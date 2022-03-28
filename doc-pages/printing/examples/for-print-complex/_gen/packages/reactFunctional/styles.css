@@ -1,0 +1,4 @@
+
+    .ag-cell {
+        page-break-inside: avoid !important;
+    }
