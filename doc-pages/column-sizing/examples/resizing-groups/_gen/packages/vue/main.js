@@ -1,13 +1,10 @@
-
-import Vue from 'vue';
-import { AgGridVue } from 'ag-grid-vue';
-import 'ag-grid-community/dist/styles/ag-grid.css';
-import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
-
-
+import Vue from "vue";
+import { AgGridVue } from "ag-grid-vue";
+import "ag-grid-community/dist/styles/ag-grid.css";
+import "ag-grid-community/dist/styles/ag-theme-alpine.css";
 
 const VueExample = {
-    template: `
+  template: `
         <div style="height: 100%">
             <div class="example-wrapper">
                 <div class="legend-bar">
@@ -26,72 +23,89 @@ const VueExample = {
             </div>
         </div>
     `,
-    components: {
-        'ag-grid-vue': AgGridVue,
-        
-    },
-    data: function() {
-        return {
-            columnDefs: [{headerName:"Everything Resizes",
-children: [{field:"athlete",
-headerClass:"resizable-header"},
-{field:"age",
-headerClass:"resizable-header"},
-{field:"country",
-headerClass:"resizable-header"}]},{headerName:"Only Year Resizes",
-children: [{field:"year",
-headerClass:"resizable-header"},
-{field:"date",
-resizable:false,
-headerClass:"fixed-size-header"},
-{field:"sport",
-resizable:false,
-headerClass:"fixed-size-header"}]},{headerName:"Nothing Resizes",
-children: [{field:"gold",
-resizable:false,
-headerClass:"fixed-size-header"},
-{field:"silver",
-resizable:false,
-headerClass:"fixed-size-header"},
-{field:"bronze",
-resizable:false,
-headerClass:"fixed-size-header"},
-{field:"total",
-resizable:false,
-headerClass:"fixed-size-header"}]}],
-            gridApi: null,
-            columnApi: null,
-            defaultColDef: {
-    width: 150,
-    resizable: true,
-},
-            rowData: null
-        }
-    },
-    created() {
-        
-    },
-    methods: {
-        onGridReady(params) {
-        this.gridApi = params.api;
-        this.gridColumnApi = params.columnApi;
-        
+  components: {
+    "ag-grid-vue": AgGridVue,
+  },
+  data: function () {
+    return {
+      columnDefs: [
+        {
+          headerName: "Everything Resizes",
+          children: [
+            { field: "athlete", headerClass: "resizable-header" },
+            { field: "age", headerClass: "resizable-header" },
+            { field: "country", headerClass: "resizable-header" },
+          ],
+        },
+        {
+          headerName: "Only Year Resizes",
+          children: [
+            { field: "year", headerClass: "resizable-header" },
+            {
+              field: "date",
+              resizable: false,
+              headerClass: "fixed-size-header",
+            },
+            {
+              field: "sport",
+              resizable: false,
+              headerClass: "fixed-size-header",
+            },
+          ],
+        },
+        {
+          headerName: "Nothing Resizes",
+          children: [
+            {
+              field: "gold",
+              resizable: false,
+              headerClass: "fixed-size-header",
+            },
+            {
+              field: "silver",
+              resizable: false,
+              headerClass: "fixed-size-header",
+            },
+            {
+              field: "bronze",
+              resizable: false,
+              headerClass: "fixed-size-header",
+            },
+            {
+              field: "total",
+              resizable: false,
+              headerClass: "fixed-size-header",
+            },
+          ],
+        },
+      ],
+      gridApi: null,
+      columnApi: null,
+      defaultColDef: {
+        width: 150,
+        resizable: true,
+      },
+      rowData: null,
+    };
+  },
+  created() {},
+  methods: {
+    onGridReady(params) {
+      this.gridApi = params.api;
+      this.gridColumnApi = params.columnApi;
 
-        
-            const updateData = (data) => params.api.setRowData(data);
-            
-            fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
-                .then(resp => resp.json())
-                .then(data => updateData(data));
+      const updateData = (data) => params.api.setRowData(data);
+
+      fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+        .then((resp) => resp.json())
+        .then((data) => updateData(data));
     },
-    }
-}
-
-
+  },
+};
 
 new Vue({
-    el: '#app',
-    components: {
-        'my-component': VueExample
-    }
+  el: "#app",
+  components: {
+    "my-component": VueExample,
+  },
 });

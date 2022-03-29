@@ -1,4 +1,3 @@
-
 const options = {
   container: document.getElementById("myChart"),
   autoSize: true,
@@ -79,7 +78,7 @@ const options = {
       position: "left",
       label: {
         formatter: function (params) {
-          return params.value / 1000 + "k"
+          return params.value / 1000 + "k";
         },
       },
     },
@@ -88,6 +87,6 @@ const options = {
     spacing: 40,
     position: "bottom",
   },
-}
+};
 
-var chart = agCharts.AgChart.create(options)
+var chart = agCharts.AgChart.create(options);

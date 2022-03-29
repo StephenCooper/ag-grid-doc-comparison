@@ -1,6 +1,5 @@
-
 const options = {
-  container: document.getElementById('myChart'),
+  container: document.getElementById("myChart"),
   data: [
     { value: 56.9 },
     { value: 22.5 },
@@ -11,10 +10,10 @@ const options = {
   ],
   series: [
     {
-      type: 'pie',
-      angleKey: 'value',
+      type: "pie",
+      angleKey: "value",
     },
   ],
-}
+};
 
-agCharts.AgChart.create(options)
+agCharts.AgChart.create(options);

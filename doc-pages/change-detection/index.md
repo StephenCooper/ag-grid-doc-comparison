@@ -6,7 +6,6 @@ The grid has built in change detection. When a value in the grid changes, either
 
 Change detection can be broken down into the following two categories:
 
-
 1. **Value Change Detection:** When a value for any cell changes (e.g. after an edit), the grid goes through every cell in the grid and compares the current value to the previous value. If the values differ, the cell is refreshed. This allows all cells using `valueGetters` to be kept up to date where a change to one cell (that was edited) may impact the value of another cell (that references the first cell) - just like Excel!
 
 1. **Aggregation Change Detection:** When a value for any cell changes, the grid will recalculate all [aggregations](/aggregation/) that are impacted by the changed value. This means the grid will automatically keep aggregation results (the values in the grouped row) up to date as the data beneath it changes.
@@ -78,7 +77,6 @@ The following operations will **automatically** trigger change detection on all 
 1. Using the `rowNode.setDataValue(col,value)` Row Node method.
 1. Using the `api.applyTransaction(transaction)` API method.
 
-
 If you do not want change detection to be automatically done, then set the grid property
 `suppressChangeDetection=true`. This will stop the change detection process firing when the above events happen.
 Ideally you should not want to turn off change detection, however the option is there if you choose to turn it off.
@@ -95,7 +93,6 @@ Aggregation change detection means rerunning [aggregations](/aggregation/) when 
 ### Example: Re-Aggregation of Groups
 
 The example below shows change detection impacting the result of groups. The grid is doing all the refresh by itself with no need for the client application explicitly requesting a refresh. Notice the following:
-
 
 - Column 'Group' is marked as a [Row Group](/grouping/) and columns A to D are marked as [Aggregation](/aggregation/) columns so that their values are summed into the group level.
 
@@ -138,7 +135,6 @@ For this reason, if you want to update the sorting, filtering or group grouping 
 
 ### Example: Change Detection and Filter / Sort / Group
 
-
 The following example is the same as the example above [Change Detection and Groups](#example-change-detection-groups) except it gets the grid to do a transaction update so that the grouping, sorting and filtering are recomputed. From the example, the following can be noted:
 
 - As before, updating any value will update the total column and aggregated group columns.
@@ -173,14 +169,13 @@ Consider the example below and you edit a cell value under under the groups "Bot
 
 The tree path selection (ie not updating anything in the group "Top") is active always in the grid and the column selection (only updating column "Column C") is active because of the grid property `aggregateOnlyChangedColumns=true`.
 
-
 The path selections ensure only the minimal amount of recalculations are done.
 
 To demonstrate this, the example installs it's own aggregation function for summing. This is identical to the normal summing provided by the grid while also printing out to the console when it gets called. This allows the example to show when the aggregations are done and on what.
 
 So with the example below, open up the console and notice the following:
 
-- When the grid initialises, the aggregation gets complete 56 times (4 columns * 14 groups). That's all paths in the group tree and all columns.
+- When the grid initialises, the aggregation gets complete 56 times (4 columns \* 14 groups). That's all paths in the group tree and all columns.
 
 - When one value changes (either via UI or via the first button 'Update One Value') then the grid recomputes the values for the impacted path only, and for the changed column only.
 
@@ -195,7 +190,6 @@ Everything above stands for when you are doing [pivoting](/pivoting/). There are
 When you click any of the buttons below, remember you are not changing the displayed cells values, as when you pivot, each cell is an aggregation of underlying data and the underlying data is no longer displayed in the grid (doing a pivot removes leaf nodes).
 
 From the example, you can observe:
-
 
 - Uncheck '**Group & Pivot**' to see what the data looks like when it is flat. You can see it's a list of student records showing student scores and age. For seeing the impact of value changes on pivots, keep this checked while selecting the other buttons.
 

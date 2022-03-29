@@ -1,17 +1,27 @@
-
-import { Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import 'ag-grid-enterprise';
-import 'ag-grid-community/dist/styles/ag-grid.css';
+import { Component } from "@angular/core";
+import { HttpClient } from "@angular/common/http";
+import "ag-grid-enterprise";
+import "ag-grid-community/dist/styles/ag-grid.css";
 import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import { ColDef, ColGroupDef, ColumnApi, FirstDataRenderedEvent, GetRowIdFunc, Grid, GridApi, GridOptions, GridReadyEvent, IDetailCellRendererParams, IsRowMaster } from 'ag-grid-community';
-import { CallsCellRenderer } from './calls-cell-renderer.component';
+import {
+  ColDef,
+  ColGroupDef,
+  ColumnApi,
+  FirstDataRenderedEvent,
+  GetRowIdFunc,
+  Grid,
+  GridApi,
+  GridOptions,
+  GridReadyEvent,
+  IDetailCellRendererParams,
+  IsRowMaster,
+} from "ag-grid-community";
+import { CallsCellRenderer } from "./calls-cell-renderer.component";
 
 @Component({
-    selector: 'my-app',
-    template: `<ag-grid-angular
+  selector: "my-app",
+  template: `<ag-grid-angular
     style="width: 100%; height: 100%;"
-    
     class="ag-theme-alpine"
     [masterDetail]="true"
     [isRowMaster]="isRowMaster"
@@ -23,68 +33,60 @@ import { CallsCellRenderer } from './calls-cell-renderer.component';
     [rowData]="rowData"
     (firstDataRendered)="onFirstDataRendered($event)"
     (gridReady)="onGridReady($event)"
-    ></ag-grid-angular>
-`
+  ></ag-grid-angular> `,
 })
-
 export class AppComponent {
-
-    
-    public isRowMaster: IsRowMaster = function (dataItem) {
+  public isRowMaster: IsRowMaster = function (dataItem) {
     return dataItem ? dataItem.callRecords.length > 0 : false;
-};
-public columnDefs: ColDef[] = [
+  };
+  public columnDefs: ColDef[] = [
     // group cell renderer needed for expand / collapse icons
-    { field: 'name', cellRenderer: 'agGroupCellRenderer' },
-    { field: 'account' },
-    { field: 'calls', cellRenderer: CallsCellRenderer },
-    { field: 'minutes', valueFormatter: "x.toLocaleString() + 'm'" },
-];
-public defaultColDef: ColDef = {
+    { field: "name", cellRenderer: "agGroupCellRenderer" },
+    { field: "account" },
+    { field: "calls", cellRenderer: CallsCellRenderer },
+    { field: "minutes", valueFormatter: "x.toLocaleString() + 'm'" },
+  ];
+  public defaultColDef: ColDef = {
     flex: 1,
-};
-public getRowId: GetRowIdFunc = function (params) {
+  };
+  public getRowId: GetRowIdFunc = function (params) {
     return params.data.account;
-};
-public detailCellRendererParams: any = {
+  };
+  public detailCellRendererParams: any = {
     detailGridOptions: {
-        columnDefs: [
-            { field: 'callId' },
-            { field: 'direction' },
-            { field: 'number', minWidth: 150 },
-            { field: 'duration', valueFormatter: "x.toLocaleString() + 's'" },
-            { field: 'switchCode', minWidth: 150 },
-        ],
-        defaultColDef: {
-            flex: 1,
-        },
+      columnDefs: [
+        { field: "callId" },
+        { field: "direction" },
+        { field: "number", minWidth: 150 },
+        { field: "duration", valueFormatter: "x.toLocaleString() + 's'" },
+        { field: "switchCode", minWidth: 150 },
+      ],
+      defaultColDef: {
+        flex: 1,
+      },
     },
     getDetailRowData: function (params) {
-        params.successCallback(params.data.callRecords);
+      params.successCallback(params.data.callRecords);
     },
-} as IDetailCellRendererParams;
-public rowData!: any[];
+  } as IDetailCellRendererParams;
+  public rowData!: any[];
 
-    constructor(private http: HttpClient) {
-}
+  constructor(private http: HttpClient) {}
 
-
-    onFirstDataRendered(params: FirstDataRenderedEvent) {
+  onFirstDataRendered(params: FirstDataRenderedEvent) {
     // arbitrarily expand a row for presentational purposes
     setTimeout(function () {
-        params.api.getDisplayedRowAtIndex(1)!.setExpanded(true);
+      params.api.getDisplayedRowAtIndex(1)!.setExpanded(true);
     }, 0);
+  }
+
+  onGridReady(params: GridReadyEvent) {
+    this.http
+      .get<any[]>(
+        "https://www.ag-grid.com/example-assets/master-detail-dynamic-data.json"
+      )
+      .subscribe((data) => {
+        this.rowData = data;
+      });
+  }
 }
-
-onGridReady(params: GridReadyEvent) {
-        
-
-        this.http.get<any[]>('https://www.ag-grid.com/example-assets/master-detail-dynamic-data.json').subscribe(data => {
-    this.rowData = data;
-});
-    }
-}
-
-
-
-

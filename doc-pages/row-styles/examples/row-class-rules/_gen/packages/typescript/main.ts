@@ -1,28 +1,34 @@
-import 'ag-grid-community/dist/styles/ag-grid.css';
+import "ag-grid-community/dist/styles/ag-grid.css";
 import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import { ColDef, ColGroupDef, Grid, GridOptions, RowClassRules } from 'ag-grid-community';
+import {
+  ColDef,
+  ColGroupDef,
+  Grid,
+  GridOptions,
+  RowClassRules,
+} from "ag-grid-community";
 
 const gridOptions: GridOptions = {
   rowData: getData(),
   columnDefs: [
-    { headerName: 'Employee', field: 'employee' },
-    { headerName: 'Number Sick Days', field: 'sickDays', editable: true },
+    { headerName: "Employee", field: "employee" },
+    { headerName: "Number Sick Days", field: "sickDays", editable: true },
   ],
   rowClassRules: {
     // row style function
-    'sick-days-warning': function (params) {
-      var numSickDays = params.data.sickDays
-      return numSickDays > 5 && numSickDays <= 7
+    "sick-days-warning": function (params) {
+      var numSickDays = params.data.sickDays;
+      return numSickDays > 5 && numSickDays <= 7;
     },
     // row style expression
-    'sick-days-breach': 'data.sickDays >= 8',
+    "sick-days-breach": "data.sickDays >= 8",
   },
-}
+};
 
 function setDataValue() {
   gridOptions.api!.forEachNode(function (rowNode) {
-    rowNode.setDataValue('sickDays', randomInt())
-  })
+    rowNode.setDataValue("sickDays", randomInt());
+  });
 }
 
 function setData() {
@@ -30,34 +36,33 @@ function setData() {
     var newData = {
       employee: rowNode.data.employee,
       sickDays: randomInt(),
-    }
-    rowNode.setData(newData)
-  })
+    };
+    rowNode.setData(newData);
+  });
 }
 
 function applyTransaction() {
-  var itemsToUpdate: any[] = []
+  var itemsToUpdate: any[] = [];
   gridOptions.api!.forEachNode(function (rowNode) {
-    var data = rowNode.data
-    data.sickDays = randomInt()
-    itemsToUpdate.push(data)
-  })
-  gridOptions.api!.applyTransaction({ update: itemsToUpdate })
+    var data = rowNode.data;
+    data.sickDays = randomInt();
+    itemsToUpdate.push(data);
+  });
+  gridOptions.api!.applyTransaction({ update: itemsToUpdate });
 }
 
 function randomInt() {
-  return Math.floor(Math.random() * 10)
+  return Math.floor(Math.random() * 10);
 }
 
 // wait for the document to be loaded, otherwise
 // AG Grid will not find the div in the document.
-  var eGridDiv = document.querySelector<HTMLElement>('#myGrid')!
-  new Grid(eGridDiv, gridOptions)
- 
+var eGridDiv = document.querySelector<HTMLElement>("#myGrid")!;
+new Grid(eGridDiv, gridOptions);
 
-if (typeof window !== 'undefined') {
-// Attach external event handlers to window so they can be called from index.html
- (<any>window).setDataValue = setDataValue;
- (<any>window).setData = setData;
- (<any>window).applyTransaction = applyTransaction;
+if (typeof window !== "undefined") {
+  // Attach external event handlers to window so they can be called from index.html
+  (<any>window).setDataValue = setDataValue;
+  (<any>window).setData = setData;
+  (<any>window).applyTransaction = applyTransaction;
 }

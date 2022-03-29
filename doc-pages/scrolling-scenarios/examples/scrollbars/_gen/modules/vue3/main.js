@@ -1,18 +1,15 @@
-
-import { createApp } from 'vue';
-import { AgGridVue } from '@ag-grid-community/vue3';
-import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import { createApp } from "vue";
+import { AgGridVue } from "@ag-grid-community/vue3";
+import "@ag-grid-community/core/dist/styles/ag-grid.css";
 import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { ModuleRegistry } from '@ag-grid-community/core';
-import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import { ModuleRegistry } from "@ag-grid-community/core";
+import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
 
 // Register the required feature modules with the Grid
-ModuleRegistry.registerModules([ClientSideRowModelModule])
-
-
+ModuleRegistry.registerModules([ClientSideRowModelModule]);
 
 const VueExample = {
-    template: `
+  template: `
         <div style="height: 100%">
             <ag-grid-vue
                 
@@ -24,48 +21,40 @@ const VueExample = {
                 :defaultColDef="defaultColDef"></ag-grid-vue>
         </div>
     `,
-    components: {
-        'ag-grid-vue': AgGridVue,
-        
+  components: {
+    "ag-grid-vue": AgGridVue,
+  },
+  data: function () {
+    return {
+      columnDefs: [{ field: "make" }, { field: "model" }, { field: "price" }],
+      gridApi: null,
+      columnApi: null,
+      defaultColDef: {
+        editable: true,
+        sortable: true,
+        resizable: true,
+        filter: true,
+        flex: 1,
+        minWidth: 100,
+      },
+      rowData: null,
+    };
+  },
+  created() {
+    this.rowData = [
+      { make: "Toyota", model: "Celica", price: 35000 },
+      { make: "Ford", model: "Mondeo", price: 32000 },
+      { make: "Porsche", model: "Boxter", price: 72000 },
+    ];
+  },
+  methods: {
+    onGridReady(params) {
+      this.gridApi = params.api;
+      this.gridColumnApi = params.columnApi;
+
+      params.api.sizeColumnsToFit();
     },
-    data: function() {
-        return {
-            columnDefs: [{field:"make"},{field:"model"},{field:"price"}],
-            gridApi: null,
-            columnApi: null,
-            defaultColDef: {
-    editable: true,
-    sortable: true,
-    resizable: true,
-    filter: true,
-    flex: 1,
-    minWidth: 100,
-},
-            rowData: null
-        }
-    },
-    created() {
-        this.rowData = [
-    { make: 'Toyota', model: 'Celica', price: 35000 },
-    { make: 'Ford', model: 'Mondeo', price: 32000 },
-    { make: 'Porsche', model: 'Boxter', price: 72000 },
-]
-    },
-    methods: {
-        onGridReady(params) {
-        this.gridApi = params.api;
-        this.gridColumnApi = params.columnApi;
-        
+  },
+};
 
-        
-    params.api.sizeColumnsToFit();
-
-    },
-    }
-}
-
-
-
-createApp(VueExample)
-    .mount("#app")
-
+createApp(VueExample).mount("#app");

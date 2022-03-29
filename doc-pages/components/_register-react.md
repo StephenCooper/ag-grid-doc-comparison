@@ -13,23 +13,7 @@
 |
 |In this example we're specifying that we want our React `CubeComponent` as a Cell Renderer in the `Cube` column:
 |
-|```jsx
-|//...other imports
-|import CubeComponent from './CubeComponent';
-|
-|const GridExample = () => {
-|   // other properties & methods
-|   
-|    const [columnDefs] = useState( [{field: 'value', cellRenderer: CubeComponent}] );
-|
-|    return (
-|         <AgGridReact
-|            columnDefs={columnDefs}
-|            ...other properties            
-|         />
-|    );
-|};
-|```
+|`jsx |//...other imports |import CubeComponent from './CubeComponent'; | |const GridExample = () => { | // other properties & methods | | const [columnDefs] = useState( [{field: 'value', cellRenderer: CubeComponent}] ); | | return ( | <AgGridReact | columnDefs={columnDefs} | ...other properties | /> | ); |}; |`
 |
 |The advantage of referencing Components directly is cleaner code, without the extra level of indirection added when referencing by name.
 |
@@ -41,32 +25,11 @@
 |In this example we've registered our React `CubeComponent` and given it a name of `cubeComponent` (this can be any name you choose).
 |We then specify that we want the previously registered `cubeComponent` to be used as a Cell Renderer in the `Cube` column:
 |
-|```jsx
-|//...other imports
-|import CubeComponent from './CubeComponent';
-|
-|const GridExample = () => {
-|   // other properties & methods
-|   
-|   const [components] = useState({
-|       cubeComponent: CubeComponent    
-|   });
-|
-|   const [columnDefs] = useState( [{field: 'value', cellRenderer: 'cubeComponent'}] );
-|
-|   return (
-|         <AgGridReact
-|            components={components}
-|            columnDefs={columnDefs}
-|            ...other properties            
-|         />
-|   );
-|};
-|```
+|`jsx |//...other imports |import CubeComponent from './CubeComponent'; | |const GridExample = () => { | // other properties & methods | | const [components] = useState({ | cubeComponent: CubeComponent | }); | | const [columnDefs] = useState( [{field: 'value', cellRenderer: 'cubeComponent'}] ); | | return ( | <AgGridReact | components={components} | columnDefs={columnDefs} | ...other properties | /> | ); |}; |`
 |
 |The advantage of referencing components by name is definitions (eg Column Definitions) can be composed of simple types (ie JSON), which is useful should you wish to persist Column Definitions.
 |
 |[[note]]
 ||A React Component in this context can be any valid React Component - A Class Based Component, a Hook or even an inline
-||Functional Component. 
+||Functional Component.
 ||The same rules apply regardless of the type of component used.

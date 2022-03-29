@@ -1,24 +1,30 @@
-import 'ag-grid-enterprise';
-import 'ag-grid-community/dist/styles/ag-grid.css';
+import "ag-grid-enterprise";
+import "ag-grid-community/dist/styles/ag-grid.css";
 import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import { ColDef, ColGroupDef, ExcelStyle, Grid, GridOptions } from 'ag-grid-community';
+import {
+  ColDef,
+  ColGroupDef,
+  ExcelStyle,
+  Grid,
+  GridOptions,
+} from "ag-grid-community";
 
 const gridOptions: GridOptions = {
   columnDefs: [
-    { headerName: 'provided', field: 'rawValue' },
-    { headerName: 'number', field: 'rawValue', cellClass: 'numberType' },
-    { headerName: 'currency', field: 'rawValue', cellClass: 'currencyFormat' },
-    { headerName: 'boolean', field: 'rawValue', cellClass: 'booleanType' },
+    { headerName: "provided", field: "rawValue" },
+    { headerName: "number", field: "rawValue", cellClass: "numberType" },
+    { headerName: "currency", field: "rawValue", cellClass: "currencyFormat" },
+    { headerName: "boolean", field: "rawValue", cellClass: "booleanType" },
     {
-      headerName: 'Negative',
-      field: 'negativeValue',
-      cellClass: 'negativeInBrackets',
+      headerName: "Negative",
+      field: "negativeValue",
+      cellClass: "negativeInBrackets",
     },
-    { headerName: 'string', field: 'rawValue', cellClass: 'stringType' },
+    { headerName: "string", field: "rawValue", cellClass: "stringType" },
     {
-      headerName: 'Date',
-      field: 'dateValue',
-      cellClass: 'dateType',
+      headerName: "Date",
+      field: "dateValue",
+      cellClass: "dateType",
       minWidth: 220,
     },
   ],
@@ -31,54 +37,53 @@ const gridOptions: GridOptions = {
     {
       rawValue: 1,
       negativeValue: -10,
-      dateValue: '2009-04-20T00:00:00.000',
+      dateValue: "2009-04-20T00:00:00.000",
     },
   ],
   excelStyles: [
     {
-      id: 'numberType',
+      id: "numberType",
       numberFormat: {
-        format: '0',
+        format: "0",
       },
     },
     {
-      id: 'currencyFormat',
+      id: "currencyFormat",
       numberFormat: {
-        format: '#,##0.00 €',
+        format: "#,##0.00 €",
       },
     },
     {
-      id: 'negativeInBrackets',
+      id: "negativeInBrackets",
       numberFormat: {
-        format: '$[blue] #,##0;$ [red](#,##0)',
+        format: "$[blue] #,##0;$ [red](#,##0)",
       },
     },
     {
-      id: 'booleanType',
-      dataType: 'Boolean',
+      id: "booleanType",
+      dataType: "Boolean",
     },
     {
-      id: 'stringType',
-      dataType: 'String',
+      id: "stringType",
+      dataType: "String",
     },
     {
-      id: 'dateType',
-      dataType: 'DateTime',
+      id: "dateType",
+      dataType: "DateTime",
     },
   ],
   popupParent: document.body,
-}
+};
 
 function onBtExport() {
-  gridOptions.api!.exportDataAsExcel()
+  gridOptions.api!.exportDataAsExcel();
 }
 
 // setup the grid after the page has finished loading
-  const gridDiv = document.querySelector<HTMLElement>('#myGrid')!
-  new Grid(gridDiv, gridOptions)
- 
+const gridDiv = document.querySelector<HTMLElement>("#myGrid")!;
+new Grid(gridDiv, gridOptions);
 
-if (typeof window !== 'undefined') {
-// Attach external event handlers to window so they can be called from index.html
- (<any>window).onBtExport = onBtExport;
+if (typeof window !== "undefined") {
+  // Attach external event handlers to window so they can be called from index.html
+  (<any>window).onBtExport = onBtExport;
 }

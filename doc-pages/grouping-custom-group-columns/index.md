@@ -3,7 +3,7 @@ title: "Row Grouping - Custom Group Columns"
 enterprise: true
 ---
 
-This section covers how to take charge of displaying the row groups without using the built-in display types. 
+This section covers how to take charge of displaying the row groups without using the built-in display types.
 
 [[note]]
 | We advise against using your own group columns. Only do this if the Auto Group Columns do not meet your requirements. Otherwise defining your own group columns will add unnecessary complexity to your code.
@@ -43,7 +43,7 @@ const gridOptions = {
 };
 </snippet>
 
-Note in the snippet above that in order to make a column display a group, you need to configure the property 
+Note in the snippet above that in order to make a column display a group, you need to configure the property
 `coldef.showRowGroup` for that column and can be configured in two different ways:
 
 - To tell this column to show all the groups: `coldef.showRowGroup= true`

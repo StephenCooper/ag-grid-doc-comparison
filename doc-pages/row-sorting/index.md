@@ -4,7 +4,6 @@ title: "Row Sorting"
 
 This page describes how to get your grid data sorting. Row sorting works with all frameworks as well as plain JavaScript.
 
-
 ## Enable Sorting
 
 Enable sorting for columns by setting the `sortable` column definition attribute.
@@ -68,7 +67,6 @@ The parameters are as follows:
 - `nodeA, nodeB`: The [Row Nodes](/row-object/) for the rows getting sorted. These can be used if more information, such as data from other columns, are needed for the comparison.
 - `isInverted`: `true` for Ascending, `false` for Descending.
 
-
 ### Custom Sorting Example
 
 Example below shows the following:
@@ -82,7 +80,6 @@ Example below shows the following:
 ### Custom Sorting Groups Example
 
 When [Row Grouping](/grouping/) it is possible to override the sort order of the Row Group columns. If using the Auto Group Column, provide a comparator via the `autoGroupColumnDef` grid property.
-
 
 <snippet>
 var gridOptions = {
@@ -120,7 +117,6 @@ By default, the sorting order is as follows:
 
 **ascending -> descending -> none**.
 
-
 In other words, when you click a column that is not sorted, it will sort ascending. The next click
 will make it sort descending. Another click will remove the sort.
 
@@ -129,19 +125,15 @@ the `gridOptions` or the `colDef`. If defined both in `colDef` and
 `gridOptions`, the `colDef` will get preference, allowing you to define a common default,
 and then tailor per column.
 
-
 ## Example: Sorting Order and Animation
 
-
 The example below shows animation of the rows plus different combinations of sorting orders as follows:
-
 
 - **Grid Default:** ascending -> descending -> no sort
 - **Column Athlete:** ascending -> descending
 - **Column Age:** descending -> ascending
 - **Column Country:** descending -> no sort
 - **Column Year:** ascending only
-
 
 <grid-example title='Sorting Order and Animation' name='sorting-order-and-animation' type='generated'></grid-example>
 
@@ -152,7 +144,6 @@ What sorting is applied is controlled via [Column State](/column-state/). The be
 <grid-example title='Sorting API' name='sorting-api' type='generated'></grid-example>
 
 ## Accented Sort
-
 
 By default sorting doesn't take into consideration locale-specific characters. If you need to make your sort
 locale-specific you can configure this by setting the grid option `accentedSort = true`.

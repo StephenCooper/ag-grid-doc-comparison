@@ -15,13 +15,11 @@ After calling `rowNode.setData` or `rowNode.setDataValue` the grid's view will a
 
 ## Sort / Filter / Group Refresh
 
-
 After calling `rowNode.setData` or `rowNode.setDataValue` the grid will not update to reflect a change in sorting, filtering or grouping.
 
 To have the grid update its sort, filter or grouping call the Grid API `refreshClientSideRowModel()`.
 
 If you want the grid to automatically update sorting, filter or grouping then you should consider using [Transaction Updates](/data-update-transactions/).
-
 
 ## Updating Rows / Cells Example
 
@@ -34,7 +32,6 @@ The example below demonstrates the following:
 - **Sort:** Re-runs the sort in the Client-Side Row Model - to see this in action, sort the data first, then edit the data so the sort is broken, then hit this button to fix the sort.
 
 - **Filter:** Re-runs the filter in the Client-Side Row Model - to see this in action, filter the data first, then
-        edit the data so the filter is broken (i.e. a row is present that should not be present), then hit this button to fix the filter.
+  edit the data so the filter is broken (i.e. a row is present that should not be present), then hit this button to fix the filter.
 
 <grid-example title='Updating Row Nodes' name='updating-row-nodes' type='generated'></grid-example>
-

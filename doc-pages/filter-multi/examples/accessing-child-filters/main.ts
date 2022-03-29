@@ -1,20 +1,25 @@
-import { Grid, GridOptions, IMultiFilter, ISetFilter } from '@ag-grid-community/core';
+import {
+  Grid,
+  GridOptions,
+  IMultiFilter,
+  ISetFilter,
+} from "@ag-grid-community/core";
 
 const gridOptions: GridOptions = {
   columnDefs: [
     {
-      field: 'athlete',
-      filter: 'agMultiColumnFilter',
+      field: "athlete",
+      filter: "agMultiColumnFilter",
       filterParams: {
         filters: [
           {
-            filter: 'agTextColumnFilter',
+            filter: "agTextColumnFilter",
             filterParams: {
-              buttons: ['apply', 'clear'],
+              buttons: ["apply", "clear"],
             },
           },
           {
-            filter: 'agSetColumnFilter',
+            filter: "agSetColumnFilter",
           },
         ],
       },
@@ -24,30 +29,30 @@ const gridOptions: GridOptions = {
     flex: 1,
     minWidth: 200,
     resizable: true,
-    menuTabs: ['filterMenuTab'],
+    menuTabs: ["filterMenuTab"],
   },
-}
+};
 
 function getTextModel() {
-  var textFilter = (gridOptions.api!.getFilterInstance(
-    'athlete'
-  ) as IMultiFilter).getChildFilterInstance(0)!;
-  console.log('Current Text Filter model: ', textFilter.getModel())
+  var textFilter = (
+    gridOptions.api!.getFilterInstance("athlete") as IMultiFilter
+  ).getChildFilterInstance(0)!;
+  console.log("Current Text Filter model: ", textFilter.getModel());
 }
 
 function getSetMiniFilter() {
-  var setFilter = (gridOptions.api!.getFilterInstance(
-    'athlete'
-  ) as IMultiFilter).getChildFilterInstance(1) as ISetFilter;
-  console.log('Current Set Filter search text: ', setFilter.getMiniFilter())
+  var setFilter = (
+    gridOptions.api!.getFilterInstance("athlete") as IMultiFilter
+  ).getChildFilterInstance(1) as ISetFilter;
+  console.log("Current Set Filter search text: ", setFilter.getMiniFilter());
 }
 
 // setup the grid after the page has finished loading
-document.addEventListener('DOMContentLoaded', function () {
-  var gridDiv = document.querySelector<HTMLElement>('#myGrid')!
-  new Grid(gridDiv, gridOptions)
+document.addEventListener("DOMContentLoaded", function () {
+  var gridDiv = document.querySelector<HTMLElement>("#myGrid")!;
+  new Grid(gridDiv, gridOptions);
 
-  fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
-    .then(response => response.json())
-    .then(data => gridOptions.api!.setRowData(data))
-})
+  fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+    .then((response) => response.json())
+    .then((data) => gridOptions.api!.setRowData(data));
+});

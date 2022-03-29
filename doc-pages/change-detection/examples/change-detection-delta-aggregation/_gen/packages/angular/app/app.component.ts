@@ -1,240 +1,253 @@
-
-import { Component } from '@angular/core';
-import 'ag-grid-enterprise';
-import 'ag-grid-community/dist/styles/ag-grid.css';
+import { Component } from "@angular/core";
+import "ag-grid-enterprise";
+import "ag-grid-community/dist/styles/ag-grid.css";
 import "ag-grid-community/dist/styles/ag-theme-alpine-dark.css";
-import { ColDef, ColGroupDef, ColumnApi, GetRowIdFunc, Grid, GridApi, GridOptions, GridReadyEvent, IAggFunc, RowNode, ValueParserParams } from 'ag-grid-community';
+import {
+  ColDef,
+  ColGroupDef,
+  ColumnApi,
+  GetRowIdFunc,
+  Grid,
+  GridApi,
+  GridOptions,
+  GridReadyEvent,
+  IAggFunc,
+  RowNode,
+  ValueParserParams,
+} from "ag-grid-community";
 
 @Component({
-    selector: 'my-app',
-    template: `<div class="parent-container">
+  selector: "my-app",
+  template: `<div class="parent-container">
     <div class="top-container">
-        <button (click)="updateOneRecord()">Update One Value</button>
-        <button (click)="updateUsingTransaction()">Update Using Transaction</button>
-        <button (click)="removeUsingTransaction()">Remove Using Transaction</button>
-        <button (click)="addUsingTransaction()">Add Using Transaction</button>
-        <button (click)="changeGroupUsingTransaction()">Change Group Using Transaction</button>
+      <button (click)="updateOneRecord()">Update One Value</button>
+      <button (click)="updateUsingTransaction()">
+        Update Using Transaction
+      </button>
+      <button (click)="removeUsingTransaction()">
+        Remove Using Transaction
+      </button>
+      <button (click)="addUsingTransaction()">Add Using Transaction</button>
+      <button (click)="changeGroupUsingTransaction()">
+        Change Group Using Transaction
+      </button>
     </div>
     <div class="center-container">
-        <ag-grid-angular
-    style="width: 100%; height: 100%;"
-    
-    class="ag-theme-alpine-dark"
-    [columnDefs]="columnDefs"
-    [defaultColDef]="defaultColDef"
-    [autoGroupColumnDef]="autoGroupColumnDef"
-    [columnTypes]="columnTypes"
-    [aggregateOnlyChangedColumns]="true"
-    [aggFuncs]="aggFuncs"
-    [groupDefaultExpanded]="groupDefaultExpanded"
-    [suppressAggFuncInHeader]="true"
-    [animateRows]="true"
-    [getRowId]="getRowId"
-    [rowData]="rowData"
-    (gridReady)="onGridReady($event)"
-    ></ag-grid-angular>
+      <ag-grid-angular
+        style="width: 100%; height: 100%;"
+        class="ag-theme-alpine-dark"
+        [columnDefs]="columnDefs"
+        [defaultColDef]="defaultColDef"
+        [autoGroupColumnDef]="autoGroupColumnDef"
+        [columnTypes]="columnTypes"
+        [aggregateOnlyChangedColumns]="true"
+        [aggFuncs]="aggFuncs"
+        [groupDefaultExpanded]="groupDefaultExpanded"
+        [suppressAggFuncInHeader]="true"
+        [animateRows]="true"
+        [getRowId]="getRowId"
+        [rowData]="rowData"
+        (gridReady)="onGridReady($event)"
+      ></ag-grid-angular>
     </div>
-</div>
-`
+  </div> `,
 })
-
 export class AppComponent {
-    private gridApi!: GridApi;
+  private gridApi!: GridApi;
 
-    
-    public columnDefs: ColDef[] = [
-    { field: 'topGroup', rowGroup: true, hide: true },
-    { field: 'group', rowGroup: true, hide: true },
-    { headerName: 'ID', field: 'id', cellClass: 'number-cell', maxWidth: 70 },
-    { field: 'a', type: 'valueColumn' },
-    { field: 'b', type: 'valueColumn' },
-    { field: 'c', type: 'valueColumn' },
-    { field: 'd', type: 'valueColumn' },
+  public columnDefs: ColDef[] = [
+    { field: "topGroup", rowGroup: true, hide: true },
+    { field: "group", rowGroup: true, hide: true },
+    { headerName: "ID", field: "id", cellClass: "number-cell", maxWidth: 70 },
+    { field: "a", type: "valueColumn" },
+    { field: "b", type: "valueColumn" },
+    { field: "c", type: "valueColumn" },
+    { field: "d", type: "valueColumn" },
     {
-        headerName: 'Total',
-        type: 'totalColumn',
-        minWidth: 120,
-        // we use getValue() instead of data.a so that it gets the aggregated values at the group level
-        valueGetter: 'getValue("a") + getValue("b") + getValue("c") + getValue("d")',
+      headerName: "Total",
+      type: "totalColumn",
+      minWidth: 120,
+      // we use getValue() instead of data.a so that it gets the aggregated values at the group level
+      valueGetter:
+        'getValue("a") + getValue("b") + getValue("c") + getValue("d")',
     },
-];
-public defaultColDef: ColDef = {
+  ];
+  public defaultColDef: ColDef = {
     flex: 1,
     sortable: true,
     resizable: true,
-};
-public autoGroupColumnDef: ColDef = {
+  };
+  public autoGroupColumnDef: ColDef = {
     minWidth: 180,
-};
-public columnTypes: {
-        [key: string]: ColDef;
-    } = {
+  };
+  public columnTypes: {
+    [key: string]: ColDef;
+  } = {
     valueColumn: {
-        editable: true,
-        aggFunc: 'sum',
-        cellClass: 'number-cell',
-        cellRenderer: 'agAnimateShowChangeCellRenderer',
-        filter: 'agNumberColumnFilter',
-        valueParser: numberValueParser,
+      editable: true,
+      aggFunc: "sum",
+      cellClass: "number-cell",
+      cellRenderer: "agAnimateShowChangeCellRenderer",
+      filter: "agNumberColumnFilter",
+      valueParser: numberValueParser,
     },
     totalColumn: {
-        cellRenderer: 'agAnimateShowChangeCellRenderer',
-        cellClass: 'number-cell',
+      cellRenderer: "agAnimateShowChangeCellRenderer",
+      cellClass: "number-cell",
     },
-};
-public aggFuncs: {
-        [key: string]: IAggFunc;
-    } = {
+  };
+  public aggFuncs: {
+    [key: string]: IAggFunc;
+  } = {
     sum: function (params) {
-        var values = params && params.values ? params.values : [];
-        var result = 0;
-        if (values) {
-            values.forEach(function (value) {
-                if (typeof value === 'number') {
-                    result += value;
-                }
-            });
-        }
-        callCount++;
-        console.log(callCount + ' aggregation: sum([' + values.join(',') + ']) = ' + result);
-        return result;
+      var values = params && params.values ? params.values : [];
+      var result = 0;
+      if (values) {
+        values.forEach(function (value) {
+          if (typeof value === "number") {
+            result += value;
+          }
+        });
+      }
+      callCount++;
+      console.log(
+        callCount + " aggregation: sum([" + values.join(",") + "]) = " + result
+      );
+      return result;
     },
-};
-public groupDefaultExpanded = 1;
-public getRowId: GetRowIdFunc = function (params) {
+  };
+  public groupDefaultExpanded = 1;
+  public getRowId: GetRowIdFunc = function (params) {
     return params.data.id;
-};
-public rowData!: any[];
+  };
+  public rowData!: any[];
 
-
-    updateOneRecord() {
+  updateOneRecord() {
     var rowNodeToUpdate = pickExistingRowNodeAtRandom(this.gridApi!);
-    if (!rowNodeToUpdate)
-        return;
+    if (!rowNodeToUpdate) return;
     var randomValue = createRandomNumber();
     var randomColumnId = pickRandomColumn();
-    console.log('updating ' + randomColumnId + ' to ' + randomValue + ' on ', rowNodeToUpdate.data);
+    console.log(
+      "updating " + randomColumnId + " to " + randomValue + " on ",
+      rowNodeToUpdate.data
+    );
     rowNodeToUpdate.setDataValue(randomColumnId, randomValue);
-}
+  }
 
-updateUsingTransaction() {
+  updateUsingTransaction() {
     var itemToUpdate = pickExistingRowItemAtRandom(this.gridApi!);
     if (!itemToUpdate) {
-        return;
+      return;
     }
-    console.log('updating - before', itemToUpdate);
+    console.log("updating - before", itemToUpdate);
     itemToUpdate[pickRandomColumn()] = createRandomNumber();
     itemToUpdate[pickRandomColumn()] = createRandomNumber();
     var transaction = {
-        update: [itemToUpdate],
+      update: [itemToUpdate],
     };
-    console.log('updating - after', itemToUpdate);
+    console.log("updating - after", itemToUpdate);
     this.gridApi.applyTransaction(transaction);
-}
+  }
 
-removeUsingTransaction() {
+  removeUsingTransaction() {
     var itemToRemove = pickExistingRowItemAtRandom(this.gridApi!);
     if (!itemToRemove) {
-        return;
+      return;
     }
     var transaction = {
-        remove: [itemToRemove],
+      remove: [itemToRemove],
     };
-    console.log('removing', itemToRemove);
+    console.log("removing", itemToRemove);
     this.gridApi.applyTransaction(transaction);
-}
+  }
 
-addUsingTransaction() {
+  addUsingTransaction() {
     var i = Math.floor(Math.random() * 2);
     var j = Math.floor(Math.random() * 5);
     var k = Math.floor(Math.random() * 3);
     var newItem = createRowItem(i, j, k);
     var transaction = {
-        add: [newItem],
+      add: [newItem],
     };
-    console.log('adding', newItem);
+    console.log("adding", newItem);
     this.gridApi.applyTransaction(transaction);
-}
+  }
 
-changeGroupUsingTransaction() {
+  changeGroupUsingTransaction() {
     var itemToUpdate = pickExistingRowItemAtRandom(this.gridApi!);
     if (!itemToUpdate) {
-        return;
+      return;
     }
-    itemToUpdate.topGroup = itemToUpdate.topGroup === 'Top' ? 'Bottom' : 'Top';
+    itemToUpdate.topGroup = itemToUpdate.topGroup === "Top" ? "Bottom" : "Top";
     var transaction = {
-        update: [itemToUpdate],
+      update: [itemToUpdate],
     };
-    console.log('updating', itemToUpdate);
+    console.log("updating", itemToUpdate);
     this.gridApi.applyTransaction(transaction);
-}
+  }
 
-onGridReady(params: GridReadyEvent) {
-        this.gridApi = params.api;
+  onGridReady(params: GridReadyEvent) {
+    this.gridApi = params.api;
 
-        
     params.api!.setRowData(createRowData());
-
-    }
+  }
 }
-
-
 
 var rowIdCounter = 0;
 var callCount = 0;
 function createRowData() {
-    var result = [];
-    for (var i = 1; i <= 2; i++) {
-        for (var j = 1; j <= 5; j++) {
-            for (var k = 1; k <= 3; k++) {
-                var rowDataItem = createRowItem(i, j, k);
-                result.push(rowDataItem);
-            }
-        }
+  var result = [];
+  for (var i = 1; i <= 2; i++) {
+    for (var j = 1; j <= 5; j++) {
+      for (var k = 1; k <= 3; k++) {
+        var rowDataItem = createRowItem(i, j, k);
+        result.push(rowDataItem);
+      }
     }
-    return result;
+  }
+  return result;
 }
 function createRowItem(i: number, j: number, k: number) {
-    var rowDataItem = {
-        id: rowIdCounter++,
-        a: (j * k * 863) % 100,
-        b: (j * k * 811) % 100,
-        c: (j * k * 743) % 100,
-        d: (j * k * 677) % 100,
-        topGroup: 'Bottom',
-        group: 'Group B' + j
-    };
-    if (i === 1) {
-        rowDataItem.topGroup = 'Top';
-        rowDataItem.group = 'Group A' + j;
-    }
-    return rowDataItem;
+  var rowDataItem = {
+    id: rowIdCounter++,
+    a: (j * k * 863) % 100,
+    b: (j * k * 811) % 100,
+    c: (j * k * 743) % 100,
+    d: (j * k * 677) % 100,
+    topGroup: "Bottom",
+    group: "Group B" + j,
+  };
+  if (i === 1) {
+    rowDataItem.topGroup = "Top";
+    rowDataItem.group = "Group A" + j;
+  }
+  return rowDataItem;
 }
 // converts strings to numbers
 function numberValueParser(params: ValueParserParams) {
-    console.log('=> updating to ' + params.newValue);
-    return Number(params.newValue);
+  console.log("=> updating to " + params.newValue);
+  return Number(params.newValue);
 }
 function pickRandomColumn() {
-    var letters = ['a', 'b', 'c', 'd'];
-    var randomIndex = Math.floor(Math.random() * letters.length);
-    return letters[randomIndex];
+  var letters = ["a", "b", "c", "d"];
+  var randomIndex = Math.floor(Math.random() * letters.length);
+  return letters[randomIndex];
 }
 function createRandomNumber() {
-    return Math.floor(Math.random() * 100);
+  return Math.floor(Math.random() * 100);
 }
 function pickExistingRowItemAtRandom(gridApi: GridApi) {
-    var rowNode = pickExistingRowNodeAtRandom(gridApi);
-    return rowNode ? rowNode.data : null;
+  var rowNode = pickExistingRowNodeAtRandom(gridApi);
+  return rowNode ? rowNode.data : null;
 }
 function pickExistingRowNodeAtRandom(gridApi: GridApi): RowNode | undefined {
-    var allItems: RowNode[] = [];
-    gridApi.forEachLeafNode(function (rowNode) {
-        allItems.push(rowNode);
-    });
-    if (allItems.length === 0) {
-        return undefined;
-    }
-    var result = allItems[Math.floor(Math.random() * allItems.length)];
-    return result;
+  var allItems: RowNode[] = [];
+  gridApi.forEachLeafNode(function (rowNode) {
+    allItems.push(rowNode);
+  });
+  if (allItems.length === 0) {
+    return undefined;
+  }
+  var result = allItems[Math.floor(Math.random() * allItems.length)];
+  return result;
 }

@@ -26,4 +26,3 @@ The example below demonstrates how changing columns impacts the server side row 
 ## Next Up
 
 Continue to the next section to learn how to [Update Data](/server-side-model-updating/) with the SSRM.
-

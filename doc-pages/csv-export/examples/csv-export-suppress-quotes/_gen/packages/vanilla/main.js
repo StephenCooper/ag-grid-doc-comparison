@@ -1,4 +1,3 @@
-
 const gridOptions = {
   defaultColDef: {
     editable: true,
@@ -10,43 +9,43 @@ const gridOptions = {
   suppressExcelExport: true,
   popupParent: document.body,
 
-  columnDefs: [{ field: 'make' }, { field: 'model' }, { field: 'price' }],
+  columnDefs: [{ field: "make" }, { field: "model" }, { field: "price" }],
 
   rowData: [
-    { make: 'Toyota', model: 'Celica', price: 35000 },
-    { make: 'Ford', model: 'Mondeo', price: 32000 },
-    { make: 'Porsche', model: 'Boxter', price: 72000 },
+    { make: "Toyota", model: "Celica", price: 35000 },
+    { make: "Ford", model: "Mondeo", price: 32000 },
+    { make: "Porsche", model: "Boxter", price: 72000 },
   ],
-}
+};
 
 function getBoolean(inputSelector) {
-  return !!(document.querySelector(inputSelector) ).checked
+  return !!document.querySelector(inputSelector).checked;
 }
 
 function getParams() {
   return {
-    suppressQuotes: getBoolean('#suppressQuotes'),
-  }
+    suppressQuotes: getBoolean("#suppressQuotes"),
+  };
 }
 
 function onBtnExport() {
-  const params = getParams()
+  const params = getParams();
   if (params.suppressQuotes) {
     alert(
-      'NOTE: you are downloading a file with non-standard quotes - it may not render correctly in Excel.'
-    )
+      "NOTE: you are downloading a file with non-standard quotes - it may not render correctly in Excel."
+    );
   }
-  gridOptions.api.exportDataAsCsv(params)
+  gridOptions.api.exportDataAsCsv(params);
 }
 
 function onBtnUpdate() {
-  (document.querySelector('#csvResult') ).value = gridOptions.api.getDataAsCsv(
+  document.querySelector("#csvResult").value = gridOptions.api.getDataAsCsv(
     getParams()
-  )
+  );
 }
 
 // setup the grid after the page has finished loading
-document.addEventListener('DOMContentLoaded', function () {
-  var gridDiv = document.querySelector('#myGrid')
-  new agGrid.Grid(gridDiv, gridOptions)
-})
+document.addEventListener("DOMContentLoaded", function () {
+  var gridDiv = document.querySelector("#myGrid");
+  new agGrid.Grid(gridDiv, gridOptions);
+});

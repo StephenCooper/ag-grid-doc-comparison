@@ -1,4 +1,3 @@
-
 const gridOptions = {
   defaultColDef: {
     editable: true,
@@ -11,49 +10,49 @@ const gridOptions = {
   popupParent: document.body,
 
   columnDefs: [
-    { headerName: 'Brand', children: [{ field: 'make' }, { field: 'model' }] },
+    { headerName: "Brand", children: [{ field: "make" }, { field: "model" }] },
     {
-      headerName: 'Value',
-      children: [{ field: 'price' }],
+      headerName: "Value",
+      children: [{ field: "price" }],
     },
   ],
 
   rowData: [
-    { make: 'Toyota', model: 'Celica', price: 35000 },
-    { make: 'Ford', model: 'Mondeo', price: 32000 },
-    { make: 'Porsche', model: 'Boxter', price: 72000 },
+    { make: "Toyota", model: "Celica", price: 35000 },
+    { make: "Ford", model: "Mondeo", price: 32000 },
+    { make: "Porsche", model: "Boxter", price: 72000 },
   ],
 
   onGridReady: function (params) {
-    (document.getElementById('columnGroups') ).checked = true
+    document.getElementById("columnGroups").checked = true;
   },
-}
+};
 
 function getBoolean(id) {
-  var field = document.querySelector('#' + id) 
+  var field = document.querySelector("#" + id);
 
-  return !!field.checked
+  return !!field.checked;
 }
 
 function getParams() {
   return {
-    skipColumnGroupHeaders: getBoolean('columnGroups'),
-    skipColumnHeaders: getBoolean('skipHeader'),
-  }
+    skipColumnGroupHeaders: getBoolean("columnGroups"),
+    skipColumnHeaders: getBoolean("skipHeader"),
+  };
 }
 
 function onBtnExport() {
-  gridOptions.api.exportDataAsCsv(getParams())
+  gridOptions.api.exportDataAsCsv(getParams());
 }
 
 function onBtnUpdate() {
-  (document.querySelector('#csvResult') ).value = gridOptions.api.getDataAsCsv(
+  document.querySelector("#csvResult").value = gridOptions.api.getDataAsCsv(
     getParams()
-  )
+  );
 }
 
 // setup the grid after the page has finished loading
-document.addEventListener('DOMContentLoaded', function () {
-  var gridDiv = document.querySelector('#myGrid')
-  new agGrid.Grid(gridDiv, gridOptions)
-})
+document.addEventListener("DOMContentLoaded", function () {
+  var gridDiv = document.querySelector("#myGrid");
+  new agGrid.Grid(gridDiv, gridOptions);
+});

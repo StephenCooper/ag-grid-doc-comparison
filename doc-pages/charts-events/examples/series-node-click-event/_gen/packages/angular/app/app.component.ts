@@ -1,90 +1,85 @@
-import { cloneDeep } from 'lodash';
-import { Component } from '@angular/core';
-import * as agCharts from 'ag-charts-community';
-import { AgChartOptions } from 'ag-charts-community';
+import { cloneDeep } from "lodash";
+import { Component } from "@angular/core";
+import * as agCharts from "ag-charts-community";
+import { AgChartOptions } from "ag-charts-community";
 
 @Component({
-    selector: 'my-app',
-    template: `<div class="wrapper">
+  selector: "my-app",
+  template: `<div class="wrapper">
     <ag-charts-angular
-    style="height: 100%"
-    [options]="options"
+      style="height: 100%"
+      [options]="options"
     ></ag-charts-angular>
-</div>`
+  </div>`,
 })
-
 export class AppComponent {
-    private options: AgChartOptions;
-    
+  private options: AgChartOptions;
 
-    constructor() {
-        this.options = {
-    
-    title: {
-        text: 'Average low/high temperatures in London',
-    },
-    subtitle: {
-        text: '(click a data point for details)',
-    },
-    data: [
-        { month: 'March', low: 3.9, high: 11.3 },
-        { month: 'April', low: 5.5, high: 14.2 },
-        { month: 'May', low: 8.7, high: 17.9 },
-    ],
-    series: [
+  constructor() {
+    this.options = {
+      title: {
+        text: "Average low/high temperatures in London",
+      },
+      subtitle: {
+        text: "(click a data point for details)",
+      },
+      data: [
+        { month: "March", low: 3.9, high: 11.3 },
+        { month: "April", low: 5.5, high: 14.2 },
+        { month: "May", low: 8.7, high: 17.9 },
+      ],
+      series: [
         {
-            type: 'line',
-            xKey: 'month',
-            yKey: 'high',
+          type: "line",
+          xKey: "month",
+          yKey: "high",
         },
         {
-            type: 'column',
-            xKey: 'month',
-            yKey: 'low',
+          type: "column",
+          xKey: "month",
+          yKey: "low",
         },
-    ],
-    axes: [
+      ],
+      axes: [
         {
-            type: 'category',
-            position: 'bottom',
+          type: "category",
+          position: "bottom",
         },
         {
-            type: 'number',
-            position: 'left',
+          type: "number",
+          position: "left",
         },
-    ],
-    legend: {
+      ],
+      legend: {
         enabled: false,
-    },
-    tooltip: {
-        tracking: false
-    },
-    listeners: {
+      },
+      tooltip: {
+        tracking: false,
+      },
+      listeners: {
         seriesNodeClick: function (event: any) {
-            var datum = event.datum;
-            window.alert('Temperature in ' +
-                datum[event.xKey] +
-                ': ' +
-                String(datum[event.yKey]) +
-                '°C' +
-                '\nSeries: ' +
-                event.series.id);
+          var datum = event.datum;
+          window.alert(
+            "Temperature in " +
+              datum[event.xKey] +
+              ": " +
+              String(datum[event.yKey]) +
+              "°C" +
+              "\nSeries: " +
+              event.series.id
+          );
         },
-    },
-}
-    }
+      },
+    };
+  }
 
-    ngOnInit() {
-        
-    }
-
-    
+  ngOnInit() {}
 }
 
 function listUnitsSoldByBrand(brands: Record<string, number>) {
-    var result = '';
-    for (var key in brands) {
-        result += key + ': ' + brands[key] + '\n';
-    }
-    return result;
+  var result = "";
+  for (var key in brands) {
+    result += key + ": " + brands[key] + "\n";
+  }
+  return result;
 }

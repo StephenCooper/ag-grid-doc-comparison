@@ -13,7 +13,6 @@ The dummy financial application above shows some of the grid's integrated charti
 - **Dynamic Charts**: Buttons positioned above the grid dynamically create different chart types.
 - **High Performance**: 100 rows are randomly updated 10 times a second (1,000 updates per second). Try updating the example via Plunker with higher update frequencies and more data.
 
-
 To learn how to create charts in your applications see the following sections for details:
 
 - [Chart API]: Used to create charts programmatically inside applications.

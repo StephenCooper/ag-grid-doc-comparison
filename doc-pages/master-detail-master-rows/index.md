@@ -48,7 +48,7 @@ The callback `isRowMaster` is re-called after data changes in the row as a resul
 
 ```js
 // to get isRowMaster called again, update the row using a Transaction Update
-const transaction = { update: [ updatedRecord1, updatedRecord2 ] };
+const transaction = { update: [updatedRecord1, updatedRecord2] };
 gridApi.applyTransaction(transaction);
 ```
 
@@ -65,12 +65,13 @@ The example below extends the previous example. It demonstrates a common scenari
 
 - Each Master Row has buttons to add or remove one detail rows.
 - Clicking 'Add' will:
-    - Add one detail row.
-    - Ensure the Master Row is expandable.
-    - Ensure the Master Row is expanded (i.e. the Detail Grid is visible).
+
+  - Add one detail row.
+  - Ensure the Master Row is expandable.
+  - Ensure the Master Row is expanded (i.e. the Detail Grid is visible).
 
 - Clicking 'Remove' will:
-    - Remove one detail row.
-    - If no detail rows exist, ensure Master Row is not expandable
+  - Remove one detail row.
+  - If no detail rows exist, ensure Master Row is not expandable
 
 <grid-example title='Dynamically Changing Master Rows' name='changing-dynamic-2' type='generated' options='{ "enterprise": true, "exampleHeight": 510, "modules": ["clientside", "masterdetail", "menu", "columnpanel"] }'></grid-example>

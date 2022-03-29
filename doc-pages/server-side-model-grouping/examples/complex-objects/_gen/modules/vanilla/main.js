@@ -1,17 +1,16 @@
-
 const columnDefs = [
   // here we are using a valueGetter to get the country name from the complex object
   {
-    colId: 'country',
-    valueGetter: 'data.country.name',
+    colId: "country",
+    valueGetter: "data.country.name",
     rowGroup: true,
     hide: true,
   },
 
-  { field: 'gold', aggFunc: 'sum' },
-  { field: 'silver', aggFunc: 'sum' },
-  { field: 'bronze', aggFunc: 'sum' },
-]
+  { field: "gold", aggFunc: "sum" },
+  { field: "silver", aggFunc: "sum" },
+  { field: "bronze", aggFunc: "sum" },
+];
 
 const gridOptions = {
   columnDefs: columnDefs,
@@ -26,29 +25,29 @@ const gridOptions = {
     minWidth: 280,
   },
   // use the server-side row model
-  rowModelType: 'serverSide',
-  serverSideStoreType: 'partial',
+  rowModelType: "serverSide",
+  serverSideStoreType: "partial",
 
   animateRows: true,
   suppressAggFuncInHeader: true,
   // debug: true,
-}
+};
 
 function getServerSideDatasource(server) {
   return {
     getRows: function (params) {
-      console.log('[Datasource] - rows requested by grid: ', params.request)
+      console.log("[Datasource] - rows requested by grid: ", params.request);
 
-      var response = server.getData(params.request)
+      var response = server.getData(params.request);
 
       // convert country to a complex object
       var resultsWithComplexObjects = response.rows.map(function (row) {
         row.country = {
           name: row.country,
           code: row.country.substring(0, 3).toUpperCase(),
-        }
-        return row
-      })
+        };
+        return row;
+      });
 
       // adding delay to simulate real server call
       setTimeout(function () {
@@ -57,31 +56,31 @@ function getServerSideDatasource(server) {
           params.success({
             rowData: resultsWithComplexObjects,
             rowCount: response.lastRow,
-          })
+          });
         } else {
           // inform the grid request failed
-          params.fail()
+          params.fail();
         }
-      }, 200)
+      }, 200);
     },
-  }
+  };
 }
 
 // setup the grid after the page has finished loading
-document.addEventListener('DOMContentLoaded', function () {
-  var gridDiv = document.querySelector('#myGrid')
-  new agGrid.Grid(gridDiv, gridOptions)
+document.addEventListener("DOMContentLoaded", function () {
+  var gridDiv = document.querySelector("#myGrid");
+  new agGrid.Grid(gridDiv, gridOptions);
 
-  fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
-    .then(response => response.json())
+  fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+    .then((response) => response.json())
     .then(function (data) {
       // setup the fake server with entire dataset
-      var fakeServer = new FakeServer(data)
+      var fakeServer = new FakeServer(data);
 
       // create datasource with a reference to the fake server
-      var datasource = getServerSideDatasource(fakeServer)
+      var datasource = getServerSideDatasource(fakeServer);
 
       // register the datasource with the grid
-      gridOptions.api.setServerSideDatasource(datasource)
-    })
-})
+      gridOptions.api.setServerSideDatasource(datasource);
+    });
+});

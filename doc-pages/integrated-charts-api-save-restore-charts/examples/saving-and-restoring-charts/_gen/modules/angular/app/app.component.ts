@@ -1,95 +1,98 @@
-
-import { Component } from '@angular/core';
-import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import { Component } from "@angular/core";
+import "@ag-grid-community/core/dist/styles/ag-grid.css";
 import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { ChartModel, ChartRef, ChartRefParams, ColDef, ColGroupDef, ColumnApi, Grid, GridApi, GridOptions, GridReadyEvent } from '@ag-grid-community/core';
+import {
+  ChartModel,
+  ChartRef,
+  ChartRefParams,
+  ColDef,
+  ColGroupDef,
+  ColumnApi,
+  Grid,
+  GridApi,
+  GridOptions,
+  GridReadyEvent,
+} from "@ag-grid-community/core";
 // Required feature modules are registered in app.module.ts
 
 @Component({
-    selector: 'my-app',
-    template: `<div class="wrapper">
+  selector: "my-app",
+  template: `<div class="wrapper">
     <div id="buttons">
-        <button (click)="saveChart()">Save chart</button>
-        <button (click)="clearChart()">Clear chart</button>
-        <button (click)="restoreChart()">Restore chart</button>
+      <button (click)="saveChart()">Save chart</button>
+      <button (click)="clearChart()">Clear chart</button>
+      <button (click)="restoreChart()">Restore chart</button>
     </div>
     <ag-grid-angular
-    style="width: 100%; height: 100%;"
-    
-    class="ag-theme-alpine"
-    [columnDefs]="columnDefs"
-    [defaultColDef]="defaultColDef"
-    [rowData]="rowData"
-    [enableRangeSelection]="true"
-    [popupParent]="popupParent"
-    [enableCharts]="true"
-    [createChartContainer]="createChartContainer"
-    (gridReady)="onGridReady($event)"
+      style="width: 100%; height: 100%;"
+      class="ag-theme-alpine"
+      [columnDefs]="columnDefs"
+      [defaultColDef]="defaultColDef"
+      [rowData]="rowData"
+      [enableRangeSelection]="true"
+      [popupParent]="popupParent"
+      [enableCharts]="true"
+      [createChartContainer]="createChartContainer"
+      (gridReady)="onGridReady($event)"
     ></ag-grid-angular>
     <div id="myChart" class="ag-theme-alpine my-chart"></div>
-</div>`
+  </div>`,
 })
-
 export class AppComponent {
-    private gridApi!: GridApi;
+  private gridApi!: GridApi;
 
-    
-    public columnDefs: ColDef[] = [
-    { field: 'country', chartDataType: 'category' },
-    { field: 'sugar', chartDataType: 'series' },
-    { field: 'fat', chartDataType: 'series' },
-    { field: 'weight', chartDataType: 'series' },
-];
-public defaultColDef: ColDef = {
+  public columnDefs: ColDef[] = [
+    { field: "country", chartDataType: "category" },
+    { field: "sugar", chartDataType: "series" },
+    { field: "fat", chartDataType: "series" },
+    { field: "weight", chartDataType: "series" },
+  ];
+  public defaultColDef: ColDef = {
     editable: true,
     sortable: true,
     flex: 1,
     minWidth: 100,
     filter: true,
     resizable: true,
-};
-public rowData: any[] | null = getData();
-public popupParent: HTMLElement = document.body
+  };
+  public rowData: any[] | null = getData();
+  public popupParent: HTMLElement = document.body;
 
-
-    saveChart() {
+  saveChart() {
     var chartModels = this.gridApi.getChartModels() || [];
     if (chartModels.length > 0) {
-        chartModel = chartModels[0];
+      chartModel = chartModels[0];
     }
-    alert('Chart saved!');
-}
+    alert("Chart saved!");
+  }
 
-clearChart() {
+  clearChart() {
     if (currentChartRef) {
-        currentChartRef.destroyChart();
-        currentChartRef = null;
+      currentChartRef.destroyChart();
+      currentChartRef = null;
     }
-}
+  }
 
-restoreChart() {
-    if (!chartModel)
-        return;
+  restoreChart() {
+    if (!chartModel) return;
     currentChartRef = this.gridApi.restoreChart(chartModel)!;
-}
+  }
 
-onGridReady(params: GridReadyEvent) {
-        this.gridApi = params.api;
-    }
+  onGridReady(params: GridReadyEvent) {
+    this.gridApi = params.api;
+  }
 
-createChartContainer(chartRef: ChartRef) {
+  createChartContainer(chartRef: ChartRef) {
     // destroy existing chart
     if (currentChartRef) {
-        currentChartRef.destroyChart();
+      currentChartRef.destroyChart();
     }
     var eChart = chartRef.chartElement;
-    var eParent = document.querySelector('#myChart') as any;
+    var eParent = document.querySelector("#myChart") as any;
     eParent.appendChild(eChart);
     currentChartRef = chartRef;
+  }
 }
-}
-
-
 
 var chartModel: ChartModel | null;
 var currentChartRef: ChartRef | null;

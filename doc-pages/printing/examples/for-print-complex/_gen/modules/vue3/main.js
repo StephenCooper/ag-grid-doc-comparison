@@ -1,19 +1,16 @@
-
-import { createApp } from 'vue';
-import { AgGridVue } from '@ag-grid-community/vue3';
-import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import { createApp } from "vue";
+import { AgGridVue } from "@ag-grid-community/vue3";
+import "@ag-grid-community/core/dist/styles/ag-grid.css";
 import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { ModuleRegistry } from '@ag-grid-community/core';
-import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
-import { RowGroupingModule } from '@ag-grid-enterprise/row-grouping';
+import { ModuleRegistry } from "@ag-grid-community/core";
+import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
+import { RowGroupingModule } from "@ag-grid-enterprise/row-grouping";
 
 // Register the required feature modules with the Grid
-ModuleRegistry.registerModules([ClientSideRowModelModule, RowGroupingModule])
-
-
+ModuleRegistry.registerModules([ClientSideRowModelModule, RowGroupingModule]);
 
 const VueExample = {
-    template: `
+  template: `
         <div style="height: 100%">
             <button v-on:click="onBtPrint()">Print</button>
             <h3>
@@ -41,69 +38,67 @@ const VueExample = {
             </p>
         </div>
     `,
-    components: {
-        'ag-grid-vue': AgGridVue,
-        
+  components: {
+    "ag-grid-vue": AgGridVue,
+  },
+  data: function () {
+    return {
+      columnDefs: [
+        { field: "group", rowGroup: true, hide: true },
+        { field: "id", pinned: "left", width: 70 },
+        { field: "model", width: 180 },
+        { field: "color", width: 100 },
+        {
+          field: "price",
+          valueFormatter: "'$' + value.toLocaleString()",
+          width: 100,
+        },
+        { field: "year", width: 100 },
+        { field: "country", width: 120 },
+      ],
+      gridApi: null,
+      columnApi: null,
+      defaultColDef: {
+        sortable: true,
+      },
+      rowData: null,
+      groupDisplayType: null,
+    };
+  },
+  created() {
+    this.rowData = getData();
+    this.groupDisplayType = "groupRows";
+  },
+  methods: {
+    onFirstDataRendered(params) {
+      params.api.expandAll();
     },
-    data: function() {
-        return {
-            columnDefs: [{field:"group",
-rowGroup:true,
-hide:true},{field:"id",
-pinned:"left",
-width:70},{field:"model",
-width:180},{field:"color",
-width:100},{field:"price",
-valueFormatter:"'$' + value.toLocaleString()",
-width:100},{field:"year",
-width:100},{field:"country",
-width:120}],
-            gridApi: null,
-            columnApi: null,
-            defaultColDef: {
-    sortable: true,
-},
-            rowData: null,
-groupDisplayType: null
-        }
-    },
-    created() {
-        this.rowData = getData();
-this.groupDisplayType = 'groupRows'
-    },
-    methods: {
-        onFirstDataRendered(params) {
-    params.api.expandAll();
-},
-onBtPrint() {
-    const api = this.gridApi;
-    setPrinterFriendly(api);
-    setTimeout(function () {
+    onBtPrint() {
+      const api = this.gridApi;
+      setPrinterFriendly(api);
+      setTimeout(function () {
         print();
         setNormal(api);
-    }, 2000);
-},
-onGridReady(params) {
-        this.gridApi = params.api;
-        this.gridColumnApi = params.columnApi;
-        
+      }, 2000);
     },
-    }
-}
+    onGridReady(params) {
+      this.gridApi = params.api;
+      this.gridColumnApi = params.columnApi;
+    },
+  },
+};
 
 window.setPrinterFriendly = function setPrinterFriendly(api) {
-    const eGridDiv = document.querySelector('#myGrid');
-    eGridDiv.style.height = '';
-    api.setDomLayout('print');
-}
+  const eGridDiv = document.querySelector("#myGrid");
+  eGridDiv.style.height = "";
+  api.setDomLayout("print");
+};
 
 window.setNormal = function setNormal(api) {
-    const eGridDiv = document.querySelector('#myGrid');
-    eGridDiv.style.width = '700px';
-    eGridDiv.style.height = '200px';
-    api.setDomLayout();
-}
+  const eGridDiv = document.querySelector("#myGrid");
+  eGridDiv.style.width = "700px";
+  eGridDiv.style.height = "200px";
+  api.setDomLayout();
+};
 
-createApp(VueExample)
-    .mount("#app")
-
+createApp(VueExample).mount("#app");

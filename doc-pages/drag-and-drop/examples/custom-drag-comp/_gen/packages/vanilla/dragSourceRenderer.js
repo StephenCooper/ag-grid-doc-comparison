@@ -1,35 +1,32 @@
+class DragSourceRenderer {
+  init(params) {
+    var eTemp = document.createElement("div");
+    eTemp.innerHTML = '<div draggable="true">Drag Me!</div>';
 
-class DragSourceRenderer  {
-    
-    
-    
+    this.eGui = eTemp.firstChild;
+    this.rowNode = params.node;
 
-    init(params) {
+    this.onDragStartListener = this.onDragStart.bind(this);
+    this.eGui.addEventListener("dragstart", this.onDragStartListener);
+  }
 
-        var eTemp = document.createElement('div');
-        eTemp.innerHTML = '<div draggable="true">Drag Me!</div>';
+  onDragStart(dragEvent) {
+    var userAgent = window.navigator.userAgent;
+    dragEvent.dataTransfer.setData(
+      "text/plain",
+      "Dragged item with ID: " + this.rowNode.data.id
+    );
+  }
 
-        this.eGui = eTemp.firstChild ;
-        this.rowNode = params.node;
+  getGui() {
+    return this.eGui;
+  }
 
-        this.onDragStartListener = this.onDragStart.bind(this);
-        this.eGui.addEventListener('dragstart', this.onDragStartListener)
-    }
+  refresh(params) {
+    return false;
+  }
 
-    onDragStart(dragEvent) {
-        var userAgent = window.navigator.userAgent;
-        dragEvent.dataTransfer.setData('text/plain', 'Dragged item with ID: ' + this.rowNode.data.id);
-    }
-
-    getGui() {
-        return this.eGui;
-    }
-
-    refresh(params) {
-        return false;
-    }
-
-    destroy() {
-        this.eGui.removeEventListener('dragstart', this.onDragStartListener)
-    }
+  destroy() {
+    this.eGui.removeEventListener("dragstart", this.onDragStartListener);
+  }
 }

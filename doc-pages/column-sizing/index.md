@@ -41,7 +41,6 @@ Call the Grid Api `api.sizeColumnsToFit()` to make the currently visible columns
 
 <api-documentation source='grid-api/api.json' section='columns' names='["sizeColumnsToFit"]' ></api-documentation>
 
-
 If you don't want a particular column to be included in the auto resize, then set the column definition `suppressSizeToFit=true`. This is helpful if, for example, you want the first column to remain fixed width, but all other columns to fill the width of the table.
 
 The grid calculates new column widths while maintaining the ratio of the column default widths. So for example
@@ -55,8 +54,8 @@ the result is deterministic and not depend on any Column resizing the user may h
 | For example assuming a grid with three Columns, the algorithm will be as follows:<br/>
 |
 | scale = availableWidth / (w1 + w2 + w3)<br/>
-| w1 = round(w1 * scale)<br/>
-| w2 = round(w2 * scale)<br/>
+| w1 = round(w1 _ scale)<br/>
+| w2 = round(w2 _ scale)<br/>
 | w3 = totalGridWidth - (w1 + w2)<br/>
 |
 | Assuming the grid is 1,200 pixels wide and the Columns have default widths of 40, 120 and 300,
@@ -64,8 +63,8 @@ the result is deterministic and not depend on any Column resizing the user may h
 |
 | availableWidth = 1,198 (available width is typically smaller as the grid typically has left and right boarders)<br/>
 | scale = 1198 / (50 + 120 + 300) = 2.548936170212766<br/>
-| col 1 = 50 * 2.54 = 127.44 -> rounded = 127<br/>
-| col 2 = 120 * 2.54 = 305.87 -> rounded = 306<br/>
+| col 1 = 50 _ 2.54 = 127.44 -> rounded = 127<br/>
+| col 2 = 120 _ 2.54 = 305.87 -> rounded = 306<br/>
 | col 3 = 1198 - (127 + 306) = 765 // last col gets the space that's left, which ensures all space is used, no rounding issues<br/>
 
 ## Auto-Size Columns
@@ -90,7 +89,6 @@ Autosizing columns can also be done using the following column API methods. If `
 ## Resizing Example
 
 The example below shows resizing in action. Things to note are as follows:
-
 
 - Each column can be resized by dragging (or double-clicking or auto resize) the right side of its header.
 - The button 'Size to Fit' calls `api.sizeColumnsToFit()`
@@ -124,7 +122,6 @@ The example below shows flex in action. Things to note are as follows:
 - Column A is fixed size. You can resize it with the drag handle and the other two columns will adjust to fill the available space
 - Column B has `flex: 2`, `minWidth: 200` and `maxWidth: 350`, so it should be constrained to this max/min width.
 - Column C has `flex: 1` so should be half the size of column B, unless column B is being constrained by its `minWidth`/`maxWidth` rules, in which case it should take up the remaining available space.
-
 
 <grid-example title='Column Flex' name='flex-columns' type='generated'></grid-example>
 
@@ -161,12 +158,12 @@ When you resize a group, it will distribute the extra room to all columns in the
 
 ## Resizing Columns When Data Is Rendered
 
-When auto sizing columns, the grid uses the rendered cells to work out the appropriate widths. This means that the result 
-of calling `columnApi.autoSizeColumns()` is dependent on the browser's rendering and may also change depending on 
+When auto sizing columns, the grid uses the rendered cells to work out the appropriate widths. This means that the result
+of calling `columnApi.autoSizeColumns()` is dependent on the browser's rendering and may also change depending on
 asynchronous rendering in your framework.
 
-If you intend to call `columnApi.autoSizeColumns()` after creating the grid, in most cases it should be sufficient to wait 
-for the `firstDataRendered` event before resizing. 
+If you intend to call `columnApi.autoSizeColumns()` after creating the grid, in most cases it should be sufficient to wait
+for the `firstDataRendered` event before resizing.
 
 [[note]]
 | The [Server Side Row Model](/server-side-model/#top) inserts a dummy row with a loading spinner before the actual row

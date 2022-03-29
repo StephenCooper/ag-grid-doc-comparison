@@ -1,5 +1,5 @@
-import * as agCharts from 'ag-charts-community';
-import { AgCartesianChartOptions } from 'ag-charts-community';
+import * as agCharts from "ag-charts-community";
+import { AgCartesianChartOptions } from "ag-charts-community";
 
 const options: AgCartesianChartOptions = {
   container: document.getElementById("myChart"),
@@ -24,25 +24,24 @@ const options: AgCartesianChartOptions = {
     { type: "column", xKey: "month", stacked: true, yKey: "value1" },
     { type: "column", xKey: "month", stacked: true, yKey: "hats_made" },
   ],
-}
+};
 
-var chart = agCharts.AgChart.create(options)
+var chart = agCharts.AgChart.create(options);
 
 function setYNames() {
   options.series![0].yName = "Sweaters Made";
   options.series![1].yName = "Hats Made";
-  agCharts.AgChart.update(chart, options)
+  agCharts.AgChart.update(chart, options);
 }
 
 function resetYNames() {
-  options.series![0].yName = undefined;;
-  options.series![1].yName = undefined;;
-  agCharts.AgChart.update(chart, options)
+  options.series![0].yName = undefined;
+  options.series![1].yName = undefined;
+  agCharts.AgChart.update(chart, options);
 }
- 
 
-if (typeof window !== 'undefined') {
-// Attach external event handlers to window so they can be called from index.html
- (<any>window).setYNames = setYNames;
- (<any>window).resetYNames = resetYNames;
+if (typeof window !== "undefined") {
+  // Attach external event handlers to window so they can be called from index.html
+  (<any>window).setYNames = setYNames;
+  (<any>window).resetYNames = resetYNames;
 }

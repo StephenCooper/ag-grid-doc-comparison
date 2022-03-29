@@ -4,7 +4,6 @@ title: "Cell Styles"
 
 Cell customisation is done a the column level via the column definition. You can mix and match any of the following mechanisms:
 
-
 - **Cell Style:** Providing a CSS style for the cells.
 - **Cell Class:** Providing a CSS class for the cells.
 - **Cell Class Rules:** Providing rules for applying CSS classes.
@@ -43,9 +42,7 @@ const gridOptions = {
 }
 </snippet>
 
-
 ## Cell Class
-
 
 Provides a class for the cells in this column. Can be a string (a class), array of strings
 (array of classes), or a function (that returns a string or an array of strings).
@@ -87,17 +84,14 @@ const gridOptions = {
 
 ## Cell Class Rules
 
-
 You can define rules which can be applied to include certain CSS classes via via `colDef.cellClassRules`.
 These rules are provided as a JavaScript map where the keys are the class names and the values are expressions
 that if evaluated to true, the class gets used. The expression can either be a JavaScript function,
 or a string which is treated as a shorthand for a function by the grid.
 
-
 <api-documentation source='column-properties/properties.json' section='styling' names='["cellClassRules"]' ></api-documentation>
 
 The following snippet is cellClassRules using functions on a year column:
-
 
 <snippet suppressFrameworkContext="true">
 |const gridOptions = {
@@ -115,7 +109,6 @@ The following snippet is cellClassRules using functions on a year column:
 </snippet>
 
 ## Cell Style, Cell Class & Cell Class Rules Params
-
 
 All cellClass cellStyle and cellClassRules functions take a `CellClassParams`.
 
@@ -162,15 +155,9 @@ effect:
 [[note]]
 | If you are using cellStyle to highlight changing data, then please take note that grid will not remove styles. For example if you are setting text color to 'red' for a condition, then you should explicitly set it back to default eg 'black' when the condition is not met. Otherwise the highlight will remain once it's first applied.
 |
-| ```js
-| // unsafe, the red will stay after initially applied
-| cellStyle: params => params.value > 80 ? { color: 'red' } : null
-| ```
+| `js | // unsafe, the red will stay after initially applied | cellStyle: params => params.value > 80 ? { color: 'red' } : null | `
 |
-| ```js
-| // safe, to black will override the red when the condition is not true
-| cellStyle: params => params.value > 80 ? { color: 'red' } : { color: 'black' }
-| ```
+| `js | // safe, to black will override the red when the condition is not true | cellStyle: params => params.value > 80 ? { color: 'red' } : { color: 'black' } | `
 
 ## Cell Styling Example
 

@@ -10,7 +10,7 @@ The navigator is hidden by default, to enable it add the following config to the
 
 ```js
 navigator: {
-    enabled: true
+  enabled: true;
 }
 ```
 

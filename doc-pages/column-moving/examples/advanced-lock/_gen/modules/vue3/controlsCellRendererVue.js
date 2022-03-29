@@ -2,7 +2,7 @@
 // be used with operations tied to the buttons. in this example, the cell renderer is just for
 // display purposes.
 export default {
-    template: `
+  template: `
       <div>
           <button>A</button>
           <button>B</button>

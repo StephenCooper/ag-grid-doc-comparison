@@ -21,9 +21,7 @@ AG Grid uses 'DOM row virtualisation' which means it only renders the rows you c
 
 Use a viewport to manage large live sets of data in the grid, where you only want to load a subset of the data into the grid and the data is updating at the source (typically a server), with the source sending updates to the grid when displayed data is changed.
 
-
 The diagram below shows how the viewport maps to a connection to your dataset. The dataset connection knows what the viewport is displaying and sends data accordingly. When the user scrolls, the viewport will 'get' data from the source. If / when the data changes, the source will 'push' the data to the viewport if it knows the viewport is displaying that data.
-
 
 <img src="resources/viewport.png" alt="Viewport Connected to Dataset"/>
 
@@ -40,7 +38,7 @@ To use the viewportRowModel you provide the grid with an implementation of `IVie
 
 <api-documentation source='grid-properties/properties.json' section='viewportRowModel' names='["viewportDatasource"]'></api-documentation>
 
-The grid will call the `init` method once, passing you a params object with the following methods. 
+The grid will call the `init` method once, passing you a params object with the following methods.
 
 <interface-documentation interfaceName='IViewportDatasourceParams' ></interface-documentation>
 
@@ -128,4 +126,3 @@ The example below is almost identical to the above example with the following di
 - `viewportRowModelBufferSize = 0`: Likewise because there is no scrolling, there is no sense in bringing back extra rows to act as a buffer.
 
 <grid-example title='Pagination Viewport Example' name='pagination-viewport' type='generated' options='{ "enterprise": true, "modules":["viewport"], "exampleHeight": 570 }'></grid-example>
-

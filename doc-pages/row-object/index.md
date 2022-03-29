@@ -9,7 +9,7 @@ A Row Node represents one row of data. The Row Node will contain a reference to 
 
 ## Row Node Events
 
-All events fired by the `rowNode` are synchronous (events are normally asynchronous). The grid is also listening for these events internally. This means that when you receive an event, the grid  may still have some work to do (e.g. if `rowTop` changed, the grid UI may still have to update to reflect this change). It is also best you do not call any grid API functions while receiving events from the `rowNode` (as the grid is still processing). Instead, it is best to put your logic into a timeout and call the grid in another VM tick.
+All events fired by the `rowNode` are synchronous (events are normally asynchronous). The grid is also listening for these events internally. This means that when you receive an event, the grid may still have some work to do (e.g. if `rowTop` changed, the grid UI may still have to update to reflect this change). It is also best you do not call any grid API functions while receiving events from the `rowNode` (as the grid is still processing). Instead, it is best to put your logic into a timeout and call the grid in another VM tick.
 
 When adding event listeners to a row, they will stay with the row until the row is destroyed. This means if the row is taken out of memory (pagination or virtual paging) then the listener will be removed. Likewise, if you set new data into the grid, all listeners on the old data will be removed.
 
@@ -33,5 +33,5 @@ var renderer = function(params) {
     return params.value;
 }
 ```
-<api-documentation source='resources/events.json'></api-documentation>
 
+<api-documentation source='resources/events.json'></api-documentation>

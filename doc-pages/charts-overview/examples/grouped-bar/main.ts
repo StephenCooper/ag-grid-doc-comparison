@@ -1,5 +1,5 @@
-import { AgChartOptions } from "ag-charts-community"
-import * as agCharts from "ag-charts-community"
+import { AgChartOptions } from "ag-charts-community";
+import * as agCharts from "ag-charts-community";
 
 const options: AgChartOptions = {
   container: document.getElementById("myChart"),
@@ -62,6 +62,6 @@ const options: AgChartOptions = {
   legend: {
     position: "bottom",
   },
-}
+};
 
-var chart = agCharts.AgChart.create(options)
+var chart = agCharts.AgChart.create(options);

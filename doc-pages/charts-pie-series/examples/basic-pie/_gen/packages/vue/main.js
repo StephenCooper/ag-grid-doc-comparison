@@ -1,53 +1,46 @@
-import Vue from 'vue';
-import { cloneDeep } from 'lodash';
-import * as agCharts from 'ag-charts-community';
-import { AgChartsVue } from 'ag-charts-vue';
+import Vue from "vue";
+import { cloneDeep } from "lodash";
+import * as agCharts from "ag-charts-community";
+import { AgChartsVue } from "ag-charts-vue";
 
 const ChartExample = {
-    template: `
+  template: `
         <ag-charts-vue    
                 :options="options"></ag-charts-vue>
     `,
-    components: {
-        'ag-charts-vue': AgChartsVue
-    },
-    data: function() {
-        return {
-            options: null
-        }
-    },
-    created() {
-        this.options = {
-    
-    data: [
+  components: {
+    "ag-charts-vue": AgChartsVue,
+  },
+  data: function () {
+    return {
+      options: null,
+    };
+  },
+  created() {
+    this.options = {
+      data: [
         { value: 56.9 },
         { value: 22.5 },
         { value: 6.8 },
         { value: 8.5 },
         { value: 2.6 },
         { value: 1.9 },
-    ],
-    series: [
+      ],
+      series: [
         {
-            type: 'pie',
-            angleKey: 'value',
+          type: "pie",
+          angleKey: "value",
         },
-    ],
-}
-    },
-    mounted() {
-        
-    },
-    methods: {
-        
-    }
-}
-
-
+      ],
+    };
+  },
+  mounted() {},
+  methods: {},
+};
 
 new Vue({
-    el: '#app',
-    components: {
-        'my-component': ChartExample
-    }
+  el: "#app",
+  components: {
+    "my-component": ChartExample,
+  },
 });

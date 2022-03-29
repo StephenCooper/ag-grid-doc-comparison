@@ -1,16 +1,26 @@
-import 'ag-grid-enterprise';
-import 'ag-grid-community/dist/styles/ag-grid.css';
+import "ag-grid-enterprise";
+import "ag-grid-community/dist/styles/ag-grid.css";
 import "ag-grid-community/dist/styles/ag-theme-alpine-dark.css";
-import { ColDef, ColGroupDef, GetRowIdFunc, GetRowIdParams, Grid, GridOptions, IServerSideDatasource, IsRowSelectable, ServerSideStoreType } from 'ag-grid-community';
+import {
+  ColDef,
+  ColGroupDef,
+  GetRowIdFunc,
+  GetRowIdParams,
+  Grid,
+  GridOptions,
+  IServerSideDatasource,
+  IsRowSelectable,
+  ServerSideStoreType,
+} from "ag-grid-community";
 declare var FakeServer: any;
 const gridOptions: GridOptions = {
   columnDefs: [
-    { field: 'year', rowGroup: true, hide: true },
-    { field: 'athlete', hide: true },
-    { field: 'sport', checkboxSelection: true },
-    { field: 'gold', aggFunc: 'sum' },
-    { field: 'silver', aggFunc: 'sum' },
-    { field: 'bronze', aggFunc: 'sum' },
+    { field: "year", rowGroup: true, hide: true },
+    { field: "athlete", hide: true },
+    { field: "sport", checkboxSelection: true },
+    { field: "gold", aggFunc: "sum" },
+    { field: "silver", aggFunc: "sum" },
+    { field: "bronze", aggFunc: "sum" },
   ],
   defaultColDef: {
     flex: 1,
@@ -24,7 +34,7 @@ const gridOptions: GridOptions = {
     return data.id || data.year;
   },
   autoGroupColumnDef: {
-    field: 'athlete',
+    field: "athlete",
     flex: 1,
     minWidth: 240,
     // headerCheckboxSelection: true, // not supported for Enterprise Model
@@ -34,15 +44,15 @@ const gridOptions: GridOptions = {
   },
 
   // use the server-side row model
-  rowModelType: 'serverSide',
-  serverSideStoreType: 'partial',
+  rowModelType: "serverSide",
+  serverSideStoreType: "partial",
 
   // allow multiple row selections
-  rowSelection: 'multiple',
+  rowSelection: "multiple",
 
   // restrict selections to leaf rows
   isRowSelectable: function (rowNode) {
-    return !rowNode.group
+    return !rowNode.group;
   },
 
   // restrict row selections via checkbox selection
@@ -53,48 +63,50 @@ const gridOptions: GridOptions = {
   animateRows: true,
   suppressAggFuncInHeader: true,
   // debug: true,
-}
+};
 
 function getServerSideDatasource(server: any): IServerSideDatasource {
   return {
     getRows: function (params) {
-      console.log('[Datasource] - rows requested by grid: ', params.request)
+      console.log("[Datasource] - rows requested by grid: ", params.request);
 
-      var response = server.getData(params.request)
+      var response = server.getData(params.request);
 
       // adding delay to simulate real server call
       setTimeout(function () {
         if (response.success) {
           // call the success callback
-          params.success({ rowData: response.rows, rowCount: response.lastRow })
+          params.success({
+            rowData: response.rows,
+            rowCount: response.lastRow,
+          });
         } else {
           // inform the grid request failed
-          params.fail()
+          params.fail();
         }
-      }, 200)
+      }, 200);
     },
-  }
+  };
 }
 
 // setup the grid after the page has finished loading
-  var gridDiv = document.querySelector<HTMLElement>('#myGrid')!
-  new Grid(gridDiv, gridOptions)
+var gridDiv = document.querySelector<HTMLElement>("#myGrid")!;
+new Grid(gridDiv, gridOptions);
 
-  fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
-    .then(response => response.json())
-    .then(function (data) {
-      // assign a unique ID to each data item
-      data.forEach(function (item: any, index: number) {
-        item.id = index;
-      });
+fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+  .then((response) => response.json())
+  .then(function (data) {
+    // assign a unique ID to each data item
+    data.forEach(function (item: any, index: number) {
+      item.id = index;
+    });
 
-      // setup the fake server with entire dataset
-      var fakeServer = new FakeServer(data)
+    // setup the fake server with entire dataset
+    var fakeServer = new FakeServer(data);
 
-      // create datasource with a reference to the fake server
-      var datasource = getServerSideDatasource(fakeServer)
+    // create datasource with a reference to the fake server
+    var datasource = getServerSideDatasource(fakeServer);
 
-      // register the datasource with the grid
-      gridOptions.api!.setServerSideDatasource(datasource)
-    })
- 
+    // register the datasource with the grid
+    gridOptions.api!.setServerSideDatasource(datasource);
+  });

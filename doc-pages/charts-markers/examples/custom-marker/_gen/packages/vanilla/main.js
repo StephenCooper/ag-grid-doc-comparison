@@ -1,15 +1,14 @@
-
 const options = {
-  container: document.getElementById('myChart'),
+  container: document.getElementById("myChart"),
   title: {
-    text: 'Fuel Spending (2019)',
+    text: "Fuel Spending (2019)",
   },
   data: getData(),
   series: [
     {
-      xKey: 'quarter',
-      yKey: 'electric',
-      title: 'Electric',
+      xKey: "quarter",
+      yKey: "electric",
+      title: "Electric",
       marker: {
         shape: heartFactory(),
         size: 16,
@@ -17,16 +16,16 @@ const options = {
     },
   ],
   legend: {
-    position: 'bottom',
+    position: "bottom",
   },
-}
+};
 
-agCharts.AgChart.create(options)
+agCharts.AgChart.create(options);
 
 function heartFactory() {
   class Heart extends agCharts.Marker {
     rad(degree) {
-      return degree / 180 * Math.PI;
+      return (degree / 180) * Math.PI;
     }
 
     updatePath() {
@@ -43,4 +42,3 @@ function heartFactory() {
   }
   return Heart;
 }
-

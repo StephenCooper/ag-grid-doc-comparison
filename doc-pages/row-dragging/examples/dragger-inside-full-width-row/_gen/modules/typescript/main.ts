@@ -1,18 +1,26 @@
-import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import "@ag-grid-community/core/dist/styles/ag-grid.css";
 import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { ColDef, ColGroupDef, Grid, GridOptions, ICellRendererParams, IsFullWidthRowParams, RowHeightParams } from '@ag-grid-community/core';
-import { FullWidthCellRenderer } from './fullWidthCellRenderer';
-import { ModuleRegistry } from '@ag-grid-community/core';
-import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import {
+  ColDef,
+  ColGroupDef,
+  Grid,
+  GridOptions,
+  ICellRendererParams,
+  IsFullWidthRowParams,
+  RowHeightParams,
+} from "@ag-grid-community/core";
+import { FullWidthCellRenderer } from "./fullWidthCellRenderer";
+import { ModuleRegistry } from "@ag-grid-community/core";
+import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
 
 // Register the required feature modules with the Grid
-ModuleRegistry.registerModules([ClientSideRowModelModule])
+ModuleRegistry.registerModules([ClientSideRowModelModule]);
 
 const gridOptions: GridOptions = {
   columnDefs: [
-    { field: 'name', cellRenderer: countryCellRenderer },
-    { field: 'continent' },
-    { field: 'language' },
+    { field: "name", cellRenderer: countryCellRenderer },
+    { field: "continent" },
+    { field: "language" },
   ],
   defaultColDef: {
     flex: 1,
@@ -25,16 +33,16 @@ const gridOptions: GridOptions = {
   getRowHeight: function (params) {
     // return 100px height for full width rows
     if (isFullWidth(params.data)) {
-      return 100
+      return 100;
     }
   },
   isFullWidthRow: function (params: IsFullWidthRowParams) {
-    return isFullWidth(params.rowNode.data)
+    return isFullWidth(params.rowNode.data);
   },
   // see AG Grid docs cellRenderer for details on how to build cellRenderers
   fullWidthCellRenderer: FullWidthCellRenderer,
   animateRows: true,
-}
+};
 
 function countryCellRenderer(params: ICellRendererParams) {
   if (!params.fullWidth) {
@@ -43,18 +51,17 @@ function countryCellRenderer(params: ICellRendererParams) {
   var flag =
     '<img border="0" width="15" height="10" src="https://www.ag-grid.com/example-assets/flags/' +
     params.data.code +
-    '.png">'
+    '.png">';
   return (
-    '<span style="cursor: default;">' + flag + ' ' + params.value + '</span>'
-  )
+    '<span style="cursor: default;">' + flag + " " + params.value + "</span>"
+  );
 }
 
 function isFullWidth(data: any) {
   // return true when country is Peru, France or Italy
-  return ['Peru', 'France', 'Italy'].indexOf(data.name) >= 0
+  return ["Peru", "France", "Italy"].indexOf(data.name) >= 0;
 }
 
 // setup the grid after the page has finished loading
-  var gridDiv = document.querySelector<HTMLElement>('#myGrid')!
-  new Grid(gridDiv, gridOptions)
- 
+var gridDiv = document.querySelector<HTMLElement>("#myGrid")!;
+new Grid(gridDiv, gridOptions);

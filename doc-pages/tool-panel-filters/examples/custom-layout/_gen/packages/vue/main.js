@@ -1,14 +1,11 @@
-
-import Vue from 'vue';
-import { AgGridVue } from 'ag-grid-vue';
-import 'ag-grid-enterprise';
-import 'ag-grid-community/dist/styles/ag-grid.css';
-import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
-
-
+import Vue from "vue";
+import { AgGridVue } from "ag-grid-vue";
+import "ag-grid-enterprise";
+import "ag-grid-community/dist/styles/ag-grid.css";
+import "ag-grid-community/dist/styles/ag-theme-alpine.css";
 
 const VueExample = {
-    template: `
+  template: `
         <div style="height: 100%">
             <div class="example-wrapper">
                 <div>
@@ -29,119 +26,144 @@ const VueExample = {
             </div>
         </div>
     `,
-    components: {
-        'ag-grid-vue': AgGridVue,
-        
+  components: {
+    "ag-grid-vue": AgGridVue,
+  },
+  data: function () {
+    return {
+      columnDefs: [
+        {
+          headerName: "Athlete",
+          children: [
+            {
+              headerName: "Name",
+              field: "athlete",
+              minWidth: 200,
+              filter: "agTextColumnFilter",
+            },
+            { field: "age" },
+            { field: "country", minWidth: 200 },
+          ],
+        },
+        {
+          headerName: "Competition",
+          children: [{ field: "year" }, { field: "date", minWidth: 180 }],
+        },
+        { colId: "sport", field: "sport", minWidth: 200 },
+        {
+          headerName: "Medals",
+          children: [
+            { field: "gold" },
+            { field: "silver" },
+            { field: "bronze" },
+            { field: "total" },
+          ],
+        },
+      ],
+      gridApi: null,
+      columnApi: null,
+      defaultColDef: {
+        sortable: true,
+        filter: true,
+      },
+      sideBar: null,
+      rowData: null,
+    };
+  },
+  created() {
+    this.sideBar = {
+      toolPanels: [
+        {
+          id: "filters",
+          labelDefault: "Filters",
+          labelKey: "filters",
+          iconKey: "filter",
+          toolPanel: "agFiltersToolPanel",
+          toolPanelParams: {
+            suppressExpandAll: false,
+            suppressFilterSearch: false,
+            suppressSyncLayoutWithGrid: true,
+          },
+        },
+      ],
+      defaultToolPanel: "filters",
+    };
+  },
+  methods: {
+    setCustomSortLayout() {
+      var filtersToolPanel = this.gridApi.getToolPanelInstance("filters");
+      filtersToolPanel.setFilterLayout(sortedToolPanelColumnDefs);
     },
-    data: function() {
-        return {
-            columnDefs: [{headerName:"Athlete",
-children: [{headerName:"Name",
-field:"athlete",
-minWidth:200,
-filter:"agTextColumnFilter"},
-{field:"age"},
-{field:"country",
-minWidth:200}]},{headerName:"Competition",
-children: [{field:"year"},
-{field:"date",
-minWidth:180}]},{colId:"sport",
-field:"sport",
-minWidth:200},{headerName:"Medals",
-children: [{field:"gold"},
-{field:"silver"},
-{field:"bronze"},
-{field:"total"}]}],
-            gridApi: null,
-            columnApi: null,
-            defaultColDef: {
-    sortable: true,
-    filter: true,
-},
-            sideBar: null,
-rowData: null
-        }
+    setCustomGroupLayout() {
+      var filtersToolPanel = this.gridApi.getToolPanelInstance("filters");
+      filtersToolPanel.setFilterLayout(customToolPanelColumnDefs);
     },
-    created() {
-        this.sideBar = {"toolPanels":[{"id":"filters","labelDefault":"Filters","labelKey":"filters","iconKey":"filter","toolPanel":"agFiltersToolPanel","toolPanelParams":{"suppressExpandAll":false,"suppressFilterSearch":false,"suppressSyncLayoutWithGrid":true}}],"defaultToolPanel":"filters"}
-    },
-    methods: {
-        setCustomSortLayout() {
-    var filtersToolPanel = this.gridApi.getToolPanelInstance('filters');
-    filtersToolPanel.setFilterLayout(sortedToolPanelColumnDefs);
-},
-setCustomGroupLayout() {
-    var filtersToolPanel = this.gridApi.getToolPanelInstance('filters');
-    filtersToolPanel.setFilterLayout(customToolPanelColumnDefs);
-},
-onGridReady(params) {
-        this.gridApi = params.api;
-        this.gridColumnApi = params.columnApi;
-        
+    onGridReady(params) {
+      this.gridApi = params.api;
+      this.gridColumnApi = params.columnApi;
 
-        
-            const updateData = (data) => params.api.setRowData(data);
-            
-            fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
-                .then(resp => resp.json())
-                .then(data => updateData(data));
+      const updateData = (data) => params.api.setRowData(data);
+
+      fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+        .then((resp) => resp.json())
+        .then((data) => updateData(data));
     },
-    }
-}
+  },
+};
 
 var sortedToolPanelColumnDefs = [
-    {
-        headerName: 'Athlete',
-        children: [
-            { field: 'age' },
-            { field: 'country' },
-            { headerName: 'Name', field: 'athlete' },
-        ],
-    },
-    {
-        headerName: 'Competition',
-        children: [{ field: 'date' }, { field: 'year' }],
-    },
-    {
-        headerName: 'Medals',
-        children: [
-            { field: 'bronze' },
-            { field: 'gold' },
-            { field: 'silver' },
-            { field: 'total' },
-        ],
-    },
-    { colId: 'sport', field: 'sport', width: 110 },
+  {
+    headerName: "Athlete",
+    children: [
+      { field: "age" },
+      { field: "country" },
+      { headerName: "Name", field: "athlete" },
+    ],
+  },
+  {
+    headerName: "Competition",
+    children: [{ field: "date" }, { field: "year" }],
+  },
+  {
+    headerName: "Medals",
+    children: [
+      { field: "bronze" },
+      { field: "gold" },
+      { field: "silver" },
+      { field: "total" },
+    ],
+  },
+  { colId: "sport", field: "sport", width: 110 },
 ];
 
 var customToolPanelColumnDefs = [
-    {
-        headerName: 'Dummy Group 1',
-        children: [
-            { field: 'age' },
-            { headerName: 'Name', field: 'athlete' },
-            {
-                headerName: 'Dummy Group 2',
-                children: [{ colId: 'sport' }, { field: 'country' }],
-            },
-        ],
-    },
-    {
-        headerName: 'Medals',
-        children: [
-            { field: 'total' },
-            { field: 'bronze' },
-            {
-                headerName: 'Dummy Group 3',
-                children: [{ field: 'silver' }, { field: 'gold' }],
-            },
-        ],
-    },
+  {
+    headerName: "Dummy Group 1",
+    children: [
+      { field: "age" },
+      { headerName: "Name", field: "athlete" },
+      {
+        headerName: "Dummy Group 2",
+        children: [{ colId: "sport" }, { field: "country" }],
+      },
+    ],
+  },
+  {
+    headerName: "Medals",
+    children: [
+      { field: "total" },
+      { field: "bronze" },
+      {
+        headerName: "Dummy Group 3",
+        children: [{ field: "silver" }, { field: "gold" }],
+      },
+    ],
+  },
 ];
 
 new Vue({
-    el: '#app',
-    components: {
-        'my-component': VueExample
-    }
+  el: "#app",
+  components: {
+    "my-component": VueExample,
+  },
 });

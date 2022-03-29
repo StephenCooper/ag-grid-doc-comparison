@@ -1,43 +1,50 @@
-import { Grid, GridOptions, BarSparklineOptions, BarFormat, BarFormatterParams, LabelFormatterParams } from '@ag-grid-community/core'
-
-
+import {
+  Grid,
+  GridOptions,
+  BarSparklineOptions,
+  BarFormat,
+  BarFormatterParams,
+  LabelFormatterParams,
+} from "@ag-grid-community/core";
 
 const gridOptions: GridOptions = {
   columnDefs: [
-    { field: 'symbol', maxWidth: 120 },
-    { field: 'name', minWidth: 250 },
+    { field: "symbol", maxWidth: 120 },
+    { field: "name", minWidth: 250 },
     {
-      field: 'change',
-      cellRenderer: 'agSparklineCellRenderer',
+      field: "change",
+      cellRenderer: "agSparklineCellRenderer",
       cellRendererParams: {
         sparklineOptions: {
-          type: 'bar',
+          type: "bar",
           label: {
             enabled: true,
-            color: 'white',
+            color: "white",
             fontSize: 10,
-            fontWeight: 'bold',
-            formatter: function (params: LabelFormatterParams) { return `${params.value}%` }
+            fontWeight: "bold",
+            formatter: function (params: LabelFormatterParams) {
+              return `${params.value}%`;
+            },
           },
           paddingOuter: 0,
           padding: {
             top: 0,
-            bottom: 0
+            bottom: 0,
           },
           valueAxisDomain: [0, 100],
           axis: {
-            strokeWidth: 0
+            strokeWidth: 0,
           },
           tooltip: {
-            enabled: false
+            enabled: false,
           },
-          formatter: formatter
+          formatter: formatter,
         },
       },
     },
     {
-      field: 'volume',
-      type: 'numericColumn',
+      field: "volume",
+      type: "numericColumn",
       maxWidth: 140,
     },
   ],
@@ -48,17 +55,17 @@ const gridOptions: GridOptions = {
   },
   rowData: getData(),
   rowHeight: 50,
-}
+};
 
 function formatter(params: BarFormatterParams): BarFormat {
   const { yValue } = params;
   return {
-    fill: yValue <= 20 ? '#4fa2d9' : yValue < 60 ? '#277cb5' : '#195176',
-  }
+    fill: yValue <= 20 ? "#4fa2d9" : yValue < 60 ? "#277cb5" : "#195176",
+  };
 }
 
 // setup the grid after the page has finished loading
-document.addEventListener('DOMContentLoaded', function () {
-  var gridDiv = document.querySelector<HTMLElement>('#myGrid')!
-  new Grid(gridDiv, gridOptions)
-})
+document.addEventListener("DOMContentLoaded", function () {
+  var gridDiv = document.querySelector<HTMLElement>("#myGrid")!;
+  new Grid(gridDiv, gridOptions);
+});

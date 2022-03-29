@@ -1,5 +1,5 @@
-import { AgChartOptions } from "ag-charts-community"
-import * as agCharts from "ag-charts-community"
+import { AgChartOptions } from "ag-charts-community";
+import * as agCharts from "ag-charts-community";
 
 const options: AgChartOptions = {
   container: document.getElementById("myChart"),
@@ -204,7 +204,7 @@ const options: AgChartOptions = {
         text: "Week",
       },
       label: {
-        formatter: params => (params.index % 3 ? "" : params.value),
+        formatter: (params) => (params.index % 3 ? "" : params.value),
       },
     },
     {
@@ -228,6 +228,6 @@ const options: AgChartOptions = {
   padding: {
     bottom: 30,
   },
-}
+};
 
-var chart = agCharts.AgChart.create(options)
+var chart = agCharts.AgChart.create(options);

@@ -1,20 +1,21 @@
-
-import { createApp } from 'vue';
-import { AgGridVue } from '@ag-grid-community/vue3';
-import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import { createApp } from "vue";
+import { AgGridVue } from "@ag-grid-community/vue3";
+import "@ag-grid-community/core/dist/styles/ag-grid.css";
 import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { ModuleRegistry } from '@ag-grid-community/core';
-import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
-import { RowGroupingModule } from '@ag-grid-enterprise/row-grouping';
-import { MenuModule } from '@ag-grid-enterprise/menu';
+import { ModuleRegistry } from "@ag-grid-community/core";
+import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
+import { RowGroupingModule } from "@ag-grid-enterprise/row-grouping";
+import { MenuModule } from "@ag-grid-enterprise/menu";
 
 // Register the required feature modules with the Grid
-ModuleRegistry.registerModules([ClientSideRowModelModule, RowGroupingModule, MenuModule])
-
-
+ModuleRegistry.registerModules([
+  ClientSideRowModelModule,
+  RowGroupingModule,
+  MenuModule,
+]);
 
 const VueExample = {
-    template: `
+  template: `
         <div style="height: 100%">
             <ag-grid-vue
                 
@@ -27,54 +28,47 @@ const VueExample = {
                 :rowData="rowData"></ag-grid-vue>
         </div>
     `,
-    components: {
-        'ag-grid-vue': AgGridVue,
-        
+  components: {
+    "ag-grid-vue": AgGridVue,
+  },
+  data: function () {
+    return {
+      columnDefs: [
+        { field: "country", rowGroup: true, hide: true },
+        { field: "year", filter: "agNumberColumnFilter" },
+        { field: "gold", aggFunc: "sum" },
+        { field: "silver", aggFunc: "sum" },
+        { field: "bronze", aggFunc: "sum" },
+        { field: "total", aggFunc: "sum" },
+      ],
+      gridApi: null,
+      columnApi: null,
+      defaultColDef: {
+        flex: 1,
+        resizable: true,
+      },
+      autoGroupColumnDef: null,
+      rowData: null,
+    };
+  },
+  created() {
+    this.autoGroupColumnDef = {
+      headerName: "Country",
+      field: "athlete",
+    };
+  },
+  methods: {
+    onGridReady(params) {
+      this.gridApi = params.api;
+      this.gridColumnApi = params.columnApi;
+
+      const updateData = (data) => params.api.setRowData(data);
+
+      fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+        .then((resp) => resp.json())
+        .then((data) => updateData(data));
     },
-    data: function() {
-        return {
-            columnDefs: [{field:"country",
-rowGroup:true,
-hide:true},{field:"year",
-filter:"agNumberColumnFilter"},{field:"gold",
-aggFunc:"sum"},{field:"silver",
-aggFunc:"sum"},{field:"bronze",
-aggFunc:"sum"},{field:"total",
-aggFunc:"sum"}],
-            gridApi: null,
-            columnApi: null,
-            defaultColDef: {
-    flex: 1,
-    resizable: true,
-},
-            autoGroupColumnDef: null,
-rowData: null
-        }
-    },
-    created() {
-        this.autoGroupColumnDef = {
-    headerName: 'Country',
-    field: 'athlete',
-}
-    },
-    methods: {
-        onGridReady(params) {
-        this.gridApi = params.api;
-        this.gridColumnApi = params.columnApi;
-        
+  },
+};
 
-        
-            const updateData = (data) => params.api.setRowData(data);
-            
-            fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
-                .then(resp => resp.json())
-                .then(data => updateData(data));
-    },
-    }
-}
-
-
-
-createApp(VueExample)
-    .mount("#app")
-
+createApp(VueExample).mount("#app");

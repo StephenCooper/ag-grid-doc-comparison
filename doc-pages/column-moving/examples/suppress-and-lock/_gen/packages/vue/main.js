@@ -1,13 +1,10 @@
-
-import Vue from 'vue';
-import { AgGridVue } from 'ag-grid-vue';
-import 'ag-grid-community/dist/styles/ag-grid.css';
-import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
-
-
+import Vue from "vue";
+import { AgGridVue } from "ag-grid-vue";
+import "ag-grid-community/dist/styles/ag-grid.css";
+import "ag-grid-community/dist/styles/ag-theme-alpine.css";
 
 const VueExample = {
-    template: `
+  template: `
         <div style="height: 100%">
             <div class="wrapper">
                 <div class="legend-bar">
@@ -27,52 +24,55 @@ const VueExample = {
             </div>
         </div>
     `,
-    components: {
-        'ag-grid-vue': AgGridVue,
-        
-    },
-    data: function() {
-        return {
-            columnDefs: [{field:"athlete",
-suppressMovable:true,
-width:150,
-cellClass:"suppress-movable-col"},{field:"age",
-lockPosition:true,
-cellClass:"locked-col"},{field:"country",
-width:150},{field:"year"},{field:"date"},{field:"sport"},{field:"gold"},{field:"silver"},{field:"bronze"},{field:"total"}],
-            gridApi: null,
-            columnApi: null,
-            defaultColDef: {
-    width: 150,
-    lockPinned: true, // Dont allow pinning for this example
-},
-            rowData: null
-        }
-    },
-    created() {
-        
-    },
-    methods: {
-        onGridReady(params) {
-        this.gridApi = params.api;
-        this.gridColumnApi = params.columnApi;
-        
+  components: {
+    "ag-grid-vue": AgGridVue,
+  },
+  data: function () {
+    return {
+      columnDefs: [
+        {
+          field: "athlete",
+          suppressMovable: true,
+          width: 150,
+          cellClass: "suppress-movable-col",
+        },
+        { field: "age", lockPosition: true, cellClass: "locked-col" },
+        { field: "country", width: 150 },
+        { field: "year" },
+        { field: "date" },
+        { field: "sport" },
+        { field: "gold" },
+        { field: "silver" },
+        { field: "bronze" },
+        { field: "total" },
+      ],
+      gridApi: null,
+      columnApi: null,
+      defaultColDef: {
+        width: 150,
+        lockPinned: true, // Dont allow pinning for this example
+      },
+      rowData: null,
+    };
+  },
+  created() {},
+  methods: {
+    onGridReady(params) {
+      this.gridApi = params.api;
+      this.gridColumnApi = params.columnApi;
 
-        
-            const updateData = (data) => params.api.setRowData(data);
-            
-            fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
-                .then(resp => resp.json())
-                .then(data => updateData(data));
+      const updateData = (data) => params.api.setRowData(data);
+
+      fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+        .then((resp) => resp.json())
+        .then((data) => updateData(data));
     },
-    }
-}
-
-
+  },
+};
 
 new Vue({
-    el: '#app',
-    components: {
-        'my-component': VueExample
-    }
+  el: "#app",
+  components: {
+    "my-component": VueExample,
+  },
 });

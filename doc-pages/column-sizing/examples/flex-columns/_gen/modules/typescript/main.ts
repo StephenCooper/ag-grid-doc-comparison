@@ -1,48 +1,54 @@
-import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import "@ag-grid-community/core/dist/styles/ag-grid.css";
 import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { ColDef, ColGroupDef, ColSpanParams, Grid, GridOptions } from '@ag-grid-community/core';
-import { ModuleRegistry } from '@ag-grid-community/core';
-import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import {
+  ColDef,
+  ColGroupDef,
+  ColSpanParams,
+  Grid,
+  GridOptions,
+} from "@ag-grid-community/core";
+import { ModuleRegistry } from "@ag-grid-community/core";
+import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
 
 // Register the required feature modules with the Grid
-ModuleRegistry.registerModules([ClientSideRowModelModule])
+ModuleRegistry.registerModules([ClientSideRowModelModule]);
 
 var colSpan = function (params: ColSpanParams) {
-  return params.data === 2 ? 3 : 1
-}
+  return params.data === 2 ? 3 : 1;
+};
 
 const columnDefs: (ColDef | ColGroupDef)[] = [
   {
-    headerName: 'A',
-    field: 'author',
+    headerName: "A",
+    field: "author",
     width: 300,
     colSpan: colSpan,
   },
   {
-    headerName: 'Flexed Columns',
+    headerName: "Flexed Columns",
     children: [
       {
-        headerName: 'B',
+        headerName: "B",
         minWidth: 200,
         maxWidth: 350,
         flex: 2,
       },
       {
-        headerName: 'C',
+        headerName: "C",
         flex: 1,
       },
     ],
   },
-]
+];
 
 function fillAllCellsWithWidthMeasurement() {
   Array.prototype.slice
-    .call(document.querySelectorAll('.ag-cell'))
+    .call(document.querySelectorAll(".ag-cell"))
     .forEach(function (cell) {
-      var width = cell.offsetWidth
-      var isFullWidthRow = cell.parentElement.childNodes.length === 1
-      cell.textContent = (isFullWidthRow ? 'Total width: ' : '') + width + 'px'
-    })
+      var width = cell.offsetWidth;
+      var isFullWidthRow = cell.parentElement.childNodes.length === 1;
+      cell.textContent = (isFullWidthRow ? "Total width: " : "") + width + "px";
+    });
 }
 
 const gridOptions: GridOptions = {
@@ -52,11 +58,10 @@ const gridOptions: GridOptions = {
   columnDefs: columnDefs,
   rowData: [1, 2],
   onGridReady: function () {
-    setInterval(fillAllCellsWithWidthMeasurement, 50)
+    setInterval(fillAllCellsWithWidthMeasurement, 50);
   },
-}
+};
 
 // setup the grid after the page has finished loading
-  var gridDiv = document.querySelector<HTMLElement>('#myGrid')!
-  new Grid(gridDiv, gridOptions)
- 
+var gridDiv = document.querySelector<HTMLElement>("#myGrid")!;
+new Grid(gridDiv, gridOptions);

@@ -1,15 +1,22 @@
-import 'ag-grid-enterprise';
-import 'ag-grid-community/dist/styles/ag-grid.css';
+import "ag-grid-enterprise";
+import "ag-grid-community/dist/styles/ag-grid.css";
 import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import { ColDef, ColGroupDef, FirstDataRenderedEvent, Grid, GridOptions, IDetailCellRendererParams } from 'ag-grid-community';
+import {
+  ColDef,
+  ColGroupDef,
+  FirstDataRenderedEvent,
+  Grid,
+  GridOptions,
+  IDetailCellRendererParams,
+} from "ag-grid-community";
 
 const gridOptions: GridOptions = {
   columnDefs: [
     // group cell renderer needed for expand / collapse icons
-    { field: 'name', cellRenderer: 'agGroupCellRenderer' },
-    { field: 'account' },
-    { field: 'calls' },
-    { field: 'minutes', valueFormatter: "x.toLocaleString() + 'm'" },
+    { field: "name", cellRenderer: "agGroupCellRenderer" },
+    { field: "account" },
+    { field: "calls" },
+    { field: "minutes", valueFormatter: "x.toLocaleString() + 'm'" },
   ],
   defaultColDef: {
     flex: 1,
@@ -17,17 +24,17 @@ const gridOptions: GridOptions = {
   masterDetail: true,
   detailCellRendererParams: {
     detailGridOptions: {
-      rowSelection: 'multiple',
+      rowSelection: "multiple",
       suppressRowClickSelection: true,
       enableRangeSelection: true,
       pagination: true,
       paginationAutoPageSize: true,
       columnDefs: [
-        { field: 'callId', checkboxSelection: true },
-        { field: 'direction' },
-        { field: 'number', minWidth: 150 },
-        { field: 'duration', valueFormatter: "x.toLocaleString() + 's'" },
-        { field: 'switchCode', minWidth: 150 },
+        { field: "callId", checkboxSelection: true },
+        { field: "direction" },
+        { field: "number", minWidth: 150 },
+        { field: "duration", valueFormatter: "x.toLocaleString() + 's'" },
+        { field: "switchCode", minWidth: 150 },
       ],
       defaultColDef: {
         sortable: true,
@@ -35,26 +42,25 @@ const gridOptions: GridOptions = {
       },
     },
     getDetailRowData: function (params) {
-      params.successCallback(params.data.callRecords)
+      params.successCallback(params.data.callRecords);
     },
   } as IDetailCellRendererParams,
   onFirstDataRendered: onFirstDataRendered,
-}
+};
 
 function onFirstDataRendered(params: FirstDataRenderedEvent) {
   // arbitrarily expand a row for presentational purposes
   setTimeout(function () {
-    params.api.getDisplayedRowAtIndex(1)!.setExpanded(true)
-  }, 0)
+    params.api.getDisplayedRowAtIndex(1)!.setExpanded(true);
+  }, 0);
 }
 
 // setup the grid after the page has finished loading
-  var gridDiv = document.querySelector<HTMLElement>('#myGrid')!
-  new Grid(gridDiv, gridOptions)
+var gridDiv = document.querySelector<HTMLElement>("#myGrid")!;
+new Grid(gridDiv, gridOptions);
 
-  fetch('https://www.ag-grid.com/example-assets/master-detail-data.json')
-    .then(response => response.json())
-    .then(function (data) {
-      gridOptions.api!.setRowData(data)
-    })
- 
+fetch("https://www.ag-grid.com/example-assets/master-detail-data.json")
+  .then((response) => response.json())
+  .then(function (data) {
+    gridOptions.api!.setRowData(data);
+  });

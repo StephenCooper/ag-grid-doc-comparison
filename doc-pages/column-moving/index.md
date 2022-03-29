@@ -62,12 +62,11 @@ Below is a more real-world example of where locked columns would be used. The fi
 
 From the example the following can be noted:
 
-
 - The first two columns are locked into first position by setting `colDef.lockPosition=true`. This means they cannot be moved out of place, and other columns cannot be moved around them.
 - The first two columns have the user provided `locked-col` CSS class applied to them to change the background colour.
 - The sample application listens for column pinned events. If any column is pinned, then the locked columns are also pinned. This is to keep the locked columns at the first position.
-    - Clicking **Pin Athlete** will pin the Athlete column, which will result in locked columns being pinned.
-    - Clicking **Un-Pin Athlete** will un-pin the Athlete column, which will result in locked columns being un-pinned (assuming no other columns are left pinned).
+  - Clicking **Pin Athlete** will pin the Athlete column, which will result in locked columns being pinned.
+  - Clicking **Un-Pin Athlete** will un-pin the Athlete column, which will result in locked columns being un-pinned (assuming no other columns are left pinned).
 
 <grid-example title='Advanced Lock' name='advanced-lock' type='generated'></grid-example>
 
@@ -86,10 +85,8 @@ There is a slight overlap with the property `suppressDragLeaveHidesColumns`. Whe
 
 The example below shows lock visible. The following can be noted:
 
-
 - The columns **Age**, **Gold**, **Silver** and **Bronze** are all locked visible. It is not possible to hide the columns by dragging them out of the grid and not possible to show the columns by dragging them in from the tool panel.
 - If you make a group visible or hidden in the tool panel, the locked columns are not impacted.
 - If you drag a group (e.g. the **Athlete** group) out of the grid, all normal columns in the group are removed and all locked columns in the group are left intact.
 
 <grid-example title='Lock Visible' name='lock-visible' type='generated' options='{ "exampleHeight": 550 }'></grid-example>
-

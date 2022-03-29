@@ -22,7 +22,6 @@ Formatting changes made by users through the Format Panel will raise the `ChartO
 
 <interface-documentation interfaceName='ChartOptionsChanged' ></interface-documentation>
 
-
 Here the `chartThemeName` will be set to the name of the currently selected theme, which will be either
 one of the [Provided Themes](/integrated-charts-customisation/#provided-themes) or
 a [Custom Theme](/integrated-charts-customisation/#custom-chart-themes) if used.
@@ -61,10 +60,11 @@ Here is the implementation:
 
 ```js
 function onChartCreated(event) {
-    const chartRef = gridOptions.api.getChartRef(event.chartId);
-    const chart = chartRef.chart;
+  const chartRef = gridOptions.api.getChartRef(event.chartId);
+  const chart = chartRef.chart;
 }
 ```
+
 Note in the snippet above, the `chartId` is obtained from the [`ChartCreated`](#chartcreated) event which is supplied to the `onChartCreated` callback. The `chartId` is provided in all chart events.
 
 The example below shows how the chart instance can be used, creating a subtitle and updating

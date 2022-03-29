@@ -1,4 +1,3 @@
-
 const options = {
   container: document.getElementById("myChart"),
   autoSize: true,
@@ -60,6 +59,6 @@ const options = {
   legend: {
     position: "bottom",
   },
-}
+};
 
-var chart = agCharts.AgChart.create(options)
+var chart = agCharts.AgChart.create(options);

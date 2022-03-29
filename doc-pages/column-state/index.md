@@ -8,12 +8,11 @@ Non-stateful attributes do not change from what is set in the Column Definition 
 part of a Column Definition, it typically does not change).
 
 [[note]]
-| The DOM also has stateful vs non-stateful attributes. For example consider a DOM element and setting 
-| `element.style.width="100px"` will indefinitely set width to 100 pixels, the browser will not change this value. 
+| The DOM also has stateful vs non-stateful attributes. For example consider a DOM element and setting
+| `element.style.width="100px"` will indefinitely set width to 100 pixels, the browser will not change this value.
 | However setting `element.scrollTop=200` will set the scroll position, but the browser can change the scroll
 | position further following user interaction, thus scroll position is stateful as the browser can change
 | the state.
-
 
 The full list of stateful attributes of Columns are represented by the `ColumnStateParams` interface:
 
@@ -60,10 +59,10 @@ When applying column state, in cases where some state attributes or columns are 
 the following rules apply:
 
 - If a Column State is missing attributes, or attributes are provided as `undefined`, then those missing / undefined
-attributes are not updated. For example if a Column has a Column State with just `pinned`, then Pinned is applied to
-that Column but other attributes, such as Sort, are left intact.
+  attributes are not updated. For example if a Column has a Column State with just `pinned`, then Pinned is applied to
+  that Column but other attributes, such as Sort, are left intact.
 - When state is applied and there are additional Columns in the grid that do not appear in the provided state, then the
-`params.defaultState` is applied to those additional Columns.
+  `params.defaultState` is applied to those additional Columns.
 - If `params.defaultState` is not provided, then any additional Columns in the grid will not be updated.
 
 Combining these rules together leaves for flexible fine grained state control. Take the following code snippets as
@@ -204,6 +203,6 @@ The example below demonstrates getting and setting Column Group State. Note the 
 - Clicking 'Save State' will save the opened / closed state of column groups.
 - Clicking 'Restore State' will restore the previously saved state.
 - Clicking 'Reset State' will reset the column state to match the Column Definitions,
-i.e. all Column Groups will be closed.
+  i.e. all Column Groups will be closed.
 
 <grid-example title='Column Group State' name='column-group-state' type='generated' options='{ "enterprise": true, "modules": ["clientside", "rowgrouping"] }'></grid-example>

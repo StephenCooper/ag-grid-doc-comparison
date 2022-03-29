@@ -1,17 +1,15 @@
-
-
 const gridOptions = {
   columnDefs: [
-    { field: 'athlete', minWidth: 180 },
-    { field: 'age' },
-    { field: 'country', minWidth: 150 },
-    { field: 'year' },
-    { field: 'date', minWidth: 130 },
-    { field: 'sport', minWidth: 100 },
-    { field: 'gold' },
-    { field: 'silver' },
-    { field: 'bronze' },
-    { field: 'total' },
+    { field: "athlete", minWidth: 180 },
+    { field: "age" },
+    { field: "country", minWidth: 150 },
+    { field: "year" },
+    { field: "date", minWidth: 130 },
+    { field: "sport", minWidth: 100 },
+    { field: "gold" },
+    { field: "silver" },
+    { field: "bronze" },
+    { field: "total" },
   ],
 
   defaultColDef: {
@@ -21,104 +19,104 @@ const gridOptions = {
   },
 
   rowData: [],
-}
+};
 
 // XMLHttpRequest in promise format
 function makeRequest(method, url, success, error) {
-  var httpRequest = new XMLHttpRequest()
-  httpRequest.open('GET', url, true)
-  httpRequest.responseType = 'arraybuffer'
+  var httpRequest = new XMLHttpRequest();
+  httpRequest.open("GET", url, true);
+  httpRequest.responseType = "arraybuffer";
 
-  httpRequest.open(method, url)
+  httpRequest.open(method, url);
   httpRequest.onload = function () {
-    success(httpRequest.response)
-  }
+    success(httpRequest.response);
+  };
   httpRequest.onerror = function () {
-    error(httpRequest.response)
-  }
-  httpRequest.send()
+    error(httpRequest.response);
+  };
+  httpRequest.send();
 }
 
 // read the raw data and convert it to a XLSX workbook
 function convertDataToWorkbook(dataRows) {
   /* convert data to binary string */
-  var data = new Uint8Array(dataRows)
-  var arr = []
+  var data = new Uint8Array(dataRows);
+  var arr = [];
 
   for (var i = 0; i !== data.length; ++i) {
-    arr[i] = String.fromCharCode(data[i])
+    arr[i] = String.fromCharCode(data[i]);
   }
 
-  var bstr = arr.join('')
+  var bstr = arr.join("");
 
-  return XLSX.read(bstr, { type: 'binary' })
+  return XLSX.read(bstr, { type: "binary" });
 }
 
 // pull out the values we're after, converting it into an array of rowData
 
 function populateGrid(workbook) {
   // our data is in the first sheet
-  var firstSheetName = workbook.SheetNames[0]
-  var worksheet = workbook.Sheets[firstSheetName]
+  var firstSheetName = workbook.SheetNames[0];
+  var worksheet = workbook.Sheets[firstSheetName];
 
   // we expect the following columns to be present
   var columns = {
-    A: 'athlete',
-    B: 'age',
-    C: 'country',
-    D: 'year',
-    E: 'date',
-    F: 'sport',
-    G: 'gold',
-    H: 'silver',
-    I: 'bronze',
-    J: 'total',
-  }
+    A: "athlete",
+    B: "age",
+    C: "country",
+    D: "year",
+    E: "date",
+    F: "sport",
+    G: "gold",
+    H: "silver",
+    I: "bronze",
+    J: "total",
+  };
 
-  var rowData = []
+  var rowData = [];
 
   // start at the 2nd row - the first row are the headers
-  var rowIndex = 2
+  var rowIndex = 2;
 
   // iterate over the worksheet pulling out the columns we're expecting
-  while (worksheet['A' + rowIndex]) {
-    var row = {}
+  while (worksheet["A" + rowIndex]) {
+    var row = {};
     Object.keys(columns).forEach(function (column) {
-      row[columns[column]] = worksheet[column + rowIndex].w
-    })
+      row[columns[column]] = worksheet[column + rowIndex].w;
+    });
 
-    rowData.push(row)
+    rowData.push(row);
 
-    rowIndex++
+    rowIndex++;
   }
 
   // finally, set the imported rowData into the grid
-  gridOptions.api.setRowData(rowData)
+  gridOptions.api.setRowData(rowData);
 }
 
 function importExcel() {
   makeRequest(
-    'GET',
-    'https://www.ag-grid.com/example-assets/olympic-data.xlsx',
+    "GET",
+    "https://www.ag-grid.com/example-assets/olympic-data.xlsx",
     // success
     function (data) {
-      var workbook = convertDataToWorkbook(data)
+      var workbook = convertDataToWorkbook(data);
 
-      populateGrid(workbook)
+      populateGrid(workbook);
     },
     // error
     function (error) {
-      throw error
+      throw error;
     }
-  )
+  );
 }
 
 // wait for the document to be loaded, otherwise
 // AG Grid will not find the div in the document.
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener("DOMContentLoaded", function () {
   // lookup the container we want the Grid to use
-  var eGridDiv = document.querySelector('#myGrid')
+  var eGridDiv = document.querySelector("#myGrid");
 
   // create the grid passing in the div to use together with the columns & data we want to use
-  new agGrid.Grid(eGridDiv, gridOptions)
-})
+  new agGrid.Grid(eGridDiv, gridOptions);
+});

@@ -2,11 +2,11 @@
 title: "Localisation"
 ---
 
-All the displayed text in the grid is customisable for the purposes of localisation. This is done by providing locale information to the grid for the required language. Either provide an object  of key/value pairs via the `localeText` property, or provide a `getLocaleText` callback to hook the grid up to your application's localisation.
+All the displayed text in the grid is customisable for the purposes of localisation. This is done by providing locale information to the grid for the required language. Either provide an object of key/value pairs via the `localeText` property, or provide a `getLocaleText` callback to hook the grid up to your application's localisation.
 
 <api-documentation source='grid-properties/properties.json' section='localisation' config='{"overrideBottomMargin":"1rem"}'></api-documentation>
 
-The default language of the grid is American English. The grid does not come with other locales. If you want to provide the grid in another language, you must provide to the grid the relevant  locale information.
+The default language of the grid is American English. The grid does not come with other locales. If you want to provide the grid in another language, you must provide to the grid the relevant locale information.
 
 ## Creating a Locale
 
@@ -50,10 +50,10 @@ In a real world application, the callback would look something like this:
 
 ```js
 const getLocaleText = (params) => {
-    // to avoid key clash with external keys, we add 'grid' to the start of each key.
-    const gridKey = 'grid.' + params.key;
+  // to avoid key clash with external keys, we add 'grid' to the start of each key.
+  const gridKey = "grid." + params.key;
 
-    // look the value up using an application wide service
-    return applicationLocaleService(gridKey);
-}
+  // look the value up using an application wide service
+  return applicationLocaleService(gridKey);
+};
 ```

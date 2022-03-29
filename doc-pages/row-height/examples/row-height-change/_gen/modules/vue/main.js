@@ -1,21 +1,23 @@
-
-import Vue from 'vue';
-import { AgGridVue } from '@ag-grid-community/vue';
-import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import Vue from "vue";
+import { AgGridVue } from "@ag-grid-community/vue";
+import "@ag-grid-community/core/dist/styles/ag-grid.css";
 import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { ModuleRegistry } from '@ag-grid-community/core';
-import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
-import { RowGroupingModule } from '@ag-grid-enterprise/row-grouping';
-import { MenuModule } from '@ag-grid-enterprise/menu';
-import { ColumnsToolPanelModule } from '@ag-grid-enterprise/column-tool-panel';
+import { ModuleRegistry } from "@ag-grid-community/core";
+import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
+import { RowGroupingModule } from "@ag-grid-enterprise/row-grouping";
+import { MenuModule } from "@ag-grid-enterprise/menu";
+import { ColumnsToolPanelModule } from "@ag-grid-enterprise/column-tool-panel";
 
 // Register the required feature modules with the Grid
-ModuleRegistry.registerModules([ClientSideRowModelModule, RowGroupingModule, MenuModule, ColumnsToolPanelModule])
-
-
+ModuleRegistry.registerModules([
+  ClientSideRowModelModule,
+  RowGroupingModule,
+  MenuModule,
+  ColumnsToolPanelModule,
+]);
 
 const VueExample = {
-    template: `
+  template: `
         <div style="height: 100%">
             <div class="example-wrapper">
                 <div style="margin-bottom: 5px; font-family: Verdana, Geneva, Tahoma, sans-serif; font-size: 13px;">
@@ -51,66 +53,74 @@ const VueExample = {
             </div>
         </div>
     `,
-    components: {
-        'ag-grid-vue': AgGridVue,
-        
+  components: {
+    "ag-grid-vue": AgGridVue,
+  },
+  data: function () {
+    return {
+      columnDefs: [
+        { field: "country", rowGroup: true },
+        { field: "athlete" },
+        { field: "date" },
+        { field: "sport" },
+        { field: "gold" },
+        { field: "silver" },
+        { field: "bronze" },
+        { field: "total" },
+      ],
+      gridApi: null,
+      columnApi: null,
+
+      rowData: null,
+      groupDefaultExpanded: null,
+    };
+  },
+  created() {
+    this.rowData = getData();
+    this.groupDefaultExpanded = 1;
+  },
+  methods: {
+    setSwimmingHeight(height) {
+      swimmingHeight = height;
+      this.gridApi.resetRowHeights();
     },
-    data: function() {
-        return {
-            columnDefs: [{field:"country",
-rowGroup:true},{field:"athlete"},{field:"date"},{field:"sport"},{field:"gold"},{field:"silver"},{field:"bronze"},{field:"total"}],
-            gridApi: null,
-            columnApi: null,
-            
-            rowData: null,
-groupDefaultExpanded: null
+    setGroupHeight(height) {
+      groupHeight = height;
+      this.gridApi.resetRowHeights();
+    },
+    setRussiaHeight(height) {
+      // this is used next time resetRowHeights is called
+      russiaHeight = height;
+      this.gridApi.forEachNode(function (rowNode) {
+        if (rowNode.data && rowNode.data.country === "Russia") {
+          rowNode.setRowHeight(height);
         }
+      });
+      this.gridApi.onRowHeightChanged();
     },
-    created() {
-        this.rowData = getData();
-this.groupDefaultExpanded = 1
+    onGridReady(params) {
+      this.gridApi = params.api;
+      this.gridColumnApi = params.columnApi;
     },
-    methods: {
-        setSwimmingHeight(height) {
-    swimmingHeight = height;
-    this.gridApi.resetRowHeights();
-},
-setGroupHeight(height) {
-    groupHeight = height;
-    this.gridApi.resetRowHeights();
-},
-setRussiaHeight(height) {
-    // this is used next time resetRowHeights is called
-    russiaHeight = height;
-    this.gridApi.forEachNode(function (rowNode) {
-        if (rowNode.data && rowNode.data.country === 'Russia') {
-            rowNode.setRowHeight(height);
-        }
-    });
-    this.gridApi.onRowHeightChanged();
-},
-onGridReady(params) {
-        this.gridApi = params.api;
-        this.gridColumnApi = params.columnApi;
-        
-    },
-getRowHeight(params) {
-    if (params.node.group && groupHeight != null) {
+    getRowHeight(params) {
+      if (params.node.group && groupHeight != null) {
         return groupHeight;
-    }
-    else if (params.data &&
-        params.data.country === 'Russia' &&
-        russiaHeight != null) {
+      } else if (
+        params.data &&
+        params.data.country === "Russia" &&
+        russiaHeight != null
+      ) {
         return russiaHeight;
-    }
-    else if (params.data &&
-        params.data.sport === 'Swimming' &&
-        swimmingHeight != null) {
+      } else if (
+        params.data &&
+        params.data.sport === "Swimming" &&
+        swimmingHeight != null
+      ) {
         return swimmingHeight;
-    }
-},
-    }
-}
+      }
+    },
+  },
+};
 
 var swimmingHeight;
 
@@ -119,8 +129,8 @@ var groupHeight;
 var russiaHeight;
 
 new Vue({
-    el: '#app',
-    components: {
-        'my-component': VueExample
-    }
+  el: "#app",
+  components: {
+    "my-component": VueExample,
+  },
 });

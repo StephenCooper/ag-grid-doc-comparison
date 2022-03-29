@@ -1,11 +1,18 @@
-import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import "@ag-grid-community/core/dist/styles/ag-grid.css";
 import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { ColDef, ColGroupDef, DndSourceOnRowDragParams, Grid, GridOptions, RowClassRules } from '@ag-grid-community/core';
-import { ModuleRegistry } from '@ag-grid-community/core';
-import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import {
+  ColDef,
+  ColGroupDef,
+  DndSourceOnRowDragParams,
+  Grid,
+  GridOptions,
+  RowClassRules,
+} from "@ag-grid-community/core";
+import { ModuleRegistry } from "@ag-grid-community/core";
+import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
 
 // Register the required feature modules with the Grid
-ModuleRegistry.registerModules([ClientSideRowModelModule])
+ModuleRegistry.registerModules([ClientSideRowModelModule]);
 
 const gridOptions: GridOptions = {
   defaultColDef: {
@@ -14,12 +21,12 @@ const gridOptions: GridOptions = {
     filter: true,
     resizable: true,
   },
-  rowSelection: 'multiple',
+  rowSelection: "multiple",
   suppressRowClickSelection: true,
   rowClassRules: {
-    'red-row': 'data.color == "Red"',
-    'green-row': 'data.color == "Green"',
-    'blue-row': 'data.color == "Blue"',
+    "red-row": 'data.color == "Red"',
+    "green-row": 'data.color == "Green"',
+    "blue-row": 'data.color == "Blue"',
   },
   rowData: getData(),
   rowDragManaged: true,
@@ -30,59 +37,58 @@ const gridOptions: GridOptions = {
       dndSourceOnRowDrag: onRowDrag,
       checkboxSelection: true,
     },
-    { field: 'id' },
-    { field: 'color' },
-    { field: 'value1' },
-    { field: 'value2' },
+    { field: "id" },
+    { field: "color" },
+    { field: "value1" },
+    { field: "value2" },
   ],
   animateRows: true,
-}
+};
 
 function onDragOver(event: any) {
-  var dragSupported = event.dataTransfer.types.length
+  var dragSupported = event.dataTransfer.types.length;
 
   if (dragSupported) {
-    event.dataTransfer.dropEffect = 'move'
+    event.dataTransfer.dropEffect = "move";
   }
 
-  event.preventDefault()
+  event.preventDefault();
 }
 
 function onDrop(event: any) {
-  event.preventDefault()
-  var jsonData = event.dataTransfer.getData('application/json')
+  event.preventDefault();
+  var jsonData = event.dataTransfer.getData("application/json");
 
-  var eJsonRow = document.createElement('div')
-  eJsonRow.classList.add('json-row')
-  eJsonRow.innerText = jsonData
+  var eJsonRow = document.createElement("div");
+  eJsonRow.classList.add("json-row");
+  eJsonRow.innerText = jsonData;
 
-  var eJsonDisplay = document.querySelector('#eJsonDisplay')!
-  eJsonDisplay.appendChild(eJsonRow)
+  var eJsonDisplay = document.querySelector("#eJsonDisplay")!;
+  eJsonDisplay.appendChild(eJsonRow);
 }
 
 function onRowDrag(params: DndSourceOnRowDragParams) {
   // create the data that we want to drag
-  var rowNode = params.rowNode
-  var e = params.dragEvent
+  var rowNode = params.rowNode;
+  var e = params.dragEvent;
   var jsonObject = {
-    grid: 'GRID_001',
-    operation: 'Drag on Column',
+    grid: "GRID_001",
+    operation: "Drag on Column",
     rowId: rowNode.data.id,
     selected: rowNode.isSelected(),
-  }
-  var jsonData = JSON.stringify(jsonObject)
+  };
+  var jsonData = JSON.stringify(jsonObject);
 
-  e.dataTransfer!.setData('application/json', jsonData)
-  e.dataTransfer!.setData('text/plain', jsonData)
+  e.dataTransfer!.setData("application/json", jsonData);
+  e.dataTransfer!.setData("text/plain", jsonData);
 }
 
 // setup the grid after the page has finished loading
-  var gridDiv = document.querySelector<HTMLElement>('#myGrid')!
-  new Grid(gridDiv, gridOptions)
- 
+var gridDiv = document.querySelector<HTMLElement>("#myGrid")!;
+new Grid(gridDiv, gridOptions);
 
-if (typeof window !== 'undefined') {
-// Attach external event handlers to window so they can be called from index.html
- (<any>window).onDragOver = onDragOver;
- (<any>window).onDrop = onDrop;
+if (typeof window !== "undefined") {
+  // Attach external event handlers to window so they can be called from index.html
+  (<any>window).onDragOver = onDragOver;
+  (<any>window).onDrop = onDrop;
 }

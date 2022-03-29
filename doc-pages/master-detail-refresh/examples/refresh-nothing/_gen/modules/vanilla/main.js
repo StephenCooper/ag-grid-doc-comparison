@@ -1,48 +1,47 @@
-
 const gridOptions = {
   columnDefs: [
     // group cell renderer needed for expand / collapse icons
-    { field: 'name', cellRenderer: 'agGroupCellRenderer' },
-    { field: 'account' },
-    { field: 'calls' },
-    { field: 'minutes', valueFormatter: "x.toLocaleString() + 'm'" },
+    { field: "name", cellRenderer: "agGroupCellRenderer" },
+    { field: "account" },
+    { field: "calls" },
+    { field: "minutes", valueFormatter: "x.toLocaleString() + 'm'" },
   ],
   defaultColDef: {
     flex: 1,
   },
   getRowId: function (params) {
-    return params.data.account
+    return params.data.account;
   },
   masterDetail: true,
   enableCellChangeFlash: true,
   detailCellRendererParams: {
-    refreshStrategy: 'nothing',
+    refreshStrategy: "nothing",
 
     template: function (params) {
       return (
         '<div class="ag-details-row ag-details-row-fixed-height">' +
         '<div style="padding: 4px; font-weight: bold;">' +
         params.data.name +
-        ' ' +
+        " " +
         params.data.calls +
-        ' calls</div>' +
+        " calls</div>" +
         '<div ref="eDetailGrid" class="ag-details-grid ag-details-grid-fixed-height"/>' +
-        '</div>'
-      )
+        "</div>"
+      );
     },
 
     detailGridOptions: {
-      rowSelection: 'multiple',
+      rowSelection: "multiple",
       enableCellChangeFlash: true,
       getRowId: function (params) {
-        return params.data.callId
+        return params.data.callId;
       },
       columnDefs: [
-        { field: 'callId', checkboxSelection: true },
-        { field: 'direction' },
-        { field: 'number', minWidth: 150 },
-        { field: 'duration', valueFormatter: "x.toLocaleString() + 's'" },
-        { field: 'switchCode', minWidth: 150 },
+        { field: "callId", checkboxSelection: true },
+        { field: "direction" },
+        { field: "number", minWidth: 150 },
+        { field: "duration", valueFormatter: "x.toLocaleString() + 's'" },
+        { field: "switchCode", minWidth: 150 },
       ],
       defaultColDef: {
         flex: 1,
@@ -51,28 +50,28 @@ const gridOptions = {
     },
     getDetailRowData: function (params) {
       // params.successCallback([]);
-      params.successCallback(params.data.callRecords)
+      params.successCallback(params.data.callRecords);
     },
-  } ,
+  },
   onFirstDataRendered: onFirstDataRendered,
-}
+};
 
 let allRowData;
 
 function onFirstDataRendered(params) {
   // arbitrarily expand a row for presentational purposes
   setTimeout(function () {
-    params.api.getDisplayedRowAtIndex(0).setExpanded(true)
-  }, 0)
+    params.api.getDisplayedRowAtIndex(0).setExpanded(true);
+  }, 0);
 
   setInterval(function () {
     if (!allRowData) {
-      return
+      return;
     }
 
-    const data = allRowData[0]
+    const data = allRowData[0];
 
-    const newCallRecords = []
+    const newCallRecords = [];
     data.callRecords.forEach(function (record, index) {
       newCallRecords.push({
         name: record.name,
@@ -81,29 +80,29 @@ function onFirstDataRendered(params) {
         switchCode: record.switchCode,
         direction: record.direction,
         number: record.number,
-      })
-    })
+      });
+    });
 
-    data.callRecords = newCallRecords
-    data.calls++
+    data.callRecords = newCallRecords;
+    data.calls++;
 
     const tran = {
       update: [data],
-    }
+    };
 
-    params.api.applyTransaction(tran)
-  }, 2000)
+    params.api.applyTransaction(tran);
+  }, 2000);
 }
 
 // setup the grid after the page has finished loading
-document.addEventListener('DOMContentLoaded', function () {
-  const gridDiv = document.querySelector('#myGrid')
-  new agGrid.Grid(gridDiv, gridOptions)
+document.addEventListener("DOMContentLoaded", function () {
+  const gridDiv = document.querySelector("#myGrid");
+  new agGrid.Grid(gridDiv, gridOptions);
 
-  fetch('https://www.ag-grid.com/example-assets/master-detail-data.json')
-    .then(response => response.json())
+  fetch("https://www.ag-grid.com/example-assets/master-detail-data.json")
+    .then((response) => response.json())
     .then(function (data) {
-      allRowData = data
-      gridOptions.api.setRowData(data)
-    })
-})
+      allRowData = data;
+      gridOptions.api.setRowData(data);
+    });
+});

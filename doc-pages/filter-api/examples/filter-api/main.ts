@@ -1,6 +1,14 @@
-import { Grid, ColDef, GridOptions, ISetFilter, IFiltersToolPanel } from '@ag-grid-community/core'
+import {
+  Grid,
+  ColDef,
+  GridOptions,
+  ISetFilter,
+  IFiltersToolPanel,
+} from "@ag-grid-community/core";
 
-const columnDefs: ColDef[] = [{ field: 'athlete', filter: 'agSetColumnFilter' }]
+const columnDefs: ColDef[] = [
+  { field: "athlete", filter: "agSetColumnFilter" },
+];
 
 const gridOptions: GridOptions = {
   columnDefs: columnDefs,
@@ -10,43 +18,51 @@ const gridOptions: GridOptions = {
     filter: true,
     sortable: true,
   },
-  sideBar: 'filters',
+  sideBar: "filters",
   onGridReady: function (params) {
-    ((params.api.getToolPanelInstance(
-      'filters'
-    ) as any) as IFiltersToolPanel).expandFilters()
+    (
+      params.api.getToolPanelInstance("filters") as any as IFiltersToolPanel
+    ).expandFilters();
   },
-}
+};
 
-let savedMiniFilterText: string | null = '';
+let savedMiniFilterText: string | null = "";
 
 function getMiniFilterText() {
-  const athleteFilter = gridOptions.api!.getFilterInstance('athlete') as ISetFilter;
+  const athleteFilter = gridOptions.api!.getFilterInstance(
+    "athlete"
+  ) as ISetFilter;
   console.log(athleteFilter.getMiniFilter());
 }
 
 function saveMiniFilterText() {
-  const athleteFilter = gridOptions.api!.getFilterInstance('athlete') as ISetFilter;
+  const athleteFilter = gridOptions.api!.getFilterInstance(
+    "athlete"
+  ) as ISetFilter;
   savedMiniFilterText = athleteFilter.getMiniFilter();
 }
 
 function restoreMiniFilterText() {
-  const athleteFilter = gridOptions.api!.getFilterInstance('athlete') as ISetFilter;
-  athleteFilter.setMiniFilter(savedMiniFilterText)
+  const athleteFilter = gridOptions.api!.getFilterInstance(
+    "athlete"
+  ) as ISetFilter;
+  athleteFilter.setMiniFilter(savedMiniFilterText);
 }
 
 function resetFilter() {
-  const athleteFilter = gridOptions.api!.getFilterInstance('athlete') as ISetFilter;
-  athleteFilter.setModel(null)
-  gridOptions.api!.onFilterChanged()
+  const athleteFilter = gridOptions.api!.getFilterInstance(
+    "athlete"
+  ) as ISetFilter;
+  athleteFilter.setModel(null);
+  gridOptions.api!.onFilterChanged();
 }
 
 // setup the grid after the page has finished loading
-document.addEventListener('DOMContentLoaded', function () {
-  var gridDiv = document.querySelector<HTMLElement>('#myGrid')!
-  new Grid(gridDiv, gridOptions)
+document.addEventListener("DOMContentLoaded", function () {
+  var gridDiv = document.querySelector<HTMLElement>("#myGrid")!;
+  new Grid(gridDiv, gridOptions);
 
-  fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
-    .then(response => response.json())
-    .then(data => gridOptions.api!.setRowData(data))
-})
+  fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+    .then((response) => response.json())
+    .then((data) => gridOptions.api!.setRowData(data));
+});

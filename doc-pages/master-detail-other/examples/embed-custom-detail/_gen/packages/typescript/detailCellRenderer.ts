@@ -1,18 +1,21 @@
-import { ICellRendererComp, ICellRendererParams } from 'ag-grid-community';
+import { ICellRendererComp, ICellRendererParams } from "ag-grid-community";
 
 export class DetailCellRenderer implements ICellRendererComp {
-    eGui!: HTMLElement;
+  eGui!: HTMLElement;
 
-    init(params: ICellRendererParams) {
-        this.eGui = document.createElement('div');
-        this.eGui.innerHTML = '<h1 class="custom-detail" style="padding: 20px;">' + (params.pinned ? params.pinned : 'center') + '</h1>';
-    }
+  init(params: ICellRendererParams) {
+    this.eGui = document.createElement("div");
+    this.eGui.innerHTML =
+      '<h1 class="custom-detail" style="padding: 20px;">' +
+      (params.pinned ? params.pinned : "center") +
+      "</h1>";
+  }
 
-    getGui() {
-        return this.eGui;
-    }
+  getGui() {
+    return this.eGui;
+  }
 
-    refresh(params: ICellRendererParams): boolean {
-        return false;
-    }
+  refresh(params: ICellRendererParams): boolean {
+    return false;
+  }
 }

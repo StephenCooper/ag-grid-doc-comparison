@@ -1,26 +1,33 @@
-import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import "@ag-grid-community/core/dist/styles/ag-grid.css";
 import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { ColDef, ColGroupDef, Grid, GridOptions, LineSparklineOptions, TooltipRendererParams } from '@ag-grid-community/core';
-import { ModuleRegistry } from '@ag-grid-community/core';
-import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
-import { SparklinesModule } from '@ag-grid-enterprise/sparklines';
+import {
+  ColDef,
+  ColGroupDef,
+  Grid,
+  GridOptions,
+  LineSparklineOptions,
+  TooltipRendererParams,
+} from "@ag-grid-community/core";
+import { ModuleRegistry } from "@ag-grid-community/core";
+import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
+import { SparklinesModule } from "@ag-grid-enterprise/sparklines";
 
 // Register the required feature modules with the Grid
-ModuleRegistry.registerModules([ClientSideRowModelModule, SparklinesModule])
+ModuleRegistry.registerModules([ClientSideRowModelModule, SparklinesModule]);
 
 const body = document.body;
 
 const gridOptions: GridOptions = {
   columnDefs: [
-    { field: 'symbol', maxWidth: 120 },
-    { field: 'name', minWidth: 250 },
+    { field: "symbol", maxWidth: 120 },
+    { field: "name", minWidth: 250 },
     {
-      field: 'change',
-      cellRenderer: 'agSparklineCellRenderer',
+      field: "change",
+      cellRenderer: "agSparklineCellRenderer",
       cellRendererParams: {
         sparklineOptions: {
           line: {
-            stroke: 'rgb(94,94,224)',
+            stroke: "rgb(94,94,224)",
           },
           tooltip: {
             container: body,
@@ -29,15 +36,15 @@ const gridOptions: GridOptions = {
             renderer: tooltipRenderer,
           },
           highlightStyle: {
-            fill: 'rgb(94,94,224)',
+            fill: "rgb(94,94,224)",
             strokeWidth: 0,
           },
         } as LineSparklineOptions,
       },
     },
     {
-      field: 'volume',
-      type: 'numericColumn',
+      field: "volume",
+      type: "numericColumn",
       maxWidth: 140,
     },
   ],
@@ -48,7 +55,7 @@ const gridOptions: GridOptions = {
   },
   rowData: getData(),
   rowHeight: 50,
-}
+};
 
 function tooltipRenderer(params: TooltipRendererParams) {
   const { yValue, context } = params;
@@ -62,6 +69,5 @@ function tooltipRenderer(params: TooltipRendererParams) {
 }
 
 // setup the grid after the page has finished loading
-  var gridDiv = document.querySelector<HTMLElement>('#myGrid')!;
-  new Grid(gridDiv, gridOptions);
- 
+var gridDiv = document.querySelector<HTMLElement>("#myGrid")!;
+new Grid(gridDiv, gridOptions);

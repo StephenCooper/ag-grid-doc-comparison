@@ -1,20 +1,21 @@
-
-import { createApp } from 'vue';
-import { AgGridVue } from '@ag-grid-community/vue3';
-import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import { createApp } from "vue";
+import { AgGridVue } from "@ag-grid-community/vue3";
+import "@ag-grid-community/core/dist/styles/ag-grid.css";
 import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { ModuleRegistry } from '@ag-grid-community/core';
-import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
-import { ExcelExportModule } from '@ag-grid-enterprise/excel-export';
-import { MenuModule } from '@ag-grid-enterprise/menu';
+import { ModuleRegistry } from "@ag-grid-community/core";
+import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
+import { ExcelExportModule } from "@ag-grid-enterprise/excel-export";
+import { MenuModule } from "@ag-grid-enterprise/menu";
 
 // Register the required feature modules with the Grid
-ModuleRegistry.registerModules([ClientSideRowModelModule, ExcelExportModule, MenuModule])
-
-
+ModuleRegistry.registerModules([
+  ClientSideRowModelModule,
+  ExcelExportModule,
+  MenuModule,
+]);
 
 const VueExample = {
-    template: `
+  template: `
         <div style="height: 100%">
             <div class="container">
                 <div>
@@ -35,70 +36,66 @@ const VueExample = {
             </div>
         </div>
     `,
-    components: {
-        'ag-grid-vue': AgGridVue,
-        
-    },
-    data: function() {
-        return {
-            columnDefs: [{field:"company"},{field:"url",
-cellClass:"hyperlinks"}],
-            gridApi: null,
-            columnApi: null,
-            defaultColDef: {
-    flex: 1,
-    minWidth: 100,
-    resizable: true,
-},
-            defaultExcelExportParams: null,
-excelStyles: null,
-rowData: null
-        }
-    },
-    created() {
-        this.defaultExcelExportParams = {
-    autoConvertFormulas: true,
-    processCellCallback: params => {
+  components: {
+    "ag-grid-vue": AgGridVue,
+  },
+  data: function () {
+    return {
+      columnDefs: [
+        { field: "company" },
+        { field: "url", cellClass: "hyperlinks" },
+      ],
+      gridApi: null,
+      columnApi: null,
+      defaultColDef: {
+        flex: 1,
+        minWidth: 100,
+        resizable: true,
+      },
+      defaultExcelExportParams: null,
+      excelStyles: null,
+      rowData: null,
+    };
+  },
+  created() {
+    this.defaultExcelExportParams = {
+      autoConvertFormulas: true,
+      processCellCallback: (params) => {
         const field = params.column.getColDef().field;
-        return field === 'url' ? `=HYPERLINK("${params.value}")` : params.value;
-    },
-};
-this.excelStyles = [
-    {
-        id: 'hyperlinks',
+        return field === "url" ? `=HYPERLINK("${params.value}")` : params.value;
+      },
+    };
+    this.excelStyles = [
+      {
+        id: "hyperlinks",
         font: {
-            underline: 'Single',
-            color: '#358ccb',
+          underline: "Single",
+          color: "#358ccb",
         },
+      },
+    ];
+    this.rowData = [
+      { company: "Google", url: "https://www.google.com" },
+      { company: "Adobe", url: "https://www.adobe.com" },
+      { company: "The New York Times", url: "https://www.nytimes.com" },
+      { company: "Twitter", url: "https://www.twitter.com" },
+      { company: "StackOverflow", url: "https://stackoverflow.com/" },
+      { company: "Reddit", url: "https://www.reddit.com" },
+      { company: "Github", url: "https://www.github.com" },
+      { company: "Microsoft", url: "https://www.microsoft.com" },
+      { company: "Gizmodo", url: "https://www.gizmodo.com" },
+      { company: "LinkedIN", url: "https://www.linkedin.com" },
+    ];
+  },
+  methods: {
+    onBtExport() {
+      this.gridApi.exportDataAsExcel();
     },
-];
-this.rowData = [
-    { company: 'Google', url: 'https://www.google.com' },
-    { company: 'Adobe', url: 'https://www.adobe.com' },
-    { company: 'The New York Times', url: 'https://www.nytimes.com' },
-    { company: 'Twitter', url: 'https://www.twitter.com' },
-    { company: 'StackOverflow', url: 'https://stackoverflow.com/' },
-    { company: 'Reddit', url: 'https://www.reddit.com' },
-    { company: 'Github', url: 'https://www.github.com' },
-    { company: 'Microsoft', url: 'https://www.microsoft.com' },
-    { company: 'Gizmodo', url: 'https://www.gizmodo.com' },
-    { company: 'LinkedIN', url: 'https://www.linkedin.com' },
-]
+    onGridReady(params) {
+      this.gridApi = params.api;
+      this.gridColumnApi = params.columnApi;
     },
-    methods: {
-        onBtExport() {
-    this.gridApi.exportDataAsExcel();
-},
-onGridReady(params) {
-        this.gridApi = params.api;
-        this.gridColumnApi = params.columnApi;
-        
-    },
-    }
-}
+  },
+};
 
-
-
-createApp(VueExample)
-    .mount("#app")
-
+createApp(VueExample).mount("#app");

@@ -1,14 +1,11 @@
-
-import { createApp } from 'vue';
-import { AgGridVue } from 'ag-grid-vue3';
-import 'ag-grid-enterprise';
-import 'ag-grid-community/dist/styles/ag-grid.css';
-import 'ag-grid-community/dist/styles/ag-theme-alpine-dark.css';
-
-
+import { createApp } from "vue";
+import { AgGridVue } from "ag-grid-vue3";
+import "ag-grid-enterprise";
+import "ag-grid-community/dist/styles/ag-grid.css";
+import "ag-grid-community/dist/styles/ag-theme-alpine-dark.css";
 
 const VueExample = {
-    template: `
+  template: `
         <div style="height: 100%">
             <ag-grid-vue
                 
@@ -20,84 +17,85 @@ const VueExample = {
                 :rowModelType="rowModelType"></ag-grid-vue>
         </div>
     `,
-    components: {
-        'ag-grid-vue': AgGridVue,
-        
-    },
-    data: function() {
-        return {
-            columnDefs: [{field:"athlete",
-minWidth:220},{field:"country",
-minWidth:200},{field:"year"},{field:"sport",
-minWidth:200},{field:"gold"},{field:"silver"},{field:"bronze"}],
-            gridApi: null,
-            columnApi: null,
-            defaultColDef: {
-    flex: 1,
-    minWidth: 100,
-},
-            rowModelType: null
-        }
-    },
-    created() {
-        this.rowModelType = 'serverSide'
-    },
-    methods: {
-        onGridReady(params) {
-        this.gridApi = params.api;
-        this.gridColumnApi = params.columnApi;
-        
-
-        
-            const updateData = (data) => {
-    // setup the fake server with entire dataset
-    var fakeServer = createFakeServer(data);
-    // create datasource with a reference to the fake server
-    var datasource = createServerSideDatasource(fakeServer);
-    // register the datasource with the grid
-    params.api.setServerSideDatasource(datasource);
-};
-            
-            fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
-                .then(resp => resp.json())
-                .then(data => updateData(data));
-    },
-    }
-}
-
-window.createServerSideDatasource = function createServerSideDatasource(server) {
+  components: {
+    "ag-grid-vue": AgGridVue,
+  },
+  data: function () {
     return {
-        getRows: function (params) {
-            console.log('[Datasource] - rows requested by grid: ', params.request);
-            // get data for request from our fake server
-            var response = server.getData(params.request);
-            // simulating real server call with a 500ms delay
-            setTimeout(function () {
-                if (response.success) {
-                    // supply rows for requested block to grid
-                    params.success({ rowData: response.rows });
-                }
-                else {
-                    params.fail();
-                }
-            }, 500);
-        },
+      columnDefs: [
+        { field: "athlete", minWidth: 220 },
+        { field: "country", minWidth: 200 },
+        { field: "year" },
+        { field: "sport", minWidth: 200 },
+        { field: "gold" },
+        { field: "silver" },
+        { field: "bronze" },
+      ],
+      gridApi: null,
+      columnApi: null,
+      defaultColDef: {
+        flex: 1,
+        minWidth: 100,
+      },
+      rowModelType: null,
     };
-}
+  },
+  created() {
+    this.rowModelType = "serverSide";
+  },
+  methods: {
+    onGridReady(params) {
+      this.gridApi = params.api;
+      this.gridColumnApi = params.columnApi;
+
+      const updateData = (data) => {
+        // setup the fake server with entire dataset
+        var fakeServer = createFakeServer(data);
+        // create datasource with a reference to the fake server
+        var datasource = createServerSideDatasource(fakeServer);
+        // register the datasource with the grid
+        params.api.setServerSideDatasource(datasource);
+      };
+
+      fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+        .then((resp) => resp.json())
+        .then((data) => updateData(data));
+    },
+  },
+};
+
+window.createServerSideDatasource = function createServerSideDatasource(
+  server
+) {
+  return {
+    getRows: function (params) {
+      console.log("[Datasource] - rows requested by grid: ", params.request);
+      // get data for request from our fake server
+      var response = server.getData(params.request);
+      // simulating real server call with a 500ms delay
+      setTimeout(function () {
+        if (response.success) {
+          // supply rows for requested block to grid
+          params.success({ rowData: response.rows });
+        } else {
+          params.fail();
+        }
+      }, 500);
+    },
+  };
+};
 
 window.createFakeServer = function createFakeServer(allData) {
-    return {
-        getData: function (request) {
-            // take a copy of the data to return to the client
-            var requestedRows = allData.slice();
-            return {
-                success: true,
-                rows: requestedRows,
-            };
-        },
-    };
-}
+  return {
+    getData: function (request) {
+      // take a copy of the data to return to the client
+      var requestedRows = allData.slice();
+      return {
+        success: true,
+        rows: requestedRows,
+      };
+    },
+  };
+};
 
-createApp(VueExample)
-    .mount("#app")
-
+createApp(VueExample).mount("#app");

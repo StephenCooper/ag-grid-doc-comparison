@@ -76,13 +76,12 @@ For example, consider the columns from the examples `{ Year and Gold }`. If a pi
 
 The primary and secondary columns behave in different ways in the following scenarios:
 
-
 - **Tool Panel**: The toolPanel always displays primary columns.
 
 - **Filtering**: Filters are always set on primary columns.
 
-- **Sorting**:  Sorting can be on primary or secondary columns, depending on what is displayed inside the grid.
--  **Column State**:  Storing and restoring column state view the `columnApi.getColumnState()` and `columnApi.applyColumnState(params)` methods work solely on primary columns.
+- **Sorting**: Sorting can be on primary or secondary columns, depending on what is displayed inside the grid.
+- **Column State**: Storing and restoring column state view the `columnApi.getColumnState()` and `columnApi.applyColumnState(params)` methods work solely on primary columns.
 
 ## Looking up Secondary Columns
 
@@ -106,7 +105,6 @@ As mentioned above, the secondary columns in the grid are created by the grid by
 ## Filtering with Pivot
 
 Filtering is always on primary columns. It is not possible, nor would it make sense, to set a filter on a secondary column.
-
 
 If pivoting and a filter changes then the set of secondary columns is recalculated based on the newly available columns and aggregation is recalculated.
 
@@ -153,13 +151,11 @@ The example below demonstrates Pivot Row Totals as follows:
 
 When in pivot mode you can also include automatically calculated total pivot columns. These total columns will use the provided aggregation function on the value columns to 'roll-up' each group level.
 
-
 Pivot column groups that contain more than one child will have a total column included. Expanding this group will reveal the columns that make up this total value.
 
 To enable total columns set `gridOptions.pivotColumnGroupTotals = 'before' | 'after'`. The values `before` and `after` are used to control the relative position of the total column when the group is expanded.
 
 All value columns must use the same aggregation function for the total column to make sense, otherwise the total column will not be included.
-
 
 The example below demonstrates Pivot Column Group Totals as follows:
 

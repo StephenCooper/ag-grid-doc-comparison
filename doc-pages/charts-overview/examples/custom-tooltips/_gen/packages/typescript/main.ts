@@ -1,26 +1,29 @@
-import * as agCharts from 'ag-charts-community';
-import { AgCartesianSeriesTooltipRendererParams, AgChartOptions } from 'ag-charts-community';
+import * as agCharts from "ag-charts-community";
+import {
+  AgCartesianSeriesTooltipRendererParams,
+  AgChartOptions,
+} from "ag-charts-community";
 
 function tooltipRenderer(params: AgCartesianSeriesTooltipRendererParams) {
   var formatThousands = function (value: number) {
-    return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
-  }
+    return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  };
 
   var tooltipHtml = [
     '<div class="my-tooltip">',
     '<span class="my-tooltip__title" style="color: ' +
-    params.color +
-    '">' +
-    params.yName,
+      params.color +
+      '">' +
+      params.yName,
     "(" +
-    params.datum[params.xKey] +
-    "):</span> " +
-    formatThousands(params.datum[params.yKey]) +
-    " tonnes",
+      params.datum[params.xKey] +
+      "):</span> " +
+      formatThousands(params.datum[params.yKey]) +
+      " tonnes",
     "</div>",
-  ]
+  ];
 
-  return tooltipHtml.join("\n")
+  return tooltipHtml.join("\n");
 }
 
 const options: AgChartOptions = {
@@ -121,7 +124,7 @@ const options: AgChartOptions = {
       },
       label: {
         formatter: function (params) {
-          return params.value / 1000 + "k"
+          return params.value / 1000 + "k";
         },
       },
     },
@@ -129,7 +132,6 @@ const options: AgChartOptions = {
   legend: {
     position: "bottom",
   },
-}
+};
 
-var chart = agCharts.AgChart.create(options)
- 
+var chart = agCharts.AgChart.create(options);

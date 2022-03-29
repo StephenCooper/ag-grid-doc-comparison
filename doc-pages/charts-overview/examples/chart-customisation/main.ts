@@ -1,5 +1,5 @@
-import { AgChartOptions } from "ag-charts-community"
-import * as agCharts from "ag-charts-community"
+import { AgChartOptions } from "ag-charts-community";
+import * as agCharts from "ag-charts-community";
 
 const options: AgChartOptions = {
   container: document.getElementById("myChart"),
@@ -93,7 +93,7 @@ const options: AgChartOptions = {
         fontWeight: "bold",
         fontSize: 14,
         fontFamily: "Impact, Charcoal, Sans-Serif",
-        formatter: params =>
+        formatter: (params) =>
           params.index % 2 === 1 ? params.value / 1000 + "k" : "",
       },
       title: {
@@ -129,6 +129,6 @@ const options: AgChartOptions = {
     },
     spacing: 10,
   },
-}
+};
 
-var chart = agCharts.AgChart.create(options)
+var chart = agCharts.AgChart.create(options);

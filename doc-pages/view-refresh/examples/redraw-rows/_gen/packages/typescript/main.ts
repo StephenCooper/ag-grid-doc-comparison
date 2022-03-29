@@ -1,18 +1,25 @@
-import 'ag-grid-community/dist/styles/ag-grid.css';
+import "ag-grid-community/dist/styles/ag-grid.css";
 import "ag-grid-community/dist/styles/ag-theme-alpine-dark.css";
-import { ColDef, ColGroupDef, Grid, GridOptions, RowClassParams, RowStyle } from 'ag-grid-community';
+import {
+  ColDef,
+  ColGroupDef,
+  Grid,
+  GridOptions,
+  RowClassParams,
+  RowStyle,
+} from "ag-grid-community";
 
-var colorIndex = 0
-var colors = ['#000000', '#000066', '#006600', '#660000']
+var colorIndex = 0;
+var colors = ["#000000", "#000066", "#006600", "#660000"];
 
 const gridOptions: GridOptions = {
   columnDefs: [
-    { headerName: 'A', field: 'a' },
-    { headerName: 'B', field: 'b' },
-    { headerName: 'C', field: 'c' },
-    { headerName: 'D', field: 'd' },
-    { headerName: 'E', field: 'e' },
-    { headerName: 'F', field: 'f' },
+    { headerName: "A", field: "a" },
+    { headerName: "B", field: "b" },
+    { headerName: "C", field: "c" },
+    { headerName: "D", field: "d" },
+    { headerName: "E", field: "e" },
+    { headerName: "F", field: "f" },
   ],
   defaultColDef: {
     flex: 1,
@@ -21,12 +28,12 @@ const gridOptions: GridOptions = {
   getRowStyle: function () {
     return {
       backgroundColor: colors[colorIndex],
-    }
+    };
   },
-}
+};
 
 function createData(count: number) {
-  var result = []
+  var result = [];
   for (var i = 1; i <= count; i++) {
     result.push({
       a: (i * 863) % 100,
@@ -35,40 +42,39 @@ function createData(count: number) {
       d: (i * 677) % 100,
       e: (i * 619) % 100,
       f: (i * 571) % 100,
-    })
+    });
   }
-  return result
+  return result;
 }
 
 function progressColor() {
-  colorIndex++
+  colorIndex++;
   if (colorIndex === colors.length) {
-    colorIndex = 0
+    colorIndex = 0;
   }
 }
 
 function redrawAllRows() {
-  progressColor()
-  gridOptions.api!.redrawRows()
+  progressColor();
+  gridOptions.api!.redrawRows();
 }
 
 function redrawTopRows() {
-  progressColor()
-  var rows = []
+  progressColor();
+  var rows = [];
   for (var i = 0; i < 6; i++) {
-    var row = gridOptions.api!.getDisplayedRowAtIndex(i)!
-    rows.push(row)
+    var row = gridOptions.api!.getDisplayedRowAtIndex(i)!;
+    rows.push(row);
   }
-  gridOptions.api!.redrawRows({ rowNodes: rows })
+  gridOptions.api!.redrawRows({ rowNodes: rows });
 }
 
 // setup the grid after the page has finished loading
-  var gridDiv = document.querySelector<HTMLElement>('#myGrid')!
-  new Grid(gridDiv, gridOptions)
- 
+var gridDiv = document.querySelector<HTMLElement>("#myGrid")!;
+new Grid(gridDiv, gridOptions);
 
-if (typeof window !== 'undefined') {
-// Attach external event handlers to window so they can be called from index.html
- (<any>window).redrawAllRows = redrawAllRows;
- (<any>window).redrawTopRows = redrawTopRows;
+if (typeof window !== "undefined") {
+  // Attach external event handlers to window so they can be called from index.html
+  (<any>window).redrawAllRows = redrawAllRows;
+  (<any>window).redrawTopRows = redrawTopRows;
 }

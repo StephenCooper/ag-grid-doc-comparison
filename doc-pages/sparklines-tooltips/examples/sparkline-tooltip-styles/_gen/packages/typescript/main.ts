@@ -1,34 +1,41 @@
-import 'ag-grid-enterprise';
-import 'ag-grid-community/dist/styles/ag-grid.css';
+import "ag-grid-enterprise";
+import "ag-grid-community/dist/styles/ag-grid.css";
 import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import { ColDef, ColGroupDef, Grid, GridOptions, LineSparklineOptions, TooltipRendererParams } from 'ag-grid-community';
+import {
+  ColDef,
+  ColGroupDef,
+  Grid,
+  GridOptions,
+  LineSparklineOptions,
+  TooltipRendererParams,
+} from "ag-grid-community";
 
 const gridOptions: GridOptions = {
   columnDefs: [
-    { field: 'symbol', maxWidth: 120 },
-    { field: 'name', minWidth: 250 },
+    { field: "symbol", maxWidth: 120 },
+    { field: "name", minWidth: 250 },
     {
-      field: 'change',
-      cellRenderer: 'agSparklineCellRenderer',
+      field: "change",
+      cellRenderer: "agSparklineCellRenderer",
       cellRendererParams: {
         sparklineOptions: {
           tooltip: {
             renderer: tooltipRenderer,
           },
           line: {
-            stroke: 'rgb(103,103,255)',
+            stroke: "rgb(103,103,255)",
             strokeWidth: 1,
           },
           highlightStyle: {
-            fill: 'white',
+            fill: "white",
             strokeWidth: 0,
           },
         } as LineSparklineOptions,
       },
     },
     {
-      field: 'volume',
-      type: 'numericColumn',
+      field: "volume",
+      type: "numericColumn",
       maxWidth: 140,
     },
   ],
@@ -39,19 +46,18 @@ const gridOptions: GridOptions = {
   },
   rowData: getData(),
   rowHeight: 50,
-}
+};
 
 function tooltipRenderer(params: TooltipRendererParams) {
   return {
     title: params.context.data.symbol,
     // sets styles for tooltip
-    color: 'white',
-    backgroundColor: 'rgb(78,78,255)',
+    color: "white",
+    backgroundColor: "rgb(78,78,255)",
     opacity: 0.7,
-  }
+  };
 }
 
 // setup the grid after the page has finished loading
-  var gridDiv = document.querySelector<HTMLElement>('#myGrid')!;
-  new Grid(gridDiv, gridOptions);
- 
+var gridDiv = document.querySelector<HTMLElement>("#myGrid")!;
+new Grid(gridDiv, gridOptions);

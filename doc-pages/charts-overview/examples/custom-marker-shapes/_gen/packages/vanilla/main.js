@@ -1,5 +1,4 @@
-
-var markerSize = 10
+var markerSize = 10;
 
 const options = {
   container: document.getElementById("myChart"),
@@ -137,32 +136,32 @@ const options = {
       },
       label: {
         formatter: function (params) {
-          return params.value / 1000000 + "M"
+          return params.value / 1000000 + "M";
         },
       },
     },
   ],
-}
+};
 
-var chart = agCharts.AgChart.create(options)
+var chart = agCharts.AgChart.create(options);
 
 function heartFactory() {
   class Heart extends agCharts.Marker {
     rad(degree) {
-      return (degree / 180) * Math.PI
+      return (degree / 180) * Math.PI;
     }
 
     updatePath() {
-      const { x, path, size, rad } = this
-      const r = size / 4
-      const y = this.y + r / 2
+      const { x, path, size, rad } = this;
+      const r = size / 4;
+      const y = this.y + r / 2;
 
-      path.clear()
-      path.cubicArc(x - r, y - r, r, r, 0, rad(130), rad(330), 0)
-      path.cubicArc(x + r, y - r, r, r, 0, rad(220), rad(50), 0)
-      path.lineTo(x, y + r)
-      path.closePath()
+      path.clear();
+      path.cubicArc(x - r, y - r, r, r, 0, rad(130), rad(330), 0);
+      path.cubicArc(x + r, y - r, r, r, 0, rad(220), rad(50), 0);
+      path.lineTo(x, y + r);
+      path.closePath();
     }
   }
-  return Heart
+  return Heart;
 }

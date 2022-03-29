@@ -5,7 +5,7 @@ enterprise: true
 
 You can copy and paste items to and from the grid using the system clipboard.
 
-##  Copy to Clipboard
+## Copy to Clipboard
 
 Copy to clipboard operation can be done in the following ways:
 
@@ -21,7 +21,7 @@ Headers can also be included when copying to clipboard using <kbd>Ctrl</kbd>+<kb
 | Performing multiple <kbd>Ctrl</kbd>+&lt;left click> operations followed by <kbd>Ctrl</kbd>+<kbd>C</kbd> will not preserve original cell layout
 | but rather copy them vertically to the clipboard.
 
-##  Paste from Clipboard
+## Paste from Clipboard
 
 Paste to clipboard can only be done in the following ways:
 
@@ -128,7 +128,6 @@ In summary the `processDataFromClipboard` takes a 2d array of data that was take
 
 The example below demonstrates `processDataFromClipboard`. Note the following:
 
-
 - Pasting data that is copied from cells in the 'Green' highlighted column works as normal. Note that it uses `processDataFromClipboard` returning the 2d array it was provided with.
 
 - Pasting any data from cells in the 'Red' highlighted column will result in 2x2 cells getting pasted with contents `[ ['Orange', 'Orange'], ['Grey', 'Grey'] ]`. To see this, copy and paste some 'Red' cells from column F. This is achieved by `processDataFromClipboard` returning the same 2d array always regardless of the data from the clipboard.
@@ -158,4 +157,3 @@ The example below demonstrates:
 - Does not allow paste into the 'silver' column by setting `colDef.suppressPaste=true`.
 
 <grid-example title='Complex Example' name='complex' type='generated' options='{ "enterprise": true, "modules": ["clientside", "menu", "range", "clipboard"] }'></grid-example>
-

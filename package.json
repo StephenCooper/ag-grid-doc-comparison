@@ -1,0 +1,23 @@
+{
+  "name": "ag-grid-doc-comparison",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "devDependencies": {
+    "prettier": "^2.6.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prettier": "prettier --write ./doc-pages"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/StephenCooper/ag-grid-doc-comparison.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/StephenCooper/ag-grid-doc-comparison/issues"
+  },
+  "homepage": "https://github.com/StephenCooper/ag-grid-doc-comparison#readme"
+}

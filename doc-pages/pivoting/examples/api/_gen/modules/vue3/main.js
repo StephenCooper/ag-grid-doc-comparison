@@ -1,24 +1,29 @@
-
-import { createApp } from 'vue';
-import { AgGridVue } from '@ag-grid-community/vue3';
-import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import { createApp } from "vue";
+import { AgGridVue } from "@ag-grid-community/vue3";
+import "@ag-grid-community/core/dist/styles/ag-grid.css";
 import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { ModuleRegistry } from '@ag-grid-community/core';
-import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
-import { RowGroupingModule } from '@ag-grid-enterprise/row-grouping';
-import { MenuModule } from '@ag-grid-enterprise/menu';
-import { SetFilterModule } from '@ag-grid-enterprise/set-filter';
-import { ColumnsToolPanelModule } from '@ag-grid-enterprise/column-tool-panel';
-import { FiltersToolPanelModule } from '@ag-grid-enterprise/filter-tool-panel';
-import { CsvExportModule } from '@ag-grid-community/csv-export';
+import { ModuleRegistry } from "@ag-grid-community/core";
+import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
+import { RowGroupingModule } from "@ag-grid-enterprise/row-grouping";
+import { MenuModule } from "@ag-grid-enterprise/menu";
+import { SetFilterModule } from "@ag-grid-enterprise/set-filter";
+import { ColumnsToolPanelModule } from "@ag-grid-enterprise/column-tool-panel";
+import { FiltersToolPanelModule } from "@ag-grid-enterprise/filter-tool-panel";
+import { CsvExportModule } from "@ag-grid-community/csv-export";
 
 // Register the required feature modules with the Grid
-ModuleRegistry.registerModules([ClientSideRowModelModule, RowGroupingModule, MenuModule, SetFilterModule, ColumnsToolPanelModule, FiltersToolPanelModule, CsvExportModule])
-
-
+ModuleRegistry.registerModules([
+  ClientSideRowModelModule,
+  RowGroupingModule,
+  MenuModule,
+  SetFilterModule,
+  ColumnsToolPanelModule,
+  FiltersToolPanelModule,
+  CsvExportModule,
+]);
 
 const VueExample = {
-    template: `
+  template: `
         <div style="height: 100%">
             <div style="margin-bottom: 5px;">
                 <div>
@@ -47,100 +52,96 @@ const VueExample = {
             </div>
         </div>
     `,
-    components: {
-        'ag-grid-vue': AgGridVue,
-        
+  components: {
+    "ag-grid-vue": AgGridVue,
+  },
+  data: function () {
+    return {
+      columnDefs: [
+        {
+          field: "athlete",
+          enableRowGroup: true,
+          enablePivot: true,
+          minWidth: 200,
+        },
+        { field: "age", enableValue: true },
+        { field: "country", enableRowGroup: true, enablePivot: true },
+        { field: "year", enableRowGroup: true, enablePivot: true },
+        { field: "date", enableRowGroup: true, enablePivot: true },
+        {
+          field: "sport",
+          enableRowGroup: true,
+          enablePivot: true,
+          minWidth: 200,
+        },
+        { field: "gold", enableValue: true, aggFunc: "sum" },
+        { field: "silver", enableValue: true },
+        { field: "bronze", enableValue: true },
+        { field: "total", enableValue: true },
+      ],
+      gridApi: null,
+      columnApi: null,
+      defaultColDef: {
+        flex: 1,
+        minWidth: 150,
+        filter: true,
+        resizable: true,
+      },
+      autoGroupColumnDef: null,
+      rowData: null,
+    };
+  },
+  created() {
+    this.autoGroupColumnDef = {
+      minWidth: 250,
+    };
+  },
+  methods: {
+    turnOffPivotMode() {
+      this.gridColumnApi.setPivotMode(false);
     },
-    data: function() {
-        return {
-            columnDefs: [{field:"athlete",
-enableRowGroup:true,
-enablePivot:true,
-minWidth:200},{field:"age",
-enableValue:true},{field:"country",
-enableRowGroup:true,
-enablePivot:true},{field:"year",
-enableRowGroup:true,
-enablePivot:true},{field:"date",
-enableRowGroup:true,
-enablePivot:true},{field:"sport",
-enableRowGroup:true,
-enablePivot:true,
-minWidth:200},{field:"gold",
-enableValue:true,
-aggFunc:"sum"},{field:"silver",
-enableValue:true},{field:"bronze",
-enableValue:true},{field:"total",
-enableValue:true}],
-            gridApi: null,
-            columnApi: null,
-            defaultColDef: {
-    flex: 1,
-    minWidth: 150,
-    filter: true,
-    resizable: true,
-},
-            autoGroupColumnDef: null,
-rowData: null
-        }
+    turnOnPivotMode() {
+      this.gridColumnApi.setPivotMode(true);
     },
-    created() {
-        this.autoGroupColumnDef = {
-    minWidth: 250,
-}
-    },
-    methods: {
-        turnOffPivotMode() {
-    this.gridColumnApi.setPivotMode(false);
-},
-turnOnPivotMode() {
-    this.gridColumnApi.setPivotMode(true);
-},
-addPivotColumn() {
-    this.gridColumnApi.applyColumnState({
-        state: [{ colId: 'country', pivot: true }],
+    addPivotColumn() {
+      this.gridColumnApi.applyColumnState({
+        state: [{ colId: "country", pivot: true }],
         defaultState: { pivot: false },
-    });
-},
-addPivotColumns() {
-    this.gridColumnApi.applyColumnState({
+      });
+    },
+    addPivotColumns() {
+      this.gridColumnApi.applyColumnState({
         state: [
-            { colId: 'year', pivot: true },
-            { colId: 'country', pivot: true },
+          { colId: "year", pivot: true },
+          { colId: "country", pivot: true },
         ],
         defaultState: { pivot: false },
-    });
-},
-removePivotColumn() {
-    this.gridColumnApi.applyColumnState({
-        state: [{ colId: 'country', pivot: false }],
-    });
-},
-emptyPivotColumns() {
-    this.gridColumnApi.applyColumnState({
-        defaultState: { pivot: false },
-    });
-},
-exportToCsv() {
-    this.gridApi.exportDataAsCsv();
-},
-onGridReady(params) {
-        this.gridApi = params.api;
-        this.gridColumnApi = params.columnApi;
-        
-
-        
-            const updateData = (data) => params.api.setRowData(data);
-            
-            fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
-                .then(resp => resp.json())
-                .then(data => updateData(data));
+      });
     },
-    }
-}
+    removePivotColumn() {
+      this.gridColumnApi.applyColumnState({
+        state: [{ colId: "country", pivot: false }],
+      });
+    },
+    emptyPivotColumns() {
+      this.gridColumnApi.applyColumnState({
+        defaultState: { pivot: false },
+      });
+    },
+    exportToCsv() {
+      this.gridApi.exportDataAsCsv();
+    },
+    onGridReady(params) {
+      this.gridApi = params.api;
+      this.gridColumnApi = params.columnApi;
 
+      const updateData = (data) => params.api.setRowData(data);
 
+      fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+        .then((resp) => resp.json())
+        .then((data) => updateData(data));
+    },
+  },
+};
 
-createApp(VueExample)
-    .mount("#app")
-
+createApp(VueExample).mount("#app");

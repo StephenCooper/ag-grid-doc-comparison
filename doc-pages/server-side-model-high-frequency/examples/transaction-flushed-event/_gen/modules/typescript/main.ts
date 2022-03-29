@@ -1,13 +1,24 @@
-import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import "@ag-grid-community/core/dist/styles/ag-grid.css";
 import "@ag-grid-community/core/dist/styles/ag-theme-alpine-dark.css";
-import { AsyncTransactionsFlushed, ColDef, ColGroupDef, GetRowIdFunc, Grid, GridOptions, IServerSideDatasource, ServerSideStoreType, ServerSideTransactionResult, ServerSideTransactionResultStatus } from '@ag-grid-community/core';
-import { ModuleRegistry } from '@ag-grid-community/core';
-import { ServerSideRowModelModule } from '@ag-grid-enterprise/server-side-row-model';
+import {
+  AsyncTransactionsFlushed,
+  ColDef,
+  ColGroupDef,
+  GetRowIdFunc,
+  Grid,
+  GridOptions,
+  IServerSideDatasource,
+  ServerSideStoreType,
+  ServerSideTransactionResult,
+  ServerSideTransactionResultStatus,
+} from "@ag-grid-community/core";
+import { ModuleRegistry } from "@ag-grid-community/core";
+import { ServerSideRowModelModule } from "@ag-grid-enterprise/server-side-row-model";
 
 // Register the required feature modules with the Grid
-ModuleRegistry.registerModules([ServerSideRowModelModule])
+ModuleRegistry.registerModules([ServerSideRowModelModule]);
 
-const columnDefs: ColDef[] = [{ field: 'product' }, { field: 'value' }]
+const columnDefs: ColDef[] = [{ field: "product" }, { field: "value" }];
 
 const gridOptions: GridOptions = {
   defaultColDef: {
@@ -16,118 +27,119 @@ const gridOptions: GridOptions = {
   },
   onAsyncTransactionsFlushed: onAsyncTransactionsFlushed,
   onGridReady: function (params) {
-    setupData()
+    setupData();
     var dataSource: IServerSideDatasource = {
       getRows: function (params2) {
-        var rowData = allServerSideData.slice()
+        var rowData = allServerSideData.slice();
         setTimeout(function () {
-          params2.success({ rowData: rowData })
-        }, 200)
+          params2.success({ rowData: rowData });
+        }, 200);
       },
-    }
-    params.api.setServerSideDatasource(dataSource)
+    };
+    params.api.setServerSideDatasource(dataSource);
   },
   getRowId: function (params) {
-    return params.data.product
+    return params.data.product;
   },
-  rowSelection: 'multiple',
-  serverSideStoreType: 'full',
+  rowSelection: "multiple",
+  serverSideStoreType: "full",
   columnDefs: columnDefs,
   // use the enterprise row model
-  rowModelType: 'serverSide',
+  rowModelType: "serverSide",
   animateRows: true,
   asyncTransactionWaitMillis: 4000,
-}
+};
 
 function onAsyncTransactionsFlushed(e: AsyncTransactionsFlushed) {
   var summary: { [key in ServerSideTransactionResultStatus]?: any } = {};
-  (e.results as ServerSideTransactionResult[]).forEach((result: ServerSideTransactionResult) => {
-    var status = result.status
-    if (summary[status] == null) {
-      summary[status] = 0
+  (e.results as ServerSideTransactionResult[]).forEach(
+    (result: ServerSideTransactionResult) => {
+      var status = result.status;
+      if (summary[status] == null) {
+        summary[status] = 0;
+      }
+      summary[status]++;
     }
-    summary[status]++
-  })
-  console.log('onAsyncTransactionsFlushed: ' + JSON.stringify(summary))
+  );
+  console.log("onAsyncTransactionsFlushed: " + JSON.stringify(summary));
 }
 
-var products = ['Palm Oil', 'Rubber', 'Wool', 'Amber', 'Copper']
+var products = ["Palm Oil", "Rubber", "Wool", "Amber", "Copper"];
 
-var newProductSequence = 0
+var newProductSequence = 0;
 
 var all_products = [
-  'Palm Oil',
-  'Rubber',
-  'Wool',
-  'Amber',
-  'Copper',
-  'Lead',
-  'Zinc',
-  'Tin',
-  'Aluminium',
-  'Aluminium Alloy',
-  'Nickel',
-  'Cobalt',
-  'Molybdenum',
-  'Recycled Steel',
-  'Corn',
-  'Oats',
-  'Rough Rice',
-  'Soybeans',
-  'Rapeseed',
-  'Soybean Meal',
-  'Soybean Oil',
-  'Wheat',
-  'Milk',
-  'Coca',
-  'Coffee C',
-  'Cotton No.2',
-  'Sugar No.11',
-  'Sugar No.14',
-]
+  "Palm Oil",
+  "Rubber",
+  "Wool",
+  "Amber",
+  "Copper",
+  "Lead",
+  "Zinc",
+  "Tin",
+  "Aluminium",
+  "Aluminium Alloy",
+  "Nickel",
+  "Cobalt",
+  "Molybdenum",
+  "Recycled Steel",
+  "Corn",
+  "Oats",
+  "Rough Rice",
+  "Soybeans",
+  "Rapeseed",
+  "Soybean Meal",
+  "Soybean Oil",
+  "Wheat",
+  "Milk",
+  "Coca",
+  "Coffee C",
+  "Cotton No.2",
+  "Sugar No.11",
+  "Sugar No.14",
+];
 
-var allServerSideData: any[] = []
+var allServerSideData: any[] = [];
 
 function setupData() {
   products.forEach(function (product, index) {
     allServerSideData.push({
       product: product,
       value: Math.floor(Math.random() * 10000),
-    })
-  })
+    });
+  });
 }
 
 function onBtAdd() {
   var newProductName =
-    all_products[Math.floor(all_products.length * Math.random())]
+    all_products[Math.floor(all_products.length * Math.random())];
   var newItem = {
-    product: newProductName + ' ' + newProductSequence++,
+    product: newProductName + " " + newProductSequence++,
     value: Math.floor(Math.random() * 10000),
-  }
-  allServerSideData.push(newItem)
+  };
+  allServerSideData.push(newItem);
   var tx = {
     add: [newItem],
-  }
-  gridOptions.api!.applyServerSideTransactionAsync(tx)
+  };
+  gridOptions.api!.applyServerSideTransactionAsync(tx);
 }
 
 function onBtFlush() {
-  gridOptions.api!.flushServerSideAsyncTransactions()
+  gridOptions.api!.flushServerSideAsyncTransactions();
 }
 
-var valueCounter = 0
+var valueCounter = 0;
 function getNextValue() {
-  valueCounter++
-  return Math.floor((valueCounter * 987654321) / 7) % 10000
+  valueCounter++;
+  return Math.floor((valueCounter * 987654321) / 7) % 10000;
 }
 
 // setup the grid after the page has finished loading
-  var gridDiv = document.querySelector<HTMLElement>('#myGrid')!
-  new Grid(gridDiv, gridOptions)
- 
+var gridDiv = document.querySelector<HTMLElement>("#myGrid")!;
+new Grid(gridDiv, gridOptions);
 
-if (typeof window !== 'undefined') {
-// Attach external event handlers to window so they can be called from index.html
- (<any>window).onBtAdd = onBtAdd;
- (<any>window).onBtFlush = onBtFlush;
+if (typeof window !== "undefined") {
+  // Attach external event handlers to window so they can be called from index.html
+  (<any>window).onBtAdd = onBtAdd;
+  (<any>window).onBtFlush = onBtFlush;
 }

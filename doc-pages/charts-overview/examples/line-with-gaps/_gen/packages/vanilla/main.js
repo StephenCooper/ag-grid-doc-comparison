@@ -1,4 +1,3 @@
-
 const options = {
   container: document.getElementById("myChart"),
   autoSize: true,
@@ -202,7 +201,7 @@ const options = {
         text: "Week",
       },
       label: {
-        formatter: params => (params.index % 3 ? "" : params.value),
+        formatter: (params) => (params.index % 3 ? "" : params.value),
       },
     },
     {
@@ -226,6 +225,6 @@ const options = {
   padding: {
     bottom: 30,
   },
-}
+};
 
-var chart = agCharts.AgChart.create(options)
+var chart = agCharts.AgChart.create(options);

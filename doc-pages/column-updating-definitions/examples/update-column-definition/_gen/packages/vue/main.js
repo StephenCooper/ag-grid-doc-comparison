@@ -1,11 +1,10 @@
-import 'ag-grid-community/dist/styles/ag-grid.css';
-import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
-import Vue from 'vue';
-import { AgGridVue } from 'ag-grid-vue';
-
+import "ag-grid-community/dist/styles/ag-grid.css";
+import "ag-grid-community/dist/styles/ag-theme-alpine.css";
+import Vue from "vue";
+import { AgGridVue } from "ag-grid-vue";
 
 const VueExample = {
-    template: `
+  template: `
       <div style="height: 100%">
       <div class="test-container">
         <div class="test-header">
@@ -26,92 +25,92 @@ const VueExample = {
       </div>
       </div>
     `,
-    components: {
-        'ag-grid-vue': AgGridVue,
+  components: {
+    "ag-grid-vue": AgGridVue,
+  },
+  data: function () {
+    return {
+      gridOptions: null,
+      gridApi: null,
+      columnApi: null,
+      defaultColDef: {
+        initialWidth: 100,
+        sortable: true,
+        resizable: true,
+        filter: true,
+      },
+      columnDefs: null,
+      rowData: null,
+    };
+  },
+  beforeMount() {
+    this.gridOptions = {};
+    this.columnDefs = this.getColumnDefs();
+  },
+  mounted() {
+    this.gridApi = this.gridOptions.api;
+    this.gridColumnApi = this.gridOptions.columnApi;
+  },
+  methods: {
+    setHeaderNames() {
+      const columnDefs = this.getColumnDefs();
+      columnDefs.forEach(function (colDef, index) {
+        colDef.headerName = "C" + index;
+      });
+      this.gridApi.setColumnDefs(columnDefs);
     },
-    data: function () {
-        return {
-            gridOptions: null,
-            gridApi: null,
-            columnApi: null,
-            defaultColDef: {
-                initialWidth: 100,
-                sortable: true,
-                resizable: true,
-                filter: true,
-            },
-            columnDefs: null,
-            rowData: null,
+    removeHeaderNames() {
+      const columnDefs = this.getColumnDefs();
+      columnDefs.forEach(function (colDef, index) {
+        colDef.headerName = undefined;
+      });
+      this.gridApi.setColumnDefs(columnDefs);
+    },
+    setValueFormatters() {
+      const columnDefs = this.getColumnDefs();
+      columnDefs.forEach(function (colDef, index) {
+        colDef.valueFormatter = function (params) {
+          return "[ " + params.value + " ]";
         };
+      });
+      this.gridApi.setColumnDefs(columnDefs);
     },
-    beforeMount() {
-        this.gridOptions = {};
-        this.columnDefs = this.getColumnDefs();
+    removeValueFormatters() {
+      const columnDefs = this.getColumnDefs();
+      columnDefs.forEach(function (colDef, index) {
+        colDef.valueFormatter = undefined;
+      });
+      this.gridApi.setColumnDefs(columnDefs);
     },
-    mounted() {
-        this.gridApi = this.gridOptions.api;
-        this.gridColumnApi = this.gridOptions.columnApi;
+    getColumnDefs() {
+      return [
+        { field: "athlete" },
+        { field: "age" },
+        { field: "country" },
+        { field: "sport" },
+        { field: "year" },
+        { field: "date" },
+        { field: "gold" },
+        { field: "silver" },
+        { field: "bronze" },
+        { field: "total" },
+      ];
     },
-    methods: {
-        setHeaderNames() {
-            const columnDefs = this.getColumnDefs();
-            columnDefs.forEach(function (colDef, index) {
-                colDef.headerName = 'C' + index;
-            });
-            this.gridApi.setColumnDefs(columnDefs);
-        },
-        removeHeaderNames() {
-            const columnDefs = this.getColumnDefs();
-            columnDefs.forEach(function (colDef, index) {
-                colDef.headerName = undefined;
-            });
-            this.gridApi.setColumnDefs(columnDefs);
-        },
-        setValueFormatters() {
-            const columnDefs = this.getColumnDefs();
-            columnDefs.forEach(function (colDef, index) {
-                colDef.valueFormatter = function (params) {
-                    return '[ ' + params.value + ' ]';
-                };
-            });
-            this.gridApi.setColumnDefs(columnDefs);
-        },
-        removeValueFormatters() {
-            const columnDefs = this.getColumnDefs();
-            columnDefs.forEach(function (colDef, index) {
-                colDef.valueFormatter = undefined;
-            });
-            this.gridApi.setColumnDefs(columnDefs);
-        },
-        getColumnDefs() {
-            return [
-                { field: 'athlete' },
-                { field: 'age' },
-                { field: 'country' },
-                { field: 'sport' },
-                { field: 'year' },
-                { field: 'date' },
-                { field: 'gold' },
-                { field: 'silver' },
-                { field: 'bronze' },
-                { field: 'total' }
-            ];
-        },
-        onGridReady(params) {
-            const updateData = (data) => {
-                this.rowData = data;
-            };
+    onGridReady(params) {
+      const updateData = (data) => {
+        this.rowData = data;
+      };
 
-            fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
-                .then((resp) => resp.json())
-                .then((data) => updateData(data));
-        },
+      fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+        .then((resp) => resp.json())
+        .then((data) => updateData(data));
     },
+  },
 };
 
 new Vue({
-    el: '#app',
-    components: {
-        'my-component': VueExample,
-    },
+  el: "#app",
+  components: {
+    "my-component": VueExample,
+  },
 });

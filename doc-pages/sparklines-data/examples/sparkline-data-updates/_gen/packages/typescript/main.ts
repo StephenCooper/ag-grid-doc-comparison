@@ -1,19 +1,19 @@
-import 'ag-grid-enterprise';
-import 'ag-grid-community/dist/styles/ag-grid.css';
+import "ag-grid-enterprise";
+import "ag-grid-community/dist/styles/ag-grid.css";
 import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import { ColDef, ColGroupDef, Grid, GridOptions } from 'ag-grid-community';
+import { ColDef, ColGroupDef, Grid, GridOptions } from "ag-grid-community";
 
 const gridOptions: GridOptions = {
   columnDefs: [
-    { field: 'symbol', maxWidth: 120 },
-    { field: 'name', minWidth: 250 },
+    { field: "symbol", maxWidth: 120 },
+    { field: "name", minWidth: 250 },
     {
-      field: 'change',
-      cellRenderer: 'agSparklineCellRenderer',
+      field: "change",
+      cellRenderer: "agSparklineCellRenderer",
     },
     {
-      field: 'volume',
-      type: 'numericColumn',
+      field: "volume",
+      type: "numericColumn",
       maxWidth: 140,
     },
   ],
@@ -24,47 +24,46 @@ const gridOptions: GridOptions = {
   },
   rowData: getData(),
   rowHeight: 50,
-}
+};
 
 var intervalId: any;
 
 function start() {
   if (intervalId) {
-    return
+    return;
   }
 
   const updateData = () => {
-    const itemsToUpdate: any[] = []
+    const itemsToUpdate: any[] = [];
     gridOptions.api!.forEachNodeAfterFilterAndSort(function (rowNode) {
-      const data = rowNode.data
-      const n = data.change.length
+      const data = rowNode.data;
+      const n = data.change.length;
       const v =
-        Math.random() > 0.5 ? Number(Math.random()) : -Number(Math.random())
-      data.change = [...data.change.slice(1, n), v]
-      itemsToUpdate.push(data)
-    })
-    gridOptions.api!.applyTransaction({ update: itemsToUpdate })
+        Math.random() > 0.5 ? Number(Math.random()) : -Number(Math.random());
+      data.change = [...data.change.slice(1, n), v];
+      itemsToUpdate.push(data);
+    });
+    gridOptions.api!.applyTransaction({ update: itemsToUpdate });
   };
 
-  intervalId = setInterval(updateData, 300)
+  intervalId = setInterval(updateData, 300);
 }
 
 function stop() {
   if (intervalId === undefined) {
-    return
+    return;
   }
-  clearInterval(intervalId)
-  intervalId = undefined
+  clearInterval(intervalId);
+  intervalId = undefined;
 }
 
 // setup the grid after the page has finished loading
 
-  var gridDiv = document.querySelector<HTMLElement>('#myGrid')!
-  new Grid(gridDiv, gridOptions)
- 
+var gridDiv = document.querySelector<HTMLElement>("#myGrid")!;
+new Grid(gridDiv, gridOptions);
 
-if (typeof window !== 'undefined') {
-// Attach external event handlers to window so they can be called from index.html
- (<any>window).start = start;
- (<any>window).stop = stop;
+if (typeof window !== "undefined") {
+  // Attach external event handlers to window so they can be called from index.html
+  (<any>window).start = start;
+  (<any>window).stop = stop;
 }

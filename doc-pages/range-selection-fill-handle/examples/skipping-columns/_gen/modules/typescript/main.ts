@@ -1,21 +1,30 @@
-import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import "@ag-grid-community/core/dist/styles/ag-grid.css";
 import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { ColDef, ColGroupDef, FillOperationParams, Grid, GridOptions } from '@ag-grid-community/core';
-import { ModuleRegistry } from '@ag-grid-community/core';
-import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
-import { RangeSelectionModule } from '@ag-grid-enterprise/range-selection';
+import {
+  ColDef,
+  ColGroupDef,
+  FillOperationParams,
+  Grid,
+  GridOptions,
+} from "@ag-grid-community/core";
+import { ModuleRegistry } from "@ag-grid-community/core";
+import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
+import { RangeSelectionModule } from "@ag-grid-enterprise/range-selection";
 
 // Register the required feature modules with the Grid
-ModuleRegistry.registerModules([ClientSideRowModelModule, RangeSelectionModule])
+ModuleRegistry.registerModules([
+  ClientSideRowModelModule,
+  RangeSelectionModule,
+]);
 
 const gridOptions: GridOptions = {
   columnDefs: [
-    { field: 'athlete', minWidth: 150 },
-    { field: 'age', maxWidth: 90 },
-    { field: 'country', minWidth: 150 },
-    { field: 'year', maxWidth: 90 },
-    { field: 'date', minWidth: 150 },
-    { field: 'sport', minWidth: 150 },
+    { field: "athlete", minWidth: 150 },
+    { field: "age", maxWidth: 90 },
+    { field: "country", minWidth: 150 },
+    { field: "year", maxWidth: 90 },
+    { field: "date", minWidth: 150 },
+    { field: "sport", minWidth: 150 },
   ],
   defaultColDef: {
     flex: 1,
@@ -26,26 +35,25 @@ const gridOptions: GridOptions = {
   enableFillHandle: true,
   suppressClearOnFillReduction: true,
   fillOperation: function (params) {
-    if (params.column.getColId() === 'country') {
-      return params.currentCellValue
+    if (params.column.getColId() === "country") {
+      return params.currentCellValue;
     }
 
-    return params.values[params.values.length - 1]
+    return params.values[params.values.length - 1];
   },
-}
+};
 
 function createRowData(data: any[]) {
-  var rowData = data.slice(0, 100)
-  return rowData
+  var rowData = data.slice(0, 100);
+  return rowData;
 }
 
 // setup the grid after the page has finished loading
-  var gridDiv = document.querySelector<HTMLElement>('#myGrid')!
-  new Grid(gridDiv, gridOptions)
+var gridDiv = document.querySelector<HTMLElement>("#myGrid")!;
+new Grid(gridDiv, gridOptions);
 
-  fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
-    .then(response => response.json())
-    .then(function (data) {
-      gridOptions.api!.setRowData(createRowData(data))
-    })
- 
+fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+  .then((response) => response.json())
+  .then(function (data) {
+    gridOptions.api!.setRowData(createRowData(data));
+  });

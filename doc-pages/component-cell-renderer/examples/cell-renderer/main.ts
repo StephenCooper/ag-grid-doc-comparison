@@ -1,9 +1,13 @@
 import {
-  ColDef, Grid,
+  ColDef,
+  Grid,
   GridOptions,
   ICellRendererParams,
-} from '@ag-grid-community/core'
-import { DaysFrostRenderer, ImageCellRendererParams } from './daysFrostRenderer_typescript';
+} from "@ag-grid-community/core";
+import {
+  DaysFrostRenderer,
+  ImageCellRendererParams,
+} from "./daysFrostRenderer_typescript";
 
 /**
  * Demonstrating function cell renderer
@@ -11,29 +15,29 @@ import { DaysFrostRenderer, ImageCellRendererParams } from './daysFrostRenderer_
  * by adding an +/- symbols according to the difference
  */
 const deltaIndicator = (params: ICellRendererParams) => {
-  const element = document.createElement('span')
-  const imageElement = document.createElement('img')
+  const element = document.createElement("span");
+  const imageElement = document.createElement("img");
 
   // visually indicate if this months value is higher or lower than last months value
   if (params.value > 15) {
     imageElement.src =
-      'https://www.ag-grid.com/example-assets/weather/fire-plus.png'
+      "https://www.ag-grid.com/example-assets/weather/fire-plus.png";
   } else {
     imageElement.src =
-      'https://www.ag-grid.com/example-assets/weather/fire-minus.png'
+      "https://www.ag-grid.com/example-assets/weather/fire-minus.png";
   }
-  element.appendChild(imageElement)
-  element.appendChild(document.createTextNode(params.value))
-  return element
-}
+  element.appendChild(imageElement);
+  element.appendChild(document.createTextNode(params.value));
+  return element;
+};
 
 /**
  *  Cell Renderer by Property (using the api)
  */
 function daysSunshineRenderer(params: ICellRendererParams): HTMLElement {
   const p2 = params as ImageCellRendererParams;
-  const daysSunshine = params.value / 24
-  return createImageSpan(daysSunshine, p2.rendererImage)
+  const daysSunshine = params.value / 24;
+  return createImageSpan(daysSunshine, p2.rendererImage);
 }
 
 /**
@@ -41,57 +45,57 @@ function daysSunshineRenderer(params: ICellRendererParams): HTMLElement {
  */
 function rainPerTenMmRenderer(params: ICellRendererParams) {
   const p2 = params as ImageCellRendererParams;
-  const rainPerTenMm = params.value / 10
-  return createImageSpan(rainPerTenMm, p2.rendererImage)
+  const rainPerTenMm = params.value / 10;
+  return createImageSpan(rainPerTenMm, p2.rendererImage);
 }
 
 const columnDefs: ColDef[] = [
   {
-    headerName: 'Month',
-    field: 'Month',
+    headerName: "Month",
+    field: "Month",
     width: 75,
-    cellStyle: { color: 'darkred' },
+    cellStyle: { color: "darkred" },
   },
   {
-    headerName: 'Max Temp (˚C)',
-    field: 'Max temp (C)',
+    headerName: "Max Temp (˚C)",
+    field: "Max temp (C)",
     width: 120,
     cellRenderer: deltaIndicator, // Function cell renderer
   },
   {
-    headerName: 'Min Temp (˚C)',
-    field: 'Min temp (C)',
+    headerName: "Min Temp (˚C)",
+    field: "Min temp (C)",
     width: 120,
     cellRenderer: deltaIndicator, // Function cell renderer
   },
   {
-    headerName: 'Days of Air Frost',
-    field: 'Days of air frost (days)',
+    headerName: "Days of Air Frost",
+    field: "Days of air frost (days)",
     width: 233,
     cellRenderer: DaysFrostRenderer, // Component Cell Renderer
     cellRendererParams: {
-      rendererImage: 'frost.png', // Complementing the Cell Renderer parameters
+      rendererImage: "frost.png", // Complementing the Cell Renderer parameters
     },
   },
   {
-    headerName: 'Days Sunshine',
-    field: 'Sunshine (hours)',
+    headerName: "Days Sunshine",
+    field: "Sunshine (hours)",
     width: 190,
     cellRenderer: daysSunshineRenderer,
     cellRendererParams: {
-      rendererImage: 'sun.png', // Complementing the Cell Renderer parameters
+      rendererImage: "sun.png", // Complementing the Cell Renderer parameters
     },
   },
   {
-    headerName: 'Rainfall (10mm)',
-    field: 'Rainfall (mm)',
+    headerName: "Rainfall (10mm)",
+    field: "Rainfall (mm)",
     width: 180,
     cellRenderer: rainPerTenMmRenderer,
     cellRendererParams: {
-      rendererImage: 'rain.png', // Complementing the Cell Renderer parameters
+      rendererImage: "rain.png", // Complementing the Cell Renderer parameters
     },
   },
-]
+];
 
 const gridOptions: GridOptions = {
   columnDefs: columnDefs,
@@ -104,17 +108,18 @@ const gridOptions: GridOptions = {
     filter: true,
     resizable: true,
   },
-}
+};
 
 const createImageSpan = (imageMultiplier: number, image: string) => {
-  const resultElement = document.createElement('span')
+  const resultElement = document.createElement("span");
   for (let i = 0; i < imageMultiplier; i++) {
-    const imageElement = document.createElement('img')
-    imageElement.src = 'https://www.ag-grid.com/example-assets/weather/' + image
-    resultElement.appendChild(imageElement)
+    const imageElement = document.createElement("img");
+    imageElement.src =
+      "https://www.ag-grid.com/example-assets/weather/" + image;
+    resultElement.appendChild(imageElement);
   }
-  return resultElement
-}
+  return resultElement;
+};
 
 /**
  * Updates the Days of Air Frost column - adjusts the value which in turn will demonstrate the Component refresh functionality
@@ -122,22 +127,22 @@ const createImageSpan = (imageMultiplier: number, image: string) => {
  */
 function frostierYear(extraDaysFrost: number) {
   // iterate over the rows and make each "days of air frost"
-  gridOptions.api!.forEachNode(rowNode => {
+  gridOptions.api!.forEachNode((rowNode) => {
     rowNode.setDataValue(
-      'Days of air frost (days)',
-      rowNode.data['Days of air frost (days)'] + extraDaysFrost
-    )
-  })
+      "Days of air frost (days)",
+      rowNode.data["Days of air frost (days)"] + extraDaysFrost
+    );
+  });
 }
 
 // setup the grid after the page has finished loading
-document.addEventListener('DOMContentLoaded', () => {
-  const gridDiv = document.querySelector<HTMLElement>('#myGrid')!
-  new Grid(gridDiv, gridOptions)
+document.addEventListener("DOMContentLoaded", () => {
+  const gridDiv = document.querySelector<HTMLElement>("#myGrid")!;
+  new Grid(gridDiv, gridOptions);
 
-  fetch('https://www.ag-grid.com/example-assets/weather-se-england.json')
-    .then(response => response.json())
-    .then(data => {
-      gridOptions.api!.setRowData(data)
-    })
-})
+  fetch("https://www.ag-grid.com/example-assets/weather-se-england.json")
+    .then((response) => response.json())
+    .then((data) => {
+      gridOptions.api!.setRowData(data);
+    });
+});

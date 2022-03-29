@@ -15,16 +15,17 @@ Below shows a simple example of the columns tool panel. The following can be not
 Things to try:
 
 - Checking / unchecking columns will show / hide the columns.
-- Drag and Drop a column inside the columns sections to reorder columns in the grid. 
+- Drag and Drop a column inside the columns sections to reorder columns in the grid.
 - Drag a column (e.g. Country) to Row Groups to group rows.
 - Drag a column (e.g. Gold) to Values to aggregate.
 - Reset (refresh) the demo and do the following:
-    - Click 'Pivot Mode'.
-    - Drag 'Country' to 'Row Groups'.
-    - Drag 'Year' to 'Column Labels'.
-    - Drag 'Gold' to 'Values'.
 
-    You will now have a pivot grid showing total gold medals for each country (rows showing countries) by year (columns showing years).
+  - Click 'Pivot Mode'.
+  - Drag 'Country' to 'Row Groups'.
+  - Drag 'Year' to 'Column Labels'.
+  - Drag 'Gold' to 'Values'.
+
+  You will now have a pivot grid showing total gold medals for each country (rows showing countries) by year (columns showing years).
 
 <grid-example title='Tool Panel Simple' name='simple' type='generated' options='{ "enterprise": true, "exampleHeight": 630, "modules": ["clientside", "rowgrouping", "menu", "setfilter", "columnpanel"] }'></grid-example>
 
@@ -48,13 +49,13 @@ The column tool panel is split into different sections as follows:
 - **Expand / Collapse All**: Toggle to expand or collapse all column groups.
 - **Columns Section**: Display all columns, grouped by column groups, that are available to be displayed in the grid. By default the order of the columns is kept in sync with the order they are shown in the grid, but this behaviour can be disabled.
 - **Select / Un-select All**: Toggle to select or un-select all columns in the columns section.
-- **Select / Un-Select Column (or Group)**: Each column can be individually selected. What selection means depends on pivot mode and is explained below*.
+- **Select / Un-Select Column (or Group)**: Each column can be individually selected. What selection means depends on pivot mode and is explained below\*.
 - **Drag Handle**: Each column can be dragged either with the mouse or via touch on touch devices. The column can then be dragged to one of the following:
-    1. Row Groups Section
-    2. Values (Pivot) Section
-    3. Column Labels Section
-    4. Onto the grid (when `gridOptions.allowDragFromColumnsToolPanel=true`)
-    5. Inside Columns Section to reorder columns (see [Suppress Column Reordering](/tool-panel-columns/#suppress-column-reordering))
+  1. Row Groups Section
+  2. Values (Pivot) Section
+  3. Column Labels Section
+  4. Onto the grid (when `gridOptions.allowDragFromColumnsToolPanel=true`)
+  5. Inside Columns Section to reorder columns (see [Suppress Column Reordering](/tool-panel-columns/#suppress-column-reordering))
 - **Row Groups Section**: Columns here will form the grid's [Row Grouping](/grouping/).
 - **Values Section**: Columns here will form the grid's [Aggregations](/aggregation/). The grid calls this function 'Aggregations', however for the UI we follow the Excel naming convention and call it 'Values'.
 - **Column Labels (Pivot) Section**: Columns here will form the grid's [Pivot](/pivoting/). The grid calls this function 'Pivot', however for the UI we follow the Excel naming convention and call it 'Column Labels'.
@@ -96,11 +97,11 @@ The example below demonstrates the suppress options / methods described above. N
 
 ## Suppress Column Reordering
 
-By default, reordering columns in the grid will also reorder the columns shown in the Columns Section of the Columns Tool Panel. 
-this default behaviour can be disabled via `toolPanelParams.suppressSyncLayoutWithGrid`. 
+By default, reordering columns in the grid will also reorder the columns shown in the Columns Section of the Columns Tool Panel.
+this default behaviour can be disabled via `toolPanelParams.suppressSyncLayoutWithGrid`.
 
-Similarly, the reordering of columns from inside the Columns Section of the Columns Tool Panel is also enabled by default, and can be disabled via 
-`toolPanelParams.suppressColumnMove`. 
+Similarly, the reordering of columns from inside the Columns Section of the Columns Tool Panel is also enabled by default, and can be disabled via
+`toolPanelParams.suppressColumnMove`.
 
 The configuration of these properties are shown below:
 
@@ -281,4 +282,3 @@ The example below shows two custom layouts for the Columns Tool Panel. Note the 
 ## Next Up
 
 Now that we covered the Columns Tool Panel, continue to the next section to learn about the [Filters Tool Panel](/tool-panel-filters/).
-

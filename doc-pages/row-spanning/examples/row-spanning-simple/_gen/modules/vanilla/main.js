@@ -1,37 +1,36 @@
-
 function rowSpan(params) {
-  var athlete = params.data.athlete
-  if (athlete === 'Aleksey Nemov') {
+  var athlete = params.data.athlete;
+  if (athlete === "Aleksey Nemov") {
     // have all Russia age columns width 2
-    return 2
-  } else if (athlete === 'Ryan Lochte') {
+    return 2;
+  } else if (athlete === "Ryan Lochte") {
     // have all United States column width 4
-    return 4
+    return 4;
   } else {
     // all other rows should be just normal
-    return 1
+    return 1;
   }
 }
 
 const columnDefs = [
   {
-    field: 'athlete',
+    field: "athlete",
     rowSpan: rowSpan,
     cellClassRules: {
-      'cell-span': "value==='Aleksey Nemov' || value==='Ryan Lochte'",
+      "cell-span": "value==='Aleksey Nemov' || value==='Ryan Lochte'",
     },
     width: 200,
   },
-  { field: 'age', width: 100 },
-  { field: 'country' },
-  { field: 'year', width: 100 },
-  { field: 'date' },
-  { field: 'sport' },
-  { field: 'gold' },
-  { field: 'silver' },
-  { field: 'bronze' },
-  { field: 'total' },
-]
+  { field: "age", width: 100 },
+  { field: "country" },
+  { field: "year", width: 100 },
+  { field: "date" },
+  { field: "sport" },
+  { field: "gold" },
+  { field: "silver" },
+  { field: "bronze" },
+  { field: "total" },
+];
 
 const gridOptions = {
   columnDefs: columnDefs,
@@ -40,14 +39,14 @@ const gridOptions = {
     resizable: true,
   },
   suppressRowTransform: true,
-}
+};
 
 // setup the grid after the page has finished loading
-document.addEventListener('DOMContentLoaded', function () {
-  var gridDiv = document.querySelector('#myGrid')
-  new agGrid.Grid(gridDiv, gridOptions)
+document.addEventListener("DOMContentLoaded", function () {
+  var gridDiv = document.querySelector("#myGrid");
+  new agGrid.Grid(gridDiv, gridOptions);
 
-  fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
-    .then(response => response.json())
-    .then(data => gridOptions.api.setRowData(data))
-})
+  fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+    .then((response) => response.json())
+    .then((data) => gridOptions.api.setRowData(data));
+});

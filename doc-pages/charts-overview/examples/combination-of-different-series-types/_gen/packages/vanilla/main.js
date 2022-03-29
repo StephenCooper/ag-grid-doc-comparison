@@ -1,4 +1,3 @@
-
 const options = {
   container: document.getElementById("myChart"),
   autoSize: true,
@@ -18,8 +17,7 @@ const options = {
     fontSize: 18,
   },
   subtitle: {
-    text:
-      "Source: Department for Environment, Food & Rural Affairs; Agriculture and Horticulture Development Board",
+    text: "Source: Department for Environment, Food & Rural Affairs; Agriculture and Horticulture Development Board",
   },
   series: [
     {
@@ -56,7 +54,7 @@ const options = {
       },
       label: {
         formatter: function (params) {
-          return params.value / 1000 + "M"
+          return params.value / 1000 + "M";
         },
       },
     },
@@ -70,7 +68,7 @@ const options = {
       },
       label: {
         formatter: function (params) {
-          return params.value / 1000 + "k"
+          return params.value / 1000 + "k";
         },
       },
     },
@@ -84,6 +82,6 @@ const options = {
       },
     },
   },
-}
+};
 
-var chart = agCharts.AgChart.create(options)
+var chart = agCharts.AgChart.create(options);

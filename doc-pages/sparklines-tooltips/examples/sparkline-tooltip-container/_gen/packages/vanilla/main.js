@@ -1,13 +1,12 @@
-
 const body = document.body;
 
 const gridOptions = {
   columnDefs: [
-    { field: 'symbol', maxWidth: 120 },
-    { field: 'name', minWidth: 250 },
+    { field: "symbol", maxWidth: 120 },
+    { field: "name", minWidth: 250 },
     {
-      field: 'change',
-      cellRenderer: 'agSparklineCellRenderer',
+      field: "change",
+      cellRenderer: "agSparklineCellRenderer",
       cellRendererParams: {
         sparklineOptions: {
           tooltip: {
@@ -18,15 +17,15 @@ const gridOptions = {
           },
           highlightStyle: {
             size: 5,
-            fill: 'rgb(0, 113, 235)',
+            fill: "rgb(0, 113, 235)",
             strokeWidth: 0,
           },
-        } ,
+        },
       },
     },
     {
-      field: 'volume',
-      type: 'numericColumn',
+      field: "volume",
+      type: "numericColumn",
       maxWidth: 140,
     },
   ],
@@ -37,7 +36,7 @@ const gridOptions = {
   },
   rowData: getData(),
   rowHeight: 50,
-}
+};
 
 function tooltipRenderer(params) {
   const { yValue, context } = params;
@@ -48,7 +47,7 @@ function tooltipRenderer(params) {
 }
 
 // setup the grid after the page has finished loading
-document.addEventListener('DOMContentLoaded', function () {
-  var gridDiv = document.querySelector('#myGrid');
+document.addEventListener("DOMContentLoaded", function () {
+  var gridDiv = document.querySelector("#myGrid");
   new agGrid.Grid(gridDiv, gridOptions);
-})
+});

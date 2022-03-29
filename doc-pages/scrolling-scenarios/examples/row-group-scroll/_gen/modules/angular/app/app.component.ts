@@ -1,16 +1,24 @@
-
-import { Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import { Component } from "@angular/core";
+import { HttpClient } from "@angular/common/http";
+import "@ag-grid-community/core/dist/styles/ag-grid.css";
 import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { ColDef, ColGroupDef, ColumnApi, Grid, GridApi, GridOptions, GridReadyEvent, RowGroupOpenedEvent, RowGroupingDisplayType } from '@ag-grid-community/core';
+import {
+  ColDef,
+  ColGroupDef,
+  ColumnApi,
+  Grid,
+  GridApi,
+  GridOptions,
+  GridReadyEvent,
+  RowGroupOpenedEvent,
+  RowGroupingDisplayType,
+} from "@ag-grid-community/core";
 // Required feature modules are registered in app.module.ts
 
 @Component({
-    selector: 'my-app',
-    template: `<ag-grid-angular
+  selector: "my-app",
+  template: `<ag-grid-angular
     style="width: 100%; height: 100%;"
-    
     class="ag-theme-alpine"
     [columnDefs]="columnDefs"
     [rowData]="rowData"
@@ -19,53 +27,46 @@ import { ColDef, ColGroupDef, ColumnApi, Grid, GridApi, GridOptions, GridReadyEv
     [defaultColDef]="defaultColDef"
     (rowGroupOpened)="onRowGroupOpened($event)"
     (gridReady)="onGridReady($event)"
-    ></ag-grid-angular>
-`
+  ></ag-grid-angular> `,
 })
-
 export class AppComponent {
-    private gridApi!: GridApi;
+  private gridApi!: GridApi;
 
-    
-    public columnDefs: ColDef[] = [
-    { field: 'athlete', width: 150, rowGroupIndex: 0 },
-    { field: 'age', width: 90, rowGroupIndex: 1 },
-    { field: 'country', width: 120, rowGroupIndex: 2 },
-    { field: 'year', width: 90 },
-    { field: 'date', width: 110, rowGroupIndex: 2 },
-];
-public groupDisplayType: RowGroupingDisplayType = 'groupRows';
-public defaultColDef: ColDef = {
+  public columnDefs: ColDef[] = [
+    { field: "athlete", width: 150, rowGroupIndex: 0 },
+    { field: "age", width: 90, rowGroupIndex: 1 },
+    { field: "country", width: 120, rowGroupIndex: 2 },
+    { field: "year", width: 90 },
+    { field: "date", width: 110, rowGroupIndex: 2 },
+  ];
+  public groupDisplayType: RowGroupingDisplayType = "groupRows";
+  public defaultColDef: ColDef = {
     editable: true,
     sortable: true,
     resizable: true,
     filter: true,
     flex: 1,
     minWidth: 100,
-};
-public rowData!: any[];
+  };
+  public rowData!: any[];
 
-    constructor(private http: HttpClient) {
-}
+  constructor(private http: HttpClient) {}
 
-
-    onRowGroupOpened(event: RowGroupOpenedEvent) {
+  onRowGroupOpened(event: RowGroupOpenedEvent) {
     var rowNodeIndex = event.node.rowIndex!;
     // factor in child nodes so we can scroll to correct position
     var childCount = event.node.childrenAfterSort
-        ? event.node.childrenAfterSort.length
-        : 0;
+      ? event.node.childrenAfterSort.length
+      : 0;
     var newIndex = rowNodeIndex + childCount;
     this.gridApi.ensureIndexVisible(newIndex);
+  }
+
+  onGridReady(params: GridReadyEvent) {
+    this.gridApi = params.api;
+
+    this.http
+      .get<any[]>("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      .subscribe((data) => (this.rowData = data));
+  }
 }
-
-onGridReady(params: GridReadyEvent) {
-        this.gridApi = params.api;
-
-        this.http.get<any[]>('https://www.ag-grid.com/example-assets/olympic-winners.json').subscribe(data => this.rowData = data);
-    }
-}
-
-
-
-

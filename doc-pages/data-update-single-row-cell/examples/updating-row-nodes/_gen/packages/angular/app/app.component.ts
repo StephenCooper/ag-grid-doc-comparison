@@ -1,94 +1,93 @@
-
-import { Component } from '@angular/core';
-import 'ag-grid-community/dist/styles/ag-grid.css';
+import { Component } from "@angular/core";
+import "ag-grid-community/dist/styles/ag-grid.css";
 import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import { ColDef, ColGroupDef, ColumnApi, GetRowIdFunc, Grid, GridApi, GridOptions, GridReadyEvent } from 'ag-grid-community';
+import {
+  ColDef,
+  ColGroupDef,
+  ColumnApi,
+  GetRowIdFunc,
+  Grid,
+  GridApi,
+  GridOptions,
+  GridReadyEvent,
+} from "ag-grid-community";
 
 @Component({
-    selector: 'my-app',
-    template: `<div class="example-wrapper">
+  selector: "my-app",
+  template: `<div class="example-wrapper">
     <div style="margin-bottom: 1rem;">
-        <button (click)="setPriceOnToyota()">Set Price on Toyota</button>
-        <button (click)="setDataOnFord()">Set Data on Ford</button>
-        <button (click)="updateSort()" style="margin-left: 15px">Sort</button>
-        <button (click)="updateFilter()">Filter</button>
+      <button (click)="setPriceOnToyota()">Set Price on Toyota</button>
+      <button (click)="setDataOnFord()">Set Data on Ford</button>
+      <button (click)="updateSort()" style="margin-left: 15px">Sort</button>
+      <button (click)="updateFilter()">Filter</button>
     </div>
     <ag-grid-angular
-    style="width: 100%; height: 100%;"
-    
-    class="ag-theme-alpine"
-    [rowData]="rowData"
-    [columnDefs]="columnDefs"
-    [defaultColDef]="defaultColDef"
-    [animateRows]="true"
-    [getRowId]="getRowId"
-    (gridReady)="onGridReady($event)"
+      style="width: 100%; height: 100%;"
+      class="ag-theme-alpine"
+      [rowData]="rowData"
+      [columnDefs]="columnDefs"
+      [defaultColDef]="defaultColDef"
+      [animateRows]="true"
+      [getRowId]="getRowId"
+      (gridReady)="onGridReady($event)"
     ></ag-grid-angular>
-</div>
-`
+  </div> `,
 })
-
 export class AppComponent {
-    private gridApi!: GridApi;
+  private gridApi!: GridApi;
 
-    
-    public rowData: any[] | null = [
-    { id: 'aa', make: 'Toyota', model: 'Celica', price: 35000 },
-    { id: 'bb', make: 'Ford', model: 'Mondeo', price: 32000 },
-    { id: 'cc', make: 'Porsche', model: 'Boxter', price: 72000 },
-    { id: 'dd', make: 'BMW', model: '5 Series', price: 59000 },
-    { id: 'ee', make: 'Dodge', model: 'Challanger', price: 35000 },
-    { id: 'ff', make: 'Mazda', model: 'MX5', price: 28000 },
-    { id: 'gg', make: 'Horse', model: 'Outside', price: 99000 },
-];
-public columnDefs: ColDef[] = [
-    { field: 'make' },
-    { field: 'model' },
-    { field: 'price', filter: 'agNumberColumnFilter' },
-];
-public defaultColDef: ColDef = {
+  public rowData: any[] | null = [
+    { id: "aa", make: "Toyota", model: "Celica", price: 35000 },
+    { id: "bb", make: "Ford", model: "Mondeo", price: 32000 },
+    { id: "cc", make: "Porsche", model: "Boxter", price: 72000 },
+    { id: "dd", make: "BMW", model: "5 Series", price: 59000 },
+    { id: "ee", make: "Dodge", model: "Challanger", price: 35000 },
+    { id: "ff", make: "Mazda", model: "MX5", price: 28000 },
+    { id: "gg", make: "Horse", model: "Outside", price: 99000 },
+  ];
+  public columnDefs: ColDef[] = [
+    { field: "make" },
+    { field: "model" },
+    { field: "price", filter: "agNumberColumnFilter" },
+  ];
+  public defaultColDef: ColDef = {
     flex: 1,
     editable: true,
     sortable: true,
     filter: true,
-};
-public getRowId: GetRowIdFunc = function (params) {
+  };
+  public getRowId: GetRowIdFunc = function (params) {
     return params.data.id;
-}
+  };
 
+  updateSort() {
+    this.gridApi.refreshClientSideRowModel("sort");
+  }
 
-    updateSort() {
-    this.gridApi.refreshClientSideRowModel('sort');
-}
+  updateFilter() {
+    this.gridApi.refreshClientSideRowModel("filter");
+  }
 
-updateFilter() {
-    this.gridApi.refreshClientSideRowModel('filter');
-}
-
-setPriceOnToyota() {
-    var rowNode = this.gridApi.getRowNode('aa')!;
+  setPriceOnToyota() {
+    var rowNode = this.gridApi.getRowNode("aa")!;
     var newPrice = Math.floor(Math.random() * 100000);
-    rowNode.setDataValue('price', newPrice);
-}
+    rowNode.setDataValue("price", newPrice);
+  }
 
-setDataOnFord() {
-    var rowNode = this.gridApi.getRowNode('bb')!;
+  setDataOnFord() {
+    var rowNode = this.gridApi.getRowNode("bb")!;
     var newPrice = Math.floor(Math.random() * 100000);
-    var newModel = 'T-' + Math.floor(Math.random() * 1000);
+    var newModel = "T-" + Math.floor(Math.random() * 1000);
     var newData = {
-        id: 'bb',
-        make: 'Ford',
-        model: newModel,
-        price: newPrice,
+      id: "bb",
+      make: "Ford",
+      model: newModel,
+      price: newPrice,
     };
     rowNode.setData(newData);
+  }
+
+  onGridReady(params: GridReadyEvent) {
+    this.gridApi = params.api;
+  }
 }
-
-onGridReady(params: GridReadyEvent) {
-        this.gridApi = params.api;
-    }
-}
-
-
-
-

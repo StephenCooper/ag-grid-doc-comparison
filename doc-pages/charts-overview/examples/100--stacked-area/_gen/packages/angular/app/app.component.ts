@@ -1,133 +1,123 @@
-import { cloneDeep } from 'lodash';
-import { Component } from '@angular/core';
-import * as agCharts from 'ag-charts-community';
-import { AgChartOptions } from 'ag-charts-community';
+import { cloneDeep } from "lodash";
+import { Component } from "@angular/core";
+import * as agCharts from "ag-charts-community";
+import { AgChartOptions } from "ag-charts-community";
 
 @Component({
-    selector: 'my-app',
-    template: `<ag-charts-angular
+  selector: "my-app",
+  template: `<ag-charts-angular
     style="height: 100%"
     [options]="options"
-    ></ag-charts-angular>
-`
+  ></ag-charts-angular> `,
 })
-
 export class AppComponent {
-    private options: AgChartOptions;
-    
+  private options: AgChartOptions;
 
-    constructor() {
-        this.options = {
-    
-    autoSize: true,
-    data: getData(),
-    theme: {
+  constructor() {
+    this.options = {
+      autoSize: true,
+      data: getData(),
+      theme: {
         overrides: {
-            area: {
+          area: {
+            series: {
+              highlightStyle: {
                 series: {
-                    highlightStyle: {
-                        series: {
-                            strokeWidth: 4,
-                            dimOpacity: 0.3,
-                        },
-                    },
+                  strokeWidth: 4,
+                  dimOpacity: 0.3,
                 },
+              },
             },
+          },
         },
-    },
-    title: {
+      },
+      title: {
         text: "UK Energy Sources (2018)",
         fontSize: 18,
-    },
-    subtitle: {
+      },
+      subtitle: {
         text: "Source: Department for Business, Energy & Industrial Strategy",
-    },
-    series: [
+      },
+      series: [
         {
-            type: "area",
-            xKey: "month",
-            yKey: "coal",
-            yName: "Coal",
-            normalizedTo: 100,
-            stacked: true,
+          type: "area",
+          xKey: "month",
+          yKey: "coal",
+          yName: "Coal",
+          normalizedTo: 100,
+          stacked: true,
         },
         {
-            type: "area",
-            xKey: "month",
-            yKey: "petroleum",
-            yName: "Petroleum",
-            normalizedTo: 100,
-            stacked: true,
+          type: "area",
+          xKey: "month",
+          yKey: "petroleum",
+          yName: "Petroleum",
+          normalizedTo: 100,
+          stacked: true,
         },
         {
-            type: "area",
-            xKey: "month",
-            yKey: "naturalGas",
-            yName: "Natural gas",
-            normalizedTo: 100,
-            stacked: true,
+          type: "area",
+          xKey: "month",
+          yKey: "naturalGas",
+          yName: "Natural gas",
+          normalizedTo: 100,
+          stacked: true,
         },
         {
-            type: "area",
-            xKey: "month",
-            yKey: "bioenergyWaste",
-            yName: "Bioenergy & waste",
-            normalizedTo: 100,
-            stacked: true,
+          type: "area",
+          xKey: "month",
+          yKey: "bioenergyWaste",
+          yName: "Bioenergy & waste",
+          normalizedTo: 100,
+          stacked: true,
         },
         {
-            type: "area",
-            xKey: "month",
-            yKey: "nuclear",
-            yName: "Nuclear",
-            normalizedTo: 100,
-            stacked: true,
+          type: "area",
+          xKey: "month",
+          yKey: "nuclear",
+          yName: "Nuclear",
+          normalizedTo: 100,
+          stacked: true,
         },
         {
-            type: "area",
-            xKey: "month",
-            yKey: "windSolarHydro",
-            yName: "Wind, solar & hydro",
-            normalizedTo: 100,
-            stacked: true,
+          type: "area",
+          xKey: "month",
+          yKey: "windSolarHydro",
+          yName: "Wind, solar & hydro",
+          normalizedTo: 100,
+          stacked: true,
         },
         {
-            type: "area",
-            xKey: "month",
-            yKey: "imported",
-            yName: "Imported",
-            normalizedTo: 100,
-            stacked: true,
+          type: "area",
+          xKey: "month",
+          yKey: "imported",
+          yName: "Imported",
+          normalizedTo: 100,
+          stacked: true,
         },
-    ],
-    axes: [
+      ],
+      axes: [
         {
-            type: "category",
-            position: "bottom",
+          type: "category",
+          position: "bottom",
         },
         {
-            type: "number",
-            position: "left",
-            label: {
-                format: "#{.0f}%",
-            },
-            title: {
-                enabled: true,
-                text: "Normalized Percentage Energy",
-            },
+          type: "number",
+          position: "left",
+          label: {
+            format: "#{.0f}%",
+          },
+          title: {
+            enabled: true,
+            text: "Normalized Percentage Energy",
+          },
         },
-    ],
-    legend: {
+      ],
+      legend: {
         position: "top",
-    },
+      },
+    };
+  }
+
+  ngOnInit() {}
 }
-    }
-
-    ngOnInit() {
-        
-    }
-
-    
-}
-
-

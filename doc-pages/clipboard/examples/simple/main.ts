@@ -1,17 +1,23 @@
-import { Grid, CellValueChangedEvent, GridOptions, PasteEndEvent, PasteStartEvent } from '@ag-grid-community/core'
+import {
+  Grid,
+  CellValueChangedEvent,
+  GridOptions,
+  PasteEndEvent,
+  PasteStartEvent,
+} from "@ag-grid-community/core";
 
 const gridOptions: GridOptions = {
   columnDefs: [
-    { field: 'athlete', minWidth: 200 },
-    { field: 'age' },
-    { field: 'country', minWidth: 150 },
-    { field: 'year' },
-    { field: 'date', minWidth: 150 },
-    { field: 'sport', minWidth: 150 },
-    { field: 'gold' },
-    { field: 'silver' },
-    { field: 'bronze' },
-    { field: 'total' },
+    { field: "athlete", minWidth: 200 },
+    { field: "age" },
+    { field: "country", minWidth: 150 },
+    { field: "year" },
+    { field: "date", minWidth: 150 },
+    { field: "sport", minWidth: 150 },
+    { field: "gold" },
+    { field: "silver" },
+    { field: "bronze" },
+    { field: "total" },
   ],
 
   defaultColDef: {
@@ -22,47 +28,47 @@ const gridOptions: GridOptions = {
   },
 
   enableRangeSelection: true,
-  rowSelection: 'multiple',
+  rowSelection: "multiple",
 
   onCellValueChanged: onCellValueChanged,
   onPasteStart: onPasteStart,
   onPasteEnd: onPasteEnd,
-}
+};
 
 function onCellValueChanged(params: CellValueChangedEvent) {
-  console.log('Callback onCellValueChanged:', params)
+  console.log("Callback onCellValueChanged:", params);
 }
 
 function onPasteStart(params: PasteStartEvent) {
-  console.log('Callback onPasteStart:', params)
+  console.log("Callback onPasteStart:", params);
 }
 
 function onPasteEnd(params: PasteEndEvent) {
-  console.log('Callback onPasteEnd:', params)
+  console.log("Callback onPasteEnd:", params);
 }
 
 function onBtCopyRows() {
-  gridOptions.api!.copySelectedRowsToClipboard()
+  gridOptions.api!.copySelectedRowsToClipboard();
 }
 
 function onBtCopyRange() {
-  gridOptions.api!.copySelectedRangeToClipboard()
+  gridOptions.api!.copySelectedRangeToClipboard();
 }
 
 function onPasteOff() {
-  gridOptions.api!.setSuppressClipboardPaste(true)
+  gridOptions.api!.setSuppressClipboardPaste(true);
 }
 
 function onPasteOn() {
-  gridOptions.api!.setSuppressClipboardPaste(false)
+  gridOptions.api!.setSuppressClipboardPaste(false);
 }
 
 // setup the grid after the page has finished loading
-document.addEventListener('DOMContentLoaded', () => {
-  const gridDiv = document.querySelector<HTMLElement>('#myGrid')!
-  new Grid(gridDiv, gridOptions)
+document.addEventListener("DOMContentLoaded", () => {
+  const gridDiv = document.querySelector<HTMLElement>("#myGrid")!;
+  new Grid(gridDiv, gridOptions);
 
-  fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
-    .then(response => response.json())
-    .then(data => gridOptions.api!.setRowData(data))
-})
+  fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+    .then((response) => response.json())
+    .then((data) => gridOptions.api!.setRowData(data));
+});

@@ -13,16 +13,15 @@ You can define aggregations on columns in the following three ways:
 1. **Built-In Functions:** Out of the box the grid provides `sum`, `min`, `max`, `count`, `avg`, `first`, `last`. To use
    one of these, set `colDef.aggFunc` to the string of the function you require.
 
-    [[note]]
-    | The built-in functions will support `bigint` values if you have them in your data, but the `avg`
-    | function will lose precision as it can only use integer arithmetic if `bigint` is used.
+   [[note]]
+   | The built-in functions will support `bigint` values if you have them in your data, but the `avg`
+   | function will lose precision as it can only use integer arithmetic if `bigint` is used.
 
 1. **User Registered Functions:** You can install your own aggregation functions into the
-grid and reference them as if they were grid provided functions by calling `api.addAggFunc(key, func)` or by declaring
-them using the grid option `aggFuncs` property.
+   grid and reference them as if they were grid provided functions by calling `api.addAggFunc(key, func)` or by declaring
+   them using the grid option `aggFuncs` property.
 
 1. **Direct Functions:** Lastly you can provide a function directly by setting `colDef.aggFunc` to your custom function. Direct functions do not appear in the toolPanel when selecting functions for your columns.
-
 
 Aggregation functions are provided with an array of values that it should aggregate into one value that it then returns.
 The following code snippets show the three ways of defining aggregations for columns as explained above.
@@ -75,11 +74,9 @@ const gridOptions = {
 }
 </snippet>
 
-
 Note that custom aggregation functions can also be registered using `gridApi.addAggFunc('mySum', mySumFunc)`.
 
 <api-documentation source='grid-api/api.json' section='rowPivoting' names='["addAggFunc"]'></api-documentation>
-
 
 [[note]]
 | Using a function directly will not work with column state, like
@@ -124,7 +121,6 @@ The example below shows simple aggregation using the built in functions. The fol
 
 ## Custom Aggregation Functions
 
-
 It is possible to add your own custom aggregation to the grid. Custom aggregation functions can be applied directly to
 the column or registered to the grid and reference by name (similar to grid provided functions).
 
@@ -167,7 +163,6 @@ const gridOptions = {
 }
 </snippet>
 
- 
 [[note]]
 | Javascript doesn't always represent decimal numbers correctly (e.g `0.2 + 0.1 = 0.30000000000000004`). For this
 | reason, if your aggregations rely on decimal values, it's better to add logic to enforce the amount of decimal
@@ -177,20 +172,19 @@ The next example shows many custom aggregation functions configured in a variety
 
 The following can be noted from the example:
 
-
 - **Min/Max on Age Column**: The function creates an aggregation over age giving a min and a max age. The function knows whether it is working with leaf nodes (original row data items) or aggregated nodes (ie groups) by checking the type of the value. If the value is a number, it's a row data item, otherwise it's a group. This is because the result of the aggregation has two values based on one input value. <br/><br/> The min/max function is then set by placing the function directly as the `colDef.aggFunc`.
-<br/><br/>
+  <br/><br/>
 - **Average on Age Column**: The age columns is aggregated a second time with a custom average function. The average function also needs to know if it is working with leaf nodes or group nodes, as if it's group nodes then the average is weighted. The grid also provides an average function that works in the same way, so there is no value in providing your own average function like this, it is done in this example for demonstration purposes. <br/><br/> The average function is also set by placing the function directly as the `colDef.aggFunc`.
-<br/><br/>
+  <br/><br/>
 - **Rounded Average on Age Column**: This is the same as `Average on Age Column` but forcing the values to display a maximum of
-two decimal numbers.
-<br/><br/>
+  two decimal numbers.
+  <br/><br/>
 - **Sum on Gold**: The gold column gets a custom `sum` aggregated function. The new sum function doesn't do anything different to the built in sum function, however it serves as a demonstration on how you can override. Maybe you want to provide a sum function that uses for example the `math.js` library.<br/><br/> The sum function is set using a `gridOptions` property.
-<br/><br/>
+  <br/><br/>
 - **'123' on Silver**: The '123' function ignores the inputs and always returns the value 123. Because it is registered as an aggregation function, it can be reference by name in the column definitions. Having a function return the same thing isn't very useful, however for the example it demonstrates easily where in the grid the function was used. <br/><br/> The '123' function, like 'sum', is set using a `gridOptions` property.
-<br/><br/>
+  <br/><br/>
 - **'xyz' on Bronze**: The 'xyz' function is another function with much use, however it demonstrates you can return anythin from an aggregation function - as long as your aggregation function can handle the result (if you have groups inside groups) and as long as your cell renderer can render the result (if using `cellRenderer`). <br/><br/> The 'xyz' function is set using the API. Note that we also set 'xyz' in the grid options as otherwise
-the grid would complain 'Function not found' as it tries to use the function before it is set via the API.
+  the grid would complain 'Function not found' as it tries to use the function before it is set via the API.
 
 <grid-example title='Custom Aggregation Functions' name='custom-agg-functions' type='generated' options='{ "enterprise": true, "modules": ["clientside", "rowgrouping", "menu", "columnpanel", "filterpanel", "setfilter"] }'></grid-example>
 
@@ -205,7 +199,6 @@ When the grid is empty, the aggregations are still called once with an empty set
 The next example shows a ratio calculation to demonstrate how to create an `aggFunc` that uses values from multiple columns.
 
 When values from multiple columns are required, a value object containing all the required values across multiple columns should be passed around instead of a simple value. This value object should also contain a `toString()` method so it can also be resolved by the grid to a single value. This is shown in the code snippet below:
-
 
 <snippet spaceBetweenProperties="true">
 |const gridOptions = {
@@ -305,7 +298,7 @@ const gridOptions = {
 
 Then the result of the aggregation will be stored in `data.aaa` and not in 'abby'. Most of the time this will not matter for you as the colId, if not provided, will default to the field. In order for the grid to display the aggregation result, it must be stored in the correct field name.
 
-Below shows an  example using `getGroupRowAgg`. The example doesn't represent a real world scenario, it's contrived for demonstration. It takes the number of medals as inputs and creates two outputs, one as a normal sum and another by multiplying the result by `Math.PI`.
+Below shows an example using `getGroupRowAgg`. The example doesn't represent a real world scenario, it's contrived for demonstration. It takes the number of medals as inputs and creates two outputs, one as a normal sum and another by multiplying the result by `Math.PI`.
 
 <grid-example title='Custom Full Row Aggregation' name='custom-full-row-aggregation' type='generated' options='{ "enterprise": true, "modules": ["clientside", "rowgrouping", "menu", "columnpanel", "filterpanel", "setfilter"], "exampleHeight": 620 }'></grid-example>
 

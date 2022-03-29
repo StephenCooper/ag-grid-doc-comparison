@@ -1,37 +1,37 @@
-import 'ag-grid-community/dist/styles/ag-grid.css';
+import "ag-grid-community/dist/styles/ag-grid.css";
 import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import { ColDef, ColGroupDef, Grid, GridOptions } from 'ag-grid-community';
-import { MySimpleEditor } from './mySimpleEditor';
+import { ColDef, ColGroupDef, Grid, GridOptions } from "ag-grid-community";
+import { MySimpleEditor } from "./mySimpleEditor";
 
 const columnDefs: ColDef[] = [
-  { field: 'first_name', headerName: 'First Name', width: 120, editable: true },
-  { field: 'last_name', headerName: 'Last Name', width: 120, editable: true },
+  { field: "first_name", headerName: "First Name", width: 120, editable: true },
+  { field: "last_name", headerName: "Last Name", width: 120, editable: true },
   {
-    field: 'gender',
+    field: "gender",
     width: 100,
     cellEditor: MySimpleEditor,
   },
   {
-    field: 'age',
+    field: "age",
     width: 80,
     cellEditor: MySimpleEditor,
   },
   {
-    field: 'mood',
+    field: "mood",
     width: 90,
     cellEditor: MySimpleEditor,
   },
   {
-    field: 'country',
+    field: "country",
     width: 110,
     cellEditor: MySimpleEditor,
   },
   {
-    field: 'address',
+    field: "address",
     width: 502,
     cellEditor: MySimpleEditor,
   },
-]
+];
 
 const gridOptions: GridOptions = {
   columnDefs: columnDefs,
@@ -46,27 +46,26 @@ const gridOptions: GridOptions = {
   rowData: getData(),
   onGridReady: function () {
     setInterval(() => {
-      const instances = gridOptions.api!.getCellEditorInstances()
+      const instances = gridOptions.api!.getCellEditorInstances();
       if (instances.length > 0) {
         const instance = instances[0] as any;
         if ((instance as MySimpleEditor).myCustomFunction) {
-          const result = instance.myCustomFunction()
+          const result = instance.myCustomFunction();
           console.log(
             `found editing cell: row index = ${result.rowIndex}, column = ${result.colId}.`
-          )
+          );
         } else {
           console.log(
-            'found editing cell, but method myCustomFunction not found, must be the default editor.'
-          )
+            "found editing cell, but method myCustomFunction not found, must be the default editor."
+          );
         }
       } else {
-        console.log('found not editing cell.')
+        console.log("found not editing cell.");
       }
-    }, 2000)
+    }, 2000);
   },
-}
+};
 
 // setup the grid after the page has finished loading
-  const gridDiv = document.querySelector<HTMLElement>('#myGrid')!
-  new Grid(gridDiv, gridOptions)
- 
+const gridDiv = document.querySelector<HTMLElement>("#myGrid")!;
+new Grid(gridDiv, gridOptions);

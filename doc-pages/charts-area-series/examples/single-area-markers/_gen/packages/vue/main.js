@@ -1,67 +1,65 @@
-import Vue from 'vue';
-import { cloneDeep } from 'lodash';
-import * as agCharts from 'ag-charts-community';
-import { AgChartsVue } from 'ag-charts-vue';
+import Vue from "vue";
+import { cloneDeep } from "lodash";
+import * as agCharts from "ag-charts-community";
+import { AgChartsVue } from "ag-charts-vue";
 
 const ChartExample = {
-    template: `
+  template: `
         <ag-charts-vue    
                 :options="options"></ag-charts-vue>
     `,
-    components: {
-        'ag-charts-vue': AgChartsVue
-    },
-    data: function() {
-        return {
-            options: null
-        }
-    },
-    created() {
-        this.options = {
-    
-    title: {
-        text: 'Internet Explorer Market Share',
-    },
-    subtitle: {
+  components: {
+    "ag-charts-vue": AgChartsVue,
+  },
+  data: function () {
+    return {
+      options: null,
+    };
+  },
+  created() {
+    this.options = {
+      title: {
+        text: "Internet Explorer Market Share",
+      },
+      subtitle: {
         text: '2009-2019 (aka "good times")',
-    },
-    data: getData(),
-    series: [
+      },
+      data: getData(),
+      series: [
         {
-            type: 'area',
-            xKey: 'year',
-            yKey: 'ie',
-            yName: 'IE',
-            marker: {
-                enabled: true,
+          type: "area",
+          xKey: "year",
+          yKey: "ie",
+          yName: "IE",
+          marker: {
+            enabled: true,
+          },
+          tooltip: {
+            renderer: (params) => {
+              return {
+                content:
+                  params.yName +
+                  " - " +
+                  params.yValue +
+                  "% - Jan " +
+                  params.xValue,
+              };
             },
-            tooltip: {
-                renderer: (params) => {
-                    return {
-                        content: params.yName + ' - ' + params.yValue + '% - Jan ' + params.xValue,
-                    };
-                },
-            },
+          },
         },
-    ],
-    legend: {
+      ],
+      legend: {
         enabled: false,
-    },
-}
-    },
-    mounted() {
-        
-    },
-    methods: {
-        
-    }
-}
-
-
+      },
+    };
+  },
+  mounted() {},
+  methods: {},
+};
 
 new Vue({
-    el: '#app',
-    components: {
-        'my-component': ChartExample
-    }
+  el: "#app",
+  components: {
+    "my-component": ChartExample,
+  },
 });

@@ -1,21 +1,21 @@
 .blue span.ag-header-group-text {
-    background-color: lightblue;
+  background-color: lightblue;
 }
 
 .green span.ag-header-group-text {
-    background-color: lightgreen;
+  background-color: lightgreen;
 }
 
 .container {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
 .divider {
-    height: 5%;
+  height: 5%;
 }
 
 .grid {
-    flex: 1 1 auto;
+  flex: 1 1 auto;
 }

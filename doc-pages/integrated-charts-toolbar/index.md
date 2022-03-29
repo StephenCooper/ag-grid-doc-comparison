@@ -5,7 +5,6 @@ enterprise: true
 
 The chart toolbar appears when the mouse hovers over the top right area of the chart, and provides access to additional functionality and the chart configuration sidebar.
 
-
 <div style="display: flex; margin-bottom: 25px; margin-top: 25px; margin-left: 40px;">
     <div style="flex: 1 1 0">
         <img src="resources/chart-toolbar.png" alt="Chart Toolbar"/>
@@ -79,13 +78,11 @@ By default all available toolbar items and menu panels can be accessed. However,
 
 This function receives the `GetChartToolbarItemsParams` object which contains the list of elements that are included by default in `defaultItems`, along with the grid APIs.
 
-
 The list returned by the `gridOptions.getChartToolbarItems(params)` callback can be modified to reorder and omit items from the toolbar. For instance, returning an empty array will hide all toolbar items.
 
 ### Example: Custom Toolbar Layout
 
 The example below shows how the toolbar can be customised. Notice the following:
-
 
 - **Download Chart** - has been positioned as the first toolbar item.
 - **Chart Data Panel** - appears first in the tabbed menu.
@@ -97,4 +94,3 @@ The example below shows how the toolbar can be customised. Notice the following:
 ## Next Up
 
 Continue to the next section to learn about the: [Chart Container](/integrated-charts-container/).
-

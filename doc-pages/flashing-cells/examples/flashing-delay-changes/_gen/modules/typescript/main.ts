@@ -1,68 +1,73 @@
-import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import "@ag-grid-community/core/dist/styles/ag-grid.css";
 import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { ColDef, ColGroupDef, Grid, GridOptions } from '@ag-grid-community/core';
-import { ModuleRegistry } from '@ag-grid-community/core';
-import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import {
+  ColDef,
+  ColGroupDef,
+  Grid,
+  GridOptions,
+} from "@ag-grid-community/core";
+import { ModuleRegistry } from "@ag-grid-community/core";
+import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
 
 // Register the required feature modules with the Grid
-ModuleRegistry.registerModules([ClientSideRowModelModule])
+ModuleRegistry.registerModules([ClientSideRowModelModule]);
 
 function formatNumber(number: number) {
   // this puts commas into the number eg 1000 goes to 1,000,
   // i pulled this from stack overflow, i have no idea how it works
   return Math.floor(number)
     .toString()
-    .replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
+    .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
 }
 
 const gridOptions: GridOptions = {
   columnDefs: [
-    { field: 'a' },
-    { field: 'b' },
-    { field: 'c' },
-    { field: 'd' },
-    { field: 'e' },
-    { field: 'f' },
+    { field: "a" },
+    { field: "b" },
+    { field: "c" },
+    { field: "d" },
+    { field: "e" },
+    { field: "f" },
   ],
   defaultColDef: {
     flex: 1,
-    cellClass: 'align-right',
+    cellClass: "align-right",
     enableCellChangeFlash: true,
     resizable: true,
     valueFormatter: function (params) {
-      return formatNumber(params.value)
+      return formatNumber(params.value);
     },
   },
   rowData: createRowData(),
   cellFlashDelay: 2000,
   cellFadeDelay: 500,
-}
+};
 
 function onUpdateSomeValues() {
-  var rowCount = gridOptions.api!.getDisplayedRowCount()
+  var rowCount = gridOptions.api!.getDisplayedRowCount();
   // pick 20 cells at random to update
   for (var i = 0; i < 20; i++) {
-    var row = Math.floor(Math.random() * rowCount)
-    var rowNode = gridOptions.api!.getDisplayedRowAtIndex(row)!
-    var col = ['a', 'b', 'c', 'd', 'e', 'f'][i % 6]
-    rowNode.setDataValue(col, Math.floor(Math.random() * 10000))
+    var row = Math.floor(Math.random() * rowCount);
+    var rowNode = gridOptions.api!.getDisplayedRowAtIndex(row)!;
+    var col = ["a", "b", "c", "d", "e", "f"][i % 6];
+    rowNode.setDataValue(col, Math.floor(Math.random() * 10000));
   }
 }
 
 function onFlashTwoRows() {
   // pick fourth and fifth row at random
-  var rowNode1 = gridOptions.api!.getDisplayedRowAtIndex(4)!
-  var rowNode2 = gridOptions.api!.getDisplayedRowAtIndex(5)!
+  var rowNode1 = gridOptions.api!.getDisplayedRowAtIndex(4)!;
+  var rowNode2 = gridOptions.api!.getDisplayedRowAtIndex(5)!;
   // flash whole row, so leave column selection out
   gridOptions.api!.flashCells({
     rowNodes: [rowNode1, rowNode2],
     flashDelay: 3000,
     fadeDelay: 2000,
-  })
+  });
 }
 
 function createRowData() {
-  var rowData = []
+  var rowData = [];
 
   for (var i = 0; i < 20; i++) {
     rowData.push({
@@ -72,19 +77,18 @@ function createRowData() {
       d: 0,
       e: 0,
       f: 0,
-    })
+    });
   }
 
-  return rowData
+  return rowData;
 }
 
 // setup the grid after the page has finished loading
-  var gridDiv = document.querySelector<HTMLElement>('#myGrid')!
-  new Grid(gridDiv, gridOptions)
- 
+var gridDiv = document.querySelector<HTMLElement>("#myGrid")!;
+new Grid(gridDiv, gridOptions);
 
-if (typeof window !== 'undefined') {
-// Attach external event handlers to window so they can be called from index.html
- (<any>window).onUpdateSomeValues = onUpdateSomeValues;
- (<any>window).onFlashTwoRows = onFlashTwoRows;
+if (typeof window !== "undefined") {
+  // Attach external event handlers to window so they can be called from index.html
+  (<any>window).onUpdateSomeValues = onUpdateSomeValues;
+  (<any>window).onFlashTwoRows = onFlashTwoRows;
 }

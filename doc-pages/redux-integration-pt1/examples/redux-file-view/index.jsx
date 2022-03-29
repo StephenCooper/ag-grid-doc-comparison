@@ -1,21 +1,22 @@
-import React from 'react';
-import ReactDOM, {render} from 'react-dom';
-import {Provider} from 'react-redux';
+import React from "react";
+import ReactDOM, { render } from "react-dom";
+import { Provider } from "react-redux";
 
-import store from './store.jsx';
-import FileView from './FileView.jsx';
+import store from "./store.jsx";
+import FileView from "./FileView.jsx";
 
-const rootDiv = document.getElementById('root');
+const rootDiv = document.getElementById("root");
 
-const comp =
-  <div style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
-    <div className={'btn-padding'}>
+const comp = (
+  <div style={{ display: "flex", flexDirection: "column", height: "100%" }}>
+    <div className={"btn-padding"}>
       <button onClick={reloadComponent}>Reload Component</button>
     </div>
     <Provider store={store}>
       <FileView />
     </Provider>
-  </div>;
+  </div>
+);
 
 render(comp, rootDiv);
 

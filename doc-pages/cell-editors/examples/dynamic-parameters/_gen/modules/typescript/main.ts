@@ -1,56 +1,73 @@
-import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import "@ag-grid-community/core/dist/styles/ag-grid.css";
 import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { CellValueChangedEvent, ColDef, ColGroupDef, Grid, GridOptions, ICellEditorParams } from '@ag-grid-community/core';
-import { GenderCellRenderer } from './genderCellRenderer';
-import { ModuleRegistry } from '@ag-grid-community/core';
-import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
-import { RichSelectModule } from '@ag-grid-enterprise/rich-select';
-import { MenuModule } from '@ag-grid-enterprise/menu';
-import { ColumnsToolPanelModule } from '@ag-grid-enterprise/column-tool-panel';
+import {
+  CellValueChangedEvent,
+  ColDef,
+  ColGroupDef,
+  Grid,
+  GridOptions,
+  ICellEditorParams,
+} from "@ag-grid-community/core";
+import { GenderCellRenderer } from "./genderCellRenderer";
+import { ModuleRegistry } from "@ag-grid-community/core";
+import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
+import { RichSelectModule } from "@ag-grid-enterprise/rich-select";
+import { MenuModule } from "@ag-grid-enterprise/menu";
+import { ColumnsToolPanelModule } from "@ag-grid-enterprise/column-tool-panel";
 
 // Register the required feature modules with the Grid
-ModuleRegistry.registerModules([ClientSideRowModelModule, RichSelectModule, MenuModule, ColumnsToolPanelModule])
+ModuleRegistry.registerModules([
+  ClientSideRowModelModule,
+  RichSelectModule,
+  MenuModule,
+  ColumnsToolPanelModule,
+]);
 
 const cellCellEditorParams = (params: ICellEditorParams) => {
-  const selectedCountry = params.data.country
-  const allowedCities = countyToCityMap(selectedCountry)
+  const selectedCountry = params.data.country;
+  const allowedCities = countyToCityMap(selectedCountry);
 
   return {
     values: allowedCities,
     formatValue: (value: any) => `${value} (${selectedCountry})`,
-  }
-}
+  };
+};
 
 const gridOptions: GridOptions = {
   columnDefs: [
-    { field: 'name' },
+    { field: "name" },
     {
-      field: 'gender',
+      field: "gender",
       cellRenderer: GenderCellRenderer,
-      cellEditor: 'agRichSelectCellEditor',
+      cellEditor: "agRichSelectCellEditor",
       cellEditorPopup: true,
       cellEditorParams: {
-        values: ['Male', 'Female'],
+        values: ["Male", "Female"],
         cellRenderer: GenderCellRenderer,
-        cellEditorPopup: true
+        cellEditorPopup: true,
       },
     },
     {
-      field: 'country',
-      cellEditor: 'agRichSelectCellEditor',
+      field: "country",
+      cellEditor: "agRichSelectCellEditor",
       cellEditorPopup: true,
       cellEditorParams: {
         cellHeight: 50,
-        values: ['Ireland', 'USA'],
+        values: ["Ireland", "USA"],
       },
     },
     {
-      field: 'city',
-      cellEditor: 'agRichSelectCellEditor',
+      field: "city",
+      cellEditor: "agRichSelectCellEditor",
       cellEditorPopup: true,
       cellEditorParams: cellCellEditorParams,
     },
-    { field: 'address', cellEditor: 'agLargeTextCellEditor', cellEditorPopup: true, minWidth: 550 },
+    {
+      field: "address",
+      cellEditor: "agLargeTextCellEditor",
+      cellEditorPopup: true,
+      minWidth: 550,
+    },
   ],
   defaultColDef: {
     flex: 1,
@@ -60,34 +77,32 @@ const gridOptions: GridOptions = {
   },
   rowData: getData(),
   onCellValueChanged: onCellValueChanged,
-}
+};
 
 function countyToCityMap(match: string): string[] {
   const map: { [key: string]: string[] } = {
-    Ireland: ['Dublin', 'Cork', 'Galway'],
-    USA: ['New York', 'Los Angeles', 'Chicago', 'Houston'],
-  }
+    Ireland: ["Dublin", "Cork", "Galway"],
+    USA: ["New York", "Los Angeles", "Chicago", "Houston"],
+  };
 
-  return map[match]
+  return map[match];
 }
 
 function onCellValueChanged(params: CellValueChangedEvent) {
-  const colId = params.column.getId()
+  const colId = params.column.getId();
 
-  if (colId === 'country') {
-    const selectedCountry = params.data.country
-    const selectedCity = params.data.city
-    const allowedCities = countyToCityMap(selectedCountry)
-    const cityMismatch = allowedCities.indexOf(selectedCity) < 0
+  if (colId === "country") {
+    const selectedCountry = params.data.country;
+    const selectedCity = params.data.city;
+    const allowedCities = countyToCityMap(selectedCountry);
+    const cityMismatch = allowedCities.indexOf(selectedCity) < 0;
 
     if (cityMismatch) {
-      params.node.setDataValue('city', null)
+      params.node.setDataValue("city", null);
     }
   }
 }
 
-
 // setup the grid after the page has finished loading
-  const gridDiv = document.querySelector<HTMLElement>('#myGrid')!
-  new Grid(gridDiv, gridOptions)
- 
+const gridDiv = document.querySelector<HTMLElement>("#myGrid")!;
+new Grid(gridDiv, gridOptions);

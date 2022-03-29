@@ -1,5 +1,5 @@
-import { AgChartOptions } from "ag-charts-community"
-import * as agCharts from "ag-charts-community"
+import { AgChartOptions } from "ag-charts-community";
+import * as agCharts from "ag-charts-community";
 
 var data = [
   {
@@ -23,7 +23,7 @@ var data = [
     Q3: 190,
     Q4: 200,
   },
-]
+];
 
 const options: AgChartOptions = {
   data: data,
@@ -49,6 +49,6 @@ const options: AgChartOptions = {
   legend: {
     spacing: 40,
   },
-}
+};
 
-agCharts.AgChart.create(options)
+agCharts.AgChart.create(options);

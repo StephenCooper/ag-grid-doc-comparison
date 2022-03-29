@@ -51,7 +51,7 @@ The following methods are available on the `GridApi` for managing range selectio
 
 ### getCellRanges()
 
-Get the selected ranges using `api.getCellRanges()`. This will return back a list of cell range objects, each of which contains the details of one range. 
+Get the selected ranges using `api.getCellRanges()`. This will return back a list of cell range objects, each of which contains the details of one range.
 
 The start is the first cell the user clicked on and the end is the cell where the user stopped dragging. Do not assume that the start cell's index is numerically before the end cell, as the user could have dragged up.
 

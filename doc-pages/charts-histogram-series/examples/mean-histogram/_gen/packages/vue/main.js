@@ -1,68 +1,61 @@
-import Vue from 'vue';
-import { cloneDeep } from 'lodash';
-import * as agCharts from 'ag-charts-community';
-import { AgChartsVue } from 'ag-charts-vue';
+import Vue from "vue";
+import { cloneDeep } from "lodash";
+import * as agCharts from "ag-charts-community";
+import { AgChartsVue } from "ag-charts-vue";
 
 const ChartExample = {
-    template: `
+  template: `
         <ag-charts-vue    
                 :options="options"></ag-charts-vue>
     `,
-    components: {
-        'ag-charts-vue': AgChartsVue
-    },
-    data: function() {
-        return {
-            options: null
-        }
-    },
-    created() {
-        this.options = {
-    
-    title: {
-        text: 'Race results',
-    },
-    data: getData(),
-    series: [
+  components: {
+    "ag-charts-vue": AgChartsVue,
+  },
+  data: function () {
+    return {
+      options: null,
+    };
+  },
+  created() {
+    this.options = {
+      title: {
+        text: "Race results",
+      },
+      data: getData(),
+      series: [
         {
-            type: 'histogram',
-            aggregation: 'mean',
-            xKey: 'age',
-            xName: 'Participant Age',
-            yKey: 'time',
-            yName: 'Race time',
+          type: "histogram",
+          aggregation: "mean",
+          xKey: "age",
+          xName: "Participant Age",
+          yKey: "time",
+          yName: "Race time",
         },
-    ],
-    legend: {
+      ],
+      legend: {
         enabled: false,
-    },
-    axes: [
+      },
+      axes: [
         {
-            type: 'number',
-            position: 'bottom',
-            title: { text: 'Age band (years)' },
+          type: "number",
+          position: "bottom",
+          title: { text: "Age band (years)" },
         },
         {
-            type: 'number',
-            position: 'left',
-            title: { text: 'Mean race time (seconds)' },
+          type: "number",
+          position: "left",
+          title: { text: "Mean race time (seconds)" },
         },
-    ],
-}
-    },
-    mounted() {
-        
-    },
-    methods: {
-        
-    }
-}
-
-
+      ],
+    };
+  },
+  mounted() {},
+  methods: {},
+};
 
 new Vue({
-    el: '#app',
-    components: {
-        'my-component': ChartExample
-    }
+  el: "#app",
+  components: {
+    "my-component": ChartExample,
+  },
 });

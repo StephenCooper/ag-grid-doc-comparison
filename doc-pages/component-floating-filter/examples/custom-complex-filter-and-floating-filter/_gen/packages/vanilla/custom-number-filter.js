@@ -1,98 +1,89 @@
+class CustomNumberFilter {
+  init(params) {
+    this.filterText = null;
+    this.params = params;
+    this.setupGui();
+  }
 
-class CustomNumberFilter  {
-    
-    
-    
-    
-    
+  // not called by AG Grid, just for us to help setup
+  setupGui() {
+    this.gui = document.createElement("div");
+    this.gui.innerHTML =
+      '<div style="padding: 4px;">' +
+      '<div style="font-weight: bold;">Greater than: </div>' +
+      '<div><input style="margin: 4px 0px 4px 0px;" type="number" id="filterText" placeholder="Number of medals..."/></div>' +
+      "</div>";
 
-    init(params) {
-        this.filterText = null
-        this.params = params
-        this.setupGui()
+    this.onFilterChanged = () => {
+      this.extractFilterText();
+      this.params.filterChangedCallback();
+    };
+
+    this.eFilterText = this.gui.querySelector("#filterText");
+    this.eFilterText.addEventListener("input", this.onFilterChanged);
+  }
+
+  extractFilterText() {
+    this.filterText = this.eFilterText.value;
+  }
+
+  getGui() {
+    return this.gui;
+  }
+
+  doesFilterPass(params) {
+    if (!this.isFilterActive()) {
+      return true;
     }
 
-    // not called by AG Grid, just for us to help setup
-    setupGui() {
-        this.gui = document.createElement('div')
-        this.gui.innerHTML =
-            '<div style="padding: 4px;">' +
-            '<div style="font-weight: bold;">Greater than: </div>' +
-            '<div><input style="margin: 4px 0px 4px 0px;" type="number" id="filterText" placeholder="Number of medals..."/></div>' +
-            '</div>'
+    var { api, colDef, column, columnApi, context, valueGetter } = this.params;
+    var { node } = params;
 
-        this.onFilterChanged = () => {
-            this.extractFilterText()
-            this.params.filterChangedCallback()
-        }
+    var value = valueGetter({
+      api,
+      colDef,
+      column,
+      columnApi,
+      context,
+      data: node.data,
+      getValue: (field) => node.data[field],
+      node,
+    });
 
-        this.eFilterText = this.gui.querySelector('#filterText')
-        this.eFilterText.addEventListener('input', this.onFilterChanged)
-    }
+    var filterValue = this.filterText;
 
-    extractFilterText() {
-        this.filterText = this.eFilterText.value
-    }
+    if (!value) return false;
+    return Number(value) > Number(filterValue);
+  }
 
-    getGui() {
-        return this.gui
-    }
+  isFilterActive() {
+    return (
+      this.filterText !== null &&
+      this.filterText !== undefined &&
+      this.filterText !== "" &&
+      this.isNumeric(this.filterText)
+    );
+  }
 
-    doesFilterPass(params) {
-        if (!this.isFilterActive()) {
-            return true;
-        }
+  isNumeric(n) {
+    return !isNaN(parseFloat(n)) && isFinite(parseFloat(n));
+  }
 
-        var { api, colDef, column, columnApi, context, valueGetter } = this.params;
-        var { node } = params;
+  getModel() {
+    return this.isFilterActive() ? Number(this.eFilterText.value) : null;
+  }
 
-        var value = valueGetter({
-            api,
-            colDef,
-            column,
-            columnApi,
-            context,
-            data: node.data,
-            getValue: (field) => node.data[field],
-            node,
-        });
+  setModel(model) {
+    this.eFilterText.value = model;
+    this.extractFilterText();
+  }
 
-        var filterValue = this.filterText;
+  myMethodForTakingValueFromFloatingFilter(value) {
+    this.eFilterText.value = value;
+    this.onFilterChanged();
+  }
 
-        if (!value) return false;
-        return Number(value) > Number(filterValue);
-    }
-
-    isFilterActive() {
-        return (
-            this.filterText !== null &&
-            this.filterText !== undefined &&
-            this.filterText !== '' && this.isNumeric(this.filterText)
-        );
-    }
-
-    isNumeric(n) {
-        return !isNaN(parseFloat(n)) && isFinite(parseFloat(n))
-    }
-
-    getModel() {
-        return this.isFilterActive() ? Number(this.eFilterText.value) : null
-    }
-
-    setModel(model) {
-        this.eFilterText.value = model
-        this.extractFilterText()
-    }
-
-    myMethodForTakingValueFromFloatingFilter(
-        value
-    ) {
-        this.eFilterText.value = value
-        this.onFilterChanged()
-    }
-
-    destroy() {
-        this.eFilterText.removeEventListener('input', this.onFilterChanged)
-    }
-
+  destroy() {
+    this.eFilterText.removeEventListener("input", this.onFilterChanged);
+  }
 }

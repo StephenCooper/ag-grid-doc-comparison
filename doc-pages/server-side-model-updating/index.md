@@ -13,13 +13,11 @@ The options available for doing updates depends on what [Row Store](/server-side
 | Transaction    | Add, remove and update rows in the grid. | Full Only       |
 | High Frequency | Apply transactions at high speed.        | Full Only       |
 
-
 - **Update Single Row**: This means changing an attribute for a particular row.
 
 - **Update Transactions**: This means adding, removing or updating rows.
 
 - **High Frequency**: This means adding, removing or updating rows at high frequency.
-
 
 ## Partial Store Updates
 
@@ -35,7 +33,6 @@ If you do need to insert or remove rows while using the Partial Store, then the 
 ## Full Store Updates
 
 If using the Full store, then you can update using [Single Row](#single-row-updates) and [Update & Refresh](#update--refresh) just like the Partial Store.
-
 
 On top of that, you can also update using [Transactions](/server-side-model-transactions/) and [High Frequency](/server-side-model-high-frequency/) Transactions.
 
@@ -62,7 +59,6 @@ The following code snippet outlines the general approach, to iterate through all
 
 The example below shows this in action where the following can be noted:
 
-
 - **Update Selected Rows** - will update the medal count directly on the row nodes and then invoke the mock server with the updated rows.
 - **Refresh Store** - will clear all loaded data and force a reload. Notice that the previously updated data will be returned from the server.
 
@@ -84,4 +80,3 @@ The example below shows this in action where the following can be noted:
 ## Next Up
 
 Continue to the next section to learn how to perform [Transactions](/server-side-model-transactions/).
-

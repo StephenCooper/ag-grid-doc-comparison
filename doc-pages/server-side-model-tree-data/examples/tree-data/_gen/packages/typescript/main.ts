@@ -1,31 +1,44 @@
-import 'ag-grid-enterprise';
-import 'ag-grid-community/dist/styles/ag-grid.css';
+import "ag-grid-enterprise";
+import "ag-grid-community/dist/styles/ag-grid.css";
 import "ag-grid-community/dist/styles/ag-theme-alpine-dark.css";
-import { ColDef, ColGroupDef, GetServerSideGroupKey, Grid, GridOptions, ICellRendererParams, IServerSideDatasource, IServerSideGetRowsParams, IServerSideGetRowsRequest, IsServerSideGroup, IsServerSideGroupOpenByDefaultParams, ServerSideStoreType } from 'ag-grid-community';
+import {
+  ColDef,
+  ColGroupDef,
+  GetServerSideGroupKey,
+  Grid,
+  GridOptions,
+  ICellRendererParams,
+  IServerSideDatasource,
+  IServerSideGetRowsParams,
+  IServerSideGetRowsRequest,
+  IsServerSideGroup,
+  IsServerSideGroupOpenByDefaultParams,
+  ServerSideStoreType,
+} from "ag-grid-community";
 const columnDefs: ColDef[] = [
-  { field: 'employeeId', hide: true },
-  { field: 'employeeName', hide: true },
-  { field: 'jobTitle' },
-  { field: 'employmentType' },
-]
+  { field: "employeeId", hide: true },
+  { field: "employeeName", hide: true },
+  { field: "jobTitle" },
+  { field: "employmentType" },
+];
 
 const gridOptions: GridOptions = {
   defaultColDef: {
     width: 240,
-    filter: 'agTextColumnFilter',
+    filter: "agTextColumnFilter",
     flex: 1,
   },
   autoGroupColumnDef: {
-    field: 'employeeName',
+    field: "employeeName",
     cellRendererParams: {
       innerRenderer: function (params: ICellRendererParams) {
         // display employeeName rather than group key (employeeId)
-        return params.data.employeeName
+        return params.data.employeeName;
       },
     },
   },
-  rowModelType: 'serverSide',
-  serverSideStoreType: 'partial',
+  rowModelType: "serverSide",
+  serverSideStoreType: "partial",
   treeData: true,
   columnDefs: columnDefs,
   animateRows: true,
@@ -33,29 +46,29 @@ const gridOptions: GridOptions = {
     params: IsServerSideGroupOpenByDefaultParams
   ) {
     // open first two levels by default
-    return params.rowNode.level < 2
+    return params.rowNode.level < 2;
   },
   isServerSideGroup: function (dataItem: any) {
     // indicate if node is a group
-    return dataItem.group
+    return dataItem.group;
   },
   getServerSideGroupKey: function (dataItem: any) {
     // specify which group key to use
-    return dataItem.employeeId
+    return dataItem.employeeId;
   },
-}
+};
 
 // setup the grid after the page has finished loading
-  var gridDiv = document.querySelector<HTMLElement>('#myGrid')!
-  new Grid(gridDiv, gridOptions)
+var gridDiv = document.querySelector<HTMLElement>("#myGrid")!;
+new Grid(gridDiv, gridOptions);
 
-  fetch('https://www.ag-grid.com/example-assets/small-tree-data.json')
-    .then(response => response.json())
-    .then(function (data) {
-      var fakeServer = createFakeServer(data)
-      var datasource = createServerSideDatasource(fakeServer)
-      gridOptions.api!.setServerSideDatasource(datasource)
-    })
+fetch("https://www.ag-grid.com/example-assets/small-tree-data.json")
+  .then((response) => response.json())
+  .then(function (data) {
+    var fakeServer = createFakeServer(data);
+    var datasource = createServerSideDatasource(fakeServer);
+    gridOptions.api!.setServerSideDatasource(datasource);
+  });
 
 function createFakeServer(fakeServerData: any[]) {
   const fakeServer = {
@@ -70,50 +83,49 @@ function createFakeServer(fakeServerData: any[]) {
               employeeName: d.employeeName,
               employmentType: d.employmentType,
               jobTitle: d.jobTitle,
-            }
-          })
+            };
+          });
         }
 
-        var key = groupKeys[0]
+        var key = groupKeys[0];
         for (var i = 0; i < data.length; i++) {
           if (data[i].employeeId === key) {
             return extractRowsFromData(
               groupKeys.slice(1),
               data[i].children.slice()
-            )
+            );
           }
         }
       }
 
-      return extractRowsFromData(request.groupKeys, this.data)
+      return extractRowsFromData(request.groupKeys, this.data);
     },
-  }
+  };
 
-  return fakeServer
+  return fakeServer;
 }
 
 function createServerSideDatasource(fakeServer: any) {
   const dataSource: IServerSideDatasource = {
     getRows: function (params: IServerSideGetRowsParams) {
-      console.log('ServerSideDatasource.getRows: params = ', params)
+      console.log("ServerSideDatasource.getRows: params = ", params);
 
-      var allRows = fakeServer.getData(params.request)
+      var allRows = fakeServer.getData(params.request);
 
-      var request = params.request
-      var doingInfinite = request.startRow != null && request.endRow != null
+      var request = params.request;
+      var doingInfinite = request.startRow != null && request.endRow != null;
       var result = doingInfinite
         ? {
-          rowData: allRows.slice(request.startRow, request.endRow),
-          rowCount: allRows.length,
-        }
-        : { rowData: allRows }
-      console.log('getRows: result = ', result)
+            rowData: allRows.slice(request.startRow, request.endRow),
+            rowCount: allRows.length,
+          }
+        : { rowData: allRows };
+      console.log("getRows: result = ", result);
       setTimeout(function () {
-        params.success(result)
-      }, 200)
+        params.success(result);
+      }, 200);
     },
-  }
+  };
 
-  return dataSource
+  return dataSource;
 }
- 

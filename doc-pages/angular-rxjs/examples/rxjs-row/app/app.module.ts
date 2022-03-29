@@ -5,15 +5,8 @@ import { BrowserModule } from "@angular/platform-browser";
 import { RxJsComponentByRow } from "./rxjs-component-example/rxjs-by-row.component";
 
 @NgModule({
-    imports: [
-        BrowserModule,
-        HttpClientModule,
-        AgGridModule.withComponents([])
-    ],
-    declarations: [
-        RxJsComponentByRow
-    ],
-    bootstrap: [RxJsComponentByRow]
+  imports: [BrowserModule, HttpClientModule, AgGridModule.withComponents([])],
+  declarations: [RxJsComponentByRow],
+  bootstrap: [RxJsComponentByRow],
 })
-export class AppModule {
-}
+export class AppModule {}

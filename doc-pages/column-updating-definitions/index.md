@@ -36,9 +36,9 @@ The example below demonstrates updating column definitions to change how columns
 
 - All Columns are provided with just the `field` attribute set on the Column Definition.
 - 'Set Header Names' and 'Remove Header Names' sets and then subsequently removes the `headerName` attribute on all
-Columns.
+  Columns.
 - 'Set Value Formatter' and 'Remove Value Formatter' sets and then subsequently removes the `valueFormatter` attribute
-on all Columns.
+  on all Columns.
 - Note that any resizing, sorting etc of the Columns is kept intact between updates to the Column Definitions.
 
 <grid-example title='Updating Column Definition' name='update-column-definition' type='mixed' options='{ "modules": true }'></grid-example>
@@ -50,19 +50,19 @@ values of the grid.
 
 All stateful attributes of Column Definitions are as follows:
 
-| Stateful Attribute | Initial Attribute | Description |
-|-|-|-|
-| width | initialWidth | Width of the column. |
-| flex | initialFlex | The flex value for setting this column's width. |
-| hide | initialHide | Whether this column should be hidden. |
-| pinned | initialPinned | Whether this column should be pinned. |
-| sort | initialSort | The sort to apply to this column. |
-| sortIndex | initialSortIndex | The order to apply sorting, if multi column sorting. |
-| rowGroup | initialRowGroup | Whether this column should be a row group. |
-| rowGroupIndex | initialRowGroupIndex | Whether this column should be a row group and in what order. |
-| pivot | initialPivot | If this column should be a pivot. |
-| pivotIndex | initialPivotIndex | Whether this column should be a pivot and in what order. |
-| aggFunc | initialAggFunc | The function to aggregate this column by if row grouping or pivoting. |
+| Stateful Attribute | Initial Attribute    | Description                                                           |
+| ------------------ | -------------------- | --------------------------------------------------------------------- |
+| width              | initialWidth         | Width of the column.                                                  |
+| flex               | initialFlex          | The flex value for setting this column's width.                       |
+| hide               | initialHide          | Whether this column should be hidden.                                 |
+| pinned             | initialPinned        | Whether this column should be pinned.                                 |
+| sort               | initialSort          | The sort to apply to this column.                                     |
+| sortIndex          | initialSortIndex     | The order to apply sorting, if multi column sorting.                  |
+| rowGroup           | initialRowGroup      | Whether this column should be a row group.                            |
+| rowGroupIndex      | initialRowGroupIndex | Whether this column should be a row group and in what order.          |
+| pivot              | initialPivot         | If this column should be a pivot.                                     |
+| pivotIndex         | initialPivotIndex    | Whether this column should be a pivot and in what order.              |
+| aggFunc            | initialAggFunc       | The function to aggregate this column by if row grouping or pivoting. |
 
 [[note]]
 | If you are interested in changing Column State only and not the other parts of the column definitions, then consider
@@ -90,7 +90,7 @@ The example below shows Column Definitions using **initial attributes**. Note th
 
 - The `initialWidth`, `initialSort` and `initialPinned` is applied only when the columns are created.
 - If you update the width, sort or pinned of a column by interacting with the grid's UI and then hit 'Set Columns with
-Initials', the columns state will not change.
+  Initials', the columns state will not change.
 - Removing the columns first and then setting them again will use the initial values again.
 
 <grid-example title='Updating Column Initial Attributes' name='changing-default' type='mixed' options='{ "modules": true }'></grid-example>
@@ -99,10 +99,10 @@ The following example shows Column Definitions using **stateful attributes**. No
 
 - The `width`, `sort` and `pinned` stateful attributes are applied whenever Column Definitions are set.
 - If you update the width, sort or pinned of a column by interacting with the grid's UI and then hit 'Set Columns with
-State', the columns state will change and the changes made via the UI will be lost.
+  State', the columns state will change and the changes made via the UI will be lost.
 - Note the `defaultColDef` is used to remove state. For example `sort=null` is set so that any sorting the user might of
-done on another column is cleared down. Otherwise the grid would see the `sort` attribute as `undefined` which means the
-state should not be changed.
+  done on another column is cleared down. Otherwise the grid would see the `sort` attribute as `undefined` which means the
+  state should not be changed.
 
 <grid-example title='Updating Column State' name='changing-state' type='mixed' options='{ "modules": true }'></grid-example>
 
@@ -118,7 +118,6 @@ leave pinned state as it is for that column.
 If you don't want to upset any column state (e.g. if you don't want to undo any change the user has made to the columns
 via the grid's UI, such as applying a sort by clicking on a header, or dragging a column's width) then do not set the
 state attributes as by default they will be `undefined`.
-
 
 ## Matching Columns
 
@@ -139,15 +138,14 @@ In other words, to have the grid correctly match Columns make sure each Column h
 The example below demonstrates the different matching strategies. Note the following:
 
 - All columns, with the exception of Country, are matched correctly. This means any column width, sort etc
-will be kept between changes to the columns. Country will have its state reset, as it will be treated as a new column
-each time.
+  will be kept between changes to the columns. Country will have its state reset, as it will be treated as a new column
+  each time.
 - Athlete column is matched by object equality as the same column definition instance is provided to the grid each time.
 - Age column is matched by `colId`. The `colId` is needed as the column has no `field` attribute.
 - All other columns except Country are matched using the `field` attribute.
 - Country column is not matched as it's a different object instance and has not `colId` or `field` attributes.
 
 <grid-example title='Matching Columns' name='matching-columns' type='mixed' options='{ "modules": true }'></grid-example>
-
 
 ## Maintain Column Order
 
@@ -163,7 +161,7 @@ arranged order would be lost.
 If the desired behaviour is that Column's order should be maintained, set the grid
 property `maintainColumnOrder=true`.
 
-The example below demonstrates suppressing the Column order when Column Definitions are updated. The example has to sets of Columns A and B. The order of the Column Definitions are different, however when switching between the Column sets, the order in the grid is maintained. 
+The example below demonstrates suppressing the Column order when Column Definitions are updated. The example has to sets of Columns A and B. The order of the Column Definitions are different, however when switching between the Column sets, the order in the grid is maintained.
 
 If the Columns are cleared out (clicking Clear) then when columns are set again the order will match the Column Definition order.
 
@@ -203,7 +201,7 @@ The example below demonstrates refreshing of the headers. Note the following:
 - Toggling between 'Upper Header Names' and 'Lower Header Names' causes the Header Component to refresh.
 - Toggling between 'Filter On' and 'Filter Off' causes the Header Component to refresh. For frameworks where possible, the Header Component returns `false` which results in the component getting destroyed and recreated.
 - Toggling between 'Resize On' and 'Resize Off' causes the Header Component to refresh. However there is no change to
-the Header Component as it doesn't depend on resize - the resize UI is provided by the grid.
+  the Header Component as it doesn't depend on resize - the resize UI is provided by the grid.
 
 <grid-example title='Refresh Headers' name='refresh-headers' type='mixed'></grid-example>
 
@@ -215,19 +213,13 @@ perhaps retrieve, alter and then re-apply the modified columns.
 The current column definitions can be retrieved with `getColumnDefs`:
 
 [[only-javascript]]
-| ```js
-| gridOptions.api.getColumnDefs();
-| ```
+| `js | gridOptions.api.getColumnDefs(); | `
 
 [[only-angular-or-vue]]
-| ```js
-| this.gridApi.getColumnDefs();
-| ```
+| `js | this.gridApi.getColumnDefs(); | `
 
 [[only-react]]
-| ```js
-| gridApi.getColumnDefs();
-| ```
+| `js | gridApi.getColumnDefs(); | `
 
 ## Column Groups
 
@@ -250,6 +242,7 @@ const gridOptions = {
 </snippet>
 
 In the example below, note the following:
+
 1. Clicking the top buttons alternates the columns from two sets of definitions.
 1. Column Group A - `groupId` is provided, so expand / collapse is preserved. The Header Name also changes.
 1. Column Group B - `groupId` is NOT provided, so expand / collapse is lost, group always closes when updates happen.

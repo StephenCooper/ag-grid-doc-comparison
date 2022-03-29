@@ -37,37 +37,37 @@ var data = [
     Q3: 190,
     Q4: 200,
   },
-]
+];
 ```
 
 We can create the chart pictured above using the following chart factory config:
 
 ```js
 AgChart.create({
-    data: data,
-    container: document.body,
-    title: {
-        text: 'Beverage Expenses'
-    },
-    subtitle: {
-        text: 'per quarter'
-    },
-    padding: {
-        top: 40,
-        right: 40,
-        bottom: 40,
-        left: 40
-    },
-    series: [
-        { type: 'column', xKey: 'beverage', yKey: 'Q1', stacked: true },
-        { type: 'column', xKey: 'beverage', yKey: 'Q2', stacked: true },
-        { type: 'column', xKey: 'beverage', yKey: 'Q3', stacked: true },
-        { type: 'column', xKey: 'beverage', yKey: 'Q4', stacked: true },
-    ],
-    legend: {
-        position: 'right',
-        spacing: 40
-    }
+  data: data,
+  container: document.body,
+  title: {
+    text: "Beverage Expenses",
+  },
+  subtitle: {
+    text: "per quarter",
+  },
+  padding: {
+    top: 40,
+    right: 40,
+    bottom: 40,
+    left: 40,
+  },
+  series: [
+    { type: "column", xKey: "beverage", yKey: "Q1", stacked: true },
+    { type: "column", xKey: "beverage", yKey: "Q2", stacked: true },
+    { type: "column", xKey: "beverage", yKey: "Q3", stacked: true },
+    { type: "column", xKey: "beverage", yKey: "Q4", stacked: true },
+  ],
+  legend: {
+    position: "right",
+    spacing: 40,
+  },
 });
 ```
 

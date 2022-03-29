@@ -1,94 +1,89 @@
+"use strict";
 
-'use strict';
-
-import React, { Component } from 'react';
-import { render } from 'react-dom';
-import { AgGridReact } from 'ag-grid-react';
-import 'ag-grid-enterprise';
-import 'ag-grid-community/dist/styles/ag-grid.css';
-import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import React, { Component } from "react";
+import { render } from "react-dom";
+import { AgGridReact } from "ag-grid-react";
+import "ag-grid-enterprise";
+import "ag-grid-community/dist/styles/ag-grid.css";
+import "ag-grid-community/dist/styles/ag-theme-alpine.css";
 
 class GridExample extends Component {
-    constructor(props) {
-        super(props);
+  constructor(props) {
+    super(props);
 
-        this.state = {
-            columnDefs: [
-    { field: 'symbol', maxWidth: 120 },
-    { field: 'name', minWidth: 250 },
-    {
-        field: 'change',
-        cellRenderer: 'agSparklineCellRenderer',
-        cellRendererParams: {
+    this.state = {
+      columnDefs: [
+        { field: "symbol", maxWidth: 120 },
+        { field: "name", minWidth: 250 },
+        {
+          field: "change",
+          cellRenderer: "agSparklineCellRenderer",
+          cellRendererParams: {
             sparklineOptions: {
-                line: {
-                    stroke: 'rgb(94,94,224)',
-                },
-                tooltip: {
-                    container: body,
-                    xOffset: 20,
-                    yOffset: -20,
-                    renderer: tooltipRenderer,
-                },
-                highlightStyle: {
-                    fill: 'rgb(94,94,224)',
-                    strokeWidth: 0,
-                },
+              line: {
+                stroke: "rgb(94,94,224)",
+              },
+              tooltip: {
+                container: body,
+                xOffset: 20,
+                yOffset: -20,
+                renderer: tooltipRenderer,
+              },
+              highlightStyle: {
+                fill: "rgb(94,94,224)",
+                strokeWidth: 0,
+              },
             },
+          },
         },
-    },
-    {
-        field: 'volume',
-        type: 'numericColumn',
-        maxWidth: 140,
-    },
-],
-    defaultColDef: {
-    flex: 1,
-    minWidth: 100,
-    resizable: true,
-},
-    rowData: getData(),
-    rowHeight: 50
-        };
+        {
+          field: "volume",
+          type: "numericColumn",
+          maxWidth: 140,
+        },
+      ],
+      defaultColDef: {
+        flex: 1,
+        minWidth: 100,
+        resizable: true,
+      },
+      rowData: getData(),
+      rowHeight: 50,
+    };
+  }
 
-        
-    }
+  onGridReady = (params) => {
+    this.gridApi = params.api;
+    this.gridColumnApi = params.columnApi;
+  };
 
-    onGridReady = params => {
-        this.gridApi = params.api;
-        this.gridColumnApi = params.columnApi;
-        
-    }
-
-
-
-    render() {
-        return (
-            <div style={{ width: '100%', height: '100%' }}>
-                <div
-                
-                style={{
-                    height: '100%',
-                    width: '100%'}}
-                    className="ag-theme-alpine">
-            <AgGridReact
-                columnDefs={this.state.columnDefs}
-defaultColDef={this.state.defaultColDef}
-rowData={this.state.rowData}
-rowHeight={this.state.rowHeight}
-onGridReady={this.onGridReady}
-            />
-            </div>
-            </div>
-        );
-    }
+  render() {
+    return (
+      <div style={{ width: "100%", height: "100%" }}>
+        <div
+          style={{
+            height: "100%",
+            width: "100%",
+          }}
+          className="ag-theme-alpine"
+        >
+          <AgGridReact
+            columnDefs={this.state.columnDefs}
+            defaultColDef={this.state.defaultColDef}
+            rowData={this.state.rowData}
+            rowHeight={this.state.rowHeight}
+            onGridReady={this.onGridReady}
+          />
+        </div>
+      </div>
+    );
+  }
 }
 
 const body = document.body;
 function tooltipRenderer(params) {
-    const { yValue, context } = params;
-    return `<div class='my-custom-tooltip my-custom-tooltip-arrow'>
+  const { yValue, context } = params;
+  return `<div class='my-custom-tooltip my-custom-tooltip-arrow'>
               <div class='tooltip-title'>${context.data.symbol}</div>
               <div class='tooltip-content'>
                 <div>Change: ${yValue}</div>
@@ -97,7 +92,4 @@ function tooltipRenderer(params) {
           </div>`;
 }
 
-render(
-    <GridExample></GridExample>,
-    document.querySelector('#root')
-)
+render(<GridExample></GridExample>, document.querySelector("#root"));

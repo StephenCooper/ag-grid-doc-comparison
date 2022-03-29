@@ -34,7 +34,7 @@ The example below demonstrates server-side Pagination. Note the following:
 - A pagination page size of 10 (default is 100) is set using the grid option `paginationPageSize=10`.
 - The number of rows returned per request is set to 10 (default is 100) using `cacheBlockSize=10`.
 - Use the arrows in the pagination panel to traverse the data. Note the last page arrow is greyed
-out as the last row index is only supplied to the grid when the last row has been reached.
+  out as the last row index is only supplied to the grid when the last row has been reached.
 - Open the browser's dev console to view the request supplied to the datasource.
 
 <grid-example title='Pagination' name='pagination' type='generated' options='{ "enterprise": true, "exampleHeight": 551, "extras": ["alasql"], "modules": ["serverside", "menu", "columnpanel"] }'></grid-example>
@@ -77,4 +77,3 @@ The example below demonstrates pagination with grouping and `paginateChildRows=t
 ## Next Up
 
 Continue to the next section to learn about [Row Selection](/server-side-model-selection/).
-

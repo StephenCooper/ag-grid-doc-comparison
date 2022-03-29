@@ -1,47 +1,42 @@
+class NumberFloatingFilterComponent {
+  // Generic param should be NumberFilterComponent but type needs to be passed through IFloatingFilterComp first
+  init(params) {
+    this.eGui = document.createElement("div");
+    this.eGui.innerHTML =
+      '&gt; <input style="width: 30px" type="number" min="0" />';
+    this.currentValue = null;
+    this.eFilterInput = this.eGui.querySelector("input");
 
-class NumberFloatingFilterComponent  {
-    
-    
-    
+    const onInputBoxChanged = () => {
+      if (this.eFilterInput.value === "") {
+        // Remove the filter
+        params.parentFilterInstance((instance) => {
+          instance.myMethodForTakingValueFromFloatingFilter(null);
+        });
+        return;
+      }
 
-    // Generic param should be NumberFilterComponent but type needs to be passed through IFloatingFilterComp first
-    init(params) {
-        this.eGui = document.createElement('div');
-        this.eGui.innerHTML = '&gt; <input style="width: 30px" type="number" min="0" />';
-        this.currentValue = null;
-        this.eFilterInput = this.eGui.querySelector('input');
+      this.currentValue = Number(this.eFilterInput.value);
+      params.parentFilterInstance((instance) => {
+        instance.myMethodForTakingValueFromFloatingFilter(this.currentValue);
+      });
+    };
 
-        const onInputBoxChanged = () => {
-            if (this.eFilterInput.value === '') {
-                // Remove the filter
-                params.parentFilterInstance((instance) => {
-                    instance.myMethodForTakingValueFromFloatingFilter(null);
-                });
-                return;
-            }
+    this.eFilterInput.addEventListener("input", onInputBoxChanged);
+  }
 
-            this.currentValue = Number(this.eFilterInput.value);
-            params.parentFilterInstance(instance => {
-                instance.myMethodForTakingValueFromFloatingFilter(this.currentValue);
-            });
-        }
-
-        this.eFilterInput.addEventListener('input', onInputBoxChanged);
+  onParentModelChanged(parentModel) {
+    // When the filter is empty we will receive a null message her
+    if (!parentModel) {
+      this.eFilterInput.value = "";
+      this.currentValue = null;
+    } else {
+      this.eFilterInput.value = parentModel;
+      this.currentValue = parentModel;
     }
+  }
 
-    onParentModelChanged(parentModel) {
-        // When the filter is empty we will receive a null message her
-        if (!parentModel) {
-            this.eFilterInput.value = '';
-            this.currentValue = null;
-        } else {
-            this.eFilterInput.value = parentModel;
-            this.currentValue = parentModel;
-        }
-    }
-
-    getGui() {
-        return this.eGui;
-    }
+  getGui() {
+    return this.eGui;
+  }
 }
-

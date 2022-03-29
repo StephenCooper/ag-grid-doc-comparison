@@ -55,7 +55,6 @@ The following variables are available to the expression with the following param
 - `columnApi` => Mapped from params.columnApi
 - `ctx` => Mapped from params.context
 
-
 For example, for `valueFormatter`'s, you can access to the value via the 'x' and 'value' attributes. However in `valueGetter`'s, the 'x' and 'value' will be undefined as these are not part of the `valueGetter` params.
 
 ## Column Definition Expressions vs Functions
@@ -63,7 +62,6 @@ For example, for `valueFormatter`'s, you can access to the value via the 'x' and
 Expressions and functions are two ways of achieving identical results. So why have two methods?
 
 The advantage of functions is that they are easier to work with for you. Functions will be treated by your IDE as functions and thus benefit from compile time checks, debugging e.t.c.
-
 
 The advantage of expressions are:
 
@@ -85,7 +83,6 @@ Cell Expressions bring the expression power to the cell level, so your grid can 
 
 To enable cell expressions, set `enableCellExpressions=true` in the gridOptions. Then, whenever the grid comes across a value starting with '=', it will treat it as an expression.
 
-
 The cell expressions have the same parameters of value getter expressions.
 
 Because you have access to the context (ctx) in your expression, you can add functions to the context to be available in your expressions. This allows you limitless power in what you can calculated for your expression. For example, you could provide a function that takes values from outside of the grid.
@@ -106,12 +103,21 @@ When you provide and expression to the grid, the grid converts the expression in
 
 ```js
 // this is a simple expression on the column definition
-colDef.valueGetter = 'data.firstName';
+colDef.valueGetter = "data.firstName";
 
 // the grid will then compile the above to this:
-___compiledValueGetter = (node, data, colDef, column, api, columnApi, context, getValue) => {
-    return data.firstName;
-}
+___compiledValueGetter = (
+  node,
+  data,
+  colDef,
+  column,
+  api,
+  columnApi,
+  context,
+  getValue
+) => {
+  return data.firstName;
+};
 ```
 
 If your expression has the word `return` in it, then the grid will assume it is a multi line expression and will not wrap it.

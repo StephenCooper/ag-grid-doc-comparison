@@ -15,4 +15,3 @@ The full list of component types you can provide in AG Grid are as follows:
 - [Status Bar Component](/component-status-bar/): For custom status bar components.
 - [Tool Panel Component](/component-tool-panel/): For custom tool panel components.
 - [Tooltip Component](/component-tooltip/): For custom cell tooltip components.
-

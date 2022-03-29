@@ -1,24 +1,24 @@
-import { Grid, ColDef, GridOptions } from '@ag-grid-community/core'
+import { Grid, ColDef, GridOptions } from "@ag-grid-community/core";
 
 const columnDefs: ColDef[] = [
   // row group columns
-  { field: 'country', rowGroup: true },
-  { field: 'athlete', rowGroup: true },
+  { field: "country", rowGroup: true },
+  { field: "athlete", rowGroup: true },
 
   // pivot column
   {
-    headerName: 'Year',
+    headerName: "Year",
     // to mix it up a bit, here we are using a valueGetter for the year column.
-    valueGetter: 'data.year',
+    valueGetter: "data.year",
     pivot: true,
   },
 
   // aggregation columns
-  { field: 'gold', aggFunc: 'sum' },
-  { field: 'silver', aggFunc: 'sum' },
-  { field: 'bronze', aggFunc: 'sum' },
-  { field: 'total', aggFunc: 'sum' },
-]
+  { field: "gold", aggFunc: "sum" },
+  { field: "silver", aggFunc: "sum" },
+  { field: "bronze", aggFunc: "sum" },
+  { field: "total", aggFunc: "sum" },
+];
 
 const gridOptions: GridOptions = {
   columnDefs: columnDefs,
@@ -38,21 +38,21 @@ const gridOptions: GridOptions = {
   pivotMode: true,
   groupDefaultExpanded: 9,
   groupHideOpenParents: true,
-  groupDisplayType: 'multipleColumns',
+  groupDisplayType: "multipleColumns",
   animateRows: true,
   sideBar: true,
-}
+};
 
 // setup the grid after the page has finished loading
-document.addEventListener('DOMContentLoaded', function () {
-  var gridDiv = document.querySelector<HTMLElement>('#myGrid')!
-  new Grid(gridDiv, gridOptions)
+document.addEventListener("DOMContentLoaded", function () {
+  var gridDiv = document.querySelector<HTMLElement>("#myGrid")!;
+  new Grid(gridDiv, gridOptions);
 
   // do http request to get our sample data - not using any framework to keep the example self contained.
   // you will probably use a framework like JQuery, Angular or something else to do your HTTP calls.
-  fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
-    .then(response => response.json())
+  fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+    .then((response) => response.json())
     .then(function (data) {
-      gridOptions.api!.setRowData(data)
-    })
-})
+      gridOptions.api!.setRowData(data);
+    });
+});

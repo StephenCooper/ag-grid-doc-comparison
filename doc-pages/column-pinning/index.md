@@ -47,4 +47,3 @@ The example below demonstrates columns with pinning locked. The following can be
 - All other columns act as normal. They can be added and removed from the pinned section by dragging.
 
 <grid-example title='Lock Pinned' name='lock-pinned' type='generated'></grid-example>
-

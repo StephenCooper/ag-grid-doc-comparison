@@ -1,10 +1,8 @@
-
-
 function getColumnDefs() {
   return [
-    { field: 'date', valueFormatter: dateFormatter },
-    { field: 'avgTemp' },
-  ]
+    { field: "date", valueFormatter: dateFormatter },
+    { field: "avgTemp" },
+  ];
 }
 
 const gridOptions = {
@@ -21,7 +19,7 @@ const gridOptions = {
     line: {
       title: {
         enabled: true,
-        text: 'Average Daily Temperatures',
+        text: "Average Daily Temperatures",
       },
       legend: {
         enabled: false,
@@ -39,21 +37,21 @@ const gridOptions = {
         time: {
           label: {
             rotation: 0,
-            format: '%d %b',
+            format: "%d %b",
           },
         },
         category: {
           label: {
             rotation: 0,
             formatter: function (params) {
-              return moment(new Date(params.value)).format('DD MMM')
+              return moment(new Date(params.value)).format("DD MMM");
             },
           },
         },
         number: {
           label: {
             formatter: function (params) {
-              return params.value + '°C'
+              return params.value + "°C";
             },
           },
         },
@@ -62,51 +60,50 @@ const gridOptions = {
   },
   getChartToolbarItems: getChartToolbarItems,
   onFirstDataRendered: onFirstDataRendered,
-}
+};
 
 var currentChartRef;
 
 function onFirstDataRendered(params) {
   if (currentChartRef) {
-    currentChartRef.destroyChart()
+    currentChartRef.destroyChart();
   }
 
   var createRangeChartParams = {
-    chartContainer: document.querySelector('#myChart') ,
+    chartContainer: document.querySelector("#myChart"),
     suppressChartRanges: true,
     cellRange: {
-      columns: ['date', 'avgTemp'],
+      columns: ["date", "avgTemp"],
     },
-    chartType: 'line',
-  }
-  currentChartRef = params.api.createRangeChart(createRangeChartParams)
+    chartType: "line",
+  };
+  currentChartRef = params.api.createRangeChart(createRangeChartParams);
 }
 
 function dateFormatter(params) {
   return params.value
     ? params.value.toISOString().substring(0, 10)
-    : params.value
+    : params.value;
 }
 
 function getChartToolbarItems() {
-  return ['chartData', 'chartFormat']
+  return ["chartData", "chartFormat"];
 }
 
 function toggleAxis() {
-  var axisBtn = document.querySelector('#axisBtn') ;
-  axisBtn.textContent = axisBtn.value
-  axisBtn.value = axisBtn.value === 'time' ? 'category' : 'time'
+  var axisBtn = document.querySelector("#axisBtn");
+  axisBtn.textContent = axisBtn.value;
+  axisBtn.value = axisBtn.value === "time" ? "category" : "time";
 
-  const columnDefs = getColumnDefs()
+  const columnDefs = getColumnDefs();
   columnDefs.forEach(function (colDef) {
-    if (colDef.field === 'date') {
-      colDef.chartDataType = axisBtn.value
+    if (colDef.field === "date") {
+      colDef.chartDataType = axisBtn.value;
     }
-  })
+  });
 
-  gridOptions.api.setColumnDefs(columnDefs)
+  gridOptions.api.setColumnDefs(columnDefs);
 }
-
 
 function getRowData() {
   return [
@@ -118,11 +115,11 @@ function getRowData() {
     { date: new Date(2019, 0, 23), avgTemp: 9.68 },
     { date: new Date(2019, 0, 24), avgTemp: 9.9 },
     { date: new Date(2019, 0, 25), avgTemp: 8.74 },
-  ]
+  ];
 }
 
 // setup the grid after the page has finished loading
-document.addEventListener('DOMContentLoaded', function () {
-  var gridDiv = document.querySelector('#myGrid')
-  new agGrid.Grid(gridDiv, gridOptions)
-})
+document.addEventListener("DOMContentLoaded", function () {
+  var gridDiv = document.querySelector("#myGrid");
+  new agGrid.Grid(gridDiv, gridOptions);
+});

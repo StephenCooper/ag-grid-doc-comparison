@@ -1,14 +1,11 @@
-
-import { createApp } from 'vue';
-import { AgGridVue } from 'ag-grid-vue3';
-import 'ag-grid-enterprise';
-import 'ag-grid-community/dist/styles/ag-grid.css';
-import 'ag-grid-community/dist/styles/ag-theme-alpine-dark.css';
-
-
+import { createApp } from "vue";
+import { AgGridVue } from "ag-grid-vue3";
+import "ag-grid-enterprise";
+import "ag-grid-community/dist/styles/ag-grid.css";
+import "ag-grid-community/dist/styles/ag-theme-alpine-dark.css";
 
 const VueExample = {
-    template: `
+  template: `
         <div style="height: 100%">
             <ag-grid-vue
                 
@@ -25,88 +22,84 @@ const VueExample = {
                 :suppressAggFuncInHeader="true"></ag-grid-vue>
         </div>
     `,
-    components: {
-        'ag-grid-vue': AgGridVue,
-        
-    },
-    data: function() {
-        return {
-            columnDefs: [{field:"country",
-rowGroup:true,
-hide:true},{field:"sport",
-rowGroup:true,
-hide:true},{field:"gold",
-aggFunc:"sum"},{field:"silver",
-aggFunc:"sum"},{field:"bronze",
-aggFunc:"sum"}],
-            gridApi: null,
-            columnApi: null,
-            defaultColDef: {
-    flex: 1,
-    minWidth: 150,
-    resizable: true,
-    sortable: true,
-},
-            autoGroupColumnDef: null,
-rowModelType: null,
-serverSideStoreType: null,
-getChildCount: null
-        }
-    },
-    created() {
-        this.autoGroupColumnDef = {
-    flex: 1,
-    minWidth: 280,
-};
-this.rowModelType = 'serverSide';
-this.serverSideStoreType = 'partial';
-this.getChildCount = (data) => {
-    return data ? data.childCount : undefined;
-}
-    },
-    methods: {
-        onGridReady(params) {
-        this.gridApi = params.api;
-        this.gridColumnApi = params.columnApi;
-        
+  components: {
+    "ag-grid-vue": AgGridVue,
+  },
+  data: function () {
+    return {
+      columnDefs: [
+        { field: "country", rowGroup: true, hide: true },
+        { field: "sport", rowGroup: true, hide: true },
+        { field: "gold", aggFunc: "sum" },
+        { field: "silver", aggFunc: "sum" },
+        { field: "bronze", aggFunc: "sum" },
+      ],
+      gridApi: null,
+      columnApi: null,
+      defaultColDef: {
+        flex: 1,
+        minWidth: 150,
+        resizable: true,
+        sortable: true,
+      },
+      autoGroupColumnDef: null,
+      rowModelType: null,
+      serverSideStoreType: null,
+      getChildCount: null,
+    };
+  },
+  created() {
+    this.autoGroupColumnDef = {
+      flex: 1,
+      minWidth: 280,
+    };
+    this.rowModelType = "serverSide";
+    this.serverSideStoreType = "partial";
+    this.getChildCount = (data) => {
+      return data ? data.childCount : undefined;
+    };
+  },
+  methods: {
+    onGridReady(params) {
+      this.gridApi = params.api;
+      this.gridColumnApi = params.columnApi;
 
-        
-            const updateData = (data) => {
-    // setup the fake server with entire dataset
-    var fakeServer = new FakeServer(data);
-    // create datasource with a reference to the fake server
-    var datasource = getServerSideDatasource(fakeServer);
-    // register the datasource with the grid
-    params.api.setServerSideDatasource(datasource);
-};
-            
-            fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
-                .then(resp => resp.json())
-                .then(data => updateData(data));
+      const updateData = (data) => {
+        // setup the fake server with entire dataset
+        var fakeServer = new FakeServer(data);
+        // create datasource with a reference to the fake server
+        var datasource = getServerSideDatasource(fakeServer);
+        // register the datasource with the grid
+        params.api.setServerSideDatasource(datasource);
+      };
+
+      fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+        .then((resp) => resp.json())
+        .then((data) => updateData(data));
     },
-    }
-}
+  },
+};
 
 window.getServerSideDatasource = function getServerSideDatasource(server) {
-    return {
-        getRows: function (params) {
-            console.log('[Datasource] - rows requested by grid: ', params.request);
-            var response = server.getData(params.request);
-            // adding delay to simulate real server call
-            setTimeout(function () {
-                if (response.success) {
-                    // call the success callback
-                    params.success({ rowData: response.rows, rowCount: response.lastRow });
-                }
-                else {
-                    // inform the grid request failed
-                    params.fail();
-                }
-            }, 200);
-        },
-    };
-}
+  return {
+    getRows: function (params) {
+      console.log("[Datasource] - rows requested by grid: ", params.request);
+      var response = server.getData(params.request);
+      // adding delay to simulate real server call
+      setTimeout(function () {
+        if (response.success) {
+          // call the success callback
+          params.success({
+            rowData: response.rows,
+            rowCount: response.lastRow,
+          });
+        } else {
+          // inform the grid request failed
+          params.fail();
+        }
+      }, 200);
+    },
+  };
+};
 
-createApp(VueExample)
-    .mount("#app")
-
+createApp(VueExample).mount("#app");

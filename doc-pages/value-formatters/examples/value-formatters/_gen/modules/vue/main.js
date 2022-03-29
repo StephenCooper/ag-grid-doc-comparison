@@ -1,18 +1,15 @@
-
-import Vue from 'vue';
-import { AgGridVue } from '@ag-grid-community/vue';
-import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import Vue from "vue";
+import { AgGridVue } from "@ag-grid-community/vue";
+import "@ag-grid-community/core/dist/styles/ag-grid.css";
 import "@ag-grid-community/core/dist/styles/ag-theme-alpine-dark.css";
-import { ModuleRegistry } from '@ag-grid-community/core';
-import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import { ModuleRegistry } from "@ag-grid-community/core";
+import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
 
 // Register the required feature modules with the Grid
-ModuleRegistry.registerModules([ClientSideRowModelModule])
-
-
+ModuleRegistry.registerModules([ClientSideRowModelModule]);
 
 const VueExample = {
-    template: `
+  template: `
         <div style="height: 100%">
             <ag-grid-vue
                 
@@ -24,75 +21,70 @@ const VueExample = {
                 :rowData="rowData"></ag-grid-vue>
         </div>
     `,
-    components: {
-        'ag-grid-vue': AgGridVue,
-        
+  components: {
+    "ag-grid-vue": AgGridVue,
+  },
+  data: function () {
+    return {
+      columnDefs: [
+        { headerName: "A", field: "a" },
+        { headerName: "B", field: "b" },
+        { headerName: "£A", field: "a", valueFormatter: currencyFormatter },
+        { headerName: "£B", field: "b", valueFormatter: currencyFormatter },
+        { headerName: "(A)", field: "a", valueFormatter: bracketsFormatter },
+        { headerName: "(B)", field: "b", valueFormatter: bracketsFormatter },
+      ],
+      gridApi: null,
+      columnApi: null,
+      defaultColDef: {
+        flex: 1,
+        cellClass: "number-cell",
+        resizable: true,
+      },
+      rowData: null,
+    };
+  },
+  created() {
+    this.rowData = createRowData();
+  },
+  methods: {
+    onGridReady(params) {
+      this.gridApi = params.api;
+      this.gridColumnApi = params.columnApi;
     },
-    data: function() {
-        return {
-            columnDefs: [{headerName:"A",
-field:"a"},{headerName:"B",
-field:"b"},{headerName:"£A",
-field:"a",
-valueFormatter:currencyFormatter},{headerName:"£B",
-field:"b",
-valueFormatter:currencyFormatter},{headerName:"(A)",
-field:"a",
-valueFormatter:bracketsFormatter},{headerName:"(B)",
-field:"b",
-valueFormatter:bracketsFormatter}],
-            gridApi: null,
-            columnApi: null,
-            defaultColDef: {
-    flex: 1,
-    cellClass: 'number-cell',
-    resizable: true,
-},
-            rowData: null
-        }
-    },
-    created() {
-        this.rowData = createRowData()
-    },
-    methods: {
-        onGridReady(params) {
-        this.gridApi = params.api;
-        this.gridColumnApi = params.columnApi;
-        
-    },
-    }
-}
+  },
+};
 
 window.bracketsFormatter = function bracketsFormatter(params) {
-    return '(' + params.value + ')';
-}
+  return "(" + params.value + ")";
+};
 
 window.currencyFormatter = function currencyFormatter(params) {
-    return '£' + formatNumber(params.value);
-}
+  return "£" + formatNumber(params.value);
+};
 
 window.formatNumber = function formatNumber(number) {
-    // this puts commas into the number eg 1000 goes to 1,000,
-    // i pulled this from stack overflow, i have no idea how it works
-    return Math.floor(number)
-        .toString()
-        .replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
-}
+  // this puts commas into the number eg 1000 goes to 1,000,
+  // i pulled this from stack overflow, i have no idea how it works
+  return Math.floor(number)
+    .toString()
+    .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
+};
 
 window.createRowData = function createRowData() {
-    var rowData = [];
-    for (var i = 0; i < 100; i++) {
-        rowData.push({
-            a: Math.floor(((i + 2) * 173456) % 10000),
-            b: Math.floor(((i + 7) * 373456) % 10000),
-        });
-    }
-    return rowData;
-}
+  var rowData = [];
+  for (var i = 0; i < 100; i++) {
+    rowData.push({
+      a: Math.floor(((i + 2) * 173456) % 10000),
+      b: Math.floor(((i + 7) * 373456) % 10000),
+    });
+  }
+  return rowData;
+};
 
 new Vue({
-    el: '#app',
-    components: {
-        'my-component': VueExample
-    }
+  el: "#app",
+  components: {
+    "my-component": VueExample,
+  },
 });

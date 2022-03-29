@@ -1,21 +1,23 @@
-
-import { createApp } from 'vue';
-import { AgGridVue } from '@ag-grid-community/vue3';
-import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import { createApp } from "vue";
+import { AgGridVue } from "@ag-grid-community/vue3";
+import "@ag-grid-community/core/dist/styles/ag-grid.css";
 import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { ModuleRegistry } from '@ag-grid-community/core';
-import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
-import { RowGroupingModule } from '@ag-grid-enterprise/row-grouping';
-import { MenuModule } from '@ag-grid-enterprise/menu';
-import { ColumnsToolPanelModule } from '@ag-grid-enterprise/column-tool-panel';
+import { ModuleRegistry } from "@ag-grid-community/core";
+import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
+import { RowGroupingModule } from "@ag-grid-enterprise/row-grouping";
+import { MenuModule } from "@ag-grid-enterprise/menu";
+import { ColumnsToolPanelModule } from "@ag-grid-enterprise/column-tool-panel";
 
 // Register the required feature modules with the Grid
-ModuleRegistry.registerModules([ClientSideRowModelModule, RowGroupingModule, MenuModule, ColumnsToolPanelModule])
-
-
+ModuleRegistry.registerModules([
+  ClientSideRowModelModule,
+  RowGroupingModule,
+  MenuModule,
+  ColumnsToolPanelModule,
+]);
 
 const VueExample = {
-    template: `
+  template: `
         <div style="height: 100%">
             <div class="example-wrapper">
                 <div style="margin-bottom: 5px;">
@@ -36,97 +38,95 @@ const VueExample = {
             </div>
         </div>
     `,
-    components: {
-        'ag-grid-vue': AgGridVue,
-        
+  components: {
+    "ag-grid-vue": AgGridVue,
+  },
+  data: function () {
+    return {
+      columnDefs: [
+        { field: "country", rowGroup: true, enableRowGroup: true },
+        {
+          field: "year",
+          rowGroup: true,
+          enableRowGroup: true,
+          enablePivot: true,
+        },
+        { field: "date" },
+        { field: "sport" },
+        { field: "gold", aggFunc: "sum" },
+        { field: "silver", aggFunc: "sum" },
+        { field: "bronze", aggFunc: "sum" },
+      ],
+      gridApi: null,
+      columnApi: null,
+      defaultColDef: {
+        flex: 1,
+        minWidth: 150,
+        sortable: true,
+        resizable: true,
+      },
+      autoGroupColumnDef: null,
+      sideBar: null,
+      rowData: null,
+    };
+  },
+  created() {
+    this.autoGroupColumnDef = {
+      minWidth: 250,
+    };
+    this.sideBar = "columns";
+  },
+  methods: {
+    onBtNormal() {
+      this.gridColumnApi.setPivotMode(false);
+      this.gridColumnApi.applyColumnState({
+        state: [
+          { colId: "country", rowGroup: true },
+          { colId: "year", rowGroup: true },
+        ],
+        defaultState: {
+          pivot: false,
+          rowGroup: false,
+        },
+      });
     },
-    data: function() {
-        return {
-            columnDefs: [{field:"country",
-rowGroup:true,
-enableRowGroup:true},{field:"year",
-rowGroup:true,
-enableRowGroup:true,
-enablePivot:true},{field:"date"},{field:"sport"},{field:"gold",
-aggFunc:"sum"},{field:"silver",
-aggFunc:"sum"},{field:"bronze",
-aggFunc:"sum"}],
-            gridApi: null,
-            columnApi: null,
-            defaultColDef: {
-    flex: 1,
-    minWidth: 150,
-    sortable: true,
-    resizable: true,
-},
-            autoGroupColumnDef: null,
-sideBar: null,
-rowData: null
-        }
+    onBtPivotMode() {
+      this.gridColumnApi.setPivotMode(true);
+      this.gridColumnApi.applyColumnState({
+        state: [
+          { colId: "country", rowGroup: true },
+          { colId: "year", rowGroup: true },
+        ],
+        defaultState: {
+          pivot: false,
+          rowGroup: false,
+        },
+      });
     },
-    created() {
-        this.autoGroupColumnDef = {
-    minWidth: 250,
+    onBtFullPivot() {
+      this.gridColumnApi.setPivotMode(true);
+      this.gridColumnApi.applyColumnState({
+        state: [
+          { colId: "country", rowGroup: true },
+          { colId: "year", pivot: true },
+        ],
+        defaultState: {
+          pivot: false,
+          rowGroup: false,
+        },
+      });
+    },
+    onGridReady(params) {
+      this.gridApi = params.api;
+      this.gridColumnApi = params.columnApi;
+
+      const updateData = (data) => params.api.setRowData(data);
+
+      fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+        .then((resp) => resp.json())
+        .then((data) => updateData(data));
+    },
+  },
 };
-this.sideBar = 'columns'
-    },
-    methods: {
-        onBtNormal() {
-    this.gridColumnApi.setPivotMode(false);
-    this.gridColumnApi.applyColumnState({
-        state: [
-            { colId: 'country', rowGroup: true },
-            { colId: 'year', rowGroup: true },
-        ],
-        defaultState: {
-            pivot: false,
-            rowGroup: false,
-        },
-    });
-},
-onBtPivotMode() {
-    this.gridColumnApi.setPivotMode(true);
-    this.gridColumnApi.applyColumnState({
-        state: [
-            { colId: 'country', rowGroup: true },
-            { colId: 'year', rowGroup: true },
-        ],
-        defaultState: {
-            pivot: false,
-            rowGroup: false,
-        },
-    });
-},
-onBtFullPivot() {
-    this.gridColumnApi.setPivotMode(true);
-    this.gridColumnApi.applyColumnState({
-        state: [
-            { colId: 'country', rowGroup: true },
-            { colId: 'year', pivot: true },
-        ],
-        defaultState: {
-            pivot: false,
-            rowGroup: false,
-        },
-    });
-},
-onGridReady(params) {
-        this.gridApi = params.api;
-        this.gridColumnApi = params.columnApi;
-        
 
-        
-            const updateData = (data) => params.api.setRowData(data);
-            
-            fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
-                .then(resp => resp.json())
-                .then(data => updateData(data));
-    },
-    }
-}
-
-
-
-createApp(VueExample)
-    .mount("#app")
-
+createApp(VueExample).mount("#app");

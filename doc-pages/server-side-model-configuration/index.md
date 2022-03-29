@@ -58,5 +58,3 @@ The example below demonstrates debouncing the block loading. Note the following:
 ## Next Up
 
 Continue to the next section to learn about [Sorting](/server-side-model-sorting/).
-
-

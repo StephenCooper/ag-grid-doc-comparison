@@ -1,14 +1,11 @@
-
-import Vue from 'vue';
-import { AgGridVue } from 'ag-grid-vue';
-import 'ag-grid-enterprise';
-import 'ag-grid-community/dist/styles/ag-grid.css';
-import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
-
-
+import Vue from "vue";
+import { AgGridVue } from "ag-grid-vue";
+import "ag-grid-enterprise";
+import "ag-grid-community/dist/styles/ag-grid.css";
+import "ag-grid-community/dist/styles/ag-theme-alpine.css";
 
 const VueExample = {
-    template: `
+  template: `
         <div style="height: 100%">
             <ag-grid-vue
                 
@@ -25,53 +22,49 @@ const VueExample = {
                 :rowData="rowData"></ag-grid-vue>
         </div>
     `,
-    components: {
-        'ag-grid-vue': AgGridVue,
-        
+  components: {
+    "ag-grid-vue": AgGridVue,
+  },
+  data: function () {
+    return {
+      columnDefs: [
+        { field: "assignee", rowGroup: true, hide: true },
+        { field: "priority", rowGroup: true, hide: true },
+        { field: "task" },
+      ],
+      gridApi: null,
+      columnApi: null,
+      defaultColDef: {
+        flex: 1,
+        minWidth: 100,
+        sortable: true,
+        resizable: true,
+      },
+      autoGroupColumnDef: null,
+      groupDisplayType: null,
+      groupDefaultExpanded: null,
+      rowData: null,
+    };
+  },
+  created() {
+    this.autoGroupColumnDef = {
+      minWidth: 200,
+    };
+    this.groupDisplayType = "multipleColumns";
+    this.groupDefaultExpanded = -1;
+    this.rowData = getData();
+  },
+  methods: {
+    onGridReady(params) {
+      this.gridApi = params.api;
+      this.gridColumnApi = params.columnApi;
     },
-    data: function() {
-        return {
-            columnDefs: [{field:"assignee",
-rowGroup:true,
-hide:true},{field:"priority",
-rowGroup:true,
-hide:true},{field:"task"}],
-            gridApi: null,
-            columnApi: null,
-            defaultColDef: {
-    flex: 1,
-    minWidth: 100,
-    sortable: true,
-    resizable: true,
-},
-            autoGroupColumnDef: null,
-groupDisplayType: null,
-groupDefaultExpanded: null,
-rowData: null
-        }
-    },
-    created() {
-        this.autoGroupColumnDef = {
-    minWidth: 200,
+  },
 };
-this.groupDisplayType = 'multipleColumns';
-this.groupDefaultExpanded = -1;
-this.rowData = getData()
-    },
-    methods: {
-        onGridReady(params) {
-        this.gridApi = params.api;
-        this.gridColumnApi = params.columnApi;
-        
-    },
-    }
-}
-
-
 
 new Vue({
-    el: '#app',
-    components: {
-        'my-component': VueExample
-    }
+  el: "#app",
+  components: {
+    "my-component": VueExample,
+  },
 });

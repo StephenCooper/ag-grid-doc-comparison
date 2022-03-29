@@ -1,5 +1,5 @@
-import { AgChartOptions } from "ag-charts-community"
-import * as agCharts from "ag-charts-community"
+import { AgChartOptions } from "ag-charts-community";
+import * as agCharts from "ag-charts-community";
 
 const options: AgChartOptions = {
   container: document.getElementById("myChart"),
@@ -20,8 +20,7 @@ const options: AgChartOptions = {
     fontSize: 18,
   },
   subtitle: {
-    text:
-      "Source: Department for Environment, Food & Rural Affairs; Agriculture and Horticulture Development Board",
+    text: "Source: Department for Environment, Food & Rural Affairs; Agriculture and Horticulture Development Board",
   },
   series: [
     {
@@ -58,7 +57,7 @@ const options: AgChartOptions = {
       },
       label: {
         formatter: function (params) {
-          return params.value / 1000 + "M"
+          return params.value / 1000 + "M";
         },
       },
     },
@@ -72,7 +71,7 @@ const options: AgChartOptions = {
       },
       label: {
         formatter: function (params) {
-          return params.value / 1000 + "k"
+          return params.value / 1000 + "k";
         },
       },
     },
@@ -86,6 +85,6 @@ const options: AgChartOptions = {
       },
     },
   },
-}
+};
 
-var chart = agCharts.AgChart.create(options)
+var chart = agCharts.AgChart.create(options);

@@ -1,4 +1,3 @@
-
 const options = {
   container: document.getElementById("myChart"),
   autoSize: true,
@@ -98,6 +97,6 @@ const options = {
       },
     },
   ],
-}
+};
 
-var chart = agCharts.AgChart.create(options)
+var chart = agCharts.AgChart.create(options);

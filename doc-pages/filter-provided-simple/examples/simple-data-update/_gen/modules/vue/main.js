@@ -1,18 +1,15 @@
-
-import Vue from 'vue';
-import { AgGridVue } from '@ag-grid-community/vue';
-import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import Vue from "vue";
+import { AgGridVue } from "@ag-grid-community/vue";
+import "@ag-grid-community/core/dist/styles/ag-grid.css";
 import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { ModuleRegistry } from '@ag-grid-community/core';
-import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import { ModuleRegistry } from "@ag-grid-community/core";
+import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
 
 // Register the required feature modules with the Grid
-ModuleRegistry.registerModules([ClientSideRowModelModule])
-
-
+ModuleRegistry.registerModules([ClientSideRowModelModule]);
 
 const VueExample = {
-    template: `
+  template: `
         <div style="height: 100%">
             <div class="example-wrapper">
                 <div style="margin-bottom: 5px;">
@@ -30,86 +27,88 @@ const VueExample = {
             </div>
         </div>
     `,
-    components: {
-        'ag-grid-vue': AgGridVue,
-        
-    },
-    data: function() {
-        return {
-            columnDefs: [{field:"athlete"},{field:"age",
-filter:"agNumberColumnFilter",
-maxWidth:100},{field:"date",
-filter:"agDateColumnFilter",
-filterParams:filterParams},{field:"total",
-filter:false}],
-            gridApi: null,
-            columnApi: null,
-            defaultColDef: {
-    flex: 1,
-    minWidth: 150,
-    filter: true,
-},
-            rowData: null
-        }
-    },
-    created() {
-        
-    },
-    methods: {
-        jumbleData() {
-    if (fetchedData) {
-        const ages = fetchedData.map(d => d.age);
+  components: {
+    "ag-grid-vue": AgGridVue,
+  },
+  data: function () {
+    return {
+      columnDefs: [
+        { field: "athlete" },
+        { field: "age", filter: "agNumberColumnFilter", maxWidth: 100 },
+        {
+          field: "date",
+          filter: "agDateColumnFilter",
+          filterParams: filterParams,
+        },
+        { field: "total", filter: false },
+      ],
+      gridApi: null,
+      columnApi: null,
+      defaultColDef: {
+        flex: 1,
+        minWidth: 150,
+        filter: true,
+      },
+      rowData: null,
+    };
+  },
+  created() {},
+  methods: {
+    jumbleData() {
+      if (fetchedData) {
+        const ages = fetchedData.map((d) => d.age);
         // Force reload by mutating fetched data - jumble the ages.
-        const jumbledData = fetchedData.map(d => {
-            const randomAgeIndex = Math.round(Math.random() * (ages.length - 1));
-            return { ...d, age: ages.splice(randomAgeIndex, 1)[0] };
+        const jumbledData = fetchedData.map((d) => {
+          const randomAgeIndex = Math.round(Math.random() * (ages.length - 1));
+          return { ...d, age: ages.splice(randomAgeIndex, 1)[0] };
         });
         this.gridApi.setRowData(jumbledData);
-    }
-},
-onGridReady(params) {
-        this.gridApi = params.api;
-        this.gridColumnApi = params.columnApi;
-        
-
-        
-            const updateData = (data) => {
-    fetchedData = data.slice(0, 9);
-    params.api.setRowData(fetchedData);
-};
-            
-            fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
-                .then(resp => resp.json())
-                .then(data => updateData(data));
+      }
     },
-    }
-}
+    onGridReady(params) {
+      this.gridApi = params.api;
+      this.gridColumnApi = params.columnApi;
+
+      const updateData = (data) => {
+        fetchedData = data.slice(0, 9);
+        params.api.setRowData(fetchedData);
+      };
+
+      fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+        .then((resp) => resp.json())
+        .then((data) => updateData(data));
+    },
+  },
+};
 
 var filterParams = {
-    comparator: function (filterLocalDateAtMidnight, cellValue) {
-        var dateAsString = cellValue;
-        if (dateAsString == null)
-            return -1;
-        var dateParts = dateAsString.split('/');
-        var cellDate = new Date(Number(dateParts[2]), Number(dateParts[1]) - 1, Number(dateParts[0]));
-        if (filterLocalDateAtMidnight.getTime() === cellDate.getTime()) {
-            return 0;
-        }
-        if (cellDate < filterLocalDateAtMidnight) {
-            return -1;
-        }
-        if (cellDate > filterLocalDateAtMidnight) {
-            return 1;
-        }
-    },
-    browserDatePicker: true,
+  comparator: function (filterLocalDateAtMidnight, cellValue) {
+    var dateAsString = cellValue;
+    if (dateAsString == null) return -1;
+    var dateParts = dateAsString.split("/");
+    var cellDate = new Date(
+      Number(dateParts[2]),
+      Number(dateParts[1]) - 1,
+      Number(dateParts[0])
+    );
+    if (filterLocalDateAtMidnight.getTime() === cellDate.getTime()) {
+      return 0;
+    }
+    if (cellDate < filterLocalDateAtMidnight) {
+      return -1;
+    }
+    if (cellDate > filterLocalDateAtMidnight) {
+      return 1;
+    }
+  },
+  browserDatePicker: true,
 };
 
 var fetchedData;
 
 new Vue({
-    el: '#app',
-    components: {
-        'my-component': VueExample
-    }
+  el: "#app",
+  components: {
+    "my-component": VueExample,
+  },
 });

@@ -1,21 +1,18 @@
+import { NgModule } from "@angular/core";
+import { BrowserModule } from "@angular/platform-browser";
+import { HttpClientModule } from "@angular/common/http";
 
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { AgGridModule } from "ag-grid-angular";
+import { AppComponent } from "./app.component";
 
-import { AgGridModule } from 'ag-grid-angular';
-import { AppComponent } from './app.component';
-
-import { MyInnerRenderer } from './my-inner-renderer.component';
+import { MyInnerRenderer } from "./my-inner-renderer.component";
 @NgModule({
   imports: [
     BrowserModule,
     HttpClientModule,
-    AgGridModule.withComponents([MyInnerRenderer])
+    AgGridModule.withComponents([MyInnerRenderer]),
   ],
-  declarations: [
-    AppComponent, MyInnerRenderer
-  ],
-  bootstrap: [ AppComponent ]
+  declarations: [AppComponent, MyInnerRenderer],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

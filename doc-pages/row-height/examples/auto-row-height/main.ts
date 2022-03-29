@@ -1,24 +1,24 @@
-import { Grid, GridOptions } from '@ag-grid-community/core'
+import { Grid, GridOptions } from "@ag-grid-community/core";
 
 const gridOptions: GridOptions = {
   columnDefs: [
     {
-      headerName: 'Row #',
-      field: 'rowNumber',
+      headerName: "Row #",
+      field: "rowNumber",
       width: 120,
     },
     {
-      field: 'autoA',
+      field: "autoA",
       width: 300,
       wrapText: true,
       autoHeight: true,
-      headerName: 'A) Auto Height',
+      headerName: "A) Auto Height",
     },
     {
       width: 300,
-      field: 'autoB',
+      field: "autoB",
       wrapText: true,
-      headerName: 'B) Normal Height',
+      headerName: "B) Normal Height",
     },
   ],
   defaultColDef: {
@@ -29,17 +29,17 @@ const gridOptions: GridOptions = {
     // in this example, the CSS styles are loaded AFTER the grid is created,
     // so we put this in a timeout, so height is calculated after styles are applied.
     setTimeout(function () {
-      params.api.setRowData(getData())
-    }, 500)
+      params.api.setRowData(getData());
+    }, 500);
   },
   sideBar: {
     toolPanels: [
       {
-        id: 'columns',
-        labelDefault: 'Columns',
-        labelKey: 'columns',
-        iconKey: 'columns',
-        toolPanel: 'agColumnsToolPanel',
+        id: "columns",
+        labelDefault: "Columns",
+        labelKey: "columns",
+        iconKey: "columns",
+        toolPanel: "agColumnsToolPanel",
         toolPanelParams: {
           suppressRowGroups: true,
           suppressValues: true,
@@ -52,14 +52,12 @@ const gridOptions: GridOptions = {
         },
       },
     ],
-    defaultToolPanel: 'columns',
+    defaultToolPanel: "columns",
   },
-}
+};
 
 // setup the grid after the page has finished loading
-document.addEventListener('DOMContentLoaded', function () {
-  var gridDiv = document.querySelector<HTMLElement>('#myGrid')!
-  new Grid(gridDiv, gridOptions)
-})
-
-
+document.addEventListener("DOMContentLoaded", function () {
+  var gridDiv = document.querySelector<HTMLElement>("#myGrid")!;
+  new Grid(gridDiv, gridOptions);
+});

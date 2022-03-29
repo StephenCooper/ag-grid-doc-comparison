@@ -1,32 +1,32 @@
+label,
+.row {
+  box-sizing: border-box;
+  display: block;
+  padding: 2px;
+}
 
-    label, .row {
-        box-sizing: border-box;
-        display: block;
-        padding: 2px;
-    }
+.row label {
+  display: inline;
+  padding: 0;
+}
 
-    .row label {
-        display: inline;
-        padding: 0;
-    }
+button {
+  display: inline-block;
+  font-weight: bold;
+}
 
-    button {
-        display: inline-block;
-        font-weight: bold;
-    }
+#gridContainer {
+  height: 100%;
+  width: 47%;
+  display: block;
+}
 
-    #gridContainer {
-        height: 100%;
-        width: 47%;
-        display: block;
-    }
-
-    #csvResult {
-        height: 100%;
-        width: 47%;
-        margin-left: 5%;
-        position: absolute;
-        top: 0;
-        right: 0;
-        font-size: 1em;
-    }
+#csvResult {
+  height: 100%;
+  width: 47%;
+  margin-left: 5%;
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-size: 1em;
+}

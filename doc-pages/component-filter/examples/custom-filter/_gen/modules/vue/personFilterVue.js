@@ -1,5 +1,5 @@
 export default {
-    template: `
+  template: `
       <div style="padding: 4px; width: 200px;">
       <div style="font-weight: bold;">Custom Athlete Filter</div>
       <div>
@@ -13,54 +13,59 @@ export default {
       </div>
       </div>
     `,
-    data: function () {
-        return {
-            filterText: null
-        };
+  data: function () {
+    return {
+      filterText: null,
+    };
+  },
+  methods: {
+    updateFilter() {
+      this.params.filterChangedCallback();
     },
-    methods: {
-        updateFilter() {
-            this.params.filterChangedCallback();
-        },
 
-        doesFilterPass(params) {
-            const { api, colDef, column, columnApi, context } = this.params;
-            const { node } = params;
+    doesFilterPass(params) {
+      const { api, colDef, column, columnApi, context } = this.params;
+      const { node } = params;
 
-            // make sure each word passes separately, ie search for firstname, lastname
-            let passed = true;
-            this.filterText.toLowerCase().split(' ').forEach(filterWord => {
-                const value = this.params.valueGetter({
-                    api,
-                    colDef,
-                    column,
-                    columnApi,
-                    context,
-                    data: node.data,
-                    getValue: (field) => node.data[field],
-                    node,
-                });
-    
-                if (value.toString().toLowerCase().indexOf(filterWord) < 0) {
-                    passed = false;
-                }
-            });
+      // make sure each word passes separately, ie search for firstname, lastname
+      let passed = true;
+      this.filterText
+        .toLowerCase()
+        .split(" ")
+        .forEach((filterWord) => {
+          const value = this.params.valueGetter({
+            api,
+            colDef,
+            column,
+            columnApi,
+            context,
+            data: node.data,
+            getValue: (field) => node.data[field],
+            node,
+          });
 
-            return passed;
-        },
+          if (value.toString().toLowerCase().indexOf(filterWord) < 0) {
+            passed = false;
+          }
+        });
 
-        isFilterActive() {
-            return this.filterText != null && this.filterText !== '';
-        },
+      return passed;
+    },
 
-        getModel() {
-            if (!this.isFilterActive()) { return null; }
+    isFilterActive() {
+      return this.filterText != null && this.filterText !== "";
+    },
 
-            return {value: this.filterText};
-        },
+    getModel() {
+      if (!this.isFilterActive()) {
+        return null;
+      }
 
-        setModel(model) {
-            this.filterText = model == null ? null : model.value;
-        }
-    }
+      return { value: this.filterText };
+    },
+
+    setModel(model) {
+      this.filterText = model == null ? null : model.value;
+    },
+  },
 };

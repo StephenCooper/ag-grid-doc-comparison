@@ -1,18 +1,17 @@
-
 const columnDefs = [
   {
-    field: 'athlete',
-    cellClass: 'custom-athlete-cell',
+    field: "athlete",
+    cellClass: "custom-athlete-cell",
     cellRenderer: CustomCellRenderer,
   },
-  { field: 'country' },
-  { field: 'year', width: 100 },
-  { field: 'date' },
-  { field: 'sport' },
-  { field: 'gold' },
-  { field: 'silver' },
-  { field: 'bronze' },
-]
+  { field: "country" },
+  { field: "year", width: 100 },
+  { field: "date" },
+  { field: "sport" },
+  { field: "gold" },
+  { field: "silver" },
+  { field: "bronze" },
+];
 
 const gridOptions = {
   defaultColDef: {
@@ -25,22 +24,22 @@ const gridOptions = {
   animateRows: true,
   onRowDragEnter: onRowDragEnter,
   onRowDragEnd: onRowDragEnd,
-}
+};
 
 function onRowDragEnter(e) {
-  console.log('onRowDragEnter', e)
+  console.log("onRowDragEnter", e);
 }
 
 function onRowDragEnd(e) {
-  console.log('onRowDragEnd', e)
+  console.log("onRowDragEnd", e);
 }
 
 // setup the grid after the page has finished loading
-document.addEventListener('DOMContentLoaded', function () {
-  var gridDiv = document.querySelector('#myGrid')
-  new agGrid.Grid(gridDiv, gridOptions)
+document.addEventListener("DOMContentLoaded", function () {
+  var gridDiv = document.querySelector("#myGrid");
+  new agGrid.Grid(gridDiv, gridOptions);
 
-  fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
-    .then(response => response.json())
-    .then(data => gridOptions.api.setRowData(data))
-})
+  fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+    .then((response) => response.json())
+    .then((data) => gridOptions.api.setRowData(data));
+});

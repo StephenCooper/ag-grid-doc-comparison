@@ -1,5 +1,5 @@
-import { AgChartOptions } from "ag-charts-community"
-import * as agCharts from "ag-charts-community"
+import { AgChartOptions } from "ag-charts-community";
+import * as agCharts from "ag-charts-community";
 
 const options: AgChartOptions = {
   container: document.getElementById("myChart"),
@@ -44,6 +44,6 @@ const options: AgChartOptions = {
       stacked: true,
     },
   ],
-}
+};
 
-agCharts.AgChart.create(options)
+agCharts.AgChart.create(options);

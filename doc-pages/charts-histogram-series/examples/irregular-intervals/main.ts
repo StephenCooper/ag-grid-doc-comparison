@@ -1,20 +1,20 @@
-import { AgChartOptions } from 'ag-charts-community'
-import * as agCharts from 'ag-charts-community'
+import { AgChartOptions } from "ag-charts-community";
+import * as agCharts from "ag-charts-community";
 
 const options: AgChartOptions = {
-  container: document.getElementById('myChart'),
+  container: document.getElementById("myChart"),
   title: {
-    text: 'Race demographics',
+    text: "Race demographics",
   },
   subtitle: {
-    text: 'Number of participants by age category',
+    text: "Number of participants by age category",
   },
   data: getData(),
   series: [
     {
-      type: 'histogram',
-      xKey: 'age',
-      xName: 'Participant Age',
+      type: "histogram",
+      xKey: "age",
+      xName: "Participant Age",
       areaPlot: true,
       bins: [
         [16, 18],
@@ -29,16 +29,16 @@ const options: AgChartOptions = {
   },
   axes: [
     {
-      type: 'number',
-      position: 'bottom',
-      title: { text: 'Age category (years)' },
+      type: "number",
+      position: "bottom",
+      title: { text: "Age category (years)" },
     },
     {
-      type: 'number',
-      position: 'left',
-      title: { text: 'Number of participants' },
+      type: "number",
+      position: "left",
+      title: { text: "Number of participants" },
     },
   ],
-}
+};
 
-agCharts.AgChart.create(options)
+agCharts.AgChart.create(options);

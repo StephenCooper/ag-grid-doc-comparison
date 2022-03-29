@@ -1,4 +1,3 @@
-
 const options = {
   container: document.getElementById("myChart"),
   autoSize: true,
@@ -21,11 +20,11 @@ const options = {
           marker: { enabled: true },
           highlightStyle: {
             series: {
-              dimOpacity: 0.2
-            }
-          }
-        }
-      }
+              dimOpacity: 0.2,
+            },
+          },
+        },
+      },
     },
   },
   title: {
@@ -80,7 +79,7 @@ const options = {
       },
       label: {
         formatter: function (params) {
-          return params.value / 1000 + "k"
+          return params.value / 1000 + "k";
         },
       },
     },
@@ -88,6 +87,6 @@ const options = {
   legend: {
     position: "bottom",
   },
-}
+};
 
-var chart = agCharts.AgChart.create(options)
+var chart = agCharts.AgChart.create(options);

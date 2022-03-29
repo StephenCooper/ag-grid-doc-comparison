@@ -1,12 +1,11 @@
-
 const gridOptions = {
   columnDefs: [
-    { field: 'country', rowGroup: true, hide: true },
-    { field: 'year', rowGroup: true, hide: true },
-    { field: 'version' },
-    { field: 'gold', aggFunc: 'sum' },
-    { field: 'silver', aggFunc: 'sum' },
-    { field: 'bronze', aggFunc: 'sum' },
+    { field: "country", rowGroup: true, hide: true },
+    { field: "year", rowGroup: true, hide: true },
+    { field: "version" },
+    { field: "gold", aggFunc: "sum" },
+    { field: "silver", aggFunc: "sum" },
+    { field: "bronze", aggFunc: "sum" },
   ],
   defaultColDef: {
     flex: 1,
@@ -17,99 +16,102 @@ const gridOptions = {
   autoGroupColumnDef: {
     flex: 1,
     minWidth: 280,
-    field: 'athlete',
+    field: "athlete",
   },
   getRowId: function (params) {
     var data = params.data;
-    var parts = []
+    var parts = [];
     if (data.country != null) {
-      parts.push(data.country)
+      parts.push(data.country);
     }
     if (data.year != null) {
-      parts.push(data.year)
+      parts.push(data.year);
     }
     if (data.id != null) {
-      parts.push(data.id)
+      parts.push(data.id);
     }
-    return parts.join('-')
+    return parts.join("-");
   },
   // use the server-side row model
-  rowModelType: 'serverSide',
-  serverSideStoreType: 'full',
+  rowModelType: "serverSide",
+  serverSideStoreType: "full",
 
   enableCellChangeFlash: true,
   suppressAggFuncInHeader: true,
 
   animateRows: true,
   debug: true,
-}
+};
 
-var versionCounter = 1
+var versionCounter = 1;
 
 function refreshCache(route) {
-  versionCounter++
-  var purge = (document.querySelector('#purge') ).checked === true
-  gridOptions.api.refreshServerSideStore({ route: route, purge: purge })
+  versionCounter++;
+  var purge = document.querySelector("#purge").checked === true;
+  gridOptions.api.refreshServerSideStore({ route: route, purge: purge });
 }
 
 function getServerSideDatasource(server) {
   return {
     getRows: function (params) {
-      console.log('[Datasource] - rows requested by grid: ', params.request)
+      console.log("[Datasource] - rows requested by grid: ", params.request);
 
-      var response = server.getData(params.request)
+      var response = server.getData(params.request);
 
       response.rows = response.rows.map(function (item) {
-        var res = {}
-        Object.assign(res, item)
+        var res = {};
+        Object.assign(res, item);
         res.version =
-          versionCounter + ' - ' + versionCounter + ' - ' + versionCounter
+          versionCounter + " - " + versionCounter + " - " + versionCounter;
 
         // for unique-id purposes in the client, we also want to attached
         // the parent group keys
         params.request.groupKeys.forEach(function (groupKey, index) {
-          var col = params.request.rowGroupCols[index]
-          var field = col.id
-          res[field] = groupKey
-        })
+          var col = params.request.rowGroupCols[index];
+          var field = col.id;
+          res[field] = groupKey;
+        });
 
-        return res
-      })
+        return res;
+      });
 
       // adding delay to simulate real server call
       setTimeout(function () {
         if (response.success) {
           // call the success callback
-          params.success({ rowData: response.rows, rowCount: response.lastRow })
+          params.success({
+            rowData: response.rows,
+            rowCount: response.lastRow,
+          });
         } else {
           // inform the grid request failed
-          params.fail()
+          params.fail();
         }
-      }, 1000)
+      }, 1000);
     },
-  }
+  };
 }
 
 // setup the grid after the page has finished loading
-document.addEventListener('DOMContentLoaded', function () {
-  var gridDiv = document.querySelector('#myGrid')
-  new agGrid.Grid(gridDiv, gridOptions)
+document.addEventListener("DOMContentLoaded", function () {
+  var gridDiv = document.querySelector("#myGrid");
+  new agGrid.Grid(gridDiv, gridOptions);
 
-  fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
-    .then(response => response.json())
+  fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+    .then((response) => response.json())
     .then(function (data) {
       // give each data item an ID
       data.forEach(function (dataItem, index) {
-        dataItem.id = index
-      })
+        dataItem.id = index;
+      });
 
       // setup the fake server with entire dataset
-      var fakeServer = new FakeServer(data)
+      var fakeServer = new FakeServer(data);
 
       // create datasource with a reference to the fake server
-      var datasource = getServerSideDatasource(fakeServer)
+      var datasource = getServerSideDatasource(fakeServer);
 
       // register the datasource with the grid
-      gridOptions.api.setServerSideDatasource(datasource)
-    })
-})
+      gridOptions.api.setServerSideDatasource(datasource);
+    });
+});

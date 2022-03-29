@@ -1,25 +1,25 @@
-import { Grid, GridOptions, IFiltersToolPanel } from '@ag-grid-community/core'
+import { Grid, GridOptions, IFiltersToolPanel } from "@ag-grid-community/core";
 
 var filterParams = {
   comparator: function (a: string, b: string) {
-    var valA = parseInt(a)
-    var valB = parseInt(b)
-    if (valA === valB) return 0
-    return valA > valB ? 1 : -1
+    var valA = parseInt(a);
+    var valB = parseInt(b);
+    if (valA === valB) return 0;
+    return valA > valB ? 1 : -1;
   },
-}
+};
 
 const gridOptions: GridOptions = {
   columnDefs: [
     {
-      headerName: 'Age (No Comparator)',
-      field: 'age',
-      filter: 'agSetColumnFilter',
+      headerName: "Age (No Comparator)",
+      field: "age",
+      filter: "agSetColumnFilter",
     },
     {
-      headerName: 'Age (With Comparator)',
-      field: 'age',
-      filter: 'agSetColumnFilter',
+      headerName: "Age (With Comparator)",
+      field: "age",
+      filter: "agSetColumnFilter",
       filterParams: filterParams,
     },
   ],
@@ -29,24 +29,24 @@ const gridOptions: GridOptions = {
     resizable: true,
   },
   rowData: getRowData(),
-  sideBar: 'filters',
+  sideBar: "filters",
   onGridReady: function (params) {
-    ((params.api.getToolPanelInstance(
-      'filters'
-    ) as any) as IFiltersToolPanel).expandFilters()
+    (
+      params.api.getToolPanelInstance("filters") as any as IFiltersToolPanel
+    ).expandFilters();
   },
-}
+};
 
 function getRowData() {
-  var rows = []
+  var rows = [];
   for (var i = 1; i < 117; i++) {
-    rows.push({ age: i })
+    rows.push({ age: i });
   }
-  return rows
+  return rows;
 }
 
 // setup the grid after the page has finished loading
-document.addEventListener('DOMContentLoaded', function () {
-  var gridDiv = document.querySelector<HTMLElement>('#myGrid')!
-  new Grid(gridDiv, gridOptions)
-})
+document.addEventListener("DOMContentLoaded", function () {
+  var gridDiv = document.querySelector<HTMLElement>("#myGrid")!;
+  new Grid(gridDiv, gridOptions);
+});

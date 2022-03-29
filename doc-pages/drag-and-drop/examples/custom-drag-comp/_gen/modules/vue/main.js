@@ -1,19 +1,16 @@
-
-import Vue from 'vue';
-import { AgGridVue } from '@ag-grid-community/vue';
-import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import Vue from "vue";
+import { AgGridVue } from "@ag-grid-community/vue";
+import "@ag-grid-community/core/dist/styles/ag-grid.css";
 import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import DragSourceRenderer from './dragSourceRendererVue.js';
-import { ModuleRegistry } from '@ag-grid-community/core';
-import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import DragSourceRenderer from "./dragSourceRendererVue.js";
+import { ModuleRegistry } from "@ag-grid-community/core";
+import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
 
 // Register the required feature modules with the Grid
-ModuleRegistry.registerModules([ClientSideRowModelModule])
-
-
+ModuleRegistry.registerModules([ClientSideRowModelModule]);
 
 const VueExample = {
-    template: `
+  template: `
         <div style="height: 100%">
             <div class="outer">
                 <div class="grid-col">
@@ -39,65 +36,67 @@ const VueExample = {
             </div>
         </div>
     `,
-    components: {
-        'ag-grid-vue': AgGridVue,
-        DragSourceRenderer
+  components: {
+    "ag-grid-vue": AgGridVue,
+    DragSourceRenderer,
+  },
+  data: function () {
+    return {
+      columnDefs: [
+        { cellRenderer: "DragSourceRenderer", minWidth: 100 },
+        { field: "id" },
+        { field: "color" },
+        { field: "value1" },
+        { field: "value2" },
+      ],
+      gridApi: null,
+      columnApi: null,
+      defaultColDef: {
+        width: 80,
+        sortable: true,
+        filter: true,
+        resizable: true,
+      },
+      rowClassRules: null,
+      rowData: null,
+    };
+  },
+  created() {
+    this.rowClassRules = {
+      "red-row": 'data.color == "Red"',
+      "green-row": 'data.color == "Green"',
+      "blue-row": 'data.color == "Blue"',
+    };
+    this.rowData = getData();
+  },
+  methods: {
+    onDragOver(event) {
+      var types = event.dataTransfer.types;
+      var dragSupported = types.length;
+      if (dragSupported) {
+        event.dataTransfer.dropEffect = "move";
+      }
+      event.preventDefault();
     },
-    data: function() {
-        return {
-            columnDefs: [{cellRenderer:'DragSourceRenderer',
-minWidth:100},{field:"id"},{field:"color"},{field:"value1"},{field:"value2"}],
-            gridApi: null,
-            columnApi: null,
-            defaultColDef: {
-    width: 80,
-    sortable: true,
-    filter: true,
-    resizable: true,
-},
-            rowClassRules: null,
-rowData: null
-        }
+    onDrop(event) {
+      event.preventDefault();
+      var textData = event.dataTransfer.getData("text/plain");
+      var eJsonRow = document.createElement("div");
+      eJsonRow.classList.add("json-row");
+      eJsonRow.innerText = textData;
+      var eJsonDisplay = document.querySelector("#eJsonDisplay");
+      eJsonDisplay.appendChild(eJsonRow);
     },
-    created() {
-        this.rowClassRules = {
-    'red-row': 'data.color == "Red"',
-    'green-row': 'data.color == "Green"',
-    'blue-row': 'data.color == "Blue"',
+    onGridReady(params) {
+      this.gridApi = params.api;
+      this.gridColumnApi = params.columnApi;
+    },
+  },
 };
-this.rowData = getData()
-    },
-    methods: {
-        onDragOver(event) {
-    var types = event.dataTransfer.types;
-    var dragSupported = types.length;
-    if (dragSupported) {
-        event.dataTransfer.dropEffect = 'move';
-    }
-    event.preventDefault();
-},
-onDrop(event) {
-    event.preventDefault();
-    var textData = event.dataTransfer.getData('text/plain');
-    var eJsonRow = document.createElement('div');
-    eJsonRow.classList.add('json-row');
-    eJsonRow.innerText = textData;
-    var eJsonDisplay = document.querySelector('#eJsonDisplay');
-    eJsonDisplay.appendChild(eJsonRow);
-},
-onGridReady(params) {
-        this.gridApi = params.api;
-        this.gridColumnApi = params.columnApi;
-        
-    },
-    }
-}
-
-
 
 new Vue({
-    el: '#app',
-    components: {
-        'my-component': VueExample
-    }
+  el: "#app",
+  components: {
+    "my-component": VueExample,
+  },
 });

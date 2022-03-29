@@ -18,43 +18,7 @@
 |
 |Inline Custom Components can only be registered within the Grid by name:
 |
-|```js
-|<template>
-|   <ag-grid-vue :columnDefs="columnDefs" ...other properties>
-|   </ag-grid-vue>
-|</template>
-|
-|<script>
-|//...other imports
-|import {AgGridVue} from "@ag-grid-community/vue";
-|
-|export default {
-|   components: {
-|       AgGridVue,
-|       CubeComponent: {
-|           template: '<span>{{ valueCubed() }}</span>',
-|           methods: {
-|               valueCubed() {
-|                   return this.params.value * this.params.value * this.params.value;
-|               }
-|           }
-|       }
-|   },
-|   data() {
-|       return {
-|           columnDefs: [
-|                {
-|                   headerName: "Cube",
-|                   field: "value",
-|                   cellRenderer: 'CubeComponent',     
-|               }
-|           ]
-|       }
-|   }
-|   //...other properties & methods
-|}
-|</script>
-|```
+|`js |<template> | <ag-grid-vue :columnDefs="columnDefs" ...other properties> | </ag-grid-vue> |</template> | |<script> |//...other imports |import {AgGridVue} from "@ag-grid-community/vue"; | |export default { | components: { | AgGridVue, | CubeComponent: { | template: '<span>{{ valueCubed() }}</span>', | methods: { | valueCubed() { | return this.params.value * this.params.value * this.params.value; | } | } | } | }, | data() { | return { | columnDefs: [ | { | headerName: "Cube", | field: "value", | cellRenderer: 'CubeComponent', | } | ] | } | } | //...other properties & methods |} |</script> |`
 |
 |## Registering Non-Inline Custom Components
 |
@@ -62,37 +26,7 @@
 | To use a component within the grid you will reference components by **case-sensitive**
 | name, for example:
 |
-|```js
-|<template>
-|   <ag-grid-vue ...other properties>
-|   </ag-grid-vue>
-|</template>
-|
-|<script>
-|//...other imports
-|import {AgGridVue} from "@ag-grid-community/vue";
-|import CubeComponent from './CubeComponent.vue';
-|
-|export default {
-|   components: {
-|       AgGridVue,
-|       CubeComponent
-|   }
-|   data() {
-|       return {
-|           columnDefs: [
-|                {
-|                   headerName: "Cube",
-|                   field: "value",
-|                   cellRenderer: 'CubeComponent'     
-|               }
-|           ]
-|       }
-|   }
-|   //...other properties & methods
-|}
-|</script>
-|```
+|`js |<template> | <ag-grid-vue ...other properties> | </ag-grid-vue> |</template> | |<script> |//...other imports |import {AgGridVue} from "@ag-grid-community/vue"; |import CubeComponent from './CubeComponent.vue'; | |export default { | components: { | AgGridVue, | CubeComponent | } | data() { | return { | columnDefs: [ | { | headerName: "Cube", | field: "value", | cellRenderer: 'CubeComponent' | } | ] | } | } | //...other properties & methods |} |</script> |`
 |### 2. By Direct Reference
 |
 |[[note]]
@@ -100,13 +34,13 @@
 ||
 ||This approach is supported but not recommend and will be removed in a future release.
 ||
-|When registering components within the Grid by direct reference the target components *must* be wrapped in `Vue.extend(...)` (for Vue 2), or
+|When registering components within the Grid by direct reference the target components _must_ be wrapped in `Vue.extend(...)` (for Vue 2), or
 |`defineComponent(...)` (for Vue 3):
 |
 |```js
 |<template>
-|   <ag-grid-vue ...other properties>
-|   </ag-grid-vue>
+| <ag-grid-vue ...other properties>
+| </ag-grid-vue>
 |</template>
 |
 |<script>
@@ -116,31 +50,31 @@
 |
 |// component wrapped in Vue.extend for direct reference
 |const CubeComponent = Vue.extend({
-|   template: '<span>{{ valueCubed() }}</span>',
-|   methods: {
-|       valueCubed() {
-|           return this.params.value * this.params.value * this.params.value;
-|       }
-|   }
+| template: '<span>{{ valueCubed() }}</span>',
+| methods: {
+| valueCubed() {
+| return this.params.value _ this.params.value _ this.params.value;
+| }
+| }
 |};
 |
 |
 |export default {
-|   components: {
-|       AgGridVue,
-|       // CubeComponent does not have to be registered here when registering by direct reference
-|   }
-|   data() {
-|       return {
-|           columnDefs: [
-|                {
-|                   headerName: "Cube",
-|                   field: "value",
-|                   cellRenderer: CubeComponent
-|               }
-|           ]
-|       }
-|   }
-|   //...other properties & methods
+| components: {
+| AgGridVue,
+| // CubeComponent does not have to be registered here when registering by direct reference
+| }
+| data() {
+| return {
+| columnDefs: [
+| {
+| headerName: "Cube",
+| field: "value",
+| cellRenderer: CubeComponent
+| }
+| ]
+| }
+| }
+| //...other properties & methods
 |}
 |</script>

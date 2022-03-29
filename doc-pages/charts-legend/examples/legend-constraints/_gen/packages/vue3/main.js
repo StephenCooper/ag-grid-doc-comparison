@@ -1,10 +1,10 @@
-import { createApp } from 'vue';
-import { cloneDeep } from 'lodash';
-import * as agCharts from 'ag-charts-community';
-import { AgChartsVue } from 'ag-charts-vue3';
+import { createApp } from "vue";
+import { cloneDeep } from "lodash";
+import * as agCharts from "ag-charts-community";
+import { AgChartsVue } from "ag-charts-vue3";
 
 const ChartExample = {
-    template: `
+  template: `
         <div class="wrapper">
                 <div class="toolPanel">
                     <div class="slider">
@@ -31,93 +31,88 @@ const ChartExample = {
                 :options="options"></ag-charts-vue>
             </div>
     `,
-    components: {
-        'ag-charts-vue': AgChartsVue
-    },
-    data: function() {
-        return {
-            options: null
-        }
-    },
-    created() {
-        this.options = {
-    
-    data: [
-        { label: 'USA', value: 56.9 },
-        { label: 'UK', value: 22.5 },
-        { label: 'China', value: 6.8 },
-        { label: 'Russia', value: 8.5 },
-        { label: 'India', value: 2.6 },
-        { label: 'Germany', value: 18.2 },
-        { label: 'France', value: 12.5 },
-        { label: 'Canada', value: 3.9 },
-        { label: 'Spain', value: 7.9 },
-        { label: 'South Africa', value: 21.9 },
-        { label: 'Portugal', value: 7.4 },
-        { label: 'Netherlands', value: 4.7 },
-        { label: 'Finland', value: 3.9 },
-        { label: 'Sweden', value: 3.3 },
-        { label: 'Norway', value: 3.2 },
-        { label: 'Greece', value: 1.9 },
-        { label: 'Italy', value: 2.5 },
-    ],
-    series: [
+  components: {
+    "ag-charts-vue": AgChartsVue,
+  },
+  data: function () {
+    return {
+      options: null,
+    };
+  },
+  created() {
+    this.options = {
+      data: [
+        { label: "USA", value: 56.9 },
+        { label: "UK", value: 22.5 },
+        { label: "China", value: 6.8 },
+        { label: "Russia", value: 8.5 },
+        { label: "India", value: 2.6 },
+        { label: "Germany", value: 18.2 },
+        { label: "France", value: 12.5 },
+        { label: "Canada", value: 3.9 },
+        { label: "Spain", value: 7.9 },
+        { label: "South Africa", value: 21.9 },
+        { label: "Portugal", value: 7.4 },
+        { label: "Netherlands", value: 4.7 },
+        { label: "Finland", value: 3.9 },
+        { label: "Sweden", value: 3.3 },
+        { label: "Norway", value: 3.2 },
+        { label: "Greece", value: 1.9 },
+        { label: "Italy", value: 2.5 },
+      ],
+      series: [
         {
-            type: 'pie',
-            angleKey: 'value',
-            labelKey: 'label',
-            strokeWidth: 3,
+          type: "pie",
+          angleKey: "value",
+          labelKey: "label",
+          strokeWidth: 3,
         },
-    ],
-    legend: {
-        position: 'bottom',
+      ],
+      legend: {
+        position: "bottom",
         item: {
-            paddingX: 32,
-            paddingY: 8,
-            marker: {
-                padding: 8,
-            },
+          paddingX: 32,
+          paddingY: 8,
+          marker: {
+            padding: 8,
+          },
         },
+      },
+    };
+  },
+  mounted() {},
+  methods: {
+    updateLegendItemPaddingX(event) {
+      const options = cloneDeep(this.options);
+
+      var value = +event.target.value;
+      options.legend.item.paddingX = value;
+
+      document.getElementById("xPaddingValue").innerHTML = String(value);
+
+      this.options = options;
     },
-}
+    updateLegendItemPaddingY(event) {
+      const options = cloneDeep(this.options);
+
+      var value = event.target.value;
+      options.legend.item.paddingY = +event.target.value;
+
+      document.getElementById("yPaddingValue").innerHTML = String(value);
+
+      this.options = options;
     },
-    mounted() {
-        
+    updateLegendItemSpacing(event) {
+      const options = cloneDeep(this.options);
+
+      var value = +event.target.value;
+      options.legend.item.marker.padding = value;
+
+      document.getElementById("markerPaddingValue").innerHTML = String(value);
+
+      this.options = options;
     },
-    methods: {
-        updateLegendItemPaddingX(event) {
-const options = cloneDeep(this.options);
-
-    var value = +event.target.value;
-    options.legend.item.paddingX = value;
-    
-    document.getElementById('xPaddingValue').innerHTML = String(value);
-
-this.options = options;
-},
-updateLegendItemPaddingY(event) {
-const options = cloneDeep(this.options);
-
-    var value = event.target.value;
-    options.legend.item.paddingY = +event.target.value;
-    
-    document.getElementById('yPaddingValue').innerHTML = String(value);
-
-this.options = options;
-},
-updateLegendItemSpacing(event) {
-const options = cloneDeep(this.options);
-
-    var value = +event.target.value;
-    options.legend.item.marker.padding = value;
-    
-    document.getElementById('markerPaddingValue').innerHTML = String(value);
-
-this.options = options;
-},
-    }
-}
-
-
+  },
+};
 
 createApp(ChartExample).mount("#app");

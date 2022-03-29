@@ -1,21 +1,23 @@
-
-import { createApp } from 'vue';
-import { AgGridVue } from '@ag-grid-community/vue3';
-import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import { createApp } from "vue";
+import { AgGridVue } from "@ag-grid-community/vue3";
+import "@ag-grid-community/core/dist/styles/ag-grid.css";
 import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { ModuleRegistry } from '@ag-grid-community/core';
-import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
-import { MenuModule } from '@ag-grid-enterprise/menu';
-import { SetFilterModule } from '@ag-grid-enterprise/set-filter';
-import { RowGroupingModule } from '@ag-grid-enterprise/row-grouping';
+import { ModuleRegistry } from "@ag-grid-community/core";
+import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
+import { MenuModule } from "@ag-grid-enterprise/menu";
+import { SetFilterModule } from "@ag-grid-enterprise/set-filter";
+import { RowGroupingModule } from "@ag-grid-enterprise/row-grouping";
 
 // Register the required feature modules with the Grid
-ModuleRegistry.registerModules([ClientSideRowModelModule, MenuModule, SetFilterModule, RowGroupingModule])
-
-
+ModuleRegistry.registerModules([
+  ClientSideRowModelModule,
+  MenuModule,
+  SetFilterModule,
+  RowGroupingModule,
+]);
 
 const VueExample = {
-    template: `
+  template: `
         <div style="height: 100%">
             <div class="example-wrapper">
                 <div style="margin-bottom: 1rem;">
@@ -37,78 +39,80 @@ const VueExample = {
             </div>
         </div>
     `,
-    components: {
-        'ag-grid-vue': AgGridVue,
-        
+  components: {
+    "ag-grid-vue": AgGridVue,
+  },
+  data: function () {
+    return {
+      columnDefs: [
+        { field: "country", rowGroup: true, hide: true },
+        { field: "athlete", minWidth: 180 },
+        { field: "age" },
+        { field: "year" },
+        { field: "date", minWidth: 150 },
+        { field: "sport", minWidth: 150 },
+        { field: "gold" },
+        { field: "silver" },
+        { field: "bronze" },
+        { field: "total" },
+      ],
+      gridApi: null,
+      columnApi: null,
+      defaultColDef: {
+        flex: 1,
+        minWidth: 100,
+        sortable: true,
+        filter: true,
+      },
+      autoGroupColumnDef: null,
+      groupDefaultExpanded: null,
+      rowData: null,
+    };
+  },
+  created() {
+    this.autoGroupColumnDef = {
+      minWidth: 200,
+    };
+    this.groupDefaultExpanded = 1;
+  },
+  methods: {
+    onBtForEachNode() {
+      console.log("### api.forEachNode() ###");
+      this.gridApi.forEachNode(printNode);
     },
-    data: function() {
-        return {
-            columnDefs: [{field:"country",
-rowGroup:true,
-hide:true},{field:"athlete",
-minWidth:180},{field:"age"},{field:"year"},{field:"date",
-minWidth:150},{field:"sport",
-minWidth:150},{field:"gold"},{field:"silver"},{field:"bronze"},{field:"total"}],
-            gridApi: null,
-            columnApi: null,
-            defaultColDef: {
-    flex: 1,
-    minWidth: 100,
-    sortable: true,
-    filter: true,
-},
-            autoGroupColumnDef: null,
-groupDefaultExpanded: null,
-rowData: null
-        }
+    onBtForEachNodeAfterFilter() {
+      console.log("### api.forEachNodeAfterFilter() ###");
+      this.gridApi.forEachNodeAfterFilter(printNode);
     },
-    created() {
-        this.autoGroupColumnDef = {
-    minWidth: 200,
-};
-this.groupDefaultExpanded = 1
+    onBtForEachNodeAfterFilterAndSort() {
+      console.log("### api.forEachNodeAfterFilterAndSort() ###");
+      this.gridApi.forEachNodeAfterFilterAndSort(printNode);
     },
-    methods: {
-        onBtForEachNode() {
-    console.log('### api.forEachNode() ###');
-    this.gridApi.forEachNode(printNode);
-},
-onBtForEachNodeAfterFilter() {
-    console.log('### api.forEachNodeAfterFilter() ###');
-    this.gridApi.forEachNodeAfterFilter(printNode);
-},
-onBtForEachNodeAfterFilterAndSort() {
-    console.log('### api.forEachNodeAfterFilterAndSort() ###');
-    this.gridApi.forEachNodeAfterFilterAndSort(printNode);
-},
-onBtForEachLeafNode() {
-    console.log('### api.forEachLeafNode() ###');
-    this.gridApi.forEachLeafNode(printNode);
-},
-onGridReady(params) {
-        this.gridApi = params.api;
-        this.gridColumnApi = params.columnApi;
-        
+    onBtForEachLeafNode() {
+      console.log("### api.forEachLeafNode() ###");
+      this.gridApi.forEachLeafNode(printNode);
+    },
+    onGridReady(params) {
+      this.gridApi = params.api;
+      this.gridColumnApi = params.columnApi;
 
-        
-            const updateData = (data) => params.api.setRowData(data.slice(0, 50));
-            
-            fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
-                .then(resp => resp.json())
-                .then(data => updateData(data));
+      const updateData = (data) => params.api.setRowData(data.slice(0, 50));
+
+      fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+        .then((resp) => resp.json())
+        .then((data) => updateData(data));
     },
-    }
-}
+  },
+};
 
 const printNode = (node, index) => {
-    if (node.group) {
-        console.log(index + ' -> group: ' + node.key);
-    }
-    else {
-        console.log(index + ' -> data: ' + node.data.country + ', ' + node.data.athlete);
-    }
+  if (node.group) {
+    console.log(index + " -> group: " + node.key);
+  } else {
+    console.log(
+      index + " -> data: " + node.data.country + ", " + node.data.athlete
+    );
+  }
 };
 
-createApp(VueExample)
-    .mount("#app")
-
+createApp(VueExample).mount("#app");

@@ -1,17 +1,16 @@
-
 const columnDefs = [
-  { field: 'athlete', width: 150, rowGroupIndex: 0 },
-  { field: 'age', width: 90, rowGroupIndex: 1 },
-  { field: 'country', width: 120, rowGroupIndex: 2 },
-  { field: 'year', width: 90 },
-  { field: 'date', width: 110, rowGroupIndex: 2 },
-]
+  { field: "athlete", width: 150, rowGroupIndex: 0 },
+  { field: "age", width: 90, rowGroupIndex: 1 },
+  { field: "country", width: 120, rowGroupIndex: 2 },
+  { field: "year", width: 90 },
+  { field: "date", width: 110, rowGroupIndex: 2 },
+];
 
 const gridOptions = {
   columnDefs: columnDefs,
   rowData: null,
   animateRows: false,
-  groupDisplayType: 'groupRows',
+  groupDisplayType: "groupRows",
   onRowGroupOpened: onRowGroupOpened,
   defaultColDef: {
     editable: true,
@@ -21,24 +20,24 @@ const gridOptions = {
     flex: 1,
     minWidth: 100,
   },
-}
+};
 
 function onRowGroupOpened(event) {
-  var rowNodeIndex = event.node.rowIndex
+  var rowNodeIndex = event.node.rowIndex;
   // factor in child nodes so we can scroll to correct position
   var childCount = event.node.childrenAfterSort
     ? event.node.childrenAfterSort.length
-    : 0
-  var newIndex = rowNodeIndex + childCount
-  gridOptions.api.ensureIndexVisible(newIndex)
+    : 0;
+  var newIndex = rowNodeIndex + childCount;
+  gridOptions.api.ensureIndexVisible(newIndex);
 }
 
 // setup the grid after the page has finished loading
-document.addEventListener('DOMContentLoaded', function () {
-  var gridDiv = document.querySelector('#myGrid')
-  new agGrid.Grid(gridDiv, gridOptions)
+document.addEventListener("DOMContentLoaded", function () {
+  var gridDiv = document.querySelector("#myGrid");
+  new agGrid.Grid(gridDiv, gridOptions);
 
-  fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
-    .then(response => response.json())
-    .then(data => gridOptions.api.setRowData(data))
-})
+  fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+    .then((response) => response.json())
+    .then((data) => gridOptions.api.setRowData(data));
+});

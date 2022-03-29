@@ -1,18 +1,17 @@
-
 const options = {
-  container: document.getElementById('myChart'),
+  container: document.getElementById("myChart"),
   title: {
-    text: 'Race demographics',
+    text: "Race demographics",
   },
   subtitle: {
-    text: 'Number of participants by age',
+    text: "Number of participants by age",
   },
   data: getData(),
   series: [
     {
-      type: 'histogram',
-      xKey: 'age',
-      xName: 'Participant Age',
+      type: "histogram",
+      xKey: "age",
+      xName: "Participant Age",
       binCount: 20,
     },
   ],
@@ -21,16 +20,16 @@ const options = {
   },
   axes: [
     {
-      type: 'number',
-      position: 'bottom',
-      title: { text: 'Age (years)' },
+      type: "number",
+      position: "bottom",
+      title: { text: "Age (years)" },
     },
     {
-      type: 'number',
-      position: 'left',
-      title: { text: 'Number of participants' },
+      type: "number",
+      position: "left",
+      title: { text: "Number of participants" },
     },
   ],
-}
+};
 
-agCharts.AgChart.create(options)
+agCharts.AgChart.create(options);

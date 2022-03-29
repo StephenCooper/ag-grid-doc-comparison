@@ -1,18 +1,15 @@
-
-import Vue from 'vue';
-import { AgGridVue } from '@ag-grid-community/vue';
-import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import Vue from "vue";
+import { AgGridVue } from "@ag-grid-community/vue";
+import "@ag-grid-community/core/dist/styles/ag-grid.css";
 import "@ag-grid-community/core/dist/styles/ag-theme-alpine-dark.css";
-import { ModuleRegistry } from '@ag-grid-community/core';
-import { ServerSideRowModelModule } from '@ag-grid-enterprise/server-side-row-model';
+import { ModuleRegistry } from "@ag-grid-community/core";
+import { ServerSideRowModelModule } from "@ag-grid-enterprise/server-side-row-model";
 
 // Register the required feature modules with the Grid
-ModuleRegistry.registerModules([ServerSideRowModelModule])
-
-
+ModuleRegistry.registerModules([ServerSideRowModelModule]);
 
 const VueExample = {
-    template: `
+  template: `
         <div style="height: 100%">
             <div class="example-wrapper">
                 <div style="margin-bottom: 5px;">
@@ -35,123 +32,122 @@ const VueExample = {
             </div>
         </div>
     `,
-    components: {
-        'ag-grid-vue': AgGridVue,
-        
-    },
-    data: function() {
-        return {
-            columnDefs: [{field:"product"},{field:"value"}],
-            gridApi: null,
-            columnApi: null,
-            defaultColDef: {
-    width: 250,
-    resizable: true,
-},
-            rowSelection: null,
-serverSideStoreType: null,
-rowModelType: null,
-asyncTransactionWaitMillis: null,
-getRowId: null
-        }
-    },
-    created() {
-        this.rowSelection = 'multiple';
-this.serverSideStoreType = 'full';
-this.rowModelType = 'serverSide';
-this.asyncTransactionWaitMillis = 4000;
-this.getRowId = (params) => {
-    return params.data.product;
-}
-    },
-    methods: {
-        onBtAdd() {
-    var newProductName = all_products[Math.floor(all_products.length * Math.random())];
-    var newItem = {
-        product: newProductName + ' ' + newProductSequence++,
+  components: {
+    "ag-grid-vue": AgGridVue,
+  },
+  data: function () {
+    return {
+      columnDefs: [{ field: "product" }, { field: "value" }],
+      gridApi: null,
+      columnApi: null,
+      defaultColDef: {
+        width: 250,
+        resizable: true,
+      },
+      rowSelection: null,
+      serverSideStoreType: null,
+      rowModelType: null,
+      asyncTransactionWaitMillis: null,
+      getRowId: null,
+    };
+  },
+  created() {
+    this.rowSelection = "multiple";
+    this.serverSideStoreType = "full";
+    this.rowModelType = "serverSide";
+    this.asyncTransactionWaitMillis = 4000;
+    this.getRowId = (params) => {
+      return params.data.product;
+    };
+  },
+  methods: {
+    onBtAdd() {
+      var newProductName =
+        all_products[Math.floor(all_products.length * Math.random())];
+      var newItem = {
+        product: newProductName + " " + newProductSequence++,
         value: Math.floor(Math.random() * 10000),
-    };
-    allServerSideData.push(newItem);
-    var tx = {
+      };
+      allServerSideData.push(newItem);
+      var tx = {
         add: [newItem],
-    };
-    this.gridApi.applyServerSideTransactionAsync(tx, function (res) {
-        console.log('Transaction "' + newProductName + '": status = ' + res.status);
-    });
-},
-onBtFlush() {
-    this.gridApi.flushServerSideAsyncTransactions();
-},
-onGridReady(params) {
-        this.gridApi = params.api;
-        this.gridColumnApi = params.columnApi;
-        
-
-        
-    setupData();
-    var dataSource = {
-        getRows: function (params2) {
-            var rowData = allServerSideData.slice();
-            setTimeout(function () {
-                params2.success({ rowData: rowData });
-            }, 200);
-        },
-    };
-    params.api.setServerSideDatasource(dataSource);
-
+      };
+      this.gridApi.applyServerSideTransactionAsync(tx, function (res) {
+        console.log(
+          'Transaction "' + newProductName + '": status = ' + res.status
+        );
+      });
     },
-    }
-}
+    onBtFlush() {
+      this.gridApi.flushServerSideAsyncTransactions();
+    },
+    onGridReady(params) {
+      this.gridApi = params.api;
+      this.gridColumnApi = params.columnApi;
+
+      setupData();
+      var dataSource = {
+        getRows: function (params2) {
+          var rowData = allServerSideData.slice();
+          setTimeout(function () {
+            params2.success({ rowData: rowData });
+          }, 200);
+        },
+      };
+      params.api.setServerSideDatasource(dataSource);
+    },
+  },
+};
 
 window.setupData = function setupData() {
-    products.forEach(function (product, index) {
-        allServerSideData.push({
-            product: product,
-            value: Math.floor(Math.random() * 10000),
-        });
+  products.forEach(function (product, index) {
+    allServerSideData.push({
+      product: product,
+      value: Math.floor(Math.random() * 10000),
     });
-}
+  });
+};
 
-var products = ['Palm Oil', 'Rubber', 'Wool', 'Amber', 'Copper'];
+var products = ["Palm Oil", "Rubber", "Wool", "Amber", "Copper"];
 
 var newProductSequence = 0;
 
 var all_products = [
-    'Palm Oil',
-    'Rubber',
-    'Wool',
-    'Amber',
-    'Copper',
-    'Lead',
-    'Zinc',
-    'Tin',
-    'Aluminium',
-    'Aluminium Alloy',
-    'Nickel',
-    'Cobalt',
-    'Molybdenum',
-    'Recycled Steel',
-    'Corn',
-    'Oats',
-    'Rough Rice',
-    'Soybeans',
-    'Rapeseed',
-    'Soybean Meal',
-    'Soybean Oil',
-    'Wheat',
-    'Milk',
-    'Coca',
-    'Coffee C',
-    'Cotton No.2',
-    'Sugar No.11',
-    'Sugar No.14',
+  "Palm Oil",
+  "Rubber",
+  "Wool",
+  "Amber",
+  "Copper",
+  "Lead",
+  "Zinc",
+  "Tin",
+  "Aluminium",
+  "Aluminium Alloy",
+  "Nickel",
+  "Cobalt",
+  "Molybdenum",
+  "Recycled Steel",
+  "Corn",
+  "Oats",
+  "Rough Rice",
+  "Soybeans",
+  "Rapeseed",
+  "Soybean Meal",
+  "Soybean Oil",
+  "Wheat",
+  "Milk",
+  "Coca",
+  "Coffee C",
+  "Cotton No.2",
+  "Sugar No.11",
+  "Sugar No.14",
 ];
 
 var allServerSideData = [];
 
 new Vue({
-    el: '#app',
-    components: {
-        'my-component': VueExample
-    }
+  el: "#app",
+  components: {
+    "my-component": VueExample,
+  },
 });

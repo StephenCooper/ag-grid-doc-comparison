@@ -1,14 +1,11 @@
-
-import { createApp } from 'vue';
-import { AgGridVue } from 'ag-grid-vue3';
-import 'ag-grid-enterprise';
-import 'ag-grid-community/dist/styles/ag-grid.css';
-import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
-
-
+import { createApp } from "vue";
+import { AgGridVue } from "ag-grid-vue3";
+import "ag-grid-enterprise";
+import "ag-grid-community/dist/styles/ag-grid.css";
+import "ag-grid-community/dist/styles/ag-theme-alpine.css";
 
 const VueExample = {
-    template: `
+  template: `
         <div style="height: 100%">
             <div class="container">
                 <div>
@@ -32,123 +29,124 @@ const VueExample = {
             </div>
         </div>
     `,
-    components: {
-        'ag-grid-vue': AgGridVue,
-        
-    },
-    data: function() {
-        return {
-            columnDefs: [{field:"name",
-cellRenderer:"agGroupCellRenderer"},{field:"account"},{field:"calls"},{field:"minutes",
-valueFormatter:"x.toLocaleString() + 'm'"}],
-            gridApi: null,
-            columnApi: null,
-            defaultColDef: {
-    flex: 1,
-},
-            defaultCsvExportParams: null,
-defaultExcelExportParams: null,
-detailCellRendererParams: null,
-excelStyles: null,
-rowData: null
-        }
-    },
-    created() {
-        this.defaultCsvExportParams = {
-    getCustomContentBelowRow: (params) => getCells(params),
-};
-this.defaultExcelExportParams = {
-    getCustomContentBelowRow: (params) => getCells(params),
-    columnWidth: 120,
-};
-this.detailCellRendererParams = {
-    detailGridOptions: {
+  components: {
+    "ag-grid-vue": AgGridVue,
+  },
+  data: function () {
+    return {
+      columnDefs: [
+        { field: "name", cellRenderer: "agGroupCellRenderer" },
+        { field: "account" },
+        { field: "calls" },
+        { field: "minutes", valueFormatter: "x.toLocaleString() + 'm'" },
+      ],
+      gridApi: null,
+      columnApi: null,
+      defaultColDef: {
+        flex: 1,
+      },
+      defaultCsvExportParams: null,
+      defaultExcelExportParams: null,
+      detailCellRendererParams: null,
+      excelStyles: null,
+      rowData: null,
+    };
+  },
+  created() {
+    this.defaultCsvExportParams = {
+      getCustomContentBelowRow: (params) => getCells(params),
+    };
+    this.defaultExcelExportParams = {
+      getCustomContentBelowRow: (params) => getCells(params),
+      columnWidth: 120,
+    };
+    this.detailCellRendererParams = {
+      detailGridOptions: {
         columnDefs: [
-            { field: 'callId' },
-            { field: 'direction' },
-            { field: 'number', minWidth: 150 },
-            { field: 'duration', valueFormatter: "x.toLocaleString() + 's'" },
-            { field: 'switchCode', minWidth: 150 },
+          { field: "callId" },
+          { field: "direction" },
+          { field: "number", minWidth: 150 },
+          { field: "duration", valueFormatter: "x.toLocaleString() + 's'" },
+          { field: "switchCode", minWidth: 150 },
         ],
         defaultColDef: {
-            flex: 1,
+          flex: 1,
         },
-    },
-    getDetailRowData: (params) => {
+      },
+      getDetailRowData: (params) => {
         params.successCallback(params.data.callRecords);
-    },
-};
-this.excelStyles = [
-    {
-        id: 'header',
+      },
+    };
+    this.excelStyles = [
+      {
+        id: "header",
         interior: {
-            color: '#aaaaaa',
-            pattern: 'Solid',
+          color: "#aaaaaa",
+          pattern: "Solid",
         },
-    },
-    {
-        id: 'body',
+      },
+      {
+        id: "body",
         interior: {
-            color: '#dddddd',
-            pattern: 'Solid',
+          color: "#dddddd",
+          pattern: "Solid",
         },
+      },
+    ];
+  },
+  methods: {
+    onBtExport() {
+      this.gridApi.exportDataAsExcel();
     },
-]
-    },
-    methods: {
-        onBtExport() {
-    this.gridApi.exportDataAsExcel();
-},
-onGridReady(params) {
-        this.gridApi = params.api;
-        this.gridColumnApi = params.columnApi;
-        
+    onGridReady(params) {
+      this.gridApi = params.api;
+      this.gridColumnApi = params.columnApi;
 
-        
-            const updateData = (data) => {
-    this.rowData = data;
-};
-            
-            fetch('https://www.ag-grid.com/example-assets/master-detail-data.json')
-                .then(resp => resp.json())
-                .then(data => updateData(data));
+      const updateData = (data) => {
+        this.rowData = data;
+      };
+
+      fetch("https://www.ag-grid.com/example-assets/master-detail-data.json")
+        .then((resp) => resp.json())
+        .then((data) => updateData(data));
     },
-    }
-}
+  },
+};
 
 window.cell = function cell(text, styleId) {
-    return {
-        styleId: styleId,
-        data: {
-            type: /^\d+$/.test(text) ? 'Number' : 'String',
-            value: String(text),
-        },
-    };
-}
-
-var getCells = (params) => {
-    const cells = [
-        [
-            cell(''),
-            cell('Call Id', 'header'),
-            cell('Direction', 'header'),
-            cell('Number', 'header'),
-            cell('Duration', 'header'),
-            cell('Switch Code', 'header'),
-        ],
-    ].concat(params.node.data.callRecords.map(function (record) {
-        return [
-            cell(''),
-            cell(record.callId, 'body'),
-            cell(record.direction, 'body'),
-            cell(record.number, 'body'),
-            cell(record.duration, 'body'),
-            cell(record.switchCode, 'body'),
-        ];
-    }), [[]]);
-    return cells;
+  return {
+    styleId: styleId,
+    data: {
+      type: /^\d+$/.test(text) ? "Number" : "String",
+      value: String(text),
+    },
+  };
 };
 
-createApp(VueExample)
-    .mount("#app")
+var getCells = (params) => {
+  const cells = [
+    [
+      cell(""),
+      cell("Call Id", "header"),
+      cell("Direction", "header"),
+      cell("Number", "header"),
+      cell("Duration", "header"),
+      cell("Switch Code", "header"),
+    ],
+  ].concat(
+    params.node.data.callRecords.map(function (record) {
+      return [
+        cell(""),
+        cell(record.callId, "body"),
+        cell(record.direction, "body"),
+        cell(record.number, "body"),
+        cell(record.duration, "body"),
+        cell(record.switchCode, "body"),
+      ];
+    }),
+    [[]]
+  );
+  return cells;
+};
 
+createApp(VueExample).mount("#app");

@@ -1,14 +1,11 @@
-
-import Vue from 'vue';
-import { AgGridVue } from 'ag-grid-vue';
-import 'ag-grid-enterprise';
-import 'ag-grid-community/dist/styles/ag-grid.css';
-import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
-
-
+import Vue from "vue";
+import { AgGridVue } from "ag-grid-vue";
+import "ag-grid-enterprise";
+import "ag-grid-community/dist/styles/ag-grid.css";
+import "ag-grid-community/dist/styles/ag-theme-alpine.css";
 
 const VueExample = {
-    template: `
+  template: `
         <div style="height: 100%">
             <div class="example-wrapper">
                 <div style="margin-bottom: 5px;">
@@ -28,65 +25,63 @@ const VueExample = {
             </div>
         </div>
     `,
-    components: {
-        'ag-grid-vue': AgGridVue,
-        
+  components: {
+    "ag-grid-vue": AgGridVue,
+  },
+  data: function () {
+    return {
+      columnDefs: [
+        { field: "country", rowGroup: true, hide: true },
+        { field: "year", rowGroup: true, hide: true },
+        { field: "gold" },
+        { field: "silver" },
+        { field: "bronze" },
+      ],
+      gridApi: null,
+      columnApi: null,
+      defaultColDef: {
+        flex: 1,
+        minWidth: 150,
+        resizable: true,
+      },
+      rowData: null,
+    };
+  },
+  created() {
+    this.rowData = getData();
+  },
+  methods: {
+    expandAll() {
+      this.gridApi.expandAll();
     },
-    data: function() {
-        return {
-            columnDefs: [{field:"country",
-rowGroup:true,
-hide:true},{field:"year",
-rowGroup:true,
-hide:true},{field:"gold"},{field:"silver"},{field:"bronze"}],
-            gridApi: null,
-            columnApi: null,
-            defaultColDef: {
-    flex: 1,
-    minWidth: 150,
-    resizable: true,
-},
-            rowData: null
-        }
+    collapseAll() {
+      this.gridApi.collapseAll();
     },
-    created() {
-        this.rowData = getData()
-    },
-    methods: {
-        expandAll() {
-    this.gridApi.expandAll();
-},
-collapseAll() {
-    this.gridApi.collapseAll();
-},
-expandCountries() {
-    this.gridApi.forEachNode(node => {
+    expandCountries() {
+      this.gridApi.forEachNode((node) => {
         if (node.level === 0) {
-            node.setExpanded(true);
+          node.setExpanded(true);
         }
-    });
-},
-expand2000() {
-    this.gridApi.forEachNode(node => {
-        if (node.key === '2000') {
-            node.parent.setExpanded(true); // ensure parent 'country' group is also expanded
-            node.setExpanded(true);
-        }
-    });
-},
-onGridReady(params) {
-        this.gridApi = params.api;
-        this.gridColumnApi = params.columnApi;
-        
+      });
     },
-    }
-}
-
-
+    expand2000() {
+      this.gridApi.forEachNode((node) => {
+        if (node.key === "2000") {
+          node.parent.setExpanded(true); // ensure parent 'country' group is also expanded
+          node.setExpanded(true);
+        }
+      });
+    },
+    onGridReady(params) {
+      this.gridApi = params.api;
+      this.gridColumnApi = params.columnApi;
+    },
+  },
+};
 
 new Vue({
-    el: '#app',
-    components: {
-        'my-component': VueExample
-    }
+  el: "#app",
+  components: {
+    "my-component": VueExample,
+  },
 });

@@ -57,14 +57,14 @@ So why would you want to align grids like this? It's great for aligning grids th
 
 This example is a bit more useful. In the bottom grid, we show a summary row. Also note the following:
 
-- The top grid has no horizontal scroll bar, suppressed via a grid option*.
+- The top grid has no horizontal scroll bar, suppressed via a grid option\*.
 - The bottom grid has no header, suppressed via a grid option.
 - sizeColumnsToFit is only called on the top grid, the bottom grid receives the new column widths from the top grid.
 
 <grid-example title='Aligned Grid as Footer' name='aligned-floating-footer' type='multi'></grid-example>
 
 [[note]]
-| * The property `suppressHorizontalScroll` does not work with the browser Edge.
+| \* The property `suppressHorizontalScroll` does not work with the browser Edge.
 | If you are targeting Edge there is currently no way to hide the scrollbar.
 | The technique AG Grid uses is to set the CSS overflow
 | property to 'hidden' (rather than 'auto'). In all other browsers, this technique works, however

@@ -1,4 +1,3 @@
-
 const options = {
   container: document.getElementById("myChart"),
   autoSize: true,
@@ -91,7 +90,7 @@ const options = {
         fontWeight: "bold",
         fontSize: 14,
         fontFamily: "Impact, Charcoal, Sans-Serif",
-        formatter: params =>
+        formatter: (params) =>
           params.index % 2 === 1 ? params.value / 1000 + "k" : "",
       },
       title: {
@@ -127,6 +126,6 @@ const options = {
     },
     spacing: 10,
   },
-}
+};
 
-var chart = agCharts.AgChart.create(options)
+var chart = agCharts.AgChart.create(options);

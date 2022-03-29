@@ -1,30 +1,29 @@
-
 const columnDefs = [
-  { field: 'country', width: 150, chartDataType: 'category' },
-  { field: 'gold', chartDataType: 'series' },
-  { field: 'silver', chartDataType: 'series' },
-  { field: 'bronze', chartDataType: 'series' },
+  { field: "country", width: 150, chartDataType: "category" },
+  { field: "gold", chartDataType: "series" },
+  { field: "silver", chartDataType: "series" },
+  { field: "bronze", chartDataType: "series" },
   {
-    headerName: 'A',
-    valueGetter: 'Math.floor(Math.random()*1000)',
-    chartDataType: 'series',
+    headerName: "A",
+    valueGetter: "Math.floor(Math.random()*1000)",
+    chartDataType: "series",
   },
   {
-    headerName: 'B',
-    valueGetter: 'Math.floor(Math.random()*1000)',
-    chartDataType: 'series',
+    headerName: "B",
+    valueGetter: "Math.floor(Math.random()*1000)",
+    chartDataType: "series",
   },
   {
-    headerName: 'C',
-    valueGetter: 'Math.floor(Math.random()*1000)',
-    chartDataType: 'series',
+    headerName: "C",
+    valueGetter: "Math.floor(Math.random()*1000)",
+    chartDataType: "series",
   },
   {
-    headerName: 'D',
-    valueGetter: 'Math.floor(Math.random()*1000)',
-    chartDataType: 'series',
+    headerName: "D",
+    valueGetter: "Math.floor(Math.random()*1000)",
+    chartDataType: "series",
   },
-]
+];
 
 const gridOptions = {
   defaultColDef: {
@@ -43,79 +42,79 @@ const gridOptions = {
         number: {
           line: {
             width: 6,
-            color: 'black',
+            color: "black",
           },
           tick: {
             width: 2,
             size: 10,
-            color: 'gray',
+            color: "gray",
           },
           label: {
-            fontStyle: 'italic',
-            fontWeight: 'bold',
+            fontStyle: "italic",
+            fontWeight: "bold",
             fontSize: 15,
-            fontFamily: 'Arial, sans-serif',
-            color: '#de7b73',
+            fontFamily: "Arial, sans-serif",
+            color: "#de7b73",
             padding: 10,
             rotation: 20,
             formatter: function (params) {
-              return params.value.toString().toUpperCase()
+              return params.value.toString().toUpperCase();
             },
           },
           gridStyle: [
             {
-              stroke: 'rgba(94,100,178,0.5)',
+              stroke: "rgba(94,100,178,0.5)",
             },
           ],
           title: {
             enabled: true,
-            text: 'Tonnes',
-            fontStyle: 'italic',
-            fontWeight: 'bold',
+            text: "Tonnes",
+            fontStyle: "italic",
+            fontWeight: "bold",
             fontSize: 16,
-            fontFamily: 'Arial, sans-serif',
-            color: 'blue',
+            fontFamily: "Arial, sans-serif",
+            color: "blue",
           },
         },
         category: {
           line: {
             width: 2,
-            color: 'blue',
+            color: "blue",
           },
           tick: {
             width: 2,
             size: 10,
-            color: 'blue',
+            color: "blue",
           },
           label: {
-            fontStyle: 'italic',
-            fontWeight: 'bold',
+            fontStyle: "italic",
+            fontWeight: "bold",
             fontSize: 15,
-            fontFamily: 'Arial, sans-serif',
-            color: '#de7b73',
+            fontFamily: "Arial, sans-serif",
+            color: "#de7b73",
             padding: 10,
             rotation: -20,
             formatter: function (params) {
-              var value = String(params.value)
-              return value === 'United Kingdom' ? 'UK' : '(' + value + ')'
+              var value = String(params.value);
+              return value === "United Kingdom" ? "UK" : "(" + value + ")";
             },
           },
           gridStyle: [
             {
-              stroke: '#80808044',
+              stroke: "#80808044",
               lineDash: undefined,
             },
             {
-              stroke: '#80808044',
+              stroke: "#80808044",
               lineDash: [6, 3],
             },
           ],
           title: {
-            fontStyle: 'italic',
-            fontWeight: 'bold',
+            fontStyle: "italic",
+            fontWeight: "bold",
             fontSize: 16,
-            fontFamily: 'Arial, sans-serif',
-            color: 'blue',
+            fontFamily: "Arial, sans-serif",
+            color: "blue",
           },
         },
       },
@@ -125,14 +124,14 @@ const gridOptions = {
         min: 0.2,
         max: 1,
         mask: {
-          fill: 'lime',
-          stroke: 'black',
+          fill: "lime",
+          stroke: "black",
           strokeWidth: 2,
           fillOpacity: 0.3,
         },
         minHandle: {
-          fill: 'yellow',
-          stroke: 'blue',
+          fill: "yellow",
+          stroke: "blue",
           strokeWidth: 2,
           width: 12,
           height: 22,
@@ -140,8 +139,8 @@ const gridOptions = {
           gripLineLength: 12,
         },
         maxHandle: {
-          fill: 'yellow',
-          stroke: 'blue',
+          fill: "yellow",
+          stroke: "blue",
           strokeWidth: 2,
           width: 12,
           height: 22,
@@ -151,25 +150,25 @@ const gridOptions = {
       },
     },
   },
-}
+};
 
 function onFirstDataRendered(params) {
   var cellRange = {
     rowStartIndex: 0,
     rowEndIndex: 4,
-    columns: ['country', 'gold', 'silver', 'bronze'],
-  }
+    columns: ["country", "gold", "silver", "bronze"],
+  };
 
   var createRangeChartParams = {
     cellRange: cellRange,
-    chartType: 'groupedBar',
-  }
+    chartType: "groupedBar",
+  };
 
-  params.api.createRangeChart(createRangeChartParams)
+  params.api.createRangeChart(createRangeChartParams);
 }
 
 // setup the grid after the page has finished loading
-document.addEventListener('DOMContentLoaded', function () {
-  var gridDiv = document.querySelector('#myGrid')
-  new agGrid.Grid(gridDiv, gridOptions)
-})
+document.addEventListener("DOMContentLoaded", function () {
+  var gridDiv = document.querySelector("#myGrid");
+  new agGrid.Grid(gridDiv, gridOptions);
+});

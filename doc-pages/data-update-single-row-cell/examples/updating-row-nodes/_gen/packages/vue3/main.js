@@ -1,13 +1,10 @@
-
-import { createApp } from 'vue';
-import { AgGridVue } from 'ag-grid-vue3';
-import 'ag-grid-community/dist/styles/ag-grid.css';
-import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
-
-
+import { createApp } from "vue";
+import { AgGridVue } from "ag-grid-vue3";
+import "ag-grid-community/dist/styles/ag-grid.css";
+import "ag-grid-community/dist/styles/ag-theme-alpine.css";
 
 const VueExample = {
-    template: `
+  template: `
         <div style="height: 100%">
             <div class="example-wrapper">
                 <div style="margin-bottom: 1rem;">
@@ -29,74 +26,71 @@ const VueExample = {
             </div>
         </div>
     `,
-    components: {
-        'ag-grid-vue': AgGridVue,
-        
+  components: {
+    "ag-grid-vue": AgGridVue,
+  },
+  data: function () {
+    return {
+      columnDefs: [
+        { field: "make" },
+        { field: "model" },
+        { field: "price", filter: "agNumberColumnFilter" },
+      ],
+      gridApi: null,
+      columnApi: null,
+      defaultColDef: {
+        flex: 1,
+        editable: true,
+        sortable: true,
+        filter: true,
+      },
+      rowData: null,
+      getRowId: null,
+    };
+  },
+  created() {
+    this.rowData = [
+      { id: "aa", make: "Toyota", model: "Celica", price: 35000 },
+      { id: "bb", make: "Ford", model: "Mondeo", price: 32000 },
+      { id: "cc", make: "Porsche", model: "Boxter", price: 72000 },
+      { id: "dd", make: "BMW", model: "5 Series", price: 59000 },
+      { id: "ee", make: "Dodge", model: "Challanger", price: 35000 },
+      { id: "ff", make: "Mazda", model: "MX5", price: 28000 },
+      { id: "gg", make: "Horse", model: "Outside", price: 99000 },
+    ];
+    this.getRowId = (params) => {
+      return params.data.id;
+    };
+  },
+  methods: {
+    updateSort() {
+      this.gridApi.refreshClientSideRowModel("sort");
     },
-    data: function() {
-        return {
-            columnDefs: [{field:"make"},{field:"model"},{field:"price",
-filter:"agNumberColumnFilter"}],
-            gridApi: null,
-            columnApi: null,
-            defaultColDef: {
-    flex: 1,
-    editable: true,
-    sortable: true,
-    filter: true,
-},
-            rowData: null,
-getRowId: null
-        }
+    updateFilter() {
+      this.gridApi.refreshClientSideRowModel("filter");
     },
-    created() {
-        this.rowData = [
-    { id: 'aa', make: 'Toyota', model: 'Celica', price: 35000 },
-    { id: 'bb', make: 'Ford', model: 'Mondeo', price: 32000 },
-    { id: 'cc', make: 'Porsche', model: 'Boxter', price: 72000 },
-    { id: 'dd', make: 'BMW', model: '5 Series', price: 59000 },
-    { id: 'ee', make: 'Dodge', model: 'Challanger', price: 35000 },
-    { id: 'ff', make: 'Mazda', model: 'MX5', price: 28000 },
-    { id: 'gg', make: 'Horse', model: 'Outside', price: 99000 },
-];
-this.getRowId = (params) => {
-    return params.data.id;
-}
+    setPriceOnToyota() {
+      var rowNode = this.gridApi.getRowNode("aa");
+      var newPrice = Math.floor(Math.random() * 100000);
+      rowNode.setDataValue("price", newPrice);
     },
-    methods: {
-        updateSort() {
-    this.gridApi.refreshClientSideRowModel('sort');
-},
-updateFilter() {
-    this.gridApi.refreshClientSideRowModel('filter');
-},
-setPriceOnToyota() {
-    var rowNode = this.gridApi.getRowNode('aa');
-    var newPrice = Math.floor(Math.random() * 100000);
-    rowNode.setDataValue('price', newPrice);
-},
-setDataOnFord() {
-    var rowNode = this.gridApi.getRowNode('bb');
-    var newPrice = Math.floor(Math.random() * 100000);
-    var newModel = 'T-' + Math.floor(Math.random() * 1000);
-    var newData = {
-        id: 'bb',
-        make: 'Ford',
+    setDataOnFord() {
+      var rowNode = this.gridApi.getRowNode("bb");
+      var newPrice = Math.floor(Math.random() * 100000);
+      var newModel = "T-" + Math.floor(Math.random() * 1000);
+      var newData = {
+        id: "bb",
+        make: "Ford",
         model: newModel,
         price: newPrice,
-    };
-    rowNode.setData(newData);
-},
-onGridReady(params) {
-        this.gridApi = params.api;
-        this.gridColumnApi = params.columnApi;
-        
+      };
+      rowNode.setData(newData);
     },
-    }
-}
+    onGridReady(params) {
+      this.gridApi = params.api;
+      this.gridColumnApi = params.columnApi;
+    },
+  },
+};
 
-
-
-createApp(VueExample)
-    .mount("#app")
-
+createApp(VueExample).mount("#app");

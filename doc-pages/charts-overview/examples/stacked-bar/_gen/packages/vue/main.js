@@ -1,113 +1,110 @@
-import Vue from 'vue';
-import { cloneDeep } from 'lodash';
-import * as agCharts from 'ag-charts-community';
-import { AgChartsVue } from 'ag-charts-vue';
+import Vue from "vue";
+import { cloneDeep } from "lodash";
+import * as agCharts from "ag-charts-community";
+import { AgChartsVue } from "ag-charts-vue";
 
 const ChartExample = {
-    template: `
+  template: `
         <ag-charts-vue    
                 :options="options"></ag-charts-vue>
     `,
-    components: {
-        'ag-charts-vue': AgChartsVue
-    },
-    data: function() {
-        return {
-            options: null
-        }
-    },
-    created() {
-        this.options = {
-    
-    autoSize: true,
-    data: getData().sort((a, b) => {
+  components: {
+    "ag-charts-vue": AgChartsVue,
+  },
+  data: function () {
+    return {
+      options: null,
+    };
+  },
+  created() {
+    this.options = {
+      autoSize: true,
+      data: getData().sort((a, b) => {
         return getTotal(b) - getTotal(a);
-    }),
-    theme: {
+      }),
+      theme: {
         overrides: {
-            bar: {
+          bar: {
+            series: {
+              strokeWidth: 0,
+              highlightStyle: {
                 series: {
-                    strokeWidth: 0,
-                    highlightStyle: {
-                        series: {
-                            strokeWidth: 1,
-                            dimOpacity: 0.3,
-                        },
-                    },
+                  strokeWidth: 1,
+                  dimOpacity: 0.3,
                 },
+              },
             },
+          },
         },
-    },
-    title: {
+      },
+      title: {
         text: "UK Housing Stock (2016)",
         fontSize: 18,
-    },
-    subtitle: {
+      },
+      subtitle: {
         text: "Source: Ministry of Housing, Communities & Local Government",
-    },
-    series: [
+      },
+      series: [
         {
-            type: "bar",
-            xKey: "type",
-            yKey: "ownerOccupied",
-            yName: "Owner occupied",
-            stacked: true,
+          type: "bar",
+          xKey: "type",
+          yKey: "ownerOccupied",
+          yName: "Owner occupied",
+          stacked: true,
         },
         {
-            type: "bar",
-            xKey: "type",
-            yKey: "privateRented",
-            yName: "Private rented",
-            stacked: true,
+          type: "bar",
+          xKey: "type",
+          yKey: "privateRented",
+          yName: "Private rented",
+          stacked: true,
         },
         {
-            type: "bar",
-            xKey: "type",
-            yKey: "localAuthority",
-            yName: "Local authority",
-            stacked: true,
+          type: "bar",
+          xKey: "type",
+          yKey: "localAuthority",
+          yName: "Local authority",
+          stacked: true,
         },
         {
-            type: "bar",
-            xKey: "type",
-            yKey: "housingAssociation",
-            yName: "Housing association",
-            stacked: true,
+          type: "bar",
+          xKey: "type",
+          yKey: "housingAssociation",
+          yName: "Housing association",
+          stacked: true,
         },
-    ],
-    axes: [
+      ],
+      axes: [
         {
-            type: "category",
-            position: "left",
+          type: "category",
+          position: "left",
         },
         {
-            type: "number",
-            position: "top",
+          type: "number",
+          position: "top",
         },
-    ],
-    legend: {
+      ],
+      legend: {
         position: "bottom",
-    },
-}
-    },
-    mounted() {
-        
-    },
-    methods: {
-        
-    }
-}
+      },
+    };
+  },
+  mounted() {},
+  methods: {},
+};
 
 window.getTotal = function getTotal(datum) {
-    return (datum.ownerOccupied +
-        datum.privateRented +
-        datum.localAuthority +
-        datum.housingAssociation);
-}
+  return (
+    datum.ownerOccupied +
+    datum.privateRented +
+    datum.localAuthority +
+    datum.housingAssociation
+  );
+};
 
 new Vue({
-    el: '#app',
-    components: {
-        'my-component': ChartExample
-    }
+  el: "#app",
+  components: {
+    "my-component": ChartExample,
+  },
 });

@@ -1,34 +1,41 @@
-import 'ag-grid-enterprise';
-import 'ag-grid-community/dist/styles/ag-grid.css';
+import "ag-grid-enterprise";
+import "ag-grid-community/dist/styles/ag-grid.css";
 import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import { ColDef, ColGroupDef, Grid, GridOptions, SuppressHeaderKeyboardEventParams, SuppressKeyboardEventParams } from 'ag-grid-community';
+import {
+  ColDef,
+  ColGroupDef,
+  Grid,
+  GridOptions,
+  SuppressHeaderKeyboardEventParams,
+  SuppressKeyboardEventParams,
+} from "ag-grid-community";
 
 const columnDefs: ColDef[] = [
   {
-    field: 'athlete',
+    field: "athlete",
     minWidth: 170,
     suppressKeyboardEvent: function (params) {
-      return suppressEnter(params) || suppressNavigation(params)
+      return suppressEnter(params) || suppressNavigation(params);
     },
   },
-  { field: 'age' },
+  { field: "age" },
   {
-    field: 'country',
+    field: "country",
     minWidth: 130,
     suppressHeaderKeyboardEvent: function (params) {
-      var key = params.event.key
+      var key = params.event.key;
 
-      return key === 'ArrowLeft' || key === 'ArrowRight' || key === 'Enter'
+      return key === "ArrowLeft" || key === "ArrowRight" || key === "Enter";
     },
   },
-  { field: 'year' },
-  { field: 'date' },
-  { field: 'sport' },
-  { field: 'gold' },
-  { field: 'silver' },
-  { field: 'bronze' },
-  { field: 'total' },
-]
+  { field: "year" },
+  { field: "date" },
+  { field: "sport" },
+  { field: "gold" },
+  { field: "silver" },
+  { field: "bronze" },
+  { field: "total" },
+];
 
 const gridOptions: GridOptions = {
   rowData: null,
@@ -44,12 +51,12 @@ const gridOptions: GridOptions = {
     suppressHeaderKeyboardEvent: suppressUpDownNavigation,
   },
   enableRangeSelection: true,
-  rowSelection: 'multiple',
+  rowSelection: "multiple",
   suppressRowClickSelection: true,
-}
+};
 
 function suppressEnter(params: SuppressKeyboardEventParams) {
-  var KEY_ENTER = 'Enter';
+  var KEY_ENTER = "Enter";
 
   var event = params.event;
   var key = event.key;
@@ -59,30 +66,36 @@ function suppressEnter(params: SuppressKeyboardEventParams) {
 }
 
 function suppressNavigation(params: SuppressKeyboardEventParams) {
-  var KEY_A = 'A'
-  var KEY_C = 'C'
-  var KEY_V = 'V'
-  var KEY_D = 'D'
+  var KEY_A = "A";
+  var KEY_C = "C";
+  var KEY_V = "V";
+  var KEY_D = "D";
 
-  var KEY_PAGE_UP = 'PageUp'
-  var KEY_PAGE_DOWN = 'PageDown'
-  var KEY_TAB = 'Tab'
-  var KEY_LEFT = 'ArrowLeft'
-  var KEY_UP = 'ArrowUp'
-  var KEY_RIGHT = 'ArrowRight'
-  var KEY_DOWN = 'ArrowDown'
-  var KEY_F2 = 'F2'
-  var KEY_BACKSPACE = 'Backspace'
-  var KEY_ESCAPE = 'Escape'
-  var KEY_SPACE = ' '
-  var KEY_DELETE = 'Delete'
-  var KEY_PAGE_HOME = 'Home'
-  var KEY_PAGE_END = 'End'
+  var KEY_PAGE_UP = "PageUp";
+  var KEY_PAGE_DOWN = "PageDown";
+  var KEY_TAB = "Tab";
+  var KEY_LEFT = "ArrowLeft";
+  var KEY_UP = "ArrowUp";
+  var KEY_RIGHT = "ArrowRight";
+  var KEY_DOWN = "ArrowDown";
+  var KEY_F2 = "F2";
+  var KEY_BACKSPACE = "Backspace";
+  var KEY_ESCAPE = "Escape";
+  var KEY_SPACE = " ";
+  var KEY_DELETE = "Delete";
+  var KEY_PAGE_HOME = "Home";
+  var KEY_PAGE_END = "End";
 
-  var event = params.event
-  var key = event.key
+  var event = params.event;
+  var key = event.key;
 
-  var keysToSuppress = [KEY_PAGE_UP, KEY_PAGE_DOWN, KEY_TAB, KEY_F2, KEY_ESCAPE]
+  var keysToSuppress = [
+    KEY_PAGE_UP,
+    KEY_PAGE_DOWN,
+    KEY_TAB,
+    KEY_F2,
+    KEY_ESCAPE,
+  ];
 
   var editingKeys = [
     KEY_LEFT,
@@ -94,44 +107,43 @@ function suppressNavigation(params: SuppressKeyboardEventParams) {
     KEY_SPACE,
     KEY_PAGE_HOME,
     KEY_PAGE_END,
-  ]
+  ];
 
   if (event.ctrlKey || event.metaKey) {
-    keysToSuppress.push(KEY_A)
-    keysToSuppress.push(KEY_V)
-    keysToSuppress.push(KEY_C)
-    keysToSuppress.push(KEY_D)
+    keysToSuppress.push(KEY_A);
+    keysToSuppress.push(KEY_V);
+    keysToSuppress.push(KEY_C);
+    keysToSuppress.push(KEY_D);
   }
 
   if (!params.editing) {
-    keysToSuppress = keysToSuppress.concat(editingKeys)
+    keysToSuppress = keysToSuppress.concat(editingKeys);
   }
 
   if (
-    params.column.getId() === 'country' &&
+    params.column.getId() === "country" &&
     (key === KEY_UP || key === KEY_DOWN)
   ) {
-    return false
+    return false;
   }
 
   var suppress = keysToSuppress.some(function (suppressedKey) {
-    return suppressedKey === key || key.toUpperCase() === suppressedKey
-  })
+    return suppressedKey === key || key.toUpperCase() === suppressedKey;
+  });
 
-  return suppress
+  return suppress;
 }
 
 function suppressUpDownNavigation(params: SuppressHeaderKeyboardEventParams) {
-  var key = params.event.key
+  var key = params.event.key;
 
-  return key === 'ArrowUp' || key === 'ArrowDown'
+  return key === "ArrowUp" || key === "ArrowDown";
 }
 
 // setup the grid after the page has finished loading
-  var gridDiv = document.querySelector<HTMLElement>('#myGrid')!
-  new Grid(gridDiv, gridOptions)
+var gridDiv = document.querySelector<HTMLElement>("#myGrid")!;
+new Grid(gridDiv, gridOptions);
 
-  fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
-    .then(response => response.json())
-    .then(data => gridOptions.api!.setRowData(data))
- 
+fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+  .then((response) => response.json())
+  .then((data) => gridOptions.api!.setRowData(data));

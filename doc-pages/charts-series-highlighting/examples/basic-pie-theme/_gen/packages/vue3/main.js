@@ -1,143 +1,139 @@
-import { createApp } from 'vue';
-import { cloneDeep } from 'lodash';
-import * as agCharts from 'ag-charts-community';
-import { AgChartsVue } from 'ag-charts-vue3';
+import { createApp } from "vue";
+import { cloneDeep } from "lodash";
+import * as agCharts from "ag-charts-community";
+import { AgChartsVue } from "ag-charts-vue3";
 
 const ChartExample = {
-    template: `
+  template: `
         <ag-charts-vue
                 :options="options"></ag-charts-vue>
     `,
-    components: {
-        'ag-charts-vue': AgChartsVue
-    },
-    data: function() {
-        return {
-            options: null
-        }
-    },
-    created() {
-        this.options = {
-    data: data,
-    
-    title: {
-        text: 'Beverage Expenses',
-    },
-    subtitle: {
-        text: 'per quarter',
-    },
-    theme: {
-        baseTheme: 'ag-pastel',
+  components: {
+    "ag-charts-vue": AgChartsVue,
+  },
+  data: function () {
+    return {
+      options: null,
+    };
+  },
+  created() {
+    this.options = {
+      data: data,
+
+      title: {
+        text: "Beverage Expenses",
+      },
+      subtitle: {
+        text: "per quarter",
+      },
+      theme: {
+        baseTheme: "ag-pastel",
         overrides: {
-            polar: {
-                series: {
-                    pie: {
-                        title: {
-                            showInLegend: true,
-                        },
-                        highlightStyle: {
-                            item: {
-                                fill: 'red',
-                                stroke: 'maroon',
-                                strokeWidth: 4,
-                            },
-                            series: {
-                                dimOpacity: 0.2,
-                                strokeWidth: 2,
-                            },
-                        },
-                    },
+          polar: {
+            series: {
+              pie: {
+                title: {
+                  showInLegend: true,
                 },
+                highlightStyle: {
+                  item: {
+                    fill: "red",
+                    stroke: "maroon",
+                    strokeWidth: 4,
+                  },
+                  series: {
+                    dimOpacity: 0.2,
+                    strokeWidth: 2,
+                  },
+                },
+              },
             },
+          },
         },
-    },
-    series: [
+      },
+      series: [
         {
-            type: 'pie',
-            title: {
-                text: 'Q1',
-            },
-            label: {
-                enabled: false,
-            },
-            angleKey: 'Q1',
-            labelKey: 'beverage',
-            showInLegend: true,
-            outerRadiusOffset: 0,
-            innerRadiusOffset: -20,
-        },
-        {
-            type: 'pie',
-            title: {
-                text: 'Q2',
-            },
-            label: {
-                enabled: false,
-            },
-            angleKey: 'Q2',
-            labelKey: 'beverage',
-            outerRadiusOffset: -40,
-            innerRadiusOffset: -60,
-        },
-        {
-            type: 'pie',
-            title: {
-                text: 'Q3',
-            },
-            label: {
-                enabled: false,
-            },
-            angleKey: 'Q3',
-            labelKey: 'beverage',
-            outerRadiusOffset: -80,
-            innerRadiusOffset: -100,
+          type: "pie",
+          title: {
+            text: "Q1",
+          },
+          label: {
+            enabled: false,
+          },
+          angleKey: "Q1",
+          labelKey: "beverage",
+          showInLegend: true,
+          outerRadiusOffset: 0,
+          innerRadiusOffset: -20,
         },
         {
-            type: 'pie',
-            title: {
-                text: 'Q4',
-            },
-            label: {
-                enabled: false,
-            },
-            angleKey: 'Q4',
-            labelKey: 'beverage',
-            outerRadiusOffset: -120,
-            innerRadiusOffset: -140,
+          type: "pie",
+          title: {
+            text: "Q2",
+          },
+          label: {
+            enabled: false,
+          },
+          angleKey: "Q2",
+          labelKey: "beverage",
+          outerRadiusOffset: -40,
+          innerRadiusOffset: -60,
         },
-    ],
-}
-    },
-    mounted() {
-        
-    },
-    methods: {
-        
-    }
-}
+        {
+          type: "pie",
+          title: {
+            text: "Q3",
+          },
+          label: {
+            enabled: false,
+          },
+          angleKey: "Q3",
+          labelKey: "beverage",
+          outerRadiusOffset: -80,
+          innerRadiusOffset: -100,
+        },
+        {
+          type: "pie",
+          title: {
+            text: "Q4",
+          },
+          label: {
+            enabled: false,
+          },
+          angleKey: "Q4",
+          labelKey: "beverage",
+          outerRadiusOffset: -120,
+          innerRadiusOffset: -140,
+        },
+      ],
+    };
+  },
+  mounted() {},
+  methods: {},
+};
 
 const data = [
-    {
-        beverage: 'Coffee',
-        Q1: 450,
-        Q2: 560,
-        Q3: 600,
-        Q4: 700,
-    },
-    {
-        beverage: 'Tea',
-        Q1: 270,
-        Q2: 380,
-        Q3: 450,
-        Q4: 520,
-    },
-    {
-        beverage: 'Milk',
-        Q1: 180,
-        Q2: 170,
-        Q3: 190,
-        Q4: 200,
-    },
-]
+  {
+    beverage: "Coffee",
+    Q1: 450,
+    Q2: 560,
+    Q3: 600,
+    Q4: 700,
+  },
+  {
+    beverage: "Tea",
+    Q1: 270,
+    Q2: 380,
+    Q3: 450,
+    Q4: 520,
+  },
+  {
+    beverage: "Milk",
+    Q1: 180,
+    Q2: 170,
+    Q3: 190,
+    Q4: 200,
+  },
+];
 
 createApp(ChartExample).mount("#app");

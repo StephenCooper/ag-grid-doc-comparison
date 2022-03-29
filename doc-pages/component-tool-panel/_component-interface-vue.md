@@ -5,4 +5,3 @@
 |
 |When a custom tool panel component is instantiated then the following will be made available on `this.params`:
 |
-

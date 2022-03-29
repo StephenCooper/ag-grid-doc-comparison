@@ -52,7 +52,7 @@ If you do not provide a `getMainMenuItems()` callback, then the rules alone deci
 You can add menu item separators as follows:
 
 ```js
-menuItems.push('separator')
+menuItems.push("separator");
 ```
 
 ## Repositioning the Popup
@@ -61,14 +61,13 @@ If not happy with the position of the popup, you can override it's position usin
 
 <api-documentation source='grid-properties/properties.json' section='accessories' names='["postProcessPopup"]'  ></api-documentation>
 
-
 ## Overriding Column Menu Width
 
 You can override the menu width by overriding the corresponding CSS:
 
 ```css
 .ag-set-filter-list {
-    width: 500px !important;
+  width: 500px !important;
 }
 ```
 

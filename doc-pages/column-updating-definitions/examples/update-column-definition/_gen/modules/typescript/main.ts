@@ -1,25 +1,30 @@
-import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import "@ag-grid-community/core/dist/styles/ag-grid.css";
 import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { ColDef, ColGroupDef, Grid, GridOptions } from '@ag-grid-community/core';
-import { ModuleRegistry } from '@ag-grid-community/core';
-import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import {
+  ColDef,
+  ColGroupDef,
+  Grid,
+  GridOptions,
+} from "@ag-grid-community/core";
+import { ModuleRegistry } from "@ag-grid-community/core";
+import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
 
 // Register the required feature modules with the Grid
-ModuleRegistry.registerModules([ClientSideRowModelModule])
+ModuleRegistry.registerModules([ClientSideRowModelModule]);
 
 function getColumnDefs() {
   return [
-    { field: 'athlete' },
-    { field: 'age' },
-    { field: 'country' },
-    { field: 'sport' },
-    { field: 'year' },
-    { field: 'date' },
-    { field: 'gold' },
-    { field: 'silver' },
-    { field: 'bronze' },
-    { field: 'total' },
-  ]
+    { field: "athlete" },
+    { field: "age" },
+    { field: "country" },
+    { field: "sport" },
+    { field: "year" },
+    { field: "date" },
+    { field: "gold" },
+    { field: "silver" },
+    { field: "bronze" },
+    { field: "total" },
+  ];
 }
 
 const gridOptions: GridOptions = {
@@ -30,57 +35,56 @@ const gridOptions: GridOptions = {
     filter: true,
   },
   columnDefs: getColumnDefs(),
-}
+};
 
 function setHeaderNames() {
-  const columnDefs: ColDef[] = getColumnDefs()
+  const columnDefs: ColDef[] = getColumnDefs();
   columnDefs.forEach(function (colDef, index) {
-    colDef.headerName = 'C' + index
-  })
-  gridOptions.api!.setColumnDefs(columnDefs)
+    colDef.headerName = "C" + index;
+  });
+  gridOptions.api!.setColumnDefs(columnDefs);
 }
 
 function removeHeaderNames() {
-  const columnDefs: ColDef[] = getColumnDefs()
+  const columnDefs: ColDef[] = getColumnDefs();
   columnDefs.forEach(function (colDef, index) {
-    colDef.headerName = undefined
-  })
-  gridOptions.api!.setColumnDefs(columnDefs)
+    colDef.headerName = undefined;
+  });
+  gridOptions.api!.setColumnDefs(columnDefs);
 }
 
 function setValueFormatters() {
-  const columnDefs: ColDef[] = getColumnDefs()
+  const columnDefs: ColDef[] = getColumnDefs();
   columnDefs.forEach(function (colDef, index) {
     colDef.valueFormatter = function (params) {
-      return '[ ' + params.value + ' ]'
-    }
-  })
-  gridOptions.api!.setColumnDefs(columnDefs)
+      return "[ " + params.value + " ]";
+    };
+  });
+  gridOptions.api!.setColumnDefs(columnDefs);
 }
 
 function removeValueFormatters() {
-  const columnDefs: ColDef[] = getColumnDefs()
+  const columnDefs: ColDef[] = getColumnDefs();
   columnDefs.forEach(function (colDef, index) {
-    colDef.valueFormatter = undefined
-  })
-  gridOptions.api!.setColumnDefs(columnDefs)
+    colDef.valueFormatter = undefined;
+  });
+  gridOptions.api!.setColumnDefs(columnDefs);
 }
 
 // setup the grid after the page has finished loading
-  const gridDiv = document.querySelector<HTMLElement>('#myGrid')!
-  new Grid(gridDiv, gridOptions)
+const gridDiv = document.querySelector<HTMLElement>("#myGrid")!;
+new Grid(gridDiv, gridOptions);
 
-  fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
-    .then(response => response.json())
-    .then(data => {
-      gridOptions.api!.setRowData(data)
-    })
- 
+fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+  .then((response) => response.json())
+  .then((data) => {
+    gridOptions.api!.setRowData(data);
+  });
 
-if (typeof window !== 'undefined') {
-// Attach external event handlers to window so they can be called from index.html
- (<any>window).setHeaderNames = setHeaderNames;
- (<any>window).removeHeaderNames = removeHeaderNames;
- (<any>window).setValueFormatters = setValueFormatters;
- (<any>window).removeValueFormatters = removeValueFormatters;
+if (typeof window !== "undefined") {
+  // Attach external event handlers to window so they can be called from index.html
+  (<any>window).setHeaderNames = setHeaderNames;
+  (<any>window).removeHeaderNames = removeHeaderNames;
+  (<any>window).setValueFormatters = setValueFormatters;
+  (<any>window).removeValueFormatters = removeValueFormatters;
 }

@@ -1,22 +1,25 @@
-
-import { createApp } from 'vue';
-import { AgGridVue } from '@ag-grid-community/vue3';
-import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import { createApp } from "vue";
+import { AgGridVue } from "@ag-grid-community/vue3";
+import "@ag-grid-community/core/dist/styles/ag-grid.css";
 import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { ModuleRegistry } from '@ag-grid-community/core';
-import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
-import { RowGroupingModule } from '@ag-grid-enterprise/row-grouping';
-import { MenuModule } from '@ag-grid-enterprise/menu';
-import { ColumnsToolPanelModule } from '@ag-grid-enterprise/column-tool-panel';
-import { FiltersToolPanelModule } from '@ag-grid-enterprise/filter-tool-panel';
+import { ModuleRegistry } from "@ag-grid-community/core";
+import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
+import { RowGroupingModule } from "@ag-grid-enterprise/row-grouping";
+import { MenuModule } from "@ag-grid-enterprise/menu";
+import { ColumnsToolPanelModule } from "@ag-grid-enterprise/column-tool-panel";
+import { FiltersToolPanelModule } from "@ag-grid-enterprise/filter-tool-panel";
 
 // Register the required feature modules with the Grid
-ModuleRegistry.registerModules([ClientSideRowModelModule, RowGroupingModule, MenuModule, ColumnsToolPanelModule, FiltersToolPanelModule])
-
-
+ModuleRegistry.registerModules([
+  ClientSideRowModelModule,
+  RowGroupingModule,
+  MenuModule,
+  ColumnsToolPanelModule,
+  FiltersToolPanelModule,
+]);
 
 const VueExample = {
-    template: `
+  template: `
         <div style="height: 100%">
             <div class="test-container">
                 <div class="test-header">
@@ -43,66 +46,59 @@ const VueExample = {
             </div>
         </div>
     `,
-    components: {
-        'ag-grid-vue': AgGridVue,
-        
+  components: {
+    "ag-grid-vue": AgGridVue,
+  },
+  data: function () {
+    return {
+      columnDefs: [
+        { field: "country", rowGroup: true },
+        { field: "athlete", rowGroup: true },
+        { headerName: "Year", valueGetter: "data.year", pivot: true },
+        { field: "gold", aggFunc: "sum" },
+        { field: "silver", aggFunc: "sum" },
+        { field: "bronze", aggFunc: "sum" },
+        { field: "total", aggFunc: "sum" },
+      ],
+      gridApi: null,
+      columnApi: null,
+      defaultColDef: {
+        flex: 1,
+        minWidth: 150,
+        enableRowGroup: true,
+        enablePivot: true,
+        enableValue: true,
+        filter: true,
+        resizable: true,
+        sortable: true,
+      },
+      autoGroupColumnDef: null,
+      groupDefaultExpanded: null,
+      groupDisplayType: null,
+      rowData: null,
+    };
+  },
+  created() {
+    this.autoGroupColumnDef = {
+      minWidth: 250,
+    };
+    this.groupDefaultExpanded = 9;
+    this.groupDisplayType = "multipleColumns";
+  },
+  methods: {
+    onGridReady(params) {
+      this.gridApi = params.api;
+      this.gridColumnApi = params.columnApi;
+
+      const updateData = (data) => {
+        this.rowData = data;
+      };
+
+      fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+        .then((resp) => resp.json())
+        .then((data) => updateData(data));
     },
-    data: function() {
-        return {
-            columnDefs: [{field:"country",
-rowGroup:true},{field:"athlete",
-rowGroup:true},{headerName:"Year",
-valueGetter:"data.year",
-pivot:true},{field:"gold",
-aggFunc:"sum"},{field:"silver",
-aggFunc:"sum"},{field:"bronze",
-aggFunc:"sum"},{field:"total",
-aggFunc:"sum"}],
-            gridApi: null,
-            columnApi: null,
-            defaultColDef: {
-    flex: 1,
-    minWidth: 150,
-    enableRowGroup: true,
-    enablePivot: true,
-    enableValue: true,
-    filter: true,
-    resizable: true,
-    sortable: true,
-},
-            autoGroupColumnDef: null,
-groupDefaultExpanded: null,
-groupDisplayType: null,
-rowData: null
-        }
-    },
-    created() {
-        this.autoGroupColumnDef = {
-    minWidth: 250,
+  },
 };
-this.groupDefaultExpanded = 9;
-this.groupDisplayType = 'multipleColumns'
-    },
-    methods: {
-        onGridReady(params) {
-        this.gridApi = params.api;
-        this.gridColumnApi = params.columnApi;
-        
 
-        
-            const updateData = (data) => {
-    this.rowData = data;
-};
-            
-            fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
-                .then(resp => resp.json())
-                .then(data => updateData(data));
-    },
-    }
-}
-
-
-
-createApp(VueExample)
-    .mount("#app")
-
+createApp(VueExample).mount("#app");

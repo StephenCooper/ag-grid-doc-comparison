@@ -1,4 +1,3 @@
-
 var myTheme = {
   baseTheme: "ag-default-dark",
   palette: {
@@ -20,7 +19,7 @@ var myTheme = {
       },
     },
   },
-}
+};
 
 const options = {
   theme: myTheme,
@@ -43,18 +42,48 @@ const options = {
     { label: "Windows", v1: 2.8, v2: 1.908, v3: 7.48, v4: 5.29, v5: 8.8 },
   ],
   series: [
-    { type: "column", xKey: "label", yKey: "v1", stacked: true, yName: "Reliability" },
-    { type: "column", xKey: "label", yKey: "v2", stacked: true, yName: "Ease of use" },
-    { type: "column", xKey: "label", yKey: "v3", stacked: true, yName: "Performance" },
-    { type: "column", xKey: "label", yKey: "v4", stacked: true, yName: "Price" },
-    { type: "column", xKey: "label", yKey: "v5", stacked: true, yName: "Market share" },
+    {
+      type: "column",
+      xKey: "label",
+      yKey: "v1",
+      stacked: true,
+      yName: "Reliability",
+    },
+    {
+      type: "column",
+      xKey: "label",
+      yKey: "v2",
+      stacked: true,
+      yName: "Ease of use",
+    },
+    {
+      type: "column",
+      xKey: "label",
+      yKey: "v3",
+      stacked: true,
+      yName: "Performance",
+    },
+    {
+      type: "column",
+      xKey: "label",
+      yKey: "v4",
+      stacked: true,
+      yName: "Price",
+    },
+    {
+      type: "column",
+      xKey: "label",
+      yKey: "v5",
+      stacked: true,
+      yName: "Market share",
+    },
   ],
-}
+};
 
-var chart = agCharts.AgChart.create(options)
+var chart = agCharts.AgChart.create(options);
 
 /** inScope */
 function applyTheme(theme) {
-  options.theme = theme
-  agCharts.AgChart.update(chart, options)
+  options.theme = theme;
+  agCharts.AgChart.update(chart, options);
 }

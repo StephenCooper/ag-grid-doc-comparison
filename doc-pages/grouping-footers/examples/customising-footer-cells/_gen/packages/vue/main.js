@@ -1,13 +1,12 @@
-import 'ag-grid-community/dist/styles/ag-grid.css';
+import "ag-grid-community/dist/styles/ag-grid.css";
 import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import Vue from 'vue';
-import { AgGridVue } from 'ag-grid-vue';
-import MyInnerRenderer from './myInnerRendererVue.js';
-import 'ag-grid-enterprise';
-
+import Vue from "vue";
+import { AgGridVue } from "ag-grid-vue";
+import MyInnerRenderer from "./myInnerRendererVue.js";
+import "ag-grid-enterprise";
 
 const VueExample = {
-    template: `
+  template: `
         <div style="height: 100%">
             <ag-grid-vue
 
@@ -22,55 +21,61 @@ const VueExample = {
                     :rowData="rowData"></ag-grid-vue>
         </div>
     `,
-    components: {
-        'ag-grid-vue': AgGridVue,
-        MyInnerRenderer
-    },
-    data: function () {
-        return {
-            columnDefs: [{
-                field: "country",
-                rowGroup: true,
-                hide: true
-            }, {
-                field: "year",
-                rowGroup: true,
-                hide: true
-            }, {
-                field: "gold",
-                aggFunc: "sum"
-            }, {
-                field: "silver",
-                aggFunc: "sum"
-            }, {
-                field: "bronze",
-                aggFunc: "sum"
-            }],
-            gridApi: null,
-            columnApi: null,
-            defaultColDef: {
-                flex: 1,
-                minWidth: 150,
-                sortable: true,
-                resizable: true,
-            },
-            autoGroupColumnDef: {
-                minWidth: 300,
-                cellRendererParams: {
-                    innerRenderer: 'MyInnerRenderer'
-                }
-            },
-            rowData: null
-        }
-    },
-    created() {
-        this.rowData = getData()
-    }
-}
+  components: {
+    "ag-grid-vue": AgGridVue,
+    MyInnerRenderer,
+  },
+  data: function () {
+    return {
+      columnDefs: [
+        {
+          field: "country",
+          rowGroup: true,
+          hide: true,
+        },
+        {
+          field: "year",
+          rowGroup: true,
+          hide: true,
+        },
+        {
+          field: "gold",
+          aggFunc: "sum",
+        },
+        {
+          field: "silver",
+          aggFunc: "sum",
+        },
+        {
+          field: "bronze",
+          aggFunc: "sum",
+        },
+      ],
+      gridApi: null,
+      columnApi: null,
+      defaultColDef: {
+        flex: 1,
+        minWidth: 150,
+        sortable: true,
+        resizable: true,
+      },
+      autoGroupColumnDef: {
+        minWidth: 300,
+        cellRendererParams: {
+          innerRenderer: "MyInnerRenderer",
+        },
+      },
+      rowData: null,
+    };
+  },
+  created() {
+    this.rowData = getData();
+  },
+};
 
 new Vue({
-    el: '#app',
-    components: {
-        'my-component': VueExample
-    }
+  el: "#app",
+  components: {
+    "my-component": VueExample,
+  },
 });

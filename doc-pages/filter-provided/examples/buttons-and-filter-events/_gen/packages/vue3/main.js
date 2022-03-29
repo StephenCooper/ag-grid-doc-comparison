@@ -1,13 +1,10 @@
-
-import { createApp } from 'vue';
-import { AgGridVue } from 'ag-grid-vue3';
-import 'ag-grid-community/dist/styles/ag-grid.css';
-import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
-
-
+import { createApp } from "vue";
+import { AgGridVue } from "ag-grid-vue3";
+import "ag-grid-community/dist/styles/ag-grid.css";
+import "ag-grid-community/dist/styles/ag-theme-alpine.css";
 
 const VueExample = {
-    template: `
+  template: `
         <div style="height: 100%">
             <ag-grid-vue
                 
@@ -22,70 +19,78 @@ const VueExample = {
                 @filter-modified="onFilterModified"></ag-grid-vue>
         </div>
     `,
-    components: {
-        'ag-grid-vue': AgGridVue,
-        
+  components: {
+    "ag-grid-vue": AgGridVue,
+  },
+  data: function () {
+    return {
+      columnDefs: [
+        {
+          field: "athlete",
+          filter: "agTextColumnFilter",
+          filterParams: { buttons: ["reset", "apply"] },
+        },
+        {
+          field: "age",
+          maxWidth: 100,
+          filter: "agNumberColumnFilter",
+          filterParams: { buttons: ["apply", "reset"], closeOnApply: true },
+        },
+        {
+          field: "country",
+          filter: "agTextColumnFilter",
+          filterParams: { buttons: ["clear", "apply"] },
+        },
+        {
+          field: "year",
+          filter: "agNumberColumnFilter",
+          filterParams: { buttons: ["apply", "cancel"], closeOnApply: true },
+          maxWidth: 100,
+        },
+        { field: "sport" },
+        { field: "gold", filter: "agNumberColumnFilter" },
+        { field: "silver", filter: "agNumberColumnFilter" },
+        { field: "bronze", filter: "agNumberColumnFilter" },
+        { field: "total", filter: "agNumberColumnFilter" },
+      ],
+      gridApi: null,
+      columnApi: null,
+      defaultColDef: {
+        flex: 1,
+        minWidth: 150,
+        filter: true,
+      },
+      rowData: null,
+    };
+  },
+  created() {},
+  methods: {
+    onFilterOpened(e) {
+      console.log("onFilterOpened", e);
     },
-    data: function() {
-        return {
-            columnDefs: [{field:"athlete",
-filter:"agTextColumnFilter",
-filterParams:{"buttons":["reset","apply"]}},{field:"age",
-maxWidth:100,
-filter:"agNumberColumnFilter",
-filterParams:{"buttons":["apply","reset"],"closeOnApply":true}},{field:"country",
-filter:"agTextColumnFilter",
-filterParams:{"buttons":["clear","apply"]}},{field:"year",
-filter:"agNumberColumnFilter",
-filterParams:{"buttons":["apply","cancel"],"closeOnApply":true},
-maxWidth:100},{field:"sport"},{field:"gold",
-filter:"agNumberColumnFilter"},{field:"silver",
-filter:"agNumberColumnFilter"},{field:"bronze",
-filter:"agNumberColumnFilter"},{field:"total",
-filter:"agNumberColumnFilter"}],
-            gridApi: null,
-            columnApi: null,
-            defaultColDef: {
-    flex: 1,
-    minWidth: 150,
-    filter: true,
-},
-            rowData: null
-        }
+    onFilterChanged(e) {
+      console.log("onFilterChanged", e);
+      console.log("gridApi.getFilterModel() =>", e.api.getFilterModel());
     },
-    created() {
-        
+    onFilterModified(e) {
+      console.log("onFilterModified", e);
+      console.log("filterInstance.getModel() =>", e.filterInstance.getModel());
+      console.log(
+        "filterInstance.getModelFromUi() =>",
+        e.filterInstance.getModelFromUi()
+      );
     },
-    methods: {
-        onFilterOpened(e) {
-    console.log('onFilterOpened', e);
-},
-onFilterChanged(e) {
-    console.log('onFilterChanged', e);
-    console.log('gridApi.getFilterModel() =>', e.api.getFilterModel());
-},
-onFilterModified(e) {
-    console.log('onFilterModified', e);
-    console.log('filterInstance.getModel() =>', e.filterInstance.getModel());
-    console.log('filterInstance.getModelFromUi() =>', (e.filterInstance).getModelFromUi());
-},
-onGridReady(params) {
-        this.gridApi = params.api;
-        this.gridColumnApi = params.columnApi;
-        
+    onGridReady(params) {
+      this.gridApi = params.api;
+      this.gridColumnApi = params.columnApi;
 
-        
-            const updateData = (data) => params.api.setRowData(data);
-            
-            fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
-                .then(resp => resp.json())
-                .then(data => updateData(data));
+      const updateData = (data) => params.api.setRowData(data);
+
+      fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+        .then((resp) => resp.json())
+        .then((data) => updateData(data));
     },
-    }
-}
+  },
+};
 
-
-
-createApp(VueExample)
-    .mount("#app")
-
+createApp(VueExample).mount("#app");

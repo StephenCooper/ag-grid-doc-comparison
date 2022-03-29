@@ -7,7 +7,7 @@ Excel Export allows you to configure the page settings for the exported Excel fi
 
 ## Page Setup
 
-You can customise the Excel export page settings such as **page size**, **orientation**, and **margin**, using the `pageSetup` and `margins` configs of the [Excel Export Params](../excel-export-api/#excelexportparams). These settings are visible when printing the exported Excel file or exporting to PDF. 
+You can customise the Excel export page settings such as **page size**, **orientation**, and **margin**, using the `pageSetup` and `margins` configs of the [Excel Export Params](../excel-export-api/#excelexportparams). These settings are visible when printing the exported Excel file or exporting to PDF.
 
 <snippet>
 const gridOptions = {
@@ -42,11 +42,12 @@ Note the following:
 ## Interfaces
 
 ### ExcelExportParams
+
 ```ts
 interface ExcelExportParams {
-    // ...
-    margins?: ExcelSheetMargin;
-    pageSetup?: ExcelSheetPageSetup
+  // ...
+  margins?: ExcelSheetMargin;
+  pageSetup?: ExcelSheetPageSetup;
 }
 ```
 

@@ -1,18 +1,15 @@
-
-import Vue from 'vue';
-import { AgGridVue } from '@ag-grid-community/vue';
-import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import Vue from "vue";
+import { AgGridVue } from "@ag-grid-community/vue";
+import "@ag-grid-community/core/dist/styles/ag-grid.css";
 import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { ModuleRegistry } from '@ag-grid-community/core';
-import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import { ModuleRegistry } from "@ag-grid-community/core";
+import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
 
 // Register the required feature modules with the Grid
-ModuleRegistry.registerModules([ClientSideRowModelModule])
-
-
+ModuleRegistry.registerModules([ClientSideRowModelModule]);
 
 const VueExample = {
-    template: `
+  template: `
         <div style="height: 100%">
             <div class="test-container">
                 <div class="test-header">
@@ -30,97 +27,92 @@ const VueExample = {
             </div>
         </div>
     `,
-    components: {
-        'ag-grid-vue': AgGridVue,
-        
+  components: {
+    "ag-grid-vue": AgGridVue,
+  },
+  data: function () {
+    return {
+      columnDefs: createNormalColDefs(),
+      gridApi: null,
+      columnApi: null,
+      defaultColDef: {
+        resizable: true,
+        width: 150,
+      },
+      rowData: null,
+    };
+  },
+  created() {},
+  methods: {
+    onBtNormalCols() {
+      this.gridApi.setColumnDefs(createNormalColDefs());
     },
-    data: function() {
-        return {
-            columnDefs: createNormalColDefs(),
-            gridApi: null,
-            columnApi: null,
-            defaultColDef: {
-    resizable: true,
-    width: 150,
-},
-            rowData: null
-        }
+    onBtExtraCols() {
+      this.gridApi.setColumnDefs(createExtraColDefs());
     },
-    created() {
-        
-    },
-    methods: {
-        onBtNormalCols() {
-    this.gridApi.setColumnDefs(createNormalColDefs());
-},
-onBtExtraCols() {
-    this.gridApi.setColumnDefs(createExtraColDefs());
-},
-onGridReady(params) {
-        this.gridApi = params.api;
-        this.gridColumnApi = params.columnApi;
-        
+    onGridReady(params) {
+      this.gridApi = params.api;
+      this.gridColumnApi = params.columnApi;
 
-        
-            const updateData = (data) => params.api.setRowData(data);
-            
-            fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
-                .then(resp => resp.json())
-                .then(data => updateData(data));
+      const updateData = (data) => params.api.setRowData(data);
+
+      fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+        .then((resp) => resp.json())
+        .then((data) => updateData(data));
     },
-    }
-}
+  },
+};
 
 window.createNormalColDefs = function createNormalColDefs() {
-    return [
-        {
-            headerName: 'Athlete Details',
-            headerClass: 'participant-group',
-            children: [
-                { field: 'athlete', colId: 'athlete' },
-                { field: 'country', colId: 'country' },
-            ],
-        },
-        { field: 'age', colId: 'age' },
-        {
-            headerName: 'Sports Results',
-            headerClass: 'medals-group',
-            children: [
-                { field: 'sport', colId: 'sport' },
-                { field: 'gold', colId: 'gold' },
-            ],
-        },
-    ];
-}
+  return [
+    {
+      headerName: "Athlete Details",
+      headerClass: "participant-group",
+      children: [
+        { field: "athlete", colId: "athlete" },
+        { field: "country", colId: "country" },
+      ],
+    },
+    { field: "age", colId: "age" },
+    {
+      headerName: "Sports Results",
+      headerClass: "medals-group",
+      children: [
+        { field: "sport", colId: "sport" },
+        { field: "gold", colId: "gold" },
+      ],
+    },
+  ];
+};
 
 window.createExtraColDefs = function createExtraColDefs() {
-    return [
-        {
-            headerName: 'Athlete Details',
-            headerClass: 'participant-group',
-            children: [
-                { field: 'athlete', colId: 'athlete' },
-                { field: 'country', colId: 'country' },
-                { field: 'region1', colId: 'region1' },
-                { field: 'region2', colId: 'region2' },
-            ],
-        },
-        { field: 'age', colId: 'age' },
-        { field: 'distance', colId: 'distance' },
-        {
-            headerName: 'Sports Results',
-            headerClass: 'medals-group',
-            children: [
-                { field: 'sport', colId: 'sport' },
-                { field: 'gold', colId: 'gold' },
-            ],
-        },
-    ];
-}
+  return [
+    {
+      headerName: "Athlete Details",
+      headerClass: "participant-group",
+      children: [
+        { field: "athlete", colId: "athlete" },
+        { field: "country", colId: "country" },
+        { field: "region1", colId: "region1" },
+        { field: "region2", colId: "region2" },
+      ],
+    },
+    { field: "age", colId: "age" },
+    { field: "distance", colId: "distance" },
+    {
+      headerName: "Sports Results",
+      headerClass: "medals-group",
+      children: [
+        { field: "sport", colId: "sport" },
+        { field: "gold", colId: "gold" },
+      ],
+    },
+  ];
+};
 
 new Vue({
-    el: '#app',
-    components: {
-        'my-component': VueExample
-    }
+  el: "#app",
+  components: {
+    "my-component": VueExample,
+  },
 });

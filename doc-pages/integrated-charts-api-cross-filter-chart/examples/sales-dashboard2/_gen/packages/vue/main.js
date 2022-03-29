@@ -1,14 +1,11 @@
-
-import Vue from 'vue';
-import { AgGridVue } from 'ag-grid-vue';
-import 'ag-grid-enterprise';
-import 'ag-grid-community/dist/styles/ag-grid.css';
-import 'ag-grid-community/dist/styles/ag-theme-alpine-dark.css';
-
-
+import Vue from "vue";
+import { AgGridVue } from "ag-grid-vue";
+import "ag-grid-enterprise";
+import "ag-grid-community/dist/styles/ag-grid.css";
+import "ag-grid-community/dist/styles/ag-theme-alpine-dark.css";
 
 const VueExample = {
-    template: `
+  template: `
         <div style="height: 100%">
             <div id="wrapper">
                 <div id="top">
@@ -31,172 +28,177 @@ const VueExample = {
             </div>
         </div>
     `,
-    components: {
-        'ag-grid-vue': AgGridVue,
-        
-    },
-    data: function() {
-        return {
-            columnDefs: [{field:"salesRep",
-chartDataType:"category"},{field:"handset",
-chartDataType:"category"},{headerName:"Sale Price",
-field:"sale",
-maxWidth:160,
-aggFunc:"sum",
-filter:"agNumberColumnFilter",
-chartDataType:"series"},{field:"saleDate",
-chartDataType:"category"},{field:"quarter",
-maxWidth:160,
-filter:"agSetColumnFilter",
-chartDataType:"category"}],
-            gridApi: null,
-            columnApi: null,
-            defaultColDef: {
-    flex: 1,
-    editable: true,
-    sortable: true,
-    filter: 'agMultiColumnFilter',
-    floatingFilter: true,
-    resizable: true,
-},
-            rowData: null,
-chartThemes: null,
-chartThemeOverrides: null
-        }
-    },
-    created() {
-        this.rowData = getData();
-this.chartThemes = ['ag-default-dark'];
-this.chartThemeOverrides = {
-    common: {
+  components: {
+    "ag-grid-vue": AgGridVue,
+  },
+  data: function () {
+    return {
+      columnDefs: [
+        { field: "salesRep", chartDataType: "category" },
+        { field: "handset", chartDataType: "category" },
+        {
+          headerName: "Sale Price",
+          field: "sale",
+          maxWidth: 160,
+          aggFunc: "sum",
+          filter: "agNumberColumnFilter",
+          chartDataType: "series",
+        },
+        { field: "saleDate", chartDataType: "category" },
+        {
+          field: "quarter",
+          maxWidth: 160,
+          filter: "agSetColumnFilter",
+          chartDataType: "category",
+        },
+      ],
+      gridApi: null,
+      columnApi: null,
+      defaultColDef: {
+        flex: 1,
+        editable: true,
+        sortable: true,
+        filter: "agMultiColumnFilter",
+        floatingFilter: true,
+        resizable: true,
+      },
+      rowData: null,
+      chartThemes: null,
+      chartThemeOverrides: null,
+    };
+  },
+  created() {
+    this.rowData = getData();
+    this.chartThemes = ["ag-default-dark"];
+    this.chartThemeOverrides = {
+      common: {
         padding: {
-            top: 20,
-            right: 40,
-            bottom: 20,
-            left: 30,
+          top: 20,
+          right: 40,
+          bottom: 20,
+          left: 30,
         },
-    },
-    cartesian: {
+      },
+      cartesian: {
         axes: {
-            category: {
-                label: {
-                    rotation: 0,
-                },
+          category: {
+            label: {
+              rotation: 0,
             },
+          },
         },
+      },
+    };
+  },
+  methods: {
+    onFirstDataRendered(params) {
+      createQuarterlySalesChart(params.api);
+      createSalesByRefChart(params.api);
+      createHandsetSalesChart(params.api);
     },
-}
+    onGridReady(params) {
+      this.gridApi = params.api;
+      this.gridColumnApi = params.columnApi;
     },
-    methods: {
-        onFirstDataRendered(params) {
-    createQuarterlySalesChart(params.api);
-    createSalesByRefChart(params.api);
-    createHandsetSalesChart(params.api);
-},
-onGridReady(params) {
-        this.gridApi = params.api;
-        this.gridColumnApi = params.columnApi;
-        
-    },
-    }
-}
+  },
+};
 
 window.createQuarterlySalesChart = function createQuarterlySalesChart(gridApi) {
-    gridApi.createCrossFilterChart({
-        chartType: 'line',
-        cellRange: {
-            columns: ['quarter', 'sale'],
+  gridApi.createCrossFilterChart({
+    chartType: "line",
+    cellRange: {
+      columns: ["quarter", "sale"],
+    },
+    aggFunc: "sum",
+    chartThemeOverrides: {
+      common: {
+        title: {
+          enabled: true,
+          text: "Quarterly Sales ($)",
         },
-        aggFunc: 'sum',
-        chartThemeOverrides: {
-            common: {
-                title: {
-                    enabled: true,
-                    text: 'Quarterly Sales ($)',
-                },
-                legend: {
-                    enabled: false,
-                },
-                axes: {
-                    category: {
-                        label: {
-                            rotation: 0,
-                        },
-                    },
-                    number: {
-                        label: {
-                            formatter: function (params) {
-                                return params.value / 1000 + 'k';
-                            },
-                        },
-                    },
-                },
+        legend: {
+          enabled: false,
+        },
+        axes: {
+          category: {
+            label: {
+              rotation: 0,
             },
+          },
+          number: {
+            label: {
+              formatter: function (params) {
+                return params.value / 1000 + "k";
+              },
+            },
+          },
         },
-        chartContainer: document.querySelector('#lineChart'),
-    });
-}
+      },
+    },
+    chartContainer: document.querySelector("#lineChart"),
+  });
+};
 
 window.createSalesByRefChart = function createSalesByRefChart(gridApi) {
-    gridApi.createCrossFilterChart({
-        chartType: 'doughnut',
-        cellRange: {
-            columns: ['salesRep', 'sale'],
+  gridApi.createCrossFilterChart({
+    chartType: "doughnut",
+    cellRange: {
+      columns: ["salesRep", "sale"],
+    },
+    aggFunc: "sum",
+    chartThemeOverrides: {
+      common: {
+        title: {
+          enabled: true,
+          text: "Sales by Representative ($)",
         },
-        aggFunc: 'sum',
-        chartThemeOverrides: {
-            common: {
-                title: {
-                    enabled: true,
-                    text: 'Sales by Representative ($)',
-                },
-            },
-            pie: {
-                series: {
-                    title: {
-                        enabled: false,
-                    },
-                    label: {
-                        enabled: false,
-                    },
-                },
-            },
+      },
+      pie: {
+        series: {
+          title: {
+            enabled: false,
+          },
+          label: {
+            enabled: false,
+          },
         },
-        chartContainer: document.querySelector('#doughnutChart'),
-    });
-}
+      },
+    },
+    chartContainer: document.querySelector("#doughnutChart"),
+  });
+};
 
 window.createHandsetSalesChart = function createHandsetSalesChart(gridApi) {
-    gridApi.createCrossFilterChart({
-        chartType: 'area',
-        cellRange: {
-            columns: ['handset', 'sale'],
+  gridApi.createCrossFilterChart({
+    chartType: "area",
+    cellRange: {
+      columns: ["handset", "sale"],
+    },
+    aggFunc: "count",
+    chartThemeOverrides: {
+      common: {
+        title: {
+          enabled: true,
+          text: "Handsets Sold (Units)",
         },
-        aggFunc: 'count',
-        chartThemeOverrides: {
-            common: {
-                title: {
-                    enabled: true,
-                    text: 'Handsets Sold (Units)',
-                },
-                legend: {
-                    enabled: false,
-                },
-                padding: {
-                    top: 20,
-                    right: 60,
-                    bottom: 20,
-                    left: 50,
-                },
-            }
+        legend: {
+          enabled: false,
         },
-        chartContainer: document.querySelector('#areaChart'),
-    });
-}
+        padding: {
+          top: 20,
+          right: 60,
+          bottom: 20,
+          left: 50,
+        },
+      },
+    },
+    chartContainer: document.querySelector("#areaChart"),
+  });
+};
 
 new Vue({
-    el: '#app',
-    components: {
-        'my-component': VueExample
-    }
+  el: "#app",
+  components: {
+    "my-component": VueExample,
+  },
 });

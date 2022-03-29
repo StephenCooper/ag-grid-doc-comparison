@@ -1,18 +1,15 @@
-
-import { createApp } from 'vue';
-import { AgGridVue } from '@ag-grid-community/vue3';
-import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import { createApp } from "vue";
+import { AgGridVue } from "@ag-grid-community/vue3";
+import "@ag-grid-community/core/dist/styles/ag-grid.css";
 import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { ModuleRegistry } from '@ag-grid-community/core';
-import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import { ModuleRegistry } from "@ag-grid-community/core";
+import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
 
 // Register the required feature modules with the Grid
-ModuleRegistry.registerModules([ClientSideRowModelModule])
-
-
+ModuleRegistry.registerModules([ClientSideRowModelModule]);
 
 const VueExample = {
-    template: `
+  template: `
         <div style="height: 100%">
             <div style="height: 100%; width: 100%; display: flex; flex-direction: column;">
                 <div style="margin-bottom: 5px; min-height: 30px;">
@@ -33,54 +30,50 @@ const VueExample = {
             </div>
         </div>
     `,
-    components: {
-        'ag-grid-vue': AgGridVue,
-        
+  components: {
+    "ag-grid-vue": AgGridVue,
+  },
+  data: function () {
+    return {
+      columnDefs: [{ field: "make" }, { field: "model" }, { field: "price" }],
+      gridApi: null,
+      columnApi: null,
+
+      rowData: null,
+      rowSelection: null,
+    };
+  },
+  created() {
+    this.rowData = rowDataA;
+    this.rowSelection = "single";
+  },
+  methods: {
+    onRowDataA() {
+      this.gridApi.setRowData(rowDataA);
     },
-    data: function() {
-        return {
-            columnDefs: [{field:"make"},{field:"model"},{field:"price"}],
-            gridApi: null,
-            columnApi: null,
-            
-            rowData: null,
-rowSelection: null
-        }
+    onRowDataB() {
+      this.gridApi.setRowData(rowDataB);
     },
-    created() {
-        this.rowData = rowDataA;
-this.rowSelection = 'single'
+    onGridReady(params) {
+      this.gridApi = params.api;
+      this.gridColumnApi = params.columnApi;
     },
-    methods: {
-        onRowDataA() {
-    this.gridApi.setRowData(rowDataA);
-},
-onRowDataB() {
-    this.gridApi.setRowData(rowDataB);
-},
-onGridReady(params) {
-        this.gridApi = params.api;
-        this.gridColumnApi = params.columnApi;
-        
-    },
-    }
-}
+  },
+};
 
 // specify the data
 var rowDataA = [
-    { make: "Toyota", model: "Celica", price: 35000 },
-    { make: "Porsche", model: "Boxter", price: 72000 },
-    { make: "Aston Martin", model: "DBX", price: 190000 }
+  { make: "Toyota", model: "Celica", price: 35000 },
+  { make: "Porsche", model: "Boxter", price: 72000 },
+  { make: "Aston Martin", model: "DBX", price: 190000 },
 ];
 
 var rowDataB = [
-    { make: "Toyota", model: "Celica", price: 35000 },
-    { make: "Ford", model: "Mondeo", price: 32000 },
-    { make: "Porsche", model: "Boxter", price: 72000 },
-    { make: "BMW", model: "M50", price: 60000 },
-    { make: "Aston Martin", model: "DBX", price: 190000 }
+  { make: "Toyota", model: "Celica", price: 35000 },
+  { make: "Ford", model: "Mondeo", price: 32000 },
+  { make: "Porsche", model: "Boxter", price: 72000 },
+  { make: "BMW", model: "M50", price: 60000 },
+  { make: "Aston Martin", model: "DBX", price: 190000 },
 ];
 
-createApp(VueExample)
-    .mount("#app")
-
+createApp(VueExample).mount("#app");

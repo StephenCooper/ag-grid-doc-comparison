@@ -1,50 +1,51 @@
-import { ICellEditorComp, ICellEditorParams } from 'ag-grid-community';
+import { ICellEditorComp, ICellEditorParams } from "ag-grid-community";
 
-const KEY_BACKSPACE = 'Backspace';
-const KEY_F2 = 'F2';
-const KEY_DELETE = 'Delete';
+const KEY_BACKSPACE = "Backspace";
+const KEY_F2 = "F2";
+const KEY_DELETE = "Delete";
 
 export class MySimpleEditor implements ICellEditorComp {
-    gui!: HTMLInputElement;
-    params!: ICellEditorParams;
+  gui!: HTMLInputElement;
+  params!: ICellEditorParams;
 
-    init(params: ICellEditorParams) {
-        this.gui = document.createElement('input');
-        this.gui.type = 'text';
-        this.gui.classList.add('my-simple-editor');
+  init(params: ICellEditorParams) {
+    this.gui = document.createElement("input");
+    this.gui.type = "text";
+    this.gui.classList.add("my-simple-editor");
 
-        this.params = params;
+    this.params = params;
 
-        let startValue = params.value;
+    let startValue = params.value;
 
-        const isBackspaceOrDelete = params.eventKey === KEY_BACKSPACE || params.eventKey === KEY_DELETE;
-        if (isBackspaceOrDelete) {
-            startValue = '';
-        } else if (params.charPress) {
-            startValue = params.charPress;
-        }
-
-        if (startValue !== null && startValue !== undefined) {
-            this.gui.value = startValue;
-        }
+    const isBackspaceOrDelete =
+      params.eventKey === KEY_BACKSPACE || params.eventKey === KEY_DELETE;
+    if (isBackspaceOrDelete) {
+      startValue = "";
+    } else if (params.charPress) {
+      startValue = params.charPress;
     }
 
-    getGui() {
-        return this.gui;
+    if (startValue !== null && startValue !== undefined) {
+      this.gui.value = startValue;
     }
+  }
 
-    getValue() {
-        return this.gui.value;
-    }
+  getGui() {
+    return this.gui;
+  }
 
-    afterGuiAttached() {
-        this.gui.focus();
-    }
+  getValue() {
+    return this.gui.value;
+  }
 
-    myCustomFunction() {
-        return {
-            rowIndex: this.params.rowIndex,
-            colId: this.params.column.getId()
-        };
-    }
+  afterGuiAttached() {
+    this.gui.focus();
+  }
+
+  myCustomFunction() {
+    return {
+      rowIndex: this.params.rowIndex,
+      colId: this.params.column.getId(),
+    };
+  }
 }

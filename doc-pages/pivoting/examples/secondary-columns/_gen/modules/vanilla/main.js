@@ -1,18 +1,17 @@
-
 const gridOptions = {
   columnDefs: [
-    { field: 'country', rowGroup: true, enableRowGroup: true },
+    { field: "country", rowGroup: true, enableRowGroup: true },
     {
-      field: 'year',
+      field: "year",
       pivot: true,
       enablePivot: true,
       pivotComparator: MyYearPivotComparator,
     },
-    { field: 'date' },
-    { field: 'sport' },
-    { field: 'gold', aggFunc: 'sum' },
-    { field: 'silver', aggFunc: 'sum' },
-    { field: 'bronze', aggFunc: 'sum' },
+    { field: "date" },
+    { field: "sport" },
+    { field: "gold", aggFunc: "sum" },
+    { field: "silver", aggFunc: "sum" },
+    { field: "bronze", aggFunc: "sum" },
   ],
   defaultColDef: {
     flex: 1,
@@ -33,7 +32,7 @@ const gridOptions = {
   postProcessSecondaryColDef: function (params) {
     const colDef = params.colDef;
     // make all the columns upper case
-    colDef.headerName = colDef.headerName.toUpperCase()
+    colDef.headerName = colDef.headerName.toUpperCase();
 
     // the pivot keys are the keys use for the pivot
     // don't change these, but you can use them for your information
@@ -47,26 +46,26 @@ const gridOptions = {
   // this is a callback that gets called on each group definition
   postProcessSecondaryColGroupDef: function (params) {
     const colGroupDef = params.colGroupDef;
-    // for fun, add a css class for 2002    
-    if (colGroupDef.pivotKeys[0] === '2002') {
-      colGroupDef.headerClass = 'color-background'
+    // for fun, add a css class for 2002
+    if (colGroupDef.pivotKeys[0] === "2002") {
+      colGroupDef.headerClass = "color-background";
     }
     // put 'year' in front of each group
-    colGroupDef.headerName = 'Year ' + colGroupDef.headerName
+    colGroupDef.headerName = "Year " + colGroupDef.headerName;
   },
-}
+};
 
 function MyYearPivotComparator(a, b) {
-  var requiredOrder = ['2012', '2010', '2008', '2006', '2004', '2002', '2000']
-  return requiredOrder.indexOf(a) - requiredOrder.indexOf(b)
+  var requiredOrder = ["2012", "2010", "2008", "2006", "2004", "2002", "2000"];
+  return requiredOrder.indexOf(a) - requiredOrder.indexOf(b);
 }
 
 // setup the grid after the page has finished loading
-document.addEventListener('DOMContentLoaded', function () {
-  var gridDiv = document.querySelector('#myGrid')
-  new agGrid.Grid(gridDiv, gridOptions)
+document.addEventListener("DOMContentLoaded", function () {
+  var gridDiv = document.querySelector("#myGrid");
+  new agGrid.Grid(gridDiv, gridOptions);
 
-  fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
-    .then(response => response.json())
-    .then(data => gridOptions.api.setRowData(data))
-})
+  fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+    .then((response) => response.json())
+    .then((data) => gridOptions.api.setRowData(data));
+});

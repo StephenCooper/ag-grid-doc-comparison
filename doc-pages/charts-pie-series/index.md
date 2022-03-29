@@ -13,11 +13,14 @@ To plot a basic pie all we need is an array of values that will determine the an
 A basic pie series configuration is shown below:
 
 ```js
-series: [{
-    type: 'pie',
-    angleKey: 'value'
-}]
+series: [
+  {
+    type: "pie",
+    angleKey: "value",
+  },
+];
 ```
+
 This results in the chart shown below. Note that [tooltips](/charts-tooltips/) show the absolute value of each pie slice.
 
 <chart-example title='Basic Pie Chart' name='basic-pie' type='generated'></chart-example>
@@ -42,10 +45,9 @@ Each individual slice can be toggled on and off via the legend.
 
 You might notice that not all of the slices in the chart above have a label. The reason for this is that certain slices can be small, and if there's a cluster of small slices their labels will overlap, resulting in a messy chart. To prevent this from happening the series will only show labels for slices with an angle greater than a certain value, which by default is set to be `20` degrees. This value is adjustable via the `label.minAngle` config:
 
-
 ```js
 label: {
-    minAngle: 20
+  minAngle: 20;
 }
 ```
 
@@ -66,12 +68,14 @@ Please check the [API reference](#api-reference) below to learn more about `labe
 Let's say you have the data for both the market share of mobile operating systems and the level of user satisfaction with each OS. We could represent the satisfaction level as the radius of a slice using the `radiusKey` config like so:
 
 ```js
-series: [{
-    type: 'pie',
-    labelKey: 'os',
-    angleKey: 'share',
-    radiusKey: 'satisfaction'
-}]
+series: [
+  {
+    type: "pie",
+    labelKey: "os",
+    angleKey: "share",
+    radiusKey: "satisfaction",
+  },
+];
 ```
 
 A pie chart where slices can have different radii is also known as a **rose chart**.
@@ -83,12 +87,14 @@ A pie chart where slices can have different radii is also known as a **rose char
 Pie series can be used to create a doughnut chart by using the `innerRadiusOffset` config.
 
 ```js
-series: [{
-    type: 'pie',
-    labelKey: 'os',
-    angleKey: 'share',
-    innerRadiusOffset: -70
-}]
+series: [
+  {
+    type: "pie",
+    labelKey: "os",
+    angleKey: "share",
+    innerRadiusOffset: -70,
+  },
+];
 ```
 
 The config specifies the offset value from the maximum pie radius which all pie slices use by default (the maximum pie series radius is determined automatically by the chart depending on the chart's dimensions). `-70` in the snippet above means the inner radius of the series should be 70 pixels smaller than the maximum radius.

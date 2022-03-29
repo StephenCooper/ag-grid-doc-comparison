@@ -1,15 +1,19 @@
-import { GetGroupRowAggParams, Grid, GridOptions } from '@ag-grid-community/core'
+import {
+  GetGroupRowAggParams,
+  Grid,
+  GridOptions,
+} from "@ag-grid-community/core";
 
 const gridOptions: GridOptions = {
   columnDefs: [
-    { field: 'country', rowGroup: true, hide: true },
-    { field: 'year', rowGroup: true, hide: true },
-    { field: 'gold' },
-    { field: 'silver' },
-    { field: 'bronze' },
-    { headerName: 'Gold*pi', field: 'goldPi', minWidth: 200 },
-    { headerName: 'Silver*pi', field: 'silverPi', minWidth: 200 },
-    { headerName: 'Bronze*pi', field: 'bronzePi', minWidth: 200 },
+    { field: "country", rowGroup: true, hide: true },
+    { field: "year", rowGroup: true, hide: true },
+    { field: "gold" },
+    { field: "silver" },
+    { field: "bronze" },
+    { headerName: "Gold*pi", field: "goldPi", minWidth: 200 },
+    { headerName: "Silver*pi", field: "silverPi", minWidth: 200 },
+    { headerName: "Bronze*pi", field: "bronzePi", minWidth: 200 },
   ],
   defaultColDef: {
     flex: 1,
@@ -18,14 +22,14 @@ const gridOptions: GridOptions = {
     sortable: true,
   },
   autoGroupColumnDef: {
-    headerName: 'Athlete',
-    field: 'athlete',
+    headerName: "Athlete",
+    field: "athlete",
     minWidth: 250,
   },
   sideBar: true,
   enableRangeSelection: true,
   getGroupRowAgg: getGroupRowAgg,
-}
+};
 
 function getGroupRowAgg(params: GetGroupRowAggParams) {
   const result = {
@@ -35,44 +39,44 @@ function getGroupRowAgg(params: GetGroupRowAggParams) {
     goldPi: 0,
     silverPi: 0,
     bronzePi: 0,
-  }
+  };
 
-  params.nodes.forEach(node => {
-    const data = node.group ? node.aggData : node.data
+  params.nodes.forEach((node) => {
+    const data = node.group ? node.aggData : node.data;
 
-    if (typeof data.gold === 'number') {
-      result.gold += data.gold
-      result.goldPi += data.gold * Math.PI
+    if (typeof data.gold === "number") {
+      result.gold += data.gold;
+      result.goldPi += data.gold * Math.PI;
     }
 
-    if (typeof data.silver === 'number') {
-      result.silver += data.silver
-      result.silverPi += data.silver * Math.PI
+    if (typeof data.silver === "number") {
+      result.silver += data.silver;
+      result.silverPi += data.silver * Math.PI;
     }
 
-    if (typeof data.bronze === 'number') {
-      result.bronze += data.bronze
-      result.bronzePi += data.bronze * Math.PI
+    if (typeof data.bronze === "number") {
+      result.bronze += data.bronze;
+      result.bronzePi += data.bronze * Math.PI;
     }
-  })
+  });
 
-  return result
+  return result;
 }
 
 function expandAll() {
-  gridOptions.api!.expandAll()
+  gridOptions.api!.expandAll();
 }
 
 function collapseAll() {
-  gridOptions.api!.collapseAll()
+  gridOptions.api!.collapseAll();
 }
 
 // setup the grid after the page has finished loading
-document.addEventListener('DOMContentLoaded', () => {
-  const gridDiv = document.querySelector<HTMLElement>('#myGrid')!
-  new Grid(gridDiv, gridOptions)
+document.addEventListener("DOMContentLoaded", () => {
+  const gridDiv = document.querySelector<HTMLElement>("#myGrid")!;
+  new Grid(gridDiv, gridOptions);
 
-  fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
-    .then(response => response.json())
-    .then(data => gridOptions.api!.setRowData(data))
-})
+  fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+    .then((response) => response.json())
+    .then((data) => gridOptions.api!.setRowData(data));
+});

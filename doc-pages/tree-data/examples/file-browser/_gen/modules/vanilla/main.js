@@ -1,21 +1,19 @@
-
-
 const gridOptions = {
   columnDefs: [
     {
-      field: 'dateModified',
+      field: "dateModified",
       minWidth: 250,
       comparator: function (d1, d2) {
-        return new Date(d1).getTime() < new Date(d2).getTime() ? -1 : 1
+        return new Date(d1).getTime() < new Date(d2).getTime() ? -1 : 1;
       },
     },
     {
-      field: 'size',
-      aggFunc: 'sum',
+      field: "size",
+      aggFunc: "sum",
       valueFormatter: function (params) {
         return params.value
-          ? Math.round(params.value * 10) / 10 + ' MB'
-          : '0 MB'
+          ? Math.round(params.value * 10) / 10 + " MB"
+          : "0 MB";
       },
     },
   ],
@@ -26,7 +24,7 @@ const gridOptions = {
     resizable: true,
   },
   autoGroupColumnDef: {
-    headerName: 'Files',
+    headerName: "Files",
     minWidth: 330,
     cellRendererParams: {
       checkbox: true,
@@ -39,39 +37,37 @@ const gridOptions = {
   animateRows: true,
   groupDefaultExpanded: -1,
   getDataPath: function (data) {
-    return data.filePath
+    return data.filePath;
   },
   getRowId: function (params) {
-    return params.data.id
+    return params.data.id;
   },
-}
+};
 
 function getNextId() {
   if (!window.nextId) {
-    window.nextId = 15
+    window.nextId = 15;
   } else {
-    window.nextId++
+    window.nextId++;
   }
-  return window.nextId
+  return window.nextId;
 }
 
 function getFileCellRenderer() {
-  class FileCellRenderer  {
-    
-
+  class FileCellRenderer {
     init(params) {
-      var tempDiv = document.createElement('div')
-      var value = params.value
-      var icon = getFileIcon(params.value)
+      var tempDiv = document.createElement("div");
+      var value = params.value;
+      var icon = getFileIcon(params.value);
       tempDiv.innerHTML = icon
         ? '<span><i class="' +
-        icon +
-        '"></i>' +
-        '<span class="filename"></span>' +
-        value +
-        '</span>'
-        : value
-      this.eGui = tempDiv.firstChild
+          icon +
+          '"></i>' +
+          '<span class="filename"></span>' +
+          value +
+          "</span>"
+        : value;
+      this.eGui = tempDiv.firstChild;
     }
 
     getGui() {
@@ -83,120 +79,117 @@ function getFileCellRenderer() {
     }
   }
 
-  return FileCellRenderer
+  return FileCellRenderer;
 }
 
 function addNewGroup() {
   var newGroupData = [
     {
       id: getNextId(),
-      filePath: ['Music', 'wav', 'hit_' + new Date().getTime() + '.wav'],
-      dateModified: 'Aug 23 2017 11:52:00 PM',
+      filePath: ["Music", "wav", "hit_" + new Date().getTime() + ".wav"],
+      dateModified: "Aug 23 2017 11:52:00 PM",
       size: 58.9,
     },
-  ]
-  gridOptions.api.applyTransaction({ add: newGroupData })
+  ];
+  gridOptions.api.applyTransaction({ add: newGroupData });
 }
 
 function removeSelected() {
-  var selectedNode = gridOptions.api.getSelectedNodes()[0] // single selection
+  var selectedNode = gridOptions.api.getSelectedNodes()[0]; // single selection
   if (!selectedNode) {
-    console.warn('No nodes selected!')
-    return
+    console.warn("No nodes selected!");
+    return;
   }
 
-  gridOptions.api.applyTransaction({ remove: getRowsToRemove(selectedNode) })
+  gridOptions.api.applyTransaction({ remove: getRowsToRemove(selectedNode) });
 }
 
 function getRowsToRemove(node) {
-  var res = []
+  var res = [];
   const children = node.childrenAfterGroup || [];
   for (var i = 0; i < children.length; i++) {
-    res = res.concat(getRowsToRemove(children[i]))
+    res = res.concat(getRowsToRemove(children[i]));
   }
 
   // ignore nodes that have no data, i.e. 'filler groups'
-  return node.data ? res.concat([node.data]) : res
+  return node.data ? res.concat([node.data]) : res;
 }
 
 function moveSelectedNodeToTarget(targetRowId) {
-  var selectedNode = gridOptions.api.getSelectedNodes()[0] // single selection
+  var selectedNode = gridOptions.api.getSelectedNodes()[0]; // single selection
   if (!selectedNode) {
-    console.warn('No nodes selected!')
-    return
+    console.warn("No nodes selected!");
+    return;
   }
 
-  var targetNode = gridOptions.api.getRowNode(targetRowId)
+  var targetNode = gridOptions.api.getRowNode(targetRowId);
   var invalidMove =
     selectedNode.key === targetNode.key ||
-    isSelectionParentOfTarget(selectedNode, targetNode)
+    isSelectionParentOfTarget(selectedNode, targetNode);
   if (invalidMove) {
-    console.warn('Invalid selection - must not be parent or same as target!')
-    return
+    console.warn("Invalid selection - must not be parent or same as target!");
+    return;
   }
 
-  var rowsToUpdate = getRowsToUpdate(selectedNode, targetNode.data.filePath)
-  gridOptions.api.applyTransaction({ update: rowsToUpdate })
+  var rowsToUpdate = getRowsToUpdate(selectedNode, targetNode.data.filePath);
+  gridOptions.api.applyTransaction({ update: rowsToUpdate });
 }
 
 function isSelectionParentOfTarget(selectedNode, targetNode) {
   var children = selectedNode.childrenAfterGroup || [];
   for (var i = 0; i < children.length; i++) {
-    if (targetNode && children[i].key === targetNode.key) return true
-    isSelectionParentOfTarget(children[i], targetNode)
+    if (targetNode && children[i].key === targetNode.key) return true;
+    isSelectionParentOfTarget(children[i], targetNode);
   }
-  return false
+  return false;
 }
 
 function getRowsToUpdate(node, parentPath) {
-  var res = []
+  var res = [];
 
-  var newPath = parentPath.concat([node.key])
+  var newPath = parentPath.concat([node.key]);
   if (node.data) {
     // groups without data, i.e. 'filler groups' don't need path updated
-    node.data.filePath = newPath
+    node.data.filePath = newPath;
   }
 
   var children = node.childrenAfterGroup || [];
   for (var i = 0; i < children.length; i++) {
-    var updatedChildRowData = getRowsToUpdate(
-      children[i],
-      newPath
-    )
-    res = res.concat(updatedChildRowData)
+    var updatedChildRowData = getRowsToUpdate(children[i], newPath);
+    res = res.concat(updatedChildRowData);
   }
 
   // ignore nodes that have no data, i.e. 'filler groups'
-  return node.data ? res.concat([node.data]) : res
+  return node.data ? res.concat([node.data]) : res;
 }
 
 function getFileIcon(name) {
-  return endsWith(name, '.mp3') || endsWith(name, '.wav')
-    ? 'far fa-file-audio'
-    : endsWith(name, '.xls')
-      ? 'far fa-file-excel'
-      : endsWith(name, '.txt')
-        ? 'far fa-file'
-        : endsWith(name, '.pdf')
-          ? 'far fa-file-pdf'
-          : 'far fa-folder'
+  return endsWith(name, ".mp3") || endsWith(name, ".wav")
+    ? "far fa-file-audio"
+    : endsWith(name, ".xls")
+    ? "far fa-file-excel"
+    : endsWith(name, ".txt")
+    ? "far fa-file"
+    : endsWith(name, ".pdf")
+    ? "far fa-file-pdf"
+    : "far fa-folder";
 }
 
 function endsWith(str, match) {
-  var len
+  var len;
   if (str == null || !str.length || match == null || !match.length) {
-    return false
+    return false;
   }
-  len = str.length
-  return str.substring(len - match.length, len) === match
+  len = str.length;
+  return str.substring(len - match.length, len) === match;
 }
 
 // wait for the document to be loaded, otherwise
 // AG Grid will not find the div in the document.
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener("DOMContentLoaded", function () {
   // lookup the container we want the Grid to use
-  var eGridDiv = document.querySelector('#myGrid')
+  var eGridDiv = document.querySelector("#myGrid");
 
   // create the grid passing in the div to use together with the columns & data we want to use
-  new agGrid.Grid(eGridDiv, gridOptions)
-})
+  new agGrid.Grid(eGridDiv, gridOptions);
+});

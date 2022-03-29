@@ -1,33 +1,32 @@
-
 const columnDefs = [
   {
-    groupId: 'athleteGroupId',
-    headerName: 'Athlete',
+    groupId: "athleteGroupId",
+    headerName: "Athlete",
     children: [
       {
-        headerName: 'Name',
-        field: 'athlete',
+        headerName: "Name",
+        field: "athlete",
         minWidth: 200,
-        filter: 'agTextColumnFilter',
+        filter: "agTextColumnFilter",
       },
       {
-        groupId: 'competitionGroupId',
-        headerName: 'Competition',
-        children: [{ field: 'year' }, { field: 'date', minWidth: 180 }],
+        groupId: "competitionGroupId",
+        headerName: "Competition",
+        children: [{ field: "year" }, { field: "date", minWidth: 180 }],
       },
     ],
   },
   {
-    groupId: 'medalsGroupId',
-    headerName: 'Medals',
+    groupId: "medalsGroupId",
+    headerName: "Medals",
     children: [
-      { field: 'gold' },
-      { field: 'silver' },
-      { field: 'bronze' },
-      { field: 'total' },
+      { field: "gold" },
+      { field: "silver" },
+      { field: "bronze" },
+      { field: "total" },
     ],
   },
-]
+];
 
 const gridOptions = {
   columnDefs: columnDefs,
@@ -44,49 +43,39 @@ const gridOptions = {
     sortable: true,
     resizable: true,
   },
-  sideBar: 'columns',
+  sideBar: "columns",
   onGridReady: function (params) {
-    var columnToolPanel = (gridOptions.api.getToolPanelInstance(
-      'columns'
-    ) ) 
-    columnToolPanel.collapseColumnGroups()
+    var columnToolPanel = gridOptions.api.getToolPanelInstance("columns");
+    columnToolPanel.collapseColumnGroups();
   },
-}
+};
 
 function expandAllGroups() {
-  var columnToolPanel = (gridOptions.api.getToolPanelInstance(
-    'columns'
-  ) ) 
-  columnToolPanel.expandColumnGroups()
+  var columnToolPanel = gridOptions.api.getToolPanelInstance("columns");
+  columnToolPanel.expandColumnGroups();
 }
 
 function collapseAllGroups() {
-  var columnToolPanel = (gridOptions.api.getToolPanelInstance(
-    'columns'
-  ) ) 
-  columnToolPanel.collapseColumnGroups()
+  var columnToolPanel = gridOptions.api.getToolPanelInstance("columns");
+  columnToolPanel.collapseColumnGroups();
 }
 
 function expandAthleteAndCompetitionGroups() {
-  var columnToolPanel = (gridOptions.api.getToolPanelInstance(
-    'columns'
-  ) ) 
-  columnToolPanel.expandColumnGroups(['athleteGroupId', 'competitionGroupId'])
+  var columnToolPanel = gridOptions.api.getToolPanelInstance("columns");
+  columnToolPanel.expandColumnGroups(["athleteGroupId", "competitionGroupId"]);
 }
 
 function collapseCompetitionGroups() {
-  var columnToolPanel = (gridOptions.api.getToolPanelInstance(
-    'columns'
-  ) ) 
-  columnToolPanel.collapseColumnGroups(['competitionGroupId'])
+  var columnToolPanel = gridOptions.api.getToolPanelInstance("columns");
+  columnToolPanel.collapseColumnGroups(["competitionGroupId"]);
 }
 
 // setup the grid after the page has finished loading
-document.addEventListener('DOMContentLoaded', function () {
-  var gridDiv = document.querySelector('#myGrid')
-  new agGrid.Grid(gridDiv, gridOptions)
+document.addEventListener("DOMContentLoaded", function () {
+  var gridDiv = document.querySelector("#myGrid");
+  new agGrid.Grid(gridDiv, gridOptions);
 
-  fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
-    .then(response => response.json())
-    .then(data => gridOptions.api.setRowData(data))
-})
+  fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+    .then((response) => response.json())
+    .then((data) => gridOptions.api.setRowData(data));
+});

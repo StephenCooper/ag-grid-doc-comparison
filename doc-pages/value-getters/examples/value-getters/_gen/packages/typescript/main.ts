@@ -1,65 +1,71 @@
-import 'ag-grid-community/dist/styles/ag-grid.css';
+import "ag-grid-community/dist/styles/ag-grid.css";
 import "ag-grid-community/dist/styles/ag-theme-alpine-dark.css";
-import { ColDef, ColGroupDef, Grid, GridOptions, ValueGetterParams } from 'ag-grid-community';
+import {
+  ColDef,
+  ColGroupDef,
+  Grid,
+  GridOptions,
+  ValueGetterParams,
+} from "ag-grid-community";
 
 var hashValueGetter = function (params: ValueGetterParams) {
   return params.node ? params.node.rowIndex : null;
-}
+};
 
 function abValueGetter(params: ValueGetterParams) {
-  return params.data.a + params.data.b
+  return params.data.a + params.data.b;
 }
 
 var a1000ValueGetter = function (params: ValueGetterParams) {
-  return params.data.a * 1000
-}
+  return params.data.a * 1000;
+};
 var b137ValueGetter = function (params: ValueGetterParams) {
-  return params.data.b * 137
-}
+  return params.data.b * 137;
+};
 var randomValueGetter = function () {
-  return Math.floor(Math.random() * 1000)
-}
+  return Math.floor(Math.random() * 1000);
+};
 var chainValueGetter = function (params: ValueGetterParams) {
-  return params.getValue('a&b') * 1000
-}
+  return params.getValue("a&b") * 1000;
+};
 var constValueGetter = function () {
-  return 99999
-}
+  return 99999;
+};
 const gridOptions: GridOptions = {
   columnDefs: [
     {
-      headerName: '#',
+      headerName: "#",
       maxWidth: 100,
       valueGetter: hashValueGetter,
     },
-    { field: 'a' },
-    { field: 'b' },
+    { field: "a" },
+    { field: "b" },
     {
-      headerName: 'A + B',
-      colId: 'a&b',
+      headerName: "A + B",
+      colId: "a&b",
       valueGetter: abValueGetter,
     },
     {
-      headerName: 'A * 1000',
+      headerName: "A * 1000",
       minWidth: 95,
       valueGetter: a1000ValueGetter,
     },
     {
-      headerName: 'B * 137',
+      headerName: "B * 137",
       minWidth: 90,
       valueGetter: b137ValueGetter,
     },
     {
-      headerName: 'Random',
+      headerName: "Random",
       minWidth: 90,
       valueGetter: randomValueGetter,
     },
     {
-      headerName: 'Chain',
+      headerName: "Chain",
       valueGetter: chainValueGetter,
     },
     {
-      headerName: 'Const',
+      headerName: "Const",
       minWidth: 85,
       valueGetter: constValueGetter,
     },
@@ -70,20 +76,19 @@ const gridOptions: GridOptions = {
     // cellClass: 'number-cell'
   },
   rowData: createRowData(),
-}
+};
 
 function createRowData() {
-  var rowData = []
+  var rowData = [];
   for (var i = 0; i < 100; i++) {
     rowData.push({
       a: Math.floor(i % 4),
       b: Math.floor(i % 7),
-    })
+    });
   }
-  return rowData
+  return rowData;
 }
 
 // setup the grid after the page has finished loading
-  var gridDiv = document.querySelector<HTMLElement>('#myGrid')!
-  new Grid(gridDiv, gridOptions)
- 
+var gridDiv = document.querySelector<HTMLElement>("#myGrid")!;
+new Grid(gridDiv, gridOptions);

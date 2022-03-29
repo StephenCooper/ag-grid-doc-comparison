@@ -14,21 +14,19 @@ The example below is identical to the above except [Row IDs](/row-ids/) are prov
 
 Providing [Row IDs](/row-ids/) allows the grid to work more optimally in a few ares which are outlined as follows:
 
-
-| Function | Row IDs Provided | Row IDs Missing | 
-| ----------------------------- | ------------------------- | ------------------------ | 
-| Row Selection | Row Selection maintained | Row Selection lost |
-| Row Grouping | Row Groups re-created, all open groups closed | Groups kept / updated, open groups stay open |
-| Row Refresh | Only changed rows are updated in the DOM | All rows destroyed form the DOM and recreated, flicker may occur |
-| Row Animation | Moved rows animate to new position | No row animation |
-| Flashing Cells | Changed values can be flashed to show change | No flashing available, all cells are created from scratch |
-
+| Function       | Row IDs Provided                              | Row IDs Missing                                                  |
+| -------------- | --------------------------------------------- | ---------------------------------------------------------------- |
+| Row Selection  | Row Selection maintained                      | Row Selection lost                                               |
+| Row Grouping   | Row Groups re-created, all open groups closed | Groups kept / updated, open groups stay open                     |
+| Row Refresh    | Only changed rows are updated in the DOM      | All rows destroyed form the DOM and recreated, flicker may occur |
+| Row Animation  | Moved rows animate to new position            | No row animation                                                 |
+| Flashing Cells | Changed values can be flashed to show change  | No flashing available, all cells are created from scratch        |
 
 ## Controlling Row Position
 
 The example below shows controlling the grid rows, including it's order, by updating the Row Data.
 
-The example keeps a list of records to mimic data in "a store". Each time the user does an update, the data in the store is copied, so that when Row Data is given to the grid, the grid is presented with different Row Data. This is equivalent to refreshing data from a server, or using an Immutable Data store on the client. 
+The example keeps a list of records to mimic data in "a store". Each time the user does an update, the data in the store is copied, so that when Row Data is given to the grid, the grid is presented with different Row Data. This is equivalent to refreshing data from a server, or using an Immutable Data store on the client.
 
 Note the following.
 
@@ -47,10 +45,8 @@ Note the following.
 - **Turn Grouping On / Off**: To turn grouping by symbol on and off.
 
 - **Group Selected A / B / C**: With grouping on, hit the buttons A, B and C to move selected items to that group. Notice how the rows animate to the new position.
- 
+
 <grid-example title='Simple Immutable Store' name='simple-immutable-store' type='mixed' options='{ "enterprise": true, "exampleHeight": 540, "modules": ["clientside", "rowgrouping"] }'></grid-example>
-
-
 
 ## How It Works
 

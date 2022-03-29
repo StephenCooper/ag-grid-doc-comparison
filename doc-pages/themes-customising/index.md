@@ -27,11 +27,11 @@ Here are some of the most important theme parameters. There is a [full list](#ba
 
 - The provided themes have theme-specific parameters to set the colour of many elements at once. These are shortcuts for setting several other parameters.
 
-    - `alpine-active-color` (Alpine only) sets the colour of checked checkboxes, range selections, row selections, selected tab underlines, and input focus outlines.
+  - `alpine-active-color` (Alpine only) sets the colour of checked checkboxes, range selections, row selections, selected tab underlines, and input focus outlines.
 
-    - `balham-active-color` (Balham only) sets the colour of checked checkboxes, range selections, row selections, and input focus outlines.
+  - `balham-active-color` (Balham only) sets the colour of checked checkboxes, range selections, row selections, and input focus outlines.
 
-    - `material-primary-color` and `material-accent-color` (Material only) set the colours used for the primary and accent colour roles specified in the [Material Design colour system](https://material.io/design/color/). Currently primary colour is used for buttons, range selections, selected tab underlines and input focus underlines, and accent colour is used for checked checkboxes.
+  - `material-primary-color` and `material-accent-color` (Material only) set the colours used for the primary and accent colour roles specified in the [Material Design colour system](https://material.io/design/color/). Currently primary colour is used for buttons, range selections, selected tab underlines and input focus underlines, and accent colour is used for checked checkboxes.
 
 ## Setting parameters using Sass
 
@@ -42,24 +42,24 @@ and an [angular example](https://github.com/ag-grid/ag-grid-customise-theme/tree
 
 To customise a theme, include the theme mixin file and then call the mixin passing parameters to customise it. Then add CSS rules for advanced customisation:
 
-
 ```scss
 @import "~ag-grid-community/src/styles/ag-grid.scss";
 @import "~ag-grid-community/src/styles/ag-theme-alpine/sass/ag-theme-alpine-mixin";
 
 .ag-theme-alpine {
-    @include ag-theme-alpine((
-        // use theme parameters where possible
-        alpine-active-color: deeppink
-    ));
+  @include ag-theme-alpine(
+    (
+      // use theme parameters where possible
+      alpine-active-color: deeppink
+    )
+  );
 
-    .ag-header {
-        // or write CSS selectors to make customisations beyond what the parameters support
-        text-style: italic;
-    }
+  .ag-header {
+    // or write CSS selectors to make customisations beyond what the parameters support
+    text-style: italic;
+  }
 }
 ```
-
 
 Note how this example includes the structural styles (`ag-gris.scss`) before the theme mixin. Doing this means that both structural and theme styles will be included in the compiled CSS file. Alternatively, you could leave out the first `@import` and then embed the structural stylesheet separately in your HTML page.
 
@@ -68,7 +68,6 @@ Note how this example includes the structural styles (`ag-gris.scss`) before the
 The grid uses [DOM virtualisation](/dom-virtualisation/) for rendering large amounts of data,
 which means that it needs to know the size of various elements like columns and grid rows in order to calculate their
 layout. The grid uses several strategies to work out the right size:
-
 
 1. Firstly, the grid will attempt to measure the size of an element. This works when styles have loaded, but will not work if the grid initialises before the theme loads. Our [theme customisation examples](https://github.com/ag-grid/ag-grid-customise-theme/blob/master/src/vanilla/grid.js) demonstrate how to wait for CSS to load before initialising the grid (see the cssHasLoaded function).
 
@@ -82,25 +81,26 @@ CSS variables (officially known to as "CSS Custom Properties") are supported by 
 
 ```scss
 .ag-theme-alpine {
-    /* use theme parameters where possible */
-    --ag-foreground-color: deeppink;
+  /* use theme parameters where possible */
+  --ag-foreground-color: deeppink;
 }
 
 /* or write CSS selectors to make customisations beyond what the parameters support */
 .ag-theme-alpine .ag-header {
-    text-style: italic;
+  text-style: italic;
 }
 ```
 
 If your app already defines a colour scheme using CSS variables and you want to use those existing variable names rather than the `--ag-{parameter-name}`
 provided by the grid, you can do this by passing a css `var()` value to a theme parameter in Sass. For example, if your application defines a CSS variable `--appMainTextColor` and you want to set the `foreground-color` parameter at runtime using this variable, you can do so like this:
 
-
 ```scss
 .ag-theme-alpine {
-    @include ag-theme-alpine((
-        foreground-color: var(--appMainTextColor)
-    ));
+  @include ag-theme-alpine(
+    (
+      foreground-color: var(--appMainTextColor),
+    )
+  );
 }
 ```
 
@@ -113,14 +113,12 @@ We have created an example that demonstrates both methods of CSS variable use in
 
 ## Customising themes using CSS rules
 
-
 Whether you're using Sass or CSS variables to set theme parameters, you will find that some design effects can't be achieved through
 parameters alone. For example, there is no parameter to set the `font-style: italic` on header cells. If you want your column headers to be italic, use regular CSS:
 
-
 ```css
 .ag-theme-alpine .ag-header-cell-label {
-    font-style: italic;
+  font-style: italic;
 }
 ```
 
@@ -136,7 +134,6 @@ The best way to find the right class name to use in a CSS rule is using the brow
 have multiple class names, some more general than others. For example, the [row grouping panel](/tool-panel-columns/#column-tool-panel-example) is a component onto which you can drag columns to group them. The internal name for this is the "column drop" component, and there are two
 kinds - a horizontal one at the top of the header and a vertical one in the columns tool panel. You can use the class name `ag-column-drop` to target either kind, or `ag-column-drop-vertical` / `ag-column-drop-horizontal` to target one only.
 
-
 ### Understanding CSS rule maintenance and breaking changes
 
 With each release of the grid we add features and improve existing ones, and as a result the DOM structure changes with every release - even minor and patch releases. Of course we test and update the CSS rules in our themes to make sure they still work, and this includes ensuring that
@@ -148,10 +145,9 @@ The simpler your CSS rules are, the less likely they are to break between releas
 
 Browsers use the same mechanism - CSS - for controlling how elements work (e.g. scrolling and whether they respond to mouse events), where elements appear, and how elements look. Our "structural stylesheet" (ag-grid.scss) sets CSS rules that control how the grid works, and the code depends on those rules not being overridden. There is nothing that we can do to prevent themes overriding critical rules, so as a theme author you need to be careful not to break the grid. Here's a guide:
 
-
 - Visual styles including margins, paddings, sizes, colours, fonts, borders etc are all fine to change in a theme.
 
-- Setting a component to `display: flex` and changing flex child layout properties like `align-items`, `align-self` and `flex-direction` is probably OK if you're trying to change how something looks on a small scale, e.g. to change the align of some text or icons within a container; but if you're trying to change the layout of the grid on a larger scale e.g.  turning a vertical scrolling list into a horizontal one, you are likely to break Grid features.
+- Setting a component to `display: flex` and changing flex child layout properties like `align-items`, `align-self` and `flex-direction` is probably OK if you're trying to change how something looks on a small scale, e.g. to change the align of some text or icons within a container; but if you're trying to change the layout of the grid on a larger scale e.g. turning a vertical scrolling list into a horizontal one, you are likely to break Grid features.
 
 - The style properties `position`, `overflow` and `pointer-events` are intrinsic to how the grid works. Changing these values will change how the grid operates, and may break functionality now or in future minor releases.
 
@@ -166,7 +162,6 @@ find the default values for your theme by inspecting its source code in the grid
 Note that some values are defined relative to other values using the `ag-derived` helper function, so
 `data-color: ag-derived(foreground-color)` means that if you don't set the `data-color` property it
 will default to the value of `foreground-color`. See the [ag-derived docs](#ag-derived) for more information.
-
 
 ```scss
 // Colour of text and icons in primary UI elements like menus
@@ -410,9 +405,7 @@ popup-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3)
 
 ## Parameter cascading
 
-
 A parameter cascade is when one parameter defaults to another, which may itself default to a different parameter. In this way we can have very general purpose parameters like `foreground-color` which changes the colour of all text in the grid, and more specific parameters like `data-color` which only change the colour of text in grid cells. Consider the following parameters, all of which derive their value directly or indirectly from the foreground colour:
-
 
 ```scss
 foreground-color: #000,
@@ -425,14 +418,11 @@ disabled-foreground-color: ag-derived(foreground-color, $opacity: 0.5),
 Note how `disabled-foreground-color` alters the opacity of the default foreground colour, so setting `foreground-color`
 to red (`#FF0000`) will automatically generate a semi-transparent red (`rgba(255,0,0,0.5)`).
 
-
 ### Parameter cascading and CSS variables
-
 
 There is a limitation of parameter cascading when used in combination with CSS variables. Sometimes, one parameter in the cascade alters the
 value of the parameter that it derives from, as in the case of `disabled-foreground-color` above. This requires the value to be
 known at compile time, and it is not possible to achieve this effect at runtime using CSS variables.
-
 
 If you are setting parameters using the built in CSS variables, defining `--ag-foreground-color: red`
 will not automatically set the disabled foreground colour to semi-transparent red - if you want this effect, you must explicitly define `--ag-disabled-foreground-color: rgba(255,0,0,0.5)`.
@@ -452,11 +442,10 @@ by importing `styles/mixins/_ag-theme-params.scss` from the grid distribution.
 If you're using Sass, you can write CSS rules that reference the value of a theme parameter. For example, this rule would invert
 the foreground and background colours in the header:
 
-
 ```scss
 .ag-header-cell {
-    background-color: ag-param(foreground-color);
-    color: ag-param(background-color);
+  background-color: ag-param(foreground-color);
+  color: ag-param(background-color);
 }
 ```
 
@@ -464,8 +453,8 @@ ag-param simply returns the correct value into the emitted CSS, it does not add 
 
 ```css
 .ag-header-cell {
-    background-color: #000;
-    color: #FFF;
+  background-color: #000;
+  color: #fff;
 }
 ```
 
@@ -477,8 +466,8 @@ support for CSS variables.
 
 ```css
 .ag-header-cell {
-    @include ag-color-property(background-color, foreground-color);
-    @include ag-color-property(color, background-color);
+  @include ag-color-property(background-color, foreground-color);
+  @include ag-color-property(color, background-color);
 }
 ```
 
@@ -495,9 +484,7 @@ Here is the CSS emitted by the above code:
 
 Each rule is emitted twice, the first rule ensures that the default colour is visible in older browsers that do not support CSS variables.
 
-
 ### @function ag-derived
-
 
 As the user of a theme you do not need to write code including the `ag-derived` function, but it's still useful to know about it so that you can understand your theme's default parameters. Our provided themes make extensive use of this function to implement [parameter cascading](#parameter-cascading).
 
@@ -505,11 +492,10 @@ If you're writing a theme that is intended to be extended and used by other deve
 
 Parent themes define a Sass map of supported parameter names and their default values, which can optionally be overridden by child themes by passing params to the parent theme mixin:
 
-
 ```scss
 $my-theme-default-params: (
-    animal-color: red,
-    cat-color: ag-derived(animal-color)
+  animal-color: red,
+  cat-color: ag-derived(animal-color),
 );
 ```
 
@@ -517,53 +503,48 @@ The theme can then use the parameters in CSS rules:
 
 ```scss
 .cat {
-    // outputs the value passed to "cat-color", or "red" if
-    // no "cat-color" parameter was supplied
-    color: ag-param(cat-color);
+  // outputs the value passed to "cat-color", or "red" if
+  // no "cat-color" parameter was supplied
+  color: ag-param(cat-color);
 }
 ```
 
-
 The `ag-derived` function supports modifiers - named arguments that can be used to modify the value of the parameter being derived from. In this case, if the `cat-color` parameter is not overridden, it will default to a semitransparent version of animal-color:
-
 
 ```scss
 $my-theme-default-params: (
-    animal-color: #FFFFFF,
-    cat-color: ag-derived(animal-color, $opacity: 0.5)
+  animal-color: #ffffff,
+  cat-color: ag-derived(animal-color, $opacity: 0.5),
 );
 ```
 
 Instead of passing a value to a modifier, it is also possible to pass a parameter name. In this case, the `cat-color` parameter defaults to a semitransparent version of animal-color with the exact amount of opacity depending on the value of `cat-opacity`:
 
-
 ```scss
 $my-theme-default-params: (
-    animal-color: #FFFFFF,
-    cat-opacity: 0.5,
-    cat-color: ag-derived(animal-color, $opacity: cat-opacity)
+  animal-color: #ffffff,
+  cat-opacity: 0.5,
+  cat-color: ag-derived(animal-color, $opacity: cat-opacity),
 );
 ```
 
 The following modifiers are available:
 
-
 - Available for numeric parameters:
 
-    - `$times: number` - equivalent to Sass `$value * $number`
-    - `$divide: number` - equivalent to Sass `$value / $number`
-    - `$plus: number` - equivalent to Sass `$value + $number`
-    - `$minus: number` - equivalent to Sass `$value - $number`
+  - `$times: number` - equivalent to Sass `$value * $number`
+  - `$divide: number` - equivalent to Sass `$value / $number`
+  - `$plus: number` - equivalent to Sass `$value + $number`
+  - `$minus: number` - equivalent to Sass `$value - $number`
 
 - Available for colour parameters:
 
-    - `$opacity: percentage` - amount should be from 0 to 1, equivalent to Sass `rgba($value, $amount)`
+  - `$opacity: percentage` - amount should be from 0 to 1, equivalent to Sass `rgba($value, $amount)`
 
-    - `$mix: color percentage` - mixes in an amount of another colour, e.g. `$mix: red 10%` produce a colour made from 90% the parameter value and 10% red.
+  - `$mix: color percentage` - mixes in an amount of another colour, e.g. `$mix: red 10%` produce a colour made from 90% the parameter value and 10% red.
 
-    - `$lighten: percentage` - amount should be a percentage from 0% to 100%, equivalent to Sass `lighten($value, $amount)`.
+  - `$lighten: percentage` - amount should be a percentage from 0% to 100%, equivalent to Sass `lighten($value, $amount)`.
 
-    - `$darken: percentage` - amount should be a percentage from 0% to 100%, equivalent to Sass `darken($value, $amount)`
+  - `$darken: percentage` - amount should be a percentage from 0% to 100%, equivalent to Sass `darken($value, $amount)`
 
-    - `$self-overlay: times` - takes a semi-transparent colour and overlays it on top of itself multiple times. For example, if the value of the parameter is `rgba(0, 0, 0, 0.5)` then `$self-overlay: 2` will produce `rgba(0, 0, 0, 0.75)`
-
+  - `$self-overlay: times` - takes a semi-transparent colour and overlays it on top of itself multiple times. For example, if the value of the parameter is `rgba(0, 0, 0, 0.5)` then `$self-overlay: 2` will produce `rgba(0, 0, 0, 0.75)`

@@ -1,20 +1,21 @@
-
-import { createApp } from 'vue';
-import { AgGridVue } from '@ag-grid-community/vue3';
-import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import { createApp } from "vue";
+import { AgGridVue } from "@ag-grid-community/vue3";
+import "@ag-grid-community/core/dist/styles/ag-grid.css";
 import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { ModuleRegistry } from '@ag-grid-community/core';
-import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
-import { CsvExportModule } from '@ag-grid-community/csv-export';
-import { MenuModule } from '@ag-grid-enterprise/menu';
+import { ModuleRegistry } from "@ag-grid-community/core";
+import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
+import { CsvExportModule } from "@ag-grid-community/csv-export";
+import { MenuModule } from "@ag-grid-enterprise/menu";
 
 // Register the required feature modules with the Grid
-ModuleRegistry.registerModules([ClientSideRowModelModule, CsvExportModule, MenuModule])
-
-
+ModuleRegistry.registerModules([
+  ClientSideRowModelModule,
+  CsvExportModule,
+  MenuModule,
+]);
 
 const VueExample = {
-    template: `
+  template: `
         <div style="height: 100%">
             <div style="display: flex; flex-direction: column; height: 100%;">
                 <div style="display: flex;">
@@ -44,58 +45,61 @@ const VueExample = {
             </div>
         </div>
     `,
-    components: {
-        'ag-grid-vue': AgGridVue,
-        
+  components: {
+    "ag-grid-vue": AgGridVue,
+  },
+  data: function () {
+    return {
+      columnDefs: [
+        { field: "athlete" },
+        { field: "country" },
+        { field: "sport" },
+        { field: "gold", hide: true },
+        { field: "silver", hide: true },
+        { field: "bronze", hide: true },
+        { field: "total" },
+      ],
+      gridApi: null,
+      columnApi: null,
+      defaultColDef: {
+        editable: true,
+        resizable: true,
+        minWidth: 100,
+        flex: 1,
+      },
+      popupParent: null,
+      rowData: null,
+    };
+  },
+  created() {
+    this.popupParent = document.body;
+    this.rowData = getData();
+  },
+  methods: {
+    onBtnExport() {
+      this.gridApi.exportDataAsCsv(getParams());
     },
-    data: function() {
-        return {
-            columnDefs: [{field:"athlete"},{field:"country"},{field:"sport"},{field:"gold",
-hide:true},{field:"silver",
-hide:true},{field:"bronze",
-hide:true},{field:"total"}],
-            gridApi: null,
-            columnApi: null,
-            defaultColDef: {
-    editable: true,
-    resizable: true,
-    minWidth: 100,
-    flex: 1,
-},
-            popupParent: null,
-rowData: null
-        }
+    onBtnUpdate() {
+      document.querySelector("#csvResult").value = this.gridApi.getDataAsCsv(
+        getParams()
+      );
     },
-    created() {
-        this.popupParent = document.body;
-this.rowData = getData()
+    onGridReady(params) {
+      this.gridApi = params.api;
+      this.gridColumnApi = params.columnApi;
     },
-    methods: {
-        onBtnExport() {
-    this.gridApi.exportDataAsCsv(getParams());
-},
-onBtnUpdate() {
-    (document.querySelector('#csvResult')).value = this.gridApi.getDataAsCsv(getParams());
-},
-onGridReady(params) {
-        this.gridApi = params.api;
-        this.gridColumnApi = params.columnApi;
-        
-    },
-    }
-}
+  },
+};
 
 window.getBoolean = function getBoolean(id) {
-    var field = document.querySelector('#' + id);
-    return !!field.checked;
-}
+  var field = document.querySelector("#" + id);
+  return !!field.checked;
+};
 
 window.getParams = function getParams() {
-    return {
-        allColumns: getBoolean('allColumns'),
-    };
-}
+  return {
+    allColumns: getBoolean("allColumns"),
+  };
+};
 
-createApp(VueExample)
-    .mount("#app")
-
+createApp(VueExample).mount("#app");

@@ -4,23 +4,21 @@ title: "Migrating themes to AG Grid v23+"
 
 With the release of AG Grid version 23, we have undertaken a major rewrite of the Sass code behind our provided themes, with the goal of making it easier to write custom themes. This document explains what you need to do, why we've made these changes, and exactly what we've changed.
 
-
 ## What you need to do
 
-
 - If you are using the "Balham" or "Material" themes:
-    - Test your theme to ensure that all the customisations you have made still look correct.
-    - If everything still looks correct then you do not need to change your theme code. However you will see a deprecation warning in the compile logs telling you that the path that you are using to import the theme file has changed, and you should update your import paths to remove this warning (change the @import from `.../sass/ag-theme-$name.scss` to `.../sass/legacy/ag-theme-$name-v22-compat.scss`).
-    - If anything does not work as expected, read this migration guide to establish what you need to change.
+
+  - Test your theme to ensure that all the customisations you have made still look correct.
+  - If everything still looks correct then you do not need to change your theme code. However you will see a deprecation warning in the compile logs telling you that the path that you are using to import the theme file has changed, and you should update your import paths to remove this warning (change the @import from `.../sass/ag-theme-$name.scss` to `.../sass/legacy/ag-theme-$name-v22-compat.scss`).
+  - If anything does not work as expected, read this migration guide to establish what you need to change.
 
 - If you have a large custom theme that extends any of our provided themes, but contains many CSS rules that extensively change the appearance so that it looks very different from the base theme, then consider updating your theme to extend ag-theme-base. This will provide the most stable long term base for your theme. See [this demo](https://github.com/ag-grid/ag-grid-customise-theme/tree/master/src/vanilla-extending-base) for an example of a custom theme extending the base theme.
 
 - If you are using one of the original grid themes: "fresh", "dark", "blue" or "bootstrap":
 
-    - The advice is the same as for Balham and Material, except that these themes are now officially deprecated. We have no plans to remove them from our distribution because they are working fine for many of our users. HOWEVER if you continue to use them, you  should be aware that we will not be testing and updating them with each release so some features may not look exactly right.
+  - The advice is the same as for Balham and Material, except that these themes are now officially deprecated. We have no plans to remove them from our distribution because they are working fine for many of our users. HOWEVER if you continue to use them, you should be aware that we will not be testing and updating them with each release so some features may not look exactly right.
 
-    - If you need to make changes to how one of these themes look, you can migrate to a custom theme on top of ag-theme-base. We have provided some examples of how to build fresh, dark, blue and bootstrap on top of the new base theme [in this repo](https://github.com/ag-grid/ag-grid-customise-theme/tree/master/src/legacy/v22-provided-themes).
-
+  - If you need to make changes to how one of these themes look, you can migrate to a custom theme on top of ag-theme-base. We have provided some examples of how to build fresh, dark, blue and bootstrap on top of the new base theme [in this repo](https://github.com/ag-grid/ag-grid-customise-theme/tree/master/src/legacy/v22-provided-themes).
 
 ## Why we are changing the theme system
 
@@ -44,9 +42,11 @@ $ag-header-foreground-color: red;
 @import "path/to/ag-theme-xyz.scss";
 
 // new method
-@include ag-theme-xyz((
-    header-foreground-color: red
-));
+@include ag-theme-xyz(
+  (
+    header-foreground-color: red,
+  )
+);
 ```
 
 The major advantage of this approach is that we are now able to warn when you pass a parameter that is not supported. It also allows our customers to use the [new module system](https://sass-lang.com/blog/the-module-system-is-launched) in Sass which does not support sharing global variables between modules.
@@ -58,16 +58,16 @@ Many parameters are direct equivalents of variables in v22, but this is not alwa
 These variables correspond to parameters with different names. Where possible, they will automatically be converted in backwards compatibility mode.
 
 - `$ag-primary-color` and `$ag-accent-color`. If extending a provided theme, use the theme-specific parameters to control key colours.
-    - Balham provides `balham-active-color`
-    - Alpine provides `alpine-active-color`
-    - Material provides `material-primary-color` and `material-accent-color`.
-    - Or use specific parameters like `checkbox-checked-color` that control the colours of individual elements.
+
+  - Balham provides `balham-active-color`
+  - Alpine provides `alpine-active-color`
+  - Material provides `material-primary-color` and `material-accent-color`.
+  - Or use specific parameters like `checkbox-checked-color` that control the colours of individual elements.
 
 - `$ag-alt-icon-color`. Renamed to `checkbox-background-color`.
 - `$ag-range-selected-color-1` (and `-2`, `-3`, `-4`). These used to set the color when multiple ranges overlap. They are no longer required, instead set a semi-transparent colour to `range-selection-background-color` and the correct color when multiple ranges overlap is automatically calculated.
 - `$ag-virtual-item-height`. Renamed to `$ag-list-item-height`.
 - `$ag-foreground-color-opacity`, `$ag-secondary-foreground-color-opacity`, `$ag-disabled-foreground-color-opacity`. Set a semi-transparent colour to `foreground-color`, `secondary-foreground-color`, or `disabled-foreground-color`.
-
 
 ### 3. Variables removed with no equivalent parameter
 
@@ -80,7 +80,7 @@ $ag-group-component-border-color: green;
 
 // new style.
 .ag-group {
-    border-color: green;
+  border-color: green;
 }
 ```
 
@@ -127,15 +127,12 @@ Here is a full list of removed variables. Some have suggested replacements docum
 
 - `$ag-tooltip-background-color`, `$ag-tooltip-border-color`, `$ag-tooltip-border-radius`, `$ag-tooltip-border-style`, `$ag-tooltip-border-width`, `$ag-tooltip-foreground-color`, `$ag-tooltip-padding`: use a CSS rule like `.ag-tooltip { padding: 10px; }`
 
-
 ### 4. Renamed CSS classes
 
 Throughout the grid, many css classes have been renamed to make them more consistent. For clarity and debuggability, we recommend that all themes update their css class name-based selectors to use the new names. In `$ag-compatibility-mode: "legacy:"` these will be automatically aliased to the new names.
 If you want to achieve this aliasing without the rest of legacy compatibility mode, you can disable compatibility mode and add the line `@include ag-v22-to-v23-alias-renamed-classes();` to your custom theme.
 
 Note: some of the css class name changes made in v23 are not simple renames, and so aren't covered by the mixin. This is especially true within the Filters Tool Panel. After using the mixin, test your theme and add/edit css rules as necessary.
-
-
 
 - ag-alignment-end > ag-group-item-alignment-end
 - ag-alignment-start > ag-group-item-alignment-start
@@ -184,9 +181,7 @@ Note: some of the css class name changes made in v23 are not simple renames, and
 - ag-toolpanel-indent-5 > ag-column-select-indent-5
 - ag-width-half > ag-column-drop-horizontal-half-width
 
-
 ### 5. Additional CSS classes
-
 
 In v22 and earlier, components that appeared in multiple positions in the grid required nested CSS selectors to style. For example, to style groups in the chart settings tab subheadings, you'd need `.ag-chart-settings .ag-group-component-title-bar { ... }`. Now, generic components have multiple classes, one common to all instances and one that depends on the position in the grid. So you can use `.ag-charts-settings-group-title-bar { ... }` to style just the settings tab groups.
 
@@ -200,7 +195,6 @@ v22 defined some placeholder selectors that could be extended by custom themes. 
 - %selected-tab - use .ag-tab-selected
 - %card - rounding and shadow of floating elements can be controlled by the card-radius or card-shadow parameters, or add CSS selectors to target specific elements.
 
-
 ## Backwards compatibility mode
 
 We have implemented a backwards compatibility mode that will enable some apps to continue working with minimal changes. If you are extending a provided theme importing the main theme file, e.g. `ag-theme-balham.scss`, you will automatically be opted in to "variables" backwards compatibility mode. You have three options:
@@ -210,7 +204,6 @@ We have implemented a backwards compatibility mode that will enable some apps to
 - Enter "legacy" compatibility mode if this is right for your app (see below).
 
 - Switch to the new mechanism for configuring themes. Change your theme import from `.../sass/ag-theme-$name.scss` to `.../sass/ag-theme-$name-mixin.scss` and call the theme mixin. See [themes documentation](/themes-provided/) sample code. You will need to convert all the `$ag-*` global variables you have defined to theme parameters.
-
 
 To enable "legacy" mode, define the `$ag-compatibility-mode` variable:
 
@@ -227,14 +220,14 @@ Here is what each mode does:
 
 - variables mode: reads the global variables that were supported in v22 and converts them to the parameter maps used in v23, _only if there is an equivalent parameter for a variable_ (most variables are supported). This mode:
 
-    - is a reliable mechanism and is safe to use long-term (although you may wish to update your themes anyway, to get the benefits of the new configuration system like better validation).
-    - does not support [variables removed with no equivalent parameter](#3-variables-removed-with-no-equivalent-parameter) - if you were using one of these variables, you will need to write new CSS selectors to achieve the same effect. Generally, the reason why we have removed some variables is that it is simple to write CSS to achieve the same effect.
-    - does not modify your CSS selectors. If you are using any of the [renamed CSS classes](#4-renamed-css-classes) you will need to update your CSS selectors.
+  - is a reliable mechanism and is safe to use long-term (although you may wish to update your themes anyway, to get the benefits of the new configuration system like better validation).
+  - does not support [variables removed with no equivalent parameter](#3-variables-removed-with-no-equivalent-parameter) - if you were using one of these variables, you will need to write new CSS selectors to achieve the same effect. Generally, the reason why we have removed some variables is that it is simple to write CSS to achieve the same effect.
+  - does not modify your CSS selectors. If you are using any of the [renamed CSS classes](#4-renamed-css-classes) you will need to update your CSS selectors.
 
 - legacy mode: attempts to make themes written for v22 and earlier work in v23. This mode:
-    - is intended to be used as a temporary solution for graceful migration to v23 for apps with many or complex themes, allowing these apps to update to v23 immediately and then gradually migrate their themes at a later date
-    - generates new CSS and uses Sass `@extend` directives to alias old names to new names
-    - is a "best effort" solution - it will support the majority of use cases for the majority of apps, but you may need to tweak the result by adding new CSS rules to cover edge cases where the automated conversion did not work perfectly
+  - is intended to be used as a temporary solution for graceful migration to v23 for apps with many or complex themes, allowing these apps to update to v23 immediately and then gradually migrate their themes at a later date
+  - generates new CSS and uses Sass `@extend` directives to alias old names to new names
+  - is a "best effort" solution - it will support the majority of use cases for the majority of apps, but you may need to tweak the result by adding new CSS rules to cover edge cases where the automated conversion did not work perfectly
 
 ### Advanced control of backwards compatibility mode
 
@@ -243,17 +236,15 @@ If the theme parameters generated by the backwards compatibility mode aren't rig
 ```scss
 // define this variable before including the theme file
 $ag-theme-override-params: (
-  header-background-color: blue
+  header-background-color: blue,
 );
 @import "~ag-grid-community/src/styles/ag-theme-balham/sass/legacy/ag-theme-balham-v22-compat.scss";
 ```
 
 Backwards- compatibility mode automatically renames old global variables, e.g. the variable `$ag-icon-color` used to be called `$icon-color`, and both names are supported. However, this process of renaming variables works but causes deprecation warnings in recent releases of Dart Sass. If you only use up-to-date v22 variable names (always prefixed with `$ag-`) then you can disable the renaming to remove the deprecation warnings:
 
-
 ```scss
 // define this variable before including the theme file
 $ag-suppress-legacy-var-import: true;
 @import "~ag-grid-community/src/styles/ag-theme-balham/sass/legacy/ag-theme-balham-v22-compat.scss";
 ```
-

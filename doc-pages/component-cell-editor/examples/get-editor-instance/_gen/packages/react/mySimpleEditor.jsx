@@ -1,55 +1,59 @@
-import React, { Component, createRef } from 'react';
+import React, { Component, createRef } from "react";
 
-const KEY_BACKSPACE = 'Backspace';
-const KEY_DELETE = 'Delete';
+const KEY_BACKSPACE = "Backspace";
+const KEY_DELETE = "Delete";
 
 export default class MySimpleEditor extends Component {
-    constructor(props) {
-        super(props);
+  constructor(props) {
+    super(props);
 
-        this.inputRef = createRef();
+    this.inputRef = createRef();
 
-        this.state = {
-            value: this.getInitialValue(props)
-        };
+    this.state = {
+      value: this.getInitialValue(props),
+    };
+  }
+
+  componentDidMount() {
+    setTimeout(() => this.inputRef.current.focus());
+  }
+
+  getInitialValue(props) {
+    let startValue = props.value;
+
+    const isBackspaceOrDelete =
+      props.key === KEY_BACKSPACE || props.key === KEY_DELETE;
+    if (isBackspaceOrDelete) {
+      startValue = "";
+    } else if (props.charPress) {
+      startValue = props.charPress;
     }
 
-    componentDidMount() {
-        setTimeout(() => this.inputRef.current.focus())
+    if (startValue !== null && startValue !== undefined) {
+      return startValue;
     }
 
-    getInitialValue(props) {
-        let startValue = props.value;
+    return "";
+  }
 
-        const isBackspaceOrDelete = props.key === KEY_BACKSPACE || props.key === KEY_DELETE;
-        if (isBackspaceOrDelete) {
-            startValue = '';
-        } else if (props.charPress) {
-            startValue = props.charPress;
-        }
+  getValue() {
+    return this.state.value;
+  }
 
-        if (startValue !== null && startValue !== undefined) {
-            return startValue;
-        }
+  myCustomFunction() {
+    return {
+      rowIndex: this.props.rowIndex,
+      colId: this.props.column.getId(),
+    };
+  }
 
-        return '';
-    }
-
-    getValue() {
-        return this.state.value;
-    }
-
-    myCustomFunction() {
-        return {
-            rowIndex: this.props.rowIndex,
-            colId: this.props.column.getId()
-        };
-    }
-
-    render() {
-        return (
-            <input value={this.state.value} ref={this.inputRef}
-                   onChange={event => this.setState({value: event.target.value})}/>
-        );
-    }
+  render() {
+    return (
+      <input
+        value={this.state.value}
+        ref={this.inputRef}
+        onChange={(event) => this.setState({ value: event.target.value })}
+      />
+    );
+  }
 }

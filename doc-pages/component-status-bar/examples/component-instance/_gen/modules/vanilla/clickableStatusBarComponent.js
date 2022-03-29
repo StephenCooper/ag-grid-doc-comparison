@@ -1,49 +1,42 @@
+class ClickableStatusBarComponent {
+  init(params) {
+    this.params = params;
 
-class ClickableStatusBarComponent  {
-    
-    
-    
-    
-    
+    this.visible = true;
+    this.eGui = document.createElement("div");
+    this.eGui.className = "ag-status-name-value";
 
-    init(params) {
-        this.params = params;
+    var label = document.createElement("span");
+    label.innerText = "Status Bar Component  ";
+    this.eGui.appendChild(label);
 
-        this.visible = true;
-        this.eGui = document.createElement('div');
-        this.eGui.className = 'ag-status-name-value';
+    this.eButton = document.createElement("button");
 
-        var label = document.createElement('span');
-        label.innerText = 'Status Bar Component  ';
-        this.eGui.appendChild(label);
+    this.buttonListener = this.onButtonClicked.bind(this);
+    this.eButton.addEventListener("click", this.buttonListener);
+    this.eButton.innerHTML = "Click Me";
 
-        this.eButton = document.createElement('button');
+    this.eGui.appendChild(this.eButton);
+  }
 
-        this.buttonListener = this.onButtonClicked.bind(this);
-        this.eButton.addEventListener("click", this.buttonListener);
-        this.eButton.innerHTML = 'Click Me';
+  getGui() {
+    return this.eGui;
+  }
 
-        this.eGui.appendChild(this.eButton);
-    }
+  destroy() {
+    this.eButton.removeEventListener("click", this.buttonListener);
+  }
 
-    getGui() {
-        return this.eGui;
-    }
+  onButtonClicked() {
+    alert("Selected Row Count: " + this.params.api.getSelectedRows().length);
+  }
 
-    destroy() {
-        this.eButton.removeEventListener("click", this.buttonListener);
-    }
+  setVisible(visible) {
+    this.visible = visible;
+    this.eGui.style.display = this.visible ? "block" : "none";
+  }
 
-    onButtonClicked() {
-        alert('Selected Row Count: ' + this.params.api.getSelectedRows().length)
-    }
-
-    setVisible(visible) {
-        this.visible = visible;
-        this.eGui.style.display = this.visible ? 'block' : 'none';
-    }
-
-    isVisible() {
-        return this.visible;
-    }
+  isVisible() {
+    return this.visible;
+  }
 }

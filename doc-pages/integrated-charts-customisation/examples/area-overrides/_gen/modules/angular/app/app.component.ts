@@ -1,15 +1,24 @@
-
-import { Component } from '@angular/core';
-import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import { Component } from "@angular/core";
+import "@ag-grid-community/core/dist/styles/ag-grid.css";
 import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { AgChartThemeOverrides, ColDef, ColGroupDef, ColumnApi, CreateRangeChartParams, FirstDataRenderedEvent, Grid, GridApi, GridOptions, GridReadyEvent } from '@ag-grid-community/core';
+import {
+  AgChartThemeOverrides,
+  ColDef,
+  ColGroupDef,
+  ColumnApi,
+  CreateRangeChartParams,
+  FirstDataRenderedEvent,
+  Grid,
+  GridApi,
+  GridOptions,
+  GridReadyEvent,
+} from "@ag-grid-community/core";
 // Required feature modules are registered in app.module.ts
 
 @Component({
-    selector: 'my-app',
-    template: `<ag-grid-angular
+  selector: "my-app",
+  template: `<ag-grid-angular
     style="width: 100%; height: 100%;"
-    
     class="ag-theme-alpine"
     [columnDefs]="columnDefs"
     [defaultColDef]="defaultColDef"
@@ -20,111 +29,101 @@ import { AgChartThemeOverrides, ColDef, ColGroupDef, ColumnApi, CreateRangeChart
     [chartThemeOverrides]="chartThemeOverrides"
     (firstDataRendered)="onFirstDataRendered($event)"
     (gridReady)="onGridReady($event)"
-    ></ag-grid-angular>
-`
+  ></ag-grid-angular> `,
 })
-
 export class AppComponent {
-
-    
-    public columnDefs: ColDef[] = [
-    { field: 'country', width: 150, chartDataType: 'category' },
-    { field: 'gold', chartDataType: 'series' },
-    { field: 'silver', chartDataType: 'series' },
-    { field: 'bronze', chartDataType: 'series' },
+  public columnDefs: ColDef[] = [
+    { field: "country", width: 150, chartDataType: "category" },
+    { field: "gold", chartDataType: "series" },
+    { field: "silver", chartDataType: "series" },
+    { field: "bronze", chartDataType: "series" },
     {
-        headerName: 'A',
-        valueGetter: 'Math.floor(Math.random()*1000)',
-        chartDataType: 'series',
+      headerName: "A",
+      valueGetter: "Math.floor(Math.random()*1000)",
+      chartDataType: "series",
     },
     {
-        headerName: 'B',
-        valueGetter: 'Math.floor(Math.random()*1000)',
-        chartDataType: 'series',
+      headerName: "B",
+      valueGetter: "Math.floor(Math.random()*1000)",
+      chartDataType: "series",
     },
     {
-        headerName: 'C',
-        valueGetter: 'Math.floor(Math.random()*1000)',
-        chartDataType: 'series',
+      headerName: "C",
+      valueGetter: "Math.floor(Math.random()*1000)",
+      chartDataType: "series",
     },
     {
-        headerName: 'D',
-        valueGetter: 'Math.floor(Math.random()*1000)',
-        chartDataType: 'series',
+      headerName: "D",
+      valueGetter: "Math.floor(Math.random()*1000)",
+      chartDataType: "series",
     },
-];
-public defaultColDef: ColDef = {
+  ];
+  public defaultColDef: ColDef = {
     editable: true,
     sortable: true,
     flex: 1,
     minWidth: 100,
     filter: true,
     resizable: true,
-};
-public popupParent: HTMLElement = document.body;
-public rowData: any[] | null = getData();
-public chartThemeOverrides: AgChartThemeOverrides = {
+  };
+  public popupParent: HTMLElement = document.body;
+  public rowData: any[] | null = getData();
+  public chartThemeOverrides: AgChartThemeOverrides = {
     area: {
-        series: {
-            fillOpacity: 0.5,
-            strokeOpacity: 0.5,
-            strokeWidth: 2,
-            highlightStyle: {
-                item: {
-                    fill: 'red',
-                    stroke: 'yellow',
-                },
-            },
-            marker: {
-                enabled: true,
-                shape: 'triangle',
-                size: 12,
-                strokeWidth: 4,
-            },
-            shadow: {
-                color: 'rgba(0, 0, 0, 0.3)',
-                xOffset: 5,
-                yOffset: 5,
-                blur: 8,
-            },
-            tooltip: {
-                renderer: function (params) {
-                    return {
-                        content: '<b>' +
-                            params.xName!.toUpperCase() +
-                            ':</b> ' +
-                            params.xValue +
-                            '<br/>' +
-                            '<b>' +
-                            params.yName!.toUpperCase() +
-                            ':</b> ' +
-                            params.yValue,
-                    };
-                },
-            },
+      series: {
+        fillOpacity: 0.5,
+        strokeOpacity: 0.5,
+        strokeWidth: 2,
+        highlightStyle: {
+          item: {
+            fill: "red",
+            stroke: "yellow",
+          },
         },
+        marker: {
+          enabled: true,
+          shape: "triangle",
+          size: 12,
+          strokeWidth: 4,
+        },
+        shadow: {
+          color: "rgba(0, 0, 0, 0.3)",
+          xOffset: 5,
+          yOffset: 5,
+          blur: 8,
+        },
+        tooltip: {
+          renderer: function (params) {
+            return {
+              content:
+                "<b>" +
+                params.xName!.toUpperCase() +
+                ":</b> " +
+                params.xValue +
+                "<br/>" +
+                "<b>" +
+                params.yName!.toUpperCase() +
+                ":</b> " +
+                params.yValue,
+            };
+          },
+        },
+      },
     },
-}
+  };
 
-
-    onFirstDataRendered(params: FirstDataRenderedEvent) {
+  onFirstDataRendered(params: FirstDataRenderedEvent) {
     var cellRange = {
-        rowStartIndex: 0,
-        rowEndIndex: 4,
-        columns: ['country', 'gold', 'silver', 'bronze'],
+      rowStartIndex: 0,
+      rowEndIndex: 4,
+      columns: ["country", "gold", "silver", "bronze"],
     };
     var createRangeChartParams: CreateRangeChartParams = {
-        cellRange: cellRange,
-        chartType: 'stackedArea',
+      cellRange: cellRange,
+      chartType: "stackedArea",
     };
     params.api.createRangeChart(createRangeChartParams);
+  }
+
+  onGridReady(params: GridReadyEvent) {}
 }
-
-onGridReady(params: GridReadyEvent) {
-        
-    }
-}
-
-
-
-

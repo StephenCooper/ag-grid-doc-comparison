@@ -1,5 +1,5 @@
 export default {
-    template: `
+  template: `
       <div class="container" v-if="visible">
       <div>
           <span class="component">Status Bar Component&nbsp;
@@ -8,20 +8,20 @@ export default {
       </div>
       </div>
     `,
-    data: function () {
-        return {
-            visible: true
-        };
+  data: function () {
+    return {
+      visible: true,
+    };
+  },
+  methods: {
+    onClick() {
+      alert("Selected Row Count: " + this.params.api.getSelectedRows().length);
     },
-    methods: {
-        onClick() {
-            alert('Selected Row Count: ' + this.params.api.getSelectedRows().length)
-        },
-        setVisible(visible) {
-            this.visible = visible;
-        },
-        isVisible() {
-            return this.visible;
-        }
-    }
+    setVisible(visible) {
+      this.visible = visible;
+    },
+    isVisible() {
+      return this.visible;
+    },
+  },
 };

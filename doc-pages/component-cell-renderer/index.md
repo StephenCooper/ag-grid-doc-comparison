@@ -41,7 +41,7 @@ md-include:component-refresh-general.md
 md-include:component-refresh-general.md
 [[only-vue]]
 md-include:component-refresh-general.md
-  
+
 md-include:component-refresh-react.md
 
 ### Change Detection
@@ -95,9 +95,9 @@ md-include:data-in-renderer-vue.md
 
 md-include:renderer-function-javascript.md
 md-include:renderer-function-angular.md
-md-include:renderer-function-vue.md 
+md-include:renderer-function-vue.md
 
-<!-- 
+<!--
 // taking these out, as they are regarding using JavaScript Function inside Framework Grid,
 // which isn't supported with the new xxxComp attributes.
 md-include:renderer-function-react.md
@@ -132,12 +132,12 @@ An example of getting the cell renderer for exactly one cell is as follows:
 ```js
 // example - get cell renderer for first row and column 'gold'
 const firstRowNode = gridOptions.api.getDisplayedRowAtIndex(0);
-const params = { columns: ['gold'], rowNodes: [firstRowNode] };
+const params = { columns: ["gold"], rowNodes: [firstRowNode] };
 const instances = gridOptions.api.getCellRendererInstances(params);
 
 if (instances.length > 0) {
-    // got it, user must be scrolled so that it exists
-    const instance = instances[0];
+  // got it, user must be scrolled so that it exists
+  const instance = instances[0];
 }
 ```
 

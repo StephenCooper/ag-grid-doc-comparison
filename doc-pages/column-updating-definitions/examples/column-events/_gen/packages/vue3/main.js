@@ -1,12 +1,11 @@
 import "ag-grid-community/dist/styles/ag-grid.css";
 import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import { createApp } from 'vue';
-import { AgGridVue } from 'ag-grid-vue3';
-import 'ag-grid-enterprise';
-
+import { createApp } from "vue";
+import { AgGridVue } from "ag-grid-vue3";
+import "ag-grid-enterprise";
 
 const VueExample = {
-    template: `
+  template: `
       <div style="height: 100%">
       <div class="test-container">
         <div class="test-header">
@@ -67,211 +66,211 @@ const VueExample = {
       </div>
       </div>
     `,
-    components: {
-        'ag-grid-vue': AgGridVue,
-
+  components: {
+    "ag-grid-vue": AgGridVue,
+  },
+  data: () => ({
+    columnDefs: [],
+    gridApi: null,
+    columnApi: null,
+    defaultColDef: {
+      sortable: true,
+      resizable: true,
+      width: 150,
+      enableRowGroup: true,
+      enablePivot: true,
+      enableValue: true,
     },
-    data: () => ({
-        columnDefs: [],
-        gridApi: null,
-        columnApi: null,
-        defaultColDef: {
-            sortable: true,
-            resizable: true,
-            width: 150,
-            enableRowGroup: true,
-            enablePivot: true,
-            enableValue: true
-        },
-        rowData: null
-    }),
-    beforeMount() {
-        this.columnDefs = this.getColumnDefs()
+    rowData: null,
+  }),
+  beforeMount() {
+    this.columnDefs = this.getColumnDefs();
+  },
+  methods: {
+    onSortChanged(e) {
+      console.log("Event Sort Changed", e);
     },
-    methods: {
-        onSortChanged(e) {
-            console.log('Event Sort Changed', e);
-        },
-        onColumnResized(e) {
-            console.log('Event Column Resized', e);
-        },
-        onColumnVisible(e) {
-            console.log('Event Column Visible', e);
-        },
-        onColumnPivotChanged(e) {
-            console.log('Event Pivot Changed', e);
-        },
-        onColumnRowGroupChanged(e) {
-            console.log('Event Row Group Changed', e);
-        },
-        onColumnValueChanged(e) {
-            console.log('Event Value Changed', e);
-        },
-        onColumnMoved(e) {
-            console.log('Event Column Moved', e);
-        },
-        onColumnPinned(e) {
-            console.log('Event Column Pinned', e);
-        },
-        onBtSortOn() {
-            const columnDefs = this.getColumnDefs();
-            columnDefs.forEach(colDef => {
-                if (colDef.field === 'age') {
-                    colDef.sort = 'desc';
-                }
-                if (colDef.field === 'athlete') {
-                    colDef.sort = 'asc';
-                }
-            });
-            this.gridApi.setColumnDefs(columnDefs);
-        },
-        onBtSortOff() {
-            const columnDefs = this.getColumnDefs();
-            columnDefs.forEach(colDef => {
-                colDef.sort = null;
-            });
-            this.gridApi.setColumnDefs(columnDefs);
-        },
-        onBtWidthNarrow() {
-            const columnDefs = this.getColumnDefs();
-            columnDefs.forEach(colDef => {
-                if (colDef.field === 'age' || colDef.field === 'athlete') {
-                    colDef.width = 100;
-                }
-            });
-            this.gridApi.setColumnDefs(columnDefs);
-        },
-        onBtWidthNormal() {
-            const columnDefs = this.getColumnDefs();
-            columnDefs.forEach(colDef => {
-                colDef.width = 200;
-            });
-            this.gridApi.setColumnDefs(columnDefs);
-        },
-        onBtHide() {
-            const columnDefs = this.getColumnDefs();
-            columnDefs.forEach(colDef => {
-                if (colDef.field === 'age' || colDef.field === 'athlete') {
-                    colDef.hide = true;
-                }
-            });
-            this.gridApi.setColumnDefs(columnDefs);
-        },
-        onBtShow() {
-            const columnDefs = this.getColumnDefs();
-            columnDefs.forEach(colDef => {
-                colDef.hide = false;
-            });
-            this.gridApi.setColumnDefs(columnDefs);
-        },
-        onBtPivotOn() {
-            this.gridColumnApi.setPivotMode(true);
-            const columnDefs = this.getColumnDefs();
-            columnDefs.forEach(colDef => {
-                if (colDef.field === 'country') {
-                    colDef.pivot = true;
-                }
-            });
-            this.gridApi.setColumnDefs(columnDefs);
-        },
-        onBtPivotOff() {
-            this.gridColumnApi.setPivotMode(false);
-            const columnDefs = this.getColumnDefs();
-            columnDefs.forEach(colDef => {
-                colDef.pivot = false;
-            });
-            this.gridApi.setColumnDefs(columnDefs);
-        },
-        onBtRowGroupOn() {
-            const columnDefs = this.getColumnDefs();
-            columnDefs.forEach(colDef => {
-                if (colDef.field === 'sport') {
-                    colDef.rowGroup = true;
-                }
-            });
-            this.gridApi.setColumnDefs(columnDefs);
-        },
-        onBtRowGroupOff() {
-            const columnDefs = this.getColumnDefs();
-            columnDefs.forEach(colDef => {
-                colDef.rowGroup = false;
-            });
-            this.gridApi.setColumnDefs(columnDefs);
-        },
-        onBtAggFuncOn() {
-            const columnDefs = this.getColumnDefs();
-            columnDefs.forEach(colDef => {
-                if (colDef.field === 'gold' || colDef.field === 'silver' || colDef.field === 'bronze') {
-                    colDef.aggFunc = 'sum';
-                }
-            });
-            this.gridApi.setColumnDefs(columnDefs);
-        },
-        onBtAggFuncOff() {
-            const columnDefs = this.getColumnDefs();
-            columnDefs.forEach(colDef => {
-                colDef.aggFunc = null;
-            });
-            this.gridApi.setColumnDefs(columnDefs);
-        },
-        onBtPinnedOn() {
-            const columnDefs = this.getColumnDefs();
-            columnDefs.forEach(colDef => {
-                if (colDef.field === 'athlete') {
-                    colDef.pinned = 'left';
-                }
-                if (colDef.field === 'age') {
-                    colDef.pinned = 'right';
-                }
-            });
-            this.gridApi.setColumnDefs(columnDefs);
-        },
-        onBtPinnedOff() {
-            const columnDefs = this.getColumnDefs();
-            columnDefs.forEach(colDef => {
-                colDef.pinned = null;
-            });
-            this.gridApi.setColumnDefs(columnDefs);
-        },
-        onGridReady(params) {
-            this.gridApi = params.api;
-            this.gridColumnApi = params.columnApi;
-
-
-            const updateData = (data) => {
-                this.rowData = data;
-            };
-
-            fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
-                .then(resp => resp.json())
-                .then(data => updateData(data));
-        },
-        getColumnDefs() {
-            return [
-                { field: 'athlete' },
-                { field: 'age' },
-                { field: 'country' },
-                { field: 'sport' },
-                { field: 'gold' },
-                { field: 'silver' },
-                { field: 'bronze' }
-            ];
+    onColumnResized(e) {
+      console.log("Event Column Resized", e);
+    },
+    onColumnVisible(e) {
+      console.log("Event Column Visible", e);
+    },
+    onColumnPivotChanged(e) {
+      console.log("Event Pivot Changed", e);
+    },
+    onColumnRowGroupChanged(e) {
+      console.log("Event Row Group Changed", e);
+    },
+    onColumnValueChanged(e) {
+      console.log("Event Value Changed", e);
+    },
+    onColumnMoved(e) {
+      console.log("Event Column Moved", e);
+    },
+    onColumnPinned(e) {
+      console.log("Event Column Pinned", e);
+    },
+    onBtSortOn() {
+      const columnDefs = this.getColumnDefs();
+      columnDefs.forEach((colDef) => {
+        if (colDef.field === "age") {
+          colDef.sort = "desc";
         }
-    }
-}
+        if (colDef.field === "athlete") {
+          colDef.sort = "asc";
+        }
+      });
+      this.gridApi.setColumnDefs(columnDefs);
+    },
+    onBtSortOff() {
+      const columnDefs = this.getColumnDefs();
+      columnDefs.forEach((colDef) => {
+        colDef.sort = null;
+      });
+      this.gridApi.setColumnDefs(columnDefs);
+    },
+    onBtWidthNarrow() {
+      const columnDefs = this.getColumnDefs();
+      columnDefs.forEach((colDef) => {
+        if (colDef.field === "age" || colDef.field === "athlete") {
+          colDef.width = 100;
+        }
+      });
+      this.gridApi.setColumnDefs(columnDefs);
+    },
+    onBtWidthNormal() {
+      const columnDefs = this.getColumnDefs();
+      columnDefs.forEach((colDef) => {
+        colDef.width = 200;
+      });
+      this.gridApi.setColumnDefs(columnDefs);
+    },
+    onBtHide() {
+      const columnDefs = this.getColumnDefs();
+      columnDefs.forEach((colDef) => {
+        if (colDef.field === "age" || colDef.field === "athlete") {
+          colDef.hide = true;
+        }
+      });
+      this.gridApi.setColumnDefs(columnDefs);
+    },
+    onBtShow() {
+      const columnDefs = this.getColumnDefs();
+      columnDefs.forEach((colDef) => {
+        colDef.hide = false;
+      });
+      this.gridApi.setColumnDefs(columnDefs);
+    },
+    onBtPivotOn() {
+      this.gridColumnApi.setPivotMode(true);
+      const columnDefs = this.getColumnDefs();
+      columnDefs.forEach((colDef) => {
+        if (colDef.field === "country") {
+          colDef.pivot = true;
+        }
+      });
+      this.gridApi.setColumnDefs(columnDefs);
+    },
+    onBtPivotOff() {
+      this.gridColumnApi.setPivotMode(false);
+      const columnDefs = this.getColumnDefs();
+      columnDefs.forEach((colDef) => {
+        colDef.pivot = false;
+      });
+      this.gridApi.setColumnDefs(columnDefs);
+    },
+    onBtRowGroupOn() {
+      const columnDefs = this.getColumnDefs();
+      columnDefs.forEach((colDef) => {
+        if (colDef.field === "sport") {
+          colDef.rowGroup = true;
+        }
+      });
+      this.gridApi.setColumnDefs(columnDefs);
+    },
+    onBtRowGroupOff() {
+      const columnDefs = this.getColumnDefs();
+      columnDefs.forEach((colDef) => {
+        colDef.rowGroup = false;
+      });
+      this.gridApi.setColumnDefs(columnDefs);
+    },
+    onBtAggFuncOn() {
+      const columnDefs = this.getColumnDefs();
+      columnDefs.forEach((colDef) => {
+        if (
+          colDef.field === "gold" ||
+          colDef.field === "silver" ||
+          colDef.field === "bronze"
+        ) {
+          colDef.aggFunc = "sum";
+        }
+      });
+      this.gridApi.setColumnDefs(columnDefs);
+    },
+    onBtAggFuncOff() {
+      const columnDefs = this.getColumnDefs();
+      columnDefs.forEach((colDef) => {
+        colDef.aggFunc = null;
+      });
+      this.gridApi.setColumnDefs(columnDefs);
+    },
+    onBtPinnedOn() {
+      const columnDefs = this.getColumnDefs();
+      columnDefs.forEach((colDef) => {
+        if (colDef.field === "athlete") {
+          colDef.pinned = "left";
+        }
+        if (colDef.field === "age") {
+          colDef.pinned = "right";
+        }
+      });
+      this.gridApi.setColumnDefs(columnDefs);
+    },
+    onBtPinnedOff() {
+      const columnDefs = this.getColumnDefs();
+      columnDefs.forEach((colDef) => {
+        colDef.pinned = null;
+      });
+      this.gridApi.setColumnDefs(columnDefs);
+    },
+    onGridReady(params) {
+      this.gridApi = params.api;
+      this.gridColumnApi = params.columnApi;
+
+      const updateData = (data) => {
+        this.rowData = data;
+      };
+
+      fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+        .then((resp) => resp.json())
+        .then((data) => updateData(data));
+    },
+    getColumnDefs() {
+      return [
+        { field: "athlete" },
+        { field: "age" },
+        { field: "country" },
+        { field: "sport" },
+        { field: "gold" },
+        { field: "silver" },
+        { field: "bronze" },
+      ];
+    },
+  },
+};
 
 window.getColumnDefs = function getColumnDefs() {
-    return [
-        { field: 'athlete' },
-        { field: 'age' },
-        { field: 'country' },
-        { field: 'sport' },
-        { field: 'gold' },
-        { field: 'silver' },
-        { field: 'bronze' }
-    ];
-}
+  return [
+    { field: "athlete" },
+    { field: "age" },
+    { field: "country" },
+    { field: "sport" },
+    { field: "gold" },
+    { field: "silver" },
+    { field: "bronze" },
+  ];
+};
 
-createApp(VueExample)
-    .mount("#app")
-
+createApp(VueExample).mount("#app");

@@ -1,21 +1,18 @@
+import { NgModule } from "@angular/core";
+import { BrowserModule } from "@angular/platform-browser";
+import { HttpClientModule } from "@angular/common/http";
 
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { AgGridModule } from "ag-grid-angular";
+import { AppComponent } from "./app.component";
 
-import { AgGridModule } from 'ag-grid-angular';
-import { AppComponent } from './app.component';
-
-import { MultilineCellRenderer } from './multiline-cell-renderer.component';
+import { MultilineCellRenderer } from "./multiline-cell-renderer.component";
 @NgModule({
   imports: [
     BrowserModule,
     HttpClientModule,
-    AgGridModule.withComponents([MultilineCellRenderer])
+    AgGridModule.withComponents([MultilineCellRenderer]),
   ],
-  declarations: [
-    AppComponent, MultilineCellRenderer
-  ],
-  bootstrap: [ AppComponent ]
+  declarations: [AppComponent, MultilineCellRenderer],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

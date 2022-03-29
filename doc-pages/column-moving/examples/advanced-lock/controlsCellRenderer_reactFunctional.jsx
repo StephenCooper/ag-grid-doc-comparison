@@ -1,9 +1,9 @@
-import React from 'react';
+import React from "react";
 
 export default () => (
-    <React.Fragment>
-        <button>A</button>
-        <button>B</button>
-        <button>C</button>
-    </React.Fragment>
-)
+  <React.Fragment>
+    <button>A</button>
+    <button>B</button>
+    <button>C</button>
+  </React.Fragment>
+);

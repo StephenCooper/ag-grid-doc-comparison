@@ -1,22 +1,21 @@
-
 const gridOptions = {
   columnDefs: [
-    { field: 'athlete', minWidth: 200 },
-    { field: 'gold' },
-    { field: 'silver' },
-    { field: 'bronze' },
-    { field: 'total' },
-    { field: 'age' },
+    { field: "athlete", minWidth: 200 },
+    { field: "gold" },
+    { field: "silver" },
+    { field: "bronze" },
+    { field: "total" },
+    { field: "age" },
     {
-      field: 'country',
+      field: "country",
       rowGroup: true,
       hide: true,
       valueGetter: countryValueGetter,
       keyCreator: countryKeyCreator,
     },
-    { field: 'year' },
-    { field: 'date' },
-    { field: 'sport', minWidth: 200 },
+    { field: "year" },
+    { field: "date" },
+    { field: "sport", minWidth: 200 },
   ],
   defaultColDef: {
     flex: 1,
@@ -26,29 +25,29 @@ const gridOptions = {
   autoGroupColumnDef: {
     minWidth: 200,
   },
-}
+};
 
 function countryKeyCreator(params) {
-  var countryObject = params.value
-  return countryObject.name
+  var countryObject = params.value;
+  return countryObject.name;
 }
 
 function countryValueGetter(params) {
   // hack the data  - replace the country with an object of country name and code
-  var countryName = params.data.country
-  var countryCode = countryName.substring(0, 2).toUpperCase()
+  var countryName = params.data.country;
+  var countryCode = countryName.substring(0, 2).toUpperCase();
   return {
     name: countryName,
     code: countryCode,
-  }
+  };
 }
 
 // setup the grid after the page has finished loading
-document.addEventListener('DOMContentLoaded', function () {
-  var gridDiv = document.querySelector('#myGrid')
-  new agGrid.Grid(gridDiv, gridOptions)
+document.addEventListener("DOMContentLoaded", function () {
+  var gridDiv = document.querySelector("#myGrid");
+  new agGrid.Grid(gridDiv, gridOptions);
 
-  fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
-    .then(response => response.json())
-    .then(data => gridOptions.api.setRowData(data))
-})
+  fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+    .then((response) => response.json())
+    .then((data) => gridOptions.api.setRowData(data));
+});

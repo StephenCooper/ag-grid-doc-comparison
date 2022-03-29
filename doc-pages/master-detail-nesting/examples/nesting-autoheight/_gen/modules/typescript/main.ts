@@ -1,60 +1,71 @@
-import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import "@ag-grid-community/core/dist/styles/ag-grid.css";
 import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { ColDef, ColGroupDef, Grid, GridOptions, IDetailCellRendererParams } from '@ag-grid-community/core';
-import { ModuleRegistry } from '@ag-grid-community/core';
-import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
-import { MasterDetailModule } from '@ag-grid-enterprise/master-detail';
-import { MenuModule } from '@ag-grid-enterprise/menu';
-import { ColumnsToolPanelModule } from '@ag-grid-enterprise/column-tool-panel';
+import {
+  ColDef,
+  ColGroupDef,
+  Grid,
+  GridOptions,
+  IDetailCellRendererParams,
+} from "@ag-grid-community/core";
+import { ModuleRegistry } from "@ag-grid-community/core";
+import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
+import { MasterDetailModule } from "@ag-grid-enterprise/master-detail";
+import { MenuModule } from "@ag-grid-enterprise/menu";
+import { ColumnsToolPanelModule } from "@ag-grid-enterprise/column-tool-panel";
 
 // Register the required feature modules with the Grid
-ModuleRegistry.registerModules([ClientSideRowModelModule, MasterDetailModule, MenuModule, ColumnsToolPanelModule])
+ModuleRegistry.registerModules([
+  ClientSideRowModelModule,
+  MasterDetailModule,
+  MenuModule,
+  ColumnsToolPanelModule,
+]);
 
 var rowData = [
   {
-    a1: 'level 1 - 111',
-    b1: 'level 1 - 222',
+    a1: "level 1 - 111",
+    b1: "level 1 - 222",
     children: [
       {
-        a2: 'level 2 - 333',
-        b2: 'level 2 - 444',
+        a2: "level 2 - 333",
+        b2: "level 2 - 444",
         children: [
-          { a3: 'level 3 - 5551', b3: 'level 3 - 6661' },
-          { a3: 'level 3 - 5552', b3: 'level 3 - 6662' },
-          { a3: 'level 3 - 5553', b3: 'level 3 - 6663' },
-          { a3: 'level 3 - 5554', b3: 'level 3 - 6664' },
-          { a3: 'level 3 - 5555', b3: 'level 3 - 6665' },
-          { a3: 'level 3 - 5556', b3: 'level 3 - 6666' },
+          { a3: "level 3 - 5551", b3: "level 3 - 6661" },
+          { a3: "level 3 - 5552", b3: "level 3 - 6662" },
+          { a3: "level 3 - 5553", b3: "level 3 - 6663" },
+          { a3: "level 3 - 5554", b3: "level 3 - 6664" },
+          { a3: "level 3 - 5555", b3: "level 3 - 6665" },
+          { a3: "level 3 - 5556", b3: "level 3 - 6666" },
         ],
       },
     ],
   },
   {
-    a1: 'level 1 - 111',
-    b1: 'level 1 - 222',
+    a1: "level 1 - 111",
+    b1: "level 1 - 222",
     children: [
       {
-        a2: 'level 2 - 333',
-        b2: 'level 2 - 444',
+        a2: "level 2 - 333",
+        b2: "level 2 - 444",
         children: [
-          { a3: 'level 3 - 5551', b3: 'level 3 - 6661' },
-          { a3: 'level 3 - 5552', b3: 'level 3 - 6662' },
-          { a3: 'level 3 - 5553', b3: 'level 3 - 6663' },
-          { a3: 'level 3 - 5554', b3: 'level 3 - 6664' },
-          { a3: 'level 3 - 5555', b3: 'level 3 - 6665' },
-          { a3: 'level 3 - 5556', b3: 'level 3 - 6666' },
+          { a3: "level 3 - 5551", b3: "level 3 - 6661" },
+          { a3: "level 3 - 5552", b3: "level 3 - 6662" },
+          { a3: "level 3 - 5553", b3: "level 3 - 6663" },
+          { a3: "level 3 - 5554", b3: "level 3 - 6664" },
+          { a3: "level 3 - 5555", b3: "level 3 - 6665" },
+          { a3: "level 3 - 5556", b3: "level 3 - 6666" },
         ],
       },
     ],
   },
-]
+];
 
 // level 1 grid options
 const gridOptions: GridOptions = {
   rowData: rowData,
   columnDefs: [
-    { field: 'a1', cellRenderer: 'agGroupCellRenderer' },
-    { field: 'b1' },
+    { field: "a1", cellRenderer: "agGroupCellRenderer" },
+    { field: "b1" },
   ],
   defaultColDef: {
     flex: 1,
@@ -66,8 +77,8 @@ const gridOptions: GridOptions = {
     // level 2 grid options
     detailGridOptions: {
       columnDefs: [
-        { field: 'a2', cellRenderer: 'agGroupCellRenderer' },
-        { field: 'b2' },
+        { field: "a2", cellRenderer: "agGroupCellRenderer" },
+        { field: "b2" },
       ],
       defaultColDef: {
         flex: 1,
@@ -80,25 +91,24 @@ const gridOptions: GridOptions = {
         // level 3 grid options
         detailGridOptions: {
           columnDefs: [
-            { field: 'a3', cellRenderer: 'agGroupCellRenderer' },
-            { field: 'b3' },
+            { field: "a3", cellRenderer: "agGroupCellRenderer" },
+            { field: "b3" },
           ],
           defaultColDef: {
             flex: 1,
           },
         },
         getDetailRowData: function (params) {
-          params.successCallback(params.data.children)
+          params.successCallback(params.data.children);
         },
       } as IDetailCellRendererParams,
     },
     getDetailRowData: function (params) {
-      params.successCallback(params.data.children)
+      params.successCallback(params.data.children);
     },
   } as IDetailCellRendererParams,
-}
+};
 
 // setup the grid after the page has finished loading
-  var gridDiv = document.querySelector<HTMLElement>('#myGrid')!
-  new Grid(gridDiv, gridOptions)
- 
+var gridDiv = document.querySelector<HTMLElement>("#myGrid")!;
+new Grid(gridDiv, gridOptions);

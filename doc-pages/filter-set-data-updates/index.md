@@ -51,7 +51,6 @@ The following example demonstrates Cell Editing with the Set Filter. Try the fol
 
 Transaction Updates refers to any of the following:
 
-
 - Updating data via [Transactions](/data-update-transactions/) API.
 - Updating data via [Async Transactions](/data-update-high-frequency/) API.
 - Changes when using [Immutable Data](/immutable-data/) (as this uses Transactions underneath the hood).
@@ -98,4 +97,3 @@ The following example demonstrates how `api.setRowData(data)` affects filter sel
 ## Next Up
 
 Continue to the next section: [Mini Filter](/filter-set-mini-filter/).
-

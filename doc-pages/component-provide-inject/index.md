@@ -8,7 +8,7 @@ When using Vue Components within AG Grid you are able to use `provide` / `contex
 ```js
 // Parent Grid
 const VueExample = {
-    template: `
+  template: `
         <ag-grid-vue
                 style="width: 100%; height: 100%;"
                 class="ag-theme-alpine"
@@ -16,24 +16,24 @@ const VueExample = {
                 :rowData="rowData">
         </ag-grid-vue>
     `,
-    components: {
-        'ag-grid-vue': AgGridVue,
-        'myRenderer': MyRenderer
-    },
-    provide: {
-        'providedValue': 'testValue' // provide this value to grid components
-    },
- 
-    //...rest of the component definition
-}
+  components: {
+    "ag-grid-vue": AgGridVue,
+    myRenderer: MyRenderer,
+  },
+  provide: {
+    providedValue: "testValue", // provide this value to grid components
+  },
+
+  //...rest of the component definition
+};
 
 // Child Grid Component
 export default {
-    name: 'myRenderer',
-    template: `<span>{{ value }} {{ test }}</span>`,
-    inject: ['providedValue'],   // retrieve/inject the provided value
-    
-    //...rest of the component definition
+  name: "myRenderer",
+  template: `<span>{{ value }} {{ test }}</span>`,
+  inject: ["providedValue"], // retrieve/inject the provided value
+
+  //...rest of the component definition
 };
 ```
 

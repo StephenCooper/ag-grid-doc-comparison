@@ -1,7 +1,7 @@
 ---
 title: "Tooltip Component"
 ---
- 
+
 Tooltip components allow you to add your own tooltips to the grid's column headers and cells. Use these when the provided tooltip component or the default browser tooltip do not meet your requirements.
 
 ## Simple Tooltip Component
@@ -78,7 +78,6 @@ The example below shows how to set a custom tooltip to a header and to a grouped
 
 The example below shows how to use the default tooltip component with group columns. Because the group column has no real field assigned to it, the `tooltipValueGetter` function must be used.
 
-
 <grid-example title='Row Group Tooltip' name='rowgroups-tooltip' type='generated' options='{ "enterprise": true, "modules": ["clientside", "rowgrouping", "menu", "setfilter", "columnpanel"] }'></grid-example>
 
 ## Mouse Tracking
@@ -92,4 +91,3 @@ The example below enables mouse tracking to demonstrate a scenario where tooltip
 The example below demonstrates how to use the default browser tooltips.
 
 <grid-example title='Default Browser Tooltip' name='default-tooltip' type='generated' options='{ "modules": true }'></grid-example>
-

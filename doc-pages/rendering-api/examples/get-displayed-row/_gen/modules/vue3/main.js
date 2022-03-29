@@ -1,18 +1,15 @@
-
-import { createApp } from 'vue';
-import { AgGridVue } from '@ag-grid-community/vue3';
-import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import { createApp } from "vue";
+import { AgGridVue } from "@ag-grid-community/vue3";
+import "@ag-grid-community/core/dist/styles/ag-grid.css";
 import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { ModuleRegistry } from '@ag-grid-community/core';
-import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import { ModuleRegistry } from "@ag-grid-community/core";
+import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
 
 // Register the required feature modules with the Grid
-ModuleRegistry.registerModules([ClientSideRowModelModule])
-
-
+ModuleRegistry.registerModules([ClientSideRowModelModule]);
 
 const VueExample = {
-    template: `
+  template: `
         <div style="height: 100%">
             <div class="example-wrapper">
                 <div style="margin-bottom: 5px;">
@@ -35,84 +32,87 @@ const VueExample = {
             </div>
         </div>
     `,
-    components: {
-        'ag-grid-vue': AgGridVue,
-        
+  components: {
+    "ag-grid-vue": AgGridVue,
+  },
+  data: function () {
+    return {
+      columnDefs: [
+        { field: "athlete", minWidth: 180 },
+        { field: "age" },
+        { field: "country", minWidth: 150 },
+        { headerName: "Group", valueGetter: "data.country.charAt(0)" },
+        { field: "year" },
+        { field: "date", minWidth: 150 },
+        { field: "sport", minWidth: 180 },
+        { field: "gold" },
+        { field: "silver" },
+        { field: "bronze" },
+        { field: "total" },
+      ],
+      gridApi: null,
+      columnApi: null,
+      defaultColDef: {
+        flex: 1,
+        minWidth: 100,
+        sortable: true,
+        filter: true,
+      },
+      rowData: null,
+    };
+  },
+  created() {},
+  methods: {
+    getDisplayedRowAtIndex() {
+      var rowNode = this.gridApi.getDisplayedRowAtIndex(0);
+      console.log(
+        "getDisplayedRowAtIndex(0) => " +
+          rowNode.data.athlete +
+          " " +
+          rowNode.data.year
+      );
     },
-    data: function() {
-        return {
-            columnDefs: [{field:"athlete",
-minWidth:180},{field:"age"},{field:"country",
-minWidth:150},{headerName:"Group",
-valueGetter:"data.country.charAt(0)"},{field:"year"},{field:"date",
-minWidth:150},{field:"sport",
-minWidth:180},{field:"gold"},{field:"silver"},{field:"bronze"},{field:"total"}],
-            gridApi: null,
-            columnApi: null,
-            defaultColDef: {
-    flex: 1,
-    minWidth: 100,
-    sortable: true,
-    filter: true,
-},
-            rowData: null
-        }
+    getDisplayedRowCount() {
+      var count = this.gridApi.getDisplayedRowCount();
+      console.log("getDisplayedRowCount() => " + count);
     },
-    created() {
-        
-    },
-    methods: {
-        getDisplayedRowAtIndex() {
-    var rowNode = this.gridApi.getDisplayedRowAtIndex(0);
-    console.log('getDisplayedRowAtIndex(0) => ' + rowNode.data.athlete + ' ' + rowNode.data.year);
-},
-getDisplayedRowCount() {
-    var count = this.gridApi.getDisplayedRowCount();
-    console.log('getDisplayedRowCount() => ' + count);
-},
-printAllDisplayedRows() {
-    var count = this.gridApi.getDisplayedRowCount();
-    console.log('## printAllDisplayedRows');
-    for (var i = 0; i < count; i++) {
+    printAllDisplayedRows() {
+      var count = this.gridApi.getDisplayedRowCount();
+      console.log("## printAllDisplayedRows");
+      for (var i = 0; i < count; i++) {
         var rowNode = this.gridApi.getDisplayedRowAtIndex(i);
-        console.log('row ' + i + ' is ' + rowNode.data.athlete);
-    }
-},
-printPageDisplayedRows() {
-    var rowCount = this.gridApi.getDisplayedRowCount();
-    var lastGridIndex = rowCount - 1;
-    var currentPage = this.gridApi.paginationGetCurrentPage();
-    var pageSize = this.gridApi.paginationGetPageSize();
-    var startPageIndex = currentPage * pageSize;
-    var endPageIndex = (currentPage + 1) * pageSize - 1;
-    if (endPageIndex > lastGridIndex) {
+        console.log("row " + i + " is " + rowNode.data.athlete);
+      }
+    },
+    printPageDisplayedRows() {
+      var rowCount = this.gridApi.getDisplayedRowCount();
+      var lastGridIndex = rowCount - 1;
+      var currentPage = this.gridApi.paginationGetCurrentPage();
+      var pageSize = this.gridApi.paginationGetPageSize();
+      var startPageIndex = currentPage * pageSize;
+      var endPageIndex = (currentPage + 1) * pageSize - 1;
+      if (endPageIndex > lastGridIndex) {
         endPageIndex = lastGridIndex;
-    }
-    console.log('## printPageDisplayedRows');
-    for (var i = startPageIndex; i <= endPageIndex; i++) {
+      }
+      console.log("## printPageDisplayedRows");
+      for (var i = startPageIndex; i <= endPageIndex; i++) {
         var rowNode = this.gridApi.getDisplayedRowAtIndex(i);
-        console.log('row ' + i + ' is ' + rowNode.data.athlete);
-    }
-},
-onGridReady(params) {
-        this.gridApi = params.api;
-        this.gridColumnApi = params.columnApi;
-        
-
-        
-            const updateData = (data) => {
-    params.api.setRowData(data.slice(0, 100));
-};
-            
-            fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
-                .then(resp => resp.json())
-                .then(data => updateData(data));
+        console.log("row " + i + " is " + rowNode.data.athlete);
+      }
     },
-    }
-}
+    onGridReady(params) {
+      this.gridApi = params.api;
+      this.gridColumnApi = params.columnApi;
 
+      const updateData = (data) => {
+        params.api.setRowData(data.slice(0, 100));
+      };
 
+      fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+        .then((resp) => resp.json())
+        .then((data) => updateData(data));
+    },
+  },
+};
 
-createApp(VueExample)
-    .mount("#app")
-
+createApp(VueExample).mount("#app");

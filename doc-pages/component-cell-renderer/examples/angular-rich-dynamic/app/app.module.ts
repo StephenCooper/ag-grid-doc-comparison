@@ -13,21 +13,17 @@ import { RatioParentComponent } from "./ratio.parent.component";
 import { ClickableParentComponent } from "./clickable.parent.component";
 
 @NgModule({
-    imports: [
-        BrowserModule,
-        FormsModule,
-        AgGridModule.withComponents(
-            [
-                RatioParentComponent,
-                ClickableParentComponent
-            ]),
-        RatioModule,
-        ClickableModule
-    ],
-    declarations: [
-        RichComponent
-    ],
-    bootstrap: [RichComponent]
+  imports: [
+    BrowserModule,
+    FormsModule,
+    AgGridModule.withComponents([
+      RatioParentComponent,
+      ClickableParentComponent,
+    ]),
+    RatioModule,
+    ClickableModule,
+  ],
+  declarations: [RichComponent],
+  bootstrap: [RichComponent],
 })
-export class AppModule {
-}
+export class AppModule {}

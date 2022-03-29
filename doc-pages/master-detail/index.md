@@ -47,16 +47,15 @@ The example below shows a simple Master / Detail with all the above configured.
 
 1. Set the Cell Renderer on one Master Grid column to `agGroupCellRenderer`. This tells the grid to use the Group Cell Renderer which in turn includes the expand / collapse functionality for that column.
 
-1. Set the Detail Cell Renderer* parameter `detailGridOptions`. This contains configuration for the Detail Grid such as what columns to display and what grid features you want enabled inside the Detail Grid.
+1. Set the Detail Cell Renderer\* parameter `detailGridOptions`. This contains configuration for the Detail Grid such as what columns to display and what grid features you want enabled inside the Detail Grid.
 
-1. Provide a callback via the Detail Cell Renderer* parameter `getDetailRowData`. The callback is called for each Detail Grid and sets the rows to display in each Detail Grid.
+1. Provide a callback via the Detail Cell Renderer\* parameter `getDetailRowData`. The callback is called for each Detail Grid and sets the rows to display in each Detail Grid.
 
 [[note]]
 | To learn more about `detailCellRendererParams` configuration see the
 | [Detail Grids](/master-detail-grids/) section.
 
 <grid-example title='Master Detail Example' name='simple' type='generated' options='{ "enterprise": true, "exampleHeight": 535, "modules": ["clientside", "masterdetail", "menu", "columnpanel"] }'></grid-example>
-
 
 ## Row Models
 

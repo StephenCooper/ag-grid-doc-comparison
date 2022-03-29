@@ -1,14 +1,11 @@
-
-import { createApp } from 'vue';
-import { AgGridVue } from 'ag-grid-vue3';
-import 'ag-grid-enterprise';
-import 'ag-grid-community/dist/styles/ag-grid.css';
-import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
-
-
+import { createApp } from "vue";
+import { AgGridVue } from "ag-grid-vue3";
+import "ag-grid-enterprise";
+import "ag-grid-community/dist/styles/ag-grid.css";
+import "ag-grid-community/dist/styles/ag-theme-alpine.css";
 
 const VueExample = {
-    template: `
+  template: `
         <div style="height: 100%">
             <ag-grid-vue
                 
@@ -20,53 +17,72 @@ const VueExample = {
                 :sideBar="sideBar"></ag-grid-vue>
         </div>
     `,
-    components: {
-        'ag-grid-vue': AgGridVue,
-        
-    },
-    data: function() {
-        return {
-            columnDefs: [{headerName:"Row #",
-field:"rowNumber",
-width:120},{field:"autoA",
-width:300,
-wrapText:true,
-autoHeight:true,
-headerName:"A) Auto Height"},{width:300,
-field:"autoB",
-wrapText:true,
-headerName:"B) Normal Height"}],
-            gridApi: null,
-            columnApi: null,
-            defaultColDef: {
-    sortable: true,
-    resizable: true,
-},
-            sideBar: null
-        }
-    },
-    created() {
-        this.sideBar = {"toolPanels":[{"id":"columns","labelDefault":"Columns","labelKey":"columns","iconKey":"columns","toolPanel":"agColumnsToolPanel","toolPanelParams":{"suppressRowGroups":true,"suppressValues":true,"suppressPivots":true,"suppressPivotMode":true,"suppressSideButtons":true,"suppressColumnFilter":true,"suppressColumnSelectAll":true,"suppressColumnExpandAll":true}}],"defaultToolPanel":"columns"}
-    },
-    methods: {
-        onGridReady(params) {
-        this.gridApi = params.api;
-        this.gridColumnApi = params.columnApi;
-        
+  components: {
+    "ag-grid-vue": AgGridVue,
+  },
+  data: function () {
+    return {
+      columnDefs: [
+        { headerName: "Row #", field: "rowNumber", width: 120 },
+        {
+          field: "autoA",
+          width: 300,
+          wrapText: true,
+          autoHeight: true,
+          headerName: "A) Auto Height",
+        },
+        {
+          width: 300,
+          field: "autoB",
+          wrapText: true,
+          headerName: "B) Normal Height",
+        },
+      ],
+      gridApi: null,
+      columnApi: null,
+      defaultColDef: {
+        sortable: true,
+        resizable: true,
+      },
+      sideBar: null,
+    };
+  },
+  created() {
+    this.sideBar = {
+      toolPanels: [
+        {
+          id: "columns",
+          labelDefault: "Columns",
+          labelKey: "columns",
+          iconKey: "columns",
+          toolPanel: "agColumnsToolPanel",
+          toolPanelParams: {
+            suppressRowGroups: true,
+            suppressValues: true,
+            suppressPivots: true,
+            suppressPivotMode: true,
+            suppressSideButtons: true,
+            suppressColumnFilter: true,
+            suppressColumnSelectAll: true,
+            suppressColumnExpandAll: true,
+          },
+        },
+      ],
+      defaultToolPanel: "columns",
+    };
+  },
+  methods: {
+    onGridReady(params) {
+      this.gridApi = params.api;
+      this.gridColumnApi = params.columnApi;
 
-        
-    // in this example, the CSS styles are loaded AFTER the grid is created,
-    // so we put this in a timeout, so height is calculated after styles are applied.
-    setTimeout(function () {
+      // in this example, the CSS styles are loaded AFTER the grid is created,
+      // so we put this in a timeout, so height is calculated after styles are applied.
+      setTimeout(function () {
         params.api.setRowData(getData());
-    }, 500);
-
+      }, 500);
     },
-    }
-}
+  },
+};
 
-
-
-createApp(VueExample)
-    .mount("#app")
-
+createApp(VueExample).mount("#app");

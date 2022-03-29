@@ -1,14 +1,11 @@
-
-import Vue from 'vue';
-import { AgGridVue } from 'ag-grid-vue';
-import 'ag-grid-enterprise';
-import 'ag-grid-community/dist/styles/ag-grid.css';
-import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
-
-
+import Vue from "vue";
+import { AgGridVue } from "ag-grid-vue";
+import "ag-grid-enterprise";
+import "ag-grid-community/dist/styles/ag-grid.css";
+import "ag-grid-community/dist/styles/ag-theme-alpine.css";
 
 const VueExample = {
-    template: `
+  template: `
         <div style="height: 100%">
             <div class="example-wrapper">
                 <div>
@@ -32,76 +29,91 @@ const VueExample = {
             </div>
         </div>
     `,
-    components: {
-        'ag-grid-vue': AgGridVue,
-        
+  components: {
+    "ag-grid-vue": AgGridVue,
+  },
+  data: function () {
+    return {
+      columnDefs: [
+        { headerName: "Name", field: "athlete", minWidth: 200 },
+        { field: "age", enableRowGroup: true },
+        { field: "country", minWidth: 200 },
+        { field: "year" },
+        { field: "date", suppressColumnsToolPanel: true, minWidth: 180 },
+        { field: "sport", minWidth: 200 },
+        { field: "gold", aggFunc: "sum" },
+        { field: "silver", aggFunc: "sum" },
+        { field: "bronze", aggFunc: "sum" },
+        { field: "total", aggFunc: "sum" },
+      ],
+      gridApi: null,
+      columnApi: null,
+      defaultColDef: {
+        flex: 1,
+        minWidth: 100,
+        sortable: true,
+        enablePivot: true,
+      },
+      sideBar: null,
+      rowData: null,
+    };
+  },
+  created() {
+    this.sideBar = {
+      toolPanels: [
+        {
+          id: "columns",
+          labelDefault: "Columns",
+          labelKey: "columns",
+          iconKey: "columns",
+          toolPanel: "agColumnsToolPanel",
+          toolPanelParams: {
+            suppressRowGroups: true,
+            suppressValues: true,
+            suppressPivots: true,
+            suppressPivotMode: true,
+            suppressColumnFilter: true,
+            suppressColumnSelectAll: true,
+            suppressColumnExpandAll: true,
+          },
+        },
+      ],
+      defaultToolPanel: "columns",
+    };
+  },
+  methods: {
+    showPivotModeSection() {
+      var columnToolPanel = this.gridApi.getToolPanelInstance("columns");
+      columnToolPanel.setPivotModeSectionVisible(true);
     },
-    data: function() {
-        return {
-            columnDefs: [{headerName:"Name",
-field:"athlete",
-minWidth:200},{field:"age",
-enableRowGroup:true},{field:"country",
-minWidth:200},{field:"year"},{field:"date",
-suppressColumnsToolPanel:true,
-minWidth:180},{field:"sport",
-minWidth:200},{field:"gold",
-aggFunc:"sum"},{field:"silver",
-aggFunc:"sum"},{field:"bronze",
-aggFunc:"sum"},{field:"total",
-aggFunc:"sum"}],
-            gridApi: null,
-            columnApi: null,
-            defaultColDef: {
-    flex: 1,
-    minWidth: 100,
-    sortable: true,
-    enablePivot: true,
-},
-            sideBar: null,
-rowData: null
-        }
+    showRowGroupsSection() {
+      var columnToolPanel = this.gridApi.getToolPanelInstance("columns");
+      columnToolPanel.setRowGroupsSectionVisible(true);
     },
-    created() {
-        this.sideBar = {"toolPanels":[{"id":"columns","labelDefault":"Columns","labelKey":"columns","iconKey":"columns","toolPanel":"agColumnsToolPanel","toolPanelParams":{"suppressRowGroups":true,"suppressValues":true,"suppressPivots":true,"suppressPivotMode":true,"suppressColumnFilter":true,"suppressColumnSelectAll":true,"suppressColumnExpandAll":true}}],"defaultToolPanel":"columns"}
+    showValuesSection() {
+      var columnToolPanel = this.gridApi.getToolPanelInstance("columns");
+      columnToolPanel.setValuesSectionVisible(true);
     },
-    methods: {
-        showPivotModeSection() {
-    var columnToolPanel = (this.gridApi.getToolPanelInstance('columns'));
-    columnToolPanel.setPivotModeSectionVisible(true);
-},
-showRowGroupsSection() {
-    var columnToolPanel = (this.gridApi.getToolPanelInstance('columns'));
-    columnToolPanel.setRowGroupsSectionVisible(true);
-},
-showValuesSection() {
-    var columnToolPanel = (this.gridApi.getToolPanelInstance('columns'));
-    columnToolPanel.setValuesSectionVisible(true);
-},
-showPivotSection() {
-    var columnToolPanel = (this.gridApi.getToolPanelInstance('columns'));
-    columnToolPanel.setPivotSectionVisible(true);
-},
-onGridReady(params) {
-        this.gridApi = params.api;
-        this.gridColumnApi = params.columnApi;
-        
+    showPivotSection() {
+      var columnToolPanel = this.gridApi.getToolPanelInstance("columns");
+      columnToolPanel.setPivotSectionVisible(true);
+    },
+    onGridReady(params) {
+      this.gridApi = params.api;
+      this.gridColumnApi = params.columnApi;
 
-        
-            const updateData = (data) => params.api.setRowData(data);
-            
-            fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
-                .then(resp => resp.json())
-                .then(data => updateData(data));
+      const updateData = (data) => params.api.setRowData(data);
+
+      fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+        .then((resp) => resp.json())
+        .then((data) => updateData(data));
     },
-    }
-}
-
-
+  },
+};
 
 new Vue({
-    el: '#app',
-    components: {
-        'my-component': VueExample
-    }
+  el: "#app",
+  components: {
+    "my-component": VueExample,
+  },
 });

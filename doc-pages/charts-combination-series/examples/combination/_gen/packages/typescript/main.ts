@@ -1,12 +1,19 @@
-import * as agCharts from 'ag-charts-community';
-import { AgBarSeriesOptions, AgCartesianAxisOptions, AgCartesianChartOptions, AgCartesianSeriesOptions, AgCartesianSeriesTooltipRendererParams, AgLineSeriesOptions } from 'ag-charts-community';
+import * as agCharts from "ag-charts-community";
+import {
+  AgBarSeriesOptions,
+  AgCartesianAxisOptions,
+  AgCartesianChartOptions,
+  AgCartesianSeriesOptions,
+  AgCartesianSeriesTooltipRendererParams,
+  AgLineSeriesOptions,
+} from "ag-charts-community";
 
 function tooltipRenderer(params: AgCartesianSeriesTooltipRendererParams) {
   const { yValue, xValue } = params;
   return {
-    content: `${xValue}: ${yValue}%`
+    content: `${xValue}: ${yValue}%`,
   };
-};
+}
 
 const WOMEN: AgBarSeriesOptions = {
   type: "column",
@@ -16,7 +23,7 @@ const WOMEN: AgBarSeriesOptions = {
   grouped: true,
   strokeWidth: 0,
   tooltip: {
-    renderer: tooltipRenderer
+    renderer: tooltipRenderer,
   },
 };
 
@@ -28,7 +35,7 @@ const MEN: AgBarSeriesOptions = {
   grouped: true,
   strokeWidth: 0,
   tooltip: {
-    renderer: tooltipRenderer
+    renderer: tooltipRenderer,
   },
 };
 
@@ -39,23 +46,23 @@ const PORTIONS: AgLineSeriesOptions = {
   yName: "Portions",
   strokeWidth: 3,
   marker: {
-      enabled: false,
+    enabled: false,
   },
   tooltip: {
-    renderer: tooltipRenderer
+    renderer: tooltipRenderer,
   },
 };
 
 const COLUMN_AND_LINE: AgCartesianSeriesOptions[] = [
-  { ...WOMEN, type: 'column' },
-  { ...MEN, type: 'column' },
-  { ...PORTIONS, type: 'line' },
+  { ...WOMEN, type: "column" },
+  { ...MEN, type: "column" },
+  { ...PORTIONS, type: "line" },
 ];
 
 const AREA_AND_COLUMN: AgCartesianSeriesOptions[] = [
-  { ...PORTIONS, type: 'area' },
-  { ...WOMEN, type: 'column' },
-  { ...MEN, type: 'column' },
+  { ...PORTIONS, type: "area" },
+  { ...WOMEN, type: "column" },
+  { ...MEN, type: "column" },
 ];
 
 const options: AgCartesianChartOptions = {
@@ -65,7 +72,7 @@ const options: AgCartesianChartOptions = {
   theme: {
     palette: {
       fills: ["#7cecb3", "#7cb5ec", "#ecb37c", "#ec7cb5", "#7c7dec"],
-      strokes: ["#7cecb3", "#7cb5ec", "#ecb37c", "#ec7cb5", "#7c7dec"]
+      strokes: ["#7cecb3", "#7cb5ec", "#ecb37c", "#ec7cb5", "#7c7dec"],
     },
   },
   title: {
@@ -77,9 +84,11 @@ const options: AgCartesianChartOptions = {
     {
       type: "category",
       position: "bottom",
-      gridStyle: [{
-        strokeWidth: 0
-      }],
+      gridStyle: [
+        {
+          strokeWidth: 0,
+        },
+      ],
     },
     {
       // primary y axis
@@ -87,8 +96,8 @@ const options: AgCartesianChartOptions = {
       position: "left",
       keys: ["women", "men", "children", "adults"],
       title: {
-          enabled: true,
-          text: "Adults Who Eat 5 A Day (%)",
+        enabled: true,
+        text: "Adults Who Eat 5 A Day (%)",
       },
     },
     {
@@ -97,10 +106,10 @@ const options: AgCartesianChartOptions = {
       position: "right",
       keys: ["portions"],
       title: {
-          enabled: true,
-          text: "Portions Consumed (Per Day)",
+        enabled: true,
+        text: "Portions Consumed (Per Day)",
       },
-    }
+    },
   ] as AgCartesianAxisOptions[],
   legend: {
     position: "bottom",
@@ -124,10 +133,10 @@ function areaColumn() {
   console.log("Column & Area", AREA_AND_COLUMN);
   options.series = AREA_AND_COLUMN;
   agCharts.AgChart.update(chart, options);
-} 
+}
 
-if (typeof window !== 'undefined') {
-// Attach external event handlers to window so they can be called from index.html
- (<any>window).columnLine = columnLine;
- (<any>window).areaColumn = areaColumn;
+if (typeof window !== "undefined") {
+  // Attach external event handlers to window so they can be called from index.html
+  (<any>window).columnLine = columnLine;
+  (<any>window).areaColumn = areaColumn;
 }

@@ -13,7 +13,6 @@ Under normal operation, AG Grid will render each row as a horizontal list of cel
 
 ## Simple Example of Full Width Rows
 
-
 Below shows a simple example using full width. The following can be noted:
 
 - The rows for countries France, Italy and Peru have full width components instead of cells.
@@ -48,9 +47,7 @@ column. Instead you should work off the data parameter, which represents the val
 The `isFullWidthRow(rowNode)` callback takes a `rowNode` as input and should return a boolean
 `true` (use `fullWidth`) or `false` (do not use `fullWidth` and render as normal).
 
-
 ## Sorting and Filtering
-
 
 Sorting and Filtering are NOT impacted by full width. Full width is a rendering time feature. The sorting
 and filtering applied to the data is done before rendering and is not impacted.
@@ -63,7 +60,6 @@ the full width impacts rows. For demonstration, the pinned rows are shaded blue 
 full width a darker shade of blue) and body full width rows are green.
 The following points should be noted:
 
-
 - Full width can be applied to any row, including pinned rows. The example demonstrates full width in pinned top, pinned bottom and body rows.
 
 - Full width rows can be of any height, which is specified in the usual way using the `getRowHeight(params)` callback. The example sets body `fullWidth` rows to 55px.
@@ -75,7 +71,5 @@ The following points should be noted:
 - The full width rows are the width of the grid, despite the grid requiring horizontal scrolling to show the cells.
 
 - The example is showing a flat list of data. There is no grouping or parent / child relationships between the full width and normal rows.
-
-
 
 <grid-example title='Basic Full Width' name='basic-full-width' type='generated' options=' { "exampleHeight" : 595 }'></grid-example>

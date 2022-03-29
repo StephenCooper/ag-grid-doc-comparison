@@ -4,9 +4,7 @@ title: "Server-Side Operations With Node.js"
 
 Learn how to perform server-side operations using Node.js with a complete reference implementation that uses the MySQL database.
 
-
 This guide is intended as a starting point when learning how to use the [Server-Side Row Model](/server-side-model/), as it provides a simple grid implementation that uses a limited set of features and grid configurations.
-
 
 The sample Olympic Medals application is developed using a Node.js server that connects to a MySQL database and will demonstrate how data can be lazy-loaded as required, even when performing group, filter and sort operations when working with large datasets.
 
@@ -54,9 +52,7 @@ yarn install
 
 Download and install the database as per the [MySQL Download](https://www.mysql.com/downloads/) documentation.
 
-
 Create a database with the name `'sample_data'`. Then run the following script to create the table `olympic_winners` and populate it with data via the MySQL command line:
-
 
 ```bash
 mysql -u root -p -D sample_data < ./data/olympic_winners.sql
@@ -68,7 +64,6 @@ That's it! We are now ready to run and explore the application.
 
 To run the application execute the following from the command line:
 
-
 ```bash
 yarn start
 ```
@@ -79,31 +74,29 @@ Then point your browser to [http://localhost:4000/](http://localhost:4000/)
 
 In order to keep this sample application as simple as possible, the grid configuration is kept to a minimum. The `gridOptions` required for our grid are shown below:
 
-
 ```js
 // client/index.js
 
 const gridOptions = {
-    rowModelType: 'serverSide',
+  rowModelType: "serverSide",
 
-    columnDefs: [
-        { field: 'athlete' },
-        { field: 'country', rowGroup: true, hide: true },
-        { field: 'sport', rowGroup: true, hide: true },
-        { field: 'year', filter: 'number' },
-        { field: 'gold', aggFunc: 'sum' },
-        { field: 'silver', aggFunc: 'sum' },
-        { field: 'bronze', aggFunc: 'sum' },
-    ],
+  columnDefs: [
+    { field: "athlete" },
+    { field: "country", rowGroup: true, hide: true },
+    { field: "sport", rowGroup: true, hide: true },
+    { field: "year", filter: "number" },
+    { field: "gold", aggFunc: "sum" },
+    { field: "silver", aggFunc: "sum" },
+    { field: "bronze", aggFunc: "sum" },
+  ],
 
-    defaultColDef: {
-        sortable: true
-    }
-}
+  defaultColDef: {
+    sortable: true,
+  },
+};
 ```
 
 In the code snippet above, the grid is configured to use the Server-Side Row Model by setting: `gridOptions.rowModelType = 'serverSide'`.
-
 
 Sorting is enabled via `defaultColDef.sortable = true` property. A simple number filter is also added to the 'year' column. Note that as new data is loaded the applied filters are kept.
 
@@ -119,23 +112,23 @@ Successful responses are then passed back to the grid via the `params.successCal
 // client/index.js
 
 const datasource = {
-    getRows(params) {
-        console.log(JSON.stringify(params.request, null, 1));
+  getRows(params) {
+    console.log(JSON.stringify(params.request, null, 1));
 
-        fetch('./olympicWinners/', {
-            method: 'post',
-            body: JSON.stringify(params.request),
-            headers: { 'Content-Type': 'application/json; charset=utf-8' }
-        })
-        .then(httpResponse => httpResponse.json())
-        .then(response => {
-            params.successCallback(response.rows, response.lastRow);
-        })
-        .catch(error => {
-            console.error(error);
-            params.failCallback();
-        })
-    }
+    fetch("./olympicWinners/", {
+      method: "post",
+      body: JSON.stringify(params.request),
+      headers: { "Content-Type": "application/json; charset=utf-8" },
+    })
+      .then((httpResponse) => httpResponse.json())
+      .then((response) => {
+        params.successCallback(response.rows, response.lastRow);
+      })
+      .catch((error) => {
+        console.error(error);
+        params.failCallback();
+      });
+  },
 };
 
 // register datasource with the grid
@@ -146,32 +139,31 @@ gridOptions.api.setServerSideDatasource(datasource);
 
 Hosting our server endpoint `/olympicWinners` which accepts JSON requests is done with the help of the `express` and `body-parser` npm packages.
 
-
 ```js
 // server/server.js
 
-import webpack from 'webpack';
-import webpackMiddleware from 'webpack-dev-middleware';
-import webpackConfig from '../webpack.config.js';
-import express from 'express';
-import bodyParser from 'body-parser';
+import webpack from "webpack";
+import webpackMiddleware from "webpack-dev-middleware";
+import webpackConfig from "../webpack.config.js";
+import express from "express";
+import bodyParser from "body-parser";
 
-import OlympicWinnersService from './olympicWinnersService';
+import OlympicWinnersService from "./olympicWinnersService";
 
 const app = express();
 app.use(webpackMiddleware(webpack(webpackConfig)));
 
-app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-app.post('/olympicWinners', function (req, res) {
-OlympicWinnersService.getData(req.body, (rows, lastRow) => {
+app.post("/olympicWinners", function (req, res) {
+  OlympicWinnersService.getData(req.body, (rows, lastRow) => {
     res.json({ rows: rows, lastRow: lastRow });
-    });
+  });
 });
 
 app.listen(4000, () => {
-    console.log('Started on localhost:4000');
+  console.log("Started on localhost:4000");
 });
 ```
 
@@ -180,31 +172,31 @@ Request are delegated to the `OlympicWinnersService` which contains all the serv
 ```js
 // server/olympicWinnersService.js
 
-import mysql from 'mysql';
+import mysql from "mysql";
 
 class OlympicWinnersService {
-    getData(request, resultsCallback) {
-        const SQL = this.buildSql(request);
+  getData(request, resultsCallback) {
+    const SQL = this.buildSql(request);
 
-        connection.query(SQL, (error, results) => {
-            const rowCount = this.getRowCount(request, results);
-            const resultsForPage = this.cutResultsToPageSize(request, results);
-            resultsCallback(resultsForPage, rowCount);
-        });
-    }
+    connection.query(SQL, (error, results) => {
+      const rowCount = this.getRowCount(request, results);
+      const resultsForPage = this.cutResultsToPageSize(request, results);
+      resultsCallback(resultsForPage, rowCount);
+    });
+  }
 
-    buildSql(request) {
-        const selectSql = this.createSelectSql(request);
-        const fromSql = ' FROM sample_data.olympic_winners ';
-        const whereSql = this.createWhereSql(request);
-        const limitSql = this.createLimitSql(request);
-        const orderBySql = this.createOrderBySql(request);
-        const groupBySql = this.createGroupBySql(request);
+  buildSql(request) {
+    const selectSql = this.createSelectSql(request);
+    const fromSql = " FROM sample_data.olympic_winners ";
+    const whereSql = this.createWhereSql(request);
+    const limitSql = this.createLimitSql(request);
+    const orderBySql = this.createOrderBySql(request);
+    const groupBySql = this.createGroupBySql(request);
 
-        return selectSql + fromSql + whereSql + groupBySql + orderBySql + limitSql;
-    }
+    return selectSql + fromSql + whereSql + groupBySql + orderBySql + limitSql;
+  }
 
-    // helper methods ...
+  // helper methods ...
 }
 ```
 
@@ -220,4 +212,3 @@ A high level overview was given to illustrate the problem this approach solves b
 - Filtering
 - Grouping
 - Aggregation
-

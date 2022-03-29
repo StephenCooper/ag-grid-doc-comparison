@@ -9,11 +9,13 @@ Area series are line series with the area under the line filled, placing more em
 To create a simple area chart we need to use series type `'area'`. We also have to provide the `xKey` and at least one `yKey`. A minimal `'area'` series config would therefore look like this:
 
 ```js
-series: [{
-    type: 'area',
-    xKey: 'year',
-    yKey: 'ie',
-}]
+series: [
+  {
+    type: "area",
+    xKey: "year",
+    yKey: "ie",
+  },
+];
 ```
 
 In the snippet above we are using `'ie'` as the only `yKey`, to show market share of just this internet browser. Using this simple series config produces the following chart:
@@ -27,7 +29,7 @@ To enable area markers, all we need to do is add this to the series config:
 
 ```js
 marker: {
-    enabled: true
+  enabled: true;
 }
 ```
 
@@ -66,17 +68,17 @@ It is possible to use more than one `'area'` series in a single chart. For examp
 
 ```js
 series: [
-    {
-        type: 'area',
-        xKey: 'year',
-        yKey: 'ie'
-    },
-    {
-        type: 'area',
-        xKey: 'year',
-        yKey: 'chrome'
-    }
-]
+  {
+    type: "area",
+    xKey: "year",
+    yKey: "ie",
+  },
+  {
+    type: "area",
+    xKey: "year",
+    yKey: "chrome",
+  },
+];
 ```
 
 [[note]]
@@ -97,11 +99,11 @@ The `stacked: true` property controls series stacking behaviour. For example, to
 
 ```js
 series: [
-    { type: 'area', xKey: 'year', stacked: true, yKey: 'ie' },
-    { type: 'area', xKey: 'year', stacked: true, yKey: 'firefox' },
-    { type: 'area', xKey: 'year', stacked: true, yKey: 'safari' },
-    { type: 'area', xKey: 'year', stacked: true, yKey: 'chrome' }
-]
+  { type: "area", xKey: "year", stacked: true, yKey: "ie" },
+  { type: "area", xKey: "year", stacked: true, yKey: "firefox" },
+  { type: "area", xKey: "year", stacked: true, yKey: "safari" },
+  { type: "area", xKey: "year", stacked: true, yKey: "chrome" },
+];
 ```
 
 This produces the following chart:
@@ -113,7 +115,7 @@ This produces the following chart:
 Going back to our [stacked area series](#example-stacked-area-series) example, if we wanted to normalize the totals so that for any given year stack levels always added up to a certain value, for example 100%, we could add the following to our series config:
 
 ```js
-normalizedTo: 100
+normalizedTo: 100;
 ```
 
 [[note]]

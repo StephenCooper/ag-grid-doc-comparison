@@ -15,6 +15,7 @@ All the defined classes from [cellClass](/cell-styles/#cell-class) and all the c
 
 [[note]]
 | Headers are a special case, headers are exported to Excel as normal rows, so in order to allow you to style them, you can provide an ExcelStyle with id `header`. Group headers can also be styled with an ExcelStyle id `header` or if you want the styling of headers groups to be different than regular headers, use the ExcelStyle id `headerGroup`.
+
 ## Excel Style Definition Example
 
 The example below demonstrates how to merge the styles in Excel. Everyone less than 23 will have a green background, and
@@ -81,7 +82,7 @@ const gridOptions = {
 
 ## Example: Export With Styles
 
-Note the following: 
+Note the following:
 
 - An Excel Style with id `cell` gets automatically applied to all cells (**not headers**) when exported to Excel.
 
@@ -125,22 +126,22 @@ processRowGroupCallback(params: ProcessRowGroupForExportParams): string {
 ```
 
 ```ts
-    autoGroupColumnDef: {
-        cellClass: getIndentClass
-        //...
-    }
-    excelStyles: [
-        {
-            id: 'indent-1',
-            alignment: {
-                indent: 1
-            },
-            // note, dataType: 'String' required to ensure that numeric values aren't right-aligned
-            dataType: 'String'
-        },
-        //...
-    ]
-    //...
+autoGroupColumnDef: {
+  cellClass: getIndentClass;
+  //...
+}
+excelStyles: [
+  {
+    id: "indent-1",
+    alignment: {
+      indent: 1,
+    },
+    // note, dataType: 'String' required to ensure that numeric values aren't right-aligned
+    dataType: "String",
+  },
+  //...
+];
+//...
 ```
 
 ```ts
@@ -172,7 +173,6 @@ Some of the most likely errors you can encounter when exporting to Excel are:
 - Not specifying the style associated to a cell, if a cell has an style that is not passed as part of the grid options, Excel won't fail opening the spreadsheet but the column won't be formatted.
 
 - Specifying an invalid enumerated property. It is also important to realise that Excel is case sensitive, so Solid is a valid pattern, but SOLID or solid are not.
-
 
 ## API
 

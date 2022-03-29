@@ -12,7 +12,6 @@ When you call `applyTransactionAsync()` the grid will execute the update, along 
 
 <grid-example title='Async Transaction' name='async-transaction' type='generated' options='{ "enterprise": true, "modules": ["clientside", "rowgrouping"], "exampleHeight": 590 }'></grid-example>
 
-
 To help understand the interface for `applyTransaction()` and `applyTransactionAsync()`, here are both method signatures side by side. The first executes immediately. The second executes sometime later using a callback for providing a result.
 
 ```ts
@@ -23,7 +22,6 @@ applyTransaction(rowDataTransaction: RowDataTransaction): RowNodeTransaction
 applyTransactionAsync(rowDataTransaction: RowDataTransaction, callback?: (res: RowNodeTransaction) => void): void
 ```
 
-
 Use Async Transactions if you have a high volume of streaming data going into the grid and don't want the grid's rendering and recalculating to be a bottleneck.
 
 [[note]]
@@ -33,7 +31,6 @@ Use Async Transactions if you have a high volume of streaming data going into th
 ## Async Transactions Applied Event
 
 Each time the grid executes a batch of Async Transactions, it dispatches a `asyncTransactionsApplied` event.
-
 
 The event contains `results` attribute, which is a list of all the results for all Transactions that got applied.
 
@@ -57,4 +54,3 @@ The example below demonstrates setting the wait time and also flushing. Note the
 - The example listens on event `asyncTransactionsFlushed` and logs how many transactions got applied.
 
 <grid-example title='Flush Transactions' name='flush-transactions' type='generated' options='{ "enterprise": true, "modules": ["clientside", "rowgrouping"], "exampleHeight": 590 }'></grid-example>
-

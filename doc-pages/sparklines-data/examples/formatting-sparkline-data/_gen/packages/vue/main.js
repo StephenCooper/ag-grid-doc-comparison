@@ -1,14 +1,11 @@
-
-import Vue from 'vue';
-import { AgGridVue } from 'ag-grid-vue';
-import 'ag-grid-enterprise';
-import 'ag-grid-community/dist/styles/ag-grid.css';
-import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
-
-
+import Vue from "vue";
+import { AgGridVue } from "ag-grid-vue";
+import "ag-grid-enterprise";
+import "ag-grid-community/dist/styles/ag-grid.css";
+import "ag-grid-community/dist/styles/ag-theme-alpine.css";
 
 const VueExample = {
-    template: `
+  template: `
         <div style="height: 100%">
             <ag-grid-vue
                 
@@ -21,55 +18,54 @@ const VueExample = {
                 :rowHeight="rowHeight"></ag-grid-vue>
         </div>
     `,
-    components: {
-        'ag-grid-vue': AgGridVue,
-        
+  components: {
+    "ag-grid-vue": AgGridVue,
+  },
+  data: function () {
+    return {
+      columnDefs: [
+        { field: "symbol", maxWidth: 110 },
+        { field: "name", minWidth: 250 },
+        {
+          headerName: "Rate of Change",
+          cellRenderer: "agSparklineCellRenderer",
+          cellRendererParams: { sparklineOptions: { type: "area" } },
+          valueGetter: (params) => {
+            const formattedData = [];
+            const rateOfChange = params.data.rateOfChange;
+            const { x, y } = rateOfChange;
+            x.map((xVal, i) => formattedData.push([xVal, y[i]]));
+            return formattedData;
+          },
+        },
+        { field: "volume", type: "numericColumn", maxWidth: 140 },
+      ],
+      gridApi: null,
+      columnApi: null,
+      defaultColDef: {
+        flex: 1,
+        minWidth: 100,
+        resizable: true,
+      },
+      rowData: null,
+      rowHeight: null,
+    };
+  },
+  created() {
+    this.rowData = getData();
+    this.rowHeight = 50;
+  },
+  methods: {
+    onGridReady(params) {
+      this.gridApi = params.api;
+      this.gridColumnApi = params.columnApi;
     },
-    data: function() {
-        return {
-            columnDefs: [{field:"symbol",
-maxWidth:110},{field:"name",
-minWidth:250},{headerName:"Rate of Change",
-cellRenderer:"agSparklineCellRenderer",
-cellRendererParams:{"sparklineOptions":{"type":"area"}},
-valueGetter:(params) =>  {
-    const formattedData = [];
-    const rateOfChange = params.data.rateOfChange;
-    const { x, y } = rateOfChange;
-    x.map((xVal, i) => formattedData.push([xVal, y[i]]));
-    return formattedData;
-}},{field:"volume",
-type:"numericColumn",
-maxWidth:140}],
-            gridApi: null,
-            columnApi: null,
-            defaultColDef: {
-    flex: 1,
-    minWidth: 100,
-    resizable: true,
-},
-            rowData: null,
-rowHeight: null
-        }
-    },
-    created() {
-        this.rowData = getData();
-this.rowHeight = 50
-    },
-    methods: {
-        onGridReady(params) {
-        this.gridApi = params.api;
-        this.gridColumnApi = params.columnApi;
-        
-    },
-    }
-}
-
-
+  },
+};
 
 new Vue({
-    el: '#app',
-    components: {
-        'my-component': VueExample
-    }
+  el: "#app",
+  components: {
+    "my-component": VueExample,
+  },
 });

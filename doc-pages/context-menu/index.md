@@ -22,7 +22,6 @@ The result of `getContextMenuItems(params)` should be a list with each item eith
 
 <api-documentation source='grid-properties/properties.json' section='accessories' names='["getContextMenuItems"]' ></api-documentation>
 
-
 If you want to access your underlying data item, you access that through the rowNode as `var dataItem = node.data`.
 
 Note: If you set `checked=true`, then icon will be ignored, these options are mutually exclusive.

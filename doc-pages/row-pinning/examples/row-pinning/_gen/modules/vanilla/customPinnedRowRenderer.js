@@ -1,26 +1,20 @@
-
 function setStyle(element, propertyObject) {
-    for (var property in propertyObject) {
-        element.style[property] = propertyObject[property];
-    }
+  for (var property in propertyObject) {
+    element.style[property] = propertyObject[property];
+  }
 }
-class CustomPinnedRowRenderer  {
-    
+class CustomPinnedRowRenderer {
+  init(params) {
+    this.eGui = document.createElement("div");
+    setStyle(this.eGui, params.style);
+    this.eGui.innerHTML = params.value;
+  }
 
-    init(params) {
-        this.eGui = document.createElement('div');
-        setStyle(this.eGui, params.style);
-        this.eGui.innerHTML = params.value;
-    }
+  getGui() {
+    return this.eGui;
+  }
 
-    getGui() {
-        return this.eGui;
-    }
-
-    refresh() {
-        return false;
-    }
-
+  refresh() {
+    return false;
+  }
 }
-
-

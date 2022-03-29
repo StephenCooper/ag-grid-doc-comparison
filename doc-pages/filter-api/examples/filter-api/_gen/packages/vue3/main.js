@@ -1,14 +1,11 @@
-
-import { createApp } from 'vue';
-import { AgGridVue } from 'ag-grid-vue3';
-import 'ag-grid-enterprise';
-import 'ag-grid-community/dist/styles/ag-grid.css';
-import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
-
-
+import { createApp } from "vue";
+import { AgGridVue } from "ag-grid-vue3";
+import "ag-grid-enterprise";
+import "ag-grid-community/dist/styles/ag-grid.css";
+import "ag-grid-community/dist/styles/ag-theme-alpine.css";
 
 const VueExample = {
-    template: `
+  template: `
         <div style="height: 100%">
             <div class="example-wrapper">
                 <div class="example-header">
@@ -29,67 +26,60 @@ const VueExample = {
             </div>
         </div>
     `,
-    components: {
-        'ag-grid-vue': AgGridVue,
-        
+  components: {
+    "ag-grid-vue": AgGridVue,
+  },
+  data: function () {
+    return {
+      columnDefs: [{ field: "athlete", filter: "agSetColumnFilter" }],
+      gridApi: null,
+      columnApi: null,
+      defaultColDef: {
+        flex: 1,
+        minWidth: 150,
+        filter: true,
+        sortable: true,
+      },
+      sideBar: null,
+      rowData: null,
+    };
+  },
+  created() {
+    this.sideBar = "filters";
+  },
+  methods: {
+    getMiniFilterText() {
+      const athleteFilter = this.gridApi.getFilterInstance("athlete");
+      console.log(athleteFilter.getMiniFilter());
     },
-    data: function() {
-        return {
-            columnDefs: [{field:"athlete",
-filter:"agSetColumnFilter"}],
-            gridApi: null,
-            columnApi: null,
-            defaultColDef: {
-    flex: 1,
-    minWidth: 150,
-    filter: true,
-    sortable: true,
-},
-            sideBar: null,
-rowData: null
-        }
+    saveMiniFilterText() {
+      const athleteFilter = this.gridApi.getFilterInstance("athlete");
+      savedMiniFilterText = athleteFilter.getMiniFilter();
     },
-    created() {
-        this.sideBar = 'filters'
+    restoreMiniFilterText() {
+      const athleteFilter = this.gridApi.getFilterInstance("athlete");
+      athleteFilter.setMiniFilter(savedMiniFilterText);
     },
-    methods: {
-        getMiniFilterText() {
-    const athleteFilter = this.gridApi.getFilterInstance('athlete');
-    console.log(athleteFilter.getMiniFilter());
-},
-saveMiniFilterText() {
-    const athleteFilter = this.gridApi.getFilterInstance('athlete');
-    savedMiniFilterText = athleteFilter.getMiniFilter();
-},
-restoreMiniFilterText() {
-    const athleteFilter = this.gridApi.getFilterInstance('athlete');
-    athleteFilter.setMiniFilter(savedMiniFilterText);
-},
-resetFilter() {
-    const athleteFilter = this.gridApi.getFilterInstance('athlete');
-    athleteFilter.setModel(null);
-    this.gridApi.onFilterChanged();
-},
-onGridReady(params) {
-        this.gridApi = params.api;
-        this.gridColumnApi = params.columnApi;
-        
-
-        
-    ((params.api.getToolPanelInstance('filters'))).expandFilters();
-
-        
-            const updateData = (data) => params.api.setRowData(data);
-            
-            fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
-                .then(resp => resp.json())
-                .then(data => updateData(data));
+    resetFilter() {
+      const athleteFilter = this.gridApi.getFilterInstance("athlete");
+      athleteFilter.setModel(null);
+      this.gridApi.onFilterChanged();
     },
-    }
-}
+    onGridReady(params) {
+      this.gridApi = params.api;
+      this.gridColumnApi = params.columnApi;
 
-let savedMiniFilterText = '';
+      params.api.getToolPanelInstance("filters").expandFilters();
 
-createApp(VueExample)
-    .mount("#app")
+      const updateData = (data) => params.api.setRowData(data);
 
+      fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+        .then((resp) => resp.json())
+        .then((data) => updateData(data));
+    },
+  },
+};
+
+let savedMiniFilterText = "";
+
+createApp(VueExample).mount("#app");

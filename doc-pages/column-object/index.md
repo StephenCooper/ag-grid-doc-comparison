@@ -14,11 +14,11 @@ If you add listeners to columns in custom header components, be sure to remove t
 
 ```js
 // add visibility listener to 'country' column
-const listener = event => console.log('Column visibility changed', event);
+const listener = (event) => console.log("Column visibility changed", event);
 
-const column = columnApi.getColumn('country');
-column.addEventListener('visibleChanged', listener);
+const column = columnApi.getColumn("country");
+column.addEventListener("visibleChanged", listener);
 
 // sometime later, remove the listener
-column.removeEventListener('visibleChanged', listener);
+column.removeEventListener("visibleChanged", listener);
 ```

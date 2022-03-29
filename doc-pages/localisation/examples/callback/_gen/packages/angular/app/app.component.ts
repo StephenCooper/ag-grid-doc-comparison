@@ -1,16 +1,27 @@
-
-import { Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import 'ag-grid-enterprise';
-import 'ag-grid-community/dist/styles/ag-grid.css';
+import { Component } from "@angular/core";
+import { HttpClient } from "@angular/common/http";
+import "ag-grid-enterprise";
+import "ag-grid-community/dist/styles/ag-grid.css";
 import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import { ColDef, ColGroupDef, ColumnApi, GetLocaleTextParams, Grid, GridApi, GridOptions, GridReadyEvent, ICellRendererComp, ICellRendererParams, SideBarDef, StatusPanelDef } from 'ag-grid-community';
+import {
+  ColDef,
+  ColGroupDef,
+  ColumnApi,
+  GetLocaleTextParams,
+  Grid,
+  GridApi,
+  GridOptions,
+  GridReadyEvent,
+  ICellRendererComp,
+  ICellRendererParams,
+  SideBarDef,
+  StatusPanelDef,
+} from "ag-grid-community";
 
 @Component({
-    selector: 'my-app',
-    template: `<ag-grid-angular
+  selector: "my-app",
+  template: `<ag-grid-angular
     style="width: 100%; height: 100%;"
-    
     class="ag-theme-alpine"
     [columnDefs]="columnDefs"
     [defaultColDef]="defaultColDef"
@@ -24,104 +35,101 @@ import { ColDef, ColGroupDef, ColumnApi, GetLocaleTextParams, Grid, GridApi, Gri
     [getLocaleText]="getLocaleText"
     [rowData]="rowData"
     (gridReady)="onGridReady($event)"
-    ></ag-grid-angular>
-`
+  ></ag-grid-angular> `,
 })
-
 export class AppComponent {
-
-    
-    public columnDefs: ColDef[] = [
+  public columnDefs: ColDef[] = [
     // this row just shows the row index, doesn't use any data from the row
     {
-        headerName: '#',
-        cellRenderer: NodeIdRenderer
+      headerName: "#",
+      cellRenderer: NodeIdRenderer,
     },
-    { field: 'athlete', filterParams: { buttons: ['clear', 'reset', 'apply'] } },
     {
-        field: 'age',
-        filterParams: { buttons: ['apply', 'cancel'] },
-        enablePivot: true,
+      field: "athlete",
+      filterParams: { buttons: ["clear", "reset", "apply"] },
     },
-    { field: 'country', enableRowGroup: true },
-    { field: 'year', filter: 'agNumberColumnFilter' },
-    { field: 'date' },
     {
-        field: 'sport',
-        filter: 'agMultiColumnFilter',
-        filterParams: {
-            filters: [
-                {
-                    filter: 'agTextColumnFilter',
-                    display: 'accordion',
-                },
-                {
-                    filter: 'agSetColumnFilter',
-                    display: 'accordion',
-                },
-            ],
-        },
+      field: "age",
+      filterParams: { buttons: ["apply", "cancel"] },
+      enablePivot: true,
     },
-    { field: 'gold', enableValue: true },
-    { field: 'silver', enableValue: true },
-    { field: 'bronze', enableValue: true },
-    { field: 'total', enableValue: true },
-];
-public defaultColDef: ColDef = {
+    { field: "country", enableRowGroup: true },
+    { field: "year", filter: "agNumberColumnFilter" },
+    { field: "date" },
+    {
+      field: "sport",
+      filter: "agMultiColumnFilter",
+      filterParams: {
+        filters: [
+          {
+            filter: "agTextColumnFilter",
+            display: "accordion",
+          },
+          {
+            filter: "agSetColumnFilter",
+            display: "accordion",
+          },
+        ],
+      },
+    },
+    { field: "gold", enableValue: true },
+    { field: "silver", enableValue: true },
+    { field: "bronze", enableValue: true },
+    { field: "total", enableValue: true },
+  ];
+  public defaultColDef: ColDef = {
     editable: true,
     sortable: true,
     flex: 1,
     minWidth: 100,
     filter: true,
     resizable: true,
-};
-public statusBar: {
-        statusPanels: StatusPanelDef[];
-    } = {
+  };
+  public statusBar: {
+    statusPanels: StatusPanelDef[];
+  } = {
     statusPanels: [
-        { statusPanel: 'agTotalAndFilteredRowCountComponent', align: 'left' },
-        { statusPanel: 'agAggregationComponent' },
+      { statusPanel: "agTotalAndFilteredRowCountComponent", align: "left" },
+      { statusPanel: "agAggregationComponent" },
     ],
-};
-public rowGroupPanelShow = 'always';
-public paginationPageSize = 500;
-public getLocaleText: (params: GetLocaleTextParams) => string = function (params: GetLocaleTextParams) {
+  };
+  public rowGroupPanelShow = "always";
+  public paginationPageSize = 500;
+  public getLocaleText: (params: GetLocaleTextParams) => string = function (
+    params: GetLocaleTextParams
+  ) {
     switch (params.key) {
-        case 'thousandSeparator':
-            return '.';
-        case 'decimalSeparator':
-            return ',';
-        default:
-            return params.defaultValue ? params.defaultValue.toUpperCase() : '';
+      case "thousandSeparator":
+        return ".";
+      case "decimalSeparator":
+        return ",";
+      default:
+        return params.defaultValue ? params.defaultValue.toUpperCase() : "";
     }
-};
-public rowData!: any[];
+  };
+  public rowData!: any[];
 
-    constructor(private http: HttpClient) {
-}
+  constructor(private http: HttpClient) {}
 
-
-    onGridReady(params: GridReadyEvent) {
-        
-
-        this.http.get<any[]>('https://www.ag-grid.com/example-assets/olympic-winners.json').subscribe(data => this.rowData = data);
-    }
+  onGridReady(params: GridReadyEvent) {
+    this.http
+      .get<any[]>("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      .subscribe((data) => (this.rowData = data));
+  }
 }
 
 class NodeIdRenderer implements ICellRendererComp {
-    eGui!: HTMLElement;
+  eGui!: HTMLElement;
 
-    init(params: ICellRendererParams) {
-        this.eGui = document.createElement('div');
-        this.eGui.innerHTML = params.node!.id! + 1;
-    }
+  init(params: ICellRendererParams) {
+    this.eGui = document.createElement("div");
+    this.eGui.innerHTML = params.node!.id! + 1;
+  }
 
-    getGui() {
-        return this.eGui;
-    }
-    refresh() {
-        return false;
-    }
+  getGui() {
+    return this.eGui;
+  }
+  refresh() {
+    return false;
+  }
 }
-
-

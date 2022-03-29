@@ -1,4 +1,3 @@
-
 const options = {
   container: document.getElementById("myChart"),
   title: {
@@ -42,6 +41,6 @@ const options = {
       stacked: true,
     },
   ],
-}
+};
 
-agCharts.AgChart.create(options)
+agCharts.AgChart.create(options);

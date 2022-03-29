@@ -8,16 +8,14 @@ Below shows the column definition properties for value formatters.
 
 <api-documentation source='column-properties/properties.json' section="columns" names='["valueFormatter"]' ></api-documentation>
 
-
 ```ts
 // example value formatter, simple currency formatter
-colDef.valueFormatter = params => {
-    return '£' + params.value;
-}
+colDef.valueFormatter = (params) => {
+  return "£" + params.value;
+};
 ```
 
 ## Value Formatter vs Cell Renderer
-
 
 A [cell renderer](/component-cell-renderer/) allows you to put whatever HTML you want into a cell. This sounds like value formatters and a cell renderers have cross purposes, so you may be wondering, when do you use each one and not the other?
 

@@ -1,5 +1,5 @@
 export default {
-    template: `
+  template: `
       <div>
           <div class="year-filter">
             <label>
@@ -11,30 +11,30 @@ export default {
           </div>
       </div>
     `,
-    data: function () {
-        return {
-            isActive: false
-        };
+  data: function () {
+    return {
+      isActive: false,
+    };
+  },
+  methods: {
+    toggleFilter(isFilterActive) {
+      this.isActive = isFilterActive;
+      this.params.filterChangedCallback();
     },
-    methods: {
-        toggleFilter(isFilterActive) {
-            this.isActive = isFilterActive;
-            this.params.filterChangedCallback();
-        },
-        doesFilterPass(params) {
-            return params.data.year > 2004;
-        },
-        isFilterActive() {
-            return this.isActive;
-        },
-        getModel() {
-            return this.isFilterActive() || null;
-        },
-        setModel(value) {
-            this.toggleFilter(value);
-        },
-        onFloatingFilterChanged(value) {
-            this.setModel(value);
-        }
-    }
+    doesFilterPass(params) {
+      return params.data.year > 2004;
+    },
+    isFilterActive() {
+      return this.isActive;
+    },
+    getModel() {
+      return this.isFilterActive() || null;
+    },
+    setModel(value) {
+      this.toggleFilter(value);
+    },
+    onFloatingFilterChanged(value) {
+      this.setModel(value);
+    },
+  },
 };

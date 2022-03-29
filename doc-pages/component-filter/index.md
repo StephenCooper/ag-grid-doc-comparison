@@ -31,7 +31,6 @@ The method `doesFilterPass(params)` takes the following as a parameter:
 
 <interface-documentation interfaceName='IDoesFilterPassParams' ></interface-documentation>
 
-
 ## Associating Floating Filter
 
 If you create your own filter you have two options to get floating filters working for that filter:
@@ -56,29 +55,7 @@ There are two ways you can get fix this problem:
 |
 | AG Grid allows you to get a reference to the filter instances via the `api.getFilterInstance(colKey)` method.
 |
-| ```ts
-| // let's assume an Angular component as follows
-| @Component({
-|     selector: 'filter-cell',
-|     template: `
-|         Filter: <input style="height: 10px" #input (ngModelChange)="onChange($event)" [ngModel]="text">
-|     `
-| })
-| class PartialMatchFilterComponent implements IFilterAngularComp {
-|     ... // standard filter methods hidden
-|
-|     // put a custom method on the filter
-|     myMethod() {
-|         // does something
-|     }
-| }
-|
-| // later in your app, if you want to execute myMethod()...
-| laterOnInYourApplicationSomewhere() {
-|     const angularFilterInstance = api.getFilterInstance('name') as PartialMatchFilterComponent; // assume filter on name column
-|     angularFilterInstance.myMethod();
-| }
-| ```
+| `` ts | // let's assume an Angular component as follows | @Component({ | selector: 'filter-cell', | template: ` | Filter: <input style="height: 10px" #input (ngModelChange)="onChange($event)" [ngModel]="text"> | ` | }) | class PartialMatchFilterComponent implements IFilterAngularComp { | ... // standard filter methods hidden | | // put a custom method on the filter | myMethod() { | // does something | } | } | | // later in your app, if you want to execute myMethod()... | laterOnInYourApplicationSomewhere() { | const angularFilterInstance = api.getFilterInstance('name') as PartialMatchFilterComponent; // assume filter on name column | angularFilterInstance.myMethod(); | } |  ``
 |
 | The example below illustrates how a custom filter component can be accessed and methods on it invoked:
 |
@@ -87,27 +64,9 @@ There are two ways you can get fix this problem:
 [[only-react]]
 | ## Accessing the React Component Instance
 |
-| AG Grid allows you to get a reference to the filter instances via `api.getFilterInstance(colKey, callback)`. React components are created asynchronously, so it is necessary to use a callback rather than relying on the return value of this method. 
+| AG Grid allows you to get a reference to the filter instances via `api.getFilterInstance(colKey, callback)`. React components are created asynchronously, so it is necessary to use a callback rather than relying on the return value of this method.
 |
-| ```ts
-| // let's assume a React component as follows
-| class NameFilter extends React.Component {
-|     ... // standard filter methods hidden
-|
-|     // put a custom method on the filter
-|     myMethod() {
-|         // does something
-|     }
-| }
-|
-| // later in your app, if you want to execute myMethod()...
-| laterOnInYourApplicationSomewhere() {
-|     // get reference to the AG Grid Filter component on name column
-|     api.getFilterInstance('name', filterInstance => {
-|         filterInstance.myMethod();
-|     });
-| }
-| ```
+| `ts | // let's assume a React component as follows | class NameFilter extends React.Component { | ... // standard filter methods hidden | | // put a custom method on the filter | myMethod() { | // does something | } | } | | // later in your app, if you want to execute myMethod()... | laterOnInYourApplicationSomewhere() { | // get reference to the AG Grid Filter component on name column | api.getFilterInstance('name', filterInstance => { | filterInstance.myMethod(); | }); | } | `
 |
 | The example below illustrates how a custom filter component can be accessed and methods on it invoked:
 |
@@ -118,28 +77,8 @@ There are two ways you can get fix this problem:
 |
 | AG Grid allows you to get a reference to the filter instances via the `api.getFilterInstance(colKey)` method.
 |
-| ```ts
-| // let's assume a VueJS component as follows
-| export default {
-|     template: `<input style="height: 20px" :ref="'input'" v-model="text">`,
-|     data() {
-|         ...data
-|     },
-|     methods: {
-|         myMethod() {
-|             // does something
-|         },
-|         ...other methods
-|     },
-|
-|     // later in your app, if you want to execute myMethod()...
-|     laterOnInYourApplicationSomewhere() {
-|         const filterInstance = api.getFilterInstance('name'); // assume filter on name column
-|         filterInstance.myMethod();
-|     }
-| ```
+| `` ts | // let's assume a VueJS component as follows | export default { | template: `<input style="height: 20px" :ref="'input'" v-model="text">`, | data() { | ...data | }, | methods: { | myMethod() { | // does something | }, | ...other methods | }, | | // later in your app, if you want to execute myMethod()... | laterOnInYourApplicationSomewhere() { | const filterInstance = api.getFilterInstance('name'); // assume filter on name column | filterInstance.myMethod(); | } |  ``
 |
 | The example below illustrates how a custom filter component can be accessed and methods on it invoked:
 |
 | <grid-example title='Vue Filter Component' name='filter-component' type='generated' options='{ "enterprise": false, "exampleHeight": 445, "onlyShow": "vue", "extras": ["bootstrap"] }'></grid-example>
-

@@ -28,7 +28,6 @@ const gridOptions = {
 
 For more configuration details see the section on [Pivoting](/pivoting/).
 
-
 ## Pivoting on the Server
 
 The actual pivoting is performed on the server when using the Server-Side Row Model.
@@ -72,7 +71,6 @@ gridOptions.columnApi.setSecondaryColumns(pivotColDefs);
 
 There is no limit or restriction as to the number of columns or groups you pass. However, it's important that the field (or value getter) that you set for the columns match.
 
-
 [[note]]
 | Setting secondary columns will reset all secondary column state, which means resized or reordered columns
 | will be reset. To avoid this applications should keep track of the previously supplied secondary columns
@@ -114,7 +112,6 @@ The example below demonstrates server-side Pivoting with multiple row groups whe
 - New column group definitions created from the `pivotFields` are returned from the server and supplied to the grid using `columnApi.setSecondaryColumns(pivotColDefs)`.
 - Open the browser's dev console to view the request supplied to the datasource.
 
-
 <grid-example title='Pivot Column Groups' name='pivot-column-groups' type='generated' options='{ "enterprise": true, "exampleHeight": 610, "extras": ["alasql"], "modules": ["serverside", "rowgrouping", "menu", "columnpanel"] }'></grid-example>
 
 ## Example: Slice and Dice
@@ -140,4 +137,3 @@ The example demonstrates the following:
 ## Next Up
 
 Continue to the next section to learn about [Pagination](/server-side-model-pagination/).
-

@@ -1,14 +1,11 @@
-
-import { createApp } from 'vue';
-import { AgGridVue } from 'ag-grid-vue3';
-import 'ag-grid-community/dist/styles/ag-grid.css';
-import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
-import CustomPinnedRowRenderer from './customPinnedRowRendererVue.js';
-
-
+import { createApp } from "vue";
+import { AgGridVue } from "ag-grid-vue3";
+import "ag-grid-community/dist/styles/ag-grid.css";
+import "ag-grid-community/dist/styles/ag-theme-alpine.css";
+import CustomPinnedRowRenderer from "./customPinnedRowRendererVue.js";
 
 const VueExample = {
-    template: `
+  template: `
         <div style="height: 100%">
             <div class="example-wrapper">
                 <div class="example-header">
@@ -47,107 +44,112 @@ const VueExample = {
             </div>
         </div>
     `,
-    components: {
-        'ag-grid-vue': AgGridVue,
-        CustomPinnedRowRenderer
+  components: {
+    "ag-grid-vue": AgGridVue,
+    CustomPinnedRowRenderer,
+  },
+  data: function () {
+    return {
+      columnDefs: [
+        {
+          field: "athlete",
+          cellRendererSelector: (params) => {
+            if (params.node.rowPinned) {
+              return {
+                component: "CustomPinnedRowRenderer",
+                params: {
+                  style: { color: "blue" },
+                },
+              };
+            } else {
+              // rows that are not pinned don't use any cell renderer
+              return undefined;
+            }
+          },
+        },
+        {
+          field: "age",
+          cellRendererSelector: (params) => {
+            if (params.node.rowPinned) {
+              return {
+                component: "CustomPinnedRowRenderer",
+                params: {
+                  style: { "font-style": "italic" },
+                },
+              };
+            } else {
+              // rows that are not pinned don't use any cell renderer
+              return undefined;
+            }
+          },
+        },
+        { field: "country" },
+        { field: "year" },
+        { field: "date" },
+        { field: "sport" },
+      ],
+      gridApi: null,
+      columnApi: null,
+      defaultColDef: {
+        width: 200,
+        sortable: true,
+        filter: true,
+        resizable: true,
+      },
+      getRowStyle: null,
+      pinnedTopRowData: null,
+      pinnedBottomRowData: null,
+      rowData: null,
+    };
+  },
+  created() {
+    this.getRowStyle = (params) => {
+      if (params.node.rowPinned) {
+        return { "font-weight": "bold" };
+      }
+    };
+    this.pinnedTopRowData = createData(1, "Top");
+    this.pinnedBottomRowData = createData(1, "Bottom");
+  },
+  methods: {
+    onPinnedRowTopCount() {
+      var headerRowsToFloat = document.getElementById("top-row-count").value;
+      var count = Number(headerRowsToFloat);
+      var rows = createData(count, "Top");
+      this.gridApi.setPinnedTopRowData(rows);
     },
-    data: function() {
-        return {
-            columnDefs: [{field:"athlete",
-cellRendererSelector:(params) =>  {
-    if (params.node.rowPinned) {
-        return {
-            component: 'CustomPinnedRowRenderer',
-            params: {
-                style: { color: 'blue' },
-            },
-        };
-    }
-    else {
-        // rows that are not pinned don't use any cell renderer
-        return undefined;
-    }
-}},{field:"age",
-cellRendererSelector:(params) =>  {
-    if (params.node.rowPinned) {
-        return {
-            component: 'CustomPinnedRowRenderer',
-            params: {
-                style: { 'font-style': 'italic' },
-            },
-        };
-    }
-    else {
-        // rows that are not pinned don't use any cell renderer
-        return undefined;
-    }
-}},{field:"country"},{field:"year"},{field:"date"},{field:"sport"}],
-            gridApi: null,
-            columnApi: null,
-            defaultColDef: {
-    width: 200,
-    sortable: true,
-    filter: true,
-    resizable: true,
-},
-            getRowStyle: null,
-pinnedTopRowData: null,
-pinnedBottomRowData: null,
-rowData: null
-        }
+    onPinnedRowBottomCount() {
+      var footerRowsToFloat = document.getElementById("bottom-row-count").value;
+      var count = Number(footerRowsToFloat);
+      var rows = createData(count, "Bottom");
+      this.gridApi.setPinnedBottomRowData(rows);
     },
-    created() {
-        this.getRowStyle = (params) => {
-    if (params.node.rowPinned) {
-        return { 'font-weight': 'bold' };
-    }
-};
-this.pinnedTopRowData = createData(1, 'Top');
-this.pinnedBottomRowData = createData(1, 'Bottom')
-    },
-    methods: {
-        onPinnedRowTopCount() {
-    var headerRowsToFloat = (document.getElementById('top-row-count')).value;
-    var count = Number(headerRowsToFloat);
-    var rows = createData(count, 'Top');
-    this.gridApi.setPinnedTopRowData(rows);
-},
-onPinnedRowBottomCount() {
-    var footerRowsToFloat = (document.getElementById('bottom-row-count')).value;
-    var count = Number(footerRowsToFloat);
-    var rows = createData(count, 'Bottom');
-    this.gridApi.setPinnedBottomRowData(rows);
-},
-onGridReady(params) {
-        this.gridApi = params.api;
-        this.gridColumnApi = params.columnApi;
-        
+    onGridReady(params) {
+      this.gridApi = params.api;
+      this.gridColumnApi = params.columnApi;
 
-        
-            const updateData = (data) => params.api.setRowData(data);
-            
-            fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
-                .then(resp => resp.json())
-                .then(data => updateData(data));
+      const updateData = (data) => params.api.setRowData(data);
+
+      fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+        .then((resp) => resp.json())
+        .then((data) => updateData(data));
     },
-    }
-}
+  },
+};
 
 window.createData = function createData(count, prefix) {
-    var result = [];
-    for (var i = 0; i < count; i++) {
-        result.push({
-            athlete: prefix + ' Athlete ' + i,
-            age: prefix + ' Age ' + i,
-            country: prefix + ' Country ' + i,
-            year: prefix + ' Year ' + i,
-            date: prefix + ' Date ' + i,
-            sport: prefix + ' Sport ' + i,
-        });
-    }
-    return result;
-}
+  var result = [];
+  for (var i = 0; i < count; i++) {
+    result.push({
+      athlete: prefix + " Athlete " + i,
+      age: prefix + " Age " + i,
+      country: prefix + " Country " + i,
+      year: prefix + " Year " + i,
+      date: prefix + " Date " + i,
+      sport: prefix + " Sport " + i,
+    });
+  }
+  return result;
+};
 
-createApp(VueExample)
-    .mount("#app")
-
+createApp(VueExample).mount("#app");

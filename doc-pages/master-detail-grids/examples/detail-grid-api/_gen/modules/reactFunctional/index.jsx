@@ -1,127 +1,125 @@
+"use strict";
 
-'use strict';
-
-import React, { useCallback, useMemo, useRef, useState } from 'react';
-import { render } from 'react-dom';
-import { AgGridReact } from '@ag-grid-community/react';
-import '@ag-grid-community/core/dist/styles/ag-grid.css';
-import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
-import { ModuleRegistry } from '@ag-grid-community/core';
-import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
-import { MasterDetailModule } from '@ag-grid-enterprise/master-detail';
-import { MenuModule } from '@ag-grid-enterprise/menu';
-import { ColumnsToolPanelModule } from '@ag-grid-enterprise/column-tool-panel';
+import React, { useCallback, useMemo, useRef, useState } from "react";
+import { render } from "react-dom";
+import { AgGridReact } from "@ag-grid-community/react";
+import "@ag-grid-community/core/dist/styles/ag-grid.css";
+import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
+import { ModuleRegistry } from "@ag-grid-community/core";
+import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
+import { MasterDetailModule } from "@ag-grid-enterprise/master-detail";
+import { MenuModule } from "@ag-grid-enterprise/menu";
+import { ColumnsToolPanelModule } from "@ag-grid-enterprise/column-tool-panel";
 
 // Register the required feature modules with the Grid
-ModuleRegistry.registerModules([ClientSideRowModelModule, MasterDetailModule, MenuModule, ColumnsToolPanelModule])
-
-
-
-
+ModuleRegistry.registerModules([
+  ClientSideRowModelModule,
+  MasterDetailModule,
+  MenuModule,
+  ColumnsToolPanelModule,
+]);
 
 const GridExample = () => {
-    const gridRef = useRef();
-    const containerStyle = useMemo(() => ({ width: '100%', height: '100%' }), []);
-    const gridStyle = useMemo(() => ({height: '100%', width: '100%'}), []);
-    const [rowData, setRowData] = useState();
-    const [columnDefs, setColumnDefs] = useState([
+  const gridRef = useRef();
+  const containerStyle = useMemo(() => ({ width: "100%", height: "100%" }), []);
+  const gridStyle = useMemo(() => ({ height: "100%", width: "100%" }), []);
+  const [rowData, setRowData] = useState();
+  const [columnDefs, setColumnDefs] = useState([
     // group cell renderer needed for expand / collapse icons
-    { field: 'name', cellRenderer: 'agGroupCellRenderer' },
-    { field: 'account' },
-    { field: 'calls' },
-    { field: 'minutes', valueFormatter: "x.toLocaleString() + 'm'" },
-]);
-    const detailCellRendererParams = useMemo(() => { return {
-    detailGridOptions: {
+    { field: "name", cellRenderer: "agGroupCellRenderer" },
+    { field: "account" },
+    { field: "calls" },
+    { field: "minutes", valueFormatter: "x.toLocaleString() + 'm'" },
+  ]);
+  const detailCellRendererParams = useMemo(() => {
+    return {
+      detailGridOptions: {
         columnDefs: [
-            { field: 'callId' },
-            { field: 'direction' },
-            { field: 'number', minWidth: 150 },
-            { field: 'duration', valueFormatter: "x.toLocaleString() + 's'" },
-            { field: 'switchCode', minWidth: 150 },
+          { field: "callId" },
+          { field: "direction" },
+          { field: "number", minWidth: 150 },
+          { field: "duration", valueFormatter: "x.toLocaleString() + 's'" },
+          { field: "switchCode", minWidth: 150 },
         ],
         defaultColDef: {
-            flex: 1,
-            editable: true,
-            resizable: true,
+          flex: 1,
+          editable: true,
+          resizable: true,
         },
-    },
-    getDetailRowData: function (params) {
+      },
+      getDetailRowData: function (params) {
         params.successCallback(params.data.callRecords);
-    },
-} }, []);
-    const getRowId = useCallback(function (params) {
+      },
+    };
+  }, []);
+  const getRowId = useCallback(function (params) {
     // use 'account' as the row ID
     return params.data.account;
-}, []);
-    const defaultColDef = useMemo(() => { return {
-    flex: 1,
-    editable: true,
-    resizable: true,
-} }, []);
+  }, []);
+  const defaultColDef = useMemo(() => {
+    return {
+      flex: 1,
+      editable: true,
+      resizable: true,
+    };
+  }, []);
 
+  const onGridReady = useCallback((params) => {
+    fetch("https://www.ag-grid.com/example-assets/master-detail-data.json")
+      .then((resp) => resp.json())
+      .then((data) => {
+        setRowData(data);
+      });
+  }, []);
 
-            const onGridReady = useCallback((params) => {
-                
-                fetch('https://www.ag-grid.com/example-assets/master-detail-data.json')
-                .then(resp => resp.json())
-                .then(data => {
-    setRowData(data);
-});
-            }, []);
-
-const onFirstDataRendered = useCallback((params) => {
+  const onFirstDataRendered = useCallback((params) => {
     // expand the first two rows
     setTimeout(function () {
-        gridRef.current.api.forEachNode(function (node) {
-            node.setExpanded(true);
-        });
+      gridRef.current.api.forEachNode(function (node) {
+        node.setExpanded(true);
+      });
     }, 0);
-}, [])
+  }, []);
 
-   const flashMilaSmithOnly = useCallback(() => {
+  const flashMilaSmithOnly = useCallback(() => {
     // flash Mila Smith - we know her account is 177001 and we use the account for the row ID
-    var detailGrid = gridRef.current.api.getDetailGridInfo('detail_177001');
+    var detailGrid = gridRef.current.api.getDetailGridInfo("detail_177001");
     if (detailGrid) {
-        detailGrid.api.flashCells();
+      detailGrid.api.flashCells();
     }
-}, [])
+  }, []);
 
-   const flashAll = useCallback(() => {
+  const flashAll = useCallback(() => {
     gridRef.current.api.forEachDetailGridInfo(function (detailGridApi) {
-        detailGridApi.api.flashCells();
+      detailGridApi.api.flashCells();
     });
-}, [])
+  }, []);
 
-
-    return  (
-            <div style={containerStyle}>
-                <div style={{"display":"flex","flexDirection":"column","height":"100%"}}>
-    <div style={{"paddingBottom":"4px"}}>
-        <button onClick={flashMilaSmithOnly}>Flash Mila Smith</button>
-        <button onClick={flashAll}>Flash All</button>
-    </div>
-    
-        <div  style={gridStyle} className="ag-theme-alpine">             
-            <AgGridReact
-                ref={gridRef}
-                rowData={rowData}
-columnDefs={columnDefs}
-masterDetail={true}
-detailRowHeight={200}
-detailCellRendererParams={detailCellRendererParams}
-getRowId={getRowId}
-defaultColDef={defaultColDef}
-onGridReady={onGridReady}
-onFirstDataRendered={onFirstDataRendered}
-            >
-            </AgGridReact>
+  return (
+    <div style={containerStyle}>
+      <div style={{ display: "flex", flexDirection: "column", height: "100%" }}>
+        <div style={{ paddingBottom: "4px" }}>
+          <button onClick={flashMilaSmithOnly}>Flash Mila Smith</button>
+          <button onClick={flashAll}>Flash All</button>
         </div>
-</div>
 
-            </div>
-        );
+        <div style={gridStyle} className="ag-theme-alpine">
+          <AgGridReact
+            ref={gridRef}
+            rowData={rowData}
+            columnDefs={columnDefs}
+            masterDetail={true}
+            detailRowHeight={200}
+            detailCellRendererParams={detailCellRendererParams}
+            getRowId={getRowId}
+            defaultColDef={defaultColDef}
+            onGridReady={onGridReady}
+            onFirstDataRendered={onFirstDataRendered}
+          ></AgGridReact>
+        </div>
+      </div>
+    </div>
+  );
+};
 
-}
-
-render(<GridExample></GridExample>, document.querySelector('#root'))
+render(<GridExample></GridExample>, document.querySelector("#root"));

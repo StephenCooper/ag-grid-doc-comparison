@@ -1,50 +1,45 @@
-
-
 const columnDefs = [
   {
-    field: 'athlete',
+    field: "athlete",
     minWidth: 150,
-    filter: 'agTextColumnFilter',
+    filter: "agTextColumnFilter",
     filterParams: {
       debounceMs: 2000,
     },
   },
   {
-    field: 'age',
-    filter: 'agNumberColumnFilter',
+    field: "age",
+    filter: "agNumberColumnFilter",
     filterParams: {
       debounceMs: 0,
     },
   },
-  { field: 'country' },
-  { field: 'year' },
+  { field: "country" },
+  { field: "year" },
   {
-    field: 'date',
+    field: "date",
     minWidth: 180,
-    filter: 'agDateColumnFilter',
+    filter: "agDateColumnFilter",
     filterParams: {
-      comparator: function (
-        filterLocalDateAtMidnight,
-        cellValue
-      ) {
-        var dateAsString = cellValue
-        var dateParts = dateAsString.split('/')
+      comparator: function (filterLocalDateAtMidnight, cellValue) {
+        var dateAsString = cellValue;
+        var dateParts = dateAsString.split("/");
         var cellDate = new Date(
           Number(dateParts[2]),
           Number(dateParts[1]) - 1,
           Number(dateParts[0])
-        )
+        );
 
         if (filterLocalDateAtMidnight.getTime() == cellDate.getTime()) {
-          return 0
+          return 0;
         }
 
         if (cellDate < filterLocalDateAtMidnight) {
-          return -1
+          return -1;
         }
 
         if (cellDate > filterLocalDateAtMidnight) {
-          return 1
+          return 1;
         }
       },
     },
@@ -52,44 +47,44 @@ const columnDefs = [
       suppressFilterButton: true,
     },
   },
-  { field: 'sport' },
+  { field: "sport" },
   {
-    field: 'gold',
+    field: "gold",
     floatingFilterComponent: NumberFloatingFilter,
     floatingFilterComponentParams: {
       maxValue: 7,
       suppressFilterButton: true,
-    } ,
+    },
     filter: CustomNumberFilter,
   },
   {
-    field: 'silver',
+    field: "silver",
     floatingFilterComponent: NumberFloatingFilter,
     floatingFilterComponentParams: {
       maxValue: 3,
       suppressFilterButton: true,
-    } ,
+    },
     filter: CustomNumberFilter,
   },
   {
-    field: 'bronze',
+    field: "bronze",
     floatingFilterComponent: NumberFloatingFilter,
     floatingFilterComponentParams: {
       maxValue: 2,
       suppressFilterButton: true,
-    } ,
+    },
     filter: CustomNumberFilter,
   },
   {
-    field: 'total',
+    field: "total",
     floatingFilterComponent: NumberFloatingFilter,
     floatingFilterComponentParams: {
       maxValue: 5,
       suppressFilterButton: true,
-    } ,
+    },
     filter: CustomNumberFilter,
   },
-]
+];
 
 const gridOptions = {
   defaultColDef: {
@@ -103,16 +98,14 @@ const gridOptions = {
   },
   columnDefs: columnDefs,
   rowData: null,
-}
-
-
+};
 
 // setup the grid after the page has finished loading
-document.addEventListener('DOMContentLoaded', function () {
-  var gridDiv = document.querySelector('#myGrid')
-  new agGrid.Grid(gridDiv, gridOptions)
+document.addEventListener("DOMContentLoaded", function () {
+  var gridDiv = document.querySelector("#myGrid");
+  new agGrid.Grid(gridDiv, gridOptions);
 
-  fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
-    .then(response => response.json())
-    .then(data => gridOptions.api.setRowData(data))
-})
+  fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+    .then((response) => response.json())
+    .then((data) => gridOptions.api.setRowData(data));
+});

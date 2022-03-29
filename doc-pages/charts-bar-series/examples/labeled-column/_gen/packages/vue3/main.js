@@ -1,83 +1,78 @@
-import { createApp } from 'vue';
-import { cloneDeep } from 'lodash';
-import * as agCharts from 'ag-charts-community';
-import { AgChartsVue } from 'ag-charts-vue3';
+import { createApp } from "vue";
+import { cloneDeep } from "lodash";
+import * as agCharts from "ag-charts-community";
+import { AgChartsVue } from "ag-charts-vue3";
 
 const ChartExample = {
-    template: `
+  template: `
         <ag-charts-vue
                 :options="options"></ag-charts-vue>
     `,
-    components: {
-        'ag-charts-vue': AgChartsVue
-    },
-    data: function() {
-        return {
-            options: null
-        }
-    },
-    created() {
-        this.options = {
-    
-    title: {
+  components: {
+    "ag-charts-vue": AgChartsVue,
+  },
+  data: function () {
+    return {
+      options: null,
+    };
+  },
+  created() {
+    this.options = {
+      title: {
         text: "Apple's revenue by product category",
-    },
-    subtitle: {
-        text: 'in billion U.S. dollars',
-    },
-    data: getData(),
-    series: [
+      },
+      subtitle: {
+        text: "in billion U.S. dollars",
+      },
+      data: getData(),
+      series: [
         {
-            type: 'column',
-            xKey: 'quarter',
-            yKey: 'iphone',
-            yName: 'iPhone',
-            stacked: true,
-            label: { formatter },
+          type: "column",
+          xKey: "quarter",
+          yKey: "iphone",
+          yName: "iPhone",
+          stacked: true,
+          label: { formatter },
         },
         {
-            type: 'column',
-            xKey: 'quarter',
-            yKey: 'mac',
-            yName: 'Mac',
-            stacked: true,
-            label: { formatter },
+          type: "column",
+          xKey: "quarter",
+          yKey: "mac",
+          yName: "Mac",
+          stacked: true,
+          label: { formatter },
         },
         {
-            type: 'column',
-            xKey: 'quarter',
-            yKey: 'ipad',
-            yName: 'iPad',
-            stacked: true,
-            label: { formatter },
+          type: "column",
+          xKey: "quarter",
+          yKey: "ipad",
+          yName: "iPad",
+          stacked: true,
+          label: { formatter },
         },
         {
-            type: 'column',
-            xKey: 'quarter',
-            yKey: 'wearables',
-            yName: 'Wearables',
-            stacked: true,
-            label: { formatter },
+          type: "column",
+          xKey: "quarter",
+          yKey: "wearables",
+          yName: "Wearables",
+          stacked: true,
+          label: { formatter },
         },
         {
-            type: 'column',
-            xKey: 'quarter',
-            yKey: 'services',
-            yName: 'Services',
-            stacked: true,
-            label: { formatter },
+          type: "column",
+          xKey: "quarter",
+          yKey: "services",
+          yName: "Services",
+          stacked: true,
+          label: { formatter },
         },
-    ],
-}
-    },
-    mounted() {
-        
-    },
-    methods: {
-        
-    }
-}
+      ],
+    };
+  },
+  mounted() {},
+  methods: {},
+};
 
-const formatter = ({ value }) => value == null ? '' : value.toFixed(0)
+const formatter = ({ value }) => (value == null ? "" : value.toFixed(0));
 
 createApp(ChartExample).mount("#app");

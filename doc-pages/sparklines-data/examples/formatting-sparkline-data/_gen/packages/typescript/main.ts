@@ -1,29 +1,36 @@
-import 'ag-grid-enterprise';
-import 'ag-grid-community/dist/styles/ag-grid.css';
+import "ag-grid-enterprise";
+import "ag-grid-community/dist/styles/ag-grid.css";
 import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import { AreaSparklineOptions, ColDef, ColGroupDef, Grid, GridOptions, ValueGetterParams } from 'ag-grid-community';
+import {
+  AreaSparklineOptions,
+  ColDef,
+  ColGroupDef,
+  Grid,
+  GridOptions,
+  ValueGetterParams,
+} from "ag-grid-community";
 
 const gridOptions: GridOptions = {
   columnDefs: [
-    { field: 'symbol', maxWidth: 110 },
-    { field: 'name', minWidth: 250 },
+    { field: "symbol", maxWidth: 110 },
+    { field: "name", minWidth: 250 },
     {
-      headerName: 'Rate of Change',
-      cellRenderer: 'agSparklineCellRenderer',
+      headerName: "Rate of Change",
+      cellRenderer: "agSparklineCellRenderer",
       cellRendererParams: {
         sparklineOptions: {
-          type: 'area',
+          type: "area",
         } as AreaSparklineOptions,
       },
       valueGetter: function (params: ValueGetterParams) {
-        const formattedData: any = []
-        const rateOfChange = params.data.rateOfChange
-        const { x, y } = rateOfChange
-        x.map((xVal: any, i: number) => formattedData.push([xVal, y[i]]))
-        return formattedData
+        const formattedData: any = [];
+        const rateOfChange = params.data.rateOfChange;
+        const { x, y } = rateOfChange;
+        x.map((xVal: any, i: number) => formattedData.push([xVal, y[i]]));
+        return formattedData;
       },
     },
-    { field: 'volume', type: 'numericColumn', maxWidth: 140 },
+    { field: "volume", type: "numericColumn", maxWidth: 140 },
   ],
   defaultColDef: {
     flex: 1,
@@ -32,9 +39,8 @@ const gridOptions: GridOptions = {
   },
   rowData: getData(),
   rowHeight: 50,
-}
+};
 
 // setup the grid after the page has finished loading
-  var gridDiv = document.querySelector<HTMLElement>('#myGrid')!
-  new Grid(gridDiv, gridOptions)
- 
+var gridDiv = document.querySelector<HTMLElement>("#myGrid")!;
+new Grid(gridDiv, gridOptions);

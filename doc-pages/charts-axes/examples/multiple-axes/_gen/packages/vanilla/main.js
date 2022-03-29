@@ -1,6 +1,5 @@
-
 const options = {
-  container: document.querySelector("#myChart") ,
+  container: document.querySelector("#myChart"),
   autoSize: true,
   data: getData(),
   theme: {
@@ -59,7 +58,7 @@ const options = {
       },
       label: {
         formatter: function (params) {
-          return params.value / 1000 + "M"
+          return params.value / 1000 + "M";
         },
       },
     },
@@ -73,7 +72,7 @@ const options = {
       },
       label: {
         formatter: function (params) {
-          return params.value / 1000 + "k"
+          return params.value / 1000 + "k";
         },
       },
     },
@@ -87,6 +86,6 @@ const options = {
       },
     },
   },
-}
+};
 
-var chart = agCharts.AgChart.create(options)
+var chart = agCharts.AgChart.create(options);

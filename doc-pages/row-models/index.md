@@ -48,7 +48,7 @@ deal with server-side data. The following is a summary of each:
     </li>
 </ul>
 
-Which row model you use is set by the grid property `rowModelType`. 
+Which row model you use is set by the grid property `rowModelType`.
 
 <api-documentation source='grid-properties/properties.json' section='rowModels' names='["rowModelType"]'></api-documentation>
 

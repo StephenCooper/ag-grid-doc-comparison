@@ -1,20 +1,21 @@
-
-import { createApp } from 'vue';
-import { AgGridVue } from '@ag-grid-community/vue3';
-import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import { createApp } from "vue";
+import { AgGridVue } from "@ag-grid-community/vue3";
+import "@ag-grid-community/core/dist/styles/ag-grid.css";
 import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { ModuleRegistry } from '@ag-grid-community/core';
-import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
-import { MenuModule } from '@ag-grid-enterprise/menu';
-import { GridChartsModule } from '@ag-grid-enterprise/charts';
+import { ModuleRegistry } from "@ag-grid-community/core";
+import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
+import { MenuModule } from "@ag-grid-enterprise/menu";
+import { GridChartsModule } from "@ag-grid-enterprise/charts";
 
 // Register the required feature modules with the Grid
-ModuleRegistry.registerModules([ClientSideRowModelModule, MenuModule, GridChartsModule])
-
-
+ModuleRegistry.registerModules([
+  ClientSideRowModelModule,
+  MenuModule,
+  GridChartsModule,
+]);
 
 const VueExample = {
-    template: `
+  template: `
         <div style="height: 100%">
             <ag-grid-vue
                 
@@ -31,122 +32,128 @@ const VueExample = {
                 @first-data-rendered="onFirstDataRendered"></ag-grid-vue>
         </div>
     `,
-    components: {
-        'ag-grid-vue': AgGridVue,
-        
-    },
-    data: function() {
-        return {
-            columnDefs: [{field:"country",
-width:150,
-chartDataType:"category"},{field:"gold",
-chartDataType:"series"},{field:"silver",
-chartDataType:"series"},{field:"bronze",
-chartDataType:"series"},{headerName:"A",
-valueGetter:"Math.floor(Math.random()*1000)",
-chartDataType:"series"},{headerName:"B",
-valueGetter:"Math.floor(Math.random()*1000)",
-chartDataType:"series"},{headerName:"C",
-valueGetter:"Math.floor(Math.random()*1000)",
-chartDataType:"series"},{headerName:"D",
-valueGetter:"Math.floor(Math.random()*1000)",
-chartDataType:"series"}],
-            gridApi: null,
-            columnApi: null,
-            defaultColDef: {
-    editable: true,
-    sortable: true,
-    flex: 1,
-    minWidth: 100,
-    filter: true,
-    resizable: true,
-},
-            popupParent: null,
-rowData: null,
-chartThemeOverrides: null
-        }
-    },
-    created() {
-        this.popupParent = document.body;
-this.rowData = getData();
-this.chartThemeOverrides = {
-    common: {
+  components: {
+    "ag-grid-vue": AgGridVue,
+  },
+  data: function () {
+    return {
+      columnDefs: [
+        { field: "country", width: 150, chartDataType: "category" },
+        { field: "gold", chartDataType: "series" },
+        { field: "silver", chartDataType: "series" },
+        { field: "bronze", chartDataType: "series" },
+        {
+          headerName: "A",
+          valueGetter: "Math.floor(Math.random()*1000)",
+          chartDataType: "series",
+        },
+        {
+          headerName: "B",
+          valueGetter: "Math.floor(Math.random()*1000)",
+          chartDataType: "series",
+        },
+        {
+          headerName: "C",
+          valueGetter: "Math.floor(Math.random()*1000)",
+          chartDataType: "series",
+        },
+        {
+          headerName: "D",
+          valueGetter: "Math.floor(Math.random()*1000)",
+          chartDataType: "series",
+        },
+      ],
+      gridApi: null,
+      columnApi: null,
+      defaultColDef: {
+        editable: true,
+        sortable: true,
+        flex: 1,
+        minWidth: 100,
+        filter: true,
+        resizable: true,
+      },
+      popupParent: null,
+      rowData: null,
+      chartThemeOverrides: null,
+    };
+  },
+  created() {
+    this.popupParent = document.body;
+    this.rowData = getData();
+    this.chartThemeOverrides = {
+      common: {
         padding: {
-            top: 20,
-            right: 30,
-            bottom: 10,
-            left: 2,
+          top: 20,
+          right: 30,
+          bottom: 10,
+          left: 2,
         },
         background: {
-            fill: '#e5e5e5',
+          fill: "#e5e5e5",
         },
         title: {
-            enabled: true,
-            text: 'Precious Metals Production',
-            fontStyle: 'italic',
-            fontWeight: '600',
-            fontSize: 18,
-            fontFamily: 'Impact, sans-serif',
-            color: '#414182',
+          enabled: true,
+          text: "Precious Metals Production",
+          fontStyle: "italic",
+          fontWeight: "600",
+          fontSize: 18,
+          fontFamily: "Impact, sans-serif",
+          color: "#414182",
         },
         subtitle: {
-            enabled: true,
-            text: 'by country',
-            fontSize: 14,
-            fontFamily: 'Monaco, monospace',
-            color: 'rgb(100, 100, 100)',
+          enabled: true,
+          text: "by country",
+          fontSize: 14,
+          fontFamily: "Monaco, monospace",
+          color: "rgb(100, 100, 100)",
         },
         legend: {
-            enabled: true,
-            position: 'left',
-            spacing: 20,
-            item: {
-                label: {
-                    fontStyle: 'italic',
-                    fontWeight: 'bold',
-                    fontSize: 18,
-                    fontFamily: 'Palatino, serif',
-                    color: '#555',
-                },
-                marker: {
-                    shape: 'diamond',
-                    size: 10,
-                    padding: 10,
-                    strokeWidth: 2,
-                },
-                paddingX: 120,
-                paddingY: 20,
+          enabled: true,
+          position: "left",
+          spacing: 20,
+          item: {
+            label: {
+              fontStyle: "italic",
+              fontWeight: "bold",
+              fontSize: 18,
+              fontFamily: "Palatino, serif",
+              color: "#555",
             },
+            marker: {
+              shape: "diamond",
+              size: 10,
+              padding: 10,
+              strokeWidth: 2,
+            },
+            paddingX: 120,
+            paddingY: 20,
+          },
         },
         tooltip: {
-            class: 'my-tooltip-class',
+          class: "my-tooltip-class",
         },
-    },
-}
-    },
-    methods: {
-        onFirstDataRendered(params) {
-    var cellRange = {
+      },
+    };
+  },
+  methods: {
+    onFirstDataRendered(params) {
+      var cellRange = {
         rowStartIndex: 0,
         rowEndIndex: 4,
-        columns: ['country', 'gold', 'silver', 'bronze'],
-    };
-    var createRangeChartParams = {
+        columns: ["country", "gold", "silver", "bronze"],
+      };
+      var createRangeChartParams = {
         cellRange: cellRange,
-        chartType: 'groupedBar',
-    };
-    params.api.createRangeChart(createRangeChartParams);
-},
-onGridReady(params) {
-        this.gridApi = params.api;
-        this.gridColumnApi = params.columnApi;
-        
+        chartType: "groupedBar",
+      };
+      params.api.createRangeChart(createRangeChartParams);
     },
-    }
-}
+    onGridReady(params) {
+      this.gridApi = params.api;
+      this.gridColumnApi = params.columnApi;
+    },
+  },
+};
 
-
-
-createApp(VueExample)
-    .mount("#app")
-
+createApp(VueExample).mount("#app");

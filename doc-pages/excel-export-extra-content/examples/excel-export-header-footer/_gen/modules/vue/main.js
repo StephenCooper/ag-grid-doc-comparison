@@ -1,20 +1,21 @@
-
-import Vue from 'vue';
-import { AgGridVue } from '@ag-grid-community/vue';
-import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import Vue from "vue";
+import { AgGridVue } from "@ag-grid-community/vue";
+import "@ag-grid-community/core/dist/styles/ag-grid.css";
 import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { ModuleRegistry } from '@ag-grid-community/core';
-import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
-import { ExcelExportModule } from '@ag-grid-enterprise/excel-export';
-import { MenuModule } from '@ag-grid-enterprise/menu';
+import { ModuleRegistry } from "@ag-grid-community/core";
+import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
+import { ExcelExportModule } from "@ag-grid-enterprise/excel-export";
+import { MenuModule } from "@ag-grid-enterprise/menu";
 
 // Register the required feature modules with the Grid
-ModuleRegistry.registerModules([ClientSideRowModelModule, ExcelExportModule, MenuModule])
-
-
+ModuleRegistry.registerModules([
+  ClientSideRowModelModule,
+  ExcelExportModule,
+  MenuModule,
+]);
 
 const VueExample = {
-    template: `
+  template: `
         <div style="height: 100%">
             <div class="container">
                 <div class="columns">
@@ -114,113 +115,118 @@ const VueExample = {
             </div>
         </div>
     `,
-    components: {
-        'ag-grid-vue': AgGridVue,
-        
+  components: {
+    "ag-grid-vue": AgGridVue,
+  },
+  data: function () {
+    return {
+      columnDefs: [
+        { field: "athlete", minWidth: 200 },
+        { field: "country", minWidth: 200 },
+        { field: "sport", minWidth: 150 },
+        { field: "gold" },
+        { field: "silver" },
+        { field: "bronze" },
+        { field: "total" },
+      ],
+      gridApi: null,
+      columnApi: null,
+      defaultColDef: {
+        sortable: true,
+        filter: true,
+        resizable: true,
+        minWidth: 100,
+        flex: 1,
+      },
+      popupParent: null,
+      rowData: null,
+    };
+  },
+  created() {
+    this.popupParent = document.body;
+  },
+  methods: {
+    onBtExport() {
+      this.gridApi.exportDataAsExcel(getParams());
     },
-    data: function() {
-        return {
-            columnDefs: [{field:"athlete",
-minWidth:200},{field:"country",
-minWidth:200},{field:"sport",
-minWidth:150},{field:"gold"},{field:"silver"},{field:"bronze"},{field:"total"}],
-            gridApi: null,
-            columnApi: null,
-            defaultColDef: {
-    sortable: true,
-    filter: true,
-    resizable: true,
-    minWidth: 100,
-    flex: 1,
-},
-            popupParent: null,
-rowData: null
-        }
-    },
-    created() {
-        this.popupParent = document.body
-    },
-    methods: {
-        onBtExport() {
-    this.gridApi.exportDataAsExcel(getParams());
-},
-onGridReady(params) {
-        this.gridApi = params.api;
-        this.gridColumnApi = params.columnApi;
-        
+    onGridReady(params) {
+      this.gridApi = params.api;
+      this.gridColumnApi = params.columnApi;
 
-        
-            const updateData = (data) => params.api.setRowData(data.filter((rec) => rec.country != null));
-            
-            fetch('https://www.ag-grid.com/example-assets/small-olympic-winners.json')
-                .then(resp => resp.json())
-                .then(data => updateData(data));
+      const updateData = (data) =>
+        params.api.setRowData(data.filter((rec) => rec.country != null));
+
+      fetch("https://www.ag-grid.com/example-assets/small-olympic-winners.json")
+        .then((resp) => resp.json())
+        .then((data) => updateData(data));
     },
-    }
-}
+  },
+};
 
 const getValues = (type) => {
-    const value = (document.querySelector('#' + type + 'Value')).value;
-    if (value == null) {
-        return;
+  const value = document.querySelector("#" + type + "Value").value;
+  if (value == null) {
+    return;
+  }
+  const obj = {
+    value: value,
+  };
+  obj.position = document.querySelector("#" + type + "Position").value;
+  const fontName = document.querySelector("#" + type + "FontName").value;
+  const fontSize = document.querySelector("#" + type + "FontSize").value;
+  const fontWeight = document.querySelector("#" + type + "FontWeight").value;
+  const underline = document.querySelector("#" + type + "Underline").checked;
+  if (
+    fontName !== "Calibri" ||
+    fontSize != "11" ||
+    fontWeight !== "Regular" ||
+    underline
+  ) {
+    obj.font = {};
+    if (fontName !== "Calibri") {
+      obj.font.fontName = fontName;
     }
-    const obj = {
-        value: value,
-    };
-    obj.position = (document.querySelector('#' + type + 'Position')).value;
-    const fontName = (document.querySelector('#' + type + 'FontName')).value;
-    const fontSize = (document.querySelector('#' + type + 'FontSize')).value;
-    const fontWeight = (document.querySelector('#' + type + 'FontWeight')).value;
-    const underline = (document.querySelector('#' + type + 'Underline')).checked;
-    if (fontName !== 'Calibri' ||
-        fontSize != '11' ||
-        fontWeight !== 'Regular' ||
-        underline) {
-        obj.font = {};
-        if (fontName !== 'Calibri') {
-            obj.font.fontName = fontName;
-        }
-        if (fontSize != "11") {
-            obj.font.size = Number.parseInt(fontSize);
-        }
-        if (fontWeight !== 'Regular') {
-            if (fontWeight.indexOf('Bold') !== -1) {
-                obj.font.bold = true;
-            }
-            if (fontWeight.indexOf('Italic') !== -1) {
-                obj.font.italic = true;
-            }
-        }
-        if (underline) {
-            obj.font.underline = 'Single';
-        }
+    if (fontSize != "11") {
+      obj.font.size = Number.parseInt(fontSize);
     }
-    return obj;
+    if (fontWeight !== "Regular") {
+      if (fontWeight.indexOf("Bold") !== -1) {
+        obj.font.bold = true;
+      }
+      if (fontWeight.indexOf("Italic") !== -1) {
+        obj.font.italic = true;
+      }
+    }
+    if (underline) {
+      obj.font.underline = "Single";
+    }
+  }
+  return obj;
 };
 
 const getParams = () => {
-    const header = getValues('header');
-    const footer = getValues('footer');
-    if (!header && !footer) {
-        return undefined;
-    }
-    const obj = {
-        headerFooterConfig: {
-            all: {},
-        },
-    };
-    if (header) {
-        obj.headerFooterConfig.all.header = [header];
-    }
-    if (footer) {
-        obj.headerFooterConfig.all.footer = [footer];
-    }
-    return obj;
+  const header = getValues("header");
+  const footer = getValues("footer");
+  if (!header && !footer) {
+    return undefined;
+  }
+  const obj = {
+    headerFooterConfig: {
+      all: {},
+    },
+  };
+  if (header) {
+    obj.headerFooterConfig.all.header = [header];
+  }
+  if (footer) {
+    obj.headerFooterConfig.all.footer = [footer];
+  }
+  return obj;
 };
 
 new Vue({
-    el: '#app',
-    components: {
-        'my-component': VueExample
-    }
+  el: "#app",
+  components: {
+    "my-component": VueExample,
+  },
 });

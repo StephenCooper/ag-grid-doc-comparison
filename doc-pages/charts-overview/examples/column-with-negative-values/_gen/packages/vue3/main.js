@@ -1,84 +1,77 @@
-import { createApp } from 'vue';
-import { cloneDeep } from 'lodash';
-import * as agCharts from 'ag-charts-community';
-import { AgChartsVue } from 'ag-charts-vue3';
+import { createApp } from "vue";
+import { cloneDeep } from "lodash";
+import * as agCharts from "ag-charts-community";
+import { AgChartsVue } from "ag-charts-vue3";
 
 const ChartExample = {
-    template: `
+  template: `
         <ag-charts-vue
                 :options="options"></ag-charts-vue>
     `,
-    components: {
-        'ag-charts-vue': AgChartsVue
-    },
-    data: function() {
-        return {
-            options: null
-        }
-    },
-    created() {
-        this.options = {
-    
-    autoSize: true,
-    data: getData(),
-    theme: {
+  components: {
+    "ag-charts-vue": AgChartsVue,
+  },
+  data: function () {
+    return {
+      options: null,
+    };
+  },
+  created() {
+    this.options = {
+      autoSize: true,
+      data: getData(),
+      theme: {
         palette: {
-            fills: ["#19A0AA", "#F15F36"],
-            strokes: ["#19A0AA", "#F15F36"],
+          fills: ["#19A0AA", "#F15F36"],
+          strokes: ["#19A0AA", "#F15F36"],
         },
         overrides: {
-            column: {
+          column: {
+            series: {
+              highlightStyle: {
                 series: {
-                    highlightStyle: {
-                        series: {
-                            dimOpacity: 0.3,
-                        },
-                    },
+                  dimOpacity: 0.3,
                 },
+              },
             },
+          },
         },
-    },
-    title: {
+      },
+      title: {
         text: "Changes in Prison Population (2019)",
         fontSize: 18,
-    },
-    subtitle: {
+      },
+      subtitle: {
         text: "Source: Ministry of Justice, HM Prison Service, and Her Majesty’s Prison and Probation Service",
-    },
-    series: [
+      },
+      series: [
         {
-            type: "column",
-            xKey: "month",
-            yKey: "menDelta",
-            yName: "Male",
+          type: "column",
+          xKey: "month",
+          yKey: "menDelta",
+          yName: "Male",
         },
         {
-            type: "column",
-            xKey: "month",
-            yKey: "womenDelta",
-            yName: "Female",
+          type: "column",
+          xKey: "month",
+          yKey: "womenDelta",
+          yName: "Female",
         },
-    ],
-    axes: [
+      ],
+      axes: [
         {
-            type: "category",
-            position: "bottom",
+          type: "category",
+          position: "bottom",
         },
         {
-            type: "number",
-            position: "left",
+          type: "number",
+          position: "left",
         },
-    ],
-}
-    },
-    mounted() {
-        
-    },
-    methods: {
-        
-    }
-}
-
-
+      ],
+    };
+  },
+  mounted() {},
+  methods: {},
+};
 
 createApp(ChartExample).mount("#app");

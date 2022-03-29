@@ -1,14 +1,11 @@
-
-import Vue from 'vue';
-import { AgGridVue } from 'ag-grid-vue';
-import 'ag-grid-enterprise';
-import 'ag-grid-community/dist/styles/ag-grid.css';
-import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
-
-
+import Vue from "vue";
+import { AgGridVue } from "ag-grid-vue";
+import "ag-grid-enterprise";
+import "ag-grid-community/dist/styles/ag-grid.css";
+import "ag-grid-community/dist/styles/ag-theme-alpine.css";
 
 const VueExample = {
-    template: `
+  template: `
         <div style="height: 100%">
             <ag-grid-vue
                 
@@ -19,57 +16,59 @@ const VueExample = {
                 :rowData="rowData"></ag-grid-vue>
         </div>
     `,
-    components: {
-        'ag-grid-vue': AgGridVue,
-        
+  components: {
+    "ag-grid-vue": AgGridVue,
+  },
+  data: function () {
+    return {
+      columnDefs: [
+        {
+          headerName: "Set filter column",
+          field: "value",
+          flex: 1,
+          filter: "agSetColumnFilter",
+          floatingFilter: true,
+          filterParams: filterParams,
+        },
+      ],
+      gridApi: null,
+      columnApi: null,
+
+      rowData: null,
+    };
+  },
+  created() {
+    this.rowData = [
+      { value: "value 1" },
+      { value: "value 1" },
+      { value: "value 1" },
+      { value: "value 1" },
+      { value: "value 2" },
+      { value: "value 2" },
+      { value: "value 2" },
+      { value: "value 2" },
+      { value: "value 2" },
+    ];
+  },
+  methods: {
+    onGridReady(params) {
+      this.gridApi = params.api;
+      this.gridColumnApi = params.columnApi;
     },
-    data: function() {
-        return {
-            columnDefs: [{headerName:"Set filter column",
-field:"value",
-flex:1,
-filter:"agSetColumnFilter",
-floatingFilter:true,
-filterParams:filterParams}],
-            gridApi: null,
-            columnApi: null,
-            
-            rowData: null
-        }
-    },
-    created() {
-        this.rowData = [
-    { value: 'value 1' },
-    { value: 'value 1' },
-    { value: 'value 1' },
-    { value: 'value 1' },
-    { value: 'value 2' },
-    { value: 'value 2' },
-    { value: 'value 2' },
-    { value: 'value 2' },
-    { value: 'value 2' },
-]
-    },
-    methods: {
-        onGridReady(params) {
-        this.gridApi = params.api;
-        this.gridColumnApi = params.columnApi;
-        
-    },
-    }
-}
+  },
+};
 
 var filterParams = {
-    values: function (params) {
-        setTimeout(function () {
-            params.success(['value 1', 'value 2']);
-        }, 3000);
-    },
+  values: function (params) {
+    setTimeout(function () {
+      params.success(["value 1", "value 2"]);
+    }, 3000);
+  },
 };
 
 new Vue({
-    el: '#app',
-    components: {
-        'my-component': VueExample
-    }
+  el: "#app",
+  components: {
+    "my-component": VueExample,
+  },
 });

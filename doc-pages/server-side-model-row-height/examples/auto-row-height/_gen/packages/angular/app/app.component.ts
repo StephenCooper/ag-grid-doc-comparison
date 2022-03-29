@@ -1,16 +1,24 @@
-
-import { Component } from '@angular/core';
-import 'ag-grid-enterprise';
-import 'ag-grid-community/dist/styles/ag-grid.css';
+import { Component } from "@angular/core";
+import "ag-grid-enterprise";
+import "ag-grid-community/dist/styles/ag-grid.css";
 import "ag-grid-community/dist/styles/ag-theme-alpine-dark.css";
-import { ColDef, ColGroupDef, ColumnApi, Grid, GridApi, GridOptions, GridReadyEvent, IServerSideDatasource, ServerSideStoreType } from 'ag-grid-community';
+import {
+  ColDef,
+  ColGroupDef,
+  ColumnApi,
+  Grid,
+  GridApi,
+  GridOptions,
+  GridReadyEvent,
+  IServerSideDatasource,
+  ServerSideStoreType,
+} from "ag-grid-community";
 declare var FakeServer: any;
 
 @Component({
-    selector: 'my-app',
-    template: `<ag-grid-angular
+  selector: "my-app",
+  template: `<ag-grid-angular
     style="width: 100%; height: 100%;"
-    
     class="ag-theme-alpine-dark"
     [columnDefs]="columnDefs"
     [defaultColDef]="defaultColDef"
@@ -21,51 +29,43 @@ declare var FakeServer: any;
     [suppressAggFuncInHeader]="true"
     [rowData]="rowData"
     (gridReady)="onGridReady($event)"
-    ></ag-grid-angular>
-`
+  ></ag-grid-angular> `,
 })
-
 export class AppComponent {
-
-    
-    public columnDefs: ColDef[] = [
+  public columnDefs: ColDef[] = [
     {
-        headerName: 'Group',
-        field: 'name',
-        rowGroup: true,
-        hide: true,
+      headerName: "Group",
+      field: "name",
+      rowGroup: true,
+      hide: true,
     },
     {
-        field: 'autoA',
-        wrapText: true,
-        autoHeight: true,
-        aggFunc: 'last',
+      field: "autoA",
+      wrapText: true,
+      autoHeight: true,
+      aggFunc: "last",
     },
     {
-        field: 'autoB',
-        wrapText: true,
-        autoHeight: true,
-        aggFunc: 'last',
+      field: "autoB",
+      wrapText: true,
+      autoHeight: true,
+      aggFunc: "last",
     },
-];
-public defaultColDef: ColDef = {
+  ];
+  public defaultColDef: ColDef = {
     flex: 1,
     resizable: true,
     sortable: true,
-};
-public autoGroupColumnDef: ColDef = {
+  };
+  public autoGroupColumnDef: ColDef = {
     flex: 1,
     maxWidth: 200,
-};
-public rowModelType = 'serverSide';
-public serverSideStoreType: ServerSideStoreType = 'partial';
-public rowData!: any[];
+  };
+  public rowModelType = "serverSide";
+  public serverSideStoreType: ServerSideStoreType = "partial";
+  public rowData!: any[];
 
-
-    onGridReady(params: GridReadyEvent) {
-        
-
-        
+  onGridReady(params: GridReadyEvent) {
     // generate data for example
     var data = getData();
     // setup the fake server with entire dataset
@@ -74,28 +74,27 @@ public rowData!: any[];
     var datasource = getServerSideDatasource(fakeServer);
     // register the datasource with the grid
     params.api!.setServerSideDatasource(datasource);
-
-    }
+  }
 }
 
-
-
 function getServerSideDatasource(server: any): IServerSideDatasource {
-    return {
-        getRows: function (params) {
-            console.log('[Datasource] - rows requested by grid: ', params.request);
-            var response = server.getData(params.request);
-            // adding delay to simulate real server call
-            setTimeout(function () {
-                if (response.success) {
-                    // call the success callback
-                    params.success({ rowData: response.rows, rowCount: response.lastRow });
-                }
-                else {
-                    // inform the grid request failed
-                    params.fail();
-                }
-            }, 200);
-        },
-    };
+  return {
+    getRows: function (params) {
+      console.log("[Datasource] - rows requested by grid: ", params.request);
+      var response = server.getData(params.request);
+      // adding delay to simulate real server call
+      setTimeout(function () {
+        if (response.success) {
+          // call the success callback
+          params.success({
+            rowData: response.rows,
+            rowCount: response.lastRow,
+          });
+        } else {
+          // inform the grid request failed
+          params.fail();
+        }
+      }, 200);
+    },
+  };
 }

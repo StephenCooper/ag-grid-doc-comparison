@@ -1,5 +1,5 @@
 export default {
-    template: `
+  template: `
       <div style="padding: 4px">
           <div style="font-weight: bold;">Greater than:</div>
           <div>
@@ -7,48 +7,49 @@ export default {
           </div>
       </div>
     `,
-    data: function () {
-        return {
-            filterText: null
-        };
+  data: function () {
+    return {
+      filterText: null,
+    };
+  },
+  watch: {
+    filterText: function (newFilterText, oldFilterText) {
+      this.params.filterChangedCallback();
     },
-    watch: {
-        filterText: function (newFilterText, oldFilterText) {
-            this.params.filterChangedCallback();
-        }
+  },
+  methods: {
+    isFilterActive() {
+      return (
+        this.filterText !== null &&
+        this.filterText !== undefined &&
+        this.filterText !== "" &&
+        this.isNumeric(this.filterText)
+      );
     },
-    methods: {
-        isFilterActive() {
-            return this.filterText !== null &&
-                this.filterText !== undefined &&
-                this.filterText !== '' &&
-                this.isNumeric(this.filterText);
-        },
 
-        doesFilterPass(params) {
-            const value = this.params.valueGetter(params);
+    doesFilterPass(params) {
+      const value = this.params.valueGetter(params);
 
-            if (this.isFilterActive()) {
-                if (!value) return false;
-                return Number(value) > Number(this.filterText);
-            }
-        },
+      if (this.isFilterActive()) {
+        if (!value) return false;
+        return Number(value) > Number(this.filterText);
+      }
+    },
 
+    isNumeric(n) {
+      return !isNaN(parseFloat(n)) && isFinite(n);
+    },
 
-        isNumeric(n) {
-            return !isNaN(parseFloat(n)) && isFinite(n);
-        },
+    getModel() {
+      return this.isFilterActive() ? Number(this.filterText) : null;
+    },
 
-        getModel() {
-            return this.isFilterActive() ? Number(this.filterText) : null;
-        },
+    setModel(model) {
+      this.filterText = model;
+    },
 
-        setModel(model) {
-            this.filterText = model;
-        },
-
-        myMethodForTakingValueFromFloatingFilter(value) {
-            this.filterText = value;
-        }
-    }
+    myMethodForTakingValueFromFloatingFilter(value) {
+      this.filterText = value;
+    },
+  },
 };

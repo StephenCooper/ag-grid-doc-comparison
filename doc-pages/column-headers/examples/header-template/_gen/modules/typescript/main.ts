@@ -1,24 +1,29 @@
-import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import "@ag-grid-community/core/dist/styles/ag-grid.css";
 import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { ColDef, ColGroupDef, Grid, GridOptions } from '@ag-grid-community/core';
-import { ModuleRegistry } from '@ag-grid-community/core';
-import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import {
+  ColDef,
+  ColGroupDef,
+  Grid,
+  GridOptions,
+} from "@ag-grid-community/core";
+import { ModuleRegistry } from "@ag-grid-community/core";
+import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
 
 // Register the required feature modules with the Grid
-ModuleRegistry.registerModules([ClientSideRowModelModule])
+ModuleRegistry.registerModules([ClientSideRowModelModule]);
 
 const columnDefs: ColDef[] = [
-  { headerName: 'Athlete Name', field: 'athlete', suppressMenu: true },
-  { field: 'age', sortable: false },
-  { field: 'country', suppressMenu: true },
-  { field: 'year', sortable: false },
-  { field: 'date', suppressMenu: true, sortable: false },
-  { field: 'sport', sortable: false },
-  { field: 'gold' },
-  { field: 'silver', sortable: false },
-  { field: 'bronze', suppressMenu: true },
-  { field: 'total', sortable: false },
-]
+  { headerName: "Athlete Name", field: "athlete", suppressMenu: true },
+  { field: "age", sortable: false },
+  { field: "country", suppressMenu: true },
+  { field: "year", sortable: false },
+  { field: "date", suppressMenu: true, sortable: false },
+  { field: "sport", sortable: false },
+  { field: "gold" },
+  { field: "silver", sortable: false },
+  { field: "bronze", suppressMenu: true },
+  { field: "total", sortable: false },
+];
 
 const gridOptions: GridOptions = {
   columnDefs: columnDefs,
@@ -30,7 +35,7 @@ const gridOptions: GridOptions = {
     filter: true,
     width: 150,
     headerComponentParams: {
-      menuIcon: 'fa-bars',
+      menuIcon: "fa-bars",
       template: `<div class="ag-cell-label-container" role="presentation">  
                     <span ref="eMenu" class="ag-header-icon ag-header-cell-menu-button"></span>  
                     <div ref="eLabel" class="ag-header-cell-label" role="presentation">    
@@ -44,13 +49,12 @@ const gridOptions: GridOptions = {
                 </div>`,
     },
   },
-}
+};
 
 // setup the grid after the page has finished loading
-  const gridDiv = document.querySelector<HTMLElement>('#myGrid')!
-  new Grid(gridDiv, gridOptions)
+const gridDiv = document.querySelector<HTMLElement>("#myGrid")!;
+new Grid(gridDiv, gridOptions);
 
-  fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
-    .then(response => response.json())
-    .then(data => gridOptions.api!.setRowData(data))
- 
+fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+  .then((response) => response.json())
+  .then((data) => gridOptions.api!.setRowData(data));

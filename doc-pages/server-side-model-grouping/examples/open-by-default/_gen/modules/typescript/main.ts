@@ -1,20 +1,32 @@
-import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import "@ag-grid-community/core/dist/styles/ag-grid.css";
 import "@ag-grid-community/core/dist/styles/ag-theme-alpine-dark.css";
-import { ColDef, ColGroupDef, GetRowIdFunc, GetRowIdParams, GetServerSideStoreParamsParams, Grid, GridOptions, IServerSideDatasource, IServerSideGetRowsParams, IsServerSideGroupOpenByDefaultParams, ServerSideStoreParams } from '@ag-grid-community/core';
-import { ModuleRegistry } from '@ag-grid-community/core';
-import { ServerSideRowModelModule } from '@ag-grid-enterprise/server-side-row-model';
+import {
+  ColDef,
+  ColGroupDef,
+  GetRowIdFunc,
+  GetRowIdParams,
+  GetServerSideStoreParamsParams,
+  Grid,
+  GridOptions,
+  IServerSideDatasource,
+  IServerSideGetRowsParams,
+  IsServerSideGroupOpenByDefaultParams,
+  ServerSideStoreParams,
+} from "@ag-grid-community/core";
+import { ModuleRegistry } from "@ag-grid-community/core";
+import { ServerSideRowModelModule } from "@ag-grid-enterprise/server-side-row-model";
 
 // Register the required feature modules with the Grid
-ModuleRegistry.registerModules([ServerSideRowModelModule])
+ModuleRegistry.registerModules([ServerSideRowModelModule]);
 declare var FakeServer: any;
 const gridOptions: GridOptions = {
   columnDefs: [
-    { field: 'country', enableRowGroup: true, rowGroup: true, hide: true },
-    { field: 'sport', enableRowGroup: true, rowGroup: true, hide: true },
-    { field: 'year', minWidth: 100 },
-    { field: 'gold', aggFunc: 'sum' },
-    { field: 'silver', aggFunc: 'sum' },
-    { field: 'bronze', aggFunc: 'sum' },
+    { field: "country", enableRowGroup: true, rowGroup: true, hide: true },
+    { field: "sport", enableRowGroup: true, rowGroup: true, hide: true },
+    { field: "year", minWidth: 100 },
+    { field: "gold", aggFunc: "sum" },
+    { field: "silver", aggFunc: "sum" },
+    { field: "bronze", aggFunc: "sum" },
   ],
   defaultColDef: {
     flex: 1,
@@ -28,90 +40,93 @@ const gridOptions: GridOptions = {
   },
   getServerSideStoreParams: function (params: GetServerSideStoreParamsParams) {
     var res: ServerSideStoreParams = {
-      storeType: params.level == 0 ? 'partial' : 'full',
-    }
-    return res
+      storeType: params.level == 0 ? "partial" : "full",
+    };
+    return res;
   },
-  rowModelType: 'serverSide',
-  rowSelection: 'multiple',
+  rowModelType: "serverSide",
+  rowSelection: "multiple",
 
   isServerSideGroupOpenByDefault: isServerSideGroupOpenByDefault,
   suppressAggFuncInHeader: true,
   animateRows: true,
-  getRowId: getRowId
-}
+  getRowId: getRowId,
+};
 
 function getRowId(params: GetRowIdParams) {
   return Math.random().toString();
 }
 
-function isServerSideGroupOpenByDefault(params: IsServerSideGroupOpenByDefaultParams) {
-  var route = params.rowNode.getRoute()
+function isServerSideGroupOpenByDefault(
+  params: IsServerSideGroupOpenByDefaultParams
+) {
+  var route = params.rowNode.getRoute();
   if (!route) {
-    return false
+    return false;
   }
 
-  var routeAsString = route.join(',')
+  var routeAsString = route.join(",");
 
   var routesToOpenByDefault = [
-    'Zimbabwe',
-    'Zimbabwe,Swimming',
-    'United States,Swimming',
-  ]
+    "Zimbabwe",
+    "Zimbabwe,Swimming",
+    "United States,Swimming",
+  ];
 
-  return routesToOpenByDefault.indexOf(routeAsString) >= 0
+  return routesToOpenByDefault.indexOf(routeAsString) >= 0;
 }
 
 function onBtRouteOfSelected() {
-  var selectedNodes = gridOptions.api!.getSelectedNodes()
+  var selectedNodes = gridOptions.api!.getSelectedNodes();
   selectedNodes.forEach(function (rowNode, index) {
-    var route = rowNode.getRoute()
-    var routeString = route ? route.join(',') : undefined
-    console.log('#' + index + ', route = [' + routeString + ']')
-  })
+    var route = rowNode.getRoute();
+    var routeString = route ? route.join(",") : undefined;
+    console.log("#" + index + ", route = [" + routeString + "]");
+  });
 }
 
 function getServerSideDatasource(server: any): IServerSideDatasource {
   return {
     getRows: function (params: IServerSideGetRowsParams) {
-      console.log('[Datasource] - rows requested by grid: ', params.request)
+      console.log("[Datasource] - rows requested by grid: ", params.request);
 
-      var response = server.getData(params.request)
+      var response = server.getData(params.request);
 
       // adding delay to simulate real server call
       setTimeout(function () {
         if (response.success) {
           // call the success callback
-          params.success({ rowData: response.rows, rowCount: response.lastRow })
+          params.success({
+            rowData: response.rows,
+            rowCount: response.lastRow,
+          });
         } else {
           // inform the grid request failed
-          params.fail()
+          params.fail();
         }
-      }, 400)
+      }, 400);
     },
-  }
+  };
 }
 
 // setup the grid after the page has finished loading
-  var gridDiv = document.querySelector<HTMLElement>('#myGrid')!
-  new Grid(gridDiv, gridOptions)
+var gridDiv = document.querySelector<HTMLElement>("#myGrid")!;
+new Grid(gridDiv, gridOptions);
 
-  fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
-    .then(response => response.json())
-    .then(function (data) {
+fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+  .then((response) => response.json())
+  .then(function (data) {
+    // setup the fake server with entire dataset
+    var fakeServer = new FakeServer(data);
 
-      // setup the fake server with entire dataset
-      var fakeServer = new FakeServer(data)
+    // create datasource with a reference to the fake server
+    var datasource = getServerSideDatasource(fakeServer);
 
-      // create datasource with a reference to the fake server
-      var datasource = getServerSideDatasource(fakeServer)
+    // register the datasource with the grid
+    gridOptions.api!.setServerSideDatasource(datasource);
+  });
 
-      // register the datasource with the grid
-      gridOptions.api!.setServerSideDatasource(datasource)
-    })
- 
-
-if (typeof window !== 'undefined') {
-// Attach external event handlers to window so they can be called from index.html
- (<any>window).onBtRouteOfSelected = onBtRouteOfSelected;
+if (typeof window !== "undefined") {
+  // Attach external event handlers to window so they can be called from index.html
+  (<any>window).onBtRouteOfSelected = onBtRouteOfSelected;
 }

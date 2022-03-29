@@ -1,14 +1,11 @@
-
-import Vue from 'vue';
-import { AgGridVue } from 'ag-grid-vue';
-import 'ag-grid-enterprise';
-import 'ag-grid-community/dist/styles/ag-grid.css';
-import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
-
-
+import Vue from "vue";
+import { AgGridVue } from "ag-grid-vue";
+import "ag-grid-enterprise";
+import "ag-grid-community/dist/styles/ag-grid.css";
+import "ag-grid-community/dist/styles/ag-theme-alpine.css";
 
 const VueExample = {
-    template: `
+  template: `
         <div style="height: 100%">
             <div class="container">
                 <div class="columns">
@@ -32,67 +29,62 @@ const VueExample = {
             </div>
         </div>
     `,
-    components: {
-        'ag-grid-vue': AgGridVue,
-        
+  components: {
+    "ag-grid-vue": AgGridVue,
+  },
+  data: function () {
+    return {
+      columnDefs: [
+        { checkboxSelection: true, field: "athlete", minWidth: 200 },
+        { field: "country", minWidth: 200 },
+        { headerName: "Group", valueGetter: "data.country.charAt(0)" },
+        { field: "sport", minWidth: 150 },
+        { field: "gold", hide: true },
+        { field: "silver", hide: true },
+        { field: "bronze", hide: true },
+        { field: "total", hide: true },
+      ],
+      gridApi: null,
+      columnApi: null,
+      defaultColDef: {
+        sortable: true,
+        filter: true,
+        resizable: true,
+        minWidth: 100,
+        flex: 1,
+      },
+      rowSelection: null,
+      rowData: null,
+    };
+  },
+  created() {
+    this.rowSelection = "multiple";
+  },
+  methods: {
+    onBtExport() {
+      this.gridApi.exportDataAsExcel({
+        onlySelected: document.querySelector("#selectedOnly").checked,
+      });
     },
-    data: function() {
-        return {
-            columnDefs: [{checkboxSelection:true,
-field:"athlete",
-minWidth:200},{field:"country",
-minWidth:200},{headerName:"Group",
-valueGetter:"data.country.charAt(0)"},{field:"sport",
-minWidth:150},{field:"gold",
-hide:true},{field:"silver",
-hide:true},{field:"bronze",
-hide:true},{field:"total",
-hide:true}],
-            gridApi: null,
-            columnApi: null,
-            defaultColDef: {
-    sortable: true,
-    filter: true,
-    resizable: true,
-    minWidth: 100,
-    flex: 1,
-},
-            rowSelection: null,
-rowData: null
-        }
+    onGridReady(params) {
+      this.gridApi = params.api;
+      this.gridColumnApi = params.columnApi;
+
+      document.getElementById("selectedOnly").checked = true;
+
+      const updateData = (data) =>
+        params.api.setRowData(data.filter((rec) => rec.country != null));
+
+      fetch("https://www.ag-grid.com/example-assets/small-olympic-winners.json")
+        .then((resp) => resp.json())
+        .then((data) => updateData(data));
     },
-    created() {
-        this.rowSelection = 'multiple'
-    },
-    methods: {
-        onBtExport() {
-    this.gridApi.exportDataAsExcel({
-        onlySelected: (document.querySelector('#selectedOnly')).checked,
-    });
-},
-onGridReady(params) {
-        this.gridApi = params.api;
-        this.gridColumnApi = params.columnApi;
-        
-
-        
-    (document.getElementById('selectedOnly')).checked = true;
-
-        
-            const updateData = (data) => params.api.setRowData(data.filter((rec) => rec.country != null));
-            
-            fetch('https://www.ag-grid.com/example-assets/small-olympic-winners.json')
-                .then(resp => resp.json())
-                .then(data => updateData(data));
-    },
-    }
-}
-
-
+  },
+};
 
 new Vue({
-    el: '#app',
-    components: {
-        'my-component': VueExample
-    }
+  el: "#app",
+  components: {
+    "my-component": VueExample,
+  },
 });

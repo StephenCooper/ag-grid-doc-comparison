@@ -1,21 +1,27 @@
-import 'ag-grid-enterprise';
-import 'ag-grid-community/dist/styles/ag-grid.css';
+import "ag-grid-enterprise";
+import "ag-grid-community/dist/styles/ag-grid.css";
 import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import { ColDef, ColGroupDef, ColumnSparklineOptions, Grid, GridOptions } from 'ag-grid-community';
+import {
+  ColDef,
+  ColGroupDef,
+  ColumnSparklineOptions,
+  Grid,
+  GridOptions,
+} from "ag-grid-community";
 
 const gridOptions: GridOptions = {
   columnDefs: [
-    { field: 'symbol', maxWidth: 120 },
-    { field: 'name', minWidth: 250 },
+    { field: "symbol", maxWidth: 120 },
+    { field: "name", minWidth: 250 },
     {
-      field: 'change',
-      cellRenderer: 'agSparklineCellRenderer',
+      field: "change",
+      cellRenderer: "agSparklineCellRenderer",
       cellRendererParams: {
         sparklineOptions: {
-          type: 'column',
-          fill: '#fac858',
+          type: "column",
+          fill: "#fac858",
           highlightStyle: {
-            stroke: '#fac858',
+            stroke: "#fac858",
           },
           padding: {
             top: 10,
@@ -23,14 +29,14 @@ const gridOptions: GridOptions = {
           },
           label: {
             enabled: true,
-            placement: 'outsideEnd',
+            placement: "outsideEnd",
           },
         } as ColumnSparklineOptions,
       },
     },
     {
-      field: 'volume',
-      type: 'numericColumn',
+      field: "volume",
+      type: "numericColumn",
       maxWidth: 140,
     },
   ],
@@ -41,9 +47,8 @@ const gridOptions: GridOptions = {
   },
   rowData: getData(),
   rowHeight: 80,
-}
+};
 
 // setup the grid after the page has finished loading
-  var gridDiv = document.querySelector<HTMLElement>('#myGrid')!
-  new Grid(gridDiv, gridOptions)
- 
+var gridDiv = document.querySelector<HTMLElement>("#myGrid")!;
+new Grid(gridDiv, gridOptions);

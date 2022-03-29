@@ -1,113 +1,117 @@
-
-import { Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import { Component } from "@angular/core";
+import { HttpClient } from "@angular/common/http";
+import "@ag-grid-community/core/dist/styles/ag-grid.css";
 import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { ColDef, ColGroupDef, ColumnApi, Grid, GridApi, GridOptions, GridReadyEvent, SideBarDef } from '@ag-grid-community/core';
+import {
+  ColDef,
+  ColGroupDef,
+  ColumnApi,
+  Grid,
+  GridApi,
+  GridOptions,
+  GridReadyEvent,
+  SideBarDef,
+} from "@ag-grid-community/core";
 // Required feature modules are registered in app.module.ts
 
 @Component({
-    selector: 'my-app',
-    template: `<div class="example-wrapper">
+  selector: "my-app",
+  template: `<div class="example-wrapper">
     <div style="margin-bottom: 5px;">
-        <button (click)="onBtNormal()">1 - Grouping Active</button>
-        <button (click)="onBtPivotMode()">2 - Grouping Active with Pivot Mode</button>
-        <button (click)="onBtFullPivot()">3 - Grouping Active with Pivot Mode and Pivot Active</button>
+      <button (click)="onBtNormal()">1 - Grouping Active</button>
+      <button (click)="onBtPivotMode()">
+        2 - Grouping Active with Pivot Mode
+      </button>
+      <button (click)="onBtFullPivot()">
+        3 - Grouping Active with Pivot Mode and Pivot Active
+      </button>
     </div>
 
     <ag-grid-angular
-    style="width: 100%; height: 100%;"
-    
-    class="ag-theme-alpine"
-    [columnDefs]="columnDefs"
-    [defaultColDef]="defaultColDef"
-    [autoGroupColumnDef]="autoGroupColumnDef"
-    [sideBar]="sideBar"
-    [rowData]="rowData"
-    (gridReady)="onGridReady($event)"
+      style="width: 100%; height: 100%;"
+      class="ag-theme-alpine"
+      [columnDefs]="columnDefs"
+      [defaultColDef]="defaultColDef"
+      [autoGroupColumnDef]="autoGroupColumnDef"
+      [sideBar]="sideBar"
+      [rowData]="rowData"
+      (gridReady)="onGridReady($event)"
     ></ag-grid-angular>
-</div>
-`
+  </div> `,
 })
-
 export class AppComponent {
-    private gridColumnApi!: ColumnApi;
+  private gridColumnApi!: ColumnApi;
 
-    
-    public columnDefs: ColDef[] = [
-    { field: 'country', rowGroup: true, enableRowGroup: true },
-    { field: 'year', rowGroup: true, enableRowGroup: true, enablePivot: true },
-    { field: 'date' },
-    { field: 'sport' },
-    { field: 'gold', aggFunc: 'sum' },
-    { field: 'silver', aggFunc: 'sum' },
-    { field: 'bronze', aggFunc: 'sum' },
-];
-public defaultColDef: ColDef = {
+  public columnDefs: ColDef[] = [
+    { field: "country", rowGroup: true, enableRowGroup: true },
+    { field: "year", rowGroup: true, enableRowGroup: true, enablePivot: true },
+    { field: "date" },
+    { field: "sport" },
+    { field: "gold", aggFunc: "sum" },
+    { field: "silver", aggFunc: "sum" },
+    { field: "bronze", aggFunc: "sum" },
+  ];
+  public defaultColDef: ColDef = {
     flex: 1,
     minWidth: 150,
     sortable: true,
     resizable: true,
-};
-public autoGroupColumnDef: ColDef = {
+  };
+  public autoGroupColumnDef: ColDef = {
     minWidth: 250,
-};
-public sideBar: SideBarDef | string | boolean | null = 'columns';
-public rowData!: any[];
+  };
+  public sideBar: SideBarDef | string | boolean | null = "columns";
+  public rowData!: any[];
 
-    constructor(private http: HttpClient) {
-}
+  constructor(private http: HttpClient) {}
 
-
-    onBtNormal() {
+  onBtNormal() {
     this.gridColumnApi.setPivotMode(false);
     this.gridColumnApi.applyColumnState({
-        state: [
-            { colId: 'country', rowGroup: true },
-            { colId: 'year', rowGroup: true },
-        ],
-        defaultState: {
-            pivot: false,
-            rowGroup: false,
-        },
+      state: [
+        { colId: "country", rowGroup: true },
+        { colId: "year", rowGroup: true },
+      ],
+      defaultState: {
+        pivot: false,
+        rowGroup: false,
+      },
     });
-}
+  }
 
-onBtPivotMode() {
+  onBtPivotMode() {
     this.gridColumnApi.setPivotMode(true);
     this.gridColumnApi.applyColumnState({
-        state: [
-            { colId: 'country', rowGroup: true },
-            { colId: 'year', rowGroup: true },
-        ],
-        defaultState: {
-            pivot: false,
-            rowGroup: false,
-        },
+      state: [
+        { colId: "country", rowGroup: true },
+        { colId: "year", rowGroup: true },
+      ],
+      defaultState: {
+        pivot: false,
+        rowGroup: false,
+      },
     });
-}
+  }
 
-onBtFullPivot() {
+  onBtFullPivot() {
     this.gridColumnApi.setPivotMode(true);
     this.gridColumnApi.applyColumnState({
-        state: [
-            { colId: 'country', rowGroup: true },
-            { colId: 'year', pivot: true },
-        ],
-        defaultState: {
-            pivot: false,
-            rowGroup: false,
-        },
+      state: [
+        { colId: "country", rowGroup: true },
+        { colId: "year", pivot: true },
+      ],
+      defaultState: {
+        pivot: false,
+        rowGroup: false,
+      },
     });
+  }
+
+  onGridReady(params: GridReadyEvent) {
+    this.gridColumnApi = params.columnApi;
+
+    this.http
+      .get<any[]>("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      .subscribe((data) => (this.rowData = data));
+  }
 }
-
-onGridReady(params: GridReadyEvent) {
-        this.gridColumnApi = params.columnApi;
-
-        this.http.get<any[]>('https://www.ag-grid.com/example-assets/olympic-winners.json').subscribe(data => this.rowData = data);
-    }
-}
-
-
-
-

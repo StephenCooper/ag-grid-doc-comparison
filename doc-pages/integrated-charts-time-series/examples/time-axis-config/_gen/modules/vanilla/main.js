@@ -1,9 +1,7 @@
-
-
 const gridOptions = {
   columnDefs: [
-    { field: 'timestamp', chartDataType: 'time' },
-    { field: 'cpuUsage' },
+    { field: "timestamp", chartDataType: "time" },
+    { field: "cpuUsage" },
   ],
   defaultColDef: {
     flex: 1,
@@ -17,7 +15,7 @@ const gridOptions = {
     area: {
       title: {
         enabled: true,
-        text: 'CPU Usage',
+        text: "CPU Usage",
       },
       legend: {
         enabled: false,
@@ -35,21 +33,21 @@ const gridOptions = {
         time: {
           label: {
             rotation: 45,
-            format: '%H:%M',
+            format: "%H:%M",
           },
         },
         category: {
           label: {
             rotation: 0,
             formatter: function (params) {
-              return moment(new Date(params.value)).format('DD MMM')
+              return moment(new Date(params.value)).format("DD MMM");
             },
           },
         },
         number: {
           label: {
             formatter: function (params) {
-              return params.value + '%'
+              return params.value + "%";
             },
           },
         },
@@ -58,30 +56,30 @@ const gridOptions = {
   },
   getChartToolbarItems: getChartToolbarItems,
   onFirstDataRendered: onFirstDataRendered,
-}
+};
 
 function onFirstDataRendered(params) {
   var createRangeChartParams = {
-    chartContainer: document.querySelector('#myChart') ,
+    chartContainer: document.querySelector("#myChart"),
     suppressChartRanges: true,
     cellRange: {
-      columns: ['timestamp', 'cpuUsage'],
+      columns: ["timestamp", "cpuUsage"],
     },
-    chartType: 'area',
-  }
+    chartType: "area",
+  };
 
-  params.api.createRangeChart(createRangeChartParams)
+  params.api.createRangeChart(createRangeChartParams);
 }
 
 function getChartToolbarItems() {
-  return ['chartData', 'chartFormat']
+  return ["chartData", "chartFormat"];
 }
 
 // setup the grid after the page has finished loading
-document.addEventListener('DOMContentLoaded', function () {
-  var gridDiv = document.querySelector('#myGrid')
-  new agGrid.Grid(gridDiv, gridOptions)
-})
+document.addEventListener("DOMContentLoaded", function () {
+  var gridDiv = document.querySelector("#myGrid");
+  new agGrid.Grid(gridDiv, gridOptions);
+});
 
 function getRowData() {
   return [
@@ -193,5 +191,5 @@ function getRowData() {
     { timestamp: 1600984432792, cpuUsage: 50 },
     { timestamp: 1600984436792, cpuUsage: 60 },
     { timestamp: 1600984439792, cpuUsage: 69 },
-  ]
+  ];
 }

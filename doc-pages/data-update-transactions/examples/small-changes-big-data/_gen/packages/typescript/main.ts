@@ -1,33 +1,44 @@
-import 'ag-grid-enterprise';
-import 'ag-grid-community/dist/styles/ag-grid.css';
+import "ag-grid-enterprise";
+import "ag-grid-community/dist/styles/ag-grid.css";
 import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import { ColDef, ColGroupDef, GetRowIdFunc, GetRowIdParams, Grid, GridOptions, IAggFuncParams, IDoesFilterPassParams, IFilterComp, IFilterParams, IFilterType } from 'ag-grid-community';
+import {
+  ColDef,
+  ColGroupDef,
+  GetRowIdFunc,
+  GetRowIdParams,
+  Grid,
+  GridOptions,
+  IAggFuncParams,
+  IDoesFilterPassParams,
+  IFilterComp,
+  IFilterParams,
+  IFilterType,
+} from "ag-grid-community";
 
 declare var LINUX_DISTROS: string[];
 declare var CITIES: string[];
 declare var LAPTOPS: string[];
 
-var aggCallCount = 0
-var compareCallCount = 0
-var filterCallCount = 0
-var idCounter = 0
+var aggCallCount = 0;
+var compareCallCount = 0;
+var filterCallCount = 0;
+var idCounter = 0;
 
 function myAggFunc(params: IAggFuncParams) {
-  aggCallCount++
+  aggCallCount++;
 
-  var total = 0
+  var total = 0;
   for (var i = 0; i < params.values.length; i++) {
-    total += params.values[i]
+    total += params.values[i];
   }
-  return total
+  return total;
 }
 function myComparator(a: any, b: any) {
-  compareCallCount++
-  return a < b ? -1 : 1
+  compareCallCount++;
+  return a < b ? -1 : 1;
 }
 
 function getMyFilter(): IFilterType {
-
   class MyFilter implements IFilterComp {
     filterParams!: IFilterParams;
     filterValue!: number | null;
@@ -36,43 +47,45 @@ function getMyFilter(): IFilterType {
 
     init(params: IFilterParams) {
       this.filterParams = params;
-      this.filterValue = null
+      this.filterValue = null;
 
-      this.eGui = document.createElement('div')
-      this.eGui.innerHTML = '<div>Greater Than: <input type="text"/></div>'
-      this.eInput = this.eGui.querySelector('input')
-      this.eInput.addEventListener('input', () => {
-        this.getValueFromInput()
-        params.filterChangedCallback()
-      })
+      this.eGui = document.createElement("div");
+      this.eGui.innerHTML = '<div>Greater Than: <input type="text"/></div>';
+      this.eInput = this.eGui.querySelector("input");
+      this.eInput.addEventListener("input", () => {
+        this.getValueFromInput();
+        params.filterChangedCallback();
+      });
     }
 
     getGui() {
-      return this.eGui
+      return this.eGui;
     }
 
     getValueFromInput() {
-      var value = parseInt(this.eInput.value)
-      this.filterValue = isNaN(value) ? null : value
+      var value = parseInt(this.eInput.value);
+      this.filterValue = isNaN(value) ? null : value;
     }
 
     setModel(model: any) {
       this.eInput.value = model == null ? null : model.value;
-      this.getValueFromInput()
+      this.getValueFromInput();
     }
 
     getModel() {
-      if (!this.isFilterActive()) { return null; }
+      if (!this.isFilterActive()) {
+        return null;
+      }
 
-      return { value: this.eInput.value }
+      return { value: this.eInput.value };
     }
 
     isFilterActive() {
-      return this.filterValue !== null
+      return this.filterValue !== null;
     }
 
     doesFilterPass(params: IDoesFilterPassParams) {
-      filterCallCount++
+      filterCallCount++;
 
       const { api, colDef, column, columnApi, context } = this.filterParams;
       const { node } = params;
@@ -87,31 +100,31 @@ function getMyFilter(): IFilterType {
         node,
       });
 
-      return value > (this.filterValue || 0)
+      return value > (this.filterValue || 0);
     }
   }
   return MyFilter;
 }
 
-var myFilter = getMyFilter()
+var myFilter = getMyFilter();
 
 function getRowId(params: GetRowIdParams) {
-  return params.data.id
+  return params.data.id;
 }
 
 function onBtDuplicate() {
-  var api = gridOptions.api!
+  var api = gridOptions.api!;
 
   // get the first child of the
-  var selectedRows = api.getSelectedRows()
+  var selectedRows = api.getSelectedRows();
   if (!selectedRows || selectedRows.length === 0) {
-    console.log('No rows selected!')
-    return
+    console.log("No rows selected!");
+    return;
   }
 
-  var newItems: any = []
+  var newItems: any = [];
   selectedRows.forEach(function (selectedRow) {
-    idCounter++
+    idCounter++;
     var newItem = createDataItem(
       idCounter,
       selectedRow.name,
@@ -119,28 +132,28 @@ function onBtDuplicate() {
       selectedRow.laptop,
       selectedRow.city,
       selectedRow.value
-    )
-    newItems.push(newItem)
-  })
+    );
+    newItems.push(newItem);
+  });
 
-  timeOperation('Duplicate', function () {
-    api.applyTransaction({ add: newItems })
-  })
+  timeOperation("Duplicate", function () {
+    api.applyTransaction({ add: newItems });
+  });
 }
 
 function onBtUpdate() {
-  var api = gridOptions.api!
+  var api = gridOptions.api!;
 
   // get the first child of the
-  var selectedRows = api.getSelectedRows()
+  var selectedRows = api.getSelectedRows();
   if (!selectedRows || selectedRows.length === 0) {
-    console.log('No rows selected!')
-    return
+    console.log("No rows selected!");
+    return;
   }
 
-  var updatedItems: any[] = []
+  var updatedItems: any[] = [];
   selectedRows.forEach(function (oldItem) {
-    var newValue = Math.floor(Math.random() * 100) + 10
+    var newValue = Math.floor(Math.random() * 100) + 10;
     var newItem = createDataItem(
       oldItem.id,
       oldItem.name,
@@ -148,59 +161,64 @@ function onBtUpdate() {
       oldItem.laptop,
       oldItem.city,
       newValue
-    )
-    updatedItems.push(newItem)
-  })
+    );
+    updatedItems.push(newItem);
+  });
 
-  timeOperation('Update', function () {
-    api.applyTransaction({ update: updatedItems })
-  })
+  timeOperation("Update", function () {
+    api.applyTransaction({ update: updatedItems });
+  });
 }
 
 function onBtDelete() {
-  var api = gridOptions.api!
+  var api = gridOptions.api!;
 
   // get the first child of the
-  var selectedRows = api.getSelectedRows()
+  var selectedRows = api.getSelectedRows();
   if (!selectedRows || selectedRows.length === 0) {
-    console.log('No rows selected!')
-    return
+    console.log("No rows selected!");
+    return;
   }
 
-  timeOperation('Delete', function () {
-    api.applyTransaction({ remove: selectedRows })
-  })
+  timeOperation("Delete", function () {
+    api.applyTransaction({ remove: selectedRows });
+  });
 }
 
 function onBtClearSelection() {
-  gridOptions.api!.deselectAll()
+  gridOptions.api!.deselectAll();
 }
 
 function timeOperation(name: string, operation: any) {
-  aggCallCount = 0
-  compareCallCount = 0
-  filterCallCount = 0
-  var start = new Date().getTime()
-  operation()
-  var end = new Date().getTime()
+  aggCallCount = 0;
+  compareCallCount = 0;
+  filterCallCount = 0;
+  var start = new Date().getTime();
+  operation();
+  var end = new Date().getTime();
   console.log(
     name +
-    ' finished in ' +
-    (end - start) +
-    'ms, aggCallCount = ' +
-    aggCallCount +
-    ', compareCallCount = ' +
-    compareCallCount +
-    ', filterCallCount = ' +
-    filterCallCount
-  )
+      " finished in " +
+      (end - start) +
+      "ms, aggCallCount = " +
+      aggCallCount +
+      ", compareCallCount = " +
+      compareCallCount +
+      ", filterCallCount = " +
+      filterCallCount
+  );
 }
 
 var columnDefs: ColDef[] = [
-  { field: "city", rowGroup: true, hide: true, },
-  { field: 'laptop', rowGroup: true, hide: true, },
-  { field: 'distro', sort: 'asc', comparator: myComparator },
-  { field: 'value', enableCellChangeFlash: true, aggFunc: myAggFunc, filter: myFilter }
+  { field: "city", rowGroup: true, hide: true },
+  { field: "laptop", rowGroup: true, hide: true },
+  { field: "distro", sort: "asc", comparator: myComparator },
+  {
+    field: "value",
+    enableCellChangeFlash: true,
+    aggFunc: myAggFunc,
+    filter: myFilter,
+  },
 ];
 
 const gridOptions: GridOptions = {
@@ -212,67 +230,72 @@ const gridOptions: GridOptions = {
     resizable: true,
   },
   getRowId: getRowId,
-  rowSelection: 'multiple',
+  rowSelection: "multiple",
   groupSelectsChildren: true,
   animateRows: true,
   suppressAggAtRootLevel: true,
   suppressRowClickSelection: true,
   autoGroupColumnDef: {
-    field: 'name',
+    field: "name",
     cellRendererParams: { checkbox: true },
   },
   onGridReady: function (params) {
-
     params.api.setFilterModel({
-      value: { value: '50' },
-    })
+      value: { value: "50" },
+    });
 
-    timeOperation('Initialisation', function () {
-      params.api.setRowData(getData())
-    })
+    timeOperation("Initialisation", function () {
+      params.api.setRowData(getData());
+    });
 
-    params.api.getDisplayedRowAtIndex(2)!.setExpanded(true)
-    params.api.getDisplayedRowAtIndex(4)!.setExpanded(true)
+    params.api.getDisplayedRowAtIndex(2)!.setExpanded(true);
+    params.api.getDisplayedRowAtIndex(4)!.setExpanded(true);
   },
-}
+};
 
 function letter(i: number) {
-  return 'abcdefghijklmnopqrstuvwxyz'.substring(i, i + 1)
+  return "abcdefghijklmnopqrstuvwxyz".substring(i, i + 1);
 }
 
 function randomLetter() {
-  return letter(Math.floor(Math.random() * 26 + 1))
+  return letter(Math.floor(Math.random() * 26 + 1));
 }
 
 function getData() {
-  var myRowData = []
+  var myRowData = [];
   for (var i = 0; i < 10000; i++) {
     var name =
-      'Mr ' +
+      "Mr " +
       randomLetter().toUpperCase() +
-      ' ' +
+      " " +
       randomLetter().toUpperCase() +
       randomLetter() +
       randomLetter() +
       randomLetter() +
-      randomLetter()
-    var city = CITIES[i % CITIES.length]
+      randomLetter();
+    var city = CITIES[i % CITIES.length];
     var distro =
       LINUX_DISTROS[i % LINUX_DISTROS.length] +
-      ' v' +
-      Math.floor(Math.random() * 100 + 1) / 10
-    var university = LAPTOPS[i % LAPTOPS.length]
-    var value = Math.floor(Math.random() * 100) + 10 // between 10 and 110
-    idCounter++
+      " v" +
+      Math.floor(Math.random() * 100 + 1) / 10;
+    var university = LAPTOPS[i % LAPTOPS.length];
+    var value = Math.floor(Math.random() * 100) + 10; // between 10 and 110
+    idCounter++;
     myRowData.push(
       createDataItem(idCounter, name, distro, university, city, value)
-    )
+    );
   }
   return myRowData;
 }
 
-
-function createDataItem(id: any, name: any, distro: any, laptop: any, city: any, value: any): any {
+function createDataItem(
+  id: any,
+  name: any,
+  distro: any,
+  laptop: any,
+  city: any,
+  value: any
+): any {
   return {
     id: id,
     name: name,
@@ -280,19 +303,18 @@ function createDataItem(id: any, name: any, distro: any, laptop: any, city: any,
     distro: distro,
     laptop: laptop,
     value: value,
-  }
+  };
 }
 
 // wait for the document to be loaded, otherwise
 // AG Grid will not find the div in the document.
-  var eGridDiv = document.querySelector<HTMLElement>('#myGrid')!
-  new Grid(eGridDiv, gridOptions)
- 
+var eGridDiv = document.querySelector<HTMLElement>("#myGrid")!;
+new Grid(eGridDiv, gridOptions);
 
-if (typeof window !== 'undefined') {
-// Attach external event handlers to window so they can be called from index.html
- (<any>window).onBtDuplicate = onBtDuplicate;
- (<any>window).onBtUpdate = onBtUpdate;
- (<any>window).onBtDelete = onBtDelete;
- (<any>window).onBtClearSelection = onBtClearSelection;
+if (typeof window !== "undefined") {
+  // Attach external event handlers to window so they can be called from index.html
+  (<any>window).onBtDuplicate = onBtDuplicate;
+  (<any>window).onBtUpdate = onBtUpdate;
+  (<any>window).onBtDelete = onBtDelete;
+  (<any>window).onBtClearSelection = onBtClearSelection;
 }

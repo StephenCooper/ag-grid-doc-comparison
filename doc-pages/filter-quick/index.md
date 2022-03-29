@@ -17,7 +17,7 @@ gridOptions.api.setQuickFilter('new filter text');
 
 ## Overriding the Quick Filter Value
 
-If your data contains complex objects, the quick filter will end up comparing against `[object Object]` instead of searchable string values. In this case you will need to implement `getQuickFilterText` to extract a searchable string from your complex object. 
+If your data contains complex objects, the quick filter will end up comparing against `[object Object]` instead of searchable string values. In this case you will need to implement `getQuickFilterText` to extract a searchable string from your complex object.
 
 Alternatively, you might want to format string values specifically for searching (e.g. replace accented characters in strings, or remove commas from numbers).
 
@@ -37,7 +37,6 @@ const gridOptions = {
     ]
 }
 </snippet>
-
 
 [[note]]
 | The quick filter will work 'out of the box' in most cases, so you should only override the quick filter value if you have a particular problem to resolve.
@@ -78,4 +77,3 @@ The example also demonstrates having the quick filter cache turned on. The grid 
 ## Server Side Data
 
 Quick Filters only make sense with client side data (i.e. when using the [client-side row model](/client-side-model/)). For the other row models you would need to implement your own server-side filtering to replicate Quick Filter functionality.
-

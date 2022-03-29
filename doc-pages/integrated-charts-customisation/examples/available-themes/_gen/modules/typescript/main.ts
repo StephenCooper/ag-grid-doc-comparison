@@ -1,21 +1,34 @@
-import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import "@ag-grid-community/core/dist/styles/ag-grid.css";
 import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { AgChartThemeOverrides, ColDef, ColGroupDef, CreateRangeChartParams, FirstDataRenderedEvent, Grid, GridOptions } from '@ag-grid-community/core';
-import { ModuleRegistry } from '@ag-grid-community/core';
-import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
-import { MenuModule } from '@ag-grid-enterprise/menu';
-import { GridChartsModule } from '@ag-grid-enterprise/charts';
-import { RowGroupingModule } from '@ag-grid-enterprise/row-grouping';
+import {
+  AgChartThemeOverrides,
+  ColDef,
+  ColGroupDef,
+  CreateRangeChartParams,
+  FirstDataRenderedEvent,
+  Grid,
+  GridOptions,
+} from "@ag-grid-community/core";
+import { ModuleRegistry } from "@ag-grid-community/core";
+import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
+import { MenuModule } from "@ag-grid-enterprise/menu";
+import { GridChartsModule } from "@ag-grid-enterprise/charts";
+import { RowGroupingModule } from "@ag-grid-enterprise/row-grouping";
 
 // Register the required feature modules with the Grid
-ModuleRegistry.registerModules([ClientSideRowModelModule, MenuModule, GridChartsModule, RowGroupingModule])
+ModuleRegistry.registerModules([
+  ClientSideRowModelModule,
+  MenuModule,
+  GridChartsModule,
+  RowGroupingModule,
+]);
 
 const gridOptions: GridOptions = {
   columnDefs: [
-    { field: 'country', width: 150 },
-    { field: 'gold' },
-    { field: 'silver' },
-    { field: 'bronze' },
+    { field: "country", width: 150 },
+    { field: "gold" },
+    { field: "silver" },
+    { field: "bronze" },
   ],
   defaultColDef: {
     editable: true,
@@ -28,7 +41,7 @@ const gridOptions: GridOptions = {
   popupParent: document.body,
   enableRangeSelection: true,
   enableCharts: true,
-  chartThemes: ['ag-pastel', 'ag-material-dark', 'ag-vivid-dark', 'ag-solar'],
+  chartThemes: ["ag-pastel", "ag-material-dark", "ag-vivid-dark", "ag-solar"],
   chartThemeOverrides: {
     cartesian: {
       axes: {
@@ -42,24 +55,23 @@ const gridOptions: GridOptions = {
   },
   rowData: getData(),
   onFirstDataRendered: onFirstDataRendered,
-}
+};
 
 function onFirstDataRendered(params: FirstDataRenderedEvent) {
   var createRangeChartParams: CreateRangeChartParams = {
     cellRange: {
       rowStartIndex: 0,
       rowEndIndex: 79,
-      columns: ['country', 'gold', 'silver', 'bronze'],
+      columns: ["country", "gold", "silver", "bronze"],
     },
-    chartType: 'groupedColumn',
-    chartContainer: document.querySelector('#myChart') as any,
-    aggFunc: 'sum',
-  }
+    chartType: "groupedColumn",
+    chartContainer: document.querySelector("#myChart") as any,
+    aggFunc: "sum",
+  };
 
-  params.api.createRangeChart(createRangeChartParams)
+  params.api.createRangeChart(createRangeChartParams);
 }
 
 // setup the grid after the page has finished loading
-  var gridDiv = document.querySelector<HTMLElement>('#myGrid')!
-  new Grid(gridDiv, gridOptions)
- 
+var gridDiv = document.querySelector<HTMLElement>("#myGrid")!;
+new Grid(gridDiv, gridOptions);

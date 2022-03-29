@@ -1,49 +1,39 @@
-import { cloneDeep } from 'lodash';
-import { Component } from '@angular/core';
-import * as agCharts from 'ag-charts-community';
-import { AgChartOptions } from 'ag-charts-community';
+import { cloneDeep } from "lodash";
+import { Component } from "@angular/core";
+import * as agCharts from "ag-charts-community";
+import { AgChartOptions } from "ag-charts-community";
 
 @Component({
-    selector: 'my-app',
-    template: `<ag-charts-angular
+  selector: "my-app",
+  template: `<ag-charts-angular
     style="height: 100%"
     [options]="options"
-    ></ag-charts-angular>
-`
+  ></ag-charts-angular> `,
 })
-
 export class AppComponent {
-    private options: AgChartOptions;
-    
+  private options: AgChartOptions;
 
-    constructor() {
-        this.options = {
-    
-    autoSize: true,
-    data: getData(),
-    title: {
-        text: 'People Born',
-    },
-    subtitle: {
-        text: '2008-2020',
-    },
-    series: [
+  constructor() {
+    this.options = {
+      autoSize: true,
+      data: getData(),
+      title: {
+        text: "People Born",
+      },
+      subtitle: {
+        text: "2008-2020",
+      },
+      series: [
         {
-            xKey: 'year',
-            yKey: 'visitors',
+          xKey: "year",
+          yKey: "visitors",
         },
-    ],
-    legend: {
+      ],
+      legend: {
         enabled: false,
-    },
+      },
+    };
+  }
+
+  ngOnInit() {}
 }
-    }
-
-    ngOnInit() {
-        
-    }
-
-    
-}
-
-

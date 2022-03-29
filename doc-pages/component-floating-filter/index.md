@@ -9,8 +9,8 @@ Floating Filter components allow you to add your own floating filter types to AG
 
 This page focuses on writing your own floating filter components. To see general information about floating filters in AG Grid see [floating filters](/floating-filters/).
 
-## Simple Floating Filter 
- 
+## Simple Floating Filter
+
 md-include:simple-floating-filter-javascript.md
 md-include:simple-floating-filter-angular.md
 md-include:simple-floating-filter-react.md
@@ -54,7 +54,6 @@ For details on how the floating filter interacts with its associated column filt
 
 To see examples of the different ways to implement floating filters please refer to the examples below.
 
-
 ## Floating Filter Methods on Provided Filters
 
 When the user interacts with a floating filter, the floating filter must set the state of the main parent filter in order for filter changes to take effect. This is done by the floating filter getting a reference to the parent filter instance and calling a method on it.
@@ -87,7 +86,6 @@ In this example it is important to note that:
 
 If you want to provide a custom filter but don't want to provide an equivalent custom floating filter, you can implement the method `filter.getModelAsString()` and you will get a read-only floating filter for free.
 
-
 This example uses the previous custom filter but implementing the `getModelAsString()` method. Note how there are no custom floating filters and yet each column using `NumberFilter` (Gold, Silver, Bronze and Total) has a read-only floating filter that gets updated as you change the values from the main filter.
 
 <grid-example title='Custom Filter Only' name='custom-filter' type='generated'></grid-example>
@@ -110,7 +108,7 @@ This example uses the previous custom filter but implementing the `getModelAsStr
 | see [here](/react-hooks/) for more information.
 
 [[only-vue]]
-| ## Sliding  Floating Filters
+| ## Sliding Floating Filters
 |
 | The below example shows how to create a custom floating filter re-using the out-of-the-box Number filter with Vue.
 |
@@ -127,4 +125,3 @@ Note that:
 - All the other columns have the standard 500ms debounce
 
 <grid-example title='Custom Complex Filter and Floating Filter' name='custom-complex-filter-and-floating-filter' type='typescript' options='{ "extras": ["jquery", "jqueryui"] }'></grid-example>
-

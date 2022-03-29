@@ -1,25 +1,25 @@
-import { AgChartOptions } from 'ag-charts-community'
-import * as agCharts from 'ag-charts-community'
+import { AgChartOptions } from "ag-charts-community";
+import * as agCharts from "ag-charts-community";
 
 const options: AgChartOptions = {
-  container: document.getElementById('myChart'),
+  container: document.getElementById("myChart"),
   autoSize: true,
   data: getData(),
   title: {
-    text: 'People Born',
+    text: "People Born",
   },
   subtitle: {
-    text: '2008-2020',
+    text: "2008-2020",
   },
   series: [
     {
-      xKey: 'year',
-      yKey: 'visitors',
+      xKey: "year",
+      yKey: "visitors",
     },
   ],
   legend: {
     enabled: false,
   },
-}
+};
 
-agCharts.AgChart.create(options)
+agCharts.AgChart.create(options);

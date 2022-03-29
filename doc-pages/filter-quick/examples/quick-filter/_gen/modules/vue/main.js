@@ -1,18 +1,15 @@
-
-import Vue from 'vue';
-import { AgGridVue } from '@ag-grid-community/vue';
-import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import Vue from "vue";
+import { AgGridVue } from "@ag-grid-community/vue";
+import "@ag-grid-community/core/dist/styles/ag-grid.css";
 import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { ModuleRegistry } from '@ag-grid-community/core';
-import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import { ModuleRegistry } from "@ag-grid-community/core";
+import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
 
 // Register the required feature modules with the Grid
-ModuleRegistry.registerModules([ClientSideRowModelModule])
-
-
+ModuleRegistry.registerModules([ClientSideRowModelModule]);
 
 const VueExample = {
-    template: `
+  template: `
         <div style="height: 100%">
             <div class="example-wrapper">
                 <div class="example-header">
@@ -31,66 +28,73 @@ const VueExample = {
             </div>
         </div>
     `,
-    components: {
-        'ag-grid-vue': AgGridVue,
-        
+  components: {
+    "ag-grid-vue": AgGridVue,
+  },
+  data: function () {
+    return {
+      columnDefs: [
+        { field: "name" },
+        { headerName: "Age", field: "person.age" },
+        { headerName: "Country", valueGetter: "data.person.country" },
+        {
+          headerName: "Results",
+          field: "medals",
+          cellRenderer: MedalRenderer,
+          getQuickFilterText: (params) => {
+            return getMedalString(params.value);
+          },
+        },
+      ],
+      gridApi: null,
+      columnApi: null,
+      defaultColDef: {
+        flex: 1,
+        editable: true,
+      },
+      rowData: null,
+    };
+  },
+  created() {
+    this.rowData = getData();
+  },
+  methods: {
+    onFilterTextBoxChanged() {
+      this.gridApi.setQuickFilter(
+        document.getElementById("filter-text-box").value
+      );
     },
-    data: function() {
-        return {
-            columnDefs: [{field:"name"},{headerName:"Age",
-field:"person.age"},{headerName:"Country",
-valueGetter:"data.person.country"},{headerName:"Results",
-field:"medals",
-cellRenderer:MedalRenderer,
-getQuickFilterText:(params) =>  {
-    return getMedalString(params.value);
-}}],
-            gridApi: null,
-            columnApi: null,
-            defaultColDef: {
-    flex: 1,
-    editable: true,
-},
-            rowData: null
-        }
-    },
-    created() {
-        this.rowData = getData()
-    },
-    methods: {
-        onFilterTextBoxChanged() {
-    this.gridApi.setQuickFilter((document.getElementById('filter-text-box')).value);
-},
-onPrintQuickFilterTexts() {
-    this.gridApi.forEachNode(function (rowNode, index) {
-        console.log('Row ' +
+    onPrintQuickFilterTexts() {
+      this.gridApi.forEachNode(function (rowNode, index) {
+        console.log(
+          "Row " +
             index +
-            ' quick filter text is ' +
-            rowNode.quickFilterAggregateText);
-    });
-},
-onGridReady(params) {
-        this.gridApi = params.api;
-        this.gridColumnApi = params.columnApi;
-        
+            " quick filter text is " +
+            rowNode.quickFilterAggregateText
+        );
+      });
     },
-    }
-}
+    onGridReady(params) {
+      this.gridApi = params.api;
+      this.gridColumnApi = params.columnApi;
+    },
+  },
+};
 
 const getMedalString = function ({ gold, silver, bronze }) {
-    const goldStr = gold > 0 ? `Gold: ${gold} ` : '';
-    const silverStr = silver > 0 ? `Silver: ${silver} ` : '';
-    const bronzeStr = bronze > 0 ? `Bronze: ${bronze}` : '';
-    return goldStr + silverStr + bronzeStr;
+  const goldStr = gold > 0 ? `Gold: ${gold} ` : "";
+  const silverStr = silver > 0 ? `Silver: ${silver} ` : "";
+  const bronzeStr = bronze > 0 ? `Bronze: ${bronze}` : "";
+  return goldStr + silverStr + bronzeStr;
 };
 
 const MedalRenderer = function (params) {
-    return getMedalString(params.value);
+  return getMedalString(params.value);
 };
 
 new Vue({
-    el: '#app',
-    components: {
-        'my-component': VueExample
-    }
+  el: "#app",
+  components: {
+    "my-component": VueExample,
+  },
 });

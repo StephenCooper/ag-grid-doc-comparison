@@ -146,7 +146,6 @@ Below is an example to show crosshair customisation. Note that:
 
 <grid-example title='Sparkline Crosshairs' name='sparkline-crosshairs' type='generated' options='{ "enterprise": true, "exampleHeight": 585, "modules": ["clientside", "sparklines"] }'></grid-example>
 
-
 ## Sparkline Padding Options
 
 To add extra space around the sparklines, custom `padding` options can be applied in the following way.
@@ -194,6 +193,5 @@ More advanced customisations are discussed separately in the following sections:
 <api-documentation source='sparklines-line-customisation/resources/line-sparkline-api.json' section='SparklineAxisOptions'></api-documentation>
 
 ## Next Up
-
 
 Continue to the next section to learn about: [Sparkline Data](/sparklines-data/).

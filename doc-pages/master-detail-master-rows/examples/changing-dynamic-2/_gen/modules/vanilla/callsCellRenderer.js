@@ -1,91 +1,92 @@
+class CallsCellRenderer {
+  init(params) {
+    var eTemp = document.createElement("div");
+    eTemp.innerHTML =
+      '<span class="calls-cell-renderer">' +
+      '<button ref="btAdd">+</button>' +
+      '<button ref="btRemove">-</button>' +
+      '<span ref="eValue"></span>' +
+      "</span>";
 
-class CallsCellRenderer  {
-    
-    
+    this.eGui = eTemp.firstChild;
 
-    init(params) {
-        var eTemp = document.createElement('div');
-        eTemp.innerHTML = '<span class="calls-cell-renderer">' +
-            '<button ref="btAdd">+</button>' +
-            '<button ref="btRemove">-</button>' +
-            '<span ref="eValue"></span>' +
-            '</span>';
+    this.eValue = this.eGui.querySelector('[ref="eValue"]');
+    var btAdd = this.eGui.querySelector('[ref="btAdd"]');
+    var btRemove = this.eGui.querySelector('[ref="btRemove"]');
 
-        this.eGui = eTemp.firstChild ;
+    btAdd.addEventListener("click", this.onBtAdd.bind(this, params));
+    btRemove.addEventListener("click", this.onBtRemove.bind(this, params));
 
-        this.eValue = this.eGui.querySelector('[ref="eValue"]');
-        var btAdd = this.eGui.querySelector('[ref="btAdd"]');
-        var btRemove = this.eGui.querySelector('[ref="btRemove"]');
+    this.refresh(params);
+  }
 
-        btAdd.addEventListener('click', this.onBtAdd.bind(this, params));
-        btRemove.addEventListener('click', this.onBtRemove.bind(this, params));
+  onBtRemove(params) {
+    var oldData = params.node.data;
 
-        this.refresh(params);
+    var oldCallRecords = oldData.callRecords;
+
+    if (oldCallRecords.length == 0) {
+      return;
     }
 
-    onBtRemove(params) {
+    var newCallRecords = oldCallRecords.slice(0); // make a copy
+    newCallRecords.pop(); // remove one item
 
-        var oldData = params.node.data;
+    var minutes = 0;
+    newCallRecords.forEach(function (r) {
+      minutes += r.duration;
+    });
 
-        var oldCallRecords = oldData.callRecords;
+    var newData = {
+      name: oldData.name,
+      account: oldData.account,
+      calls: newCallRecords.length,
+      minutes: minutes,
+      callRecords: newCallRecords,
+    };
 
-        if (oldCallRecords.length == 0) { return; }
+    params.api.applyTransaction({ update: [newData] });
+  }
 
-        var newCallRecords = oldCallRecords.slice(0); // make a copy
-        newCallRecords.pop(); // remove one item
+  onBtAdd(params) {
+    var oldData = params.node.data;
 
-        var minutes = 0;
-        newCallRecords.forEach(function (r) { minutes += r.duration });
+    var oldCallRecords = oldData.callRecords;
 
-        var newData = {
-            name: oldData.name,
-            account: oldData.account,
-            calls: newCallRecords.length,
-            minutes: minutes,
-            callRecords: newCallRecords
-        };
+    var newCallRecords = oldCallRecords.slice(0); // make a copy
+    newCallRecords.push({
+      name: ["Bob", "Paul", "David", "John"][Math.floor(Math.random() * 4)],
+      callId: Math.floor(Math.random() * 1000),
+      duration: Math.floor(Math.random() * 100) + 1,
+      switchCode: "SW5",
+      direction: "Out",
+      number: "(02) " + Math.floor(Math.random() * 1000000),
+    }); // add one item
 
-        params.api.applyTransaction({ update: [newData] });
-    }
+    var minutes = 0;
+    newCallRecords.forEach(function (r) {
+      minutes += r.duration;
+    });
 
-    onBtAdd(params) {
-        var oldData = params.node.data;
+    var newData = {
+      name: oldData.name,
+      account: oldData.account,
+      calls: newCallRecords.length,
+      minutes: minutes,
+      callRecords: newCallRecords,
+    };
 
-        var oldCallRecords = oldData.callRecords;
+    params.api.applyTransaction({ update: [newData] });
 
-        var newCallRecords = oldCallRecords.slice(0); // make a copy
-        newCallRecords.push({
-            name: ["Bob", "Paul", "David", "John"][Math.floor(Math.random() * 4)],
-            callId: Math.floor(Math.random() * 1000),
-            duration: Math.floor(Math.random() * 100) + 1,
-            switchCode: "SW5",
-            direction: "Out",
-            number: "(02) " + Math.floor(Math.random() * 1000000)
-        }); // add one item
+    params.node.setExpanded(true);
+  }
 
-        var minutes = 0;
-        newCallRecords.forEach(function (r) { minutes += r.duration });
+  refresh(params) {
+    this.eValue.innerHTML = params.value;
+    return true;
+  }
 
-        var newData = {
-            name: oldData.name,
-            account: oldData.account,
-            calls: newCallRecords.length,
-            minutes: minutes,
-            callRecords: newCallRecords
-        };
-
-        params.api.applyTransaction({ update: [newData] });
-
-        params.node.setExpanded(true);
-    }
-
-    refresh(params) {
-        this.eValue.innerHTML = params.value;
-        return true;
-    }
-
-    getGui() {
-        return this.eGui;
-    }
-
+  getGui() {
+    return this.eGui;
+  }
 }

@@ -1,33 +1,39 @@
-import 'ag-grid-enterprise';
-import 'ag-grid-community/dist/styles/ag-grid.css';
+import "ag-grid-enterprise";
+import "ag-grid-community/dist/styles/ag-grid.css";
 import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import { ColDef, ColGroupDef, CreateRangeChartParams, Grid, GridOptions } from 'ag-grid-community';
+import {
+  ColDef,
+  ColGroupDef,
+  CreateRangeChartParams,
+  Grid,
+  GridOptions,
+} from "ag-grid-community";
 
 const gridOptions: GridOptions = {
   columnDefs: [
-    { field: 'country', width: 150, chartDataType: 'category' },
-    { field: 'gold', chartDataType: 'series', sort: 'desc' },
-    { field: 'silver', chartDataType: 'series', sort: 'desc' },
-    { field: 'bronze', chartDataType: 'series' },
+    { field: "country", width: 150, chartDataType: "category" },
+    { field: "gold", chartDataType: "series", sort: "desc" },
+    { field: "silver", chartDataType: "series", sort: "desc" },
+    { field: "bronze", chartDataType: "series" },
     {
-      headerName: 'A',
-      valueGetter: 'Math.floor(Math.random()*1000)',
-      chartDataType: 'series',
+      headerName: "A",
+      valueGetter: "Math.floor(Math.random()*1000)",
+      chartDataType: "series",
     },
     {
-      headerName: 'B',
-      valueGetter: 'Math.floor(Math.random()*1000)',
-      chartDataType: 'series',
+      headerName: "B",
+      valueGetter: "Math.floor(Math.random()*1000)",
+      chartDataType: "series",
     },
     {
-      headerName: 'C',
-      valueGetter: 'Math.floor(Math.random()*1000)',
-      chartDataType: 'series',
+      headerName: "C",
+      valueGetter: "Math.floor(Math.random()*1000)",
+      chartDataType: "series",
     },
     {
-      headerName: 'D',
-      valueGetter: 'Math.floor(Math.random()*1000)',
-      chartDataType: 'series',
+      headerName: "D",
+      valueGetter: "Math.floor(Math.random()*1000)",
+      chartDataType: "series",
     },
   ],
   defaultColDef: {
@@ -42,42 +48,42 @@ const gridOptions: GridOptions = {
   enableRangeSelection: true,
   enableCharts: true,
   popupParent: document.body,
-}
+};
 
 function onChart1() {
   var params: CreateRangeChartParams = {
     cellRange: {
       rowStartIndex: 0,
       rowEndIndex: 4,
-      columns: ['country', 'gold', 'silver'],
+      columns: ["country", "gold", "silver"],
     },
-    chartType: 'groupedColumn',
-    chartThemeName: 'ag-vivid',
+    chartType: "groupedColumn",
+    chartThemeName: "ag-vivid",
     chartThemeOverrides: {
       common: {
         title: {
           enabled: true,
-          text: 'Top 5 Medal Winners',
+          text: "Top 5 Medal Winners",
         },
       },
     },
-  }
+  };
 
-  gridOptions.api!.createRangeChart(params)
+  gridOptions.api!.createRangeChart(params);
 }
 
 function onChart2() {
   var params: CreateRangeChartParams = {
     cellRange: {
-      columns: ['country', 'bronze'],
+      columns: ["country", "bronze"],
     },
-    chartType: 'groupedBar',
-    chartThemeName: 'ag-pastel',
+    chartType: "groupedBar",
+    chartThemeName: "ag-pastel",
     chartThemeOverrides: {
       common: {
         title: {
           enabled: true,
-          text: 'Bronze Medal by Country',
+          text: "Bronze Medal by Country",
         },
         legend: {
           enabled: false,
@@ -85,19 +91,17 @@ function onChart2() {
       },
     },
     unlinkChart: true,
-  }
+  };
 
-  gridOptions.api!.createRangeChart(params)
+  gridOptions.api!.createRangeChart(params);
 }
 
-
 // setup the grid after the page has finished loading
-  var gridDiv = document.querySelector<HTMLElement>('#myGrid')!
-  new Grid(gridDiv, gridOptions)
- 
+var gridDiv = document.querySelector<HTMLElement>("#myGrid")!;
+new Grid(gridDiv, gridOptions);
 
-if (typeof window !== 'undefined') {
-// Attach external event handlers to window so they can be called from index.html
- (<any>window).onChart1 = onChart1;
- (<any>window).onChart2 = onChart2;
+if (typeof window !== "undefined") {
+  // Attach external event handlers to window so they can be called from index.html
+  (<any>window).onChart1 = onChart1;
+  (<any>window).onChart2 = onChart2;
 }

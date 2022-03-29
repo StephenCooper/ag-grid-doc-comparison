@@ -1,84 +1,95 @@
-
-import { Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import { Component } from "@angular/core";
+import { HttpClient } from "@angular/common/http";
+import "@ag-grid-community/core/dist/styles/ag-grid.css";
 import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { ColDef, ColGroupDef, ColumnApi, Grid, GridApi, GridOptions, GridReadyEvent } from '@ag-grid-community/core';
+import {
+  ColDef,
+  ColGroupDef,
+  ColumnApi,
+  Grid,
+  GridApi,
+  GridOptions,
+  GridReadyEvent,
+} from "@ag-grid-community/core";
 // Required feature modules are registered in app.module.ts
 
 @Component({
-    selector: 'my-app',
-    template: `<div class="example-wrapper">
+  selector: "my-app",
+  template: `<div class="example-wrapper">
     <div style="margin-bottom: 5px;">
-        <button (click)="getDisplayedRowAtIndex()">Get Displayed Row 0</button>
-        <button (click)="getDisplayedRowCount()">Get Displayed Row Count</button>
-        <button (click)="printAllDisplayedRows()">Print All Displayed Rows</button>
-        <button (click)="printPageDisplayedRows()">Print Page Displayed Rows</button>
+      <button (click)="getDisplayedRowAtIndex()">Get Displayed Row 0</button>
+      <button (click)="getDisplayedRowCount()">Get Displayed Row Count</button>
+      <button (click)="printAllDisplayedRows()">
+        Print All Displayed Rows
+      </button>
+      <button (click)="printPageDisplayedRows()">
+        Print Page Displayed Rows
+      </button>
     </div>
-    
+
     <ag-grid-angular
-    style="width: 100%; height: 100%;"
-    
-    class="ag-theme-alpine"
-    [columnDefs]="columnDefs"
-    [defaultColDef]="defaultColDef"
-    [pagination]="true"
-    [paginationAutoPageSize]="true"
-    [rowData]="rowData"
-    (gridReady)="onGridReady($event)"
+      style="width: 100%; height: 100%;"
+      class="ag-theme-alpine"
+      [columnDefs]="columnDefs"
+      [defaultColDef]="defaultColDef"
+      [pagination]="true"
+      [paginationAutoPageSize]="true"
+      [rowData]="rowData"
+      (gridReady)="onGridReady($event)"
     ></ag-grid-angular>
-</div>`
+  </div>`,
 })
-
 export class AppComponent {
-    private gridApi!: GridApi;
+  private gridApi!: GridApi;
 
-    
-    public columnDefs: ColDef[] = [
-    { field: 'athlete', minWidth: 180 },
-    { field: 'age' },
-    { field: 'country', minWidth: 150 },
-    { headerName: 'Group', valueGetter: 'data.country.charAt(0)' },
-    { field: 'year' },
-    { field: 'date', minWidth: 150 },
-    { field: 'sport', minWidth: 180 },
-    { field: 'gold' },
-    { field: 'silver' },
-    { field: 'bronze' },
-    { field: 'total' },
-];
-public defaultColDef: ColDef = {
+  public columnDefs: ColDef[] = [
+    { field: "athlete", minWidth: 180 },
+    { field: "age" },
+    { field: "country", minWidth: 150 },
+    { headerName: "Group", valueGetter: "data.country.charAt(0)" },
+    { field: "year" },
+    { field: "date", minWidth: 150 },
+    { field: "sport", minWidth: 180 },
+    { field: "gold" },
+    { field: "silver" },
+    { field: "bronze" },
+    { field: "total" },
+  ];
+  public defaultColDef: ColDef = {
     flex: 1,
     minWidth: 100,
     sortable: true,
     filter: true,
-};
-public rowData!: any[];
+  };
+  public rowData!: any[];
 
-    constructor(private http: HttpClient) {
-}
+  constructor(private http: HttpClient) {}
 
-
-    getDisplayedRowAtIndex() {
+  getDisplayedRowAtIndex() {
     var rowNode = this.gridApi.getDisplayedRowAtIndex(0)!;
-    console.log('getDisplayedRowAtIndex(0) => ' + rowNode.data.athlete + ' ' + rowNode.data.year);
-}
+    console.log(
+      "getDisplayedRowAtIndex(0) => " +
+        rowNode.data.athlete +
+        " " +
+        rowNode.data.year
+    );
+  }
 
-getDisplayedRowCount() {
+  getDisplayedRowCount() {
     var count = this.gridApi.getDisplayedRowCount();
-    console.log('getDisplayedRowCount() => ' + count);
-}
+    console.log("getDisplayedRowCount() => " + count);
+  }
 
-printAllDisplayedRows() {
+  printAllDisplayedRows() {
     var count = this.gridApi.getDisplayedRowCount();
-    console.log('## printAllDisplayedRows');
+    console.log("## printAllDisplayedRows");
     for (var i = 0; i < count; i++) {
-        var rowNode = this.gridApi.getDisplayedRowAtIndex(i)!;
-        console.log('row ' + i + ' is ' + rowNode.data.athlete);
+      var rowNode = this.gridApi.getDisplayedRowAtIndex(i)!;
+      console.log("row " + i + " is " + rowNode.data.athlete);
     }
-}
+  }
 
-printPageDisplayedRows() {
+  printPageDisplayedRows() {
     var rowCount = this.gridApi.getDisplayedRowCount();
     var lastGridIndex = rowCount - 1;
     var currentPage = this.gridApi.paginationGetCurrentPage();
@@ -86,24 +97,22 @@ printPageDisplayedRows() {
     var startPageIndex = currentPage * pageSize;
     var endPageIndex = (currentPage + 1) * pageSize - 1;
     if (endPageIndex > lastGridIndex) {
-        endPageIndex = lastGridIndex;
+      endPageIndex = lastGridIndex;
     }
-    console.log('## printPageDisplayedRows');
+    console.log("## printPageDisplayedRows");
     for (var i = startPageIndex; i <= endPageIndex; i++) {
-        var rowNode = this.gridApi.getDisplayedRowAtIndex(i)!;
-        console.log('row ' + i + ' is ' + rowNode.data.athlete);
+      var rowNode = this.gridApi.getDisplayedRowAtIndex(i)!;
+      console.log("row " + i + " is " + rowNode.data.athlete);
     }
+  }
+
+  onGridReady(params: GridReadyEvent) {
+    this.gridApi = params.api;
+
+    this.http
+      .get<any[]>("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      .subscribe((data) => {
+        params.api!.setRowData(data.slice(0, 100));
+      });
+  }
 }
-
-onGridReady(params: GridReadyEvent) {
-        this.gridApi = params.api;
-
-        this.http.get<any[]>('https://www.ag-grid.com/example-assets/olympic-winners.json').subscribe(data => {
-    params.api!.setRowData(data.slice(0, 100));
-});
-    }
-}
-
-
-
-

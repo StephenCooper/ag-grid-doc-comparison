@@ -1,46 +1,45 @@
-import { createApp } from 'vue';
-import { cloneDeep } from 'lodash';
-import * as agCharts from 'ag-charts-community';
-import { AgChartsVue } from 'ag-charts-vue3';
+import { createApp } from "vue";
+import { cloneDeep } from "lodash";
+import * as agCharts from "ag-charts-community";
+import { AgChartsVue } from "ag-charts-vue3";
 
 const ChartExample = {
-    template: `
+  template: `
         <ag-charts-vue
                 :options="options"></ag-charts-vue>
     `,
-    components: {
-        'ag-charts-vue': AgChartsVue
-    },
-    data: function() {
-        return {
-            options: null
-        }
-    },
-    created() {
-        this.options = {
-    
-    autoSize: true,
-    data: getData(),
-    theme: {
+  components: {
+    "ag-charts-vue": AgChartsVue,
+  },
+  data: function () {
+    return {
+      options: null,
+    };
+  },
+  created() {
+    this.options = {
+      autoSize: true,
+      data: getData(),
+      theme: {
         overrides: {
-            column: {
-                series: {
-                    strokeWidth: 0,
-                    highlightStyle: {
-                        strokeWidth: 1,
-                    },
-                },
+          column: {
+            series: {
+              strokeWidth: 0,
+              highlightStyle: {
+                strokeWidth: 1,
+              },
             },
+          },
         },
-    },
-    title: {
+      },
+      title: {
         text: "Regular Internet Users",
         fontSize: 18,
-    },
-    subtitle: {
+      },
+      subtitle: {
         text: "Source: Office for National Statistics",
-    },
-    series: [
+      },
+      series: [
         { type: "column", xKey: "year", yKey: "16-24" },
         { type: "column", xKey: "year", yKey: "25-34" },
         { type: "column", xKey: "year", yKey: "35-44" },
@@ -48,32 +47,26 @@ const ChartExample = {
         { type: "column", xKey: "year", yKey: "55-64" },
         { type: "column", xKey: "year", yKey: "65-74" },
         { type: "column", xKey: "year", yKey: "75+" },
-    ],
-    axes: [
+      ],
+      axes: [
         {
-            type: "category",
-            position: "bottom",
+          type: "category",
+          position: "bottom",
         },
         {
-            type: "number",
-            position: "left",
-            label: {
-                formatter: (params) => {
-                    return params.value / 1000 + "M";
-                },
+          type: "number",
+          position: "left",
+          label: {
+            formatter: (params) => {
+              return params.value / 1000 + "M";
             },
+          },
         },
-    ],
-}
-    },
-    mounted() {
-        
-    },
-    methods: {
-        
-    }
-}
-
-
+      ],
+    };
+  },
+  mounted() {},
+  methods: {},
+};
 
 createApp(ChartExample).mount("#app");

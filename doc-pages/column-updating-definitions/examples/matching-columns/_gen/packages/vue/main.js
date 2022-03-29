@@ -1,17 +1,16 @@
-import 'ag-grid-community/dist/styles/ag-grid.css';
+import "ag-grid-community/dist/styles/ag-grid.css";
 import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import Vue from 'vue';
-import { AgGridVue } from 'ag-grid-vue';
-
+import Vue from "vue";
+import { AgGridVue } from "ag-grid-vue";
 
 const athleteColumn = {
-    headerName: 'Athlete',
-    valueGetter: function (params) {
-        return params.data.athlete;
-    }
+  headerName: "Athlete",
+  valueGetter: function (params) {
+    return params.data.athlete;
+  },
 };
 const VueExample = {
-    template: `
+  template: `
       <div style="height: 100%">
       <div class="test-container">
         <div class="test-header">
@@ -29,100 +28,98 @@ const VueExample = {
       </div>
       </div>
     `,
-    components: {
-        'ag-grid-vue': AgGridVue,
-
+  components: {
+    "ag-grid-vue": AgGridVue,
+  },
+  data: function () {
+    return {
+      columnDefs: [],
+      gridApi: null,
+      columnApi: null,
+      defaultColDef: {
+        initialWidth: 100,
+        sortable: true,
+        resizable: true,
+      },
+      rowData: null,
+    };
+  },
+  beforeMount() {
+    this.columnDefs = this.getColDefsMedalsIncluded();
+  },
+  methods: {
+    onBtExcludeMedalColumns() {
+      this.gridApi.setColumnDefs(this.getColDefsMedalsExcluded());
     },
-    data: function () {
-        return {
-            columnDefs: [],
-            gridApi: null,
-            columnApi: null,
-            defaultColDef: {
-                initialWidth: 100,
-                sortable: true,
-                resizable: true
-            },
-            rowData: null
-        }
+    onBtIncludeMedalColumns() {
+      this.gridApi.setColumnDefs(this.getColDefsMedalsIncluded());
     },
-    beforeMount() {
-        this.columnDefs = this.getColDefsMedalsIncluded();
+    onGridReady(params) {
+      this.gridApi = params.api;
+      this.gridColumnApi = params.columnApi;
+
+      const updateData = (data) => {
+        this.rowData = data;
+      };
+
+      fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+        .then((resp) => resp.json())
+        .then((data) => updateData(data));
     },
-    methods: {
-        onBtExcludeMedalColumns() {
-            this.gridApi.setColumnDefs(this.getColDefsMedalsExcluded());
+    getColDefsMedalsIncluded() {
+      return [
+        athleteColumn,
+        {
+          colId: "myAgeCol",
+          headerName: "Age",
+          valueGetter: function (params) {
+            return params.data.age;
+          },
         },
-        onBtIncludeMedalColumns() {
-            this.gridApi.setColumnDefs(this.getColDefsMedalsIncluded());
+        {
+          headerName: "Country",
+          headerClass: "country-header",
+          valueGetter: function (params) {
+            return params.data.country;
+          },
         },
-        onGridReady(params) {
-            this.gridApi = params.api;
-            this.gridColumnApi = params.columnApi;
-
-
-            const updateData = (data) => {
-                this.rowData = data;
-            };
-
-            fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
-                .then(resp => resp.json())
-                .then(data => updateData(data));
+        { field: "sport" },
+        { field: "year" },
+        { field: "date" },
+        { field: "gold" },
+        { field: "silver" },
+        { field: "bronze" },
+        { field: "total" },
+      ];
+    },
+    getColDefsMedalsExcluded() {
+      return [
+        athleteColumn,
+        {
+          colId: "myAgeCol",
+          headerName: "Age",
+          valueGetter: function (params) {
+            return params.data.age;
+          },
         },
-        getColDefsMedalsIncluded() {
-            return [
-                athleteColumn,
-                {
-                    colId: 'myAgeCol',
-                    headerName: 'Age',
-                    valueGetter: function (params) {
-                        return params.data.age;
-                    }
-                },
-                {
-                    headerName: 'Country',
-                    headerClass: 'country-header',
-                    valueGetter: function (params) {
-                        return params.data.country;
-                    }
-                },
-                { field: 'sport' },
-                { field: 'year' },
-                { field: 'date' },
-                { field: 'gold' },
-                { field: 'silver' },
-                { field: 'bronze' },
-                { field: 'total' }
-            ];
+        {
+          headerName: "Country",
+          headerClass: "country-header",
+          valueGetter: function (params) {
+            return params.data.country;
+          },
         },
-        getColDefsMedalsExcluded() {
-            return [
-                athleteColumn,
-                {
-                    colId: 'myAgeCol',
-                    headerName: 'Age',
-                    valueGetter: function (params) {
-                        return params.data.age;
-                    }
-                },
-                {
-                    headerName: 'Country',
-                    headerClass: 'country-header',
-                    valueGetter: function (params) {
-                        return params.data.country;
-                    }
-                },
-                { field: 'sport' },
-                { field: 'year' },
-                { field: 'date' }
-            ];
-        }
-    }
-}
+        { field: "sport" },
+        { field: "year" },
+        { field: "date" },
+      ];
+    },
+  },
+};
 
 new Vue({
-    el: '#app',
-    components: {
-        'my-component': VueExample
-    }
+  el: "#app",
+  components: {
+    "my-component": VueExample,
+  },
 });

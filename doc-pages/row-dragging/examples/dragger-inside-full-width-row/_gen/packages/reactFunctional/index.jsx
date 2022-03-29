@@ -1,85 +1,76 @@
+"use strict";
 
-'use strict';
-
-import React, { useCallback, useMemo, useRef, useState } from 'react';
-import { render } from 'react-dom';
-import { AgGridReact } from 'ag-grid-react';
-import 'ag-grid-community/dist/styles/ag-grid.css';
-import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
-import FullWidthCellRenderer from './fullWidthCellRenderer.jsx';
+import React, { useCallback, useMemo, useRef, useState } from "react";
+import { render } from "react-dom";
+import { AgGridReact } from "ag-grid-react";
+import "ag-grid-community/dist/styles/ag-grid.css";
+import "ag-grid-community/dist/styles/ag-theme-alpine.css";
+import FullWidthCellRenderer from "./fullWidthCellRenderer.jsx";
 
 const countryCellRenderer = (params) => {
-    if (!params.fullWidth) {
-        return params.value;
-    }
-    var flag = '<img border="0" width="15" height="10" src="https://www.ag-grid.com/example-assets/flags/' +
-        params.data.code +
-        '.png">';
-    return ('<span style="cursor: default;">' + flag + ' ' + params.value + '</span>');
-}
+  if (!params.fullWidth) {
+    return params.value;
+  }
+  var flag =
+    '<img border="0" width="15" height="10" src="https://www.ag-grid.com/example-assets/flags/' +
+    params.data.code +
+    '.png">';
+  return (
+    '<span style="cursor: default;">' + flag + " " + params.value + "</span>"
+  );
+};
 
 const isFullWidth = (data) => {
-    // return true when country is Peru, France or Italy
-    return ['Peru', 'France', 'Italy'].indexOf(data.name) >= 0;
-}
-
-
+  // return true when country is Peru, France or Italy
+  return ["Peru", "France", "Italy"].indexOf(data.name) >= 0;
+};
 
 const GridExample = () => {
-    
-    const containerStyle = useMemo(() => ({ width: '100%', height: '100%' }), []);
-    const gridStyle = useMemo(() => ({height: '100%', width: '100%'}), []);
-    const [rowData, setRowData] = useState(getData());
-    const [columnDefs, setColumnDefs] = useState([
-    { field: 'name', cellRenderer: countryCellRenderer },
-    { field: 'continent' },
-    { field: 'language' },
-]);
-    const defaultColDef = useMemo(() => { return {
-    flex: 1,
-    sortable: true,
-    resizable: true,
-    filter: true,
-} }, []);
-    const getRowHeight = useCallback(function (params) {
+  const containerStyle = useMemo(() => ({ width: "100%", height: "100%" }), []);
+  const gridStyle = useMemo(() => ({ height: "100%", width: "100%" }), []);
+  const [rowData, setRowData] = useState(getData());
+  const [columnDefs, setColumnDefs] = useState([
+    { field: "name", cellRenderer: countryCellRenderer },
+    { field: "continent" },
+    { field: "language" },
+  ]);
+  const defaultColDef = useMemo(() => {
+    return {
+      flex: 1,
+      sortable: true,
+      resizable: true,
+      filter: true,
+    };
+  }, []);
+  const getRowHeight = useCallback(function (params) {
     // return 100px height for full width rows
     if (isFullWidth(params.data)) {
-        return 100;
+      return 100;
     }
-}, []);
-    const isFullWidthRow = useCallback(function (params) {
+  }, []);
+  const isFullWidthRow = useCallback(function (params) {
     return isFullWidth(params.rowNode.data);
-}, []);
-    const fullWidthCellRenderer = useMemo(() => { return FullWidthCellRenderer }, []);
+  }, []);
+  const fullWidthCellRenderer = useMemo(() => {
+    return FullWidthCellRenderer;
+  }, []);
 
+  return (
+    <div style={containerStyle}>
+      <div style={gridStyle} className="ag-theme-alpine">
+        <AgGridReact
+          rowData={rowData}
+          columnDefs={columnDefs}
+          defaultColDef={defaultColDef}
+          rowDragManaged={true}
+          getRowHeight={getRowHeight}
+          isFullWidthRow={isFullWidthRow}
+          fullWidthCellRenderer={fullWidthCellRenderer}
+          animateRows={true}
+        ></AgGridReact>
+      </div>
+    </div>
+  );
+};
 
-
-
-
-
-    return  (
-            <div style={containerStyle}>
-                
-
-
-        <div  style={gridStyle} className="ag-theme-alpine">             
-            <AgGridReact
-                
-                rowData={rowData}
-columnDefs={columnDefs}
-defaultColDef={defaultColDef}
-rowDragManaged={true}
-getRowHeight={getRowHeight}
-isFullWidthRow={isFullWidthRow}
-fullWidthCellRenderer={fullWidthCellRenderer}
-animateRows={true}
-            >
-            </AgGridReact>
-        </div>
-
-            </div>
-        );
-
-}
-
-render(<GridExample></GridExample>, document.querySelector('#root'))
+render(<GridExample></GridExample>, document.querySelector("#root"));

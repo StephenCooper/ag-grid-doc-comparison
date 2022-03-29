@@ -6,7 +6,6 @@ frameworks: ["react"]
 This section takes a deeper look at integrating AG Grid with a Redux store by implementing a
 feature rich File Browser that uses Tree Data.
 
-
 Following on from [Redux Integration Part 1](/redux-integration-pt1/) we will implement a
 Redux File Browser to demonstrate how the feature rich AG Grid can be combined with a Redux
 store to achieve elegant and powerful grid implementations.
@@ -21,15 +20,15 @@ from the redux module, and just a single reducer is required:
 ```jsx
 // store.jsx
 
-import { createStore } from 'redux';
-import fileReducer from './reducers/fileReducer.jsx';
+import { createStore } from "redux";
+import fileReducer from "./reducers/fileReducer.jsx";
 
 const initialState = {
-    files: [
-        { id: 1, filePath: ['Documents'] },
-        { id: 2, filePath: ['Documents', 'txt'] },
-        // more files ...
-    ]
+  files: [
+    { id: 1, filePath: ["Documents"] },
+    { id: 2, filePath: ["Documents", "txt"] },
+    // more files ...
+  ],
 };
 
 export default createStore(fileReducer, initialState);
@@ -42,26 +41,23 @@ The logic for handling these operations is defined in the `fileReducer` shown be
 // reducers/fileReducer.jsx
 
 export function fileReducer(state = {}, action) {
-    const payload = action.payload;
-    switch (action.type) {
-        case types.NEW_FILE:
-            return {
-                files: [
-                ...state.files,
-                newFile(state.files, payload.filePath)
-            ]
-        };
-        case types.MOVE_FILES:
-            return {
-                files: moveFiles(state.files, payload.pathToMove, payload.targetPath)
-        };
-        case types.DELETE_FILES:
-            return {
-                files: deleteFiles(state.files, payload.pathToRemove)
-            };
-        default:
-            return state;
-    }
+  const payload = action.payload;
+  switch (action.type) {
+    case types.NEW_FILE:
+      return {
+        files: [...state.files, newFile(state.files, payload.filePath)],
+      };
+    case types.MOVE_FILES:
+      return {
+        files: moveFiles(state.files, payload.pathToMove, payload.targetPath),
+      };
+    case types.DELETE_FILES:
+      return {
+        files: deleteFiles(state.files, payload.pathToRemove),
+      };
+    default:
+      return state;
+  }
 }
 ```
 
@@ -75,24 +71,24 @@ Rather than create action objects directly we shall use the following _Action Cr
 // actions/fileActions.jsx
 
 export const actions = {
-    newFile(filePath) {
-        return {
-            type: types.NEW_FILE,
-            payload: {filePath}
-        };
-    },
-    moveFiles(pathToMove, targetPath) {
-        return {
-            type: types.MOVE_FILES,
-            payload: {pathToMove, targetPath}
-        };
-    },
-    deleteFiles(pathToRemove) {
-        return {
-            type: types.DELETE_FILES,
-            payload: {pathToRemove}
-        };
-    }
+  newFile(filePath) {
+    return {
+      type: types.NEW_FILE,
+      payload: { filePath },
+    };
+  },
+  moveFiles(pathToMove, targetPath) {
+    return {
+      type: types.MOVE_FILES,
+      payload: { pathToMove, targetPath },
+    };
+  },
+  deleteFiles(pathToRemove) {
+    return {
+      type: types.DELETE_FILES,
+      payload: { pathToRemove },
+    };
+  },
 };
 ```
 
@@ -101,25 +97,24 @@ export const actions = {
 Now that we have created our Redux store we need to make it available to our React `FileBrowser`
 component. This is achieved through the `Provider` component from the react-redux project.
 
-
 In the entry point of our application we wrap the `FileBrowser` component in the `Provider`
 component as shown below:
 
 ```jsx
 // index.jsx
 
-import React from 'react';
-import { render } from 'react-dom';
-import { Provider } from 'react-redux';
+import React from "react";
+import { render } from "react-dom";
+import { Provider } from "react-redux";
 
-import store from './store.jsx';
-import FileBrowser from './FileBrowser.jsx';
+import store from "./store.jsx";
+import FileBrowser from "./FileBrowser.jsx";
 
 render(
-    <Provider store={ store }>
-        <FileBrowser/>
-    </Provider>,
-    document.getElementById('root')
+  <Provider store={store}>
+    <FileBrowser />
+  </Provider>,
+  document.getElementById("root")
 );
 ```
 
@@ -227,12 +222,12 @@ each array entry contains it's hierarchy in the `filePath` attribute.
 
 ```jsx
 files: [
-    {  id: 1, filePath: ['Documents'] },
-    { id: 2, filePath: ['Documents', 'txt'] },
-    { id: 3, filePath: ['Documents', 'txt', 'notes.txt'] },
-    { id: 4, filePath: ['Documents', 'pdf'] },
-    // more files ...
-]
+  { id: 1, filePath: ["Documents"] },
+  { id: 2, filePath: ["Documents", "txt"] },
+  { id: 3, filePath: ["Documents", "txt", "notes.txt"] },
+  { id: 4, filePath: ["Documents", "pdf"] },
+  // more files ...
+];
 ```
 
 This is supplied to the grid via the callback: `getDataPath={data => data.filePath}`.
@@ -255,20 +250,20 @@ grid to retrieve the context menu items. Here is the implementation:
 
 ```js
 getContextMenuItems = (params) => {
-    if (!params.node) return [];
-    let filePath = params.node.data ? params.node.data.filePath : [];
+  if (!params.node) return [];
+  let filePath = params.node.data ? params.node.data.filePath : [];
 
-    let deleteItem = {
-        name: "Delete",
-        action: () => this.props.actions.deleteFiles(filePath)
-    };
+  let deleteItem = {
+    name: "Delete",
+    action: () => this.props.actions.deleteFiles(filePath),
+  };
 
-    let newItem = {
-        name: "New",
-        action: () => this.props.actions.newFile(filePath)
-    };
+  let newItem = {
+    name: "New",
+    action: () => this.props.actions.newFile(filePath),
+  };
 
-    return params.node.data.file ? [deleteItem] : [newItem, deleteItem];
+  return params.node.data.file ? [deleteItem] : [newItem, deleteItem];
 };
 ```
 
@@ -287,12 +282,12 @@ via: `onRowDragEnd={this.onRowDragEnd}`. Here is the implementation:
 
 ```js
 onRowDragEnd = (event) => {
-    if(event.overNode.data.file) return;
+  if (event.overNode.data.file) return;
 
-    let movingFilePath = event.node.data.filePath;
-    let targetPath = event.overNode.data.filePath;
+  let movingFilePath = event.node.data.filePath;
+  let targetPath = event.overNode.data.filePath;
 
-    this.props.actions.moveFiles(movingFilePath, targetPath);
+  this.props.actions.moveFiles(movingFilePath, targetPath);
 };
 ```
 
@@ -316,49 +311,53 @@ and folders. This is implemented as a react component as follows:
 ```jsx
 // FileCellRenderer.jsx
 
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
 export default class FileCellRenderer extends Component {
-    render() {
-        return (
-            <div>
-                <i className={this.getFileIcon(this.props.value)}/>
-                <span className="filename">{this.props.value}</span>
-            </div>
-        );
-    }
-    getFileIcon = (filename) => {
-        return filename.endsWith('.mp3') || filename.endsWith('.wav') ? 'far fa-file-audio' :
-            filename.endsWith('.xls') ? 'far fa-file-excel' :
-                filename.endsWith('.txt') ? 'far fa-file' :
-                    filename.endsWith('.pdf') ? 'far fa-file-pdf' : 'far fa-folder';
-    }
+  render() {
+    return (
+      <div>
+        <i className={this.getFileIcon(this.props.value)} />
+        <span className="filename">{this.props.value}</span>
+      </div>
+    );
+  }
+  getFileIcon = (filename) => {
+    return filename.endsWith(".mp3") || filename.endsWith(".wav")
+      ? "far fa-file-audio"
+      : filename.endsWith(".xls")
+      ? "far fa-file-excel"
+      : filename.endsWith(".txt")
+      ? "far fa-file"
+      : filename.endsWith(".pdf")
+      ? "far fa-file-pdf"
+      : "far fa-folder";
+  };
 }
 ```
 
 The Cell Renderer is supplied to the grid through: `components={this.components}`. Where `components` is just an object referencing the imported component:
 
 ```js
-import FileCellRenderer from './FileCellRenderer.jsx';
+import FileCellRenderer from "./FileCellRenderer.jsx";
 
 components = {
-    fileCellRenderer: FileCellRenderer
+  fileCellRenderer: FileCellRenderer,
 };
 ```
 
 The key "fileCellRenderer" is passed by name to the `innerRenderer` used in the Auto Group Column:
 
-
 ```js
 autoGroupColumnDef = {
-    headerName: "Files",
-    rowDrag: true,
-    sort: 'asc',
-    width: 250,
-    cellRendererParams: {
-        suppressCount: true,
-        innerRenderer: "fileCellRenderer"
-    }
+  headerName: "Files",
+  rowDrag: true,
+  sort: "asc",
+  width: 250,
+  cellRendererParams: {
+    suppressCount: true,
+    innerRenderer: "fileCellRenderer",
+  },
 };
 ```
 

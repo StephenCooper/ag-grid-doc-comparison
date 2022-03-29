@@ -1,20 +1,21 @@
-
-import { createApp } from 'vue';
-import { AgGridVue } from '@ag-grid-community/vue3';
-import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import { createApp } from "vue";
+import { AgGridVue } from "@ag-grid-community/vue3";
+import "@ag-grid-community/core/dist/styles/ag-grid.css";
 import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { ModuleRegistry } from '@ag-grid-community/core';
-import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
-import { MenuModule } from '@ag-grid-enterprise/menu';
-import { ExcelExportModule } from '@ag-grid-enterprise/excel-export';
+import { ModuleRegistry } from "@ag-grid-community/core";
+import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
+import { MenuModule } from "@ag-grid-enterprise/menu";
+import { ExcelExportModule } from "@ag-grid-enterprise/excel-export";
 
 // Register the required feature modules with the Grid
-ModuleRegistry.registerModules([ClientSideRowModelModule, MenuModule, ExcelExportModule])
-
-
+ModuleRegistry.registerModules([
+  ClientSideRowModelModule,
+  MenuModule,
+  ExcelExportModule,
+]);
 
 const VueExample = {
-    template: `
+  template: `
         <div style="height: 100%">
             <div class="container">
                 <div>
@@ -34,75 +35,77 @@ const VueExample = {
             </div>
         </div>
     `,
-    components: {
-        'ag-grid-vue': AgGridVue,
-        
-    },
-    data: function() {
-        return {
-            columnDefs: [{field:"athlete",
-minWidth:200},{field:"age"},{field:"country",
-minWidth:200},{field:"year"},{field:"date",
-minWidth:150},{field:"sport",
-minWidth:150},{field:"gold"},{field:"silver"}],
-            gridApi: null,
-            columnApi: null,
-            defaultColDef: {
-    sortable: true,
-    filter: true,
-    resizable: true,
-    minWidth: 100,
-    flex: 1,
-},
-            rowSelection: null,
-rowData: null
-        }
-    },
-    created() {
-        this.rowSelection = 'multiple'
-    },
-    methods: {
-        onBtExport() {
-    var spreadsheets = [];
-    this.gridApi.forEachNode((node, index) => {
+  components: {
+    "ag-grid-vue": AgGridVue,
+  },
+  data: function () {
+    return {
+      columnDefs: [
+        { field: "athlete", minWidth: 200 },
+        { field: "age" },
+        { field: "country", minWidth: 200 },
+        { field: "year" },
+        { field: "date", minWidth: 150 },
+        { field: "sport", minWidth: 150 },
+        { field: "gold" },
+        { field: "silver" },
+      ],
+      gridApi: null,
+      columnApi: null,
+      defaultColDef: {
+        sortable: true,
+        filter: true,
+        resizable: true,
+        minWidth: 100,
+        flex: 1,
+      },
+      rowSelection: null,
+      rowData: null,
+    };
+  },
+  created() {
+    this.rowSelection = "multiple";
+  },
+  methods: {
+    onBtExport() {
+      var spreadsheets = [];
+      this.gridApi.forEachNode((node, index) => {
         if (index % 100 === 0) {
-            this.gridApi.deselectAll();
+          this.gridApi.deselectAll();
         }
         node.setSelected(true);
         if (index % 100 === 99) {
-            spreadsheets.push(this.gridApi.getSheetDataForExcel({
-                onlySelected: true,
-            }));
+          spreadsheets.push(
+            this.gridApi.getSheetDataForExcel({
+              onlySelected: true,
+            })
+          );
         }
-    });
-    // check if the last page was exported
-    if (this.gridApi.getSelectedNodes().length) {
-        spreadsheets.push(this.gridApi.getSheetDataForExcel({
+      });
+      // check if the last page was exported
+      if (this.gridApi.getSelectedNodes().length) {
+        spreadsheets.push(
+          this.gridApi.getSheetDataForExcel({
             onlySelected: true,
-        }));
+          })
+        );
         this.gridApi.deselectAll();
-    }
-    this.gridApi.exportMultipleSheetsAsExcel({
+      }
+      this.gridApi.exportMultipleSheetsAsExcel({
         data: spreadsheets,
-    });
-},
-onGridReady(params) {
-        this.gridApi = params.api;
-        this.gridColumnApi = params.columnApi;
-        
-
-        
-            const updateData = (data) => params.api.setRowData(data);
-            
-            fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
-                .then(resp => resp.json())
-                .then(data => updateData(data));
+      });
     },
-    }
-}
+    onGridReady(params) {
+      this.gridApi = params.api;
+      this.gridColumnApi = params.columnApi;
 
+      const updateData = (data) => params.api.setRowData(data);
 
+      fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+        .then((resp) => resp.json())
+        .then((data) => updateData(data));
+    },
+  },
+};
 
-createApp(VueExample)
-    .mount("#app")
-
+createApp(VueExample).mount("#app");

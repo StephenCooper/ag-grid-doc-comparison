@@ -1,21 +1,18 @@
+class NumberFilterComponent {
+  constructor() {
+    NumberFilterComponent.prototype.__init.call(this);
+  }
 
-class NumberFilterComponent  {constructor() { NumberFilterComponent.prototype.__init.call(this); }
-    
-    
-    
-    
-    
+  init(params) {
+    this.filterText = null;
+    this.params = params;
+    this.setupGui();
+  }
 
-    init(params) {
-        this.filterText = null;
-        this.params = params;
-        this.setupGui();
-    }
-
-    // not called by AG Grid, just for us to help setup
-    setupGui() {
-        this.gui = document.createElement('div');
-        this.gui.innerHTML = `
+  // not called by AG Grid, just for us to help setup
+  setupGui() {
+    this.gui = document.createElement("div");
+    this.gui.innerHTML = `
             <div style="padding: 4px">
                 <div style="font-weight: bold;">Greater than: </div>
                 <div>
@@ -24,70 +21,77 @@ class NumberFilterComponent  {constructor() { NumberFilterComponent.prototype.__
             </div>
         `;
 
-        this.onFilterChanged = () => {
-            this.extractFilterText();
-            this.params.filterChangedCallback();
-        };
+    this.onFilterChanged = () => {
+      this.extractFilterText();
+      this.params.filterChangedCallback();
+    };
 
-        this.eFilterText = this.gui.querySelector('#filterText');
-        this.eFilterText.addEventListener('input', this.onFilterChanged);
+    this.eFilterText = this.gui.querySelector("#filterText");
+    this.eFilterText.addEventListener("input", this.onFilterChanged);
+  }
+
+  __init() {
+    this.isNumeric = (n) => !isNaN(parseFloat(n)) && isFinite(n);
+  }
+
+  myMethodForTakingValueFromFloatingFilter(value) {
+    this.eFilterText.value = value;
+    this.onFilterChanged();
+  }
+
+  extractFilterText() {
+    this.filterText = this.eFilterText.value;
+  }
+
+  getGui() {
+    return this.gui;
+  }
+
+  doesFilterPass(params) {
+    if (!this.isFilterActive()) {
+      return false;
     }
 
-    __init() {this.isNumeric = (n) => !isNaN(parseFloat(n)) && isFinite(n)}
+    const { api, colDef, column, columnApi, context, valueGetter } =
+      this.params;
+    const { node } = params;
 
-    myMethodForTakingValueFromFloatingFilter(value) {
-        this.eFilterText.value = value;
-        this.onFilterChanged();
-    }
+    const value = valueGetter({
+      api,
+      colDef,
+      column,
+      columnApi,
+      context,
+      data: node.data,
+      getValue: (field) => node.data[field],
+      node,
+    });
 
-    extractFilterText() {
-        this.filterText = this.eFilterText.value;
-    }
+    const filterValue = this.filterText;
 
-    getGui() {
-        return this.gui;
-    }
+    if (!value) return false;
+    return Number(value) > Number(filterValue);
+  }
 
-    doesFilterPass(params) {
-        if (!this.isFilterActive()) { return false; }
+  isFilterActive() {
+    return (
+      this.filterText !== null &&
+      this.filterText !== undefined &&
+      this.filterText !== "" &&
+      this.isNumeric(this.filterText)
+    );
+  }
 
-        const { api, colDef, column, columnApi, context, valueGetter } = this.params;
-        const { node } = params;
+  getModel() {
+    return this.isFilterActive() ? Number(this.eFilterText.value) : null;
+  }
 
-        const value = valueGetter({
-            api,
-            colDef,
-            column,
-            columnApi,
-            context,
-            data: node.data,
-            getValue: (field) => node.data[field],
-            node,
-        });
+  setModel(model) {
+    this.eFilterText.value = model;
+    this.extractFilterText();
+  }
 
-        const filterValue = this.filterText;
-
-        if (!value) return false;
-        return Number(value) > Number(filterValue);
-    }
-
-    isFilterActive() {
-        return this.filterText !== null &&
-            this.filterText !== undefined &&
-            this.filterText !== '' &&
-            this.isNumeric(this.filterText);
-    }
-
-    getModel() {
-        return this.isFilterActive() ? Number(this.eFilterText.value) : null;
-    }
-
-    setModel(model) {
-        this.eFilterText.value = model;
-        this.extractFilterText();
-    }
-
-    destroy() {
-        this.eFilterText.removeEventListener('input', this.onFilterChanged);
-    }
+  destroy() {
+    this.eFilterText.removeEventListener("input", this.onFilterChanged);
+  }
 }

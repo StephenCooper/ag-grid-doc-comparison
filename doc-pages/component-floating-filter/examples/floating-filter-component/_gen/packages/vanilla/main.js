@@ -1,21 +1,20 @@
-
 const columnDefs = [
-  { field: 'country', filter: false },
-  { field: 'language', filter: false },
-  { field: 'name', filter: false },
+  { field: "country", filter: false },
+  { field: "language", filter: false },
+  { field: "name", filter: false },
   {
-    field: 'gold',
+    field: "gold",
     floatingFilterComponent: SliderFloatingFilter,
     floatingFilterComponentParams: {
       maxValue: 7,
       suppressFilterButton: true,
     },
-    filter: 'agNumberColumnFilter',
+    filter: "agNumberColumnFilter",
     suppressMenu: false,
   },
   {
-    field: 'silver',
-    filter: 'agNumberColumnFilter',
+    field: "silver",
+    filter: "agNumberColumnFilter",
     floatingFilterComponent: SliderFloatingFilter,
     floatingFilterComponentParams: {
       maxValue: 5,
@@ -24,8 +23,8 @@ const columnDefs = [
     suppressMenu: false,
   },
   {
-    field: 'bronze',
-    filter: 'agNumberColumnFilter',
+    field: "bronze",
+    filter: "agNumberColumnFilter",
     floatingFilterComponent: SliderFloatingFilter,
     floatingFilterComponentParams: {
       maxValue: 10,
@@ -33,7 +32,7 @@ const columnDefs = [
     },
     suppressMenu: false,
   },
-]
+];
 
 const gridOptions = {
   defaultColDef: {
@@ -46,12 +45,12 @@ const gridOptions = {
     resizable: true,
   },
   columnDefs: columnDefs,
-  rowData: getData()
-}
+  rowData: getData(),
+};
 
 // setup the grid after the page has finished loading
-document.addEventListener('DOMContentLoaded', function () {
-  var gridDiv = document.querySelector('#myGrid')
-  new agGrid.Grid(gridDiv, gridOptions)
-  gridOptions.api.sizeColumnsToFit()
-})
+document.addEventListener("DOMContentLoaded", function () {
+  var gridDiv = document.querySelector("#myGrid");
+  new agGrid.Grid(gridDiv, gridOptions);
+  gridOptions.api.sizeColumnsToFit();
+});

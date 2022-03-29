@@ -1,90 +1,78 @@
+<style>
+  .customExpandButton {
+    float: right;
+    margin-top: 2px;
+    margin-left: 3px;
+  }
 
+  .expanded {
+    animation-name: toExpanded;
+    animation-duration: 1s;
+    -webkit-transform: rotate(180deg); /* Chrome, Safari, Opera */
+    transform: rotate(180deg);
+  }
 
-    <style>
+  .collapsed {
+    color: cornflowerblue;
+    animation-name: toCollapsed;
+    animation-duration: 1s;
+    -webkit-transform: rotate(0deg); /* Chrome, Safari, Opera */
+    transform: rotate(0deg);
+  }
 
-        .customExpandButton{
-            float:right;
-            margin-top: 2px;
-            margin-left: 3px;
-        }
+  .customHeaderMenuButton,
+  .customHeaderLabel,
+  .customHeaderLabel,
+  .customSortDownLabel,
+  .customSortUpLabel,
+  .customSortRemoveLabel {
+    margin-top: 2px;
+    margin-left: 4px;
+    float: left;
+  }
 
-        .expanded {
-            animation-name: toExpanded;
-            animation-duration: 1s;
-            -webkit-transform: rotate(180deg); /* Chrome, Safari, Opera */
-            transform: rotate(180deg);
-        }
+  .customSortDownLabel {
+    margin-left: 10px;
+  }
 
-        .collapsed {
-            color: cornflowerblue;
-            animation-name: toCollapsed;
-            animation-duration: 1s;
-            -webkit-transform: rotate(0deg); /* Chrome, Safari, Opera */
-            transform: rotate(0deg);
-        }
+  .customSortUpLabel {
+    margin-left: 1px;
+  }
 
-        .customHeaderMenuButton,
-        .customHeaderLabel,
-        .customHeaderLabel,
-        .customSortDownLabel,
-        .customSortUpLabel,
-        .customSortRemoveLabel
-        {
-            margin-top: 2px;
-            margin-left: 4px;
-            float: left;
-        }
+  .customSortRemoveLabel {
+    float: left;
+    font-size: 11px;
+  }
 
-        .customSortDownLabel{
-            margin-left: 10px;
-        }
+  .active {
+    color: cornflowerblue;
+  }
 
-        .customSortUpLabel{
-            margin-left: 1px;
-        }
+  @keyframes toExpanded {
+    from {
+      color: cornflowerblue;
+      -webkit-transform: rotate(0deg); /* Chrome, Safari, Opera */
+      transform: rotate(0deg);
+    }
+    to {
+      color: black;
+      -webkit-transform: rotate(180deg); /* Chrome, Safari, Opera */
+      transform: rotate(180deg);
+    }
+  }
 
-        .customSortRemoveLabel{
-            float: left;
-            font-size: 11px;
-        }
+  @keyframes toCollapsed {
+    from {
+      color: black;
+      -webkit-transform: rotate(180deg); /* Chrome, Safari, Opera */
+      transform: rotate(180deg);
+    }
+    to {
+      color: cornflowerblue;
+      -webkit-transform: rotate(0deg); /* Chrome, Safari, Opera */
+      transform: rotate(0deg);
+    }
+  }
+</style>
 
-        .active {
-            color: cornflowerblue;
-        }
-
-
-
-        @keyframes  toExpanded{
-            from {
-                color: cornflowerblue;
-                -webkit-transform: rotate(0deg); /* Chrome, Safari, Opera */
-                transform: rotate(0deg);
-            }
-            to {
-                color: black;
-                -webkit-transform: rotate(180deg); /* Chrome, Safari, Opera */
-                transform: rotate(180deg);
-            }
-        }
-
-        @keyframes toCollapsed{
-            from {
-                color: black;
-                -webkit-transform: rotate(180deg); /* Chrome, Safari, Opera */
-                transform: rotate(180deg);
-            }
-            to {
-                color: cornflowerblue;
-                -webkit-transform: rotate(0deg); /* Chrome, Safari, Opera */
-                transform: rotate(0deg);
-            }
-        }
-
-    </style>
-
-
-
-
-<div id="myGrid" style="height: 100%;" class="ag-theme-alpine"></div>
-
-
+<div id="myGrid" style="height: 100%" class="ag-theme-alpine"></div>

@@ -1,6 +1,5 @@
-
 const options = {
-  container: document.getElementById('myChart'),
+  container: document.getElementById("myChart"),
   autoSize: true,
   data: getData(),
   theme: {
@@ -13,36 +12,36 @@ const options = {
     },
   },
   title: {
-    text: 'Gross Weekly Earnings by Occupation (Q4 2019)',
+    text: "Gross Weekly Earnings by Occupation (Q4 2019)",
     fontSize: 18,
   },
   subtitle: {
-    text: 'Source: Office for National Statistics',
+    text: "Source: Office for National Statistics",
   },
   series: [
     {
-      type: 'bar',
-      xKey: 'type',
-      yKey: 'earnings',
+      type: "bar",
+      xKey: "type",
+      yKey: "earnings",
     },
   ],
   axes: [
     {
-      type: 'category',
-      position: 'left',
+      type: "category",
+      position: "left",
     },
     {
-      type: 'number',
-      position: 'bottom',
+      type: "number",
+      position: "bottom",
       title: {
         enabled: true,
-        text: '£/week',
+        text: "£/week",
       },
     },
   ],
   legend: {
     enabled: false,
   },
-}
+};
 
-var chart = agCharts.AgChart.create(options)
+var chart = agCharts.AgChart.create(options);

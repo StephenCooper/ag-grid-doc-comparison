@@ -1,75 +1,68 @@
-import Vue from 'vue';
-import { cloneDeep } from 'lodash';
-import * as agCharts from 'ag-charts-community';
-import { AgChartsVue } from 'ag-charts-vue';
+import Vue from "vue";
+import { cloneDeep } from "lodash";
+import * as agCharts from "ag-charts-community";
+import { AgChartsVue } from "ag-charts-vue";
 
 const ChartExample = {
-    template: `
+  template: `
         <ag-charts-vue    
                 :options="options"></ag-charts-vue>
     `,
-    components: {
-        'ag-charts-vue': AgChartsVue
-    },
-    data: function() {
-        return {
-            options: null
-        }
-    },
-    created() {
-        this.options = {
-    
-    autoSize: true,
-    title: {
-        text: 'Fuel Spending (2019)',
-    },
-    data: [
+  components: {
+    "ag-charts-vue": AgChartsVue,
+  },
+  data: function () {
+    return {
+      options: null,
+    };
+  },
+  created() {
+    this.options = {
+      autoSize: true,
+      title: {
+        text: "Fuel Spending (2019)",
+      },
+      data: [
         {
-            quarter: 'Q1',
-            petrol: 200,
-            diesel: 100,
+          quarter: "Q1",
+          petrol: 200,
+          diesel: 100,
         },
         {
-            quarter: 'Q2',
-            petrol: 300,
-            diesel: 130,
+          quarter: "Q2",
+          petrol: 300,
+          diesel: 130,
         },
         {
-            quarter: 'Q3',
-            petrol: 350,
-            diesel: 160,
+          quarter: "Q3",
+          petrol: 350,
+          diesel: 160,
         },
         {
-            quarter: 'Q4',
-            petrol: 400,
-            diesel: 200,
+          quarter: "Q4",
+          petrol: 400,
+          diesel: 200,
         },
-    ],
-    series: [
+      ],
+      series: [
         {
-            xKey: 'quarter',
-            yKey: 'petrol',
+          xKey: "quarter",
+          yKey: "petrol",
         },
         {
-            xKey: 'quarter',
-            yKey: 'diesel',
+          xKey: "quarter",
+          yKey: "diesel",
         },
-    ],
-}
-    },
-    mounted() {
-        
-    },
-    methods: {
-        
-    }
-}
-
-
+      ],
+    };
+  },
+  mounted() {},
+  methods: {},
+};
 
 new Vue({
-    el: '#app',
-    components: {
-        'my-component': ChartExample
-    }
+  el: "#app",
+  components: {
+    "my-component": ChartExample,
+  },
 });

@@ -1,259 +1,252 @@
-import { createApp } from 'vue';
-import { cloneDeep } from 'lodash';
-import * as agCharts from 'ag-charts-community';
-import { AgChartsVue } from 'ag-charts-vue3';
+import { createApp } from "vue";
+import { cloneDeep } from "lodash";
+import * as agCharts from "ag-charts-community";
+import { AgChartsVue } from "ag-charts-vue3";
 
 const ChartExample = {
-    template: `
+  template: `
         <ag-charts-vue
                 :options="options"></ag-charts-vue>
     `,
-    components: {
-        'ag-charts-vue': AgChartsVue
-    },
-    data: function() {
-        return {
-            options: null
-        }
-    },
-    created() {
-        this.options = {
-    
-    autoSize: true,
-    data: getData(),
-    theme: {
+  components: {
+    "ag-charts-vue": AgChartsVue,
+  },
+  data: function () {
+    return {
+      options: null,
+    };
+  },
+  created() {
+    this.options = {
+      autoSize: true,
+      data: getData(),
+      theme: {
         palette: {
-            fills: [
-                "#0b1791",
-                "#be2a2c",
-                "#f6d24a",
-                "#ce1126",
-                "#002d62",
-                "#1b4e9e",
-                "#f6d24a",
-                "#0073cf",
-                "#e88532",
-                "#000000",
-                "#006847",
-                "#c22b38",
-                "#042279",
-                "#4997d0",
-                "#2868c1",
-                "#459945",
-            ],
-            strokes: [
-                "#0b1791",
-                "#f6d24a",
-                "#f6d24a",
-                "#ce1126",
-                "#ce1126",
-                "#fade4b",
-                "#be2a2c",
-                "#0073cf",
-                "#469c65",
-                "#fed100",
-                "#ce1126",
-                "#1e5190",
-                "#bf2b30",
-                "#4997d0",
-                "#2868c1",
-                "#459945",
-            ],
+          fills: [
+            "#0b1791",
+            "#be2a2c",
+            "#f6d24a",
+            "#ce1126",
+            "#002d62",
+            "#1b4e9e",
+            "#f6d24a",
+            "#0073cf",
+            "#e88532",
+            "#000000",
+            "#006847",
+            "#c22b38",
+            "#042279",
+            "#4997d0",
+            "#2868c1",
+            "#459945",
+          ],
+          strokes: [
+            "#0b1791",
+            "#f6d24a",
+            "#f6d24a",
+            "#ce1126",
+            "#ce1126",
+            "#fade4b",
+            "#be2a2c",
+            "#0073cf",
+            "#469c65",
+            "#fed100",
+            "#ce1126",
+            "#1e5190",
+            "#bf2b30",
+            "#4997d0",
+            "#2868c1",
+            "#459945",
+          ],
         },
         overrides: {
-            cartesian: {
-                series: {
-                    line: {
-                        highlightStyle: {
-                            series: {
-                                dimOpacity: 0.2,
-                                strokeWidth: 4,
-                            },
-                        },
-                        marker: { enabled: true },
-                    },
+          cartesian: {
+            series: {
+              line: {
+                highlightStyle: {
+                  series: {
+                    dimOpacity: 0.2,
+                    strokeWidth: 4,
+                  },
                 },
+                marker: { enabled: true },
+              },
             },
+          },
         },
-    },
-    title: {
+      },
+      title: {
         text: "Imported Banana Prices (2019)",
         fontSize: 18,
-    },
-    subtitle: {
+      },
+      subtitle: {
         text: "Source: Department for Environment, Food and Rural Affairs",
-    },
-    series: [
+      },
+      series: [
         {
-            type: "line",
-            xKey: "week",
-            yKey: "belize",
-            yName: "Belize",
+          type: "line",
+          xKey: "week",
+          yKey: "belize",
+          yName: "Belize",
         },
         {
-            type: "line",
-            xKey: "week",
-            yKey: "cameroon",
-            yName: "Cameroon",
-            marker: {
-                strokeWidth: 2,
-            },
+          type: "line",
+          xKey: "week",
+          yKey: "cameroon",
+          yName: "Cameroon",
+          marker: {
+            strokeWidth: 2,
+          },
         },
         {
-            type: "line",
-            xKey: "week",
-            yKey: "columbia",
-            yName: "Columbia",
+          type: "line",
+          xKey: "week",
+          yKey: "columbia",
+          yName: "Columbia",
         },
         {
-            type: "line",
-            xKey: "week",
-            yKey: "costaRica",
-            yName: "Costa Rica",
+          type: "line",
+          xKey: "week",
+          yKey: "costaRica",
+          yName: "Costa Rica",
         },
         {
-            type: "line",
-            xKey: "week",
-            yKey: "dominicanRepublic",
-            yName: "Dominican Republic",
-            marker: {
-                strokeWidth: 2,
-            },
+          type: "line",
+          xKey: "week",
+          yKey: "dominicanRepublic",
+          yName: "Dominican Republic",
+          marker: {
+            strokeWidth: 2,
+          },
         },
         {
-            type: "line",
-            xKey: "week",
-            yKey: "ecuador",
-            yName: "Ecuador",
-            marker: {
-                strokeWidth: 2,
-            },
+          type: "line",
+          xKey: "week",
+          yKey: "ecuador",
+          yName: "Ecuador",
+          marker: {
+            strokeWidth: 2,
+          },
         },
         {
-            type: "line",
-            xKey: "week",
-            yKey: "ghana",
-            yName: "Ghana",
-            marker: {
-                strokeWidth: 2,
-            },
+          type: "line",
+          xKey: "week",
+          yKey: "ghana",
+          yName: "Ghana",
+          marker: {
+            strokeWidth: 2,
+          },
         },
         {
-            type: "line",
-            xKey: "week",
-            yKey: "honduras",
-            yName: "Honduras",
+          type: "line",
+          xKey: "week",
+          yKey: "honduras",
+          yName: "Honduras",
         },
         {
-            type: "line",
-            xKey: "week",
-            yKey: "ivoryCoast",
-            yName: "Ivory Coast",
-            marker: {
-                strokeWidth: 2,
-            },
+          type: "line",
+          xKey: "week",
+          yKey: "ivoryCoast",
+          yName: "Ivory Coast",
+          marker: {
+            strokeWidth: 2,
+          },
         },
         {
-            type: "line",
-            xKey: "week",
-            yKey: "jamaica",
-            yName: "Jamaica",
-            marker: {
-                strokeWidth: 2,
-            },
+          type: "line",
+          xKey: "week",
+          yKey: "jamaica",
+          yName: "Jamaica",
+          marker: {
+            strokeWidth: 2,
+          },
         },
         {
-            type: "line",
-            xKey: "week",
-            yKey: "mexico",
-            yName: "Mexico",
-            marker: {
-                strokeWidth: 2,
-            },
+          type: "line",
+          xKey: "week",
+          yKey: "mexico",
+          yName: "Mexico",
+          marker: {
+            strokeWidth: 2,
+          },
         },
         {
-            type: "line",
-            xKey: "week",
-            yKey: "panama",
-            yName: "Panama",
-            marker: {
-                strokeWidth: 2,
-            },
+          type: "line",
+          xKey: "week",
+          yKey: "panama",
+          yName: "Panama",
+          marker: {
+            strokeWidth: 2,
+          },
         },
         {
-            type: "line",
-            xKey: "week",
-            yKey: "windwardIsles",
-            yName: "Windward Isles",
-            marker: {
-                strokeWidth: 2,
-            },
+          type: "line",
+          xKey: "week",
+          yKey: "windwardIsles",
+          yName: "Windward Isles",
+          marker: {
+            strokeWidth: 2,
+          },
         },
         {
-            type: "line",
-            xKey: "week",
-            yKey: "guatemala",
-            yName: "Guatemala",
+          type: "line",
+          xKey: "week",
+          yKey: "guatemala",
+          yName: "Guatemala",
         },
         {
-            type: "line",
-            xKey: "week",
-            yKey: "nicaragua",
-            yName: "Nicaragua",
-            marker: {
-                fill: "#ffffff",
-            },
+          type: "line",
+          xKey: "week",
+          yKey: "nicaragua",
+          yName: "Nicaragua",
+          marker: {
+            fill: "#ffffff",
+          },
         },
         {
-            type: "line",
-            xKey: "week",
-            yKey: "brazil",
-            yName: "Brazil",
+          type: "line",
+          xKey: "week",
+          yKey: "brazil",
+          yName: "Brazil",
         },
-    ],
-    axes: [
+      ],
+      axes: [
         {
-            type: "category",
-            position: "bottom",
-            title: {
-                enabled: true,
-                text: "Week",
-            },
-            label: {
-                formatter: params => (params.index % 3 ? "" : params.value),
-            },
+          type: "category",
+          position: "bottom",
+          title: {
+            enabled: true,
+            text: "Week",
+          },
+          label: {
+            formatter: (params) => (params.index % 3 ? "" : params.value),
+          },
         },
         {
-            type: "number",
-            position: "left",
-            title: {
-                enabled: true,
-                text: "£ per kg",
-            },
-            nice: false,
-            min: 0.2,
-            max: 1,
+          type: "number",
+          position: "left",
+          title: {
+            enabled: true,
+            text: "£ per kg",
+          },
+          nice: false,
+          min: 0.2,
+          max: 1,
         },
-    ],
-    legend: {
+      ],
+      legend: {
         position: "bottom",
         item: {
-            paddingY: 15,
+          paddingY: 15,
         },
-    },
-    padding: {
+      },
+      padding: {
         bottom: 30,
-    },
-}
-    },
-    mounted() {
-        
-    },
-    methods: {
-        
-    }
-}
-
-
+      },
+    };
+  },
+  mounted() {},
+  methods: {},
+};
 
 createApp(ChartExample).mount("#app");

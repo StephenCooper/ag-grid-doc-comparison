@@ -1,75 +1,65 @@
-import { cloneDeep } from 'lodash';
-import { Component } from '@angular/core';
-import * as agCharts from 'ag-charts-community';
-import { AgChartOptions } from 'ag-charts-community';
+import { cloneDeep } from "lodash";
+import { Component } from "@angular/core";
+import * as agCharts from "ag-charts-community";
+import { AgChartOptions } from "ag-charts-community";
 
 @Component({
-    selector: 'my-app',
-    template: `<ag-charts-angular
+  selector: "my-app",
+  template: `<ag-charts-angular
     style="height: 100%"
     [options]="options"
-    ></ag-charts-angular>
-`
+  ></ag-charts-angular> `,
 })
-
 export class AppComponent {
-    private options: AgChartOptions;
-    
+  private options: AgChartOptions;
 
-    constructor() {
-        this.options = {
-    
-    autoSize: true,
-    title: {
-        text: 'Fuel Spending (2019)',
-    },
-    data: [
+  constructor() {
+    this.options = {
+      autoSize: true,
+      title: {
+        text: "Fuel Spending (2019)",
+      },
+      data: [
         {
-            quarter: 'Q1',
-            petrol: 200,
-            diesel: 100,
+          quarter: "Q1",
+          petrol: 200,
+          diesel: 100,
         },
         {
-            quarter: 'Q2',
-            petrol: 300,
-            diesel: 130,
+          quarter: "Q2",
+          petrol: 300,
+          diesel: 130,
         },
         {
-            quarter: 'Q3',
-            petrol: 350,
-            diesel: 160,
+          quarter: "Q3",
+          petrol: 350,
+          diesel: 160,
         },
         {
-            quarter: 'Q4',
-            petrol: 400,
-            diesel: 200,
+          quarter: "Q4",
+          petrol: 400,
+          diesel: 200,
         },
-    ],
-    series: [
+      ],
+      series: [
         {
-            xKey: 'quarter',
-            yKey: 'petrol',
-            yName: 'Petrol',
+          xKey: "quarter",
+          yKey: "petrol",
+          yName: "Petrol",
         },
         {
-            xKey: 'quarter',
-            yKey: 'diesel',
-            yName: 'Diesel',
-            stroke: 'black',
-            marker: {
-                fill: 'gray',
-                stroke: 'black',
-            },
+          xKey: "quarter",
+          yKey: "diesel",
+          yName: "Diesel",
+          stroke: "black",
+          marker: {
+            fill: "gray",
+            stroke: "black",
+          },
         },
-    ],
+      ],
+    };
+  }
+
+  ngOnInit() {}
 }
-    }
-
-    ngOnInit() {
-        
-    }
-
-    
-}
-
-

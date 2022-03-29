@@ -1,14 +1,13 @@
-
 const columnDefs = [
-  { field: 'athlete', minWidth: 200 },
-  { field: 'age' },
-  { field: 'country', minWidth: 200 },
-  { field: 'year' },
-  { field: 'date', minWidth: 150 },
-  { field: 'sport', minWidth: 150 },
-  { field: 'gold' },
-  { field: 'silver' },
-]
+  { field: "athlete", minWidth: 200 },
+  { field: "age" },
+  { field: "country", minWidth: 200 },
+  { field: "year" },
+  { field: "date", minWidth: 150 },
+  { field: "sport", minWidth: 150 },
+  { field: "gold" },
+  { field: "silver" },
+];
 
 const gridOptions = {
   defaultColDef: {
@@ -20,27 +19,27 @@ const gridOptions = {
   },
 
   columnDefs: columnDefs,
-  rowSelection: 'multiple',
-}
+  rowSelection: "multiple",
+};
 
 function onBtExport() {
-  var spreadsheets = []
+  var spreadsheets = [];
 
   gridOptions.api.forEachNode((node, index) => {
     if (index % 100 === 0) {
-      gridOptions.api.deselectAll()
+      gridOptions.api.deselectAll();
     }
 
-    node.setSelected(true)
+    node.setSelected(true);
 
     if (index % 100 === 99) {
       spreadsheets.push(
         gridOptions.api.getSheetDataForExcel({
           onlySelected: true,
         })
-      )
+      );
     }
-  })
+  });
 
   // check if the last page was exported
 
@@ -49,21 +48,21 @@ function onBtExport() {
       gridOptions.api.getSheetDataForExcel({
         onlySelected: true,
       })
-    )
-    gridOptions.api.deselectAll()
+    );
+    gridOptions.api.deselectAll();
   }
 
   gridOptions.api.exportMultipleSheetsAsExcel({
     data: spreadsheets,
-  })
+  });
 }
 
 // setup the grid after the page has finished loading
-document.addEventListener('DOMContentLoaded', function () {
-  var gridDiv = document.querySelector('#myGrid')
-  new agGrid.Grid(gridDiv, gridOptions)
+document.addEventListener("DOMContentLoaded", function () {
+  var gridDiv = document.querySelector("#myGrid");
+  new agGrid.Grid(gridDiv, gridOptions);
 
-  fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
-    .then(response => response.json())
-    .then(data => gridOptions.api.setRowData(data))
-})
+  fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+    .then((response) => response.json())
+    .then((data) => gridOptions.api.setRowData(data));
+});

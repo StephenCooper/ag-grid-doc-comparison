@@ -1,18 +1,15 @@
-
-import { createApp } from 'vue';
-import { AgGridVue } from '@ag-grid-community/vue3';
-import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import { createApp } from "vue";
+import { AgGridVue } from "@ag-grid-community/vue3";
+import "@ag-grid-community/core/dist/styles/ag-grid.css";
 import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { ModuleRegistry } from '@ag-grid-community/core';
-import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import { ModuleRegistry } from "@ag-grid-community/core";
+import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
 
 // Register the required feature modules with the Grid
-ModuleRegistry.registerModules([ClientSideRowModelModule])
-
-
+ModuleRegistry.registerModules([ClientSideRowModelModule]);
 
 const VueExample = {
-    template: `
+  template: `
         <div style="height: 100%">
             <div class="outer">
                 <div class="grid-col">
@@ -38,61 +35,60 @@ const VueExample = {
             </div>
         </div>
     `,
-    components: {
-        'ag-grid-vue': AgGridVue,
-        
+  components: {
+    "ag-grid-vue": AgGridVue,
+  },
+  data: function () {
+    return {
+      columnDefs: [
+        { valueGetter: "'Drag'", dndSource: true },
+        { field: "id" },
+        { field: "color" },
+        { field: "value1" },
+        { field: "value2" },
+      ],
+      gridApi: null,
+      columnApi: null,
+      defaultColDef: {
+        width: 80,
+        sortable: true,
+        filter: true,
+        resizable: true,
+      },
+      rowClassRules: null,
+      rowData: null,
+    };
+  },
+  created() {
+    this.rowClassRules = {
+      "red-row": 'data.color == "Red"',
+      "green-row": 'data.color == "Green"',
+      "blue-row": 'data.color == "Blue"',
+    };
+    this.rowData = getData();
+  },
+  methods: {
+    onDragOver(event) {
+      var dragSupported = event.dataTransfer.length;
+      if (dragSupported) {
+        event.dataTransfer.dropEffect = "move";
+      }
+      event.preventDefault();
     },
-    data: function() {
-        return {
-            columnDefs: [{valueGetter:"'Drag'",
-dndSource:true},{field:"id"},{field:"color"},{field:"value1"},{field:"value2"}],
-            gridApi: null,
-            columnApi: null,
-            defaultColDef: {
-    width: 80,
-    sortable: true,
-    filter: true,
-    resizable: true,
-},
-            rowClassRules: null,
-rowData: null
-        }
+    onDrop(event) {
+      var jsonData = event.dataTransfer.getData("application/json");
+      var eJsonRow = document.createElement("div");
+      eJsonRow.classList.add("json-row");
+      eJsonRow.innerText = jsonData;
+      var eJsonDisplay = document.querySelector("#eJsonDisplay");
+      eJsonDisplay.appendChild(eJsonRow);
+      event.preventDefault();
     },
-    created() {
-        this.rowClassRules = {
-    'red-row': 'data.color == "Red"',
-    'green-row': 'data.color == "Green"',
-    'blue-row': 'data.color == "Blue"',
+    onGridReady(params) {
+      this.gridApi = params.api;
+      this.gridColumnApi = params.columnApi;
+    },
+  },
 };
-this.rowData = getData()
-    },
-    methods: {
-        onDragOver(event) {
-    var dragSupported = event.dataTransfer.length;
-    if (dragSupported) {
-        event.dataTransfer.dropEffect = 'move';
-    }
-    event.preventDefault();
-},
-onDrop(event) {
-    var jsonData = event.dataTransfer.getData('application/json');
-    var eJsonRow = document.createElement('div');
-    eJsonRow.classList.add('json-row');
-    eJsonRow.innerText = jsonData;
-    var eJsonDisplay = document.querySelector('#eJsonDisplay');
-    eJsonDisplay.appendChild(eJsonRow);
-    event.preventDefault();
-},
-onGridReady(params) {
-        this.gridApi = params.api;
-        this.gridColumnApi = params.columnApi;
-        
-    },
-    }
-}
 
-
-
-createApp(VueExample)
-    .mount("#app")
-
+createApp(VueExample).mount("#app");

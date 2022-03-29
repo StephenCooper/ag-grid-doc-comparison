@@ -1,4 +1,4 @@
-import { Component } from "@angular/core"
+import { Component } from "@angular/core";
 
 @Component({
   selector: "my-app",
@@ -51,7 +51,7 @@ export class AppComponent {
         yName: "Price",
       },
     ],
-  }
+  };
 
   private chartOptions2 = {
     theme: myTheme,
@@ -68,7 +68,7 @@ export class AppComponent {
         labelKey: "label",
       },
     ],
-  }
+  };
 }
 
 var data = [
@@ -77,7 +77,7 @@ var data = [
   { label: "BlackBerry", v1: 7.54, v2: 1.98, v3: 9.88, v4: 1.38, v5: 4.44 },
   { label: "Symbian", v1: 9.27, v2: 4.21, v3: 2.53, v4: 6.31, v5: 4.44 },
   { label: "Windows", v1: 2.8, v2: 1.908, v3: 7.48, v4: 5.29, v5: 8.8 },
-]
+];
 
 var myTheme = {
   baseTheme: "ag-default-dark",
@@ -148,4 +148,4 @@ var myTheme = {
       },
     },
   },
-}
+};

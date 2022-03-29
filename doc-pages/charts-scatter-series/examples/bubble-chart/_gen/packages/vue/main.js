@@ -1,110 +1,103 @@
-import Vue from 'vue';
-import { cloneDeep } from 'lodash';
-import * as agCharts from 'ag-charts-community';
-import { AgChartsVue } from 'ag-charts-vue';
+import Vue from "vue";
+import { cloneDeep } from "lodash";
+import * as agCharts from "ag-charts-community";
+import { AgChartsVue } from "ag-charts-vue";
 
 const ChartExample = {
-    template: `
+  template: `
         <ag-charts-vue    
                 :options="options"></ag-charts-vue>
     `,
-    components: {
-        'ag-charts-vue': AgChartsVue
-    },
-    data: function() {
-        return {
-            options: null
-        }
-    },
-    created() {
-        this.options = {
-    
-    autoSize: true,
-    title: {
-        text: 'Weight vs Height',
-    },
-    subtitle: {
-        text: 'by gender',
-    },
-    series: [
+  components: {
+    "ag-charts-vue": AgChartsVue,
+  },
+  data: function () {
+    return {
+      options: null,
+    };
+  },
+  created() {
+    this.options = {
+      autoSize: true,
+      title: {
+        text: "Weight vs Height",
+      },
+      subtitle: {
+        text: "by gender",
+      },
+      series: [
         {
-            type: 'scatter',
-            title: 'Male',
-            data: maleHeightWeight,
-            xKey: 'height',
-            xName: 'Height',
-            yKey: 'weight',
-            yName: 'Weight',
-            sizeKey: 'age',
-            sizeName: 'Age',
-            marker: {
-                shape: 'square',
-                size: 6,
-                maxSize: 30,
-                fill: 'rgba(227,111,106,0.71)',
-                stroke: '#9f4e4a',
-            },
+          type: "scatter",
+          title: "Male",
+          data: maleHeightWeight,
+          xKey: "height",
+          xName: "Height",
+          yKey: "weight",
+          yName: "Weight",
+          sizeKey: "age",
+          sizeName: "Age",
+          marker: {
+            shape: "square",
+            size: 6,
+            maxSize: 30,
+            fill: "rgba(227,111,106,0.71)",
+            stroke: "#9f4e4a",
+          },
         },
         {
-            type: 'scatter',
-            title: 'Female',
-            data: femaleHeightWeight,
-            xKey: 'height',
-            xName: 'Height',
-            yKey: 'weight',
-            yName: 'Weight',
-            sizeKey: 'age',
-            sizeName: 'Age',
-            marker: {
-                size: 6,
-                maxSize: 30,
-                fill: 'rgba(123,145,222,0.71)',
-                stroke: '#56659b',
-            },
+          type: "scatter",
+          title: "Female",
+          data: femaleHeightWeight,
+          xKey: "height",
+          xName: "Height",
+          yKey: "weight",
+          yName: "Weight",
+          sizeKey: "age",
+          sizeName: "Age",
+          marker: {
+            size: 6,
+            maxSize: 30,
+            fill: "rgba(123,145,222,0.71)",
+            stroke: "#56659b",
+          },
         },
-    ],
-    axes: [
+      ],
+      axes: [
         {
-            type: 'number',
-            position: 'bottom',
-            title: {
-                text: 'Height',
+          type: "number",
+          position: "bottom",
+          title: {
+            text: "Height",
+          },
+          label: {
+            rotation: 45,
+            formatter: (params) => {
+              return params.value + "cm";
             },
-            label: {
-                rotation: 45,
-                formatter: (params) => {
-                    return params.value + 'cm';
-                },
-            },
+          },
         },
         {
-            type: 'number',
-            position: 'left',
-            title: {
-                text: 'Weight',
+          type: "number",
+          position: "left",
+          title: {
+            text: "Weight",
+          },
+          label: {
+            formatter: function (params) {
+              return params.value + "kg";
             },
-            label: {
-                formatter: function (params) {
-                    return params.value + 'kg';
-                },
-            },
+          },
         },
-    ],
-}
-    },
-    mounted() {
-        
-    },
-    methods: {
-        
-    }
-}
-
-
+      ],
+    };
+  },
+  mounted() {},
+  methods: {},
+};
 
 new Vue({
-    el: '#app',
-    components: {
-        'my-component': ChartExample
-    }
+  el: "#app",
+  components: {
+    "my-component": ChartExample,
+  },
 });

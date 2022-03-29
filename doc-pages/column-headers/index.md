@@ -43,13 +43,13 @@ The following example shows how you can provide a unique look and feel to the he
 
 ```css
 .ag-pivot-off .ag-header-group-cell {
-    font-size: 50px;
-    color: red;
+  font-size: 50px;
+  color: red;
 }
 
 .ag-pivot-on .ag-header-group-cell {
-    font-size: 25px;
-    color: green;
+  font-size: 25px;
+  color: green;
 }
 ```
 
@@ -57,24 +57,24 @@ The following example shows how you can provide a unique look and feel to the he
 
 ```css
 .ag-cell-label-container {
-    /* Necessary to allow for text to grow vertically */
-    height: 100%;
+  /* Necessary to allow for text to grow vertically */
+  height: 100%;
 }
 
 .ag-header-cell-label {
-    /* Necessary to allow for text to grow vertically */
-    height: 100%;
-    padding: 0 !important;
+  /* Necessary to allow for text to grow vertically */
+  height: 100%;
+  padding: 0 !important;
 }
 
 .ag-header-cell-label .ag-header-cell-text {
-    /* Force the width corresponding at how much width
+  /* Force the width corresponding at how much width
     we need once the text is laid out vertically */
-    width: 30px;
-    transform: rotate(90deg);
-    margin-top: 50px;
-    /* Since we are rotating a span */
-    display: inline-block;
+  width: 30px;
+  transform: rotate(90deg);
+  margin-top: 50px;
+  /* Since we are rotating a span */
+  display: inline-block;
 }
 ```
 
@@ -82,20 +82,20 @@ The following example shows how you can provide a unique look and feel to the he
 
 ```css
 .ag-floating-filter-body input {
-    height: 49px;
+  height: 49px;
 }
 
 .ag-floating-filter-button {
-    margin-top: -49px;
+  margin-top: -49px;
 }
 
 .ag-floating-filter-button button {
-    height: 49px
+  height: 49px;
 }
 
 .ag-floating-filter-body input {
-    font-size: 15px;
-    font-weight: bold;
+  font-size: 15px;
+  font-weight: bold;
 }
 ```
 
@@ -103,12 +103,12 @@ The following example shows how you can provide a unique look and feel to the he
 
 ```css
 .ag-pivot-off .ag-header-cell-label {
-    color: #8a6d3b;
+  color: #8a6d3b;
 }
 
 .ag-pivot-on .ag-header-cell-label {
-    color: #1b6d85;
-    font-weight: bold;
+  color: #1b6d85;
+  font-weight: bold;
 }
 ```
 
@@ -139,30 +139,54 @@ This is the default template used in AG Grid:
 
 ```html
 <div class="ag-cell-label-container" role="presentation">
-    <span ref="eMenu" class="ag-header-icon ag-header-cell-menu-button" aria-hidden="true"></span>
-    <div ref="eLabel" class="ag-header-cell-label" role="presentation">
-        <span ref="eText" class="ag-header-cell-text"></span>
-        <span ref="eFilter" class="ag-header-icon ag-header-label-icon ag-filter-icon" aria-hidden="true"></span>
-        <span ref="eSortOrder" class="ag-header-icon ag-header-label-icon ag-sort-order" aria-hidden="true"></span>
-        <span ref="eSortAsc" class="ag-header-icon ag-header-label-icon ag-sort-ascending-icon" aria-hidden="true"></span>
-        <span ref="eSortDesc" class="ag-header-icon ag-header-label-icon ag-sort-descending-icon" aria-hidden="true"></span>
-        <span ref="eSortNone" class="ag-header-icon ag-header-label-icon ag-sort-none-icon" aria-hidden="true"></span>
-    </div>
+  <span
+    ref="eMenu"
+    class="ag-header-icon ag-header-cell-menu-button"
+    aria-hidden="true"
+  ></span>
+  <div ref="eLabel" class="ag-header-cell-label" role="presentation">
+    <span ref="eText" class="ag-header-cell-text"></span>
+    <span
+      ref="eFilter"
+      class="ag-header-icon ag-header-label-icon ag-filter-icon"
+      aria-hidden="true"
+    ></span>
+    <span
+      ref="eSortOrder"
+      class="ag-header-icon ag-header-label-icon ag-sort-order"
+      aria-hidden="true"
+    ></span>
+    <span
+      ref="eSortAsc"
+      class="ag-header-icon ag-header-label-icon ag-sort-ascending-icon"
+      aria-hidden="true"
+    ></span>
+    <span
+      ref="eSortDesc"
+      class="ag-header-icon ag-header-label-icon ag-sort-descending-icon"
+      aria-hidden="true"
+    ></span>
+    <span
+      ref="eSortNone"
+      class="ag-header-icon ag-header-label-icon ag-sort-none-icon"
+      aria-hidden="true"
+    ></span>
+  </div>
 </div>
 ```
 
 When you provide your own template, everything should work as expected as long as you re-use the same `refs`.
 
-| Ref | Description |
-|-|-|
-| `eMenu` | The container where the column menu icon will appear to enable opening the column menu. |
-| `eLabel` | The container where there is going to be an onClick mouse listener to trigger the sort. |
-| `eText` | The text displayed on the column. |
-| `eFilter` | The container with the icon that will appear if the user filters this column. |
+| Ref          | Description                                                                                                            |
+| ------------ | ---------------------------------------------------------------------------------------------------------------------- |
+| `eMenu`      | The container where the column menu icon will appear to enable opening the column menu.                                |
+| `eLabel`     | The container where there is going to be an onClick mouse listener to trigger the sort.                                |
+| `eText`      | The text displayed on the column.                                                                                      |
+| `eFilter`    | The container with the icon that will appear if the user filters this column.                                          |
 | `eSortOrder` | In case of sorting my multiple columns, this shows the index that represents the position of this column in the order. |
-| `eSortAsc` | In case of sorting ascending the data in the column, this shows the associated icon. |
-| `eSortDesc` | In case of sorting descending the data in the column, this shows the descending icon. |
-| `eSortNone` | In case of no sort being applied, this shows the associated icon. Note this icon by default is empty. |
+| `eSortAsc`   | In case of sorting ascending the data in the column, this shows the associated icon.                                   |
+| `eSortDesc`  | In case of sorting descending the data in the column, this shows the descending icon.                                  |
+| `eSortNone`  | In case of no sort being applied, this shows the associated icon. Note this icon by default is empty.                  |
 
 The ref parameters are used by the grid to identify elements to add functionality to. If you leave an element out of your template, the functionality will not be added. For example if you do not specify `eLabel` then the column will not react to click events for sorting.
 

@@ -6,19 +6,5 @@
 |
 | If you are using Angular v8 or v9+ but with Ivy disabled by the compiler flag `enableIvy: false` then you must declare your custom components with the AgGridModule via the `withComponents` method. This enables AG Grid to be able to use your Angular components by adding them as `entryComponents` for you. You need to provide them in the **top level** `NgModule`:
 |
-| ```jsx
-| @NgModule({
-|     imports: [
-|         BrowserModule,
-|         AgGridModule.withComponents(
-|             [
-|                 SquareComponent,      // Components to be used within the Grid
-|                 CubeComponent,
-|                 // ...other components
-|             ]
-|         ),
-|       // AgGridModule, // Ivy: No need for withComponents 
-|     ]
-| })
-| ```
+| `jsx | @NgModule({ | imports: [ | BrowserModule, | AgGridModule.withComponents( | [ | SquareComponent, // Components to be used within the Grid | CubeComponent, | // ...other components | ] | ), | // AgGridModule, // Ivy: No need for withComponents | ] | }) | `
 |

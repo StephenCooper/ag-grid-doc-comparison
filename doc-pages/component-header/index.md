@@ -34,7 +34,7 @@ md-include:component-interface-vue.md
 
 <interface-documentation interfaceName='IHeaderParams' ></interface-documentation>
 
-## Specifying Header Components 
+## Specifying Header Components
 
 You specify the Header Component, as well Header Group Components, in the column definition (or you can set in the default column definition to impact all columns).
 
@@ -53,23 +53,23 @@ please refer to the [Grouped Column Definition Docs](../column-groups/).
 ### Grid vs Your Responsibilities
 
 A Header Component allows customising the inside part of the header. The component is wrapped inside a header cell so that the grid can take care of some complex logic that you should not be worried about, eg the resizing and moving of columns. The HTML of the header cell is similar to the following:
- 
-```html
-    <!-- the ag-header-cell is always provided by AG Grid -->
-    <!-- column moving and resize logic is put on this element by the grid -->
-    <div class="ag-header-cell">
 
-    <!-- AG Grid will also always provide a resize bar (if column resizing
+```html
+<!-- the ag-header-cell is always provided by AG Grid -->
+<!-- column moving and resize logic is put on this element by the grid -->
+<div class="ag-header-cell">
+  <!-- AG Grid will also always provide a resize bar (if column resizing
     is enabled) and take care of all the resize logic. the grid usually
     floats this element to the right.-->
-    <div class="ag-header-cell-resize"></div>
+  <div class="ag-header-cell-resize"></div>
 
-    <!-- checkbox for selection, if turned on.
+  <!-- checkbox for selection, if turned on.
     the grid usually floats this element to the left. -->
-    <div class="ag-header-select-all"></div>
+  <div class="ag-header-select-all"></div>
 
-    <!-- the header component - this is the piece that you can customise -->
-    <div class="ag-header-component"></div>
+  <!-- the header component - this is the piece that you can customise -->
+  <div class="ag-header-component"></div>
+</div>
 ```
 
 The grid is always responsible for the following:
@@ -83,7 +83,6 @@ The header component (your bit) will be responsible for the following:
 - **Filtering:** You do not filter via the column (you filter from inside the menu), however you may need to display icons as the filter state of the column changes.
 - **Menu:** If you want the user to be able to open the column menu, you will need to manage this user interaction. The default grid component provides a button for the user to click to show the menu.
 - **Anything Else:** Whatever you want, you are probably creating a custom header to add your own functionality in.
-
 
 ### Sorting
 
@@ -99,83 +98,29 @@ After the user requests a sort, you should call ONE of the following:
 | 1. `props.progressSort(multiSort):` This is the simplest. Call it to progress the sort on the column to the next stage. Using this uses the grid logic for working out what the next sort stage is (eg 'descending' normally follows 'ascending').
 | 1. `props.setSort(direction, multiSort):` Use this to set to sort to a specific state. Use this if you don't want to use the grids logic for working out the next sort state.
 
-
 [[only-javascript]]
-| ```js
-| // option 1) tell the grid when you want to progress the sorting
-| myHeaderElement.addEventListener('click', function(event) {
-|     // in this example, we do multi sort if Shift key is pressed
-|     params.progressSort(event.shiftKey);
-| });
-| 
-| // or option 2) tell the grid when you want to set the sort explicitly
-| // button that always sorts ASCENDING
-| mySortAscButton.addEventListener('click', function(event) {
-|     params.setSort('asc', event.shiftKey);
-| });
-| 
-| // button that always sorts DESCENDING
-| mySortDescButton.addEventListener('click', function(event) {
-|     params.setSort('desc', event.shiftKey);
-| });
-| ```
+| `js | // option 1) tell the grid when you want to progress the sorting | myHeaderElement.addEventListener('click', function(event) { | // in this example, we do multi sort if Shift key is pressed | params.progressSort(event.shiftKey); | }); | | // or option 2) tell the grid when you want to set the sort explicitly | // button that always sorts ASCENDING | mySortAscButton.addEventListener('click', function(event) { | params.setSort('asc', event.shiftKey); | }); | | // button that always sorts DESCENDING | mySortDescButton.addEventListener('click', function(event) { | params.setSort('desc', event.shiftKey); | }); | `
 
 [[only-angular-or-vue]]
-| ```js
-| // option 1) tell the grid when you want to progress the sorting
-| onSortClicked(event) {
-|      // in this example, we do multi sort if Shift key is pressed
-|     this.params.progressSort(event.shiftKey);
-| };
-| 
-| // or option 2) tell the grid when you want to set the sort explicitly
-| // button that always sorts ASCENDING
-| onSortAscClicked(event) {
-|     this.params.setSort('asc', event.shiftKey);
-| };
-| 
-| // button that always sorts DESCENDING
-| onSortDescClicked(event) {
-|     this.params.setSort('desc', event.shiftKey);
-| };
-| ```
+| `js | // option 1) tell the grid when you want to progress the sorting | onSortClicked(event) { | // in this example, we do multi sort if Shift key is pressed | this.params.progressSort(event.shiftKey); | }; | | // or option 2) tell the grid when you want to set the sort explicitly | // button that always sorts ASCENDING | onSortAscClicked(event) { | this.params.setSort('asc', event.shiftKey); | }; | | // button that always sorts DESCENDING | onSortDescClicked(event) { | this.params.setSort('desc', event.shiftKey); | }; | `
 
 [[only-react]]
-| ```js
-| // option 1) tell the grid when you want to progress the sorting
-| onSortClicked(event) {
-|      // in this example, we do multi sort if Shift key is pressed
-|     this.props.progressSort(event.shiftKey);
-| };
-| 
-| // or option 2) tell the grid when you want to set the sort explicitly
-| // button that always sorts ASCENDING
-| onSortAscClicked(event) {
-|     this.props.setSort('asc', event.shiftKey);
-| };
-| 
-| // button that always sorts DESCENDING
-| onSortDescClicked(event) {
-|     this.props.setSort('desc', event.shiftKey);
-| };
-| ```
+| `js | // option 1) tell the grid when you want to progress the sorting | onSortClicked(event) { | // in this example, we do multi sort if Shift key is pressed | this.props.progressSort(event.shiftKey); | }; | | // or option 2) tell the grid when you want to set the sort explicitly | // button that always sorts ASCENDING | onSortAscClicked(event) { | this.props.setSort('asc', event.shiftKey); | }; | | // button that always sorts DESCENDING | onSortDescClicked(event) { | this.props.setSort('desc', event.shiftKey); | }; | `
 
 To know when a column's sort state has change (eg when to update your icons), you should listen for `sortChanged` event on the column.
 
-
 ```js
 // listen to the column for sort events
-column.addEventListener('sortChanged', function() {
+column.addEventListener("sortChanged", function () {
+  // get sort state from column
+  var sort = column.getSort();
+  console.log("sort state of column is " + sort); // prints one of ['asc',desc',null]
 
-    // get sort state from column
-    var sort = column.getSort();
-    console.log('sort state of column is ' + sort); // prints one of ['asc',desc',null]
-
-    // then do what you need, eg set relevant icons visible
-    var sortingAscending = sort==='asc';
-    var sortingDescending = sort==='desc';
-    var notSorting = !sortingAscending && !sortingDescending;
-    // how you update your GUI accordingly is up to you
+  // then do what you need, eg set relevant icons visible
+  var sortingAscending = sort === "asc";
+  var sortingDescending = sort === "desc";
+  var notSorting = !sortingAscending && !sortingDescending;
+  // how you update your GUI accordingly is up to you
 });
 
 // don't forget to remove your listener in your destroy code
@@ -187,9 +132,9 @@ The header doesn't normally initiate filtering. If it does, use the standard gri
 
 ```js
 // listen to the column for filter events
-column.addEventListener('filterChanged', function() {
-    // when filter changes on the col, this will print one of [true,false]
-    console.log('filter of column is ' + column.isFilterActive());
+column.addEventListener("filterChanged", function () {
+  // when filter changes on the col, this will print one of [true,false]
+  console.log("filter of column is " + column.isFilterActive());
 });
 
 // don't forget to remove your listener in your destroy code
@@ -200,29 +145,13 @@ column.addEventListener('filterChanged', function() {
 How you get the user to ask for the column menu is up to you. When you want to display the menu, call the `params.showColumnMenu()` callback. The callback takes the HTML element for the button so that it can place the menu over the button (so the menu appears to drop down from the button).
 
 [[only-javascript]]
-| ```js
-| myMenuButton.addEventListener('click', function() {
-|     params.showColumnMenu(myMenuButton);
-| });
-| ```
+| `js | myMenuButton.addEventListener('click', function() { | params.showColumnMenu(myMenuButton); | }); | `
 [[only-vue]]
-| ```js
-| onMenuClicked() {
-|     this.params.showColumnMenu(this.$refs.menuButton);
-| });
-| ```
+| `js | onMenuClicked() { | this.params.showColumnMenu(this.$refs.menuButton); | }); | `
 [[only-angular]]
-| ```js
-| onMenuClicked() {
-|     this.params.showColumnMenu(this.menuButton.nativeElement);
-| });
-| ```
+| `js | onMenuClicked() { | this.params.showColumnMenu(this.menuButton.nativeElement); | }); | `
 [[only-react]]
-| ```js
-| onMenuClicked() {
-|     this.props.showColumnMenu(refButton.current);
-| });
-| ```
+| `js | onMenuClicked() { | this.props.showColumnMenu(refButton.current); | }); | `
 
 ### Refresh
 
@@ -240,44 +169,13 @@ It is the responsibility of the Header Component to inspect the Column Definitio
 On top of the parameters provided by the grid, you can also provide your own parameters. This is useful if you want to 'configure' your header component. For example, you might have a header component for formatting currency but that needs the currency symbol.
 
 [[only-javascript]]
-|```js
-|colDef = {
-|    ...
-|    headerComponent: MyHeaderComponent;
-|    headerComponentParams : {
-|        currencySymbol: '£' // the pound symbol will be placed into params
-|    }
-|}
-|```
+|`js |colDef = { | ... | headerComponent: MyHeaderComponent; | headerComponentParams : { | currencySymbol: '£' // the pound symbol will be placed into params | } |} |`
 [[only-angular]]
-|```js
-|colDef = {
-|    ...
-|    headerComponent: MyHeaderComponent;
-|    headerComponentParams : {
-|        currencySymbol: '£' // the pound symbol will be placed into params
-|    }
-|}
-|```
+|`js |colDef = { | ... | headerComponent: MyHeaderComponent; | headerComponentParams : { | currencySymbol: '£' // the pound symbol will be placed into params | } |} |`
 [[only-react]]
-|```js
-|colDef = {
-|    ...
-|    headerComponent: MyHeaderComponent;
-|    headerComponentParams : {
-|        currencySymbol: '£' // the pound symbol will be placed into params
-|    }
-|}|```
+|`js |colDef = { | ... | headerComponent: MyHeaderComponent; | headerComponentParams : { | currencySymbol: '£' // the pound symbol will be placed into params | } |}|`
 [[only-vue]]
-|```js
-|colDef = {
-|    ...
-|    headerComponent: 'MyHeaderComponent';
-|    headerComponentParams : {
-|        currencySymbol: '£' // the pound symbol will be placed into params
-|    }
-|}
-|```
+|`js |colDef = { | ... | headerComponent: 'MyHeaderComponent'; | headerComponentParams : { | currencySymbol: '£' // the pound symbol will be placed into params | } |} |`
 
 ## Header Group Components
 

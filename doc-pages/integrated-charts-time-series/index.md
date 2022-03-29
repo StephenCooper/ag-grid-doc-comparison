@@ -13,11 +13,9 @@ of a category or numeric axis.
 A [Time Axis](/charts-axes/#time-axis) is used to plot continuous date / time values, whereas a
 [Category Axis](/charts-axes/#category-axis) is used to plot discrete values or categories.
 
-
 The example below highlights the differences between time and category axes. Notice that the time axis contains all
-    days for the range of values provided, whereas the category axis only shows axis labels for the discrete values
-    provide.
-
+days for the range of values provided, whereas the category axis only shows axis labels for the discrete values
+provide.
 
 <grid-example title='Time vs Category Axis' name='time-vs-category' type='generated' options='{ "exampleHeight": 740, "enterprise": true, "modules": ["clientside", "menu", "charts"], "extras": ["momentjs"] }'></grid-example>
 
@@ -59,4 +57,3 @@ the `chartDataType='time'` property on the 'timestamp' column definition:
 ## Next Up
 
 Continue to the next section to learn about: [Save / Restore Charts](/integrated-charts-api-save-restore-charts/).
-

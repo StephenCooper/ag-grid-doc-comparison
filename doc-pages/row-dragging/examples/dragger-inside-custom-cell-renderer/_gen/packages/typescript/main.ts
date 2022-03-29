@@ -1,22 +1,22 @@
-import 'ag-grid-community/dist/styles/ag-grid.css';
+import "ag-grid-community/dist/styles/ag-grid.css";
 import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import { ColDef, ColGroupDef, Grid, GridOptions } from 'ag-grid-community';
-import { CustomCellRenderer } from './customCellRenderer';
+import { ColDef, ColGroupDef, Grid, GridOptions } from "ag-grid-community";
+import { CustomCellRenderer } from "./customCellRenderer";
 
 const columnDefs: ColDef[] = [
   {
-    field: 'athlete',
-    cellClass: 'custom-athlete-cell',
+    field: "athlete",
+    cellClass: "custom-athlete-cell",
     cellRenderer: CustomCellRenderer,
   },
-  { field: 'country' },
-  { field: 'year', width: 100 },
-  { field: 'date' },
-  { field: 'sport' },
-  { field: 'gold' },
-  { field: 'silver' },
-  { field: 'bronze' },
-]
+  { field: "country" },
+  { field: "year", width: 100 },
+  { field: "date" },
+  { field: "sport" },
+  { field: "gold" },
+  { field: "silver" },
+  { field: "bronze" },
+];
 
 const gridOptions: GridOptions = {
   defaultColDef: {
@@ -27,13 +27,12 @@ const gridOptions: GridOptions = {
   rowDragManaged: true,
   columnDefs: columnDefs,
   animateRows: true,
-}
+};
 
 // setup the grid after the page has finished loading
-  var gridDiv = document.querySelector<HTMLElement>('#myGrid')!
-  new Grid(gridDiv, gridOptions)
+var gridDiv = document.querySelector<HTMLElement>("#myGrid")!;
+new Grid(gridDiv, gridOptions);
 
-  fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
-    .then(response => response.json())
-    .then(data => gridOptions.api!.setRowData(data))
- 
+fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+  .then((response) => response.json())
+  .then((data) => gridOptions.api!.setRowData(data));

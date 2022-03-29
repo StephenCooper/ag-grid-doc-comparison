@@ -1,16 +1,15 @@
-
 const columnDefs = [
-  { headerName: 'Athlete Name', field: 'athlete', suppressMenu: true },
-  { field: 'age', sortable: false },
-  { field: 'country', suppressMenu: true },
-  { field: 'year', sortable: false },
-  { field: 'date', suppressMenu: true, sortable: false },
-  { field: 'sport', sortable: false },
-  { field: 'gold' },
-  { field: 'silver', sortable: false },
-  { field: 'bronze', suppressMenu: true },
-  { field: 'total', sortable: false },
-]
+  { headerName: "Athlete Name", field: "athlete", suppressMenu: true },
+  { field: "age", sortable: false },
+  { field: "country", suppressMenu: true },
+  { field: "year", sortable: false },
+  { field: "date", suppressMenu: true, sortable: false },
+  { field: "sport", sortable: false },
+  { field: "gold" },
+  { field: "silver", sortable: false },
+  { field: "bronze", suppressMenu: true },
+  { field: "total", sortable: false },
+];
 
 const gridOptions = {
   columnDefs: columnDefs,
@@ -22,7 +21,7 @@ const gridOptions = {
     filter: true,
     width: 150,
     headerComponentParams: {
-      menuIcon: 'fa-bars',
+      menuIcon: "fa-bars",
       template: `<div class="ag-cell-label-container" role="presentation">  
                     <span ref="eMenu" class="ag-header-icon ag-header-cell-menu-button"></span>  
                     <div ref="eLabel" class="ag-header-cell-label" role="presentation">    
@@ -36,14 +35,14 @@ const gridOptions = {
                 </div>`,
     },
   },
-}
+};
 
 // setup the grid after the page has finished loading
-document.addEventListener('DOMContentLoaded', () => {
-  const gridDiv = document.querySelector('#myGrid')
-  new agGrid.Grid(gridDiv, gridOptions)
+document.addEventListener("DOMContentLoaded", () => {
+  const gridDiv = document.querySelector("#myGrid");
+  new agGrid.Grid(gridDiv, gridOptions);
 
-  fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
-    .then(response => response.json())
-    .then(data => gridOptions.api.setRowData(data))
-})
+  fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+    .then((response) => response.json())
+    .then((data) => gridOptions.api.setRowData(data));
+});

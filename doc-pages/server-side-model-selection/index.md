@@ -21,7 +21,6 @@ The example below shows both simple 'click' selection and multiple 'shift-click'
 | 1. Only works across rows that share the same parent.
 | 1. Only works for rows that are loaded (e.g. a large range selection may span rows that are not loaded).
 
-
 ## Example: Checkbox Selection
 
 Below shows another example using checkbox selection. The example shows checkboxes on the groups and a regular column.
@@ -50,7 +49,7 @@ is provided in the data such as a database Primary Key would be ideal.
 ### Supplying Unique Group IDs
 
 When grouping there may not be an easy way to get unique Row IDs from the data for group levels. This is because a group
-row doesn't always correspond to one Row in the store. 
+row doesn't always correspond to one Row in the store.
 
 To handle this scenario, the grid provides `parentKeys` and `level` properties in the `GetRowIdParams` supplied to `getRowId()`.
 
@@ -101,11 +100,10 @@ Row Model (e.g. if using the default Client-side Row Model) it is possible to do
 `groupSelectsChildren=true`. This is not possible in the Server-Side Row Model because the children
 for a group may not be loaded into the grid. Without all the children loaded, it is not possible to select them all.
 
-Selecting a group where it selects all children is not supported out-of-the-box, this is something you will need to 
-implement within the application as it will require selecting rows that are not yet loaded into the grid, probably 
+Selecting a group where it selects all children is not supported out-of-the-box, this is something you will need to
+implement within the application as it will require selecting rows that are not yet loaded into the grid, probably
 not even loaded into the client.
 
 ## Next Up
 
 Continue to the next section to learn how to [Change Columns](/server-side-model-changing-columns/).
-

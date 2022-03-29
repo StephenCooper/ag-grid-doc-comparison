@@ -1,19 +1,23 @@
-import { Grid, ColumnSparklineOptions, GridOptions } from '@ag-grid-community/core'
+import {
+  Grid,
+  ColumnSparklineOptions,
+  GridOptions,
+} from "@ag-grid-community/core";
 
 const gridOptions: GridOptions = {
   columnDefs: [
-    { field: 'symbol', maxWidth: 120 },
-    { field: 'name', minWidth: 250 },
+    { field: "symbol", maxWidth: 120 },
+    { field: "name", minWidth: 250 },
     {
-      field: 'change',
-      cellRenderer: 'agSparklineCellRenderer',
+      field: "change",
+      cellRenderer: "agSparklineCellRenderer",
       cellRendererParams: {
         sparklineOptions: {
-          type: 'column',
-          fill: '#91cc75',
-          stroke: '#91cc75',
+          type: "column",
+          fill: "#91cc75",
+          stroke: "#91cc75",
           highlightStyle: {
-            fill: 'orange',
+            fill: "orange",
           },
           paddingInner: 0.3,
           paddingOuter: 0.1,
@@ -21,8 +25,8 @@ const gridOptions: GridOptions = {
       },
     },
     {
-      field: 'volume',
-      type: 'numericColumn',
+      field: "volume",
+      type: "numericColumn",
       maxWidth: 140,
     },
   ],
@@ -33,10 +37,10 @@ const gridOptions: GridOptions = {
   },
   rowData: getData(),
   rowHeight: 50,
-}
+};
 
 // setup the grid after the page has finished loading
-document.addEventListener('DOMContentLoaded', function () {
-  var gridDiv = document.querySelector<HTMLElement>('#myGrid')!
-  new Grid(gridDiv, gridOptions)
-})
+document.addEventListener("DOMContentLoaded", function () {
+  var gridDiv = document.querySelector<HTMLElement>("#myGrid")!;
+  new Grid(gridDiv, gridOptions);
+});

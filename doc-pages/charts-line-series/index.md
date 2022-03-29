@@ -13,11 +13,13 @@ Since `'line'` series type is so common, the chart factory (`AgChart.create` met
 The simplest line series config therefore only requires two properties, `xKey` and `yKey`:
 
 ```js
-series: [{
+series: [
+  {
     // type: 'line' <-- assumed
-    xKey: 'year',
-    yKey: 'spending'
-}]
+    xKey: "year",
+    yKey: "spending",
+  },
+];
 ```
 
 <chart-example title='Single Line Series' name='basic-line' type='generated'></chart-example>
@@ -59,15 +61,15 @@ To create multiple line series we need to provide two config objects in the `ser
 
 ```js
 series: [
-    {
-        xKey: 'quarter',
-        yKey: 'petrol'
-    },
-    {
-        xKey: 'quarter',
-        yKey: 'diesel'
-    }
-]
+  {
+    xKey: "quarter",
+    yKey: "petrol",
+  },
+  {
+    xKey: "quarter",
+    yKey: "diesel",
+  },
+];
 ```
 
 And we get a result like this:
@@ -80,17 +82,17 @@ By default the legend shows the keys used to fetch the series data, but those ma
 
 ```js
 series: [
-    {
-        xKey: 'quarter',
-        yKey: 'petrol',
-        yName: 'Petrol'
-    },
-    {
-        xKey: 'quarter',
-        yKey: 'diesel',
-        yName: 'Diesel'
-    }
-]
+  {
+    xKey: "quarter",
+    yKey: "petrol",
+    yName: "Petrol",
+  },
+  {
+    xKey: "quarter",
+    yKey: "diesel",
+    yName: "Diesel",
+  },
+];
 ```
 
 <chart-example title='Legend and Tooltip Information' name='legend-info' type='generated'></chart-example>

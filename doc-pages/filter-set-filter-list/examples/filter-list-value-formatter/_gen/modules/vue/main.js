@@ -1,22 +1,25 @@
-
-import Vue from 'vue';
-import { AgGridVue } from '@ag-grid-community/vue';
-import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import Vue from "vue";
+import { AgGridVue } from "@ag-grid-community/vue";
+import "@ag-grid-community/core/dist/styles/ag-grid.css";
 import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { ModuleRegistry } from '@ag-grid-community/core';
-import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
-import { SetFilterModule } from '@ag-grid-enterprise/set-filter';
-import { MenuModule } from '@ag-grid-enterprise/menu';
-import { ColumnsToolPanelModule } from '@ag-grid-enterprise/column-tool-panel';
-import { FiltersToolPanelModule } from '@ag-grid-enterprise/filter-tool-panel';
+import { ModuleRegistry } from "@ag-grid-community/core";
+import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
+import { SetFilterModule } from "@ag-grid-enterprise/set-filter";
+import { MenuModule } from "@ag-grid-enterprise/menu";
+import { ColumnsToolPanelModule } from "@ag-grid-enterprise/column-tool-panel";
+import { FiltersToolPanelModule } from "@ag-grid-enterprise/filter-tool-panel";
 
 // Register the required feature modules with the Grid
-ModuleRegistry.registerModules([ClientSideRowModelModule, SetFilterModule, MenuModule, ColumnsToolPanelModule, FiltersToolPanelModule])
-
-
+ModuleRegistry.registerModules([
+  ClientSideRowModelModule,
+  SetFilterModule,
+  MenuModule,
+  ColumnsToolPanelModule,
+  FiltersToolPanelModule,
+]);
 
 const VueExample = {
-    template: `
+  template: `
         <div style="height: 100%">
             <div style="display: flex; flex-direction: column; height: 100%;">
                 <div style="padding-bottom: 5px;">
@@ -35,95 +38,99 @@ const VueExample = {
             </div>
         </div>
     `,
-    components: {
-        'ag-grid-vue': AgGridVue,
-        
+  components: {
+    "ag-grid-vue": AgGridVue,
+  },
+  data: function () {
+    return {
+      columnDefs: [
+        {
+          headerName: "No Value Formatter",
+          field: "country",
+          valueFormatter: countryValueFormatter,
+          filter: "agSetColumnFilter",
+          filterParams: {},
+        },
+        {
+          headerName: "With Value Formatter",
+          field: "country",
+          valueFormatter: countryValueFormatter,
+          filter: "agSetColumnFilter",
+          filterParams: { valueFormatter: countryValueFormatter },
+        },
+      ],
+      gridApi: null,
+      columnApi: null,
+      defaultColDef: {
+        flex: 1,
+        minWidth: 225,
+        resizable: true,
+        floatingFilter: true,
+      },
+      sideBar: null,
+      rowData: null,
+    };
+  },
+  created() {
+    this.sideBar = "filters";
+  },
+  methods: {
+    onFirstDataRendered(params) {
+      params.api.getToolPanelInstance("filters").expandFilters();
     },
-    data: function() {
-        return {
-            columnDefs: [{headerName:"No Value Formatter",
-field:"country",
-valueFormatter:countryValueFormatter,
-filter:"agSetColumnFilter",
-filterParams:{}},{headerName:"With Value Formatter",
-field:"country",
-valueFormatter:countryValueFormatter,
-filter:"agSetColumnFilter",
-filterParams:{"valueFormatter":countryValueFormatter}}],
-            gridApi: null,
-            columnApi: null,
-            defaultColDef: {
-    flex: 1,
-    minWidth: 225,
-    resizable: true,
-    floatingFilter: true,
-},
-            sideBar: null,
-rowData: null
-        }
+    printFilterModel() {
+      var filterModel = this.gridApi.getFilterModel();
+      console.log(filterModel);
     },
-    created() {
-        this.sideBar = 'filters'
-    },
-    methods: {
-        onFirstDataRendered(params) {
-    ((params.api.getToolPanelInstance('filters'))).expandFilters();
-},
-printFilterModel() {
-    var filterModel = this.gridApi.getFilterModel();
-    console.log(filterModel);
-},
-onGridReady(params) {
-        this.gridApi = params.api;
-        this.gridColumnApi = params.columnApi;
-        
+    onGridReady(params) {
+      this.gridApi = params.api;
+      this.gridColumnApi = params.columnApi;
 
-        
-            const updateData = (data) => {
-    // only return data that has corresponding country codes
-    var dataWithFlags = data.filter(function (d) {
-        return COUNTRY_CODES[d.country];
-    });
-    params.api.setRowData(dataWithFlags);
-};
-            
-            fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
-                .then(resp => resp.json())
-                .then(data => updateData(data));
+      const updateData = (data) => {
+        // only return data that has corresponding country codes
+        var dataWithFlags = data.filter(function (d) {
+          return COUNTRY_CODES[d.country];
+        });
+        params.api.setRowData(dataWithFlags);
+      };
+
+      fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+        .then((resp) => resp.json())
+        .then((data) => updateData(data));
     },
-    }
-}
+  },
+};
 
 window.countryValueFormatter = function countryValueFormatter(params) {
-    var value = params.value;
-    return value + ' (' + COUNTRY_CODES[value].toUpperCase() + ')';
-}
+  var value = params.value;
+  return value + " (" + COUNTRY_CODES[value].toUpperCase() + ")";
+};
 
 var COUNTRY_CODES = {
-    Ireland: 'ie',
-    Luxembourg: 'lu',
-    Belgium: 'be',
-    Spain: 'es',
-    France: 'fr',
-    Germany: 'de',
-    Sweden: 'se',
-    Italy: 'it',
-    Greece: 'gr',
-    Iceland: 'is',
-    Portugal: 'pt',
-    Malta: 'mt',
-    Norway: 'no',
-    Brazil: 'br',
-    Argentina: 'ar',
-    Colombia: 'co',
-    Peru: 'pe',
-    Venezuela: 've',
-    Uruguay: 'uy',
+  Ireland: "ie",
+  Luxembourg: "lu",
+  Belgium: "be",
+  Spain: "es",
+  France: "fr",
+  Germany: "de",
+  Sweden: "se",
+  Italy: "it",
+  Greece: "gr",
+  Iceland: "is",
+  Portugal: "pt",
+  Malta: "mt",
+  Norway: "no",
+  Brazil: "br",
+  Argentina: "ar",
+  Colombia: "co",
+  Peru: "pe",
+  Venezuela: "ve",
+  Uruguay: "uy",
 };
 
 new Vue({
-    el: '#app',
-    components: {
-        'my-component': VueExample
-    }
+  el: "#app",
+  components: {
+    "my-component": VueExample,
+  },
 });

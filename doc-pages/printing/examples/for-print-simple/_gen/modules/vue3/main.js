@@ -1,18 +1,15 @@
-
-import { createApp } from 'vue';
-import { AgGridVue } from '@ag-grid-community/vue3';
-import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import { createApp } from "vue";
+import { AgGridVue } from "@ag-grid-community/vue3";
+import "@ag-grid-community/core/dist/styles/ag-grid.css";
 import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { ModuleRegistry } from '@ag-grid-community/core';
-import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import { ModuleRegistry } from "@ag-grid-community/core";
+import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
 
 // Register the required feature modules with the Grid
-ModuleRegistry.registerModules([ClientSideRowModelModule])
-
-
+ModuleRegistry.registerModules([ClientSideRowModelModule]);
 
 const VueExample = {
-    template: `
+  template: `
         <div style="height: 100%">
             <button v-on:click="onBtPrinterFriendly()">Printer Friendly Layout</button>
             <button v-on:click="onBtNormal()">Normal Layout</button>
@@ -38,52 +35,49 @@ const VueExample = {
             </p>
         </div>
     `,
-    components: {
-        'ag-grid-vue': AgGridVue,
-        
+  components: {
+    "ag-grid-vue": AgGridVue,
+  },
+  data: function () {
+    return {
+      columnDefs: [
+        { headerName: "ID", valueGetter: "node.rowIndex + 1", width: 70 },
+        { field: "model", width: 150 },
+        { field: "color" },
+        { field: "price", valueFormatter: "'$' + value.toLocaleString()" },
+        { field: "year" },
+        { field: "country" },
+      ],
+      gridApi: null,
+      columnApi: null,
+      defaultColDef: {
+        width: 100,
+      },
+      rowData: null,
+    };
+  },
+  created() {
+    this.rowData = getData();
+  },
+  methods: {
+    onBtPrinterFriendly() {
+      var eGridDiv = document.querySelector("#myGrid");
+      eGridDiv.style.width = "";
+      eGridDiv.style.height = "";
+      this.gridApi.setDomLayout("print");
     },
-    data: function() {
-        return {
-            columnDefs: [{headerName:"ID",
-valueGetter:"node.rowIndex + 1",
-width:70},{field:"model",
-width:150},{field:"color"},{field:"price",
-valueFormatter:"'$' + value.toLocaleString()"},{field:"year"},{field:"country"}],
-            gridApi: null,
-            columnApi: null,
-            defaultColDef: {
-    width: 100,
-},
-            rowData: null
-        }
+    onBtNormal() {
+      var eGridDiv = document.querySelector("#myGrid");
+      eGridDiv.style.width = "400px";
+      eGridDiv.style.height = "200px";
+      // Same as setting to 'normal' as it is the default
+      this.gridApi.setDomLayout();
     },
-    created() {
-        this.rowData = getData()
+    onGridReady(params) {
+      this.gridApi = params.api;
+      this.gridColumnApi = params.columnApi;
     },
-    methods: {
-        onBtPrinterFriendly() {
-    var eGridDiv = document.querySelector('#myGrid');
-    eGridDiv.style.width = '';
-    eGridDiv.style.height = '';
-    this.gridApi.setDomLayout('print');
-},
-onBtNormal() {
-    var eGridDiv = document.querySelector('#myGrid');
-    eGridDiv.style.width = '400px';
-    eGridDiv.style.height = '200px';
-    // Same as setting to 'normal' as it is the default
-    this.gridApi.setDomLayout();
-},
-onGridReady(params) {
-        this.gridApi = params.api;
-        this.gridColumnApi = params.columnApi;
-        
-    },
-    }
-}
+  },
+};
 
-
-
-createApp(VueExample)
-    .mount("#app")
-
+createApp(VueExample).mount("#app");

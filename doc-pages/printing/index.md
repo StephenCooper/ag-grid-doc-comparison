@@ -4,8 +4,8 @@ title: "Printing"
 
 This section explains how to use the Print Layout feature of the grid.
 
-A grid using print layout will not use any scrollbars so all rows and columns will get printed. The grid will auto-size 
-width and height to fit all contents. This means if the grid is printed on paper all the cells will get included, as 
+A grid using print layout will not use any scrollbars so all rows and columns will get printed. The grid will auto-size
+width and height to fit all contents. This means if the grid is printed on paper all the cells will get included, as
 opposed to printing a grid with scrollbars and only cells within the visible area will get printed.
 
 The example below shows print layout. The following can be noted:
@@ -28,7 +28,6 @@ gridOptions.api.setDomLayout();
 
 ## Toggling Grid Size
 
-
 The grid width and height will adjust automatically to fit the contents of all cells. For this to work the application should **not** set a width or height onto the grid component. If using print layout, make sure you have no width or height set for the grid.
 
 All the examples on this page set width and height initially on the grid and then remove the width and height when print layout is set.
@@ -42,10 +41,11 @@ When in print layout all rows will have the CSS property `page-break-inside: avo
 Below shows a more detailed example and also automatically shows the print dialog. From the example, the following can be noted:
 
 - When 'Print' is pressed, the grid will do the following:
-    - Set the grid into print layout.
-    - Remove the height and width settings from the grid to allow the grid to auto-fit it's size.
-    - Wait for two seconds (to allow the browser to redraw with the new settings) and then bring up the print dialog.
-    - Set the grid back to normal when the print dialog is closed.
+
+  - Set the grid into print layout.
+  - Remove the height and width settings from the grid to allow the grid to auto-fit it's size.
+  - Wait for two seconds (to allow the browser to redraw with the new settings) and then bring up the print dialog.
+  - Set the grid back to normal when the print dialog is closed.
 
 - The first column 'ID' is pinned. When in print layout, the column is not pinned as pinning makes no sense when there are no horizontal scrolls.
 
@@ -72,5 +72,3 @@ When the grid is in print layout, it will be rendering all cells without using r
 ## Row Models
 
 The only [Row Model](/row-models/) that print layout works with is the default [Client Side](/client-side-model/) row model. It will not work with the others ([Infinite](/infinite-scrolling/), [Server-Side](/server-side-model/) or [Viewport](/viewport/)). This is because the grid will render the entire data-set which goes against the philosophy of the other row models which lazy load data.
-
-

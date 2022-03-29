@@ -1,22 +1,25 @@
-
-import Vue from 'vue';
-import { AgGridVue } from '@ag-grid-community/vue';
-import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import Vue from "vue";
+import { AgGridVue } from "@ag-grid-community/vue";
+import "@ag-grid-community/core/dist/styles/ag-grid.css";
 import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { ModuleRegistry } from '@ag-grid-community/core';
-import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
-import { SetFilterModule } from '@ag-grid-enterprise/set-filter';
-import { MenuModule } from '@ag-grid-enterprise/menu';
-import { ColumnsToolPanelModule } from '@ag-grid-enterprise/column-tool-panel';
-import { FiltersToolPanelModule } from '@ag-grid-enterprise/filter-tool-panel';
+import { ModuleRegistry } from "@ag-grid-community/core";
+import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
+import { SetFilterModule } from "@ag-grid-enterprise/set-filter";
+import { MenuModule } from "@ag-grid-enterprise/menu";
+import { ColumnsToolPanelModule } from "@ag-grid-enterprise/column-tool-panel";
+import { FiltersToolPanelModule } from "@ag-grid-enterprise/filter-tool-panel";
 
 // Register the required feature modules with the Grid
-ModuleRegistry.registerModules([ClientSideRowModelModule, SetFilterModule, MenuModule, ColumnsToolPanelModule, FiltersToolPanelModule])
-
-
+ModuleRegistry.registerModules([
+  ClientSideRowModelModule,
+  SetFilterModule,
+  MenuModule,
+  ColumnsToolPanelModule,
+  FiltersToolPanelModule,
+]);
 
 const VueExample = {
-    template: `
+  template: `
         <div style="height: 100%">
             <div class="example-wrapper">
                 <div class="example-header">
@@ -37,70 +40,65 @@ const VueExample = {
             </div>
         </div>
     `,
-    components: {
-        'ag-grid-vue': AgGridVue,
-        
+  components: {
+    "ag-grid-vue": AgGridVue,
+  },
+  data: function () {
+    return {
+      columnDefs: [{ field: "athlete", filter: "agSetColumnFilter" }],
+      gridApi: null,
+      columnApi: null,
+      defaultColDef: {
+        flex: 1,
+        minWidth: 150,
+        filter: true,
+        sortable: true,
+      },
+      sideBar: null,
+      rowData: null,
+    };
+  },
+  created() {
+    this.sideBar = "filters";
+  },
+  methods: {
+    getMiniFilterText() {
+      const athleteFilter = this.gridApi.getFilterInstance("athlete");
+      console.log(athleteFilter.getMiniFilter());
     },
-    data: function() {
-        return {
-            columnDefs: [{field:"athlete",
-filter:"agSetColumnFilter"}],
-            gridApi: null,
-            columnApi: null,
-            defaultColDef: {
-    flex: 1,
-    minWidth: 150,
-    filter: true,
-    sortable: true,
-},
-            sideBar: null,
-rowData: null
-        }
+    saveMiniFilterText() {
+      const athleteFilter = this.gridApi.getFilterInstance("athlete");
+      savedMiniFilterText = athleteFilter.getMiniFilter();
     },
-    created() {
-        this.sideBar = 'filters'
+    restoreMiniFilterText() {
+      const athleteFilter = this.gridApi.getFilterInstance("athlete");
+      athleteFilter.setMiniFilter(savedMiniFilterText);
     },
-    methods: {
-        getMiniFilterText() {
-    const athleteFilter = this.gridApi.getFilterInstance('athlete');
-    console.log(athleteFilter.getMiniFilter());
-},
-saveMiniFilterText() {
-    const athleteFilter = this.gridApi.getFilterInstance('athlete');
-    savedMiniFilterText = athleteFilter.getMiniFilter();
-},
-restoreMiniFilterText() {
-    const athleteFilter = this.gridApi.getFilterInstance('athlete');
-    athleteFilter.setMiniFilter(savedMiniFilterText);
-},
-resetFilter() {
-    const athleteFilter = this.gridApi.getFilterInstance('athlete');
-    athleteFilter.setModel(null);
-    this.gridApi.onFilterChanged();
-},
-onGridReady(params) {
-        this.gridApi = params.api;
-        this.gridColumnApi = params.columnApi;
-        
+    resetFilter() {
+      const athleteFilter = this.gridApi.getFilterInstance("athlete");
+      athleteFilter.setModel(null);
+      this.gridApi.onFilterChanged();
+    },
+    onGridReady(params) {
+      this.gridApi = params.api;
+      this.gridColumnApi = params.columnApi;
 
-        
-    ((params.api.getToolPanelInstance('filters'))).expandFilters();
+      params.api.getToolPanelInstance("filters").expandFilters();
 
-        
-            const updateData = (data) => params.api.setRowData(data);
-            
-            fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
-                .then(resp => resp.json())
-                .then(data => updateData(data));
+      const updateData = (data) => params.api.setRowData(data);
+
+      fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+        .then((resp) => resp.json())
+        .then((data) => updateData(data));
     },
-    }
-}
+  },
+};
 
-let savedMiniFilterText = '';
+let savedMiniFilterText = "";
 
 new Vue({
-    el: '#app',
-    components: {
-        'my-component': VueExample
-    }
+  el: "#app",
+  components: {
+    "my-component": VueExample,
+  },
 });

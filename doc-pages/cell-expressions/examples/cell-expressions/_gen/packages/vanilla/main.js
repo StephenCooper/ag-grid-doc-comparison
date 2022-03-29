@@ -1,23 +1,17 @@
-
 ///// left table
 var columnDefsLeft = [
-  { headerName: 'Function', field: 'function', minWidth: 150 },
-  { headerName: 'Value', field: 'value' },
-  { headerName: 'Times 10', valueGetter: 'getValue("value") * 10' },
-]
-
-
-
-
-
+  { headerName: "Function", field: "function", minWidth: 150 },
+  { headerName: "Value", field: "value" },
+  { headerName: "Times 10", valueGetter: 'getValue("value") * 10' },
+];
 
 var rowDataLeft = [
-  { function: 'Number Squared', value: '=ctx.theNumber * ctx.theNumber' },
-  { function: 'Number x 2', value: '=ctx.theNumber * 2' },
-  { function: "Today's Date", value: '=new Date().toLocaleDateString()' },
-  { function: 'Sum A', value: '=ctx.sum("a")' },
-  { function: 'Sum B', value: '=ctx.sum("b")' },
-]
+  { function: "Number Squared", value: "=ctx.theNumber * ctx.theNumber" },
+  { function: "Number x 2", value: "=ctx.theNumber * 2" },
+  { function: "Today's Date", value: "=new Date().toLocaleDateString()" },
+  { function: "Sum A", value: '=ctx.sum("a")' },
+  { function: "Sum B", value: '=ctx.sum("b")' },
+];
 
 var gridOptionsLeft = {
   columnDefs: columnDefsLeft,
@@ -29,31 +23,27 @@ var gridOptionsLeft = {
   context: {
     theNumber: 4,
   },
-}
+};
 
 ///// Right table
 var columnDefsRight = [
   {
-    headerName: 'A',
-    field: 'a',
+    headerName: "A",
+    field: "a",
     width: 150,
     editable: true,
     valueSetter: numberNewValueHandler,
     onCellValueChanged: cellValueChanged,
   },
   {
-    headerName: 'B',
-    field: 'b',
+    headerName: "B",
+    field: "b",
     width: 150,
     editable: true,
     newValueHandler: numberNewValueHandler,
     onCellValueChanged: cellValueChanged,
   },
-]
-
-
-
-
+];
 
 var rowDataRight = [
   { a: 1, b: 22 },
@@ -63,7 +53,7 @@ var rowDataRight = [
   { a: 5, b: 66 },
   { a: 6, b: 77 },
   { a: 7, b: 88 },
-]
+];
 
 var gridOptionsRight = {
   columnDefs: columnDefsRight,
@@ -71,40 +61,40 @@ var gridOptionsRight = {
     flex: 1,
   },
   rowData: rowDataRight,
-}
+};
 
 gridOptionsLeft.context.sum = function (field) {
-  var result = 0
+  var result = 0;
   rowDataRight.forEach(function (item) {
-    result += item[field]
-  })
-  return result
-}
+    result += item[field];
+  });
+  return result;
+};
 
 // tell Left grid to refresh when number changes
 function onNewNumber(value) {
-  gridOptionsLeft.context.theNumber = new Number(value)
-  gridOptionsLeft.api.redrawRows()
+  gridOptionsLeft.context.theNumber = new Number(value);
+  gridOptionsLeft.api.redrawRows();
 }
 
 // we want to convert the strings to numbers
 function numberNewValueHandler(params) {
-  var valueAsNumber = parseFloat(params.newValue)
-  var field = params.colDef.field
-  var data = params.data
-  data[field] = valueAsNumber
+  var valueAsNumber = parseFloat(params.newValue);
+  var field = params.colDef.field;
+  var data = params.data;
+  data[field] = valueAsNumber;
   return true;
 }
 
 // we want to tell the Left grid to refresh when the Right grid values change
 function cellValueChanged(params) {
-  gridOptionsLeft.api.redrawRows()
+  gridOptionsLeft.api.redrawRows();
 }
 
 // setup the grid after the page has finished loading
-document.addEventListener('DOMContentLoaded', function () {
-  var gridDivLeft = document.querySelector('#myGridLeft')
-  new agGrid.Grid(gridDivLeft, gridOptionsLeft)
-  var gridDivRight = document.querySelector('#myGridRight')
-  new agGrid.Grid(gridDivRight, gridOptionsRight)
-})
+document.addEventListener("DOMContentLoaded", function () {
+  var gridDivLeft = document.querySelector("#myGridLeft");
+  new agGrid.Grid(gridDivLeft, gridOptionsLeft);
+  var gridDivRight = document.querySelector("#myGridRight");
+  new agGrid.Grid(gridDivRight, gridOptionsRight);
+});

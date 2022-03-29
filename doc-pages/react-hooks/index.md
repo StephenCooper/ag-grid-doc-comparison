@@ -13,13 +13,13 @@ When setting Row Data, we recommend using `useState` or `useMemo`.
 
 ```jsx
 const App = () => {
-    const [rowData, setRowData] = useState([
-        {make: "Toyota", model: "Celica", price: 35000},
-        {make: "Ford", model: "Mondeo", price: 32000},
-        {make: "Porsche", model: "Boxter", price: 72000}
-    ]);
+  const [rowData, setRowData] = useState([
+    { make: "Toyota", model: "Celica", price: 35000 },
+    { make: "Ford", model: "Mondeo", price: 32000 },
+    { make: "Porsche", model: "Boxter", price: 72000 },
+  ]);
 
-    return <AgGridReact rowData={rowData} />;
+  return <AgGridReact rowData={rowData} />;
 };
 ```
 
@@ -33,12 +33,12 @@ When setting Column Definitions, we recommend using `useState` or `useMemo`.
 
 ```jsx
 const App = () => {
-    const [columnDefs, setColumnDefs] = useState([
-        {field: 'make'},
-        {field: 'model'},
-    ]);
+  const [columnDefs, setColumnDefs] = useState([
+    { field: "make" },
+    { field: "model" },
+  ]);
 
-    return <AgGridReact columnDefs={columnDefs} />;
+  return <AgGridReact columnDefs={columnDefs} />;
 };
 ```
 
@@ -46,16 +46,12 @@ If you do NOT use `useState` or `useMemo`, then the grid will be provided with a
 
 It makes sense to use `useState` if your application intends changing Column Definitions and to use `useMemo` if your application does not change Column Definitions.
 
-
 ```jsx
 const App = () => {
-    // do NOT do this, will result in extra Grid processing
-    const columnDefs = [
-        {field: 'make'},
-        {field: 'model'},
-    ];
+  // do NOT do this, will result in extra Grid processing
+  const columnDefs = [{ field: "make" }, { field: "model" }];
 
-    return <AgGridReact columnDefs={columnDefs} />;
+  return <AgGridReact columnDefs={columnDefs} />;
 };
 ```
 
@@ -66,12 +62,12 @@ It is also possible to define Columns using HTML Markup. We do not recommend thi
 ```jsx
 // do NOT define Columns in HTML like this
 const App = () => {
-    return (
-        <AgGridReact>
-            <AgGridColumn field="make"></AgGridColumn>
-            <AgGridColumn field="model"></AgGridColumn>
-        </AgGridReact>
-    );
+  return (
+    <AgGridReact>
+      <AgGridColumn field="make"></AgGridColumn>
+      <AgGridColumn field="model"></AgGridColumn>
+    </AgGridReact>
+  );
 };
 ```
 
@@ -85,22 +81,17 @@ For all other properties that are Objects, e.g. `sideBar` and `statusBar`, we al
 
 ```jsx
 const App = () => {
+  // GOOD - only one instance created
+  const sideBar = useMemo(() => {
+    toolPanels: ["filters", "columns"];
+  }, []);
 
-    // GOOD - only one instance created
-    const sideBar = useMemo( ()=> {
-        toolPanels: ['filters','columns']
-    }, []);
+  // BAD - each render could re-create the Status Bar in the grid
+  const statusBar = {
+    statusPanels: [{ statusPanel: "agTotalAndFilteredRowCountComponent" }],
+  };
 
-    // BAD - each render could re-create the Status Bar in the grid
-    const statusBar = {
-        statusPanels: [ 
-            { statusPanel: 'agTotalAndFilteredRowCountComponent' }
-        ]
-    };
-
-    return (
-        <AgGridReact sideBar={sideBar} statusBar={statusBar} />
-    );
+  return <AgGridReact sideBar={sideBar} statusBar={statusBar} />;
 };
 ```
 
@@ -108,24 +99,22 @@ Properties of simple types (string, boolean and number) do not need to use hooks
 
 ```jsx
 const App = () => {
+  const rowBuffer = 0;
+  const rowSelection = "multiple";
+  const animateRows = true;
 
-    const rowBuffer = 0;
-    const rowSelection = 'multiple';
-    const animateRows = true;
-
-    return (
-        <AgGridReact 
-            // variables assigned, no hooks, properties
-            // only set once
-            rowBuffer={rowBuffer} 
-            rowSelection={rowSelection} 
-            animateRows={animateRows} 
-
-            // inline also works well, properties only set once
-            rowModelType='clientSide'
-            rowHeight="50"
-            />
-    );
+  return (
+    <AgGridReact
+      // variables assigned, no hooks, properties
+      // only set once
+      rowBuffer={rowBuffer}
+      rowSelection={rowSelection}
+      animateRows={animateRows}
+      // inline also works well, properties only set once
+      rowModelType="clientSide"
+      rowHeight="50"
+    />
+  );
 };
 ```
 
@@ -139,27 +128,29 @@ If you do use `useCallback()`, make sure you set correct dependencies in order t
 
 ```jsx
 const App = () => {
-    const [clickedCount, setClickedCount] = useState(0);
+  const [clickedCount, setClickedCount] = useState(0);
 
-    // good callback, no hook, no stale data
-    const onCellClicked = () => setClickedRow(clickedCount++);
+  // good callback, no hook, no stale data
+  const onCellClicked = () => setClickedRow(clickedCount++);
 
-    // bad callback - stale data, dependency missing,
-    // will ALWAYS print 0
-    const onCellValueChanged = useCallback( ()=> {
-        console.log(`number of clicks is ${clickedCount}`);
-    }, []);
+  // bad callback - stale data, dependency missing,
+  // will ALWAYS print 0
+  const onCellValueChanged = useCallback(() => {
+    console.log(`number of clicks is ${clickedCount}`);
+  }, []);
 
-    // good callback, no stale data
-    const onFilterOpened = useCallback( ()=> {
-        console.log(`number of clicks is ${clickedCount}`);
-    }, [clickedRow]);
+  // good callback, no stale data
+  const onFilterOpened = useCallback(() => {
+    console.log(`number of clicks is ${clickedCount}`);
+  }, [clickedRow]);
 
-    return <AgGridReact 
-                onCellClicked={onCellClicked} 
-                onCellValueChanged={onCellValueChanged}
-                onFilterOpened={onFilterOpened}
-                />;
+  return (
+    <AgGridReact
+      onCellClicked={onCellClicked}
+      onCellValueChanged={onCellValueChanged}
+      onFilterOpened={onFilterOpened}
+    />
+  );
 };
 ```
 
@@ -176,23 +167,22 @@ We also recommend the use of `memo` around Components, to avoid [Wasted Componen
 Almost all of our examples, where Custom Components are used, are referenced directly. However the examples do not use `memo` to avoid clutter in the example.
 
 ```jsx
-const MyCellRenderer = p => <span>{p.value}</span>;
+const MyCellRenderer = (p) => <span>{p.value}</span>;
 
 const App = () => {
-    const [columnDefs] = useState([
+  const [columnDefs] = useState([
+    // reference the Cell Renderer above
+    { field: "make", cellRenderer: MyCellRenderer },
 
-        // reference the Cell Renderer above
-        { field: 'make', cellRenderer: MyCellRenderer },
-        
-        // or put inline
-        { field: 'model', cellRenderer: p => <span>{p.value}</span> },
+    // or put inline
+    { field: "model", cellRenderer: (p) => <span>{p.value}</span> },
 
-        // optionally for best performance, memo() the renderer, so render
-        // cycles don't occur unnecessarily
-        { field: 'price', cellRenderer: memo(MyCellRenderer) }
-    ]);
+    // optionally for best performance, memo() the renderer, so render
+    // cycles don't occur unnecessarily
+    { field: "price", cellRenderer: memo(MyCellRenderer) },
+  ]);
 
-    return <AgGridReact columnDefs={columnDefs} />;
+  return <AgGridReact columnDefs={columnDefs} />;
 };
 ```
 

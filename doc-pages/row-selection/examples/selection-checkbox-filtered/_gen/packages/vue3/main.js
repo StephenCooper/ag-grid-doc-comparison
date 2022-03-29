@@ -1,14 +1,11 @@
-
-import { createApp } from 'vue';
-import { AgGridVue } from 'ag-grid-vue3';
-import 'ag-grid-enterprise';
-import 'ag-grid-community/dist/styles/ag-grid.css';
-import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
-
-
+import { createApp } from "vue";
+import { AgGridVue } from "ag-grid-vue3";
+import "ag-grid-enterprise";
+import "ag-grid-community/dist/styles/ag-grid.css";
+import "ag-grid-community/dist/styles/ag-theme-alpine.css";
 
 const VueExample = {
-    template: `
+  template: `
         <div style="height: 100%">
             <div class="example-wrapper">
                 <div style="margin-bottom: 5px;">
@@ -33,87 +30,78 @@ const VueExample = {
             </div>
         </div>
     `,
-    components: {
-        'ag-grid-vue': AgGridVue,
-        
-    },
-    data: function() {
-        return {
-            columnDefs: [{field:"country",
-rowGroup:true,
-hide:true},{field:"sport",
-rowGroup:true,
-hide:true},{field:"age",
-minWidth:120,
-aggFunc:"sum"},{field:"year",
-maxWidth:120},{field:"date",
-minWidth:150},{field:"gold",
-aggFunc:"sum"},{field:"silver",
-aggFunc:"sum"},{field:"bronze",
-aggFunc:"sum"},{field:"total",
-aggFunc:"sum"}],
-            gridApi: null,
-            columnApi: null,
-            defaultColDef: {
-    flex: 1,
-    minWidth: 100,
-    filter: true,
-    resizable: true,
-},
-            autoGroupColumnDef: null,
-rowSelection: null,
-rowData: null
-        }
-    },
-    created() {
-        this.autoGroupColumnDef = {
-    headerName: 'Athlete',
-    field: 'athlete',
-    minWidth: 250,
-    cellRenderer: 'agGroupCellRenderer',
-    cellRendererParams: {
+  components: {
+    "ag-grid-vue": AgGridVue,
+  },
+  data: function () {
+    return {
+      columnDefs: [
+        { field: "country", rowGroup: true, hide: true },
+        { field: "sport", rowGroup: true, hide: true },
+        { field: "age", minWidth: 120, aggFunc: "sum" },
+        { field: "year", maxWidth: 120 },
+        { field: "date", minWidth: 150 },
+        { field: "gold", aggFunc: "sum" },
+        { field: "silver", aggFunc: "sum" },
+        { field: "bronze", aggFunc: "sum" },
+        { field: "total", aggFunc: "sum" },
+      ],
+      gridApi: null,
+      columnApi: null,
+      defaultColDef: {
+        flex: 1,
+        minWidth: 100,
+        filter: true,
+        resizable: true,
+      },
+      autoGroupColumnDef: null,
+      rowSelection: null,
+      rowData: null,
+    };
+  },
+  created() {
+    this.autoGroupColumnDef = {
+      headerName: "Athlete",
+      field: "athlete",
+      minWidth: 250,
+      cellRenderer: "agGroupCellRenderer",
+      cellRendererParams: {
         checkbox: true,
-    },
-};
-this.rowSelection = 'multiple'
-    },
-    methods: {
-        filterSwimming() {
-    this.gridApi.setFilterModel({
+      },
+    };
+    this.rowSelection = "multiple";
+  },
+  methods: {
+    filterSwimming() {
+      this.gridApi.setFilterModel({
         sport: {
-            type: 'set',
-            values: ['Swimming'],
+          type: "set",
+          values: ["Swimming"],
         },
-    });
-},
-ages16And20() {
-    this.gridApi.setFilterModel({
-        age: {
-            type: 'set',
-            values: ['16', '20'],
-        },
-    });
-},
-clearFilter() {
-    this.gridApi.setFilterModel(null);
-},
-onGridReady(params) {
-        this.gridApi = params.api;
-        this.gridColumnApi = params.columnApi;
-        
-
-        
-            const updateData = (data) => params.api.setRowData(data);
-            
-            fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
-                .then(resp => resp.json())
-                .then(data => updateData(data));
+      });
     },
-    }
-}
+    ages16And20() {
+      this.gridApi.setFilterModel({
+        age: {
+          type: "set",
+          values: ["16", "20"],
+        },
+      });
+    },
+    clearFilter() {
+      this.gridApi.setFilterModel(null);
+    },
+    onGridReady(params) {
+      this.gridApi = params.api;
+      this.gridColumnApi = params.columnApi;
 
+      const updateData = (data) => params.api.setRowData(data);
 
+      fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+        .then((resp) => resp.json())
+        .then((data) => updateData(data));
+    },
+  },
+};
 
-createApp(VueExample)
-    .mount("#app")
-
+createApp(VueExample).mount("#app");

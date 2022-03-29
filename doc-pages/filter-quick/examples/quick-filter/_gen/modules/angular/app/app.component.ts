@@ -1,89 +1,106 @@
-
-import { Component } from '@angular/core';
-import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import { Component } from "@angular/core";
+import "@ag-grid-community/core/dist/styles/ag-grid.css";
 import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { ColDef, ColGroupDef, ColumnApi, Grid, GridApi, GridOptions, GridReadyEvent, ICellRendererParams } from '@ag-grid-community/core';
+import {
+  ColDef,
+  ColGroupDef,
+  ColumnApi,
+  Grid,
+  GridApi,
+  GridOptions,
+  GridReadyEvent,
+  ICellRendererParams,
+} from "@ag-grid-community/core";
 // Required feature modules are registered in app.module.ts
 
 @Component({
-    selector: 'my-app',
-    template: `<div class="example-wrapper">
+  selector: "my-app",
+  template: `<div class="example-wrapper">
     <div class="example-header">
-        <input type="text" id="filter-text-box" placeholder="Filter..." (input)="onFilterTextBoxChanged()">
-        <button style="margin-left: 20px;" (click)="onPrintQuickFilterTexts()">Print Quick Filter Cache Texts</button>
+      <input
+        type="text"
+        id="filter-text-box"
+        placeholder="Filter..."
+        (input)="onFilterTextBoxChanged()"
+      />
+      <button style="margin-left: 20px;" (click)="onPrintQuickFilterTexts()">
+        Print Quick Filter Cache Texts
+      </button>
     </div>
     <ag-grid-angular
-    style="width: 100%; height: 100%;"
-    
-    class="ag-theme-alpine"
-    [columnDefs]="columnDefs"
-    [defaultColDef]="defaultColDef"
-    [rowData]="rowData"
-    [cacheQuickFilter]="true"
-    (gridReady)="onGridReady($event)"
+      style="width: 100%; height: 100%;"
+      class="ag-theme-alpine"
+      [columnDefs]="columnDefs"
+      [defaultColDef]="defaultColDef"
+      [rowData]="rowData"
+      [cacheQuickFilter]="true"
+      (gridReady)="onGridReady($event)"
     ></ag-grid-angular>
-</div>`
+  </div>`,
 })
-
 export class AppComponent {
-    private gridApi!: GridApi;
+  private gridApi!: GridApi;
 
-    
-    public columnDefs: ColDef[] = [
+  public columnDefs: ColDef[] = [
     // simple column, easy to understand
-    { field: 'name' },
+    { field: "name" },
     // the grid works with embedded fields
-    { headerName: 'Age', field: 'person.age' },
+    { headerName: "Age", field: "person.age" },
     // or use value getter, all works with quick filter
-    { headerName: 'Country', valueGetter: "data.person.country" },
+    { headerName: "Country", valueGetter: "data.person.country" },
     // or use the object value, so value passed around is an object
     {
-        headerName: 'Results',
-        field: 'medals',
-        cellRenderer: MedalRenderer,
-        // this is needed to avoid toString=[object,object] result with objects
-        getQuickFilterText: function (params) {
-            return getMedalString(params.value);
-        },
+      headerName: "Results",
+      field: "medals",
+      cellRenderer: MedalRenderer,
+      // this is needed to avoid toString=[object,object] result with objects
+      getQuickFilterText: function (params) {
+        return getMedalString(params.value);
+      },
     },
-];
-public defaultColDef: ColDef = {
+  ];
+  public defaultColDef: ColDef = {
     flex: 1,
     editable: true,
-};
-public rowData: any[] | null = getData()
+  };
+  public rowData: any[] | null = getData();
 
+  onFilterTextBoxChanged() {
+    this.gridApi.setQuickFilter(
+      (document.getElementById("filter-text-box") as HTMLInputElement).value
+    );
+  }
 
-    onFilterTextBoxChanged() {
-    this.gridApi.setQuickFilter((document.getElementById('filter-text-box') as HTMLInputElement).value);
-}
-
-onPrintQuickFilterTexts() {
+  onPrintQuickFilterTexts() {
     this.gridApi.forEachNode(function (rowNode, index) {
-        console.log('Row ' +
-            index +
-            ' quick filter text is ' +
-            rowNode.quickFilterAggregateText);
+      console.log(
+        "Row " +
+          index +
+          " quick filter text is " +
+          rowNode.quickFilterAggregateText
+      );
     });
+  }
+
+  onGridReady(params: GridReadyEvent) {
+    this.gridApi = params.api;
+  }
 }
 
-onGridReady(params: GridReadyEvent) {
-        this.gridApi = params.api;
-    }
-}
-
-
-
-const getMedalString = function ({ gold, silver, bronze }: {
-    gold: number;
-    silver: number;
-    bronze: number;
+const getMedalString = function ({
+  gold,
+  silver,
+  bronze,
+}: {
+  gold: number;
+  silver: number;
+  bronze: number;
 }) {
-    const goldStr = gold > 0 ? `Gold: ${gold} ` : '';
-    const silverStr = silver > 0 ? `Silver: ${silver} ` : '';
-    const bronzeStr = bronze > 0 ? `Bronze: ${bronze}` : '';
-    return goldStr + silverStr + bronzeStr;
+  const goldStr = gold > 0 ? `Gold: ${gold} ` : "";
+  const silverStr = silver > 0 ? `Silver: ${silver} ` : "";
+  const bronzeStr = bronze > 0 ? `Bronze: ${bronze}` : "";
+  return goldStr + silverStr + bronzeStr;
 };
 const MedalRenderer = function (params: ICellRendererParams) {
-    return getMedalString(params.value);
+  return getMedalString(params.value);
 };

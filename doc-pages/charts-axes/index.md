@@ -98,7 +98,8 @@ All of the above points are demonstrated by the example below.
 <chart-example title='Number Axis vs Log Axis' name='number-vs-log' type='generated'></chart-example>
 
 [[note]]
-| The range of a log axis should be strictly positive or strictly negative (because there's no power you can raise a number to that will yield zero). For that reason, any non-conforming range will be clipped to conformity, leaving only the larger segment. For example, `[0, 10]` will be clipped to  `[Number.EPSILON, 10]`, while `[-10, 5]` will be clipped to `[-10, -Number.EPSILON]`. Since there can be orders of magnitude difference between `Number.EPSILON` and the other range value, it is often desirable to set the `min` or `max` property of the axis manually. In this case it can be `min: 1` and `max: -1`, respectively.
+| The range of a log axis should be strictly positive or strictly negative (because there's no power you can raise a number to that will yield zero). For that reason, any non-conforming range will be clipped to conformity, leaving only the larger segment. For example, `[0, 10]` will be clipped to `[Number.EPSILON, 10]`, while `[-10, 5]` will be clipped to `[-10, -Number.EPSILON]`. Since there can be orders of magnitude difference between `Number.EPSILON` and the other range value, it is often desirable to set the `min` or `max` property of the axis manually. In this case it can be `min: 1` and `max: -1`, respectively.
+
 ## Time Axis
 
 The time axis is similar to the number axis in the sense that it is also used to plot continuous values. The time axis can even be used with numeric data (in addition to `Date` objects), but the numbers will be interpreted as Unix timestamps. The time axis differs from the number axis in tick segmentation and label formatting. For example, you could choose to place a tick every 5 minutes, every month, or every Friday.
@@ -228,6 +229,7 @@ and to append the units used at the end.
 ### Example: Number Currency Format
 
 Let's take a look at another example that illustrates a common requirement of formatting numbers as currency. Note that we are using:
+
 - the `s` SI prefix directive to shorten big numbers by using smaller numbers in combination with units,
   so that `3500000` becomes `3.5M` for example
 - the `~` trim option to trim all insignificant trailing zeros from the formatted value,
@@ -245,18 +247,17 @@ as well as the `formatter` function generated from the `format` config we provid
 to do is to format the original value using that generated formatter `params.formatter(params.value)`
 and replace the SI units with the currency ones `.replace('k', 'K').replace('G', 'B')`.
 
-
 <chart-example title='Number Axis Currency Format' name='number-axis-currency-format' type='generated'></chart-example>
 
 ### Time Label Format String
 
 For time axes, a format string can be provided, which will be used to format the dates for display as axis labels. The format string may contain the following directives, which reflect those from Python's <a href="https://strftime.org/" target="_blank">strftime</a>:
 
-- `%a` - abbreviated weekday name.*
-- `%A` - full weekday name.*
-- `%b` - abbreviated month name.*
-- `%B` - full month name.*
-- `%c` - the locale’s date and time, such as `%x`, `%X`.*
+- `%a` - abbreviated weekday name.\*
+- `%A` - full weekday name.\*
+- `%b` - abbreviated month name.\*
+- `%B` - full month name.\*
+- `%c` - the locale’s date and time, such as `%x`, `%X`.\*
 - `%d` - zero-padded day of the month as a decimal number `[01,31]`.
 - `%e` - space-padded day of the month as a decimal number `[ 1,31]`; equivalent to `%_d`.
 - `%f` - microseconds as a decimal number `[000000,999999]`.
@@ -266,7 +267,7 @@ For time axes, a format string can be provided, which will be used to format the
 - `%m` - month as a decimal number `[01,12]`.
 - `%M` - minute as a decimal number `[00,59]`.
 - `%L` - milliseconds as a decimal number `[000,999]`.
-- `%p` - either AM or PM.*
+- `%p` - either AM or PM.\*
 - `%Q` - milliseconds since UNIX epoch.
 - `%s` - seconds since UNIX epoch.
 - `%S` - second as a decimal number `[00,61]`.
@@ -275,14 +276,14 @@ For time axes, a format string can be provided, which will be used to format the
 - `%V` - ISO 8601 week number of the year as a decimal number `[01, 53]`.
 - `%w` - Sunday-based weekday as a decimal number `[0,6]`.
 - `%W` - Monday-based week of the year as a decimal number `[00,53]`.
-- `%x` - the locale’s date, such as `%-m/%-d/%Y`.*
-- `%X` - the locale’s time, such as `%-I:%M:%S %p`.*
+- `%x` - the locale’s date, such as `%-m/%-d/%Y`.\*
+- `%X` - the locale’s time, such as `%-I:%M:%S %p`.\*
 - `%y` - year without century as a decimal number `[00,99]`.
 - `%Y` - year with century as a decimal number.
 - `%Z` - time zone offset, such as `-0700`, `-07:00`, `-07`, or `Z`.
 - `%%` - a literal percent sign (%).
 
-Directives marked with an asterisk (*) may be affected by the locale definition.
+Directives marked with an asterisk (\*) may be affected by the locale definition.
 
 For `%U`, all days in a new year preceding the first Sunday are considered to be in week 0.<br />
 For `%W`, all days in a new year preceding the first Monday are considered to be in week 0.<br />
@@ -342,6 +343,7 @@ that all series that use that those keys will be coordinated by this axis, as il
 ### Example: Multiple y-axes
 
 Note, that we are:
+
 - using two number axis configurations in the `axes` array
 - position one number axis to the `left` and the other to the `right` of the chart
 - set the left number axis `keys` to match the `yKey`s of the `column` series

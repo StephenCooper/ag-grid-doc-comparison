@@ -2,6 +2,7 @@
 title: "Excel Export - Formulas"
 enterprise: true
 ---
+
 Excel Export allows to include Excel Formulas in the exported file. You can use formulas to translate any column Value Getters logic, so the column values are correctly computed locally in Excel.
 
 ## Exporting formulas
@@ -9,12 +10,13 @@ Excel Export allows to include Excel Formulas in the exported file. You can use 
 There are two ways to export formulas.
 
 There are two ways to include formulas as part of the exported Excel file.
+
 1. Set `dataType='Formula'` in the [Excel Styles](../excel-export-styles/) for a column.
 1. Set `autoConvertFormulas=true` in the Excel export parameters to be used across all columns.
 
 ## Formula Data Type
 
-When a cell is exported with `dataType='Formula'`, the cell content will be automatically converted to an Excel formula. It is your responsibility to ensure the value in the grid cell is a valid Excel formula. 
+When a cell is exported with `dataType='Formula'`, the cell content will be automatically converted to an Excel formula. It is your responsibility to ensure the value in the grid cell is a valid Excel formula.
 
 <snippet>
 const gridOptions = {
@@ -44,7 +46,6 @@ const gridOptions = {
     ],
 }
 </snippet>
-
 
 Note the following:
 

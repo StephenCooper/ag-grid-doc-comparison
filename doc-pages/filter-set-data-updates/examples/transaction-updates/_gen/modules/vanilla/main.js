@@ -1,41 +1,40 @@
-
 const gridOptions = {
   rowData: getRowData(),
   columnDefs: [
     {
-      headerName: 'Set Filter Column',
-      field: 'col1',
-      filter: 'agSetColumnFilter',
+      headerName: "Set Filter Column",
+      field: "col1",
+      filter: "agSetColumnFilter",
       editable: true,
       flex: 1,
     },
   ],
-  sideBar: 'filters',
+  sideBar: "filters",
   onFirstDataRendered: onFirstDataRendered,
-}
+};
 
 function getRowData() {
   return [
-    { col1: 'A' },
-    { col1: 'A' },
-    { col1: 'B' },
-    { col1: 'B' },
-    { col1: 'C' },
-    { col1: 'C' },
-  ]
+    { col1: "A" },
+    { col1: "A" },
+    { col1: "B" },
+    { col1: "B" },
+    { col1: "C" },
+    { col1: "C" },
+  ];
 }
 
 function updateFirstRow() {
-  var firstRow = gridOptions.api.getDisplayedRowAtIndex(0)
+  var firstRow = gridOptions.api.getDisplayedRowAtIndex(0);
   if (firstRow) {
-    var firstRowData = firstRow.data
-    firstRowData['col1'] += 'X'
-    gridOptions.api.applyTransaction({ update: [firstRowData] })
+    var firstRowData = firstRow.data;
+    firstRowData["col1"] += "X";
+    gridOptions.api.applyTransaction({ update: [firstRowData] });
   }
 }
 
 function addDRow() {
-  gridOptions.api.applyTransaction({ add: [{ col1: 'D' }] })
+  gridOptions.api.applyTransaction({ add: [{ col1: "D" }] });
 }
 
 function reset() {
@@ -44,13 +43,11 @@ function reset() {
 }
 
 function onFirstDataRendered(params) {
-  ((params.api.getToolPanelInstance(
-    'filters'
-  ) ) ).expandFilters()
+  params.api.getToolPanelInstance("filters").expandFilters();
 }
 
 // setup the grid after the page has finished loading
-document.addEventListener('DOMContentLoaded', function () {
-  var gridDiv = document.querySelector('#myGrid')
-  new agGrid.Grid(gridDiv, gridOptions)
-})
+document.addEventListener("DOMContentLoaded", function () {
+  var gridDiv = document.querySelector("#myGrid");
+  new agGrid.Grid(gridDiv, gridOptions);
+});

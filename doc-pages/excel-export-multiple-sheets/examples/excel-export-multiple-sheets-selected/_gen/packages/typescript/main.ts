@@ -1,18 +1,18 @@
-import 'ag-grid-enterprise';
-import 'ag-grid-community/dist/styles/ag-grid.css';
+import "ag-grid-enterprise";
+import "ag-grid-community/dist/styles/ag-grid.css";
 import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import { ColDef, ColGroupDef, Grid, GridOptions } from 'ag-grid-community';
+import { ColDef, ColGroupDef, Grid, GridOptions } from "ag-grid-community";
 
 const columnDefs: ColDef[] = [
-  { field: 'athlete', minWidth: 200 },
-  { field: 'age' },
-  { field: 'country', minWidth: 200 },
-  { field: 'year' },
-  { field: 'date', minWidth: 150 },
-  { field: 'sport', minWidth: 150 },
-  { field: 'gold' },
-  { field: 'silver' },
-]
+  { field: "athlete", minWidth: 200 },
+  { field: "age" },
+  { field: "country", minWidth: 200 },
+  { field: "year" },
+  { field: "date", minWidth: 150 },
+  { field: "sport", minWidth: 150 },
+  { field: "gold" },
+  { field: "silver" },
+];
 
 const gridOptions: GridOptions = {
   defaultColDef: {
@@ -24,27 +24,27 @@ const gridOptions: GridOptions = {
   },
 
   columnDefs: columnDefs,
-  rowSelection: 'multiple',
-}
+  rowSelection: "multiple",
+};
 
 function onBtExport() {
-  var spreadsheets: string[] = []
+  var spreadsheets: string[] = [];
 
   gridOptions.api!.forEachNode((node, index) => {
     if (index % 100 === 0) {
-      gridOptions.api!.deselectAll()
+      gridOptions.api!.deselectAll();
     }
 
-    node.setSelected(true)
+    node.setSelected(true);
 
     if (index % 100 === 99) {
       spreadsheets.push(
         gridOptions.api!.getSheetDataForExcel({
           onlySelected: true,
         })!
-      )
+      );
     }
-  })
+  });
 
   // check if the last page was exported
 
@@ -53,25 +53,24 @@ function onBtExport() {
       gridOptions.api!.getSheetDataForExcel({
         onlySelected: true,
       })!
-    )
-    gridOptions.api!.deselectAll()
+    );
+    gridOptions.api!.deselectAll();
   }
 
   gridOptions.api!.exportMultipleSheetsAsExcel({
     data: spreadsheets,
-  })
+  });
 }
 
 // setup the grid after the page has finished loading
-  var gridDiv = document.querySelector<HTMLElement>('#myGrid')!
-  new Grid(gridDiv, gridOptions)
+var gridDiv = document.querySelector<HTMLElement>("#myGrid")!;
+new Grid(gridDiv, gridOptions);
 
-  fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
-    .then(response => response.json())
-    .then(data => gridOptions.api!.setRowData(data))
- 
+fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+  .then((response) => response.json())
+  .then((data) => gridOptions.api!.setRowData(data));
 
-if (typeof window !== 'undefined') {
-// Attach external event handlers to window so they can be called from index.html
- (<any>window).onBtExport = onBtExport;
+if (typeof window !== "undefined") {
+  // Attach external event handlers to window so they can be called from index.html
+  (<any>window).onBtExport = onBtExport;
 }

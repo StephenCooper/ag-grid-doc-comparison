@@ -1,94 +1,87 @@
-import Vue from 'vue';
-import { cloneDeep } from 'lodash';
-import * as agCharts from 'ag-charts-community';
-import { AgChartsVue } from 'ag-charts-vue';
+import Vue from "vue";
+import { cloneDeep } from "lodash";
+import * as agCharts from "ag-charts-community";
+import { AgChartsVue } from "ag-charts-vue";
 
 const ChartExample = {
-    template: `
+  template: `
         <ag-charts-vue    
                 :options="options"></ag-charts-vue>
     `,
-    components: {
-        'ag-charts-vue': AgChartsVue
-    },
-    data: function() {
-        return {
-            options: null
-        }
-    },
-    created() {
-        this.options = {
-    
-    autoSize: true,
-    data: getData(),
-    title: {
-        text: 'Most Populous Cities (2019)',
+  components: {
+    "ag-charts-vue": AgChartsVue,
+  },
+  data: function () {
+    return {
+      options: null,
+    };
+  },
+  created() {
+    this.options = {
+      autoSize: true,
+      data: getData(),
+      title: {
+        text: "Most Populous Cities (2019)",
         fontSize: 18,
-    },
-    subtitle: {
-        text: 'Source: Simple Maps',
-    },
-    series: [
+      },
+      subtitle: {
+        text: "Source: Simple Maps",
+      },
+      series: [
         {
-            type: 'scatter',
-            title: 'Most populous cities',
-            xKey: 'lon',
-            xName: 'Longitude',
-            yKey: 'lat',
-            yName: 'Latitude',
-            sizeKey: 'population',
-            sizeName: 'Population',
-            labelKey: 'city',
-            labelName: 'City',
-            marker: {
-                size: 5,
-                maxSize: 100,
-            },
-            fillOpacity: 0.5,
+          type: "scatter",
+          title: "Most populous cities",
+          xKey: "lon",
+          xName: "Longitude",
+          yKey: "lat",
+          yName: "Latitude",
+          sizeKey: "population",
+          sizeName: "Population",
+          labelKey: "city",
+          labelName: "City",
+          marker: {
+            size: 5,
+            maxSize: 100,
+          },
+          fillOpacity: 0.5,
         },
-    ],
-    axes: [
+      ],
+      axes: [
         {
-            position: 'bottom',
-            type: 'number',
-            title: {
-                enabled: true,
-                text: 'Longitude',
-            },
-            min: -180,
-            max: 180,
-            nice: false,
+          position: "bottom",
+          type: "number",
+          title: {
+            enabled: true,
+            text: "Longitude",
+          },
+          min: -180,
+          max: 180,
+          nice: false,
         },
         {
-            position: 'left',
-            type: 'number',
-            title: {
-                enabled: true,
-                text: 'Latitude',
-            },
-            min: -90,
-            max: 90,
-            nice: false,
+          position: "left",
+          type: "number",
+          title: {
+            enabled: true,
+            text: "Latitude",
+          },
+          min: -90,
+          max: 90,
+          nice: false,
         },
-    ],
-    legend: {
+      ],
+      legend: {
         enabled: false,
-    },
-}
-    },
-    mounted() {
-        
-    },
-    methods: {
-        
-    }
-}
-
-
+      },
+    };
+  },
+  mounted() {},
+  methods: {},
+};
 
 new Vue({
-    el: '#app',
-    components: {
-        'my-component': ChartExample
-    }
+  el: "#app",
+  components: {
+    "my-component": ChartExample,
+  },
 });

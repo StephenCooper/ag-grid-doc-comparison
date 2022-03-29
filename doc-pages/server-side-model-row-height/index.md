@@ -5,7 +5,6 @@ enterprise: true
 
 Learn how to set Row Height when using the Server-Side Row Model.
 
-
 ## Dynamic Row Height
 
 To enable [Dynamic Row Height](/row-height/) when using the Server-Side Row Model you need to provide an implementation for the `getRowHeight` Grid Options property. This is demonstrated in the example below:
@@ -38,4 +37,3 @@ details on these properties.
 ## Next Up
 
 Continue to the next section to learn how to combine [Master Detail](/server-side-model-master-detail/) with the SSRM.
-

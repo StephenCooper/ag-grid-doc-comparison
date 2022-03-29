@@ -22,7 +22,7 @@ const gridOptions = {
 </snippet>
 
 In the snippet above, `year` has a lower `rowGroupIndex` than `country` which means it will be grouped first. The
-`rowGroupIndex` values can be any number that is either positive or zero and gaps are permitted. 
+`rowGroupIndex` values can be any number that is either positive or zero and gaps are permitted.
 
 The following example shows how the `rowGroupIndex` can be used to ensure rows are grouped by 'year' first and then
 `country` even though the `country` column definition is supplied to the grid first.
@@ -40,7 +40,7 @@ in one of the following cases:
 - The grid is using the [Group Rows Display Type](/grouping-group-rows), which means there are no columns associated with
   the groups to order.
 
-- The groups have an implied order that should not require column sorting to achieve. For example grouping by month 
+- The groups have an implied order that should not require column sorting to achieve. For example grouping by month
   (January, February...) or other groups which have business meaning that require order e.g. ["Severe", "Medium", "Low"]
   or ["Today", "Yesterday", "Older than 1 day"].
 

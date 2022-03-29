@@ -1,59 +1,58 @@
-
-import { Component } from '@angular/core';
-import 'ag-grid-enterprise';
-import 'ag-grid-community/dist/styles/ag-grid.css';
+import { Component } from "@angular/core";
+import "ag-grid-enterprise";
+import "ag-grid-community/dist/styles/ag-grid.css";
 import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import { ColDef, ColGroupDef, ColumnApi, Grid, GridApi, GridOptions, GridReadyEvent, SetFilterValuesFuncParams } from 'ag-grid-community';
+import {
+  ColDef,
+  ColGroupDef,
+  ColumnApi,
+  Grid,
+  GridApi,
+  GridOptions,
+  GridReadyEvent,
+  SetFilterValuesFuncParams,
+} from "ag-grid-community";
 
 @Component({
-    selector: 'my-app',
-    template: `<ag-grid-angular
+  selector: "my-app",
+  template: `<ag-grid-angular
     style="width: 100%; height: 100%;"
-    
     class="ag-theme-alpine"
     [rowData]="rowData"
     [columnDefs]="columnDefs"
     (gridReady)="onGridReady($event)"
-    ></ag-grid-angular>`
+  ></ag-grid-angular>`,
 })
-
 export class AppComponent {
-
-    
-    public rowData: any[] | null = [
-    { value: 'value 1' },
-    { value: 'value 1' },
-    { value: 'value 1' },
-    { value: 'value 1' },
-    { value: 'value 2' },
-    { value: 'value 2' },
-    { value: 'value 2' },
-    { value: 'value 2' },
-    { value: 'value 2' },
-];
-public columnDefs: ColDef[] = [
+  public rowData: any[] | null = [
+    { value: "value 1" },
+    { value: "value 1" },
+    { value: "value 1" },
+    { value: "value 1" },
+    { value: "value 2" },
+    { value: "value 2" },
+    { value: "value 2" },
+    { value: "value 2" },
+    { value: "value 2" },
+  ];
+  public columnDefs: ColDef[] = [
     {
-        headerName: 'Set filter column',
-        field: 'value',
-        flex: 1,
-        filter: 'agSetColumnFilter',
-        floatingFilter: true,
-        filterParams: filterParams,
+      headerName: "Set filter column",
+      field: "value",
+      flex: 1,
+      filter: "agSetColumnFilter",
+      floatingFilter: true,
+      filterParams: filterParams,
     },
-]
+  ];
 
-
-    onGridReady(params: GridReadyEvent) {
-        
-    }
+  onGridReady(params: GridReadyEvent) {}
 }
 
-
-
 var filterParams = {
-    values: function (params: SetFilterValuesFuncParams) {
-        setTimeout(function () {
-            params.success(['value 1', 'value 2']);
-        }, 3000);
-    },
+  values: function (params: SetFilterValuesFuncParams) {
+    setTimeout(function () {
+      params.success(["value 1", "value 2"]);
+    }, 3000);
+  },
 };

@@ -1,23 +1,26 @@
-
-import Vue from 'vue';
-import { AgGridVue } from '@ag-grid-community/vue';
-import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import Vue from "vue";
+import { AgGridVue } from "@ag-grid-community/vue";
+import "@ag-grid-community/core/dist/styles/ag-grid.css";
 import "@ag-grid-community/core/dist/styles/ag-theme-alpine-dark.css";
-import ColourCellRenderer from './colourCellRendererVue.js';
-import { ModuleRegistry } from '@ag-grid-community/core';
-import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
-import { RichSelectModule } from '@ag-grid-enterprise/rich-select';
-import { SetFilterModule } from '@ag-grid-enterprise/set-filter';
-import { MenuModule } from '@ag-grid-enterprise/menu';
-import { ColumnsToolPanelModule } from '@ag-grid-enterprise/column-tool-panel';
+import ColourCellRenderer from "./colourCellRendererVue.js";
+import { ModuleRegistry } from "@ag-grid-community/core";
+import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
+import { RichSelectModule } from "@ag-grid-enterprise/rich-select";
+import { SetFilterModule } from "@ag-grid-enterprise/set-filter";
+import { MenuModule } from "@ag-grid-enterprise/menu";
+import { ColumnsToolPanelModule } from "@ag-grid-enterprise/column-tool-panel";
 
 // Register the required feature modules with the Grid
-ModuleRegistry.registerModules([ClientSideRowModelModule, RichSelectModule, SetFilterModule, MenuModule, ColumnsToolPanelModule])
-
-
+ModuleRegistry.registerModules([
+  ClientSideRowModelModule,
+  RichSelectModule,
+  SetFilterModule,
+  MenuModule,
+  ColumnsToolPanelModule,
+]);
 
 const VueExample = {
-    template: `
+  template: `
         <div style="height: 100%">
             <ag-grid-vue
                 
@@ -30,136 +33,164 @@ const VueExample = {
                 @cell-value-changed="onCellValueChanged"></ag-grid-vue>
         </div>
     `,
-    components: {
-        'ag-grid-vue': AgGridVue,
-        ColourCellRenderer
+  components: {
+    "ag-grid-vue": AgGridVue,
+    ColourCellRenderer,
+  },
+  data: function () {
+    return {
+      columnDefs: [
+        {
+          field: "make",
+          cellEditor: "agSelectCellEditor",
+          cellEditorParams: { values: carBrands },
+          filterParams: {
+            valueFormatter: (params) => {
+              return lookupValue(carMappings, params.value);
+            },
+          },
+          valueFormatter: (params) => {
+            return lookupValue(carMappings, params.value);
+          },
+        },
+        {
+          field: "exteriorColour",
+          minWidth: 150,
+          cellEditor: "agRichSelectCellEditor",
+          cellEditorPopup: true,
+          cellEditorParams: {
+            values: colours,
+            cellRenderer: "ColourCellRenderer",
+          },
+          filter: "agSetColumnFilter",
+          filterParams: {
+            values: colours,
+            valueFormatter: (params) => {
+              return lookupValue(colourMappings, params.value);
+            },
+            cellRenderer: "ColourCellRenderer",
+          },
+          valueFormatter: (params) => {
+            return lookupValue(colourMappings, params.value);
+          },
+          valueParser: (params) => {
+            return lookupKey(colourMappings, params.newValue);
+          },
+          cellRenderer: "ColourCellRenderer",
+        },
+        {
+          field: "interiorColour",
+          minWidth: 150,
+          cellEditor: "agTextCellEditor",
+          cellEditorParams: { useFormatter: true },
+          filter: "agSetColumnFilter",
+          filterParams: {
+            values: colours,
+            valueFormatter: (params) => {
+              return lookupValue(colourMappings, params.value);
+            },
+            cellRenderer: "ColourCellRenderer",
+          },
+          valueFormatter: (params) => {
+            return lookupValue(colourMappings, params.value);
+          },
+          valueParser: (params) => {
+            return lookupKey(colourMappings, params.newValue);
+          },
+          cellRenderer: "ColourCellRenderer",
+        },
+        {
+          headerName: "Retail Price",
+          field: "price",
+          minWidth: 140,
+          colId: "retailPrice",
+          valueGetter: (params) => {
+            return params.data.price;
+          },
+          valueFormatter: currencyFormatter,
+          valueSetter: numberValueSetter,
+        },
+        {
+          headerName: "Retail Price (incl Taxes)",
+          minWidth: 205,
+          editable: false,
+          valueGetter: (params) => {
+            // example of chaining value getters
+            return params.getValue("retailPrice") * 1.2;
+          },
+          valueFormatter: currencyFormatter,
+        },
+      ],
+      gridApi: null,
+      columnApi: null,
+      defaultColDef: {
+        flex: 1,
+        filter: true,
+        editable: true,
+      },
+      rowData: null,
+    };
+  },
+  created() {
+    this.rowData = getData();
+  },
+  methods: {
+    onCellValueChanged(params) {
+      // notice that the data always contains the keys rather than values after editing
+      console.log("onCellValueChanged: ", params);
     },
-    data: function() {
-        return {
-            columnDefs: [{field:"make",
-cellEditor:"agSelectCellEditor",
-cellEditorParams:{"values":carBrands},
-filterParams:{"valueFormatter":(params) =>  {
-    return lookupValue(carMappings, params.value);
-}},
-valueFormatter:(params) =>  {
-    return lookupValue(carMappings, params.value);
-}},{field:"exteriorColour",
-minWidth:150,
-cellEditor:"agRichSelectCellEditor",
-cellEditorPopup:true,
-cellEditorParams:{"values":colours,"cellRenderer":"ColourCellRenderer"},
-filter:"agSetColumnFilter",
-filterParams:{"values":colours,"valueFormatter":(params) =>  {
-    return lookupValue(colourMappings, params.value);
-},"cellRenderer":"ColourCellRenderer"},
-valueFormatter:(params) =>  {
-    return lookupValue(colourMappings, params.value);
-},
-valueParser:(params) =>  {
-    return lookupKey(colourMappings, params.newValue);
-},
-cellRenderer:'ColourCellRenderer'},{field:"interiorColour",
-minWidth:150,
-cellEditor:"agTextCellEditor",
-cellEditorParams:{"useFormatter":true},
-filter:"agSetColumnFilter",
-filterParams:{"values":colours,"valueFormatter":(params) =>  {
-    return lookupValue(colourMappings, params.value);
-},"cellRenderer":"ColourCellRenderer"},
-valueFormatter:(params) =>  {
-    return lookupValue(colourMappings, params.value);
-},
-valueParser:(params) =>  {
-    return lookupKey(colourMappings, params.newValue);
-},
-cellRenderer:'ColourCellRenderer'},{headerName:"Retail Price",
-field:"price",
-minWidth:140,
-colId:"retailPrice",
-valueGetter:(params) =>  {
-    return params.data.price;
-},
-valueFormatter:currencyFormatter,
-valueSetter:numberValueSetter},{headerName:"Retail Price (incl Taxes)",
-minWidth:205,
-editable:false,
-valueGetter:(params) =>  {
-    // example of chaining value getters
-    return params.getValue('retailPrice') * 1.2;
-},
-valueFormatter:currencyFormatter}],
-            gridApi: null,
-            columnApi: null,
-            defaultColDef: {
-    flex: 1,
-    filter: true,
-    editable: true,
-},
-            rowData: null
-        }
+    onGridReady(params) {
+      this.gridApi = params.api;
+      this.gridColumnApi = params.columnApi;
     },
-    created() {
-        this.rowData = getData()
-    },
-    methods: {
-        onCellValueChanged(params) {
-    // notice that the data always contains the keys rather than values after editing
-    console.log('onCellValueChanged: ', params);
-},
-onGridReady(params) {
-        this.gridApi = params.api;
-        this.gridColumnApi = params.columnApi;
-        
-    },
-    }
-}
+  },
+};
 
 window.extractValues = function extractValues(mappings) {
-    return Object.keys(mappings);
-}
+  return Object.keys(mappings);
+};
 
 window.lookupValue = function lookupValue(mappings, key) {
-    return mappings[key];
-}
+  return mappings[key];
+};
 
 window.lookupKey = function lookupKey(mappings, name) {
-    const keys = Object.keys(mappings);
-    for (let i = 0; i < keys.length; i++) {
-        const key = keys[i];
-        if (mappings[key] === name) {
-            return key;
-        }
+  const keys = Object.keys(mappings);
+  for (let i = 0; i < keys.length; i++) {
+    const key = keys[i];
+    if (mappings[key] === name) {
+      return key;
     }
-}
+  }
+};
 
 window.currencyFormatter = function currencyFormatter(params) {
-    const value = Math.floor(params.value);
-    if (isNaN(value)) {
-        return '';
-    }
-    return '£' + value.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
-}
+  const value = Math.floor(params.value);
+  if (isNaN(value)) {
+    return "";
+  }
+  return "£" + value.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
+};
 
 window.numberValueSetter = function numberValueSetter(params) {
-    if (isNaN(parseFloat(params.newValue)) || !isFinite(params.newValue)) {
-        return false; // don't set invalid numbers!
-    }
-    params.data.price = params.newValue;
-    return true;
-}
+  if (isNaN(parseFloat(params.newValue)) || !isFinite(params.newValue)) {
+    return false; // don't set invalid numbers!
+  }
+  params.data.price = params.newValue;
+  return true;
+};
 
 const carMappings = {
-    tyt: 'Toyota',
-    frd: 'Ford',
-    prs: 'Porsche',
-    nss: 'Nissan',
+  tyt: "Toyota",
+  frd: "Ford",
+  prs: "Porsche",
+  nss: "Nissan",
 };
 
 const colourMappings = {
-    cb: 'Cadet Blue',
-    bw: 'Burlywood',
-    fg: 'Forest Green',
+  cb: "Cadet Blue",
+  bw: "Burlywood",
+  fg: "Forest Green",
 };
 
 const carBrands = extractValues(carMappings);
@@ -167,8 +198,8 @@ const carBrands = extractValues(carMappings);
 const colours = extractValues(colourMappings);
 
 new Vue({
-    el: '#app',
-    components: {
-        'my-component': VueExample
-    }
+  el: "#app",
+  components: {
+    "my-component": VueExample,
+  },
 });

@@ -1,5 +1,5 @@
 export default {
-    template: `
+  template: `
         <div style="display: flex">
             <span v-if="enableMenu" ref="menuButton" class="ag-icon ag-icon-menu" @click="onMenuClicked($event)"></span>
             <div class="customHeaderLabel">{{ displayName }}</div>
@@ -11,57 +11,57 @@ export default {
                  class="customSortRemoveLabel"><i class="fa fa-times"></i></div>
         </div>
     `,
-    data: function () {
-        return {
-            ascSort: null,
-            descSort: null,
-            noSort: null,
-            enableMenu: false,
-            enableSorting: false,
-            displayName: null
-        };
+  data: function () {
+    return {
+      ascSort: null,
+      descSort: null,
+      noSort: null,
+      enableMenu: false,
+      enableSorting: false,
+      displayName: null,
+    };
+  },
+  beforeMount() {
+    this.enableMenu = this.params.enableMenu;
+    this.enableSorting = this.params.enableSorting;
+    this.displayName = this.params.displayName;
+  },
+  mounted() {
+    console.log("CustomHeader - mounted() -> " + this.params.column.getId());
+
+    this.params.column.addEventListener("sortChanged", this.onSortChanged);
+    this.onSortChanged();
+  },
+  unmounted() {
+    console.log("CustomHeader unmounted() -> " + this.params.column.getId());
+  },
+  methods: {
+    onMenuClicked() {
+      this.params.showColumnMenu(this.$refs.menuButton);
     },
-    beforeMount() {
-        this.enableMenu = this.params.enableMenu;
-        this.enableSorting = this.params.enableSorting;
-        this.displayName = this.params.displayName;
+
+    onSortChanged() {
+      this.ascSort = this.descSort = this.noSort = "inactive";
+      if (this.params.column.isSortAscending()) {
+        this.ascSort = "active";
+      } else if (this.params.column.isSortDescending()) {
+        this.descSort = "active";
+      } else {
+        this.noSort = "active";
+      }
     },
-    mounted() {
-        console.log('CustomHeader - mounted() -> ' + this.params.column.getId());
 
-        this.params.column.addEventListener('sortChanged', this.onSortChanged);
-        this.onSortChanged();
+    onSortRequested(order, event) {
+      this.params.setSort(order, event.shiftKey);
     },
-    unmounted() {
-        console.log('CustomHeader unmounted() -> ' + this.params.column.getId());
+
+    refresh(params) {
+      console.log("CustomHeader refresh() -> " + this.params.column.getId());
+
+      this.enableMenu = params.enableMenu;
+      this.enableSorting = params.enableSorting;
+      this.displayName = params.displayName;
+      return true;
     },
-    methods: {
-        onMenuClicked() {
-            this.params.showColumnMenu(this.$refs.menuButton);
-        },
-
-        onSortChanged() {
-            this.ascSort = this.descSort = this.noSort = 'inactive';
-            if (this.params.column.isSortAscending()) {
-                this.ascSort = 'active';
-            } else if (this.params.column.isSortDescending()) {
-                this.descSort = 'active';
-            } else {
-                this.noSort = 'active';
-            }
-        },
-
-        onSortRequested(order, event) {
-            this.params.setSort(order, event.shiftKey);
-        },
-
-        refresh(params) {
-            console.log('CustomHeader refresh() -> ' + this.params.column.getId());
-
-            this.enableMenu = params.enableMenu;
-            this.enableSorting = params.enableSorting;
-            this.displayName = params.displayName;
-            return true;
-        }
-    }
+  },
 };

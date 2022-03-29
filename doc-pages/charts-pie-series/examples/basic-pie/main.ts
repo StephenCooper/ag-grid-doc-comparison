@@ -1,8 +1,8 @@
-import { AgChartOptions } from 'ag-charts-community'
-import * as agCharts from 'ag-charts-community'
+import { AgChartOptions } from "ag-charts-community";
+import * as agCharts from "ag-charts-community";
 
 const options: AgChartOptions = {
-  container: document.getElementById('myChart'),
+  container: document.getElementById("myChart"),
   data: [
     { value: 56.9 },
     { value: 22.5 },
@@ -13,10 +13,10 @@ const options: AgChartOptions = {
   ],
   series: [
     {
-      type: 'pie',
-      angleKey: 'value',
+      type: "pie",
+      angleKey: "value",
     },
   ],
-}
+};
 
-agCharts.AgChart.create(options)
+agCharts.AgChart.create(options);

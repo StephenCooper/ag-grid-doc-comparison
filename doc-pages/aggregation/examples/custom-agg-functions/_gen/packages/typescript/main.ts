@@ -1,25 +1,33 @@
-import 'ag-grid-enterprise';
-import 'ag-grid-community/dist/styles/ag-grid.css';
+import "ag-grid-enterprise";
+import "ag-grid-community/dist/styles/ag-grid.css";
 import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import { ColDef, ColGroupDef, Grid, GridOptions, IAggFunc, IAggFuncParams, SideBarDef } from 'ag-grid-community';
+import {
+  ColDef,
+  ColGroupDef,
+  Grid,
+  GridOptions,
+  IAggFunc,
+  IAggFuncParams,
+  SideBarDef,
+} from "ag-grid-community";
 
 const columnDefs: ColDef[] = [
-  { field: 'country', rowGroup: true, hide: true },
-  { field: 'year', rowGroup: true, hide: true },
+  { field: "country", rowGroup: true, hide: true },
+  { field: "year", rowGroup: true, hide: true },
 
   // this column uses min and max func
-  { headerName: 'minMax(age)', field: 'age', aggFunc: minAndMaxAggFunction },
+  { headerName: "minMax(age)", field: "age", aggFunc: minAndMaxAggFunction },
   // here we use an average func and specify the function directly
   {
-    headerName: 'avg(age)',
-    field: 'age',
+    headerName: "avg(age)",
+    field: "age",
     aggFunc: avgAggFunction,
     enableValue: true,
     minWidth: 200,
   },
   {
-    headerName: 'roundedAvg(age)',
-    field: 'age',
+    headerName: "roundedAvg(age)",
+    field: "age",
     aggFunc: roundedAvgAggFunction,
     enableValue: true,
     minWidth: 200,
@@ -27,25 +35,25 @@ const columnDefs: ColDef[] = [
   // here we use a custom sum function that was registered with the grid,
   // which overrides the built in sum function
   {
-    headerName: 'sum(gold)',
-    field: 'gold',
-    aggFunc: 'sum',
+    headerName: "sum(gold)",
+    field: "gold",
+    aggFunc: "sum",
     enableValue: true,
   },
   // and these two use the built in sum func
   {
-    headerName: 'abc(silver)',
-    field: 'silver',
-    aggFunc: '123',
+    headerName: "abc(silver)",
+    field: "silver",
+    aggFunc: "123",
     enableValue: true,
   },
   {
-    headerName: 'xyz(bronze)',
-    field: 'bronze',
-    aggFunc: 'xyz',
+    headerName: "xyz(bronze)",
+    field: "bronze",
+    aggFunc: "xyz",
     enableValue: true,
   },
-]
+];
 
 const gridOptions: GridOptions = {
   columnDefs: columnDefs,
@@ -57,8 +65,8 @@ const gridOptions: GridOptions = {
     resizable: true,
   },
   autoGroupColumnDef: {
-    headerName: 'Athlete',
-    field: 'athlete',
+    headerName: "Athlete",
+    field: "athlete",
     minWidth: 250,
   },
   enableRangeSelection: true,
@@ -67,30 +75,30 @@ const gridOptions: GridOptions = {
     // this overrides the grids built in sum function
     sum: sumFunction,
     // this adds another function called 'abc'
-    '123': oneTwoThreeFunc,
+    "123": oneTwoThreeFunc,
     // and again xyz
     xyz: xyzFunc,
   },
   sideBar: true,
-  onGridReady: params => {
+  onGridReady: (params) => {
     // we could also register functions after the grid is created,
     // however because we are providing the columns in the grid options,
     // it will be to late (eg remove 'xyz' from aggFuncs, and you will
     // see the grid complains).
-    params.api.addAggFunc('xyz', xyzFunc)
+    params.api.addAggFunc("xyz", xyzFunc);
   },
-}
+};
 
 function oneTwoThreeFunc(params: IAggFuncParams) {
   // this is just an example, rather than working out an aggregation,
   // we just return 123 each time, so you can see in the example 22 is the result
-  return 123
+  return 123;
 }
 
 function xyzFunc(params: IAggFuncParams) {
   // this is just an example, rather than working out an aggregation,
   // we just return 22 each time, so you can see in the example 22 is the result
-  return 'xyz'
+  return "xyz";
 }
 
 // sum function has no advantage over the built in sum function.
@@ -98,13 +106,13 @@ function xyzFunc(params: IAggFuncParams) {
 // showing it can be good as a starting point for understanding
 // hwo the aggregation functions work.
 function sumFunction(params: IAggFuncParams) {
-  let result = 0
-  params.values.forEach(value => {
-    if (typeof value === 'number') {
-      result += value
+  let result = 0;
+  params.values.forEach((value) => {
+    if (typeof value === "number") {
+      result += value;
     }
-  })
-  return result
+  });
+  return result;
 }
 
 // min and max agg function. the leaf nodes are just numbers, like any other
@@ -120,54 +128,54 @@ function minAndMaxAggFunction(params: IAggFuncParams) {
     // get around it in a customer cellRenderer, however this is a trick that will also work
     // with clipboard.
     toString: function () {
-      return '(' + this.min + '..' + this.max + ')'
+      return "(" + this.min + ".." + this.max + ")";
     },
-  }
+  };
   // update the result based on each value
-  params.values.forEach(value => {
+  params.values.forEach((value) => {
     const groupNode =
-      value !== null && value !== undefined && typeof value === 'object'
+      value !== null && value !== undefined && typeof value === "object";
 
-    const minValue = groupNode ? value.min : value
-    const maxValue = groupNode ? value.max : value
+    const minValue = groupNode ? value.min : value;
+    const maxValue = groupNode ? value.max : value;
 
     // value is a number, not a 'result' object,
     // so this must be the first group
-    result.min = min(minValue, result.min)
-    result.max = max(maxValue, result.max)
-  })
+    result.min = min(minValue, result.min);
+    result.max = max(maxValue, result.max);
+  });
 
-  return result
+  return result;
 }
 
 // the average function is tricky as the multiple levels require weighted averages
 // for the non-leaf node aggregations.
 function avgAggFunction(params: IAggFuncParams) {
   // the average will be the sum / count
-  let sum = 0
-  let count = 0
+  let sum = 0;
+  let count = 0;
 
-  params.values.forEach(value => {
+  params.values.forEach((value) => {
     const groupNode =
-      value !== null && value !== undefined && typeof value === 'object'
+      value !== null && value !== undefined && typeof value === "object";
     if (groupNode) {
       // we are aggregating groups, so we take the
       // aggregated values to calculated a weighted average
-      sum += value.avg * value.count
-      count += value.count
+      sum += value.avg * value.count;
+      count += value.count;
     } else {
       // skip values that are not numbers (ie skip empty values)
-      if (typeof value === 'number') {
-        sum += value
-        count++
+      if (typeof value === "number") {
+        sum += value;
+        count++;
       }
     }
-  })
+  });
 
   // avoid divide by zero error
-  let avg = null
+  let avg = null;
   if (count !== 0) {
-    avg = sum / count
+    avg = sum / count;
   }
 
   // the result will be an object. when this cell is rendered, only the avg is shown.
@@ -179,65 +187,64 @@ function avgAggFunction(params: IAggFuncParams) {
     // the grid by default uses toString to render values for an object, so this
     // is a trick to get the default cellRenderer to display the avg value
     toString: function () {
-      return `${this.avg}`
+      return `${this.avg}`;
     },
-  }
+  };
 
-  return result
+  return result;
 }
 
 function roundedAvgAggFunction(params: IAggFuncParams) {
-  const result = avgAggFunction(params)
+  const result = avgAggFunction(params);
   if (result.avg) {
-    result.avg = Math.round(result.avg * 100) / 100
+    result.avg = Math.round(result.avg * 100) / 100;
   }
 
-  return result
+  return result;
 }
 
 // similar to Math.min() except handles missing values, if any value is missing, then
 // it returns the other value, or 'null' if both are missing.
 function min(a: any, b: any) {
-  const aMissing = typeof a !== 'number'
-  const bMissing = typeof b !== 'number'
+  const aMissing = typeof a !== "number";
+  const bMissing = typeof b !== "number";
 
   if (aMissing && bMissing) {
-    return null
+    return null;
   } else if (aMissing) {
-    return b
+    return b;
   } else if (bMissing) {
-    return a
+    return a;
   } else if (a > b) {
-    return b
+    return b;
   } else {
-    return a
+    return a;
   }
 }
 
 // similar to Math.max() except handles missing values, if any value is missing, then
 // it returns the other value, or 'null' if both are missing.
 function max(a: any, b: any) {
-  const aMissing = typeof a !== 'number'
-  const bMissing = typeof b !== 'number'
+  const aMissing = typeof a !== "number";
+  const bMissing = typeof b !== "number";
 
   if (aMissing && bMissing) {
-    return null
+    return null;
   } else if (aMissing) {
-    return b
+    return b;
   } else if (bMissing) {
-    return a
+    return a;
   } else if (a < b) {
-    return b
+    return b;
   } else {
-    return a
+    return a;
   }
 }
 
 // setup the grid after the page has finished loading
-  const gridDiv = document.querySelector<HTMLElement>('#myGrid')!
-  new Grid(gridDiv, gridOptions)
+const gridDiv = document.querySelector<HTMLElement>("#myGrid")!;
+new Grid(gridDiv, gridOptions);
 
-  fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
-    .then(response => response.json())
-    .then(data => gridOptions.api!.setRowData(data))
- 
+fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+  .then((response) => response.json())
+  .then((data) => gridOptions.api!.setRowData(data));

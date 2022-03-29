@@ -51,7 +51,6 @@ The signature of the grid API `applyServerSideTransaction(params)` is as follows
 
 <api-documentation source='grid-api/api.json' section='serverSideRowModel' names='["applyServerSideTransaction"]'></api-documentation>
 
-
 ## Matching Rows
 
 In order for the grid to find rows to update and remove, it needs a way to identify these rows.

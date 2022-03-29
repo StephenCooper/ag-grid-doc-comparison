@@ -1,70 +1,63 @@
-import { createApp } from 'vue';
-import { cloneDeep } from 'lodash';
-import * as agCharts from 'ag-charts-community';
-import { AgChartsVue } from 'ag-charts-vue3';
+import { createApp } from "vue";
+import { cloneDeep } from "lodash";
+import * as agCharts from "ag-charts-community";
+import { AgChartsVue } from "ag-charts-vue3";
 
 const ChartExample = {
-    template: `
+  template: `
         <ag-charts-vue
                 :options="options"></ag-charts-vue>
     `,
-    components: {
-        'ag-charts-vue': AgChartsVue
-    },
-    data: function() {
-        return {
-            options: null
-        }
-    },
-    created() {
-        this.options = {
-    
-    title: {
-        text: 'Race demographics',
-    },
-    subtitle: {
-        text: 'Number of participants by age category',
-    },
-    data: getData(),
-    series: [
+  components: {
+    "ag-charts-vue": AgChartsVue,
+  },
+  data: function () {
+    return {
+      options: null,
+    };
+  },
+  created() {
+    this.options = {
+      title: {
+        text: "Race demographics",
+      },
+      subtitle: {
+        text: "Number of participants by age category",
+      },
+      data: getData(),
+      series: [
         {
-            type: 'histogram',
-            xKey: 'age',
-            xName: 'Participant Age',
-            areaPlot: true,
-            bins: [
-                [16, 18],
-                [18, 21],
-                [21, 25],
-                [25, 40],
-            ],
+          type: "histogram",
+          xKey: "age",
+          xName: "Participant Age",
+          areaPlot: true,
+          bins: [
+            [16, 18],
+            [18, 21],
+            [21, 25],
+            [25, 40],
+          ],
         },
-    ],
-    legend: {
+      ],
+      legend: {
         enabled: false,
-    },
-    axes: [
+      },
+      axes: [
         {
-            type: 'number',
-            position: 'bottom',
-            title: { text: 'Age category (years)' },
+          type: "number",
+          position: "bottom",
+          title: { text: "Age category (years)" },
         },
         {
-            type: 'number',
-            position: 'left',
-            title: { text: 'Number of participants' },
+          type: "number",
+          position: "left",
+          title: { text: "Number of participants" },
         },
-    ],
-}
-    },
-    mounted() {
-        
-    },
-    methods: {
-        
-    }
-}
-
-
+      ],
+    };
+  },
+  mounted() {},
+  methods: {},
+};
 
 createApp(ChartExample).mount("#app");

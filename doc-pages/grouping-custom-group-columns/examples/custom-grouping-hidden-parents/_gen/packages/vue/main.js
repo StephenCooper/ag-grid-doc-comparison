@@ -1,14 +1,11 @@
-
-import Vue from 'vue';
-import { AgGridVue } from 'ag-grid-vue';
-import 'ag-grid-enterprise';
-import 'ag-grid-community/dist/styles/ag-grid.css';
-import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
-
-
+import Vue from "vue";
+import { AgGridVue } from "ag-grid-vue";
+import "ag-grid-enterprise";
+import "ag-grid-community/dist/styles/ag-grid.css";
+import "ag-grid-community/dist/styles/ag-theme-alpine.css";
 
 const VueExample = {
-    template: `
+  template: `
         <div style="height: 100%">
             <div class="example-wrapper">
                 <div class="example-header">
@@ -34,68 +31,68 @@ const VueExample = {
             </div>
         </div>
     `,
-    components: {
-        'ag-grid-vue': AgGridVue,
-        
-    },
-    data: function() {
-        return {
-            columnDefs: [{headerName:"Country",
-showRowGroup:"country",
-cellRenderer:"agGroupCellRenderer",
-minWidth:200},{headerName:"Year",
-valueGetter:(params) =>  {
-    if (params.data) {
-        return params.data.year;
-    }
-},
-showRowGroup:"year",
-cellRenderer:"agGroupCellRenderer"},{field:"athlete",
-minWidth:200},{field:"gold",
-aggFunc:"sum"},{field:"silver",
-aggFunc:"sum"},{field:"bronze",
-aggFunc:"sum"},{field:"total",
-aggFunc:"sum"},{field:"country",
-rowGroup:true,
-hide:true},{field:"year",
-rowGroup:true,
-hide:true}],
-            gridApi: null,
-            columnApi: null,
-            defaultColDef: {
-    flex: 1,
-    minWidth: 150,
-    sortable: true,
-    resizable: true,
-},
-            groupDisplayType: null,
-rowData: null
-        }
-    },
-    created() {
-        this.groupDisplayType = 'custom'
-    },
-    methods: {
-        onGridReady(params) {
-        this.gridApi = params.api;
-        this.gridColumnApi = params.columnApi;
-        
+  components: {
+    "ag-grid-vue": AgGridVue,
+  },
+  data: function () {
+    return {
+      columnDefs: [
+        {
+          headerName: "Country",
+          showRowGroup: "country",
+          cellRenderer: "agGroupCellRenderer",
+          minWidth: 200,
+        },
+        {
+          headerName: "Year",
+          valueGetter: (params) => {
+            if (params.data) {
+              return params.data.year;
+            }
+          },
+          showRowGroup: "year",
+          cellRenderer: "agGroupCellRenderer",
+        },
+        { field: "athlete", minWidth: 200 },
+        { field: "gold", aggFunc: "sum" },
+        { field: "silver", aggFunc: "sum" },
+        { field: "bronze", aggFunc: "sum" },
+        { field: "total", aggFunc: "sum" },
+        { field: "country", rowGroup: true, hide: true },
+        { field: "year", rowGroup: true, hide: true },
+      ],
+      gridApi: null,
+      columnApi: null,
+      defaultColDef: {
+        flex: 1,
+        minWidth: 150,
+        sortable: true,
+        resizable: true,
+      },
+      groupDisplayType: null,
+      rowData: null,
+    };
+  },
+  created() {
+    this.groupDisplayType = "custom";
+  },
+  methods: {
+    onGridReady(params) {
+      this.gridApi = params.api;
+      this.gridColumnApi = params.columnApi;
 
-        
-            const updateData = (data) => params.api.setRowData(data);
-            
-            fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
-                .then(resp => resp.json())
-                .then(data => updateData(data));
+      const updateData = (data) => params.api.setRowData(data);
+
+      fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+        .then((resp) => resp.json())
+        .then((data) => updateData(data));
     },
-    }
-}
-
-
+  },
+};
 
 new Vue({
-    el: '#app',
-    components: {
-        'my-component': VueExample
-    }
+  el: "#app",
+  components: {
+    "my-component": VueExample,
+  },
 });

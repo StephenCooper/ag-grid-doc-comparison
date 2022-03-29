@@ -1,48 +1,58 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
 export default class YearFilter extends Component {
-    constructor(props) {
-        super(props);
+  constructor(props) {
+    super(props);
 
-        this.state = {
-            isActive: false,
-        };
-    }
-
-    toggleFilter = isActive => {
-        this.setState({ isActive }, () => this.props.filterChangedCallback());
+    this.state = {
+      isActive: false,
     };
+  }
 
-    doesFilterPass = params => {
-        return params.data.year > 2004;
-    };
+  toggleFilter = (isActive) => {
+    this.setState({ isActive }, () => this.props.filterChangedCallback());
+  };
 
-    isFilterActive = () => {
-        return this.state.isActive;
-    };
+  doesFilterPass = (params) => {
+    return params.data.year > 2004;
+  };
 
-    getModel = () => {
-        return this.isFilterActive() || null;
-    };
+  isFilterActive = () => {
+    return this.state.isActive;
+  };
 
-    setModel = model => {
-        this.toggleFilter(!!model);
-    };
+  getModel = () => {
+    return this.isFilterActive() || null;
+  };
 
-    onFloatingFilterChanged = value => {
-        this.setModel(value);
-    };
+  setModel = (model) => {
+    this.toggleFilter(!!model);
+  };
 
-    render() {
-        return (
-            <div class="year-filter">
-                <label>
-                    <input type="radio" checked={!this.state.isActive} onChange={() => this.toggleFilter(false)} /> All
-                </label>
-                <label>
-                    <input type="radio" checked={this.state.isActive} onChange={() => this.toggleFilter(true)} /> After 2004
-                </label>
-            </div>
-        );
-    }
+  onFloatingFilterChanged = (value) => {
+    this.setModel(value);
+  };
+
+  render() {
+    return (
+      <div class="year-filter">
+        <label>
+          <input
+            type="radio"
+            checked={!this.state.isActive}
+            onChange={() => this.toggleFilter(false)}
+          />{" "}
+          All
+        </label>
+        <label>
+          <input
+            type="radio"
+            checked={this.state.isActive}
+            onChange={() => this.toggleFilter(true)}
+          />{" "}
+          After 2004
+        </label>
+      </div>
+    );
+  }
 }

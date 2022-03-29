@@ -1,17 +1,11 @@
-import {NgModule} from "@angular/core";
+import { NgModule } from "@angular/core";
 
-import {RatioComponent} from "./ratio.component";
-import {RatioParentComponent} from "./ratio.parent.component";
+import { RatioComponent } from "./ratio.component";
+import { RatioParentComponent } from "./ratio.parent.component";
 
 @NgModule({
-    imports: [],
-    declarations: [
-        RatioComponent,
-        RatioParentComponent
-    ],
-    exports: [
-        RatioParentComponent
-    ]
+  imports: [],
+  declarations: [RatioComponent, RatioParentComponent],
+  exports: [RatioParentComponent],
 })
-export class RatioModule {
-}
+export class RatioModule {}

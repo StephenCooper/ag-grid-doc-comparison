@@ -1,5 +1,5 @@
-import { AgChartOptions } from "ag-charts-community"
-import * as agCharts from "ag-charts-community"
+import { AgChartOptions } from "ag-charts-community";
+import * as agCharts from "ag-charts-community";
 
 function getTotal(datum: any) {
   return (
@@ -7,14 +7,14 @@ function getTotal(datum: any) {
     datum.privateRented +
     datum.localAuthority +
     datum.housingAssociation
-  )
+  );
 }
 
 const options: AgChartOptions = {
   container: document.getElementById("myChart"),
   autoSize: true,
   data: getData().sort(function (a: any, b: any) {
-    return getTotal(b) - getTotal(a)
+    return getTotal(b) - getTotal(a);
   }),
   theme: {
     overrides: {
@@ -81,6 +81,6 @@ const options: AgChartOptions = {
   legend: {
     position: "bottom",
   },
-}
+};
 
-var chart = agCharts.AgChart.create(options)
+var chart = agCharts.AgChart.create(options);

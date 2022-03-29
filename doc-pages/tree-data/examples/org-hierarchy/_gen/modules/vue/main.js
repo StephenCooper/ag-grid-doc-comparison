@@ -1,19 +1,16 @@
-
-import Vue from 'vue';
-import { AgGridVue } from '@ag-grid-community/vue';
-import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import Vue from "vue";
+import { AgGridVue } from "@ag-grid-community/vue";
+import "@ag-grid-community/core/dist/styles/ag-grid.css";
 import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { ModuleRegistry } from '@ag-grid-community/core';
-import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
-import { RowGroupingModule } from '@ag-grid-enterprise/row-grouping';
+import { ModuleRegistry } from "@ag-grid-community/core";
+import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
+import { RowGroupingModule } from "@ag-grid-enterprise/row-grouping";
 
 // Register the required feature modules with the Grid
-ModuleRegistry.registerModules([ClientSideRowModelModule, RowGroupingModule])
-
-
+ModuleRegistry.registerModules([ClientSideRowModelModule, RowGroupingModule]);
 
 const VueExample = {
-    template: `
+  template: `
         <div style="height: 100%">
             <div class="example-wrapper">
                 <div style="margin-bottom: 5px;">
@@ -35,55 +32,53 @@ const VueExample = {
             </div>
         </div>
     `,
-    components: {
-        'ag-grid-vue': AgGridVue,
-        
-    },
-    data: function() {
-        return {
-            columnDefs: [{field:"jobTitle"},{field:"employmentType"}],
-            gridApi: null,
-            columnApi: null,
-            defaultColDef: {
-    flex: 1,
-},
-            autoGroupColumnDef: null,
-rowData: null,
-groupDefaultExpanded: null,
-getDataPath: null
-        }
-    },
-    created() {
-        this.autoGroupColumnDef = {
-    headerName: 'Organisation Hierarchy',
-    minWidth: 300,
-    cellRendererParams: {
+  components: {
+    "ag-grid-vue": AgGridVue,
+  },
+  data: function () {
+    return {
+      columnDefs: [{ field: "jobTitle" }, { field: "employmentType" }],
+      gridApi: null,
+      columnApi: null,
+      defaultColDef: {
+        flex: 1,
+      },
+      autoGroupColumnDef: null,
+      rowData: null,
+      groupDefaultExpanded: null,
+      getDataPath: null,
+    };
+  },
+  created() {
+    this.autoGroupColumnDef = {
+      headerName: "Organisation Hierarchy",
+      minWidth: 300,
+      cellRendererParams: {
         suppressCount: true,
+      },
+    };
+    this.rowData = getData();
+    this.groupDefaultExpanded = -1;
+    this.getDataPath = (data) => {
+      return data.orgHierarchy;
+    };
+  },
+  methods: {
+    onFilterTextBoxChanged() {
+      this.gridApi.setQuickFilter(
+        document.getElementById("filter-text-box").value
+      );
     },
+    onGridReady(params) {
+      this.gridApi = params.api;
+      this.gridColumnApi = params.columnApi;
+    },
+  },
 };
-this.rowData = getData();
-this.groupDefaultExpanded = -1;
-this.getDataPath = (data) => {
-    return data.orgHierarchy;
-}
-    },
-    methods: {
-        onFilterTextBoxChanged() {
-    this.gridApi.setQuickFilter((document.getElementById('filter-text-box')).value);
-},
-onGridReady(params) {
-        this.gridApi = params.api;
-        this.gridColumnApi = params.columnApi;
-        
-    },
-    }
-}
-
-
 
 new Vue({
-    el: '#app',
-    components: {
-        'my-component': VueExample
-    }
+  el: "#app",
+  components: {
+    "my-component": VueExample,
+  },
 });

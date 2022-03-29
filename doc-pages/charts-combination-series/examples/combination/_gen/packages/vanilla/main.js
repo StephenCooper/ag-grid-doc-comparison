@@ -1,10 +1,9 @@
-
 function tooltipRenderer(params) {
   const { yValue, xValue } = params;
   return {
-    content: `${xValue}: ${yValue}%`
+    content: `${xValue}: ${yValue}%`,
   };
-};
+}
 
 const WOMEN = {
   type: "column",
@@ -14,7 +13,7 @@ const WOMEN = {
   grouped: true,
   strokeWidth: 0,
   tooltip: {
-    renderer: tooltipRenderer
+    renderer: tooltipRenderer,
   },
 };
 
@@ -26,7 +25,7 @@ const MEN = {
   grouped: true,
   strokeWidth: 0,
   tooltip: {
-    renderer: tooltipRenderer
+    renderer: tooltipRenderer,
   },
 };
 
@@ -37,33 +36,33 @@ const PORTIONS = {
   yName: "Portions",
   strokeWidth: 3,
   marker: {
-      enabled: false,
+    enabled: false,
   },
   tooltip: {
-    renderer: tooltipRenderer
+    renderer: tooltipRenderer,
   },
 };
 
 const COLUMN_AND_LINE = [
-  { ...WOMEN, type: 'column' },
-  { ...MEN, type: 'column' },
-  { ...PORTIONS, type: 'line' },
+  { ...WOMEN, type: "column" },
+  { ...MEN, type: "column" },
+  { ...PORTIONS, type: "line" },
 ];
 
 const AREA_AND_COLUMN = [
-  { ...PORTIONS, type: 'area' },
-  { ...WOMEN, type: 'column' },
-  { ...MEN, type: 'column' },
+  { ...PORTIONS, type: "area" },
+  { ...WOMEN, type: "column" },
+  { ...MEN, type: "column" },
 ];
 
 const options = {
-  container: document.querySelector("#myChart") ,
+  container: document.querySelector("#myChart"),
   autoSize: true,
   data: getData(),
   theme: {
     palette: {
       fills: ["#7cecb3", "#7cb5ec", "#ecb37c", "#ec7cb5", "#7c7dec"],
-      strokes: ["#7cecb3", "#7cb5ec", "#ecb37c", "#ec7cb5", "#7c7dec"]
+      strokes: ["#7cecb3", "#7cb5ec", "#ecb37c", "#ec7cb5", "#7c7dec"],
     },
   },
   title: {
@@ -75,9 +74,11 @@ const options = {
     {
       type: "category",
       position: "bottom",
-      gridStyle: [{
-        strokeWidth: 0
-      }],
+      gridStyle: [
+        {
+          strokeWidth: 0,
+        },
+      ],
     },
     {
       // primary y axis
@@ -85,8 +86,8 @@ const options = {
       position: "left",
       keys: ["women", "men", "children", "adults"],
       title: {
-          enabled: true,
-          text: "Adults Who Eat 5 A Day (%)",
+        enabled: true,
+        text: "Adults Who Eat 5 A Day (%)",
       },
     },
     {
@@ -95,11 +96,11 @@ const options = {
       position: "right",
       keys: ["portions"],
       title: {
-          enabled: true,
-          text: "Portions Consumed (Per Day)",
+        enabled: true,
+        text: "Portions Consumed (Per Day)",
       },
-    }
-  ] ,
+    },
+  ],
   legend: {
     position: "bottom",
     item: {

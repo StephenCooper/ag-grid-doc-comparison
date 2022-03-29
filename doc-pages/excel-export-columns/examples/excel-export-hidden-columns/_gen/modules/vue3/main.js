@@ -1,21 +1,23 @@
-
-import { createApp } from 'vue';
-import { AgGridVue } from '@ag-grid-community/vue3';
-import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import { createApp } from "vue";
+import { AgGridVue } from "@ag-grid-community/vue3";
+import "@ag-grid-community/core/dist/styles/ag-grid.css";
 import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { ModuleRegistry } from '@ag-grid-community/core';
-import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
-import { CsvExportModule } from '@ag-grid-community/csv-export';
-import { ExcelExportModule } from '@ag-grid-enterprise/excel-export';
-import { MenuModule } from '@ag-grid-enterprise/menu';
+import { ModuleRegistry } from "@ag-grid-community/core";
+import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
+import { CsvExportModule } from "@ag-grid-community/csv-export";
+import { ExcelExportModule } from "@ag-grid-enterprise/excel-export";
+import { MenuModule } from "@ag-grid-enterprise/menu";
 
 // Register the required feature modules with the Grid
-ModuleRegistry.registerModules([ClientSideRowModelModule, CsvExportModule, ExcelExportModule, MenuModule])
-
-
+ModuleRegistry.registerModules([
+  ClientSideRowModelModule,
+  CsvExportModule,
+  ExcelExportModule,
+  MenuModule,
+]);
 
 const VueExample = {
-    template: `
+  template: `
         <div style="height: 100%">
             <div class="container">
                 <div class="columns">
@@ -38,76 +40,78 @@ const VueExample = {
             </div>
         </div>
     `,
-    components: {
-        'ag-grid-vue': AgGridVue,
-        
+  components: {
+    "ag-grid-vue": AgGridVue,
+  },
+  data: function () {
+    return {
+      columnDefs: [
+        {
+          headerName: "Top Level Column Group",
+          children: [
+            {
+              headerName: "Group A",
+              children: [
+                { field: "athlete", minWidth: 200 },
+                { field: "country", minWidth: 200 },
+                { headerName: "Group", valueGetter: "data.country.charAt(0)" },
+              ],
+            },
+            {
+              headerName: "Group B",
+              children: [
+                { field: "sport", minWidth: 150 },
+                { field: "gold", hide: true },
+                { field: "silver", hide: true },
+                { field: "bronze", hide: true },
+                { field: "total", hide: true },
+              ],
+            },
+          ],
+        },
+      ],
+      gridApi: null,
+      columnApi: null,
+      defaultColDef: {
+        sortable: true,
+        filter: true,
+        resizable: true,
+        minWidth: 100,
+        flex: 1,
+      },
+      popupParent: null,
+      rowData: null,
+    };
+  },
+  created() {
+    this.popupParent = document.body;
+  },
+  methods: {
+    onBtExport() {
+      this.gridApi.exportDataAsExcel(getParams());
     },
-    data: function() {
-        return {
-            columnDefs: [{headerName:"Top Level Column Group",
-children: [{headerName:"Group A",
-children: [{field:"athlete",
-minWidth:200},
-{field:"country",
-minWidth:200},
-{headerName:"Group",
-valueGetter:"data.country.charAt(0)"}]},
-{headerName:"Group B",
-children: [{field:"sport",
-minWidth:150},
-{field:"gold",
-hide:true},
-{field:"silver",
-hide:true},
-{field:"bronze",
-hide:true},
-{field:"total",
-hide:true}]}]}],
-            gridApi: null,
-            columnApi: null,
-            defaultColDef: {
-    sortable: true,
-    filter: true,
-    resizable: true,
-    minWidth: 100,
-    flex: 1,
-},
-            popupParent: null,
-rowData: null
-        }
-    },
-    created() {
-        this.popupParent = document.body
-    },
-    methods: {
-        onBtExport() {
-    this.gridApi.exportDataAsExcel(getParams());
-},
-onGridReady(params) {
-        this.gridApi = params.api;
-        this.gridColumnApi = params.columnApi;
-        
+    onGridReady(params) {
+      this.gridApi = params.api;
+      this.gridColumnApi = params.columnApi;
 
-        
-            const updateData = (data) => params.api.setRowData(data.filter((rec) => rec.country != null));
-            
-            fetch('https://www.ag-grid.com/example-assets/small-olympic-winners.json')
-                .then(resp => resp.json())
-                .then(data => updateData(data));
+      const updateData = (data) =>
+        params.api.setRowData(data.filter((rec) => rec.country != null));
+
+      fetch("https://www.ag-grid.com/example-assets/small-olympic-winners.json")
+        .then((resp) => resp.json())
+        .then((data) => updateData(data));
     },
-    }
-}
+  },
+};
 
 window.getBoolean = function getBoolean(id) {
-    return !!(document.querySelector('#' + id)).checked;
-}
+  return !!document.querySelector("#" + id).checked;
+};
 
 window.getParams = function getParams() {
-    return {
-        allColumns: getBoolean('allColumns'),
-    };
-}
+  return {
+    allColumns: getBoolean("allColumns"),
+  };
+};
 
-createApp(VueExample)
-    .mount("#app")
-
+createApp(VueExample).mount("#app");

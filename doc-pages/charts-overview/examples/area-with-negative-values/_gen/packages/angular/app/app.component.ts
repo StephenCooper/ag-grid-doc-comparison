@@ -1,109 +1,99 @@
-import { cloneDeep } from 'lodash';
-import { Component } from '@angular/core';
-import * as agCharts from 'ag-charts-community';
-import { AgChartOptions } from 'ag-charts-community';
+import { cloneDeep } from "lodash";
+import { Component } from "@angular/core";
+import * as agCharts from "ag-charts-community";
+import { AgChartOptions } from "ag-charts-community";
 
 @Component({
-    selector: 'my-app',
-    template: `<ag-charts-angular
+  selector: "my-app",
+  template: `<ag-charts-angular
     style="height: 100%"
     [options]="options"
-    ></ag-charts-angular>
-`
+  ></ag-charts-angular> `,
 })
-
 export class AppComponent {
-    private options: AgChartOptions;
-    
+  private options: AgChartOptions;
 
-    constructor() {
-        this.options = {
-    
-    autoSize: true,
-    data: getData(),
-    theme: {
+  constructor() {
+    this.options = {
+      autoSize: true,
+      data: getData(),
+      theme: {
         palette: {
-            fills: ["#FA7921", "#5BC0EB", "#9BC53D", "#E55934", "#FDE74C"],
-            strokes: ["#af5517", "#4086a4", "#6c8a2b", "#a03e24", "#b1a235"],
+          fills: ["#FA7921", "#5BC0EB", "#9BC53D", "#E55934", "#FDE74C"],
+          strokes: ["#af5517", "#4086a4", "#6c8a2b", "#a03e24", "#b1a235"],
         },
         overrides: {
-            area: {
+          area: {
+            series: {
+              fillOpacity: 0.6,
+              highlightStyle: {
                 series: {
-                    fillOpacity: 0.6,
-                    highlightStyle: {
-                        series: {
-                            strokeWidth: 3,
-                            dimOpacity: 0.1,
-                        },
-                    },
+                  strokeWidth: 3,
+                  dimOpacity: 0.1,
                 },
+              },
             },
+          },
         },
-    },
-    title: {
+      },
+      title: {
         text: "Changes in UK Energy Stock (2018)",
         fontSize: 18,
-    },
-    subtitle: {
+      },
+      subtitle: {
         text: "Source: Department for Business, Energy & Industrial Strategy",
-    },
-    series: [
+      },
+      series: [
         {
-            type: "area",
-            xKey: "quarter",
-            yKey: "naturalGas",
-            yName: "Natural gas",
+          type: "area",
+          xKey: "quarter",
+          yKey: "naturalGas",
+          yName: "Natural gas",
         },
         {
-            type: "area",
-            xKey: "quarter",
-            yKey: "coal",
-            yName: "Coal",
+          type: "area",
+          xKey: "quarter",
+          yKey: "coal",
+          yName: "Coal",
         },
         {
-            type: "area",
-            xKey: "quarter",
-            yKey: "primaryOil",
-            yName: "Primary oil",
+          type: "area",
+          xKey: "quarter",
+          yKey: "primaryOil",
+          yName: "Primary oil",
         },
         {
-            type: "area",
-            xKey: "quarter",
-            yKey: "petroleum",
-            yName: "Petroleum",
+          type: "area",
+          xKey: "quarter",
+          yKey: "petroleum",
+          yName: "Petroleum",
         },
         {
-            type: "area",
-            xKey: "quarter",
-            yKey: "manufacturedFuels",
-            yName: "Manufactured fuels",
+          type: "area",
+          xKey: "quarter",
+          yKey: "manufacturedFuels",
+          yName: "Manufactured fuels",
         },
-    ],
-    axes: [
+      ],
+      axes: [
         {
-            type: "category",
-            position: "bottom",
+          type: "category",
+          position: "bottom",
         },
         {
-            type: "number",
-            position: "left",
-            title: {
-                enabled: true,
-                text: "Thousand tonnes of oil equivalent",
-            },
+          type: "number",
+          position: "left",
+          title: {
+            enabled: true,
+            text: "Thousand tonnes of oil equivalent",
+          },
         },
-    ],
-    legend: {
+      ],
+      legend: {
         position: "bottom",
-    },
+      },
+    };
+  }
+
+  ngOnInit() {}
 }
-    }
-
-    ngOnInit() {
-        
-    }
-
-    
-}
-
-

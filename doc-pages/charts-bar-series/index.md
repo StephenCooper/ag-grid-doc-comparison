@@ -15,11 +15,13 @@ To create a column chart, we need to use series type `'column'`. We also have to
 A minimal `'column'` series config would therefore look like this:
 
 ```js
-series: [{
-    type: 'column',
-    xKey: 'quarter',
-    yKey: 'iphone'
-}]
+series: [
+  {
+    type: "column",
+    xKey: "quarter",
+    yKey: "iphone",
+  },
+];
 ```
 
 In the snippet above we are using the `'iphone'` as the only `yKey`, to show revenue per quarter for this product alone. Using this simple series config produces the following chart:
@@ -42,6 +44,7 @@ series: [
 ```
 
 This example demonstrates stacked columns using the example above. Additionally:
+
 - We set `yName` on each series to configure the display names to provide tooltip headers and legend entries.
 
 <chart-example title='Stacked Column Series' name='stacked-column' type='generated'></chart-example>
@@ -51,7 +54,7 @@ This example demonstrates stacked columns using the example above. Additionally:
 If we want to show quarterly revenue for each product category as grouped columns, we can simply take the [stacked column](#stacked-columns) config from the example above and set the `grouped` property of the series to `true`:
 
 ```js
-grouped: true
+grouped: true;
 ```
 
 This will produce the following chart:</p>
@@ -63,7 +66,7 @@ This will produce the following chart:</p>
 Going back to our [stacked column](#stacked-columns) example, if we wanted to normalize the totals so that each column's segments added up to a certain value, for example 100%, we could add the following to our series config:
 
 ```js
-normalizedTo: 100
+normalizedTo: 100;
 ```
 
 [[note]]
@@ -76,7 +79,8 @@ normalizedTo: 100
 It's possible to add labels to columns, by adding the following to the series config:
 
 ```js
-label: {}
+label: {
+}
 ```
 
 That's it. The config can be empty like that. However, you might want to customise your labels. For example, by default the values are rounded to two decimal places for the labels, but in the example below even that is too much, so we use a label formatter that simply returns the integer part of the number:
@@ -108,15 +112,15 @@ To create a bar chart all you need to do is use `type: 'bar'` instead of `type: 
 
 ```js
 axes: [
-    {
-        type: 'number',
-        position: 'bottom'
-    },
-    {
-        type: 'category',
-        position: 'left'
-    }
-]
+  {
+    type: "number",
+    position: "bottom",
+  },
+  {
+    type: "category",
+    position: "left",
+  },
+];
 ```
 
 With these simple changes we go from [stacked columns](#stacked-columns) to stacked bars:

@@ -1,14 +1,11 @@
-
-import { createApp } from 'vue';
-import { AgGridVue } from 'ag-grid-vue3';
-import 'ag-grid-enterprise';
-import 'ag-grid-community/dist/styles/ag-grid.css';
-import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
-
-
+import { createApp } from "vue";
+import { AgGridVue } from "ag-grid-vue3";
+import "ag-grid-enterprise";
+import "ag-grid-community/dist/styles/ag-grid.css";
+import "ag-grid-community/dist/styles/ag-theme-alpine.css";
 
 const VueExample = {
-    template: `
+  template: `
         <div style="height: 100%">
             <ag-grid-vue
                 
@@ -21,61 +18,67 @@ const VueExample = {
                 :sideBar="sideBar"></ag-grid-vue>
         </div>
     `,
-    components: {
-        'ag-grid-vue': AgGridVue,
-        
+  components: {
+    "ag-grid-vue": AgGridVue,
+  },
+  data: function () {
+    return {
+      columnDefs: [
+        {
+          headerName: "Animals (array)",
+          field: "animalsArray",
+          filter: "agSetColumnFilter",
+        },
+        {
+          headerName: "Animals (string)",
+          filter: "agSetColumnFilter",
+          valueGetter: valueGetter,
+        },
+        {
+          headerName: "Animals (objects)",
+          field: "animalsObjects",
+          filter: "agSetColumnFilter",
+          valueFormatter: valueFormatter,
+          keyCreator: keyCreator,
+        },
+      ],
+      gridApi: null,
+      columnApi: null,
+      defaultColDef: {
+        flex: 1,
+      },
+      rowData: null,
+      sideBar: null,
+    };
+  },
+  created() {
+    this.rowData = getData();
+    this.sideBar = "filters";
+  },
+  methods: {
+    onGridReady(params) {
+      this.gridApi = params.api;
+      this.gridColumnApi = params.columnApi;
     },
-    data: function() {
-        return {
-            columnDefs: [{headerName:"Animals (array)",
-field:"animalsArray",
-filter:"agSetColumnFilter"},{headerName:"Animals (string)",
-filter:"agSetColumnFilter",
-valueGetter:valueGetter},{headerName:"Animals (objects)",
-field:"animalsObjects",
-filter:"agSetColumnFilter",
-valueFormatter:valueFormatter,
-keyCreator:keyCreator}],
-            gridApi: null,
-            columnApi: null,
-            defaultColDef: {
-    flex: 1,
-},
-            rowData: null,
-sideBar: null
-        }
-    },
-    created() {
-        this.rowData = getData();
-this.sideBar = 'filters'
-    },
-    methods: {
-        onGridReady(params) {
-        this.gridApi = params.api;
-        this.gridColumnApi = params.columnApi;
-        
-    },
-    }
-}
+  },
+};
 
 var valueGetter = function (params) {
-    return params.data['animalsString'].split('|');
+  return params.data["animalsString"].split("|");
 };
 
 var valueFormatter = function (params) {
-    return params.value
-        .map(function (animal) {
-        return animal.name;
+  return params.value
+    .map(function (animal) {
+      return animal.name;
     })
-        .join(', ');
+    .join(", ");
 };
 
 var keyCreator = function (params) {
-    return params.value.map(function (animal) {
-        return animal.name;
-    });
+  return params.value.map(function (animal) {
+    return animal.name;
+  });
 };
 
-createApp(VueExample)
-    .mount("#app")
-
+createApp(VueExample).mount("#app");

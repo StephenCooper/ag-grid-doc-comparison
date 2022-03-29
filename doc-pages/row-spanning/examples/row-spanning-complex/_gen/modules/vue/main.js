@@ -1,45 +1,42 @@
-
-import Vue from 'vue';
-import { AgGridVue } from '@ag-grid-community/vue';
-import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import Vue from "vue";
+import { AgGridVue } from "@ag-grid-community/vue";
+import "@ag-grid-community/core/dist/styles/ag-grid.css";
 import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { ModuleRegistry } from '@ag-grid-community/core';
-import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import { ModuleRegistry } from "@ag-grid-community/core";
+import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
 
 // Register the required feature modules with the Grid
-ModuleRegistry.registerModules([ClientSideRowModelModule])
+ModuleRegistry.registerModules([ClientSideRowModelModule]);
 
-class ShowCellRenderer  {
-    
-
-    init(params) {
-        const cellBlank = !params.value;
-        if (cellBlank) {
-            return;
-        }
-
-        this.ui = document.createElement('div')
-        this.ui.innerHTML =
-            '<div class="show-name">' +
-            params.value.name +
-            '' +
-            '</div>' +
-            '<div class="show-presenter">' +
-            params.value.presenter +
-            '</div>'
+class ShowCellRenderer {
+  init(params) {
+    const cellBlank = !params.value;
+    if (cellBlank) {
+      return;
     }
 
-    getGui() {
-        return this.ui;
-    }
+    this.ui = document.createElement("div");
+    this.ui.innerHTML =
+      '<div class="show-name">' +
+      params.value.name +
+      "" +
+      "</div>" +
+      '<div class="show-presenter">' +
+      params.value.presenter +
+      "</div>";
+  }
 
-    refresh() {
-        return false;
-    }
+  getGui() {
+    return this.ui;
+  }
+
+  refresh() {
+    return false;
+  }
 }
 
 const VueExample = {
-    template: `
+  template: `
         <div style="height: 100%">
             <ag-grid-vue
                 
@@ -52,50 +49,57 @@ const VueExample = {
                 :suppressRowTransform="true"></ag-grid-vue>
         </div>
     `,
-    components: {
-        'ag-grid-vue': AgGridVue,
-        
+  components: {
+    "ag-grid-vue": AgGridVue,
+  },
+  data: function () {
+    return {
+      columnDefs: [
+        { field: "localTime" },
+        {
+          field: "show",
+          cellRenderer: ShowCellRenderer,
+          rowSpan: rowSpan,
+          cellClassRules: { "show-cell": "value !== undefined" },
+          width: 200,
+        },
+        { field: "a" },
+        { field: "b" },
+        { field: "c" },
+        { field: "d" },
+        { field: "e" },
+      ],
+      gridApi: null,
+      columnApi: null,
+      defaultColDef: {
+        resizable: true,
+        width: 170,
+      },
+      rowData: null,
+    };
+  },
+  created() {
+    this.rowData = getData();
+  },
+  methods: {
+    onGridReady(params) {
+      this.gridApi = params.api;
+      this.gridColumnApi = params.columnApi;
     },
-    data: function() {
-        return {
-            columnDefs: [{field:"localTime"},{field:"show",
-cellRenderer:ShowCellRenderer,
-rowSpan:rowSpan,
-cellClassRules:{"show-cell":"value !== undefined"},
-width:200},{field:"a"},{field:"b"},{field:"c"},{field:"d"},{field:"e"}],
-            gridApi: null,
-            columnApi: null,
-            defaultColDef: {
-    resizable: true,
-    width: 170,
-},
-            rowData: null
-        }
-    },
-    created() {
-        this.rowData = getData()
-    },
-    methods: {
-        onGridReady(params) {
-        this.gridApi = params.api;
-        this.gridColumnApi = params.columnApi;
-        
-    },
-    }
-}
+  },
+};
 
 window.rowSpan = function rowSpan(params) {
-    if (params.data.show) {
-        return 4;
-    }
-    else {
-        return 1;
-    }
-}
+  if (params.data.show) {
+    return 4;
+  } else {
+    return 1;
+  }
+};
 
 new Vue({
-    el: '#app',
-    components: {
-        'my-component': VueExample
-    }
+  el: "#app",
+  components: {
+    "my-component": VueExample,
+  },
 });

@@ -85,18 +85,19 @@ You might have more advanced requirements, for example to ignore accented charac
 The following is an example function to remove accents and convert to lower case.
 
 ```js
-const toLowerWithoutAccents = value =>
-    value.toLowerCase()
-        .replace(/[àáâãäå]/g, 'a')
-        .replace(/æ/g, 'ae')
-        .replace(/ç/g, 'c')
-        .replace(/[èéêë]/g, 'e')
-        .replace(/[ìíîï]/g, 'i')
-        .replace(/ñ/g, 'n')
-        .replace(/[òóôõö]/g, 'o')
-        .replace(/œ/g, 'oe')
-        .replace(/[ùúûü]/g, 'u')
-        .replace(/[ýÿ]/g, 'y');
+const toLowerWithoutAccents = (value) =>
+  value
+    .toLowerCase()
+    .replace(/[àáâãäå]/g, "a")
+    .replace(/æ/g, "ae")
+    .replace(/ç/g, "c")
+    .replace(/[èéêë]/g, "e")
+    .replace(/[ìíîï]/g, "i")
+    .replace(/ñ/g, "n")
+    .replace(/[òóôõö]/g, "o")
+    .replace(/œ/g, "oe")
+    .replace(/[ùúûü]/g, "u")
+    .replace(/[ýÿ]/g, "y");
 ```
 
 ## Example: Text Filter

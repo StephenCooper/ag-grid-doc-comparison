@@ -1,16 +1,15 @@
-
 const gridOptions = {
   columnDefs: [
-    { field: 'country', rowGroup: true, hide: true },
-    { field: 'athlete', minWidth: 180 },
-    { field: 'age' },
-    { field: 'year' },
-    { field: 'date', minWidth: 150 },
-    { field: 'sport', minWidth: 150 },
-    { field: 'gold' },
-    { field: 'silver' },
-    { field: 'bronze' },
-    { field: 'total' },
+    { field: "country", rowGroup: true, hide: true },
+    { field: "athlete", minWidth: 180 },
+    { field: "age" },
+    { field: "year" },
+    { field: "date", minWidth: 150 },
+    { field: "sport", minWidth: 150 },
+    { field: "gold" },
+    { field: "silver" },
+    { field: "bronze" },
+    { field: "total" },
   ],
   defaultColDef: {
     flex: 1,
@@ -22,44 +21,44 @@ const gridOptions = {
     minWidth: 200,
   },
   groupDefaultExpanded: 1,
-}
+};
 
 function onBtForEachNode() {
-  console.log('### api.forEachNode() ###')
-  gridOptions.api.forEachNode(printNode)
+  console.log("### api.forEachNode() ###");
+  gridOptions.api.forEachNode(printNode);
 }
 
 function onBtForEachNodeAfterFilter() {
-  console.log('### api.forEachNodeAfterFilter() ###')
-  gridOptions.api.forEachNodeAfterFilter(printNode)
+  console.log("### api.forEachNodeAfterFilter() ###");
+  gridOptions.api.forEachNodeAfterFilter(printNode);
 }
 
 function onBtForEachNodeAfterFilterAndSort() {
-  console.log('### api.forEachNodeAfterFilterAndSort() ###')
-  gridOptions.api.forEachNodeAfterFilterAndSort(printNode)
+  console.log("### api.forEachNodeAfterFilterAndSort() ###");
+  gridOptions.api.forEachNodeAfterFilterAndSort(printNode);
 }
 
 function onBtForEachLeafNode() {
-  console.log('### api.forEachLeafNode() ###')
-  gridOptions.api.forEachLeafNode(printNode)
+  console.log("### api.forEachLeafNode() ###");
+  gridOptions.api.forEachLeafNode(printNode);
 }
 
 const printNode = (node, index) => {
   if (node.group) {
-    console.log(index + ' -> group: ' + node.key)
+    console.log(index + " -> group: " + node.key);
   } else {
     console.log(
-      index + ' -> data: ' + node.data.country + ', ' + node.data.athlete
-    )
+      index + " -> data: " + node.data.country + ", " + node.data.athlete
+    );
   }
-}
+};
 
 // setup the grid after the page has finished loading
-document.addEventListener('DOMContentLoaded', () => {
-  const gridDiv = document.querySelector('#myGrid')
-  new agGrid.Grid(gridDiv, gridOptions)
+document.addEventListener("DOMContentLoaded", () => {
+  const gridDiv = document.querySelector("#myGrid");
+  new agGrid.Grid(gridDiv, gridOptions);
 
-  fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
-    .then(response => response.json())
-    .then(data => gridOptions.api.setRowData(data.slice(0, 50)))
-})
+  fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+    .then((response) => response.json())
+    .then((data) => gridOptions.api.setRowData(data.slice(0, 50)));
+});

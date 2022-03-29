@@ -69,6 +69,7 @@ sparklineOptions: {
 </div>
 
 The given `fill` string can be in one of the following formats:
+
 - `#rgb` - Short Hex Code
 - `#rrggbb` - Hex Code
 - `rgb(r, g, b)` - RGB
@@ -306,7 +307,6 @@ More advanced customisations are discussed separately in the following sections:
 ### SparklineLabelOptions
 
 <api-documentation source='sparklines-column-customisation/resources/column-sparkline-api.json' section='SparklineLabelOptions'></api-documentation>
-
 
 ## Next Up
 

@@ -77,6 +77,7 @@ sparklineOptions: {
 </div>
 
 The given `fill` string can be in one of the following formats:
+
 - `#rgb` - Short Hex Code
 - `#rrggbb` - Hex Code
 - `rgb(r, g, b)` - RGB
@@ -217,7 +218,6 @@ sparklineOptions: {
     <image-caption src="resources/custom-label-styles.png" alt="Bar label text style customisation" width="250px" constrained="true">Custom label text styles</image-caption>
 </div>
 
-
 The position of the labels can be specified by setting the `placement` property in `label` options. By default, the labels are positioned at the end of the bars on the inside, i.e. `placement` is set to `insideEnd `. The snippet below shows how the positioning of the label can be modified:
 
 ```js
@@ -328,7 +328,6 @@ More advanced customisations are discussed separately in the following sections:
 ### SparklineLabelOptions
 
 <api-documentation source='sparklines-bar-customisation/resources/bar-sparkline-api.json' section='SparklineLabelOptions'></api-documentation>
-
 
 ## Next Up
 

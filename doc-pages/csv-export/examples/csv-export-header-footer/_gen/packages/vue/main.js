@@ -1,14 +1,11 @@
-
-import Vue from 'vue';
-import { AgGridVue } from 'ag-grid-vue';
-import 'ag-grid-enterprise';
-import 'ag-grid-community/dist/styles/ag-grid.css';
-import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
-
-
+import Vue from "vue";
+import { AgGridVue } from "ag-grid-vue";
+import "ag-grid-enterprise";
+import "ag-grid-community/dist/styles/ag-grid.css";
+import "ag-grid-community/dist/styles/ag-theme-alpine.css";
 
 const VueExample = {
-    template: `
+  template: `
         <div style="height: 100%">
             <div style="display: flex; flex-direction: column; height: 100%;">
                 <div style="display: flex;">
@@ -53,109 +50,114 @@ const VueExample = {
             </div>
         </div>
     `,
-    components: {
-        'ag-grid-vue': AgGridVue,
-        
+  components: {
+    "ag-grid-vue": AgGridVue,
+  },
+  data: function () {
+    return {
+      columnDefs: [{ field: "make" }, { field: "model" }, { field: "price" }],
+      gridApi: null,
+      columnApi: null,
+      defaultColDef: {
+        editable: true,
+        resizable: true,
+        minWidth: 100,
+        flex: 1,
+      },
+      popupParent: null,
+      rowData: null,
+    };
+  },
+  created() {
+    this.popupParent = document.body;
+    this.rowData = [
+      { make: "Toyota", model: "Celica", price: 35000 },
+      { make: "Ford", model: "Mondeo", price: 32000 },
+      { make: "Porsche", model: "Boxter", price: 72000 },
+    ];
+  },
+  methods: {
+    onBtnExport() {
+      var params = getParams();
+      if (params.suppressQuotes || params.columnSeparator) {
+        alert(
+          "NOTE: you are downloading a file with non-standard quotes or separators - it may not render correctly in Excel."
+        );
+      }
+      this.gridApi.exportDataAsCsv(params);
     },
-    data: function() {
-        return {
-            columnDefs: [{field:"make"},{field:"model"},{field:"price"}],
-            gridApi: null,
-            columnApi: null,
-            defaultColDef: {
-    editable: true,
-    resizable: true,
-    minWidth: 100,
-    flex: 1,
-},
-            popupParent: null,
-rowData: null
-        }
+    onBtnUpdate() {
+      document.querySelector("#csvResult").value = this.gridApi.getDataAsCsv(
+        getParams()
+      );
     },
-    created() {
-        this.popupParent = document.body;
-this.rowData = [
-    { make: 'Toyota', model: 'Celica', price: 35000 },
-    { make: 'Ford', model: 'Mondeo', price: 32000 },
-    { make: 'Porsche', model: 'Boxter', price: 72000 },
-]
+    onGridReady(params) {
+      this.gridApi = params.api;
+      this.gridColumnApi = params.columnApi;
     },
-    methods: {
-        onBtnExport() {
-    var params = getParams();
-    if (params.suppressQuotes || params.columnSeparator) {
-        alert('NOTE: you are downloading a file with non-standard quotes or separators - it may not render correctly in Excel.');
-    }
-    this.gridApi.exportDataAsCsv(params);
-},
-onBtnUpdate() {
-    (document.querySelector('#csvResult')).value = this.gridApi.getDataAsCsv(getParams());
-},
-onGridReady(params) {
-        this.gridApi = params.api;
-        this.gridColumnApi = params.columnApi;
-        
-    },
-    }
-}
+  },
+};
 
 window.getValue = function getValue(inputSelector) {
-    var text = (document.querySelector(inputSelector)).value;
-    switch (text) {
-        case 'string':
-            return ('Here is a comma, and a some "quotes". You can see them using the\n' +
-                'api.getDataAsCsv() button but they will not be visible when the downloaded\n' +
-                'CSV file is opened in Excel because string content passed to\n' +
-                'prependContent and appendContent is not escaped.');
-        case 'array':
-            return [
-                [],
-                [
-                    {
-                        data: {
-                            value: 'Here is a comma, and a some "quotes".',
-                            type: 'String',
-                        },
-                    },
-                ],
-                [
-                    {
-                        data: {
-                            value: 'They are visible when the downloaded CSV file is opened in Excel because custom content is properly escaped (provided that suppressQuotes is not set to true)',
-                            type: 'String',
-                        },
-                    },
-                ],
-                [
-                    { data: { value: 'this cell:', type: 'String' }, mergeAcross: 1 },
-                    {
-                        data: {
-                            value: 'is empty because the first cell has mergeAcross=1',
-                            type: 'String',
-                        },
-                    },
-                ],
-                [],
-            ];
-        case 'none':
-            return;
-        default:
-            return text;
-    }
-}
+  var text = document.querySelector(inputSelector).value;
+  switch (text) {
+    case "string":
+      return (
+        'Here is a comma, and a some "quotes". You can see them using the\n' +
+        "api.getDataAsCsv() button but they will not be visible when the downloaded\n" +
+        "CSV file is opened in Excel because string content passed to\n" +
+        "prependContent and appendContent is not escaped."
+      );
+    case "array":
+      return [
+        [],
+        [
+          {
+            data: {
+              value: 'Here is a comma, and a some "quotes".',
+              type: "String",
+            },
+          },
+        ],
+        [
+          {
+            data: {
+              value:
+                "They are visible when the downloaded CSV file is opened in Excel because custom content is properly escaped (provided that suppressQuotes is not set to true)",
+              type: "String",
+            },
+          },
+        ],
+        [
+          { data: { value: "this cell:", type: "String" }, mergeAcross: 1 },
+          {
+            data: {
+              value: "is empty because the first cell has mergeAcross=1",
+              type: "String",
+            },
+          },
+        ],
+        [],
+      ];
+    case "none":
+      return;
+    default:
+      return text;
+  }
+};
 
 window.getParams = function getParams() {
-    return {
-        prependContent: getValue('#prependContent'),
-        appendContent: getValue('#appendContent'),
-        suppressQuotes: undefined,
-        columnSeparator: undefined,
-    };
-}
+  return {
+    prependContent: getValue("#prependContent"),
+    appendContent: getValue("#appendContent"),
+    suppressQuotes: undefined,
+    columnSeparator: undefined,
+  };
+};
 
 new Vue({
-    el: '#app',
-    components: {
-        'my-component': VueExample
-    }
+  el: "#app",
+  components: {
+    "my-component": VueExample,
+  },
 });

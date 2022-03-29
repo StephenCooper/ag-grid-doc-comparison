@@ -1,14 +1,11 @@
-
-import Vue from 'vue';
-import { AgGridVue } from 'ag-grid-vue';
-import 'ag-grid-enterprise';
-import 'ag-grid-community/dist/styles/ag-grid.css';
-import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
-
-
+import Vue from "vue";
+import { AgGridVue } from "ag-grid-vue";
+import "ag-grid-enterprise";
+import "ag-grid-community/dist/styles/ag-grid.css";
+import "ag-grid-community/dist/styles/ag-theme-alpine.css";
 
 const VueExample = {
-    template: `
+  template: `
         <div style="height: 100%">
             <div class="wrapper">
                 <ag-grid-vue
@@ -28,94 +25,90 @@ const VueExample = {
             </div>
         </div>
     `,
-    components: {
-        'ag-grid-vue': AgGridVue,
-        
-    },
-    data: function() {
-        return {
-            columnDefs: [{field:"athlete",
-width:150,
-chartDataType:"category"},{field:"age",
-chartDataType:"category",
-sort:"asc"},{field:"sport"},{field:"year",
-chartDataType:"excluded"},{field:"gold",
-chartDataType:"series"},{field:"silver",
-chartDataType:"series"},{field:"bronze"}],
-            gridApi: null,
-            columnApi: null,
-            defaultColDef: {
-    editable: true,
-    sortable: true,
-    flex: 1,
-    minWidth: 100,
-    filter: true,
-    resizable: true,
-},
-            popupParent: null,
-chartThemeOverrides: null,
-rowData: null
-        }
-    },
-    created() {
-        this.popupParent = document.body;
-this.chartThemeOverrides = {
-    common: {
+  components: {
+    "ag-grid-vue": AgGridVue,
+  },
+  data: function () {
+    return {
+      columnDefs: [
+        { field: "athlete", width: 150, chartDataType: "category" },
+        { field: "age", chartDataType: "category", sort: "asc" },
+        { field: "sport" },
+        { field: "year", chartDataType: "excluded" },
+        { field: "gold", chartDataType: "series" },
+        { field: "silver", chartDataType: "series" },
+        { field: "bronze" },
+      ],
+      gridApi: null,
+      columnApi: null,
+      defaultColDef: {
+        editable: true,
+        sortable: true,
+        flex: 1,
+        minWidth: 100,
+        filter: true,
+        resizable: true,
+      },
+      popupParent: null,
+      chartThemeOverrides: null,
+      rowData: null,
+    };
+  },
+  created() {
+    this.popupParent = document.body;
+    this.chartThemeOverrides = {
+      common: {
         title: {
-            enabled: true,
-            text: 'Medals by Age',
+          enabled: true,
+          text: "Medals by Age",
         },
         legend: {
-            position: 'bottom',
+          position: "bottom",
         },
-    },
-    column: {
+      },
+      column: {
         axes: {
-            category: {
-                label: {
-                    rotation: 0,
-                },
+          category: {
+            label: {
+              rotation: 0,
             },
+          },
         },
-    },
-}
-    },
-    methods: {
-        onFirstDataRendered(params) {
-    var createRangeChartParams = {
-        cellRange: {
-            rowStartIndex: 0,
-            rowEndIndex: 79,
-            columns: ['age', 'gold', 'silver', 'bronze'],
-        },
-        chartType: 'groupedColumn',
-        chartContainer: document.querySelector('#myChart'),
-        aggFunc: 'sum',
+      },
     };
-    params.api.createRangeChart(createRangeChartParams);
-},
-onGridReady(params) {
-        this.gridApi = params.api;
-        this.gridColumnApi = params.columnApi;
-        
-
-        
-            const updateData = (data) => {
-    this.rowData = data;
-};
-            
-            fetch('https://www.ag-grid.com/example-assets/wide-spread-of-sports.json')
-                .then(resp => resp.json())
-                .then(data => updateData(data));
+  },
+  methods: {
+    onFirstDataRendered(params) {
+      var createRangeChartParams = {
+        cellRange: {
+          rowStartIndex: 0,
+          rowEndIndex: 79,
+          columns: ["age", "gold", "silver", "bronze"],
+        },
+        chartType: "groupedColumn",
+        chartContainer: document.querySelector("#myChart"),
+        aggFunc: "sum",
+      };
+      params.api.createRangeChart(createRangeChartParams);
     },
-    }
-}
+    onGridReady(params) {
+      this.gridApi = params.api;
+      this.gridColumnApi = params.columnApi;
 
+      const updateData = (data) => {
+        this.rowData = data;
+      };
 
+      fetch("https://www.ag-grid.com/example-assets/wide-spread-of-sports.json")
+        .then((resp) => resp.json())
+        .then((data) => updateData(data));
+    },
+  },
+};
 
 new Vue({
-    el: '#app',
-    components: {
-        'my-component': VueExample
-    }
+  el: "#app",
+  components: {
+    "my-component": VueExample,
+  },
 });

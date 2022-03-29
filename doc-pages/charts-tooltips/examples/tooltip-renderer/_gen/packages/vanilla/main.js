@@ -1,4 +1,3 @@
-
 function renderer(params) {
   return (
     '<div class="ag-chart-tooltip-title" style="background-color:' +
@@ -9,7 +8,7 @@ function renderer(params) {
     '<div class="ag-chart-tooltip-content">' +
     params.yValue.toFixed(0) +
     "</div>"
-  )
+  );
 }
 
 const options = {
@@ -49,6 +48,6 @@ const options = {
       stacked: true,
     },
   ],
-}
+};
 
-var chart = agCharts.AgChart.create(options)
+var chart = agCharts.AgChart.create(options);

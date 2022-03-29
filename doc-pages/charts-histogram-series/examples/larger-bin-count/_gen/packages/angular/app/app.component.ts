@@ -1,62 +1,52 @@
-import { cloneDeep } from 'lodash';
-import { Component } from '@angular/core';
-import * as agCharts from 'ag-charts-community';
-import { AgChartOptions } from 'ag-charts-community';
+import { cloneDeep } from "lodash";
+import { Component } from "@angular/core";
+import * as agCharts from "ag-charts-community";
+import { AgChartOptions } from "ag-charts-community";
 
 @Component({
-    selector: 'my-app',
-    template: `<ag-charts-angular
+  selector: "my-app",
+  template: `<ag-charts-angular
     style="height: 100%"
     [options]="options"
-    ></ag-charts-angular>
-`
+  ></ag-charts-angular> `,
 })
-
 export class AppComponent {
-    private options: AgChartOptions;
-    
+  private options: AgChartOptions;
 
-    constructor() {
-        this.options = {
-    
-    title: {
-        text: 'Race demographics',
-    },
-    subtitle: {
-        text: 'Number of participants by age',
-    },
-    data: getData(),
-    series: [
+  constructor() {
+    this.options = {
+      title: {
+        text: "Race demographics",
+      },
+      subtitle: {
+        text: "Number of participants by age",
+      },
+      data: getData(),
+      series: [
         {
-            type: 'histogram',
-            xKey: 'age',
-            xName: 'Participant Age',
-            binCount: 20,
+          type: "histogram",
+          xKey: "age",
+          xName: "Participant Age",
+          binCount: 20,
         },
-    ],
-    legend: {
+      ],
+      legend: {
         enabled: false,
-    },
-    axes: [
+      },
+      axes: [
         {
-            type: 'number',
-            position: 'bottom',
-            title: { text: 'Age (years)' },
+          type: "number",
+          position: "bottom",
+          title: { text: "Age (years)" },
         },
         {
-            type: 'number',
-            position: 'left',
-            title: { text: 'Number of participants' },
+          type: "number",
+          position: "left",
+          title: { text: "Number of participants" },
         },
-    ],
+      ],
+    };
+  }
+
+  ngOnInit() {}
 }
-    }
-
-    ngOnInit() {
-        
-    }
-
-    
-}
-
-

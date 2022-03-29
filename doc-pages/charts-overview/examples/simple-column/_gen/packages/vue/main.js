@@ -1,87 +1,80 @@
-import Vue from 'vue';
-import { cloneDeep } from 'lodash';
-import * as agCharts from 'ag-charts-community';
-import { AgChartsVue } from 'ag-charts-vue';
+import Vue from "vue";
+import { cloneDeep } from "lodash";
+import * as agCharts from "ag-charts-community";
+import { AgChartsVue } from "ag-charts-vue";
 
 const ChartExample = {
-    template: `
+  template: `
         <ag-charts-vue    
                 :options="options"></ag-charts-vue>
     `,
-    components: {
-        'ag-charts-vue': AgChartsVue
-    },
-    data: function() {
-        return {
-            options: null
-        }
-    },
-    created() {
-        this.options = {
-    
-    autoSize: true,
-    data: getData(),
-    title: {
-        text: 'Total Visitors to Museums and Galleries',
+  components: {
+    "ag-charts-vue": AgChartsVue,
+  },
+  data: function () {
+    return {
+      options: null,
+    };
+  },
+  created() {
+    this.options = {
+      autoSize: true,
+      data: getData(),
+      title: {
+        text: "Total Visitors to Museums and Galleries",
         fontSize: 18,
-    },
-    subtitle: {
-        text: 'Source: Department for Digital, Culture, Media & Sport',
-    },
-    series: [
+      },
+      subtitle: {
+        text: "Source: Department for Digital, Culture, Media & Sport",
+      },
+      series: [
         {
-            type: 'column',
-            xKey: 'year',
-            yKey: 'visitors',
-            fill: '#0084e7',
-            strokeWidth: 0,
-            shadow: {
-                enabled: true,
-                xOffset: 3,
-            },
+          type: "column",
+          xKey: "year",
+          yKey: "visitors",
+          fill: "#0084e7",
+          strokeWidth: 0,
+          shadow: {
+            enabled: true,
+            xOffset: 3,
+          },
         },
-    ],
-    axes: [
+      ],
+      axes: [
         {
-            type: 'category',
-            position: 'bottom',
-            title: {
-                enabled: true,
-                text: 'Year',
-            },
+          type: "category",
+          position: "bottom",
+          title: {
+            enabled: true,
+            text: "Year",
+          },
         },
         {
-            type: 'number',
-            position: 'left',
-            title: {
-                enabled: true,
-                text: 'Total visitors',
+          type: "number",
+          position: "left",
+          title: {
+            enabled: true,
+            text: "Total visitors",
+          },
+          label: {
+            formatter: (params) => {
+              return params.value / 1000000 + "M";
             },
-            label: {
-                formatter: (params) => {
-                    return params.value / 1000000 + 'M';
-                },
-            },
+          },
         },
-    ],
-    legend: {
+      ],
+      legend: {
         enabled: false,
-    },
-}
-    },
-    mounted() {
-        
-    },
-    methods: {
-        
-    }
-}
-
-
+      },
+    };
+  },
+  mounted() {},
+  methods: {},
+};
 
 new Vue({
-    el: '#app',
-    components: {
-        'my-component': ChartExample
-    }
+  el: "#app",
+  components: {
+    "my-component": ChartExample,
+  },
 });

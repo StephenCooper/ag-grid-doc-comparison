@@ -1,21 +1,23 @@
-
-import Vue from 'vue';
-import { AgGridVue } from '@ag-grid-community/vue';
-import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import Vue from "vue";
+import { AgGridVue } from "@ag-grid-community/vue";
+import "@ag-grid-community/core/dist/styles/ag-grid.css";
 import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { ModuleRegistry } from '@ag-grid-community/core';
-import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
-import { MenuModule } from '@ag-grid-enterprise/menu';
-import { RangeSelectionModule } from '@ag-grid-enterprise/range-selection';
-import { ClipboardModule } from '@ag-grid-enterprise/clipboard';
+import { ModuleRegistry } from "@ag-grid-community/core";
+import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
+import { MenuModule } from "@ag-grid-enterprise/menu";
+import { RangeSelectionModule } from "@ag-grid-enterprise/range-selection";
+import { ClipboardModule } from "@ag-grid-enterprise/clipboard";
 
 // Register the required feature modules with the Grid
-ModuleRegistry.registerModules([ClientSideRowModelModule, MenuModule, RangeSelectionModule, ClipboardModule])
-
-
+ModuleRegistry.registerModules([
+  ClientSideRowModelModule,
+  MenuModule,
+  RangeSelectionModule,
+  ClipboardModule,
+]);
 
 const VueExample = {
-    template: `
+  template: `
         <div style="height: 100%">
             <div style="padding-bottom: 5px">
                 <button v-on:click="onBtCopyRows()">Copy Selected Rows to Clipboard</button>
@@ -39,74 +41,76 @@ const VueExample = {
                 @paste-end="onPasteEnd"></ag-grid-vue>
         </div>
     `,
-    components: {
-        'ag-grid-vue': AgGridVue,
-        
+  components: {
+    "ag-grid-vue": AgGridVue,
+  },
+  data: function () {
+    return {
+      columnDefs: [
+        { field: "athlete", minWidth: 200 },
+        { field: "age" },
+        { field: "country", minWidth: 150 },
+        { field: "year" },
+        { field: "date", minWidth: 150 },
+        { field: "sport", minWidth: 150 },
+        { field: "gold" },
+        { field: "silver" },
+        { field: "bronze" },
+        { field: "total" },
+      ],
+      gridApi: null,
+      columnApi: null,
+      defaultColDef: {
+        editable: true,
+        flex: 1,
+        minWidth: 100,
+        resizable: true,
+      },
+      rowSelection: null,
+      rowData: null,
+    };
+  },
+  created() {
+    this.rowSelection = "multiple";
+  },
+  methods: {
+    onCellValueChanged(params) {
+      console.log("Callback onCellValueChanged:", params);
     },
-    data: function() {
-        return {
-            columnDefs: [{field:"athlete",
-minWidth:200},{field:"age"},{field:"country",
-minWidth:150},{field:"year"},{field:"date",
-minWidth:150},{field:"sport",
-minWidth:150},{field:"gold"},{field:"silver"},{field:"bronze"},{field:"total"}],
-            gridApi: null,
-            columnApi: null,
-            defaultColDef: {
-    editable: true,
-    flex: 1,
-    minWidth: 100,
-    resizable: true,
-},
-            rowSelection: null,
-rowData: null
-        }
+    onPasteStart(params) {
+      console.log("Callback onPasteStart:", params);
     },
-    created() {
-        this.rowSelection = 'multiple'
+    onPasteEnd(params) {
+      console.log("Callback onPasteEnd:", params);
     },
-    methods: {
-        onCellValueChanged(params) {
-    console.log('Callback onCellValueChanged:', params);
-},
-onPasteStart(params) {
-    console.log('Callback onPasteStart:', params);
-},
-onPasteEnd(params) {
-    console.log('Callback onPasteEnd:', params);
-},
-onBtCopyRows() {
-    this.gridApi.copySelectedRowsToClipboard();
-},
-onBtCopyRange() {
-    this.gridApi.copySelectedRangeToClipboard();
-},
-onPasteOff() {
-    this.gridApi.setSuppressClipboardPaste(true);
-},
-onPasteOn() {
-    this.gridApi.setSuppressClipboardPaste(false);
-},
-onGridReady(params) {
-        this.gridApi = params.api;
-        this.gridColumnApi = params.columnApi;
-        
+    onBtCopyRows() {
+      this.gridApi.copySelectedRowsToClipboard();
+    },
+    onBtCopyRange() {
+      this.gridApi.copySelectedRangeToClipboard();
+    },
+    onPasteOff() {
+      this.gridApi.setSuppressClipboardPaste(true);
+    },
+    onPasteOn() {
+      this.gridApi.setSuppressClipboardPaste(false);
+    },
+    onGridReady(params) {
+      this.gridApi = params.api;
+      this.gridColumnApi = params.columnApi;
 
-        
-            const updateData = (data) => params.api.setRowData(data);
-            
-            fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
-                .then(resp => resp.json())
-                .then(data => updateData(data));
+      const updateData = (data) => params.api.setRowData(data);
+
+      fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+        .then((resp) => resp.json())
+        .then((data) => updateData(data));
     },
-    }
-}
-
-
+  },
+};
 
 new Vue({
-    el: '#app',
-    components: {
-        'my-component': VueExample
-    }
+  el: "#app",
+  components: {
+    "my-component": VueExample,
+  },
 });

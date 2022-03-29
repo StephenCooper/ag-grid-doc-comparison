@@ -1,31 +1,25 @@
+class ClickableStatusBarComponent {
+  init(params) {
+    this.params = params;
 
-class ClickableStatusBarComponent  {
-    
-    
-    
+    this.eGui = document.createElement("button");
 
-    init(params) {
-        this.params = params;
+    this.buttonListener = this.onButtonClicked.bind(this);
+    this.eGui.addEventListener("click", this.buttonListener);
+    this.eGui.innerHTML = "Click Me For Selected Row Count";
+    this.eGui.style.padding = "5px";
+    this.eGui.style.margin = "5px";
+  }
 
-        this.eGui = document.createElement('button');
+  getGui() {
+    return this.eGui;
+  }
 
-        this.buttonListener = this.onButtonClicked.bind(this);
-        this.eGui.addEventListener("click", this.buttonListener);
-        this.eGui.innerHTML = 'Click Me For Selected Row Count';
-        this.eGui.style.padding = "5px";
-        this.eGui.style.margin = "5px";
-    }
+  destroy() {
+    this.eGui.removeEventListener("click", this.buttonListener);
+  }
 
-    getGui() {
-        return this.eGui;
-    }
-
-    destroy() {
-        this.eGui.removeEventListener("click", this.buttonListener);
-    }
-
-    onButtonClicked() {
-        alert('Selected Row Count: ' + this.params.api.getSelectedRows().length)
-    }
+  onButtonClicked() {
+    alert("Selected Row Count: " + this.params.api.getSelectedRows().length);
+  }
 }
-

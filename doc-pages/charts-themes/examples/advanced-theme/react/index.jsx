@@ -1,12 +1,12 @@
-"use strict"
+"use strict";
 
-import { AgChartsReact } from "ag-charts-react"
-import React, { Component } from "react"
-import { render } from "react-dom"
+import { AgChartsReact } from "ag-charts-react";
+import React, { Component } from "react";
+import { render } from "react-dom";
 
 class Chart1 extends Component {
   constructor(props) {
-    super(props)
+    super(props);
 
     this.state = {
       options: {
@@ -48,7 +48,7 @@ class Chart1 extends Component {
           },
         ],
       },
-    }
+    };
   }
 
   render() {
@@ -56,13 +56,13 @@ class Chart1 extends Component {
       <div className="wrapper">
         <AgChartsReact options={this.state.options} />
       </div>
-    )
+    );
   }
 }
 
 class Chart2 extends Component {
   constructor(props) {
-    super(props)
+    super(props);
 
     this.state = {
       options: {
@@ -81,7 +81,7 @@ class Chart2 extends Component {
           },
         ],
       },
-    }
+    };
   }
 
   render() {
@@ -89,7 +89,7 @@ class Chart2 extends Component {
       <div className="wrapper">
         <AgChartsReact options={this.state.options} />
       </div>
-    )
+    );
   }
 }
 
@@ -162,7 +162,7 @@ var myTheme = {
       },
     },
   },
-}
+};
 
 var data = [
   {
@@ -205,7 +205,7 @@ var data = [
     v4: 5.29,
     v5: 8.8,
   },
-]
+];
 
 render(
   <div id="charts">
@@ -217,4 +217,4 @@ render(
     </div>
   </div>,
   document.querySelector("#root")
-)
+);

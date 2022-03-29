@@ -95,25 +95,16 @@ The following example demonstrates how data can be formatted using `valueGetter`
 
 ## Missing Data Points
 
-Missing or invalid X and Y values need to be handled differently and are described in the following sections:  
+Missing or invalid X and Y values need to be handled differently and are described in the following sections:
 
 ### Missing Y values
 
 If the Y value of the data point is `Infinity`, `null`, `undefined`, `NaN`, a `string` or an `object`, i.e. if it's not
 a `number`, it will be classified as missing or invalid.
 
-``` js
+```js
 // Missing Y Values
-const data = [
-    0.17, 
-    0.20, 
-    undefined, 
-    0.39, 
-    0.26, 
-    null, 
-    0.68, 
-    0.28
-];
+const data = [0.17, 0.2, undefined, 0.39, 0.26, null, 0.68, 0.28];
 ```
 
 When a data point has a missing or invalid Y value, it will be rendered as a gap, this is illustrated in the images below:
@@ -133,29 +124,28 @@ When a data point has a missing or invalid Y value, it will be rendered as a gap
     <image-caption src="resources/area-sparkline-invalid-y-values.png" alt="Area sparkline with gaps for invalid Y values" width="250px" constrained="true">Missing Y values</image-caption>
 </div>
 
-
 ### Missing X values
 
-If X values are supplied in the sparkline data but are inconsistent with the configured [x-axis type](/sparklines-axis-types/), 
+If X values are supplied in the sparkline data but are inconsistent with the configured [x-axis type](/sparklines-axis-types/),
 they are considered invalid and will be skipped in the sparkline.
 
 There won't be any gaps, only the data points with valid x values will appear in the sparklines.
 
-For example if the x-axis is configured to be a [Number Axis](/sparklines-axis-types/#number-axis), but some data points 
-have X values which are not of type `number`, these values will be considered invalid and will be ignored when the 
+For example if the x-axis is configured to be a [Number Axis](/sparklines-axis-types/#number-axis), but some data points
+have X values which are not of type `number`, these values will be considered invalid and will be ignored when the
 sparkline is rendered.
 
-``` js
+```js
 // Missing X Values
 const data = [
-    [2.1, 0.17],
-    [2.3, 0.202],
-    [undefined, 0.28],
-    [2.9, 0.39],
-    [3.3, 0.26],
-    [null, 0.41],
-    [3.9, 0.68],
-    [4.3, 0.28],
+  [2.1, 0.17],
+  [2.3, 0.202],
+  [undefined, 0.28],
+  [2.9, 0.39],
+  [3.3, 0.26],
+  [null, 0.41],
+  [3.9, 0.68],
+  [4.3, 0.28],
 ];
 ```
 

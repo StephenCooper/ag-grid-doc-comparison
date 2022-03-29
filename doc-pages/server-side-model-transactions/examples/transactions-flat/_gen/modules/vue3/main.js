@@ -1,18 +1,15 @@
-
-import { createApp } from 'vue';
-import { AgGridVue } from '@ag-grid-community/vue3';
-import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import { createApp } from "vue";
+import { AgGridVue } from "@ag-grid-community/vue3";
+import "@ag-grid-community/core/dist/styles/ag-grid.css";
 import "@ag-grid-community/core/dist/styles/ag-theme-alpine-dark.css";
-import { ModuleRegistry } from '@ag-grid-community/core';
-import { ServerSideRowModelModule } from '@ag-grid-enterprise/server-side-row-model';
+import { ModuleRegistry } from "@ag-grid-community/core";
+import { ServerSideRowModelModule } from "@ag-grid-enterprise/server-side-row-model";
 
 // Register the required feature modules with the Grid
-ModuleRegistry.registerModules([ServerSideRowModelModule])
-
-
+ModuleRegistry.registerModules([ServerSideRowModelModule]);
 
 const VueExample = {
-    template: `
+  template: `
         <div style="height: 100%">
             <div class="example-wrapper">
                 <div style="margin-bottom: 5px;">
@@ -39,178 +36,174 @@ const VueExample = {
             </div>
         </div>
     `,
-    components: {
-        'ag-grid-vue': AgGridVue,
-        
-    },
-    data: function() {
-        return {
-            columnDefs: [{field:"product"},{field:"value"}],
-            gridApi: null,
-            columnApi: null,
-            defaultColDef: {
-    width: 250,
-    resizable: true,
-},
-            getRowId: null,
-rowSelection: null,
-serverSideStoreType: null,
-rowModelType: null
-        }
-    },
-    created() {
-        this.getRowId = (params) => {
-    return params.data.product;
-};
-this.rowSelection = 'multiple';
-this.serverSideStoreType = 'full';
-this.rowModelType = 'serverSide'
-    },
-    methods: {
-        onRemoveSelected() {
-    const rowsToRemove = this.gridApi.getSelectedRows();
-    const tx = {
-        remove: rowsToRemove,
+  components: {
+    "ag-grid-vue": AgGridVue,
+  },
+  data: function () {
+    return {
+      columnDefs: [{ field: "product" }, { field: "value" }],
+      gridApi: null,
+      columnApi: null,
+      defaultColDef: {
+        width: 250,
+        resizable: true,
+      },
+      getRowId: null,
+      rowSelection: null,
+      serverSideStoreType: null,
+      rowModelType: null,
     };
-    this.gridApi.applyServerSideTransaction(tx);
-},
-onRemoveRandom() {
-    const rowsToRemove = [];
-    let firstRow;
-    this.gridApi.forEachNode(function (node) {
+  },
+  created() {
+    this.getRowId = (params) => {
+      return params.data.product;
+    };
+    this.rowSelection = "multiple";
+    this.serverSideStoreType = "full";
+    this.rowModelType = "serverSide";
+  },
+  methods: {
+    onRemoveSelected() {
+      const rowsToRemove = this.gridApi.getSelectedRows();
+      const tx = {
+        remove: rowsToRemove,
+      };
+      this.gridApi.applyServerSideTransaction(tx);
+    },
+    onRemoveRandom() {
+      const rowsToRemove = [];
+      let firstRow;
+      this.gridApi.forEachNode(function (node) {
         if (firstRow == null) {
-            firstRow = node.data;
+          firstRow = node.data;
         }
         // skip half the nodes at random
         if (Math.random() < 0.75) {
-            return;
+          return;
         }
         rowsToRemove.push(node.data);
-    });
-    if (rowsToRemove.length == 0 && firstRow != null) {
+      });
+      if (rowsToRemove.length == 0 && firstRow != null) {
         rowsToRemove.push(firstRow);
-    }
-    const tx = {
+      }
+      const tx = {
         remove: rowsToRemove,
-    };
-    this.gridApi.applyServerSideTransaction(tx);
-},
-onUpdateSelected() {
-    const rowsToUpdate = this.gridApi.getSelectedRows();
-    rowsToUpdate.forEach(function (data) {
+      };
+      this.gridApi.applyServerSideTransaction(tx);
+    },
+    onUpdateSelected() {
+      const rowsToUpdate = this.gridApi.getSelectedRows();
+      rowsToUpdate.forEach(function (data) {
         data.value = getNextValue();
-    });
-    const tx = {
+      });
+      const tx = {
         update: rowsToUpdate,
-    };
-    this.gridApi.applyServerSideTransaction(tx);
-},
-onUpdateRandom() {
-    const rowsToUpdate = [];
-    this.gridApi.forEachNode(function (node) {
+      };
+      this.gridApi.applyServerSideTransaction(tx);
+    },
+    onUpdateRandom() {
+      const rowsToUpdate = [];
+      this.gridApi.forEachNode(function (node) {
         // skip half the nodes at random
         if (Math.random() > 0.5) {
-            return;
+          return;
         }
         const data = node.data;
         data.value = getNextValue();
         rowsToUpdate.push(data);
-    });
-    const tx = {
+      });
+      const tx = {
         update: rowsToUpdate,
-    };
-    this.gridApi.applyServerSideTransaction(tx);
-},
-onAdd(index) {
-    const newProductName = all_products[Math.floor(all_products.length * Math.random())];
-    const itemsToAdd = [];
-    for (let i = 0; i < 5; i++) {
+      };
+      this.gridApi.applyServerSideTransaction(tx);
+    },
+    onAdd(index) {
+      const newProductName =
+        all_products[Math.floor(all_products.length * Math.random())];
+      const itemsToAdd = [];
+      for (let i = 0; i < 5; i++) {
         itemsToAdd.push({
-            product: newProductName + ' ' + newProductSequence++,
-            value: getNextValue(),
+          product: newProductName + " " + newProductSequence++,
+          value: getNextValue(),
         });
-    }
-    const tx = {
+      }
+      const tx = {
         addIndex: index,
         add: itemsToAdd,
-    };
-    this.gridApi.applyServerSideTransaction(tx);
-},
-onGridReady(params) {
-        this.gridApi = params.api;
-        this.gridColumnApi = params.columnApi;
-        
+      };
+      this.gridApi.applyServerSideTransaction(tx);
+    },
+    onGridReady(params) {
+      this.gridApi = params.api;
+      this.gridColumnApi = params.columnApi;
 
-        
-            const updateData = (data) => {
-    const dataSource = {
-        getRows: function (params) {
+      const updateData = (data) => {
+        const dataSource = {
+          getRows: function (params) {
             // To make the demo look real, wait for 500ms before returning
             setTimeout(function () {
-                const rows = [];
-                products.forEach(function (product, index) {
-                    rows.push({
-                        product: product,
-                        value: getNextValue(),
-                    });
+              const rows = [];
+              products.forEach(function (product, index) {
+                rows.push({
+                  product: product,
+                  value: getNextValue(),
                 });
-                // call the success callback
-                params.success({ rowData: rows, rowCount: rows.length });
+              });
+              // call the success callback
+              params.success({ rowData: rows, rowCount: rows.length });
             }, 500);
-        },
-    };
-    params.api.setServerSideDatasource(dataSource);
-};
-            
-            fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
-                .then(resp => resp.json())
-                .then(data => updateData(data));
+          },
+        };
+        params.api.setServerSideDatasource(dataSource);
+      };
+
+      fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+        .then((resp) => resp.json())
+        .then((data) => updateData(data));
     },
-    }
-}
+  },
+};
 
 window.getNextValue = function getNextValue() {
-    valueCounter++;
-    return Math.floor((valueCounter * 987654321) / 7) % 10000;
-}
+  valueCounter++;
+  return Math.floor((valueCounter * 987654321) / 7) % 10000;
+};
 
-const products = ['Palm Oil', 'Rubber', 'Wool', 'Amber', 'Copper'];
+const products = ["Palm Oil", "Rubber", "Wool", "Amber", "Copper"];
 
 const all_products = [
-    'Palm Oil',
-    'Rubber',
-    'Wool',
-    'Amber',
-    'Copper',
-    'Lead',
-    'Zinc',
-    'Tin',
-    'Aluminium',
-    'Aluminium Alloy',
-    'Nickel',
-    'Cobalt',
-    'Molybdenum',
-    'Recycled Steel',
-    'Corn',
-    'Oats',
-    'Rough Rice',
-    'Soybeans',
-    'Rapeseed',
-    'Soybean Meal',
-    'Soybean Oil',
-    'Wheat',
-    'Milk',
-    'Coca',
-    'Coffee C',
-    'Cotton No.2',
-    'Sugar No.11',
-    'Sugar No.14',
+  "Palm Oil",
+  "Rubber",
+  "Wool",
+  "Amber",
+  "Copper",
+  "Lead",
+  "Zinc",
+  "Tin",
+  "Aluminium",
+  "Aluminium Alloy",
+  "Nickel",
+  "Cobalt",
+  "Molybdenum",
+  "Recycled Steel",
+  "Corn",
+  "Oats",
+  "Rough Rice",
+  "Soybeans",
+  "Rapeseed",
+  "Soybean Meal",
+  "Soybean Oil",
+  "Wheat",
+  "Milk",
+  "Coca",
+  "Coffee C",
+  "Cotton No.2",
+  "Sugar No.11",
+  "Sugar No.14",
 ];
 
 let newProductSequence = 0;
 
 let valueCounter = 0;
 
-createApp(VueExample)
-    .mount("#app")
-
+createApp(VueExample).mount("#app");

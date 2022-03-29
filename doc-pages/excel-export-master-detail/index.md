@@ -23,7 +23,7 @@ The example below demonstrates how both the master and detail data can be export
 
 <grid-example title='Exporting Master / Detail Data' name='single-sheet' type='generated' options='{ "enterprise": true, "modules": ["clientside", "masterdetail", "menu", "columnpanel", "clipboard", "excel"], "exampleHeight": 550 }'></grid-example>
 
-##  Exporting to Multiple Sheets
+## Exporting to Multiple Sheets
 
 Note the following:
 

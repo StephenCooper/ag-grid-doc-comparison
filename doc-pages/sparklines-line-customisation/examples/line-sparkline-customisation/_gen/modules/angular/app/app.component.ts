@@ -1,72 +1,69 @@
-
-import { Component } from '@angular/core';
-import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import { Component } from "@angular/core";
+import "@ag-grid-community/core/dist/styles/ag-grid.css";
 import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { ColDef, ColGroupDef, ColumnApi, Grid, GridApi, GridOptions, GridReadyEvent, LineSparklineOptions } from '@ag-grid-community/core';
+import {
+  ColDef,
+  ColGroupDef,
+  ColumnApi,
+  Grid,
+  GridApi,
+  GridOptions,
+  GridReadyEvent,
+  LineSparklineOptions,
+} from "@ag-grid-community/core";
 // Required feature modules are registered in app.module.ts
 
 @Component({
-    selector: 'my-app',
-    template: `<ag-grid-angular
+  selector: "my-app",
+  template: `<ag-grid-angular
     style="width: 100%; height: 100%;"
-    
     class="ag-theme-alpine"
     [columnDefs]="columnDefs"
     [defaultColDef]="defaultColDef"
     [rowData]="rowData"
     [rowHeight]="rowHeight"
     (gridReady)="onGridReady($event)"
-    ></ag-grid-angular>`
+  ></ag-grid-angular>`,
 })
-
 export class AppComponent {
-
-    
-    public columnDefs: ColDef[] = [
-    { field: 'symbol', maxWidth: 120 },
-    { field: 'name', minWidth: 250 },
+  public columnDefs: ColDef[] = [
+    { field: "symbol", maxWidth: 120 },
+    { field: "name", minWidth: 250 },
     {
-        field: 'change',
-        cellRenderer: 'agSparklineCellRenderer',
-        cellRendererParams: {
-            sparklineOptions: {
-                type: 'line',
-                line: {
-                    stroke: 'rgb(124, 255, 178)',
-                    strokeWidth: 2,
-                },
-                padding: {
-                    top: 5,
-                    bottom: 5,
-                },
-                highlightStyle: {
-                    size: 7,
-                    fill: 'rgb(124, 255, 178)',
-                    strokeWidth: 0
-                },
-            } as LineSparklineOptions,
-        },
+      field: "change",
+      cellRenderer: "agSparklineCellRenderer",
+      cellRendererParams: {
+        sparklineOptions: {
+          type: "line",
+          line: {
+            stroke: "rgb(124, 255, 178)",
+            strokeWidth: 2,
+          },
+          padding: {
+            top: 5,
+            bottom: 5,
+          },
+          highlightStyle: {
+            size: 7,
+            fill: "rgb(124, 255, 178)",
+            strokeWidth: 0,
+          },
+        } as LineSparklineOptions,
+      },
     },
     {
-        field: 'volume',
-        type: 'numericColumn',
-        maxWidth: 140,
+      field: "volume",
+      type: "numericColumn",
+      maxWidth: 140,
     },
-];
-public defaultColDef: ColDef = {
+  ];
+  public defaultColDef: ColDef = {
     flex: 1,
     minWidth: 100,
     resizable: true,
-};
-public rowData: any[] | null = getData();
-public rowHeight = 50
+  };
+  public rowData: any[] | null = getData();
+  public rowHeight = 50;
 
-
-    onGridReady(params: GridReadyEvent) {
-        
-    }
+  onGridReady(params: GridReadyEvent) {}
 }
-
-
-
-

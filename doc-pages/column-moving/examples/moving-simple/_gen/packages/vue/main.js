@@ -1,13 +1,10 @@
-
-import Vue from 'vue';
-import { AgGridVue } from 'ag-grid-vue';
-import 'ag-grid-community/dist/styles/ag-grid.css';
-import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
-
-
+import Vue from "vue";
+import { AgGridVue } from "ag-grid-vue";
+import "ag-grid-community/dist/styles/ag-grid.css";
+import "ag-grid-community/dist/styles/ag-theme-alpine.css";
 
 const VueExample = {
-    template: `
+  template: `
         <div style="height: 100%">
             <div class="example-wrapper">
                 <div style="margin-bottom: 1rem;">
@@ -29,63 +26,67 @@ const VueExample = {
             </div>
         </div>
     `,
-    components: {
-        'ag-grid-vue': AgGridVue,
-        
+  components: {
+    "ag-grid-vue": AgGridVue,
+  },
+  data: function () {
+    return {
+      columnDefs: [
+        { field: "athlete" },
+        { field: "age" },
+        { field: "country" },
+        { field: "year" },
+        { field: "date" },
+        { field: "sport" },
+        { field: "gold" },
+        { field: "silver" },
+        { field: "bronze" },
+        { field: "total" },
+      ],
+      gridApi: null,
+      columnApi: null,
+      defaultColDef: {
+        width: 150,
+      },
+      rowData: null,
+    };
+  },
+  created() {},
+  methods: {
+    onMedalsFirst() {
+      this.gridColumnApi.moveColumns(["gold", "silver", "bronze", "total"], 0);
     },
-    data: function() {
-        return {
-            columnDefs: [{field:"athlete"},{field:"age"},{field:"country"},{field:"year"},{field:"date"},{field:"sport"},{field:"gold"},{field:"silver"},{field:"bronze"},{field:"total"}],
-            gridApi: null,
-            columnApi: null,
-            defaultColDef: {
-    width: 150,
-},
-            rowData: null
-        }
+    onMedalsLast() {
+      this.gridColumnApi.moveColumns(["gold", "silver", "bronze", "total"], 6);
     },
-    created() {
-        
+    onCountryFirst() {
+      this.gridColumnApi.moveColumn("country", 0);
     },
-    methods: {
-        onMedalsFirst() {
-    this.gridColumnApi.moveColumns(['gold', 'silver', 'bronze', 'total'], 0);
-},
-onMedalsLast() {
-    this.gridColumnApi.moveColumns(['gold', 'silver', 'bronze', 'total'], 6);
-},
-onCountryFirst() {
-    this.gridColumnApi.moveColumn('country', 0);
-},
-onSwapFirstTwo() {
-    this.gridColumnApi.moveColumnByIndex(0, 1);
-},
-onPrintColumns() {
-    const cols = this.gridColumnApi.getAllGridColumns();
-    const colToNameFunc = (col, index) => index + ' = ' + col.getId();
-    const colNames = cols.map(colToNameFunc).join(', ');
-    console.log('columns are: ' + colNames);
-},
-onGridReady(params) {
-        this.gridApi = params.api;
-        this.gridColumnApi = params.columnApi;
-        
+    onSwapFirstTwo() {
+      this.gridColumnApi.moveColumnByIndex(0, 1);
+    },
+    onPrintColumns() {
+      const cols = this.gridColumnApi.getAllGridColumns();
+      const colToNameFunc = (col, index) => index + " = " + col.getId();
+      const colNames = cols.map(colToNameFunc).join(", ");
+      console.log("columns are: " + colNames);
+    },
+    onGridReady(params) {
+      this.gridApi = params.api;
+      this.gridColumnApi = params.columnApi;
 
-        
-            const updateData = (data) => params.api.setRowData(data);
-            
-            fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
-                .then(resp => resp.json())
-                .then(data => updateData(data));
+      const updateData = (data) => params.api.setRowData(data);
+
+      fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+        .then((resp) => resp.json())
+        .then((data) => updateData(data));
     },
-    }
-}
-
-
+  },
+};
 
 new Vue({
-    el: '#app',
-    components: {
-        'my-component': VueExample
-    }
+  el: "#app",
+  components: {
+    "my-component": VueExample,
+  },
 });

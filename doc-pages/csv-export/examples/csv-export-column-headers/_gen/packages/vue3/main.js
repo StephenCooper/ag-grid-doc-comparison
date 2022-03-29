@@ -1,14 +1,11 @@
-
-import { createApp } from 'vue';
-import { AgGridVue } from 'ag-grid-vue3';
-import 'ag-grid-enterprise';
-import 'ag-grid-community/dist/styles/ag-grid.css';
-import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
-
-
+import { createApp } from "vue";
+import { AgGridVue } from "ag-grid-vue3";
+import "ag-grid-enterprise";
+import "ag-grid-community/dist/styles/ag-grid.css";
+import "ag-grid-community/dist/styles/ag-theme-alpine.css";
 
 const VueExample = {
-    template: `
+  template: `
         <div style="height: 100%">
             <div style="display: flex; flex-direction: column; height: 100%;">
                 <div style="display: flex;">
@@ -39,67 +36,66 @@ const VueExample = {
             </div>
         </div>
     `,
-    components: {
-        'ag-grid-vue': AgGridVue,
-        
+  components: {
+    "ag-grid-vue": AgGridVue,
+  },
+  data: function () {
+    return {
+      columnDefs: [
+        {
+          headerName: "Brand",
+          children: [{ field: "make" }, { field: "model" }],
+        },
+        { headerName: "Value", children: [{ field: "price" }] },
+      ],
+      gridApi: null,
+      columnApi: null,
+      defaultColDef: {
+        editable: true,
+        resizable: true,
+        minWidth: 100,
+        flex: 1,
+      },
+      popupParent: null,
+      rowData: null,
+    };
+  },
+  created() {
+    this.popupParent = document.body;
+    this.rowData = [
+      { make: "Toyota", model: "Celica", price: 35000 },
+      { make: "Ford", model: "Mondeo", price: 32000 },
+      { make: "Porsche", model: "Boxter", price: 72000 },
+    ];
+  },
+  methods: {
+    onBtnExport() {
+      this.gridApi.exportDataAsCsv(getParams());
     },
-    data: function() {
-        return {
-            columnDefs: [{headerName:"Brand",
-children: [{field:"make"},
-{field:"model"}]},{headerName:"Value",
-children: [{field:"price"}]}],
-            gridApi: null,
-            columnApi: null,
-            defaultColDef: {
-    editable: true,
-    resizable: true,
-    minWidth: 100,
-    flex: 1,
-},
-            popupParent: null,
-rowData: null
-        }
+    onBtnUpdate() {
+      document.querySelector("#csvResult").value = this.gridApi.getDataAsCsv(
+        getParams()
+      );
     },
-    created() {
-        this.popupParent = document.body;
-this.rowData = [
-    { make: 'Toyota', model: 'Celica', price: 35000 },
-    { make: 'Ford', model: 'Mondeo', price: 32000 },
-    { make: 'Porsche', model: 'Boxter', price: 72000 },
-]
-    },
-    methods: {
-        onBtnExport() {
-    this.gridApi.exportDataAsCsv(getParams());
-},
-onBtnUpdate() {
-    (document.querySelector('#csvResult')).value = this.gridApi.getDataAsCsv(getParams());
-},
-onGridReady(params) {
-        this.gridApi = params.api;
-        this.gridColumnApi = params.columnApi;
-        
+    onGridReady(params) {
+      this.gridApi = params.api;
+      this.gridColumnApi = params.columnApi;
 
-        
-    (document.getElementById('columnGroups')).checked = true;
-
+      document.getElementById("columnGroups").checked = true;
     },
-    }
-}
+  },
+};
 
 window.getBoolean = function getBoolean(id) {
-    var field = document.querySelector('#' + id);
-    return !!field.checked;
-}
+  var field = document.querySelector("#" + id);
+  return !!field.checked;
+};
 
 window.getParams = function getParams() {
-    return {
-        skipColumnGroupHeaders: getBoolean('columnGroups'),
-        skipColumnHeaders: getBoolean('skipHeader'),
-    };
-}
+  return {
+    skipColumnGroupHeaders: getBoolean("columnGroups"),
+    skipColumnHeaders: getBoolean("skipHeader"),
+  };
+};
 
-createApp(VueExample)
-    .mount("#app")
-
+createApp(VueExample).mount("#app");

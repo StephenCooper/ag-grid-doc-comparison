@@ -1,18 +1,17 @@
-
 function getTotal(datum) {
   return (
     datum.ownerOccupied +
     datum.privateRented +
     datum.localAuthority +
     datum.housingAssociation
-  )
+  );
 }
 
 const options = {
   container: document.getElementById("myChart"),
   autoSize: true,
   data: getData().sort(function (a, b) {
-    return getTotal(b) - getTotal(a)
+    return getTotal(b) - getTotal(a);
   }),
   theme: {
     overrides: {
@@ -79,6 +78,6 @@ const options = {
   legend: {
     position: "bottom",
   },
-}
+};
 
-var chart = agCharts.AgChart.create(options)
+var chart = agCharts.AgChart.create(options);

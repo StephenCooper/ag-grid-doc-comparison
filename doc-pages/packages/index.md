@@ -32,7 +32,6 @@ The following artifacts are "`packages`" and are designed to work to together:
 || `ag-grid-enterprise` | All Enterprise Features |
 || `ag-grid-vue` | Vue Support |
 
-
 When using `packages` you get all of the code within that package and cannot pick and choose which features you require. Unlike ['modules](/modules/) there is no need to register feature modules with the grid as the packages take care of this for you.
 
 As a result it is easier to use `packages` but the trade-off will be you'll end up with a larger bundle size if you don't require all the features within a given package.
@@ -59,42 +58,21 @@ You can then (optionally) specify `ag-grid-enterprise` if you require Enterprise
 If you do require Enterprise features you'll additionally need to import the `ag-grid-enterprise` package for it to be included in your application:
 
 ```js
-import 'ag-grid-enterprise';
+import "ag-grid-enterprise";
 ```
 
 [[only-angular]]
 |Finally, if you're using Angular you'll need to specify `ag-grid-angular` packages:
 |
-|```diff
-|"dependencies": {
-|    "ag-grid-community": "~@AG_GRID_VERSION@"
-|    "ag-grid-enterprise": "~@AG_GRID_VERSION@"
-|+   "ag-grid-angular": "~@AG_GRID_VERSION@"
-|    //...other dependencies...
-|}
-|```
+|`diff |"dependencies": { | "ag-grid-community": "~@AG_GRID_VERSION@" | "ag-grid-enterprise": "~@AG_GRID_VERSION@" |+ "ag-grid-angular": "~@AG_GRID_VERSION@" | //...other dependencies... |} |`
 [[only-react]]
 |Finally, if you're using Reaxt you'll need to specify `ag-grid-react` packages:
 |
-|```diff
-|"dependencies": {
-|    "ag-grid-community": "~@AG_GRID_VERSION@"
-|    "ag-grid-enterprise": "~@AG_GRID_VERSION@"
-|+   "ag-grid-react": "~@AG_GRID_VERSION@"
-|    //...other dependencies...
-|}
-|```
+|`diff |"dependencies": { | "ag-grid-community": "~@AG_GRID_VERSION@" | "ag-grid-enterprise": "~@AG_GRID_VERSION@" |+ "ag-grid-react": "~@AG_GRID_VERSION@" | //...other dependencies... |} |`
 [[only-vue]]
 |Finally, if you're using Vue you'll need to specify `ag-grid-vue` packages:
 |
-|```diff
-|"dependencies": {
-|    "ag-grid-community": "~@AG_GRID_VERSION@"
-|    "ag-grid-enterprise": "~@AG_GRID_VERSION@"
-|+   "ag-grid-vue": "~@AG_GRID_VERSION@"
-|    //...other dependencies...
-|}
-|```
+|`diff |"dependencies": { | "ag-grid-community": "~@AG_GRID_VERSION@" | "ag-grid-enterprise": "~@AG_GRID_VERSION@" |+ "ag-grid-vue": "~@AG_GRID_VERSION@" | //...other dependencies... |} |`
 
 ## Example: Packages
 
@@ -109,13 +87,12 @@ If you are using packages then check that you select the 'Packages' option from 
 
 It is vitally important that you do not mix packages and modules in the same application as you will end up including AG Grid twice and doubling your bundle size! All modules are scoped by either `@ag-grid-community/*` or `@ag-grid-enterprise/*` and should not be mixed with the standalone packages of `ag-grid-community` and `ag-grid-enterprise`.
 
- | Packages             | Modules                     |
- | -------------------- | --------------------------- |
- | `ag-grid-community`  | `@ag-grid-community/xxxxx`  |
- | `ag-grid-enterprise` | `@ag-grid-enterprise/xxxxx` |
+| Packages             | Modules                     |
+| -------------------- | --------------------------- |
+| `ag-grid-community`  | `@ag-grid-community/xxxxx`  |
+| `ag-grid-enterprise` | `@ag-grid-enterprise/xxxxx` |
 
-
-```js 
+```js
 "dependencies": {
     "ag-grid-community": "~@AG_GRID_VERSION@" <- a package dependency
     "@ag-grid-enterprise/row-grouping": "~@AG_GRID_VERSION@"  <- a module dependency
@@ -126,4 +103,3 @@ It is vitally important that you do not mix packages and modules in the same app
 Please refer to the [modules](/modules/) documentation if you are concerned with bundle size.
 
 Please refer to the [Getting Started](/getting-started/) guides for a walk through on how to install and use these packages from the ground up.
-

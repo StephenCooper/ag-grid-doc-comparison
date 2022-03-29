@@ -66,8 +66,8 @@ There are two ways to configure the Group Column:
 
 ### Auto Column Group
 
-When the grid is working with Tree Data there is no need to explicitly specify a Group Column as the grid will use the 
-[Auto Group Column](/grouping-single-group-column/#group-column-configuration). However, you will probably want to 
+When the grid is working with Tree Data there is no need to explicitly specify a Group Column as the grid will use the
+[Auto Group Column](/grouping-single-group-column/#group-column-configuration). However, you will probably want to
 override some defaults as shown below:
 
 <snippet>
@@ -84,7 +84,7 @@ const gridOptions = {
 
 ### Custom Column Group
 
-As noted above, providing your own Custom Column Group has the advantage of giving you full control over the 
+As noted above, providing your own Custom Column Group has the advantage of giving you full control over the
 presentation of the Column Group, however it is not as convenient as using the default Auto Column Group.
 
 One significant difference is that the entire `dataPath` array will be supplied as a value, rather than just the current
@@ -215,7 +215,6 @@ Click selection is supported with tree data. However when you are displaying tre
 Filler groups do not keep their selection state should the filler group be moved. For example if you have groups A->B->C, where C is the only row provided (so the grid creates groups A and B for you), and then you change the patch to D->B->C, group B will not keep it's selection.
 
 If keeping selection of groups is a priority, then arrange your data so that the grid does not need to create any filler groups.
-
 
 ## Filtering Aggregations
 

@@ -9,53 +9,5 @@
 |
 |The following code snippet shows how both JavaScript and Vue Components can be used at the same time:
 |
-|```js
-|<template>
-|   <ag-grid-vue :components="components" 
-|                ...other properties>
-|   </ag-grid-vue>
-|</template>
-|
-|<script>
-|//...other imports
-|import {AgGridVue} from "@ag-grid-community/vue";
-|import JavascriptComponent from './JavascriptComponent.js';
-|import VueComponent from './VueComponent.vue';
-|
-|export default {
-|   components: {
-|       AgGridVue,
-|       // Vue components are registered here
-|       'vueComponent': VueComponent
-|   }
-|   data() {
-|       return {
-|           // JavaScript components are registered here, for when looking up component by name
-|           components: [
-|               // declare the javascript component
-|               'javascriptComponent': JavascriptComponent
-|           ],          
-|           columnDefs: [
-|                {
-|                   headerName: "JS Cell",
-|                   field: "value",
-|                   cellRenderer: 'javascriptComponent',    // reference/use the javascript component by name
-|               },
-|                {
-|                   headerName: "JS Cell",
-|                   field: "value",
-|                   cellRenderer: JavascriptComponent,    // reference/use the javascript component directly
-|               },
-|               {
-|                   headerName: "Vue Cell",
-|                   field: "value",
-|                   cellRenderer: 'vueComponent',  // reference/use the Vue component
-|               }
-|           ]
-|       }
-|   }
-|   //...other properties & methods
-|}
-|</script>
-|```
+|`js |<template> | <ag-grid-vue :components="components" | ...other properties> | </ag-grid-vue> |</template> | |<script> |//...other imports |import {AgGridVue} from "@ag-grid-community/vue"; |import JavascriptComponent from './JavascriptComponent.js'; |import VueComponent from './VueComponent.vue'; | |export default { | components: { | AgGridVue, | // Vue components are registered here | 'vueComponent': VueComponent | } | data() { | return { | // JavaScript components are registered here, for when looking up component by name | components: [ | // declare the javascript component | 'javascriptComponent': JavascriptComponent | ], | columnDefs: [ | { | headerName: "JS Cell", | field: "value", | cellRenderer: 'javascriptComponent', // reference/use the javascript component by name | }, | { | headerName: "JS Cell", | field: "value", | cellRenderer: JavascriptComponent, // reference/use the javascript component directly | }, | { | headerName: "Vue Cell", | field: "value", | cellRenderer: 'vueComponent', // reference/use the Vue component | } | ] | } | } | //...other properties & methods |} |</script> |`
 |

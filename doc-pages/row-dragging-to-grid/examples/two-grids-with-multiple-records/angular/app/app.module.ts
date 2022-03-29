@@ -1,21 +1,18 @@
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { NgModule } from "@angular/core";
+import { BrowserModule } from "@angular/platform-browser";
+import { HttpClientModule } from "@angular/common/http";
 
 // ag-grid
 import { AgGridModule } from "@ag-grid-community/angular";
-import { SportRenderer, AppComponent } from './app.component';
+import { SportRenderer, AppComponent } from "./app.component";
 
 @NgModule({
   imports: [
     BrowserModule,
     HttpClientModule,
-    AgGridModule.withComponents([SportRenderer])
+    AgGridModule.withComponents([SportRenderer]),
   ],
-  declarations: [
-    AppComponent,
-    SportRenderer
-  ],
-  bootstrap: [AppComponent]
+  declarations: [AppComponent, SportRenderer],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

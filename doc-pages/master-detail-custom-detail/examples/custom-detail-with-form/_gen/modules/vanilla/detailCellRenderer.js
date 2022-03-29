@@ -1,42 +1,44 @@
+class DetailCellRenderer {
+  init(params) {
+    var firstRecord = params.data.callRecords[0];
 
-class DetailCellRenderer  {
-    
+    this.eGui = document.createElement("div");
+    this.eGui.innerHTML =
+      "<form>" +
+      "  <div>" +
+      "  <p>" +
+      "    <label>" +
+      "      Call Id:<br>" +
+      '    <input type="text" value="' +
+      firstRecord.callId +
+      '">' +
+      "    </label>" +
+      "  </p>" +
+      "  <p>" +
+      "    <label>" +
+      "      Number:<br>" +
+      '    <input type="text" value="' +
+      firstRecord.number +
+      '">' +
+      "    </label>" +
+      "  </p>" +
+      "  <p>" +
+      "    <label>" +
+      "      Direction:<br>" +
+      '    <input type="text" value="' +
+      firstRecord.direction +
+      '">' +
+      "    </label>" +
+      "  </p>" +
+      "</form>" +
+      "</div>";
+  }
 
-    init(params) {
+  getGui() {
+    return this.eGui;
+  }
 
-        var firstRecord = params.data.callRecords[0];
-
-        this.eGui = document.createElement('div');
-        this.eGui.innerHTML =
-            '<form>' +
-            '  <div>' +
-            '  <p>' +
-            '    <label>' +
-            '      Call Id:<br>' +
-            '    <input type="text" value="' + firstRecord.callId + '">' +
-            '    </label>' +
-            '  </p>' +
-            '  <p>' +
-            '    <label>' +
-            '      Number:<br>' +
-            '    <input type="text" value="' + firstRecord.number + '">' +
-            '    </label>' +
-            '  </p>' +
-            '  <p>' +
-            '    <label>' +
-            '      Direction:<br>' +
-            '    <input type="text" value="' + firstRecord.direction + '">' +
-            '    </label>' +
-            '  </p>' +
-            '</form>' +
-            '</div>';
-    }
-
-    getGui() {
-        return this.eGui;
-    }
-
-    refresh(params) {
-        return false;
-    }
+  refresh(params) {
+    return false;
+  }
 }

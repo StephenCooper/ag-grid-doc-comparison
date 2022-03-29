@@ -1,21 +1,18 @@
+class CountryCellRenderer {
+  init(params) {
+    this.eGui = document.createElement("img");
+    this.eGui.alt = params.data;
 
-class CountryCellRenderer  {
-    
+    const context = params.context;
+    this.eGui.src =
+      context.base64flags[context.countryCodes[params.data.country]];
+  }
 
-    init(params) {
-        this.eGui = document.createElement('img');
-        this.eGui.alt = params.data;
+  getGui() {
+    return this.eGui;
+  }
 
-        const context = (params ).context;
-        this.eGui.src = context.base64flags[context.countryCodes[params.data.country]];
-    }
-
-    getGui() {
-        return this.eGui;
-    }
-
-    refresh() {
-        return false
-    }
+  refresh() {
+    return false;
+  }
 }
-

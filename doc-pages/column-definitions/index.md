@@ -1,6 +1,7 @@
 ---
 title: "Column Definitions"
 ---
+
 Each column in the grid is defined using a Column Definition (`ColDef`). Columns are positioned in the grid according to the order the Column Definitions are specified in the Grid Options.
 
 The following example shows a simple grid with 3 columns defined:
@@ -45,37 +46,11 @@ Groups are explained in more detail in the section [Column Groups](/column-group
 |
 | You declare the grid as normal:
 |
-| ```jsx
-| <ag-grid-vue
-|         class="ag-theme-alpine"
-|         style="width: 700px; height: 400px;"
-|         :rowData="rowData"
-|         //...rest of definition
-| ```
+| `jsx | <ag-grid-vue | class="ag-theme-alpine" | style="width: 700px; height: 400px;" | :rowData="rowData" | //...rest of definition | `
 |
 | And within this component you can then define your column definitions:
 |
-| ```jsx
-| <ag-grid-vue
-|     //...rest of definition
-| >
-|     <ag-grid-column headerName="IT Skills">
-|         <ag-grid-column
-|             field="skills"
-|             :width="120"
-|             suppressSorting
-|             cellRenderer="SkillsCellRenderer"
-|             :menuTabs="['filterMenuTab']">
-|         </ag-grid-column>
-|         <ag-grid-column
-|             field="proficiency"
-|             :width="135"
-|             cellRenderer="ProficiencyCellRenderer"
-|             :menuTabs="['filterMenuTab']">
-|         </ag-grid-column>
-|     </ag-grid-column>
-| </ag-grid-vue>
-| ```
+| `jsx | <ag-grid-vue | //...rest of definition | > | <ag-grid-column headerName="IT Skills"> | <ag-grid-column | field="skills" | :width="120" | suppressSorting | cellRenderer="SkillsCellRenderer" | :menuTabs="['filterMenuTab']"> | </ag-grid-column> | <ag-grid-column | field="proficiency" | :width="135" | cellRenderer="ProficiencyCellRenderer" | :menuTabs="['filterMenuTab']"> | </ag-grid-column> | </ag-grid-column> | </ag-grid-vue> | `
 |
 | In this example we're defining a grouped column with `IT Skills` having two
 | child columns `Skills and Proficiency`.
@@ -138,7 +113,7 @@ const gridOptions = {
 
 When the grid creates a column it starts with the default column definition, then adds properties defined via column types and then finally adds in properties from the specific column definition.
 
-At each stage if a column property already exists, the latter will override the existing value. For example, if the `defaultColDef` sets `editable: true` but a `columnType` sets `editable: false` then this column will not be editable. 
+At each stage if a column property already exists, the latter will override the existing value. For example, if the `defaultColDef` sets `editable: true` but a `columnType` sets `editable: false` then this column will not be editable.
 
 For example, the following is an outline of the steps used when creating 'Col C' shown above:
 
@@ -176,7 +151,6 @@ const gridOptions = {
     ]
 }
 </snippet>
-
 
 The `rightAligned` column type works by setting the header and cell class properties as follows. If you manually set either `headerClass` or `cellClass` then you may need to include the right aligned CSS classes yourself as column type properties are overridden by explicitly defined column properties.
 

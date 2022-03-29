@@ -1,14 +1,11 @@
-
-import { createApp } from 'vue';
-import { AgGridVue } from 'ag-grid-vue3';
-import 'ag-grid-enterprise';
-import 'ag-grid-community/dist/styles/ag-grid.css';
-import 'ag-grid-community/dist/styles/ag-theme-alpine-dark.css';
-
-
+import { createApp } from "vue";
+import { AgGridVue } from "ag-grid-vue3";
+import "ag-grid-enterprise";
+import "ag-grid-community/dist/styles/ag-grid.css";
+import "ag-grid-community/dist/styles/ag-theme-alpine-dark.css";
 
 const VueExample = {
-    template: `
+  template: `
         <div style="height: 100%">
             <div id="wrapper">
                 <div id="pieChart" class="ag-theme-alpine-dark"></div>
@@ -26,73 +23,68 @@ const VueExample = {
             </div>
         </div>
     `,
-    components: {
-        'ag-grid-vue': AgGridVue,
-        
-    },
-    data: function() {
-        return {
-            columnDefs: [{field:"salesRep",
-chartDataType:"category"},{field:"handset",
-chartDataType:"category"},{field:"sale",
-chartDataType:"series"},{field:"saleDate",
-chartDataType:"category"}],
-            gridApi: null,
-            columnApi: null,
-            defaultColDef: {
-    flex: 1,
-    sortable: true,
-    filter: 'agSetColumnFilter',
-    floatingFilter: true,
-    resizable: true,
-},
-            rowData: null,
-chartThemes: null
-        }
-    },
-    created() {
-        this.rowData = getData();
-this.chartThemes = ['ag-default-dark']
-    },
-    methods: {
-        onFirstDataRendered(params) {
-    params.api.createCrossFilterChart({
-        chartType: 'pie',
+  components: {
+    "ag-grid-vue": AgGridVue,
+  },
+  data: function () {
+    return {
+      columnDefs: [
+        { field: "salesRep", chartDataType: "category" },
+        { field: "handset", chartDataType: "category" },
+        { field: "sale", chartDataType: "series" },
+        { field: "saleDate", chartDataType: "category" },
+      ],
+      gridApi: null,
+      columnApi: null,
+      defaultColDef: {
+        flex: 1,
+        sortable: true,
+        filter: "agSetColumnFilter",
+        floatingFilter: true,
+        resizable: true,
+      },
+      rowData: null,
+      chartThemes: null,
+    };
+  },
+  created() {
+    this.rowData = getData();
+    this.chartThemes = ["ag-default-dark"];
+  },
+  methods: {
+    onFirstDataRendered(params) {
+      params.api.createCrossFilterChart({
+        chartType: "pie",
         cellRange: {
-            columns: ['salesRep', 'sale'],
+          columns: ["salesRep", "sale"],
         },
-        aggFunc: 'sum',
+        aggFunc: "sum",
         chartThemeOverrides: {
-            common: {
-                title: {
-                    enabled: true,
-                    text: 'Sales by Representative ($)',
-                },
+          common: {
+            title: {
+              enabled: true,
+              text: "Sales by Representative ($)",
             },
-            pie: {
-                series: {
-                    title: {
-                        enabled: false,
-                    },
-                    label: {
-                        enabled: false,
-                    },
-                },
+          },
+          pie: {
+            series: {
+              title: {
+                enabled: false,
+              },
+              label: {
+                enabled: false,
+              },
             },
+          },
         },
-        chartContainer: document.querySelector('#pieChart'),
-    });
-},
-onGridReady(params) {
-        this.gridApi = params.api;
-        this.gridColumnApi = params.columnApi;
-        
+        chartContainer: document.querySelector("#pieChart"),
+      });
     },
-    }
-}
+    onGridReady(params) {
+      this.gridApi = params.api;
+      this.gridColumnApi = params.columnApi;
+    },
+  },
+};
 
-
-
-createApp(VueExample)
-    .mount("#app")
-
+createApp(VueExample).mount("#app");

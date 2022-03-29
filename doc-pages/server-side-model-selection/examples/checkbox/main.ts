@@ -1,13 +1,18 @@
-import { Grid, GridOptions, GetRowIdParams, IServerSideDatasource } from '@ag-grid-community/core'
+import {
+  Grid,
+  GridOptions,
+  GetRowIdParams,
+  IServerSideDatasource,
+} from "@ag-grid-community/core";
 declare var FakeServer: any;
 const gridOptions: GridOptions = {
   columnDefs: [
-    { field: 'year', rowGroup: true, hide: true },
-    { field: 'athlete', hide: true },
-    { field: 'sport', checkboxSelection: true },
-    { field: 'gold', aggFunc: 'sum' },
-    { field: 'silver', aggFunc: 'sum' },
-    { field: 'bronze', aggFunc: 'sum' },
+    { field: "year", rowGroup: true, hide: true },
+    { field: "athlete", hide: true },
+    { field: "sport", checkboxSelection: true },
+    { field: "gold", aggFunc: "sum" },
+    { field: "silver", aggFunc: "sum" },
+    { field: "bronze", aggFunc: "sum" },
   ],
   defaultColDef: {
     flex: 1,
@@ -21,7 +26,7 @@ const gridOptions: GridOptions = {
     return data.id || data.year;
   },
   autoGroupColumnDef: {
-    field: 'athlete',
+    field: "athlete",
     flex: 1,
     minWidth: 240,
     // headerCheckboxSelection: true, // not supported for Enterprise Model
@@ -31,15 +36,15 @@ const gridOptions: GridOptions = {
   },
 
   // use the server-side row model
-  rowModelType: 'serverSide',
-  serverSideStoreType: 'partial',
+  rowModelType: "serverSide",
+  serverSideStoreType: "partial",
 
   // allow multiple row selections
-  rowSelection: 'multiple',
+  rowSelection: "multiple",
 
   // restrict selections to leaf rows
   isRowSelectable: function (rowNode) {
-    return !rowNode.group
+    return !rowNode.group;
   },
 
   // restrict row selections via checkbox selection
@@ -50,36 +55,39 @@ const gridOptions: GridOptions = {
   animateRows: true,
   suppressAggFuncInHeader: true,
   // debug: true,
-}
+};
 
 function getServerSideDatasource(server: any): IServerSideDatasource {
   return {
     getRows: function (params) {
-      console.log('[Datasource] - rows requested by grid: ', params.request)
+      console.log("[Datasource] - rows requested by grid: ", params.request);
 
-      var response = server.getData(params.request)
+      var response = server.getData(params.request);
 
       // adding delay to simulate real server call
       setTimeout(function () {
         if (response.success) {
           // call the success callback
-          params.success({ rowData: response.rows, rowCount: response.lastRow })
+          params.success({
+            rowData: response.rows,
+            rowCount: response.lastRow,
+          });
         } else {
           // inform the grid request failed
-          params.fail()
+          params.fail();
         }
-      }, 200)
+      }, 200);
     },
-  }
+  };
 }
 
 // setup the grid after the page has finished loading
-document.addEventListener('DOMContentLoaded', function () {
-  var gridDiv = document.querySelector<HTMLElement>('#myGrid')!
-  new Grid(gridDiv, gridOptions)
+document.addEventListener("DOMContentLoaded", function () {
+  var gridDiv = document.querySelector<HTMLElement>("#myGrid")!;
+  new Grid(gridDiv, gridOptions);
 
-  fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
-    .then(response => response.json())
+  fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+    .then((response) => response.json())
     .then(function (data) {
       // assign a unique ID to each data item
       data.forEach(function (item: any, index: number) {
@@ -87,12 +95,12 @@ document.addEventListener('DOMContentLoaded', function () {
       });
 
       // setup the fake server with entire dataset
-      var fakeServer = new FakeServer(data)
+      var fakeServer = new FakeServer(data);
 
       // create datasource with a reference to the fake server
-      var datasource = getServerSideDatasource(fakeServer)
+      var datasource = getServerSideDatasource(fakeServer);
 
       // register the datasource with the grid
-      gridOptions.api!.setServerSideDatasource(datasource)
-    })
-})
+      gridOptions.api!.setServerSideDatasource(datasource);
+    });
+});

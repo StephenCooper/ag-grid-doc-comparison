@@ -1,14 +1,11 @@
-
-import { createApp } from 'vue';
-import { AgGridVue } from 'ag-grid-vue3';
-import 'ag-grid-enterprise';
-import 'ag-grid-community/dist/styles/ag-grid.css';
-import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
-
-
+import { createApp } from "vue";
+import { AgGridVue } from "ag-grid-vue3";
+import "ag-grid-enterprise";
+import "ag-grid-community/dist/styles/ag-grid.css";
+import "ag-grid-community/dist/styles/ag-theme-alpine.css";
 
 const VueExample = {
-    template: `
+  template: `
         <div style="height: 100%">
             <div class="test-container">
                 <div class="test-header">
@@ -31,88 +28,97 @@ const VueExample = {
             </div>
         </div>
     `,
-    components: {
-        'ag-grid-vue': AgGridVue,
-        
+  components: {
+    "ag-grid-vue": AgGridVue,
+  },
+  data: function () {
+    return {
+      columnDefs: [
+        {
+          field: "athlete",
+          minWidth: 200,
+          enableRowGroup: true,
+          enablePivot: true,
+        },
+        { field: "age", enableValue: true },
+        {
+          field: "country",
+          minWidth: 200,
+          enableRowGroup: true,
+          enablePivot: true,
+          rowGroupIndex: 1,
+        },
+        {
+          field: "year",
+          enableRowGroup: true,
+          enablePivot: true,
+          pivotIndex: 1,
+        },
+        {
+          field: "date",
+          minWidth: 180,
+          enableRowGroup: true,
+          enablePivot: true,
+        },
+        {
+          field: "sport",
+          minWidth: 200,
+          enableRowGroup: true,
+          enablePivot: true,
+          rowGroupIndex: 2,
+        },
+        { field: "gold", hide: true, enableValue: true },
+        { field: "silver", hide: true, enableValue: true, aggFunc: "sum" },
+        { field: "bronze", hide: true, enableValue: true, aggFunc: "sum" },
+        {
+          headerName: "Total",
+          field: "totalAgg",
+          valueGetter:
+            "node.group ? data.totalAgg : data.gold + data.silver + data.bronze",
+        },
+      ],
+      gridApi: null,
+      columnApi: null,
+      defaultColDef: {
+        flex: 1,
+        minWidth: 150,
+        sortable: true,
+        resizable: true,
+      },
+      autoGroupColumnDef: null,
+      sideBar: null,
+      rowGroupPanelShow: null,
+      pivotPanelShow: null,
+      rowData: null,
+    };
+  },
+  created() {
+    this.autoGroupColumnDef = {
+      minWidth: 250,
+    };
+    this.sideBar = "columns";
+    this.rowGroupPanelShow = "always";
+    this.pivotPanelShow = "always";
+  },
+  methods: {
+    setReadOnly() {
+      this.gridApi.setFunctionsReadOnly(
+        document.getElementById("read-only").checked
+      );
     },
-    data: function() {
-        return {
-            columnDefs: [{field:"athlete",
-minWidth:200,
-enableRowGroup:true,
-enablePivot:true},{field:"age",
-enableValue:true},{field:"country",
-minWidth:200,
-enableRowGroup:true,
-enablePivot:true,
-rowGroupIndex:1},{field:"year",
-enableRowGroup:true,
-enablePivot:true,
-pivotIndex:1},{field:"date",
-minWidth:180,
-enableRowGroup:true,
-enablePivot:true},{field:"sport",
-minWidth:200,
-enableRowGroup:true,
-enablePivot:true,
-rowGroupIndex:2},{field:"gold",
-hide:true,
-enableValue:true},{field:"silver",
-hide:true,
-enableValue:true,
-aggFunc:"sum"},{field:"bronze",
-hide:true,
-enableValue:true,
-aggFunc:"sum"},{headerName:"Total",
-field:"totalAgg",
-valueGetter:"node.group ? data.totalAgg : data.gold + data.silver + data.bronze"}],
-            gridApi: null,
-            columnApi: null,
-            defaultColDef: {
-    flex: 1,
-    minWidth: 150,
-    sortable: true,
-    resizable: true,
-},
-            autoGroupColumnDef: null,
-sideBar: null,
-rowGroupPanelShow: null,
-pivotPanelShow: null,
-rowData: null
-        }
+    onGridReady(params) {
+      this.gridApi = params.api;
+      this.gridColumnApi = params.columnApi;
+
+      document.getElementById("read-only").checked = true;
+
+      const updateData = (data) => params.api.setRowData(data);
+
+      fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+        .then((resp) => resp.json())
+        .then((data) => updateData(data));
     },
-    created() {
-        this.autoGroupColumnDef = {
-    minWidth: 250,
+  },
 };
-this.sideBar = 'columns';
-this.rowGroupPanelShow = 'always';
-this.pivotPanelShow = 'always'
-    },
-    methods: {
-        setReadOnly() {
-    this.gridApi.setFunctionsReadOnly((document.getElementById('read-only')).checked);
-},
-onGridReady(params) {
-        this.gridApi = params.api;
-        this.gridColumnApi = params.columnApi;
-        
 
-        
-    (document.getElementById('read-only')).checked = true;
-
-        
-            const updateData = (data) => params.api.setRowData(data);
-            
-            fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
-                .then(resp => resp.json())
-                .then(data => updateData(data));
-    },
-    }
-}
-
-
-
-createApp(VueExample)
-    .mount("#app")
-
+createApp(VueExample).mount("#app");

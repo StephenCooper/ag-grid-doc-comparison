@@ -78,7 +78,7 @@ series: [{
 
 ### Mean Bins
 
-Showing frequencies or summing up the y-values isn't always the best way to show your data. For data that is not evenly distributed in x, but is relatively uniform in y, a sum plot xy histogram will tend to be dominated by the populations of the x-bins. In the above example you may notice that the prize money distribution very closely follows the age distribution, so that while  potentially useful, the chart does not reveal any new trends in the data. In many cases, plotting the mean of a bin on the y-axis better illustrates an underlying trend in the data:
+Showing frequencies or summing up the y-values isn't always the best way to show your data. For data that is not evenly distributed in x, but is relatively uniform in y, a sum plot xy histogram will tend to be dominated by the populations of the x-bins. In the above example you may notice that the prize money distribution very closely follows the age distribution, so that while potentially useful, the chart does not reveal any new trends in the data. In many cases, plotting the mean of a bin on the y-axis better illustrates an underlying trend in the data:
 
 ```js
 series: [{

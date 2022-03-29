@@ -1,18 +1,1 @@
-|```ts
-|loadingCellRendererSelector: (params) => {
-|    const useCustomRenderer = ...some condition/check...
-|    if (useCustomRenderer) {
-|        return {
-|            component: CustomLoadingCellRenderer,
-|            params: {
-|                // parameters to supply to the custom loading cell renderer
-|                loadingMessage: '--- CUSTOM ERROR MESSAGE ---',
-|            },
-|        };
-|        } else {
-|            // no loading cell renderer 
-|            return undefined;
-|        }
-|    }
-|}
-|```
+|`ts |loadingCellRendererSelector: (params) => { | const useCustomRenderer = ...some condition/check... | if (useCustomRenderer) { | return { | component: CustomLoadingCellRenderer, | params: { | // parameters to supply to the custom loading cell renderer | loadingMessage: '--- CUSTOM ERROR MESSAGE ---', | }, | }; | } else { | // no loading cell renderer | return undefined; | } | } |} |`

@@ -1,45 +1,51 @@
-import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import "@ag-grid-community/core/dist/styles/ag-grid.css";
 import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { ColDef, ColGroupDef, Grid, GridOptions, RowSpanParams } from '@ag-grid-community/core';
-import { ModuleRegistry } from '@ag-grid-community/core';
-import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import {
+  ColDef,
+  ColGroupDef,
+  Grid,
+  GridOptions,
+  RowSpanParams,
+} from "@ag-grid-community/core";
+import { ModuleRegistry } from "@ag-grid-community/core";
+import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
 
 // Register the required feature modules with the Grid
-ModuleRegistry.registerModules([ClientSideRowModelModule])
+ModuleRegistry.registerModules([ClientSideRowModelModule]);
 
 function rowSpan(params: RowSpanParams) {
-  var athlete = params.data.athlete
-  if (athlete === 'Aleksey Nemov') {
+  var athlete = params.data.athlete;
+  if (athlete === "Aleksey Nemov") {
     // have all Russia age columns width 2
-    return 2
-  } else if (athlete === 'Ryan Lochte') {
+    return 2;
+  } else if (athlete === "Ryan Lochte") {
     // have all United States column width 4
-    return 4
+    return 4;
   } else {
     // all other rows should be just normal
-    return 1
+    return 1;
   }
 }
 
 const columnDefs: ColDef[] = [
   {
-    field: 'athlete',
+    field: "athlete",
     rowSpan: rowSpan,
     cellClassRules: {
-      'cell-span': "value==='Aleksey Nemov' || value==='Ryan Lochte'",
+      "cell-span": "value==='Aleksey Nemov' || value==='Ryan Lochte'",
     },
     width: 200,
   },
-  { field: 'age', width: 100 },
-  { field: 'country' },
-  { field: 'year', width: 100 },
-  { field: 'date' },
-  { field: 'sport' },
-  { field: 'gold' },
-  { field: 'silver' },
-  { field: 'bronze' },
-  { field: 'total' },
-]
+  { field: "age", width: 100 },
+  { field: "country" },
+  { field: "year", width: 100 },
+  { field: "date" },
+  { field: "sport" },
+  { field: "gold" },
+  { field: "silver" },
+  { field: "bronze" },
+  { field: "total" },
+];
 
 const gridOptions: GridOptions = {
   columnDefs: columnDefs,
@@ -48,13 +54,12 @@ const gridOptions: GridOptions = {
     resizable: true,
   },
   suppressRowTransform: true,
-}
+};
 
 // setup the grid after the page has finished loading
-  var gridDiv = document.querySelector<HTMLElement>('#myGrid')!
-  new Grid(gridDiv, gridOptions)
+var gridDiv = document.querySelector<HTMLElement>("#myGrid")!;
+new Grid(gridDiv, gridOptions);
 
-  fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
-    .then(response => response.json())
-    .then(data => gridOptions.api!.setRowData(data))
- 
+fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+  .then((response) => response.json())
+  .then((data) => gridOptions.api!.setRowData(data));

@@ -1,11 +1,2 @@
 [[only-vue]]
-|```js
-| colDef = {
-|    cellEditor: 'MyCellEditor',    
-|    cellEditorParams: {
-|        // make "country" value available to cell editor
-|        country: 'Ireland'
-|    },
-|    // ...other props
-|}
-|```
+|`js | colDef = { | cellEditor: 'MyCellEditor', | cellEditorParams: { | // make "country" value available to cell editor | country: 'Ireland' | }, | // ...other props |} |`

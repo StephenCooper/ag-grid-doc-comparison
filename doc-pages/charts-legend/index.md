@@ -10,7 +10,7 @@ A legend can be positioned to any side of a chart using the `position` config:
 
 ```js
 legend: {
-    position: 'right' // 'bottom', 'left', 'top'
+  position: "right"; // 'bottom', 'left', 'top'
 }
 ```
 
@@ -18,7 +18,7 @@ A legend is shown by default but can be hidden using the `enabled` config:
 
 ```js
 legend: {
-    enabled: false
+  enabled: false;
 }
 ```
 
@@ -53,9 +53,9 @@ In addition to the width and height of the chart, the legend's layout is also af
 
 ```js
 legend: {
-    item: {
-        paddingX: 16
-    }
+  item: {
+    paddingX: 16;
+  }
 }
 ```
 
@@ -63,9 +63,9 @@ legend: {
 
 ```js
 legend: {
-    item: {
-        paddingY: 8
-    }
+  item: {
+    paddingY: 8;
+  }
 }
 ```
 
@@ -73,11 +73,11 @@ And the `legend.item.marker.padding` config is responsible for the amount of pad
 
 ```js
 legend: {
-    item: {
-        marker: {
-            padding: 8
-        }
+  item: {
+    marker: {
+      padding: 8;
     }
+  }
 }
 ```
 
@@ -122,7 +122,7 @@ It's also possible to override the default behaviour and make the legend use a s
 
 ```js
 legend: {
-    markerShape: 'circle' // 'square', 'diamond', 'cross', 'plus', 'triangle'
+  markerShape: "circle"; // 'square', 'diamond', 'cross', 'plus', 'triangle'
 }
 ```
 

@@ -6,7 +6,6 @@ enterprise: true
 This section describes the Server-Side Datasource and demonstrates how it can be used to lazy-load data from a
 server through an infinite scroll.
 
-
 The Server-Side Row Model (SSRM) requires a datasource to fetch rows for the grid. As the grid requires more data
 (eg the user scrolls down and Infinite Scrolling is active) more data will be requested via the datasource.
 
@@ -30,26 +29,25 @@ A datasource is used by the SSRM to fetch rows for the grid. Applications are re
 The following snippet shows a simple datasource implementation:
 
 ```js
-const createDatasource = server => {
-    return {
-        // called by the grid when more rows are required
-        getRows: params => {
+const createDatasource = (server) => {
+  return {
+    // called by the grid when more rows are required
+    getRows: (params) => {
+      // get data for request from server
+      const response = server.getData(params.request);
 
-            // get data for request from server
-            const response = server.getData(params.request);
-
-            if (response.success) {
-                // supply rows for requested block to grid
-                params.success({
-                    rowData: response.rows
-                });
-            } else {
-                // inform grid request failed
-                params.fail();
-            }
-        }
-    };
-}
+      if (response.success) {
+        // supply rows for requested block to grid
+        params.success({
+          rowData: response.rows,
+        });
+      } else {
+        // inform grid request failed
+        params.fail();
+      }
+    },
+  };
+};
 ```
 
 Notice that the datasource contains a single method `getRows(params)` which is called by the grid when more rows are required. A request is supplied in the `params` object which contains all the information required by the server to fetch data from the server.
@@ -132,4 +130,3 @@ The Fail callback has no parameters. It informs the grid the request has failed 
 ## Next Up
 
 Continue to the next section to learn about [Row Stores](/server-side-model-row-stores/).
-

@@ -1,14 +1,11 @@
-
-import Vue from 'vue';
-import { AgGridVue } from 'ag-grid-vue';
-import 'ag-grid-enterprise';
-import 'ag-grid-community/dist/styles/ag-grid.css';
-import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
-
-
+import Vue from "vue";
+import { AgGridVue } from "ag-grid-vue";
+import "ag-grid-enterprise";
+import "ag-grid-community/dist/styles/ag-grid.css";
+import "ag-grid-community/dist/styles/ag-theme-alpine.css";
 
 const VueExample = {
-    template: `
+  template: `
         <div style="height: 100%">
             <div id="container">
                 <div id="header">
@@ -28,94 +25,99 @@ const VueExample = {
             </div>
         </div>
     `,
-    components: {
-        'ag-grid-vue': AgGridVue,
-        
+  components: {
+    "ag-grid-vue": AgGridVue,
+  },
+  data: function () {
+    return {
+      columnDefs: [
+        {
+          colId: "array",
+          headerName: "Values Array",
+          field: "animal",
+          filter: "agSetColumnFilter",
+          filterParams: arrayFilterParams,
+        },
+        {
+          colId: "callback",
+          headerName: "Values Callback",
+          field: "animal",
+          filter: "agSetColumnFilter",
+          filterParams: callbackFilterParams,
+        },
+      ],
+      gridApi: null,
+      columnApi: null,
+      defaultColDef: {
+        flex: 1,
+        filter: true,
+        resizable: true,
+      },
+      sideBar: null,
+      rowData: null,
+    };
+  },
+  created() {
+    this.sideBar = "filters";
+    this.rowData = getData();
+  },
+  methods: {
+    onFirstDataRendered(params) {
+      params.api.getToolPanelInstance("filters").expandFilters();
     },
-    data: function() {
-        return {
-            columnDefs: [{colId:"array",
-headerName:"Values Array",
-field:"animal",
-filter:"agSetColumnFilter",
-filterParams:arrayFilterParams},{colId:"callback",
-headerName:"Values Callback",
-field:"animal",
-filter:"agSetColumnFilter",
-filterParams:callbackFilterParams}],
-            gridApi: null,
-            columnApi: null,
-            defaultColDef: {
-    flex: 1,
-    filter: true,
-    resizable: true,
-},
-            sideBar: null,
-rowData: null
-        }
-    },
-    created() {
-        this.sideBar = 'filters';
-this.rowData = getData()
-    },
-    methods: {
-        onFirstDataRendered(params) {
-    ((params.api.getToolPanelInstance('filters'))).expandFilters();
-},
-useList1() {
-    console.log('Updating values to ' + list1);
-    valuesArray.length = 0;
-    list1.forEach(function (value) {
+    useList1() {
+      console.log("Updating values to " + list1);
+      valuesArray.length = 0;
+      list1.forEach(function (value) {
         valuesArray.push(value);
-    });
-    var filter = this.gridApi.getFilterInstance('array');
-    filter.refreshFilterValues();
-    valuesCallbackList = list1;
-},
-useList2() {
-    console.log('Updating values to ' + list2);
-    valuesArray.length = 0;
-    list2.forEach(function (value) {
-        valuesArray.push(value);
-    });
-    var filter = this.gridApi.getFilterInstance('array');
-    filter.refreshFilterValues();
-    valuesCallbackList = list2;
-},
-onGridReady(params) {
-        this.gridApi = params.api;
-        this.gridColumnApi = params.columnApi;
-        
+      });
+      var filter = this.gridApi.getFilterInstance("array");
+      filter.refreshFilterValues();
+      valuesCallbackList = list1;
     },
-    }
-}
+    useList2() {
+      console.log("Updating values to " + list2);
+      valuesArray.length = 0;
+      list2.forEach(function (value) {
+        valuesArray.push(value);
+      });
+      var filter = this.gridApi.getFilterInstance("array");
+      filter.refreshFilterValues();
+      valuesCallbackList = list2;
+    },
+    onGridReady(params) {
+      this.gridApi = params.api;
+      this.gridColumnApi = params.columnApi;
+    },
+  },
+};
 
 window.valuesCallback = function valuesCallback(params) {
-    setTimeout(function () {
-        params.success(valuesCallbackList);
-    }, 1000);
-}
+  setTimeout(function () {
+    params.success(valuesCallbackList);
+  }, 1000);
+};
 
-var list1 = ['Elephant', 'Lion', 'Monkey'];
+var list1 = ["Elephant", "Lion", "Monkey"];
 
-var list2 = ['Elephant', 'Giraffe', 'Tiger'];
+var list2 = ["Elephant", "Giraffe", "Tiger"];
 
 var valuesArray = list1.slice();
 
 var valuesCallbackList = list1;
 
 var arrayFilterParams = {
-    values: valuesArray,
+  values: valuesArray,
 };
 
 var callbackFilterParams = {
-    values: valuesCallback,
-    refreshValuesOnOpen: true,
+  values: valuesCallback,
+  refreshValuesOnOpen: true,
 };
 
 new Vue({
-    el: '#app',
-    components: {
-        'my-component': VueExample
-    }
+  el: "#app",
+  components: {
+    "my-component": VueExample,
+  },
 });

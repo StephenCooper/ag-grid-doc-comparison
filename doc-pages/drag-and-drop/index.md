@@ -26,7 +26,6 @@ To allow dragging from the grid, set the property `dndSource=true` on one of the
 This will result in the column having a drag handle displayed. When the dragging starts, the grid
 will by default create a JSON representation of the data and set this as MIME types `application/json` and also `text/plain`.
 
-
 <api-documentation source='column-properties/properties.json' section='row dragging' names='["dndSource"]'></api-documentation>
 
 In the example below, note the following:

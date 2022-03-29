@@ -1,105 +1,117 @@
-import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import "@ag-grid-community/core/dist/styles/ag-grid.css";
 import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { CellClassParams, ColDef, ColGroupDef, ExcelStyle, Grid, GridOptions, GridReadyEvent } from '@ag-grid-community/core';
-import { ModuleRegistry } from '@ag-grid-community/core';
-import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
-import { MenuModule } from '@ag-grid-enterprise/menu';
-import { ExcelExportModule } from '@ag-grid-enterprise/excel-export';
+import {
+  CellClassParams,
+  ColDef,
+  ColGroupDef,
+  ExcelStyle,
+  Grid,
+  GridOptions,
+  GridReadyEvent,
+} from "@ag-grid-community/core";
+import { ModuleRegistry } from "@ag-grid-community/core";
+import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
+import { MenuModule } from "@ag-grid-enterprise/menu";
+import { ExcelExportModule } from "@ag-grid-enterprise/excel-export";
 
 // Register the required feature modules with the Grid
-ModuleRegistry.registerModules([ClientSideRowModelModule, MenuModule, ExcelExportModule])
+ModuleRegistry.registerModules([
+  ClientSideRowModelModule,
+  MenuModule,
+  ExcelExportModule,
+]);
 
 const columnDefs: (ColDef | ColGroupDef)[] = [
   {
-    headerName: 'Top Level Column Group',
+    headerName: "Top Level Column Group",
     children: [
       {
-        headerName: 'Group A',
+        headerName: "Group A",
         children: [
-          { field: 'athlete', minWidth: 200 },
+          { field: "athlete", minWidth: 200 },
           {
-            field: 'age',
-            cellClass: 'twoDecimalPlaces',
+            field: "age",
+            cellClass: "twoDecimalPlaces",
             cellClassRules: {
               greenBackground: function (params) {
-                return params.value < 23
+                return params.value < 23;
               },
               redFont: function (params) {
-                return params.value < 20
+                return params.value < 20;
               },
             },
           },
           {
-            field: 'country',
+            field: "country",
             minWidth: 200,
             cellClassRules: {
               redFont: function (params) {
-                return params.value === 'United States'
+                return params.value === "United States";
               },
             },
           },
           {
-            headerName: 'Group',
-            valueGetter: 'data.country.charAt(0)',
+            headerName: "Group",
+            valueGetter: "data.country.charAt(0)",
             cellClassRules: {
               boldBorders: function (params) {
-                return params.value === 'U'
+                return params.value === "U";
               },
             },
-            cellClass: ['redFont', 'greenBackground'],
+            cellClass: ["redFont", "greenBackground"],
           },
           {
-            field: 'year',
+            field: "year",
             cellClassRules: {
               notInExcel: function (params) {
-                return true
+                return true;
               },
             },
           },
         ],
       },
       {
-        headerName: 'Group B',
+        headerName: "Group B",
         children: [
           {
-            field: 'date',
+            field: "date",
             minWidth: 150,
-            cellClass: 'dateFormat',
+            cellClass: "dateFormat",
             valueGetter: function (params) {
-              var val = params.data.date
+              var val = params.data.date;
 
-              if (val.indexOf('/') < 0) {
-                return val
+              if (val.indexOf("/") < 0) {
+                return val;
               }
 
-              var split = val.split('/')
+              var split = val.split("/");
 
-              return split[2] + '-' + split[1] + '-' + split[0]
+              return split[2] + "-" + split[1] + "-" + split[0];
             },
           },
-          { field: 'sport', minWidth: 150 },
+          { field: "sport", minWidth: 150 },
           {
-            field: 'gold',
+            field: "gold",
             cellClassRules: {
               boldBorders: function (params) {
-                return params.value > 2
+                return params.value > 2;
               },
             },
           },
-          { field: 'silver', cellClass: 'textFormat' },
-          { field: 'bronze' },
-          { field: 'total' },
+          { field: "silver", cellClass: "textFormat" },
+          { field: "bronze" },
+          { field: "total" },
         ],
       },
     ],
   },
-]
+];
 
 const gridOptions: GridOptions = {
   defaultColDef: {
     cellClassRules: {
       darkGreyBackground: function (params: CellClassParams) {
-        return (params.node.rowIndex || 0) % 2 == 0
+        return (params.node.rowIndex || 0) % 2 == 0;
       },
     },
     sortable: true,
@@ -112,21 +124,22 @@ const gridOptions: GridOptions = {
   columnDefs: columnDefs,
 
   onGridReady: function (params: GridReadyEvent) {
-    (document.getElementById('fontSize') as HTMLInputElement).checked = true;
-    (document.getElementById('rowHeight') as HTMLInputElement).checked = true;
-    (document.getElementById('headerRowHeight') as HTMLInputElement).checked = true;
+    (document.getElementById("fontSize") as HTMLInputElement).checked = true;
+    (document.getElementById("rowHeight") as HTMLInputElement).checked = true;
+    (document.getElementById("headerRowHeight") as HTMLInputElement).checked =
+      true;
   },
 
   pinnedTopRowData: [
     {
-      athlete: 'Floating <Top> Athlete',
+      athlete: "Floating <Top> Athlete",
       age: 999,
-      country: 'Floating <Top> Country',
+      country: "Floating <Top> Country",
       year: 2020,
-      date: '2020-08-01',
-      sport: 'Track & Field',
+      date: "2020-08-01",
+      sport: "Track & Field",
       gold: 22,
-      silver: '003',
+      silver: "003",
       bronze: 44,
       total: 55,
     },
@@ -134,14 +147,14 @@ const gridOptions: GridOptions = {
 
   pinnedBottomRowData: [
     {
-      athlete: 'Floating <Bottom> Athlete',
+      athlete: "Floating <Bottom> Athlete",
       age: 888,
-      country: 'Floating <Bottom> Country',
+      country: "Floating <Bottom> Country",
       year: 2030,
-      date: '2030-08-01',
-      sport: 'Track & Field',
+      date: "2030-08-01",
+      sport: "Track & Field",
       gold: 222,
-      silver: '005',
+      silver: "005",
       bronze: 244,
       total: 255,
     },
@@ -149,151 +162,152 @@ const gridOptions: GridOptions = {
 
   excelStyles: [
     {
-      id: 'cell',
+      id: "cell",
       alignment: {
-        vertical: 'Center',
+        vertical: "Center",
       },
     },
     {
-      id: 'header',
+      id: "header",
       alignment: {
-        vertical: 'Center',
+        vertical: "Center",
       },
       interior: {
-        color: '#f8f8f8',
-        pattern: 'Solid',
-        patternColor: undefined
+        color: "#f8f8f8",
+        pattern: "Solid",
+        patternColor: undefined,
       },
       borders: {
         borderBottom: {
-          color: '#babfc7',
-          lineStyle: 'Continuous',
+          color: "#babfc7",
+          lineStyle: "Continuous",
           weight: 1,
         },
       },
     },
     {
-      id: 'headerGroup',
+      id: "headerGroup",
       font: {
         bold: true,
       },
     },
     {
-      id: 'greenBackground',
+      id: "greenBackground",
       interior: {
-        color: '#b5e6b5',
-        pattern: 'Solid',
+        color: "#b5e6b5",
+        pattern: "Solid",
       },
     },
     {
-      id: 'redFont',
+      id: "redFont",
       font: {
-        fontName: 'Calibri Light',
-        underline: 'Single',
+        fontName: "Calibri Light",
+        underline: "Single",
         italic: true,
-        color: '#ff0000',
+        color: "#ff0000",
       },
     },
     {
-      id: 'darkGreyBackground',
+      id: "darkGreyBackground",
       interior: {
-        color: '#888888',
-        pattern: 'Solid',
+        color: "#888888",
+        pattern: "Solid",
       },
       font: {
-        fontName: 'Calibri Light',
-        color: '#ffffff',
+        fontName: "Calibri Light",
+        color: "#ffffff",
       },
     },
     {
-      id: 'boldBorders',
+      id: "boldBorders",
       borders: {
         borderBottom: {
-          color: '#000000',
-          lineStyle: 'Continuous',
+          color: "#000000",
+          lineStyle: "Continuous",
           weight: 3,
         },
         borderLeft: {
-          color: '#000000',
-          lineStyle: 'Continuous',
+          color: "#000000",
+          lineStyle: "Continuous",
           weight: 3,
         },
         borderRight: {
-          color: '#000000',
-          lineStyle: 'Continuous',
+          color: "#000000",
+          lineStyle: "Continuous",
           weight: 3,
         },
         borderTop: {
-          color: '#000000',
-          lineStyle: 'Continuous',
+          color: "#000000",
+          lineStyle: "Continuous",
           weight: 3,
         },
       },
     },
     {
-      id: 'dateFormat',
-      dataType: 'DateTime',
+      id: "dateFormat",
+      dataType: "DateTime",
       numberFormat: {
-        format: 'mm/dd/yyyy;@',
+        format: "mm/dd/yyyy;@",
       },
     },
     {
-      id: 'twoDecimalPlaces',
+      id: "twoDecimalPlaces",
       numberFormat: {
-        format: '#,##0.00',
+        format: "#,##0.00",
       },
     },
     {
-      id: 'textFormat',
-      dataType: 'String',
+      id: "textFormat",
+      dataType: "String",
     },
   ],
-}
+};
 
 function getBooleanValue(cssSelector: string) {
-  return (document.querySelector(cssSelector) as HTMLInputElement).checked === true
+  return (
+    (document.querySelector(cssSelector) as HTMLInputElement).checked === true
+  );
 }
 
 function getTextValue(cssSelector: string) {
-  return (document.querySelector(cssSelector) as HTMLInputElement).value
+  return (document.querySelector(cssSelector) as HTMLInputElement).value;
 }
 
 function getNumericValue(cssSelector: string) {
-  var value = parseFloat(getTextValue(cssSelector))
+  var value = parseFloat(getTextValue(cssSelector));
   if (isNaN(value)) {
-    var message = 'Invalid number entered in ' + cssSelector + ' field'
-    alert(message)
-    throw new Error(message)
+    var message = "Invalid number entered in " + cssSelector + " field";
+    alert(message);
+    throw new Error(message);
   }
-  return value
+  return value;
 }
 
 function onBtExport() {
   var params = {
-    fontSize: getBooleanValue('#fontSize')
-      ? getNumericValue('#fontSizeValue')
+    fontSize: getBooleanValue("#fontSize")
+      ? getNumericValue("#fontSizeValue")
       : undefined,
-    rowHeight: getBooleanValue('#rowHeight')
-      ? getNumericValue('#rowHeightValue')
+    rowHeight: getBooleanValue("#rowHeight")
+      ? getNumericValue("#rowHeightValue")
       : undefined,
-    headerRowHeight: getBooleanValue('#headerRowHeight')
-      ? getNumericValue('#headerRowHeightValue')
+    headerRowHeight: getBooleanValue("#headerRowHeight")
+      ? getNumericValue("#headerRowHeightValue")
       : undefined,
-  }
+  };
 
-  gridOptions.api!.exportDataAsExcel(params)
+  gridOptions.api!.exportDataAsExcel(params);
 }
 
 // setup the grid after the page has finished loading
-  var gridDiv = document.querySelector<HTMLElement>('#myGrid')!
-  new Grid(gridDiv, gridOptions)
+var gridDiv = document.querySelector<HTMLElement>("#myGrid")!;
+new Grid(gridDiv, gridOptions);
 
-  fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
-    .then(response => response.json())
-    .then(data => gridOptions.api!.setRowData(data))
- 
+fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+  .then((response) => response.json())
+  .then((data) => gridOptions.api!.setRowData(data));
 
-if (typeof window !== 'undefined') {
-// Attach external event handlers to window so they can be called from index.html
- (<any>window).onBtExport = onBtExport;
+if (typeof window !== "undefined") {
+  // Attach external event handlers to window so they can be called from index.html
+  (<any>window).onBtExport = onBtExport;
 }

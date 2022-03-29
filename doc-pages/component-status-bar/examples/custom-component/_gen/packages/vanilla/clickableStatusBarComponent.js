@@ -1,41 +1,32 @@
+class ClickableStatusBarComponent {
+  init(params) {
+    this.params = params;
 
-class ClickableStatusBarComponent  {
-    
-    
-    
-    
+    this.eGui = document.createElement("div");
+    this.eGui.className = "ag-status-name-value";
 
-    init(params) {
-        this.params = params;
+    var label = document.createElement("span");
+    label.innerText = "Status Bar Component ";
+    this.eGui.appendChild(label);
 
-        this.eGui = document.createElement('div');
-        this.eGui.className = 'ag-status-name-value';
+    this.eButton = document.createElement("button");
 
-        var label = document.createElement('span');
-        label.innerText = 'Status Bar Component ';
-        this.eGui.appendChild(label);
+    this.buttonListener = this.onButtonClicked.bind(this);
+    this.eButton.addEventListener("click", this.buttonListener);
+    this.eButton.innerHTML = "Click Me";
 
-        this.eButton = document.createElement('button');
+    this.eGui.appendChild(this.eButton);
+  }
 
-        this.buttonListener = this.onButtonClicked.bind(this);
-        this.eButton.addEventListener("click", this.buttonListener);
-        this.eButton.innerHTML = 'Click Me';
+  getGui() {
+    return this.eGui;
+  }
 
-        this.eGui.appendChild(this.eButton);
-    }
+  destroy() {
+    this.eButton.removeEventListener("click", this.buttonListener);
+  }
 
-    getGui() {
-        return this.eGui;
-    }
-
-    destroy() {
-        this.eButton.removeEventListener("click", this.buttonListener);
-    }
-
-    onButtonClicked() {
-        alert('Selected Row Count: ' + this.params.api.getSelectedRows().length)
-    }
-
+  onButtonClicked() {
+    alert("Selected Row Count: " + this.params.api.getSelectedRows().length);
+  }
 }
-
-

@@ -1,33 +1,32 @@
-import 'ag-grid-community/dist/styles/ag-grid.css';
+import "ag-grid-community/dist/styles/ag-grid.css";
 import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import Vue from 'vue';
-import { AgGridVue } from 'ag-grid-vue';
-
+import Vue from "vue";
+import { AgGridVue } from "ag-grid-vue";
 
 const colDefsMedalsIncluded = [
-    { field: 'athlete' },
-    { field: 'age' },
-    { field: 'country' },
-    { field: 'sport' },
-    { field: 'year' },
-    { field: 'date' },
-    { field: 'gold' },
-    { field: 'silver' },
-    { field: 'bronze' },
-    { field: 'total' }
+  { field: "athlete" },
+  { field: "age" },
+  { field: "country" },
+  { field: "sport" },
+  { field: "year" },
+  { field: "date" },
+  { field: "gold" },
+  { field: "silver" },
+  { field: "bronze" },
+  { field: "total" },
 ];
 
 const colDefsMedalsExcluded = [
-    { field: 'athlete' },
-    { field: 'age' },
-    { field: 'country' },
-    { field: 'sport' },
-    { field: 'year' },
-    { field: 'date' }
+  { field: "athlete" },
+  { field: "age" },
+  { field: "country" },
+  { field: "sport" },
+  { field: "year" },
+  { field: "date" },
 ];
 
 const VueExample = {
-    template: `
+  template: `
         <div style="height: 100%">
             <div class="test-container">
                 <div class="test-header">
@@ -45,53 +44,49 @@ const VueExample = {
             </div>
         </div>
     `,
-    components: {
-        'ag-grid-vue': AgGridVue,
-
+  components: {
+    "ag-grid-vue": AgGridVue,
+  },
+  data: function () {
+    return {
+      columnDefs: colDefsMedalsIncluded,
+      gridApi: null,
+      columnApi: null,
+      defaultColDef: {
+        initialWidth: 100,
+        sortable: true,
+        resizable: true,
+      },
+      rowData: null,
+    };
+  },
+  beforeMount() {},
+  methods: {
+    onBtExcludeMedalColumns() {
+      this.gridApi.setColumnDefs(colDefsMedalsExcluded);
     },
-    data: function () {
-        return {
-            columnDefs: colDefsMedalsIncluded,
-            gridApi: null,
-            columnApi: null,
-            defaultColDef: {
-                initialWidth: 100,
-                sortable: true,
-                resizable: true
-            },
-            rowData: null
-        }
+    onBtIncludeMedalColumns() {
+      this.gridApi.setColumnDefs(colDefsMedalsIncluded);
     },
-    beforeMount() {
+    onGridReady(params) {
+      this.gridApi = params.api;
+      this.gridColumnApi = params.columnApi;
 
+      const updateData = (data) => {
+        this.onBtIncludeMedalColumns();
+        this.rowData = data;
+      };
+
+      fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+        .then((resp) => resp.json())
+        .then((data) => updateData(data));
     },
-    methods: {
-        onBtExcludeMedalColumns() {
-            this.gridApi.setColumnDefs(colDefsMedalsExcluded);
-        },
-        onBtIncludeMedalColumns() {
-            this.gridApi.setColumnDefs(colDefsMedalsIncluded);
-        },
-        onGridReady(params) {
-            this.gridApi = params.api;
-            this.gridColumnApi = params.columnApi;
-
-
-            const updateData = (data) => {
-                this.onBtIncludeMedalColumns();
-                this.rowData = data;
-            };
-
-            fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
-                .then(resp => resp.json())
-                .then(data => updateData(data));
-        },
-    }
-}
+  },
+};
 
 new Vue({
-    el: '#app',
-    components: {
-        'my-component': VueExample
-    }
+  el: "#app",
+  components: {
+    "my-component": VueExample,
+  },
 });

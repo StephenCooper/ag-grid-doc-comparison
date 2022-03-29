@@ -1,11 +1,10 @@
-
 const gridOptions = {
   columnDefs: [
-    { headerName: 'Name', field: 'simple' },
-    { headerName: 'Bad Number', field: 'numberBad' },
+    { headerName: "Name", field: "simple" },
+    { headerName: "Bad Number", field: "numberBad" },
     {
-      headerName: 'Good Number',
-      field: 'numberGood',
+      headerName: "Good Number",
+      field: "numberGood",
       valueParser: numberParser,
     },
   ],
@@ -16,19 +15,19 @@ const gridOptions = {
   },
   rowData: getData(),
   onCellValueChanged: onCellValueChanged,
-}
+};
 
 function onCellValueChanged(event) {
-  console.log('data after changes is: ', event.data);
+  console.log("data after changes is: ", event.data);
 }
 
 function numberParser(params) {
-  return Number(params.newValue)
+  return Number(params.newValue);
 }
 
 // setup the grid after the page has finished loading
-document.addEventListener('DOMContentLoaded', function () {
-  var gridDiv = document.querySelector('#myGrid')
-  new agGrid.Grid(gridDiv, gridOptions)
-  gridOptions.api.sizeColumnsToFit()
-})
+document.addEventListener("DOMContentLoaded", function () {
+  var gridDiv = document.querySelector("#myGrid");
+  new agGrid.Grid(gridDiv, gridOptions);
+  gridOptions.api.sizeColumnsToFit();
+});

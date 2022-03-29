@@ -54,36 +54,36 @@ In order to give screen readers the contextual information they require to inter
 When inspecting the DOM you'll notice the following roles and properties have been added:
 
 - **role="grid"** - marks the enclosing element of the grid.<br>
-    **Note:** You can set any aria property in the panel (role="grid") by using the `setGridAriaProperty` method in the [Grid Api](/grid-api/).
-    - **aria-rowcount** - announces the number of rows.
-    - **aria-colcount** - announces the number of rows.
-    - **aria-multiselectable="true"** - marks the grid as being able to select multiple rows.
+  **Note:** You can set any aria property in the panel (role="grid") by using the `setGridAriaProperty` method in the [Grid Api](/grid-api/).
+  - **aria-rowcount** - announces the number of rows.
+  - **aria-colcount** - announces the number of rows.
+  - **aria-multiselectable="true"** - marks the grid as being able to select multiple rows.
 - **role="rowgroup"** - element that serve as container for the table header rows and grid rows.
 - **role="row"** - a row of column headers or grid cells.
-    - **aria-rowindex** - announces the visible index of the row.
-    - **aria-selected** - only present if the row is selectable, it announces the selection state.
-    - **aria-expanded** - only present in row groups, it announces the expand state.
+  - **aria-rowindex** - announces the visible index of the row.
+  - **aria-selected** - only present if the row is selectable, it announces the selection state.
+  - **aria-expanded** - only present in row groups, it announces the expand state.
 - **role="columnheader"** - element containing a column header.
-    - **aria-colindex** - announces the visible index of the column.
-    - **aria-colspan** - only present if the column spans across multiple columns, it helps guide screen readers.
-    - **aria-expanded** - only present in grouped headers, it announces the expand state.
-    - **aria-sort** - only present in sortable columns, it announces the sort state.
+  - **aria-colindex** - announces the visible index of the column.
+  - **aria-colspan** - only present if the column spans across multiple columns, it helps guide screen readers.
+  - **aria-expanded** - only present in grouped headers, it announces the expand state.
+  - **aria-sort** - only present in sortable columns, it announces the sort state.
 - **role="gridcell"** - element containing a grid cell.
-    - **aria-colindex** - announces the visible index of the cell.
-    - **aria-selected** - only present if the cell is selectable, it announces the selection state.
-    - **aria-expanded** - only present in a group cell, it announces the expand state.
+  - **aria-colindex** - announces the visible index of the cell.
+  - **aria-selected** - only present if the cell is selectable, it announces the selection state.
+  - **aria-expanded** - only present in a group cell, it announces the expand state.
 - **role="tablist"** - element that serve as a container for a single levels of tab items.
 - **role="tab"** - marks an element as a tablist item.
 - **role="tree"** - element that serve as a container for items that could have multiple levels.
 - **role="treeitem"** - marks an element as an item of a tree.
-    - **aria-level** - announces the current level of the tree.
-    - **aria-expanded** - only present if the item has subitems, it announces the current expand state.
+  - **aria-level** - announces the current level of the tree.
+  - **aria-expanded** - only present if the item has subitems, it announces the current expand state.
 - **role="listbox"** - element that serve as a container for multiple elements that will be presented as a list.
 - **role="option"** - marks an element as an item of a listbox.
-    - **aria-setsize** - announces the total number of items in the listbox.
-    - **aria-posinset** - announces the position of the item within the set.
-    - **aria-selected** - only present if the item is selectable, it announces the current select state.
-    - **aria-checked** - only present if the item has a checkbox, it announces the current check state.
+  - **aria-setsize** - announces the total number of items in the listbox.
+  - **aria-posinset** - announces the position of the item within the set.
+  - **aria-selected** - only present if the item is selectable, it announces the current select state.
+  - **aria-checked** - only present if the item has a checkbox, it announces the current check state.
 - **role="presentation"** - indicates an element should be ignored.
 - **aria-hidden="true"** - indicates an element and child elements should be ignored.
 - **aria-label** - used to provide information about the current focused item.
@@ -120,7 +120,7 @@ const gridOptions = {
 
 In order to ensure all grid elements are loaded, you need to disable column and row virtualization. The best way to do this is to use [pagination](/row-pagination/). This way you can reduce the initial loading time and memory footprint while ensuring all elements for these rows are loaded for screen readers.
 
-If your requirement is to use scrolling instead of pagination, you can disable row virtualisation at the expense  of increasing the memory footprint. Please test the performance of this and if it's not satisfactory, switch to  using pagination instead.
+If your requirement is to use scrolling instead of pagination, you can disable row virtualisation at the expense of increasing the memory footprint. Please test the performance of this and if it's not satisfactory, switch to using pagination instead.
 
 Column virtualisation can be disabled as follows:
 
@@ -166,13 +166,16 @@ customisation in action.
 Using advanced functionality in AG Grid makes the DOM structure incompatible with the assumptions screen readers make. This results in a few limitations in accessibility when specific functionality is used:
 
 - ### Navigation to pinned rows/columns
-    Screen readers assume that the visual and DOM element order are identical. Specifically, when you pin a row/column, it  causes elements to be rendered in different containers. This is why you cannot use screen readers to navigate into a  pinned row/column cells, as in fact, this means they're rendered in a different element from the rest of the columns/rows which are scrollable.
+
+  Screen readers assume that the visual and DOM element order are identical. Specifically, when you pin a row/column, it causes elements to be rendered in different containers. This is why you cannot use screen readers to navigate into a pinned row/column cells, as in fact, this means they're rendered in a different element from the rest of the columns/rows which are scrollable.
 
 - ### Limitations announcing the correct column name in grouped columns
-    Even though all aria tags have been applied to th necessary elements, some screen readers have trouble navigating the tags when the structure of the grid gets more complex (eg. grouped columns). This is the reason why there are some limitations announcing the correct column names.
+
+  Even though all aria tags have been applied to th necessary elements, some screen readers have trouble navigating the tags when the structure of the grid gets more complex (eg. grouped columns). This is the reason why there are some limitations announcing the correct column names.
 
 - ### No announcements of state change of a gridcell or gridheader
-    Some screen readers will not recognise changes that happen to an element that is currently focused (including children of this element). So in order to detect changes (eg. sorted state, updated labels, etc...) you will need to move focus to another element and back.
+
+  Some screen readers will not recognise changes that happen to an element that is currently focused (including children of this element). So in order to detect changes (eg. sorted state, updated labels, etc...) you will need to move focus to another element and back.
 
 - ### Server-Side Row Model
-    Announcing the row count in the grid when using server-side row model (SSRM) is not supported. This is because the row count cannot be known in all the scenarios where SSRM is in use.
+  Announcing the row count in the grid when using server-side row model (SSRM) is not supported. This is because the row count cannot be known in all the scenarios where SSRM is in use.

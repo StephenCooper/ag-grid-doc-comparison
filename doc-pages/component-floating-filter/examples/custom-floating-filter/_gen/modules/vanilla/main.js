@@ -1,47 +1,46 @@
-
 const columnDefs = [
-  { field: 'athlete', filter: false },
+  { field: "athlete", filter: false },
   {
-    field: 'gold',
-    filter: 'agNumberColumnFilter',
+    field: "gold",
+    filter: "agNumberColumnFilter",
     suppressMenu: true,
     floatingFilterComponent: NumberFloatingFilterComponent,
     floatingFilterComponentParams: {
       suppressFilterButton: true,
-      color: 'red',
+      color: "red",
     },
   },
   {
-    field: 'silver',
-    filter: 'agNumberColumnFilter',
+    field: "silver",
+    filter: "agNumberColumnFilter",
     suppressMenu: true,
     floatingFilterComponent: NumberFloatingFilterComponent,
     floatingFilterComponentParams: {
       suppressFilterButton: true,
-      color: 'blue',
+      color: "blue",
     },
   },
   {
-    field: 'bronze',
-    filter: 'agNumberColumnFilter',
+    field: "bronze",
+    filter: "agNumberColumnFilter",
     suppressMenu: true,
     floatingFilterComponent: NumberFloatingFilterComponent,
     floatingFilterComponentParams: {
       suppressFilterButton: true,
-      color: 'green',
+      color: "green",
     },
   },
   {
-    field: 'total',
-    filter: 'agNumberColumnFilter',
+    field: "total",
+    filter: "agNumberColumnFilter",
     suppressMenu: true,
     floatingFilterComponent: NumberFloatingFilterComponent,
     floatingFilterComponentParams: {
       suppressFilterButton: true,
-      color: 'orange',
+      color: "orange",
     },
   },
-]
+];
 
 const gridOptions = {
   defaultColDef: {
@@ -55,16 +54,16 @@ const gridOptions = {
   },
   columnDefs: columnDefs,
   rowData: null,
-}
+};
 
 // setup the grid after the page has finished loading
-document.addEventListener('DOMContentLoaded', () => {
-  const gridDiv = document.querySelector('#myGrid')
-  new agGrid.Grid(gridDiv, gridOptions)
+document.addEventListener("DOMContentLoaded", () => {
+  const gridDiv = document.querySelector("#myGrid");
+  new agGrid.Grid(gridDiv, gridOptions);
 
-  fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
-    .then(response => response.json())
-    .then(data => {
-      gridOptions.api.setRowData(data)
-    })
-})
+  fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+    .then((response) => response.json())
+    .then((data) => {
+      gridOptions.api.setRowData(data);
+    });
+});

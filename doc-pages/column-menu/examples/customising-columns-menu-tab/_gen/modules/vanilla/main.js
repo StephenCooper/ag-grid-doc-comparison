@@ -1,12 +1,11 @@
-
 const columnDefs = [
   {
-    groupId: 'athleteGroupId',
-    headerName: 'Athlete',
+    groupId: "athleteGroupId",
+    headerName: "Athlete",
     children: [
       {
-        headerName: 'Name',
-        field: 'athlete',
+        headerName: "Name",
+        field: "athlete",
         minWidth: 200,
         columnsMenuParams: {
           // hides the Column Filter section
@@ -20,7 +19,7 @@ const columnDefs = [
         },
       },
       {
-        field: 'age',
+        field: "age",
         minWidth: 200,
         columnsMenuParams: {
           // contracts all column groups
@@ -30,31 +29,31 @@ const columnDefs = [
     ],
   },
   {
-    groupId: 'medalsGroupId',
-    headerName: 'Medals',
-    children: [{ field: 'gold' }, { field: 'silver' }, { field: 'bronze' }],
+    groupId: "medalsGroupId",
+    headerName: "Medals",
+    children: [{ field: "gold" }, { field: "silver" }, { field: "bronze" }],
   },
-]
+];
 
 const gridOptions = {
   columnDefs: columnDefs,
   defaultColDef: {
     flex: 1,
     resizable: true,
-    menuTabs: ['columnsMenuTab'],
+    menuTabs: ["columnsMenuTab"],
     columnsMenuParams: {
       // suppresses updating the layout of columns as they are rearranged in the grid
       suppressSyncLayoutWithGrid: true,
     },
   },
-}
+};
 
 // setup the grid after the page has finished loading
-document.addEventListener('DOMContentLoaded', () => {
-  const gridDiv = document.querySelector('#myGrid')
-  new agGrid.Grid(gridDiv, gridOptions)
+document.addEventListener("DOMContentLoaded", () => {
+  const gridDiv = document.querySelector("#myGrid");
+  new agGrid.Grid(gridDiv, gridOptions);
 
-  fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
-    .then(response => response.json())
-    .then(data => gridOptions.api.setRowData(data))
-})
+  fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+    .then((response) => response.json())
+    .then((data) => gridOptions.api.setRowData(data));
+});

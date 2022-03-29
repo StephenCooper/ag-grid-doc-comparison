@@ -17,18 +17,14 @@
             "icon": "react",
             "url": "/reactui/",
             "pane": "left",
-            "frameworks": [
-              "react"
-            ]
+            "frameworks": ["react"]
           },
           {
             "title": "Hooks",
             "icon": "reactHooks",
             "url": "/react-hooks/",
             "pane": "left",
-            "frameworks": [
-              "react"
-            ]
+            "frameworks": ["react"]
           },
           {
             "title": "Video Tutorial",
@@ -42,9 +38,7 @@
             "url": "{example}",
             "icon": "plunker",
             "menuHide": true,
-            "frameworks": [
-              "javascript"
-            ],
+            "frameworks": ["javascript"],
             "pane": "left"
           },
           {
@@ -52,11 +46,7 @@
             "url": "{example}",
             "icon": "stackblitz",
             "menuHide": true,
-            "frameworks": [
-              "angular",
-              "react",
-              "vue"
-            ],
+            "frameworks": ["angular", "react", "vue"],
             "pane": "left"
           },
           {
@@ -64,19 +54,14 @@
             "url": "{thinkster}",
             "icon": "thinkster",
             "menuHide": true,
-            "frameworks": [
-              "angular",
-              "react"
-            ],
+            "frameworks": ["angular", "react"],
             "pane": "left"
           },
           {
             "title": "Vue 3 Tutorial",
             "icon": "vue",
             "url": "/vue3/",
-            "frameworks": [
-              "vue"
-            ],
+            "frameworks": ["vue"],
             "pane": "right"
           }
         ]
@@ -272,17 +257,13 @@
             "title": "Install with NPM",
             "url": "/npm/",
             "showInCollapsed": true,
-            "frameworks": [
-              "javascript"
-            ]
+            "frameworks": ["javascript"]
           },
           {
             "title": "Download Bundles",
             "url": "/download/",
             "showInCollapsed": true,
-            "frameworks": [
-              "javascript"
-            ]
+            "frameworks": ["javascript"]
           },
           {
             "title": "Community & Enterprise",
@@ -306,18 +287,12 @@
               {
                 "title": "Custom UMD Bundle",
                 "url": "/modules-building/",
-                "frameworks": [
-                  "javascript"
-                ]
+                "frameworks": ["javascript"]
               },
               {
                 "title": "Modules - Example",
                 "url": "/modules-building/",
-                "frameworks": [
-                  "angular",
-                  "react",
-                  "vue"
-                ]
+                "frameworks": ["angular", "react", "vue"]
               }
             ]
           },
@@ -330,30 +305,22 @@
             "title": "Building",
             "url": "/building/",
             "showInCollapsed": true,
-            "frameworks": [
-              "javascript"
-            ],
+            "frameworks": ["javascript"],
             "items": [
               {
                 "title": "Rollup",
                 "url": "/building-rollup/",
-                "frameworks": [
-                  "javascript"
-                ]
+                "frameworks": ["javascript"]
               },
               {
                 "title": "TypeScript & Webpack",
                 "url": "/building-typescript/",
-                "frameworks": [
-                  "javascript"
-                ]
+                "frameworks": ["javascript"]
               },
               {
                 "title": "AMD",
                 "url": "/building-amd/",
-                "frameworks": [
-                  "javascript"
-                ]
+                "frameworks": ["javascript"]
               }
             ]
           }
@@ -472,11 +439,7 @@
           {
             "title": "See Also",
             "url": "",
-            "frameworks": [
-              "angular",
-              "react",
-              "vue"
-            ],
+            "frameworks": ["angular", "react", "vue"],
             "items": [
               {
                 "title": "Use with RxJS",
@@ -1309,26 +1272,19 @@
                 "title": "Higher Order Components",
                 "url": "/framework-hoc/",
                 "showInCollapsed": true,
-                "frameworks": [
-                  "react"
-                ]
+                "frameworks": ["react"]
               },
               {
                 "title": "Parent/Child Communication",
                 "url": "/component-communication/",
                 "showInCollapsed": true,
-                "frameworks": [
-                  "angular",
-                  "vue"
-                ]
+                "frameworks": ["angular", "vue"]
               },
               {
                 "title": "Provide/Inject",
                 "url": "/component-provide-inject/",
                 "showInCollapsed": true,
-                "frameworks": [
-                  "vue"
-                ]
+                "frameworks": ["vue"]
               }
             ]
           }
@@ -1920,49 +1876,37 @@
             "title": "Unidirectional Data Flow",
             "url": "/framework-data-flow/",
             "showInCollapsed": true,
-            "frameworks": [
-              "vue"
-            ]
+            "frameworks": ["vue"]
           },
           {
             "title": "Redux Integration Part 1",
             "url": "/redux-integration-pt1/",
             "showInCollapsed": true,
-            "frameworks": [
-              "react"
-            ]
+            "frameworks": ["react"]
           },
           {
             "title": "Redux Integration Part 2",
             "url": "/redux-integration-pt2/",
             "showInCollapsed": true,
-            "frameworks": [
-              "react"
-            ]
+            "frameworks": ["react"]
           },
           {
             "title": "Material UI Components",
             "url": "/material-design/",
             "showInCollapsed": true,
-            "frameworks": [
-              "angular"
-            ]
+            "frameworks": ["angular"]
           },
           {
             "title": "Use with RxJS",
             "url": "/angular-rxjs/",
             "showInCollapsed": true,
-            "frameworks": [
-              "angular"
-            ]
+            "frameworks": ["angular"]
           },
           {
             "title": "Miscellaneous",
             "url": "/framework-misc/",
             "showInCollapsed": true,
-            "frameworks": [
-              "vue"
-            ]
+            "frameworks": ["vue"]
           }
         ]
       }

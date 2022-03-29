@@ -1,58 +1,73 @@
-import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import "@ag-grid-community/core/dist/styles/ag-grid.css";
 import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { ColDef, ColGroupDef, CreateRangeChartParams, FirstDataRenderedEvent, GetChartToolbarItems, GetChartToolbarItemsParams, Grid, GridOptions, ValueParserParams } from '@ag-grid-community/core';
-import { ModuleRegistry } from '@ag-grid-community/core';
-import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
-import { MenuModule } from '@ag-grid-enterprise/menu';
-import { GridChartsModule } from '@ag-grid-enterprise/charts';
-import { RowGroupingModule } from '@ag-grid-enterprise/row-grouping';
+import {
+  ColDef,
+  ColGroupDef,
+  CreateRangeChartParams,
+  FirstDataRenderedEvent,
+  GetChartToolbarItems,
+  GetChartToolbarItemsParams,
+  Grid,
+  GridOptions,
+  ValueParserParams,
+} from "@ag-grid-community/core";
+import { ModuleRegistry } from "@ag-grid-community/core";
+import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
+import { MenuModule } from "@ag-grid-enterprise/menu";
+import { GridChartsModule } from "@ag-grid-enterprise/charts";
+import { RowGroupingModule } from "@ag-grid-enterprise/row-grouping";
 
 // Register the required feature modules with the Grid
-ModuleRegistry.registerModules([ClientSideRowModelModule, MenuModule, GridChartsModule, RowGroupingModule])
+ModuleRegistry.registerModules([
+  ClientSideRowModelModule,
+  MenuModule,
+  GridChartsModule,
+  RowGroupingModule,
+]);
 
 const gridOptions: GridOptions = {
   columnDefs: [
-    { field: 'country', width: 150, chartDataType: 'category' },
-    { field: 'group', chartDataType: 'category' },
+    { field: "country", width: 150, chartDataType: "category" },
+    { field: "group", chartDataType: "category" },
     {
-      field: 'gold',
-      chartDataType: 'series',
+      field: "gold",
+      chartDataType: "series",
       editable: true,
       valueParser: numberValueParser,
     },
     {
-      field: 'silver',
-      chartDataType: 'series',
+      field: "silver",
+      chartDataType: "series",
       editable: true,
       valueParser: numberValueParser,
     },
     {
-      field: 'bronze',
-      chartDataType: 'series',
+      field: "bronze",
+      chartDataType: "series",
       editable: true,
       valueParser: numberValueParser,
     },
     {
-      field: 'a',
-      chartDataType: 'series',
+      field: "a",
+      chartDataType: "series",
       editable: true,
       valueParser: numberValueParser,
     },
     {
-      field: 'b',
-      chartDataType: 'series',
+      field: "b",
+      chartDataType: "series",
       editable: true,
       valueParser: numberValueParser,
     },
     {
-      field: 'c',
-      chartDataType: 'series',
+      field: "c",
+      chartDataType: "series",
       editable: true,
       valueParser: numberValueParser,
     },
     {
-      field: 'd',
-      chartDataType: 'series',
+      field: "d",
+      chartDataType: "series",
       editable: true,
       valueParser: numberValueParser,
     },
@@ -71,30 +86,30 @@ const gridOptions: GridOptions = {
   onFirstDataRendered: onFirstDataRendered,
   getChartToolbarItems: getChartToolbarItems,
   popupParent: document.body,
-}
+};
 
 function onFirstDataRendered(event: FirstDataRenderedEvent) {
-  var eContainer1 = document.querySelector('#chart1') as any;
+  var eContainer1 = document.querySelector("#chart1") as any;
   var params1: CreateRangeChartParams = {
     cellRange: {
       rowStartIndex: 0,
       rowEndIndex: 4,
-      columns: ['country', 'gold', 'silver'],
+      columns: ["country", "gold", "silver"],
     },
-    chartType: 'groupedBar',
+    chartType: "groupedBar",
     chartContainer: eContainer1,
-  }
+  };
 
-  event.api.createRangeChart(params1)
+  event.api.createRangeChart(params1);
 
-  var eContainer2 = document.querySelector('#chart2') as any;
+  var eContainer2 = document.querySelector("#chart2") as any;
   var params2: CreateRangeChartParams = {
     cellRange: {
-      columns: ['group', 'gold'],
+      columns: ["group", "gold"],
     },
-    chartType: 'pie',
+    chartType: "pie",
     chartContainer: eContainer2,
-    aggFunc: 'sum',
+    aggFunc: "sum",
     chartThemeOverrides: {
       common: {
         padding: {
@@ -105,22 +120,22 @@ function onFirstDataRendered(event: FirstDataRenderedEvent) {
         },
         legend: {
           enabled: true,
-          position: 'bottom',
+          position: "bottom",
         },
       },
     },
-  }
+  };
 
-  event.api.createRangeChart(params2)
+  event.api.createRangeChart(params2);
 
-  var eContainer3 = document.querySelector('#chart3') as any
+  var eContainer3 = document.querySelector("#chart3") as any;
   var params3: CreateRangeChartParams = {
     cellRange: {
-      columns: ['group', 'silver'],
+      columns: ["group", "silver"],
     },
-    chartType: 'pie',
+    chartType: "pie",
     chartContainer: eContainer3,
-    aggFunc: 'sum',
+    aggFunc: "sum",
     chartThemeOverrides: {
       common: {
         padding: {
@@ -131,31 +146,29 @@ function onFirstDataRendered(event: FirstDataRenderedEvent) {
         },
         legend: {
           enabled: true,
-          position: 'bottom',
+          position: "bottom",
         },
       },
     },
-  }
+  };
 
-  event.api.createRangeChart(params3)
+  event.api.createRangeChart(params3);
 }
 
 function numberValueParser(params: ValueParserParams) {
-  var res = Number.parseInt(params.newValue)
+  var res = Number.parseInt(params.newValue);
 
   if (isNaN(res)) {
-    return undefined
+    return undefined;
   }
 
-  return res
+  return res;
 }
 
 function getChartToolbarItems(params: GetChartToolbarItemsParams) {
-  return []
+  return [];
 }
 
-
 // setup the grid after the page has finished loading
-  var gridDiv = document.querySelector<HTMLElement>('#myGrid')!
-  new Grid(gridDiv, gridOptions)
- 
+var gridDiv = document.querySelector<HTMLElement>("#myGrid")!;
+new Grid(gridDiv, gridOptions);

@@ -1,20 +1,21 @@
-import { ICellRendererComp, ICellRendererParams } from 'ag-grid-community';
+import { ICellRendererComp, ICellRendererParams } from "ag-grid-community";
 
 export class MedalCellRenderer implements ICellRendererComp {
-    eGui!: HTMLSpanElement;
+  eGui!: HTMLSpanElement;
 
-    // init method gets the details of the cell to be renderer
-    init(params: ICellRendererParams) {
-        this.eGui = document.createElement('span');
-        this.eGui.innerHTML = new Array(parseInt(params.value, 10)).fill('#').join('');
-    }
+  // init method gets the details of the cell to be renderer
+  init(params: ICellRendererParams) {
+    this.eGui = document.createElement("span");
+    this.eGui.innerHTML = new Array(parseInt(params.value, 10))
+      .fill("#")
+      .join("");
+  }
 
-    getGui() {
-        return this.eGui;
-    }
+  getGui() {
+    return this.eGui;
+  }
 
-    refresh(params: ICellRendererParams): boolean {
-        return false;
-    }
+  refresh(params: ICellRendererParams): boolean {
+    return false;
+  }
 }
-

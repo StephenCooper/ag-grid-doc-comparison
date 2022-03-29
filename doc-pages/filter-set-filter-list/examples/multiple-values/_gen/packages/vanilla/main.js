@@ -1,38 +1,37 @@
-
 var valueGetter = function (params) {
-  return params.data['animalsString'].split('|')
-}
+  return params.data["animalsString"].split("|");
+};
 
 var valueFormatter = function (params) {
   return params.value
     .map(function (animal) {
-      return animal.name
+      return animal.name;
     })
-    .join(', ')
-}
+    .join(", ");
+};
 
 var keyCreator = function (params) {
   return params.value.map(function (animal) {
-    return animal.name
-  })
-}
+    return animal.name;
+  });
+};
 
 const gridOptions = {
   columnDefs: [
     {
-      headerName: 'Animals (array)',
-      field: 'animalsArray',
-      filter: 'agSetColumnFilter',
+      headerName: "Animals (array)",
+      field: "animalsArray",
+      filter: "agSetColumnFilter",
     },
     {
-      headerName: 'Animals (string)',
-      filter: 'agSetColumnFilter',
+      headerName: "Animals (string)",
+      filter: "agSetColumnFilter",
       valueGetter: valueGetter,
     },
     {
-      headerName: 'Animals (objects)',
-      field: 'animalsObjects',
-      filter: 'agSetColumnFilter',
+      headerName: "Animals (objects)",
+      field: "animalsObjects",
+      filter: "agSetColumnFilter",
       valueFormatter: valueFormatter,
       keyCreator: keyCreator,
     },
@@ -41,11 +40,11 @@ const gridOptions = {
     flex: 1,
   },
   rowData: getData(),
-  sideBar: 'filters',
-}
+  sideBar: "filters",
+};
 
 // setup the grid after the page has finished loading
-document.addEventListener('DOMContentLoaded', function () {
-  var gridDiv = document.querySelector('#myGrid')
-  new agGrid.Grid(gridDiv, gridOptions)
-})
+document.addEventListener("DOMContentLoaded", function () {
+  var gridDiv = document.querySelector("#myGrid");
+  new agGrid.Grid(gridDiv, gridOptions);
+});

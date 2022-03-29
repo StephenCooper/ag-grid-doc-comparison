@@ -4,7 +4,6 @@ title: "Client-Side Data - Transaction Updates"
 
 Transaction Updates allow large numbers of rows in the grid to be added, removed or updated in an efficient manner. Use Transaction Updates for fast changes to large datasets.
 
-
 ## Transaction Update API
 
 A transaction object contains the details of what rows should be added, removed and updated. The grid API `applyTransaction(transaction)` takes this transaction object and applies it to the grid's data.
@@ -17,8 +16,6 @@ The result of the `applyTransaction(transaction)` is also a transaction, however
 - **Row Node Transaction**: Contains Row Nodes, the grid-created objects that wrap row data items.
 
 For each data item in a Row Data Transaction there will typically be a Row Node in Row Node Transaction wrapping that data item. The only exception is for edge cases, for example you tried to delete or update a data item that didn't exist.
-
-
 
 ## Example: Updating with Transaction
 
@@ -33,12 +30,9 @@ The example applies transactions in different ways and prints the results of the
 
 <grid-example title='Updating with Transaction' name='updating-with-transaction' type='generated'></grid-example>
 
-
-
 ## Identifying Rows for Update and Remove
 
 When passing in data to be updated or removed, the grid will be asking:
-
 
 _"What row do you mean exactly by this data item you are passing?"_
 
@@ -62,23 +56,22 @@ There are two approaches you can take: 1) Providing Row IDs, or 2) Using Object 
 
   ```js
   const myTransaction = {
-      add: [
-          // adding a row, there should be no row with ID = 4 already
-          {employeeId: '4', name: 'Billy', age: 55}
-      ],
-      
-      update: [
-          // updating a row, the grid will look for the row with ID = 2 to update
-          {employeeId: '2', name: 'Bob', age: 23}
-      ],
-      
-      remove: [
-          // deleting a row, only the ID is needed, other attributes (name, age) don't serve any purpose
-          {employeeId: '4'}
-      ]
-  }
-  ```
+    add: [
+      // adding a row, there should be no row with ID = 4 already
+      { employeeId: "4", name: "Billy", age: 55 },
+    ],
 
+    update: [
+      // updating a row, the grid will look for the row with ID = 2 to update
+      { employeeId: "2", name: "Bob", age: 23 },
+    ],
+
+    remove: [
+      // deleting a row, only the ID is needed, other attributes (name, age) don't serve any purpose
+      { employeeId: "4" },
+    ],
+  };
+  ```
 
 - ### Using Object References (Slower)
 
@@ -92,9 +85,7 @@ There are two approaches you can take: 1) Providing Row IDs, or 2) Using Object 
 
 Although using object references is slower, this will only be an issue if working with large datasets (thousands of rows).
 
-
 ## Example: Updating with Transaction and Groups
-
 
 When using transactions and grouping, the groups are kept intact as you add, remove and update rows. The example below demonstrates the following:
 
@@ -106,7 +97,6 @@ When using transactions and grouping, the groups are kept intact as you add, rem
 - **Move to Sold:** Move selected items to 'Sold' group.
 - When moving items, the grid animates the rows to the new location with minimal DOM updates.
 - **Get Row Data:** Prints all row data to the console.
-
 
 <grid-example title='Updating with Transaction and Groups' name='updating-with-transaction-and-groups' type='generated' options='{ "enterprise": true, "modules": ["clientside", "rowgrouping"] }'></grid-example>
 
@@ -144,7 +134,6 @@ The example below demonstrates Changed Path Selection. The example is best viewe
 | row to be checked (for selection state) between each update. If you need a blazing fast grid managing rapid
 | changes, consider avoiding this feature.
 
-
 ## Suppress Model Updates
 
 Sometimes it's required to do transaction updates and not have the rows re-sort / re-filter / re-group / re-aggregate.
@@ -164,5 +153,3 @@ Note the following:
 3. After data is updated, hitting Update Model gets the grid to sort, filter and aggregate.
 
 <grid-example title='Suppress Update Model' name='suppress-update-model' type='generated' options='{ "enterprise": true, "modules": ["clientside", "rowgrouping"] }'></grid-example>
-
-

@@ -5,12 +5,9 @@ enterprise: true
 
 Learn how to perform server-side operations using the Oracle Database with a complete reference implementation.
 
-
 In this guide we will show how large datasets, which are too big be loaded directly into the browser, can be managed by performing server-side operations inside the Oracle database.
 
-
 We will develop a financial reporting application that demonstrates how data can be lazy-loaded as required, even when performing group, filter, sort and pivot operations.
-
 
 <image-caption src="server-side-operations-oracle/resources/oracle-enterprise.png" alt="Oracle" constrained="true"></image-caption>
 
@@ -18,7 +15,6 @@ We will develop a financial reporting application that demonstrates how data can
 | The reference implementation covered in this guide is for demonstration purposes only. If you use this in production it comes with no warranty or support.
 
 The source code can be found here: [https://github.com/ag-grid/ag-grid-server-side-oracle-example](https://github.com/ag-grid/ag-grid-server-side-oracle-example)
-
 
 ## Overview
 
@@ -62,7 +58,6 @@ This example was tested using the following versions:
 - Apache Maven (3.5.2)
 - Oracle 12c Release 2 (12.2.0.1)
 - Oracle JDBC Driver (ojdbc7-12.1.0.2)
-
 
 Due to Oracle license restrictions the Oracle JDBC driver is not available in the public Maven repository and should be manually installed into your local Maven repository like so:
 
@@ -217,11 +212,9 @@ public class ServerSideGetRowsResponse {
 
 We will discuss these in detail throughout this guide, however for more details see: [Server-Side Datasource](/server-side-model/#server-side-datasource)
 
-
 ## Service Controller
 
 Our service shall contain a single endpoint `/getRows` with the request and response objects defined above:
-
 
 ```java
 // src/main/java/com/ag/grid/enterprise/oracle/demo/controller/TradeController.java
@@ -246,13 +239,11 @@ public class TradeController {
 
 The `TradeController` makes use of the [Spring Controller](https://docs.spring.io/spring/docs/current/spring-framework-reference/web.html#mvc-controller) to handle HTTP and JSON Serialisation.
 
-
 ## Data Access
 
 The `OracleSqlQueryBuilder` dynamically generates SQL based on the supplied request. We will query the `Trade` table with our generated SQL using the [Spring JDBC Template](https://docs.spring.io/spring/docs/current/spring-framework-reference/data-access.html).
 
 Here is the implementation of our `TradeDao`:
-
 
 ```java
 // src/main/java/com/ag/grid/enterprise/oracle/demo/dao/TradeDao.java
@@ -331,9 +322,7 @@ Map<String, ColumnFilter> filterModel;
 
 As these filters differ in structure it is necessary to perform some specialised deserialisation using the Type Annotations provided by the [Jackson Annotations](https://github.com/FasterXML/jackson-annotations) project.
 
-
 When the `filterModel` property is deserialised, we will need to select the appropriate concrete `ColumnFilter` as shown below:
-
 
 ```java
 // src/main/java/com/ag/grid/enterprise/oracle/demo/filter/ColumnFilter.java
@@ -356,13 +345,11 @@ Here we are using the `filterType` property to determine which concrete filter c
 
 The `ServerSideGetRowsRequest` contains the following attribute to determine which columns to sort by:
 
-
 ```java
 private List<SortModel> sortModel;
 ```
 
 The `SortModel` contains the `colId` (i.e. 'book') and the `sort` type (i.e. 'asc')
-
 
 ```java
 // src/main/java/com/ag/grid/enterprise/oracle/demo/request/SortModel.java
@@ -386,7 +373,6 @@ orderByCols.isEmpty() ? "" : " ORDER BY " + join(",", orderByCols);
 
 Grouping is easily achieved in the `OracleSqlQueryBuilder` by appending `rowGroups` to the `GROUP BY` like so:
 
-
 ```java
 // src/main/java/com/ag/grid/enterprise/oracle/demo/builder/OracleSqlQueryBuilder.java
 
@@ -405,7 +391,6 @@ private List<String> getRowGroupsToInclude() {
 
 In order to perform pivoting we will use the `OracleSqlQueryBuilder` to generate a series of decode statements for each combination of pivot and value columns, such as:
 
-
 ```sql
 sum (
      DECODE(DEALTYPE, 'Financial', DECODE(BIDTYPE, 'Buy', CURRENTVALUE))
@@ -414,9 +399,7 @@ sum (
 
 These new pivot columns (i.e. 'Secondary Columns') are created using the row values contained in the data and have field names such as: `Financial_Buy_CURRENTVALUE`.
 
-
 These will need to be returned to the grid in the `ServerSideGetRowsResponse` in the following property:
-
 
 ```java
 List<String> secondaryColumnFields;
@@ -428,50 +411,49 @@ Our client code will then use these secondary column fields to generate the corr
 // src/main/resources/static/main.js
 
 let createSecondaryColumns = function (fields, valueCols) {
-    let secondaryCols = [];
+  let secondaryCols = [];
 
-    function addColDef(colId, parts, res) {
-        if (parts.length === 0) return [];
+  function addColDef(colId, parts, res) {
+    if (parts.length === 0) return [];
 
-        let first = parts.shift();
-        let existing = res.find(r => r.groupId === first);
+    let first = parts.shift();
+    let existing = res.find((r) => r.groupId === first);
 
-        if (existing) {
-            existing['children'] = addColDef(colId, parts, existing.children);
-        } else {
-            let colDef = {};
-            let isGroup = parts.length > 0;
+    if (existing) {
+      existing["children"] = addColDef(colId, parts, existing.children);
+    } else {
+      let colDef = {};
+      let isGroup = parts.length > 0;
 
-            if (isGroup) {
-                colDef['groupId'] = first;
-                colDef['headerName'] = first;
-            } else {
-                let valueCol = valueCols.find(r => r.field === first);
+      if (isGroup) {
+        colDef["groupId"] = first;
+        colDef["headerName"] = first;
+      } else {
+        let valueCol = valueCols.find((r) => r.field === first);
 
-                colDef['colId'] = colId;
-                colDef['headerName'] =  valueCol.displayName;
-                colDef['field'] = colId;
-                colDef['type'] = 'measure';
-            }
+        colDef["colId"] = colId;
+        colDef["headerName"] = valueCol.displayName;
+        colDef["field"] = colId;
+        colDef["type"] = "measure";
+      }
 
-            let children = addColDef(colId, parts, []);
-            children.length > 0 ? colDef['children'] = children : null;
+      let children = addColDef(colId, parts, []);
+      children.length > 0 ? (colDef["children"] = children) : null;
 
-            res.push(colDef);
-        }
-
-        return res;
+      res.push(colDef);
     }
 
-    fields.sort();
-    fields.forEach(field => addColDef(field, field.split('_'), secondaryCols));
+    return res;
+  }
 
-    return secondaryCols;
+  fields.sort();
+  fields.forEach((field) => addColDef(field, field.split("_"), secondaryCols));
+
+  return secondaryCols;
 };
 ```
 
 In order for the grid to show these newly created columns an explicit API call is required:
-
 
 ```js
 gridOptions.columnApi.setSecondaryColumns(secondaryColDefs);
@@ -486,7 +468,6 @@ private int startRow, endRow;
 ```
 
 The `OracleSqlQueryBuilder` uses this information when limiting the results as follows:
-
 
 ```java
 // src/main/java/com/ag/grid/enterprise/oracle/demo/builder/OracleSqlQueryBuilder.java
@@ -507,4 +488,3 @@ A high level overview was given to illustrate the problem this approach solves b
 - Grouping
 - Pivoting
 - Infinite Scrolling
-

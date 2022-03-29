@@ -1,19 +1,16 @@
-
-import Vue from 'vue';
-import { AgGridVue } from '@ag-grid-community/vue';
-import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import Vue from "vue";
+import { AgGridVue } from "@ag-grid-community/vue";
+import "@ag-grid-community/core/dist/styles/ag-grid.css";
 import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { ModuleRegistry } from '@ag-grid-community/core';
-import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
-import { RowGroupingModule } from '@ag-grid-enterprise/row-grouping';
+import { ModuleRegistry } from "@ag-grid-community/core";
+import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
+import { RowGroupingModule } from "@ag-grid-enterprise/row-grouping";
 
 // Register the required feature modules with the Grid
-ModuleRegistry.registerModules([ClientSideRowModelModule, RowGroupingModule])
-
-
+ModuleRegistry.registerModules([ClientSideRowModelModule, RowGroupingModule]);
 
 const VueExample = {
-    template: `
+  template: `
         <div style="height: 100%">
             <ag-grid-vue
                 
@@ -33,88 +30,97 @@ const VueExample = {
                 :rowData="rowData"></ag-grid-vue>
         </div>
     `,
-    components: {
-        'ag-grid-vue': AgGridVue,
-        
-    },
-    data: function() {
-        return {
-            columnDefs: [{field:"athlete",
-minWidth:170,
-checkboxSelection:checkboxSelection,
-headerCheckboxSelection:headerCheckboxSelection},{field:"age"},{field:"country"},{field:"year"},{field:"date"},{field:"sport"},{field:"gold"},{field:"silver"},{field:"bronze"},{field:"total"}],
-            gridApi: null,
-            columnApi: null,
-            defaultColDef: {
-    editable: true,
-    enableRowGroup: true,
-    enablePivot: true,
-    enableValue: true,
-    sortable: true,
-    resizable: true,
-    filter: true,
-    flex: 1,
-    minWidth: 100,
-},
-            autoGroupColumnDef: null,
-rowSelection: null,
-rowGroupPanelShow: null,
-pivotPanelShow: null,
-rowData: null
-        }
-    },
-    created() {
-        this.autoGroupColumnDef = {
-    headerName: 'Group',
-    minWidth: 170,
-    field: 'athlete',
-    valueGetter: (params) => {
+  components: {
+    "ag-grid-vue": AgGridVue,
+  },
+  data: function () {
+    return {
+      columnDefs: [
+        {
+          field: "athlete",
+          minWidth: 170,
+          checkboxSelection: checkboxSelection,
+          headerCheckboxSelection: headerCheckboxSelection,
+        },
+        { field: "age" },
+        { field: "country" },
+        { field: "year" },
+        { field: "date" },
+        { field: "sport" },
+        { field: "gold" },
+        { field: "silver" },
+        { field: "bronze" },
+        { field: "total" },
+      ],
+      gridApi: null,
+      columnApi: null,
+      defaultColDef: {
+        editable: true,
+        enableRowGroup: true,
+        enablePivot: true,
+        enableValue: true,
+        sortable: true,
+        resizable: true,
+        filter: true,
+        flex: 1,
+        minWidth: 100,
+      },
+      autoGroupColumnDef: null,
+      rowSelection: null,
+      rowGroupPanelShow: null,
+      pivotPanelShow: null,
+      rowData: null,
+    };
+  },
+  created() {
+    this.autoGroupColumnDef = {
+      headerName: "Group",
+      minWidth: 170,
+      field: "athlete",
+      valueGetter: (params) => {
         if (params.node.group) {
-            return params.node.key;
+          return params.node.key;
+        } else {
+          return params.data[params.colDef.field];
         }
-        else {
-            return params.data[params.colDef.field];
-        }
-    },
-    headerCheckboxSelection: true,
-    cellRenderer: 'agGroupCellRenderer',
-    cellRendererParams: {
+      },
+      headerCheckboxSelection: true,
+      cellRenderer: "agGroupCellRenderer",
+      cellRendererParams: {
         checkbox: true,
-    },
-};
-this.rowSelection = 'multiple';
-this.rowGroupPanelShow = 'always';
-this.pivotPanelShow = 'always'
-    },
-    methods: {
-        onGridReady(params) {
-        this.gridApi = params.api;
-        this.gridColumnApi = params.columnApi;
-        
+      },
+    };
+    this.rowSelection = "multiple";
+    this.rowGroupPanelShow = "always";
+    this.pivotPanelShow = "always";
+  },
+  methods: {
+    onGridReady(params) {
+      this.gridApi = params.api;
+      this.gridColumnApi = params.columnApi;
 
-        
-            const updateData = (data) => params.api.setRowData(data);
-            
-            fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
-                .then(resp => resp.json())
-                .then(data => updateData(data));
+      const updateData = (data) => params.api.setRowData(data);
+
+      fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+        .then((resp) => resp.json())
+        .then((data) => updateData(data));
     },
-    }
-}
+  },
+};
 
 var checkboxSelection = function (params) {
-    // we put checkbox on the name if we are not doing grouping
-    return params.columnApi.getRowGroupColumns().length === 0;
+  // we put checkbox on the name if we are not doing grouping
+  return params.columnApi.getRowGroupColumns().length === 0;
 };
 
 var headerCheckboxSelection = function (params) {
-    // we put checkbox on the name if we are not doing grouping
-    return params.columnApi.getRowGroupColumns().length === 0;
+  // we put checkbox on the name if we are not doing grouping
+  return params.columnApi.getRowGroupColumns().length === 0;
 };
 
 new Vue({
-    el: '#app',
-    components: {
-        'my-component': VueExample
-    }
+  el: "#app",
+  components: {
+    "my-component": VueExample,
+  },
 });

@@ -1,21 +1,23 @@
-
-import Vue from 'vue';
-import { AgGridVue } from '@ag-grid-community/vue';
-import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import Vue from "vue";
+import { AgGridVue } from "@ag-grid-community/vue";
+import "@ag-grid-community/core/dist/styles/ag-grid.css";
 import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { ModuleRegistry } from '@ag-grid-community/core';
-import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
-import { SetFilterModule } from '@ag-grid-enterprise/set-filter';
-import { MenuModule } from '@ag-grid-enterprise/menu';
-import { FiltersToolPanelModule } from '@ag-grid-enterprise/filter-tool-panel';
+import { ModuleRegistry } from "@ag-grid-community/core";
+import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
+import { SetFilterModule } from "@ag-grid-enterprise/set-filter";
+import { MenuModule } from "@ag-grid-enterprise/menu";
+import { FiltersToolPanelModule } from "@ag-grid-enterprise/filter-tool-panel";
 
 // Register the required feature modules with the Grid
-ModuleRegistry.registerModules([ClientSideRowModelModule, SetFilterModule, MenuModule, FiltersToolPanelModule])
-
-
+ModuleRegistry.registerModules([
+  ClientSideRowModelModule,
+  SetFilterModule,
+  MenuModule,
+  FiltersToolPanelModule,
+]);
 
 const VueExample = {
-    template: `
+  template: `
         <div style="height: 100%">
             <div class="example-wrapper">
                 <div class="example-header">
@@ -49,92 +51,106 @@ const VueExample = {
             </div>
         </div>
     `,
-    components: {
-        'ag-grid-vue': AgGridVue,
-        
+  components: {
+    "ag-grid-vue": AgGridVue,
+  },
+  data: function () {
+    return {
+      columnDefs: [
+        {
+          headerName: "Case Insensitive (default)",
+          field: "colour",
+          filter: "agSetColumnFilter",
+          filterParams: {
+            caseSensitive: false,
+            cellRenderer: colourCellRenderer,
+          },
+        },
+        {
+          headerName: "Case Sensitive",
+          field: "colour",
+          filter: "agSetColumnFilter",
+          filterParams: {
+            caseSensitive: true,
+            cellRenderer: colourCellRenderer,
+          },
+        },
+      ],
+      gridApi: null,
+      columnApi: null,
+      defaultColDef: {
+        flex: 1,
+        minWidth: 225,
+        cellRenderer: colourCellRenderer,
+        resizable: true,
+        floatingFilter: true,
+      },
+      sideBar: null,
+      rowData: null,
+    };
+  },
+  created() {
+    this.sideBar = "filters";
+    this.rowData = getData();
+  },
+  methods: {
+    onFirstDataRendered(params) {
+      this.gridApi.getToolPanelInstance("filters").expandFilters();
     },
-    data: function() {
-        return {
-            columnDefs: [{headerName:"Case Insensitive (default)",
-field:"colour",
-filter:"agSetColumnFilter",
-filterParams:{"caseSensitive":false,"cellRenderer":colourCellRenderer}},{headerName:"Case Sensitive",
-field:"colour",
-filter:"agSetColumnFilter",
-filterParams:{"caseSensitive":true,"cellRenderer":colourCellRenderer}}],
-            gridApi: null,
-            columnApi: null,
-            defaultColDef: {
-    flex: 1,
-    minWidth: 225,
-    cellRenderer: colourCellRenderer,
-    resizable: true,
-    floatingFilter: true,
-},
-            sideBar: null,
-rowData: null
-        }
+    setModel(type) {
+      const instance = this.gridApi.getFilterInstance(FILTER_TYPES[type]);
+      instance.setModel({ values: MANGLED_COLOURS });
+      this.gridApi.onFilterChanged();
     },
-    created() {
-        this.sideBar = 'filters';
-this.rowData = getData()
+    getModel(type) {
+      const instance = this.gridApi.getFilterInstance(FILTER_TYPES[type]);
+      alert(JSON.stringify(instance.getModel(), null, 2));
     },
-    methods: {
-        onFirstDataRendered(params) {
-    ((this.gridApi.getToolPanelInstance('filters'))).expandFilters();
-},
-setModel(type) {
-    const instance = this.gridApi.getFilterInstance(FILTER_TYPES[type]);
-    instance.setModel({ values: MANGLED_COLOURS });
-    this.gridApi.onFilterChanged();
-},
-getModel(type) {
-    const instance = this.gridApi.getFilterInstance(FILTER_TYPES[type]);
-    alert(JSON.stringify(instance.getModel(), null, 2));
-},
-setFilterValues(type) {
-    const instance = this.gridApi.getFilterInstance(FILTER_TYPES[type]);
-    instance.setFilterValues(MANGLED_COLOURS);
-    instance.applyModel();
-    this.gridApi.onFilterChanged();
-},
-getValues(type) {
-    const instance = this.gridApi.getFilterInstance(FILTER_TYPES[type]);
-    alert(JSON.stringify(instance.getValues(), null, 2));
-},
-reset(type) {
-    const instance = this.gridApi.getFilterInstance(FILTER_TYPES[type]);
-    instance.resetFilterValues();
-    instance.setModel(null);
-    this.gridApi.onFilterChanged();
-},
-onGridReady(params) {
-        this.gridApi = params.api;
-        this.gridColumnApi = params.columnApi;
-        
+    setFilterValues(type) {
+      const instance = this.gridApi.getFilterInstance(FILTER_TYPES[type]);
+      instance.setFilterValues(MANGLED_COLOURS);
+      instance.applyModel();
+      this.gridApi.onFilterChanged();
     },
-    }
-}
-
-window.colourCellRenderer = function colourCellRenderer(params) {
-    if (!params.value || params.value === '(Select All)') {
-        return params.value;
-    }
-    return `<div style="background-color: ${params.value.toLowerCase()}; ${FIXED_STYLES}"></div>${params.value}`;
-}
-
-var FIXED_STYLES = 'vertical-align: middle; border: 1px solid black; margin: 3px; display: inline-block; width: 10px; height: 10px';
-
-var FILTER_TYPES = {
-    insensitive: 'colour',
-    sensitive: 'colour_1',
+    getValues(type) {
+      const instance = this.gridApi.getFilterInstance(FILTER_TYPES[type]);
+      alert(JSON.stringify(instance.getValues(), null, 2));
+    },
+    reset(type) {
+      const instance = this.gridApi.getFilterInstance(FILTER_TYPES[type]);
+      instance.resetFilterValues();
+      instance.setModel(null);
+      this.gridApi.onFilterChanged();
+    },
+    onGridReady(params) {
+      this.gridApi = params.api;
+      this.gridColumnApi = params.columnApi;
+    },
+  },
 };
 
-var MANGLED_COLOURS = ['ReD', 'OrAnGe', 'WhItE', 'YeLlOw'];
+window.colourCellRenderer = function colourCellRenderer(params) {
+  if (!params.value || params.value === "(Select All)") {
+    return params.value;
+  }
+  return `<div style="background-color: ${params.value.toLowerCase()}; ${FIXED_STYLES}"></div>${
+    params.value
+  }`;
+};
+
+var FIXED_STYLES =
+  "vertical-align: middle; border: 1px solid black; margin: 3px; display: inline-block; width: 10px; height: 10px";
+
+var FILTER_TYPES = {
+  insensitive: "colour",
+  sensitive: "colour_1",
+};
+
+var MANGLED_COLOURS = ["ReD", "OrAnGe", "WhItE", "YeLlOw"];
 
 new Vue({
-    el: '#app',
-    components: {
-        'my-component': VueExample
-    }
+  el: "#app",
+  components: {
+    "my-component": VueExample,
+  },
 });

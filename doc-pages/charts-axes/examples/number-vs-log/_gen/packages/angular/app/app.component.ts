@@ -1,172 +1,163 @@
-import { cloneDeep } from 'lodash';
-import { Component } from '@angular/core';
-import * as agCharts from 'ag-charts-community';
-import { AgCartesianChartOptions } from 'ag-charts-community';
+import { cloneDeep } from "lodash";
+import { Component } from "@angular/core";
+import * as agCharts from "ag-charts-community";
+import { AgCartesianChartOptions } from "ag-charts-community";
 
 @Component({
-    selector: 'my-app',
-    template: `<div class="wrapper">
+  selector: "my-app",
+  template: `<div class="wrapper">
     <div id="toolPanel">
-        <button (click)="useNumberAxis()">Number axis</button>
-        <span class="spacer"></span>
-        <button (click)="useLogAxis()">Base 10 log axis</button>
-        <span class="spacer"></span>
-        <button (click)="useBaseTwoLogAxis()">Base 2 log axis</button>
-        <span class="spacer"></span>
-        <button (click)="useLogAxisWithFewerTicks()">Log axis with fewer ticks (base 10)</button>
+      <button (click)="useNumberAxis()">Number axis</button>
+      <span class="spacer"></span>
+      <button (click)="useLogAxis()">Base 10 log axis</button>
+      <span class="spacer"></span>
+      <button (click)="useBaseTwoLogAxis()">Base 2 log axis</button>
+      <span class="spacer"></span>
+      <button (click)="useLogAxisWithFewerTicks()">
+        Log axis with fewer ticks (base 10)
+      </button>
     </div>
     <ag-charts-angular
-    style="height: 100%"
-    [options]="options"
+      style="height: 100%"
+      [options]="options"
     ></ag-charts-angular>
-</div>`
+  </div>`,
 })
-
 export class AppComponent {
-    private options: AgCartesianChartOptions;
-    
+  private options: AgCartesianChartOptions;
 
-    constructor() {
-        this.options = {
-    
-    data: [
-        { os: 'A', share: 10 },
-        { os: 'B', share: 100 },
-        { os: 'C', share: 1000 },
-    ],
-    series: [
+  constructor() {
+    this.options = {
+      data: [
+        { os: "A", share: 10 },
+        { os: "B", share: 100 },
+        { os: "C", share: 1000 },
+      ],
+      series: [
         {
-            type: 'line',
-            xKey: 'os',
-            yKey: 'share',
+          type: "line",
+          xKey: "os",
+          yKey: "share",
         },
-    ],
-    axes: [
+      ],
+      axes: [
         {
-            type: 'category',
-            position: 'bottom',
+          type: "category",
+          position: "bottom",
         },
         {
-            type: 'number',
-            position: 'left',
-            label: {
-                format: '.0f',
-            },
-            tick: {
-                count: 10,
-            },
+          type: "number",
+          position: "left",
+          label: {
+            format: ".0f",
+          },
+          tick: {
+            count: 10,
+          },
         },
-    ],
-    legend: {
+      ],
+      legend: {
         enabled: false,
-    },
-}
-    }
+      },
+    };
+  }
 
-    ngOnInit() {
-        
-    }
+  ngOnInit() {}
 
-    useNumberAxis = () => {
-const options = cloneDeep(this.options);
+  useNumberAxis = () => {
+    const options = cloneDeep(this.options);
 
     options.axes = [
-        {
-            type: 'category',
-            position: 'bottom',
+      {
+        type: "category",
+        position: "bottom",
+      },
+      {
+        type: "number",
+        position: "left",
+        min: 1,
+        label: {
+          format: ".0f",
         },
-        {
-            type: 'number',
-            position: 'left',
-            min: 1,
-            label: {
-                format: '.0f',
-            },
-            tick: {
-                count: 10,
-            },
+        tick: {
+          count: 10,
         },
+      },
     ];
-    
 
-this.options = options;
-}
+    this.options = options;
+  };
 
-useLogAxis = () => {
-const options = cloneDeep(this.options);
+  useLogAxis = () => {
+    const options = cloneDeep(this.options);
 
     options.axes = [
-        {
-            type: 'category',
-            position: 'bottom',
+      {
+        type: "category",
+        position: "bottom",
+      },
+      {
+        type: "log",
+        position: "left",
+        min: 10,
+        label: {
+          format: ".0f",
         },
-        {
-            type: 'log',
-            position: 'left',
-            min: 10,
-            label: {
-                format: '.0f',
-            },
-            tick: {
-                count: 10,
-            },
+        tick: {
+          count: 10,
         },
+      },
     ];
-    
 
-this.options = options;
-}
+    this.options = options;
+  };
 
-useBaseTwoLogAxis = () => {
-const options = cloneDeep(this.options);
+  useBaseTwoLogAxis = () => {
+    const options = cloneDeep(this.options);
 
     options.axes = [
-        {
-            type: 'category',
-            position: 'bottom',
+      {
+        type: "category",
+        position: "bottom",
+      },
+      {
+        type: "log",
+        position: "left",
+        min: 10,
+        label: {
+          format: ".0f",
         },
-        {
-            type: 'log',
-            position: 'left',
-            min: 10,
-            label: {
-                format: '.0f',
-            },
-            tick: {
-                count: 10,
-            },
-            base: 2,
+        tick: {
+          count: 10,
         },
+        base: 2,
+      },
     ];
-    
 
-this.options = options;
-}
+    this.options = options;
+  };
 
-useLogAxisWithFewerTicks = () => {
-const options = cloneDeep(this.options);
+  useLogAxisWithFewerTicks = () => {
+    const options = cloneDeep(this.options);
 
     options.axes = [
-        {
-            type: 'category',
-            position: 'bottom',
+      {
+        type: "category",
+        position: "bottom",
+      },
+      {
+        type: "log",
+        position: "left",
+        min: 10,
+        label: {
+          format: ".0f",
         },
-        {
-            type: 'log',
-            position: 'left',
-            min: 10,
-            label: {
-                format: '.0f',
-            },
-            tick: {
-                count: 2, // a hint that we want a smaller tick count
-            },
+        tick: {
+          count: 2, // a hint that we want a smaller tick count
         },
+      },
     ];
-    
 
-this.options = options;
+    this.options = options;
+  };
 }
-}
-
-

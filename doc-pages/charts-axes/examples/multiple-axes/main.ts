@@ -1,5 +1,5 @@
-import { AgChartOptions } from "ag-charts-community"
-import * as agCharts from "ag-charts-community"
+import { AgChartOptions } from "ag-charts-community";
+import * as agCharts from "ag-charts-community";
 
 const options: AgChartOptions = {
   container: document.querySelector("#myChart") as HTMLElement,
@@ -61,7 +61,7 @@ const options: AgChartOptions = {
       },
       label: {
         formatter: function (params) {
-          return params.value / 1000 + "M"
+          return params.value / 1000 + "M";
         },
       },
     },
@@ -75,7 +75,7 @@ const options: AgChartOptions = {
       },
       label: {
         formatter: function (params) {
-          return params.value / 1000 + "k"
+          return params.value / 1000 + "k";
         },
       },
     },
@@ -89,6 +89,6 @@ const options: AgChartOptions = {
       },
     },
   },
-}
+};
 
-var chart = agCharts.AgChart.create(options)
+var chart = agCharts.AgChart.create(options);

@@ -1,5 +1,5 @@
-import { AgChartsVue } from "ag-charts-vue3"
-import { createApp } from "vue"
+import { AgChartsVue } from "ag-charts-vue3";
+import { createApp } from "vue";
 
 const ChartExample = {
   template: `
@@ -27,35 +27,35 @@ const ChartExample = {
         },
         data,
         series: [
-            {
-                type: "column",
-                xKey: "label",
-                yKey: "v1",
-                stacked: true,
-                yName: "Reliability",
-              },
-              {
-                type: "column",
-                xKey: "label",
-                yKey: "v2",
-                stacked: true,
-                yName: "Ease of use",
-              },
-              {
-                type: "column",
-                xKey: "label",
-                yKey: "v3",
-                stacked: true,
-                yName: "Performance",
-              },
-              {
-                type: "line",
-                xKey: "label",
-                yKey: "v4",
-                yName: "Price",
-              },
-            ],
-        },
+          {
+            type: "column",
+            xKey: "label",
+            yKey: "v1",
+            stacked: true,
+            yName: "Reliability",
+          },
+          {
+            type: "column",
+            xKey: "label",
+            yKey: "v2",
+            stacked: true,
+            yName: "Ease of use",
+          },
+          {
+            type: "column",
+            xKey: "label",
+            yKey: "v3",
+            stacked: true,
+            yName: "Performance",
+          },
+          {
+            type: "line",
+            xKey: "label",
+            yKey: "v4",
+            yName: "Price",
+          },
+        ],
+      },
       chartOptions2: {
         theme: myTheme,
         autoSize: true,
@@ -72,9 +72,9 @@ const ChartExample = {
           },
         ],
       },
-    }
+    };
   },
-}
+};
 
 var data = [
   { label: "Android", v1: 5.67, v2: 8.63, v3: 8.14, v4: 6.45, v5: 1.37 },
@@ -82,7 +82,7 @@ var data = [
   { label: "BlackBerry", v1: 7.54, v2: 1.98, v3: 9.88, v4: 1.38, v5: 4.44 },
   { label: "Symbian", v1: 9.27, v2: 4.21, v3: 2.53, v4: 6.31, v5: 4.44 },
   { label: "Windows", v1: 2.8, v2: 1.908, v3: 7.48, v4: 5.29, v5: 8.8 },
-]
+];
 
 var myTheme = {
   baseTheme: "ag-default-dark",
@@ -153,6 +153,6 @@ var myTheme = {
       },
     },
   },
-}
+};
 
-createApp(ChartExample).mount("#app")
+createApp(ChartExample).mount("#app");

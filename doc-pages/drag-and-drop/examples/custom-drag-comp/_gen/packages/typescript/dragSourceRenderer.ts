@@ -1,36 +1,42 @@
-import { ICellRendererComp, ICellRendererParams, RowNode } from 'ag-grid-community';
+import {
+  ICellRendererComp,
+  ICellRendererParams,
+  RowNode,
+} from "ag-grid-community";
 
 export class DragSourceRenderer implements ICellRendererComp {
-    eGui!: HTMLElement;
-    rowNode!: RowNode;
-    onDragStartListener: any;
+  eGui!: HTMLElement;
+  rowNode!: RowNode;
+  onDragStartListener: any;
 
-    init(params: ICellRendererParams) {
+  init(params: ICellRendererParams) {
+    var eTemp = document.createElement("div");
+    eTemp.innerHTML = '<div draggable="true">Drag Me!</div>';
 
-        var eTemp = document.createElement('div');
-        eTemp.innerHTML = '<div draggable="true">Drag Me!</div>';
+    this.eGui = eTemp.firstChild as HTMLElement;
+    this.rowNode = params.node;
 
-        this.eGui = eTemp.firstChild as HTMLElement;
-        this.rowNode = params.node;
+    this.onDragStartListener = this.onDragStart.bind(this);
+    this.eGui.addEventListener("dragstart", this.onDragStartListener);
+  }
 
-        this.onDragStartListener = this.onDragStart.bind(this);
-        this.eGui.addEventListener('dragstart', this.onDragStartListener)
-    }
+  onDragStart(dragEvent: any) {
+    var userAgent = window.navigator.userAgent;
+    dragEvent.dataTransfer.setData(
+      "text/plain",
+      "Dragged item with ID: " + this.rowNode.data.id
+    );
+  }
 
-    onDragStart(dragEvent: any) {
-        var userAgent = window.navigator.userAgent;
-        dragEvent.dataTransfer.setData('text/plain', 'Dragged item with ID: ' + this.rowNode.data.id);
-    }
+  getGui() {
+    return this.eGui;
+  }
 
-    getGui() {
-        return this.eGui;
-    }
+  refresh(params: ICellRendererParams): boolean {
+    return false;
+  }
 
-    refresh(params: ICellRendererParams): boolean {
-        return false;
-    }
-
-    destroy() {
-        this.eGui.removeEventListener('dragstart', this.onDragStartListener)
-    }
+  destroy() {
+    this.eGui.removeEventListener("dragstart", this.onDragStartListener);
+  }
 }

@@ -3,7 +3,7 @@ title: "Row Grouping - Group Rows"
 enterprise: true
 ---
 
-This section covers the Group Rows display type, where group rows are automatically added by the grid containing the 
+This section covers the Group Rows display type, where group rows are automatically added by the grid containing the
 row groups instead of group columns. This can be preferred if you have a lot of information you want to say about the group.
 
 <image-caption src="grouping-group-rows/resources/group-rows.png" alt="Group Rows" maxWidth="80%" constrained="true" centered="true"></image-caption>
@@ -42,13 +42,13 @@ The example below demonstrates the Group Rows display type. Note the following:
 
 ## Group Row Configuration
 
-When using Group Rows, it is possible to change the rendering of the group row. This done by either replacing the 
-Cell Renderer with your own [Custom Cell Renderer](/component-cell-renderer/), or configuring the provided 
+When using Group Rows, it is possible to change the rendering of the group row. This done by either replacing the
+Cell Renderer with your own [Custom Cell Renderer](/component-cell-renderer/), or configuring the provided
 [Group Cell Renderer](/group-cell-renderer/).
 
-If using Group Rows and no `groupRowRenderer` properties are provided, then the default 
+If using Group Rows and no `groupRowRenderer` properties are provided, then the default
 [Group Cell Renderer](/group-cell-renderer/) is used with its default values.
- 
+
 <snippet>
 const gridOptions = {
     // groups by row - the grid defaults to using the default group cell renderer for the row with default settings.
@@ -63,7 +63,6 @@ const gridOptions = {
     groupRowRenderer: 'agGroupCellRenderer',
 }
 </snippet>
-
 
 ### Providing Cell Renderer
 
@@ -81,12 +80,12 @@ md-include:group-config-common.md
 [[only-vue]]
 |<snippet>
 |const gridOptions = {
-|    // configures Group Rows with a customer Cell Renderer
-|    groupDisplayType: 'groupRows', 
-|    groupRowRenderer: 'myCellRenderer',
-|    groupRowRendererParams: {
-|        someProp: 'someValue',
-|    },
+| // configures Group Rows with a customer Cell Renderer
+| groupDisplayType: 'groupRows',
+| groupRowRenderer: 'myCellRenderer',
+| groupRowRendererParams: {
+| someProp: 'someValue',
+| },
 |}
 |</snippet>
 
@@ -108,8 +107,8 @@ const gridOptions = {
 }
 </snippet>
 
-Below shows an example of aggregation with Group Rows. It also provides an `innerRenderer` to configure what gets 
-displaying inside the row groups, however it keeps the Default Group Cell Renderer for its expand / collapse 
+Below shows an example of aggregation with Group Rows. It also provides an `innerRenderer` to configure what gets
+displaying inside the row groups, however it keeps the Default Group Cell Renderer for its expand / collapse
 functionality. Note the following:
 
 [[only-javascript]]
@@ -118,24 +117,24 @@ functionality. Note the following:
 |- Each medal column is editable, you can change the number of medals for any of the athletes.
 |- The column Year has a filter on it.
 |- The cell renderer has logic listening for changes to filtering and data cell changes. This means the aggregation data in the full width row is updated if:
-|    1. If you edit any cell
-|    1. If you filter the data (ie take rows out).
+| 1. If you edit any cell
+| 1. If you filter the data (ie take rows out).
 [[only-angular]]
 |- Each group spans the width of the grid.
 |- Each group uses a custom Cell Renderer. The cell renderer shows the aggregation data for each medal type.
 |- Each medal column is editable, you can change the number of medals for any of the athletes.
 |- The column Year has a filter on it.
 |- Aggregation data in the full width row is updated if:
-|    1. If you edit any cell
-|    1. If you filter the data (ie take rows out).
+| 1. If you edit any cell
+| 1. If you filter the data (ie take rows out).
 [[only-react]]
 |- Each group spans the width of the grid.
 |- Each group uses a custom Cell Renderer. The cell renderer shows the aggregation data for each medal type.
 |- Each medal column is editable, you can change the number of medals for any of the athletes.
 |- The column Year has a filter on it.
 |- The cell renderer has logic listening for changes to filtering and data cell changes. This means the aggregation data in the full width row is updated if:
-|    1. If you edit any cell
-|    1. If you filter the data (ie take rows out).
+| 1. If you edit any cell
+| 1. If you filter the data (ie take rows out).
 [[only-vue]]
 |- Each group spans the width of the grid.
 |- Each group uses a custom Cell Renderer. The cell renderer shows the aggregation data for each medal type.

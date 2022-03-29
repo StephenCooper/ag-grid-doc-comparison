@@ -1,40 +1,39 @@
-
 var colSpan = function (params) {
-  return params.data === 2 ? 3 : 1
-}
+  return params.data === 2 ? 3 : 1;
+};
 
 const columnDefs = [
   {
-    headerName: 'A',
-    field: 'author',
+    headerName: "A",
+    field: "author",
     width: 300,
     colSpan: colSpan,
   },
   {
-    headerName: 'Flexed Columns',
+    headerName: "Flexed Columns",
     children: [
       {
-        headerName: 'B',
+        headerName: "B",
         minWidth: 200,
         maxWidth: 350,
         flex: 2,
       },
       {
-        headerName: 'C',
+        headerName: "C",
         flex: 1,
       },
     ],
   },
-]
+];
 
 function fillAllCellsWithWidthMeasurement() {
   Array.prototype.slice
-    .call(document.querySelectorAll('.ag-cell'))
+    .call(document.querySelectorAll(".ag-cell"))
     .forEach(function (cell) {
-      var width = cell.offsetWidth
-      var isFullWidthRow = cell.parentElement.childNodes.length === 1
-      cell.textContent = (isFullWidthRow ? 'Total width: ' : '') + width + 'px'
-    })
+      var width = cell.offsetWidth;
+      var isFullWidthRow = cell.parentElement.childNodes.length === 1;
+      cell.textContent = (isFullWidthRow ? "Total width: " : "") + width + "px";
+    });
 }
 
 const gridOptions = {
@@ -44,12 +43,12 @@ const gridOptions = {
   columnDefs: columnDefs,
   rowData: [1, 2],
   onGridReady: function () {
-    setInterval(fillAllCellsWithWidthMeasurement, 50)
+    setInterval(fillAllCellsWithWidthMeasurement, 50);
   },
-}
+};
 
 // setup the grid after the page has finished loading
-document.addEventListener('DOMContentLoaded', function () {
-  var gridDiv = document.querySelector('#myGrid')
-  new agGrid.Grid(gridDiv, gridOptions)
-})
+document.addEventListener("DOMContentLoaded", function () {
+  var gridDiv = document.querySelector("#myGrid");
+  new agGrid.Grid(gridDiv, gridOptions);
+});

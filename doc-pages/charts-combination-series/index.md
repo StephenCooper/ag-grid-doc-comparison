@@ -14,19 +14,19 @@ Unlike charts with a single series type, the `type` property must be specified e
 
 ```js
 series: [
-    {
-      type: "column", // use 'column' series
-      xKey: "year",
-      yKey: "men",
-      // ...other series options
-    },
-    {
-      type: "line", // use 'line' series
-      xKey: "year",
-      yKey: "portions",
-      // ...other series options
-    },
-]
+  {
+    type: "column", // use 'column' series
+    xKey: "year",
+    yKey: "men",
+    // ...other series options
+  },
+  {
+    type: "line", // use 'line' series
+    xKey: "year",
+    yKey: "portions",
+    // ...other series options
+  },
+];
 ```
 
 The snippet above shows the configuration required for a combination chart consisting of a `column` and `line` series.

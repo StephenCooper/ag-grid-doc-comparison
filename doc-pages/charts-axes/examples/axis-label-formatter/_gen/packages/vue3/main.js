@@ -1,74 +1,67 @@
-import { createApp } from 'vue';
-import { cloneDeep } from 'lodash';
-import * as agCharts from 'ag-charts-community';
-import { AgChartsVue } from 'ag-charts-vue3';
+import { createApp } from "vue";
+import { cloneDeep } from "lodash";
+import * as agCharts from "ag-charts-community";
+import { AgChartsVue } from "ag-charts-vue3";
 
 const ChartExample = {
-    template: `
+  template: `
         <div class="wrapper">
                 <ag-charts-vue
                 :options="options"></ag-charts-vue>
             </div>
     `,
-    components: {
-        'ag-charts-vue': AgChartsVue
-    },
-    data: function() {
-        return {
-            options: null
-        }
-    },
-    created() {
-        this.options = {
-    
-    data: [
-        { os: 'Windows', share: 88.07 },
-        { os: 'macOS', share: 9.44 },
-        { os: 'Linux', share: 1.87 },
-    ],
-    series: [
+  components: {
+    "ag-charts-vue": AgChartsVue,
+  },
+  data: function () {
+    return {
+      options: null,
+    };
+  },
+  created() {
+    this.options = {
+      data: [
+        { os: "Windows", share: 88.07 },
+        { os: "macOS", share: 9.44 },
+        { os: "Linux", share: 1.87 },
+      ],
+      series: [
         {
-            type: 'column',
-            xKey: 'os',
-            yKey: 'share',
+          type: "column",
+          xKey: "os",
+          yKey: "share",
         },
-    ],
-    axes: [
+      ],
+      axes: [
         {
-            type: 'category',
-            position: 'bottom',
-            title: {
-                text: 'Desktop Operating Systems',
-                enabled: false,
-            },
+          type: "category",
+          position: "bottom",
+          title: {
+            text: "Desktop Operating Systems",
+            enabled: false,
+          },
         },
         {
-            type: 'number',
-            position: 'left',
-            title: {
-                text: 'Market Share (%)',
-                enabled: false,
+          type: "number",
+          position: "left",
+          title: {
+            text: "Market Share (%)",
+            enabled: false,
+          },
+          label: {
+            formatter: (params) => {
+              return params.value + "%";
             },
-            label: {
-                formatter: (params) => {
-                    return params.value + '%';
-                },
-            },
+          },
         },
-    ],
-    legend: {
+      ],
+      legend: {
         enabled: false,
-    },
-}
-    },
-    mounted() {
-        
-    },
-    methods: {
-        
-    }
-}
-
-
+      },
+    };
+  },
+  mounted() {},
+  methods: {},
+};
 
 createApp(ChartExample).mount("#app");

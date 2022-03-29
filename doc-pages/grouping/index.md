@@ -4,10 +4,10 @@ enterprise: true
 ---
 
 Row Grouping allows rows to be grouped by columns with the grid performing a 'group by' operation on the rows supplied
-to the grid. This section introduces Row Grouping and provides links to subsections that cover the various ways Row 
+to the grid. This section introduces Row Grouping and provides links to subsections that cover the various ways Row
 Grouping can be configured and customised.
 
-The grid can be configured to initially display rows in a grouped state or rows can be grouped programmatically through 
+The grid can be configured to initially display rows in a grouped state or rows can be grouped programmatically through
 the grid API's. Users can also manually group rows through the UI as shown below:
 
 <image-caption src="grouping/resources/row-grouping.gif" maxWidth="90%" constrained="true" centered="true" alt="Row Grouping" ></image-caption>
@@ -43,14 +43,14 @@ The example below demonstrates the default row grouping behaviour. Note the foll
 
 ## Row Grouping Customisations
 
-The previous example demonstrated the [Default Row Grouping](../grouping/#example-default-row-grouping) behavior, 
+The previous example demonstrated the [Default Row Grouping](../grouping/#example-default-row-grouping) behavior,
 however extensive Row Grouping customisations are also possible as summarised below:
 
 - **[Display Types](../grouping-display-types/)** - compares the different ways row groups can be displayed in the grid.
-    - ***[Single Group Column](../grouping-single-group-column/)*** - a single group column is automatically added by the grid for all row groups.
-    - ***[Multiple Group Columns](../grouping-multiple-group-columns/)*** - group columns are automatically added by the grid for each row group.
-    - ***[Group Rows](../grouping-group-rows/)*** - group rows are automatically added by the grid containing the row groups instead of group columns.
-    - ***[Custom Group Columns](../grouping-custom-group-columns/)*** - customise how row groups are displayed without using the built-in display types.
+  - **_[Single Group Column](../grouping-single-group-column/)_** - a single group column is automatically added by the grid for all row groups.
+  - **_[Multiple Group Columns](../grouping-multiple-group-columns/)_** - group columns are automatically added by the grid for each row group.
+  - **_[Group Rows](../grouping-group-rows/)_** - group rows are automatically added by the grid containing the row groups instead of group columns.
+  - **_[Custom Group Columns](../grouping-custom-group-columns/)_** - customise how row groups are displayed without using the built-in display types.
 - **[Row Group Panel](../grouping-group-panel/)** - add a panel above the grid to allow users control which columns the rows are grouped by.
 - **[Group Order](../grouping-group-order/)** - control how row groups are ordered.
 - **[Sorting Groups](../grouping-sorting/)** - configure and customise how row groups are sorted.

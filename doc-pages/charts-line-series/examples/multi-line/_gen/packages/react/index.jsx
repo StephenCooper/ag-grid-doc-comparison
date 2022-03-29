@@ -1,77 +1,62 @@
-'use strict';
+"use strict";
 
-import React, { Component } from 'react';
-import { cloneDeep } from 'lodash';
-import { render } from 'react-dom';
-import * as agCharts from 'ag-charts-community';
-import { AgChartsReact } from 'ag-charts-react';
+import React, { Component } from "react";
+import { cloneDeep } from "lodash";
+import { render } from "react-dom";
+import * as agCharts from "ag-charts-community";
+import { AgChartsReact } from "ag-charts-react";
 
 class ChartExample extends Component {
-    constructor(props) {
-        super(props);
+  constructor(props) {
+    super(props);
 
-        this.state = {
-            options: {
-    
-    autoSize: true,
-    title: {
-        text: 'Fuel Spending (2019)',
-    },
-    data: [
-        {
-            quarter: 'Q1',
+    this.state = {
+      options: {
+        autoSize: true,
+        title: {
+          text: "Fuel Spending (2019)",
+        },
+        data: [
+          {
+            quarter: "Q1",
             petrol: 200,
             diesel: 100,
-        },
-        {
-            quarter: 'Q2',
+          },
+          {
+            quarter: "Q2",
             petrol: 300,
             diesel: 130,
-        },
-        {
-            quarter: 'Q3',
+          },
+          {
+            quarter: "Q3",
             petrol: 350,
             diesel: 160,
-        },
-        {
-            quarter: 'Q4',
+          },
+          {
+            quarter: "Q4",
             petrol: 400,
             diesel: 200,
-        },
-    ],
-    series: [
-        {
-            xKey: 'quarter',
-            yKey: 'petrol',
-        },
-        {
-            xKey: 'quarter',
-            yKey: 'diesel',
-        },
-    ],
-}
-        };
+          },
+        ],
+        series: [
+          {
+            xKey: "quarter",
+            yKey: "petrol",
+          },
+          {
+            xKey: "quarter",
+            yKey: "diesel",
+          },
+        ],
+      },
+    };
+  }
 
-        
-    }
+  componentDidMount() {}
 
-    componentDidMount() {
-        
-    }
-
-    
-
-    render() {
-        return <AgChartsReact
-    options={this.state.options}
-/>
-;
-    }
+  render() {
+    return <AgChartsReact options={this.state.options} />;
+  }
 }
 
-
-
-render(
-    <ChartExample />,
-    document.querySelector('#root')
-)
+render(<ChartExample />, document.querySelector("#root"));

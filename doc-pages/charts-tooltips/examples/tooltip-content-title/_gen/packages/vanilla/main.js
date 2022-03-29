@@ -1,9 +1,8 @@
-
 function renderer(params) {
   return {
     title: params.xValue,
     content: params.yValue.toFixed(0),
-  }
+  };
 }
 
 const options = {
@@ -43,6 +42,6 @@ const options = {
       stacked: true,
     },
   ],
-}
+};
 
-var chart = agCharts.AgChart.create(options)
+var chart = agCharts.AgChart.create(options);

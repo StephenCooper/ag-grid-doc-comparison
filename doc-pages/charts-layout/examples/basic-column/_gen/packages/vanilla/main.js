@@ -1,4 +1,3 @@
-
 var data = [
   {
     beverage: "Coffee",
@@ -21,7 +20,7 @@ var data = [
     Q3: 190,
     Q4: 200,
   },
-]
+];
 
 const options = {
   data: data,
@@ -47,6 +46,6 @@ const options = {
   legend: {
     spacing: 40,
   },
-}
+};
 
-agCharts.AgChart.create(options)
+agCharts.AgChart.create(options);

@@ -1,88 +1,82 @@
+"use strict";
 
-'use strict';
-
-import React, { Component } from 'react';
-import { render } from 'react-dom';
-import { AgGridReact } from 'ag-grid-react';
-import 'ag-grid-community/dist/styles/ag-grid.css';
-import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import React, { Component } from "react";
+import { render } from "react-dom";
+import { AgGridReact } from "ag-grid-react";
+import "ag-grid-community/dist/styles/ag-grid.css";
+import "ag-grid-community/dist/styles/ag-theme-alpine.css";
 
 class GridExample extends Component {
-    constructor(props) {
-        super(props);
+  constructor(props) {
+    super(props);
 
-        this.state = {
-            columnDefs: [
-    { field: 'athlete', minWidth: 150 },
-    { field: 'age', maxWidth: 90 },
-    { field: 'country', minWidth: 150 },
-    { field: 'year', maxWidth: 90 },
-    { field: 'date', minWidth: 150 },
-    { field: 'sport', minWidth: 150 },
-    { field: 'gold' },
-    { field: 'silver' },
-    { field: 'bronze' },
-    { field: 'total' },
-],
-    defaultColDef: {
-    flex: 1,
-    minWidth: 100,
-},
-    rowSelection: 'multiple',
-    rowData: null
-        };
+    this.state = {
+      columnDefs: [
+        { field: "athlete", minWidth: 150 },
+        { field: "age", maxWidth: 90 },
+        { field: "country", minWidth: 150 },
+        { field: "year", maxWidth: 90 },
+        { field: "date", minWidth: 150 },
+        { field: "sport", minWidth: 150 },
+        { field: "gold" },
+        { field: "silver" },
+        { field: "bronze" },
+        { field: "total" },
+      ],
+      defaultColDef: {
+        flex: 1,
+        minWidth: 100,
+      },
+      rowSelection: "multiple",
+      rowData: null,
+    };
+  }
 
-        
-    }
+  onGridReady = (params) => {
+    this.gridApi = params.api;
+    this.gridColumnApi = params.columnApi;
 
-    onGridReady = params => {
-        this.gridApi = params.api;
-        this.gridColumnApi = params.columnApi;
-        
-        const updateData = (data) => params.api.setRowData(data);
-        
-        fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
-            .then(resp => resp.json())
-            .then(data => updateData(data));
-    }
+    const updateData = (data) => params.api.setRowData(data);
 
-selectAllAmerican = () => {
+    fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      .then((resp) => resp.json())
+      .then((data) => updateData(data));
+  };
+
+  selectAllAmerican = () => {
     this.gridApi.forEachNode(function (node) {
-        node.setSelected(node.data.country === 'United States');
+      node.setSelected(node.data.country === "United States");
     });
-}
+  };
 
-    render() {
-        return (
-            <div style={{ width: '100%', height: '100%' }}>
-                <div className="example-wrapper">
-    <div style={{"marginBottom":"5px"}}>
-        <button onClick={() => this.selectAllAmerican()}>Select All American</button>
-    </div>
-    <div
-                
-                style={{
-                    height: '100%',
-                    width: '100%'}}
-                    className="ag-theme-alpine">
+  render() {
+    return (
+      <div style={{ width: "100%", height: "100%" }}>
+        <div className="example-wrapper">
+          <div style={{ marginBottom: "5px" }}>
+            <button onClick={() => this.selectAllAmerican()}>
+              Select All American
+            </button>
+          </div>
+          <div
+            style={{
+              height: "100%",
+              width: "100%",
+            }}
+            className="ag-theme-alpine"
+          >
             <AgGridReact
-                columnDefs={this.state.columnDefs}
-defaultColDef={this.state.defaultColDef}
-rowSelection={this.state.rowSelection}
-rowData={this.state.rowData}
-onGridReady={this.onGridReady}
+              columnDefs={this.state.columnDefs}
+              defaultColDef={this.state.defaultColDef}
+              rowSelection={this.state.rowSelection}
+              rowData={this.state.rowData}
+              onGridReady={this.onGridReady}
             />
-            </div>
-</div>
-
-            </div>
-        );
-    }
+          </div>
+        </div>
+      </div>
+    );
+  }
 }
 
-
-
-render(
-    <GridExample></GridExample>,
-    document.querySelector('#root')
-)
+render(<GridExample></GridExample>, document.querySelector("#root"));

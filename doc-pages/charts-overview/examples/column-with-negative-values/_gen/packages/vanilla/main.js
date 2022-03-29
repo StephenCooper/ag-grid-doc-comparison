@@ -1,4 +1,3 @@
-
 const options = {
   container: document.getElementById("myChart"),
   autoSize: true,
@@ -25,8 +24,7 @@ const options = {
     fontSize: 18,
   },
   subtitle: {
-    text:
-      "Source: Ministry of Justice, HM Prison Service, and Her Majesty’s Prison and Probation Service",
+    text: "Source: Ministry of Justice, HM Prison Service, and Her Majesty’s Prison and Probation Service",
   },
   series: [
     {
@@ -52,6 +50,6 @@ const options = {
       position: "left",
     },
   ],
-}
+};
 
-var chart = agCharts.AgChart.create(options)
+var chart = agCharts.AgChart.create(options);

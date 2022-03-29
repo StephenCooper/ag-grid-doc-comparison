@@ -1,9 +1,9 @@
 html {
-    position: fixed;
-    height: 100%;
-    width: 100%;
-  }
-  
+  position: fixed;
+  height: 100%;
+  width: 100%;
+}
+
 body {
   height: 100%;
   width: 100%;
@@ -17,10 +17,10 @@ body {
 }
 .custom-date-filter:after {
   position: absolute;
-  content: '\f073';
+  content: "\f073";
   display: block;
   font-weight: 400;
-  font-family: 'Font Awesome 5 Free';
+  font-family: "Font Awesome 5 Free";
   right: 5px;
   pointer-events: none;
   color: rgba(0, 0, 0, 0.54);

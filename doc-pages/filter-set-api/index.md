@@ -30,12 +30,10 @@ The filter model contains an array of string values where each item in the array
 The `ISetFilter` interface defines the public API for the Set Filter.
 
 <interface-documentation interfaceName='ISetFilter' exclude='["getModelFromUi", "applyModel", "doesFilterPass", "onNewRowsLoaded", "onAnyFilterChanged", "getModelAsString"]' overrideSrc='filter-set-api/resources/iSetFilter.json'></interface-documentation>
- 
+
 It is important to note that when updating the Set Filter through the API, it is up to the developer to call `filterInstance.applyModel()` to apply the changes that have been made to the model and then `gridOptions.api.onFilterChanged()` at the end of the interaction with the filter.
 
-
 If no call is made to `filterInstance.applyModel()` then the filter UI will show any changes, but they won't be reflected in the filter model. This will appear as if the user never hit the Apply Button (regardless of whether the Apply Button is active or not).
-
 
 If no call to `gridOptions.api.onFilterChanged()` is provided the grid will still show the data relevant to the filter before it was updated through the API.
 
@@ -64,8 +62,8 @@ const gridOptions = {
 [[note]]
 | The `caseSensitive` option also affects [Mini-Filter](/filter-set-mini-filter/#enabling-case-sensitive-searches) searches and the values presented in the [Filter List](/filter-set-filter-list/#enabling-value-case-sensitivity).
 
-
 The following example demonstrates the difference in behaviour between `caseSensitive: false` (the default) and `caseSensitive: true`:
+
 - With `caseSensitive: false` (the default):
   - `setModel()` will perform **case-insensitive** matching against available values to decide what is enabled in the Filter List.
   - `setFilterValues()` will override the available values and force the case of the presented values in the Filter List to those provided.

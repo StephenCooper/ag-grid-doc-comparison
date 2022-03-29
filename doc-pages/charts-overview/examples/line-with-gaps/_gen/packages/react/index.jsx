@@ -1,266 +1,251 @@
-'use strict';
+"use strict";
 
-import React, { Component } from 'react';
-import { cloneDeep } from 'lodash';
-import { render } from 'react-dom';
-import * as agCharts from 'ag-charts-community';
-import { AgChartsReact } from 'ag-charts-react';
+import React, { Component } from "react";
+import { cloneDeep } from "lodash";
+import { render } from "react-dom";
+import * as agCharts from "ag-charts-community";
+import { AgChartsReact } from "ag-charts-react";
 
 class ChartExample extends Component {
-    constructor(props) {
-        super(props);
+  constructor(props) {
+    super(props);
 
-        this.state = {
-            options: {
-    
-    autoSize: true,
-    data: getData(),
-    theme: {
-        palette: {
+    this.state = {
+      options: {
+        autoSize: true,
+        data: getData(),
+        theme: {
+          palette: {
             fills: [
-                "#0b1791",
-                "#be2a2c",
-                "#f6d24a",
-                "#ce1126",
-                "#002d62",
-                "#1b4e9e",
-                "#f6d24a",
-                "#0073cf",
-                "#e88532",
-                "#000000",
-                "#006847",
-                "#c22b38",
-                "#042279",
-                "#4997d0",
-                "#2868c1",
-                "#459945",
+              "#0b1791",
+              "#be2a2c",
+              "#f6d24a",
+              "#ce1126",
+              "#002d62",
+              "#1b4e9e",
+              "#f6d24a",
+              "#0073cf",
+              "#e88532",
+              "#000000",
+              "#006847",
+              "#c22b38",
+              "#042279",
+              "#4997d0",
+              "#2868c1",
+              "#459945",
             ],
             strokes: [
-                "#0b1791",
-                "#f6d24a",
-                "#f6d24a",
-                "#ce1126",
-                "#ce1126",
-                "#fade4b",
-                "#be2a2c",
-                "#0073cf",
-                "#469c65",
-                "#fed100",
-                "#ce1126",
-                "#1e5190",
-                "#bf2b30",
-                "#4997d0",
-                "#2868c1",
-                "#459945",
+              "#0b1791",
+              "#f6d24a",
+              "#f6d24a",
+              "#ce1126",
+              "#ce1126",
+              "#fade4b",
+              "#be2a2c",
+              "#0073cf",
+              "#469c65",
+              "#fed100",
+              "#ce1126",
+              "#1e5190",
+              "#bf2b30",
+              "#4997d0",
+              "#2868c1",
+              "#459945",
             ],
-        },
-        overrides: {
+          },
+          overrides: {
             cartesian: {
-                series: {
-                    line: {
-                        highlightStyle: {
-                            series: {
-                                dimOpacity: 0.2,
-                                strokeWidth: 4,
-                            },
-                        },
-                        marker: { enabled: true },
+              series: {
+                line: {
+                  highlightStyle: {
+                    series: {
+                      dimOpacity: 0.2,
+                      strokeWidth: 4,
                     },
+                  },
+                  marker: { enabled: true },
                 },
+              },
             },
+          },
         },
-    },
-    title: {
-        text: "Imported Banana Prices (2019)",
-        fontSize: 18,
-    },
-    subtitle: {
-        text: "Source: Department for Environment, Food and Rural Affairs",
-    },
-    series: [
-        {
+        title: {
+          text: "Imported Banana Prices (2019)",
+          fontSize: 18,
+        },
+        subtitle: {
+          text: "Source: Department for Environment, Food and Rural Affairs",
+        },
+        series: [
+          {
             type: "line",
             xKey: "week",
             yKey: "belize",
             yName: "Belize",
-        },
-        {
+          },
+          {
             type: "line",
             xKey: "week",
             yKey: "cameroon",
             yName: "Cameroon",
             marker: {
-                strokeWidth: 2,
+              strokeWidth: 2,
             },
-        },
-        {
+          },
+          {
             type: "line",
             xKey: "week",
             yKey: "columbia",
             yName: "Columbia",
-        },
-        {
+          },
+          {
             type: "line",
             xKey: "week",
             yKey: "costaRica",
             yName: "Costa Rica",
-        },
-        {
+          },
+          {
             type: "line",
             xKey: "week",
             yKey: "dominicanRepublic",
             yName: "Dominican Republic",
             marker: {
-                strokeWidth: 2,
+              strokeWidth: 2,
             },
-        },
-        {
+          },
+          {
             type: "line",
             xKey: "week",
             yKey: "ecuador",
             yName: "Ecuador",
             marker: {
-                strokeWidth: 2,
+              strokeWidth: 2,
             },
-        },
-        {
+          },
+          {
             type: "line",
             xKey: "week",
             yKey: "ghana",
             yName: "Ghana",
             marker: {
-                strokeWidth: 2,
+              strokeWidth: 2,
             },
-        },
-        {
+          },
+          {
             type: "line",
             xKey: "week",
             yKey: "honduras",
             yName: "Honduras",
-        },
-        {
+          },
+          {
             type: "line",
             xKey: "week",
             yKey: "ivoryCoast",
             yName: "Ivory Coast",
             marker: {
-                strokeWidth: 2,
+              strokeWidth: 2,
             },
-        },
-        {
+          },
+          {
             type: "line",
             xKey: "week",
             yKey: "jamaica",
             yName: "Jamaica",
             marker: {
-                strokeWidth: 2,
+              strokeWidth: 2,
             },
-        },
-        {
+          },
+          {
             type: "line",
             xKey: "week",
             yKey: "mexico",
             yName: "Mexico",
             marker: {
-                strokeWidth: 2,
+              strokeWidth: 2,
             },
-        },
-        {
+          },
+          {
             type: "line",
             xKey: "week",
             yKey: "panama",
             yName: "Panama",
             marker: {
-                strokeWidth: 2,
+              strokeWidth: 2,
             },
-        },
-        {
+          },
+          {
             type: "line",
             xKey: "week",
             yKey: "windwardIsles",
             yName: "Windward Isles",
             marker: {
-                strokeWidth: 2,
+              strokeWidth: 2,
             },
-        },
-        {
+          },
+          {
             type: "line",
             xKey: "week",
             yKey: "guatemala",
             yName: "Guatemala",
-        },
-        {
+          },
+          {
             type: "line",
             xKey: "week",
             yKey: "nicaragua",
             yName: "Nicaragua",
             marker: {
-                fill: "#ffffff",
+              fill: "#ffffff",
             },
-        },
-        {
+          },
+          {
             type: "line",
             xKey: "week",
             yKey: "brazil",
             yName: "Brazil",
-        },
-    ],
-    axes: [
-        {
+          },
+        ],
+        axes: [
+          {
             type: "category",
             position: "bottom",
             title: {
-                enabled: true,
-                text: "Week",
+              enabled: true,
+              text: "Week",
             },
             label: {
-                formatter: params => (params.index % 3 ? "" : params.value),
+              formatter: (params) => (params.index % 3 ? "" : params.value),
             },
-        },
-        {
+          },
+          {
             type: "number",
             position: "left",
             title: {
-                enabled: true,
-                text: "£ per kg",
+              enabled: true,
+              text: "£ per kg",
             },
             nice: false,
             min: 0.2,
             max: 1,
-        },
-    ],
-    legend: {
-        position: "bottom",
-        item: {
+          },
+        ],
+        legend: {
+          position: "bottom",
+          item: {
             paddingY: 15,
+          },
         },
-    },
-    padding: {
-        bottom: 30,
-    },
-}
-        };
+        padding: {
+          bottom: 30,
+        },
+      },
+    };
+  }
 
-        
-    }
+  componentDidMount() {}
 
-    componentDidMount() {
-        
-    }
-
-    
-
-    render() {
-        return <AgChartsReact
-    options={this.state.options}
-/>
-;
-    }
+  render() {
+    return <AgChartsReact options={this.state.options} />;
+  }
 }
 
-
-
-render(
-    <ChartExample />,
-    document.querySelector('#root')
-)
+render(<ChartExample />, document.querySelector("#root"));

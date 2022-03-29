@@ -1,14 +1,11 @@
-
-import { createApp } from 'vue';
-import { AgGridVue } from 'ag-grid-vue3';
-import 'ag-grid-enterprise';
-import 'ag-grid-community/dist/styles/ag-grid.css';
-import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
-
-
+import { createApp } from "vue";
+import { AgGridVue } from "ag-grid-vue3";
+import "ag-grid-enterprise";
+import "ag-grid-community/dist/styles/ag-grid.css";
+import "ag-grid-community/dist/styles/ag-theme-alpine.css";
 
 const VueExample = {
-    template: `
+  template: `
         <div style="height: 100%">
             <div class="container">
                 <div class="columns">
@@ -55,264 +52,292 @@ const VueExample = {
             </div>
         </div>
     `,
-    components: {
-        'ag-grid-vue': AgGridVue,
-        
-    },
-    data: function() {
-        return {
-            columnDefs: [{headerName:"Top Level Column Group",
-children: [{headerName:"Group A",
-children: [{field:"athlete",
-minWidth:200},
-{field:"age",
-cellClass:"twoDecimalPlaces",
-cellClassRules:{"greenBackground":(params) =>  {
-    return params.value < 23;
-},"redFont":(params) =>  {
-    return params.value < 20;
-}}},
-{field:"country",
-minWidth:200,
-cellClassRules:{"redFont":(params) =>  {
-    return params.value === 'United States';
-}}},
-{headerName:"Group",
-valueGetter:"data.country.charAt(0)",
-cellClassRules:{"boldBorders":(params) =>  {
-    return params.value === 'U';
-}},
-cellClass:["redFont","greenBackground"]},
-{field:"year",
-cellClassRules:{"notInExcel":(params) =>  {
-    return true;
-}}}]},
-{headerName:"Group B",
-children: [{field:"date",
-minWidth:150,
-cellClass:"dateFormat",
-valueGetter:(params) =>  {
-    var val = params.data.date;
-    if (val.indexOf('/') < 0) {
-        return val;
-    }
-    var split = val.split('/');
-    return split[2] + '-' + split[1] + '-' + split[0];
-}},
-{field:"sport",
-minWidth:150},
-{field:"gold",
-cellClassRules:{"boldBorders":(params) =>  {
-    return params.value > 2;
-}}},
-{field:"silver",
-cellClass:"textFormat"},
-{field:"bronze"},
-{field:"total"}]}]}],
-            gridApi: null,
-            columnApi: null,
-            defaultColDef: {
-    cellClassRules: {
-        darkGreyBackground: function (params) {
-            return (params.node.rowIndex || 0) % 2 == 0;
+  components: {
+    "ag-grid-vue": AgGridVue,
+  },
+  data: function () {
+    return {
+      columnDefs: [
+        {
+          headerName: "Top Level Column Group",
+          children: [
+            {
+              headerName: "Group A",
+              children: [
+                { field: "athlete", minWidth: 200 },
+                {
+                  field: "age",
+                  cellClass: "twoDecimalPlaces",
+                  cellClassRules: {
+                    greenBackground: (params) => {
+                      return params.value < 23;
+                    },
+                    redFont: (params) => {
+                      return params.value < 20;
+                    },
+                  },
+                },
+                {
+                  field: "country",
+                  minWidth: 200,
+                  cellClassRules: {
+                    redFont: (params) => {
+                      return params.value === "United States";
+                    },
+                  },
+                },
+                {
+                  headerName: "Group",
+                  valueGetter: "data.country.charAt(0)",
+                  cellClassRules: {
+                    boldBorders: (params) => {
+                      return params.value === "U";
+                    },
+                  },
+                  cellClass: ["redFont", "greenBackground"],
+                },
+                {
+                  field: "year",
+                  cellClassRules: {
+                    notInExcel: (params) => {
+                      return true;
+                    },
+                  },
+                },
+              ],
+            },
+            {
+              headerName: "Group B",
+              children: [
+                {
+                  field: "date",
+                  minWidth: 150,
+                  cellClass: "dateFormat",
+                  valueGetter: (params) => {
+                    var val = params.data.date;
+                    if (val.indexOf("/") < 0) {
+                      return val;
+                    }
+                    var split = val.split("/");
+                    return split[2] + "-" + split[1] + "-" + split[0];
+                  },
+                },
+                { field: "sport", minWidth: 150 },
+                {
+                  field: "gold",
+                  cellClassRules: {
+                    boldBorders: (params) => {
+                      return params.value > 2;
+                    },
+                  },
+                },
+                { field: "silver", cellClass: "textFormat" },
+                { field: "bronze" },
+                { field: "total" },
+              ],
+            },
+          ],
         },
-    },
-    sortable: true,
-    filter: true,
-    resizable: true,
-    minWidth: 100,
-    flex: 1,
-},
-            pinnedTopRowData: null,
-pinnedBottomRowData: null,
-excelStyles: null,
-rowData: null
-        }
-    },
-    created() {
-        this.pinnedTopRowData = [
-    {
-        athlete: 'Floating <Top> Athlete',
+      ],
+      gridApi: null,
+      columnApi: null,
+      defaultColDef: {
+        cellClassRules: {
+          darkGreyBackground: function (params) {
+            return (params.node.rowIndex || 0) % 2 == 0;
+          },
+        },
+        sortable: true,
+        filter: true,
+        resizable: true,
+        minWidth: 100,
+        flex: 1,
+      },
+      pinnedTopRowData: null,
+      pinnedBottomRowData: null,
+      excelStyles: null,
+      rowData: null,
+    };
+  },
+  created() {
+    this.pinnedTopRowData = [
+      {
+        athlete: "Floating <Top> Athlete",
         age: 999,
-        country: 'Floating <Top> Country',
+        country: "Floating <Top> Country",
         year: 2020,
-        date: '2020-08-01',
-        sport: 'Track & Field',
+        date: "2020-08-01",
+        sport: "Track & Field",
         gold: 22,
-        silver: '003',
+        silver: "003",
         bronze: 44,
         total: 55,
-    },
-];
-this.pinnedBottomRowData = [
-    {
-        athlete: 'Floating <Bottom> Athlete',
+      },
+    ];
+    this.pinnedBottomRowData = [
+      {
+        athlete: "Floating <Bottom> Athlete",
         age: 888,
-        country: 'Floating <Bottom> Country',
+        country: "Floating <Bottom> Country",
         year: 2030,
-        date: '2030-08-01',
-        sport: 'Track & Field',
+        date: "2030-08-01",
+        sport: "Track & Field",
         gold: 222,
-        silver: '005',
+        silver: "005",
         bronze: 244,
         total: 255,
-    },
-];
-this.excelStyles = [
-    {
-        id: 'cell',
+      },
+    ];
+    this.excelStyles = [
+      {
+        id: "cell",
         alignment: {
-            vertical: 'Center',
+          vertical: "Center",
         },
-    },
-    {
-        id: 'header',
+      },
+      {
+        id: "header",
         alignment: {
-            vertical: 'Center',
+          vertical: "Center",
         },
         interior: {
-            color: '#f8f8f8',
-            pattern: 'Solid',
-            patternColor: undefined
+          color: "#f8f8f8",
+          pattern: "Solid",
+          patternColor: undefined,
         },
         borders: {
-            borderBottom: {
-                color: '#babfc7',
-                lineStyle: 'Continuous',
-                weight: 1,
-            },
+          borderBottom: {
+            color: "#babfc7",
+            lineStyle: "Continuous",
+            weight: 1,
+          },
         },
-    },
-    {
-        id: 'headerGroup',
+      },
+      {
+        id: "headerGroup",
         font: {
-            bold: true,
+          bold: true,
         },
-    },
-    {
-        id: 'greenBackground',
+      },
+      {
+        id: "greenBackground",
         interior: {
-            color: '#b5e6b5',
-            pattern: 'Solid',
+          color: "#b5e6b5",
+          pattern: "Solid",
         },
-    },
-    {
-        id: 'redFont',
+      },
+      {
+        id: "redFont",
         font: {
-            fontName: 'Calibri Light',
-            underline: 'Single',
-            italic: true,
-            color: '#ff0000',
+          fontName: "Calibri Light",
+          underline: "Single",
+          italic: true,
+          color: "#ff0000",
         },
-    },
-    {
-        id: 'darkGreyBackground',
+      },
+      {
+        id: "darkGreyBackground",
         interior: {
-            color: '#888888',
-            pattern: 'Solid',
+          color: "#888888",
+          pattern: "Solid",
         },
         font: {
-            fontName: 'Calibri Light',
-            color: '#ffffff',
+          fontName: "Calibri Light",
+          color: "#ffffff",
         },
-    },
-    {
-        id: 'boldBorders',
+      },
+      {
+        id: "boldBorders",
         borders: {
-            borderBottom: {
-                color: '#000000',
-                lineStyle: 'Continuous',
-                weight: 3,
-            },
-            borderLeft: {
-                color: '#000000',
-                lineStyle: 'Continuous',
-                weight: 3,
-            },
-            borderRight: {
-                color: '#000000',
-                lineStyle: 'Continuous',
-                weight: 3,
-            },
-            borderTop: {
-                color: '#000000',
-                lineStyle: 'Continuous',
-                weight: 3,
-            },
+          borderBottom: {
+            color: "#000000",
+            lineStyle: "Continuous",
+            weight: 3,
+          },
+          borderLeft: {
+            color: "#000000",
+            lineStyle: "Continuous",
+            weight: 3,
+          },
+          borderRight: {
+            color: "#000000",
+            lineStyle: "Continuous",
+            weight: 3,
+          },
+          borderTop: {
+            color: "#000000",
+            lineStyle: "Continuous",
+            weight: 3,
+          },
         },
-    },
-    {
-        id: 'dateFormat',
-        dataType: 'DateTime',
+      },
+      {
+        id: "dateFormat",
+        dataType: "DateTime",
         numberFormat: {
-            format: 'mm/dd/yyyy;@',
+          format: "mm/dd/yyyy;@",
         },
-    },
-    {
-        id: 'twoDecimalPlaces',
+      },
+      {
+        id: "twoDecimalPlaces",
         numberFormat: {
-            format: '#,##0.00',
+          format: "#,##0.00",
         },
+      },
+      {
+        id: "textFormat",
+        dataType: "String",
+      },
+    ];
+  },
+  methods: {
+    onBtExport() {
+      var params = {
+        fontSize: getBooleanValue("#fontSize")
+          ? getNumericValue("#fontSizeValue")
+          : undefined,
+        rowHeight: getBooleanValue("#rowHeight")
+          ? getNumericValue("#rowHeightValue")
+          : undefined,
+        headerRowHeight: getBooleanValue("#headerRowHeight")
+          ? getNumericValue("#headerRowHeightValue")
+          : undefined,
+      };
+      this.gridApi.exportDataAsExcel(params);
     },
-    {
-        id: 'textFormat',
-        dataType: 'String',
-    },
-]
-    },
-    methods: {
-        onBtExport() {
-    var params = {
-        fontSize: getBooleanValue('#fontSize')
-            ? getNumericValue('#fontSizeValue')
-            : undefined,
-        rowHeight: getBooleanValue('#rowHeight')
-            ? getNumericValue('#rowHeightValue')
-            : undefined,
-        headerRowHeight: getBooleanValue('#headerRowHeight')
-            ? getNumericValue('#headerRowHeightValue')
-            : undefined,
-    };
-    this.gridApi.exportDataAsExcel(params);
-},
-onGridReady(params) {
-        this.gridApi = params.api;
-        this.gridColumnApi = params.columnApi;
-        
+    onGridReady(params) {
+      this.gridApi = params.api;
+      this.gridColumnApi = params.columnApi;
 
-        
-    (document.getElementById('fontSize')).checked = true;
-    (document.getElementById('rowHeight')).checked = true;
-    (document.getElementById('headerRowHeight')).checked = true;
+      document.getElementById("fontSize").checked = true;
+      document.getElementById("rowHeight").checked = true;
+      document.getElementById("headerRowHeight").checked = true;
 
-        
-            const updateData = (data) => params.api.setRowData(data);
-            
-            fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
-                .then(resp => resp.json())
-                .then(data => updateData(data));
+      const updateData = (data) => params.api.setRowData(data);
+
+      fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+        .then((resp) => resp.json())
+        .then((data) => updateData(data));
     },
-    }
-}
+  },
+};
 
 window.getBooleanValue = function getBooleanValue(cssSelector) {
-    return (document.querySelector(cssSelector)).checked === true;
-}
+  return document.querySelector(cssSelector).checked === true;
+};
 
 window.getTextValue = function getTextValue(cssSelector) {
-    return (document.querySelector(cssSelector)).value;
-}
+  return document.querySelector(cssSelector).value;
+};
 
 window.getNumericValue = function getNumericValue(cssSelector) {
-    var value = parseFloat(getTextValue(cssSelector));
-    if (isNaN(value)) {
-        var message = 'Invalid number entered in ' + cssSelector + ' field';
-        alert(message);
-        throw new Error(message);
-    }
-    return value;
-}
+  var value = parseFloat(getTextValue(cssSelector));
+  if (isNaN(value)) {
+    var message = "Invalid number entered in " + cssSelector + " field";
+    alert(message);
+    throw new Error(message);
+  }
+  return value;
+};
 
-createApp(VueExample)
-    .mount("#app")
-
+createApp(VueExample).mount("#app");

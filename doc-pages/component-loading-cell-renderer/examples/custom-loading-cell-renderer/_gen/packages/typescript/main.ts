@@ -1,20 +1,28 @@
-import 'ag-grid-enterprise';
-import 'ag-grid-community/dist/styles/ag-grid.css';
+import "ag-grid-enterprise";
+import "ag-grid-community/dist/styles/ag-grid.css";
 import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import { ColDef, ColGroupDef, Grid, GridOptions, IServerSideDatasource, IServerSideGetRowsRequest, ServerSideStoreType } from 'ag-grid-community';
-import { CustomLoadingCellRenderer } from './customLoadingCellRenderer';
+import {
+  ColDef,
+  ColGroupDef,
+  Grid,
+  GridOptions,
+  IServerSideDatasource,
+  IServerSideGetRowsRequest,
+  ServerSideStoreType,
+} from "ag-grid-community";
+import { CustomLoadingCellRenderer } from "./customLoadingCellRenderer";
 
 const columnDefs: ColDef[] = [
-  { field: 'id' },
-  { field: 'athlete', width: 150 },
-  { field: 'age' },
-  { field: 'country' },
-  { field: 'year' },
-  { field: 'sport' },
-  { field: 'gold' },
-  { field: 'silver' },
-  { field: 'bronze' },
-]
+  { field: "id" },
+  { field: "athlete", width: 150 },
+  { field: "age" },
+  { field: "country" },
+  { field: "year" },
+  { field: "sport" },
+  { field: "gold" },
+  { field: "silver" },
+  { field: "bronze" },
+];
 
 const gridOptions: GridOptions = {
   defaultColDef: {
@@ -27,15 +35,15 @@ const gridOptions: GridOptions = {
   },
   loadingCellRenderer: CustomLoadingCellRenderer,
   loadingCellRendererParams: {
-    loadingMessage: 'One moment please...',
+    loadingMessage: "One moment please...",
   },
 
   columnDefs: columnDefs,
 
   // use the server-side row model
-  rowModelType: 'serverSide',
+  rowModelType: "serverSide",
 
-  serverSideStoreType: 'partial',
+  serverSideStoreType: "partial",
 
   // fetch 100 rows per at a time
   cacheBlockSize: 100,
@@ -45,64 +53,67 @@ const gridOptions: GridOptions = {
 
   animateRows: true,
   // debug: true,
-}
+};
 
 // setup the grid after the page has finished loading
-  const gridDiv = document.querySelector<HTMLElement>('#myGrid')!
-  new Grid(gridDiv, gridOptions)
+const gridDiv = document.querySelector<HTMLElement>("#myGrid")!;
+new Grid(gridDiv, gridOptions);
 
-  fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
-    .then(response => response.json())
-    .then(data => {
-      // add id to data
-      let idSequence = 0
-      data.forEach((item: any) => {
-        item.id = idSequence++
-      })
+fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+  .then((response) => response.json())
+  .then((data) => {
+    // add id to data
+    let idSequence = 0;
+    data.forEach((item: any) => {
+      item.id = idSequence++;
+    });
 
-      const server: any = getFakeServer(data)
-      const datasource: IServerSideDatasource = getServerSideDatasource(server)
-      gridOptions.api!.setServerSideDatasource(datasource)
-    })
+    const server: any = getFakeServer(data);
+    const datasource: IServerSideDatasource = getServerSideDatasource(server);
+    gridOptions.api!.setServerSideDatasource(datasource);
+  });
 
 function getServerSideDatasource(server: any): IServerSideDatasource {
   return {
-    getRows: params => {
+    getRows: (params) => {
       // adding delay to simulate real server call
       setTimeout(() => {
-        const response = server.getResponse(params.request)
+        const response = server.getResponse(params.request);
 
         if (response.success) {
           // call the success callback
-          params.success({ rowData: response.rows, rowCount: response.lastRow })
+          params.success({
+            rowData: response.rows,
+            rowCount: response.lastRow,
+          });
         } else {
           // inform the grid request failed
-          params.fail()
+          params.fail();
         }
-      }, 2000)
+      }, 2000);
     },
-  }
+  };
 }
 
 function getFakeServer(allData: any[]): any {
   return {
     getResponse: (request: IServerSideGetRowsRequest) => {
       console.log(
-        'asking for rows: ' + request.startRow + ' to ' + request.endRow
-      )
+        "asking for rows: " + request.startRow + " to " + request.endRow
+      );
 
       // take a slice of the total rows
-      const rowsThisPage = allData.slice(request.startRow, request.endRow)
+      const rowsThisPage = allData.slice(request.startRow, request.endRow);
 
       // if on or after the last page, work out the last row.
-      const lastRow = allData.length <= (request.endRow || 0) ? allData.length : -1
+      const lastRow =
+        allData.length <= (request.endRow || 0) ? allData.length : -1;
 
       return {
         success: true,
         rows: rowsThisPage,
         lastRow: lastRow,
-      }
+      };
     },
-  }
+  };
 }
- 

@@ -1,38 +1,31 @@
+class CountStatusBarComponent {
+  init(params) {
+    this.params = params;
 
-class CountStatusBarComponent  {
-    
-    
-    
+    this.eGui = document.createElement("div");
+    this.eGui.className = "ag-status-name-value";
 
-    init(params) {
-        this.params = params;
+    var label = document.createElement("span");
+    label.innerText = "Row Count Component: ";
+    this.eGui.appendChild(label);
 
-        this.eGui = document.createElement('div');
-        this.eGui.className = 'ag-status-name-value';
+    this.eCount = document.createElement("span");
+    this.eCount.className = "ag-status-name-value-value";
 
-        var label = document.createElement('span');
-        label.innerText = 'Row Count Component: ';
-        this.eGui.appendChild(label);
+    this.eGui.appendChild(this.eCount);
 
-        this.eCount = document.createElement('span');
-        this.eCount.className = 'ag-status-name-value-value';
+    params.api.addEventListener("gridReady", this.onGridReady.bind(this));
+  }
 
-        this.eGui.appendChild(this.eCount);
+  getGui() {
+    return this.eGui;
+  }
 
-        params.api.addEventListener('gridReady', this.onGridReady.bind(this));
-    }
+  destroy() {
+    this.params.api.removeEventListener("gridReady", this.onGridReady);
+  }
 
-    getGui() {
-        return this.eGui;
-    }
-
-    destroy() {
-        this.params.api.removeEventListener("gridReady", this.onGridReady);
-    }
-
-    onGridReady() {
-        this.eCount.innerText = this.params.api.getModel().getRowCount() + ''
-    }
+  onGridReady() {
+    this.eCount.innerText = this.params.api.getModel().getRowCount() + "";
+  }
 }
-
-

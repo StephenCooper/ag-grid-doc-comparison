@@ -24,7 +24,6 @@ To enable Master / Detail, you should set the following grid options:
 
 These grid options are illustrated below:
 
-
 <snippet spaceBetweenProperties="true">
 |const gridOptions = {
 |    // master grid columns
@@ -126,33 +125,33 @@ The following snippets compares these approaches:
 Option 1 - fixed detail row height, sets height for all details rows
 <snippet>
 const gridOptions = {
-    detailRowHeight: 500,
+detailRowHeight: 500,
 }
 </snippet>
 
 Option 2 - dynamic detail row height, dynamically sets height for all rows
 <snippet>
 |const gridOptions = {
-|    getRowHeight: params => {
-|        const isDetailRow = params.node.detail;
+| getRowHeight: params => {
+| const isDetailRow = params.node.detail;
 |
-|        // not that this callback gets called for all rows, not just the detail row
-|        if (isDetailRow) {
-|            // dynamically calculate detail row height
-|            return params.data.children.length * 50;
-|        }
-|        // for all non-detail rows, return 25, the default row height
-|        return 25;
-|    }
+| // not that this callback gets called for all rows, not just the detail row
+| if (isDetailRow) {
+| // dynamically calculate detail row height
+| return params.data.children.length \* 50;
+| }
+| // for all non-detail rows, return 25, the default row height
+| return 25;
+| }
 |}
 </snippet>
 
 Option 3 - use autoHeight
 <snippet>
 |const gridOptions = {
-|    detailCellRendererParams: {
-|        autoHeight: true,
-|    }
+| detailCellRendererParams: {
+| autoHeight: true,
+| }
 |}
 </snippet>
 
@@ -167,7 +166,6 @@ The following example explicitly sets detail row heights based on the number of 
 - **getRowHeight()** - is implemented to size detail rows according to the number of records.
 - **node.detail** - is used to identify 'detail' row nodes.
 
-
 <grid-example title='Dynamic Detail Row Height' name='dynamic-detail-row-height' type='generated' options='{ "enterprise": true, "exampleHeight": 590, "extras": ["alasql"], "modules": ["serverside", "clientside", "masterdetail", "menu", "columnpanel"] }'></grid-example>
 
 See [Master Detail Dynamic Height](/master-detail-height/#dynamic-height) for more details.
@@ -176,11 +174,9 @@ See [Master Detail Dynamic Height](/master-detail-height/#dynamic-height) for mo
 
 The following example gets the grid to auto-size all details sections to fit their rows. This is done by setting `masterGridOptions.detailRowAutoHeight = true`.
 
-
 <grid-example title='Auto Detail Row Height' name='auto-detail-row-height' type='generated' options='{ "enterprise": true, "exampleHeight": 590, "extras": ["alasql"], "modules": ["serverside", "clientside", "masterdetail", "menu", "columnpanel"] }'></grid-example>
 
 See [Master Detail Auto Height](/master-detail-height/#auto-height) for more details.
-
 
 ## Lazy Loading Detail Rows
 
@@ -191,4 +187,3 @@ However note that detail rows will be purged once the master row is closed, or i
 ## Next Up
 
 Continue to the next section to learn how to work with [Tree Data](/server-side-model-tree-data/).
-

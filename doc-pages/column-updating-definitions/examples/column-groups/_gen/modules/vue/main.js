@@ -1,18 +1,15 @@
-
-import Vue from 'vue';
-import { AgGridVue } from '@ag-grid-community/vue';
-import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import Vue from "vue";
+import { AgGridVue } from "@ag-grid-community/vue";
+import "@ag-grid-community/core/dist/styles/ag-grid.css";
 import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { ModuleRegistry } from '@ag-grid-community/core';
-import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import { ModuleRegistry } from "@ag-grid-community/core";
+import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
 
 // Register the required feature modules with the Grid
-ModuleRegistry.registerModules([ClientSideRowModelModule])
-
-
+ModuleRegistry.registerModules([ClientSideRowModelModule]);
 
 const VueExample = {
-    template: `
+  template: `
         <div style="height: 100%">
             <div class="test-container">
                 <div class="test-header">
@@ -30,136 +27,142 @@ const VueExample = {
             </div>
         </div>
     `,
-    components: {
-        'ag-grid-vue': AgGridVue,
-        
+  components: {
+    "ag-grid-vue": AgGridVue,
+  },
+  data: function () {
+    return {
+      columnDefs: [
+        {
+          headerName: "Group A",
+          groupId: "groupA",
+          children: [
+            { field: "athlete" },
+            { field: "age" },
+            { field: "country", columnGroupShow: "open" },
+          ],
+        },
+        {
+          headerName: "Group B",
+          children: [
+            { field: "sport" },
+            { field: "year" },
+            { field: "date", columnGroupShow: "open" },
+          ],
+        },
+        {
+          headerName: "Group C",
+          groupId: "groupC",
+          children: [
+            { field: "total" },
+            { field: "gold", columnGroupShow: "open" },
+            { field: "silver", columnGroupShow: "open" },
+            { field: "bronze", columnGroupShow: "open" },
+          ],
+        },
+      ],
+      gridApi: null,
+      columnApi: null,
+      defaultColDef: {
+        initialWidth: 100,
+        sortable: true,
+        resizable: true,
+      },
+      rowData: null,
+    };
+  },
+  created() {},
+  methods: {
+    onBtSetA() {
+      this.gridApi.setColumnDefs(createColSetA());
     },
-    data: function() {
-        return {
-            columnDefs: [{headerName:"Group A",
-groupId:"groupA",
-children: [{field:"athlete"},
-{field:"age"},
-{field:"country",
-columnGroupShow:"open"}]},{headerName:"Group B",
-children: [{field:"sport"},
-{field:"year"},
-{field:"date",
-columnGroupShow:"open"}]},{headerName:"Group C",
-groupId:"groupC",
-children: [{field:"total"},
-{field:"gold",
-columnGroupShow:"open"},
-{field:"silver",
-columnGroupShow:"open"},
-{field:"bronze",
-columnGroupShow:"open"}]}],
-            gridApi: null,
-            columnApi: null,
-            defaultColDef: {
-    initialWidth: 100,
-    sortable: true,
-    resizable: true,
-},
-            rowData: null
-        }
+    onBtSetB() {
+      this.gridApi.setColumnDefs(createColSetB());
     },
-    created() {
-        
-    },
-    methods: {
-        onBtSetA() {
-    this.gridApi.setColumnDefs(createColSetA());
-},
-onBtSetB() {
-    this.gridApi.setColumnDefs(createColSetB());
-},
-onGridReady(params) {
-        this.gridApi = params.api;
-        this.gridColumnApi = params.columnApi;
-        
+    onGridReady(params) {
+      this.gridApi = params.api;
+      this.gridColumnApi = params.columnApi;
 
-        
-            const updateData = (data) => {
-    this.rowData = data;
-};
-            
-            fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
-                .then(resp => resp.json())
-                .then(data => updateData(data));
+      const updateData = (data) => {
+        this.rowData = data;
+      };
+
+      fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+        .then((resp) => resp.json())
+        .then((data) => updateData(data));
     },
-    }
-}
+  },
+};
 
 window.createColSetA = function createColSetA() {
-    return [
-        {
-            headerName: 'Group A',
-            groupId: 'groupA',
-            children: [
-                { field: 'athlete' },
-                { field: 'age' },
-                { field: 'country', columnGroupShow: 'open' },
-            ],
-        },
-        {
-            headerName: 'Group B',
-            children: [
-                { field: 'sport' },
-                { field: 'year' },
-                { field: 'date', columnGroupShow: 'open' },
-            ],
-        },
-        {
-            headerName: 'Group C',
-            groupId: 'groupC',
-            children: [
-                { field: 'total' },
-                { field: 'gold', columnGroupShow: 'open' },
-                { field: 'silver', columnGroupShow: 'open' },
-                { field: 'bronze', columnGroupShow: 'open' },
-            ],
-        },
-    ];
-}
+  return [
+    {
+      headerName: "Group A",
+      groupId: "groupA",
+      children: [
+        { field: "athlete" },
+        { field: "age" },
+        { field: "country", columnGroupShow: "open" },
+      ],
+    },
+    {
+      headerName: "Group B",
+      children: [
+        { field: "sport" },
+        { field: "year" },
+        { field: "date", columnGroupShow: "open" },
+      ],
+    },
+    {
+      headerName: "Group C",
+      groupId: "groupC",
+      children: [
+        { field: "total" },
+        { field: "gold", columnGroupShow: "open" },
+        { field: "silver", columnGroupShow: "open" },
+        { field: "bronze", columnGroupShow: "open" },
+      ],
+    },
+  ];
+};
 
 window.createColSetB = function createColSetB() {
-    return [
-        {
-            headerName: 'GROUP A',
-            groupId: 'groupA',
-            children: [
-                { field: 'athlete' },
-                { field: 'age' },
-                { field: 'country', columnGroupShow: 'open' },
-            ],
-        },
-        {
-            headerName: 'Group B',
-            children: [
-                { field: 'sport' },
-                { field: 'year' },
-                { field: 'date', columnGroupShow: 'open' },
-            ],
-        },
-        {
-            headerName: 'Group C',
-            groupId: 'groupC',
-            children: [
-                { field: 'total' },
-                { field: 'gold', columnGroupShow: 'open' },
-                { field: 'silver', columnGroupShow: 'open' },
-                { field: 'bronze', columnGroupShow: 'open' },
-                { field: 'extraA' },
-                { field: 'extraB', columnGroupShow: 'open' },
-            ],
-        },
-    ];
-}
+  return [
+    {
+      headerName: "GROUP A",
+      groupId: "groupA",
+      children: [
+        { field: "athlete" },
+        { field: "age" },
+        { field: "country", columnGroupShow: "open" },
+      ],
+    },
+    {
+      headerName: "Group B",
+      children: [
+        { field: "sport" },
+        { field: "year" },
+        { field: "date", columnGroupShow: "open" },
+      ],
+    },
+    {
+      headerName: "Group C",
+      groupId: "groupC",
+      children: [
+        { field: "total" },
+        { field: "gold", columnGroupShow: "open" },
+        { field: "silver", columnGroupShow: "open" },
+        { field: "bronze", columnGroupShow: "open" },
+        { field: "extraA" },
+        { field: "extraB", columnGroupShow: "open" },
+      ],
+    },
+  ];
+};
 
 new Vue({
-    el: '#app',
-    components: {
-        'my-component': VueExample
-    }
+  el: "#app",
+  components: {
+    "my-component": VueExample,
+  },
 });

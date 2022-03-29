@@ -1,51 +1,56 @@
-import { Grid, ColDef, GridOptions, ValueParserParams } from '@ag-grid-community/core'
+import {
+  Grid,
+  ColDef,
+  GridOptions,
+  ValueParserParams,
+} from "@ag-grid-community/core";
 
 const columnDefs: ColDef[] = [
   {
-    headerName: 'Editable A',
-    field: 'a',
+    headerName: "Editable A",
+    field: "a",
     editable: true,
     valueParser: numberValueParser,
   },
   {
-    headerName: 'Editable B',
-    field: 'b',
+    headerName: "Editable B",
+    field: "b",
     editable: true,
     valueParser: numberValueParser,
   },
   {
-    headerName: 'Editable C',
-    field: 'c',
+    headerName: "Editable C",
+    field: "c",
     editable: true,
     valueParser: numberValueParser,
   },
   {
-    headerName: 'API D',
-    field: 'd',
+    headerName: "API D",
+    field: "d",
     minWidth: 140,
     valueParser: numberValueParser,
-    cellRenderer: 'agAnimateShowChangeCellRenderer',
+    cellRenderer: "agAnimateShowChangeCellRenderer",
   },
   {
-    headerName: 'API E',
-    field: 'e',
+    headerName: "API E",
+    field: "e",
     minWidth: 140,
     valueParser: numberValueParser,
-    cellRenderer: 'agAnimateShowChangeCellRenderer',
+    cellRenderer: "agAnimateShowChangeCellRenderer",
   },
   {
-    headerName: 'Total',
+    headerName: "Total",
     minWidth: 140,
-    valueGetter: 'data.a + data.b + data.c + data.d + data.e',
-    cellRenderer: 'agAnimateShowChangeCellRenderer',
+    valueGetter: "data.a + data.b + data.c + data.d + data.e",
+    cellRenderer: "agAnimateShowChangeCellRenderer",
   },
   {
-    headerName: 'Average',
+    headerName: "Average",
     minWidth: 140,
-    valueGetter: '(data.a + data.b + data.c + data.d + data.e) / 5',
-    cellRenderer: 'agAnimateSlideCellRenderer',
+    valueGetter: "(data.a + data.b + data.c + data.d + data.e) / 5",
+    cellRenderer: "agAnimateSlideCellRenderer",
   },
-]
+];
 
 const gridOptions: GridOptions = {
   columnDefs: columnDefs,
@@ -53,16 +58,16 @@ const gridOptions: GridOptions = {
     flex: 1,
     minWidth: 120,
     resizable: true,
-    cellClass: 'align-right',
+    cellClass: "align-right",
     valueFormatter: function (params) {
-      return formatNumber(params.value)
+      return formatNumber(params.value);
     },
   },
   rowData: createRowData(),
-}
+};
 
 function numberValueParser(params: ValueParserParams) {
-  return Number(params.newValue)
+  return Number(params.newValue);
 }
 
 function formatNumber(number: number) {
@@ -70,21 +75,21 @@ function formatNumber(number: number) {
   // i pulled this from stack overflow, i have no idea how it works
   return Math.floor(number)
     .toString()
-    .replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
+    .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
 }
 
 function onUpdateSomeValues() {
-  const rowCount = gridOptions.api!.getDisplayedRowCount()
+  const rowCount = gridOptions.api!.getDisplayedRowCount();
   for (let i = 0; i < 10; i++) {
-    const row = Math.floor(Math.random() * rowCount)
-    const rowNode = gridOptions.api!.getDisplayedRowAtIndex(row)!
-    rowNode.setDataValue('d', Math.floor(Math.random() * 10000))
-    rowNode.setDataValue('e', Math.floor(Math.random() * 10000))
+    const row = Math.floor(Math.random() * rowCount);
+    const rowNode = gridOptions.api!.getDisplayedRowAtIndex(row)!;
+    rowNode.setDataValue("d", Math.floor(Math.random() * 10000));
+    rowNode.setDataValue("e", Math.floor(Math.random() * 10000));
   }
 }
 
 function createRowData() {
-  const rowData = []
+  const rowData = [];
 
   for (let i = 0; i < 20; i++) {
     rowData.push({
@@ -93,17 +98,17 @@ function createRowData() {
       c: Math.floor(((i + 323) * 468276) % 10000),
       d: 0,
       e: 0,
-    })
+    });
   }
 
-  return rowData
+  return rowData;
 }
 
 // setup the grid after the page has finished loading
-document.addEventListener('DOMContentLoaded', function () {
-  const gridDiv = document.querySelector<HTMLElement>('#myGrid')!
-  new Grid(gridDiv, gridOptions)
+document.addEventListener("DOMContentLoaded", function () {
+  const gridDiv = document.querySelector<HTMLElement>("#myGrid")!;
+  new Grid(gridDiv, gridOptions);
   setTimeout(function () {
-    gridOptions.api!.sizeColumnsToFit()
-  }, 200)
-})
+    gridOptions.api!.sizeColumnsToFit();
+  }, 200);
+});

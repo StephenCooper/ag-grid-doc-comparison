@@ -1,18 +1,15 @@
-
-import { createApp } from 'vue';
-import { AgGridVue } from '@ag-grid-community/vue3';
-import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import { createApp } from "vue";
+import { AgGridVue } from "@ag-grid-community/vue3";
+import "@ag-grid-community/core/dist/styles/ag-grid.css";
 import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { ModuleRegistry } from '@ag-grid-community/core';
-import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import { ModuleRegistry } from "@ag-grid-community/core";
+import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
 
 // Register the required feature modules with the Grid
-ModuleRegistry.registerModules([ClientSideRowModelModule])
-
-
+ModuleRegistry.registerModules([ClientSideRowModelModule]);
 
 const VueExample = {
-    template: `
+  template: `
         <div style="height: 100%">
             <div class="example-wrapper">
                 <div style="margin-bottom: 1rem;">
@@ -32,52 +29,50 @@ const VueExample = {
             </div>
         </div>
     `,
-    components: {
-        'ag-grid-vue': AgGridVue,
-        
+  components: {
+    "ag-grid-vue": AgGridVue,
+  },
+  data: function () {
+    return {
+      columnDefs: [
+        { field: "athlete", rowDrag: true },
+        { field: "country" },
+        { field: "year", width: 100 },
+        { field: "date" },
+        { field: "sport" },
+        { field: "gold" },
+        { field: "silver" },
+        { field: "bronze" },
+      ],
+      gridApi: null,
+      columnApi: null,
+      defaultColDef: {
+        width: 170,
+        sortable: true,
+        filter: true,
+      },
+      rowData: null,
+    };
+  },
+  created() {},
+  methods: {
+    onBtSuppressRowDrag() {
+      this.gridApi.setSuppressRowDrag(true);
     },
-    data: function() {
-        return {
-            columnDefs: [{field:"athlete",
-rowDrag:true},{field:"country"},{field:"year",
-width:100},{field:"date"},{field:"sport"},{field:"gold"},{field:"silver"},{field:"bronze"}],
-            gridApi: null,
-            columnApi: null,
-            defaultColDef: {
-    width: 170,
-    sortable: true,
-    filter: true,
-},
-            rowData: null
-        }
+    onBtShowRowDrag() {
+      this.gridApi.setSuppressRowDrag(false);
     },
-    created() {
-        
+    onGridReady(params) {
+      this.gridApi = params.api;
+      this.gridColumnApi = params.columnApi;
+
+      const updateData = (data) => params.api.setRowData(data);
+
+      fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+        .then((resp) => resp.json())
+        .then((data) => updateData(data));
     },
-    methods: {
-        onBtSuppressRowDrag() {
-    this.gridApi.setSuppressRowDrag(true);
-},
-onBtShowRowDrag() {
-    this.gridApi.setSuppressRowDrag(false);
-},
-onGridReady(params) {
-        this.gridApi = params.api;
-        this.gridColumnApi = params.columnApi;
-        
+  },
+};
 
-        
-            const updateData = (data) => params.api.setRowData(data);
-            
-            fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
-                .then(resp => resp.json())
-                .then(data => updateData(data));
-    },
-    }
-}
-
-
-
-createApp(VueExample)
-    .mount("#app")
-
+createApp(VueExample).mount("#app");

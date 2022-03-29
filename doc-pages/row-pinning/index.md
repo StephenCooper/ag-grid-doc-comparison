@@ -12,7 +12,6 @@ and `setPinnedBottomRowData(rows)`.
 
 <api-documentation source='grid-properties/properties.json' section='rowPinning' names='["pinnedTopRowData", "pinnedBottomRowData"]' ></api-documentation>
 
-
 <api-documentation source='grid-api/api.json' section='pinned' names='["setPinnedTopRowData", "setPinnedBottomRowData"]'></api-documentation>
 
 ## Cell Editing

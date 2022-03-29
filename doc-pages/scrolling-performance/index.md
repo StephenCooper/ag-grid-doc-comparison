@@ -9,7 +9,7 @@ The grid is fast. However, the grid can also be configured and extended in many 
 | | ### **React Dev vs Prod Mode**
 | |
 | | React in Production Mode works faster than Dev Mode. Given the DOM complexity of the grid, React Production Mode will
-| | allow the grid to perform optimally without any overhead introduced by Dev Mode. Performance testing should be 
+| | allow the grid to perform optimally without any overhead introduced by Dev Mode. Performance testing should be
 | | performed in Production Mode only.
 | |
 | | Check the [React Docs](https://reactjs.org/docs/optimizing-performance.html) to learn how to check which mode React is running in.
@@ -31,7 +31,7 @@ The grid can be slowed down by custom [Cell Renderers](/component-cell-renderer/
 | Given React and Plain JavaScript are different, you might wonder which one would be faster for your implementation. This is down to you, which one you prefer. The only thing we can say is we can't see why there would be a clear winner form the grid's point of view.
 
 [[only-angular]]
-| 
+|
 | ## Consider JavaScript Cell Renderers
 |
 | The grid's rendering uses AG Grid's own internal rendering engine which does not use Angular. As such, each time an Angular Cell Renderer is used, the grid switches context into an Angular application. This context switching can be time consuming when done multiple times (i.e. each cell).
@@ -39,7 +39,7 @@ The grid can be slowed down by custom [Cell Renderers](/component-cell-renderer/
 | Consider using JavaScript Cell Renderers instead of Angular Cell Renderers to see if it makes your rendering faster.
 
 [[only-vue]]
-| 
+|
 | ## Consider JavaScript Cell Renderers
 |
 | The grid's rendering uses AG Grid's own internal rendering engine which does not use Vue. As such, each time a Vue Cell Renderer is used, the grid switches context into a Vue application. This context switching can be time consuming when done multiple times (i.e. each cell).
@@ -53,8 +53,6 @@ Cell Renders result in more DOM. More DOM means more CPU processing to render, r
 Ask the question, do you really need the Cell Renderer?
 
 If you are only manipulating the value rather than creating complex DOM, would a [Value Getter](../value-getters/) or [Value Formatter](../value-formatters/) achieve what you want instead? Value Getters and Value Formatters do not result in more DOM.
-
-
 
 ## Avoid Auto Height
 

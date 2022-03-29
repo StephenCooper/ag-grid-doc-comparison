@@ -29,4 +29,3 @@ You can disable viewport zooming by setting the following tag at the top level p
 ```html
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 ```
-

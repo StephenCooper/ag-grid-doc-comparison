@@ -1,81 +1,74 @@
-import Vue from 'vue';
-import { cloneDeep } from 'lodash';
-import * as agCharts from 'ag-charts-community';
-import { AgChartsVue } from 'ag-charts-vue';
+import Vue from "vue";
+import { cloneDeep } from "lodash";
+import * as agCharts from "ag-charts-community";
+import { AgChartsVue } from "ag-charts-vue";
 
 const ChartExample = {
-    template: `
+  template: `
         <ag-charts-vue    
                 :options="options"></ag-charts-vue>
     `,
-    components: {
-        'ag-charts-vue': AgChartsVue
-    },
-    data: function() {
-        return {
-            options: null
-        }
-    },
-    created() {
-        this.options = {
-    
-    autoSize: true,
-    data: getData(),
-    theme: {
+  components: {
+    "ag-charts-vue": AgChartsVue,
+  },
+  data: function () {
+    return {
+      options: null,
+    };
+  },
+  created() {
+    this.options = {
+      autoSize: true,
+      data: getData(),
+      theme: {
         overrides: {
-            bar: {
-                series: {
-                    strokeWidth: 0,
-                },
+          bar: {
+            series: {
+              strokeWidth: 0,
             },
+          },
         },
-    },
-    title: {
-        text: 'Gross Weekly Earnings by Occupation (Q4 2019)',
+      },
+      title: {
+        text: "Gross Weekly Earnings by Occupation (Q4 2019)",
         fontSize: 18,
-    },
-    subtitle: {
-        text: 'Source: Office for National Statistics',
-    },
-    series: [
+      },
+      subtitle: {
+        text: "Source: Office for National Statistics",
+      },
+      series: [
         {
-            type: 'bar',
-            xKey: 'type',
-            yKey: 'earnings',
+          type: "bar",
+          xKey: "type",
+          yKey: "earnings",
         },
-    ],
-    axes: [
+      ],
+      axes: [
         {
-            type: 'category',
-            position: 'left',
+          type: "category",
+          position: "left",
         },
         {
-            type: 'number',
-            position: 'bottom',
-            title: {
-                enabled: true,
-                text: '£/week',
-            },
+          type: "number",
+          position: "bottom",
+          title: {
+            enabled: true,
+            text: "£/week",
+          },
         },
-    ],
-    legend: {
+      ],
+      legend: {
         enabled: false,
-    },
-}
-    },
-    mounted() {
-        
-    },
-    methods: {
-        
-    }
-}
-
-
+      },
+    };
+  },
+  mounted() {},
+  methods: {},
+};
 
 new Vue({
-    el: '#app',
-    components: {
-        'my-component': ChartExample
-    }
+  el: "#app",
+  components: {
+    "my-component": ChartExample,
+  },
 });

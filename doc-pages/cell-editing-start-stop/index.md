@@ -25,7 +25,6 @@ The grid will stop editing when any of the following happen:
 - **Popup Editor Closed**: If using popup editor, the popup is configured to close if you click outside the editor. Closing the popup triggers the grid to stop editing.
 - **gridApi.stopEditing()**: If you call `stopEditing()` on the grid API.
 
-
 ## Tab Navigation
 
 While editing, if you hit <kbd>Tab</kbd>, the editing will stop for the current cell and start on the next cell. If you hold down <kbd>Shift</kbd>+<kbd>Tab</kbd>, the same will happen except the previous cell will start editing rather than the next. This is in line with editing data in Excel.
@@ -33,7 +32,6 @@ While editing, if you hit <kbd>Tab</kbd>, the editing will stop for the current 
 The next and previous cells can also be navigated using the API functions `api.tabToNextCell()` and `api.tabToPreviousCell()`. Both of these methods will return `true` if the navigation was successful, otherwise `false`.
 
 <api-documentation source='grid-api/api.json' section='navigation' names='["tabToNextCell", "tabToPreviousCell"]'></api-documentation>
-
 
 ## Editing API
 
@@ -119,10 +117,10 @@ The grid below has `suppressClickEdit = true` so that clicking doesn't started e
 
 By default, the grid will not stop editing the currently editing cell when the cell loses focus, unless another
 cell is clicked on. This means clicking on the grid header, or another part of your application, will not stop editing.
-This can be bad if, for example, you have a save button, and you need the grid to stop editing before you execute 
+This can be bad if, for example, you have a save button, and you need the grid to stop editing before you execute
 your save function (e.g. you want to make sure the edit is saved into the grid's state).
 
-If you want the grid to stop editing when focus leaves the cell or the grid, set the grid property 
+If you want the grid to stop editing when focus leaves the cell or the grid, set the grid property
 `stopEditingWhenCellsLoseFocus = true`.
 
 The example below shows the editing with `stopEditingWhenCellsLoseFocus = true`. Notice the following:

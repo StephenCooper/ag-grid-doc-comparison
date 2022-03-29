@@ -9,14 +9,14 @@ using the property `animateRows=true`.
 The grid will animate the rows in the following scenarios:
 
 - Column Animations:
-    - Moving Columns
+  - Moving Columns
 - Row Animations
-    - Filtering Rows
-    - Sorting Rows
-    - Expanding / Collapsing Row Groups
+  - Filtering Rows
+  - Sorting Rows
+  - Expanding / Collapsing Row Groups
 
 [[note]]
-|Column animations are **on** by default, row animations are **off** by default. 
+|Column animations are **on** by default, row animations are **off** by default.
 | This is to keep with what is expected to be the most common configuration as default.
 
 You do not need to know how the animations work, you just need to turn them on. However
@@ -27,7 +27,6 @@ for you to understand the sequence of rules which are as follows:
 - **Old Rows:** Rows that are no longer in the grid are left in the same position and faded out.
 - **Moved Rows:** Rows that are in a new position get their position transitioned to the new position.
 - **Resized Height Rows:** Rows that get their height change will have the height transitioned to the new height.
-
 
 In addition to the transition animations, old rows are placed behind new rows such that moving rows are
 on top of old rows when moved (hence old rows are not fading out on top of new rows, but behind new rows).
@@ -40,10 +39,8 @@ on top of old rows when moved (hence old rows are not fading out on top of new r
 | will animate to new positions. Users will also have their preference, with users in high pressure
 | situations (e.g. finance traders or air traffic control) may prefer no animation to focus on the data.
 
-
 ## Example Animation
+
 The example below shows the animations by the JavaScript calling the grid's API. So no touching, just looking!!!
 
-
 <grid-example title='Animation' name='animation' type='generated' options='{ "enterprise": true, "modules": ["clientside", "rowgrouping", "menu", "setfilter", "columnpanel"] }'></grid-example>
-

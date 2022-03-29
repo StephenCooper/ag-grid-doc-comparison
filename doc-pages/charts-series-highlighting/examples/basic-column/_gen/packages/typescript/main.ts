@@ -1,5 +1,5 @@
-import * as agCharts from 'ag-charts-community';
-import { AgChartOptions } from 'ag-charts-community';
+import * as agCharts from "ag-charts-community";
+import { AgChartOptions } from "ag-charts-community";
 
 var data = [
   {
@@ -23,7 +23,7 @@ var data = [
     Q3: 190,
     Q4: 200,
   },
-]
+];
 
 const options: AgChartOptions = {
   data: data,
@@ -54,12 +54,11 @@ const options: AgChartOptions = {
     text: "per quarter",
   },
   series: [
-    { type: 'column', xKey: 'beverage', yKey: 'Q1', stacked: true },
-    { type: 'column', xKey: 'beverage', yKey: 'Q2', stacked: true },
-    { type: 'column', xKey: 'beverage', yKey: 'Q3', stacked: true },
-    { type: 'column', xKey: 'beverage', yKey: 'Q4', stacked: true },
+    { type: "column", xKey: "beverage", yKey: "Q1", stacked: true },
+    { type: "column", xKey: "beverage", yKey: "Q2", stacked: true },
+    { type: "column", xKey: "beverage", yKey: "Q3", stacked: true },
+    { type: "column", xKey: "beverage", yKey: "Q4", stacked: true },
   ],
-}
+};
 
-agCharts.AgChart.create(options)
- 
+agCharts.AgChart.create(options);
