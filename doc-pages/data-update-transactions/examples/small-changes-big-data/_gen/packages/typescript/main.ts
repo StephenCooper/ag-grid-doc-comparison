@@ -1,10 +1,5 @@
-import "ag-grid-enterprise";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
 import {
   ColDef,
-  ColGroupDef,
-  GetRowIdFunc,
   GetRowIdParams,
   Grid,
   GridOptions,
@@ -14,6 +9,9 @@ import {
   IFilterParams,
   IFilterType,
 } from "ag-grid-community";
+import "ag-grid-community/dist/styles/ag-grid.css";
+import "ag-grid-community/dist/styles/ag-theme-alpine.css";
+import "ag-grid-enterprise";
 
 declare var LINUX_DISTROS: string[];
 declare var CITIES: string[];

@@ -1,23 +1,20 @@
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine-dark.css";
+import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
 import {
   CellValueChangedEvent,
-  ColDef,
-  ColGroupDef,
   Grid,
   GridOptions,
-  ICellRendererParams,
   ISetFilterParams,
+  ModuleRegistry,
   ValueFormatterParams,
   ValueSetterParams,
 } from "@ag-grid-community/core";
-import { ColourCellRenderer } from "./colourCellRenderer";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
+import "@ag-grid-community/core/dist/styles/ag-grid.css";
+import "@ag-grid-community/core/dist/styles/ag-theme-alpine-dark.css";
+import { ColumnsToolPanelModule } from "@ag-grid-enterprise/column-tool-panel";
+import { MenuModule } from "@ag-grid-enterprise/menu";
 import { RichSelectModule } from "@ag-grid-enterprise/rich-select";
 import { SetFilterModule } from "@ag-grid-enterprise/set-filter";
-import { MenuModule } from "@ag-grid-enterprise/menu";
-import { ColumnsToolPanelModule } from "@ag-grid-enterprise/column-tool-panel";
+import { ColourCellRenderer } from "./colourCellRenderer";
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([

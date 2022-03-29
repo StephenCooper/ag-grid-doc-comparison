@@ -1,7 +1,7 @@
 import {
-  Grid,
   CheckboxSelectionCallbackParams,
   ColDef,
+  Grid,
   GridOptions,
   HeaderCheckboxSelectionCallbackParams,
 } from "@ag-grid-community/core";

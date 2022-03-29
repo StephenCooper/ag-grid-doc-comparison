@@ -1,5 +1,5 @@
-import { AgChartOptions } from "ag-charts-community";
 import * as agCharts from "ag-charts-community";
+import { AgChartOptions } from "ag-charts-community";
 declare var data: any;
 
 const options: AgChartOptions = {

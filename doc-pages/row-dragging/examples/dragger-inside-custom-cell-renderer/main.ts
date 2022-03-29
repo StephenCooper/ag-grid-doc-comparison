@@ -1,4 +1,4 @@
-import { Grid, ColDef, GridOptions } from "@ag-grid-community/core";
+import { ColDef, Grid, GridOptions } from "@ag-grid-community/core";
 import { CustomCellRenderer } from "./customCellRenderer_typescript";
 
 const columnDefs: ColDef[] = [

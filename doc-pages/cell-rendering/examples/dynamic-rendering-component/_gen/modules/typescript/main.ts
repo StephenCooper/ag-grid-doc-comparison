@@ -1,16 +1,14 @@
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
+import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
 import {
-  ColDef,
-  ColGroupDef,
   Grid,
   GridOptions,
   ICellRendererParams,
+  ModuleRegistry,
 } from "@ag-grid-community/core";
-import { MoodRenderer } from "./moodRenderer";
+import "@ag-grid-community/core/dist/styles/ag-grid.css";
+import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
 import { GenderRenderer } from "./genderRenderer";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
+import { MoodRenderer } from "./moodRenderer";
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([ClientSideRowModelModule]);

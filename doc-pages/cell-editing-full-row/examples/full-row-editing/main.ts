@@ -1,9 +1,8 @@
 import {
-  Grid,
   CellValueChangedEvent,
+  Grid,
   GridOptions,
   ICellEditorComp,
-  ICellEditorParams,
   RowValueChangedEvent,
 } from "@ag-grid-community/core";
 declare var NumericCellEditor: ICellEditorComp;

@@ -1,12 +1,12 @@
-import {
-  AgCartesianChartOptions,
-  AgCartesianAxisOptions,
-  AgCartesianSeriesOptions,
-  AgBarSeriesOptions,
-  AgLineSeriesOptions,
-  AgCartesianSeriesTooltipRendererParams,
-} from "ag-charts-community";
 import * as agCharts from "ag-charts-community";
+import {
+  AgBarSeriesOptions,
+  AgCartesianAxisOptions,
+  AgCartesianChartOptions,
+  AgCartesianSeriesOptions,
+  AgCartesianSeriesTooltipRendererParams,
+  AgLineSeriesOptions,
+} from "ag-charts-community";
 
 function tooltipRenderer(params: AgCartesianSeriesTooltipRendererParams) {
   const { yValue, xValue } = params;

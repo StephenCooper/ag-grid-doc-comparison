@@ -1,12 +1,12 @@
-import Vue from "vue";
-import { AgGridVue } from "@ag-grid-community/vue";
+import { ModuleRegistry } from "@ag-grid-community/core";
 import "@ag-grid-community/core/dist/styles/ag-grid.css";
 import "@ag-grid-community/core/dist/styles/ag-theme-alpine-dark.css";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import { ServerSideRowModelModule } from "@ag-grid-enterprise/server-side-row-model";
-import { RowGroupingModule } from "@ag-grid-enterprise/row-grouping";
-import { MenuModule } from "@ag-grid-enterprise/menu";
+import { AgGridVue } from "@ag-grid-community/vue";
 import { ColumnsToolPanelModule } from "@ag-grid-enterprise/column-tool-panel";
+import { MenuModule } from "@ag-grid-enterprise/menu";
+import { RowGroupingModule } from "@ag-grid-enterprise/row-grouping";
+import { ServerSideRowModelModule } from "@ag-grid-enterprise/server-side-row-model";
+import Vue from "vue";
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([

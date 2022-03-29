@@ -1,10 +1,10 @@
 import "ag-grid-community/dist/styles/ag-grid.css";
 import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import Vue from "vue";
+import "ag-grid-enterprise";
 import { AgGridVue } from "ag-grid-vue";
+import Vue from "vue";
 import MoodEditor from "./moodEditorVue.js";
 import NumericCellEditor from "./numericCellEditorVue.js";
-import "ag-grid-enterprise";
 
 const VueExample = {
   template: `

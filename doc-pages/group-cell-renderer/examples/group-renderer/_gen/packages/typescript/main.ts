@@ -1,15 +1,7 @@
-import "ag-grid-enterprise";
+import { ColDef, Grid, GridOptions } from "ag-grid-community";
 import "ag-grid-community/dist/styles/ag-grid.css";
 import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import {
-  ColDef,
-  ColGroupDef,
-  Grid,
-  GridOptions,
-  ICellRendererComp,
-  ICellRendererParams,
-  RowGroupingDisplayType,
-} from "ag-grid-community";
+import "ag-grid-enterprise";
 import { SimpleCellRenderer } from "./simpleCellRenderer";
 
 const columnDefs: ColDef[] = [

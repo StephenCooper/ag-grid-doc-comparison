@@ -1,10 +1,10 @@
 "use strict";
 
-import React, { Component } from "react";
-import { render } from "react-dom";
-import { AgGridReact } from "ag-grid-react";
 import "ag-grid-community/dist/styles/ag-grid.css";
 import "ag-grid-community/dist/styles/ag-theme-alpine.css";
+import { AgGridReact } from "ag-grid-react";
+import React, { Component } from "react";
+import { render } from "react-dom";
 import MedalCellRenderer from "./medalCellRenderer.jsx";
 
 class GridExample extends Component {

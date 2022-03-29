@@ -1,8 +1,8 @@
 import {
-  Grid,
   CreateRangeChartParams,
   FirstDataRenderedEvent,
   GetChartToolbarItemsParams,
+  Grid,
   GridOptions,
   ValueParserParams,
 } from "@ag-grid-community/core";

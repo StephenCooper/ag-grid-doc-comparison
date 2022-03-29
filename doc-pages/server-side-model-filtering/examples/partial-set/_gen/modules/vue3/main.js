@@ -1,11 +1,11 @@
-import { createApp } from "vue";
-import { AgGridVue } from "@ag-grid-community/vue3";
+import { ModuleRegistry } from "@ag-grid-community/core";
 import "@ag-grid-community/core/dist/styles/ag-grid.css";
 import "@ag-grid-community/core/dist/styles/ag-theme-alpine-dark.css";
-import { ModuleRegistry } from "@ag-grid-community/core";
+import { AgGridVue } from "@ag-grid-community/vue3";
+import { MenuModule } from "@ag-grid-enterprise/menu";
 import { ServerSideRowModelModule } from "@ag-grid-enterprise/server-side-row-model";
 import { SetFilterModule } from "@ag-grid-enterprise/set-filter";
-import { MenuModule } from "@ag-grid-enterprise/menu";
+import { createApp } from "vue";
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([

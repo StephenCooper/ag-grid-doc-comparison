@@ -1,19 +1,16 @@
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
+import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
 import {
   CellRange,
-  ColDef,
-  ColGroupDef,
   Grid,
   GridOptions,
-  ProcessCellForExportParams,
+  ModuleRegistry,
   RangeSelectionChangedEvent,
 } from "@ag-grid-community/core";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { RangeSelectionModule } from "@ag-grid-enterprise/range-selection";
-import { MenuModule } from "@ag-grid-enterprise/menu";
+import "@ag-grid-community/core/dist/styles/ag-grid.css";
+import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
 import { ClipboardModule } from "@ag-grid-enterprise/clipboard";
+import { MenuModule } from "@ag-grid-enterprise/menu";
+import { RangeSelectionModule } from "@ag-grid-enterprise/range-selection";
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([

@@ -1,6 +1,6 @@
 import { Component } from "@angular/core";
-import { ITooltipParams } from "ag-grid-community";
 import { ITooltipAngularComp } from "ag-grid-angular";
+import { ITooltipParams } from "ag-grid-community";
 
 @Component({
   selector: "tooltip-component",

@@ -1,6 +1,6 @@
 import {
-  Grid,
   CellValueChangedEvent,
+  Grid,
   GridOptions,
   PasteEndEvent,
   PasteStartEvent,

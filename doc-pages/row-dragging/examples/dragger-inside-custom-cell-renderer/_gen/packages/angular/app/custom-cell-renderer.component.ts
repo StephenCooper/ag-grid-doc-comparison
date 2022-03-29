@@ -1,6 +1,6 @@
 import { Component, ElementRef, HostBinding, ViewChild } from "@angular/core";
-import { ICellRendererParams } from "ag-grid-community";
 import { ICellRendererAngularComp } from "ag-grid-angular";
+import { ICellRendererParams } from "ag-grid-community";
 
 @Component({
   selector: "custom-cell",

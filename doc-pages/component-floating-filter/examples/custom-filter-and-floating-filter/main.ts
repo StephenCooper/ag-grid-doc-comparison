@@ -1,6 +1,6 @@
-import { Grid, ColDef, GridOptions } from "@ag-grid-community/core";
-import { NumberFloatingFilterComponent } from "./numberFloatingFilterComponent_typescript";
+import { ColDef, Grid, GridOptions } from "@ag-grid-community/core";
 import { NumberFilterComponent } from "./numberFilterComponent_typescript";
+import { NumberFloatingFilterComponent } from "./numberFloatingFilterComponent_typescript";
 
 const columnDefs: ColDef[] = [
   { field: "athlete", filter: "agTextColumnFilter" },

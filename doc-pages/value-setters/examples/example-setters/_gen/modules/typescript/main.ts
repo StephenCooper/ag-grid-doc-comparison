@@ -1,16 +1,15 @@
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine-dark.css";
+import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
 import {
   CellValueChangedEvent,
   ColDef,
-  ColGroupDef,
   Grid,
   GridOptions,
+  ModuleRegistry,
   ValueGetterParams,
   ValueSetterParams,
 } from "@ag-grid-community/core";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
+import "@ag-grid-community/core/dist/styles/ag-grid.css";
+import "@ag-grid-community/core/dist/styles/ag-theme-alpine-dark.css";
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([ClientSideRowModelModule]);

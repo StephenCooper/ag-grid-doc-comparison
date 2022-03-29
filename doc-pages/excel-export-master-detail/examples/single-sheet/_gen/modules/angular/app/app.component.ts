@@ -1,24 +1,19 @@
-import { Component } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
 import {
   ColDef,
-  ColGroupDef,
-  ColumnApi,
   CsvCell,
   CsvExportParams,
   ExcelCell,
   ExcelExportParams,
   ExcelStyle,
-  GetDetailRowDataParams,
-  Grid,
   GridApi,
-  GridOptions,
   GridReadyEvent,
   IDetailCellRendererParams,
   ProcessRowGroupForExportParams,
 } from "@ag-grid-community/core";
+import "@ag-grid-community/core/dist/styles/ag-grid.css";
+import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
+import { HttpClient } from "@angular/common/http";
+import { Component } from "@angular/core";
 // Required feature modules are registered in app.module.ts
 
 @Component({

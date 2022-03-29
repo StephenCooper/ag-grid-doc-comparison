@@ -1,21 +1,16 @@
 import { Component } from "@angular/core";
-import "ag-grid-enterprise";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
 import {
   AreaSparklineOptions,
   ColDef,
-  ColGroupDef,
-  ColumnApi,
   ColumnFormatterParams,
   ColumnSparklineOptions,
-  Grid,
-  GridApi,
-  GridOptions,
   GridReadyEvent,
   LineSparklineOptions,
   MarkerFormatterParams,
 } from "ag-grid-community";
+import "ag-grid-community/dist/styles/ag-grid.css";
+import "ag-grid-community/dist/styles/ag-theme-alpine.css";
+import "ag-grid-enterprise";
 
 @Component({
   selector: "my-app",

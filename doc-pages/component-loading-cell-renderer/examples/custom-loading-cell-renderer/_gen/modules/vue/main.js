@@ -1,10 +1,10 @@
-import Vue from "vue";
-import { AgGridVue } from "@ag-grid-community/vue";
+import { ModuleRegistry } from "@ag-grid-community/core";
 import "@ag-grid-community/core/dist/styles/ag-grid.css";
 import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import CustomLoadingCellRenderer from "./customLoadingCellRendererVue.js";
-import { ModuleRegistry } from "@ag-grid-community/core";
+import { AgGridVue } from "@ag-grid-community/vue";
 import { ServerSideRowModelModule } from "@ag-grid-enterprise/server-side-row-model";
+import Vue from "vue";
+import CustomLoadingCellRenderer from "./customLoadingCellRendererVue.js";
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([ServerSideRowModelModule]);

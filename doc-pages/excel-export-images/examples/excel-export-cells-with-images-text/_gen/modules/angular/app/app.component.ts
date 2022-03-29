@@ -1,18 +1,13 @@
-import { Component } from "@angular/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
 import {
   ColDef,
-  ColGroupDef,
-  ColumnApi,
   ExcelExportParams,
   ExcelStyle,
-  Grid,
   GridApi,
-  GridOptions,
   GridReadyEvent,
-  ICellRendererParams,
 } from "@ag-grid-community/core";
+import "@ag-grid-community/core/dist/styles/ag-grid.css";
+import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
+import { Component } from "@angular/core";
 import { CountryCellRenderer } from "./country-cell-renderer.component";
 // Required feature modules are registered in app.module.ts
 declare function createBase64FlagsFromResponse(

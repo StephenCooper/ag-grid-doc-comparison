@@ -1,7 +1,6 @@
-import { Component, OnDestroy } from "@angular/core";
-
-import { ICellRendererParams } from "@ag-grid-community/core";
 import { ICellRendererAngularComp } from "@ag-grid-community/angular";
+import { ICellRendererParams } from "@ag-grid-community/core";
+import { Component, OnDestroy } from "@angular/core";
 
 @Component({
   selector: "square-cell",

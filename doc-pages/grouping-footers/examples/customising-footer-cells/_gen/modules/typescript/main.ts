@@ -1,15 +1,9 @@
+import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
+import { Grid, GridOptions, ModuleRegistry } from "@ag-grid-community/core";
 import "@ag-grid-community/core/dist/styles/ag-grid.css";
 import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import {
-  ColDef,
-  ColGroupDef,
-  Grid,
-  GridOptions,
-} from "@ag-grid-community/core";
-import { MyInnerRenderer } from "./myInnerRenderer";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
 import { RowGroupingModule } from "@ag-grid-enterprise/row-grouping";
+import { MyInnerRenderer } from "./myInnerRenderer";
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([ClientSideRowModelModule, RowGroupingModule]);

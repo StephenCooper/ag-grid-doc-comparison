@@ -1,6 +1,6 @@
 import { Component, ElementRef, ViewChild } from "@angular/core";
-import { IDateParams } from "ag-grid-community";
 import { IDateAngularComp } from "ag-grid-angular";
+import { IDateParams } from "ag-grid-community";
 
 // we'll be using the globally provided flatpickr for our example
 declare var flatpickr: any;

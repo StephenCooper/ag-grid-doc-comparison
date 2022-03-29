@@ -1,21 +1,17 @@
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
+import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
 import {
-  ColDef,
-  ColGroupDef,
   FirstDataRenderedEvent,
-  GetRowIdFunc,
   Grid,
   GridOptions,
   IDetailCellRendererParams,
-  IsRowMaster,
+  ModuleRegistry,
 } from "@ag-grid-community/core";
-import { CallsCellRenderer } from "./callsCellRenderer";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
+import "@ag-grid-community/core/dist/styles/ag-grid.css";
+import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
+import { ColumnsToolPanelModule } from "@ag-grid-enterprise/column-tool-panel";
 import { MasterDetailModule } from "@ag-grid-enterprise/master-detail";
 import { MenuModule } from "@ag-grid-enterprise/menu";
-import { ColumnsToolPanelModule } from "@ag-grid-enterprise/column-tool-panel";
+import { CallsCellRenderer } from "./callsCellRenderer";
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([

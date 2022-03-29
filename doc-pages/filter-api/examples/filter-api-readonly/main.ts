@@ -1,4 +1,4 @@
-import { Grid, ColDef, GridOptions, ISetFilter } from "@ag-grid-community/core";
+import { ColDef, Grid, GridOptions, ISetFilter } from "@ag-grid-community/core";
 
 declare var dateComparator: any;
 var defaultFilterParams = { readOnly: true };

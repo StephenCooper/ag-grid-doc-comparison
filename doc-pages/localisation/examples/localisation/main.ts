@@ -1,11 +1,10 @@
 import {
-  Grid,
   ColDef,
+  Grid,
   GridOptions,
-  ICellRendererParams,
   ICellRendererComp,
+  ICellRendererParams,
 } from "@ag-grid-community/core";
-import { doc } from "prettier";
 
 declare var AG_GRID_LOCALE_ZZZ: {
   [key: string]: string;

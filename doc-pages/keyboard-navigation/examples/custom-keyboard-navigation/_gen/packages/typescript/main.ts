@@ -1,10 +1,6 @@
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
 import {
-  CellPosition,
   ColDef,
   ColGroupDef,
-  ColumnGroup,
   Grid,
   GridOptions,
   HeaderPosition,
@@ -13,6 +9,8 @@ import {
   TabToNextCellParams,
   TabToNextHeaderParams,
 } from "ag-grid-community";
+import "ag-grid-community/dist/styles/ag-grid.css";
+import "ag-grid-community/dist/styles/ag-theme-alpine.css";
 
 const columnDefs: (ColDef | ColGroupDef)[] = [
   {

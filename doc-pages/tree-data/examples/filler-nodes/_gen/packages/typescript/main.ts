@@ -1,13 +1,7 @@
-import "ag-grid-enterprise";
+import { Grid, GridOptions } from "ag-grid-community";
 import "ag-grid-community/dist/styles/ag-grid.css";
 import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import {
-  ColDef,
-  ColGroupDef,
-  GetDataPath,
-  Grid,
-  GridOptions,
-} from "ag-grid-community";
+import "ag-grid-enterprise";
 
 // specify the data
 var rowData = [

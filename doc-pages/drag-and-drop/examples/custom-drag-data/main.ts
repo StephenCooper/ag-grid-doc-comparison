@@ -1,7 +1,7 @@
 import {
+  DndSourceOnRowDragParams,
   Grid,
   GridOptions,
-  DndSourceOnRowDragParams,
 } from "@ag-grid-community/core";
 
 const gridOptions: GridOptions = {

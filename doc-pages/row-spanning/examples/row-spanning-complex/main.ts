@@ -1,10 +1,10 @@
 import {
-  Grid,
   ColDef,
+  Grid,
   GridOptions,
+  ICellRendererComp,
   ICellRendererParams,
   RowSpanParams,
-  ICellRendererComp,
 } from "@ag-grid-community/core";
 
 function rowSpan(params: RowSpanParams) {

@@ -1,10 +1,4 @@
-import "ag-grid-enterprise";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine-dark.css";
 import {
-  ColDef,
-  ColGroupDef,
-  GetRowIdFunc,
   Grid,
   GridApi,
   GridOptions,
@@ -12,6 +6,9 @@ import {
   RowNode,
   ValueGetterParams,
 } from "ag-grid-community";
+import "ag-grid-community/dist/styles/ag-grid.css";
+import "ag-grid-community/dist/styles/ag-theme-alpine-dark.css";
+import "ag-grid-enterprise";
 
 interface Student {
   student: number;

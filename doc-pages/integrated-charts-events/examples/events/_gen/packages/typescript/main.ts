@@ -1,16 +1,15 @@
-import "ag-grid-enterprise";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
 import {
   ChartCreated,
   ChartDestroyed,
   ChartOptionsChanged,
   ChartRangeSelectionChanged,
   ColDef,
-  ColGroupDef,
   Grid,
   GridOptions,
 } from "ag-grid-community";
+import "ag-grid-community/dist/styles/ag-grid.css";
+import "ag-grid-community/dist/styles/ag-theme-alpine.css";
+import "ag-grid-enterprise";
 
 const columnDefs: ColDef[] = [
   { field: "Month", width: 150, chartDataType: "category" },

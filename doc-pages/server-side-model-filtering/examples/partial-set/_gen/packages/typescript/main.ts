@@ -1,16 +1,14 @@
-import "ag-grid-enterprise";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine-dark.css";
 import {
   ColDef,
-  ColGroupDef,
   Grid,
   GridOptions,
   IServerSideDatasource,
   ISetFilter,
-  ServerSideStoreType,
   SetFilterValuesFuncParams,
 } from "ag-grid-community";
+import "ag-grid-community/dist/styles/ag-grid.css";
+import "ag-grid-community/dist/styles/ag-theme-alpine-dark.css";
+import "ag-grid-enterprise";
 
 declare var FakeServer: any;
 const columnDefs: ColDef[] = [

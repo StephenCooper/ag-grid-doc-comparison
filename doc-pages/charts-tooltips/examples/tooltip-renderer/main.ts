@@ -1,8 +1,8 @@
+import * as agCharts from "ag-charts-community";
 import {
   AgCartesianSeriesTooltipRendererParams,
   AgChartOptions,
 } from "ag-charts-community";
-import * as agCharts from "ag-charts-community";
 
 function renderer(params: AgCartesianSeriesTooltipRendererParams) {
   return (

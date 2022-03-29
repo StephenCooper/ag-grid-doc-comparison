@@ -1,12 +1,12 @@
 import "ag-grid-community/dist/styles/ag-grid.css";
 import "ag-grid-community/dist/styles/ag-theme-alpine.css";
+import "ag-grid-enterprise";
 import { AgGridVue } from "ag-grid-vue";
 import Vue from "vue";
 import GenderRenderer from "./genderRendererVue.js";
 import MoodEditor from "./moodEditorVue.js";
 import MoodRenderer from "./moodRendererVue.js";
 import NumericEditor from "./numericEditorVue.js";
-import "ag-grid-enterprise";
 
 class CountryCellRenderer {
   init(params) {

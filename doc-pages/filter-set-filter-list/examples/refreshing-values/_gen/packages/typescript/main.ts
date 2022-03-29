@@ -1,9 +1,4 @@
-import "ag-grid-enterprise";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
 import {
-  ColDef,
-  ColGroupDef,
   FirstDataRenderedEvent,
   Grid,
   GridOptions,
@@ -11,8 +6,10 @@ import {
   ISetFilter,
   ISetFilterParams,
   SetFilterValuesFuncParams,
-  SideBarDef,
 } from "ag-grid-community";
+import "ag-grid-community/dist/styles/ag-grid.css";
+import "ag-grid-community/dist/styles/ag-theme-alpine.css";
+import "ag-grid-enterprise";
 
 var list1 = ["Elephant", "Lion", "Monkey"];
 var list2 = ["Elephant", "Giraffe", "Tiger"];

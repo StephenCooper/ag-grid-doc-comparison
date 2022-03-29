@@ -1,10 +1,5 @@
-import "ag-grid-enterprise";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
 import {
   AreaSparklineOptions,
-  ColDef,
-  ColGroupDef,
   ColumnFormatterParams,
   ColumnSparklineOptions,
   Grid,
@@ -12,6 +7,9 @@ import {
   LineSparklineOptions,
   MarkerFormatterParams,
 } from "ag-grid-community";
+import "ag-grid-community/dist/styles/ag-grid.css";
+import "ag-grid-community/dist/styles/ag-theme-alpine.css";
+import "ag-grid-enterprise";
 
 const gridOptions: GridOptions = {
   rowHeight: 70,

@@ -1,17 +1,14 @@
-import "ag-grid-enterprise";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
 import {
   CheckboxSelectionCallbackParams,
   ColDef,
-  ColGroupDef,
   FirstDataRenderedEvent,
   Grid,
   GridOptions,
   HeaderCheckboxSelectionCallbackParams,
-  PaginationNumberFormatterParams,
-  ValueGetterParams,
 } from "ag-grid-community";
+import "ag-grid-community/dist/styles/ag-grid.css";
+import "ag-grid-community/dist/styles/ag-theme-alpine.css";
+import "ag-grid-enterprise";
 
 var checkboxSelection = function (params: CheckboxSelectionCallbackParams) {
   // we put checkbox on the name if we are not doing grouping

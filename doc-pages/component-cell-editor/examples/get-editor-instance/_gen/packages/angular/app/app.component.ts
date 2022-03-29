@@ -1,8 +1,8 @@
+import { Component, OnDestroy } from "@angular/core";
+import { ColDef, GridReadyEvent } from "ag-grid-community";
 import "ag-grid-community/dist/styles/ag-grid.css";
 import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import { Component, OnDestroy } from "@angular/core";
 import { MySimpleEditor } from "./mySimple-editor.component";
-import { ColDef, GridReadyEvent } from "ag-grid-community";
 
 @Component({
   selector: "my-app",

@@ -1,17 +1,11 @@
+import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
+import { Grid, GridOptions, ModuleRegistry } from "@ag-grid-community/core";
 import "@ag-grid-community/core/dist/styles/ag-grid.css";
 import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import {
-  ColDef,
-  ColGroupDef,
-  Grid,
-  GridOptions,
-} from "@ag-grid-community/core";
 import { DoublingEditor } from "./doublingEditor";
-import { MoodRenderer } from "./moodRenderer";
 import { MoodEditor } from "./moodEditor";
+import { MoodRenderer } from "./moodRenderer";
 import { NumericEditor } from "./numericEditor";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([ClientSideRowModelModule]);

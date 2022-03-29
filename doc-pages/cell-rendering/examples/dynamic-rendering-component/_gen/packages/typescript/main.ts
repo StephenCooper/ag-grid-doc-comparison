@@ -1,14 +1,8 @@
+import { Grid, GridOptions, ICellRendererParams } from "ag-grid-community";
 import "ag-grid-community/dist/styles/ag-grid.css";
 import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import {
-  ColDef,
-  ColGroupDef,
-  Grid,
-  GridOptions,
-  ICellRendererParams,
-} from "ag-grid-community";
-import { MoodRenderer } from "./moodRenderer";
 import { GenderRenderer } from "./genderRenderer";
+import { MoodRenderer } from "./moodRenderer";
 
 const rowData = [
   { value: 14, type: "age" },

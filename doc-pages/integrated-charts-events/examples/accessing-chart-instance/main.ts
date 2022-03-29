@@ -1,9 +1,9 @@
 import {
-  Grid,
   ChartCreated,
   ChartDestroyed,
   ChartRangeSelectionChanged,
   ColDef,
+  Grid,
   GridApi,
   GridOptions,
 } from "@ag-grid-community/core";

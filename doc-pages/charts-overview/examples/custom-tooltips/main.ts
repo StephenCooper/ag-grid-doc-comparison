@@ -1,6 +1,8 @@
-import { AgCartesianSeriesTooltipRendererParams } from "ag-charts-community";
-import { AgChartOptions } from "ag-charts-community";
 import * as agCharts from "ag-charts-community";
+import {
+  AgCartesianSeriesTooltipRendererParams,
+  AgChartOptions,
+} from "ag-charts-community";
 
 function tooltipRenderer(params: AgCartesianSeriesTooltipRendererParams) {
   var formatThousands = function (value: number) {

@@ -1,15 +1,7 @@
-import { Component } from "@angular/core";
+import { ColDef, GridReadyEvent } from "@ag-grid-community/core";
 import "@ag-grid-community/core/dist/styles/ag-grid.css";
 import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import {
-  ColDef,
-  ColGroupDef,
-  ColumnApi,
-  Grid,
-  GridApi,
-  GridOptions,
-  GridReadyEvent,
-} from "@ag-grid-community/core";
+import { Component } from "@angular/core";
 import { DoublingEditor } from "./doubling-editor.component";
 import { MoodEditor } from "./mood-editor.component";
 import { MoodRenderer } from "./mood-renderer.component";

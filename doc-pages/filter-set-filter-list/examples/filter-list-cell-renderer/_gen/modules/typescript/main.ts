@@ -1,21 +1,18 @@
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
+import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
 import {
-  ColDef,
-  ColGroupDef,
   FirstDataRenderedEvent,
   Grid,
   GridOptions,
   IFiltersToolPanel,
-  SideBarDef,
+  ModuleRegistry,
 } from "@ag-grid-community/core";
-import { CountryCellRenderer } from "./countryCellRenderer";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { SetFilterModule } from "@ag-grid-enterprise/set-filter";
-import { MenuModule } from "@ag-grid-enterprise/menu";
+import "@ag-grid-community/core/dist/styles/ag-grid.css";
+import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
 import { ColumnsToolPanelModule } from "@ag-grid-enterprise/column-tool-panel";
 import { FiltersToolPanelModule } from "@ag-grid-enterprise/filter-tool-panel";
+import { MenuModule } from "@ag-grid-enterprise/menu";
+import { SetFilterModule } from "@ag-grid-enterprise/set-filter";
+import { CountryCellRenderer } from "./countryCellRenderer";
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([

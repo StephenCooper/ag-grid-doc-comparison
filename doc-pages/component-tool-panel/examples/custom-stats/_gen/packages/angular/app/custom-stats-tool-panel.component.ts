@@ -1,6 +1,6 @@
 import { Component } from "@angular/core";
-import { IToolPanelParams, RowNode } from "ag-grid-community";
 import { IToolPanelAngularComp } from "ag-grid-angular";
+import { IToolPanelParams, RowNode } from "ag-grid-community";
 
 @Component({
   selector: "custom-stats",

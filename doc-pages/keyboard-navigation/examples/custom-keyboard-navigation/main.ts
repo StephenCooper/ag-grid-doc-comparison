@@ -1,8 +1,7 @@
 import {
-  Grid,
   ColDef,
   ColGroupDef,
-  ColumnGroup,
+  Grid,
   GridOptions,
   HeaderPosition,
   NavigateToNextCellParams,

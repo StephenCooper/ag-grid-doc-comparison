@@ -1,13 +1,12 @@
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
 import {
   ColDef,
-  ColGroupDef,
   Grid,
   GridOptions,
   RowDragEndEvent,
   RowDragEnterEvent,
 } from "ag-grid-community";
+import "ag-grid-community/dist/styles/ag-grid.css";
+import "ag-grid-community/dist/styles/ag-theme-alpine.css";
 import { CustomCellRenderer } from "./customCellRenderer";
 
 const columnDefs: ColDef[] = [

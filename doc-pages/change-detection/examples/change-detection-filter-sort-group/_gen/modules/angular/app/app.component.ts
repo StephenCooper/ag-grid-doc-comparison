@@ -1,16 +1,11 @@
-import { Component } from "@angular/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine-dark.css";
 import {
   CellValueChangedEvent,
   ColDef,
-  ColGroupDef,
-  ColumnApi,
-  Grid,
-  GridApi,
-  GridOptions,
   GridReadyEvent,
 } from "@ag-grid-community/core";
+import "@ag-grid-community/core/dist/styles/ag-grid.css";
+import "@ag-grid-community/core/dist/styles/ag-theme-alpine-dark.css";
+import { Component } from "@angular/core";
 // Required feature modules are registered in app.module.ts
 
 @Component({

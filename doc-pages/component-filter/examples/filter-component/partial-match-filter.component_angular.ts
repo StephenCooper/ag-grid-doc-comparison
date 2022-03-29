@@ -1,10 +1,10 @@
-import { Component, ViewChild, ViewContainerRef } from "@angular/core";
+import { IFilterAngularComp } from "@ag-grid-community/angular";
 import {
   IAfterGuiAttachedParams,
   IDoesFilterPassParams,
   IFilterParams,
 } from "@ag-grid-community/core";
-import { IFilterAngularComp } from "@ag-grid-community/angular";
+import { Component, ViewChild, ViewContainerRef } from "@angular/core";
 
 @Component({
   selector: "filter-cell",

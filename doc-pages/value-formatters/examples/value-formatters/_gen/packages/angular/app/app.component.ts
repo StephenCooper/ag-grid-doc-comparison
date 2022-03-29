@@ -1,16 +1,11 @@
 import { Component } from "@angular/core";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine-dark.css";
 import {
   ColDef,
-  ColGroupDef,
-  ColumnApi,
-  Grid,
-  GridApi,
-  GridOptions,
   GridReadyEvent,
   ValueFormatterParams,
 } from "ag-grid-community";
+import "ag-grid-community/dist/styles/ag-grid.css";
+import "ag-grid-community/dist/styles/ag-theme-alpine-dark.css";
 
 @Component({
   selector: "my-app",

@@ -1,5 +1,4 @@
 import { ICellRendererComp, ICellRendererParams } from "ag-grid-community";
-import React from "react";
 
 export class CountryCellRenderer implements ICellRendererComp {
   eGui!: HTMLDivElement;

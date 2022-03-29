@@ -1,9 +1,5 @@
-import "ag-grid-enterprise";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine-dark.css";
 import {
   ColDef,
-  ColGroupDef,
   FirstDataRenderedEvent,
   Grid,
   GridOptions,
@@ -11,9 +7,10 @@ import {
   IFilterComp,
   IFilterParams,
   IServerSideDatasource,
-  ServerSideStoreType,
-  SideBarDef,
 } from "ag-grid-community";
+import "ag-grid-community/dist/styles/ag-grid.css";
+import "ag-grid-community/dist/styles/ag-theme-alpine-dark.css";
+import "ag-grid-enterprise";
 declare function createFakeServer(data: any): any;
 declare function createServerSideDatasource(
   server: any,

@@ -1,17 +1,17 @@
 "use strict";
 
-import React, { Component } from "react";
-import { render } from "react-dom";
-import { AgGridReact } from "@ag-grid-community/react";
+import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
+import { ModuleRegistry } from "@ag-grid-community/core";
 import "@ag-grid-community/core/dist/styles/ag-grid.css";
 import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
+import { AgGridReact } from "@ag-grid-community/react";
+import { ColumnsToolPanelModule } from "@ag-grid-enterprise/column-tool-panel";
+import { MenuModule } from "@ag-grid-enterprise/menu";
+import { RichSelectModule } from "@ag-grid-enterprise/rich-select";
+import React, { Component } from "react";
+import { render } from "react-dom";
 import MoodEditor from "./moodEditor.jsx";
 import NumericCellEditor from "./numericCellEditor.jsx";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { MenuModule } from "@ag-grid-enterprise/menu";
-import { ColumnsToolPanelModule } from "@ag-grid-enterprise/column-tool-panel";
-import { RichSelectModule } from "@ag-grid-enterprise/rich-select";
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([

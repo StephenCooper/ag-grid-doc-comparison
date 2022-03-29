@@ -1,10 +1,9 @@
 import {
-  Grid,
   CsvCell,
   CsvExportParams,
   ExcelCell,
   ExcelExportParams,
-  GetDetailRowDataParams,
+  Grid,
   GridOptions,
   IDetailCellRendererParams,
   ProcessRowGroupForExportParams,

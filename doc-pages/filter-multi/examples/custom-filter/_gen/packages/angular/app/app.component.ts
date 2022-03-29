@@ -1,17 +1,9 @@
-import { Component } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
-import "ag-grid-enterprise";
+import { Component } from "@angular/core";
+import { ColDef, GridReadyEvent } from "ag-grid-community";
 import "ag-grid-community/dist/styles/ag-grid.css";
 import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import {
-  ColDef,
-  ColGroupDef,
-  ColumnApi,
-  Grid,
-  GridApi,
-  GridOptions,
-  GridReadyEvent,
-} from "ag-grid-community";
+import "ag-grid-enterprise";
 import { YearFilter } from "./year-filter.component";
 import { YearFloatingFilter } from "./year-floating-filter.component";
 

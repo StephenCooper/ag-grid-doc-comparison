@@ -1,9 +1,8 @@
-import { Injectable } from "@angular/core";
-import { map, catchError, tap } from "rxjs/operators";
-import { of, throwError, interval } from "rxjs";
-
-import { cloneDeep } from "lodash";
 import { HttpClient } from "@angular/common/http";
+import { Injectable } from "@angular/core";
+import { cloneDeep } from "lodash";
+import { interval, throwError } from "rxjs";
+import { catchError, map } from "rxjs/operators";
 
 @Injectable()
 export class MockServerService {

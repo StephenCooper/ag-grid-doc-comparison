@@ -1,8 +1,7 @@
 import {
-  Grid,
   AsyncTransactionsFlushed,
-  GetRowIdParams,
   ColDef,
+  Grid,
   GridApi,
   GridOptions,
   IsApplyServerSideTransactionParams,

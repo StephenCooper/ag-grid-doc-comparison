@@ -1,15 +1,14 @@
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
 import {
   CellClassParams,
   CellClassRules,
   ColDef,
-  ColGroupDef,
   Grid,
   GridOptions,
   ICellRendererParams,
   ValueParserParams,
 } from "ag-grid-community";
+import "ag-grid-community/dist/styles/ag-grid.css";
+import "ag-grid-community/dist/styles/ag-theme-alpine.css";
 
 const ragCellClassRules: CellClassRules = {
   "rag-green-outer": (params) => params.value === 2008,

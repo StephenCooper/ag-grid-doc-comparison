@@ -1,6 +1,6 @@
 import {
-  Grid,
   FirstDataRenderedEvent,
+  Grid,
   GridOptions,
   ICellRendererParams,
   IDetailCellRendererParams,

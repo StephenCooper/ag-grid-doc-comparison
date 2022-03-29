@@ -1,21 +1,16 @@
 import { Component } from "@angular/core";
-import "ag-grid-enterprise";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
 import {
   CellEditingStartedEvent,
   CellEditingStoppedEvent,
   ColDef,
-  ColGroupDef,
-  ColumnApi,
-  Grid,
-  GridApi,
-  GridOptions,
   GridReadyEvent,
   ICellEditorParams,
   RowEditingStartedEvent,
   RowEditingStoppedEvent,
 } from "ag-grid-community";
+import "ag-grid-community/dist/styles/ag-grid.css";
+import "ag-grid-community/dist/styles/ag-theme-alpine.css";
+import "ag-grid-enterprise";
 import { MoodEditor } from "./mood-editor.component";
 import { NumericCellEditor } from "./numeric-cell-editor.component";
 

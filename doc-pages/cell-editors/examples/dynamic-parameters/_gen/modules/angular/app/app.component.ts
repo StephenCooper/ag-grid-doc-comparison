@@ -1,17 +1,12 @@
-import { Component } from "@angular/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
 import {
   CellValueChangedEvent,
   ColDef,
-  ColGroupDef,
-  ColumnApi,
-  Grid,
-  GridApi,
-  GridOptions,
   GridReadyEvent,
   ICellEditorParams,
 } from "@ag-grid-community/core";
+import "@ag-grid-community/core/dist/styles/ag-grid.css";
+import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
+import { Component } from "@angular/core";
 import { GenderCellRenderer } from "./gender-cell-renderer.component";
 // Required feature modules are registered in app.module.ts
 

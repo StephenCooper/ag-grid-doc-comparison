@@ -1,15 +1,6 @@
-import { Component } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine-dark.css";
 import {
   ColDef,
-  ColGroupDef,
-  ColumnApi,
   GetServerSideGroupKey,
-  Grid,
-  GridApi,
-  GridOptions,
   GridReadyEvent,
   ICellRendererParams,
   IServerSideDatasource,
@@ -19,6 +10,10 @@ import {
   IsServerSideGroupOpenByDefaultParams,
   ServerSideStoreType,
 } from "@ag-grid-community/core";
+import "@ag-grid-community/core/dist/styles/ag-grid.css";
+import "@ag-grid-community/core/dist/styles/ag-theme-alpine-dark.css";
+import { HttpClient } from "@angular/common/http";
+import { Component } from "@angular/core";
 // Required feature modules are registered in app.module.ts
 
 @Component({

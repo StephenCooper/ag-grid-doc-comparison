@@ -4,8 +4,8 @@ import {
   ViewChild,
   ViewContainerRef,
 } from "@angular/core";
-import { ICellEditorParams } from "ag-grid-community";
 import { ICellEditorAngularComp } from "ag-grid-angular";
+import { ICellEditorParams } from "ag-grid-community";
 
 const KEY_BACKSPACE = "Backspace";
 const KEY_DELETE = "Delete";

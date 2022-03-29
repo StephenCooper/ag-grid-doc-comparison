@@ -1,21 +1,20 @@
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
+import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
 import {
   ColDef,
-  ColGroupDef,
   Grid,
   GridOptions,
   ICellRendererComp,
   ICellRendererParams,
   KeyCreatorParams,
+  ModuleRegistry,
 } from "@ag-grid-community/core";
-import { GenderRenderer } from "./genderRenderer";
-import { NumericEditor } from "./numericEditor";
-import { MoodRenderer } from "./moodRenderer";
-import { MoodEditor } from "./moodEditor";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
+import "@ag-grid-community/core/dist/styles/ag-grid.css";
+import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
 import { RichSelectModule } from "@ag-grid-enterprise/rich-select";
+import { GenderRenderer } from "./genderRenderer";
+import { MoodEditor } from "./moodEditor";
+import { MoodRenderer } from "./moodRenderer";
+import { NumericEditor } from "./numericEditor";
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([ClientSideRowModelModule, RichSelectModule]);

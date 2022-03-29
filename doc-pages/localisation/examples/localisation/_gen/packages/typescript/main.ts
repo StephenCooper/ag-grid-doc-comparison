@@ -1,17 +1,13 @@
-import "ag-grid-enterprise";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
 import {
   ColDef,
-  ColGroupDef,
   Grid,
   GridOptions,
   ICellRendererComp,
   ICellRendererParams,
-  SideBarDef,
-  StatusPanelDef,
 } from "ag-grid-community";
-import { doc } from "prettier";
+import "ag-grid-community/dist/styles/ag-grid.css";
+import "ag-grid-community/dist/styles/ag-theme-alpine.css";
+import "ag-grid-enterprise";
 
 declare var AG_GRID_LOCALE_ZZZ: {
   [key: string]: string;

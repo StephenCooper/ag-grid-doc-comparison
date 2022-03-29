@@ -1,7 +1,7 @@
-import Vue from "vue";
-import { cloneDeep } from "lodash";
 import * as agCharts from "ag-charts-community";
 import { AgChartsVue } from "ag-charts-vue";
+import { cloneDeep } from "lodash";
+import Vue from "vue";
 
 const ChartExample = {
   template: `

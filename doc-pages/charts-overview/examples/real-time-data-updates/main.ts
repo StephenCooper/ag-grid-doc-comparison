@@ -1,5 +1,5 @@
-import { AgCartesianChartOptions } from "ag-charts-community";
 import * as agCharts from "ag-charts-community";
+import { AgCartesianChartOptions } from "ag-charts-community";
 
 var systemLoad = 0;
 var userLoad = 0;

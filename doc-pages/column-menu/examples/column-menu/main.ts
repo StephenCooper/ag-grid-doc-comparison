@@ -1,7 +1,7 @@
 import {
-  Grid,
   ColDef,
   GetMainMenuItemsParams,
+  Grid,
   GridOptions,
   MenuItemDef,
   PostProcessPopupParams,

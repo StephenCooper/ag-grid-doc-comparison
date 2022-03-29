@@ -1,19 +1,17 @@
-import "ag-grid-enterprise";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
 import {
   CellEditingStartedEvent,
   CellEditingStoppedEvent,
-  ColDef,
-  ColGroupDef,
   Grid,
   GridOptions,
   ICellEditorParams,
   RowEditingStartedEvent,
   RowEditingStoppedEvent,
 } from "ag-grid-community";
-import { NumericCellEditor } from "./numericCellEditor";
+import "ag-grid-community/dist/styles/ag-grid.css";
+import "ag-grid-community/dist/styles/ag-theme-alpine.css";
+import "ag-grid-enterprise";
 import { MoodEditor } from "./moodEditor";
+import { NumericCellEditor } from "./numericCellEditor";
 
 const gridOptions: GridOptions = {
   columnDefs: [

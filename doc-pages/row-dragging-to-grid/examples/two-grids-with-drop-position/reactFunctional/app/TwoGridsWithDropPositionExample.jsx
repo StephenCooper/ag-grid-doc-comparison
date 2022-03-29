@@ -1,12 +1,10 @@
-import React, { useCallback, useEffect, useRef, useState } from "react";
-
-import { AgGridReact } from "@ag-grid-community/react";
 import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-
+import { ModuleRegistry } from "@ag-grid-community/core";
 import "@ag-grid-community/core/dist/styles/ag-grid.css";
 import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
+import { AgGridReact } from "@ag-grid-community/react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 
-import { ModuleRegistry } from "@ag-grid-community/core";
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([ClientSideRowModelModule]);
 

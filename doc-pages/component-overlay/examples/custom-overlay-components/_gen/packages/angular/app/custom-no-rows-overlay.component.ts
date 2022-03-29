@@ -1,6 +1,6 @@
 import { Component } from "@angular/core";
-import { INoRowsOverlayParams } from "ag-grid-community";
 import { INoRowsOverlayAngularComp } from "ag-grid-angular";
+import { INoRowsOverlayParams } from "ag-grid-community";
 
 @Component({
   selector: "app-no-rows-overlay",

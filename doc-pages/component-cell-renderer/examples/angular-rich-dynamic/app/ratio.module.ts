@@ -1,5 +1,4 @@
 import { NgModule } from "@angular/core";
-
 import { RatioComponent } from "./ratio.component";
 import { RatioParentComponent } from "./ratio.parent.component";
 

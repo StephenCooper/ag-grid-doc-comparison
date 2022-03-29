@@ -1,8 +1,8 @@
 import {
-  Grid,
   ColDef,
-  GridOptions,
   GetRowIdParams,
+  Grid,
+  GridOptions,
   IAggFuncParams,
   IDoesFilterPassParams,
   IFilterComp,

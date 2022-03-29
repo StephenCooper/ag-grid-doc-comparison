@@ -1,8 +1,5 @@
 import { Component } from "@angular/core";
-import {
-  ICellRendererAngularComp,
-  INoRowsOverlayAngularComp,
-} from "ag-grid-angular";
+import { ICellRendererAngularComp } from "ag-grid-angular";
 import { ICellRendererParams } from "ag-grid-community";
 
 @Component({

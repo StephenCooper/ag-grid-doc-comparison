@@ -1,11 +1,11 @@
 "use strict";
 
-import React, { useCallback, useMemo, useRef, useState } from "react";
-import { render } from "react-dom";
-import { AgGridReact } from "ag-grid-react";
-import "ag-grid-enterprise";
 import "ag-grid-community/dist/styles/ag-grid.css";
 import "ag-grid-community/dist/styles/ag-theme-alpine.css";
+import "ag-grid-enterprise";
+import { AgGridReact } from "ag-grid-react";
+import React, { useCallback, useMemo, useState } from "react";
+import { render } from "react-dom";
 
 const MyYearPivotComparator = (a, b) => {
   var requiredOrder = ["2012", "2010", "2008", "2006", "2004", "2002", "2000"];

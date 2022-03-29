@@ -1,6 +1,6 @@
 import {
-  Grid,
   FirstDataRenderedEvent,
+  Grid,
   GridOptions,
   IDetailCellRendererParams,
 } from "@ag-grid-community/core";

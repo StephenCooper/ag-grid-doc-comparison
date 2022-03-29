@@ -1,5 +1,4 @@
 import { NgModule } from "@angular/core";
-
 import { ClickableComponent } from "./clickable.component";
 import { ClickableParentComponent } from "./clickable.parent.component";
 

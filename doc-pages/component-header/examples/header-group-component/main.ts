@@ -1,4 +1,4 @@
-import { Grid, ColGroupDef, GridOptions } from "@ag-grid-community/core";
+import { ColGroupDef, Grid, GridOptions } from "@ag-grid-community/core";
 import { CustomHeaderGroup } from "./customHeaderGroup_typescript";
 
 const columnDefs: ColGroupDef[] = [

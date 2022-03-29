@@ -1,7 +1,6 @@
-import { cloneDeep } from "lodash";
 import { Component } from "@angular/core";
-import * as agCharts from "ag-charts-community";
 import { AgCartesianChartOptions } from "ag-charts-community";
+import { cloneDeep } from "lodash";
 declare var maleHeightWeight: any[];
 declare var femaleHeightWeight: any[];
 

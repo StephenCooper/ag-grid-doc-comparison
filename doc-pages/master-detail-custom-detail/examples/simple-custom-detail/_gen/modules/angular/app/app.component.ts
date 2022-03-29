@@ -1,17 +1,12 @@
-import { Component } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
 import {
   ColDef,
-  ColGroupDef,
-  ColumnApi,
   FirstDataRenderedEvent,
-  Grid,
-  GridApi,
-  GridOptions,
   GridReadyEvent,
 } from "@ag-grid-community/core";
+import "@ag-grid-community/core/dist/styles/ag-grid.css";
+import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
+import { HttpClient } from "@angular/common/http";
+import { Component } from "@angular/core";
 import { DetailCellRenderer } from "./detail-cell-renderer.component";
 // Required feature modules are registered in app.module.ts
 

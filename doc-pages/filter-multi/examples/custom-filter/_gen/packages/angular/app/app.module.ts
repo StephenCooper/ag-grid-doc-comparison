@@ -1,12 +1,11 @@
+import { HttpClientModule } from "@angular/common/http";
 import { NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
-import { HttpClientModule } from "@angular/common/http";
-
 import { AgGridModule } from "ag-grid-angular";
 import { AppComponent } from "./app.component";
-
 import { YearFilter } from "./year-filter.component";
 import { YearFloatingFilter } from "./year-floating-filter.component";
+
 @NgModule({
   imports: [
     BrowserModule,

@@ -1,16 +1,7 @@
-import { Component } from "@angular/core";
+import { ColDef, GridReadyEvent, SideBarDef } from "@ag-grid-community/core";
 import "@ag-grid-community/core/dist/styles/ag-grid.css";
 import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import {
-  ColDef,
-  ColGroupDef,
-  ColumnApi,
-  Grid,
-  GridApi,
-  GridOptions,
-  GridReadyEvent,
-  SideBarDef,
-} from "@ag-grid-community/core";
+import { Component } from "@angular/core";
 // Required feature modules are registered in app.module.ts
 
 @Component({

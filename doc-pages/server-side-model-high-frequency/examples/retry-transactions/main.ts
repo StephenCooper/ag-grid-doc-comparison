@@ -1,7 +1,7 @@
 import {
-  Grid,
   AsyncTransactionsFlushed,
   ColDef,
+  Grid,
   GridOptions,
   IServerSideDatasource,
   ServerSideTransactionResult,

@@ -1,14 +1,12 @@
-import "ag-grid-enterprise";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
 import {
   CellValueChangedEvent,
-  ColDef,
-  ColGroupDef,
   Grid,
   GridOptions,
   ICellEditorParams,
 } from "ag-grid-community";
+import "ag-grid-community/dist/styles/ag-grid.css";
+import "ag-grid-community/dist/styles/ag-theme-alpine.css";
+import "ag-grid-enterprise";
 import { GenderCellRenderer } from "./genderCellRenderer";
 
 const cellCellEditorParams = (params: ICellEditorParams) => {

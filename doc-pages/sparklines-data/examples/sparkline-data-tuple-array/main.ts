@@ -1,6 +1,6 @@
 import {
-  Grid,
   AreaSparklineOptions,
+  Grid,
   GridOptions,
 } from "@ag-grid-community/core";
 declare function getStockData(): any[];

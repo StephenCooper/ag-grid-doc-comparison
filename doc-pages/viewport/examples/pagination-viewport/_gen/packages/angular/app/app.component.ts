@@ -1,22 +1,17 @@
-import { Component } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
-import "ag-grid-enterprise";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
+import { Component } from "@angular/core";
 import {
   ColDef,
-  ColGroupDef,
-  ColumnApi,
   GetRowIdFunc,
-  Grid,
-  GridApi,
-  GridOptions,
   GridReadyEvent,
   ICellRendererComp,
   ICellRendererParams,
   IViewportDatasource,
   ValueFormatterParams,
 } from "ag-grid-community";
+import "ag-grid-community/dist/styles/ag-grid.css";
+import "ag-grid-community/dist/styles/ag-theme-alpine.css";
+import "ag-grid-enterprise";
 declare function createMockServer(): any;
 declare function createViewportDatasource(mockServer: any): IViewportDatasource;
 

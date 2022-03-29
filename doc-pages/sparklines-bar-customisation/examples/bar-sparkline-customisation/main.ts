@@ -1,7 +1,7 @@
 import {
+  BarSparklineOptions,
   Grid,
   GridOptions,
-  BarSparklineOptions,
 } from "@ag-grid-community/core";
 
 const gridOptions: GridOptions = {

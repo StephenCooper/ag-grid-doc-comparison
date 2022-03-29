@@ -1,9 +1,8 @@
 import {
-  Grid,
-  GridOptions,
-  BarSparklineOptions,
   BarFormat,
   BarFormatterParams,
+  Grid,
+  GridOptions,
   LabelFormatterParams,
 } from "@ag-grid-community/core";
 

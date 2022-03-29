@@ -1,21 +1,17 @@
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine-dark.css";
+import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
 import {
-  ColDef,
-  ColGroupDef,
   Grid,
   GridOptions,
   IDetailCellRendererParams,
   IServerSideDatasource,
-  RowHeightParams,
-  ServerSideStoreType,
+  ModuleRegistry,
 } from "@ag-grid-community/core";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import { ServerSideRowModelModule } from "@ag-grid-enterprise/server-side-row-model";
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
+import "@ag-grid-community/core/dist/styles/ag-grid.css";
+import "@ag-grid-community/core/dist/styles/ag-theme-alpine-dark.css";
+import { ColumnsToolPanelModule } from "@ag-grid-enterprise/column-tool-panel";
 import { MasterDetailModule } from "@ag-grid-enterprise/master-detail";
 import { MenuModule } from "@ag-grid-enterprise/menu";
-import { ColumnsToolPanelModule } from "@ag-grid-enterprise/column-tool-panel";
+import { ServerSideRowModelModule } from "@ag-grid-enterprise/server-side-row-model";
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([

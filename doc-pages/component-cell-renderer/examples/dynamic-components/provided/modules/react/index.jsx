@@ -1,18 +1,18 @@
 "use strict";
 
-import React, { Component } from "react";
-import { render } from "react-dom";
-import { AgGridReact } from "@ag-grid-community/react";
 import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
+import { ModuleRegistry } from "@ag-grid-community/core";
 import "@ag-grid-community/core/dist/styles/ag-grid.css";
 import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
+import { AgGridReact } from "@ag-grid-community/react";
+import React, { Component } from "react";
+import { render } from "react-dom";
 import ChildMessageRenderer from "./childMessageRenderer.jsx";
 import CubeRenderer from "./cubeRenderer.jsx";
 import CurrencyRenderer from "./currencyRenderer.jsx";
 import ParamsRenderer from "./paramsRenderer.jsx";
 import SquareRenderer from "./squareRenderer.jsx";
 
-import { ModuleRegistry } from "@ag-grid-community/core";
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([ClientSideRowModelModule]);
 

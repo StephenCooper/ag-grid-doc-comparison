@@ -1,15 +1,15 @@
-import { NgModule } from "@angular/core";
-import { BrowserModule } from "@angular/platform-browser";
-import { HttpClientModule } from "@angular/common/http";
-
 import { AgGridModule } from "@ag-grid-community/angular";
-import { AppComponent } from "./app.component";
-import { ModuleRegistry } from "@ag-grid-community/core";
 import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { SetFilterModule } from "@ag-grid-enterprise/set-filter";
-import { MenuModule } from "@ag-grid-enterprise/menu";
+import { ModuleRegistry } from "@ag-grid-community/core";
 import { ColumnsToolPanelModule } from "@ag-grid-enterprise/column-tool-panel";
 import { FiltersToolPanelModule } from "@ag-grid-enterprise/filter-tool-panel";
+import { MenuModule } from "@ag-grid-enterprise/menu";
+import { SetFilterModule } from "@ag-grid-enterprise/set-filter";
+import { HttpClientModule } from "@angular/common/http";
+import { NgModule } from "@angular/core";
+import { BrowserModule } from "@angular/platform-browser";
+import { AppComponent } from "./app.component";
+import { CountryCellRenderer } from "./country-cell-renderer.component";
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([
@@ -20,7 +20,6 @@ ModuleRegistry.registerModules([
   FiltersToolPanelModule,
 ]);
 
-import { CountryCellRenderer } from "./country-cell-renderer.component";
 @NgModule({
   imports: [
     BrowserModule,

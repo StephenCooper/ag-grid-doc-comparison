@@ -1,8 +1,8 @@
 import {
-  Grid,
   AreaSparklineOptions,
   ColumnFormatterParams,
   ColumnSparklineOptions,
+  Grid,
   GridOptions,
   LineSparklineOptions,
   MarkerFormatterParams,

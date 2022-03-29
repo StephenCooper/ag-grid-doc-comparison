@@ -1,9 +1,4 @@
-import {
-  Grid,
-  ColDef,
-  GridOptions,
-  ICellRendererParams,
-} from "@ag-grid-community/core";
+import { ColDef, Grid, GridOptions } from "@ag-grid-community/core";
 import { MultilineCellRenderer } from "./multilineCellRenderer_typescript";
 
 const columnDefs: ColDef[] = [

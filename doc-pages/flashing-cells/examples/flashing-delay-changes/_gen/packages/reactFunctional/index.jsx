@@ -1,10 +1,10 @@
 "use strict";
 
-import React, { useCallback, useMemo, useRef, useState } from "react";
-import { render } from "react-dom";
-import { AgGridReact } from "ag-grid-react";
 import "ag-grid-community/dist/styles/ag-grid.css";
 import "ag-grid-community/dist/styles/ag-theme-alpine.css";
+import { AgGridReact } from "ag-grid-react";
+import React, { useCallback, useMemo, useRef, useState } from "react";
+import { render } from "react-dom";
 
 const formatNumber = (number) => {
   // this puts commas into the number eg 1000 goes to 1,000,

@@ -1,13 +1,13 @@
-import Vue from "vue";
-import { AgGridVue } from "@ag-grid-community/vue";
+import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
+import { ModuleRegistry } from "@ag-grid-community/core";
 import "@ag-grid-community/core/dist/styles/ag-grid.css";
 import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
+import { AgGridVue } from "@ag-grid-community/vue";
+import { RangeSelectionModule } from "@ag-grid-enterprise/range-selection";
+import { StatusBarModule } from "@ag-grid-enterprise/status-bar";
+import Vue from "vue";
 import ClickableStatusBarComponent from "./clickableStatusBarComponentVue.js";
 import CountStatusBarComponent from "./countStatusBarComponentVue.js";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { StatusBarModule } from "@ag-grid-enterprise/status-bar";
-import { RangeSelectionModule } from "@ag-grid-enterprise/range-selection";
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([

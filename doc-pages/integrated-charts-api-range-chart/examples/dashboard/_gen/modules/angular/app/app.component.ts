@@ -1,20 +1,14 @@
-import { Component } from "@angular/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
 import {
   ColDef,
-  ColGroupDef,
-  ColumnApi,
   CreateRangeChartParams,
   FirstDataRenderedEvent,
-  GetChartToolbarItems,
   GetChartToolbarItemsParams,
-  Grid,
-  GridApi,
-  GridOptions,
   GridReadyEvent,
   ValueParserParams,
 } from "@ag-grid-community/core";
+import "@ag-grid-community/core/dist/styles/ag-grid.css";
+import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
+import { Component } from "@angular/core";
 // Required feature modules are registered in app.module.ts
 
 @Component({

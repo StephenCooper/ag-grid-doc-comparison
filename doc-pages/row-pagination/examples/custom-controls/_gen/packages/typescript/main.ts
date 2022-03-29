@@ -1,13 +1,12 @@
-import "ag-grid-enterprise";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
 import {
   ColDef,
-  ColGroupDef,
   Grid,
   GridOptions,
   ValueFormatterParams,
 } from "ag-grid-community";
+import "ag-grid-community/dist/styles/ag-grid.css";
+import "ag-grid-community/dist/styles/ag-theme-alpine.css";
+import "ag-grid-enterprise";
 
 const columnDefs: ColDef[] = [
   // this row just shows the row index, doesn't use any data from the row

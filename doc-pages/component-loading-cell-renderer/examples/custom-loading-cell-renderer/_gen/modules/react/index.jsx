@@ -1,13 +1,13 @@
 "use strict";
 
-import React, { Component } from "react";
-import { render } from "react-dom";
-import { AgGridReact } from "@ag-grid-community/react";
+import { ModuleRegistry } from "@ag-grid-community/core";
 import "@ag-grid-community/core/dist/styles/ag-grid.css";
 import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import CustomLoadingCellRenderer from "./customLoadingCellRenderer.jsx";
-import { ModuleRegistry } from "@ag-grid-community/core";
+import { AgGridReact } from "@ag-grid-community/react";
 import { ServerSideRowModelModule } from "@ag-grid-enterprise/server-side-row-model";
+import React, { Component } from "react";
+import { render } from "react-dom";
+import CustomLoadingCellRenderer from "./customLoadingCellRenderer.jsx";
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([ServerSideRowModelModule]);

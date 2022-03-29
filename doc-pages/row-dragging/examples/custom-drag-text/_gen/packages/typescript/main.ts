@@ -1,12 +1,6 @@
+import { ColDef, Grid, GridOptions, IRowDragItem } from "ag-grid-community";
 import "ag-grid-community/dist/styles/ag-grid.css";
 import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import {
-  ColDef,
-  ColGroupDef,
-  Grid,
-  GridOptions,
-  IRowDragItem,
-} from "ag-grid-community";
 
 var rowDragText = function (params: IRowDragItem) {
   // keep double equals here because data can be a string or number

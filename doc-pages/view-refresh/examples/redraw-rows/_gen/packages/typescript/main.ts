@@ -1,13 +1,6 @@
+import { Grid, GridOptions } from "ag-grid-community";
 import "ag-grid-community/dist/styles/ag-grid.css";
 import "ag-grid-community/dist/styles/ag-theme-alpine-dark.css";
-import {
-  ColDef,
-  ColGroupDef,
-  Grid,
-  GridOptions,
-  RowClassParams,
-  RowStyle,
-} from "ag-grid-community";
 
 var colorIndex = 0;
 var colors = ["#000000", "#000066", "#006600", "#660000"];

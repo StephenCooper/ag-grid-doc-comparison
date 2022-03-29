@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "devDependencies": {
-    "prettier": "^2.6.1"
+    "prettier": "^2.6.1",
+    "prettier-plugin-organize-imports": "^2.3.4"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",

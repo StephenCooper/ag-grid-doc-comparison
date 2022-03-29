@@ -1,8 +1,8 @@
 import "ag-grid-community/dist/styles/ag-grid.css";
 import "ag-grid-community/dist/styles/ag-theme-alpine.css";
+import { AgGridReact } from "ag-grid-react";
 import React, { Component } from "react";
 import { render } from "react-dom";
-import { AgGridReact } from "ag-grid-react";
 import ChildMessageRenderer from "./childMessageRenderer.jsx";
 import CubeRenderer from "./cubeRenderer.jsx";
 import CurrencyRenderer from "./currencyRenderer.jsx";

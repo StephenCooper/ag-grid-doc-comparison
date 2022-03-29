@@ -1,9 +1,9 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-
 import { cloneDeep } from "lodash";
-import { map, catchError } from "rxjs/operators";
-import { of, throwError, interval } from "rxjs";
+import { interval, throwError } from "rxjs";
+import { catchError, map } from "rxjs/operators";
+
 @Injectable()
 export class MockServerService {
   stocksUrl: string = "https://www.ag-grid.com/example-assets/stocks.json";

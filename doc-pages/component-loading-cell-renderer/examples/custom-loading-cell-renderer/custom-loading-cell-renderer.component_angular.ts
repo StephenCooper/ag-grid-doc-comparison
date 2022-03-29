@@ -1,6 +1,6 @@
-import { Component } from "@angular/core";
 import { ILoadingCellRendererAngularComp } from "@ag-grid-community/angular";
 import { ILoadingCellRendererParams } from "@ag-grid-community/core";
+import { Component } from "@angular/core";
 
 @Component({
   selector: "app-loading-cell-renderer",

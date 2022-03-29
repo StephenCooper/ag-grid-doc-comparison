@@ -1,13 +1,11 @@
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
 import {
-  ColDef,
-  ColGroupDef,
   FirstDataRenderedEvent,
   Grid,
   GridOptions,
   GridSizeChangedEvent,
 } from "ag-grid-community";
+import "ag-grid-community/dist/styles/ag-grid.css";
+import "ag-grid-community/dist/styles/ag-theme-alpine.css";
 
 const gridOptions: GridOptions = {
   columnDefs: [

@@ -1,4 +1,4 @@
-import { Grid, Column, GridOptions } from "@ag-grid-community/core";
+import { Column, Grid, GridOptions } from "@ag-grid-community/core";
 
 const gridOptions: GridOptions = {
   columnDefs: [

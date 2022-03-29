@@ -1,6 +1,6 @@
 import {
-  Grid,
   AreaSparklineOptions,
+  Grid,
   GridOptions,
   TooltipRendererParams,
 } from "@ag-grid-community/core";

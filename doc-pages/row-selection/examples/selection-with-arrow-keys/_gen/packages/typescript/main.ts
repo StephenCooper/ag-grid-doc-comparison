@@ -1,13 +1,6 @@
+import { Grid, GridOptions, NavigateToNextCellParams } from "ag-grid-community";
 import "ag-grid-community/dist/styles/ag-grid.css";
 import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import {
-  CellPosition,
-  ColDef,
-  ColGroupDef,
-  Grid,
-  GridOptions,
-  NavigateToNextCellParams,
-} from "ag-grid-community";
 
 const gridOptions: GridOptions = {
   columnDefs: [

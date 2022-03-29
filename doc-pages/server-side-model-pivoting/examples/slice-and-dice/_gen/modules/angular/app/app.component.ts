@@ -1,14 +1,6 @@
-import { Component } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine-dark.css";
 import {
   ColDef,
-  ColGroupDef,
-  ColumnApi,
   FirstDataRenderedEvent,
-  Grid,
-  GridApi,
   GridOptions,
   GridReadyEvent,
   IDoesFilterPassParams,
@@ -16,8 +8,11 @@ import {
   IFilterParams,
   IServerSideDatasource,
   ServerSideStoreType,
-  SideBarDef,
 } from "@ag-grid-community/core";
+import "@ag-grid-community/core/dist/styles/ag-grid.css";
+import "@ag-grid-community/core/dist/styles/ag-theme-alpine-dark.css";
+import { HttpClient } from "@angular/common/http";
+import { Component } from "@angular/core";
 // Required feature modules are registered in app.module.ts
 declare function createFakeServer(data: any): any;
 declare function createServerSideDatasource(

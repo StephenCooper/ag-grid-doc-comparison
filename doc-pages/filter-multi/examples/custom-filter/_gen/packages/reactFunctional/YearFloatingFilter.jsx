@@ -1,4 +1,4 @@
-import React, { forwardRef, useState, useImperativeHandle } from "react";
+import React, { forwardRef, useImperativeHandle, useState } from "react";
 
 export default forwardRef(({ parentFilterInstance }, ref) => {
   const [isActive, setIsActive] = useState(false);

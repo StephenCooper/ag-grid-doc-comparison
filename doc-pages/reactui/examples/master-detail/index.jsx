@@ -1,6 +1,7 @@
 "use strict";
 
 import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
+import { ModuleRegistry } from "@ag-grid-community/core";
 import "@ag-grid-community/core/dist/styles/ag-grid.css";
 import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
 import { AgGridReact } from "@ag-grid-community/react";
@@ -8,16 +9,9 @@ import { ColumnsToolPanelModule } from "@ag-grid-enterprise/column-tool-panel";
 import { MasterDetailModule } from "@ag-grid-enterprise/master-detail";
 import { MenuModule } from "@ag-grid-enterprise/menu";
 import { RangeSelectionModule } from "@ag-grid-enterprise/range-selection";
-import React, {
-  useRef,
-  useEffect,
-  useMemo,
-  useState,
-  useCallback,
-} from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import { render } from "react-dom";
 
-import { ModuleRegistry } from "@ag-grid-community/core";
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([
   ClientSideRowModelModule,

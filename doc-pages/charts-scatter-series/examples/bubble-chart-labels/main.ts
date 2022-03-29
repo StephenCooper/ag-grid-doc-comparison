@@ -1,5 +1,5 @@
-import { AgCartesianChartOptions } from "ag-charts-community";
 import * as agCharts from "ag-charts-community";
+import { AgCartesianChartOptions } from "ag-charts-community";
 declare var maleHeightWeight: any[];
 declare var femaleHeightWeight: any[];
 

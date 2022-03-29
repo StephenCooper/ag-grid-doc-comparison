@@ -1,17 +1,14 @@
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
+import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
 import {
-  ColDef,
-  ColGroupDef,
   FirstDataRenderedEvent,
   Grid,
   GridOptions,
-  StatusPanelDef,
+  ModuleRegistry,
 } from "@ag-grid-community/core";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { StatusBarModule } from "@ag-grid-enterprise/status-bar";
+import "@ag-grid-community/core/dist/styles/ag-grid.css";
+import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
 import { RangeSelectionModule } from "@ag-grid-enterprise/range-selection";
+import { StatusBarModule } from "@ag-grid-enterprise/status-bar";
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([

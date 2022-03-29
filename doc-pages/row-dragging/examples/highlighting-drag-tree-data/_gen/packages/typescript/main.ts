@@ -1,12 +1,5 @@
-import "ag-grid-enterprise";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
 import {
   CellClassParams,
-  ColDef,
-  ColGroupDef,
-  GetDataPath,
-  GetRowIdFunc,
   Grid,
   GridApi,
   GridOptions,
@@ -17,6 +10,9 @@ import {
   RowNode,
   ValueFormatterParams,
 } from "ag-grid-community";
+import "ag-grid-community/dist/styles/ag-grid.css";
+import "ag-grid-community/dist/styles/ag-theme-alpine.css";
+import "ag-grid-enterprise";
 declare var FileCellRenderer: any;
 
 var valueFormatter = function (params: ValueFormatterParams) {

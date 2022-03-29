@@ -1,14 +1,7 @@
-import "ag-grid-enterprise";
+import { ChartRef, ColDef, Grid, GridOptions } from "ag-grid-community";
 import "ag-grid-community/dist/styles/ag-grid.css";
 import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import {
-  ChartRef,
-  ChartRefParams,
-  ColDef,
-  ColGroupDef,
-  Grid,
-  GridOptions,
-} from "ag-grid-community";
+import "ag-grid-enterprise";
 
 const columnDefs: ColDef[] = [
   { field: "athlete", width: 150, chartDataType: "category" },

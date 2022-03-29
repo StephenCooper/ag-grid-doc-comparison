@@ -1,10 +1,9 @@
-import { NgModule } from "@angular/core";
-import { BrowserModule } from "@angular/platform-browser";
-import { HttpClientModule } from "@angular/common/http";
-
 // ag-grid
 import { AgGridModule } from "@ag-grid-community/angular";
-import { SportRenderer, AppComponent } from "./app.component";
+import { HttpClientModule } from "@angular/common/http";
+import { NgModule } from "@angular/core";
+import { BrowserModule } from "@angular/platform-browser";
+import { AppComponent, SportRenderer } from "./app.component";
 
 @NgModule({
   imports: [

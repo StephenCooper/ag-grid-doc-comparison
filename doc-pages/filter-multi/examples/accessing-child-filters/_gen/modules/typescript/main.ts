@@ -1,19 +1,17 @@
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
+import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
 import {
-  ColDef,
-  ColGroupDef,
   Grid,
   GridOptions,
   IMultiFilter,
   ISetFilter,
+  ModuleRegistry,
 } from "@ag-grid-community/core";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
+import "@ag-grid-community/core/dist/styles/ag-grid.css";
+import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
+import { ClipboardModule } from "@ag-grid-enterprise/clipboard";
+import { MenuModule } from "@ag-grid-enterprise/menu";
 import { MultiFilterModule } from "@ag-grid-enterprise/multi-filter";
 import { SetFilterModule } from "@ag-grid-enterprise/set-filter";
-import { MenuModule } from "@ag-grid-enterprise/menu";
-import { ClipboardModule } from "@ag-grid-enterprise/clipboard";
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([

@@ -1,11 +1,10 @@
 import {
-  Grid,
   CheckboxSelectionCallbackParams,
   ColDef,
   FirstDataRenderedEvent,
+  Grid,
   GridOptions,
   HeaderCheckboxSelectionCallbackParams,
-  ValueGetterParams,
 } from "@ag-grid-community/core";
 
 var checkboxSelection = function (params: CheckboxSelectionCallbackParams) {

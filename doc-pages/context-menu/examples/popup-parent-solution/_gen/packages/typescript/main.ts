@@ -1,7 +1,7 @@
-import "ag-grid-enterprise";
+import { Grid, GridOptions } from "ag-grid-community";
 import "ag-grid-community/dist/styles/ag-grid.css";
 import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import { ColDef, ColGroupDef, Grid, GridOptions } from "ag-grid-community";
+import "ag-grid-enterprise";
 
 var rowData = [
   { a: 1, b: 1, c: 1, d: 1, e: 1 },

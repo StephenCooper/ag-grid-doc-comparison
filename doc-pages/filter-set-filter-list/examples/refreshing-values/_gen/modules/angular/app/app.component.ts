@@ -1,14 +1,7 @@
-import { Component } from "@angular/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
 import {
   ColDef,
-  ColGroupDef,
-  ColumnApi,
   FirstDataRenderedEvent,
-  Grid,
   GridApi,
-  GridOptions,
   GridReadyEvent,
   IFiltersToolPanel,
   ISetFilter,
@@ -16,6 +9,9 @@ import {
   SetFilterValuesFuncParams,
   SideBarDef,
 } from "@ag-grid-community/core";
+import "@ag-grid-community/core/dist/styles/ag-grid.css";
+import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
+import { Component } from "@angular/core";
 // Required feature modules are registered in app.module.ts
 
 @Component({

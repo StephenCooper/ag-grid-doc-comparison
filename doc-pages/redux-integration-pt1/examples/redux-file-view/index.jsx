@@ -1,9 +1,8 @@
 import React from "react";
 import ReactDOM, { render } from "react-dom";
 import { Provider } from "react-redux";
-
-import store from "./store.jsx";
 import FileView from "./FileView.jsx";
+import store from "./store.jsx";
 
 const rootDiv = document.getElementById("root");
 

@@ -1,11 +1,11 @@
-import { createApp } from "vue";
-import { AgGridVue } from "@ag-grid-community/vue3";
+import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
+import { ModuleRegistry } from "@ag-grid-community/core";
 import "@ag-grid-community/core/dist/styles/ag-grid.css";
 import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { StatusBarModule } from "@ag-grid-enterprise/status-bar";
+import { AgGridVue } from "@ag-grid-community/vue3";
 import { RangeSelectionModule } from "@ag-grid-enterprise/range-selection";
+import { StatusBarModule } from "@ag-grid-enterprise/status-bar";
+import { createApp } from "vue";
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([

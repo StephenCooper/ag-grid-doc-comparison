@@ -1,17 +1,15 @@
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
 import {
   ColDef,
-  ColGroupDef,
-  GetRowIdFunc,
   Grid,
   GridOptions,
   ICellRendererComp,
   ICellRendererParams,
   IViewportDatasource,
+  ModuleRegistry,
   ValueFormatterParams,
 } from "@ag-grid-community/core";
-import { ModuleRegistry } from "@ag-grid-community/core";
+import "@ag-grid-community/core/dist/styles/ag-grid.css";
+import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
 import { ViewportRowModelModule } from "@ag-grid-enterprise/viewport-row-model";
 
 // Register the required feature modules with the Grid

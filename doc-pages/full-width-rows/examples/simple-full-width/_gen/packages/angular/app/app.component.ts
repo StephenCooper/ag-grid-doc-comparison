@@ -1,19 +1,14 @@
 import { Component } from "@angular/core";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
 import {
   ColDef,
-  ColGroupDef,
-  ColumnApi,
-  Grid,
-  GridApi,
-  GridOptions,
   GridReadyEvent,
   ICellRendererComp,
   ICellRendererParams,
   IsFullWidthRowParams,
   RowHeightParams,
 } from "ag-grid-community";
+import "ag-grid-community/dist/styles/ag-grid.css";
+import "ag-grid-community/dist/styles/ag-theme-alpine.css";
 import { FullWidthCellRenderer } from "./full-width-cell-renderer.component";
 
 @Component({

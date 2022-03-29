@@ -1,4 +1,4 @@
-import { Grid, ChartRef, ColDef, GridOptions } from "@ag-grid-community/core";
+import { ChartRef, ColDef, Grid, GridOptions } from "@ag-grid-community/core";
 
 const columnDefs: ColDef[] = [
   { field: "athlete", width: 150, chartDataType: "category" },

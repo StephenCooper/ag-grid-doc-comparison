@@ -1,6 +1,6 @@
 import {
-  Grid,
   FirstDataRenderedEvent,
+  Grid,
   GridApi,
   GridOptions,
   GridReadyEvent,

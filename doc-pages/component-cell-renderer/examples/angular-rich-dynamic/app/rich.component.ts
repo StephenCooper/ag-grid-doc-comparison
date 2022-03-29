@@ -1,10 +1,3 @@
-import { Component } from "@angular/core";
-
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-
-import { RatioParentComponent } from "./ratio.parent.component";
-import { ClickableParentComponent } from "./clickable.parent.component";
 import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
 import {
   ColDef,
@@ -12,6 +5,11 @@ import {
   GridReadyEvent,
   Module,
 } from "@ag-grid-community/core";
+import "@ag-grid-community/core/dist/styles/ag-grid.css";
+import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
+import { Component } from "@angular/core";
+import { ClickableParentComponent } from "./clickable.parent.component";
+import { RatioParentComponent } from "./ratio.parent.component";
 
 @Component({
   selector: "my-app",

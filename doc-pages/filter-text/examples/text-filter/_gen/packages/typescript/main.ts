@@ -1,12 +1,11 @@
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
 import {
   ColDef,
-  ColGroupDef,
   Grid,
   GridOptions,
   ITextFilterParams,
 } from "ag-grid-community";
+import "ag-grid-community/dist/styles/ag-grid.css";
+import "ag-grid-community/dist/styles/ag-theme-alpine.css";
 
 function contains(target: string, lookingFor: string) {
   return target && target.indexOf(lookingFor) >= 0;

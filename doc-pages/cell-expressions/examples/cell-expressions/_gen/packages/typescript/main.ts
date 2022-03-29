@@ -1,5 +1,3 @@
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine-dark.css";
 import {
   ColDef,
   Grid,
@@ -7,6 +5,8 @@ import {
   NewValueParams,
   ValueSetterParams,
 } from "ag-grid-community";
+import "ag-grid-community/dist/styles/ag-grid.css";
+import "ag-grid-community/dist/styles/ag-theme-alpine-dark.css";
 
 ///// left table
 var columnDefsLeft: ColDef[] = [

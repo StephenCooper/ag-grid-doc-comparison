@@ -2,7 +2,6 @@ import {
   CellValueChangedEvent,
   Grid,
   GridOptions,
-  ICellRendererParams,
   ISetFilterParams,
   ValueFormatterParams,
   ValueSetterParams,

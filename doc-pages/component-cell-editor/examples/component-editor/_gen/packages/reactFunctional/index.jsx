@@ -1,5 +1,6 @@
 import "ag-grid-community/dist/styles/ag-grid.css";
 import "ag-grid-community/dist/styles/ag-theme-alpine.css";
+import { AgGridReact } from "ag-grid-react";
 import React, {
   forwardRef,
   memo,
@@ -10,7 +11,6 @@ import React, {
   useState,
 } from "react";
 import ReactDOM, { render } from "react-dom";
-import { AgGridReact } from "ag-grid-react";
 ("use strict");
 
 const KEY_BACKSPACE = "Backspace";

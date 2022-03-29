@@ -1,10 +1,10 @@
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
 import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
 import { GridOptions, ValueFormatterParams } from "@ag-grid-community/core";
+import "@ag-grid-community/core/dist/styles/ag-grid.css";
+import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
 import { Component } from "@angular/core";
-import { MockServerService } from "./mockServer.service";
 import { Observable } from "rxjs";
+import { MockServerService } from "./mockServer.service";
 
 @Component({
   selector: "my-app",

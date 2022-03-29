@@ -1,14 +1,13 @@
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
 import {
   ColDef,
-  ColGroupDef,
   Grid,
   GridOptions,
   ICellRendererFunc,
   ICellRendererParams,
   ValueGetterParams,
 } from "ag-grid-community";
+import "ag-grid-community/dist/styles/ag-grid.css";
+import "ag-grid-community/dist/styles/ag-theme-alpine.css";
 
 const columnDefs: ColDef[] = [
   { headerName: "Product", field: "product" },

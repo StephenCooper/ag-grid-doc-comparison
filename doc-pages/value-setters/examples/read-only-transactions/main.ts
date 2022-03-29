@@ -1,7 +1,7 @@
 import {
+  CellEditRequestEvent,
   Grid,
   GridOptions,
-  CellEditRequestEvent,
 } from "@ag-grid-community/core";
 
 const gridOptions: GridOptions = {

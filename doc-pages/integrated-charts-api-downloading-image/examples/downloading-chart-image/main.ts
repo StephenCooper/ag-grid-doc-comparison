@@ -1,9 +1,9 @@
 import {
-  Grid,
   ChartCreated,
   CreateRangeChartParams,
   FirstDataRenderedEvent,
   GetChartImageDataUrlParams,
+  Grid,
   GridOptions,
 } from "@ag-grid-community/core";
 

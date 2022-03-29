@@ -1,12 +1,3 @@
-import { Component } from "@angular/core";
-import { ChildMessageRenderer } from "./child-message-renderer.component";
-import { CubeRenderer } from "./cube-renderer.component";
-import { CurrencyRenderer } from "./currency-renderer.component";
-import { ParamsRenderer } from "./params-renderer.component";
-import { SquareRenderer } from "./square-renderer.component";
-
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
 import {
   ColDef,
   ColumnApi,
@@ -14,6 +5,14 @@ import {
   GridReadyEvent,
   RowNode,
 } from "@ag-grid-community/core";
+import "@ag-grid-community/core/dist/styles/ag-grid.css";
+import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
+import { Component } from "@angular/core";
+import { ChildMessageRenderer } from "./child-message-renderer.component";
+import { CubeRenderer } from "./cube-renderer.component";
+import { CurrencyRenderer } from "./currency-renderer.component";
+import { ParamsRenderer } from "./params-renderer.component";
+import { SquareRenderer } from "./square-renderer.component";
 
 @Component({
   selector: "my-app",

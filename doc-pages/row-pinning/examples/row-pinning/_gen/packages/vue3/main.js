@@ -1,7 +1,7 @@
-import { createApp } from "vue";
-import { AgGridVue } from "ag-grid-vue3";
 import "ag-grid-community/dist/styles/ag-grid.css";
 import "ag-grid-community/dist/styles/ag-theme-alpine.css";
+import { AgGridVue } from "ag-grid-vue3";
+import { createApp } from "vue";
 import CustomPinnedRowRenderer from "./customPinnedRowRendererVue.js";
 
 const VueExample = {

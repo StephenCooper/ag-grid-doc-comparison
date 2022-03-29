@@ -1,13 +1,11 @@
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
 import {
   ColDef,
-  ColGroupDef,
   Grid,
   GridOptions,
   IsFullWidthRowParams,
-  RowHeightParams,
 } from "ag-grid-community";
+import "ag-grid-community/dist/styles/ag-grid.css";
+import "ag-grid-community/dist/styles/ag-theme-alpine.css";
 import { FullWidthCellRenderer } from "./fullWidthCellRenderer";
 
 const rowData = createData(100, "body");

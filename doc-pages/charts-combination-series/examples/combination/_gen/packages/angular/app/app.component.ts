@@ -1,6 +1,4 @@
-import { cloneDeep } from "lodash";
 import { Component } from "@angular/core";
-import * as agCharts from "ag-charts-community";
 import {
   AgBarSeriesOptions,
   AgCartesianAxisOptions,
@@ -9,6 +7,7 @@ import {
   AgCartesianSeriesTooltipRendererParams,
   AgLineSeriesOptions,
 } from "ag-charts-community";
+import { cloneDeep } from "lodash";
 
 @Component({
   selector: "my-app",

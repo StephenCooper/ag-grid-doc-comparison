@@ -1,23 +1,20 @@
-import { Component } from "@angular/core";
-
+import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
 import {
-  ModuleRegistry,
-  GridApi,
   ColDef,
   GridReadyEvent,
+  ModuleRegistry,
 } from "@ag-grid-community/core";
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { MenuModule } from "@ag-grid-enterprise/menu";
+import "@ag-grid-community/core/dist/styles/ag-grid.css";
+import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
 import { ExcelExportModule } from "@ag-grid-enterprise/excel-export";
+import { MenuModule } from "@ag-grid-enterprise/menu";
+import { Component } from "@angular/core";
 
 ModuleRegistry.registerModules([
   ClientSideRowModelModule,
   MenuModule,
   ExcelExportModule,
 ]);
-
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
 
 @Component({
   selector: "my-app",

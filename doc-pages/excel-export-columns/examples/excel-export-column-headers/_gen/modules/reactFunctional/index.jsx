@@ -1,15 +1,15 @@
 "use strict";
 
-import React, { useCallback, useMemo, useRef, useState } from "react";
-import { render } from "react-dom";
-import { AgGridReact } from "@ag-grid-community/react";
+import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
+import { ModuleRegistry } from "@ag-grid-community/core";
 import "@ag-grid-community/core/dist/styles/ag-grid.css";
 import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
 import { CsvExportModule } from "@ag-grid-community/csv-export";
+import { AgGridReact } from "@ag-grid-community/react";
 import { ExcelExportModule } from "@ag-grid-enterprise/excel-export";
 import { MenuModule } from "@ag-grid-enterprise/menu";
+import React, { useCallback, useMemo, useRef, useState } from "react";
+import { render } from "react-dom";
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([

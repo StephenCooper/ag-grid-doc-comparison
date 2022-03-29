@@ -1,14 +1,13 @@
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
 import {
   CellClassRules,
   ColDef,
-  ColGroupDef,
   ColSpanParams,
   Grid,
   GridOptions,
   RowHeightParams,
 } from "ag-grid-community";
+import "ag-grid-community/dist/styles/ag-grid.css";
+import "ag-grid-community/dist/styles/ag-theme-alpine.css";
 
 var cellClassRules: CellClassRules = {
   "header-cell": 'data.section === "big-title"',

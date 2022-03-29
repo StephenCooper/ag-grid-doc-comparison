@@ -1,8 +1,5 @@
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine-dark.css";
 import {
   ColDef,
-  ColGroupDef,
   FirstDataRenderedEvent,
   Grid,
   GridOptions,
@@ -10,15 +7,15 @@ import {
   IFilterComp,
   IFilterParams,
   IServerSideDatasource,
-  ServerSideStoreType,
-  SideBarDef,
+  ModuleRegistry,
 } from "@ag-grid-community/core";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import { ServerSideRowModelModule } from "@ag-grid-enterprise/server-side-row-model";
-import { RowGroupingModule } from "@ag-grid-enterprise/row-grouping";
-import { MenuModule } from "@ag-grid-enterprise/menu";
+import "@ag-grid-community/core/dist/styles/ag-grid.css";
+import "@ag-grid-community/core/dist/styles/ag-theme-alpine-dark.css";
 import { ColumnsToolPanelModule } from "@ag-grid-enterprise/column-tool-panel";
 import { FiltersToolPanelModule } from "@ag-grid-enterprise/filter-tool-panel";
+import { MenuModule } from "@ag-grid-enterprise/menu";
+import { RowGroupingModule } from "@ag-grid-enterprise/row-grouping";
+import { ServerSideRowModelModule } from "@ag-grid-enterprise/server-side-row-model";
 import { SetFilterModule } from "@ag-grid-enterprise/set-filter";
 
 // Register the required feature modules with the Grid

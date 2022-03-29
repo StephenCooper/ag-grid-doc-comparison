@@ -1,6 +1,6 @@
-import { Component, ViewChild, ViewContainerRef } from "@angular/core";
-import { ICellRendererParams, IFilterParams } from "ag-grid-community";
-import { ICellRendererAngularComp, IFilterAngularComp } from "ag-grid-angular";
+import { Component } from "@angular/core";
+import { ICellRendererAngularComp } from "ag-grid-angular";
+import { ICellRendererParams } from "ag-grid-community";
 
 @Component({
   selector: "full-width-cell",

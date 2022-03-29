@@ -1,9 +1,9 @@
 import {
-  Grid,
   ColDef,
+  Grid,
   GridOptions,
-  ISetFilter,
   IFiltersToolPanel,
+  ISetFilter,
 } from "@ag-grid-community/core";
 
 const columnDefs: ColDef[] = [

@@ -1,11 +1,6 @@
 import { Component } from "@angular/core";
 import { IFilterAngularComp } from "ag-grid-angular";
-import {
-  IDoesFilterPassParams,
-  IFilterParams,
-  RowNode,
-  ValueGetterFunc,
-} from "ag-grid-community";
+import { IDoesFilterPassParams, IFilterParams } from "ag-grid-community";
 
 @Component({
   selector: "year-component",

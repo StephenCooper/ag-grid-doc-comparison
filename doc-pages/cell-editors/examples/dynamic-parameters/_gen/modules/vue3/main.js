@@ -1,13 +1,13 @@
-import { createApp } from "vue";
-import { AgGridVue } from "@ag-grid-community/vue3";
+import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
+import { ModuleRegistry } from "@ag-grid-community/core";
 import "@ag-grid-community/core/dist/styles/ag-grid.css";
 import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import GenderCellRenderer from "./genderCellRendererVue.js";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { RichSelectModule } from "@ag-grid-enterprise/rich-select";
-import { MenuModule } from "@ag-grid-enterprise/menu";
+import { AgGridVue } from "@ag-grid-community/vue3";
 import { ColumnsToolPanelModule } from "@ag-grid-enterprise/column-tool-panel";
+import { MenuModule } from "@ag-grid-enterprise/menu";
+import { RichSelectModule } from "@ag-grid-enterprise/rich-select";
+import { createApp } from "vue";
+import GenderCellRenderer from "./genderCellRendererVue.js";
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([

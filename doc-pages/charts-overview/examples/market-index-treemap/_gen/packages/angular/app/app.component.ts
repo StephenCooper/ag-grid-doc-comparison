@@ -1,6 +1,4 @@
-import { cloneDeep } from "lodash";
 import { Component } from "@angular/core";
-import * as agCharts from "ag-charts-community";
 import {
   AgChartOptions,
   AgTreemapSeriesTooltipRendererParams,

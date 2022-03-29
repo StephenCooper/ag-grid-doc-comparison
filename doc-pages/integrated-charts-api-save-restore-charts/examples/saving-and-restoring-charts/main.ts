@@ -1,7 +1,7 @@
 import {
-  Grid,
   ChartModel,
   ChartRef,
+  Grid,
   GridOptions,
 } from "@ag-grid-community/core";
 

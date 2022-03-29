@@ -1,6 +1,6 @@
 import {
-  Grid,
   ColDef,
+  Grid,
   GridOptions,
   IViewportDatasource,
   IViewportDatasourceParams,

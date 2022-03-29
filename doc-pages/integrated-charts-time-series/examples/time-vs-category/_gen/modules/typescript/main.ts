@@ -1,21 +1,18 @@
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
+import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
 import {
-  AgChartThemeOverrides,
   ChartMenuOptions,
   ColDef,
-  ColGroupDef,
   CreateRangeChartParams,
   FirstDataRenderedEvent,
-  GetChartToolbarItems,
   Grid,
   GridOptions,
+  ModuleRegistry,
   ValueFormatterParams,
 } from "@ag-grid-community/core";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { MenuModule } from "@ag-grid-enterprise/menu";
+import "@ag-grid-community/core/dist/styles/ag-grid.css";
+import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
 import { GridChartsModule } from "@ag-grid-enterprise/charts";
+import { MenuModule } from "@ag-grid-enterprise/menu";
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([

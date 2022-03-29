@@ -1,6 +1,6 @@
 import {
-  Grid,
   GetServerSideStoreParamsParams,
+  Grid,
   GridOptions,
   IServerSideDatasource,
   ServerSideStoreParams,

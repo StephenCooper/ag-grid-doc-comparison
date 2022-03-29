@@ -1,4 +1,4 @@
-import { Grid, ColDef, GridOptions } from "@ag-grid-community/core";
+import { ColDef, Grid, GridOptions } from "@ag-grid-community/core";
 import { NumberFloatingFilterComponent } from "./numberFloatingFilterComponent_typescript";
 
 const columnDefs: ColDef[] = [

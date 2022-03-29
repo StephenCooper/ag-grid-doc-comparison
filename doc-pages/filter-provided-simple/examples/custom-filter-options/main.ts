@@ -1,9 +1,9 @@
 import {
-  Grid,
   ColDef,
+  GetLocaleTextParams,
+  Grid,
   GridOptions,
   IFilterOptionDef,
-  GetLocaleTextParams,
 } from "@ag-grid-community/core";
 declare var window: any;
 

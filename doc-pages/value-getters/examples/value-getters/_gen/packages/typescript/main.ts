@@ -1,12 +1,6 @@
+import { Grid, GridOptions, ValueGetterParams } from "ag-grid-community";
 import "ag-grid-community/dist/styles/ag-grid.css";
 import "ag-grid-community/dist/styles/ag-theme-alpine-dark.css";
-import {
-  ColDef,
-  ColGroupDef,
-  Grid,
-  GridOptions,
-  ValueGetterParams,
-} from "ag-grid-community";
 
 var hashValueGetter = function (params: ValueGetterParams) {
   return params.node ? params.node.rowIndex : null;

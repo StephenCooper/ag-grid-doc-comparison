@@ -1,10 +1,9 @@
 "use strict";
 
-import React, { Component } from "react";
-import { cloneDeep } from "lodash";
-import { render } from "react-dom";
-import * as agCharts from "ag-charts-community";
 import { AgChartsReact } from "ag-charts-react";
+import { cloneDeep } from "lodash";
+import React, { Component } from "react";
+import { render } from "react-dom";
 
 class ChartExample extends Component {
   constructor(props) {

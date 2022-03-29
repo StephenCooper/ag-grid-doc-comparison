@@ -1,20 +1,18 @@
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
+import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
 import {
-  CellPosition,
   ColDef,
   ColGroupDef,
-  ColumnGroup,
   Grid,
   GridOptions,
   HeaderPosition,
+  ModuleRegistry,
   NavigateToNextCellParams,
   NavigateToNextHeaderParams,
   TabToNextCellParams,
   TabToNextHeaderParams,
 } from "@ag-grid-community/core";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
+import "@ag-grid-community/core/dist/styles/ag-grid.css";
+import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([ClientSideRowModelModule]);

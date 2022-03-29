@@ -1,6 +1,6 @@
 import {
-  Grid,
   CellRange,
+  Grid,
   GridOptions,
   RangeSelectionChangedEvent,
 } from "@ag-grid-community/core";

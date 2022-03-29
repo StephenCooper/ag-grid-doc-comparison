@@ -1,6 +1,6 @@
 import {
-  Grid,
   GetContextMenuItemsParams,
+  Grid,
   GridOptions,
   MenuItemDef,
 } from "@ag-grid-community/core";

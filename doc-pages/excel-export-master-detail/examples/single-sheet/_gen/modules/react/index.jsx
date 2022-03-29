@@ -1,17 +1,17 @@
 "use strict";
 
-import React, { Component } from "react";
-import { render } from "react-dom";
-import { AgGridReact } from "@ag-grid-community/react";
+import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
+import { ModuleRegistry } from "@ag-grid-community/core";
 import "@ag-grid-community/core/dist/styles/ag-grid.css";
 import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
+import { AgGridReact } from "@ag-grid-community/react";
+import { ClipboardModule } from "@ag-grid-enterprise/clipboard";
+import { ColumnsToolPanelModule } from "@ag-grid-enterprise/column-tool-panel";
+import { ExcelExportModule } from "@ag-grid-enterprise/excel-export";
 import { MasterDetailModule } from "@ag-grid-enterprise/master-detail";
 import { MenuModule } from "@ag-grid-enterprise/menu";
-import { ColumnsToolPanelModule } from "@ag-grid-enterprise/column-tool-panel";
-import { ClipboardModule } from "@ag-grid-enterprise/clipboard";
-import { ExcelExportModule } from "@ag-grid-enterprise/excel-export";
+import React, { Component } from "react";
+import { render } from "react-dom";
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([

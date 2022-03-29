@@ -1,16 +1,16 @@
 "use strict";
 
-import React, { useMemo, useEffect, useState } from "react";
-import { render } from "react-dom";
-import { AgGridReact } from "@ag-grid-community/react";
 import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { RangeSelectionModule } from "@ag-grid-enterprise/range-selection";
-import { RowGroupingModule } from "@ag-grid-enterprise/row-grouping";
-import { RichSelectModule } from "@ag-grid-enterprise/rich-select";
+import { ModuleRegistry } from "@ag-grid-community/core";
 import "@ag-grid-community/core/dist/styles/ag-grid.css";
 import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
+import { AgGridReact } from "@ag-grid-community/react";
+import { RangeSelectionModule } from "@ag-grid-enterprise/range-selection";
+import { RichSelectModule } from "@ag-grid-enterprise/rich-select";
+import { RowGroupingModule } from "@ag-grid-enterprise/row-grouping";
+import React, { useEffect, useMemo, useState } from "react";
+import { render } from "react-dom";
 
-import { ModuleRegistry } from "@ag-grid-community/core";
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([
   ClientSideRowModelModule,

@@ -1,21 +1,19 @@
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
 import {
   ColDef,
-  ColGroupDef,
-  GetRowIdFunc,
   Grid,
   GridOptions,
   ICellRendererParams,
   IDatasource,
   IGetRowsParams,
+  ModuleRegistry,
   SortModelItem,
 } from "@ag-grid-community/core";
-import { ModuleRegistry } from "@ag-grid-community/core";
+import "@ag-grid-community/core/dist/styles/ag-grid.css";
+import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
 import { InfiniteRowModelModule } from "@ag-grid-community/infinite-row-model";
-import { SetFilterModule } from "@ag-grid-enterprise/set-filter";
-import { MenuModule } from "@ag-grid-enterprise/menu";
 import { ColumnsToolPanelModule } from "@ag-grid-enterprise/column-tool-panel";
+import { MenuModule } from "@ag-grid-enterprise/menu";
+import { SetFilterModule } from "@ag-grid-enterprise/set-filter";
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([

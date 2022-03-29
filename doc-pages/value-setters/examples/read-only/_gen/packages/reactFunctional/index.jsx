@@ -1,10 +1,10 @@
 "use strict";
 
-import React, { useCallback, useMemo, useRef, useState } from "react";
-import { render } from "react-dom";
-import { AgGridReact } from "ag-grid-react";
 import "ag-grid-community/dist/styles/ag-grid.css";
 import "ag-grid-community/dist/styles/ag-theme-alpine.css";
+import { AgGridReact } from "ag-grid-react";
+import React, { useCallback, useMemo, useState } from "react";
+import { render } from "react-dom";
 
 const GridExample = () => {
   const containerStyle = useMemo(() => ({ width: "100%", height: "100%" }), []);

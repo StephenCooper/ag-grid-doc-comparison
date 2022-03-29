@@ -2,8 +2,8 @@ import {
   Grid,
   GridOptions,
   ProcessCellForExportParams,
-  ProcessHeaderForExportParams,
   ProcessGroupHeaderForExportParams,
+  ProcessHeaderForExportParams,
 } from "@ag-grid-community/core";
 
 const gridOptions: GridOptions = {

@@ -1,8 +1,7 @@
 import {
-  Grid,
   ColDef,
+  Grid,
   GridOptions,
-  INumberFilterParams,
   ValueFormatterParams,
 } from "@ag-grid-community/core";
 

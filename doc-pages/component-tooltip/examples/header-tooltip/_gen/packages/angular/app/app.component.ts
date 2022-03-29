@@ -1,18 +1,14 @@
-import { Component } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
+import { Component } from "@angular/core";
 import {
   ColDef,
   ColGroupDef,
-  ColumnApi,
   FirstDataRenderedEvent,
-  Grid,
-  GridApi,
-  GridOptions,
   GridReadyEvent,
   ITooltipParams,
 } from "ag-grid-community";
+import "ag-grid-community/dist/styles/ag-grid.css";
+import "ag-grid-community/dist/styles/ag-theme-alpine.css";
 import { CustomTooltip } from "./custom-tooltip.component";
 
 @Component({

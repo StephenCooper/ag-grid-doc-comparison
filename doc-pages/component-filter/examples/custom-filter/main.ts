@@ -1,4 +1,4 @@
-import { Grid, ColDef, GridOptions } from "@ag-grid-community/core";
+import { ColDef, Grid, GridOptions } from "@ag-grid-community/core";
 import { PersonFilter } from "./personFilter_typescript";
 import { YearFilter } from "./yearFilter_typescript";
 

@@ -1,14 +1,7 @@
-import "ag-grid-enterprise";
+import { Grid, GridOptions, IServerSideDatasource } from "ag-grid-community";
 import "ag-grid-community/dist/styles/ag-grid.css";
 import "ag-grid-community/dist/styles/ag-theme-alpine-dark.css";
-import {
-  ColDef,
-  ColGroupDef,
-  Grid,
-  GridOptions,
-  IServerSideDatasource,
-  ServerSideStoreType,
-} from "ag-grid-community";
+import "ag-grid-enterprise";
 
 const gridOptions: GridOptions = {
   columnDefs: [

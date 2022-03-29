@@ -1,5 +1,5 @@
-import { AgChartOptions } from "ag-charts-community";
 import * as agCharts from "ag-charts-community";
+import { AgChartOptions } from "ag-charts-community";
 
 var minSize = 5;
 var maxSize = 100;

@@ -1,14 +1,12 @@
-import { AfterViewInit, Component } from "@angular/core";
-
+import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
+import { ColDef, GridOptions } from "@ag-grid-community/core";
 import "@ag-grid-community/core/dist/styles/ag-grid.css";
 import "@ag-grid-community/core/dist/styles/ag-theme-material.css";
-
-import { MatSliderComponent } from "./mat-slider.component";
-import { MatButtonToggleHeaderComponent } from "./mat-button-toggle.component";
+import { AfterViewInit, Component } from "@angular/core";
 import { ColumnAlignmentService } from "./columnAlignmentService";
+import { MatButtonToggleHeaderComponent } from "./mat-button-toggle.component";
 import { MatProgressSpinnerComponent } from "./mat-progress-spinner.component";
-import { ColDef, GridOptions } from "@ag-grid-community/core";
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
+import { MatSliderComponent } from "./mat-slider.component";
 
 @Component({
   selector: "my-app",

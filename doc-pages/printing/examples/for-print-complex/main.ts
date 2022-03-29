@@ -1,7 +1,7 @@
 import {
-  Grid,
   ColDef,
   FirstDataRenderedEvent,
+  Grid,
   GridApi,
   GridOptions,
 } from "@ag-grid-community/core";

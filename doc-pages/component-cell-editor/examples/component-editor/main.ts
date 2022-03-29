@@ -1,7 +1,7 @@
 import { Grid, GridOptions } from "@ag-grid-community/core";
 import { DoublingEditor } from "./doublingEditor_typescript";
-import { MoodRenderer } from "./moodRenderer_typescript";
 import { MoodEditor } from "./moodEditor_typescript";
+import { MoodRenderer } from "./moodRenderer_typescript";
 import { NumericEditor } from "./numericEditor_typescript";
 
 const gridOptions: GridOptions = {

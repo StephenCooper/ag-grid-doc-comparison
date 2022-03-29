@@ -1,15 +1,14 @@
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
+import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
 import {
   ColDef,
-  ColGroupDef,
   Grid,
   GridOptions,
+  ModuleRegistry,
 } from "@ag-grid-community/core";
-import { ColourCellRenderer } from "./colourCellRenderer";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
+import "@ag-grid-community/core/dist/styles/ag-grid.css";
+import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
 import { RichSelectModule } from "@ag-grid-enterprise/rich-select";
+import { ColourCellRenderer } from "./colourCellRenderer";
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([ClientSideRowModelModule, RichSelectModule]);

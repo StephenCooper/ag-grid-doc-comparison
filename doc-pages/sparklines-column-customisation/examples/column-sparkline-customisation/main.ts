@@ -1,6 +1,6 @@
 import {
-  Grid,
   ColumnSparklineOptions,
+  Grid,
   GridOptions,
 } from "@ag-grid-community/core";
 

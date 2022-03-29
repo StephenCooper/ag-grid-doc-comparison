@@ -1,14 +1,12 @@
-import { Component } from "@angular/core";
-
+import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
+import { ColDef, GridOptions, Module } from "@ag-grid-community/core";
 import "@ag-grid-community/core/dist/styles/ag-grid.css";
 import "@ag-grid-community/core/dist/styles/ag-theme-material.css";
-
+import { Component } from "@angular/core";
 import { MatCheckboxComponent } from "./mat-checkbox.component";
 import { MatInputComponent } from "./mat-input.component";
 import { MatRadioComponent } from "./mat-radio.component";
 import { MatSelectComponent } from "./mat-select.component";
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ColDef, GridOptions, Module } from "@ag-grid-community/core";
 
 @Component({
   selector: "my-app",

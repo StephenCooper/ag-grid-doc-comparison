@@ -1,14 +1,14 @@
-import Vue from "vue";
-import { AgGridVue } from "@ag-grid-community/vue";
+import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
+import { ModuleRegistry } from "@ag-grid-community/core";
 import "@ag-grid-community/core/dist/styles/ag-grid.css";
 import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
+import { AgGridVue } from "@ag-grid-community/vue";
+import { ClipboardModule } from "@ag-grid-enterprise/clipboard";
+import { ColumnsToolPanelModule } from "@ag-grid-enterprise/column-tool-panel";
+import { ExcelExportModule } from "@ag-grid-enterprise/excel-export";
 import { MasterDetailModule } from "@ag-grid-enterprise/master-detail";
 import { MenuModule } from "@ag-grid-enterprise/menu";
-import { ColumnsToolPanelModule } from "@ag-grid-enterprise/column-tool-panel";
-import { ClipboardModule } from "@ag-grid-enterprise/clipboard";
-import { ExcelExportModule } from "@ag-grid-enterprise/excel-export";
+import Vue from "vue";
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([

@@ -1,7 +1,7 @@
-import { Component } from "@angular/core";
 import { IHeaderAngularComp } from "@ag-grid-community/angular";
-import { ColumnAlignmentService } from "./columnAlignmentService";
 import { IHeaderParams } from "@ag-grid-community/core";
+import { Component } from "@angular/core";
+import { ColumnAlignmentService } from "./columnAlignmentService";
 
 @Component({
   selector: "header-component",

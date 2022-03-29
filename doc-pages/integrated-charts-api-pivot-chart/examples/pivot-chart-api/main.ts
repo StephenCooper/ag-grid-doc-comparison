@@ -1,7 +1,7 @@
 import {
-  Grid,
   CreatePivotChartParams,
   FirstDataRenderedEvent,
+  Grid,
   GridOptions,
 } from "@ag-grid-community/core";
 

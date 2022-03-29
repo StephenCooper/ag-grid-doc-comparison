@@ -1,14 +1,7 @@
-import "ag-grid-enterprise";
+import { Grid, GridOptions, IFiltersToolPanel } from "ag-grid-community";
 import "ag-grid-community/dist/styles/ag-grid.css";
 import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import {
-  ColDef,
-  ColGroupDef,
-  Grid,
-  GridOptions,
-  IFiltersToolPanel,
-  SideBarDef,
-} from "ag-grid-community";
+import "ag-grid-enterprise";
 
 var filterParams = {
   comparator: function (a: string, b: string) {

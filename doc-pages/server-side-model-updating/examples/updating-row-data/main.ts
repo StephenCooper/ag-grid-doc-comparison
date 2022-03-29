@@ -1,7 +1,7 @@
 import {
-  Grid,
   ColDef,
   GetRowIdParams,
+  Grid,
   GridOptions,
   IServerSideDatasource,
   IServerSideGetRowsParams,

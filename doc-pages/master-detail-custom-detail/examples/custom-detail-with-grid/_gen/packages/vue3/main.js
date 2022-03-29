@@ -1,9 +1,9 @@
 import "ag-grid-community/dist/styles/ag-grid.css";
 import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import { createApp } from "vue";
-import { AgGridVue } from "ag-grid-vue3";
-import DetailCellRenderer from "./detailCellRendererVue.js";
 import "ag-grid-enterprise";
+import { AgGridVue } from "ag-grid-vue3";
+import { createApp } from "vue";
+import DetailCellRenderer from "./detailCellRendererVue.js";
 
 const VueExample = {
   template: `

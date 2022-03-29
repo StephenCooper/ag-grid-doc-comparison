@@ -1,18 +1,15 @@
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
 import {
   ColDef,
-  ColGroupDef,
-  GetRowIdFunc,
   Grid,
   GridOptions,
   ICellRendererParams,
   IDatasource,
   IGetRowsParams,
   RowClassParams,
-  RowStyle,
   ValueFormatterParams,
 } from "ag-grid-community";
+import "ag-grid-community/dist/styles/ag-grid.css";
+import "ag-grid-community/dist/styles/ag-theme-alpine.css";
 
 const valueFormatter = function (params: ValueFormatterParams) {
   if (typeof params.value === "number") {

@@ -1,12 +1,12 @@
 import {
-  Grid,
+  AgAxisLabelFormatterParams,
+  AgCartesianSeriesTooltipRendererParams,
   ChartType,
   ColDef,
   CreateRangeChartParams,
+  Grid,
   GridOptions,
   ValueFormatterParams,
-  AgAxisLabelFormatterParams,
-  AgCartesianSeriesTooltipRendererParams,
 } from "@ag-grid-community/core";
 declare var __basePath: string;
 

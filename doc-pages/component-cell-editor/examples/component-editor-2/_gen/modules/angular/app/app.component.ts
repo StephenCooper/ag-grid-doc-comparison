@@ -1,18 +1,13 @@
-import { Component } from "@angular/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
 import {
   ColDef,
-  ColGroupDef,
-  ColumnApi,
-  Grid,
-  GridApi,
-  GridOptions,
   GridReadyEvent,
   ICellRendererComp,
   ICellRendererParams,
   KeyCreatorParams,
 } from "@ag-grid-community/core";
+import "@ag-grid-community/core/dist/styles/ag-grid.css";
+import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
+import { Component } from "@angular/core";
 import { GenderRenderer } from "./gender-renderer.component";
 import { MoodEditor } from "./mood-editor.component";
 import { MoodRenderer } from "./mood-renderer.component";

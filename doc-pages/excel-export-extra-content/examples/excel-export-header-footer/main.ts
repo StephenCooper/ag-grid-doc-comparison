@@ -1,8 +1,7 @@
 import {
-  Grid,
   ExcelExportParams,
-  ExcelHeaderFooterConfig,
   ExcelHeaderFooterContent,
+  Grid,
   GridOptions,
 } from "@ag-grid-community/core";
 

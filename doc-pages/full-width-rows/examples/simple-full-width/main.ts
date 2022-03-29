@@ -1,8 +1,8 @@
 import {
   Grid,
   GridOptions,
-  ICellRendererParams,
   ICellRendererComp,
+  ICellRendererParams,
   IsFullWidthRowParams,
 } from "@ag-grid-community/core";
 import { FullWidthCellRenderer } from "./fullWidthCellRenderer_typescript";

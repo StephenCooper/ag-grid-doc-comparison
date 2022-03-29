@@ -1,11 +1,11 @@
+import { ICellEditorAngularComp } from "@ag-grid-community/angular";
+import { ICellEditorParams } from "@ag-grid-community/core";
 import {
   Component,
   QueryList,
   ViewChildren,
   ViewContainerRef,
 } from "@angular/core";
-import { ICellEditorAngularComp } from "@ag-grid-community/angular";
-import { ICellEditorParams } from "@ag-grid-community/core";
 
 @Component({
   selector: "input-cell",

@@ -1,13 +1,13 @@
-import Vue from "vue";
-import { AgGridVue } from "@ag-grid-community/vue";
+import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
+import { ModuleRegistry } from "@ag-grid-community/core";
 import "@ag-grid-community/core/dist/styles/ag-grid.css";
 import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import MultilineCellRenderer from "./multilineCellRendererVue.js";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { MenuModule } from "@ag-grid-enterprise/menu";
-import { ExcelExportModule } from "@ag-grid-enterprise/excel-export";
 import { CsvExportModule } from "@ag-grid-community/csv-export";
+import { AgGridVue } from "@ag-grid-community/vue";
+import { ExcelExportModule } from "@ag-grid-enterprise/excel-export";
+import { MenuModule } from "@ag-grid-enterprise/menu";
+import Vue from "vue";
+import MultilineCellRenderer from "./multilineCellRendererVue.js";
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([

@@ -1,8 +1,8 @@
 "use strict";
 
+import SimpleGridComponent from "app/SimpleGridComponent";
 import React from "react";
 import { render } from "react-dom";
-import SimpleGridComponent from "app/SimpleGridComponent";
 
 render(
   <SimpleGridComponent></SimpleGridComponent>,

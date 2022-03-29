@@ -1,15 +1,7 @@
-import "ag-grid-enterprise";
+import { ColumnApi, Grid, GridOptions } from "ag-grid-community";
 import "ag-grid-community/dist/styles/ag-grid.css";
 import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import {
-  ColDef,
-  ColGroupDef,
-  ColumnApi,
-  GetRowIdFunc,
-  Grid,
-  GridOptions,
-  StatusPanelDef,
-} from "ag-grid-community";
+import "ag-grid-enterprise";
 
 function getInitialData() {
   const data = [];

@@ -1,16 +1,13 @@
-import "ag-grid-enterprise";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
 import {
-  ColDef,
-  ColGroupDef,
   Grid,
   GridOptions,
   KeyCreatorParams,
-  SideBarDef,
   ValueFormatterParams,
   ValueGetterParams,
 } from "ag-grid-community";
+import "ag-grid-community/dist/styles/ag-grid.css";
+import "ag-grid-community/dist/styles/ag-theme-alpine.css";
+import "ag-grid-enterprise";
 
 var valueGetter = function (params: ValueGetterParams) {
   return params.data["animalsString"].split("|");

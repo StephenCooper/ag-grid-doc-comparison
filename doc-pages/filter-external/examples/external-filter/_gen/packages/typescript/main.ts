@@ -1,14 +1,7 @@
-import "ag-grid-enterprise";
+import { ColDef, Grid, GridOptions, RowNode } from "ag-grid-community";
 import "ag-grid-community/dist/styles/ag-grid.css";
 import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import {
-  ColDef,
-  ColGroupDef,
-  Grid,
-  GridOptions,
-  IsExternalFilterPresentParams,
-  RowNode,
-} from "ag-grid-community";
+import "ag-grid-enterprise";
 
 var dateFilterParams = {
   comparator: function (filterLocalDateAtMidnight: Date, cellValue: string) {

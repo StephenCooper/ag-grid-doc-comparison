@@ -1,18 +1,18 @@
 "use strict";
 
-import React, { Component } from "react";
-import { render } from "react-dom";
-import { AgGridReact } from "@ag-grid-community/react";
+import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
+import { ModuleRegistry } from "@ag-grid-community/core";
 import "@ag-grid-community/core/dist/styles/ag-grid.css";
 import "@ag-grid-community/core/dist/styles/ag-theme-alpine-dark.css";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { MenuModule } from "@ag-grid-enterprise/menu";
+import { AgGridReact } from "@ag-grid-community/react";
 import { GridChartsModule } from "@ag-grid-enterprise/charts";
-import { SetFilterModule } from "@ag-grid-enterprise/set-filter";
-import { MultiFilterModule } from "@ag-grid-enterprise/multi-filter";
-import { FiltersToolPanelModule } from "@ag-grid-enterprise/filter-tool-panel";
 import { ColumnsToolPanelModule } from "@ag-grid-enterprise/column-tool-panel";
+import { FiltersToolPanelModule } from "@ag-grid-enterprise/filter-tool-panel";
+import { MenuModule } from "@ag-grid-enterprise/menu";
+import { MultiFilterModule } from "@ag-grid-enterprise/multi-filter";
+import { SetFilterModule } from "@ag-grid-enterprise/set-filter";
+import React, { Component } from "react";
+import { render } from "react-dom";
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([

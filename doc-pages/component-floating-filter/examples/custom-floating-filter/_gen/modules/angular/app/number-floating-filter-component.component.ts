@@ -1,6 +1,6 @@
-import { Component } from "@angular/core";
 import { IFloatingFilterAngularComp } from "@ag-grid-community/angular";
 import { IFloatingFilterParams, ISimpleFilter } from "@ag-grid-community/core";
+import { Component } from "@angular/core";
 
 export interface CustomParams {
   suppressFilterButton: boolean;

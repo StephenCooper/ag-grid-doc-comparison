@@ -1,9 +1,4 @@
-import {
-  ColDef,
-  Grid,
-  GridOptions,
-  ICellRendererParams,
-} from "@ag-grid-community/core";
+import { ColDef, Grid, GridOptions } from "@ag-grid-community/core";
 import { CountryCellRenderer } from "./countryCellRenderer_typescript";
 
 declare function createBase64FlagsFromResponse(

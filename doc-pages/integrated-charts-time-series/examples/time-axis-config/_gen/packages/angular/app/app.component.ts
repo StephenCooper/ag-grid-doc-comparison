@@ -1,21 +1,15 @@
 import { Component } from "@angular/core";
-import "ag-grid-enterprise";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
 import {
   AgChartThemeOverrides,
   ChartMenuOptions,
   ColDef,
-  ColGroupDef,
-  ColumnApi,
   CreateRangeChartParams,
   FirstDataRenderedEvent,
-  GetChartToolbarItems,
-  Grid,
-  GridApi,
-  GridOptions,
   GridReadyEvent,
 } from "ag-grid-community";
+import "ag-grid-community/dist/styles/ag-grid.css";
+import "ag-grid-community/dist/styles/ag-theme-alpine.css";
+import "ag-grid-enterprise";
 declare var moment: any;
 
 @Component({

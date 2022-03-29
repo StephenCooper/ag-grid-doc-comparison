@@ -1,6 +1,6 @@
+import { Component, ElementRef, ViewChild } from "@angular/core";
 import { IHeaderAngularComp } from "ag-grid-angular";
 import { IHeaderParams } from "ag-grid-community";
-import { Component, ElementRef, ViewChild } from "@angular/core";
 
 @Component({
   selector: "app-loading-overlay",

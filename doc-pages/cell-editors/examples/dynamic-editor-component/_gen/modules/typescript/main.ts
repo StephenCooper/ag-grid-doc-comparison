@@ -1,23 +1,21 @@
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
+import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
 import {
   CellEditingStartedEvent,
   CellEditingStoppedEvent,
-  ColDef,
-  ColGroupDef,
   Grid,
   GridOptions,
   ICellEditorParams,
+  ModuleRegistry,
   RowEditingStartedEvent,
   RowEditingStoppedEvent,
 } from "@ag-grid-community/core";
-import { NumericCellEditor } from "./numericCellEditor";
-import { MoodEditor } from "./moodEditor";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { MenuModule } from "@ag-grid-enterprise/menu";
+import "@ag-grid-community/core/dist/styles/ag-grid.css";
+import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
 import { ColumnsToolPanelModule } from "@ag-grid-enterprise/column-tool-panel";
+import { MenuModule } from "@ag-grid-enterprise/menu";
 import { RichSelectModule } from "@ag-grid-enterprise/rich-select";
+import { MoodEditor } from "./moodEditor";
+import { NumericCellEditor } from "./numericCellEditor";
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([

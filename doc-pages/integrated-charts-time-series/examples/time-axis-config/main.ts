@@ -1,8 +1,8 @@
 import {
-  Grid,
   ChartMenuOptions,
   CreateRangeChartParams,
   FirstDataRenderedEvent,
+  Grid,
   GridOptions,
 } from "@ag-grid-community/core";
 declare var moment: any;

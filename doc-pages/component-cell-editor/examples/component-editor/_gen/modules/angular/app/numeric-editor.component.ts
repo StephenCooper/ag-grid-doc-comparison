@@ -1,11 +1,11 @@
+import { ICellEditorAngularComp } from "@ag-grid-community/angular";
+import { ICellEditorParams } from "@ag-grid-community/core";
 import {
   AfterViewInit,
   Component,
   ViewChild,
   ViewContainerRef,
 } from "@angular/core";
-import { ICellEditorAngularComp } from "@ag-grid-community/angular";
-import { ICellEditorParams } from "@ag-grid-community/core";
 
 const KEY_BACKSPACE = "Backspace";
 const KEY_DELETE = "Delete";

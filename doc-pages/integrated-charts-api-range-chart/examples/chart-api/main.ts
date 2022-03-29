@@ -1,6 +1,6 @@
 import {
-  Grid,
   CreateRangeChartParams,
+  Grid,
   GridOptions,
 } from "@ag-grid-community/core";
 

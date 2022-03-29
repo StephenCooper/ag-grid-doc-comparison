@@ -1,9 +1,9 @@
 import "ag-grid-community/dist/styles/ag-grid.css";
 import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import Vue from "vue";
-import { AgGridVue } from "ag-grid-vue";
-import MyInnerRenderer from "./myInnerRendererVue.js";
 import "ag-grid-enterprise";
+import { AgGridVue } from "ag-grid-vue";
+import Vue from "vue";
+import MyInnerRenderer from "./myInnerRendererVue.js";
 
 const VueExample = {
   template: `

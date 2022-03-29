@@ -1,6 +1,6 @@
 import {
-  ICellRendererParams,
   ICellRendererComp,
+  ICellRendererParams,
 } from "@ag-grid-community/core";
 
 export class SimpleCellRenderer implements ICellRendererComp {

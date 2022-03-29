@@ -1,19 +1,18 @@
-import "ag-grid-enterprise";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
 import {
   ColDef,
-  ColGroupDef,
   Grid,
   GridOptions,
   ICellRendererComp,
   ICellRendererParams,
   KeyCreatorParams,
 } from "ag-grid-community";
+import "ag-grid-community/dist/styles/ag-grid.css";
+import "ag-grid-community/dist/styles/ag-theme-alpine.css";
+import "ag-grid-enterprise";
 import { GenderRenderer } from "./genderRenderer";
-import { NumericEditor } from "./numericEditor";
-import { MoodRenderer } from "./moodRenderer";
 import { MoodEditor } from "./moodEditor";
+import { MoodRenderer } from "./moodRenderer";
+import { NumericEditor } from "./numericEditor";
 
 class CountryCellRenderer implements ICellRendererComp {
   eGui!: HTMLElement;

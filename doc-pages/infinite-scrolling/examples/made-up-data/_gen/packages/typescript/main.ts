@@ -1,14 +1,12 @@
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
 import {
   ColDef,
-  ColGroupDef,
-  GetRowIdFunc,
   Grid,
   GridOptions,
   IDatasource,
   IGetRowsParams,
 } from "ag-grid-community";
+import "ag-grid-community/dist/styles/ag-grid.css";
+import "ag-grid-community/dist/styles/ag-theme-alpine.css";
 
 var ALPHABET = "abcdefghijklmnopqrstuvwxyz".split("");
 

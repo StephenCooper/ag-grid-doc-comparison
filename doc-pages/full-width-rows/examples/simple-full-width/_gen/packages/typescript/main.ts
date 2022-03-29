@@ -1,15 +1,12 @@
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
 import {
-  ColDef,
-  ColGroupDef,
   Grid,
   GridOptions,
   ICellRendererComp,
   ICellRendererParams,
   IsFullWidthRowParams,
-  RowHeightParams,
 } from "ag-grid-community";
+import "ag-grid-community/dist/styles/ag-grid.css";
+import "ag-grid-community/dist/styles/ag-theme-alpine.css";
 import { FullWidthCellRenderer } from "./fullWidthCellRenderer";
 
 class CountryCellRenderer implements ICellRendererComp {

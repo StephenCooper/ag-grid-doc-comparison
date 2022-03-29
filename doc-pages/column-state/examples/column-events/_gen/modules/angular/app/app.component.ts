@@ -1,11 +1,5 @@
-import { Component } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
 import {
   ColDef,
-  ColGroupDef,
-  Column,
   ColumnApi,
   ColumnMovedEvent,
   ColumnPinnedEvent,
@@ -14,12 +8,13 @@ import {
   ColumnRowGroupChangedEvent,
   ColumnValueChangedEvent,
   ColumnVisibleEvent,
-  Grid,
-  GridApi,
-  GridOptions,
   GridReadyEvent,
   SortChangedEvent,
 } from "@ag-grid-community/core";
+import "@ag-grid-community/core/dist/styles/ag-grid.css";
+import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
+import { HttpClient } from "@angular/common/http";
+import { Component } from "@angular/core";
 // Required feature modules are registered in app.module.ts
 
 @Component({

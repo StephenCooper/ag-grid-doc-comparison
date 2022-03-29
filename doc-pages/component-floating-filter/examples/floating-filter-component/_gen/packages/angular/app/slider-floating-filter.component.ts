@@ -1,11 +1,10 @@
 import { Component } from "@angular/core";
+import { AgFrameworkComponent } from "ag-grid-angular";
 import {
   IFloatingFilter,
   IFloatingFilterParams,
-  NumberFilter,
   NumberFilterModel,
 } from "ag-grid-community";
-import { AgFrameworkComponent } from "ag-grid-angular";
 
 export interface SliderFloatingFilterParams extends IFloatingFilterParams {
   value: number;

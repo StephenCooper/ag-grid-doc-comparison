@@ -3,9 +3,9 @@ import {
   Grid,
   GridOptions,
   IFiltersToolPanel,
+  ISetFilter,
   ISetFilterParams,
   SetFilterValuesFuncParams,
-  ISetFilter,
 } from "@ag-grid-community/core";
 
 var list1 = ["Elephant", "Lion", "Monkey"];

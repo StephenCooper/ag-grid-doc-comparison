@@ -1,13 +1,11 @@
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine-dark.css";
 import {
   CellValueChangedEvent,
-  ColDef,
-  ColGroupDef,
   Grid,
   GridOptions,
   ValueParserParams,
 } from "ag-grid-community";
+import "ag-grid-community/dist/styles/ag-grid.css";
+import "ag-grid-community/dist/styles/ag-theme-alpine-dark.css";
 
 const gridOptions: GridOptions = {
   columnDefs: [

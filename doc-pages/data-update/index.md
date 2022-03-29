@@ -39,7 +39,6 @@ Updating data in the grid can be done in the following ways:
 
     <br/>
 
-
 - ### Transaction
 
   The grid takes a transaction containing rows to add, remove and update. This is done using `api.applyTransaction(transaction)`.

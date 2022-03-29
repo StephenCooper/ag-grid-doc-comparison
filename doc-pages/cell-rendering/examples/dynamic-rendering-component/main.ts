@@ -3,9 +3,8 @@ import {
   GridOptions,
   ICellRendererParams,
 } from "@ag-grid-community/core";
-
-import { MoodRenderer } from "./moodRenderer_typescript";
 import { GenderRenderer } from "./genderRenderer_typescript";
+import { MoodRenderer } from "./moodRenderer_typescript";
 
 const rowData = [
   { value: 14, type: "age" },

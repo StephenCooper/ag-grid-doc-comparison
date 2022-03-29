@@ -1,8 +1,5 @@
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import { Component } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
-import { DaysFrostRenderer } from "./days-frost-renderer.component";
+import { Component } from "@angular/core";
 import {
   ColDef,
   GridApi,
@@ -10,6 +7,9 @@ import {
   ICellRendererParams,
   RowNode,
 } from "ag-grid-community";
+import "ag-grid-community/dist/styles/ag-grid.css";
+import "ag-grid-community/dist/styles/ag-theme-alpine.css";
+import { DaysFrostRenderer } from "./days-frost-renderer.component";
 
 /*
  * It's unlikely you'll use functions that create and manipulate DOM elements like this in an Angular application, but it

@@ -1,19 +1,17 @@
-import React, { useState } from "react";
-import { AgGridReact } from "@ag-grid-community/react";
-
-import { ModuleRegistry } from "@ag-grid-community/core";
 import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { MenuModule } from "@ag-grid-enterprise/menu";
+import { ModuleRegistry } from "@ag-grid-community/core";
+import "@ag-grid-community/core/dist/styles/ag-grid.css";
+import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
+import { AgGridReact } from "@ag-grid-community/react";
 import { ExcelExportModule } from "@ag-grid-enterprise/excel-export";
+import { MenuModule } from "@ag-grid-enterprise/menu";
+import React, { useState } from "react";
 
 ModuleRegistry.registerModules([
   ClientSideRowModelModule,
   MenuModule,
   ExcelExportModule,
 ]);
-
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
 
 const App = () => {
   const [columnDefs, setColumnDefs] = useState([

@@ -1,26 +1,22 @@
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
+import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
 import {
-  ColDef,
-  ColGroupDef,
   CsvCell,
   CsvExportParams,
   ExcelCell,
   ExcelExportParams,
-  ExcelStyle,
-  GetDetailRowDataParams,
   Grid,
   GridOptions,
   IDetailCellRendererParams,
+  ModuleRegistry,
   ProcessRowGroupForExportParams,
 } from "@ag-grid-community/core";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
+import "@ag-grid-community/core/dist/styles/ag-grid.css";
+import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
+import { ClipboardModule } from "@ag-grid-enterprise/clipboard";
+import { ColumnsToolPanelModule } from "@ag-grid-enterprise/column-tool-panel";
+import { ExcelExportModule } from "@ag-grid-enterprise/excel-export";
 import { MasterDetailModule } from "@ag-grid-enterprise/master-detail";
 import { MenuModule } from "@ag-grid-enterprise/menu";
-import { ColumnsToolPanelModule } from "@ag-grid-enterprise/column-tool-panel";
-import { ClipboardModule } from "@ag-grid-enterprise/clipboard";
-import { ExcelExportModule } from "@ag-grid-enterprise/excel-export";
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([

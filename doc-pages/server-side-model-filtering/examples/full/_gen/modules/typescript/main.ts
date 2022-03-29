@@ -1,17 +1,14 @@
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine-dark.css";
 import {
-  ColDef,
-  ColGroupDef,
   Grid,
   GridOptions,
   IServerSideDatasource,
-  ServerSideStoreType,
+  ModuleRegistry,
 } from "@ag-grid-community/core";
-import { ModuleRegistry } from "@ag-grid-community/core";
+import "@ag-grid-community/core/dist/styles/ag-grid.css";
+import "@ag-grid-community/core/dist/styles/ag-theme-alpine-dark.css";
+import { MenuModule } from "@ag-grid-enterprise/menu";
 import { ServerSideRowModelModule } from "@ag-grid-enterprise/server-side-row-model";
 import { SetFilterModule } from "@ag-grid-enterprise/set-filter";
-import { MenuModule } from "@ag-grid-enterprise/menu";
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([

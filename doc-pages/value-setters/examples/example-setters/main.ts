@@ -1,7 +1,7 @@
 import {
-  Grid,
   CellValueChangedEvent,
   ColDef,
+  Grid,
   GridOptions,
   ValueGetterParams,
   ValueSetterParams,

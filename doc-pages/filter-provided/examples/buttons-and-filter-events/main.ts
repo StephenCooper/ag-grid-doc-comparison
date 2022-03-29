@@ -1,9 +1,9 @@
 import {
-  Grid,
   ColDef,
   FilterChangedEvent,
   FilterModifiedEvent,
   FilterOpenedEvent,
+  Grid,
   GridOptions,
   IProvidedFilter,
 } from "@ag-grid-community/core";

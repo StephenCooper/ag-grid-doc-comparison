@@ -1,8 +1,8 @@
 import {
-  Grid,
   ColDef,
   ColGroupDef,
   ColumnApi,
+  Grid,
   GridOptions,
   IServerSideDatasource,
   IServerSideGetRowsRequest,

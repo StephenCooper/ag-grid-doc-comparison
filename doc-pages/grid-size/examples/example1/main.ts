@@ -1,6 +1,6 @@
 import {
-  Grid,
   FirstDataRenderedEvent,
+  Grid,
   GridOptions,
   GridSizeChangedEvent,
 } from "@ag-grid-community/core";

@@ -1,7 +1,6 @@
-import { createStore, applyMiddleware } from "redux";
-
-import fileReducer from "./reducers/fileReducer.jsx";
+import { applyMiddleware, createStore } from "redux";
 import logger from "./middleware/logger.jsx";
+import fileReducer from "./reducers/fileReducer.jsx";
 
 const initialState = {
   files: [

@@ -1,8 +1,8 @@
 import {
-  Grid,
   CellClassRules,
   ColDef,
   ColSpanParams,
+  Grid,
   GridOptions,
   RowHeightParams,
 } from "@ag-grid-community/core";

@@ -1,6 +1,6 @@
 import {
-  Grid,
   CellClassParams,
+  Grid,
   GridApi,
   GridOptions,
   RefreshCellsParams,

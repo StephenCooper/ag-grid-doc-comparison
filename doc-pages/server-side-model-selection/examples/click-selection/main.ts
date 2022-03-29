@@ -1,7 +1,7 @@
 import {
+  GetRowIdParams,
   Grid,
   GridOptions,
-  GetRowIdParams,
   IServerSideDatasource,
 } from "@ag-grid-community/core";
 declare var FakeServer: any;

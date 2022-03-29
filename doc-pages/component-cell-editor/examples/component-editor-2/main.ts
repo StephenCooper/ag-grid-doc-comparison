@@ -1,16 +1,15 @@
 import {
-  Grid,
   ColDef,
+  Grid,
   GridOptions,
   ICellRendererComp,
   ICellRendererParams,
   KeyCreatorParams,
 } from "@ag-grid-community/core";
-
 import { GenderRenderer } from "./genderRenderer_typescript";
-import { NumericEditor } from "./numericEditor_typescript";
-import { MoodRenderer } from "./moodRenderer_typescript";
 import { MoodEditor } from "./moodEditor_typescript";
+import { MoodRenderer } from "./moodRenderer_typescript";
+import { NumericEditor } from "./numericEditor_typescript";
 
 class CountryCellRenderer implements ICellRendererComp {
   eGui!: HTMLElement;

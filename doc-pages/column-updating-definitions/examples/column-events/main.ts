@@ -1,5 +1,4 @@
 import {
-  Grid,
   ColDef,
   ColumnMovedEvent,
   ColumnPinnedEvent,
@@ -8,6 +7,7 @@ import {
   ColumnRowGroupChangedEvent,
   ColumnValueChangedEvent,
   ColumnVisibleEvent,
+  Grid,
   GridOptions,
   SortChangedEvent,
 } from "@ag-grid-community/core";

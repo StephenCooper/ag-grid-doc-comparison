@@ -1,6 +1,6 @@
 import {
-  Grid,
   ColDef,
+  Grid,
   GridApi,
   GridOptions,
   ValueFormatterParams,

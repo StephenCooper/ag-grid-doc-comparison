@@ -2,7 +2,6 @@ import {
   CellValueChangedEvent,
   Grid,
   GridOptions,
-  ICellRendererParams,
   ValueFormatterParams,
   ValueSetterParams,
 } from "@ag-grid-community/core";

@@ -1,17 +1,14 @@
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
+import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
 import {
   BarFormat,
   BarFormatterParams,
-  BarSparklineOptions,
-  ColDef,
-  ColGroupDef,
   Grid,
   GridOptions,
   LabelFormatterParams,
+  ModuleRegistry,
 } from "@ag-grid-community/core";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
+import "@ag-grid-community/core/dist/styles/ag-grid.css";
+import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
 import { SparklinesModule } from "@ag-grid-enterprise/sparklines";
 
 // Register the required feature modules with the Grid

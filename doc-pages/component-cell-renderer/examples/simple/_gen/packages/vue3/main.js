@@ -1,7 +1,7 @@
 import "ag-grid-community/dist/styles/ag-grid.css";
 import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import { createApp, ref } from "vue";
 import { AgGridVue } from "ag-grid-vue3";
+import { createApp, ref } from "vue";
 import MedalCellRenderer from "./medalCellRendererVue.js";
 import TotalValueRenderer from "./totalValueRendererVue.js";
 

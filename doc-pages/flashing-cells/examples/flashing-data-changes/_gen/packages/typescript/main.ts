@@ -1,6 +1,6 @@
+import { Grid, GridOptions } from "ag-grid-community";
 import "ag-grid-community/dist/styles/ag-grid.css";
 import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import { ColDef, ColGroupDef, Grid, GridOptions } from "ag-grid-community";
 
 function formatNumber(number: number) {
   // this puts commas into the number eg 1000 goes to 1,000,

@@ -1,10 +1,10 @@
 import {
-  Grid,
   ChartCreated,
   ChartDestroyed,
   ChartOptionsChanged,
   ChartRangeSelectionChanged,
   ColDef,
+  Grid,
   GridOptions,
 } from "@ag-grid-community/core";
 

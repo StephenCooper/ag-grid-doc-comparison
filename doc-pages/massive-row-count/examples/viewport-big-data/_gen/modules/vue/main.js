@@ -1,9 +1,9 @@
-import Vue from "vue";
-import { AgGridVue } from "@ag-grid-community/vue";
+import { ModuleRegistry } from "@ag-grid-community/core";
 import "@ag-grid-community/core/dist/styles/ag-grid.css";
 import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { ModuleRegistry } from "@ag-grid-community/core";
+import { AgGridVue } from "@ag-grid-community/vue";
 import { ViewportRowModelModule } from "@ag-grid-enterprise/viewport-row-model";
+import Vue from "vue";
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([ViewportRowModelModule]);

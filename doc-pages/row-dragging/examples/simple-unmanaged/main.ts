@@ -1,7 +1,7 @@
 import {
+  GetRowIdParams,
   Grid,
   GridOptions,
-  GetRowIdParams,
   RowDragMoveEvent,
 } from "@ag-grid-community/core";
 

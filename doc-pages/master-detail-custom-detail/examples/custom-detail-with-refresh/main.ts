@@ -1,6 +1,6 @@
 import {
-  Grid,
   FirstDataRenderedEvent,
+  Grid,
   GridOptions,
 } from "@ag-grid-community/core";
 import { DetailCellRenderer } from "./detailCellRenderer_typescript";
