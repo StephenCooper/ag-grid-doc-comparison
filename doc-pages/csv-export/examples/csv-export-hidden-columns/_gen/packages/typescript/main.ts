@@ -1,7 +1,7 @@
-import { Grid, GridOptions } from "ag-grid-community";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
+import { Grid, GridOptions } from 'ag-grid-community';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import 'ag-grid-enterprise';
 
 const gridOptions: GridOptions = {
   defaultColDef: {
@@ -15,27 +15,27 @@ const gridOptions: GridOptions = {
   popupParent: document.body,
 
   columnDefs: [
-    { field: "athlete" },
-    { field: "country" },
-    { field: "sport" },
-    { field: "gold", hide: true },
-    { field: "silver", hide: true },
-    { field: "bronze", hide: true },
-    { field: "total" },
+    { field: 'athlete' },
+    { field: 'country' },
+    { field: 'sport' },
+    { field: 'gold', hide: true },
+    { field: 'silver', hide: true },
+    { field: 'bronze', hide: true },
+    { field: 'total' },
   ],
 
   rowData: getData(),
 };
 
 function getBoolean(id: string) {
-  var field: any = document.querySelector("#" + id);
+  var field: any = document.querySelector('#' + id);
 
   return !!field.checked;
 }
 
 function getParams() {
   return {
-    allColumns: getBoolean("allColumns"),
+    allColumns: getBoolean('allColumns'),
   };
 }
 
@@ -44,15 +44,16 @@ function onBtnExport() {
 }
 
 function onBtnUpdate() {
-  (document.querySelector("#csvResult") as any).value =
-    gridOptions.api!.getDataAsCsv(getParams());
+  (document.querySelector(
+    '#csvResult'
+  ) as any).value = gridOptions.api!.getDataAsCsv(getParams());
 }
 
 // setup the grid after the page has finished loading
-var gridDiv = document.querySelector<HTMLElement>("#myGrid")!;
+var gridDiv = document.querySelector<HTMLElement>('#myGrid')!;
 new Grid(gridDiv, gridOptions);
 
-if (typeof window !== "undefined") {
+if (typeof window !== 'undefined') {
   // Attach external event handlers to window so they can be called from index.html
   (<any>window).onBtnExport = onBtnExport;
   (<any>window).onBtnUpdate = onBtnUpdate;

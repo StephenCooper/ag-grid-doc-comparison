@@ -1,11 +1,11 @@
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { AgGridVue } from "@ag-grid-community/vue";
-import { GridChartsModule } from "@ag-grid-enterprise/charts";
-import { MenuModule } from "@ag-grid-enterprise/menu";
-import Vue from "vue";
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { AgGridVue } from '@ag-grid-community/vue';
+import { GridChartsModule } from '@ag-grid-enterprise/charts';
+import { MenuModule } from '@ag-grid-enterprise/menu';
+import Vue from 'vue';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([
@@ -39,34 +39,34 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
-        { field: "country", width: 150, chartDataType: "category" },
-        { field: "gold", chartDataType: "series", sort: "desc" },
-        { field: "silver", chartDataType: "series", sort: "desc" },
-        { field: "bronze", chartDataType: "series" },
+        { field: 'country', width: 150, chartDataType: 'category' },
+        { field: 'gold', chartDataType: 'series', sort: 'desc' },
+        { field: 'silver', chartDataType: 'series', sort: 'desc' },
+        { field: 'bronze', chartDataType: 'series' },
         {
-          headerName: "A",
-          valueGetter: "Math.floor(Math.random()*1000)",
-          chartDataType: "series",
+          headerName: 'A',
+          valueGetter: 'Math.floor(Math.random()*1000)',
+          chartDataType: 'series',
         },
         {
-          headerName: "B",
-          valueGetter: "Math.floor(Math.random()*1000)",
-          chartDataType: "series",
+          headerName: 'B',
+          valueGetter: 'Math.floor(Math.random()*1000)',
+          chartDataType: 'series',
         },
         {
-          headerName: "C",
-          valueGetter: "Math.floor(Math.random()*1000)",
-          chartDataType: "series",
+          headerName: 'C',
+          valueGetter: 'Math.floor(Math.random()*1000)',
+          chartDataType: 'series',
         },
         {
-          headerName: "D",
-          valueGetter: "Math.floor(Math.random()*1000)",
-          chartDataType: "series",
+          headerName: 'D',
+          valueGetter: 'Math.floor(Math.random()*1000)',
+          chartDataType: 'series',
         },
       ],
       gridApi: null,
@@ -93,15 +93,15 @@ const VueExample = {
         cellRange: {
           rowStartIndex: 0,
           rowEndIndex: 4,
-          columns: ["country", "gold", "silver"],
+          columns: ['country', 'gold', 'silver'],
         },
-        chartType: "groupedColumn",
-        chartThemeName: "ag-vivid",
+        chartType: 'groupedColumn',
+        chartThemeName: 'ag-vivid',
         chartThemeOverrides: {
           common: {
             title: {
               enabled: true,
-              text: "Top 5 Medal Winners",
+              text: 'Top 5 Medal Winners',
             },
           },
         },
@@ -111,15 +111,15 @@ const VueExample = {
     onChart2() {
       var params = {
         cellRange: {
-          columns: ["country", "bronze"],
+          columns: ['country', 'bronze'],
         },
-        chartType: "groupedBar",
-        chartThemeName: "ag-pastel",
+        chartType: 'groupedBar',
+        chartThemeName: 'ag-pastel',
         chartThemeOverrides: {
           common: {
             title: {
               enabled: true,
-              text: "Bronze Medal by Country",
+              text: 'Bronze Medal by Country',
             },
             legend: {
               enabled: false,
@@ -138,8 +138,8 @@ const VueExample = {
 };
 
 new Vue({
-  el: "#app",
+  el: '#app',
   components: {
-    "my-component": VueExample,
+    'my-component': VueExample,
   },
 });

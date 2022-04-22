@@ -1,19 +1,19 @@
-"use strict";
+'use strict';
 
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
-import { AgGridReact } from "ag-grid-react";
-import React, { useMemo, useState } from "react";
-import { render } from "react-dom";
+import React, { useCallback, useMemo, useRef, useState } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from 'ag-grid-react';
+import 'ag-grid-enterprise';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 
 const colors = {
-  firstLast: "rgb(253, 221, 96)",
-  min: "rgb(239, 108, 0)",
-  max: "rgb(59, 162, 114)",
-  negative: "rgb(255, 110, 118)",
-  positive: "rgba(0,128,0, 0.3)",
-  highlighted: "rgb(88, 217, 249)",
+  firstLast: 'rgb(253, 221, 96)',
+  min: 'rgb(239, 108, 0)',
+  max: 'rgb(59, 162, 114)',
+  negative: 'rgb(255, 110, 118)',
+  positive: 'rgba(0,128,0, 0.3)',
+  highlighted: 'rgb(88, 217, 249)',
 };
 
 const lineMarkerFormatter = (params) => {
@@ -66,19 +66,19 @@ const areaMarkerFormatter = (params) => {
 };
 
 const GridExample = () => {
-  const containerStyle = useMemo(() => ({ width: "100%", height: "100%" }), []);
-  const gridStyle = useMemo(() => ({ height: "100%", width: "100%" }), []);
+  const containerStyle = useMemo(() => ({ width: '100%', height: '100%' }), []);
+  const gridStyle = useMemo(() => ({ height: '100%', width: '100%' }), []);
   const [rowData, setRowData] = useState(getData());
   const [columnDefs, setColumnDefs] = useState([
     {
-      field: "sparkline",
-      headerName: "Line Sparkline",
+      field: 'sparkline',
+      headerName: 'Line Sparkline',
       minWidth: 100,
-      cellRenderer: "agSparklineCellRenderer",
+      cellRenderer: 'agSparklineCellRenderer',
       cellRendererParams: {
         sparklineOptions: {
           line: {
-            stroke: "rgb(124, 255, 178)",
+            stroke: 'rgb(124, 255, 178)',
             strokeWidth: 3,
           },
           padding: {
@@ -86,20 +86,20 @@ const GridExample = () => {
             bottom: 10,
           },
           marker: {
-            shape: "diamond",
+            shape: 'diamond',
             formatter: lineMarkerFormatter,
           },
         },
       },
     },
     {
-      field: "sparkline",
-      headerName: "Column Sparkline",
+      field: 'sparkline',
+      headerName: 'Column Sparkline',
       minWidth: 100,
-      cellRenderer: "agSparklineCellRenderer",
+      cellRenderer: 'agSparklineCellRenderer',
       cellRendererParams: {
         sparklineOptions: {
-          type: "column",
+          type: 'column',
           padding: {
             top: 10,
             bottom: 10,
@@ -109,16 +109,16 @@ const GridExample = () => {
       },
     },
     {
-      field: "sparkline",
-      headerName: "Area Sparkline",
+      field: 'sparkline',
+      headerName: 'Area Sparkline',
       minWidth: 100,
-      cellRenderer: "agSparklineCellRenderer",
+      cellRenderer: 'agSparklineCellRenderer',
       cellRendererParams: {
         sparklineOptions: {
-          type: "area",
-          fill: "rgba(84, 112, 198, 0.3)",
+          type: 'area',
+          fill: 'rgba(84, 112, 198, 0.3)',
           line: {
-            stroke: "rgb(84, 112, 198)",
+            stroke: 'rgb(84, 112, 198)',
           },
           padding: {
             top: 10,
@@ -153,4 +153,4 @@ const GridExample = () => {
   );
 };
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

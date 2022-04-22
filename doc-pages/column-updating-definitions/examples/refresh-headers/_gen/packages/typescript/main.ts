@@ -1,20 +1,20 @@
-import { ColDef, Grid, GridOptions } from "ag-grid-community";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import { CustomHeader } from "./customHeader";
+import { ColDef, Grid, GridOptions } from 'ag-grid-community';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import { CustomHeader } from './customHeader';
 
 const gridOptions: GridOptions = {
   columnDefs: [
-    { field: "athlete" },
-    { field: "age" },
-    { field: "country" },
-    { field: "year" },
-    { field: "date" },
-    { field: "sport" },
-    { field: "gold" },
-    { field: "silver" },
-    { field: "bronze" },
-    { field: "total" },
+    { field: 'athlete' },
+    { field: 'age' },
+    { field: 'country' },
+    { field: 'year' },
+    { field: 'date' },
+    { field: 'sport' },
+    { field: 'gold' },
+    { field: 'silver' },
+    { field: 'bronze' },
+    { field: 'total' },
   ],
   rowData: null,
   defaultColDef: {
@@ -24,16 +24,16 @@ const gridOptions: GridOptions = {
 
 function onBtUpperNames() {
   const columnDefs: ColDef[] = [
-    { field: "athlete" },
-    { field: "age" },
-    { field: "country" },
-    { field: "year" },
-    { field: "date" },
-    { field: "sport" },
-    { field: "gold" },
-    { field: "silver" },
-    { field: "bronze" },
-    { field: "total" },
+    { field: 'athlete' },
+    { field: 'age' },
+    { field: 'country' },
+    { field: 'year' },
+    { field: 'date' },
+    { field: 'sport' },
+    { field: 'gold' },
+    { field: 'silver' },
+    { field: 'bronze' },
+    { field: 'total' },
   ];
   columnDefs.forEach(function (c) {
     c.headerName = c.field!.toUpperCase();
@@ -43,16 +43,16 @@ function onBtUpperNames() {
 
 function onBtLowerNames() {
   const columnDefs: ColDef[] = [
-    { field: "athlete" },
-    { field: "age" },
-    { field: "country" },
-    { field: "year" },
-    { field: "date" },
-    { field: "sport" },
-    { field: "gold" },
-    { field: "silver" },
-    { field: "bronze" },
-    { field: "total" },
+    { field: 'athlete' },
+    { field: 'age' },
+    { field: 'country' },
+    { field: 'year' },
+    { field: 'date' },
+    { field: 'sport' },
+    { field: 'gold' },
+    { field: 'silver' },
+    { field: 'bronze' },
+    { field: 'total' },
   ];
   columnDefs.forEach(function (c) {
     c.headerName = c.field;
@@ -62,16 +62,16 @@ function onBtLowerNames() {
 
 function onBtFilterOn() {
   const columnDefs: ColDef[] = [
-    { field: "athlete" },
-    { field: "age" },
-    { field: "country" },
-    { field: "year" },
-    { field: "date" },
-    { field: "sport" },
-    { field: "gold" },
-    { field: "silver" },
-    { field: "bronze" },
-    { field: "total" },
+    { field: 'athlete' },
+    { field: 'age' },
+    { field: 'country' },
+    { field: 'year' },
+    { field: 'date' },
+    { field: 'sport' },
+    { field: 'gold' },
+    { field: 'silver' },
+    { field: 'bronze' },
+    { field: 'total' },
   ];
   columnDefs.forEach(function (c) {
     c.filter = true;
@@ -81,16 +81,16 @@ function onBtFilterOn() {
 
 function onBtFilterOff() {
   const columnDefs: ColDef[] = [
-    { field: "athlete" },
-    { field: "age" },
-    { field: "country" },
-    { field: "year" },
-    { field: "date" },
-    { field: "sport" },
-    { field: "gold" },
-    { field: "silver" },
-    { field: "bronze" },
-    { field: "total" },
+    { field: 'athlete' },
+    { field: 'age' },
+    { field: 'country' },
+    { field: 'year' },
+    { field: 'date' },
+    { field: 'sport' },
+    { field: 'gold' },
+    { field: 'silver' },
+    { field: 'bronze' },
+    { field: 'total' },
   ];
   columnDefs.forEach(function (c) {
     c.filter = false;
@@ -100,16 +100,16 @@ function onBtFilterOff() {
 
 function onBtResizeOn() {
   const columnDefs: ColDef[] = [
-    { field: "athlete" },
-    { field: "age" },
-    { field: "country" },
-    { field: "year" },
-    { field: "date" },
-    { field: "sport" },
-    { field: "gold" },
-    { field: "silver" },
-    { field: "bronze" },
-    { field: "total" },
+    { field: 'athlete' },
+    { field: 'age' },
+    { field: 'country' },
+    { field: 'year' },
+    { field: 'date' },
+    { field: 'sport' },
+    { field: 'gold' },
+    { field: 'silver' },
+    { field: 'bronze' },
+    { field: 'total' },
   ];
   columnDefs.forEach(function (c) {
     c.resizable = true;
@@ -119,16 +119,16 @@ function onBtResizeOn() {
 
 function onBtResizeOff() {
   const columnDefs: ColDef[] = [
-    { field: "athlete" },
-    { field: "age" },
-    { field: "country" },
-    { field: "year" },
-    { field: "date" },
-    { field: "sport" },
-    { field: "gold" },
-    { field: "silver" },
-    { field: "bronze" },
-    { field: "total" },
+    { field: 'athlete' },
+    { field: 'age' },
+    { field: 'country' },
+    { field: 'year' },
+    { field: 'date' },
+    { field: 'sport' },
+    { field: 'gold' },
+    { field: 'silver' },
+    { field: 'bronze' },
+    { field: 'total' },
   ];
   columnDefs.forEach(function (c) {
     c.resizable = false;
@@ -137,16 +137,16 @@ function onBtResizeOff() {
 }
 
 // setup the grid after the page has finished loading
-const gridDiv = document.querySelector<HTMLElement>("#myGrid")!;
+const gridDiv = document.querySelector<HTMLElement>('#myGrid')!;
 new Grid(gridDiv, gridOptions);
 
-fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
   .then((response) => response.json())
   .then(function (data) {
     gridOptions.api!.setRowData(data);
   });
 
-if (typeof window !== "undefined") {
+if (typeof window !== 'undefined') {
   // Attach external event handlers to window so they can be called from index.html
   (<any>window).onBtUpperNames = onBtUpperNames;
   (<any>window).onBtLowerNames = onBtLowerNames;

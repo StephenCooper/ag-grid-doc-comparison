@@ -38,7 +38,7 @@ function createServerSideDatasource(fakeServer, gridOptions) {
       colDefs.forEach(function (colDef) {
         if (colDef.children) {
           parts.push(colDef.groupId);
-          parts.push("[" + that.createColsHash(colDef.children) + "]");
+          parts.push('[' + that.createColsHash(colDef.children) + ']');
         } else {
           parts.push(colDef.colId);
           // headerName can change if the aggFunc was changed in a value col. if we didn't
@@ -49,7 +49,7 @@ function createServerSideDatasource(fakeServer, gridOptions) {
           }
         }
       });
-      return parts.join(",");
+      return parts.join(',');
     }
   }
 
@@ -172,7 +172,7 @@ function createFakeServer(data) {
           if (valueA == valueB) {
             continue;
           }
-          var sortDirection = sortColModel.sort === "asc" ? 1 : -1;
+          var sortDirection = sortColModel.sort === 'asc' ? 1 : -1;
           if (valueA > valueB) {
             return sortDirection;
           } else {
@@ -198,11 +198,11 @@ function createFakeServer(data) {
         if (filterModel.age) {
           var age = item.age;
           var allowedAge = parseInt(filterModel.age.filter);
-          if (filterModel.age.type == "equals") {
+          if (filterModel.age.type == 'equals') {
             if (age !== allowedAge) {
               continue;
             }
-          } else if (filterModel.age.type == "lessThan") {
+          } else if (filterModel.age.type == 'lessThan') {
             if (age >= allowedAge) {
               continue;
             }
@@ -273,7 +273,7 @@ function createFakeServer(data) {
           ) {
             pivotValues.push(pivotValue.toString());
           } else {
-            pivotValues.push("-");
+            pivotValues.push('-');
           }
         });
 
@@ -338,15 +338,15 @@ function createFakeServer(data) {
 
         parentGroup.children.push({
           colId: colKey,
-          headerName: valueCol.aggFunc + "(" + valueCol.displayName + ")",
+          headerName: valueCol.aggFunc + '(' + valueCol.displayName + ')',
           field: colKey,
         });
       }
 
       function createColKey(pivotValues, valueField) {
-        var result = pivotValues.join("|");
+        var result = pivotValues.join('|');
         if (valueField !== undefined) {
-          result += "|" + valueField;
+          result += '|' + valueField;
         }
         return result;
       }
@@ -390,14 +390,14 @@ function createFakeServer(data) {
 
         // the aggregation we do depends on which agg func the user picked
         switch (valueCol.aggFunc) {
-          case "sum":
+          case 'sum':
             var sum = 0;
             values.forEach(function (value) {
               sum += value;
             });
             result[field] = sum;
             break;
-          case "min":
+          case 'min':
             var min = null;
             values.forEach(function (value) {
               if (min === null || min > value) {
@@ -406,7 +406,7 @@ function createFakeServer(data) {
             });
             result[field] = min;
             break;
-          case "max":
+          case 'max':
             var max = null;
             values.forEach(function (value) {
               if (max === null || max < value) {
@@ -415,12 +415,12 @@ function createFakeServer(data) {
             });
             result[field] = max;
             break;
-          case "random":
+          case 'random':
             result[field] = Math.random(); // just make up a number
             break;
           default:
             console.warn(
-              "unrecognised aggregation function: " + valueCol.aggFunc
+              'unrecognised aggregation function: ' + valueCol.aggFunc
             );
             break;
         }

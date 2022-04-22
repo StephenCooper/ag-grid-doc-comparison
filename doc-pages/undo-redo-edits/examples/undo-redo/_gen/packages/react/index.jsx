@@ -1,11 +1,11 @@
-"use strict";
+'use strict';
 
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
-import { AgGridReact } from "ag-grid-react";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from 'ag-grid-react';
+import 'ag-grid-enterprise';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 
 class GridExample extends Component {
   constructor(props) {
@@ -13,14 +13,14 @@ class GridExample extends Component {
 
     this.state = {
       columnDefs: [
-        { field: "a" },
-        { field: "b" },
-        { field: "c" },
-        { field: "d" },
-        { field: "e" },
-        { field: "f" },
-        { field: "g" },
-        { field: "h" },
+        { field: 'a' },
+        { field: 'b' },
+        { field: 'c' },
+        { field: 'd' },
+        { field: 'e' },
+        { field: 'f' },
+        { field: 'g' },
+        { field: 'h' },
       ],
       defaultColDef: {
         flex: 1,
@@ -37,21 +37,21 @@ class GridExample extends Component {
   };
 
   onFirstDataRendered = () => {
-    setValue("#undoInput", 0);
-    disable("#undoInput", true);
-    disable("#undoBtn", true);
-    setValue("#redoInput", 0);
-    disable("#redoInput", true);
-    disable("#redoBtn", true);
+    setValue('#undoInput', 0);
+    disable('#undoInput', true);
+    disable('#undoBtn', true);
+    setValue('#redoInput', 0);
+    disable('#redoInput', true);
+    disable('#redoBtn', true);
   };
 
   onCellValueChanged = (params) => {
     var undoSize = params.api.getCurrentUndoSize();
-    setValue("#undoInput", undoSize);
-    disable("#undoBtn", undoSize < 1);
+    setValue('#undoInput', undoSize);
+    disable('#undoBtn', undoSize < 1);
     var redoSize = params.api.getCurrentRedoSize();
-    setValue("#redoInput", redoSize);
-    disable("#redoBtn", redoSize < 1);
+    setValue('#redoInput', redoSize);
+    disable('#redoBtn', redoSize < 1);
   };
 
   undo = () => {
@@ -64,7 +64,7 @@ class GridExample extends Component {
 
   render() {
     return (
-      <div style={{ width: "100%", height: "100%" }}>
+      <div style={{ width: '100%', height: '100%' }}>
         <div className="example-wrapper">
           <div>
             <span className="button-group">
@@ -90,8 +90,8 @@ class GridExample extends Component {
           </div>
           <div
             style={{
-              height: "100%",
-              width: "100%",
+              height: '100%',
+              width: '100%',
             }}
             className="ag-theme-alpine"
           >
@@ -124,16 +124,16 @@ function setValue(id, value) {
 function getRows() {
   return Array.apply(null, Array(100)).map(function (_, i) {
     return {
-      a: "a-" + i,
-      b: "b-" + i,
-      c: "c-" + i,
-      d: "d-" + i,
-      e: "e-" + i,
-      f: "f-" + i,
-      g: "g-" + i,
-      h: "h-" + i,
+      a: 'a-' + i,
+      b: 'b-' + i,
+      c: 'c-' + i,
+      d: 'd-' + i,
+      e: 'e-' + i,
+      f: 'f-' + i,
+      g: 'g-' + i,
+      h: 'h-' + i,
     };
   });
 }
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

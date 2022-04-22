@@ -1,5 +1,5 @@
-import { AgChartsVue } from "ag-charts-vue";
-import Vue from "vue";
+import { AgChartsVue } from 'ag-charts-vue';
+import Vue from 'vue';
 
 const ChartExample = {
   template: `
@@ -7,7 +7,7 @@ const ChartExample = {
                 :options="options"></ag-charts-vue>
     `,
   components: {
-    "ag-charts-vue": AgChartsVue,
+    'ag-charts-vue': AgChartsVue,
   },
   data: function () {
     return {
@@ -18,36 +18,36 @@ const ChartExample = {
     this.options = {
       data: [
         {
-          month: "Dec",
+          month: 'Dec',
           sweaters: 50,
           hats: 40,
         },
         {
-          month: "Jan",
+          month: 'Jan',
           sweaters: 70,
           hats: 50,
         },
         {
-          month: "Feb",
+          month: 'Feb',
           sweaters: 60,
           hats: 30,
         },
       ],
       series: [
         {
-          type: "column",
-          xKey: "month",
+          type: 'column',
+          xKey: 'month',
           tooltip: { renderer: renderer },
-          yKey: "sweaters",
-          yName: "Sweaters made",
+          yKey: 'sweaters',
+          yName: 'Sweaters made',
           stacked: true,
         },
         {
-          type: "column",
-          xKey: "month",
+          type: 'column',
+          xKey: 'month',
           tooltip: { renderer: renderer },
-          yKey: "hats",
-          yName: "Hats made",
+          yKey: 'hats',
+          yName: 'Hats made',
           stacked: true,
         },
       ],
@@ -65,8 +65,8 @@ window.renderer = function renderer(params) {
 };
 
 new Vue({
-  el: "#app",
+  el: '#app',
   components: {
-    "my-component": ChartExample,
+    'my-component': ChartExample,
   },
 });

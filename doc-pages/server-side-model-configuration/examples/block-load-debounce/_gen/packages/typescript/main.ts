@@ -3,21 +3,21 @@ import {
   GridOptions,
   IServerSideDatasource,
   IServerSideGetRowsRequest,
-} from "ag-grid-community";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine-dark.css";
-import "ag-grid-enterprise";
+} from 'ag-grid-community';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine-dark.css';
+import 'ag-grid-enterprise';
 
 const gridOptions: GridOptions = {
   columnDefs: [
-    { field: "id", maxWidth: 80 },
-    { field: "athlete", minWidth: 220 },
-    { field: "country", minWidth: 200 },
-    { field: "year" },
-    { field: "sport", minWidth: 200 },
-    { field: "gold" },
-    { field: "silver" },
-    { field: "bronze" },
+    { field: 'id', maxWidth: 80 },
+    { field: 'athlete', minWidth: 220 },
+    { field: 'country', minWidth: 200 },
+    { field: 'year' },
+    { field: 'sport', minWidth: 200 },
+    { field: 'gold' },
+    { field: 'silver' },
+    { field: 'bronze' },
   ],
 
   defaultColDef: {
@@ -27,10 +27,10 @@ const gridOptions: GridOptions = {
   },
 
   // use the server-side row model
-  rowModelType: "serverSide",
+  rowModelType: 'serverSide',
 
   // set to partial, so infinite scrolling is enabled
-  serverSideStoreType: "partial",
+  serverSideStoreType: 'partial',
 
   // adding a debounce to allow skipping over blocks while scrolling
   blockLoadDebounceMillis: 1000,
@@ -39,10 +39,10 @@ const gridOptions: GridOptions = {
 };
 
 // setup the grid after the page has finished loading
-var gridDiv = document.querySelector<HTMLElement>("#myGrid")!;
+var gridDiv = document.querySelector<HTMLElement>('#myGrid')!;
 new Grid(gridDiv, gridOptions);
 
-fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
   .then((response) => response.json())
   .then(function (data) {
     // adding row id to data
@@ -64,7 +64,7 @@ fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
 function createServerSideDatasource(server: any): IServerSideDatasource {
   return {
     getRows: function (params) {
-      console.log("[Datasource] - rows requested by grid: ", params.request);
+      console.log('[Datasource] - rows requested by grid: ', params.request);
 
       // get data for request from our fake server
       var response = server.getData(params.request);

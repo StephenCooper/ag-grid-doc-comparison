@@ -10,6 +10,7 @@ This section covers Server-Side Sorting using the Server-Side Row Model.
 Sorting is enabled in the grid via the `sortable` column definition attribute. Some example column definitions
 with sorting enabled are shown below:
 
+
 <snippet>
 const gridOptions = {
     columnDefs: [
@@ -64,6 +65,7 @@ The example below demonstrates sorting using the SSRM and the Partial Store. Not
 - The server uses the metadata contained in the `sortModel` to sort the rows.
 - Open the browser's dev console to view the `sortModel` supplied in the request to the datasource.
 - Try single / multi column (using <kbd>Shift</kbd> key) sorting by clicking on column headers.
+
 
 <grid-example title='Partial Sorting' name='partial-sorting' type='generated' options='{ "enterprise": true, "extras": ["alasql"], "modules": ["serverside"] }'></grid-example>
 

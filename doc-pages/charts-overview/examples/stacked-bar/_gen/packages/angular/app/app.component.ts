@@ -1,8 +1,8 @@
-import { Component } from "@angular/core";
-import { AgChartOptions } from "ag-charts-community";
+import { Component } from '@angular/core';
+import { AgChartOptions } from 'ag-charts-community';
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<ag-charts-angular
     style="height: 100%"
     [options]="options"
@@ -33,54 +33,54 @@ export class AppComponent {
         },
       },
       title: {
-        text: "UK Housing Stock (2016)",
+        text: 'UK Housing Stock (2016)',
         fontSize: 18,
       },
       subtitle: {
-        text: "Source: Ministry of Housing, Communities & Local Government",
+        text: 'Source: Ministry of Housing, Communities & Local Government',
       },
       series: [
         {
-          type: "bar",
-          xKey: "type",
-          yKey: "ownerOccupied",
-          yName: "Owner occupied",
+          type: 'bar',
+          xKey: 'type',
+          yKey: 'ownerOccupied',
+          yName: 'Owner occupied',
           stacked: true,
         },
         {
-          type: "bar",
-          xKey: "type",
-          yKey: "privateRented",
-          yName: "Private rented",
+          type: 'bar',
+          xKey: 'type',
+          yKey: 'privateRented',
+          yName: 'Private rented',
           stacked: true,
         },
         {
-          type: "bar",
-          xKey: "type",
-          yKey: "localAuthority",
-          yName: "Local authority",
+          type: 'bar',
+          xKey: 'type',
+          yKey: 'localAuthority',
+          yName: 'Local authority',
           stacked: true,
         },
         {
-          type: "bar",
-          xKey: "type",
-          yKey: "housingAssociation",
-          yName: "Housing association",
+          type: 'bar',
+          xKey: 'type',
+          yKey: 'housingAssociation',
+          yName: 'Housing association',
           stacked: true,
         },
       ],
       axes: [
         {
-          type: "category",
-          position: "left",
+          type: 'category',
+          position: 'left',
         },
         {
-          type: "number",
-          position: "top",
+          type: 'number',
+          position: 'top',
         },
       ],
       legend: {
-        position: "bottom",
+        position: 'bottom',
       },
     };
   }

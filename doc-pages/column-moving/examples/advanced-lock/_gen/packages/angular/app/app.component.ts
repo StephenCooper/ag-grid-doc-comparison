@@ -1,18 +1,18 @@
-import { HttpClient } from "@angular/common/http";
-import { Component } from "@angular/core";
+import { HttpClient } from '@angular/common/http';
+import { Component } from '@angular/core';
 import {
   ColDef,
   ColumnApi,
   ColumnPinnedEvent,
   ColumnState,
   GridReadyEvent,
-} from "ag-grid-community";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import { ControlsCellRenderer } from "./controls-cell-renderer.component";
+} from 'ag-grid-community';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import { ControlsCellRenderer } from './controls-cell-renderer.component';
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<div class="example-wrapper">
     <div class="legend-bar">
       <button (click)="onPinAthlete()">Pin Athlete</button>
@@ -37,29 +37,29 @@ export class AppComponent {
 
   public columnDefs: ColDef[] = [
     {
-      lockPosition: true,
-      valueGetter: "node.rowIndex",
-      cellClass: "locked-col",
+      lockPosition: 'left',
+      valueGetter: 'node.rowIndex',
+      cellClass: 'locked-col',
       width: 60,
       suppressNavigable: true,
     },
     {
-      lockPosition: true,
+      lockPosition: 'left',
       cellRenderer: ControlsCellRenderer,
-      cellClass: "locked-col",
+      cellClass: 'locked-col',
       width: 120,
       suppressNavigable: true,
     },
-    { field: "athlete" },
-    { field: "age" },
-    { field: "country" },
-    { field: "year" },
-    { field: "date" },
-    { field: "sport" },
-    { field: "gold" },
-    { field: "silver" },
-    { field: "bronze" },
-    { field: "total" },
+    { field: 'athlete' },
+    { field: 'age' },
+    { field: 'country' },
+    { field: 'year' },
+    { field: 'date' },
+    { field: 'sport' },
+    { field: 'gold' },
+    { field: 'silver' },
+    { field: 'bronze' },
+    { field: 'total' },
   ];
   public defaultColDef: ColDef = {
     width: 150,
@@ -76,7 +76,7 @@ export class AppComponent {
       (col) => !col.getColDef().lockPosition
     );
     const pinnedCount = allNonFixedCols.filter(
-      (col) => col.getPinned() === "left"
+      (col) => col.getPinned() === 'left'
     ).length;
     const pinFixed = pinnedCount > 0;
     const columnStates: ColumnState[] = [];
@@ -84,7 +84,7 @@ export class AppComponent {
       if (pinFixed !== col.isPinned()) {
         columnStates.push({
           colId: col.getId(),
-          pinned: pinFixed ? "left" : null,
+          pinned: pinFixed ? 'left' : null,
         });
       }
     });
@@ -95,13 +95,13 @@ export class AppComponent {
 
   onPinAthlete() {
     this.gridColumnApi.applyColumnState({
-      state: [{ colId: "athlete", pinned: "left" }],
+      state: [{ colId: 'athlete', pinned: 'left' }],
     });
   }
 
   onUnpinAthlete() {
     this.gridColumnApi.applyColumnState({
-      state: [{ colId: "athlete", pinned: null }],
+      state: [{ colId: 'athlete', pinned: null }],
     });
   }
 
@@ -109,7 +109,7 @@ export class AppComponent {
     this.gridColumnApi = params.columnApi;
 
     this.http
-      .get<any[]>("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      .get<any[]>('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .subscribe((data) => (this.rowData = data));
   }
 }

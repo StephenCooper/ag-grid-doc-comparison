@@ -1,6 +1,6 @@
-import { AgChartsVue } from "ag-charts-vue";
-import { cloneDeep } from "lodash";
-import Vue from "vue";
+import { AgChartsVue } from 'ag-charts-vue';
+import { cloneDeep } from 'lodash';
+import Vue from 'vue';
 
 const ChartExample = {
   template: `
@@ -16,7 +16,7 @@ const ChartExample = {
             </div>
     `,
   components: {
-    "ag-charts-vue": AgChartsVue,
+    'ag-charts-vue': AgChartsVue,
   },
   data: function () {
     return {
@@ -25,28 +25,28 @@ const ChartExample = {
   },
   created() {
     this.options = {
-      theme: "ag-default-dark",
+      theme: 'ag-default-dark',
       autoSize: true,
       padding: {
         left: 70,
         right: 70,
       },
       title: {
-        text: "Chart Theme Example",
+        text: 'Chart Theme Example',
       },
       data: [
-        { label: "Android", value: 56.9, other: 7 },
-        { label: "iOS", value: 22.5, other: 8 },
-        { label: "BlackBerry", value: 6.8, other: 9 },
-        { label: "Symbian", value: 8.5, other: 10 },
-        { label: "Bada", value: 2.6, other: 11 },
-        { label: "Windows", value: 1.9, other: 12 },
+        { label: 'Android', value: 56.9, other: 7 },
+        { label: 'iOS', value: 22.5, other: 8 },
+        { label: 'BlackBerry', value: 6.8, other: 9 },
+        { label: 'Symbian', value: 8.5, other: 10 },
+        { label: 'Bada', value: 2.6, other: 11 },
+        { label: 'Windows', value: 1.9, other: 12 },
       ],
       series: [
         {
-          type: "pie",
-          angleKey: "value",
-          labelKey: "label",
+          type: 'pie',
+          angleKey: 'value',
+          labelKey: 'label',
         },
       ],
     };
@@ -64,8 +64,8 @@ const ChartExample = {
 };
 
 new Vue({
-  el: "#app",
+  el: '#app',
   components: {
-    "my-component": ChartExample,
+    'my-component': ChartExample,
   },
 });

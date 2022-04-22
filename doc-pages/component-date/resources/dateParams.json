@@ -1,11 +1,13 @@
 {
-  "_config_": {},
-  "IDateParams": {
-    "filterParams": {
-      "interfaceHierarchyOverrides": {
-        "exclude": ["IRowModel"],
-        "include": []
-      }
+    "_config_": {},
+    "IDateParams": {
+        "filterParams": {
+            "interfaceHierarchyOverrides": {
+                "exclude": [
+                    "IRowModel"
+                ],
+                "include": []
+            }
+        }
     }
-  }
 }

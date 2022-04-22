@@ -1,11 +1,11 @@
-"use strict";
+'use strict';
 
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
-import { AgGridReact } from "ag-grid-react";
-import React, { useCallback, useMemo, useRef, useState } from "react";
-import { render } from "react-dom";
+import React, { useCallback, useMemo, useRef, useState } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from 'ag-grid-react';
+import 'ag-grid-enterprise';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 
 // defined and updated in data.js
 var UPDATE_COUNT = 200;
@@ -13,7 +13,7 @@ var UPDATE_COUNT = 200;
 const numberCellFormatter = (params) => {
   return Math.floor(params.value)
     .toString()
-    .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
+    .replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
 };
 
 // makes a copy of the original and merges in the new values
@@ -29,134 +29,134 @@ const copyObject = (object) => {
 
 const GridExample = () => {
   const gridRef = useRef();
-  const containerStyle = useMemo(() => ({ width: "100%", height: "100%" }), []);
-  const gridStyle = useMemo(() => ({ height: "100%", width: "100%" }), []);
+  const containerStyle = useMemo(() => ({ width: '100%', height: '100%' }), []);
+  const gridStyle = useMemo(() => ({ height: '100%', width: '100%' }), []);
   const [rowData, setRowData] = useState();
   const [columnDefs, setColumnDefs] = useState([
     // these are the row groups, so they are all hidden (they are show in the group column)
     {
-      headerName: "Product",
-      field: "product",
+      headerName: 'Product',
+      field: 'product',
       enableRowGroup: true,
       enablePivot: true,
       rowGroupIndex: 0,
       hide: true,
     },
     {
-      headerName: "Portfolio",
-      field: "portfolio",
+      headerName: 'Portfolio',
+      field: 'portfolio',
       enableRowGroup: true,
       enablePivot: true,
       rowGroupIndex: 1,
       hide: true,
     },
     {
-      headerName: "Book",
-      field: "book",
+      headerName: 'Book',
+      field: 'book',
       enableRowGroup: true,
       enablePivot: true,
       rowGroupIndex: 2,
       hide: true,
     },
-    { headerName: "Trade", field: "trade", width: 100 },
+    { headerName: 'Trade', field: 'trade', width: 100 },
     // all the other columns (visible and not grouped)
     {
-      field: "current",
+      field: 'current',
       width: 200,
-      aggFunc: "sum",
+      aggFunc: 'sum',
       enableValue: true,
-      cellClass: "number",
+      cellClass: 'number',
       valueFormatter: numberCellFormatter,
-      cellRenderer: "agAnimateShowChangeCellRenderer",
+      cellRenderer: 'agAnimateShowChangeCellRenderer',
     },
     {
-      field: "previous",
+      field: 'previous',
       width: 200,
-      aggFunc: "sum",
+      aggFunc: 'sum',
       enableValue: true,
-      cellClass: "number",
+      cellClass: 'number',
       valueFormatter: numberCellFormatter,
-      cellRenderer: "agAnimateShowChangeCellRenderer",
+      cellRenderer: 'agAnimateShowChangeCellRenderer',
     },
     {
-      field: "dealType",
+      field: 'dealType',
       enableRowGroup: true,
       enablePivot: true,
     },
     {
-      headerName: "Bid",
-      field: "bidFlag",
+      headerName: 'Bid',
+      field: 'bidFlag',
       enableRowGroup: true,
       enablePivot: true,
       width: 100,
     },
     {
-      headerName: "PL 1",
-      field: "pl1",
+      headerName: 'PL 1',
+      field: 'pl1',
       width: 200,
-      aggFunc: "sum",
+      aggFunc: 'sum',
       enableValue: true,
-      cellClass: "number",
+      cellClass: 'number',
       valueFormatter: numberCellFormatter,
-      cellRenderer: "agAnimateShowChangeCellRenderer",
+      cellRenderer: 'agAnimateShowChangeCellRenderer',
     },
     {
-      headerName: "PL 2",
-      field: "pl2",
+      headerName: 'PL 2',
+      field: 'pl2',
       width: 200,
-      aggFunc: "sum",
+      aggFunc: 'sum',
       enableValue: true,
-      cellClass: "number",
+      cellClass: 'number',
       valueFormatter: numberCellFormatter,
-      cellRenderer: "agAnimateShowChangeCellRenderer",
+      cellRenderer: 'agAnimateShowChangeCellRenderer',
     },
     {
-      headerName: "Gain-DX",
-      field: "gainDx",
+      headerName: 'Gain-DX',
+      field: 'gainDx',
       width: 200,
-      aggFunc: "sum",
+      aggFunc: 'sum',
       enableValue: true,
-      cellClass: "number",
+      cellClass: 'number',
       valueFormatter: numberCellFormatter,
-      cellRenderer: "agAnimateShowChangeCellRenderer",
+      cellRenderer: 'agAnimateShowChangeCellRenderer',
     },
     {
-      headerName: "SX / PX",
-      field: "sxPx",
+      headerName: 'SX / PX',
+      field: 'sxPx',
       width: 200,
-      aggFunc: "sum",
+      aggFunc: 'sum',
       enableValue: true,
-      cellClass: "number",
+      cellClass: 'number',
       valueFormatter: numberCellFormatter,
-      cellRenderer: "agAnimateShowChangeCellRenderer",
+      cellRenderer: 'agAnimateShowChangeCellRenderer',
     },
     {
-      headerName: "99 Out",
-      field: "_99Out",
+      headerName: '99 Out',
+      field: '_99Out',
       width: 200,
-      aggFunc: "sum",
+      aggFunc: 'sum',
       enableValue: true,
-      cellClass: "number",
+      cellClass: 'number',
       valueFormatter: numberCellFormatter,
-      cellRenderer: "agAnimateShowChangeCellRenderer",
+      cellRenderer: 'agAnimateShowChangeCellRenderer',
     },
     {
-      field: "submitterID",
+      field: 'submitterID',
       width: 200,
-      aggFunc: "sum",
+      aggFunc: 'sum',
       enableValue: true,
-      cellClass: "number",
+      cellClass: 'number',
       valueFormatter: numberCellFormatter,
-      cellRenderer: "agAnimateShowChangeCellRenderer",
+      cellRenderer: 'agAnimateShowChangeCellRenderer',
     },
     {
-      field: "submitterDealID",
+      field: 'submitterDealID',
       width: 200,
-      aggFunc: "sum",
+      aggFunc: 'sum',
       enableValue: true,
-      cellClass: "number",
+      cellClass: 'number',
       valueFormatter: numberCellFormatter,
-      cellRenderer: "agAnimateShowChangeCellRenderer",
+      cellRenderer: 'agAnimateShowChangeCellRenderer',
     },
   ]);
   const getRowId = useCallback(function (params) {
@@ -182,7 +182,7 @@ const GridExample = () => {
 
   const onNormalUpdate = useCallback(() => {
     var startMillis = new Date().getTime();
-    setMessage("Running Transaction");
+    setMessage('Running Transaction');
     var api = gridRef.current.api;
     for (var i = 0; i < UPDATE_COUNT; i++) {
       setTimeout(function () {
@@ -204,17 +204,17 @@ const GridExample = () => {
     setTimeout(function () {
       var endMillis = new Date().getTime();
       var duration = endMillis - startMillis;
-      setMessage("Transaction took " + duration.toLocaleString() + "ms");
+      setMessage('Transaction took ' + duration.toLocaleString() + 'ms');
     }, 0);
     function setMessage(msg) {
-      var eMessage = document.querySelector("#eMessage");
+      var eMessage = document.querySelector('#eMessage');
       eMessage.innerHTML = msg;
     }
   }, []);
 
   const onAsyncUpdate = useCallback(() => {
     var startMillis = new Date().getTime();
-    setMessage("Running Async");
+    setMessage('Running Async');
     var updatedCount = 0;
     var api = gridRef.current.api;
     for (var i = 0; i < UPDATE_COUNT; i++) {
@@ -240,12 +240,12 @@ const GridExample = () => {
         setTimeout(function () {
           var endMillis = new Date().getTime();
           var duration = endMillis - startMillis;
-          setMessage("Async took " + duration.toLocaleString() + "ms");
+          setMessage('Async took ' + duration.toLocaleString() + 'ms');
         }, 0);
       }
     }
     function setMessage(msg) {
-      var eMessage = document.querySelector("#eMessage");
+      var eMessage = document.querySelector('#eMessage');
       eMessage.innerHTML = msg;
     }
   }, []);
@@ -253,7 +253,7 @@ const GridExample = () => {
   return (
     <div style={containerStyle}>
       <div className="example-wrapper">
-        <div style={{ marginBottom: "5px" }}>
+        <div style={{ marginBottom: '5px' }}>
           <button onClick={onNormalUpdate}>Normal Update</button>
           <button onClick={onAsyncUpdate}>Async Update</button>
           <span id="eMessage"></span>
@@ -266,8 +266,8 @@ const GridExample = () => {
             columnDefs={columnDefs}
             suppressAggFuncInHeader={true}
             animateRows={true}
-            rowGroupPanelShow={"always"}
-            pivotPanelShow={"always"}
+            rowGroupPanelShow={'always'}
+            pivotPanelShow={'always'}
             getRowId={getRowId}
             defaultColDef={defaultColDef}
             autoGroupColumnDef={autoGroupColumnDef}
@@ -279,4 +279,4 @@ const GridExample = () => {
   );
 };
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

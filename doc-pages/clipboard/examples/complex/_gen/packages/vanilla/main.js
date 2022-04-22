@@ -1,23 +1,23 @@
 const gridOptions = {
   columnDefs: [
     {
-      headerName: "Participants",
+      headerName: 'Participants',
       children: [
-        { field: "athlete", minWidth: 200 },
-        { field: "age" },
-        { field: "country", minWidth: 150 },
+        { field: 'athlete', minWidth: 200 },
+        { field: 'age' },
+        { field: 'country', minWidth: 150 },
       ],
     },
     {
-      headerName: "Olympic Games",
+      headerName: 'Olympic Games',
       children: [
-        { field: "year" },
-        { field: "date", minWidth: 150 },
-        { field: "sport", minWidth: 150 },
-        { field: "gold" },
-        { field: "silver", suppressPaste: true },
-        { field: "bronze" },
-        { field: "total" },
+        { field: 'year' },
+        { field: 'date', minWidth: 150 },
+        { field: 'sport', minWidth: 150 },
+        { field: 'gold' },
+        { field: 'silver', suppressPaste: true },
+        { field: 'bronze' },
+        { field: 'total' },
       ],
     },
   ],
@@ -30,15 +30,15 @@ const gridOptions = {
   },
 
   enableRangeSelection: true,
-  clipboardDelimiter: ",",
+  clipboardDelimiter: ',',
 };
 
 // setup the grid after the page has finished loading
-document.addEventListener("DOMContentLoaded", () => {
-  const gridDiv = document.querySelector("#myGrid");
+document.addEventListener('DOMContentLoaded', () => {
+  const gridDiv = document.querySelector('#myGrid');
   new agGrid.Grid(gridDiv, gridOptions);
 
-  fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+  fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
     .then((response) => response.json())
     .then((data) => gridOptions.api.setRowData(data));
 });

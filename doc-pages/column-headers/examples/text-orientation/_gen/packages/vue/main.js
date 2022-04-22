@@ -1,8 +1,8 @@
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
-import { AgGridVue } from "ag-grid-vue";
-import Vue from "vue";
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import 'ag-grid-enterprise';
+import { AgGridVue } from 'ag-grid-vue';
+import Vue from 'vue';
 
 const VueExample = {
   template: `
@@ -23,62 +23,62 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
         {
-          headerName: "Athlete Details",
+          headerName: 'Athlete Details',
           children: [
             {
-              field: "athlete",
+              field: 'athlete',
               width: 150,
               suppressSizeToFit: true,
               enableRowGroup: true,
               rowGroupIndex: 0,
             },
             {
-              field: "age",
+              field: 'age',
               width: 90,
               minWidth: 75,
               maxWidth: 100,
               enableRowGroup: true,
             },
-            { field: "country", width: 120, enableRowGroup: true },
-            { field: "year", width: 90, enableRowGroup: true, pivotIndex: 0 },
-            { field: "sport", width: 110, enableRowGroup: true },
+            { field: 'country', width: 120, enableRowGroup: true },
+            { field: 'year', width: 90, enableRowGroup: true, pivotIndex: 0 },
+            { field: 'sport', width: 110, enableRowGroup: true },
             {
-              field: "gold",
+              field: 'gold',
               width: 60,
               enableValue: true,
               suppressMenu: true,
-              filter: "agNumberColumnFilter",
-              aggFunc: "sum",
+              filter: 'agNumberColumnFilter',
+              aggFunc: 'sum',
             },
             {
-              field: "silver",
+              field: 'silver',
               width: 60,
               enableValue: true,
               suppressMenu: true,
-              filter: "agNumberColumnFilter",
-              aggFunc: "sum",
+              filter: 'agNumberColumnFilter',
+              aggFunc: 'sum',
             },
             {
-              field: "bronze",
+              field: 'bronze',
               width: 60,
               enableValue: true,
               suppressMenu: true,
-              filter: "agNumberColumnFilter",
-              aggFunc: "sum",
+              filter: 'agNumberColumnFilter',
+              aggFunc: 'sum',
             },
             {
-              field: "total",
+              field: 'total',
               width: 60,
               enableValue: true,
               suppressMenu: true,
-              filter: "agNumberColumnFilter",
-              aggFunc: "sum",
+              filter: 'agNumberColumnFilter',
+              aggFunc: 'sum',
             },
           ],
         },
@@ -111,7 +111,7 @@ const VueExample = {
 
       const updateData = (data) => params.api.setRowData(data);
 
-      fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
         .then((resp) => resp.json())
         .then((data) => updateData(data));
     },
@@ -119,8 +119,8 @@ const VueExample = {
 };
 
 new Vue({
-  el: "#app",
+  el: '#app',
   components: {
-    "my-component": VueExample,
+    'my-component': VueExample,
   },
 });

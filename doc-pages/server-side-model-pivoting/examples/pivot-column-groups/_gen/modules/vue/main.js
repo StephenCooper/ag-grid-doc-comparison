@@ -1,12 +1,12 @@
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine-dark.css";
-import { AgGridVue } from "@ag-grid-community/vue";
-import { ColumnsToolPanelModule } from "@ag-grid-enterprise/column-tool-panel";
-import { MenuModule } from "@ag-grid-enterprise/menu";
-import { RowGroupingModule } from "@ag-grid-enterprise/row-grouping";
-import { ServerSideRowModelModule } from "@ag-grid-enterprise/server-side-row-model";
-import Vue from "vue";
+import { ModuleRegistry } from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine-dark.css';
+import { AgGridVue } from '@ag-grid-community/vue';
+import { ColumnsToolPanelModule } from '@ag-grid-enterprise/column-tool-panel';
+import { MenuModule } from '@ag-grid-enterprise/menu';
+import { RowGroupingModule } from '@ag-grid-enterprise/row-grouping';
+import { ServerSideRowModelModule } from '@ag-grid-enterprise/server-side-row-model';
+import Vue from 'vue';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([
@@ -34,17 +34,17 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
-        { field: "country", rowGroup: true },
-        { field: "sport", rowGroup: true },
-        { field: "year", pivot: true },
-        { field: "gold", aggFunc: "sum" },
-        { field: "silver", aggFunc: "sum" },
-        { field: "bronze", aggFunc: "sum" },
+        { field: 'country', rowGroup: true },
+        { field: 'sport', rowGroup: true },
+        { field: 'year', pivot: true },
+        { field: 'gold', aggFunc: 'sum' },
+        { field: 'silver', aggFunc: 'sum' },
+        { field: 'bronze', aggFunc: 'sum' },
       ],
       gridApi: null,
       columnApi: null,
@@ -62,8 +62,8 @@ const VueExample = {
     this.autoGroupColumnDef = {
       minWidth: 200,
     };
-    this.rowModelType = "serverSide";
-    this.serverSideStoreType = "partial";
+    this.rowModelType = 'serverSide';
+    this.serverSideStoreType = 'partial';
   },
   methods: {
     onGridReady(params) {
@@ -79,7 +79,7 @@ const VueExample = {
         params.api.setServerSideDatasource(datasource);
       };
 
-      fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
         .then((resp) => resp.json())
         .then((data) => updateData(data));
     },
@@ -90,7 +90,7 @@ window.getServerSideDatasource = function getServerSideDatasource(server) {
   return {
     getRows: function (params) {
       var request = params.request;
-      console.log("[Datasource] - rows requested by grid: ", params.request);
+      console.log('[Datasource] - rows requested by grid: ', params.request);
       var response = server.getData(request);
       // add pivot colDefs in the grid based on the resulting data
       addPivotColDefs(request, response, params.columnApi);
@@ -131,26 +131,26 @@ window.createPivotColDefs = function createPivotColDefs(request, pivotFields) {
     if (parts.length === 0) return [];
     var first = parts.shift();
     var existing = res.filter(function (r) {
-      return "groupId" in r && r.groupId === first;
+      return 'groupId' in r && r.groupId === first;
     })[0];
     if (existing) {
-      existing["children"] = addColDef(colId, parts, existing.children);
+      existing['children'] = addColDef(colId, parts, existing.children);
     } else {
       var colDef = {};
       var isGroup = parts.length > 0;
       if (isGroup) {
-        colDef["groupId"] = first;
-        colDef["headerName"] = first;
+        colDef['groupId'] = first;
+        colDef['headerName'] = first;
       } else {
         var valueCol = request.valueCols.filter(function (r) {
           return r.field === first;
         })[0];
-        colDef["colId"] = colId;
-        colDef["headerName"] = valueCol.displayName;
-        colDef["field"] = colId;
+        colDef['colId'] = colId;
+        colDef['headerName'] = valueCol.displayName;
+        colDef['field'] = colId;
       }
       var children = addColDef(colId, parts, []);
-      children.length > 0 ? (colDef["children"] = children) : null;
+      children.length > 0 ? (colDef['children'] = children) : null;
       res.push(colDef);
     }
     return res;
@@ -158,7 +158,7 @@ window.createPivotColDefs = function createPivotColDefs(request, pivotFields) {
   if (request.pivotMode && request.pivotCols.length > 0) {
     var secondaryCols = [];
     pivotFields.forEach(function (field) {
-      addColDef(field, field.split("_"), secondaryCols);
+      addColDef(field, field.split('_'), secondaryCols);
     });
     return secondaryCols;
   }
@@ -166,8 +166,8 @@ window.createPivotColDefs = function createPivotColDefs(request, pivotFields) {
 };
 
 new Vue({
-  el: "#app",
+  el: '#app',
   components: {
-    "my-component": VueExample,
+    'my-component': VueExample,
   },
 });

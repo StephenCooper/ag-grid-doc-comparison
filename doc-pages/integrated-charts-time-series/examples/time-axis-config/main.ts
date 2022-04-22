@@ -1,16 +1,10 @@
-import {
-  ChartMenuOptions,
-  CreateRangeChartParams,
-  FirstDataRenderedEvent,
-  Grid,
-  GridOptions,
-} from "@ag-grid-community/core";
+import { Grid, ChartMenuOptions, CreateRangeChartParams, FirstDataRenderedEvent, GridOptions } from '@ag-grid-community/core'
 declare var moment: any;
 
 const gridOptions: GridOptions = {
   columnDefs: [
-    { field: "timestamp", chartDataType: "time" },
-    { field: "cpuUsage" },
+    { field: 'timestamp', chartDataType: 'time' },
+    { field: 'cpuUsage' },
   ],
   defaultColDef: {
     flex: 1,
@@ -24,7 +18,7 @@ const gridOptions: GridOptions = {
     area: {
       title: {
         enabled: true,
-        text: "CPU Usage",
+        text: 'CPU Usage',
       },
       legend: {
         enabled: false,
@@ -42,21 +36,21 @@ const gridOptions: GridOptions = {
         time: {
           label: {
             rotation: 45,
-            format: "%H:%M",
+            format: '%H:%M',
           },
         },
         category: {
           label: {
             rotation: 0,
             formatter: function (params) {
-              return moment(new Date(params.value)).format("DD MMM");
+              return moment(new Date(params.value)).format('DD MMM')
             },
           },
         },
         number: {
           label: {
             formatter: function (params) {
-              return params.value + "%";
+              return params.value + '%'
             },
           },
         },
@@ -65,30 +59,30 @@ const gridOptions: GridOptions = {
   },
   getChartToolbarItems: getChartToolbarItems,
   onFirstDataRendered: onFirstDataRendered,
-};
+}
 
 function onFirstDataRendered(params: FirstDataRenderedEvent) {
   var createRangeChartParams: CreateRangeChartParams = {
-    chartContainer: document.querySelector("#myChart") as any,
+    chartContainer: document.querySelector('#myChart') as any,
     suppressChartRanges: true,
     cellRange: {
-      columns: ["timestamp", "cpuUsage"],
+      columns: ['timestamp', 'cpuUsage'],
     },
-    chartType: "area",
-  };
+    chartType: 'area',
+  }
 
-  params.api.createRangeChart(createRangeChartParams);
+  params.api.createRangeChart(createRangeChartParams)
 }
 
 function getChartToolbarItems(): ChartMenuOptions[] {
-  return ["chartData", "chartFormat"];
+  return ['chartData', 'chartFormat']
 }
 
 // setup the grid after the page has finished loading
-document.addEventListener("DOMContentLoaded", function () {
-  var gridDiv = document.querySelector<HTMLElement>("#myGrid")!;
-  new Grid(gridDiv, gridOptions);
-});
+document.addEventListener('DOMContentLoaded', function () {
+  var gridDiv = document.querySelector<HTMLElement>('#myGrid')!
+  new Grid(gridDiv, gridOptions)
+})
 
 function getRowData() {
   return [
@@ -200,5 +194,5 @@ function getRowData() {
     { timestamp: 1600984432792, cpuUsage: 50 },
     { timestamp: 1600984436792, cpuUsage: 60 },
     { timestamp: 1600984439792, cpuUsage: 69 },
-  ];
+  ]
 }

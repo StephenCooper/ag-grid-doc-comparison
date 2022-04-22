@@ -1,42 +1,42 @@
-"use strict";
+'use strict';
 
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
-import { AgGridReact } from "ag-grid-react";
-import React, { useCallback, useMemo, useRef, useState } from "react";
-import { render } from "react-dom";
+import React, { useCallback, useMemo, useRef, useState } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from 'ag-grid-react';
+import 'ag-grid-enterprise';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 
 const setPrinterFriendly = (api) => {
-  const eGridDiv = document.querySelector("#myGrid");
-  eGridDiv.style.height = "";
-  api.setDomLayout("print");
+  const eGridDiv = document.querySelector('#myGrid');
+  eGridDiv.style.height = '';
+  api.setDomLayout('print');
 };
 
 const setNormal = (api) => {
-  const eGridDiv = document.querySelector("#myGrid");
-  eGridDiv.style.width = "700px";
-  eGridDiv.style.height = "200px";
+  const eGridDiv = document.querySelector('#myGrid');
+  eGridDiv.style.width = '700px';
+  eGridDiv.style.height = '200px';
   api.setDomLayout();
 };
 
 const GridExample = () => {
   const gridRef = useRef();
-  const containerStyle = useMemo(() => ({ width: "100%", height: "100%" }), []);
-  const gridStyle = useMemo(() => ({ height: "200px", width: "700px" }), []);
+  const containerStyle = useMemo(() => ({ width: '100%', height: '100%' }), []);
+  const gridStyle = useMemo(() => ({ height: '200px', width: '700px' }), []);
   const [rowData, setRowData] = useState(getData());
   const [columnDefs, setColumnDefs] = useState([
-    { field: "group", rowGroup: true, hide: true },
-    { field: "id", pinned: "left", width: 70 },
-    { field: "model", width: 180 },
-    { field: "color", width: 100 },
+    { field: 'group', rowGroup: true, hide: true },
+    { field: 'id', pinned: 'left', width: 70 },
+    { field: 'model', width: 180 },
+    { field: 'color', width: 100 },
     {
-      field: "price",
+      field: 'price',
       valueFormatter: "'$' + value.toLocaleString()",
       width: 100,
     },
-    { field: "year", width: 100 },
-    { field: "country", width: 120 },
+    { field: 'year', width: 100 },
+    { field: 'country', width: 120 },
   ]);
   const defaultColDef = useMemo(() => {
     return {
@@ -78,7 +78,7 @@ const GridExample = () => {
           columnDefs={columnDefs}
           defaultColDef={defaultColDef}
           animateRows={true}
-          groupDisplayType={"groupRows"}
+          groupDisplayType={'groupRows'}
           onFirstDataRendered={onFirstDataRendered}
         ></AgGridReact>
       </div>
@@ -96,4 +96,4 @@ const GridExample = () => {
   );
 };
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

@@ -1,8 +1,10 @@
-"use strict";
+'use strict';
 
-import { AgChartsReact } from "ag-charts-react";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { cloneDeep } from 'lodash';
+import { render } from 'react-dom';
+import * as agCharts from 'ag-charts-community';
+import { AgChartsReact } from 'ag-charts-react';
 
 class ChartExample extends Component {
   constructor(props) {
@@ -13,69 +15,69 @@ class ChartExample extends Component {
         data: data,
 
         title: {
-          text: "Beverage Expenses",
+          text: 'Beverage Expenses',
         },
         subtitle: {
-          text: "per quarter",
+          text: 'per quarter',
         },
         series: [
           {
-            type: "pie",
+            type: 'pie',
             title: {
-              text: "Q1",
+              text: 'Q1',
               showInLegend: true,
             },
             label: {
               enabled: false,
             },
-            angleKey: "Q1",
-            labelKey: "beverage",
+            angleKey: 'Q1',
+            labelKey: 'beverage',
             showInLegend: true,
             outerRadiusOffset: 0,
             innerRadiusOffset: -20,
             highlightStyle,
           },
           {
-            type: "pie",
+            type: 'pie',
             title: {
-              text: "Q2",
+              text: 'Q2',
               showInLegend: true,
             },
             label: {
               enabled: false,
             },
-            angleKey: "Q2",
-            labelKey: "beverage",
+            angleKey: 'Q2',
+            labelKey: 'beverage',
             outerRadiusOffset: -40,
             innerRadiusOffset: -60,
             highlightStyle,
           },
           {
-            type: "pie",
+            type: 'pie',
             title: {
-              text: "Q3",
+              text: 'Q3',
               showInLegend: true,
             },
             label: {
               enabled: false,
             },
-            angleKey: "Q3",
-            labelKey: "beverage",
+            angleKey: 'Q3',
+            labelKey: 'beverage',
             outerRadiusOffset: -80,
             innerRadiusOffset: -100,
             highlightStyle,
           },
           {
-            type: "pie",
+            type: 'pie',
             title: {
-              text: "Q4",
+              text: 'Q4',
               showInLegend: true,
             },
             label: {
               enabled: false,
             },
-            angleKey: "Q4",
-            labelKey: "beverage",
+            angleKey: 'Q4',
+            labelKey: 'beverage',
             outerRadiusOffset: -120,
             innerRadiusOffset: -140,
             highlightStyle,
@@ -94,21 +96,21 @@ class ChartExample extends Component {
 
 const data = [
   {
-    beverage: "Coffee",
+    beverage: 'Coffee',
     Q1: 450,
     Q2: 560,
     Q3: 600,
     Q4: 700,
   },
   {
-    beverage: "Tea",
+    beverage: 'Tea',
     Q1: 270,
     Q2: 380,
     Q3: 450,
     Q4: 520,
   },
   {
-    beverage: "Milk",
+    beverage: 'Milk',
     Q1: 180,
     Q2: 170,
     Q3: 190,
@@ -117,8 +119,8 @@ const data = [
 ];
 const highlightStyle = {
   item: {
-    fill: "red",
-    stroke: "maroon",
+    fill: 'red',
+    stroke: 'maroon',
     strokeWidth: 4,
   },
   series: {
@@ -127,4 +129,4 @@ const highlightStyle = {
   },
 };
 
-render(<ChartExample />, document.querySelector("#root"));
+render(<ChartExample />, document.querySelector('#root'));

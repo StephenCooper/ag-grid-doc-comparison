@@ -1,14 +1,14 @@
 const gridOptions = {
   columnDefs: [
-    { field: "athlete", minWidth: 150 },
-    { field: "age", minWidth: 50, filter: "agNumberColumnFilter" },
-    { field: "country", width: 120 },
-    { field: "year", width: 90 },
-    { field: "date", width: 110 },
-    { field: "sport", width: 110 },
-    { field: "gold", width: 110 },
-    { field: "silver", width: 110 },
-    { field: "bronze", width: 110 },
+    { field: 'athlete', minWidth: 150 },
+    { field: 'age', minWidth: 50, filter: 'agNumberColumnFilter' },
+    { field: 'country', width: 120 },
+    { field: 'year', width: 90 },
+    { field: 'date', width: 110 },
+    { field: 'sport', width: 110 },
+    { field: 'gold', width: 110 },
+    { field: 'silver', width: 110 },
+    { field: 'bronze', width: 110 },
   ],
   defaultColDef: {
     editable: true,
@@ -20,15 +20,15 @@ const gridOptions = {
   },
   ensureDomOrder: true,
   suppressColumnVirtualisation: true,
-  rowBuffer: 600,
+  suppressRowVirtualisation: true,
 };
 
 // setup the grid after the page has finished loading
-document.addEventListener("DOMContentLoaded", () => {
-  const gridDiv = document.querySelector("#myGrid");
+document.addEventListener('DOMContentLoaded', () => {
+  const gridDiv = document.querySelector('#myGrid');
   new agGrid.Grid(gridDiv, gridOptions);
 
-  fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+  fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
     .then((response) => response.json())
     .then((data) => gridOptions.api.setRowData(data.slice(0, 600)));
 });

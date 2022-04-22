@@ -3,7 +3,7 @@ export default {
   data: function () {
     return {
       value: 0,
-      rendererImage: "",
+      rendererImage: '',
     };
   },
   beforeMount() {

@@ -1,14 +1,14 @@
-"use strict";
+'use strict';
 
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { AgGridReact } from "@ag-grid-community/react";
-import { ExcelExportModule } from "@ag-grid-enterprise/excel-export";
-import { MenuModule } from "@ag-grid-enterprise/menu";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from '@ag-grid-community/react';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import { MenuModule } from '@ag-grid-enterprise/menu';
+import { ExcelExportModule } from '@ag-grid-enterprise/excel-export';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([
@@ -23,14 +23,14 @@ class GridExample extends Component {
 
     this.state = {
       columnDefs: [
-        { field: "athlete", minWidth: 200 },
-        { field: "age" },
-        { field: "country", minWidth: 200 },
-        { field: "year" },
-        { field: "date", minWidth: 150 },
-        { field: "sport", minWidth: 150 },
-        { field: "gold" },
-        { field: "silver" },
+        { field: 'athlete', minWidth: 200 },
+        { field: 'age' },
+        { field: 'country', minWidth: 200 },
+        { field: 'year' },
+        { field: 'date', minWidth: 150 },
+        { field: 'sport', minWidth: 150 },
+        { field: 'gold' },
+        { field: 'silver' },
       ],
       defaultColDef: {
         sortable: true,
@@ -39,7 +39,7 @@ class GridExample extends Component {
         minWidth: 100,
         flex: 1,
       },
-      rowSelection: "multiple",
+      rowSelection: 'multiple',
       rowData: null,
     };
   }
@@ -50,7 +50,7 @@ class GridExample extends Component {
 
     const updateData = (data) => params.api.setRowData(data);
 
-    fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+    fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .then((resp) => resp.json())
       .then((data) => updateData(data));
   };
@@ -86,12 +86,12 @@ class GridExample extends Component {
 
   render() {
     return (
-      <div style={{ width: "100%", height: "100%" }}>
+      <div style={{ width: '100%', height: '100%' }}>
         <div className="container">
           <div>
             <button
               onClick={() => this.onBtExport()}
-              style={{ marginBottom: "5px", fontWeight: "bold" }}
+              style={{ marginBottom: '5px', fontWeight: 'bold' }}
             >
               Export to Excel
             </button>
@@ -99,8 +99,8 @@ class GridExample extends Component {
           <div className="grid-wrapper">
             <div
               style={{
-                height: "100%",
-                width: "100%",
+                height: '100%',
+                width: '100%',
               }}
               className="ag-theme-alpine"
             >
@@ -119,4 +119,4 @@ class GridExample extends Component {
   }
 }
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

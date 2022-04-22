@@ -3,15 +3,15 @@ import {
   GridApi,
   GridReadyEvent,
   RowNode,
-} from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { HttpClient } from "@angular/common/http";
-import { Component } from "@angular/core";
+} from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { HttpClient } from '@angular/common/http';
+import { Component } from '@angular/core';
 // Required feature modules are registered in app.module.ts
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<div class="example-wrapper">
     <div style="margin-bottom: 1rem;">
       <button (click)="onBtForEachNode()">For-Each Node</button>
@@ -40,16 +40,16 @@ export class AppComponent {
   private gridApi!: GridApi;
 
   public columnDefs: ColDef[] = [
-    { field: "country", rowGroup: true, hide: true },
-    { field: "athlete", minWidth: 180 },
-    { field: "age" },
-    { field: "year" },
-    { field: "date", minWidth: 150 },
-    { field: "sport", minWidth: 150 },
-    { field: "gold" },
-    { field: "silver" },
-    { field: "bronze" },
-    { field: "total" },
+    { field: 'country', rowGroup: true, hide: true },
+    { field: 'athlete', minWidth: 180 },
+    { field: 'age' },
+    { field: 'year' },
+    { field: 'date', minWidth: 150 },
+    { field: 'sport', minWidth: 150 },
+    { field: 'gold' },
+    { field: 'silver' },
+    { field: 'bronze' },
+    { field: 'total' },
   ];
   public defaultColDef: ColDef = {
     flex: 1,
@@ -66,22 +66,22 @@ export class AppComponent {
   constructor(private http: HttpClient) {}
 
   onBtForEachNode() {
-    console.log("### api.forEachNode() ###");
+    console.log('### api.forEachNode() ###');
     this.gridApi.forEachNode(printNode);
   }
 
   onBtForEachNodeAfterFilter() {
-    console.log("### api.forEachNodeAfterFilter() ###");
+    console.log('### api.forEachNodeAfterFilter() ###');
     this.gridApi.forEachNodeAfterFilter(printNode);
   }
 
   onBtForEachNodeAfterFilterAndSort() {
-    console.log("### api.forEachNodeAfterFilterAndSort() ###");
+    console.log('### api.forEachNodeAfterFilterAndSort() ###');
     this.gridApi.forEachNodeAfterFilterAndSort(printNode);
   }
 
   onBtForEachLeafNode() {
-    console.log("### api.forEachLeafNode() ###");
+    console.log('### api.forEachLeafNode() ###');
     this.gridApi.forEachLeafNode(printNode);
   }
 
@@ -89,17 +89,17 @@ export class AppComponent {
     this.gridApi = params.api;
 
     this.http
-      .get<any[]>("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      .get<any[]>('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .subscribe((data) => params.api!.setRowData(data.slice(0, 50)));
   }
 }
 
 const printNode = (node: RowNode, index?: number) => {
   if (node.group) {
-    console.log(index + " -> group: " + node.key);
+    console.log(index + ' -> group: ' + node.key);
   } else {
     console.log(
-      index + " -> data: " + node.data.country + ", " + node.data.athlete
+      index + ' -> data: ' + node.data.country + ', ' + node.data.athlete
     );
   }
 };

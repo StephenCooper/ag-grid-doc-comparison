@@ -5,15 +5,15 @@ import {
   GridReadyEvent,
   ProcessCellForExportParams,
   RangeSelectionChangedEvent,
-} from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { HttpClient } from "@angular/common/http";
-import { Component } from "@angular/core";
+} from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { HttpClient } from '@angular/common/http';
+import { Component } from '@angular/core';
 // Required feature modules are registered in app.module.ts
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<div class="example-wrapper">
     <div class="example-header">
       <button (click)="onAddRange()">Add Range</button>
@@ -43,62 +43,64 @@ export class AppComponent {
   private gridApi!: GridApi;
 
   public columnDefs: ColDef[] = [
-    { field: "athlete", minWidth: 150 },
-    { field: "age", maxWidth: 90 },
-    { field: "country", minWidth: 150 },
-    { field: "year", maxWidth: 90 },
-    { field: "date", minWidth: 150 },
-    { field: "sport", minWidth: 150 },
-    { field: "gold" },
-    { field: "silver" },
-    { field: "bronze" },
-    { field: "total" },
+    { field: 'athlete', minWidth: 150 },
+    { field: 'age', maxWidth: 90 },
+    { field: 'country', minWidth: 150 },
+    { field: 'year', maxWidth: 90 },
+    { field: 'date', minWidth: 150 },
+    { field: 'sport', minWidth: 150 },
+    { field: 'gold' },
+    { field: 'silver' },
+    { field: 'bronze' },
+    { field: 'total' },
   ];
   public defaultColDef: ColDef = {
     flex: 1,
     minWidth: 100,
     editable: true,
   };
-  public processCellForClipboard: (params: ProcessCellForExportParams) => any =
-    function (params) {
-      if (
-        params.column.getColId() === "athlete" &&
-        params.value &&
-        params.value.toUpperCase
-      ) {
-        return params.value.toUpperCase();
-      }
-      return params.value;
-    };
-  public processCellFromClipboard: (params: ProcessCellForExportParams) => any =
-    function (params) {
-      if (
-        params.column.getColId() === "athlete" &&
-        params.value &&
-        params.value.toLowerCase
-      ) {
-        return params.value.toLowerCase();
-      }
-      return params.value;
-    };
+  public processCellForClipboard: (
+    params: ProcessCellForExportParams
+  ) => any = function (params: ProcessCellForExportParams) {
+    if (
+      params.column.getColId() === 'athlete' &&
+      params.value &&
+      params.value.toUpperCase
+    ) {
+      return params.value.toUpperCase();
+    }
+    return params.value;
+  };
+  public processCellFromClipboard: (
+    params: ProcessCellForExportParams
+  ) => any = function (params: ProcessCellForExportParams) {
+    if (
+      params.column.getColId() === 'athlete' &&
+      params.value &&
+      params.value.toLowerCase
+    ) {
+      return params.value.toLowerCase();
+    }
+    return params.value;
+  };
   public rowData!: any[];
 
   constructor(private http: HttpClient) {}
 
   onRangeSelectionChanged(event: RangeSelectionChangedEvent) {
-    var lbRangeCount = document.querySelector("#lbRangeCount")!;
-    var lbEagerSum = document.querySelector("#lbEagerSum")!;
-    var lbLazySum = document.querySelector("#lbLazySum")!;
+    var lbRangeCount = document.querySelector('#lbRangeCount')!;
+    var lbEagerSum = document.querySelector('#lbEagerSum')!;
+    var lbLazySum = document.querySelector('#lbLazySum')!;
     var cellRanges = this.gridApi.getCellRanges();
     // if no selection, clear all the results and do nothing more
     if (!cellRanges || cellRanges.length === 0) {
-      lbRangeCount.innerHTML = "0";
-      lbEagerSum.innerHTML = "-";
-      lbLazySum.innerHTML = "-";
+      lbRangeCount.innerHTML = '0';
+      lbEagerSum.innerHTML = '-';
+      lbLazySum.innerHTML = '-';
       return;
     }
     // set range count to the number of ranges selected
-    lbRangeCount.innerHTML = cellRanges.length + "";
+    lbRangeCount.innerHTML = cellRanges.length + '';
     var sum = 0;
     var api = this.gridApi!;
     if (cellRanges) {
@@ -114,19 +116,19 @@ export class AppComponent {
             var rowModel = api.getModel();
             var rowNode = rowModel.getRow(rowIndex)!;
             var value = api.getValue(column, rowNode);
-            if (typeof value === "number") {
+            if (typeof value === 'number') {
               sum += value;
             }
           });
         }
       });
     }
-    lbEagerSum.innerHTML = sum + "";
+    lbEagerSum.innerHTML = sum + '';
     if (event.started) {
-      lbLazySum.innerHTML = "?";
+      lbLazySum.innerHTML = '?';
     }
     if (event.finished) {
-      lbLazySum.innerHTML = sum + "";
+      lbLazySum.innerHTML = sum + '';
     }
   }
 
@@ -134,8 +136,8 @@ export class AppComponent {
     this.gridApi.addCellRange({
       rowStartIndex: 4,
       rowEndIndex: 8,
-      columnStart: "age",
-      columnEnd: "date",
+      columnStart: 'age',
+      columnEnd: 'date',
     });
   }
 
@@ -147,7 +149,7 @@ export class AppComponent {
     this.gridApi = params.api;
 
     this.http
-      .get<any[]>("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      .get<any[]>('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .subscribe((data) => (this.rowData = data));
   }
 }

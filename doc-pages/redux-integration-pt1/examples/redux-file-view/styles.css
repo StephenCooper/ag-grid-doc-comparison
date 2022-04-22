@@ -11,9 +11,9 @@
   color: blue;
 }
 .filename {
-  padding: 5px;
+  padding:5px;
   color: black;
-  font-size: 16px;
+  font-size: 16px
 }
 .btn-padding {
   padding-bottom: 1rem;

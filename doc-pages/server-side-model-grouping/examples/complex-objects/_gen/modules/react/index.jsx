@@ -1,13 +1,13 @@
-"use strict";
+'use strict';
 
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine-dark.css";
-import { AgGridReact } from "@ag-grid-community/react";
-import { RowGroupingModule } from "@ag-grid-enterprise/row-grouping";
-import { ServerSideRowModelModule } from "@ag-grid-enterprise/server-side-row-model";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from '@ag-grid-community/react';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine-dark.css';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import { ServerSideRowModelModule } from '@ag-grid-enterprise/server-side-row-model';
+import { RowGroupingModule } from '@ag-grid-enterprise/row-grouping';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([ServerSideRowModelModule, RowGroupingModule]);
@@ -20,14 +20,14 @@ class GridExample extends Component {
       columnDefs: [
         // here we are using a valueGetter to get the country name from the complex object
         {
-          colId: "country",
-          valueGetter: "data.country.name",
+          colId: 'country',
+          valueGetter: 'data.country.name',
           rowGroup: true,
           hide: true,
         },
-        { field: "gold", aggFunc: "sum" },
-        { field: "silver", aggFunc: "sum" },
-        { field: "bronze", aggFunc: "sum" },
+        { field: 'gold', aggFunc: 'sum' },
+        { field: 'silver', aggFunc: 'sum' },
+        { field: 'bronze', aggFunc: 'sum' },
       ],
       defaultColDef: {
         flex: 1,
@@ -39,8 +39,8 @@ class GridExample extends Component {
         flex: 1,
         minWidth: 280,
       },
-      rowModelType: "serverSide",
-      serverSideStoreType: "partial",
+      rowModelType: 'serverSide',
+      serverSideStoreType: 'partial',
     };
   }
 
@@ -57,18 +57,18 @@ class GridExample extends Component {
       params.api.setServerSideDatasource(datasource);
     };
 
-    fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+    fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .then((resp) => resp.json())
       .then((data) => updateData(data));
   };
 
   render() {
     return (
-      <div style={{ width: "100%", height: "100%" }}>
+      <div style={{ width: '100%', height: '100%' }}>
         <div
           style={{
-            height: "100%",
-            width: "100%",
+            height: '100%',
+            width: '100%',
           }}
           className="ag-theme-alpine-dark"
         >
@@ -91,7 +91,7 @@ class GridExample extends Component {
 function getServerSideDatasource(server) {
   return {
     getRows: function (params) {
-      console.log("[Datasource] - rows requested by grid: ", params.request);
+      console.log('[Datasource] - rows requested by grid: ', params.request);
       var response = server.getData(params.request);
       // convert country to a complex object
       var resultsWithComplexObjects = response.rows.map(function (row) {
@@ -118,4 +118,4 @@ function getServerSideDatasource(server) {
   };
 }
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

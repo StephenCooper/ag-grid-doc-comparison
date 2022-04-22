@@ -1,17 +1,17 @@
-"use strict";
+'use strict';
 
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { AgGridReact } from "@ag-grid-community/react";
-import { ColumnsToolPanelModule } from "@ag-grid-enterprise/column-tool-panel";
-import { FiltersToolPanelModule } from "@ag-grid-enterprise/filter-tool-panel";
-import { MenuModule } from "@ag-grid-enterprise/menu";
-import { SetFilterModule } from "@ag-grid-enterprise/set-filter";
-import React, { Component } from "react";
-import { render } from "react-dom";
-import CountryCellRenderer from "./countryCellRenderer.jsx";
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from '@ag-grid-community/react';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import CountryCellRenderer from './countryCellRenderer.jsx';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import { SetFilterModule } from '@ag-grid-enterprise/set-filter';
+import { MenuModule } from '@ag-grid-enterprise/menu';
+import { ColumnsToolPanelModule } from '@ag-grid-enterprise/column-tool-panel';
+import { FiltersToolPanelModule } from '@ag-grid-enterprise/filter-tool-panel';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([
@@ -29,19 +29,19 @@ class GridExample extends Component {
     this.state = {
       columnDefs: [
         {
-          headerName: "No Cell Renderer",
-          field: "country",
+          headerName: 'No Cell Renderer',
+          field: 'country',
           cellRenderer: CountryCellRenderer,
-          filter: "agSetColumnFilter",
+          filter: 'agSetColumnFilter',
           filterParams: {
             // no cell renderer!
           },
         },
         {
-          headerName: "With Cell Renderers",
-          field: "country",
+          headerName: 'With Cell Renderers',
+          field: 'country',
           cellRenderer: CountryCellRenderer,
-          filter: "agSetColumnFilter",
+          filter: 'agSetColumnFilter',
           filterParams: {
             cellRenderer: CountryCellRenderer,
           },
@@ -56,7 +56,7 @@ class GridExample extends Component {
         resizable: true,
         floatingFilter: true,
       },
-      sideBar: "filters",
+      sideBar: 'filters',
       rowData: null,
     };
   }
@@ -73,13 +73,13 @@ class GridExample extends Component {
       params.api.setRowData(dataWithFlags);
     };
 
-    fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+    fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .then((resp) => resp.json())
       .then((data) => updateData(data));
   };
 
   onFirstDataRendered = (params) => {
-    params.api.getToolPanelInstance("filters").expandFilters();
+    params.api.getToolPanelInstance('filters').expandFilters();
   };
 
   printFilterModel = () => {
@@ -89,9 +89,9 @@ class GridExample extends Component {
 
   render() {
     return (
-      <div style={{ width: "100%", height: "100%" }}>
+      <div style={{ width: '100%', height: '100%' }}>
         <div className="example-wrapper">
-          <div style={{ marginBottom: "5px" }}>
+          <div style={{ marginBottom: '5px' }}>
             <button onClick={() => this.printFilterModel()}>
               Print Filter Model
             </button>
@@ -99,8 +99,8 @@ class GridExample extends Component {
 
           <div
             style={{
-              height: "100%",
-              width: "100%",
+              height: '100%',
+              width: '100%',
             }}
             className="ag-theme-alpine"
           >
@@ -121,25 +121,25 @@ class GridExample extends Component {
 }
 
 const COUNTRY_CODES = {
-  Ireland: "ie",
-  Luxembourg: "lu",
-  Belgium: "be",
-  Spain: "es",
-  France: "fr",
-  Germany: "de",
-  Sweden: "se",
-  Italy: "it",
-  Greece: "gr",
-  Iceland: "is",
-  Portugal: "pt",
-  Malta: "mt",
-  Norway: "no",
-  Brazil: "br",
-  Argentina: "ar",
-  Colombia: "co",
-  Peru: "pe",
-  Venezuela: "ve",
-  Uruguay: "uy",
+  Ireland: 'ie',
+  Luxembourg: 'lu',
+  Belgium: 'be',
+  Spain: 'es',
+  France: 'fr',
+  Germany: 'de',
+  Sweden: 'se',
+  Italy: 'it',
+  Greece: 'gr',
+  Iceland: 'is',
+  Portugal: 'pt',
+  Malta: 'mt',
+  Norway: 'no',
+  Brazil: 'br',
+  Argentina: 'ar',
+  Colombia: 'co',
+  Peru: 'pe',
+  Venezuela: 've',
+  Uruguay: 'uy',
 };
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

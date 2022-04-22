@@ -1,9 +1,9 @@
-import { HttpClientModule } from "@angular/common/http";
-import { NgModule } from "@angular/core";
-import { BrowserModule } from "@angular/platform-browser";
-import { AgGridModule } from "ag-grid-angular";
-import { AppComponent } from "./app.component";
-import { GenderCellRenderer } from "./gender-cell-renderer.component";
+import { HttpClientModule } from '@angular/common/http';
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { AgGridModule } from 'ag-grid-angular';
+import { AppComponent } from './app.component';
+import { GenderCellRenderer } from './gender-cell-renderer.component';
 
 @NgModule({
   imports: [

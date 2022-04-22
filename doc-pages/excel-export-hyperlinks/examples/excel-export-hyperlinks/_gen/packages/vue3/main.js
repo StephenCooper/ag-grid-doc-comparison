@@ -1,8 +1,8 @@
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
-import { AgGridVue } from "ag-grid-vue3";
-import { createApp } from "vue";
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import 'ag-grid-enterprise';
+import { AgGridVue } from 'ag-grid-vue3';
+import { createApp } from 'vue';
 
 const VueExample = {
   template: `
@@ -27,13 +27,13 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
-        { field: "company" },
-        { field: "url", cellClass: "hyperlinks" },
+        { field: 'company' },
+        { field: 'url', cellClass: 'hyperlinks' },
       ],
       gridApi: null,
       columnApi: null,
@@ -52,29 +52,29 @@ const VueExample = {
       autoConvertFormulas: true,
       processCellCallback: (params) => {
         const field = params.column.getColDef().field;
-        return field === "url" ? `=HYPERLINK("${params.value}")` : params.value;
+        return field === 'url' ? `=HYPERLINK("${params.value}")` : params.value;
       },
     };
     this.excelStyles = [
       {
-        id: "hyperlinks",
+        id: 'hyperlinks',
         font: {
-          underline: "Single",
-          color: "#358ccb",
+          underline: 'Single',
+          color: '#358ccb',
         },
       },
     ];
     this.rowData = [
-      { company: "Google", url: "https://www.google.com" },
-      { company: "Adobe", url: "https://www.adobe.com" },
-      { company: "The New York Times", url: "https://www.nytimes.com" },
-      { company: "Twitter", url: "https://www.twitter.com" },
-      { company: "StackOverflow", url: "https://stackoverflow.com/" },
-      { company: "Reddit", url: "https://www.reddit.com" },
-      { company: "Github", url: "https://www.github.com" },
-      { company: "Microsoft", url: "https://www.microsoft.com" },
-      { company: "Gizmodo", url: "https://www.gizmodo.com" },
-      { company: "LinkedIN", url: "https://www.linkedin.com" },
+      { company: 'Google', url: 'https://www.google.com' },
+      { company: 'Adobe', url: 'https://www.adobe.com' },
+      { company: 'The New York Times', url: 'https://www.nytimes.com' },
+      { company: 'Twitter', url: 'https://www.twitter.com' },
+      { company: 'StackOverflow', url: 'https://stackoverflow.com/' },
+      { company: 'Reddit', url: 'https://www.reddit.com' },
+      { company: 'Github', url: 'https://www.github.com' },
+      { company: 'Microsoft', url: 'https://www.microsoft.com' },
+      { company: 'Gizmodo', url: 'https://www.gizmodo.com' },
+      { company: 'LinkedIN', url: 'https://www.linkedin.com' },
     ];
   },
   methods: {
@@ -88,4 +88,4 @@ const VueExample = {
   },
 };
 
-createApp(VueExample).mount("#app");
+createApp(VueExample).mount('#app');

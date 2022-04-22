@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 
 export default class ColourCellRenderer extends Component {
   constructor(props) {
@@ -6,11 +6,11 @@ export default class ColourCellRenderer extends Component {
   }
 
   removeSpaces(str) {
-    return str ? str.replace(/\s/g, "") : str;
+    return str ? str.replace(/\s/g, '') : str;
   }
 
   render() {
-    if (this.props.value === "(Select All)") {
+    if (this.props.value === '(Select All)') {
       return this.props.value;
     }
 

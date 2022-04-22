@@ -1,15 +1,15 @@
-"use strict";
+'use strict';
 
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { AgGridReact } from "@ag-grid-community/react";
-import { FiltersToolPanelModule } from "@ag-grid-enterprise/filter-tool-panel";
-import { MenuModule } from "@ag-grid-enterprise/menu";
-import { SetFilterModule } from "@ag-grid-enterprise/set-filter";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from '@ag-grid-community/react';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import { MenuModule } from '@ag-grid-enterprise/menu';
+import { SetFilterModule } from '@ag-grid-enterprise/set-filter';
+import { FiltersToolPanelModule } from '@ag-grid-enterprise/filter-tool-panel';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([
@@ -26,39 +26,39 @@ class GridExample extends Component {
     this.state = {
       columnDefs: [
         {
-          groupId: "athleteGroupId",
-          headerName: "Athlete",
+          groupId: 'athleteGroupId',
+          headerName: 'Athlete',
           children: [
             {
-              headerName: "Name",
-              field: "athlete",
+              headerName: 'Name',
+              field: 'athlete',
               minWidth: 200,
-              filter: "agTextColumnFilter",
+              filter: 'agTextColumnFilter',
             },
-            { field: "age" },
+            { field: 'age' },
             {
-              groupId: "competitionGroupId",
-              headerName: "Competition",
+              groupId: 'competitionGroupId',
+              headerName: 'Competition',
               children: [
-                { field: "year" },
+                { field: 'year' },
                 {
-                  field: "date",
+                  field: 'date',
                   minWidth: 180,
                   suppressFiltersToolPanel: true,
                 },
               ],
             },
-            { field: "country", minWidth: 200 },
+            { field: 'country', minWidth: 200 },
           ],
         },
-        { colId: "sport", field: "sport", minWidth: 200 },
+        { colId: 'sport', field: 'sport', minWidth: 200 },
         {
-          headerName: "Medals",
+          headerName: 'Medals',
           children: [
-            { field: "gold" },
-            { field: "silver" },
-            { field: "bronze" },
-            { field: "total" },
+            { field: 'gold' },
+            { field: 'silver' },
+            { field: 'bronze' },
+            { field: 'total' },
           ],
         },
       ],
@@ -72,18 +72,18 @@ class GridExample extends Component {
       sideBar: {
         toolPanels: [
           {
-            id: "filters",
-            labelDefault: "Filters",
-            labelKey: "filters",
-            iconKey: "filter",
-            toolPanel: "agFiltersToolPanel",
+            id: 'filters',
+            labelDefault: 'Filters',
+            labelKey: 'filters',
+            iconKey: 'filter',
+            toolPanel: 'agFiltersToolPanel',
             toolPanelParams: {
               suppressExpandAll: true,
               suppressFilterSearch: true,
             },
           },
         ],
-        defaultToolPanel: "filters",
+        defaultToolPanel: 'filters',
       },
       rowData: null,
     };
@@ -95,18 +95,18 @@ class GridExample extends Component {
 
     const updateData = (data) => params.api.setRowData(data);
 
-    fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+    fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .then((resp) => resp.json())
       .then((data) => updateData(data));
   };
 
   render() {
     return (
-      <div style={{ width: "100%", height: "100%" }}>
+      <div style={{ width: '100%', height: '100%' }}>
         <div
           style={{
-            height: "100%",
-            width: "100%",
+            height: '100%',
+            width: '100%',
           }}
           className="ag-theme-alpine"
         >
@@ -123,4 +123,4 @@ class GridExample extends Component {
   }
 }
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

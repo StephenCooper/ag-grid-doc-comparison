@@ -1,13 +1,13 @@
-"use strict";
+'use strict';
 
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { AgGridReact } from "@ag-grid-community/react";
-import React, { Component } from "react";
-import { render } from "react-dom";
-import FullWidthCellRenderer from "./fullWidthCellRenderer.jsx";
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from '@ag-grid-community/react';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import FullWidthCellRenderer from './fullWidthCellRenderer.jsx';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([ClientSideRowModelModule]);
@@ -17,9 +17,9 @@ class GridExample extends Component {
     super(props);
 
     this.state = {
-      rowData: createData(100, "body"),
-      pinnedTopRowData: createData(3, "pinned"),
-      pinnedBottomRowData: createData(3, "pinned"),
+      rowData: createData(100, 'body'),
+      pinnedTopRowData: createData(3, 'pinned'),
+      pinnedBottomRowData: createData(3, 'pinned'),
       columnDefs: getColumnDefs(),
       isFullWidthRow: function (params) {
         // in this example, we check the fullWidth attribute that we set
@@ -47,11 +47,11 @@ class GridExample extends Component {
 
   render() {
     return (
-      <div style={{ width: "100%", height: "100%" }}>
+      <div style={{ width: '100%', height: '100%' }}>
         <div
           style={{
-            height: "100%",
-            width: "100%",
+            height: '100%',
+            width: '100%',
           }}
           className="ag-theme-alpine"
         >
@@ -79,18 +79,18 @@ function getColumnDefs() {
       field: letter,
       width: 150,
     };
-    if (letter === "A") {
-      colDef.pinned = "left";
+    if (letter === 'A') {
+      colDef.pinned = 'left';
     }
-    if (letter === "Z") {
-      colDef.pinned = "right";
+    if (letter === 'Z') {
+      colDef.pinned = 'right';
     }
     columnDefs.push(colDef);
   });
   return columnDefs;
 }
 function alphabet() {
-  return "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
+  return 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
 }
 function createData(count, prefix) {
   const rowData = [];
@@ -103,11 +103,11 @@ function createData(count, prefix) {
     item.fullWidth = i % 3 === 2;
     // put in a column for each letter of the alphabet
     alphabet().forEach(function (letter) {
-      item[letter] = prefix + " (" + letter + "," + i + ")";
+      item[letter] = prefix + ' (' + letter + ',' + i + ')';
     });
     rowData.push(item);
   }
   return rowData;
 }
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

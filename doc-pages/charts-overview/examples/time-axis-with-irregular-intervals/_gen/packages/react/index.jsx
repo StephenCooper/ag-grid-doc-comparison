@@ -1,8 +1,10 @@
-"use strict";
+'use strict';
 
-import { AgChartsReact } from "ag-charts-react";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { cloneDeep } from 'lodash';
+import { render } from 'react-dom';
+import * as agCharts from 'ag-charts-community';
+import { AgChartsReact } from 'ag-charts-react';
 
 class ChartExample extends Component {
   constructor(props) {
@@ -13,20 +15,20 @@ class ChartExample extends Component {
         theme: {
           palette: {
             fills: [
-              "#5BC0EB",
-              "#FDE74C",
-              "#9BC53D",
-              "#E55934",
-              "#FA7921",
-              "#fa3081",
+              '#5BC0EB',
+              '#FDE74C',
+              '#9BC53D',
+              '#E55934',
+              '#FA7921',
+              '#fa3081',
             ],
             strokes: [
-              "#5BC0EB",
-              "#FDE74C",
-              "#9BC53D",
-              "#E55934",
-              "#FA7921",
-              "#fa3081",
+              '#5BC0EB',
+              '#FDE74C',
+              '#9BC53D',
+              '#E55934',
+              '#FA7921',
+              '#fa3081',
             ],
           },
           overrides: {
@@ -35,11 +37,11 @@ class ChartExample extends Component {
         },
         autoSize: true,
         title: {
-          text: "Earthquake Magnitudes by Source (January 2020)",
+          text: 'Earthquake Magnitudes by Source (January 2020)',
           fontSize: 18,
         },
         subtitle: {
-          text: "Source: US Geological Survey",
+          text: 'Source: US Geological Survey',
         },
         padding: {
           left: 40,
@@ -48,53 +50,53 @@ class ChartExample extends Component {
         series: [
           {
             data: data.ci,
-            type: "line",
-            title: "Southern California Seismic Network",
-            xKey: "time",
-            yKey: "magnitude",
+            type: 'line',
+            title: 'Southern California Seismic Network',
+            xKey: 'time',
+            yKey: 'magnitude',
           },
           {
             data: data.hv,
-            type: "line",
-            title: "Hawaiian Volcano Observatory Network",
-            xKey: "time",
-            yKey: "magnitude",
+            type: 'line',
+            title: 'Hawaiian Volcano Observatory Network',
+            xKey: 'time',
+            yKey: 'magnitude',
           },
           {
             data: data.nc,
-            type: "line",
-            title: "USGS Northern California Network",
-            xKey: "time",
-            yKey: "magnitude",
+            type: 'line',
+            title: 'USGS Northern California Network',
+            xKey: 'time',
+            yKey: 'magnitude',
           },
           {
             data: data.ok,
-            type: "line",
-            title: "Oklahoma Seismic Network",
-            xKey: "time",
-            yKey: "magnitude",
+            type: 'line',
+            title: 'Oklahoma Seismic Network',
+            xKey: 'time',
+            yKey: 'magnitude',
           },
         ],
         axes: [
           {
-            position: "bottom",
-            type: "time",
+            position: 'bottom',
+            type: 'time',
             label: {
-              format: "%d/%m",
+              format: '%d/%m',
               rotation: 30,
             },
           },
           {
-            position: "left",
-            type: "number",
+            position: 'left',
+            type: 'number',
             title: {
               enabled: true,
-              text: "Magnitude",
+              text: 'Magnitude',
             },
           },
         ],
         legend: {
-          position: "bottom",
+          position: 'bottom',
           item: {
             marker: {
               strokeWidth: 0,
@@ -112,4 +114,4 @@ class ChartExample extends Component {
   }
 }
 
-render(<ChartExample />, document.querySelector("#root"));
+render(<ChartExample />, document.querySelector('#root'));

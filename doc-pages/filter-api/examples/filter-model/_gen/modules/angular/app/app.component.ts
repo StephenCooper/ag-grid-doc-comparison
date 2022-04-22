@@ -4,15 +4,15 @@ import {
   GridReadyEvent,
   IFiltersToolPanel,
   SideBarDef,
-} from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { HttpClient } from "@angular/common/http";
-import { Component } from "@angular/core";
+} from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { HttpClient } from '@angular/common/http';
+import { Component } from '@angular/core';
 // Required feature modules are registered in app.module.ts
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<div class="example-wrapper">
     <div>
       <div class="button-group">
@@ -51,20 +51,20 @@ export class AppComponent {
   private gridApi!: GridApi;
 
   public columnDefs: ColDef[] = [
-    { field: "athlete", filter: "agTextColumnFilter" },
-    { field: "age", filter: "agNumberColumnFilter", maxWidth: 100 },
-    { field: "country" },
-    { field: "year", maxWidth: 100 },
+    { field: 'athlete', filter: 'agTextColumnFilter' },
+    { field: 'age', filter: 'agNumberColumnFilter', maxWidth: 100 },
+    { field: 'country' },
+    { field: 'year', maxWidth: 100 },
     {
-      field: "date",
-      filter: "agDateColumnFilter",
+      field: 'date',
+      filter: 'agDateColumnFilter',
       filterParams: filterParams,
     },
-    { field: "sport" },
-    { field: "gold", filter: "agNumberColumnFilter" },
-    { field: "silver", filter: "agNumberColumnFilter" },
-    { field: "bronze", filter: "agNumberColumnFilter" },
-    { field: "total", filter: "agNumberColumnFilter" },
+    { field: 'sport' },
+    { field: 'gold', filter: 'agNumberColumnFilter' },
+    { field: 'silver', filter: 'agNumberColumnFilter' },
+    { field: 'bronze', filter: 'agNumberColumnFilter' },
+    { field: 'total', filter: 'agNumberColumnFilter' },
   ];
   public defaultColDef: ColDef = {
     flex: 1,
@@ -72,7 +72,7 @@ export class AppComponent {
     filter: true,
     sortable: true,
   };
-  public sideBar: SideBarDef | string | boolean | null = "filters";
+  public sideBar: SideBarDef | string | string[] | boolean | null = 'filters';
   public rowData!: any[];
 
   constructor(private http: HttpClient) {}
@@ -84,8 +84,8 @@ export class AppComponent {
   saveFilterModel() {
     savedFilterModel = this.gridApi.getFilterModel();
     var keys = Object.keys(savedFilterModel);
-    var savedFilters: string = keys.length > 0 ? keys.join(", ") : "(none)";
-    (document.querySelector("#savedFilters") as any).innerHTML = savedFilters;
+    var savedFilters: string = keys.length > 0 ? keys.join(', ') : '(none)';
+    (document.querySelector('#savedFilters') as any).innerHTML = savedFilters;
   }
 
   restoreFilterModel() {
@@ -95,29 +95,29 @@ export class AppComponent {
   restoreFromHardCoded() {
     var hardcodedFilter = {
       country: {
-        type: "set",
-        values: ["Ireland", "United States"],
+        type: 'set',
+        values: ['Ireland', 'United States'],
       },
-      age: { type: "lessThan", filter: "30" },
-      athlete: { type: "startsWith", filter: "Mich" },
-      date: { type: "lessThan", dateFrom: "2010-01-01" },
+      age: { type: 'lessThan', filter: '30' },
+      athlete: { type: 'startsWith', filter: 'Mich' },
+      date: { type: 'lessThan', dateFrom: '2010-01-01' },
     };
     this.gridApi.setFilterModel(hardcodedFilter);
   }
 
   destroyFilter() {
-    this.gridApi.destroyFilter("athlete");
+    this.gridApi.destroyFilter('athlete');
   }
 
   onGridReady(params: GridReadyEvent) {
     this.gridApi = params.api;
 
-    (
-      params.api.getToolPanelInstance("filters") as any as IFiltersToolPanel
-    ).expandFilters();
+    ((params.api.getToolPanelInstance(
+      'filters'
+    ) as any) as IFiltersToolPanel).expandFilters();
 
     this.http
-      .get<any[]>("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      .get<any[]>('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .subscribe((data) => (this.rowData = data));
   }
 }
@@ -126,7 +126,7 @@ var filterParams = {
   comparator: function (filterLocalDateAtMidnight: Date, cellValue: string) {
     var dateAsString = cellValue;
     if (dateAsString == null) return -1;
-    var dateParts = dateAsString.split("/");
+    var dateParts = dateAsString.split('/');
     var cellDate = new Date(
       Number(dateParts[2]),
       Number(dateParts[1]) - 1,

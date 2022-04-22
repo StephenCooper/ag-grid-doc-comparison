@@ -65,19 +65,19 @@ Most people will be happy with the default navigation the grid does when you use
 
 ### navigateToNextCell
 
-Provide a callback `navigateToNextCell` if you want to override the arrow key navigation.
+Provide a callback `navigateToNextCell` if you want to override the arrow key navigation. 
 
-<api-documentation source='grid-properties/properties.json' section='nav' names='["navigateToNextCell"]'  ></api-documentation>
+<api-documentation source='grid-options/properties.json' section='nav' names='["navigateToNextCell"]'  ></api-documentation>
 
 ### tabToNextCell
 
-Provide a callback `tabToNextCell` if you want to override the <kbd>Tab</kbd> key navigation.
+Provide a callback `tabToNextCell` if you want to override the <kbd>Tab</kbd> key navigation. 
 
-<api-documentation source='grid-properties/properties.json' section='nav' names='["tabToNextCell"]'  ></api-documentation>
+<api-documentation source='grid-options/properties.json' section='nav' names='["tabToNextCell"]'  ></api-documentation>
 
 ### CellPosition
 
-Both functions above use `CellPosition`. This is an object that represents a cell in the grid.
+Both functions above use `CellPosition`. This is an object that represents a cell in the grid. 
 
 <interface-documentation interfaceName='CellPosition' ></interface-documentation>
 
@@ -85,15 +85,15 @@ The functions take a `CellPosition` for current and next cells, as well as retur
 
 ### navigateToNextHeader
 
-Provide a callback `navigateToNextHeader` if you want to override the arrow key navigation.
+Provide a callback `navigateToNextHeader` if you want to override the arrow key navigation. 
 
-<api-documentation source='grid-properties/properties.json' section='nav' names='["navigateToNextHeader"]'  ></api-documentation>
+<api-documentation source='grid-options/properties.json' section='nav' names='["navigateToNextHeader"]'  ></api-documentation>
 
 ### tabToNextHeader
 
-Provide a callback `tabToNextHeader` if you want to override the <kbd>Tab</kbd> key navigation.
+Provide a callback `tabToNextHeader` if you want to override the <kbd>Tab</kbd> key navigation. 
 
-<api-documentation source='grid-properties/properties.json' section='nav' names='["tabToNextHeader"]'  ></api-documentation>
+<api-documentation source='grid-options/properties.json' section='nav' names='["tabToNextHeader"]'  ></api-documentation>
 
 ### HeaderPosition
 
@@ -111,7 +111,7 @@ You should return the `HeaderPosition` you want in the `navigateToNextHeader` an
 
 ## Example Custom Cell Navigation
 
-The example below shows how to use `navigateToNextCell`, `tabToNextCell`, `navigateToNextHeader` and `tabToNextHeader` in practice.
+The example below shows how to use `navigateToNextCell`, `tabToNextCell`,  `navigateToNextHeader` and `tabToNextHeader` in practice.
 
 Note the following:
 
@@ -119,8 +119,8 @@ Note the following:
 - `tabToNextCell` uses tabbing to go up and down rather than right and left.
 - `navigateToNextHeader` swaps the up and down arrow keys.
 - `tabToNextHeader` uses tabbing to go up and down rather than right and left.
-- When a cell in the first grid row is focused, pressing the down arrow will navigate to the header by passing `rowIndex: -1`.
-- When a header cell in the last header row is focused, pressing the up arrow will navigate to the first grid row by passing `headerRowIndex: -1`.
+- When a cell in the first grid row is focused, pressing the down arrow will navigate to  the header by passing `rowIndex: -1`.
+- When a header cell in the last header row is focused, pressing the up arrow will navigate  to the first grid row by passing `headerRowIndex: -1`.
 - Tabbing/Shift tabbing will move the focus until the first header or the last grid row, but focus will not leave the grid.
 
 <grid-example title='Custom Keyboard Navigation' name='custom-keyboard-navigation' type='mixed'></grid-example>
@@ -198,36 +198,36 @@ It is possible to stop the grid acting on particular events. To do this implemen
 
 <api-documentation source='column-properties/properties.json' section='columns' names='["suppressKeyboardEvent"]'></api-documentation>
 
-The callback is available as a [column callback](/column-properties/#reference-columns-suppressKeyboardEvent) (set on the column definition). If you want it to apply to all columns then apply to the `defaultColDef` property.
+The callback is available as a [column callback](/column-properties/#reference-columns-suppressKeyboardEvent) (set on the column definition). If you want it to apply to all columns then apply to the `defaultColDef` property. 
 
 ### Example: Suppress Keyboard Navigation
 
 The example below demonstrates suppressing the following keyboard events:
 
 - On the Athlete column cells only:
-  - <kbd>Enter</kbd> will not start or stop editing.
+    - <kbd>Enter</kbd> will not start or stop editing.
 - On the Country column cells only:
-  - <kbd>↑</kbd> <kbd>↓</kbd> arrow keys are allowed. This is the only column that allows navigation from the grid to the header.
+    - <kbd>↑</kbd> <kbd>↓</kbd> arrow keys are allowed. This is the only column that allows navigation from the grid to the header.
 - On all cells (including the cells of the Athlete Column):
-  - <kbd>Ctrl</kbd>+<kbd>A</kbd> will not select all cells into a range.
-  - <kbd>Ctrl</kbd>+<kbd>C</kbd> will not copy to clipboard.
-  - <kbd>Ctrl</kbd>+<kbd>V</kbd> will not paste from clipboard.
-  - <kbd>Ctrl</kbd>+<kbd>D</kbd> will not copy range down.
-  - <kbd>Page Up</kbd> and <kbd>Page Down</kbd> will not get handled by the grid.
-  - <kbd>Home</kbd> will not focus top left cell.
-  - <kbd>End</kbd> will not focus bottom right cell.
-  - <kbd>←</kbd> <kbd>↑</kbd> <kbd>→</kbd> <kbd>↓</kbd> Arrow keys will not navigate focused cell.
-  - <kbd>F2</kbd> will not start editing.
-  - <kbd>Delete</kbd> will not start editing.
-  - <kbd>Backspace</kbd> will not start editing.
-  - <kbd>Escape</kbd> will not cancel editing.
-  - <kbd>Space</kbd> will not select current row.
-  - <kbd>Tab</kbd> will not be handled by the grid.
+    - <kbd>Ctrl</kbd>+<kbd>A</kbd> will not select all cells into a range.
+    - <kbd>Ctrl</kbd>+<kbd>C</kbd> will not copy to clipboard.
+    - <kbd>Ctrl</kbd>+<kbd>V</kbd> will not paste from clipboard.
+    - <kbd>Ctrl</kbd>+<kbd>D</kbd> will not copy range down.
+    - <kbd>Page Up</kbd> and <kbd>Page Down</kbd> will not get handled by the grid.
+    - <kbd>Home</kbd> will not focus top left cell.
+    - <kbd>End</kbd> will not focus bottom right cell.
+    - <kbd>←</kbd> <kbd>↑</kbd> <kbd>→</kbd> <kbd>↓</kbd> Arrow keys will not navigate focused cell.
+    - <kbd>F2</kbd> will not start editing.
+    - <kbd>Delete</kbd> will not start editing.
+    - <kbd>Backspace</kbd> will not start editing.
+    - <kbd>Escape</kbd> will not cancel editing.
+    - <kbd>Space</kbd> will not select current row.
+    - <kbd>Tab</kbd> will not be handled by the grid.
 - On the Country header only:
-  - Navigation is blocked from the left to right using arrows but is allowed using <kbd>Tab</kbd>.
-  - Navigation up and down is allowed. This is the only header that allows navigation from the header to the grid cells.
-  - <kbd>Enter</kbd> is blocked. This is the only header that blocks sorting / opening menu via keyboard.
+    - Navigation is blocked from the left to right using arrows but is allowed using <kbd>Tab</kbd>.
+    - Navigation up and down is allowed. This is the only header that allows navigation from the header to the grid cells.
+    - <kbd>Enter</kbd> is blocked. This is the only header that blocks sorting / opening menu via keyboard.
 - On all headers (excluding country):
-  - Navigation is blocked up and down, but navigation left / right is allowed using arrows and <kbd>Tab</kbd>.
+    - Navigation is blocked up and down, but navigation left / right is allowed using arrows and <kbd>Tab</kbd>.
 
 <grid-example title='Suppress Keys' name='suppress-keys' type='generated' options='{ "enterprise": true, "modules": ["clientside", "menu", "columnpanel", "filterpanel", "setfilter"] }'></grid-example>

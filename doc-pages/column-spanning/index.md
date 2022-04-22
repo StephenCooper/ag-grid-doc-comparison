@@ -20,6 +20,7 @@ const gridOptions = {
 }
 </snippet>
 
+
 The interface for the colSpan callback is as follows:
 
 <api-documentation source='column-properties/properties.json' section='spanning' names='["colSpan"]'></api-documentation>

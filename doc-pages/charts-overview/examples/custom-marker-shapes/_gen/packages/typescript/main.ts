@@ -1,33 +1,33 @@
-import * as agCharts from "ag-charts-community";
-import { AgChartOptions } from "ag-charts-community";
+import * as agCharts from 'ag-charts-community';
+import { AgChartOptions } from 'ag-charts-community';
 
 var markerSize = 10;
 
 const options: AgChartOptions = {
-  container: document.getElementById("myChart"),
+  container: document.getElementById('myChart'),
   autoSize: true,
   data: getData(),
   theme: {
     palette: {
       fills: [
-        "#f3622d",
-        "#fba71b",
-        "#57b757",
-        "#41a9c9",
-        "#4258c9",
-        "#9a42c8",
-        "#c84164",
-        "#888888",
+        '#f3622d',
+        '#fba71b',
+        '#57b757',
+        '#41a9c9',
+        '#4258c9',
+        '#9a42c8',
+        '#c84164',
+        '#888888',
       ],
       strokes: [
-        "#aa4520",
-        "#b07513",
-        "#3d803d",
-        "#2d768d",
-        "#2e3e8d",
-        "#6c2e8c",
-        "#8c2d46",
-        "#5f5f5f",
+        '#aa4520',
+        '#b07513',
+        '#3d803d',
+        '#2d768d',
+        '#2e3e8d',
+        '#6c2e8c',
+        '#8c2d46',
+        '#5f5f5f',
       ],
     },
     overrides: {
@@ -44,78 +44,78 @@ const options: AgChartOptions = {
     },
   },
   title: {
-    text: "Taxed Alcohol Consumption (UK)",
+    text: 'Taxed Alcohol Consumption (UK)',
     fontSize: 18,
   },
   subtitle: {
-    text: "Source: HM Revenue & Customs",
+    text: 'Source: HM Revenue & Customs',
   },
   series: [
     {
-      type: "line",
-      title: "Still wine",
-      xKey: "year",
-      yKey: "stillWine",
+      type: 'line',
+      title: 'Still wine',
+      xKey: 'year',
+      yKey: 'stillWine',
       marker: {
         size: markerSize,
-        shape: "circle",
+        shape: 'circle',
       },
     },
     {
-      type: "line",
-      title: "Sparkling wine",
-      xKey: "year",
-      yKey: "sparklingWine",
+      type: 'line',
+      title: 'Sparkling wine',
+      xKey: 'year',
+      yKey: 'sparklingWine',
       marker: {
         size: markerSize,
-        shape: "cross",
+        shape: 'cross',
       },
     },
     {
-      type: "line",
-      title: "Made-wine",
-      xKey: "year",
-      yKey: "madeWine",
+      type: 'line',
+      title: 'Made-wine',
+      xKey: 'year',
+      yKey: 'madeWine',
       marker: {
         size: markerSize,
-        shape: "diamond",
+        shape: 'diamond',
       },
     },
     {
-      type: "line",
-      title: "Whisky",
-      xKey: "year",
-      yKey: "whisky",
+      type: 'line',
+      title: 'Whisky',
+      xKey: 'year',
+      yKey: 'whisky',
       marker: {
         size: markerSize,
-        shape: "plus",
+        shape: 'plus',
       },
     },
     {
-      type: "line",
-      title: "Potable spirits",
-      xKey: "year",
-      yKey: "potableSpirits",
+      type: 'line',
+      title: 'Potable spirits',
+      xKey: 'year',
+      yKey: 'potableSpirits',
       marker: {
         size: markerSize,
-        shape: "square",
+        shape: 'square',
       },
     },
     {
-      type: "line",
-      title: "Beer",
-      xKey: "year",
-      yKey: "beer",
+      type: 'line',
+      title: 'Beer',
+      xKey: 'year',
+      yKey: 'beer',
       marker: {
         size: markerSize,
-        shape: "triangle",
+        shape: 'triangle',
       },
     },
     {
-      type: "line",
-      title: "Cider",
-      xKey: "year",
-      yKey: "cider",
+      type: 'line',
+      title: 'Cider',
+      xKey: 'year',
+      yKey: 'cider',
       marker: {
         size: markerSize,
         shape: heartFactory(),
@@ -124,22 +124,22 @@ const options: AgChartOptions = {
   ],
   axes: [
     {
-      position: "bottom",
-      type: "category",
+      position: 'bottom',
+      type: 'category',
       label: {
         rotation: -30,
       },
     },
     {
-      position: "left",
-      type: "number",
+      position: 'left',
+      type: 'number',
       title: {
         enabled: true,
-        text: "Volume (hectolitres)",
+        text: 'Volume (hectolitres)',
       },
       label: {
         formatter: function (params) {
-          return params.value / 1000000 + "M";
+          return params.value / 1000000 + 'M';
         },
       },
     },

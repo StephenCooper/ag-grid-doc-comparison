@@ -2,7 +2,7 @@ class MyInnerRenderer {
   // gets called once before the renderer is used
   init(params) {
     // create the cell
-    this.eGui = document.createElement("div");
+    this.eGui = document.createElement('div');
 
     let template;
 

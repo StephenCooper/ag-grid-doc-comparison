@@ -1,8 +1,8 @@
 class CountryCellRenderer {
   init(params) {
-    this.eGui = document.createElement("div");
+    this.eGui = document.createElement('div');
 
-    if (!params.value || params.value === "(Select All)") {
+    if (!params.value || params.value === '(Select All)') {
       this.eGui.innerHTML = params.value;
     } else {
       const url = `https://flags.fmcdn.net/data/flags/mini/${

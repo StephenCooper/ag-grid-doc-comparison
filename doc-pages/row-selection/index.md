@@ -56,11 +56,11 @@ Checkbox selection can be used in two places: row selection and group selection.
 
 <api-documentation source='column-properties/properties.json' section='columns' names='["checkboxSelection"]'></api-documentation>
 
-To include checkbox selection for a column, set the attribute `'checkboxSelection'` to `true` on the column definition.
-You can set this attribute on as many columns as you like, however it doesn't make sense to have it in more than one
+To include checkbox selection for a column, set the attribute `'checkboxSelection'` to `true` on the column definition. 
+You can set this attribute on as many columns as you like, however it doesn't make sense to have it in more than one 
 column in a table.
 
-To enable checkbox selection for groups, set the attribute `'checkbox'` to `true` for the group renderer. See the
+To enable checkbox selection for groups, set the attribute `'checkbox'` to `true` for the group renderer. See the 
 grouping section for details on the group renderer.
 
 `checkboxSelection` can also be specified as a function. This allows dynamically setting whether a cell
@@ -68,7 +68,7 @@ has a checkbox or not. The callback is called when the Cell is drawn, and called
 to the row's data or the column positions (e.g. the callback could be showing the checkbox depending on what
 value is displayed, or if the column in question is the first column to show a checkbox for the first column only).
 
-If the function returns false, a selection checkbox will still be created and in the DOM,
+If the function returns false, a selection checkbox will still be created and in the DOM, 
 however it will not be visible using CSS `visibility: hidden`. This is to ensure the following UX properties:
 
 1. Where a column has a checkbox for only some cells, the values will remain aligned.
@@ -182,7 +182,7 @@ The next example is similar to the one above with the following changes:
 
 It is possible to specify which rows can be selected via the `gridOptions.isRowSelectable(rowNode)` callback function.
 
-<api-documentation source='grid-properties/properties.json' section='selection' names='["isRowSelectable"]'></api-documentation>
+<api-documentation source='grid-options/properties.json' section='selection' names='["isRowSelectable"]'></api-documentation>
 
 For instance if we only wanted to allow rows where the 'year' property is less than 2007, we could implement the following:
 
@@ -210,10 +210,10 @@ This example demonstrates the following:
 - As `gridOptions.groupSelectsFiltered = true` selecting groups will only select 'selectable' children that pass the filter.
 - To demonstrate, follow these steps:
 
-  1. Click 'Filter by Year 2008 & 2012'.
-  1. Select checkbox beside 'United States'.
-  1. Click 'Clear Filter'.
-  1. Notice that only 'United States' for 2008 is selected.
+    1. Click 'Filter by Year 2008 & 2012'.
+    1. Select checkbox beside 'United States'.
+    1. Click 'Clear Filter'.
+    1. Notice that only 'United States' for 2008 is selected.
 
 <grid-example title='Specifying Selectable Rows with Groups' name='specify-selectable-rows-with-groups' type='generated' options='{ "enterprise": true, "exampleHeight": 590, "modules": ["clientside", "rowgrouping", "setfilter", "menu", "columnpanel"] }'></grid-example>
 
@@ -275,7 +275,7 @@ By default, you can select a row on mouse click, and navigate up and down the ro
 
 We need to provide a callback to the `navigateToNextCell` grid option to override the default arrow key navigation:
 
-<api-documentation source='grid-properties/properties.json' section='nav' names='["navigateToNextCell"]'></api-documentation>
+<api-documentation source='grid-options/properties.json' section='nav' names='["navigateToNextCell"]'></api-documentation>
 
 <snippet>
 |const gridOptions = {
@@ -305,3 +305,4 @@ We need to provide a callback to the `navigateToNextCell` grid option to overrid
 From the code above you can see that we iterate over each node and call the `setSelected()` method if it matches the current `rowIndex`.
 
 <grid-example title='Selection with Keyboard Arrow Keys' name='selection-with-arrow-keys' type='generated'></grid-example>
+

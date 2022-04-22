@@ -7,7 +7,7 @@
         "matrixExcludeChildren": true,
         "items": [
           {
-            "title": "Tutorial",
+            "title": "Getting Started",
             "url": "/getting-started/",
             "icon": "framework",
             "pane": "left"
@@ -17,28 +17,39 @@
             "icon": "react",
             "url": "/reactui/",
             "pane": "left",
-            "frameworks": ["react"]
+            "frameworks": [
+              "react"
+            ]
           },
           {
             "title": "Hooks",
             "icon": "reactHooks",
             "url": "/react-hooks/",
             "pane": "left",
-            "frameworks": ["react"]
+            "frameworks": [
+              "react"
+            ]
           },
           {
             "title": "Video Tutorial",
             "url": "{video-tutorial}",
             "icon": "youtube",
             "menuHide": true,
-            "pane": "left"
+            "pane": "left",
+            "frameworks": [
+              "javascript",
+              "angular",
+              "vue"
+            ]
           },
           {
             "title": "Plunker Example",
             "url": "{example}",
             "icon": "plunker",
             "menuHide": true,
-            "frameworks": ["javascript"],
+            "frameworks": [
+              "javascript"
+            ],
             "pane": "left"
           },
           {
@@ -46,7 +57,11 @@
             "url": "{example}",
             "icon": "stackblitz",
             "menuHide": true,
-            "frameworks": ["angular", "react", "vue"],
+            "frameworks": [
+              "angular",
+              "react",
+              "vue"
+            ],
             "pane": "left"
           },
           {
@@ -54,15 +69,27 @@
             "url": "{thinkster}",
             "icon": "thinkster",
             "menuHide": true,
-            "frameworks": ["angular", "react"],
+            "frameworks": [
+              "angular",
+              "react"
+            ],
             "pane": "left"
           },
           {
             "title": "Vue 3 Tutorial",
             "icon": "vue",
             "url": "/vue3/",
-            "frameworks": ["vue"],
+            "frameworks": [
+              "vue"
+            ],
             "pane": "right"
+          },
+          {
+            "title": "Videos",
+            "url": "/videos/",
+            "frameworks": [
+              "react"
+            ]
           }
         ]
       },
@@ -78,7 +105,7 @@
             "items": [
               {
                 "title": "Grid Options",
-                "url": "/grid-properties/",
+                "url": "/grid-options/",
                 "showInCollapsed": true
               },
               {
@@ -257,13 +284,17 @@
             "title": "Install with NPM",
             "url": "/npm/",
             "showInCollapsed": true,
-            "frameworks": ["javascript"]
+            "frameworks": [
+              "javascript"
+            ]
           },
           {
             "title": "Download Bundles",
             "url": "/download/",
             "showInCollapsed": true,
-            "frameworks": ["javascript"]
+            "frameworks": [
+              "javascript"
+            ]
           },
           {
             "title": "Community & Enterprise",
@@ -287,12 +318,18 @@
               {
                 "title": "Custom UMD Bundle",
                 "url": "/modules-building/",
-                "frameworks": ["javascript"]
+                "frameworks": [
+                  "javascript"
+                ]
               },
               {
                 "title": "Modules - Example",
                 "url": "/modules-building/",
-                "frameworks": ["angular", "react", "vue"]
+                "frameworks": [
+                  "angular",
+                  "react",
+                  "vue"
+                ]
               }
             ]
           },
@@ -305,22 +342,30 @@
             "title": "Building",
             "url": "/building/",
             "showInCollapsed": true,
-            "frameworks": ["javascript"],
+            "frameworks": [
+              "javascript"
+            ],
             "items": [
               {
                 "title": "Rollup",
                 "url": "/building-rollup/",
-                "frameworks": ["javascript"]
+                "frameworks": [
+                  "javascript"
+                ]
               },
               {
                 "title": "TypeScript & Webpack",
                 "url": "/building-typescript/",
-                "frameworks": ["javascript"]
+                "frameworks": [
+                  "javascript"
+                ]
               },
               {
                 "title": "AMD",
                 "url": "/building-amd/",
-                "frameworks": ["javascript"]
+                "frameworks": [
+                  "javascript"
+                ]
               }
             ]
           }
@@ -439,7 +484,11 @@
           {
             "title": "See Also",
             "url": "",
-            "frameworks": ["angular", "react", "vue"],
+            "frameworks": [
+              "angular",
+              "react",
+              "vue"
+            ],
             "items": [
               {
                 "title": "Use with RxJS",
@@ -959,7 +1008,28 @@
             "title": "Aggregation",
             "url": "/aggregation/",
             "enterprise": true,
-            "showInCollapsed": true
+            "showInCollapsed": true,
+            "matrixExcludeChildren": true,
+            "items": [
+              {
+                "title": "Custom Functions",
+                "url": "/aggregation-custom-functions/",
+                "enterprise": true,
+                "showInCollapsed": false
+              },
+              {
+                "title": "Filtering",
+                "url": "/aggregation-filtering/",
+                "enterprise": true,
+                "showInCollapsed": false
+              },
+              {
+                "title": "Other",
+                "url": "/aggregation-other/",
+                "enterprise": true,
+                "showInCollapsed": false
+              }
+            ]
           },
           {
             "title": "Tree Data",
@@ -1272,19 +1342,26 @@
                 "title": "Higher Order Components",
                 "url": "/framework-hoc/",
                 "showInCollapsed": true,
-                "frameworks": ["react"]
+                "frameworks": [
+                  "react"
+                ]
               },
               {
                 "title": "Parent/Child Communication",
                 "url": "/component-communication/",
                 "showInCollapsed": true,
-                "frameworks": ["angular", "vue"]
+                "frameworks": [
+                  "angular",
+                  "vue"
+                ]
               },
               {
                 "title": "Provide/Inject",
                 "url": "/component-provide-inject/",
                 "showInCollapsed": true,
-                "frameworks": ["vue"]
+                "frameworks": [
+                  "vue"
+                ]
               }
             ]
           }
@@ -1860,6 +1937,14 @@
             "showInCollapsed": true
           },
           {
+            "title": "Testing Async",
+            "url": "/testing-async/",
+            "showInCollapsed": true,
+            "frameworks": [
+              "angular"
+            ]
+          },
+          {
             "title": "Security",
             "url": "/security/",
             "showInCollapsed": true
@@ -1876,37 +1961,49 @@
             "title": "Unidirectional Data Flow",
             "url": "/framework-data-flow/",
             "showInCollapsed": true,
-            "frameworks": ["vue"]
+            "frameworks": [
+              "vue"
+            ]
           },
           {
             "title": "Redux Integration Part 1",
             "url": "/redux-integration-pt1/",
             "showInCollapsed": true,
-            "frameworks": ["react"]
+            "frameworks": [
+              "react"
+            ]
           },
           {
             "title": "Redux Integration Part 2",
             "url": "/redux-integration-pt2/",
             "showInCollapsed": true,
-            "frameworks": ["react"]
+            "frameworks": [
+              "react"
+            ]
           },
           {
             "title": "Material UI Components",
             "url": "/material-design/",
             "showInCollapsed": true,
-            "frameworks": ["angular"]
+            "frameworks": [
+              "angular"
+            ]
           },
           {
             "title": "Use with RxJS",
             "url": "/angular-rxjs/",
             "showInCollapsed": true,
-            "frameworks": ["angular"]
+            "frameworks": [
+              "angular"
+            ]
           },
           {
             "title": "Miscellaneous",
             "url": "/framework-misc/",
             "showInCollapsed": true,
-            "frameworks": ["vue"]
+            "frameworks": [
+              "vue"
+            ]
           }
         ]
       }

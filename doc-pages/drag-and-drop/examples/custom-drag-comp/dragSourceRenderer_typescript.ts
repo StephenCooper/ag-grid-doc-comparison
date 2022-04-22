@@ -1,42 +1,36 @@
-import {
-  ICellRendererComp,
-  ICellRendererParams,
-  RowNode,
-} from "@ag-grid-community/core";
+import { ICellRendererComp, ICellRendererParams, RowNode } from "@ag-grid-community/core";
 
 export class DragSourceRenderer implements ICellRendererComp {
-  eGui!: HTMLElement;
-  rowNode!: RowNode;
-  onDragStartListener: any;
+    eGui!: HTMLElement;
+    rowNode!: RowNode;
+    onDragStartListener: any;
 
-  init(params: ICellRendererParams) {
-    var eTemp = document.createElement("div");
-    eTemp.innerHTML = '<div draggable="true">Drag Me!</div>';
+    init(params: ICellRendererParams) {
 
-    this.eGui = eTemp.firstChild as HTMLElement;
-    this.rowNode = params.node;
+        var eTemp = document.createElement('div');
+        eTemp.innerHTML = '<div draggable="true">Drag Me!</div>';
 
-    this.onDragStartListener = this.onDragStart.bind(this);
-    this.eGui.addEventListener("dragstart", this.onDragStartListener);
-  }
+        this.eGui = eTemp.firstChild as HTMLElement;
+        this.rowNode = params.node;
 
-  onDragStart(dragEvent: any) {
-    var userAgent = window.navigator.userAgent;
-    dragEvent.dataTransfer.setData(
-      "text/plain",
-      "Dragged item with ID: " + this.rowNode.data.id
-    );
-  }
+        this.onDragStartListener = this.onDragStart.bind(this);
+        this.eGui.addEventListener('dragstart', this.onDragStartListener)
+    }
 
-  getGui() {
-    return this.eGui;
-  }
+    onDragStart(dragEvent: any) {
+        var userAgent = window.navigator.userAgent;
+        dragEvent.dataTransfer.setData('text/plain', 'Dragged item with ID: ' + this.rowNode.data.id);
+    }
 
-  refresh(params: ICellRendererParams): boolean {
-    return false;
-  }
+    getGui() {
+        return this.eGui;
+    }
 
-  destroy() {
-    this.eGui.removeEventListener("dragstart", this.onDragStartListener);
-  }
+    refresh(params: ICellRendererParams): boolean {
+        return false;
+    }
+
+    destroy() {
+        this.eGui.removeEventListener('dragstart', this.onDragStartListener)
+    }
 }

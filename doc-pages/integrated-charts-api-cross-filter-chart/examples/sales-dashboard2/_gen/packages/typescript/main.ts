@@ -3,42 +3,42 @@ import {
   Grid,
   GridApi,
   GridOptions,
-} from "ag-grid-community";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine-dark.css";
-import "ag-grid-enterprise";
+} from 'ag-grid-community';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine-dark.css';
+import 'ag-grid-enterprise';
 
 const gridOptions: GridOptions = {
   columnDefs: [
-    { field: "salesRep", chartDataType: "category" },
-    { field: "handset", chartDataType: "category" },
+    { field: 'salesRep', chartDataType: 'category' },
+    { field: 'handset', chartDataType: 'category' },
     {
-      headerName: "Sale Price",
-      field: "sale",
+      headerName: 'Sale Price',
+      field: 'sale',
       maxWidth: 160,
-      aggFunc: "sum",
-      filter: "agNumberColumnFilter",
-      chartDataType: "series",
+      aggFunc: 'sum',
+      filter: 'agNumberColumnFilter',
+      chartDataType: 'series',
     },
-    { field: "saleDate", chartDataType: "category" },
+    { field: 'saleDate', chartDataType: 'category' },
     {
-      field: "quarter",
+      field: 'quarter',
       maxWidth: 160,
-      filter: "agSetColumnFilter",
-      chartDataType: "category",
+      filter: 'agSetColumnFilter',
+      chartDataType: 'category',
     },
   ],
   defaultColDef: {
     flex: 1,
     editable: true,
     sortable: true,
-    filter: "agMultiColumnFilter",
+    filter: 'agMultiColumnFilter',
     floatingFilter: true,
     resizable: true,
   },
   rowData: getData(),
   enableCharts: true,
-  chartThemes: ["ag-default-dark"],
+  chartThemes: ['ag-default-dark'],
   chartThemeOverrides: {
     common: {
       padding: {
@@ -69,16 +69,16 @@ function onFirstDataRendered(params: FirstDataRenderedEvent) {
 
 function createQuarterlySalesChart(gridApi: GridApi) {
   gridApi.createCrossFilterChart({
-    chartType: "line",
+    chartType: 'line',
     cellRange: {
-      columns: ["quarter", "sale"],
+      columns: ['quarter', 'sale'],
     },
-    aggFunc: "sum",
+    aggFunc: 'sum',
     chartThemeOverrides: {
       common: {
         title: {
           enabled: true,
-          text: "Quarterly Sales ($)",
+          text: 'Quarterly Sales ($)',
         },
         legend: {
           enabled: false,
@@ -92,29 +92,29 @@ function createQuarterlySalesChart(gridApi: GridApi) {
           number: {
             label: {
               formatter: function (params: any) {
-                return params.value / 1000 + "k";
+                return params.value / 1000 + 'k';
               },
             },
           },
         },
       },
     },
-    chartContainer: document.querySelector("#lineChart") as any,
+    chartContainer: document.querySelector('#lineChart') as any,
   });
 }
 
 function createSalesByRefChart(gridApi: GridApi) {
   gridApi.createCrossFilterChart({
-    chartType: "doughnut",
+    chartType: 'doughnut',
     cellRange: {
-      columns: ["salesRep", "sale"],
+      columns: ['salesRep', 'sale'],
     },
-    aggFunc: "sum",
+    aggFunc: 'sum',
     chartThemeOverrides: {
       common: {
         title: {
           enabled: true,
-          text: "Sales by Representative ($)",
+          text: 'Sales by Representative ($)',
         },
       },
       pie: {
@@ -128,22 +128,22 @@ function createSalesByRefChart(gridApi: GridApi) {
         },
       },
     },
-    chartContainer: document.querySelector("#doughnutChart") as any,
+    chartContainer: document.querySelector('#doughnutChart') as any,
   });
 }
 
 function createHandsetSalesChart(gridApi: GridApi) {
   gridApi.createCrossFilterChart({
-    chartType: "area",
+    chartType: 'area',
     cellRange: {
-      columns: ["handset", "sale"],
+      columns: ['handset', 'sale'],
     },
-    aggFunc: "count",
+    aggFunc: 'count',
     chartThemeOverrides: {
       common: {
         title: {
           enabled: true,
-          text: "Handsets Sold (Units)",
+          text: 'Handsets Sold (Units)',
         },
         legend: {
           enabled: false,
@@ -156,10 +156,10 @@ function createHandsetSalesChart(gridApi: GridApi) {
         },
       },
     },
-    chartContainer: document.querySelector("#areaChart") as any,
+    chartContainer: document.querySelector('#areaChart') as any,
   });
 }
 
 // setup the grid after the page has finished loading
-var gridDiv = document.querySelector<HTMLElement>("#myGrid")!;
+var gridDiv = document.querySelector<HTMLElement>('#myGrid')!;
 new Grid(gridDiv, gridOptions);

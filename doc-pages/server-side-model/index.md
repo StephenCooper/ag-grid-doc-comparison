@@ -20,6 +20,7 @@ Before diving into the details of how to use the SSRM, the next section provides
 
 When designing a grid-based application, one of the key considerations is how much data needs to be sent from the server to the client. The answer to this determines which Row Model should be selected for the grid.
 
+
 ### Client-Side Row Model
 
 The simplest approach is to send all row data to the browser in response to a single request at initialisation. For this use case the [Client-Side Row Model](/client-side-model/) has been designed.
@@ -53,16 +54,16 @@ You may benefit from the combination of all these features or just be interested
 - **Infinite Scrolling:** When active, rows are read back from the server in blocks to provide the experience of infinite scrolling. This allows viewing very large datasets in the browser by only bringing back data one block at a time. Using Infinite Scrolling is an optional feature. It is possible to bring back all the data for a particular group level and then allow the grid to do Sorting and Filtering of the data in the browsers memory.
 
 - **Server-Side Grouping, Pivot and Aggregation:** Because the data is coming back from the server one group level at
-  a time, this allows you to do aggregation on the server, returning back the aggregated results for the top level parent
-  rows. For example you could include 'employee count' as an attribute on the returned manager record, to say how many
-  employees a manager manages.
+a time, this allows you to do aggregation on the server, returning back the aggregated results for the top level parent
+rows. For example you could include 'employee count' as an attribute on the returned manager record, to say how many
+employees a manager manages.
 
 - **Slice and Dice:** Assuming your server-side can build the data query, you can allow the user to use the Grid UI
-  to drag columns around to select what columns you want to group by and aggregate on. What the user selects will then
-  be forwarded to your datasource as part of the request. This feature is advanced and will require some difficult
-  server-side coding from you, however when done your users will have an experience of slicing and dicing large data in
-  real time, something previously only available in expensive reporting tools, which you can now embed into your
-  JavaScript application.
+to drag columns around to select what columns you want to group by and aggregate on. What the user selects will then
+be forwarded to your datasource as part of the request. This feature is advanced and will require some difficult
+server-side coding from you, however when done your users will have an experience of slicing and dicing large data in
+real time, something previously only available in expensive reporting tools, which you can now embed into your
+JavaScript application.
 
 ## Full Stack Examples
 
@@ -81,6 +82,8 @@ The full stack examples are as follows:
 - [GraphQL connecting to MySQL](/server-side-operations-graphql/)
 - [Java Server connecting to Apache Spark](/server-side-operations-spark/)
 
+
 ## Next Up
 
 To get started using the SSRM see the next section on: [Server-Side Datasource](/server-side-model-datasource/).
+

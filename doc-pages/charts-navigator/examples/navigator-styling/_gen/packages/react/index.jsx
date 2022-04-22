@@ -1,8 +1,10 @@
-"use strict";
+'use strict';
 
-import { AgChartsReact } from "ag-charts-react";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { cloneDeep } from 'lodash';
+import { render } from 'react-dom';
+import * as agCharts from 'ag-charts-community';
+import { AgChartsReact } from 'ag-charts-react';
 
 class ChartExample extends Component {
   constructor(props) {
@@ -11,31 +13,31 @@ class ChartExample extends Component {
     this.state = {
       options: {
         title: {
-          text: "Navigator Styling",
+          text: 'Navigator Styling',
         },
         data: [
-          { label: "Android", value: 56.9 },
-          { label: "iOS", value: 22.5 },
-          { label: "BlackBerry", value: 6.8 },
-          { label: "Symbian", value: 8.5 },
-          { label: "Bada", value: 2.6 },
-          { label: "Windows", value: 1.9 },
+          { label: 'Android', value: 56.9 },
+          { label: 'iOS', value: 22.5 },
+          { label: 'BlackBerry', value: 6.8 },
+          { label: 'Symbian', value: 8.5 },
+          { label: 'Bada', value: 2.6 },
+          { label: 'Windows', value: 1.9 },
         ],
         series: [
           {
-            type: "column",
-            xKey: "label",
-            yKey: "value",
+            type: 'column',
+            xKey: 'label',
+            yKey: 'value',
           },
         ],
         axes: [
           {
-            type: "number",
-            position: "left",
+            type: 'number',
+            position: 'left',
           },
           {
-            type: "category",
-            position: "bottom",
+            type: 'category',
+            position: 'bottom',
           },
         ],
         legend: {
@@ -47,13 +49,13 @@ class ChartExample extends Component {
           min: 0.2,
           max: 0.7,
           mask: {
-            fill: "red",
+            fill: 'red',
             strokeWidth: 2,
             fillOpacity: 0.3,
           },
           minHandle: {
-            fill: "yellow",
-            stroke: "blue",
+            fill: 'yellow',
+            stroke: 'blue',
             width: 16,
             height: 30,
             gripLineGap: 4,
@@ -61,8 +63,8 @@ class ChartExample extends Component {
             strokeWidth: 2,
           },
           maxHandle: {
-            fill: "lime",
-            stroke: "black",
+            fill: 'lime',
+            stroke: 'black',
           },
         },
       },
@@ -80,4 +82,4 @@ class ChartExample extends Component {
   }
 }
 
-render(<ChartExample />, document.querySelector("#root"));
+render(<ChartExample />, document.querySelector('#root'));

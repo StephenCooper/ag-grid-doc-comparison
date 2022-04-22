@@ -1,22 +1,22 @@
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
 import {
   ColDef,
   Grid,
   GridOptions,
   ModuleRegistry,
-} from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { NumberFilterComponent } from "./numberFilterComponent";
-import { NumberFloatingFilterComponent } from "./numberFloatingFilterComponent";
+} from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { NumberFilterComponent } from './numberFilterComponent';
+import { NumberFloatingFilterComponent } from './numberFloatingFilterComponent';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([ClientSideRowModelModule]);
 
 const columnDefs: ColDef[] = [
-  { field: "athlete", filter: "agTextColumnFilter" },
+  { field: 'athlete', filter: 'agTextColumnFilter' },
   {
-    field: "gold",
+    field: 'gold',
     floatingFilterComponent: NumberFloatingFilterComponent,
     floatingFilterComponentParams: {
       suppressFilterButton: true,
@@ -24,7 +24,7 @@ const columnDefs: ColDef[] = [
     filter: NumberFilterComponent,
   },
   {
-    field: "silver",
+    field: 'silver',
     floatingFilterComponent: NumberFloatingFilterComponent,
     floatingFilterComponentParams: {
       suppressFilterButton: true,
@@ -32,7 +32,7 @@ const columnDefs: ColDef[] = [
     filter: NumberFilterComponent,
   },
   {
-    field: "bronze",
+    field: 'bronze',
     floatingFilterComponent: NumberFloatingFilterComponent,
     floatingFilterComponentParams: {
       suppressFilterButton: true,
@@ -40,7 +40,7 @@ const columnDefs: ColDef[] = [
     filter: NumberFilterComponent,
   },
   {
-    field: "total",
+    field: 'total',
     floatingFilterComponent: NumberFloatingFilterComponent,
     floatingFilterComponentParams: {
       suppressFilterButton: true,
@@ -64,10 +64,10 @@ const gridOptions: GridOptions = {
 };
 
 // setup the grid after the page has finished loading
-const gridDiv = document.querySelector<HTMLElement>("#myGrid")!;
+const gridDiv = document.querySelector<HTMLElement>('#myGrid')!;
 new Grid(gridDiv, gridOptions);
 
-fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
   .then((response) => response.json())
   .then((data) => {
     gridOptions.api!.setRowData(data);

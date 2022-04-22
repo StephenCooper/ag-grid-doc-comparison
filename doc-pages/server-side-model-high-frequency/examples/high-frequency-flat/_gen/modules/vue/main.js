@@ -1,9 +1,9 @@
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine-dark.css";
-import { AgGridVue } from "@ag-grid-community/vue";
-import { ServerSideRowModelModule } from "@ag-grid-enterprise/server-side-row-model";
-import Vue from "vue";
+import { ModuleRegistry } from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine-dark.css';
+import { AgGridVue } from '@ag-grid-community/vue';
+import { ServerSideRowModelModule } from '@ag-grid-enterprise/server-side-row-model';
+import Vue from 'vue';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([ServerSideRowModelModule]);
@@ -33,11 +33,11 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
-      columnDefs: [{ field: "product" }, { field: "value" }],
+      columnDefs: [{ field: 'product' }, { field: 'value' }],
       gridApi: null,
       columnApi: null,
       defaultColDef: {
@@ -52,9 +52,9 @@ const VueExample = {
     };
   },
   created() {
-    this.rowSelection = "multiple";
-    this.serverSideStoreType = "full";
-    this.rowModelType = "serverSide";
+    this.rowSelection = 'multiple';
+    this.serverSideStoreType = 'full';
+    this.rowModelType = 'serverSide';
     this.asyncTransactionWaitMillis = 4000;
     this.getRowId = (params) => {
       return params.data.product;
@@ -65,7 +65,7 @@ const VueExample = {
       var newProductName =
         all_products[Math.floor(all_products.length * Math.random())];
       var newItem = {
-        product: newProductName + " " + newProductSequence++,
+        product: newProductName + ' ' + newProductSequence++,
         value: Math.floor(Math.random() * 10000),
       };
       allServerSideData.push(newItem);
@@ -108,46 +108,46 @@ window.setupData = function setupData() {
   });
 };
 
-var products = ["Palm Oil", "Rubber", "Wool", "Amber", "Copper"];
+var products = ['Palm Oil', 'Rubber', 'Wool', 'Amber', 'Copper'];
 
 var newProductSequence = 0;
 
 var all_products = [
-  "Palm Oil",
-  "Rubber",
-  "Wool",
-  "Amber",
-  "Copper",
-  "Lead",
-  "Zinc",
-  "Tin",
-  "Aluminium",
-  "Aluminium Alloy",
-  "Nickel",
-  "Cobalt",
-  "Molybdenum",
-  "Recycled Steel",
-  "Corn",
-  "Oats",
-  "Rough Rice",
-  "Soybeans",
-  "Rapeseed",
-  "Soybean Meal",
-  "Soybean Oil",
-  "Wheat",
-  "Milk",
-  "Coca",
-  "Coffee C",
-  "Cotton No.2",
-  "Sugar No.11",
-  "Sugar No.14",
+  'Palm Oil',
+  'Rubber',
+  'Wool',
+  'Amber',
+  'Copper',
+  'Lead',
+  'Zinc',
+  'Tin',
+  'Aluminium',
+  'Aluminium Alloy',
+  'Nickel',
+  'Cobalt',
+  'Molybdenum',
+  'Recycled Steel',
+  'Corn',
+  'Oats',
+  'Rough Rice',
+  'Soybeans',
+  'Rapeseed',
+  'Soybean Meal',
+  'Soybean Oil',
+  'Wheat',
+  'Milk',
+  'Coca',
+  'Coffee C',
+  'Cotton No.2',
+  'Sugar No.11',
+  'Sugar No.14',
 ];
 
 var allServerSideData = [];
 
 new Vue({
-  el: "#app",
+  el: '#app',
   components: {
-    "my-component": VueExample,
+    'my-component': VueExample,
   },
 });

@@ -1,12 +1,12 @@
-"use strict";
+'use strict';
 
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
-import { AgGridReact } from "ag-grid-react";
-import React, { Component } from "react";
-import { render } from "react-dom";
-import DetailCellRenderer from "./detailCellRenderer.jsx";
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from 'ag-grid-react';
+import 'ag-grid-enterprise';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import DetailCellRenderer from './detailCellRenderer.jsx';
 
 class GridExample extends Component {
   constructor(props) {
@@ -17,14 +17,14 @@ class GridExample extends Component {
       detailRowHeight: 150,
       columnDefs: [
         // group cell renderer needed for expand / collapse icons
-        { field: "name", cellRenderer: "agGroupCellRenderer", pinned: "left" },
-        { field: "account" },
-        { field: "calls" },
-        { field: "minutes", valueFormatter: "x.toLocaleString() + 'm'" },
-        { headerName: "Extra Col 1", valueGetter: '"AAA"' },
-        { headerName: "Extra Col 2", valueGetter: '"BBB"' },
-        { headerName: "Extra Col 3", valueGetter: '"CCC"' },
-        { headerName: "Pinned Right", pinned: "right" },
+        { field: 'name', cellRenderer: 'agGroupCellRenderer', pinned: 'left' },
+        { field: 'account' },
+        { field: 'calls' },
+        { field: 'minutes', valueFormatter: "x.toLocaleString() + 'm'" },
+        { headerName: 'Extra Col 1', valueGetter: '"AAA"' },
+        { headerName: 'Extra Col 2', valueGetter: '"BBB"' },
+        { headerName: 'Extra Col 3', valueGetter: '"CCC"' },
+        { headerName: 'Pinned Right', pinned: 'right' },
       ],
       defaultColDef: {},
       rowData: null,
@@ -39,7 +39,7 @@ class GridExample extends Component {
       this.setState({ rowData: data });
     };
 
-    fetch("https://www.ag-grid.com/example-assets/master-detail-data.json")
+    fetch('https://www.ag-grid.com/example-assets/master-detail-data.json')
       .then((resp) => resp.json())
       .then((data) => updateData(data));
   };
@@ -47,18 +47,18 @@ class GridExample extends Component {
   onFirstDataRendered = (params) => {
     setTimeout(function () {
       params.api.forEachNode(function (node) {
-        node.setExpanded(node.id === "1");
+        node.setExpanded(node.id === '1');
       });
     }, 1000);
   };
 
   render() {
     return (
-      <div style={{ width: "100%", height: "100%" }}>
+      <div style={{ width: '100%', height: '100%' }}>
         <div
           style={{
-            height: "100%",
-            width: "100%",
+            height: '100%',
+            width: '100%',
           }}
           className="ag-theme-alpine"
         >
@@ -80,4 +80,4 @@ class GridExample extends Component {
   }
 }
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

@@ -1,14 +1,14 @@
-"use strict";
+'use strict';
 
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { AgGridReact } from "@ag-grid-community/react";
-import { ExcelExportModule } from "@ag-grid-enterprise/excel-export";
-import { MenuModule } from "@ag-grid-enterprise/menu";
-import React, { useCallback, useMemo, useRef, useState } from "react";
-import { render } from "react-dom";
+import React, { useCallback, useMemo, useRef, useState } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from '@ag-grid-community/react';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import { MenuModule } from '@ag-grid-enterprise/menu';
+import { ExcelExportModule } from '@ag-grid-enterprise/excel-export';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([
@@ -32,33 +32,33 @@ const getValue = (id) => {
 const getSheetConfig = () => {
   return {
     pageSetup: {
-      orientation: getValue("#pageOrientation"),
-      pageSize: getValue("#pageSize"),
+      orientation: getValue('#pageOrientation'),
+      pageSize: getValue('#pageSize'),
     },
     margins: {
-      top: getNumber("#top"),
-      right: getNumber("#right"),
-      bottom: getNumber("#bottom"),
-      left: getNumber("#left"),
-      header: getNumber("#header"),
-      footer: getNumber("#footer"),
+      top: getNumber('#top'),
+      right: getNumber('#right'),
+      bottom: getNumber('#bottom'),
+      left: getNumber('#left'),
+      header: getNumber('#header'),
+      footer: getNumber('#footer'),
     },
   };
 };
 
 const GridExample = () => {
   const gridRef = useRef();
-  const containerStyle = useMemo(() => ({ width: "100%", height: "100%" }), []);
-  const gridStyle = useMemo(() => ({ height: "100%", width: "100%" }), []);
+  const containerStyle = useMemo(() => ({ width: '100%', height: '100%' }), []);
+  const gridStyle = useMemo(() => ({ height: '100%', width: '100%' }), []);
   const [rowData, setRowData] = useState();
   const [columnDefs, setColumnDefs] = useState([
-    { field: "athlete", minWidth: 200 },
-    { field: "country", minWidth: 200 },
-    { field: "sport", minWidth: 150 },
-    { field: "gold" },
-    { field: "silver" },
-    { field: "bronze" },
-    { field: "total" },
+    { field: 'athlete', minWidth: 200 },
+    { field: 'country', minWidth: 200 },
+    { field: 'sport', minWidth: 150 },
+    { field: 'gold' },
+    { field: 'silver' },
+    { field: 'bronze' },
+    { field: 'total' },
   ]);
   const defaultColDef = useMemo(() => {
     return {
@@ -74,7 +74,7 @@ const GridExample = () => {
   }, []);
 
   const onGridReady = useCallback((params) => {
-    fetch("https://www.ag-grid.com/example-assets/small-olympic-winners.json")
+    fetch('https://www.ag-grid.com/example-assets/small-olympic-winners.json')
       .then((resp) => resp.json())
       .then((data) => setRowData(data.filter((rec) => rec.country != null)));
   }, []);
@@ -89,14 +89,14 @@ const GridExample = () => {
       <div className="container">
         <div className="columns">
           <div className="column">
-            <label className="option" for="pageOrientation">
+            <label className="option" htmlFor="pageOrientation">
               Page Orientation =
               <select id="pageOrientation">
                 <option value="Portrait">Portrait</option>
                 <option value="Landscape">Landscape</option>
               </select>
             </label>
-            <label className="option" for="pageSize">
+            <label className="option" htmlFor="pageSize">
               Page Size =
               <select id="pageSize">
                 <option value="Letter">Letter</option>
@@ -131,22 +131,22 @@ const GridExample = () => {
           </div>
           <div className="column margin-container">
             <div>Margins</div>
-            <label for="top">
+            <label htmlFor="top">
               Top = <input type="number" id="top" value="0.75" />
             </label>
-            <label for="right">
+            <label htmlFor="right">
               Right = <input type="number" id="right" value="0.7" />
             </label>
-            <label for="bottom">
+            <label htmlFor="bottom">
               Bottom = <input type="number" id="bottom" value="0.75" />
             </label>
-            <label for="left">
+            <label htmlFor="left">
               Left = <input type="number" id="left" value="0.7" />
             </label>
-            <label for="header">
+            <label htmlFor="header">
               Header = <input type="number" id="header" value="0.3" />
             </label>
-            <label for="footer">
+            <label htmlFor="footer">
               Footer = <input type="number" id="footer" value="0.3" />
             </label>
           </div>
@@ -154,7 +154,7 @@ const GridExample = () => {
         <div>
           <button
             onClick={onBtExport}
-            style={{ margin: "5px 0px", fontWeight: "bold" }}
+            style={{ margin: '5px 0px', fontWeight: 'bold' }}
           >
             Export to Excel
           </button>
@@ -176,4 +176,4 @@ const GridExample = () => {
   );
 };
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

@@ -2,14 +2,14 @@ import {
   ColDef,
   GridReadyEvent,
   ValueFormatterParams,
-} from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine-dark.css";
-import { Component } from "@angular/core";
+} from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine-dark.css';
+import { Component } from '@angular/core';
 // Required feature modules are registered in app.module.ts
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<ag-grid-angular
     style="width: 100%; height: 100%;"
     class="ag-theme-alpine-dark"
@@ -21,16 +21,16 @@ import { Component } from "@angular/core";
 })
 export class AppComponent {
   public columnDefs: ColDef[] = [
-    { headerName: "A", field: "a" },
-    { headerName: "B", field: "b" },
-    { headerName: "£A", field: "a", valueFormatter: currencyFormatter },
-    { headerName: "£B", field: "b", valueFormatter: currencyFormatter },
-    { headerName: "(A)", field: "a", valueFormatter: bracketsFormatter },
-    { headerName: "(B)", field: "b", valueFormatter: bracketsFormatter },
+    { headerName: 'A', field: 'a' },
+    { headerName: 'B', field: 'b' },
+    { headerName: '£A', field: 'a', valueFormatter: currencyFormatter },
+    { headerName: '£B', field: 'b', valueFormatter: currencyFormatter },
+    { headerName: '(A)', field: 'a', valueFormatter: bracketsFormatter },
+    { headerName: '(B)', field: 'b', valueFormatter: bracketsFormatter },
   ];
   public defaultColDef: ColDef = {
     flex: 1,
-    cellClass: "number-cell",
+    cellClass: 'number-cell',
     resizable: true,
   };
   public rowData: any[] | null = createRowData();
@@ -39,17 +39,17 @@ export class AppComponent {
 }
 
 function bracketsFormatter(params: ValueFormatterParams) {
-  return "(" + params.value + ")";
+  return '(' + params.value + ')';
 }
 function currencyFormatter(params: ValueFormatterParams) {
-  return "£" + formatNumber(params.value);
+  return '£' + formatNumber(params.value);
 }
 function formatNumber(number: number) {
   // this puts commas into the number eg 1000 goes to 1,000,
   // i pulled this from stack overflow, i have no idea how it works
   return Math.floor(number)
     .toString()
-    .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
+    .replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
 }
 function createRowData() {
   var rowData = [];

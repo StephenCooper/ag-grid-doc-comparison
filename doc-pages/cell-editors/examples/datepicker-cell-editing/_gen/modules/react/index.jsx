@@ -1,14 +1,14 @@
-"use strict";
+'use strict';
 
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { AgGridReact } from "@ag-grid-community/react";
-import { ColumnsToolPanelModule } from "@ag-grid-enterprise/column-tool-panel";
-import { MenuModule } from "@ag-grid-enterprise/menu";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from '@ag-grid-community/react';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import { MenuModule } from '@ag-grid-enterprise/menu';
+import { ColumnsToolPanelModule } from '@ag-grid-enterprise/column-tool-panel';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([
@@ -21,14 +21,14 @@ class DatePicker {
   // gets called once before the renderer is used
   init(params) {
     // create the cell
-    this.eInput = document.createElement("input");
+    this.eInput = document.createElement('input');
     this.eInput.value = params.value;
-    this.eInput.classList.add("ag-input");
-    this.eInput.style.height = "100%";
+    this.eInput.classList.add('ag-input');
+    this.eInput.style.height = '100%';
 
     // https://jqueryui.com/datepicker/
     $(this.eInput).datepicker({
-      dateFormat: "dd/mm/yy",
+      dateFormat: 'dd/mm/yy',
       onSelect: () => {
         this.eInput.focus();
       },
@@ -70,21 +70,21 @@ class GridExample extends Component {
 
     this.state = {
       columnDefs: [
-        { field: "athlete" },
+        { field: 'athlete' },
         {
-          field: "date",
+          field: 'date',
           editable: true,
           cellEditor: DatePicker,
           cellEditorPopup: true,
         },
-        { field: "age", maxWidth: 110 },
-        { field: "country" },
-        { field: "year", maxWidth: 120 },
-        { field: "sport" },
-        { field: "gold" },
-        { field: "silver" },
-        { field: "bronze" },
-        { field: "total" },
+        { field: 'age', maxWidth: 110 },
+        { field: 'country' },
+        { field: 'year', maxWidth: 120 },
+        { field: 'sport' },
+        { field: 'gold' },
+        { field: 'silver' },
+        { field: 'bronze' },
+        { field: 'total' },
       ],
       defaultColDef: {
         flex: 1,
@@ -100,18 +100,18 @@ class GridExample extends Component {
 
     const updateData = (data) => params.api.setRowData(data);
 
-    fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+    fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .then((resp) => resp.json())
       .then((data) => updateData(data));
   };
 
   render() {
     return (
-      <div style={{ width: "100%", height: "100%" }}>
+      <div style={{ width: '100%', height: '100%' }}>
         <div
           style={{
-            height: "100%",
-            width: "100%",
+            height: '100%',
+            width: '100%',
           }}
           className="ag-theme-alpine"
         >
@@ -127,4 +127,4 @@ class GridExample extends Component {
   }
 }
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

@@ -1,13 +1,13 @@
-"use strict";
+'use strict';
 
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { AgGridReact } from "@ag-grid-community/react";
-import { RowGroupingModule } from "@ag-grid-enterprise/row-grouping";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from '@ag-grid-community/react';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import { RowGroupingModule } from '@ag-grid-enterprise/row-grouping';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([ClientSideRowModelModule, RowGroupingModule]);
@@ -19,11 +19,11 @@ class GridExample extends Component {
     this.state = {
       columnDefs: [
         {
-          field: "dateModified",
+          field: 'dateModified',
           cellClassRules: cellClassRules,
         },
         {
-          field: "size",
+          field: 'size',
           valueFormatter: valueFormatter,
           cellClassRules: cellClassRules,
         },
@@ -42,14 +42,14 @@ class GridExample extends Component {
       },
       autoGroupColumnDef: {
         rowDrag: true,
-        headerName: "Files",
+        headerName: 'Files',
         minWidth: 300,
         cellRendererParams: {
           suppressCount: true,
           innerRenderer: FileCellRenderer,
         },
         cellClassRules: {
-          "hover-over": function (params) {
+          'hover-over': function (params) {
             return params.node === potentialParent;
           },
         },
@@ -85,7 +85,7 @@ class GridExample extends Component {
     // check we are not moving a folder into a child folder
     var invalidMode = isSelectionParentOfTarget(event.node, potentialParent);
     if (invalidMode) {
-      console.log("invalid move");
+      console.log('invalid move');
     }
     if (needToChangeParent && !invalidMode) {
       var updatedRows = [];
@@ -101,11 +101,11 @@ class GridExample extends Component {
 
   render() {
     return (
-      <div style={{ width: "100%", height: "100%" }}>
+      <div style={{ width: '100%', height: '100%' }}>
         <div
           style={{
-            height: "100%",
-            width: "100%",
+            height: '100%',
+            width: '100%',
           }}
           className="ag-theme-alpine"
         >
@@ -131,10 +131,10 @@ class GridExample extends Component {
 }
 
 var valueFormatter = function (params) {
-  return params.value ? params.value + " MB" : "";
+  return params.value ? params.value + ' MB' : '';
 };
 var cellClassRules = {
-  "hover-over": function (params) {
+  'hover-over': function (params) {
     return params.node === potentialParent;
   },
 };
@@ -177,7 +177,7 @@ function setPotentialParentForNode(api, overNode) {
   var newPotentialParent;
   if (overNode) {
     newPotentialParent =
-      overNode.data.type === "folder"
+      overNode.data.type === 'folder'
         ? // if over a folder, we take the immediate row
           overNode
         : // if over a file, we take the parent row (which will be a folder)
@@ -214,4 +214,4 @@ function refreshRows(api, rowsToRefresh) {
   api.refreshCells(params);
 }
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

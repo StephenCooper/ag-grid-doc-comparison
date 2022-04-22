@@ -1,10 +1,10 @@
 const gridOptions = {
   columnDefs: [
-    { field: "country", rowGroup: true, hide: true },
-    { field: "year", rowGroup: true, hide: true },
-    { field: "gold", aggFunc: "sum" },
-    { field: "silver", aggFunc: "sum" },
-    { field: "bronze", aggFunc: "sum" },
+    { field: 'country', rowGroup: true, hide: true },
+    { field: 'year', rowGroup: true, hide: true },
+    { field: 'gold', aggFunc: 'sum' },
+    { field: 'silver', aggFunc: 'sum' },
+    { field: 'bronze', aggFunc: 'sum' },
   ],
   defaultColDef: {
     flex: 1,
@@ -25,7 +25,7 @@ const gridOptions = {
 };
 
 // setup the grid after the page has finished loading
-document.addEventListener("DOMContentLoaded", function () {
-  const gridDiv = document.querySelector("#myGrid");
+document.addEventListener('DOMContentLoaded', function () {
+  const gridDiv = document.querySelector('#myGrid');
   new agGrid.Grid(gridDiv, gridOptions);
 });

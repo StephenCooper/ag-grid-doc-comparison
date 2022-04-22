@@ -1,60 +1,60 @@
-"use strict";
+'use strict';
 
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import { AgGridReact } from "ag-grid-react";
-import React, { useCallback, useMemo, useState } from "react";
-import { render } from "react-dom";
-import CustomHeaderGroup from "./customHeaderGroup.jsx";
+import React, { useCallback, useMemo, useRef, useState } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from 'ag-grid-react';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import CustomHeaderGroup from './customHeaderGroup.jsx';
 
 const GridExample = () => {
-  const containerStyle = useMemo(() => ({ width: "100%", height: "100%" }), []);
-  const gridStyle = useMemo(() => ({ height: "100%", width: "100%" }), []);
+  const containerStyle = useMemo(() => ({ width: '100%', height: '100%' }), []);
+  const gridStyle = useMemo(() => ({ height: '100%', width: '100%' }), []);
   const [rowData, setRowData] = useState();
   const [columnDefs, setColumnDefs] = useState([
     {
-      headerName: "Athlete Details",
+      headerName: 'Athlete Details',
       headerGroupComponent: CustomHeaderGroup,
       children: [
-        { field: "athlete", width: 150 },
-        { field: "age", width: 90, columnGroupShow: "open" },
+        { field: 'athlete', width: 150 },
+        { field: 'age', width: 90, columnGroupShow: 'open' },
         {
-          field: "country",
+          field: 'country',
           width: 120,
-          columnGroupShow: "open",
+          columnGroupShow: 'open',
         },
       ],
     },
     {
-      headerName: "Medal details",
+      headerName: 'Medal details',
       headerGroupComponent: CustomHeaderGroup,
       children: [
-        { field: "year", width: 90 },
-        { field: "date", width: 110 },
+        { field: 'year', width: 90 },
+        { field: 'date', width: 110 },
         {
-          field: "sport",
+          field: 'sport',
           width: 110,
-          columnGroupShow: "open",
+          columnGroupShow: 'open',
         },
         {
-          field: "gold",
+          field: 'gold',
           width: 100,
-          columnGroupShow: "open",
+          columnGroupShow: 'open',
         },
         {
-          field: "silver",
+          field: 'silver',
           width: 100,
-          columnGroupShow: "open",
+          columnGroupShow: 'open',
         },
         {
-          field: "bronze",
+          field: 'bronze',
           width: 100,
-          columnGroupShow: "open",
+          columnGroupShow: 'open',
         },
         {
-          field: "total",
+          field: 'total',
           width: 100,
-          columnGroupShow: "open",
+          columnGroupShow: 'open',
         },
       ],
     },
@@ -67,7 +67,7 @@ const GridExample = () => {
   }, []);
 
   const onGridReady = useCallback((params) => {
-    fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+    fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .then((resp) => resp.json())
       .then((data) => setRowData(data));
   }, []);
@@ -86,4 +86,4 @@ const GridExample = () => {
   );
 };
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

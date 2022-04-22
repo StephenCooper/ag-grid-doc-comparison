@@ -5,15 +5,15 @@ import {
   IServerSideDatasource,
   IServerSideGetRowsRequest,
   ServerSideStoreType,
-} from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine-dark.css";
-import { HttpClient } from "@angular/common/http";
-import { Component } from "@angular/core";
+} from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine-dark.css';
+import { HttpClient } from '@angular/common/http';
+import { Component } from '@angular/core';
 // Required feature modules are registered in app.module.ts
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<div style="height: 100%; box-sizing: border-box;">
     <ag-grid-angular
       style="width: 100%; height: 100%;"
@@ -33,25 +33,25 @@ import { Component } from "@angular/core";
 export class AppComponent {
   public columnDefs: ColDef[] = [
     // group cell renderer needed for expand / collapse icons
-    { field: "accountId", cellRenderer: "agGroupCellRenderer" },
-    { field: "name" },
-    { field: "country" },
-    { field: "calls" },
-    { field: "totalDuration" },
+    { field: 'accountId', cellRenderer: 'agGroupCellRenderer' },
+    { field: 'name' },
+    { field: 'country' },
+    { field: 'calls' },
+    { field: 'totalDuration' },
   ];
   public defaultColDef: ColDef = {
     flex: 1,
   };
-  public rowModelType = "serverSide";
-  public serverSideStoreType: ServerSideStoreType = "partial";
+  public rowModelType = 'serverSide';
+  public serverSideStoreType: ServerSideStoreType = 'partial';
   public detailCellRendererParams: any = {
     detailGridOptions: {
       columnDefs: [
-        { field: "callId" },
-        { field: "direction" },
-        { field: "duration", valueFormatter: "x.toLocaleString() + 's'" },
-        { field: "switchCode", minWidth: 150 },
-        { field: "number", minWidth: 180 },
+        { field: 'callId' },
+        { field: 'direction' },
+        { field: 'duration', valueFormatter: "x.toLocaleString() + 's'" },
+        { field: 'switchCode', minWidth: 150 },
+        { field: 'number', minWidth: 180 },
       ],
       defaultColDef: {
         flex: 1,
@@ -69,14 +69,14 @@ export class AppComponent {
   onGridReady(params: GridReadyEvent) {
     setTimeout(function () {
       // expand some master row
-      var someRow = params.api.getRowNode("1");
+      var someRow = params.api.getRowNode('1');
       if (someRow) {
         someRow.setExpanded(true);
       }
     }, 1000);
 
     this.http
-      .get<any[]>("https://www.ag-grid.com/example-assets/call-data.json")
+      .get<any[]>('https://www.ag-grid.com/example-assets/call-data.json')
       .subscribe((data) => {
         var server = getFakeServer(data);
         var datasource = getServerSideDatasource(server);
@@ -109,7 +109,7 @@ function getFakeServer(allData: any) {
   return {
     getResponse: function (request: IServerSideGetRowsRequest) {
       console.log(
-        "asking for rows: " + request.startRow + " to " + request.endRow
+        'asking for rows: ' + request.startRow + ' to ' + request.endRow
       );
       // take a slice of the total rows
       var rowsThisPage = allData.slice(request.startRow, request.endRow);

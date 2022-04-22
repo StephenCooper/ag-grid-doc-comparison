@@ -1,11 +1,11 @@
-import { HttpClient } from "@angular/common/http";
-import { Component } from "@angular/core";
-import { ColDef, GridReadyEvent } from "ag-grid-community";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
+import { HttpClient } from '@angular/common/http';
+import { Component } from '@angular/core';
+import { ColDef, GridReadyEvent } from 'ag-grid-community';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<ag-grid-angular
     style="width: 100%; height: 100%;"
     class="ag-theme-alpine"
@@ -17,16 +17,16 @@ import "ag-grid-community/dist/styles/ag-theme-alpine.css";
 })
 export class AppComponent {
   public columnDefs: ColDef[] = [
-    { field: "athlete", sort: "desc" },
-    { field: "age", width: 90 },
-    { field: "country" },
-    { field: "year", width: 90, unSortIcon: true },
-    { field: "date", comparator: dateComparator },
-    { field: "sport" },
-    { field: "gold" },
-    { field: "silver" },
-    { field: "bronze" },
-    { field: "total" },
+    { field: 'athlete', sort: 'desc' },
+    { field: 'age', width: 90 },
+    { field: 'country' },
+    { field: 'year', width: 90, unSortIcon: true },
+    { field: 'date', comparator: dateComparator },
+    { field: 'sport' },
+    { field: 'gold' },
+    { field: 'silver' },
+    { field: 'bronze' },
+    { field: 'total' },
   ];
   public defaultColDef: ColDef = {
     width: 170,
@@ -38,7 +38,7 @@ export class AppComponent {
 
   onGridReady(params: GridReadyEvent) {
     this.http
-      .get<any[]>("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      .get<any[]>('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .subscribe((data) => (this.rowData = data));
   }
 }

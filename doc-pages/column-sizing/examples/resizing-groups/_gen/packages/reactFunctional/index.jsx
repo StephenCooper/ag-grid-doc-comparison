@@ -1,68 +1,68 @@
-"use strict";
+'use strict';
 
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import { AgGridReact } from "ag-grid-react";
-import React, { useCallback, useMemo, useState } from "react";
-import { render } from "react-dom";
+import React, { useCallback, useMemo, useRef, useState } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from 'ag-grid-react';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 
 const GridExample = () => {
-  const containerStyle = useMemo(() => ({ width: "100%", height: "100%" }), []);
-  const gridStyle = useMemo(() => ({ height: "100%", width: "100%" }), []);
+  const containerStyle = useMemo(() => ({ width: '100%', height: '100%' }), []);
+  const gridStyle = useMemo(() => ({ height: '100%', width: '100%' }), []);
   const [rowData, setRowData] = useState();
   const [columnDefs, setColumnDefs] = useState([
     {
-      headerName: "Everything Resizes",
+      headerName: 'Everything Resizes',
       children: [
         {
-          field: "athlete",
-          headerClass: "resizable-header",
+          field: 'athlete',
+          headerClass: 'resizable-header',
         },
-        { field: "age", headerClass: "resizable-header" },
+        { field: 'age', headerClass: 'resizable-header' },
         {
-          field: "country",
-          headerClass: "resizable-header",
+          field: 'country',
+          headerClass: 'resizable-header',
         },
       ],
     },
     {
-      headerName: "Only Year Resizes",
+      headerName: 'Only Year Resizes',
       children: [
-        { field: "year", headerClass: "resizable-header" },
+        { field: 'year', headerClass: 'resizable-header' },
         {
-          field: "date",
+          field: 'date',
           resizable: false,
-          headerClass: "fixed-size-header",
+          headerClass: 'fixed-size-header',
         },
         {
-          field: "sport",
+          field: 'sport',
           resizable: false,
-          headerClass: "fixed-size-header",
+          headerClass: 'fixed-size-header',
         },
       ],
     },
     {
-      headerName: "Nothing Resizes",
+      headerName: 'Nothing Resizes',
       children: [
         {
-          field: "gold",
+          field: 'gold',
           resizable: false,
-          headerClass: "fixed-size-header",
+          headerClass: 'fixed-size-header',
         },
         {
-          field: "silver",
+          field: 'silver',
           resizable: false,
-          headerClass: "fixed-size-header",
+          headerClass: 'fixed-size-header',
         },
         {
-          field: "bronze",
+          field: 'bronze',
           resizable: false,
-          headerClass: "fixed-size-header",
+          headerClass: 'fixed-size-header',
         },
         {
-          field: "total",
+          field: 'total',
           resizable: false,
-          headerClass: "fixed-size-header",
+          headerClass: 'fixed-size-header',
         },
       ],
     },
@@ -75,7 +75,7 @@ const GridExample = () => {
   }, []);
 
   const onGridReady = useCallback((params) => {
-    fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+    fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .then((resp) => resp.json())
       .then((data) => setRowData(data));
   }, []);
@@ -103,4 +103,4 @@ const GridExample = () => {
   );
 };
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

@@ -3,22 +3,22 @@ import {
   GridOptions,
   ICellRendererComp,
   ICellRendererParams,
-} from "ag-grid-community";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
+} from 'ag-grid-community';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 
 const gridOptions: GridOptions = {
   columnDefs: [
-    { field: "athlete", minWidth: 180 },
-    { field: "age" },
-    { field: "country", minWidth: 160 },
-    { field: "year" },
-    { field: "date", minWidth: 160 },
-    { field: "sport", minWidth: 180 },
-    { field: "gold" },
-    { field: "silver" },
-    { field: "bronze" },
-    { field: "total" },
+    { field: 'athlete', minWidth: 180 },
+    { field: 'age' },
+    { field: 'country', minWidth: 160 },
+    { field: 'year' },
+    { field: 'date', minWidth: 160 },
+    { field: 'sport', minWidth: 180 },
+    { field: 'gold' },
+    { field: 'silver' },
+    { field: 'bronze' },
+    { field: 'total' },
   ],
   defaultColDef: {
     flex: 1,
@@ -42,7 +42,7 @@ function getRenderer() {
     createGui() {
       const template =
         '<span><button id="theButton" style="height: 39px">#</button><span id="theValue" style="padding-left: 4px;"></span></span>';
-      const tempDiv = document.createElement("div");
+      const tempDiv = document.createElement('div');
       tempDiv.innerHTML = template;
       this.eGui = tempDiv.firstElementChild;
     }
@@ -54,16 +54,16 @@ function getRenderer() {
       this.params = params;
 
       // attach the value to the value span
-      const eValue = this.eGui.querySelector("#theValue");
+      const eValue = this.eGui.querySelector('#theValue');
 
       eValue.innerHTML = params.value;
       // setup the button, first get reference to it
-      this.eButton = this.eGui.querySelector("#theButton");
+      this.eButton = this.eGui.querySelector('#theButton');
 
       // bind the listener so 'this' is preserved, also keep reference to it for removal
       this.buttonClickListener = this.onButtonClicked.bind(this);
       // add the listener
-      this.eButton.addEventListener("click", this.buttonClickListener);
+      this.eButton.addEventListener('click', this.buttonClickListener);
     }
     onButtonClicked() {
       // start editing this cell. see the docs on the params that this method takes
@@ -82,7 +82,7 @@ function getRenderer() {
     }
     destroy() {
       // be good, clean up the listener
-      this.eButton.removeEventListener("click", this.buttonClickListener);
+      this.eButton.removeEventListener('click', this.buttonClickListener);
     }
   }
 
@@ -90,9 +90,9 @@ function getRenderer() {
 }
 
 // setup the grid after the page has finished loading
-const gridDiv = document.querySelector<HTMLElement>("#myGrid")!;
+const gridDiv = document.querySelector<HTMLElement>('#myGrid')!;
 new Grid(gridDiv, gridOptions);
 
-fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
   .then((response) => response.json())
   .then((data) => gridOptions.api!.setRowData(data));

@@ -1,11 +1,11 @@
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { AgGridVue } from "@ag-grid-community/vue3";
-import { ColumnsToolPanelModule } from "@ag-grid-enterprise/column-tool-panel";
-import { MenuModule } from "@ag-grid-enterprise/menu";
-import { createApp } from "vue";
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { AgGridVue } from '@ag-grid-community/vue3';
+import { ColumnsToolPanelModule } from '@ag-grid-enterprise/column-tool-panel';
+import { MenuModule } from '@ag-grid-enterprise/menu';
+import { createApp } from 'vue';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([
@@ -39,52 +39,52 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
         {
-          field: "athlete",
+          field: 'athlete',
           minWidth: 200,
           enableRowGroup: true,
           enablePivot: true,
         },
-        { field: "age", enableValue: true },
+        { field: 'age', enableValue: true },
         {
-          field: "country",
+          field: 'country',
           minWidth: 200,
           enableRowGroup: true,
           enablePivot: true,
           rowGroupIndex: 1,
         },
         {
-          field: "year",
+          field: 'year',
           enableRowGroup: true,
           enablePivot: true,
           pivotIndex: 1,
         },
         {
-          field: "date",
+          field: 'date',
           minWidth: 180,
           enableRowGroup: true,
           enablePivot: true,
         },
         {
-          field: "sport",
+          field: 'sport',
           minWidth: 200,
           enableRowGroup: true,
           enablePivot: true,
           rowGroupIndex: 2,
         },
-        { field: "gold", hide: true, enableValue: true },
-        { field: "silver", hide: true, enableValue: true, aggFunc: "sum" },
-        { field: "bronze", hide: true, enableValue: true, aggFunc: "sum" },
+        { field: 'gold', hide: true, enableValue: true },
+        { field: 'silver', hide: true, enableValue: true, aggFunc: 'sum' },
+        { field: 'bronze', hide: true, enableValue: true, aggFunc: 'sum' },
         {
-          headerName: "Total",
-          field: "totalAgg",
+          headerName: 'Total',
+          field: 'totalAgg',
           valueGetter:
-            "node.group ? data.totalAgg : data.gold + data.silver + data.bronze",
+            'node.group ? data.totalAgg : data.gold + data.silver + data.bronze',
         },
       ],
       gridApi: null,
@@ -106,29 +106,29 @@ const VueExample = {
     this.autoGroupColumnDef = {
       minWidth: 250,
     };
-    this.sideBar = "columns";
-    this.rowGroupPanelShow = "always";
-    this.pivotPanelShow = "always";
+    this.sideBar = 'columns';
+    this.rowGroupPanelShow = 'always';
+    this.pivotPanelShow = 'always';
   },
   methods: {
     setReadOnly() {
       this.gridApi.setFunctionsReadOnly(
-        document.getElementById("read-only").checked
+        document.getElementById('read-only').checked
       );
     },
     onGridReady(params) {
       this.gridApi = params.api;
       this.gridColumnApi = params.columnApi;
 
-      document.getElementById("read-only").checked = true;
+      document.getElementById('read-only').checked = true;
 
       const updateData = (data) => params.api.setRowData(data);
 
-      fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
         .then((resp) => resp.json())
         .then((data) => updateData(data));
     },
   },
 };
 
-createApp(VueExample).mount("#app");
+createApp(VueExample).mount('#app');

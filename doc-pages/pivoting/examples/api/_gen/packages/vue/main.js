@@ -1,8 +1,8 @@
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
-import { AgGridVue } from "ag-grid-vue";
-import Vue from "vue";
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import 'ag-grid-enterprise';
+import { AgGridVue } from 'ag-grid-vue';
+import Vue from 'vue';
 
 const VueExample = {
   template: `
@@ -35,31 +35,31 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
         {
-          field: "athlete",
+          field: 'athlete',
           enableRowGroup: true,
           enablePivot: true,
           minWidth: 200,
         },
-        { field: "age", enableValue: true },
-        { field: "country", enableRowGroup: true, enablePivot: true },
-        { field: "year", enableRowGroup: true, enablePivot: true },
-        { field: "date", enableRowGroup: true, enablePivot: true },
+        { field: 'age', enableValue: true },
+        { field: 'country', enableRowGroup: true, enablePivot: true },
+        { field: 'year', enableRowGroup: true, enablePivot: true },
+        { field: 'date', enableRowGroup: true, enablePivot: true },
         {
-          field: "sport",
+          field: 'sport',
           enableRowGroup: true,
           enablePivot: true,
           minWidth: 200,
         },
-        { field: "gold", enableValue: true, aggFunc: "sum" },
-        { field: "silver", enableValue: true },
-        { field: "bronze", enableValue: true },
-        { field: "total", enableValue: true },
+        { field: 'gold', enableValue: true, aggFunc: 'sum' },
+        { field: 'silver', enableValue: true },
+        { field: 'bronze', enableValue: true },
+        { field: 'total', enableValue: true },
       ],
       gridApi: null,
       columnApi: null,
@@ -87,22 +87,22 @@ const VueExample = {
     },
     addPivotColumn() {
       this.gridColumnApi.applyColumnState({
-        state: [{ colId: "country", pivot: true }],
+        state: [{ colId: 'country', pivot: true }],
         defaultState: { pivot: false },
       });
     },
     addPivotColumns() {
       this.gridColumnApi.applyColumnState({
         state: [
-          { colId: "year", pivot: true },
-          { colId: "country", pivot: true },
+          { colId: 'year', pivot: true },
+          { colId: 'country', pivot: true },
         ],
         defaultState: { pivot: false },
       });
     },
     removePivotColumn() {
       this.gridColumnApi.applyColumnState({
-        state: [{ colId: "country", pivot: false }],
+        state: [{ colId: 'country', pivot: false }],
       });
     },
     emptyPivotColumns() {
@@ -119,7 +119,7 @@ const VueExample = {
 
       const updateData = (data) => params.api.setRowData(data);
 
-      fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
         .then((resp) => resp.json())
         .then((data) => updateData(data));
     },
@@ -127,8 +127,8 @@ const VueExample = {
 };
 
 new Vue({
-  el: "#app",
+  el: '#app',
   components: {
-    "my-component": VueExample,
+    'my-component': VueExample,
   },
 });

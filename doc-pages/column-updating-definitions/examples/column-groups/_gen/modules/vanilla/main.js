@@ -1,30 +1,30 @@
 function createColSetA() {
   return [
     {
-      headerName: "Group A",
-      groupId: "groupA",
+      headerName: 'Group A',
+      groupId: 'groupA',
       children: [
-        { field: "athlete" },
-        { field: "age" },
-        { field: "country", columnGroupShow: "open" },
+        { field: 'athlete' },
+        { field: 'age' },
+        { field: 'country', columnGroupShow: 'open' },
       ],
     },
     {
-      headerName: "Group B",
+      headerName: 'Group B',
       children: [
-        { field: "sport" },
-        { field: "year" },
-        { field: "date", columnGroupShow: "open" },
+        { field: 'sport' },
+        { field: 'year' },
+        { field: 'date', columnGroupShow: 'open' },
       ],
     },
     {
-      headerName: "Group C",
-      groupId: "groupC",
+      headerName: 'Group C',
+      groupId: 'groupC',
       children: [
-        { field: "total" },
-        { field: "gold", columnGroupShow: "open" },
-        { field: "silver", columnGroupShow: "open" },
-        { field: "bronze", columnGroupShow: "open" },
+        { field: 'total' },
+        { field: 'gold', columnGroupShow: 'open' },
+        { field: 'silver', columnGroupShow: 'open' },
+        { field: 'bronze', columnGroupShow: 'open' },
       ],
     },
   ];
@@ -33,32 +33,32 @@ function createColSetA() {
 function createColSetB() {
   return [
     {
-      headerName: "GROUP A",
-      groupId: "groupA",
+      headerName: 'GROUP A',
+      groupId: 'groupA',
       children: [
-        { field: "athlete" },
-        { field: "age" },
-        { field: "country", columnGroupShow: "open" },
+        { field: 'athlete' },
+        { field: 'age' },
+        { field: 'country', columnGroupShow: 'open' },
       ],
     },
     {
-      headerName: "Group B",
+      headerName: 'Group B',
       children: [
-        { field: "sport" },
-        { field: "year" },
-        { field: "date", columnGroupShow: "open" },
+        { field: 'sport' },
+        { field: 'year' },
+        { field: 'date', columnGroupShow: 'open' },
       ],
     },
     {
-      headerName: "Group C",
-      groupId: "groupC",
+      headerName: 'Group C',
+      groupId: 'groupC',
       children: [
-        { field: "total" },
-        { field: "gold", columnGroupShow: "open" },
-        { field: "silver", columnGroupShow: "open" },
-        { field: "bronze", columnGroupShow: "open" },
-        { field: "extraA" },
-        { field: "extraB", columnGroupShow: "open" },
+        { field: 'total' },
+        { field: 'gold', columnGroupShow: 'open' },
+        { field: 'silver', columnGroupShow: 'open' },
+        { field: 'bronze', columnGroupShow: 'open' },
+        { field: 'extraA' },
+        { field: 'extraB', columnGroupShow: 'open' },
       ],
     },
   ];
@@ -72,30 +72,30 @@ const gridOptions = {
   },
   columnDefs: [
     {
-      headerName: "Group A",
-      groupId: "groupA",
+      headerName: 'Group A',
+      groupId: 'groupA',
       children: [
-        { field: "athlete" },
-        { field: "age" },
-        { field: "country", columnGroupShow: "open" },
+        { field: 'athlete' },
+        { field: 'age' },
+        { field: 'country', columnGroupShow: 'open' },
       ],
     },
     {
-      headerName: "Group B",
+      headerName: 'Group B',
       children: [
-        { field: "sport" },
-        { field: "year" },
-        { field: "date", columnGroupShow: "open" },
+        { field: 'sport' },
+        { field: 'year' },
+        { field: 'date', columnGroupShow: 'open' },
       ],
     },
     {
-      headerName: "Group C",
-      groupId: "groupC",
+      headerName: 'Group C',
+      groupId: 'groupC',
       children: [
-        { field: "total" },
-        { field: "gold", columnGroupShow: "open" },
-        { field: "silver", columnGroupShow: "open" },
-        { field: "bronze", columnGroupShow: "open" },
+        { field: 'total' },
+        { field: 'gold', columnGroupShow: 'open' },
+        { field: 'silver', columnGroupShow: 'open' },
+        { field: 'bronze', columnGroupShow: 'open' },
       ],
     },
   ],
@@ -110,11 +110,11 @@ function onBtSetB() {
 }
 
 // setup the grid after the page has finished loading
-document.addEventListener("DOMContentLoaded", () => {
-  const gridDiv = document.querySelector("#myGrid");
+document.addEventListener('DOMContentLoaded', () => {
+  const gridDiv = document.querySelector('#myGrid');
   new agGrid.Grid(gridDiv, gridOptions);
 
-  fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+  fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
     .then((response) => response.json())
     .then((data) => {
       gridOptions.api.setRowData(data);

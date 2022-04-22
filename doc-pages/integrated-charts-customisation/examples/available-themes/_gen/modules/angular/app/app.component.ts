@@ -4,14 +4,14 @@ import {
   CreateRangeChartParams,
   FirstDataRenderedEvent,
   GridReadyEvent,
-} from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { Component } from "@angular/core";
+} from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { Component } from '@angular/core';
 // Required feature modules are registered in app.module.ts
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<div class="wrapper">
     <ag-grid-angular
       style="width: 100%; height: 100%;"
@@ -32,10 +32,10 @@ import { Component } from "@angular/core";
 })
 export class AppComponent {
   public columnDefs: ColDef[] = [
-    { field: "country", width: 150 },
-    { field: "gold" },
-    { field: "silver" },
-    { field: "bronze" },
+    { field: 'country', width: 150 },
+    { field: 'gold' },
+    { field: 'silver' },
+    { field: 'bronze' },
   ];
   public defaultColDef: ColDef = {
     editable: true,
@@ -47,10 +47,10 @@ export class AppComponent {
   };
   public popupParent: HTMLElement = document.body;
   public chartThemes: string[] = [
-    "ag-pastel",
-    "ag-material-dark",
-    "ag-vivid-dark",
-    "ag-solar",
+    'ag-pastel',
+    'ag-material-dark',
+    'ag-vivid-dark',
+    'ag-solar',
   ];
   public chartThemeOverrides: AgChartThemeOverrides = {
     cartesian: {
@@ -70,11 +70,11 @@ export class AppComponent {
       cellRange: {
         rowStartIndex: 0,
         rowEndIndex: 79,
-        columns: ["country", "gold", "silver", "bronze"],
+        columns: ['country', 'gold', 'silver', 'bronze'],
       },
-      chartType: "groupedColumn",
-      chartContainer: document.querySelector("#myChart") as any,
-      aggFunc: "sum",
+      chartType: 'groupedColumn',
+      chartContainer: document.querySelector('#myChart') as any,
+      aggFunc: 'sum',
     };
     params.api.createRangeChart(createRangeChartParams);
   }

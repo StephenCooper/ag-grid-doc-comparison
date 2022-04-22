@@ -1,38 +1,39 @@
 import {
   Grid,
   GridOptions,
+  IFiltersToolPanel,
   ISetFilter,
   KeyCreatorParams,
   ValueFormatterParams,
-} from "ag-grid-community";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
+} from 'ag-grid-community';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import 'ag-grid-enterprise';
 
 const gridOptions: GridOptions = {
   columnDefs: [
     {
-      field: "athlete",
-      filter: "agSetColumnFilter",
+      field: 'athlete',
+      filter: 'agSetColumnFilter',
       filterParams: {
         cellHeight: 20,
       },
     },
-    { field: "age", maxWidth: 120, filter: "agNumberColumnFilter" },
     {
-      field: "country",
+      field: 'country',
       valueFormatter: function (params: ValueFormatterParams) {
         return `${params.value.name} (${params.value.code})`;
       },
       keyCreator: countryKeyCreator,
     },
-    { field: "year", maxWidth: 120 },
-    { field: "date" },
-    { field: "sport" },
-    { field: "gold", filter: "agNumberColumnFilter" },
-    { field: "silver", filter: "agNumberColumnFilter" },
-    { field: "bronze", filter: "agNumberColumnFilter" },
-    { field: "total", filter: "agNumberColumnFilter" },
+    { field: 'age', maxWidth: 120, filter: 'agNumberColumnFilter' },
+    { field: 'year', maxWidth: 120 },
+    { field: 'date' },
+    { field: 'sport' },
+    { field: 'gold', filter: 'agNumberColumnFilter' },
+    { field: 'silver', filter: 'agNumberColumnFilter' },
+    { field: 'bronze', filter: 'agNumberColumnFilter' },
+    { field: 'total', filter: 'agNumberColumnFilter' },
   ],
   defaultColDef: {
     flex: 1,
@@ -40,6 +41,8 @@ const gridOptions: GridOptions = {
     filter: true,
     resizable: true,
   },
+  sideBar: 'filters',
+  onFirstDataRendered: onFirstDataRendered,
 };
 
 function countryKeyCreator(params: KeyCreatorParams) {
@@ -59,49 +62,55 @@ function patchData(data: any[]) {
 }
 
 function selectJohnAndKenny() {
-  const instance = gridOptions.api!.getFilterInstance("athlete")!;
-  instance.setModel({ values: ["John Joe Nevin", "Kenny Egan"] });
+  const instance = gridOptions.api!.getFilterInstance('athlete')!;
+  instance.setModel({ values: ['John Joe Nevin', 'Kenny Egan'] });
   gridOptions.api!.onFilterChanged();
 }
 
 function selectEverything() {
-  const instance = gridOptions.api!.getFilterInstance("athlete")!;
+  const instance = gridOptions.api!.getFilterInstance('athlete')!;
   instance.setModel(null);
   gridOptions.api!.onFilterChanged();
 }
 
 function selectNothing() {
-  const instance = gridOptions.api!.getFilterInstance("athlete")!;
+  const instance = gridOptions.api!.getFilterInstance('athlete')!;
   instance.setModel({ values: [] });
   gridOptions.api!.onFilterChanged();
 }
 
 function setCountriesToFranceAustralia() {
-  const instance = gridOptions.api!.getFilterInstance("country") as ISetFilter;
-  instance.setFilterValues(["France", "Australia"]);
+  const instance = gridOptions.api!.getFilterInstance('country') as ISetFilter;
+  instance.setFilterValues(['France', 'Australia']);
   instance.applyModel();
   gridOptions.api!.onFilterChanged();
 }
 
 function setCountriesToAll() {
-  const instance = gridOptions.api!.getFilterInstance("country") as ISetFilter;
+  const instance = gridOptions.api!.getFilterInstance('country') as ISetFilter;
   instance.resetFilterValues();
   instance.applyModel();
   gridOptions.api!.onFilterChanged();
 }
 
+function onFirstDataRendered() {
+  ((gridOptions.api!.getToolPanelInstance(
+    'filters'
+  ) as any) as IFiltersToolPanel).expandFilters();
+}
+
 // setup the grid after the page has finished loading
-const gridDiv = document.querySelector<HTMLElement>("#myGrid")!;
+const gridDiv = document.querySelector<HTMLElement>('#myGrid')!;
 new Grid(gridDiv, gridOptions);
 
-fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
   .then((response) => response.json())
   .then(function (data) {
     patchData(data);
     gridOptions.api!.setRowData(data);
   });
 
-if (typeof window !== "undefined") {
+if (typeof window !== 'undefined') {
   // Attach external event handlers to window so they can be called from index.html
   (<any>window).selectJohnAndKenny = selectJohnAndKenny;
   (<any>window).selectEverything = selectEverything;

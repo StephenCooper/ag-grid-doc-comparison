@@ -1,7 +1,7 @@
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine-dark.css";
-import { AgGridVue } from "ag-grid-vue";
-import Vue from "vue";
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine-dark.css';
+import { AgGridVue } from 'ag-grid-vue';
+import Vue from 'vue';
 
 const VueExample = {
   template: `
@@ -17,20 +17,20 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
-        { headerName: "#", maxWidth: 100, valueGetter: hashValueGetter },
-        { field: "a" },
-        { field: "b" },
-        { headerName: "A + B", colId: "a&b", valueGetter: abValueGetter },
-        { headerName: "A * 1000", minWidth: 95, valueGetter: a1000ValueGetter },
-        { headerName: "B * 137", minWidth: 90, valueGetter: b137ValueGetter },
-        { headerName: "Random", minWidth: 90, valueGetter: randomValueGetter },
-        { headerName: "Chain", valueGetter: chainValueGetter },
-        { headerName: "Const", minWidth: 85, valueGetter: constValueGetter },
+        { headerName: '#', maxWidth: 100, valueGetter: hashValueGetter },
+        { field: 'a' },
+        { field: 'b' },
+        { headerName: 'A + B', colId: 'a&b', valueGetter: abValueGetter },
+        { headerName: 'A * 1000', minWidth: 95, valueGetter: a1000ValueGetter },
+        { headerName: 'B * 137', minWidth: 90, valueGetter: b137ValueGetter },
+        { headerName: 'Random', minWidth: 90, valueGetter: randomValueGetter },
+        { headerName: 'Chain', valueGetter: chainValueGetter },
+        { headerName: 'Const', minWidth: 85, valueGetter: constValueGetter },
       ],
       gridApi: null,
       columnApi: null,
@@ -85,7 +85,7 @@ var randomValueGetter = function () {
 };
 
 var chainValueGetter = function (params) {
-  return params.getValue("a&b") * 1000;
+  return params.getValue('a&b') * 1000;
 };
 
 var constValueGetter = function () {
@@ -93,8 +93,8 @@ var constValueGetter = function () {
 };
 
 new Vue({
-  el: "#app",
+  el: '#app',
   components: {
-    "my-component": VueExample,
+    'my-component': VueExample,
   },
 });

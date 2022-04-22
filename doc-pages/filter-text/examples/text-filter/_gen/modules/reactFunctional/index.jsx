@@ -1,12 +1,12 @@
-"use strict";
+'use strict';
 
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { AgGridReact } from "@ag-grid-community/react";
-import React, { useCallback, useMemo, useState } from "react";
-import { render } from "react-dom";
+import React, { useCallback, useMemo, useRef, useState } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from '@ag-grid-community/react';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([ClientSideRowModelModule]);
@@ -16,40 +16,40 @@ const contains = (target, lookingFor) => {
 };
 
 var athleteFilterParams = {
-  filterOptions: ["contains", "notContains"],
+  filterOptions: ['contains', 'notContains'],
   textFormatter: function (r) {
     if (r == null) return null;
     return r
       .toLowerCase()
-      .replace(/[àáâãäå]/g, "a")
-      .replace(/æ/g, "ae")
-      .replace(/ç/g, "c")
-      .replace(/[èéêë]/g, "e")
-      .replace(/[ìíîï]/g, "i")
-      .replace(/ñ/g, "n")
-      .replace(/[òóôõö]/g, "o")
-      .replace(/œ/g, "oe")
-      .replace(/[ùúûü]/g, "u")
-      .replace(/[ýÿ]/g, "y");
+      .replace(/[àáâãäå]/g, 'a')
+      .replace(/æ/g, 'ae')
+      .replace(/ç/g, 'c')
+      .replace(/[èéêë]/g, 'e')
+      .replace(/[ìíîï]/g, 'i')
+      .replace(/ñ/g, 'n')
+      .replace(/[òóôõö]/g, 'o')
+      .replace(/œ/g, 'oe')
+      .replace(/[ùúûü]/g, 'u')
+      .replace(/[ýÿ]/g, 'y');
   },
   debounceMs: 200,
   suppressAndOrCondition: true,
 };
 
 var countryFilterParams = {
-  filterOptions: ["contains"],
+  filterOptions: ['contains'],
   textMatcher: function ({ value, filterText }) {
-    var filterTextLowerCase = filterText ? filterText.toLowerCase() : "";
+    var filterTextLowerCase = filterText ? filterText.toLowerCase() : '';
     var valueLowerCase = value.toString().toLowerCase();
     var aliases = {
-      usa: "united states",
-      holland: "netherlands",
-      vodka: "russia",
-      niall: "ireland",
-      sean: "south africa",
-      alberto: "mexico",
-      john: "australia",
-      xi: "china",
+      usa: 'united states',
+      holland: 'netherlands',
+      vodka: 'russia',
+      niall: 'ireland',
+      sean: 'south africa',
+      alberto: 'mexico',
+      john: 'australia',
+      xi: 'china',
     };
     var literalMatch = contains(valueLowerCase, filterTextLowerCase);
     return (
@@ -61,25 +61,25 @@ var countryFilterParams = {
 };
 
 const GridExample = () => {
-  const containerStyle = useMemo(() => ({ width: "100%", height: "100%" }), []);
-  const gridStyle = useMemo(() => ({ height: "100%", width: "100%" }), []);
+  const containerStyle = useMemo(() => ({ width: '100%', height: '100%' }), []);
+  const gridStyle = useMemo(() => ({ height: '100%', width: '100%' }), []);
   const [rowData, setRowData] = useState();
   const [columnDefs, setColumnDefs] = useState([
     {
-      field: "athlete",
+      field: 'athlete',
       filterParams: athleteFilterParams,
     },
     {
-      field: "country",
-      filter: "agTextColumnFilter",
+      field: 'country',
+      filter: 'agTextColumnFilter',
       filterParams: countryFilterParams,
     },
     {
-      field: "sport",
-      filter: "agTextColumnFilter",
+      field: 'sport',
+      filter: 'agTextColumnFilter',
       filterParams: {
         caseSensitive: true,
-        defaultOption: "startsWith",
+        defaultOption: 'startsWith',
       },
     },
   ]);
@@ -92,7 +92,7 @@ const GridExample = () => {
   }, []);
 
   const onGridReady = useCallback((params) => {
-    fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+    fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .then((resp) => resp.json())
       .then((data) => setRowData(data));
   }, []);
@@ -111,4 +111,4 @@ const GridExample = () => {
   );
 };
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

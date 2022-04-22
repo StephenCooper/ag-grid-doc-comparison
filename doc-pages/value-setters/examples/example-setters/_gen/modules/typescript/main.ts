@@ -1,4 +1,4 @@
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
 import {
   CellValueChangedEvent,
   ColDef,
@@ -7,22 +7,22 @@ import {
   ModuleRegistry,
   ValueGetterParams,
   ValueSetterParams,
-} from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine-dark.css";
+} from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine-dark.css';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([ClientSideRowModelModule]);
 
 const columnDefs: ColDef[] = [
   {
-    headerName: "Name",
+    headerName: 'Name',
     valueGetter: function (params: ValueGetterParams) {
-      return params.data.firstName + " " + params.data.lastName;
+      return params.data.firstName + ' ' + params.data.lastName;
     },
     valueSetter: function (params: ValueSetterParams) {
       var fullName = params.newValue;
-      var nameSplit = fullName.split(" ");
+      var nameSplit = fullName.split(' ');
       var newFirstName = nameSplit[0];
       var newLastName = nameSplit[1];
       var data = params.data;
@@ -40,11 +40,11 @@ const columnDefs: ColDef[] = [
     },
   },
   {
-    headerName: "A",
-    field: "a",
+    headerName: 'A',
+    field: 'a',
   },
   {
-    headerName: "B",
+    headerName: 'B',
     valueGetter: function (params: ValueGetterParams) {
       return params.data.b;
     },
@@ -58,7 +58,7 @@ const columnDefs: ColDef[] = [
     },
   },
   {
-    headerName: "C.X",
+    headerName: 'C.X',
     valueGetter: function (params: ValueGetterParams) {
       if (params.data.c) {
         return params.data.c.x;
@@ -75,7 +75,7 @@ const columnDefs: ColDef[] = [
     },
   },
   {
-    headerName: "C.Y",
+    headerName: 'C.Y',
     valueGetter: function (params: ValueGetterParams) {
       if (params.data.c) {
         return params.data.c.y;
@@ -105,9 +105,9 @@ const gridOptions: GridOptions = {
 };
 
 function onCellValueChanged(event: CellValueChangedEvent) {
-  console.log("Data after change is", event.data);
+  console.log('Data after change is', event.data);
 }
 
 // setup the grid after the page has finished loading
-var gridDiv = document.querySelector<HTMLElement>("#myGrid")!;
+var gridDiv = document.querySelector<HTMLElement>('#myGrid')!;
 new Grid(gridDiv, gridOptions);

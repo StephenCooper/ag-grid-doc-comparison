@@ -1,9 +1,9 @@
-import { Component } from "@angular/core";
-import { ICellRendererAngularComp } from "ag-grid-angular";
-import { ICellRendererParams } from "ag-grid-community";
+import { Component } from '@angular/core';
+import { ICellRendererAngularComp } from 'ag-grid-angular';
+import { ICellRendererParams } from 'ag-grid-community';
 
 @Component({
-  selector: "app-loading-cell-renderer",
+  selector: 'app-loading-cell-renderer',
   template: `<span class="calls-cell-renderer">
     <button (click)="onAdd()">+</button>
     <button (click)="onRemove()">-</button>
@@ -26,12 +26,12 @@ export class CallsCellRenderer implements ICellRendererAngularComp {
 
     var newCallRecords = oldCallRecords.slice(0); // make a copy
     newCallRecords.push({
-      name: ["Bob", "Paul", "David", "John"][Math.floor(Math.random() * 4)],
+      name: ['Bob', 'Paul', 'David', 'John'][Math.floor(Math.random() * 4)],
       callId: Math.floor(Math.random() * 1000),
       duration: Math.floor(Math.random() * 100) + 1,
-      switchCode: "SW5",
-      direction: "Out",
-      number: "(02) " + Math.floor(Math.random() * 1000000),
+      switchCode: 'SW5',
+      direction: 'Out',
+      number: '(02) ' + Math.floor(Math.random() * 1000000),
     }); // add one item
 
     var minutes = 0;

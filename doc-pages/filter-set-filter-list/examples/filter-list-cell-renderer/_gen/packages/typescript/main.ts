@@ -3,50 +3,50 @@ import {
   Grid,
   GridOptions,
   IFiltersToolPanel,
-} from "ag-grid-community";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
-import { CountryCellRenderer } from "./countryCellRenderer";
+} from 'ag-grid-community';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import 'ag-grid-enterprise';
+import { CountryCellRenderer } from './countryCellRenderer';
 
 const COUNTRY_CODES: Record<string, string> = {
-  Ireland: "ie",
-  Luxembourg: "lu",
-  Belgium: "be",
-  Spain: "es",
-  France: "fr",
-  Germany: "de",
-  Sweden: "se",
-  Italy: "it",
-  Greece: "gr",
-  Iceland: "is",
-  Portugal: "pt",
-  Malta: "mt",
-  Norway: "no",
-  Brazil: "br",
-  Argentina: "ar",
-  Colombia: "co",
-  Peru: "pe",
-  Venezuela: "ve",
-  Uruguay: "uy",
+  Ireland: 'ie',
+  Luxembourg: 'lu',
+  Belgium: 'be',
+  Spain: 'es',
+  France: 'fr',
+  Germany: 'de',
+  Sweden: 'se',
+  Italy: 'it',
+  Greece: 'gr',
+  Iceland: 'is',
+  Portugal: 'pt',
+  Malta: 'mt',
+  Norway: 'no',
+  Brazil: 'br',
+  Argentina: 'ar',
+  Colombia: 'co',
+  Peru: 'pe',
+  Venezuela: 've',
+  Uruguay: 'uy',
 };
 
 const gridOptions: GridOptions = {
   columnDefs: [
     {
-      headerName: "No Cell Renderer",
-      field: "country",
+      headerName: 'No Cell Renderer',
+      field: 'country',
       cellRenderer: CountryCellRenderer,
-      filter: "agSetColumnFilter",
+      filter: 'agSetColumnFilter',
       filterParams: {
         // no cell renderer!
       },
     },
     {
-      headerName: "With Cell Renderers",
-      field: "country",
+      headerName: 'With Cell Renderers',
+      field: 'country',
       cellRenderer: CountryCellRenderer,
-      filter: "agSetColumnFilter",
+      filter: 'agSetColumnFilter',
       filterParams: {
         cellRenderer: CountryCellRenderer,
       },
@@ -61,7 +61,7 @@ const gridOptions: GridOptions = {
     resizable: true,
     floatingFilter: true,
   },
-  sideBar: "filters",
+  sideBar: 'filters',
   onFirstDataRendered: onFirstDataRendered,
 };
 
@@ -71,16 +71,16 @@ function printFilterModel() {
 }
 
 function onFirstDataRendered(params: FirstDataRenderedEvent) {
-  (
-    params.api.getToolPanelInstance("filters") as any as IFiltersToolPanel
-  ).expandFilters();
+  ((params.api.getToolPanelInstance(
+    'filters'
+  ) as any) as IFiltersToolPanel).expandFilters();
 }
 
 // setup the grid after the page has finished loading
-const gridDiv = document.querySelector<HTMLElement>("#myGrid")!;
+const gridDiv = document.querySelector<HTMLElement>('#myGrid')!;
 new Grid(gridDiv, gridOptions);
 
-fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
   .then((response) => response.json())
   .then(function (data) {
     // only return data that has corresponding country codes
@@ -91,7 +91,7 @@ fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
     gridOptions.api!.setRowData(dataWithFlags);
   });
 
-if (typeof window !== "undefined") {
+if (typeof window !== 'undefined') {
   // Attach external event handlers to window so they can be called from index.html
   (<any>window).printFilterModel = printFilterModel;
 }

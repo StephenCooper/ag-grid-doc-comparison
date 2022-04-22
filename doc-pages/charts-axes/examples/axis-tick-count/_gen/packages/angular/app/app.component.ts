@@ -1,9 +1,9 @@
-import { Component } from "@angular/core";
-import { AgCartesianChartOptions } from "ag-charts-community";
-import { cloneDeep } from "lodash";
+import { Component } from '@angular/core';
+import { AgCartesianChartOptions } from 'ag-charts-community';
+import { cloneDeep } from 'lodash';
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<div class="wrapper">
     <div id="toolPanel">
       <button (click)="setTickCountTo5()">Set tick count to 5</button>
@@ -26,9 +26,9 @@ export class AppComponent {
       data: generateSpiralData(),
       series: [
         {
-          type: "line",
-          xKey: "x",
-          yKey: "y",
+          type: 'line',
+          xKey: 'x',
+          yKey: 'y',
           marker: {
             enabled: false,
           },
@@ -36,15 +36,15 @@ export class AppComponent {
       ],
       axes: [
         {
-          type: "number",
-          position: "bottom",
+          type: 'number',
+          position: 'bottom',
           tick: {
             count: 10,
           },
         },
         {
-          type: "number",
-          position: "left",
+          type: 'number',
+          position: 'left',
           tick: {
             count: 10,
           },

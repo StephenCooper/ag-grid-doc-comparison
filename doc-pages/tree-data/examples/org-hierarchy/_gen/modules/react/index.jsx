@@ -1,13 +1,13 @@
-"use strict";
+'use strict';
 
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { AgGridReact } from "@ag-grid-community/react";
-import { RowGroupingModule } from "@ag-grid-enterprise/row-grouping";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from '@ag-grid-community/react';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import { RowGroupingModule } from '@ag-grid-enterprise/row-grouping';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([ClientSideRowModelModule, RowGroupingModule]);
@@ -19,14 +19,14 @@ class GridExample extends Component {
     this.state = {
       columnDefs: [
         // we're using the auto group column by default!
-        { field: "jobTitle" },
-        { field: "employmentType" },
+        { field: 'jobTitle' },
+        { field: 'employmentType' },
       ],
       defaultColDef: {
         flex: 1,
       },
       autoGroupColumnDef: {
-        headerName: "Organisation Hierarchy",
+        headerName: 'Organisation Hierarchy',
         minWidth: 300,
         cellRendererParams: {
           suppressCount: true,
@@ -47,15 +47,15 @@ class GridExample extends Component {
 
   onFilterTextBoxChanged = () => {
     this.gridApi.setQuickFilter(
-      document.getElementById("filter-text-box").value
+      document.getElementById('filter-text-box').value
     );
   };
 
   render() {
     return (
-      <div style={{ width: "100%", height: "100%" }}>
+      <div style={{ width: '100%', height: '100%' }}>
         <div className="example-wrapper">
-          <div style={{ marginBottom: "5px" }}>
+          <div style={{ marginBottom: '5px' }}>
             <input
               type="text"
               id="filter-text-box"
@@ -65,8 +65,8 @@ class GridExample extends Component {
           </div>
           <div
             style={{
-              height: "100%",
-              width: "100%",
+              height: '100%',
+              width: '100%',
             }}
             className="ag-theme-alpine"
           >
@@ -88,4 +88,4 @@ class GridExample extends Component {
   }
 }
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

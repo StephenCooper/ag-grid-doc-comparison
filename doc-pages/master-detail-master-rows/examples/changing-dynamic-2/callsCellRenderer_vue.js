@@ -1,77 +1,77 @@
 export default {
-  template: `
+    template: `
         <span class="calls-cell-renderer">
             <button v-on:click="onAdd">+</button>
             <button v-on:click="onRemove">-</button>
             <span>{{ value }}</span>
         </span>
     `,
-  data: function () {
-    return {};
-  },
-  computed: {
-    value: function () {
-      return this.params.value;
+    data: function() {
+        return {};
     },
-  },
-  methods: {
-    onAdd: function () {
-      const oldData = this.params.node.data;
-      const oldCallRecords = oldData.callRecords;
-      const newCallRecords = oldCallRecords.slice(0); // make a copy
-
-      newCallRecords.push({
-        name: ["Bob", "Paul", "David", "John"][Math.floor(Math.random() * 4)],
-        callId: Math.floor(Math.random() * 1000),
-        duration: Math.floor(Math.random() * 100) + 1,
-        switchCode: "SW5",
-        direction: "Out",
-        number: "(02) " + Math.floor(Math.random() * 1000000),
-      }); // add one item
-
-      let minutes = 0;
-      newCallRecords.forEach(function (r) {
-        minutes += r.duration;
-      });
-
-      const newData = {
-        name: oldData.name,
-        account: oldData.account,
-        calls: newCallRecords.length,
-        minutes: minutes,
-        callRecords: newCallRecords,
-      };
-
-      this.params.api.applyTransaction({ update: [newData] });
-
-      this.params.node.setExpanded(true);
+    computed: {
+        value: function () {
+            return this.params.value;
+        },
     },
-    onRemove: function () {
-      const oldData = this.params.node.data;
+    methods: {
+        onAdd: function () {
+            const oldData = this.params.node.data;
+            const oldCallRecords = oldData.callRecords;
+            const newCallRecords = oldCallRecords.slice(0); // make a copy
 
-      const oldCallRecords = oldData.callRecords;
+            newCallRecords.push({
+                name: ["Bob", "Paul", "David", "John"][Math.floor(Math.random() * 4)],
+                callId: Math.floor(Math.random() * 1000),
+                duration: Math.floor(Math.random() * 100) + 1,
+                switchCode: "SW5",
+                direction: "Out",
+                number: "(02) " + Math.floor(Math.random() * 1000000)
+            }); // add one item
 
-      if (oldCallRecords.length === 0) {
-        return;
-      }
+            let minutes = 0;
+            newCallRecords.forEach(function (r) {
+                minutes += r.duration
+            });
 
-      const newCallRecords = oldCallRecords.slice(0); // make a copy
-      newCallRecords.pop(); // remove one item
+            const newData = {
+                name: oldData.name,
+                account: oldData.account,
+                calls: newCallRecords.length,
+                minutes: minutes,
+                callRecords: newCallRecords
+            };
 
-      let minutes = 0;
-      newCallRecords.forEach(function (r) {
-        minutes += r.duration;
-      });
+            this.params.api.applyTransaction({update: [newData]});
 
-      const newData = {
-        name: oldData.name,
-        account: oldData.account,
-        calls: newCallRecords.length,
-        minutes: minutes,
-        callRecords: newCallRecords,
-      };
+            this.params.node.setExpanded(true);
+        },
+        onRemove: function () {
+            const oldData = this.params.node.data;
 
-      this.params.api.applyTransaction({ update: [newData] });
-    },
-  },
+            const oldCallRecords = oldData.callRecords;
+
+            if (oldCallRecords.length === 0) {
+                return;
+            }
+
+            const newCallRecords = oldCallRecords.slice(0); // make a copy
+            newCallRecords.pop(); // remove one item
+
+            let minutes = 0;
+            newCallRecords.forEach(function (r) {
+                minutes += r.duration
+            });
+
+            const newData = {
+                name: oldData.name,
+                account: oldData.account,
+                calls: newCallRecords.length,
+                minutes: minutes,
+                callRecords: newCallRecords
+            };
+
+            this.params.api.applyTransaction({update: [newData]});
+        }
+    }
 };

@@ -1,5 +1,5 @@
-import { HttpClient } from "@angular/common/http";
-import { Component } from "@angular/core";
+import { HttpClient } from '@angular/common/http';
+import { Component } from '@angular/core';
 import {
   ColDef,
   GridReadyEvent,
@@ -7,12 +7,13 @@ import {
   IDatasource,
   IGetRowsParams,
   IsRowSelectable,
-} from "ag-grid-community";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
+  RowNode,
+} from 'ag-grid-community';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<ag-grid-angular
     style="width: 100%; height: 100%;"
     class="ag-theme-alpine"
@@ -35,11 +36,11 @@ export class AppComponent {
   public columnDefs: ColDef[] = [
     // this row shows the row index, doesn't use any data from the row
     {
-      headerName: "ID",
+      headerName: 'ID',
       maxWidth: 100,
       // it is important to have node.id here, so that when the id changes (which happens
       // when the row is loaded) then the cell is refreshed.
-      valueGetter: "node.id",
+      valueGetter: 'node.id',
       cellRenderer: function (params: ICellRendererParams) {
         if (params.value !== undefined) {
           return params.value;
@@ -48,16 +49,16 @@ export class AppComponent {
         }
       },
     },
-    { field: "athlete", minWidth: 200 },
-    { field: "age" },
-    { field: "country", minWidth: 200, checkboxSelection: true },
-    { field: "year" },
-    { field: "date", minWidth: 150 },
-    { field: "sport", minWidth: 150 },
-    { field: "gold" },
-    { field: "silver" },
-    { field: "bronze" },
-    { field: "total" },
+    { field: 'athlete', minWidth: 200 },
+    { field: 'age' },
+    { field: 'country', minWidth: 200, checkboxSelection: true },
+    { field: 'year' },
+    { field: 'date', minWidth: 150 },
+    { field: 'sport', minWidth: 150 },
+    { field: 'gold' },
+    { field: 'silver' },
+    { field: 'bronze' },
+    { field: 'total' },
   ];
   public defaultColDef: ColDef = {
     flex: 1,
@@ -65,11 +66,11 @@ export class AppComponent {
     resizable: true,
   };
   public rowBuffer = 0;
-  public rowSelection = "multiple";
-  public isRowSelectable: IsRowSelectable = function (rowNode) {
-    return rowNode.data ? rowNode.data.country === "United States" : false;
+  public rowSelection = 'multiple';
+  public isRowSelectable: IsRowSelectable = function (rowNode: RowNode) {
+    return rowNode.data ? rowNode.data.country === 'United States' : false;
   };
-  public rowModelType = "infinite";
+  public rowModelType = 'infinite';
   public cacheBlockSize = 100;
   public cacheOverflowSize = 2;
   public maxConcurrentDatasourceRequests = 2;
@@ -81,7 +82,7 @@ export class AppComponent {
 
   onGridReady(params: GridReadyEvent) {
     this.http
-      .get<any[]>("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      .get<any[]>('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .subscribe((data) => {
         const dataSource: IDatasource = {
           rowCount: undefined,

@@ -1,8 +1,8 @@
-import { ColDef, Grid, GridOptions } from "ag-grid-community";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
-import { CountryCellRenderer } from "./countryCellRenderer";
+import { ColDef, Grid, GridOptions } from 'ag-grid-community';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import 'ag-grid-enterprise';
+import { CountryCellRenderer } from './countryCellRenderer';
 
 declare function createBase64FlagsFromResponse(
   response: any,
@@ -15,8 +15,8 @@ const base64flags: any = {};
 
 const columnDefs: ColDef[] = [
   {
-    field: "country",
-    headerName: " ",
+    field: 'country',
+    headerName: ' ',
     minWidth: 70,
     width: 70,
     maxWidth: 70,
@@ -26,15 +26,15 @@ const columnDefs: ColDef[] = [
       countryCodes: countryCodes,
     },
   },
-  { field: "athlete" },
-  { field: "age" },
-  { field: "year" },
-  { field: "date" },
-  { field: "sport" },
-  { field: "gold" },
-  { field: "silver" },
-  { field: "bronze" },
-  { field: "total" },
+  { field: 'athlete' },
+  { field: 'age' },
+  { field: 'year' },
+  { field: 'date' },
+  { field: 'sport' },
+  { field: 'gold' },
+  { field: 'silver' },
+  { field: 'bronze' },
+  { field: 'total' },
 ];
 
 const gridOptions: GridOptions = {
@@ -45,7 +45,7 @@ const gridOptions: GridOptions = {
   },
   defaultExcelExportParams: {
     addImageToCell: function (rowIndex, col, value) {
-      if (col.getColId() !== "country") {
+      if (col.getColId() !== 'country') {
         return;
       }
 
@@ -54,7 +54,7 @@ const gridOptions: GridOptions = {
         image: {
           id: countryCode,
           base64: base64flags[countryCode],
-          imageType: "png",
+          imageType: 'png',
           width: 20,
           height: 11,
           position: {
@@ -70,7 +70,7 @@ const gridOptions: GridOptions = {
     countryCodes: countryCodes,
   },
   onGridReady: (params) => {
-    fetch("https://www.ag-grid.com/example-assets/small-olympic-winners.json")
+    fetch('https://www.ag-grid.com/example-assets/small-olympic-winners.json')
       .then((data) =>
         createBase64FlagsFromResponse(data, countryCodes, base64flags)
       )
@@ -83,10 +83,10 @@ function onBtExport() {
 }
 
 // setup the grid after the page has finished loading
-const gridDiv = document.querySelector<HTMLElement>("#myGrid")!;
+const gridDiv = document.querySelector<HTMLElement>('#myGrid')!;
 new Grid(gridDiv, gridOptions);
 
-if (typeof window !== "undefined") {
+if (typeof window !== 'undefined') {
   // Attach external event handlers to window so they can be called from index.html
   (<any>window).onBtExport = onBtExport;
 }

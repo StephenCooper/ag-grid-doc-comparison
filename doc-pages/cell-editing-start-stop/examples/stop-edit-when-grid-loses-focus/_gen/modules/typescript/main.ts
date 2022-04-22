@@ -1,13 +1,13 @@
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
 import {
   Grid,
   GridOptions,
   ICellEditorComp,
   ICellEditorParams,
   ModuleRegistry,
-} from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
+} from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([ClientSideRowModelModule]);
@@ -30,21 +30,21 @@ class YearCellEditor implements ICellEditorComp {
 
   init(params: ICellEditorParams) {
     this.value = params.value;
-    const tempElement = document.createElement("div");
+    const tempElement = document.createElement('div');
     tempElement.innerHTML =
       '<div class="yearSelect">' +
-      "<div>Clicking here does not close the popup!</div>" +
+      '<div>Clicking here does not close the popup!</div>' +
       '<button id="bt2006" class="yearButton">2006</button>' +
       '<button id="bt2008" class="yearButton">2008</button>' +
       '<button id="bt2010" class="yearButton">2010</button>' +
       '<button id="bt2012" class="yearButton">2012</button>' +
-      "<div>" +
+      '<div>' +
       '<input type="text" style="width: 100%;" placeholder="clicking on this text field does not close"/>' +
-      "</div>" +
-      "</div>";
+      '</div>' +
+      '</div>';
 
     [2006, 2008, 2010, 2012].forEach((year) => {
-      tempElement.querySelector("#bt" + year)!.addEventListener("click", () => {
+      tempElement.querySelector('#bt' + year)!.addEventListener('click', () => {
         this.value = year;
         params.stopEditing();
       });
@@ -56,16 +56,16 @@ class YearCellEditor implements ICellEditorComp {
 
 const gridOptions: GridOptions = {
   columnDefs: [
-    { field: "athlete", minWidth: 160 },
-    { field: "age" },
-    { field: "country", minWidth: 140 },
-    { field: "year", cellEditor: YearCellEditor, cellEditorPopup: true },
-    { field: "date", minWidth: 140 },
-    { field: "sport", minWidth: 160 },
-    { field: "gold" },
-    { field: "silver" },
-    { field: "bronze" },
-    { field: "total" },
+    { field: 'athlete', minWidth: 160 },
+    { field: 'age' },
+    { field: 'country', minWidth: 140 },
+    { field: 'year', cellEditor: YearCellEditor, cellEditorPopup: true },
+    { field: 'date', minWidth: 140 },
+    { field: 'sport', minWidth: 160 },
+    { field: 'gold' },
+    { field: 'silver' },
+    { field: 'bronze' },
+    { field: 'total' },
   ],
   defaultColDef: {
     flex: 1,
@@ -79,9 +79,9 @@ const gridOptions: GridOptions = {
 };
 
 // setup the grid after the page has finished loading
-const gridDiv = document.querySelector<HTMLElement>("#myGrid")!;
+const gridDiv = document.querySelector<HTMLElement>('#myGrid')!;
 new Grid(gridDiv, gridOptions);
 
-fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
   .then((response) => response.json())
   .then((data) => gridOptions.api!.setRowData(data));

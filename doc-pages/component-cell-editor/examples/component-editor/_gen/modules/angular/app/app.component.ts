@@ -1,15 +1,15 @@
-import { ColDef, GridReadyEvent } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { Component } from "@angular/core";
-import { DoublingEditor } from "./doubling-editor.component";
-import { MoodEditor } from "./mood-editor.component";
-import { MoodRenderer } from "./mood-renderer.component";
-import { NumericEditor } from "./numeric-editor.component";
+import { ColDef, GridReadyEvent } from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { Component } from '@angular/core';
+import { DoublingEditor } from './doubling-editor.component';
+import { MoodEditor } from './mood-editor.component';
+import { MoodRenderer } from './mood-renderer.component';
+import { NumericEditor } from './numeric-editor.component';
 // Required feature modules are registered in app.module.ts
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<div style="height: 100%; box-sizing: border-box;">
     <ag-grid-angular
       style="width: 100%; height: 100%;"
@@ -24,14 +24,14 @@ import { NumericEditor } from "./numeric-editor.component";
 export class AppComponent {
   public columnDefs: ColDef[] = [
     {
-      headerName: "Doubling",
-      field: "number",
+      headerName: 'Doubling',
+      field: 'number',
       cellEditor: DoublingEditor,
       editable: true,
       width: 300,
     },
     {
-      field: "mood",
+      field: 'mood',
       cellRenderer: MoodRenderer,
       cellEditor: MoodEditor,
       cellEditorPopup: true,
@@ -39,8 +39,8 @@ export class AppComponent {
       width: 300,
     },
     {
-      headerName: "Numeric",
-      field: "number",
+      headerName: 'Numeric',
+      field: 'number',
       cellEditor: NumericEditor,
       cellEditorPopup: true,
       editable: true,
@@ -48,19 +48,19 @@ export class AppComponent {
     },
   ];
   public rowData: any[] | null = [
-    { name: "Bob", mood: "Happy", number: 10 },
-    { name: "Harry", mood: "Sad", number: 3 },
-    { name: "Sally", mood: "Happy", number: 20 },
-    { name: "Mary", mood: "Sad", number: 5 },
-    { name: "John", mood: "Happy", number: 15 },
-    { name: "Jack", mood: "Happy", number: 25 },
-    { name: "Sue", mood: "Sad", number: 43 },
-    { name: "Sean", mood: "Sad", number: 1335 },
-    { name: "Niall", mood: "Happy", number: 2 },
-    { name: "Alberto", mood: "Happy", number: 123 },
-    { name: "Fred", mood: "Sad", number: 532 },
-    { name: "Jenny", mood: "Happy", number: 34 },
-    { name: "Larry", mood: "Happy", number: 13 },
+    { name: 'Bob', mood: 'Happy', number: 10 },
+    { name: 'Harry', mood: 'Sad', number: 3 },
+    { name: 'Sally', mood: 'Happy', number: 20 },
+    { name: 'Mary', mood: 'Sad', number: 5 },
+    { name: 'John', mood: 'Happy', number: 15 },
+    { name: 'Jack', mood: 'Happy', number: 25 },
+    { name: 'Sue', mood: 'Sad', number: 43 },
+    { name: 'Sean', mood: 'Sad', number: 1335 },
+    { name: 'Niall', mood: 'Happy', number: 2 },
+    { name: 'Alberto', mood: 'Happy', number: 123 },
+    { name: 'Fred', mood: 'Sad', number: 532 },
+    { name: 'Jenny', mood: 'Happy', number: 34 },
+    { name: 'Larry', mood: 'Happy', number: 13 },
   ];
   public defaultColDef: ColDef = {
     editable: true,

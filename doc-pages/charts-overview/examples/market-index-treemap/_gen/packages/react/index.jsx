@@ -1,8 +1,10 @@
-"use strict";
+'use strict';
 
-import { AgChartsReact } from "ag-charts-react";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { cloneDeep } from 'lodash';
+import { render } from 'react-dom';
+import * as agCharts from 'ag-charts-community';
+import { AgChartsReact } from 'ag-charts-react';
 
 class ChartExample extends Component {
   constructor(props) {
@@ -10,25 +12,26 @@ class ChartExample extends Component {
 
     this.state = {
       options: {
-        type: "hierarchy",
+        type: 'hierarchy',
 
         data,
         series: [
           {
-            type: "treemap",
-            labelKey: "name",
-            sizeKey: "size",
-            colorKey: "color",
+            type: 'treemap',
+            labelKey: 'name',
+            sizeKey: 'size',
+            colorKey: 'color',
             tooltip: {
               renderer: tooltipRenderer,
             },
           },
         ],
         title: {
-          text: "S&P 500 index stocks categorized by sectors and industries.",
+          text: 'S&P 500 index stocks categorized by sectors and industries.',
         },
         subtitle: {
-          text: "Area represents market cap. Color represents change from the day before.",
+          text:
+            'Area represents market cap. Color represents change from the day before.',
         },
       },
     };
@@ -43,13 +46,13 @@ class ChartExample extends Component {
 
 function tooltipRenderer(params) {
   const { datum } = params;
-  const customRootText = "Custom Root Text";
+  const customRootText = 'Custom Root Text';
   const title = datum.parent
     ? datum.parent.depth
       ? datum.parent.datum[params.labelKey]
       : customRootText
     : customRootText;
-  let content = "<div>";
+  let content = '<div>';
   let ellipsis = false;
   if (datum.parent) {
     const maxCount = 5;
@@ -60,19 +63,19 @@ function tooltipRenderer(params) {
       }; padding: 5px;"><strong>${
         child.datum.name || child.label
       }</strong>: ${String(
-        isFinite(child.colorValue) ? child.colorValue.toFixed(2) : ""
+        isFinite(child.colorValue) ? child.colorValue.toFixed(2) : ''
       )}%</div>`;
     });
   }
   if (ellipsis) {
     content += `<div style="text-align: center;">...</div>`;
   }
-  content += "</div>";
+  content += '</div>';
   return {
     title,
     content,
-    backgroundColor: "gray",
+    backgroundColor: 'gray',
   };
 }
 
-render(<ChartExample />, document.querySelector("#root"));
+render(<ChartExample />, document.querySelector('#root'));

@@ -1,16 +1,16 @@
-"use strict";
+'use strict';
 
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { AgGridReact } from "@ag-grid-community/react";
-import { ColumnsToolPanelModule } from "@ag-grid-enterprise/column-tool-panel";
-import { FiltersToolPanelModule } from "@ag-grid-enterprise/filter-tool-panel";
-import { MenuModule } from "@ag-grid-enterprise/menu";
-import { SetFilterModule } from "@ag-grid-enterprise/set-filter";
-import React, { useCallback, useMemo, useRef, useState } from "react";
-import { render } from "react-dom";
+import React, { useCallback, useMemo, useRef, useState } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from '@ag-grid-community/react';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import { SetFilterModule } from '@ag-grid-enterprise/set-filter';
+import { MenuModule } from '@ag-grid-enterprise/menu';
+import { ColumnsToolPanelModule } from '@ag-grid-enterprise/column-tool-panel';
+import { FiltersToolPanelModule } from '@ag-grid-enterprise/filter-tool-panel';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([
@@ -21,15 +21,15 @@ ModuleRegistry.registerModules([
   FiltersToolPanelModule,
 ]);
 
-let savedMiniFilterText = "";
+let savedMiniFilterText = '';
 
 const GridExample = () => {
   const gridRef = useRef();
-  const containerStyle = useMemo(() => ({ width: "100%", height: "100%" }), []);
-  const gridStyle = useMemo(() => ({ height: "100%", width: "100%" }), []);
+  const containerStyle = useMemo(() => ({ width: '100%', height: '100%' }), []);
+  const gridStyle = useMemo(() => ({ height: '100%', width: '100%' }), []);
   const [rowData, setRowData] = useState();
   const [columnDefs, setColumnDefs] = useState([
-    { field: "athlete", filter: "agSetColumnFilter" },
+    { field: 'athlete', filter: 'agSetColumnFilter' },
   ]);
   const defaultColDef = useMemo(() => {
     return {
@@ -41,30 +41,30 @@ const GridExample = () => {
   }, []);
 
   const onGridReady = useCallback((params) => {
-    fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+    fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .then((resp) => resp.json())
       .then((data) => setRowData(data));
 
-    params.api.getToolPanelInstance("filters").expandFilters();
+    params.api.getToolPanelInstance('filters').expandFilters();
   }, []);
 
   const getMiniFilterText = useCallback(() => {
-    const athleteFilter = gridRef.current.api.getFilterInstance("athlete");
+    const athleteFilter = gridRef.current.api.getFilterInstance('athlete');
     console.log(athleteFilter.getMiniFilter());
   }, []);
 
   const saveMiniFilterText = useCallback(() => {
-    const athleteFilter = gridRef.current.api.getFilterInstance("athlete");
+    const athleteFilter = gridRef.current.api.getFilterInstance('athlete');
     savedMiniFilterText = athleteFilter.getMiniFilter();
   }, []);
 
   const restoreMiniFilterText = useCallback(() => {
-    const athleteFilter = gridRef.current.api.getFilterInstance("athlete");
+    const athleteFilter = gridRef.current.api.getFilterInstance('athlete');
     athleteFilter.setMiniFilter(savedMiniFilterText);
   }, []);
 
   const resetFilter = useCallback(() => {
-    const athleteFilter = gridRef.current.api.getFilterInstance("athlete");
+    const athleteFilter = gridRef.current.api.getFilterInstance('athlete');
     athleteFilter.setModel(null);
     gridRef.current.api.onFilterChanged();
   }, []);
@@ -87,7 +87,7 @@ const GridExample = () => {
             rowData={rowData}
             columnDefs={columnDefs}
             defaultColDef={defaultColDef}
-            sideBar={"filters"}
+            sideBar={'filters'}
             onGridReady={onGridReady}
           ></AgGridReact>
         </div>
@@ -96,4 +96,4 @@ const GridExample = () => {
   );
 };
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

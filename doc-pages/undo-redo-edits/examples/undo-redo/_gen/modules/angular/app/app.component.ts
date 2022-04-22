@@ -3,14 +3,14 @@ import {
   ColDef,
   GridApi,
   GridReadyEvent,
-} from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { Component } from "@angular/core";
+} from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { Component } from '@angular/core';
 // Required feature modules are registered in app.module.ts
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<div class="example-wrapper">
     <div>
       <span class="button-group">
@@ -43,14 +43,14 @@ export class AppComponent {
   private gridApi!: GridApi;
 
   public columnDefs: ColDef[] = [
-    { field: "a" },
-    { field: "b" },
-    { field: "c" },
-    { field: "d" },
-    { field: "e" },
-    { field: "f" },
-    { field: "g" },
-    { field: "h" },
+    { field: 'a' },
+    { field: 'b' },
+    { field: 'c' },
+    { field: 'd' },
+    { field: 'e' },
+    { field: 'f' },
+    { field: 'g' },
+    { field: 'h' },
   ];
   public defaultColDef: ColDef = {
     flex: 1,
@@ -60,21 +60,21 @@ export class AppComponent {
   public undoRedoCellEditingLimit = 5;
 
   onFirstDataRendered() {
-    setValue("#undoInput", 0);
-    disable("#undoInput", true);
-    disable("#undoBtn", true);
-    setValue("#redoInput", 0);
-    disable("#redoInput", true);
-    disable("#redoBtn", true);
+    setValue('#undoInput', 0);
+    disable('#undoInput', true);
+    disable('#undoBtn', true);
+    setValue('#redoInput', 0);
+    disable('#redoInput', true);
+    disable('#redoBtn', true);
   }
 
   onCellValueChanged(params: CellValueChangedEvent) {
     var undoSize = params.api.getCurrentUndoSize();
-    setValue("#undoInput", undoSize);
-    disable("#undoBtn", undoSize < 1);
+    setValue('#undoInput', undoSize);
+    disable('#undoBtn', undoSize < 1);
     var redoSize = params.api.getCurrentRedoSize();
-    setValue("#redoInput", redoSize);
-    disable("#redoBtn", redoSize < 1);
+    setValue('#redoInput', redoSize);
+    disable('#redoBtn', redoSize < 1);
   }
 
   undo() {
@@ -99,14 +99,14 @@ function setValue(id: string, value: number) {
 function getRows() {
   return Array.apply(null, Array(100)).map(function (_, i) {
     return {
-      a: "a-" + i,
-      b: "b-" + i,
-      c: "c-" + i,
-      d: "d-" + i,
-      e: "e-" + i,
-      f: "f-" + i,
-      g: "g-" + i,
-      h: "h-" + i,
+      a: 'a-' + i,
+      b: 'b-' + i,
+      c: 'c-' + i,
+      d: 'd-' + i,
+      e: 'e-' + i,
+      f: 'f-' + i,
+      g: 'g-' + i,
+      h: 'h-' + i,
     };
   });
 }

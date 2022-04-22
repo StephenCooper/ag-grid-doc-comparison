@@ -1,15 +1,15 @@
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
-import { AgGridReact } from "ag-grid-react";
-import React, { useMemo, useState } from "react";
-import { render } from "react-dom";
-("use strict");
+'use strict';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import React, { useMemo, useState } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from 'ag-grid-react';
+import 'ag-grid-enterprise';
 
 const COUNTRY_CODES = {
-  Ireland: "ie",
-  "United Kingdom": "gb",
-  USA: "us",
+  Ireland: 'ie',
+  'United Kingdom': 'gb',
+  USA: 'us',
 };
 
 function numberParser(params) {
@@ -71,25 +71,25 @@ function cityCellRenderer(params) {
 }
 
 const GridExample = () => {
-  const containerStyle = useMemo(() => ({ width: "100%", height: "100%" }), []);
-  const gridStyle = useMemo(() => ({ height: "98%", width: "100%" }), []);
+  const containerStyle = useMemo(() => ({ width: '100%', height: '100%' }), []);
+  const gridStyle = useMemo(() => ({ height: '98%', width: '100%' }), []);
   const [rowData, setRowData] = useState(getData());
   const [columnDefs, setColumnDefs] = useState([
-    { field: "city", type: "dimension", cellRenderer: cityCellRenderer },
+    { field: 'city', type: 'dimension', cellRenderer: cityCellRenderer },
     {
-      field: "country",
-      type: "dimension",
+      field: 'country',
+      type: 'dimension',
       cellRenderer: countryCellRenderer,
       minWidth: 200,
     },
     {
-      field: "state",
-      type: "dimension",
+      field: 'state',
+      type: 'dimension',
       cellRenderer: stateCellRenderer,
       rowGroup: true,
     },
-    { field: "val1", type: "numberValue" },
-    { field: "val2", type: "numberValue" },
+    { field: 'val1', type: 'numberValue' },
+    { field: 'val2', type: 'numberValue' },
   ]);
   const defaultColDef = useMemo(() => {
     return {
@@ -100,7 +100,7 @@ const GridExample = () => {
   }, []);
   const autoGroupColumnDef = useMemo(() => {
     return {
-      field: "city",
+      field: 'city',
       minWidth: 200,
     };
   }, []);
@@ -108,7 +108,7 @@ const GridExample = () => {
     return {
       numberValue: {
         enableValue: true,
-        aggFunc: "sum",
+        aggFunc: 'sum',
         editable: true,
         valueParser: numberParser,
       },
@@ -129,7 +129,7 @@ const GridExample = () => {
           autoGroupColumnDef={autoGroupColumnDef}
           columnTypes={columnTypes}
           groupDefaultExpanded={-1}
-          rowGroupPanelShow={"always"}
+          rowGroupPanelShow={'always'}
           animateRows={true}
         ></AgGridReact>
       </div>
@@ -137,4 +137,4 @@ const GridExample = () => {
   );
 };
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

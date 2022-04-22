@@ -1,46 +1,40 @@
-import { HttpClient } from "@angular/common/http";
-import { Component } from "@angular/core";
-import {
-  ColDef,
-  GridReadyEvent,
-  PostProcessSecondaryColDefParams,
-  PostProcessSecondaryColGroupDefParams,
-} from "ag-grid-community";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
+import { HttpClient } from '@angular/common/http';
+import { Component } from '@angular/core';
+import { ColDef, ColGroupDef, GridReadyEvent } from 'ag-grid-community';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import 'ag-grid-enterprise';
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: ` <ag-grid-angular
     style="width: 100%; height: 100%;"
     class="ag-theme-alpine"
     [columnDefs]="columnDefs"
     [defaultColDef]="defaultColDef"
     [autoGroupColumnDef]="autoGroupColumnDef"
-    [sideBar]="true"
     [pivotMode]="true"
     [suppressAggFuncInHeader]="true"
-    [postProcessSecondaryColDef]="postProcessSecondaryColDef"
-    [postProcessSecondaryColGroupDef]="postProcessSecondaryColGroupDef"
+    [processSecondaryColDef]="processSecondaryColDef"
+    [processSecondaryColGroupDef]="processSecondaryColGroupDef"
     [rowData]="rowData"
     (gridReady)="onGridReady($event)"
   ></ag-grid-angular>`,
 })
 export class AppComponent {
   public columnDefs: ColDef[] = [
-    { field: "country", rowGroup: true, enableRowGroup: true },
+    { field: 'country', rowGroup: true, enableRowGroup: true },
     {
-      field: "year",
+      field: 'year',
       pivot: true,
       enablePivot: true,
       pivotComparator: MyYearPivotComparator,
     },
-    { field: "date" },
-    { field: "sport" },
-    { field: "gold", aggFunc: "sum" },
-    { field: "silver", aggFunc: "sum" },
-    { field: "bronze", aggFunc: "sum" },
+    { field: 'date' },
+    { field: 'sport' },
+    { field: 'gold', aggFunc: 'sum' },
+    { field: 'silver', aggFunc: 'sum' },
+    { field: 'bronze', aggFunc: 'sum' },
   ];
   public defaultColDef: ColDef = {
     flex: 1,
@@ -51,30 +45,22 @@ export class AppComponent {
   public autoGroupColumnDef: ColDef = {
     minWidth: 250,
   };
-  public postProcessSecondaryColDef: (
-    params: PostProcessSecondaryColDefParams
-  ) => void = function (params: PostProcessSecondaryColDefParams) {
-    const colDef = params.colDef;
-    // make all the columns upper case
-    colDef.headerName = colDef.headerName!.toUpperCase();
-    // the pivot keys are the keys use for the pivot
-    // don't change these, but you can use them for your information
-    // console.log('Pivot Keys:');
-    // console.log(colDef.pivotKeys);
-    // // the value column is the value we are aggregating on
-    // console.log('Pivot Value Keys:');
-    // console.log(colDef.pivotValueColumn);
+  public processSecondaryColDef: (colDef: ColDef) => void = function (
+    colDef: ColDef
+  ) {
+    if (colDef.pivotValueColumn?.getId() === 'gold') {
+      colDef.headerName = colDef.headerName?.toUpperCase();
+    }
   };
-  public postProcessSecondaryColGroupDef: (
-    params: PostProcessSecondaryColGroupDefParams
-  ) => void = function (params: PostProcessSecondaryColGroupDefParams) {
-    const colGroupDef = params.colGroupDef;
-    // for fun, add a css class for 2002
-    if (colGroupDef.pivotKeys![0] === "2002") {
-      colGroupDef.headerClass = "color-background";
+  public processSecondaryColGroupDef: (
+    colGroupDef: ColGroupDef
+  ) => void = function (colGroupDef: ColGroupDef) {
+    // for fun, add a css class for 2010
+    if (colGroupDef.pivotKeys?.length && colGroupDef.pivotKeys[0] === '2010') {
+      colGroupDef.headerClass = 'color-background';
     }
     // put 'year' in front of each group
-    colGroupDef.headerName = "Year " + colGroupDef.headerName;
+    colGroupDef.headerName = 'Year ' + colGroupDef.headerName;
   };
   public rowData!: any[];
 
@@ -82,12 +68,12 @@ export class AppComponent {
 
   onGridReady(params: GridReadyEvent) {
     this.http
-      .get<any[]>("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      .get<any[]>('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .subscribe((data) => (this.rowData = data));
   }
 }
 
 function MyYearPivotComparator(a: string, b: string) {
-  var requiredOrder = ["2012", "2010", "2008", "2006", "2004", "2002", "2000"];
+  var requiredOrder = ['2012', '2010', '2008', '2006', '2004', '2002', '2000'];
   return requiredOrder.indexOf(a) - requiredOrder.indexOf(b);
 }

@@ -1,11 +1,11 @@
-import { ColDef, GridReadyEvent, SideBarDef } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { Component } from "@angular/core";
+import { ColDef, GridReadyEvent, SideBarDef } from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { Component } from '@angular/core';
 // Required feature modules are registered in app.module.ts
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<ag-grid-angular
     style="width: 100%; height: 100%;"
     class="ag-theme-alpine"
@@ -19,36 +19,36 @@ import { Component } from "@angular/core";
 export class AppComponent {
   public columnDefs: ColDef[] = [
     {
-      headerName: "Row #",
-      field: "rowNumber",
+      headerName: 'Row #',
+      field: 'rowNumber',
       width: 120,
     },
     {
-      field: "autoA",
+      field: 'autoA',
       width: 300,
       wrapText: true,
       autoHeight: true,
-      headerName: "A) Auto Height",
+      headerName: 'A) Auto Height',
     },
     {
       width: 300,
-      field: "autoB",
+      field: 'autoB',
       wrapText: true,
-      headerName: "B) Normal Height",
+      headerName: 'B) Normal Height',
     },
   ];
   public defaultColDef: ColDef = {
     sortable: true,
     resizable: true,
   };
-  public sideBar: SideBarDef | string | boolean | null = {
+  public sideBar: SideBarDef | string | string[] | boolean | null = {
     toolPanels: [
       {
-        id: "columns",
-        labelDefault: "Columns",
-        labelKey: "columns",
-        iconKey: "columns",
-        toolPanel: "agColumnsToolPanel",
+        id: 'columns',
+        labelDefault: 'Columns',
+        labelKey: 'columns',
+        iconKey: 'columns',
+        toolPanel: 'agColumnsToolPanel',
         toolPanelParams: {
           suppressRowGroups: true,
           suppressValues: true,
@@ -61,7 +61,7 @@ export class AppComponent {
         },
       },
     ],
-    defaultToolPanel: "columns",
+    defaultToolPanel: 'columns',
   };
   public rowData!: any[];
 

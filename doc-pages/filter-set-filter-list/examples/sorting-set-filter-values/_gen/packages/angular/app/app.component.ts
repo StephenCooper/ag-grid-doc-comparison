@@ -1,16 +1,16 @@
-import { Component } from "@angular/core";
+import { Component } from '@angular/core';
 import {
   ColDef,
   GridReadyEvent,
   IFiltersToolPanel,
   SideBarDef,
-} from "ag-grid-community";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
+} from 'ag-grid-community';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import 'ag-grid-enterprise';
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<ag-grid-angular
     style="width: 100%; height: 100%;"
     class="ag-theme-alpine"
@@ -24,14 +24,14 @@ import "ag-grid-enterprise";
 export class AppComponent {
   public columnDefs: ColDef[] = [
     {
-      headerName: "Age (No Comparator)",
-      field: "age",
-      filter: "agSetColumnFilter",
+      headerName: 'Age (No Comparator)',
+      field: 'age',
+      filter: 'agSetColumnFilter',
     },
     {
-      headerName: "Age (With Comparator)",
-      field: "age",
-      filter: "agSetColumnFilter",
+      headerName: 'Age (With Comparator)',
+      field: 'age',
+      filter: 'agSetColumnFilter',
       filterParams: filterParams,
     },
   ];
@@ -41,12 +41,12 @@ export class AppComponent {
     resizable: true,
   };
   public rowData: any[] | null = getRowData();
-  public sideBar: SideBarDef | string | boolean | null = "filters";
+  public sideBar: SideBarDef | string | string[] | boolean | null = 'filters';
 
   onGridReady(params: GridReadyEvent) {
-    (
-      params.api.getToolPanelInstance("filters") as any as IFiltersToolPanel
-    ).expandFilters();
+    ((params.api.getToolPanelInstance(
+      'filters'
+    ) as any) as IFiltersToolPanel).expandFilters();
   }
 }
 

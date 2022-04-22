@@ -27,19 +27,34 @@ In this section we demonstrate how you to cherry pick modules to provide the fea
 |
 | This is what our `package.json` file will look like based on the requirements above:
 |
-| `js | "dependencies": { | "@ag-grid-community/client-side-row-model": "~@AG_GRID_VERSION@", | "@ag-grid-enterprise/excel-export": "~@AG_GRID_VERSION@", | "@ag-grid-enterprise/menu": "~@AG_GRID_VERSION@" | | //...other dependencies... | } | `
+| ```js
+| "dependencies": {
+|     "@ag-grid-community/client-side-row-model": "~@AG_GRID_VERSION@",
+|     "@ag-grid-enterprise/excel-export": "~@AG_GRID_VERSION@",
+|     "@ag-grid-enterprise/menu": "~@AG_GRID_VERSION@"
+|
+|     //...other dependencies...
+| }
+| ```
 |
 | ### Registering Our Modules
 |
 | Now that these modules are available to us we need to import them within our application, and then register them with the Grid:
 |
-| `js | import { ModuleRegistry } from '@ag-grid-community/core'; | import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model'; | import { MenuModule } from '@ag-grid-enterprise/menu'; | import { ExcelExportModule } from '@ag-grid-enterprise/excel-export'; | | ModuleRegistry.registerModules([ClientSideRowModelModule, MenuModule, ExcelExportModule]); | `
+| ```js
+| import { ModuleRegistry } from '@ag-grid-community/core';
+| import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+| import { MenuModule } from '@ag-grid-enterprise/menu';
+| import { ExcelExportModule } from '@ag-grid-enterprise/excel-export';
+|
+| ModuleRegistry.registerModules([ClientSideRowModelModule, MenuModule, ExcelExportModule]);
+| ```
 |
 | [[note]]
 | | You do not need to register framework modules (ie. `@ag-grid-community/angular`, `@ag-grid-community/react`, `@ag-grid-community/vue` etc).
 |
 | And that's all that's required. Below is an example using the above configuration for your framework.
-|
+| 
 | ### Example
 | <grid-example title='Using Modules' name='module-grid' type='multi' options='{ "enterprise": true, "modules": ["clientside", "menu", "excel"], "showCode": true }'></grid-example>
 |
@@ -60,7 +75,15 @@ In this section we demonstrate how you to cherry pick modules to provide the fea
 |
 | This is what our `package.json` file will look like based on the requirements above:
 |
-| `js | "dependencies": { | "@ag-grid-community/client-side-row-model": "~@AG_GRID_VERSION@", | "@ag-grid-enterprise/excel-export": "~@AG_GRID_VERSION@", | "@ag-grid-enterprise/menu": "~@AG_GRID_VERSION@" | | //...other dependencies... | } | `
+| ```js
+| "dependencies": {
+|     "@ag-grid-community/client-side-row-model": "~@AG_GRID_VERSION@",
+|     "@ag-grid-enterprise/excel-export": "~@AG_GRID_VERSION@",
+|     "@ag-grid-enterprise/menu": "~@AG_GRID_VERSION@"
+|
+|     //...other dependencies...
+| }
+| ```
 |
 | ### Specify What Include in the Bundle
 |
@@ -71,13 +94,42 @@ In this section we demonstrate how you to cherry pick modules to provide the fea
 |
 | Let's create a file called `main.js` that will serve as our entry point:
 |
-| `js | export * from '@ag-grid-community/core'; | export * from '@ag-grid-enterprise/core'; | export * from '@ag-grid-community/client-side-row-model'; | export * from '@ag-grid-enterprise/menu'; | export * from '@ag-grid-enterprise/excel-export'; | | import { ModuleRegistry } from '@ag-grid-community/core'; | import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model'; | import { MenuModule } from '@ag-grid-enterprise/menu'; | import { ExcelExportModule } from '@ag-grid-enterprise/excel-export'; | | ModuleRegistry.register(ClientSideRowModelModule); | ModuleRegistry.register(MenuModule); | ModuleRegistry.register(ExcelExportModule); | | import '@ag-grid-community/core/dist/styles/ag-grid.css'; | import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css'; | `
+| ```js
+| export * from '@ag-grid-community/core';
+| export * from '@ag-grid-enterprise/core';
+| export * from '@ag-grid-community/client-side-row-model';
+| export * from '@ag-grid-enterprise/menu';
+| export * from '@ag-grid-enterprise/excel-export';
+|
+| import { ModuleRegistry } from '@ag-grid-community/core';
+| import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+| import { MenuModule } from '@ag-grid-enterprise/menu';
+| import { ExcelExportModule } from '@ag-grid-enterprise/excel-export';
+|
+| ModuleRegistry.register(ClientSideRowModelModule);
+| ModuleRegistry.register(MenuModule);
+| ModuleRegistry.register(ExcelExportModule);
+|
+| import '@ag-grid-community/core/dist/styles/ag-grid.css';
+| import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+| ```
 |
 | Note that we've included the Module Registration step here - we do this so that consumers of our UMD bundle won't have to. This is a convenience step but is recommended for UMD bundles.
 |
 | Next we'll create a Webpack configuration file:
 |
-| `js | module.exports = { | mode: 'production', | entry: path.resolve(__dirname, '../src/main.js'), | output: { | path: path.resolve(__dirname, '../dist'), | filename: 'bundle.umd.js', | library: ['agGrid'], | libraryTarget: 'umd' | } | } | `
+| ```js
+| module.exports = {
+|     mode: 'production',
+|     entry: path.resolve(__dirname, '../src/main.js'),
+|     output: {
+|         path: path.resolve(__dirname, '../dist'),
+|         filename: 'bundle.umd.js',
+|         library: ['agGrid'],
+|         libraryTarget: 'umd'
+|     }
+| }
+| ```
 |
 | There are two main items here:
 |
@@ -86,9 +138,48 @@ In this section we demonstrate how you to cherry pick modules to provide the fea
 |
 | You can then build your bundle as follows:
 |
-| `bash | webpack --config config/webpack.prod.js | `
+| ```bash
+| webpack --config config/webpack.prod.js
+| ```
 |
 | Which will result in a file called `dist/bundle.umd.js` being created, which we can then use as follows:
 |
-| `html | <!DOCTYPE html> | <html> | <head> | <script src="./dist/bundle.umd.js"></script> | | <script> | var columnDefs = [ | { field: 'make' }, | { field: 'model' }, | { field: 'price' } | ]; | | // specify the data | var rowData = [ | { make: 'Toyota', model: 'Celica', price: 35000 }, | { make: 'Ford', model: 'Mondeo', price: 32000 }, | { make: 'Porsche', model: 'Boxter', price: 72000 } | ]; | | // let the grid know which columns and what data to use | var gridOptions = { | columnDefs: columnDefs, | rowData: rowData | }; | | // setup the grid after the page has finished loading | document.addEventListener('DOMContentLoaded', function () { | var gridDiv = document.querySelector('#myGrid'); | new agGrid.Grid(gridDiv, gridOptions); | }); | </script> | </head> | <body> | <div id="myGrid" style="height: 200px; width:500px;" class="ag-theme-alpine"></div> | </body> | </html> | `
+| ```html
+| <!DOCTYPE html>
+| <html>
+| <head>
+|     <script src="./dist/bundle.umd.js"></script>
+|
+|     <script>
+|         var columnDefs = [
+|             { field: 'make' },
+|             { field: 'model' },
+|             { field: 'price' }
+|         ];
+|
+|         // specify the data
+|         var rowData = [
+|             { make: 'Toyota', model: 'Celica', price: 35000 },
+|             { make: 'Ford', model: 'Mondeo', price: 32000 },
+|             { make: 'Porsche', model: 'Boxster', price: 72000 }
+|         ];
+|
+|         // let the grid know which columns and what data to use
+|         var gridOptions = {
+|             columnDefs: columnDefs,
+|             rowData: rowData
+|         };
+|
+|         // setup the grid after the page has finished loading
+|         document.addEventListener('DOMContentLoaded', function () {
+|             var gridDiv = document.querySelector('#myGrid');
+|             new agGrid.Grid(gridDiv, gridOptions);
+|         });
+|     </script>
+| </head>
+| <body>
+|     <div id="myGrid" style="height: 200px; width:500px;" class="ag-theme-alpine"></div>
+| </body>
+| </html>
+| ```
 |

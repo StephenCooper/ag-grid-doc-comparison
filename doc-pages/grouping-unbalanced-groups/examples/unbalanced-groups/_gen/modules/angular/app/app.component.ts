@@ -3,14 +3,14 @@ import {
   GridReadyEvent,
   ICellRendererParams,
   ValueParserParams,
-} from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { Component } from "@angular/core";
+} from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { Component } from '@angular/core';
 // Required feature modules are registered in app.module.ts
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: ` <ag-grid-angular
     style="width: 100%; height: 98%;"
     class="ag-theme-alpine"
@@ -27,21 +27,21 @@ import { Component } from "@angular/core";
 })
 export class AppComponent {
   public columnDefs: ColDef[] = [
-    { field: "city", type: "dimension", cellRenderer: cityCellRenderer },
+    { field: 'city', type: 'dimension', cellRenderer: cityCellRenderer },
     {
-      field: "country",
-      type: "dimension",
+      field: 'country',
+      type: 'dimension',
       cellRenderer: countryCellRenderer,
       minWidth: 200,
     },
     {
-      field: "state",
-      type: "dimension",
+      field: 'state',
+      type: 'dimension',
       cellRenderer: stateCellRenderer,
       rowGroup: true,
     },
-    { field: "val1", type: "numberValue" },
-    { field: "val2", type: "numberValue" },
+    { field: 'val1', type: 'numberValue' },
+    { field: 'val2', type: 'numberValue' },
   ];
   public defaultColDef: ColDef = {
     flex: 1,
@@ -49,7 +49,7 @@ export class AppComponent {
     resizable: true,
   };
   public autoGroupColumnDef: ColDef = {
-    field: "city",
+    field: 'city',
     minWidth: 200,
   };
   public columnTypes: {
@@ -57,7 +57,7 @@ export class AppComponent {
   } = {
     numberValue: {
       enableValue: true,
-      aggFunc: "sum",
+      aggFunc: 'sum',
       editable: true,
       valueParser: numberParser,
     },
@@ -68,45 +68,45 @@ export class AppComponent {
   };
   public rowData: any[] | null = getData();
   public groupDefaultExpanded = -1;
-  public rowGroupPanelShow = "always";
+  public rowGroupPanelShow = 'always';
 
   onGridReady(params: GridReadyEvent) {}
 }
 
 const COUNTRY_CODES: Record<string, string> = {
-  Ireland: "ie",
-  "United Kingdom": "gb",
-  USA: "us",
+  Ireland: 'ie',
+  'United Kingdom': 'gb',
+  USA: 'us',
 };
 function numberParser(params: ValueParserParams) {
   return parseInt(params.newValue);
 }
 function countryCellRenderer(params: ICellRendererParams) {
   if (params.value === undefined || params.value === null) {
-    return "";
+    return '';
   } else {
     const flag =
       '<img border="0" width="15" height="10" src="https://flagcdn.com/h20/' +
       COUNTRY_CODES[params.value] +
       '.png">';
-    return flag + " " + params.value;
+    return flag + ' ' + params.value;
   }
 }
 function stateCellRenderer(params: ICellRendererParams) {
   if (params.value === undefined || params.value === null) {
-    return "";
+    return '';
   } else {
     const flag =
       '<img border="0" width="15" height="10" src="https://www.ag-grid.com/example-assets/gold-star.png">';
-    return flag + " " + params.value;
+    return flag + ' ' + params.value;
   }
 }
 function cityCellRenderer(params: ICellRendererParams) {
   if (params.value === undefined || params.value === null) {
-    return "";
+    return '';
   } else {
     const flag =
       '<img border="0" width="15" height="10" src="https://www.ag-grid.com/example-assets/weather/sun.png">';
-    return flag + " " + params.value;
+    return flag + ' ' + params.value;
   }
 }

@@ -1,8 +1,10 @@
-"use strict";
+'use strict';
 
-import { AgChartsReact } from "ag-charts-react";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { cloneDeep } from 'lodash';
+import { render } from 'react-dom';
+import * as agCharts from 'ag-charts-community';
+import { AgChartsReact } from 'ag-charts-react';
 
 class ChartExample extends Component {
   constructor(props) {
@@ -11,17 +13,17 @@ class ChartExample extends Component {
     this.state = {
       options: {
         title: {
-          text: "Race results",
+          text: 'Race results',
         },
         data: getData(),
         series: [
           {
-            type: "histogram",
-            aggregation: "mean",
-            xKey: "age",
-            xName: "Participant Age",
-            yKey: "time",
-            yName: "Race time",
+            type: 'histogram',
+            aggregation: 'mean',
+            xKey: 'age',
+            xName: 'Participant Age',
+            yKey: 'time',
+            yName: 'Race time',
           },
         ],
         legend: {
@@ -29,14 +31,14 @@ class ChartExample extends Component {
         },
         axes: [
           {
-            type: "number",
-            position: "bottom",
-            title: { text: "Age band (years)" },
+            type: 'number',
+            position: 'bottom',
+            title: { text: 'Age band (years)' },
           },
           {
-            type: "number",
-            position: "left",
-            title: { text: "Mean race time (seconds)" },
+            type: 'number',
+            position: 'left',
+            title: { text: 'Mean race time (seconds)' },
           },
         ],
       },
@@ -50,4 +52,4 @@ class ChartExample extends Component {
   }
 }
 
-render(<ChartExample />, document.querySelector("#root"));
+render(<ChartExample />, document.querySelector('#root'));

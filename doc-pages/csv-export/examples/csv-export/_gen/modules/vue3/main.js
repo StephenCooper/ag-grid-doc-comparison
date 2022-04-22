@@ -1,10 +1,10 @@
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { CsvExportModule } from "@ag-grid-community/csv-export";
-import { AgGridVue } from "@ag-grid-community/vue3";
-import { createApp } from "vue";
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { CsvExportModule } from '@ag-grid-community/csv-export';
+import { AgGridVue } from '@ag-grid-community/vue3';
+import { createApp } from 'vue';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([ClientSideRowModelModule, CsvExportModule]);
@@ -36,11 +36,11 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
-      columnDefs: [{ field: "make" }, { field: "model" }, { field: "price" }],
+      columnDefs: [{ field: 'make' }, { field: 'model' }, { field: 'price' }],
       gridApi: null,
       columnApi: null,
       defaultColDef: {
@@ -56,9 +56,9 @@ const VueExample = {
   created() {
     this.popupParent = document.body;
     this.rowData = [
-      { make: "Toyota", model: "Celica", price: 35000 },
-      { make: "Ford", model: "Mondeo", price: 32000 },
-      { make: "Porsche", model: "Boxter", price: 72000 },
+      { make: 'Toyota', model: 'Celica', price: 35000 },
+      { make: 'Ford', model: 'Mondeo', price: 32000 },
+      { make: 'Porsche', model: 'Boxster', price: 72000 },
     ];
   },
   methods: {
@@ -66,7 +66,7 @@ const VueExample = {
       this.gridApi.exportDataAsCsv();
     },
     onBtnUpdate() {
-      document.querySelector("#csvResult").value = this.gridApi.getDataAsCsv();
+      document.querySelector('#csvResult').value = this.gridApi.getDataAsCsv();
     },
     onGridReady(params) {
       this.gridApi = params.api;
@@ -75,4 +75,4 @@ const VueExample = {
   },
 };
 
-createApp(VueExample).mount("#app");
+createApp(VueExample).mount('#app');

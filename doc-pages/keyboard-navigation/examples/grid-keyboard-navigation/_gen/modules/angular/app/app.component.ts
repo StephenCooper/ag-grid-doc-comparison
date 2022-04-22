@@ -3,15 +3,15 @@ import {
   ColGroupDef,
   GridReadyEvent,
   SideBarDef,
-} from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { HttpClient } from "@angular/common/http";
-import { Component } from "@angular/core";
+} from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { HttpClient } from '@angular/common/http';
+import { Component } from '@angular/core';
 // Required feature modules are registered in app.module.ts
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<ag-grid-angular
     style="width: 100%; height: 100%;"
     class="ag-theme-alpine"
@@ -27,7 +27,7 @@ import { Component } from "@angular/core";
 export class AppComponent {
   public columnDefs: (ColDef | ColGroupDef)[] = [
     {
-      headerName: " ",
+      headerName: ' ',
       headerCheckboxSelection: true,
       checkboxSelection: true,
       floatingFilter: false,
@@ -43,49 +43,49 @@ export class AppComponent {
       suppressColumnsToolPanel: true,
     },
     {
-      headerName: "Participant",
+      headerName: 'Participant',
       children: [
-        { field: "athlete", minWidth: 170 },
-        { field: "country", minWidth: 150 },
+        { field: 'athlete', minWidth: 170 },
+        { field: 'country', minWidth: 150 },
       ],
     },
-    { field: "sport" },
+    { field: 'sport' },
     {
-      headerName: "Medals",
+      headerName: 'Medals',
       children: [
         {
-          field: "total",
-          columnGroupShow: "closed",
-          filter: "agNumberColumnFilter",
+          field: 'total',
+          columnGroupShow: 'closed',
+          filter: 'agNumberColumnFilter',
           width: 120,
           flex: 0,
         },
         {
-          field: "gold",
-          columnGroupShow: "open",
-          filter: "agNumberColumnFilter",
+          field: 'gold',
+          columnGroupShow: 'open',
+          filter: 'agNumberColumnFilter',
           width: 100,
           flex: 0,
         },
         {
-          field: "silver",
-          columnGroupShow: "open",
-          filter: "agNumberColumnFilter",
+          field: 'silver',
+          columnGroupShow: 'open',
+          filter: 'agNumberColumnFilter',
           width: 100,
           flex: 0,
         },
         {
-          field: "bronze",
-          columnGroupShow: "open",
-          filter: "agNumberColumnFilter",
+          field: 'bronze',
+          columnGroupShow: 'open',
+          filter: 'agNumberColumnFilter',
           width: 100,
           flex: 0,
         },
       ],
     },
-    { field: "year", filter: "agNumberColumnFilter" },
+    { field: 'year', filter: 'agNumberColumnFilter' },
   ];
-  public rowSelection = "multiple";
+  public rowSelection = 'multiple';
   public defaultColDef: ColDef = {
     editable: true,
     sortable: true,
@@ -95,9 +95,9 @@ export class AppComponent {
     floatingFilter: true,
     flex: 1,
   };
-  public sideBar: SideBarDef | string | boolean | null = {
-    toolPanels: ["columns", "filters"],
-    defaultToolPanel: "",
+  public sideBar: SideBarDef | string | string[] | boolean | null = {
+    toolPanels: ['columns', 'filters'],
+    defaultToolPanel: '',
   };
   public rowData!: any[];
 
@@ -105,7 +105,7 @@ export class AppComponent {
 
   onGridReady(params: GridReadyEvent) {
     this.http
-      .get<any[]>("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      .get<any[]>('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .subscribe((data) => (this.rowData = data));
   }
 }

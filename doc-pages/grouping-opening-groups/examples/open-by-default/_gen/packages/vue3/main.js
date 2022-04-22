@@ -1,8 +1,8 @@
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
-import { AgGridVue } from "ag-grid-vue3";
-import { createApp } from "vue";
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import 'ag-grid-enterprise';
+import { AgGridVue } from 'ag-grid-vue3';
+import { createApp } from 'vue';
 
 const VueExample = {
   template: `
@@ -21,16 +21,16 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
-        { field: "country", rowGroup: true },
-        { field: "year", rowGroup: true },
-        { field: "sport" },
-        { field: "athlete" },
-        { field: "total" },
+        { field: 'country', rowGroup: true },
+        { field: 'year', rowGroup: true },
+        { field: 'sport' },
+        { field: 'athlete' },
+        { field: 'total' },
       ],
       gridApi: null,
       columnApi: null,
@@ -52,8 +52,8 @@ const VueExample = {
     };
     this.isGroupOpenByDefault = (params) => {
       return (
-        (params.field === "year" && params.key === "2004") ||
-        (params.field === "country" && params.key === "United States")
+        (params.field === 'year' && params.key === '2004') ||
+        (params.field === 'country' && params.key === 'United States')
       );
     };
   },
@@ -64,11 +64,11 @@ const VueExample = {
 
       const updateData = (data) => params.api.setRowData(data);
 
-      fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
         .then((resp) => resp.json())
         .then((data) => updateData(data));
     },
   },
 };
 
-createApp(VueExample).mount("#app");
+createApp(VueExample).mount('#app');

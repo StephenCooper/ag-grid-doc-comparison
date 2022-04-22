@@ -1,7 +1,7 @@
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import { AgGridVue } from "ag-grid-vue";
-import Vue from "vue";
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import { AgGridVue } from 'ag-grid-vue';
+import Vue from 'vue';
 
 const VueExample = {
   template: `
@@ -17,22 +17,22 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
         {
-          field: "sale",
-          headerName: "Sale ($)",
-          filter: "agNumberColumnFilter",
+          field: 'sale',
+          headerName: 'Sale ($)',
+          filter: 'agNumberColumnFilter',
           floatingFilter: true,
           valueFormatter: numberValueFormatter,
         },
         {
-          field: "sale",
-          headerName: "Sale",
-          filter: "agNumberColumnFilter",
+          field: 'sale',
+          headerName: 'Sale',
+          filter: 'agNumberColumnFilter',
           floatingFilter: true,
           filterParams: saleFilterParams,
           valueFormatter: saleValueFormatter,
@@ -63,25 +63,25 @@ var numberValueFormatter = function (params) {
 };
 
 var saleFilterParams = {
-  allowedCharPattern: "\\d\\-\\,\\$",
+  allowedCharPattern: '\\d\\-\\,\\$',
   numberParser: function (text) {
     return text == null
       ? null
-      : parseFloat(text.replace(",", ".").replace("$", ""));
+      : parseFloat(text.replace(',', '.').replace('$', ''));
   },
 };
 
 var saleValueFormatter = function (params) {
-  var formatted = params.value.toFixed(2).replace(".", ",");
-  if (formatted.indexOf("-") === 0) {
-    return "-$" + formatted.slice(1);
+  var formatted = params.value.toFixed(2).replace('.', ',');
+  if (formatted.indexOf('-') === 0) {
+    return '-$' + formatted.slice(1);
   }
-  return "$" + formatted;
+  return '$' + formatted;
 };
 
 new Vue({
-  el: "#app",
+  el: '#app',
   components: {
-    "my-component": VueExample,
+    'my-component': VueExample,
   },
 });

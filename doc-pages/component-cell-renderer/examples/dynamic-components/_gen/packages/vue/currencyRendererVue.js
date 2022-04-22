@@ -7,7 +7,7 @@ export default {
   },
   computed: {
     formattedValue: function () {
-      return this.formatValueToCurrency("EUR", this.params.value);
+      return this.formatValueToCurrency('EUR', this.params.value);
     },
   },
   methods: {

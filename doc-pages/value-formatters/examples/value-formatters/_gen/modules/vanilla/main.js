@@ -1,26 +1,26 @@
 const gridOptions = {
   columnDefs: [
-    { headerName: "A", field: "a" },
-    { headerName: "B", field: "b" },
-    { headerName: "£A", field: "a", valueFormatter: currencyFormatter },
-    { headerName: "£B", field: "b", valueFormatter: currencyFormatter },
-    { headerName: "(A)", field: "a", valueFormatter: bracketsFormatter },
-    { headerName: "(B)", field: "b", valueFormatter: bracketsFormatter },
+    { headerName: 'A', field: 'a' },
+    { headerName: 'B', field: 'b' },
+    { headerName: '£A', field: 'a', valueFormatter: currencyFormatter },
+    { headerName: '£B', field: 'b', valueFormatter: currencyFormatter },
+    { headerName: '(A)', field: 'a', valueFormatter: bracketsFormatter },
+    { headerName: '(B)', field: 'b', valueFormatter: bracketsFormatter },
   ],
   defaultColDef: {
     flex: 1,
-    cellClass: "number-cell",
+    cellClass: 'number-cell',
     resizable: true,
   },
   rowData: createRowData(),
 };
 
 function bracketsFormatter(params) {
-  return "(" + params.value + ")";
+  return '(' + params.value + ')';
 }
 
 function currencyFormatter(params) {
-  return "£" + formatNumber(params.value);
+  return '£' + formatNumber(params.value);
 }
 
 function formatNumber(number) {
@@ -28,7 +28,7 @@ function formatNumber(number) {
   // i pulled this from stack overflow, i have no idea how it works
   return Math.floor(number)
     .toString()
-    .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
+    .replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
 }
 
 function createRowData() {
@@ -45,7 +45,7 @@ function createRowData() {
 }
 
 // setup the grid after the page has finished loading
-document.addEventListener("DOMContentLoaded", function () {
-  var gridDiv = document.querySelector("#myGrid");
+document.addEventListener('DOMContentLoaded', function () {
+  var gridDiv = document.querySelector('#myGrid');
   new agGrid.Grid(gridDiv, gridOptions);
 });

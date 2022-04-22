@@ -77,7 +77,6 @@ sparklineOptions: {
 </div>
 
 The given `fill` string can be in one of the following formats:
-
 - `#rgb` - Short Hex Code
 - `#rrggbb` - Hex Code
 - `rgb(r, g, b)` - RGB
@@ -114,7 +113,7 @@ Here is the result of the configuration shown in the above snippet.
 </div>
 
 [[note]]
-| If `strokeWidth` is set to a value greater than `1`, it is recommended to set the axis line `stroke` to the same value in order to preserve the alignment of the bars with the x-axis line.
+| If `strokeWidth` is set to a value greater than `1`, it is recommended to set the axis line `strokeWidth` to the same value in order to preserve the alignment of the bars with the x-axis line.
 
 ## Bar Padding Options
 
@@ -217,6 +216,7 @@ sparklineOptions: {
     <image-caption src="resources/default.png" alt="Bar default" width="250px" constrained="true">Default</image-caption>
     <image-caption src="resources/custom-label-styles.png" alt="Bar label text style customisation" width="250px" constrained="true">Custom label text styles</image-caption>
 </div>
+
 
 The position of the labels can be specified by setting the `placement` property in `label` options. By default, the labels are positioned at the end of the bars on the inside, i.e. `placement` is set to `insideEnd `. The snippet below shows how the positioning of the label can be modified:
 
@@ -328,6 +328,7 @@ More advanced customisations are discussed separately in the following sections:
 ### SparklineLabelOptions
 
 <api-documentation source='sparklines-bar-customisation/resources/bar-sparkline-api.json' section='SparklineLabelOptions'></api-documentation>
+
 
 ## Next Up
 

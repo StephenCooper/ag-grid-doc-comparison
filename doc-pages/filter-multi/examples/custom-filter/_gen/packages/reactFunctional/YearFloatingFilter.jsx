@@ -1,4 +1,4 @@
-import React, { forwardRef, useImperativeHandle, useState } from "react";
+import React, { forwardRef, useState, useImperativeHandle } from 'react';
 
 export default forwardRef(({ parentFilterInstance }, ref) => {
   const [isActive, setIsActive] = useState(false);
@@ -23,7 +23,7 @@ export default forwardRef(({ parentFilterInstance }, ref) => {
           type="radio"
           checked={!isActive}
           onChange={() => toggleFilter(false)}
-        />{" "}
+        />{' '}
         All
       </label>
       <label>
@@ -31,7 +31,7 @@ export default forwardRef(({ parentFilterInstance }, ref) => {
           type="radio"
           checked={isActive}
           onChange={() => toggleFilter(true)}
-        />{" "}
+        />{' '}
         After 2004
       </label>
     </div>

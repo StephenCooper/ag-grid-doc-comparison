@@ -1,14 +1,14 @@
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine-dark.css";
-import { AgGridVue } from "@ag-grid-community/vue3";
-import { ColumnsToolPanelModule } from "@ag-grid-enterprise/column-tool-panel";
-import { FiltersToolPanelModule } from "@ag-grid-enterprise/filter-tool-panel";
-import { MenuModule } from "@ag-grid-enterprise/menu";
-import { RowGroupingModule } from "@ag-grid-enterprise/row-grouping";
-import { ServerSideRowModelModule } from "@ag-grid-enterprise/server-side-row-model";
-import { SetFilterModule } from "@ag-grid-enterprise/set-filter";
-import { createApp } from "vue";
+import { ModuleRegistry } from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine-dark.css';
+import { AgGridVue } from '@ag-grid-community/vue3';
+import { ColumnsToolPanelModule } from '@ag-grid-enterprise/column-tool-panel';
+import { FiltersToolPanelModule } from '@ag-grid-enterprise/filter-tool-panel';
+import { MenuModule } from '@ag-grid-enterprise/menu';
+import { RowGroupingModule } from '@ag-grid-enterprise/row-grouping';
+import { ServerSideRowModelModule } from '@ag-grid-enterprise/server-side-row-model';
+import { SetFilterModule } from '@ag-grid-enterprise/set-filter';
+import { createApp } from 'vue';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([
@@ -30,7 +30,7 @@ class CustomAgeFilter {
   }
 
   init(params) {
-    this.eGui = document.createElement("div");
+    this.eGui = document.createElement('div');
     this.eGui.innerHTML = `<div>  
           <label>    
               <input type="radio" name="ageFilterValue" ref="btAll" checked/> All  
@@ -50,13 +50,13 @@ class CustomAgeFilter {
 
     this.eGui
       .querySelector('[ref="btAll"]')
-      .addEventListener("change", this.onSelection.bind(this, null));
+      .addEventListener('change', this.onSelection.bind(this, null));
     this.eGui
       .querySelector('[ref="bt20"]')
-      .addEventListener("change", this.onSelection.bind(this, 20));
+      .addEventListener('change', this.onSelection.bind(this, 20));
     this.eGui
       .querySelector('[ref="bt22"]')
-      .addEventListener("change", this.onSelection.bind(this, 22));
+      .addEventListener('change', this.onSelection.bind(this, 22));
   }
 
   onSelection(value) {
@@ -97,7 +97,7 @@ class CustomAgeFilter {
       // return something that your server side can work with.
       return {
         filter: this.filterValue,
-        type: "equals",
+        type: 'equals',
       };
     }
   }
@@ -144,47 +144,47 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
         {
-          field: "athlete",
+          field: 'athlete',
           enableRowGroup: true,
           enablePivot: true,
           filter: false,
         },
-        { field: "age", enableRowGroup: true, filter: CustomAgeFilter },
+        { field: 'age', enableRowGroup: true, filter: CustomAgeFilter },
         {
-          field: "country",
+          field: 'country',
           enableRowGroup: true,
           enablePivot: true,
           rowGroup: true,
           hide: true,
-          filter: "agSetColumnFilter",
+          filter: 'agSetColumnFilter',
           filterParams: { values: countries },
         },
         {
-          field: "year",
+          field: 'year',
           enableRowGroup: true,
           enablePivot: true,
           rowGroup: true,
           hide: true,
-          filter: "agSetColumnFilter",
+          filter: 'agSetColumnFilter',
           filterParams: {
-            values: ["2000", "2002", "2004", "2006", "2008", "2010", "2012"],
+            values: ['2000', '2002', '2004', '2006', '2008', '2010', '2012'],
           },
         },
         {
-          field: "sport",
+          field: 'sport',
           enableRowGroup: true,
           enablePivot: true,
           filter: false,
         },
-        { field: "gold", aggFunc: "sum", filter: false, enableValue: true },
-        { field: "silver", aggFunc: "sum", filter: false, enableValue: true },
-        { field: "bronze", aggFunc: "sum", filter: false, enableValue: true },
+        { field: 'gold', aggFunc: 'sum', filter: false, enableValue: true },
+        { field: 'silver', aggFunc: 'sum', filter: false, enableValue: true },
+        { field: 'bronze', aggFunc: 'sum', filter: false, enableValue: true },
       ],
       gridApi: null,
       columnApi: null,
@@ -194,7 +194,7 @@ const VueExample = {
         // restrict what aggregation functions the columns can have,
         // include a custom function 'random' that just returns a
         // random number
-        allowedAggFuncs: ["sum", "min", "max", "random"],
+        allowedAggFuncs: ['sum', 'min', 'max', 'random'],
         sortable: true,
         resizable: true,
         filter: true,
@@ -213,10 +213,10 @@ const VueExample = {
     this.autoGroupColumnDef = {
       width: 180,
     };
-    this.rowModelType = "serverSide";
-    this.serverSideStoreType = "partial";
-    this.rowGroupPanelShow = "always";
-    this.pivotPanelShow = "always";
+    this.rowModelType = 'serverSide';
+    this.serverSideStoreType = 'partial';
+    this.rowGroupPanelShow = 'always';
+    this.pivotPanelShow = 'always';
     this.maxConcurrentDatasourceRequests = 1;
     this.cacheBlockSize = 100;
     this.maxBlocksInCache = 2;
@@ -235,7 +235,7 @@ const VueExample = {
         params.api.setServerSideDatasource(datasource);
       };
 
-      fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
         .then((resp) => resp.json())
         .then((data) => updateData(data));
     },
@@ -244,4 +244,4 @@ const VueExample = {
 
 const countries = getCountries();
 
-createApp(VueExample).mount("#app");
+createApp(VueExample).mount('#app');

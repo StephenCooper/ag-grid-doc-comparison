@@ -1,14 +1,14 @@
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import { AgGridVue } from "ag-grid-vue";
-import Vue from "vue";
-import FullWidthCellRenderer from "./fullWidthCellRendererVue.js";
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import { AgGridVue } from 'ag-grid-vue';
+import Vue from 'vue';
+import FullWidthCellRenderer from './fullWidthCellRendererVue.js';
 
 class CountryCellRenderer {
   init(params) {
     const flag = `<img border="0" width="15" height="10" src="https://www.ag-grid.com/example-assets/flags/${params.data.code}.png">`;
 
-    const eTemp = document.createElement("div");
+    const eTemp = document.createElement('div');
     eTemp.innerHTML = `<span style="cursor: default;">${flag} ${params.value}</span>`;
     this.eGui = eTemp.firstElementChild;
   }
@@ -39,15 +39,15 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
     FullWidthCellRenderer,
   },
   data: function () {
     return {
       columnDefs: [
-        { field: "name", cellRenderer: CountryCellRenderer },
-        { field: "continent" },
-        { field: "language" },
+        { field: 'name', cellRenderer: CountryCellRenderer },
+        { field: 'continent' },
+        { field: 'language' },
       ],
       gridApi: null,
       columnApi: null,
@@ -74,7 +74,7 @@ const VueExample = {
     this.isFullWidthRow = (params) => {
       return isFullWidth(params.rowNode.data);
     };
-    this.fullWidthCellRenderer = "FullWidthCellRenderer";
+    this.fullWidthCellRenderer = 'FullWidthCellRenderer';
   },
   methods: {
     onGridReady(params) {
@@ -86,12 +86,12 @@ const VueExample = {
 
 window.isFullWidth = function isFullWidth(data) {
   // return true when country is Peru, France or Italy
-  return ["Peru", "France", "Italy"].indexOf(data.name) >= 0;
+  return ['Peru', 'France', 'Italy'].indexOf(data.name) >= 0;
 };
 
 new Vue({
-  el: "#app",
+  el: '#app',
   components: {
-    "my-component": VueExample,
+    'my-component': VueExample,
   },
 });

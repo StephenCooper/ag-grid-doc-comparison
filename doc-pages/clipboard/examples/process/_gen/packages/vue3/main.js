@@ -1,8 +1,8 @@
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
-import { AgGridVue } from "ag-grid-vue3";
-import { createApp } from "vue";
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import 'ag-grid-enterprise';
+import { AgGridVue } from 'ag-grid-vue3';
+import { createApp } from 'vue';
 
 const VueExample = {
   template: `
@@ -24,29 +24,29 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
         {
-          headerName: "Participants",
+          headerName: 'Participants',
           children: [
-            { field: "athlete", headerName: "Athlete Name", minWidth: 200 },
-            { field: "age" },
-            { field: "country", minWidth: 150 },
+            { field: 'athlete', headerName: 'Athlete Name', minWidth: 200 },
+            { field: 'age' },
+            { field: 'country', minWidth: 150 },
           ],
         },
         {
-          headerName: "Olympic Games",
+          headerName: 'Olympic Games',
           children: [
-            { field: "year" },
-            { field: "date", minWidth: 150 },
-            { field: "sport", minWidth: 150 },
-            { field: "gold" },
-            { field: "silver", suppressPaste: true },
-            { field: "bronze" },
-            { field: "total" },
+            { field: 'year' },
+            { field: 'date', minWidth: 150 },
+            { field: 'sport', minWidth: 150 },
+            { field: 'gold' },
+            { field: 'silver', suppressPaste: true },
+            { field: 'bronze' },
+            { field: 'total' },
           ],
         },
       ],
@@ -63,7 +63,7 @@ const VueExample = {
     };
   },
   created() {
-    this.rowSelection = "multiple";
+    this.rowSelection = 'multiple';
   },
   methods: {
     onGridReady(params) {
@@ -72,33 +72,33 @@ const VueExample = {
 
       const updateData = (data) => params.api.setRowData(data);
 
-      fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
         .then((resp) => resp.json())
         .then((data) => updateData(data));
     },
     processCellForClipboard(params) {
-      return "C-" + params.value;
+      return 'C-' + params.value;
     },
     processHeaderForClipboard(params) {
       const colDef = params.column.getColDef();
-      let headerName = colDef.headerName || colDef.field || "";
-      if (colDef.headerName !== "") {
+      let headerName = colDef.headerName || colDef.field || '';
+      if (colDef.headerName !== '') {
         headerName = headerName.charAt(0).toUpperCase() + headerName.slice(1);
       }
-      return "H-" + headerName;
+      return 'H-' + headerName;
     },
     processGroupHeaderForClipboard(params) {
       const colGroupDef = params.columnGroup.getColGroupDef() || {};
-      const headerName = colGroupDef.headerName || "";
-      if (headerName === "") {
-        return "";
+      const headerName = colGroupDef.headerName || '';
+      if (headerName === '') {
+        return '';
       }
-      return "GH-" + headerName;
+      return 'GH-' + headerName;
     },
     processCellFromClipboard(params) {
-      return "Z-" + params.value;
+      return 'Z-' + params.value;
     },
   },
 };
 
-createApp(VueExample).mount("#app");
+createApp(VueExample).mount('#app');

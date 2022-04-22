@@ -1,24 +1,24 @@
-import { Grid, GridOptions } from "ag-grid-community";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine-dark.css";
+import { Grid, GridOptions, RowClassParams, RowStyle } from 'ag-grid-community';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine-dark.css';
 
 var colorIndex = 0;
-var colors = ["#000000", "#000066", "#006600", "#660000"];
+var colors = ['#000000', '#000066', '#006600', '#660000'];
 
 const gridOptions: GridOptions = {
   columnDefs: [
-    { headerName: "A", field: "a" },
-    { headerName: "B", field: "b" },
-    { headerName: "C", field: "c" },
-    { headerName: "D", field: "d" },
-    { headerName: "E", field: "e" },
-    { headerName: "F", field: "f" },
+    { headerName: 'A', field: 'a' },
+    { headerName: 'B', field: 'b' },
+    { headerName: 'C', field: 'c' },
+    { headerName: 'D', field: 'd' },
+    { headerName: 'E', field: 'e' },
+    { headerName: 'F', field: 'f' },
   ],
   defaultColDef: {
     flex: 1,
   },
   rowData: createData(12),
-  getRowStyle: function () {
+  getRowStyle: function (params: RowClassParams): RowStyle | undefined {
     return {
       backgroundColor: colors[colorIndex],
     };
@@ -63,10 +63,10 @@ function redrawTopRows() {
 }
 
 // setup the grid after the page has finished loading
-var gridDiv = document.querySelector<HTMLElement>("#myGrid")!;
+var gridDiv = document.querySelector<HTMLElement>('#myGrid')!;
 new Grid(gridDiv, gridOptions);
 
-if (typeof window !== "undefined") {
+if (typeof window !== 'undefined') {
   // Attach external event handlers to window so they can be called from index.html
   (<any>window).redrawAllRows = redrawAllRows;
   (<any>window).redrawTopRows = redrawTopRows;

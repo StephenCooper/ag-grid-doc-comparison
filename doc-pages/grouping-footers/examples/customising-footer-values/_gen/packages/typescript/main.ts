@@ -1,15 +1,15 @@
-import { Grid, GridOptions } from "ag-grid-community";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
+import { Grid, GridOptions } from 'ag-grid-community';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import 'ag-grid-enterprise';
 
 const gridOptions: GridOptions = {
   columnDefs: [
-    { field: "country", rowGroup: true, hide: true },
-    { field: "year", rowGroup: true, hide: true },
-    { field: "gold", aggFunc: "sum" },
-    { field: "silver", aggFunc: "sum" },
-    { field: "bronze", aggFunc: "sum" },
+    { field: 'country', rowGroup: true, hide: true },
+    { field: 'year', rowGroup: true, hide: true },
+    { field: 'gold', aggFunc: 'sum' },
+    { field: 'silver', aggFunc: 'sum' },
+    { field: 'bronze', aggFunc: 'sum' },
   ],
   defaultColDef: {
     flex: 1,
@@ -23,7 +23,7 @@ const gridOptions: GridOptions = {
       footerValueGetter: (params: any) => {
         const isRootLevel = params.node.level === -1;
         if (isRootLevel) {
-          return "Grand Total";
+          return 'Grand Total';
         }
         return `Sub Total (${params.value})`;
       },
@@ -36,5 +36,5 @@ const gridOptions: GridOptions = {
 };
 
 // setup the grid after the page has finished loading
-var gridDiv = document.querySelector<HTMLElement>("#myGrid")!;
+var gridDiv = document.querySelector<HTMLElement>('#myGrid')!;
 new Grid(gridDiv, gridOptions);

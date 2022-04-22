@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React, { useMemo } from 'react';
 
 export default (props) => {
   const data = useMemo(
@@ -6,7 +6,7 @@ export default (props) => {
     []
   );
 
-  const valueToDisplay = props.value.value ? props.value.value : "- Missing -";
+  const valueToDisplay = props.value.value ? props.value.value : '- Missing -';
   return (
     <div className="custom-tooltip">
       <p>

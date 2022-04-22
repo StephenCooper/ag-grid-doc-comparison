@@ -1,7 +1,7 @@
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import { AgGridVue } from "ag-grid-vue3";
-import { createApp } from "vue";
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import { AgGridVue } from 'ag-grid-vue3';
+import { createApp } from 'vue';
 
 const VueExample = {
   template: `
@@ -21,26 +21,26 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
-        { field: "athlete" },
-        { field: "sport" },
-        { field: "age" },
-        { field: "year" },
-        { field: "date" },
-        { field: "gold" },
-        { field: "silver" },
-        { field: "bronze" },
-        { field: "total" },
+        { field: 'athlete' },
+        { field: 'sport' },
+        { field: 'age' },
+        { field: 'year' },
+        { field: 'date' },
+        { field: 'gold' },
+        { field: 'silver' },
+        { field: 'bronze' },
+        { field: 'total' },
       ],
       gridApi: null,
       columnApi: null,
       defaultColDef: {
         valueFormatter: (p) => {
-          console.log("formatter called " + times + " times");
+          console.log('formatter called ' + times + ' times');
           times++;
           return p.value;
         },
@@ -56,7 +56,7 @@ const VueExample = {
 
       const updateData = (data) => params.api.setRowData(data.slice(0, 100));
 
-      fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
         .then((resp) => resp.json())
         .then((data) => updateData(data));
     },
@@ -65,4 +65,4 @@ const VueExample = {
 
 let times = 1;
 
-createApp(VueExample).mount("#app");
+createApp(VueExample).mount('#app');

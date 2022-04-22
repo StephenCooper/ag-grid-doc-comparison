@@ -2,15 +2,15 @@ import {
   ColDef,
   FillOperationParams,
   GridReadyEvent,
-} from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { HttpClient } from "@angular/common/http";
-import { Component } from "@angular/core";
+} from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { HttpClient } from '@angular/common/http';
+import { Component } from '@angular/core';
 // Required feature modules are registered in app.module.ts
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<ag-grid-angular
     style="width: 100%; height: 100%;"
     class="ag-theme-alpine"
@@ -26,12 +26,12 @@ import { Component } from "@angular/core";
 })
 export class AppComponent {
   public columnDefs: ColDef[] = [
-    { field: "athlete", minWidth: 150 },
-    { field: "age", maxWidth: 90 },
-    { field: "country", minWidth: 150 },
-    { field: "year", maxWidth: 90 },
-    { field: "date", minWidth: 150 },
-    { field: "sport", minWidth: 150 },
+    { field: 'athlete', minWidth: 150 },
+    { field: 'age', maxWidth: 90 },
+    { field: 'country', minWidth: 150 },
+    { field: 'year', maxWidth: 90 },
+    { field: 'date', minWidth: 150 },
+    { field: 'sport', minWidth: 150 },
   ];
   public defaultColDef: ColDef = {
     flex: 1,
@@ -39,9 +39,9 @@ export class AppComponent {
     editable: true,
   };
   public fillOperation: (params: FillOperationParams) => any = function (
-    params
+    params: FillOperationParams
   ) {
-    if (params.column.getColId() === "country") {
+    if (params.column.getColId() === 'country') {
       return params.currentCellValue;
     }
     return params.values[params.values.length - 1];
@@ -52,7 +52,7 @@ export class AppComponent {
 
   onGridReady(params: GridReadyEvent) {
     this.http
-      .get<any[]>("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      .get<any[]>('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .subscribe((data) => {
         params.api!.setRowData(createRowData(data));
       });

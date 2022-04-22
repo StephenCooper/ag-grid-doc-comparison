@@ -141,7 +141,7 @@ need to hook into either the `gridReady` or the `firstDataRendered` events.
 class ClickableStatusBarComponent() {
   init(params) {
     this.params = params;
-
+    
     // No rows will be available yet
     console.log(params.api.getModel().rowsToDisplay);
 
@@ -162,7 +162,7 @@ To force the the status bar to have a fixed height, add CSS to the status bar di
 
 ```css
 .ag-status-bar {
-  min-height: 35px;
+    min-height: 35px;
 }
 ```
 

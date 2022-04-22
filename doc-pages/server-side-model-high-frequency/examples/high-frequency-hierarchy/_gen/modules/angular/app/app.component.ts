@@ -10,15 +10,15 @@ import {
   ServerSideTransactionResult,
   ServerSideTransactionResultStatus,
   ValueFormatterParams,
-} from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine-dark.css";
-import { Component } from "@angular/core";
+} from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine-dark.css';
+import { Component } from '@angular/core';
 // Required feature modules are registered in app.module.ts
 declare var FakeServer: any;
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<div class="example-wrapper">
     <div style="margin-bottom: 5px;">
       <button (click)="onBtApplyOneTransaction()">One Transaction</button>
@@ -48,114 +48,114 @@ declare var FakeServer: any;
 export class AppComponent {
   public columnDefs: ColDef[] = [
     // keys
-    { field: "productName", rowGroup: true, hide: true },
-    { field: "portfolioName", rowGroup: true, hide: true },
-    { field: "bookId", rowGroup: true, hide: true },
+    { field: 'productName', rowGroup: true, hide: true },
+    { field: 'portfolioName', rowGroup: true, hide: true },
+    { field: 'bookId', rowGroup: true, hide: true },
     // {field: 'productId'},
     // {field: 'portfolioId'},
     // {field: 'bookId'},
     // all the other columns (visible and not grouped)
     {
-      headerName: "Current",
-      field: "current",
+      headerName: 'Current',
+      field: 'current',
       width: 200,
-      type: "numericColumn",
+      type: 'numericColumn',
       valueFormatter: numberCellFormatter,
-      cellRenderer: "agAnimateShowChangeCellRenderer",
+      cellRenderer: 'agAnimateShowChangeCellRenderer',
     },
     {
-      headerName: "Previous",
-      field: "previous",
+      headerName: 'Previous',
+      field: 'previous',
       width: 200,
-      type: "numericColumn",
+      type: 'numericColumn',
       valueFormatter: numberCellFormatter,
-      cellRenderer: "agAnimateShowChangeCellRenderer",
+      cellRenderer: 'agAnimateShowChangeCellRenderer',
     },
     {
-      headerName: "Deal Type",
-      field: "dealType",
-      filter: "agSetColumnFilter",
+      headerName: 'Deal Type',
+      field: 'dealType',
+      filter: 'agSetColumnFilter',
       filterParams: {
-        values: ["Financial", "Physical"],
+        values: ['Financial', 'Physical'],
       },
     },
     {
-      headerName: "Bid",
-      field: "bidFlag",
+      headerName: 'Bid',
+      field: 'bidFlag',
       width: 100,
-      filter: "agSetColumnFilter",
+      filter: 'agSetColumnFilter',
       filterParams: {
-        values: ["Buy", "Sell"],
+        values: ['Buy', 'Sell'],
       },
     },
     {
-      headerName: "PL 1",
-      field: "pl1",
+      headerName: 'PL 1',
+      field: 'pl1',
       width: 200,
-      type: "numericColumn",
+      type: 'numericColumn',
       valueFormatter: numberCellFormatter,
-      cellRenderer: "agAnimateShowChangeCellRenderer",
+      cellRenderer: 'agAnimateShowChangeCellRenderer',
     },
     {
-      headerName: "PL 2",
-      field: "pl2",
+      headerName: 'PL 2',
+      field: 'pl2',
       width: 200,
-      type: "numericColumn",
+      type: 'numericColumn',
       valueFormatter: numberCellFormatter,
-      cellRenderer: "agAnimateShowChangeCellRenderer",
+      cellRenderer: 'agAnimateShowChangeCellRenderer',
     },
     {
-      headerName: "Gain-DX",
-      field: "gainDx",
+      headerName: 'Gain-DX',
+      field: 'gainDx',
       width: 200,
-      type: "numericColumn",
+      type: 'numericColumn',
       valueFormatter: numberCellFormatter,
-      cellRenderer: "agAnimateShowChangeCellRenderer",
+      cellRenderer: 'agAnimateShowChangeCellRenderer',
     },
     {
-      headerName: "SX / PX",
-      field: "sxPx",
+      headerName: 'SX / PX',
+      field: 'sxPx',
       width: 200,
-      type: "numericColumn",
+      type: 'numericColumn',
       valueFormatter: numberCellFormatter,
-      cellRenderer: "agAnimateShowChangeCellRenderer",
+      cellRenderer: 'agAnimateShowChangeCellRenderer',
     },
     {
-      headerName: "99 Out",
-      field: "_99Out",
+      headerName: '99 Out',
+      field: '_99Out',
       width: 200,
-      type: "numericColumn",
+      type: 'numericColumn',
       valueFormatter: numberCellFormatter,
-      cellRenderer: "agAnimateShowChangeCellRenderer",
+      cellRenderer: 'agAnimateShowChangeCellRenderer',
     },
     {
-      headerName: "Submitter ID",
-      field: "submitterID",
+      headerName: 'Submitter ID',
+      field: 'submitterID',
       width: 200,
-      type: "numericColumn",
+      type: 'numericColumn',
       valueFormatter: numberCellFormatter,
-      cellRenderer: "agAnimateShowChangeCellRenderer",
+      cellRenderer: 'agAnimateShowChangeCellRenderer',
     },
     {
-      headerName: "Submitted Deal ID",
-      field: "submitterDealID",
+      headerName: 'Submitted Deal ID',
+      field: 'submitterDealID',
       width: 200,
-      type: "numericColumn",
+      type: 'numericColumn',
       valueFormatter: numberCellFormatter,
-      cellRenderer: "agAnimateShowChangeCellRenderer",
+      cellRenderer: 'agAnimateShowChangeCellRenderer',
     },
   ];
   public asyncTransactionWaitMillis = 500;
-  public rowSelection = "multiple";
-  public serverSideStoreType: ServerSideStoreType = "full";
-  public rowModelType = "serverSide";
+  public rowSelection = 'multiple';
+  public serverSideStoreType: ServerSideStoreType = 'full';
+  public rowModelType = 'serverSide';
   public defaultColDef: ColDef = {
     width: 250,
     resizable: true,
     sortable: true,
   };
   public autoGroupColumnDef: ColDef = {
-    field: "tradeId",
+    field: 'tradeId',
   };
   public rowData!: any[];
 
@@ -172,7 +172,7 @@ export class AppComponent {
         summary[status]++;
       }
     );
-    console.log("onAsyncTransactionsFlushed: " + JSON.stringify(summary));
+    console.log('onAsyncTransactionsFlushed: ' + JSON.stringify(summary));
   }
 
   onBtStart() {
@@ -226,7 +226,7 @@ export class AppComponent {
     var transactionCreatedSinceInitialLoad =
       transactionVersion > dataLoadedVersion;
     if (!transactionCreatedSinceInitialLoad) {
-      console.log("cancelling transaction");
+      console.log('cancelling transaction');
     }
     return transactionCreatedSinceInitialLoad;
   }
@@ -236,7 +236,7 @@ var fakeServer = new FakeServer();
 function numberCellFormatter(params: ValueFormatterParams) {
   return Math.floor(params.value)
     .toString()
-    .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
+    .replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
 }
 function processUpdateFromFakeServer(
   gridApi: GridApi,
@@ -244,13 +244,13 @@ function processUpdateFromFakeServer(
 ) {
   var updatingJustOneTransaction = transactions.length == 4;
   if (updatingJustOneTransaction) {
-    console.log("Updating One Record");
+    console.log('Updating One Record');
   }
   transactions.forEach(function (tx) {
     gridApi.applyServerSideTransactionAsync(tx, function (res) {
       if (updatingJustOneTransaction) {
         console.log(
-          "Route [" + (tx.route || []).join(",") + "], status = " + res.status
+          'Route [' + (tx.route || []).join(',') + '], status = ' + res.status
         );
       }
     });

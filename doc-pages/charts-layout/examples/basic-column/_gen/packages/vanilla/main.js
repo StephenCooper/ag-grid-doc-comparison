@@ -1,20 +1,20 @@
 var data = [
   {
-    beverage: "Coffee",
+    beverage: 'Coffee',
     Q1: 450,
     Q2: 560,
     Q3: 600,
     Q4: 700,
   },
   {
-    beverage: "Tea",
+    beverage: 'Tea',
     Q1: 270,
     Q2: 380,
     Q3: 450,
     Q4: 520,
   },
   {
-    beverage: "Milk",
+    beverage: 'Milk',
     Q1: 180,
     Q2: 170,
     Q3: 190,
@@ -26,10 +26,10 @@ const options = {
   data: data,
   container: document.body,
   title: {
-    text: "Beverage Expenses",
+    text: 'Beverage Expenses',
   },
   subtitle: {
-    text: "per quarter",
+    text: 'per quarter',
   },
   padding: {
     top: 40,
@@ -38,10 +38,10 @@ const options = {
     left: 40,
   },
   series: [
-    { type: "column", xKey: "beverage", yKey: "Q1", stacked: true },
-    { type: "column", xKey: "beverage", yKey: "Q2", stacked: true },
-    { type: "column", xKey: "beverage", yKey: "Q3", stacked: true },
-    { type: "column", xKey: "beverage", yKey: "Q4", stacked: true },
+    { type: 'column', xKey: 'beverage', yKey: 'Q1', stacked: true },
+    { type: 'column', xKey: 'beverage', yKey: 'Q2', stacked: true },
+    { type: 'column', xKey: 'beverage', yKey: 'Q3', stacked: true },
+    { type: 'column', xKey: 'beverage', yKey: 'Q4', stacked: true },
   ],
   legend: {
     spacing: 40,

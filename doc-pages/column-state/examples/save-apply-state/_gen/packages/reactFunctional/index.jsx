@@ -1,28 +1,28 @@
-"use strict";
+'use strict';
 
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
-import { AgGridReact } from "ag-grid-react";
-import React, { useCallback, useMemo, useRef, useState } from "react";
-import { render } from "react-dom";
+import React, { useCallback, useMemo, useRef, useState } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from 'ag-grid-react';
+import 'ag-grid-enterprise';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 
 const GridExample = () => {
   const gridRef = useRef();
-  const containerStyle = useMemo(() => ({ width: "100%", height: "100%" }), []);
-  const gridStyle = useMemo(() => ({ height: "100%", width: "100%" }), []);
+  const containerStyle = useMemo(() => ({ width: '100%', height: '100%' }), []);
+  const gridStyle = useMemo(() => ({ height: '100%', width: '100%' }), []);
   const [rowData, setRowData] = useState();
   const [columnDefs, setColumnDefs] = useState([
-    { field: "athlete" },
-    { field: "age" },
-    { field: "country" },
-    { field: "sport" },
-    { field: "year" },
-    { field: "date" },
-    { field: "gold" },
-    { field: "silver" },
-    { field: "bronze" },
-    { field: "total" },
+    { field: 'athlete' },
+    { field: 'age' },
+    { field: 'country' },
+    { field: 'sport' },
+    { field: 'year' },
+    { field: 'date' },
+    { field: 'gold' },
+    { field: 'silver' },
+    { field: 'bronze' },
+    { field: 'total' },
   ]);
   const defaultColDef = useMemo(() => {
     return {
@@ -36,36 +36,36 @@ const GridExample = () => {
   }, []);
   const sideBar = useMemo(() => {
     return {
-      toolPanels: ["columns"],
+      toolPanels: ['columns'],
     };
   }, []);
 
   const onGridReady = useCallback((params) => {
-    fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+    fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .then((resp) => resp.json())
       .then((data) => setRowData(data));
   }, []);
 
   const saveState = useCallback(() => {
     window.colState = gridRef.current.columnApi.getColumnState();
-    console.log("column state saved");
+    console.log('column state saved');
   }, []);
 
   const restoreState = useCallback(() => {
     if (!window.colState) {
-      console.log("no columns state to restore by, you must save state first");
+      console.log('no columns state to restore by, you must save state first');
       return;
     }
     gridRef.current.columnApi.applyColumnState({
       state: window.colState,
       applyOrder: true,
     });
-    console.log("column state restored");
+    console.log('column state restored');
   }, []);
 
   const resetState = useCallback(() => {
     gridRef.current.columnApi.resetColumnState();
-    console.log("column state reset");
+    console.log('column state reset');
   }, []);
 
   return (
@@ -86,8 +86,8 @@ const GridExample = () => {
             columnDefs={columnDefs}
             defaultColDef={defaultColDef}
             sideBar={sideBar}
-            rowGroupPanelShow={"always"}
-            pivotPanelShow={"always"}
+            rowGroupPanelShow={'always'}
+            pivotPanelShow={'always'}
             onGridReady={onGridReady}
           ></AgGridReact>
         </div>
@@ -96,4 +96,4 @@ const GridExample = () => {
   );
 };
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

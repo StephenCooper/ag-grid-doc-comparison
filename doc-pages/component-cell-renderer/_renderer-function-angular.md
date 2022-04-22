@@ -8,6 +8,25 @@
 |
 |In the example below we're outputting a simple string value that depends on the cell value:
 |
-|`` js |@Component({ | selector: 'my-app', | template: ` | <ag-grid-angular | [columnDefs]="columnDefs" | ...other properties> | </ag-grid-angular>` |}) |export class AppComponent { | private columnDefs = [ | { | headerName: "Value", | field: "value", | cellRenderer: params => params.value > 1000 ? "LARGE VALUE" : "SMALL VALUE" | } | ]; | ..other methods |} | ``
+|```js
+|@Component({
+|    selector: 'my-app',
+|    template: `
+|        <ag-grid-angular
+|                [columnDefs]="columnDefs"
+|                ...other properties>
+|        </ag-grid-angular>`
+|})
+|export class AppComponent {
+|    private columnDefs = [
+|        {
+|            headerName: "Value",
+|            field: "value",
+|            cellRenderer: params => params.value > 1000 ? "LARGE VALUE" : "SMALL VALUE"
+|        }
+|     ];
+|     ..other methods
+|}
+|```
 |
 | It is also possible to write a JavaScript-based cell renderer function - refer to the [docs here](../../javascript-data-grid/component-cell-renderer/#cell-renderer-function) for more information

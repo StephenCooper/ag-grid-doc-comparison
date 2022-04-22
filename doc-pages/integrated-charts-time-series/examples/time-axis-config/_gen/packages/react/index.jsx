@@ -1,11 +1,11 @@
-"use strict";
+'use strict';
 
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
-import { AgGridReact } from "ag-grid-react";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from 'ag-grid-react';
+import 'ag-grid-enterprise';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 
 class GridExample extends Component {
   constructor(props) {
@@ -13,8 +13,8 @@ class GridExample extends Component {
 
     this.state = {
       columnDefs: [
-        { field: "timestamp", chartDataType: "time" },
-        { field: "cpuUsage" },
+        { field: 'timestamp', chartDataType: 'time' },
+        { field: 'cpuUsage' },
       ],
       defaultColDef: {
         flex: 1,
@@ -26,7 +26,7 @@ class GridExample extends Component {
         area: {
           title: {
             enabled: true,
-            text: "CPU Usage",
+            text: 'CPU Usage',
           },
           legend: {
             enabled: false,
@@ -44,21 +44,21 @@ class GridExample extends Component {
             time: {
               label: {
                 rotation: 45,
-                format: "%H:%M",
+                format: '%H:%M',
               },
             },
             category: {
               label: {
                 rotation: 0,
                 formatter: function (params) {
-                  return moment(new Date(params.value)).format("DD MMM");
+                  return moment(new Date(params.value)).format('DD MMM');
                 },
               },
             },
             number: {
               label: {
                 formatter: function (params) {
-                  return params.value + "%";
+                  return params.value + '%';
                 },
               },
             },
@@ -75,28 +75,28 @@ class GridExample extends Component {
 
   onFirstDataRendered = (params) => {
     var createRangeChartParams = {
-      chartContainer: document.querySelector("#myChart"),
+      chartContainer: document.querySelector('#myChart'),
       suppressChartRanges: true,
       cellRange: {
-        columns: ["timestamp", "cpuUsage"],
+        columns: ['timestamp', 'cpuUsage'],
       },
-      chartType: "area",
+      chartType: 'area',
     };
     params.api.createRangeChart(createRangeChartParams);
   };
 
   getChartToolbarItems = () => {
-    return ["chartData", "chartFormat"];
+    return ['chartData', 'chartFormat'];
   };
 
   render() {
     return (
-      <div style={{ width: "100%", height: "100%" }}>
+      <div style={{ width: '100%', height: '100%' }}>
         <div className="wrapper">
           <div
             style={{
-              height: "100%",
-              width: "100%",
+              height: '100%',
+              width: '100%',
             }}
             className="ag-theme-alpine"
           >
@@ -233,4 +233,4 @@ function getRowData() {
   ];
 }
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

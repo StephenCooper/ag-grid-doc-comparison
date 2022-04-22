@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 
 export default class SliderFloatingFilter extends Component {
   constructor(props) {
@@ -17,9 +17,9 @@ export default class SliderFloatingFilter extends Component {
       },
       () => {
         let valueToUse =
-          this.state.currentValue === "0" ? null : this.state.currentValue;
+          this.state.currentValue === '0' ? null : this.state.currentValue;
         this.props.parentFilterInstance(function (instance) {
-          instance.onFloatingFilterChanged("greaterThan", valueToUse);
+          instance.onFloatingFilterChanged('greaterThan', valueToUse);
         });
       }
     );

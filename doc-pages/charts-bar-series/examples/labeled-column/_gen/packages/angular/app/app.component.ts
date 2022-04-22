@@ -1,8 +1,8 @@
-import { Component } from "@angular/core";
-import { AgChartOptions } from "ag-charts-community";
+import { Component } from '@angular/core';
+import { AgChartOptions } from 'ag-charts-community';
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<ag-charts-angular
     style="height: 100%"
     [options]="options"
@@ -17,47 +17,47 @@ export class AppComponent {
         text: "Apple's revenue by product category",
       },
       subtitle: {
-        text: "in billion U.S. dollars",
+        text: 'in billion U.S. dollars',
       },
       data: getData(),
       series: [
         {
-          type: "column",
-          xKey: "quarter",
-          yKey: "iphone",
-          yName: "iPhone",
+          type: 'column',
+          xKey: 'quarter',
+          yKey: 'iphone',
+          yName: 'iPhone',
           stacked: true,
           label: { formatter },
         },
         {
-          type: "column",
-          xKey: "quarter",
-          yKey: "mac",
-          yName: "Mac",
+          type: 'column',
+          xKey: 'quarter',
+          yKey: 'mac',
+          yName: 'Mac',
           stacked: true,
           label: { formatter },
         },
         {
-          type: "column",
-          xKey: "quarter",
-          yKey: "ipad",
-          yName: "iPad",
+          type: 'column',
+          xKey: 'quarter',
+          yKey: 'ipad',
+          yName: 'iPad',
           stacked: true,
           label: { formatter },
         },
         {
-          type: "column",
-          xKey: "quarter",
-          yKey: "wearables",
-          yName: "Wearables",
+          type: 'column',
+          xKey: 'quarter',
+          yKey: 'wearables',
+          yName: 'Wearables',
           stacked: true,
           label: { formatter },
         },
         {
-          type: "column",
-          xKey: "quarter",
-          yKey: "services",
-          yName: "Services",
+          type: 'column',
+          xKey: 'quarter',
+          yKey: 'services',
+          yName: 'Services',
           stacked: true,
           label: { formatter },
         },
@@ -69,4 +69,4 @@ export class AppComponent {
 }
 
 const formatter = ({ value }: { value?: number }) =>
-  value == null ? "" : value.toFixed(0);
+  value == null ? '' : value.toFixed(0);

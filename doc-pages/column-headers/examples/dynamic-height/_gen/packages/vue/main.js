@@ -1,8 +1,8 @@
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
-import { AgGridVue } from "ag-grid-vue";
-import Vue from "vue";
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import 'ag-grid-enterprise';
+import { AgGridVue } from 'ag-grid-vue';
+import Vue from 'vue';
 
 const VueExample = {
   template: `
@@ -22,13 +22,13 @@ const VueExample = {
                             <td>
                                 <button v-on:click="setGroupHeaderHeight(40)">40px</button>
                                 <button v-on:click="setGroupHeaderHeight(60)">60px</button>
-                                <button v-on:click="setGroupHeaderHeight()">undefined</button>
+                                <button v-on:click="setGroupHeaderHeight(undefined)">undefined</button>
                             </td>
                             <td>headerHeight (<span id="headerHeight">undefined</span>)</td>
                             <td>
                                 <button v-on:click="setHeaderHeight(70)">70px</button>
                                 <button v-on:click="setHeaderHeight(80)">80px</button>
-                                <button v-on:click="setHeaderHeight()">undefined</button>
+                                <button v-on:click="setHeaderHeight(undefined)">undefined</button>
                             </td>
                         </tr>
                         <tr id="requiresPivot" class="hidden">
@@ -37,13 +37,13 @@ const VueExample = {
                             <td>
                                 <button v-on:click="setPivotGroupHeaderHeight(50)">50px</button>
                                 <button v-on:click="setPivotGroupHeaderHeight(70)">70px</button>
-                                <button v-on:click="setPivotGroupHeaderHeight()">undefined</button>
+                                <button v-on:click="setPivotGroupHeaderHeight(undefined)">undefined</button>
                             </td>
                             <td>pivotHeaderHeight (<span id="pivotHeaderHeight">undefined</span>)</td>
                             <td>
                                 <button v-on:click="setPivotHeaderHeight(60)">60px</button>
                                 <button v-on:click="setPivotHeaderHeight(80)">80px</button>
-                                <button v-on:click="setPivotHeaderHeight()">undefined</button>
+                                <button v-on:click="setPivotHeaderHeight(undefined)">undefined</button>
                             </td>
                         </tr>
                         <tr id="requiresNotPivot">
@@ -51,7 +51,7 @@ const VueExample = {
                             <td>
                                 <button v-on:click="setFloatingFiltersHeight(35)">35px</button>
                                 <button v-on:click="setFloatingFiltersHeight(55)">55px</button>
-                                <button v-on:click="setFloatingFiltersHeight()">undefined</button>
+                                <button v-on:click="setFloatingFiltersHeight(undefined)">undefined</button>
                             </td>
                         </tr>
                     </tbody></table>
@@ -68,58 +68,58 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
         {
-          headerName: "Athlete Details",
+          headerName: 'Athlete Details',
           children: [
             {
-              field: "athlete",
+              field: 'athlete',
               width: 150,
               suppressSizeToFit: true,
               enableRowGroup: true,
               rowGroupIndex: 0,
             },
             {
-              field: "age",
+              field: 'age',
               width: 90,
               minWidth: 75,
               maxWidth: 100,
               enableRowGroup: true,
             },
-            { field: "country", enableRowGroup: true },
-            { field: "year", width: 90, enableRowGroup: true, pivotIndex: 0 },
-            { field: "sport", width: 110, enableRowGroup: true },
+            { field: 'country', enableRowGroup: true },
+            { field: 'year', width: 90, enableRowGroup: true, pivotIndex: 0 },
+            { field: 'sport', width: 110, enableRowGroup: true },
             {
-              field: "gold",
+              field: 'gold',
               enableValue: true,
               suppressMenu: true,
-              filter: "agNumberColumnFilter",
-              aggFunc: "sum",
+              filter: 'agNumberColumnFilter',
+              aggFunc: 'sum',
             },
             {
-              field: "silver",
+              field: 'silver',
               enableValue: true,
               suppressMenu: true,
-              filter: "agNumberColumnFilter",
-              aggFunc: "sum",
+              filter: 'agNumberColumnFilter',
+              aggFunc: 'sum',
             },
             {
-              field: "bronze",
+              field: 'bronze',
               enableValue: true,
               suppressMenu: true,
-              filter: "agNumberColumnFilter",
-              aggFunc: "sum",
+              filter: 'agNumberColumnFilter',
+              aggFunc: 'sum',
             },
             {
-              field: "total",
+              field: 'total',
               enableValue: true,
               suppressMenu: true,
-              filter: "agNumberColumnFilter",
-              aggFunc: "sum",
+              filter: 'agNumberColumnFilter',
+              aggFunc: 'sum',
             },
           ],
         },
@@ -138,36 +138,36 @@ const VueExample = {
   created() {},
   methods: {
     setPivotOn() {
-      document.querySelector("#requiresPivot").className = "";
-      document.querySelector("#requiresNotPivot").className = "hidden";
+      document.querySelector('#requiresPivot').className = '';
+      document.querySelector('#requiresNotPivot').className = 'hidden';
       this.gridColumnApi.setPivotMode(true);
-      setIdText("pivot", "on");
+      setIdText('pivot', 'on');
     },
     setPivotOff() {
-      document.querySelector("#requiresPivot").className = "hidden";
-      document.querySelector("#requiresNotPivot").className = "";
+      document.querySelector('#requiresPivot').className = 'hidden';
+      document.querySelector('#requiresNotPivot').className = '';
       this.gridColumnApi.setPivotMode(false);
-      setIdText("pivot", "off");
+      setIdText('pivot', 'off');
     },
     setHeaderHeight(value) {
       this.gridApi.setHeaderHeight(value);
-      setIdText("headerHeight", value);
+      setIdText('headerHeight', value);
     },
     setGroupHeaderHeight(value) {
       this.gridApi.setGroupHeaderHeight(value);
-      setIdText("groupHeaderHeight", value);
+      setIdText('groupHeaderHeight', value);
     },
     setFloatingFiltersHeight(value) {
       this.gridApi.setFloatingFiltersHeight(value);
-      setIdText("floatingFiltersHeight", value);
+      setIdText('floatingFiltersHeight', value);
     },
     setPivotGroupHeaderHeight(value) {
       this.gridApi.setPivotGroupHeaderHeight(value);
-      setIdText("pivotGroupHeaderHeight", value);
+      setIdText('pivotGroupHeaderHeight', value);
     },
     setPivotHeaderHeight(value) {
       this.gridApi.setPivotHeaderHeight(value);
-      setIdText("pivotHeaderHeight", value);
+      setIdText('pivotHeaderHeight', value);
     },
     onGridReady(params) {
       this.gridApi = params.api;
@@ -175,7 +175,7 @@ const VueExample = {
 
       const updateData = (data) => params.api.setRowData(data);
 
-      fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
         .then((resp) => resp.json())
         .then((data) => updateData(data));
     },
@@ -184,12 +184,12 @@ const VueExample = {
 
 window.setIdText = function setIdText(id, value) {
   document.getElementById(id).innerHTML =
-    value == undefined ? "undefined" : value + "";
+    value == undefined ? 'undefined' : value + '';
 };
 
 new Vue({
-  el: "#app",
+  el: '#app',
   components: {
-    "my-component": VueExample,
+    'my-component': VueExample,
   },
 });

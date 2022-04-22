@@ -1,36 +1,38 @@
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import { AgGridReact } from "ag-grid-react";
-import React, { useEffect, useMemo, useRef, useState } from "react";
-import { render } from "react-dom";
-
-("use strict");
+'use strict';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from 'ag-grid-react';
 
 const GridExample = () => {
   const [gridApi, setGridApi] = useState(null);
   const [gridColumnApi, setGridColumnApi] = useState(null);
   const [rowData, setRowData] = useState(null);
-  const columnDefs = useMemo(() => [
-    {
-      headerName: "#",
-      colId: "rowNum",
-      valueGetter: "node.id",
-    },
-    {
-      field: "athlete",
-      minWidth: 170,
-    },
-    { field: "age" },
-    { field: "country" },
-    { field: "year" },
-    { field: "date" },
-    { field: "sport" },
-    { field: "gold" },
-    { field: "silver" },
-    { field: "bronze" },
-    { field: "total" },
-  ]);
-  const myInput = useRef();
+  const columnDefs = useMemo(
+    () => [
+      {
+        headerName: '#',
+        colId: 'rowNum',
+        valueGetter: 'node.id',
+      },
+      {
+        field: 'athlete',
+        minWidth: 170,
+      },
+      { field: 'age' },
+      { field: 'country' },
+      { field: 'year' },
+      { field: 'date' },
+      { field: 'sport' },
+      { field: 'gold' },
+      { field: 'silver' },
+      { field: 'bronze' },
+      { field: 'total' },
+    ],
+    []
+  );
+  const myInput = useRef(null);
 
   const onGridReady = (params) => {
     setGridApi(params.api);
@@ -40,7 +42,7 @@ const GridExample = () => {
       setRowData(data);
     };
 
-    fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+    fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .then((resp) => resp.json())
       .then((data) => updateData(data));
   };
@@ -51,9 +53,9 @@ const GridExample = () => {
     }
 
     myInput.current.addEventListener(
-      "keydown",
+      'keydown',
       function (event) {
-        if (event.key !== "Tab") {
+        if (event.key !== 'Tab') {
           return;
         }
 
@@ -70,7 +72,7 @@ const GridExample = () => {
   }, [myInput, gridApi, gridColumnApi]);
 
   return (
-    <div style={{ width: "100%", height: "100%" }}>
+    <div style={{ width: '100%', height: '100%' }}>
       <div className="test-container">
         <div>
           <div className="form-container">
@@ -84,7 +86,7 @@ const GridExample = () => {
         </div>
         <div
           id="myGrid"
-          style={{ height: "100%", width: "100%" }}
+          style={{ height: '100%', width: '100%' }}
           className="ag-theme-alpine"
         >
           <AgGridReact
@@ -110,4 +112,4 @@ const GridExample = () => {
   );
 };
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

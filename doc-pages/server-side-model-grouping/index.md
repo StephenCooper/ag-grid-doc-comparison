@@ -100,20 +100,19 @@ scrolling (using the Partial Store) could be turned off at the top level but tur
 
 This is done by implementing the grid callback `getServerSideStoreParams(params)`.
 
-<api-documentation source='grid-properties/properties.json' section='serverSideRowModel' names='["getServerSideStoreParams"]' ></api-documentation>
+<api-documentation source='grid-options/properties.json' section='serverSideRowModel' names='["getServerSideStoreParams"]' ></api-documentation>
 
 The example below demonstrates the `getServerSideStoreParams(params)` callback. Note the following:
 
 - The grid is configured differently depending on whether grouping is active or not by implementing
-  the `getServerSideStoreParams(params)` callback. The callback logs its results to the dev console.
+the `getServerSideStoreParams(params)` callback. The callback logs its results to the dev console.
 
 - When grouping is active, the stores are configured as follows:
+    - Level 0 - Full Store (no infinite scrolling)
+    - Level 1 - Partial Store (infinite scrolling) with block size of 5
+    - Level 2 - Partial Store (infinite scrolling) with block size of 2
 
-  - Level 0 - Full Store (no infinite scrolling)
-  - Level 1 - Partial Store (infinite scrolling) with block size of 5
-  - Level 2 - Partial Store (infinite scrolling) with block size of 2
-
-  To observe, expand different levels of the data and notice when rows are read back in blocks.
+    To observe, expand different levels of the data and notice when rows are read back in blocks.
 
 - When no grouping is active, the store is configured to use infinite scroll and only keeps two blocks of rows in the store.<br/><br/>To observe this, remove all grouping and scroll down to load more blocks. Then scroll back up to observe the initial blocks getting reloaded.
 
@@ -134,28 +133,28 @@ It is also possible to attach info to each store as data is loaded. This is done
 when rows are fetched.
 
 ```js
-const createDatasource = (server) => {
-  return {
-    // called by the grid when more rows are required
-    getRows: (params) => {
-      // get data for request from server
-      const rows = server.getData(params.request);
+const createDatasource = server => {
+    return {
+        // called by the grid when more rows are required
+        getRows: params => {
+            // get data for request from server
+            const rows = server.getData(params.request);
 
-      // pass rows back along with any additional store info
-      params.success({
-        rowData: rows,
-        storeInfo: { a: 22, b: 55 },
-      });
-    },
-  };
-};
+            // pass rows back along with any additional store info
+            params.success({
+                rowData: rows,
+                storeInfo: {a: 22, b: 55}
+            });
+        }
+    }
+}
 ```
 
 The info object is merged into the Store Info (which is initially an empty object) and then available in the following locations:
 
 1. Included in the Store State returned from `getServerSideStoreState()`.
 1. Included in the params to `isApplyServerSideTransaction()`. This method is explained
-   in [Cancelling Transactions](/server-side-model-high-frequency/#cancelling-transactions).
+in [Cancelling Transactions](/server-side-model-high-frequency/#cancelling-transactions).
 
 If rows are loaded multiple times into the Store, then the Store Info values will over write existing values
 as they are merged on top of the existing values. Rows can be loaded multiple times if a) the store
@@ -170,14 +169,14 @@ The example below shows Store Info in action.
 
 It is possible to have rows open as soon as they are loaded. To do this implement the grid callback `isServerSideGroupOpenByDefault`.
 
-<api-documentation source='grid-properties/properties.json' section='serverSideRowModel' names='["isServerSideGroupOpenByDefault"]' ></api-documentation>
+<api-documentation source='grid-options/properties.json' section='serverSideRowModel' names='["isServerSideGroupOpenByDefault"]' ></api-documentation>
 
 ```js
 // Example implementation
 function isServerSideGroupOpenByDefault(params) {
-  var rowNode = params.rowNode;
-  var isZimbabwe = rowNode.field == "country" && rowNode.key == "Zimbabwe";
-  return isZimbabwe;
+    var rowNode = params.rowNode;
+    var isZimbabwe = rowNode.field == 'country' && rowNode.key == 'Zimbabwe';
+    return isZimbabwe;
 }
 ```
 
@@ -188,9 +187,9 @@ It may also be helpful to use the [Row Node](/row-object/) API `getRoute()` to i
 Below shows `isServerSideGroupOpenByDefault()` and `getRoute` in action. Note the following:
 
 - The callback opens the following routes as soon as those routes are loaded:
-  - [Zimbabwe]
-  - [Zimbabwe, Swimming]
-  - [United States, Swimming]
+    - [Zimbabwe]
+    - [Zimbabwe, Swimming]
+    - [United States, Swimming]
 - Note [Zimbabwe] and [Zimbabwe, Swimming] are visibly open by default.
 - Note [United States, Swimming] is not visibly open by default, as the parent group 'United States' is not open. However open 'United States' is open, it's 'Swimming' group is open.
 - Selecting a row and clicking 'Route of Selected' will print the route to the selected node.
@@ -237,7 +236,7 @@ The example below demonstrates these techniques. Note the following:
 
 By default, the grid will not show row counts beside the group names. If you do want row counts, you need to implement the `getChildCount(dataItem)` callback for the grid. The callback provides you with the row data; it is your application's responsibility to know what the child row count is. The suggestion is you set this information into the row data item you provide to the grid.
 
-<api-documentation source='grid-properties/properties.json' section='serverSideRowModel' names='["getChildCount"]' ></api-documentation>
+<api-documentation source='grid-options/properties.json' section='serverSideRowModel' names='["getChildCount"]' ></api-documentation>
 
 <snippet>
 const gridOptions = {
@@ -255,15 +254,14 @@ const gridOptions = {
 When a sort is applied to a grouped grid using the SSRM, the grid will behave differently depending on what store is used. How it behaves is as follows:
 
 - ### Full Store
-
-  The Full Store always sorts inside the grid. The rows are never reloaded due to a sort.
+    The Full Store always sorts inside the grid. The rows are never reloaded due to a sort.
 
 - ### Partial Store
-  - Non-group levels always refresh - all rows are loaded again from the server.
-  - Group levels refresh (reload from server) if the sort was changed in:
-    - Any column with a value active (ie colDef.aggFunc='something')
-    - Any secondary column (ie you are pivoting and sort a pivot value column)
-    - A Column used for this levels group (eg you are grouping by 'Country' and you sort by 'Country').
+    - Non-group levels always refresh - all rows are loaded again from the server.
+    - Group levels refresh (reload from server) if the sort was changed in:
+        - Any column with a value active (ie colDef.aggFunc='something')
+        - Any secondary column (ie you are pivoting and sort a pivot value column)
+        - A Column used for this levels group (eg you are grouping by 'Country' and you sort by 'Country').
 
 It is possible to force the grid to always refresh (reload data) after a sort changes. Do this by setting grid property `serverSideSortingAlwaysResets=true`.
 
@@ -272,11 +270,10 @@ It is possible to force the grid to always refresh (reload data) after a sort ch
 When a filter is applied to a grouped grid using the SSRM, the grid will behave differently depending on what store is used. How it behaves is as follows:
 
 - ### Full Store
-
-  The Full Store always filters inside the grid. The rows are never reloaded due to a filter change.
+    The Full Store always filters inside the grid. The rows are never reloaded due to a filter change.
 
 - ### Partial Store
-  Changing the filter on any column will always refresh the Partial Store. Rows will be loaded again from the server with the new filter information.
+    Changing the filter on any column will always refresh the Partial Store. Rows will be loaded again from the server with the new filter information.
 
 It is possible to force the grid to always refresh (reload data) after a filter changes. Do this by setting grid property `serverSideFilteringAlwaysResets=true`.
 

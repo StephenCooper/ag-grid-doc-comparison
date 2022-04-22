@@ -2,14 +2,14 @@ import {
   ColDef,
   FirstDataRenderedEvent,
   GridReadyEvent,
-} from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine-dark.css";
-import { Component } from "@angular/core";
+} from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine-dark.css';
+import { Component } from '@angular/core';
 // Required feature modules are registered in app.module.ts
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<div id="wrapper">
     <div id="pieChart" class="ag-theme-alpine-dark"></div>
     <ag-grid-angular
@@ -27,33 +27,33 @@ import { Component } from "@angular/core";
 })
 export class AppComponent {
   public columnDefs: ColDef[] = [
-    { field: "salesRep", chartDataType: "category" },
-    { field: "handset", chartDataType: "category" },
-    { field: "sale", chartDataType: "series" },
-    { field: "saleDate", chartDataType: "category" },
+    { field: 'salesRep', chartDataType: 'category' },
+    { field: 'handset', chartDataType: 'category' },
+    { field: 'sale', chartDataType: 'series' },
+    { field: 'saleDate', chartDataType: 'category' },
   ];
   public defaultColDef: ColDef = {
     flex: 1,
     sortable: true,
-    filter: "agSetColumnFilter",
+    filter: 'agSetColumnFilter',
     floatingFilter: true,
     resizable: true,
   };
   public rowData: any[] | null = getData();
-  public chartThemes: string[] = ["ag-default-dark"];
+  public chartThemes: string[] = ['ag-default-dark'];
 
   onFirstDataRendered(params: FirstDataRenderedEvent) {
     params.api.createCrossFilterChart({
-      chartType: "pie",
+      chartType: 'pie',
       cellRange: {
-        columns: ["salesRep", "sale"],
+        columns: ['salesRep', 'sale'],
       },
-      aggFunc: "sum",
+      aggFunc: 'sum',
       chartThemeOverrides: {
         common: {
           title: {
             enabled: true,
-            text: "Sales by Representative ($)",
+            text: 'Sales by Representative ($)',
           },
         },
         pie: {
@@ -67,7 +67,7 @@ export class AppComponent {
           },
         },
       },
-      chartContainer: document.querySelector("#pieChart") as any,
+      chartContainer: document.querySelector('#pieChart') as any,
     });
   }
 

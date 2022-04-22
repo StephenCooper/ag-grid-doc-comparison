@@ -1,9 +1,10 @@
-"use strict";
+'use strict';
 
-import { AgChartsReact } from "ag-charts-react";
-import { cloneDeep } from "lodash";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { cloneDeep } from 'lodash';
+import { render } from 'react-dom';
+import * as agCharts from 'ag-charts-community';
+import { AgChartsReact } from 'ag-charts-react';
 
 class ChartExample extends Component {
   constructor(props) {
@@ -15,50 +16,50 @@ class ChartExample extends Component {
         data: getData(),
         theme: {
           palette: {
-            fills: ["#ec4d3d", "#4facf2"],
-            strokes: ["#ec4d3d", "#4facf2"],
+            fills: ['#ec4d3d', '#4facf2'],
+            strokes: ['#ec4d3d', '#4facf2'],
           },
           overrides: { area: { series: { fillOpacity: 0.5 } } },
         },
         title: {
-          text: "Simulated CPU Usage",
+          text: 'Simulated CPU Usage',
           fontSize: 18,
         },
         series: [
           {
-            type: "area",
-            xKey: "time",
-            yKey: "system",
+            type: 'area',
+            xKey: 'time',
+            yKey: 'system',
             stacked: true,
-            yName: "System",
+            yName: 'System',
           },
           {
-            type: "area",
-            xKey: "time",
-            yKey: "user",
+            type: 'area',
+            xKey: 'time',
+            yKey: 'user',
             stacked: true,
-            yName: "User",
+            yName: 'User',
           },
         ],
         axes: [
           {
-            type: "time",
-            position: "bottom",
+            type: 'time',
+            position: 'bottom',
             nice: false,
           },
           {
-            type: "number",
-            position: "left",
+            type: 'number',
+            position: 'left',
             title: {
               enabled: true,
-              text: "Load (%)",
+              text: 'Load (%)',
             },
             min: 0,
             max: 100,
           },
         ],
         legend: {
-          position: "bottom",
+          position: 'bottom',
         },
       },
     };
@@ -116,4 +117,4 @@ function getData() {
   return data;
 }
 
-render(<ChartExample />, document.querySelector("#root"));
+render(<ChartExample />, document.querySelector('#root'));

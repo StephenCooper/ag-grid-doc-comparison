@@ -1,8 +1,8 @@
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import { AgGridVue } from "ag-grid-vue3";
-import { createApp } from "vue";
-import CustomHeader from "./customHeaderVue.js";
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import { AgGridVue } from 'ag-grid-vue3';
+import { createApp } from 'vue';
+import CustomHeader from './customHeaderVue.js';
 
 const VueExample = {
   template: `
@@ -19,30 +19,30 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
     agColumnHeader: CustomHeader,
   },
   data: function () {
     return {
       columnDefs: [
-        { field: "athlete", suppressMenu: true, minWidth: 120 },
+        { field: 'athlete', suppressMenu: true, minWidth: 120 },
         {
-          field: "age",
+          field: 'age',
           sortable: false,
-          headerComponentParams: { menuIcon: "fa-external-link-alt" },
+          headerComponentParams: { menuIcon: 'fa-external-link-alt' },
         },
-        { field: "country", suppressMenu: true, minWidth: 120 },
-        { field: "year", sortable: false },
-        { field: "date", suppressMenu: true },
-        { field: "sport", sortable: false },
+        { field: 'country', suppressMenu: true, minWidth: 120 },
+        { field: 'year', sortable: false },
+        { field: 'date', suppressMenu: true },
+        { field: 'sport', sortable: false },
         {
-          field: "gold",
-          headerComponentParams: { menuIcon: "fa-cog" },
+          field: 'gold',
+          headerComponentParams: { menuIcon: 'fa-cog' },
           minWidth: 120,
         },
-        { field: "silver", sortable: false },
-        { field: "bronze", suppressMenu: true, minWidth: 120 },
-        { field: "total", sortable: false },
+        { field: 'silver', sortable: false },
+        { field: 'bronze', suppressMenu: true, minWidth: 120 },
+        { field: 'total', sortable: false },
       ],
       gridApi: null,
       columnApi: null,
@@ -54,7 +54,7 @@ const VueExample = {
         filter: true,
         resizable: true,
         headerComponentParams: {
-          menuIcon: "fa-bars",
+          menuIcon: 'fa-bars',
         },
       },
       rowData: null,
@@ -70,11 +70,11 @@ const VueExample = {
         this.rowData = data;
       };
 
-      fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
         .then((resp) => resp.json())
         .then((data) => updateData(data));
     },
   },
 };
 
-createApp(VueExample).mount("#app");
+createApp(VueExample).mount('#app');

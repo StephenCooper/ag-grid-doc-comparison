@@ -3,14 +3,14 @@ import {
   ColDef,
   GridReadyEvent,
   ValueParserParams,
-} from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine-dark.css";
-import { Component } from "@angular/core";
+} from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine-dark.css';
+import { Component } from '@angular/core';
 // Required feature modules are registered in app.module.ts
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<ag-grid-angular
     style="width: 100%; height: 100%;"
     class="ag-theme-alpine-dark"
@@ -23,11 +23,11 @@ import { Component } from "@angular/core";
 })
 export class AppComponent {
   public columnDefs: ColDef[] = [
-    { headerName: "Name", field: "simple" },
-    { headerName: "Bad Number", field: "numberBad" },
+    { headerName: 'Name', field: 'simple' },
+    { headerName: 'Bad Number', field: 'numberBad' },
     {
-      headerName: "Good Number",
-      field: "numberGood",
+      headerName: 'Good Number',
+      field: 'numberGood',
       valueParser: numberParser,
     },
   ];
@@ -39,7 +39,7 @@ export class AppComponent {
   public rowData: any[] | null = getData();
 
   onCellValueChanged(event: CellValueChangedEvent) {
-    console.log("data after changes is: ", event.data);
+    console.log('data after changes is: ', event.data);
   }
 
   onGridReady(params: GridReadyEvent) {

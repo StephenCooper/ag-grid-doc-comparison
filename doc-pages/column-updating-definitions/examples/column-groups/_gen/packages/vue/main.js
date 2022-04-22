@@ -1,7 +1,7 @@
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import { AgGridVue } from "ag-grid-vue";
-import Vue from "vue";
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import { AgGridVue } from 'ag-grid-vue';
+import Vue from 'vue';
 
 const VueExample = {
   template: `
@@ -23,36 +23,36 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
         {
-          headerName: "Group A",
-          groupId: "groupA",
+          headerName: 'Group A',
+          groupId: 'groupA',
           children: [
-            { field: "athlete" },
-            { field: "age" },
-            { field: "country", columnGroupShow: "open" },
+            { field: 'athlete' },
+            { field: 'age' },
+            { field: 'country', columnGroupShow: 'open' },
           ],
         },
         {
-          headerName: "Group B",
+          headerName: 'Group B',
           children: [
-            { field: "sport" },
-            { field: "year" },
-            { field: "date", columnGroupShow: "open" },
+            { field: 'sport' },
+            { field: 'year' },
+            { field: 'date', columnGroupShow: 'open' },
           ],
         },
         {
-          headerName: "Group C",
-          groupId: "groupC",
+          headerName: 'Group C',
+          groupId: 'groupC',
           children: [
-            { field: "total" },
-            { field: "gold", columnGroupShow: "open" },
-            { field: "silver", columnGroupShow: "open" },
-            { field: "bronze", columnGroupShow: "open" },
+            { field: 'total' },
+            { field: 'gold', columnGroupShow: 'open' },
+            { field: 'silver', columnGroupShow: 'open' },
+            { field: 'bronze', columnGroupShow: 'open' },
           ],
         },
       ],
@@ -82,7 +82,7 @@ const VueExample = {
         this.rowData = data;
       };
 
-      fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
         .then((resp) => resp.json())
         .then((data) => updateData(data));
     },
@@ -92,30 +92,30 @@ const VueExample = {
 window.createColSetA = function createColSetA() {
   return [
     {
-      headerName: "Group A",
-      groupId: "groupA",
+      headerName: 'Group A',
+      groupId: 'groupA',
       children: [
-        { field: "athlete" },
-        { field: "age" },
-        { field: "country", columnGroupShow: "open" },
+        { field: 'athlete' },
+        { field: 'age' },
+        { field: 'country', columnGroupShow: 'open' },
       ],
     },
     {
-      headerName: "Group B",
+      headerName: 'Group B',
       children: [
-        { field: "sport" },
-        { field: "year" },
-        { field: "date", columnGroupShow: "open" },
+        { field: 'sport' },
+        { field: 'year' },
+        { field: 'date', columnGroupShow: 'open' },
       ],
     },
     {
-      headerName: "Group C",
-      groupId: "groupC",
+      headerName: 'Group C',
+      groupId: 'groupC',
       children: [
-        { field: "total" },
-        { field: "gold", columnGroupShow: "open" },
-        { field: "silver", columnGroupShow: "open" },
-        { field: "bronze", columnGroupShow: "open" },
+        { field: 'total' },
+        { field: 'gold', columnGroupShow: 'open' },
+        { field: 'silver', columnGroupShow: 'open' },
+        { field: 'bronze', columnGroupShow: 'open' },
       ],
     },
   ];
@@ -124,40 +124,40 @@ window.createColSetA = function createColSetA() {
 window.createColSetB = function createColSetB() {
   return [
     {
-      headerName: "GROUP A",
-      groupId: "groupA",
+      headerName: 'GROUP A',
+      groupId: 'groupA',
       children: [
-        { field: "athlete" },
-        { field: "age" },
-        { field: "country", columnGroupShow: "open" },
+        { field: 'athlete' },
+        { field: 'age' },
+        { field: 'country', columnGroupShow: 'open' },
       ],
     },
     {
-      headerName: "Group B",
+      headerName: 'Group B',
       children: [
-        { field: "sport" },
-        { field: "year" },
-        { field: "date", columnGroupShow: "open" },
+        { field: 'sport' },
+        { field: 'year' },
+        { field: 'date', columnGroupShow: 'open' },
       ],
     },
     {
-      headerName: "Group C",
-      groupId: "groupC",
+      headerName: 'Group C',
+      groupId: 'groupC',
       children: [
-        { field: "total" },
-        { field: "gold", columnGroupShow: "open" },
-        { field: "silver", columnGroupShow: "open" },
-        { field: "bronze", columnGroupShow: "open" },
-        { field: "extraA" },
-        { field: "extraB", columnGroupShow: "open" },
+        { field: 'total' },
+        { field: 'gold', columnGroupShow: 'open' },
+        { field: 'silver', columnGroupShow: 'open' },
+        { field: 'bronze', columnGroupShow: 'open' },
+        { field: 'extraA' },
+        { field: 'extraB', columnGroupShow: 'open' },
       ],
     },
   ];
 };
 
 new Vue({
-  el: "#app",
+  el: '#app',
   components: {
-    "my-component": VueExample,
+    'my-component': VueExample,
   },
 });

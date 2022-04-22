@@ -1,19 +1,19 @@
-import { HttpClient } from "@angular/common/http";
-import { Component } from "@angular/core";
+import { HttpClient } from '@angular/common/http';
+import { Component } from '@angular/core';
 import {
   ColDef,
   FirstDataRenderedEvent,
   GridApi,
   GridReadyEvent,
-} from "ag-grid-community";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
-import { DetailCellRenderer } from "./detail-cell-renderer.component";
+} from 'ag-grid-community';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import 'ag-grid-enterprise';
+import { DetailCellRenderer } from './detail-cell-renderer.component';
 declare var window: any;
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<div class="example-wrapper">
     <div style="margin-bottom: 5px;">
       <button (click)="printDetailGridInfo()">Print Detail Grid Info</button>
@@ -38,10 +38,10 @@ export class AppComponent {
 
   public columnDefs: ColDef[] = [
     // group cell renderer needed for expand / collapse icons
-    { field: "name", cellRenderer: "agGroupCellRenderer" },
-    { field: "account" },
-    { field: "calls" },
-    { field: "minutes", valueFormatter: "x.toLocaleString() + 'm'" },
+    { field: 'name', cellRenderer: 'agGroupCellRenderer' },
+    { field: 'account' },
+    { field: 'calls' },
+    { field: 'minutes', valueFormatter: "x.toLocaleString() + 'm'" },
   ];
   public defaultColDef: ColDef = {
     flex: 1,
@@ -79,7 +79,7 @@ export class AppComponent {
 
     this.http
       .get<any[]>(
-        "https://www.ag-grid.com/example-assets/master-detail-data.json"
+        'https://www.ag-grid.com/example-assets/master-detail-data.json'
       )
       .subscribe((data) => {
         this.rowData = data;

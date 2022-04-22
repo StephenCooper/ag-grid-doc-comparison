@@ -12,6 +12,7 @@ When you call `applyTransactionAsync()` the grid will execute the update, along 
 
 <grid-example title='Async Transaction' name='async-transaction' type='generated' options='{ "enterprise": true, "modules": ["clientside", "rowgrouping"], "exampleHeight": 590 }'></grid-example>
 
+
 To help understand the interface for `applyTransaction()` and `applyTransactionAsync()`, here are both method signatures side by side. The first executes immediately. The second executes sometime later using a callback for providing a result.
 
 ```ts
@@ -21,6 +22,7 @@ applyTransaction(rowDataTransaction: RowDataTransaction): RowNodeTransaction
 // batch takes a RowDataTransaction and the result is provided some time later via a callback
 applyTransactionAsync(rowDataTransaction: RowDataTransaction, callback?: (res: RowNodeTransaction) => void): void
 ```
+
 
 Use Async Transactions if you have a high volume of streaming data going into the grid and don't want the grid's rendering and recalculating to be a bottleneck.
 
@@ -34,13 +36,13 @@ Each time the grid executes a batch of Async Transactions, it dispatches a `asyn
 
 The event contains `results` attribute, which is a list of all the results for all Transactions that got applied.
 
-This even is useful for debugging or observing how the Async Transactions are applied for learning purposes.
+This event is useful for debugging or observing how the Async Transactions are applied for learning purposes.
 
 ## Flush Async Transactions
 
 The default wait between executing batches is 50ms. This means when an Async Transaction is provided to the grid, it can take up to 50ms for that transaction to be applied.
 
-Sometimes you may want all transactions to be applied before doing something - for example you may want to select a rows in the grid but want to make sure the grid has all the latest row data before doing so.
+Sometimes you may want all transactions to be applied before doing something - for example you may want to select a row in the grid but want to make sure the grid has all the latest row data before doing so.
 
 To make sure the grid has no Async Transactions pending, you can flush the Async Transaction queue. This is done by calling the API `flushAsyncTransactions`.
 
@@ -54,3 +56,4 @@ The example below demonstrates setting the wait time and also flushing. Note the
 - The example listens on event `asyncTransactionsFlushed` and logs how many transactions got applied.
 
 <grid-example title='Flush Transactions' name='flush-transactions' type='generated' options='{ "enterprise": true, "modules": ["clientside", "rowgrouping"], "exampleHeight": 590 }'></grid-example>
+

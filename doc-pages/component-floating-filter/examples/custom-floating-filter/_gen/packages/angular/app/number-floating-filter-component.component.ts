@@ -1,13 +1,13 @@
-import { Component } from "@angular/core";
-import { IFloatingFilterAngularComp } from "ag-grid-angular";
-import { IFloatingFilterParams, ISimpleFilter } from "ag-grid-community";
+import { Component } from '@angular/core';
+import { IFloatingFilterAngularComp } from 'ag-grid-angular';
+import { IFloatingFilterParams, ISimpleFilter } from 'ag-grid-community';
 
 export interface CustomParams {
   suppressFilterButton: boolean;
   color: string;
 }
 @Component({
-  selector: "number-component",
+  selector: 'number-component',
   template: `&gt;
     <input
       [style.color]="params.color"
@@ -19,8 +19,7 @@ export interface CustomParams {
     />`,
 })
 export class NumberFloatingFilterComponent
-  implements IFloatingFilterAngularComp
-{
+  implements IFloatingFilterAngularComp {
   params!: IFloatingFilterParams<ISimpleFilter> & CustomParams;
   currentValue: number | null | string = null;
   style: any;
@@ -53,7 +52,7 @@ export class NumberFloatingFilterComponent
 
     this.currentValue = Number(this.currentValue);
     this.params.parentFilterInstance((instance: any) => {
-      instance.onFloatingFilterChanged("greaterThan", this.currentValue);
+      instance.onFloatingFilterChanged('greaterThan', this.currentValue);
     });
   }
 }

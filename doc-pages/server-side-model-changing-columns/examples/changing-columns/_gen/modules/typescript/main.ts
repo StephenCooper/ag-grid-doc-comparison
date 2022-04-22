@@ -6,13 +6,13 @@ import {
   IServerSideGetRowsParams,
   ModuleRegistry,
   SetFilterValuesFuncParams,
-} from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine-dark.css";
-import { ColumnsToolPanelModule } from "@ag-grid-enterprise/column-tool-panel";
-import { MenuModule } from "@ag-grid-enterprise/menu";
-import { RowGroupingModule } from "@ag-grid-enterprise/row-grouping";
-import { ServerSideRowModelModule } from "@ag-grid-enterprise/server-side-row-model";
+} from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine-dark.css';
+import { ColumnsToolPanelModule } from '@ag-grid-enterprise/column-tool-panel';
+import { MenuModule } from '@ag-grid-enterprise/menu';
+import { RowGroupingModule } from '@ag-grid-enterprise/row-grouping';
+import { ServerSideRowModelModule } from '@ag-grid-enterprise/server-side-row-model';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([
@@ -24,21 +24,21 @@ ModuleRegistry.registerModules([
 
 declare var FakeServer: any;
 
-var colDefCountry: ColDef = { field: "country", rowGroup: true };
-var colDefYear: ColDef = { field: "year", rowGroup: true };
+var colDefCountry: ColDef = { field: 'country', rowGroup: true };
+var colDefYear: ColDef = { field: 'year', rowGroup: true };
 var colDefAthlete: ColDef = {
-  field: "athlete",
-  filter: "agSetColumnFilter",
+  field: 'athlete',
+  filter: 'agSetColumnFilter',
   filterParams: {
     values: getAthletesAsync,
   },
-  menuTabs: ["filterMenuTab"],
+  menuTabs: ['filterMenuTab'],
 };
-var colDefAge: ColDef = { field: "age" };
-var colDefSport: ColDef = { field: "sport" };
-var colDefGold: ColDef = { field: "gold", aggFunc: "sum" };
-var colDefSilver: ColDef = { field: "silver", aggFunc: "sum" };
-var colDefBronze: ColDef = { field: "bronze", aggFunc: "sum" };
+var colDefAge: ColDef = { field: 'age' };
+var colDefSport: ColDef = { field: 'sport' };
+var colDefGold: ColDef = { field: 'gold', aggFunc: 'sum' };
+var colDefSilver: ColDef = { field: 'silver', aggFunc: 'sum' };
+var colDefBronze: ColDef = { field: 'bronze', aggFunc: 'sum' };
 
 const columnDefs: ColDef[] = [
   colDefAthlete,
@@ -63,18 +63,18 @@ const gridOptions: GridOptions = {
     minWidth: 200,
   },
   // use the server-side row model
-  rowModelType: "serverSide",
-  serverSideStoreType: "partial",
+  rowModelType: 'serverSide',
+  serverSideStoreType: 'partial',
 
   onGridReady: function () {
-    (document.getElementById("athlete") as HTMLInputElement).checked = true;
-    (document.getElementById("age") as HTMLInputElement).checked = true;
-    (document.getElementById("country") as HTMLInputElement).checked = true;
-    (document.getElementById("year") as HTMLInputElement).checked = true;
-    (document.getElementById("sport") as HTMLInputElement).checked = true;
-    (document.getElementById("gold") as HTMLInputElement).checked = true;
-    (document.getElementById("silver") as HTMLInputElement).checked = true;
-    (document.getElementById("bronze") as HTMLInputElement).checked = true;
+    (document.getElementById('athlete') as HTMLInputElement).checked = true;
+    (document.getElementById('age') as HTMLInputElement).checked = true;
+    (document.getElementById('country') as HTMLInputElement).checked = true;
+    (document.getElementById('year') as HTMLInputElement).checked = true;
+    (document.getElementById('sport') as HTMLInputElement).checked = true;
+    (document.getElementById('gold') as HTMLInputElement).checked = true;
+    (document.getElementById('silver') as HTMLInputElement).checked = true;
+    (document.getElementById('bronze') as HTMLInputElement).checked = true;
   },
 
   animateRows: true,
@@ -93,29 +93,29 @@ function getAthletesAsync(params: SetFilterValuesFuncParams) {
 
 function onBtApply() {
   var cols = [];
-  if (getBooleanValue("#athlete")) {
+  if (getBooleanValue('#athlete')) {
     cols.push(colDefAthlete);
   }
-  if (getBooleanValue("#age")) {
+  if (getBooleanValue('#age')) {
     cols.push(colDefAge);
   }
-  if (getBooleanValue("#country")) {
+  if (getBooleanValue('#country')) {
     cols.push(colDefCountry);
   }
-  if (getBooleanValue("#year")) {
+  if (getBooleanValue('#year')) {
     cols.push(colDefYear);
   }
-  if (getBooleanValue("#sport")) {
+  if (getBooleanValue('#sport')) {
     cols.push(colDefSport);
   }
 
-  if (getBooleanValue("#gold")) {
+  if (getBooleanValue('#gold')) {
     cols.push(colDefGold);
   }
-  if (getBooleanValue("#silver")) {
+  if (getBooleanValue('#silver')) {
     cols.push(colDefSilver);
   }
-  if (getBooleanValue("#bronze")) {
+  if (getBooleanValue('#bronze')) {
     cols.push(colDefBronze);
   }
 
@@ -131,7 +131,7 @@ function getBooleanValue(cssSelector: string) {
 function getServerSideDatasource(server: any): IServerSideDatasource {
   return {
     getRows: function (params: IServerSideGetRowsParams) {
-      console.log("[Datasource] - rows requested by grid: ", params.request);
+      console.log('[Datasource] - rows requested by grid: ', params.request);
 
       var response = server.getData(params.request);
 
@@ -155,10 +155,10 @@ function getServerSideDatasource(server: any): IServerSideDatasource {
 var fakeServer: any = undefined;
 
 // setup the grid after the page has finished loading
-var gridDiv = document.querySelector<HTMLElement>("#myGrid")!;
+var gridDiv = document.querySelector<HTMLElement>('#myGrid')!;
 new Grid(gridDiv, gridOptions);
 
-fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
   .then((response) => response.json())
   .then(function (data) {
     // setup the fake server with entire dataset
@@ -171,7 +171,7 @@ fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
     gridOptions.api!.setServerSideDatasource(datasource);
   });
 
-if (typeof window !== "undefined") {
+if (typeof window !== 'undefined') {
   // Attach external event handlers to window so they can be called from index.html
   (<any>window).onBtApply = onBtApply;
 }

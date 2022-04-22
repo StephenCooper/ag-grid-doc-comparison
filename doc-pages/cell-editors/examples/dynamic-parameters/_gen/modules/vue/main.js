@@ -1,13 +1,13 @@
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { AgGridVue } from "@ag-grid-community/vue";
-import { ColumnsToolPanelModule } from "@ag-grid-enterprise/column-tool-panel";
-import { MenuModule } from "@ag-grid-enterprise/menu";
-import { RichSelectModule } from "@ag-grid-enterprise/rich-select";
-import Vue from "vue";
-import GenderCellRenderer from "./genderCellRendererVue.js";
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { AgGridVue } from '@ag-grid-community/vue';
+import { ColumnsToolPanelModule } from '@ag-grid-enterprise/column-tool-panel';
+import { MenuModule } from '@ag-grid-enterprise/menu';
+import { RichSelectModule } from '@ag-grid-enterprise/rich-select';
+import Vue from 'vue';
+import GenderCellRenderer from './genderCellRendererVue.js';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([
@@ -32,39 +32,39 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
     GenderCellRenderer,
   },
   data: function () {
     return {
       columnDefs: [
-        { field: "name" },
+        { field: 'name' },
         {
-          field: "gender",
-          cellRenderer: "GenderCellRenderer",
-          cellEditor: "agRichSelectCellEditor",
+          field: 'gender',
+          cellRenderer: 'GenderCellRenderer',
+          cellEditor: 'agRichSelectCellEditor',
           cellEditorPopup: true,
           cellEditorParams: {
-            values: ["Male", "Female"],
-            cellRenderer: "GenderCellRenderer",
+            values: ['Male', 'Female'],
+            cellRenderer: 'GenderCellRenderer',
             cellEditorPopup: true,
           },
         },
         {
-          field: "country",
-          cellEditor: "agRichSelectCellEditor",
+          field: 'country',
+          cellEditor: 'agRichSelectCellEditor',
           cellEditorPopup: true,
-          cellEditorParams: { cellHeight: 50, values: ["Ireland", "USA"] },
+          cellEditorParams: { cellHeight: 50, values: ['Ireland', 'USA'] },
         },
         {
-          field: "city",
-          cellEditor: "agRichSelectCellEditor",
+          field: 'city',
+          cellEditor: 'agRichSelectCellEditor',
           cellEditorPopup: true,
           cellEditorParams: cellCellEditorParams,
         },
         {
-          field: "address",
-          cellEditor: "agLargeTextCellEditor",
+          field: 'address',
+          cellEditor: 'agLargeTextCellEditor',
           cellEditorPopup: true,
           minWidth: 550,
         },
@@ -86,13 +86,13 @@ const VueExample = {
   methods: {
     onCellValueChanged(params) {
       const colId = params.column.getId();
-      if (colId === "country") {
+      if (colId === 'country') {
         const selectedCountry = params.data.country;
         const selectedCity = params.data.city;
         const allowedCities = countyToCityMap(selectedCountry);
         const cityMismatch = allowedCities.indexOf(selectedCity) < 0;
         if (cityMismatch) {
-          params.node.setDataValue("city", null);
+          params.node.setDataValue('city', null);
         }
       }
     },
@@ -105,8 +105,8 @@ const VueExample = {
 
 window.countyToCityMap = function countyToCityMap(match) {
   const map = {
-    Ireland: ["Dublin", "Cork", "Galway"],
-    USA: ["New York", "Los Angeles", "Chicago", "Houston"],
+    Ireland: ['Dublin', 'Cork', 'Galway'],
+    USA: ['New York', 'Los Angeles', 'Chicago', 'Houston'],
   };
   return map[match];
 };
@@ -121,8 +121,8 @@ const cellCellEditorParams = (params) => {
 };
 
 new Vue({
-  el: "#app",
+  el: '#app',
   components: {
-    "my-component": VueExample,
+    'my-component': VueExample,
   },
 });

@@ -3,16 +3,16 @@ import {
   Grid,
   GridOptions,
   IFiltersToolPanel,
-} from "ag-grid-community";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
+} from 'ag-grid-community';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import 'ag-grid-enterprise';
 
 var filterParams = {
   comparator: function (filterLocalDateAtMidnight: Date, cellValue: string) {
     var dateAsString = cellValue;
     if (dateAsString == null) return -1;
-    var dateParts = dateAsString.split("/");
+    var dateParts = dateAsString.split('/');
     var cellDate = new Date(
       Number(dateParts[2]),
       Number(dateParts[1]) - 1,
@@ -35,20 +35,20 @@ var filterParams = {
 };
 
 const columnDefs: ColDef[] = [
-  { field: "athlete", filter: "agTextColumnFilter" },
-  { field: "age", filter: "agNumberColumnFilter", maxWidth: 100 },
-  { field: "country" },
-  { field: "year", maxWidth: 100 },
+  { field: 'athlete', filter: 'agTextColumnFilter' },
+  { field: 'age', filter: 'agNumberColumnFilter', maxWidth: 100 },
+  { field: 'country' },
+  { field: 'year', maxWidth: 100 },
   {
-    field: "date",
-    filter: "agDateColumnFilter",
+    field: 'date',
+    filter: 'agDateColumnFilter',
     filterParams: filterParams,
   },
-  { field: "sport" },
-  { field: "gold", filter: "agNumberColumnFilter" },
-  { field: "silver", filter: "agNumberColumnFilter" },
-  { field: "bronze", filter: "agNumberColumnFilter" },
-  { field: "total", filter: "agNumberColumnFilter" },
+  { field: 'sport' },
+  { field: 'gold', filter: 'agNumberColumnFilter' },
+  { field: 'silver', filter: 'agNumberColumnFilter' },
+  { field: 'bronze', filter: 'agNumberColumnFilter' },
+  { field: 'total', filter: 'agNumberColumnFilter' },
 ];
 
 const gridOptions: GridOptions = {
@@ -59,11 +59,11 @@ const gridOptions: GridOptions = {
     filter: true,
     sortable: true,
   },
-  sideBar: "filters",
+  sideBar: 'filters',
   onGridReady: function (params) {
-    (
-      params.api.getToolPanelInstance("filters") as any as IFiltersToolPanel
-    ).expandFilters();
+    ((params.api.getToolPanelInstance(
+      'filters'
+    ) as any) as IFiltersToolPanel).expandFilters();
   },
 };
 
@@ -77,9 +77,9 @@ function saveFilterModel() {
   savedFilterModel = gridOptions.api!.getFilterModel();
 
   var keys = Object.keys(savedFilterModel);
-  var savedFilters: string = keys.length > 0 ? keys.join(", ") : "(none)";
+  var savedFilters: string = keys.length > 0 ? keys.join(', ') : '(none)';
 
-  (document.querySelector("#savedFilters") as any).innerHTML = savedFilters;
+  (document.querySelector('#savedFilters') as any).innerHTML = savedFilters;
 }
 
 function restoreFilterModel() {
@@ -89,30 +89,30 @@ function restoreFilterModel() {
 function restoreFromHardCoded() {
   var hardcodedFilter = {
     country: {
-      type: "set",
-      values: ["Ireland", "United States"],
+      type: 'set',
+      values: ['Ireland', 'United States'],
     },
-    age: { type: "lessThan", filter: "30" },
-    athlete: { type: "startsWith", filter: "Mich" },
-    date: { type: "lessThan", dateFrom: "2010-01-01" },
+    age: { type: 'lessThan', filter: '30' },
+    athlete: { type: 'startsWith', filter: 'Mich' },
+    date: { type: 'lessThan', dateFrom: '2010-01-01' },
   };
 
   gridOptions.api!.setFilterModel(hardcodedFilter);
 }
 
 function destroyFilter() {
-  gridOptions.api!.destroyFilter("athlete");
+  gridOptions.api!.destroyFilter('athlete');
 }
 
 // setup the grid after the page has finished loading
-var gridDiv = document.querySelector<HTMLElement>("#myGrid")!;
+var gridDiv = document.querySelector<HTMLElement>('#myGrid')!;
 new Grid(gridDiv, gridOptions);
 
-fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
   .then((response) => response.json())
   .then((data) => gridOptions.api!.setRowData(data));
 
-if (typeof window !== "undefined") {
+if (typeof window !== 'undefined') {
   // Attach external event handlers to window so they can be called from index.html
   (<any>window).clearFilters = clearFilters;
   (<any>window).saveFilterModel = saveFilterModel;

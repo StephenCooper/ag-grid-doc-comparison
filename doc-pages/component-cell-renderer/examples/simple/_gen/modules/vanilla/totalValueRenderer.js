@@ -2,7 +2,7 @@ class TotalValueRenderer {
   // gets called once before the renderer is used
   init(params) {
     // create the cell
-    this.eGui = document.createElement("div");
+    this.eGui = document.createElement('div');
     this.eGui.innerHTML = `
           <span>
               <span class="my-value"></span>
@@ -11,8 +11,8 @@ class TotalValueRenderer {
        `;
 
     // get references to the elements we want
-    this.eButton = this.eGui.querySelector(".btn-simple");
-    this.eValue = this.eGui.querySelector(".my-value");
+    this.eButton = this.eGui.querySelector('.btn-simple');
+    this.eValue = this.eGui.querySelector('.my-value');
 
     // set value into cell
     this.cellValue = this.getValueToDisplay(params);
@@ -20,7 +20,7 @@ class TotalValueRenderer {
 
     // add event listener to button
     this.eventListener = () => alert(`${this.cellValue} medals won!`);
-    this.eButton.addEventListener("click", this.eventListener);
+    this.eButton.addEventListener('click', this.eventListener);
   }
 
   getGui() {
@@ -42,7 +42,7 @@ class TotalValueRenderer {
     // do cleanup, remove event listener from button
     if (this.eButton) {
       // check that the button element exists as destroy() can be called before getGui()
-      this.eButton.removeEventListener("click", this.eventListener);
+      this.eButton.removeEventListener('click', this.eventListener);
     }
   }
 

@@ -1,10 +1,10 @@
-"use strict";
+'use strict';
 
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import { AgGridReact } from "ag-grid-react";
-import React, { useCallback, useMemo, useState } from "react";
-import { render } from "react-dom";
+import React, { useCallback, useMemo, useRef, useState } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from 'ag-grid-react';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 
 const createRowData = () => {
   var data = [];
@@ -19,21 +19,21 @@ const createRowData = () => {
 };
 
 const GridExample = () => {
-  const containerStyle = useMemo(() => ({ width: "100%", height: "100%" }), []);
-  const gridStyle = useMemo(() => ({ height: "100%", width: "100%" }), []);
+  const containerStyle = useMemo(() => ({ width: '100%', height: '100%' }), []);
+  const gridStyle = useMemo(() => ({ height: '100%', width: '100%' }), []);
   const [rowData, setRowData] = useState(createRowData());
   const [columnDefs, setColumnDefs] = useState([
     // colId will be 'firstCol'
-    { headerName: "Col 1", colId: "firstCol", field: "height" },
+    { headerName: 'Col 1', colId: 'firstCol', field: 'height' },
     // colId will be 'firstCol_1', cos 'firstCol' already taken
-    { headerName: "Col 2", colId: "firstCol", field: "height" },
+    { headerName: 'Col 2', colId: 'firstCol', field: 'height' },
     // colId will be 'height'
-    { headerName: "Col 3", field: "height" },
+    { headerName: 'Col 3', field: 'height' },
     // colId will be 'height_1', cos 'height' already taken
-    { headerName: "Col 4", field: "height" },
+    { headerName: 'Col 4', field: 'height' },
     // no colId, no field, so grid generated ID
-    { headerName: "Col 5", valueGetter: "data.width" },
-    { headerName: "Col 6", valueGetter: "data.width" },
+    { headerName: 'Col 5', valueGetter: 'data.width' },
+    { headerName: 'Col 6', valueGetter: 'data.width' },
   ]);
 
   const onGridReady = useCallback((params) => {
@@ -41,7 +41,7 @@ const GridExample = () => {
     cols.forEach(function (col) {
       var colDef = col.getColDef();
       console.log(
-        colDef.headerName + ", Column ID = " + col.getId(),
+        colDef.headerName + ', Column ID = ' + col.getId(),
         JSON.stringify(colDef)
       );
     });
@@ -49,7 +49,7 @@ const GridExample = () => {
 
   return (
     <div style={containerStyle}>
-      <div style={{ height: "100%", boxSizing: "border-box" }}>
+      <div style={{ height: '100%', boxSizing: 'border-box' }}>
         <div style={gridStyle} className="ag-theme-alpine">
           <AgGridReact
             rowData={rowData}
@@ -62,4 +62,4 @@ const GridExample = () => {
   );
 };
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

@@ -1,10 +1,10 @@
-import * as agCharts from "ag-charts-community";
-import { AgChartOptions } from "ag-charts-community";
+import { AgChartOptions } from 'ag-charts-community'
+import * as agCharts from 'ag-charts-community'
 
 const options: AgChartOptions = {
-  container: document.getElementById("myChart"),
+  container: document.getElementById('myChart'),
   title: {
-    text: "Internet Explorer Market Share",
+    text: 'Internet Explorer Market Share',
   },
   subtitle: {
     text: '2009-2019 (aka "good times")',
@@ -12,19 +12,18 @@ const options: AgChartOptions = {
   data: getData(),
   series: [
     {
-      type: "area",
-      xKey: "year",
-      yKey: "ie",
-      yName: "IE",
+      type: 'area',
+      xKey: 'year',
+      yKey: 'ie',
+      yName: 'IE',
       marker: {
         enabled: true,
       },
       tooltip: {
         renderer: function (params) {
           return {
-            content:
-              params.yName + " - " + params.yValue + "% - Jan " + params.xValue,
-          };
+            content: `${params.xValue}: ${params.yValue.toFixed(1)}%`,
+          }
         },
       },
     },
@@ -32,6 +31,6 @@ const options: AgChartOptions = {
   legend: {
     enabled: false,
   },
-};
+}
 
-agCharts.AgChart.create(options);
+agCharts.AgChart.create(options)

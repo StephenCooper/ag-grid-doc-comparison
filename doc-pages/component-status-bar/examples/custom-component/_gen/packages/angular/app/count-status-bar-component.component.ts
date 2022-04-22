@@ -1,9 +1,9 @@
-import { Component } from "@angular/core";
-import { IStatusPanelAngularComp } from "ag-grid-angular";
-import { IStatusPanelParams } from "ag-grid-community";
+import { Component } from '@angular/core';
+import { IStatusPanelAngularComp } from 'ag-grid-angular';
+import { IStatusPanelParams } from 'ag-grid-community';
 
 @Component({
-  selector: "status-component",
+  selector: 'status-component',
   template: `
     <div class="ag-status-name-value">
       <span>Row Count Component&nbsp;:</span>
@@ -18,7 +18,7 @@ export class CountStatusBarComponent implements IStatusPanelAngularComp {
   agInit(params: IStatusPanelParams): void {
     this.params = params;
 
-    this.params.api.addEventListener("gridReady", this.onGridReady.bind(this));
+    this.params.api.addEventListener('gridReady', this.onGridReady.bind(this));
   }
 
   onGridReady() {

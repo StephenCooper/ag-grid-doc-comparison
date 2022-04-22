@@ -1,45 +1,40 @@
-import {
-  ColDef,
-  Grid,
-  GridOptions,
-  ValueFormatterParams,
-} from "@ag-grid-community/core";
+import { Grid, ColDef, GridOptions, ValueFormatterParams, GetRowIdParams } from '@ag-grid-community/core'
 declare function createMockServer(): any;
 
 const columnDefs: ColDef[] = [
-  { field: "code", maxWidth: 90 },
-  { field: "name", minWidth: 200 },
+  { field: 'code', maxWidth: 90 },
+  { field: 'name', minWidth: 200 },
   {
-    field: "bid",
-    cellClass: "cell-number",
+    field: 'bid',
+    cellClass: 'cell-number',
     valueFormatter: numberFormatter,
-    cellRenderer: "agAnimateShowChangeCellRenderer",
+    cellRenderer: 'agAnimateShowChangeCellRenderer',
   },
   {
-    field: "mid",
-    cellClass: "cell-number",
+    field: 'mid',
+    cellClass: 'cell-number',
     valueFormatter: numberFormatter,
-    cellRenderer: "agAnimateShowChangeCellRenderer",
+    cellRenderer: 'agAnimateShowChangeCellRenderer',
   },
   {
-    field: "ask",
-    cellClass: "cell-number",
+    field: 'ask',
+    cellClass: 'cell-number',
     valueFormatter: numberFormatter,
-    cellRenderer: "agAnimateShowChangeCellRenderer",
+    cellRenderer: 'agAnimateShowChangeCellRenderer',
   },
   {
-    field: "volume",
-    cellClass: "cell-number",
-    cellRenderer: "agAnimateSlideCellRenderer",
+    field: 'volume',
+    cellClass: 'cell-number',
+    cellRenderer: 'agAnimateSlideCellRenderer',
   },
-];
+]
 
 function numberFormatter(params: ValueFormatterParams) {
-  if (typeof params.value === "number") {
-    return params.value.toFixed(2);
+  if (typeof params.value === 'number') {
+    return params.value.toFixed(2)
   }
 
-  return params.value;
+  return params.value
 }
 
 const gridOptions: GridOptions = {
@@ -50,30 +45,32 @@ const gridOptions: GridOptions = {
   },
   enableRangeSelection: true,
   columnDefs: columnDefs,
-  getRowId: function (params) {
-    return params.data.code;
+  getRowId: function (params: GetRowIdParams) {
+    return params.data.code
   },
   onGridReady: function (params) {
     var mockServer = createMockServer(),
       initialLoad$ = mockServer.initialLoad(),
-      updates$ = mockServer.byRowupdates();
+      updates$ = mockServer.byRowupdates()
 
     initialLoad$.subscribe(function (rowData: any[]) {
       // the initial full set of data
       // note that we don't need to un-subscribe here as it's a one off data load
-      params.api.setRowData(rowData);
+      params.api.setRowData(rowData)
 
       // now listen for updates
       // we process the updates with a transaction - this ensures that only the changes
       // rows will get re-rendered, improving performance
       updates$.subscribe(function (updates: any[]) {
-        return params.api.applyTransaction({ update: updates });
-      });
-    });
+        return params.api.applyTransaction({ update: updates })
+      })
+    })
   },
-};
+}
 
-document.addEventListener("DOMContentLoaded", function () {
-  var gridDiv = document.querySelector<HTMLElement>("#myGrid")!;
-  new Grid(gridDiv, gridOptions);
-});
+document.addEventListener('DOMContentLoaded', function () {
+  var gridDiv = document.querySelector<HTMLElement>('#myGrid')!
+  new Grid(gridDiv, gridOptions)
+})
+
+

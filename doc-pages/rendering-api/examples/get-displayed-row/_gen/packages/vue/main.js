@@ -1,7 +1,7 @@
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import { AgGridVue } from "ag-grid-vue";
-import Vue from "vue";
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import { AgGridVue } from 'ag-grid-vue';
+import Vue from 'vue';
 
 const VueExample = {
   template: `
@@ -28,22 +28,22 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
-        { field: "athlete", minWidth: 180 },
-        { field: "age" },
-        { field: "country", minWidth: 150 },
-        { headerName: "Group", valueGetter: "data.country.charAt(0)" },
-        { field: "year" },
-        { field: "date", minWidth: 150 },
-        { field: "sport", minWidth: 180 },
-        { field: "gold" },
-        { field: "silver" },
-        { field: "bronze" },
-        { field: "total" },
+        { field: 'athlete', minWidth: 180 },
+        { field: 'age' },
+        { field: 'country', minWidth: 150 },
+        { headerName: 'Group', valueGetter: 'data.country.charAt(0)' },
+        { field: 'year' },
+        { field: 'date', minWidth: 150 },
+        { field: 'sport', minWidth: 180 },
+        { field: 'gold' },
+        { field: 'silver' },
+        { field: 'bronze' },
+        { field: 'total' },
       ],
       gridApi: null,
       columnApi: null,
@@ -61,22 +61,22 @@ const VueExample = {
     getDisplayedRowAtIndex() {
       var rowNode = this.gridApi.getDisplayedRowAtIndex(0);
       console.log(
-        "getDisplayedRowAtIndex(0) => " +
+        'getDisplayedRowAtIndex(0) => ' +
           rowNode.data.athlete +
-          " " +
+          ' ' +
           rowNode.data.year
       );
     },
     getDisplayedRowCount() {
       var count = this.gridApi.getDisplayedRowCount();
-      console.log("getDisplayedRowCount() => " + count);
+      console.log('getDisplayedRowCount() => ' + count);
     },
     printAllDisplayedRows() {
       var count = this.gridApi.getDisplayedRowCount();
-      console.log("## printAllDisplayedRows");
+      console.log('## printAllDisplayedRows');
       for (var i = 0; i < count; i++) {
         var rowNode = this.gridApi.getDisplayedRowAtIndex(i);
-        console.log("row " + i + " is " + rowNode.data.athlete);
+        console.log('row ' + i + ' is ' + rowNode.data.athlete);
       }
     },
     printPageDisplayedRows() {
@@ -89,10 +89,10 @@ const VueExample = {
       if (endPageIndex > lastGridIndex) {
         endPageIndex = lastGridIndex;
       }
-      console.log("## printPageDisplayedRows");
+      console.log('## printPageDisplayedRows');
       for (var i = startPageIndex; i <= endPageIndex; i++) {
         var rowNode = this.gridApi.getDisplayedRowAtIndex(i);
-        console.log("row " + i + " is " + rowNode.data.athlete);
+        console.log('row ' + i + ' is ' + rowNode.data.athlete);
       }
     },
     onGridReady(params) {
@@ -103,7 +103,7 @@ const VueExample = {
         params.api.setRowData(data.slice(0, 100));
       };
 
-      fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
         .then((resp) => resp.json())
         .then((data) => updateData(data));
     },
@@ -111,8 +111,8 @@ const VueExample = {
 };
 
 new Vue({
-  el: "#app",
+  el: '#app',
   components: {
-    "my-component": VueExample,
+    'my-component': VueExample,
   },
 });

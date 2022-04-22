@@ -1,9 +1,9 @@
-import { Component } from "@angular/core";
-import { AgCartesianChartOptions } from "ag-charts-community";
-import { cloneDeep } from "lodash";
+import { Component } from '@angular/core';
+import { AgCartesianChartOptions } from 'ag-charts-community';
+import { cloneDeep } from 'lodash';
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<div class="wrapper">
     <div id="toolPanel">
       <button (click)="setYNames()">Set yNames</button>
@@ -24,24 +24,24 @@ export class AppComponent {
     this.options = {
       data: [
         {
-          month: "Jun",
+          month: 'Jun',
           value1: 50,
           hats_made: 40,
         },
         {
-          month: "Jul",
+          month: 'Jul',
           value1: 70,
           hats_made: 50,
         },
         {
-          month: "Aug",
+          month: 'Aug',
           value1: 60,
           hats_made: 30,
         },
       ],
       series: [
-        { type: "column", xKey: "month", stacked: true, yKey: "value1" },
-        { type: "column", xKey: "month", stacked: true, yKey: "hats_made" },
+        { type: 'column', xKey: 'month', stacked: true, yKey: 'value1' },
+        { type: 'column', xKey: 'month', stacked: true, yKey: 'hats_made' },
       ],
     };
   }
@@ -51,8 +51,8 @@ export class AppComponent {
   setYNames = () => {
     const options = cloneDeep(this.options);
 
-    options.series![0].yName = "Sweaters Made";
-    options.series![1].yName = "Hats Made";
+    options.series![0].yName = 'Sweaters Made';
+    options.series![1].yName = 'Hats Made';
 
     this.options = options;
   };

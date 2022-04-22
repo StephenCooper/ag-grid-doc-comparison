@@ -1,23 +1,23 @@
-import { ColDef, Grid, GridOptions } from "@ag-grid-community/core";
+import { Grid, ColDef, GridOptions } from '@ag-grid-community/core'
 import { CustomTooltip } from "./customTooltip_typescript";
 
 const columnDefs: ColDef[] = [
   {
-    field: "athlete",
+    field: 'athlete',
     minWidth: 150,
-    tooltipField: "athlete",
-    tooltipComponentParams: { color: "#ececec" },
+    tooltipField: 'athlete',
+    tooltipComponentParams: { color: '#ececec' },
   },
-  { field: "age" },
-  { field: "country", minWidth: 130, tooltipField: "country" },
-  { field: "year" },
-  { field: "date" },
-  { field: "sport" },
-  { field: "gold" },
-  { field: "silver" },
-  { field: "bronze" },
-  { field: "total" },
-];
+  { field: 'age' },
+  { field: 'country', minWidth: 130, tooltipField: 'country' },
+  { field: 'year' },
+  { field: 'date' },
+  { field: 'sport' },
+  { field: 'gold' },
+  { field: 'silver' },
+  { field: 'bronze' },
+  { field: 'total' },
+]
 
 const gridOptions: GridOptions = {
   defaultColDef: {
@@ -27,7 +27,7 @@ const gridOptions: GridOptions = {
     minWidth: 100,
     filter: true,
     resizable: true,
-    tooltipComponent: CustomTooltip,
+    tooltipComponent: CustomTooltip
   },
 
   tooltipShowDelay: 0,
@@ -36,16 +36,16 @@ const gridOptions: GridOptions = {
   // set rowData to null or undefined to show loading panel by default
   rowData: null,
   columnDefs: columnDefs,
-};
+}
 
 // setup the grid after the page has finished loading
-document.addEventListener("DOMContentLoaded", () => {
-  const gridDiv = document.querySelector<HTMLElement>("#myGrid")!;
-  new Grid(gridDiv, gridOptions);
+document.addEventListener('DOMContentLoaded', () => {
+  const gridDiv = document.querySelector<HTMLElement>('#myGrid')!
+  new Grid(gridDiv, gridOptions)
 
-  fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
-    .then((response) => response.json())
-    .then((data) => {
-      gridOptions.api!.setRowData(data);
-    });
-});
+  fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
+    .then(response => response.json())
+    .then(data => {
+      gridOptions.api!.setRowData(data)
+    })
+})

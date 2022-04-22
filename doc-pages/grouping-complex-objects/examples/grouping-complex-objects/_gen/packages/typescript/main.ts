@@ -3,29 +3,29 @@ import {
   GridOptions,
   KeyCreatorParams,
   ValueGetterParams,
-} from "ag-grid-community";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
+} from 'ag-grid-community';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import 'ag-grid-enterprise';
 
 const gridOptions: GridOptions = {
   columnDefs: [
-    { field: "athlete", minWidth: 200 },
-    { field: "gold" },
-    { field: "silver" },
-    { field: "bronze" },
-    { field: "total" },
-    { field: "age" },
+    { field: 'athlete', minWidth: 200 },
+    { field: 'gold' },
+    { field: 'silver' },
+    { field: 'bronze' },
+    { field: 'total' },
+    { field: 'age' },
     {
-      field: "country",
+      field: 'country',
       rowGroup: true,
       hide: true,
       valueGetter: countryValueGetter,
       keyCreator: countryKeyCreator,
     },
-    { field: "year" },
-    { field: "date" },
-    { field: "sport", minWidth: 200 },
+    { field: 'year' },
+    { field: 'date' },
+    { field: 'sport', minWidth: 200 },
   ],
   defaultColDef: {
     flex: 1,
@@ -53,9 +53,9 @@ function countryValueGetter(params: ValueGetterParams) {
 }
 
 // setup the grid after the page has finished loading
-var gridDiv = document.querySelector<HTMLElement>("#myGrid")!;
+var gridDiv = document.querySelector<HTMLElement>('#myGrid')!;
 new Grid(gridDiv, gridOptions);
 
-fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
   .then((response) => response.json())
   .then((data) => gridOptions.api!.setRowData(data));

@@ -1,15 +1,17 @@
 // specify the columns
-const columnDefs = [{ field: "make" }, { field: "model" }, { field: "price" }];
+const columnDefs = [{ field: 'make' }, { field: 'model' }, { field: 'price' }];
 
 // specify the data
 var rowData = [
-  { make: "Toyota", model: "Celica", price: 35000 },
-  { make: "Ford", model: "Mondeo", price: 32000 },
-  { make: "Porsche", model: "Boxter", price: 72000 },
+  { make: 'Toyota', model: 'Celica', price: 35000 },
+  { make: 'Ford', model: 'Mondeo', price: 32000 },
+  { make: 'Porsche', model: 'Boxster', price: 72000 },
 ];
 
 // let the grid know which columns and what data to use
 const gridOptions = {
+  alwaysShowHorizontalScroll: true,
+  alwaysShowVerticalScroll: true,
   columnDefs: columnDefs,
   rowData: rowData,
   onGridReady: function (params) {
@@ -27,9 +29,9 @@ const gridOptions = {
 
 // wait for the document to be loaded, otherwise
 // AG Grid will not find the div in the document.
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener('DOMContentLoaded', function () {
   // lookup the container we want the Grid to use
-  var eGridDiv = document.querySelector("#myGrid");
+  var eGridDiv = document.querySelector('#myGrid');
 
   // create the grid passing in the div to use together with the columns & data we want to use
   new agGrid.Grid(eGridDiv, gridOptions);

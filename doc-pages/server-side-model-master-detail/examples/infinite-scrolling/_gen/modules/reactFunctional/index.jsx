@@ -1,16 +1,16 @@
-"use strict";
+'use strict';
 
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine-dark.css";
-import { AgGridReact } from "@ag-grid-community/react";
-import { ColumnsToolPanelModule } from "@ag-grid-enterprise/column-tool-panel";
-import { MasterDetailModule } from "@ag-grid-enterprise/master-detail";
-import { MenuModule } from "@ag-grid-enterprise/menu";
-import { ServerSideRowModelModule } from "@ag-grid-enterprise/server-side-row-model";
-import React, { useCallback, useMemo, useState } from "react";
-import { render } from "react-dom";
+import React, { useCallback, useMemo, useRef, useState } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from '@ag-grid-community/react';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine-dark.css';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import { ServerSideRowModelModule } from '@ag-grid-enterprise/server-side-row-model';
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import { MasterDetailModule } from '@ag-grid-enterprise/master-detail';
+import { MenuModule } from '@ag-grid-enterprise/menu';
+import { ColumnsToolPanelModule } from '@ag-grid-enterprise/column-tool-panel';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([
@@ -46,7 +46,7 @@ const getFakeServer = (allData) => {
   return {
     getResponse: function (request) {
       console.log(
-        "asking for rows: " + request.startRow + " to " + request.endRow
+        'asking for rows: ' + request.startRow + ' to ' + request.endRow
       );
       // take a slice of the total rows
       var rowsThisPage = allData.slice(request.startRow, request.endRow);
@@ -62,16 +62,16 @@ const getFakeServer = (allData) => {
 };
 
 const GridExample = () => {
-  const containerStyle = useMemo(() => ({ width: "100%", height: "100%" }), []);
-  const gridStyle = useMemo(() => ({ height: "100%", width: "100%" }), []);
+  const containerStyle = useMemo(() => ({ width: '100%', height: '100%' }), []);
+  const gridStyle = useMemo(() => ({ height: '100%', width: '100%' }), []);
 
   const [columnDefs, setColumnDefs] = useState([
     // group cell renderer needed for expand / collapse icons
-    { field: "accountId", cellRenderer: "agGroupCellRenderer" },
-    { field: "name" },
-    { field: "country" },
-    { field: "calls" },
-    { field: "totalDuration" },
+    { field: 'accountId', cellRenderer: 'agGroupCellRenderer' },
+    { field: 'name' },
+    { field: 'country' },
+    { field: 'calls' },
+    { field: 'totalDuration' },
   ]);
   const defaultColDef = useMemo(() => {
     return {
@@ -82,11 +82,11 @@ const GridExample = () => {
     return {
       detailGridOptions: {
         columnDefs: [
-          { field: "callId" },
-          { field: "direction" },
-          { field: "duration", valueFormatter: "x.toLocaleString() + 's'" },
-          { field: "switchCode", minWidth: 150 },
-          { field: "number", minWidth: 180 },
+          { field: 'callId' },
+          { field: 'direction' },
+          { field: 'duration', valueFormatter: "x.toLocaleString() + 's'" },
+          { field: 'switchCode', minWidth: 150 },
+          { field: 'number', minWidth: 180 },
         ],
         defaultColDef: {
           flex: 1,
@@ -100,7 +100,7 @@ const GridExample = () => {
   }, []);
 
   const onGridReady = useCallback((params) => {
-    fetch("https://www.ag-grid.com/example-assets/call-data.json")
+    fetch('https://www.ag-grid.com/example-assets/call-data.json')
       .then((resp) => resp.json())
       .then((data) => {
         var server = getFakeServer(data);
@@ -110,7 +110,7 @@ const GridExample = () => {
 
     setTimeout(function () {
       // expand some master row
-      var someRow = params.api.getRowNode("1");
+      var someRow = params.api.getRowNode('1');
       if (someRow) {
         someRow.setExpanded(true);
       }
@@ -119,14 +119,14 @@ const GridExample = () => {
 
   return (
     <div style={containerStyle}>
-      <div style={{ height: "100%", boxSizing: "border-box" }}>
+      <div style={{ height: '100%', boxSizing: 'border-box' }}>
         <div style={gridStyle} className="ag-theme-alpine-dark">
           <AgGridReact
             columnDefs={columnDefs}
             defaultColDef={defaultColDef}
             animateRows={true}
-            rowModelType={"serverSide"}
-            serverSideStoreType={"partial"}
+            rowModelType={'serverSide'}
+            serverSideStoreType={'partial'}
             masterDetail={true}
             detailCellRendererParams={detailCellRendererParams}
             onGridReady={onGridReady}
@@ -137,4 +137,4 @@ const GridExample = () => {
   );
 };
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

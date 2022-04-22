@@ -1,10 +1,9 @@
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import { AgGridReact } from "ag-grid-react";
-import React, { Component } from "react";
-import { render } from "react-dom";
-
-("use strict");
+'use strict';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from 'ag-grid-react';
 
 class GridExample extends Component {
   constructor(props) {
@@ -14,8 +13,8 @@ class GridExample extends Component {
       columnDefs: this.createColumnDefs(),
       rowData: null,
       style: {
-        width: "100%",
-        height: "100%",
+        width: '100%',
+        height: '100%',
       },
     };
   }
@@ -23,7 +22,7 @@ class GridExample extends Component {
   onGridReady(params) {
     this.gridApi = params.api;
 
-    fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+    fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .then((resp) => resp.json())
       .then((data) => {
         this.setState({ rowData: data });
@@ -32,29 +31,29 @@ class GridExample extends Component {
 
   createColumnDefs() {
     return [
-      { field: "athlete", width: 150 },
-      { field: "age", width: 90 },
-      { field: "country", width: 150 },
-      { field: "year", width: 90 },
-      { field: "date", width: 150 },
-      { field: "sport", width: 150 },
-      { field: "gold", width: 100 },
-      { field: "silver", width: 100 },
-      { field: "bronze", width: 100 },
-      { field: "total", width: 100 },
+      { field: 'athlete', width: 150 },
+      { field: 'age', width: 90 },
+      { field: 'country', width: 150 },
+      { field: 'year', width: 90 },
+      { field: 'date', width: 150 },
+      { field: 'sport', width: 150 },
+      { field: 'gold', width: 100 },
+      { field: 'silver', width: 100 },
+      { field: 'bronze', width: 100 },
+      { field: 'total', width: 100 },
     ];
   }
 
   fillLarge() {
-    this.setWidthAndHeight("100%", "100%");
+    this.setWidthAndHeight('100%', '100%');
   }
 
   fillMedium() {
-    this.setWidthAndHeight("60%", "60%");
+    this.setWidthAndHeight('60%', '60%');
   }
 
   fillExact() {
-    this.setWidthAndHeight("400px", "400px");
+    this.setWidthAndHeight('400px', '400px');
   }
 
   componentDidUpdate() {}
@@ -70,8 +69,8 @@ class GridExample extends Component {
 
   render() {
     return (
-      <div style={{ height: "100%" }}>
-        <div style={{ marginBottom: "5px" }}>
+      <div style={{ height: '100%' }}>
+        <div style={{ marginBottom: '5px' }}>
           <button onClick={this.fillLarge.bind(this)}>Fill 100%</button>
           <button onClick={this.fillMedium.bind(this)}>Fill 60%</button>
           <button onClick={this.fillExact.bind(this)}>
@@ -79,7 +78,7 @@ class GridExample extends Component {
           </button>
         </div>
         <div
-          style={{ height: "calc(100% - 25px)" }}
+          style={{ height: 'calc(100% - 25px)' }}
           className="ag-theme-alpine"
         >
           <div style={this.state.style}>
@@ -95,4 +94,4 @@ class GridExample extends Component {
   }
 }
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

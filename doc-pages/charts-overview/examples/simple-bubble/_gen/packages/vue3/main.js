@@ -1,5 +1,5 @@
-import { AgChartsVue } from "ag-charts-vue3";
-import { createApp } from "vue";
+import { AgChartsVue } from 'ag-charts-vue3';
+import { createApp } from 'vue';
 
 const ChartExample = {
   template: `
@@ -7,7 +7,7 @@ const ChartExample = {
                 :options="options"></ag-charts-vue>
     `,
   components: {
-    "ag-charts-vue": AgChartsVue,
+    'ag-charts-vue': AgChartsVue,
   },
   data: function () {
     return {
@@ -21,45 +21,45 @@ const ChartExample = {
         return d.magnitude > 4;
       }),
       title: {
-        text: "Worldwide Earthquakes (first week of February 2020)",
+        text: 'Worldwide Earthquakes (first week of February 2020)',
         fontSize: 18,
       },
       subtitle: {
-        text: "Source: US Geological Survey",
+        text: 'Source: US Geological Survey',
       },
       series: [
         {
-          type: "scatter",
-          xKey: "depth",
-          xName: "Depth",
-          yKey: "magnitude",
-          yName: "Magnitude",
-          sizeKey: "minDistance",
-          sizeName: "Minimum Distance",
+          type: 'scatter',
+          xKey: 'depth',
+          xName: 'Depth',
+          yKey: 'magnitude',
+          yName: 'Magnitude',
+          sizeKey: 'minDistance',
+          sizeName: 'Minimum Distance',
           marker: {
             size: 5,
             maxSize: 100,
-            fill: "#41874b",
-            stroke: "#41874b",
+            fill: '#41874b',
+            stroke: '#41874b',
           },
           fillOpacity: 0.5,
         },
       ],
       axes: [
         {
-          position: "bottom",
-          type: "number",
+          position: 'bottom',
+          type: 'number',
           title: {
             enabled: true,
-            text: "Depth (m)",
+            text: 'Depth (m)',
           },
         },
         {
-          position: "left",
-          type: "number",
+          position: 'left',
+          type: 'number',
           title: {
             enabled: true,
-            text: "Magnitude",
+            text: 'Magnitude',
           },
         },
       ],
@@ -72,4 +72,4 @@ const ChartExample = {
   methods: {},
 };
 
-createApp(ChartExample).mount("#app");
+createApp(ChartExample).mount('#app');

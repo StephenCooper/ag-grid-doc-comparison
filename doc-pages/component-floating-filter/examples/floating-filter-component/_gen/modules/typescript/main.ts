@@ -1,34 +1,34 @@
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
 import {
   ColDef,
   Grid,
   GridOptions,
   ModuleRegistry,
-} from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { SliderFloatingFilter } from "./sliderFloatingFilter";
+} from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { SliderFloatingFilter } from './sliderFloatingFilter';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([ClientSideRowModelModule]);
 
 const columnDefs: ColDef[] = [
-  { field: "country", filter: false },
-  { field: "language", filter: false },
-  { field: "name", filter: false },
+  { field: 'country', filter: false },
+  { field: 'language', filter: false },
+  { field: 'name', filter: false },
   {
-    field: "gold",
+    field: 'gold',
     floatingFilterComponent: SliderFloatingFilter,
     floatingFilterComponentParams: {
       maxValue: 7,
       suppressFilterButton: true,
     },
-    filter: "agNumberColumnFilter",
+    filter: 'agNumberColumnFilter',
     suppressMenu: false,
   },
   {
-    field: "silver",
-    filter: "agNumberColumnFilter",
+    field: 'silver',
+    filter: 'agNumberColumnFilter',
     floatingFilterComponent: SliderFloatingFilter,
     floatingFilterComponentParams: {
       maxValue: 5,
@@ -37,8 +37,8 @@ const columnDefs: ColDef[] = [
     suppressMenu: false,
   },
   {
-    field: "bronze",
-    filter: "agNumberColumnFilter",
+    field: 'bronze',
+    filter: 'agNumberColumnFilter',
     floatingFilterComponent: SliderFloatingFilter,
     floatingFilterComponentParams: {
       maxValue: 10,
@@ -63,6 +63,6 @@ const gridOptions: GridOptions = {
 };
 
 // setup the grid after the page has finished loading
-var gridDiv = document.querySelector<HTMLElement>("#myGrid")!;
+var gridDiv = document.querySelector<HTMLElement>('#myGrid')!;
 new Grid(gridDiv, gridOptions);
 gridOptions.api!.sizeColumnsToFit();

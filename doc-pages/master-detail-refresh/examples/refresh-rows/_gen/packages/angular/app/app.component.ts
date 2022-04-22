@@ -1,18 +1,19 @@
-import { HttpClient } from "@angular/common/http";
-import { Component } from "@angular/core";
+import { HttpClient } from '@angular/common/http';
+import { Component } from '@angular/core';
 import {
   ColDef,
   FirstDataRenderedEvent,
   GetRowIdFunc,
+  GetRowIdParams,
   GridReadyEvent,
   IDetailCellRendererParams,
-} from "ag-grid-community";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
+} from 'ag-grid-community';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import 'ag-grid-enterprise';
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<ag-grid-angular
     style="width: 100%; height: 100%;"
     class="ag-theme-alpine"
@@ -30,19 +31,19 @@ import "ag-grid-enterprise";
 export class AppComponent {
   public columnDefs: ColDef[] = [
     // group cell renderer needed for expand / collapse icons
-    { field: "name", cellRenderer: "agGroupCellRenderer" },
-    { field: "account" },
-    { field: "calls" },
-    { field: "minutes", valueFormatter: "x.toLocaleString() + 'm'" },
+    { field: 'name', cellRenderer: 'agGroupCellRenderer' },
+    { field: 'account' },
+    { field: 'calls' },
+    { field: 'minutes', valueFormatter: "x.toLocaleString() + 'm'" },
   ];
   public defaultColDef: ColDef = {
     flex: 1,
   };
-  public getRowId: GetRowIdFunc = function (params) {
+  public getRowId: GetRowIdFunc = function (params: GetRowIdParams) {
     return params.data.account;
   };
   public detailCellRendererParams: any = {
-    refreshStrategy: "rows",
+    refreshStrategy: 'rows',
     template: function (params) {
       return `<div class="ag-details-row ag-details-row-fixed-height">
             <div style="padding: 4px; font-weight: bold;">${params.data.name} ${params.data.calls} calls</div>
@@ -50,17 +51,17 @@ export class AppComponent {
          </div>`;
     },
     detailGridOptions: {
-      rowSelection: "multiple",
+      rowSelection: 'multiple',
       enableCellChangeFlash: true,
-      getRowId: function (params) {
+      getRowId: function (params: GetRowIdParams) {
         return params.data.callId;
       },
       columnDefs: [
-        { field: "callId", checkboxSelection: true },
-        { field: "direction" },
-        { field: "number", minWidth: 150 },
-        { field: "duration", valueFormatter: "x.toLocaleString() + 's'" },
-        { field: "switchCode", minWidth: 150 },
+        { field: 'callId', checkboxSelection: true },
+        { field: 'direction' },
+        { field: 'number', minWidth: 150 },
+        { field: 'duration', valueFormatter: "x.toLocaleString() + 's'" },
+        { field: 'switchCode', minWidth: 150 },
       ],
       defaultColDef: {
         flex: 1,
@@ -109,7 +110,7 @@ export class AppComponent {
   onGridReady(params: GridReadyEvent) {
     this.http
       .get<any[]>(
-        "https://www.ag-grid.com/example-assets/master-detail-data.json"
+        'https://www.ag-grid.com/example-assets/master-detail-data.json'
       )
       .subscribe((data) => {
         allRowData = data;

@@ -1,15 +1,15 @@
-"use strict";
+'use strict';
 
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { AgGridReact } from "@ag-grid-community/react";
-import { ColumnsToolPanelModule } from "@ag-grid-enterprise/column-tool-panel";
-import { MasterDetailModule } from "@ag-grid-enterprise/master-detail";
-import { MenuModule } from "@ag-grid-enterprise/menu";
-import React, { useCallback, useMemo, useRef, useState } from "react";
-import { render } from "react-dom";
+import React, { useCallback, useMemo, useRef, useState } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from '@ag-grid-community/react';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import { MasterDetailModule } from '@ag-grid-enterprise/master-detail';
+import { MenuModule } from '@ag-grid-enterprise/menu';
+import { ColumnsToolPanelModule } from '@ag-grid-enterprise/column-tool-panel';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([
@@ -21,18 +21,18 @@ ModuleRegistry.registerModules([
 
 const GridExample = () => {
   const gridRef = useRef();
-  const containerStyle = useMemo(() => ({ width: "100%", height: "100%" }), []);
-  const gridStyle = useMemo(() => ({ height: "100%", width: "100%" }), []);
+  const containerStyle = useMemo(() => ({ width: '100%', height: '100%' }), []);
+  const gridStyle = useMemo(() => ({ height: '100%', width: '100%' }), []);
   const [rowData, setRowData] = useState();
   const isRowMaster = useCallback(function (dataItem) {
     return dataItem ? dataItem.callRecords.length > 0 : false;
   }, []);
   const [columnDefs, setColumnDefs] = useState([
     // group cell renderer needed for expand / collapse icons
-    { field: "name", cellRenderer: "agGroupCellRenderer" },
-    { field: "account" },
-    { field: "calls" },
-    { field: "minutes", valueFormatter: "x.toLocaleString() + 'm'" },
+    { field: 'name', cellRenderer: 'agGroupCellRenderer' },
+    { field: 'account' },
+    { field: 'calls' },
+    { field: 'minutes', valueFormatter: "x.toLocaleString() + 'm'" },
   ]);
   const defaultColDef = useMemo(() => {
     return {
@@ -46,11 +46,11 @@ const GridExample = () => {
     return {
       detailGridOptions: {
         columnDefs: [
-          { field: "callId" },
-          { field: "direction" },
-          { field: "number", minWidth: 150 },
-          { field: "duration", valueFormatter: "x.toLocaleString() + 's'" },
-          { field: "switchCode", minWidth: 150 },
+          { field: 'callId' },
+          { field: 'direction' },
+          { field: 'number', minWidth: 150 },
+          { field: 'duration', valueFormatter: "x.toLocaleString() + 's'" },
+          { field: 'switchCode', minWidth: 150 },
         ],
         defaultColDef: {
           flex: 1,
@@ -64,7 +64,7 @@ const GridExample = () => {
 
   const onGridReady = useCallback((params) => {
     fetch(
-      "https://www.ag-grid.com/example-assets/master-detail-dynamic-data.json"
+      'https://www.ag-grid.com/example-assets/master-detail-dynamic-data.json'
     )
       .then((resp) => resp.json())
       .then((data) => {
@@ -80,31 +80,31 @@ const GridExample = () => {
   }, []);
 
   const onBtClearMilaCalls = useCallback(() => {
-    var milaSmithRowNode = gridRef.current.api.getRowNode("177001");
+    var milaSmithRowNode = gridRef.current.api.getRowNode('177001');
     var milaSmithData = milaSmithRowNode.data;
     milaSmithData.callRecords = [];
     gridRef.current.api.applyTransaction({ update: [milaSmithData] });
   }, []);
 
   const onBtSetMilaCalls = useCallback(() => {
-    var milaSmithRowNode = gridRef.current.api.getRowNode("177001");
+    var milaSmithRowNode = gridRef.current.api.getRowNode('177001');
     var milaSmithData = milaSmithRowNode.data;
     milaSmithData.callRecords = [
       {
-        name: "susan",
+        name: 'susan',
         callId: 579,
         duration: 23,
-        switchCode: "SW5",
-        direction: "Out",
-        number: "(02) 47485405",
+        switchCode: 'SW5',
+        direction: 'Out',
+        number: '(02) 47485405',
       },
       {
-        name: "susan",
+        name: 'susan',
         callId: 580,
         duration: 52,
-        switchCode: "SW3",
-        direction: "In",
-        number: "(02) 32367069",
+        switchCode: 'SW3',
+        direction: 'In',
+        number: '(02) 32367069',
       },
     ];
     gridRef.current.api.applyTransaction({ update: [milaSmithData] });
@@ -112,8 +112,8 @@ const GridExample = () => {
 
   return (
     <div style={containerStyle}>
-      <div style={{ display: "flex", flexDirection: "column", height: "100%" }}>
-        <div style={{ paddingBottom: "4px" }}>
+      <div style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
+        <div style={{ paddingBottom: '4px' }}>
           <button onClick={onBtClearMilaCalls}>Clear Mila Calls</button>
           <button onClick={onBtSetMilaCalls}>Set Mila Calls</button>
         </div>
@@ -137,4 +137,4 @@ const GridExample = () => {
   );
 };
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

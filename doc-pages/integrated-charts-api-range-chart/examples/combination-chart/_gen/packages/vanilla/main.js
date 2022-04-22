@@ -1,11 +1,11 @@
 const gridOptions = {
   columnDefs: [
-    { field: "day", maxWidth: 90 },
-    { field: "month", chartDataType: "category" },
-    { field: "rain", chartDataType: "series", valueParser: numberParser },
-    { field: "pressure", chartDataType: "series", valueParser: numberParser },
-    { field: "temp", chartDataType: "series", valueParser: numberParser },
-    { field: "wind", chartDataType: "series", valueParser: numberParser },
+    { field: 'day', maxWidth: 90 },
+    { field: 'month', chartDataType: 'category' },
+    { field: 'rain', chartDataType: 'series', valueParser: numberParser },
+    { field: 'pressure', chartDataType: 'series', valueParser: numberParser },
+    { field: 'temp', chartDataType: 'series', valueParser: numberParser },
+    { field: 'wind', chartDataType: 'series', valueParser: numberParser },
   ],
   defaultColDef: {
     flex: 1,
@@ -18,7 +18,7 @@ const gridOptions = {
   rowData: getData(),
   onFirstDataRendered: onFirstDataRendered,
   enableRangeSelection: true,
-  chartThemes: ["ag-pastel", "ag-vivid"],
+  chartThemes: ['ag-pastel', 'ag-vivid'],
   enableCharts: true,
   popupParent: document.body,
   chartThemeOverrides: {
@@ -27,7 +27,7 @@ const gridOptions = {
         right: 40,
       },
       legend: {
-        position: "bottom",
+        position: 'bottom',
       },
     },
     column: {
@@ -47,31 +47,31 @@ const gridOptions = {
 
 function onFirstDataRendered(params) {
   params.api.createRangeChart({
-    chartType: "customCombo",
+    chartType: 'customCombo',
     cellRange: {
-      columns: ["month", "rain", "pressure", "temp"],
+      columns: ['month', 'rain', 'pressure', 'temp'],
     },
     seriesChartTypes: [
-      { colId: "rain", chartType: "groupedColumn", secondaryAxis: false },
-      { colId: "pressure", chartType: "line", secondaryAxis: true },
-      { colId: "temp", chartType: "line", secondaryAxis: true },
+      { colId: 'rain', chartType: 'groupedColumn', secondaryAxis: false },
+      { colId: 'pressure', chartType: 'line', secondaryAxis: true },
+      { colId: 'temp', chartType: 'line', secondaryAxis: true },
     ],
-    aggFunc: "sum",
+    aggFunc: 'sum',
     suppressChartRanges: true,
-    chartContainer: document.querySelector("#myChart"),
+    chartContainer: document.querySelector('#myChart'),
   });
 }
 
 function numberParser(params) {
   const value = params.newValue;
-  if (value === null || value === undefined || value === "") {
+  if (value === null || value === undefined || value === '') {
     return null;
   }
   return parseFloat(value);
 }
 
 // set up the grid after the page has finished loading
-document.addEventListener("DOMContentLoaded", function () {
-  const gridDiv = document.querySelector("#myGrid");
+document.addEventListener('DOMContentLoaded', function () {
+  const gridDiv = document.querySelector('#myGrid');
   new agGrid.Grid(gridDiv, gridOptions);
 });

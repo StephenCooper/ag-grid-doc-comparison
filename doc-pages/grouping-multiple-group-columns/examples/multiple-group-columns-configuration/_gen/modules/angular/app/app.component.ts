@@ -2,15 +2,15 @@ import {
   ColDef,
   GridReadyEvent,
   RowGroupingDisplayType,
-} from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { HttpClient } from "@angular/common/http";
-import { Component } from "@angular/core";
+} from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { HttpClient } from '@angular/common/http';
+import { Component } from '@angular/core';
 // Required feature modules are registered in app.module.ts
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<ag-grid-angular
     style="width: 100%; height: 100%;"
     class="ag-theme-alpine"
@@ -25,11 +25,11 @@ import { Component } from "@angular/core";
 })
 export class AppComponent {
   public columnDefs: ColDef[] = [
-    { field: "country", rowGroup: true, hide: true },
-    { field: "year", rowGroup: true, hide: true },
-    { field: "athlete" },
-    { field: "sport" },
-    { field: "total" },
+    { field: 'country', rowGroup: true, hide: true },
+    { field: 'year', rowGroup: true, hide: true },
+    { field: 'athlete' },
+    { field: 'sport' },
+    { field: 'total' },
   ];
   public defaultColDef: ColDef = {
     flex: 1,
@@ -45,14 +45,14 @@ export class AppComponent {
       checkbox: true,
     },
   };
-  public groupDisplayType: RowGroupingDisplayType = "multipleColumns";
+  public groupDisplayType: RowGroupingDisplayType = 'multipleColumns';
   public rowData!: any[];
 
   constructor(private http: HttpClient) {}
 
   onGridReady(params: GridReadyEvent) {
     this.http
-      .get<any[]>("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      .get<any[]>('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .subscribe((data) => (this.rowData = data));
   }
 }

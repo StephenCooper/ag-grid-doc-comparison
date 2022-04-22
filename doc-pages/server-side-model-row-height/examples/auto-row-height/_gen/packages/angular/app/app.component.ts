@@ -1,17 +1,17 @@
-import { Component } from "@angular/core";
+import { Component } from '@angular/core';
 import {
   ColDef,
   GridReadyEvent,
   IServerSideDatasource,
   ServerSideStoreType,
-} from "ag-grid-community";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine-dark.css";
-import "ag-grid-enterprise";
+} from 'ag-grid-community';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine-dark.css';
+import 'ag-grid-enterprise';
 declare var FakeServer: any;
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<ag-grid-angular
     style="width: 100%; height: 100%;"
     class="ag-theme-alpine-dark"
@@ -29,22 +29,22 @@ declare var FakeServer: any;
 export class AppComponent {
   public columnDefs: ColDef[] = [
     {
-      headerName: "Group",
-      field: "name",
+      headerName: 'Group',
+      field: 'name',
       rowGroup: true,
       hide: true,
     },
     {
-      field: "autoA",
+      field: 'autoA',
       wrapText: true,
       autoHeight: true,
-      aggFunc: "last",
+      aggFunc: 'last',
     },
     {
-      field: "autoB",
+      field: 'autoB',
       wrapText: true,
       autoHeight: true,
-      aggFunc: "last",
+      aggFunc: 'last',
     },
   ];
   public defaultColDef: ColDef = {
@@ -56,8 +56,8 @@ export class AppComponent {
     flex: 1,
     maxWidth: 200,
   };
-  public rowModelType = "serverSide";
-  public serverSideStoreType: ServerSideStoreType = "partial";
+  public rowModelType = 'serverSide';
+  public serverSideStoreType: ServerSideStoreType = 'partial';
   public rowData!: any[];
 
   onGridReady(params: GridReadyEvent) {
@@ -75,7 +75,7 @@ export class AppComponent {
 function getServerSideDatasource(server: any): IServerSideDatasource {
   return {
     getRows: function (params) {
-      console.log("[Datasource] - rows requested by grid: ", params.request);
+      console.log('[Datasource] - rows requested by grid: ', params.request);
       var response = server.getData(params.request);
       // adding delay to simulate real server call
       setTimeout(function () {

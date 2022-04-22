@@ -1,8 +1,8 @@
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
-import { AgGridVue } from "ag-grid-vue3";
-import { createApp } from "vue";
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import 'ag-grid-enterprise';
+import { AgGridVue } from 'ag-grid-vue3';
+import { createApp } from 'vue';
 
 const VueExample = {
   template: `
@@ -21,16 +21,16 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
-        { field: "athlete", width: 150, rowGroupIndex: 0 },
-        { field: "age", width: 90, rowGroupIndex: 1 },
-        { field: "country", width: 120, rowGroupIndex: 2 },
-        { field: "year", width: 90 },
-        { field: "date", width: 110, rowGroupIndex: 2 },
+        { field: 'athlete', width: 150, rowGroupIndex: 0 },
+        { field: 'age', width: 90, rowGroupIndex: 1 },
+        { field: 'country', width: 120, rowGroupIndex: 2 },
+        { field: 'year', width: 90 },
+        { field: 'date', width: 110, rowGroupIndex: 2 },
       ],
       gridApi: null,
       columnApi: null,
@@ -47,7 +47,7 @@ const VueExample = {
     };
   },
   created() {
-    this.groupDisplayType = "groupRows";
+    this.groupDisplayType = 'groupRows';
   },
   methods: {
     onRowGroupOpened(event) {
@@ -65,11 +65,11 @@ const VueExample = {
 
       const updateData = (data) => params.api.setRowData(data);
 
-      fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
         .then((resp) => resp.json())
         .then((data) => updateData(data));
     },
   },
 };
 
-createApp(VueExample).mount("#app");
+createApp(VueExample).mount('#app');

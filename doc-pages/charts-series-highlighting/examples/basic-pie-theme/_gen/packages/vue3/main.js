@@ -1,5 +1,5 @@
-import { AgChartsVue } from "ag-charts-vue3";
-import { createApp } from "vue";
+import { AgChartsVue } from 'ag-charts-vue3';
+import { createApp } from 'vue';
 
 const ChartExample = {
   template: `
@@ -7,7 +7,7 @@ const ChartExample = {
                 :options="options"></ag-charts-vue>
     `,
   components: {
-    "ag-charts-vue": AgChartsVue,
+    'ag-charts-vue': AgChartsVue,
   },
   data: function () {
     return {
@@ -19,13 +19,13 @@ const ChartExample = {
       data: data,
 
       title: {
-        text: "Beverage Expenses",
+        text: 'Beverage Expenses',
       },
       subtitle: {
-        text: "per quarter",
+        text: 'per quarter',
       },
       theme: {
-        baseTheme: "ag-pastel",
+        baseTheme: 'ag-pastel',
         overrides: {
           polar: {
             series: {
@@ -35,8 +35,8 @@ const ChartExample = {
                 },
                 highlightStyle: {
                   item: {
-                    fill: "red",
-                    stroke: "maroon",
+                    fill: 'red',
+                    stroke: 'maroon',
                     strokeWidth: 4,
                   },
                   series: {
@@ -51,55 +51,55 @@ const ChartExample = {
       },
       series: [
         {
-          type: "pie",
+          type: 'pie',
           title: {
-            text: "Q1",
+            text: 'Q1',
           },
           label: {
             enabled: false,
           },
-          angleKey: "Q1",
-          labelKey: "beverage",
+          angleKey: 'Q1',
+          labelKey: 'beverage',
           showInLegend: true,
           outerRadiusOffset: 0,
           innerRadiusOffset: -20,
         },
         {
-          type: "pie",
+          type: 'pie',
           title: {
-            text: "Q2",
+            text: 'Q2',
           },
           label: {
             enabled: false,
           },
-          angleKey: "Q2",
-          labelKey: "beverage",
+          angleKey: 'Q2',
+          labelKey: 'beverage',
           outerRadiusOffset: -40,
           innerRadiusOffset: -60,
         },
         {
-          type: "pie",
+          type: 'pie',
           title: {
-            text: "Q3",
+            text: 'Q3',
           },
           label: {
             enabled: false,
           },
-          angleKey: "Q3",
-          labelKey: "beverage",
+          angleKey: 'Q3',
+          labelKey: 'beverage',
           outerRadiusOffset: -80,
           innerRadiusOffset: -100,
         },
         {
-          type: "pie",
+          type: 'pie',
           title: {
-            text: "Q4",
+            text: 'Q4',
           },
           label: {
             enabled: false,
           },
-          angleKey: "Q4",
-          labelKey: "beverage",
+          angleKey: 'Q4',
+          labelKey: 'beverage',
           outerRadiusOffset: -120,
           innerRadiusOffset: -140,
         },
@@ -112,21 +112,21 @@ const ChartExample = {
 
 const data = [
   {
-    beverage: "Coffee",
+    beverage: 'Coffee',
     Q1: 450,
     Q2: 560,
     Q3: 600,
     Q4: 700,
   },
   {
-    beverage: "Tea",
+    beverage: 'Tea',
     Q1: 270,
     Q2: 380,
     Q3: 450,
     Q4: 520,
   },
   {
-    beverage: "Milk",
+    beverage: 'Milk',
     Q1: 180,
     Q2: 170,
     Q3: 190,
@@ -134,4 +134,4 @@ const data = [
   },
 ];
 
-createApp(ChartExample).mount("#app");
+createApp(ChartExample).mount('#app');

@@ -13,6 +13,7 @@ The update actions that cause the Detail Rows to refresh are as follows:
 
 How the refresh occurs depends on the Refresh Strategy set on the Detail Cell Renderer. There are three Refresh Strategies which are as follows:
 
+
 1. **Refresh Rows** - The detail panel calls `getDetailRowData(params)` again and sets the row data in the Detail Grid by using it's `setRowData` grid API. This will keep the Detail Grid instance thus any changes in the Detail Grid (scrolling, column positions etc) will be kept. If the Detail Grid is configured to use [Immutable Data](/immutable-data/) then more grid context will be kept such as row selection etc (see the documentation on [Immutable Data](/immutable-data/) for how this impacts keeping grid context).
 
 1. **Refresh Everything** -The Detail Panel will get destroyed and a fresh Detail Panel will be redrawn. This will result in `getDetailRowData(params)` getting called again. The Detail Grid will be a new instance and any changes in the Detail Grid (scrolling, column position, row selection etc) will be lost. If the Detail Panel is using a custom template, then the template will be re-created. Use this option if you want to update the template or you want a fresh detail grid instance.
@@ -26,11 +27,10 @@ Below are different examples to demonstrate each of the refresh strategies. Each
 - Each Detail Grid has a title with the record's name and call count eg 'Nora Thomas 24 calls'. This is set by providing a custom Detail Cell Renderer template/ Only the detail strategy Refresh Everything will get this updated.
 
 - The grid refreshes the first master row every two seconds as follows:
+    - The call count is incremented.
+    - Half of the call records (displayed in the detail grid) have their durations updated.
 
-  - The call count is incremented.
-  - Half of the call records (displayed in the detail grid) have their durations updated.
-
-  All refresh strategies will have the Master Grid updated (as the strategy applies to the Detail Grid only), however each strategy will have the Detail Grid updated differently.
+    All refresh strategies will have the Master Grid updated (as the strategy applies to the Detail Grid only), however each strategy will have the Detail Grid updated differently.
 
 ## Refresh Rows
 
@@ -50,6 +50,7 @@ This example shows the Refresh Rows strategy. Note the following:
 
 This example shows the Refresh Everything strategy. Note the following:
 
+
 - The Detail Cell Renderer params has `refreshStrategy='everything'`.
 - The callback `getDetailRowData(params)` is called. The Detail Grid is recreated and contains the most recent data. The grid's context (column position, vertical scroll) is lost.
 - The Detail Grid setting [Immutable Data](/immutable-data/) is irrelevant as the Detail Grid is recreated.
@@ -67,3 +68,4 @@ This example shows the Refresh Nothing strategy. Note the following:
 - The Detail Grid shows old data and the Detail Grid's title remains unchanged.
 
 <grid-example title='Refresh Nothing' name='refresh-nothing' type='mixed' options='{ "enterprise": true, "exampleHeight": 550, "modules": ["clientside", "masterdetail", "menu", "columnpanel"] }'></grid-example>
+

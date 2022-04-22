@@ -1,10 +1,10 @@
-"use strict";
+'use strict';
 
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import { AgGridReact } from "ag-grid-react";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from 'ag-grid-react';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 
 class GridExample extends Component {
   constructor(props) {
@@ -12,12 +12,12 @@ class GridExample extends Component {
 
     this.state = {
       columnDefs: [
-        { headerName: "ID", valueGetter: "node.rowIndex + 1", width: 70 },
-        { field: "model", width: 150 },
-        { field: "color" },
-        { field: "price", valueFormatter: '"$" + value.toLocaleString()' },
-        { field: "year" },
-        { field: "country" },
+        { headerName: 'ID', valueGetter: 'node.rowIndex + 1', width: 70 },
+        { field: 'model', width: 150 },
+        { field: 'color' },
+        { field: 'price', valueFormatter: '"$" + value.toLocaleString()' },
+        { field: 'year' },
+        { field: 'country' },
       ],
       rowData: getData(),
       defaultColDef: {
@@ -32,23 +32,23 @@ class GridExample extends Component {
   };
 
   onBtPrinterFriendly = () => {
-    var eGridDiv = document.querySelector("#myGrid");
-    eGridDiv.style.width = "";
-    eGridDiv.style.height = "";
-    this.gridApi.setDomLayout("print");
+    var eGridDiv = document.querySelector('#myGrid');
+    eGridDiv.style.width = '';
+    eGridDiv.style.height = '';
+    this.gridApi.setDomLayout('print');
   };
 
   onBtNormal = () => {
-    var eGridDiv = document.querySelector("#myGrid");
-    eGridDiv.style.width = "400px";
-    eGridDiv.style.height = "200px";
+    var eGridDiv = document.querySelector('#myGrid');
+    eGridDiv.style.width = '400px';
+    eGridDiv.style.height = '200px';
     // Same as setting to 'normal' as it is the default
     this.gridApi.setDomLayout();
   };
 
   render() {
     return (
-      <div style={{ width: "100%", height: "100%" }}>
+      <div style={{ width: '100%', height: '100%' }}>
         <button onClick={() => this.onBtPrinterFriendly()}>
           Printer Friendly Layout
         </button>
@@ -67,8 +67,8 @@ class GridExample extends Component {
         <div
           id="myGrid"
           style={{
-            height: "200px",
-            width: "400px",
+            height: '200px',
+            width: '400px',
           }}
           className="ag-theme-alpine"
         >
@@ -94,4 +94,4 @@ class GridExample extends Component {
   }
 }
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

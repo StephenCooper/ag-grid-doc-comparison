@@ -3,7 +3,8 @@ import React, {
   useEffect,
   useImperativeHandle,
   useState,
-} from "react";
+  useRef,
+} from 'react';
 
 export default forwardRef((props, ref) => {
   const [filterText, setFilterText] = useState(null);
@@ -19,7 +20,7 @@ export default forwardRef((props, ref) => {
         let passed = true;
         filterText
           .toLowerCase()
-          .split(" ")
+          .split(' ')
           .forEach((filterWord) => {
             const value = props.valueGetter({
               api,
@@ -41,7 +42,7 @@ export default forwardRef((props, ref) => {
       },
 
       isFilterActive() {
-        return filterText != null && filterText !== "";
+        return filterText != null && filterText !== '';
       },
 
       getModel() {
@@ -68,10 +69,10 @@ export default forwardRef((props, ref) => {
 
   return (
     <div style={{ padding: 4, width: 200 }}>
-      <div style={{ fontWeight: "bold" }}>Custom Athlete Filter</div>
+      <div style={{ fontWeight: 'bold' }}>Custom Athlete Filter</div>
       <div>
         <input
-          style={{ margin: "4 0 4 0" }}
+          style={{ margin: '4 0 4 0' }}
           type="text"
           value={filterText}
           onChange={onChange}
@@ -90,10 +91,10 @@ export default forwardRef((props, ref) => {
           src="https://www.ag-grid.com/images/ag-Grid2-200.png"
           style={{
             width: 150,
-            textAlign: "center",
+            textAlign: 'center',
             padding: 10,
             margin: 10,
-            border: "1px solid lightgrey",
+            border: '1px solid lightgrey',
           }}
         />
       </div>

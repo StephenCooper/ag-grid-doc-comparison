@@ -1,13 +1,13 @@
 const gridOptions = {
   columnDefs: [
-    { field: "a" },
-    { field: "b" },
-    { field: "c" },
-    { field: "d" },
-    { field: "e" },
-    { field: "f" },
-    { field: "g" },
-    { field: "h" },
+    { field: 'a' },
+    { field: 'b' },
+    { field: 'c' },
+    { field: 'd' },
+    { field: 'e' },
+    { field: 'f' },
+    { field: 'g' },
+    { field: 'h' },
   ],
   defaultColDef: {
     flex: 1,
@@ -32,23 +32,23 @@ function redo() {
 }
 
 function onFirstDataRendered() {
-  setValue("#undoInput", 0);
-  disable("#undoInput", true);
-  disable("#undoBtn", true);
+  setValue('#undoInput', 0);
+  disable('#undoInput', true);
+  disable('#undoBtn', true);
 
-  setValue("#redoInput", 0);
-  disable("#redoInput", true);
-  disable("#redoBtn", true);
+  setValue('#redoInput', 0);
+  disable('#redoInput', true);
+  disable('#redoBtn', true);
 }
 
 function onCellValueChanged(params) {
   var undoSize = params.api.getCurrentUndoSize();
-  setValue("#undoInput", undoSize);
-  disable("#undoBtn", undoSize < 1);
+  setValue('#undoInput', undoSize);
+  disable('#undoBtn', undoSize < 1);
 
   var redoSize = params.api.getCurrentRedoSize();
-  setValue("#redoInput", redoSize);
-  disable("#redoBtn", redoSize < 1);
+  setValue('#redoInput', redoSize);
+  disable('#redoBtn', redoSize < 1);
 }
 
 function disable(id, disabled) {
@@ -62,20 +62,20 @@ function setValue(id, value) {
 function getRows() {
   return Array.apply(null, Array(100)).map(function (_, i) {
     return {
-      a: "a-" + i,
-      b: "b-" + i,
-      c: "c-" + i,
-      d: "d-" + i,
-      e: "e-" + i,
-      f: "f-" + i,
-      g: "g-" + i,
-      h: "h-" + i,
+      a: 'a-' + i,
+      b: 'b-' + i,
+      c: 'c-' + i,
+      d: 'd-' + i,
+      e: 'e-' + i,
+      f: 'f-' + i,
+      g: 'g-' + i,
+      h: 'h-' + i,
     };
   });
 }
 
 // setup the grid after the page has finished loading
-document.addEventListener("DOMContentLoaded", function () {
-  var gridDiv = document.querySelector("#myGrid");
+document.addEventListener('DOMContentLoaded', function () {
+  var gridDiv = document.querySelector('#myGrid');
   new agGrid.Grid(gridDiv, gridOptions);
 });

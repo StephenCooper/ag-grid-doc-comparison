@@ -1,8 +1,8 @@
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
-import { AgGridVue } from "ag-grid-vue3";
-import { createApp } from "vue";
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import 'ag-grid-enterprise';
+import { AgGridVue } from 'ag-grid-vue3';
+import { createApp } from 'vue';
 
 const VueExample = {
   template: `
@@ -25,26 +25,26 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
         {
-          headerName: "Group A",
+          headerName: 'Group A',
           children: [
-            { field: "athlete", minWidth: 200 },
-            { field: "country", minWidth: 200 },
+            { field: 'athlete', minWidth: 200 },
+            { field: 'country', minWidth: 200 },
           ],
         },
         {
-          headerName: "Group B",
+          headerName: 'Group B',
           children: [
-            { field: "sport", minWidth: 150 },
-            { field: "gold" },
-            { field: "silver" },
-            { field: "bronze" },
-            { field: "total" },
+            { field: 'sport', minWidth: 150 },
+            { field: 'gold' },
+            { field: 'silver' },
+            { field: 'bronze' },
+            { field: 'total' },
           ],
         },
       ],
@@ -73,11 +73,11 @@ const VueExample = {
         this.rowData = data;
       };
 
-      fetch("https://www.ag-grid.com/example-assets/small-olympic-winners.json")
+      fetch('https://www.ag-grid.com/example-assets/small-olympic-winners.json')
         .then((resp) => resp.json())
         .then((data) => updateData(data));
     },
   },
 };
 
-createApp(VueExample).mount("#app");
+createApp(VueExample).mount('#app');

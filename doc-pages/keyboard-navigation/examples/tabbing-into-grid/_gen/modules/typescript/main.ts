@@ -1,29 +1,29 @@
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
 import {
   ColDef,
   FirstDataRenderedEvent,
   Grid,
   GridOptions,
   ModuleRegistry,
-} from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
+} from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([ClientSideRowModelModule]);
 
 const columnDefs: ColDef[] = [
-  { headerName: "#", colId: "rowNum", valueGetter: "node.id" },
-  { field: "athlete", minWidth: 170 },
-  { field: "age" },
-  { field: "country" },
-  { field: "year" },
-  { field: "date" },
-  { field: "sport" },
-  { field: "gold" },
-  { field: "silver" },
-  { field: "bronze" },
-  { field: "total" },
+  { headerName: '#', colId: 'rowNum', valueGetter: 'node.id' },
+  { field: 'athlete', minWidth: 170 },
+  { field: 'age' },
+  { field: 'country' },
+  { field: 'year' },
+  { field: 'date' },
+  { field: 'sport' },
+  { field: 'gold' },
+  { field: 'silver' },
+  { field: 'bronze' },
+  { field: 'total' },
 ];
 
 const gridOptions: GridOptions = {
@@ -42,14 +42,14 @@ const gridOptions: GridOptions = {
 
 function onFirstDataRendered(params: FirstDataRenderedEvent) {
   // obtain reference to input element
-  var myInput = document.getElementById("my-input")!;
+  var myInput = document.getElementById('my-input')!;
 
   // intercept key strokes within input element
   myInput.addEventListener(
-    "keydown",
+    'keydown',
     function (event) {
       // ignore non Tab key strokes
-      if (event.key !== "Tab") return;
+      if (event.key !== 'Tab') return;
 
       // prevents tabbing into the url section
       event.preventDefault();
@@ -69,9 +69,9 @@ function onFirstDataRendered(params: FirstDataRenderedEvent) {
 }
 
 // setup the grid after the page has finished loading
-var gridDiv = document.querySelector<HTMLElement>("#myGrid")!;
+var gridDiv = document.querySelector<HTMLElement>('#myGrid')!;
 new Grid(gridDiv, gridOptions);
 
-fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
   .then((response) => response.json())
   .then((data) => gridOptions.api!.setRowData(data));

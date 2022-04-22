@@ -1,8 +1,8 @@
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
-import { AgGridVue } from "ag-grid-vue";
-import Vue from "vue";
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import 'ag-grid-enterprise';
+import { AgGridVue } from 'ag-grid-vue';
+import Vue from 'vue';
 
 const VueExample = {
   template: `
@@ -27,15 +27,15 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
-        { field: "country", width: 150 },
-        { field: "gold" },
-        { field: "silver" },
-        { field: "bronze" },
+        { field: 'country', width: 150 },
+        { field: 'gold' },
+        { field: 'silver' },
+        { field: 'bronze' },
       ],
       gridApi: null,
       columnApi: null,
@@ -56,10 +56,10 @@ const VueExample = {
   created() {
     this.popupParent = document.body;
     this.chartThemes = [
-      "ag-pastel",
-      "ag-material-dark",
-      "ag-vivid-dark",
-      "ag-solar",
+      'ag-pastel',
+      'ag-material-dark',
+      'ag-vivid-dark',
+      'ag-solar',
     ];
     this.chartThemeOverrides = {
       cartesian: {
@@ -80,11 +80,11 @@ const VueExample = {
         cellRange: {
           rowStartIndex: 0,
           rowEndIndex: 79,
-          columns: ["country", "gold", "silver", "bronze"],
+          columns: ['country', 'gold', 'silver', 'bronze'],
         },
-        chartType: "groupedColumn",
-        chartContainer: document.querySelector("#myChart"),
-        aggFunc: "sum",
+        chartType: 'groupedColumn',
+        chartContainer: document.querySelector('#myChart'),
+        aggFunc: 'sum',
       };
       params.api.createRangeChart(createRangeChartParams);
     },
@@ -96,8 +96,8 @@ const VueExample = {
 };
 
 new Vue({
-  el: "#app",
+  el: '#app',
   components: {
-    "my-component": VueExample,
+    'my-component': VueExample,
   },
 });

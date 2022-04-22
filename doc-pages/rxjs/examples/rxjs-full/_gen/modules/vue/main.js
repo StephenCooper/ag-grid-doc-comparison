@@ -1,10 +1,10 @@
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { AgGridVue } from "@ag-grid-community/vue";
-import { RowGroupingModule } from "@ag-grid-enterprise/row-grouping";
-import Vue from "vue";
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { AgGridVue } from '@ag-grid-community/vue';
+import { RowGroupingModule } from '@ag-grid-enterprise/row-grouping';
+import Vue from 'vue';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([ClientSideRowModelModule, RowGroupingModule]);
@@ -24,35 +24,35 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
-        { field: "code", maxWidth: 90 },
-        { field: "name", minWidth: 200 },
+        { field: 'code', maxWidth: 90 },
+        { field: 'name', minWidth: 200 },
         {
-          field: "bid",
-          cellClass: "cell-number",
+          field: 'bid',
+          cellClass: 'cell-number',
           valueFormatter: numberFormatter,
-          cellRenderer: "agAnimateShowChangeCellRenderer",
+          cellRenderer: 'agAnimateShowChangeCellRenderer',
         },
         {
-          field: "mid",
-          cellClass: "cell-number",
+          field: 'mid',
+          cellClass: 'cell-number',
           valueFormatter: numberFormatter,
-          cellRenderer: "agAnimateShowChangeCellRenderer",
+          cellRenderer: 'agAnimateShowChangeCellRenderer',
         },
         {
-          field: "ask",
-          cellClass: "cell-number",
+          field: 'ask',
+          cellClass: 'cell-number',
           valueFormatter: numberFormatter,
-          cellRenderer: "agAnimateShowChangeCellRenderer",
+          cellRenderer: 'agAnimateShowChangeCellRenderer',
         },
         {
-          field: "volume",
-          cellClass: "cell-number",
-          cellRenderer: "agAnimateSlideCellRenderer",
+          field: 'volume',
+          cellClass: 'cell-number',
+          cellRenderer: 'agAnimateSlideCellRenderer',
         },
       ],
       gridApi: null,
@@ -94,15 +94,15 @@ const VueExample = {
 };
 
 window.numberFormatter = function numberFormatter(params) {
-  if (typeof params.value === "number") {
+  if (typeof params.value === 'number') {
     return params.value.toFixed(2);
   }
   return params.value;
 };
 
 new Vue({
-  el: "#app",
+  el: '#app',
   components: {
-    "my-component": VueExample,
+    'my-component': VueExample,
   },
 });

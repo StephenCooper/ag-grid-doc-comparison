@@ -13,15 +13,15 @@ class ShowCellRenderer {
       return;
     }
 
-    this.ui = document.createElement("div");
+    this.ui = document.createElement('div');
     this.ui.innerHTML =
       '<div class="show-name">' +
       params.value.name +
-      "" +
-      "</div>" +
+      '' +
+      '</div>' +
       '<div class="show-presenter">' +
       params.value.presenter +
-      "</div>";
+      '</div>';
   }
 
   getGui() {
@@ -34,21 +34,21 @@ class ShowCellRenderer {
 }
 
 const columnDefs = [
-  { field: "localTime" },
+  { field: 'localTime' },
   {
-    field: "show",
+    field: 'show',
     cellRenderer: ShowCellRenderer,
     rowSpan: rowSpan,
     cellClassRules: {
-      "show-cell": "value !== undefined",
+      'show-cell': 'value !== undefined',
     },
     width: 200,
   },
-  { field: "a" },
-  { field: "b" },
-  { field: "c" },
-  { field: "d" },
-  { field: "e" },
+  { field: 'a' },
+  { field: 'b' },
+  { field: 'c' },
+  { field: 'd' },
+  { field: 'e' },
 ];
 
 const gridOptions = {
@@ -62,7 +62,7 @@ const gridOptions = {
 };
 
 // setup the grid after the page has finished loading
-document.addEventListener("DOMContentLoaded", function () {
-  const gridDiv = document.querySelector("#myGrid");
+document.addEventListener('DOMContentLoaded', function () {
+  const gridDiv = document.querySelector('#myGrid');
   new agGrid.Grid(gridDiv, gridOptions);
 });

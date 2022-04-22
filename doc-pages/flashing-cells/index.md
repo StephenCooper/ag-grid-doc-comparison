@@ -31,6 +31,7 @@ If you want to override the flash background color, this has to be done by overr
 
 The example below demonstrates flashing delay changes. The following can be noted:
 
+
 - The `cellFlashDelay` value has been changed to 2000ms, so cells will remain in their "flashed" state for 2 seconds.
 - The `cellFadeDelay` value has been changed to 500ms, so the fading animation will happen faster than what it normally would (1 second).
 - Clicking **Update Some Data** will update some data to demonstrate the changes mentioned above.
@@ -45,5 +46,6 @@ One exception to the above is changes due to filtering. If you are [Row Grouping
 ## Flashing Cells vs Custom Cell Renderers
 
 Flashing cells is a simple and quick way to visually show to the user that the data has changed. It is also possible to have more intelligent animations by putting animations into custom [Cell Renderers](/component-cell-renderer/). Cell Renderers have a `refresh` method that gets called when data changes, allowing custom animations to highlight data changes.
+
 
 The grid comes with two such Cell Renderers for showing data changes which are detailed in the [Change Cell Renderers](/change-cell-renderers/) section.

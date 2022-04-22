@@ -1,7 +1,8 @@
-import { Component } from "@angular/core";
+import { Component } from '@angular/core';
 import {
   ColDef,
   GetRowIdFunc,
+  GetRowIdParams,
   GetServerSideStoreParamsParams,
   GridApi,
   GridReadyEvent,
@@ -9,13 +10,13 @@ import {
   IServerSideGetRowsParams,
   ServerSideStoreParams,
   ServerSideStoreType,
-} from "ag-grid-community";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine-dark.css";
-import "ag-grid-enterprise";
+} from 'ag-grid-community';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine-dark.css';
+import 'ag-grid-enterprise';
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<div class="example-wrapper">
     <div style="margin-bottom: 5px;">
       <button (click)="onBtNewPalmOil()">New Palm Oil</button>
@@ -45,23 +46,25 @@ export class AppComponent {
   private gridApi!: GridApi;
 
   public columnDefs: ColDef[] = [
-    { field: "productName", rowGroup: true, hide: true },
-    { field: "tradeName" },
-    { field: "value" },
+    { field: 'productName', rowGroup: true, hide: true },
+    { field: 'tradeName' },
+    { field: 'value' },
   ];
   public defaultColDef: ColDef = {
     width: 250,
     resizable: true,
   };
-  public getRowId: GetRowIdFunc = function (params) {
+  public getRowId: GetRowIdFunc = function (params: GetRowIdParams) {
     return params.data.id;
   };
-  public rowModelType = "serverSide";
-  public serverSideStoreType: ServerSideStoreType = "full";
+  public rowModelType = 'serverSide';
+  public serverSideStoreType: ServerSideStoreType = 'full';
   public getServerSideStoreParams: (
     params: GetServerSideStoreParamsParams
-  ) => ServerSideStoreParams = function (params) {
-    const type = params.level == 0 ? "partial" : "full";
+  ) => ServerSideStoreParams = function (
+    params: GetServerSideStoreParamsParams
+  ): ServerSideStoreParams {
+    const type = params.level == 0 ? 'partial' : 'full';
     return {
       storeType: type,
     };
@@ -70,56 +73,56 @@ export class AppComponent {
 
   onBtNewPalmOil() {
     const transaction = {
-      route: ["Palm Oil"],
+      route: ['Palm Oil'],
       add: [createOneTrade()],
     };
     const res = this.gridApi.applyServerSideTransaction(transaction);
-    console.log("New Palm Oil, result = " + (res && res.status));
+    console.log('New Palm Oil, result = ' + (res && res.status));
   }
 
   onBtNewRubber() {
     const transaction = {
-      route: ["Rubber"],
+      route: ['Rubber'],
       add: [createOneTrade()],
     };
     const res = this.gridApi.applyServerSideTransaction(transaction);
-    console.log("New Rubber, result = " + (res && res.status));
+    console.log('New Rubber, result = ' + (res && res.status));
   }
 
   onBtNewWoolAmber() {
     const transactions = [];
     transactions.push({
-      route: ["Wool"],
+      route: ['Wool'],
       add: [createOneTrade()],
     });
     transactions.push({
-      route: ["Amber"],
+      route: ['Amber'],
       add: [createOneTrade()],
     });
     const api = this.gridApi!;
     transactions.forEach(function (tx) {
       const res = api.applyServerSideTransaction(tx);
-      console.log("New " + tx.route[0] + ", result = " + (res && res.status));
+      console.log('New ' + tx.route[0] + ', result = ' + (res && res.status));
     });
   }
 
   onBtNewProduct() {
     const transaction = {
       route: [],
-      add: [{ id: idSequence++, productName: "Rice", trades: [] }],
+      add: [{ id: idSequence++, productName: 'Rice', trades: [] }],
     };
     const res = this.gridApi.applyServerSideTransaction(transaction);
-    console.log("New Product, result = " + (res && res.status));
+    console.log('New Product, result = ' + (res && res.status));
   }
 
   onBtStoreState() {
     const storeState = this.gridApi.getServerSideStoreState();
-    console.log("Store States:");
+    console.log('Store States:');
     storeState.forEach(function (state, index) {
       console.log(
         index +
-          " - " +
-          JSON.stringify(state).replace(/"/g, "").replace(/,/g, ", ")
+          ' - ' +
+          JSON.stringify(state).replace(/"/g, '').replace(/,/g, ', ')
       );
     });
   }
@@ -159,13 +162,13 @@ export class AppComponent {
   }
 }
 
-const productsNames = ["Palm Oil", "Rubber", "Wool", "Amber", "Copper"];
+const productsNames = ['Palm Oil', 'Rubber', 'Wool', 'Amber', 'Copper'];
 const products: any[] = [];
 let idSequence = 0;
 function createOneTrade() {
   return {
     id: idSequence++,
-    tradeName: "TRD-" + Math.floor(Math.random() * 20000),
+    tradeName: 'TRD-' + Math.floor(Math.random() * 20000),
     value: Math.floor(Math.random() * 20000),
   };
 }

@@ -1,8 +1,8 @@
-import { Component } from "@angular/core";
-import { AgChartOptions } from "ag-charts-community";
+import { Component } from '@angular/core';
+import { AgChartOptions } from 'ag-charts-community';
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<ag-charts-angular
     style="height: 100%"
     [options]="options"
@@ -14,7 +14,7 @@ export class AppComponent {
   constructor() {
     this.options = {
       title: {
-        text: "Internet Explorer Market Share",
+        text: 'Internet Explorer Market Share',
       },
       subtitle: {
         text: '2009-2019 (aka "good times")',
@@ -22,10 +22,10 @@ export class AppComponent {
       data: getData(),
       series: [
         {
-          type: "area",
-          xKey: "year",
-          yKey: "ie",
-          yName: "IE",
+          type: 'area',
+          xKey: 'year',
+          yKey: 'ie',
+          yName: 'IE',
         },
       ],
       legend: {

@@ -1,8 +1,8 @@
-import { Component } from "@angular/core";
-import { AgChartOptions } from "ag-charts-community";
+import { Component } from '@angular/core';
+import { AgChartOptions } from 'ag-charts-community';
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<ag-charts-angular
     style="height: 100%"
     [options]="options"
@@ -18,20 +18,20 @@ export class AppComponent {
       theme: {
         palette: {
           fills: [
-            "#5BC0EB",
-            "#FDE74C",
-            "#9BC53D",
-            "#E55934",
-            "#FA7921",
-            "#fa3081",
+            '#5BC0EB',
+            '#FDE74C',
+            '#9BC53D',
+            '#E55934',
+            '#FA7921',
+            '#fa3081',
           ],
           strokes: [
-            "#4086a4",
-            "#b1a235",
-            "#6c8a2b",
-            "#a03e24",
-            "#af5517",
-            "#af225a",
+            '#4086a4',
+            '#b1a235',
+            '#6c8a2b',
+            '#a03e24',
+            '#af5517',
+            '#af225a',
           ],
         },
         overrides: {
@@ -48,64 +48,64 @@ export class AppComponent {
         },
       },
       title: {
-        text: "Total Visitors to Science Museums (2019)",
+        text: 'Total Visitors to Science Museums (2019)',
         fontSize: 18,
       },
       subtitle: {
-        text: "Source: Department for Digital, Culture, Media & Sport",
+        text: 'Source: Department for Digital, Culture, Media & Sport',
       },
       series: [
-        { type: "area", xKey: "date", stacked: true, yKey: "Science Museum" },
+        { type: 'area', xKey: 'date', stacked: true, yKey: 'Science Museum' },
         {
-          type: "area",
-          xKey: "date",
+          type: 'area',
+          xKey: 'date',
           stacked: true,
-          yKey: "National Media Museum",
+          yKey: 'National Media Museum',
         },
         {
-          type: "area",
-          xKey: "date",
+          type: 'area',
+          xKey: 'date',
           stacked: true,
-          yKey: "National Railway Museum",
+          yKey: 'National Railway Museum',
         },
-        { type: "area", xKey: "date", stacked: true, yKey: "Locomotion" },
+        { type: 'area', xKey: 'date', stacked: true, yKey: 'Locomotion' },
         {
-          type: "area",
-          xKey: "date",
-          yKey: "Museum of Science and Industry, Manchester",
+          type: 'area',
+          xKey: 'date',
+          yKey: 'Museum of Science and Industry, Manchester',
           stacked: true,
         },
         {
-          type: "area",
-          xKey: "date",
-          yKey: "National Coal Mining Museum for England",
+          type: 'area',
+          xKey: 'date',
+          yKey: 'National Coal Mining Museum for England',
           stacked: true,
         },
       ],
       axes: [
         {
-          type: "time",
-          position: "bottom",
+          type: 'time',
+          position: 'bottom',
           label: {
-            format: "%b",
+            format: '%b',
           },
         },
         {
-          type: "number",
-          position: "left",
+          type: 'number',
+          position: 'left',
           title: {
             enabled: true,
-            text: "Total visitors",
+            text: 'Total visitors',
           },
           label: {
             formatter: function (params) {
-              return params.value / 1000 + "k";
+              return params.value / 1000 + 'k';
             },
           },
         },
       ],
       legend: {
-        position: "bottom",
+        position: 'bottom',
       },
     };
   }

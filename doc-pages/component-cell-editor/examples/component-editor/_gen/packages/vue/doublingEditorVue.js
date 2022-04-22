@@ -1,4 +1,4 @@
-import { nextTick } from "vue";
+import { nextTick } from 'vue';
 
 export default {
   template: `<input type="number" v-model="value" ref="input" style="width: 100%"/>`,

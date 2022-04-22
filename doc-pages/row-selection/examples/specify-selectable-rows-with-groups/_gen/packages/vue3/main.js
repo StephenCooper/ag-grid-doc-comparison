@@ -1,8 +1,8 @@
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
-import { AgGridVue } from "ag-grid-vue3";
-import { createApp } from "vue";
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import 'ag-grid-enterprise';
+import { AgGridVue } from 'ag-grid-vue3';
+import { createApp } from 'vue';
 
 const VueExample = {
   template: `
@@ -31,18 +31,18 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
-        { field: "country", rowGroup: true, hide: true },
-        { field: "year", maxWidth: 100 },
-        { field: "gold", aggFunc: "sum" },
-        { field: "silver", aggFunc: "sum" },
-        { field: "bronze", aggFunc: "sum" },
-        { field: "date" },
-        { field: "sport" },
+        { field: 'country', rowGroup: true, hide: true },
+        { field: 'year', maxWidth: 100 },
+        { field: 'gold', aggFunc: 'sum' },
+        { field: 'silver', aggFunc: 'sum' },
+        { field: 'bronze', aggFunc: 'sum' },
+        { field: 'date' },
+        { field: 'sport' },
       ],
       gridApi: null,
       columnApi: null,
@@ -61,15 +61,15 @@ const VueExample = {
   },
   created() {
     this.autoGroupColumnDef = {
-      headerName: "Athlete",
-      field: "athlete",
+      headerName: 'Athlete',
+      field: 'athlete',
       minWidth: 250,
-      cellRenderer: "agGroupCellRenderer",
+      cellRenderer: 'agGroupCellRenderer',
       cellRendererParams: {
         checkbox: true,
       },
     };
-    this.rowSelection = "multiple";
+    this.rowSelection = 'multiple';
     this.groupDefaultExpanded = -1;
     this.isRowSelectable = (node) => {
       return node.data
@@ -81,8 +81,8 @@ const VueExample = {
     filterBy2004() {
       this.gridApi.setFilterModel({
         year: {
-          type: "set",
-          values: ["2008", "2012"],
+          type: 'set',
+          values: ['2008', '2012'],
         },
       });
     },
@@ -97,11 +97,11 @@ const VueExample = {
         this.rowData = data;
       };
 
-      fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
         .then((resp) => resp.json())
         .then((data) => updateData(data));
     },
   },
 };
 
-createApp(VueExample).mount("#app");
+createApp(VueExample).mount('#app');

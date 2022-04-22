@@ -1,12 +1,12 @@
-"use strict";
+'use strict';
 
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { AgGridReact } from "@ag-grid-community/react";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from '@ag-grid-community/react';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([ClientSideRowModelModule]);
@@ -18,57 +18,57 @@ class GridExample extends Component {
     this.state = {
       columnDefs: [
         {
-          headerName: "Everything Resizes",
+          headerName: 'Everything Resizes',
           children: [
             {
-              field: "athlete",
-              headerClass: "resizable-header",
+              field: 'athlete',
+              headerClass: 'resizable-header',
             },
-            { field: "age", headerClass: "resizable-header" },
+            { field: 'age', headerClass: 'resizable-header' },
             {
-              field: "country",
-              headerClass: "resizable-header",
+              field: 'country',
+              headerClass: 'resizable-header',
             },
           ],
         },
         {
-          headerName: "Only Year Resizes",
+          headerName: 'Only Year Resizes',
           children: [
-            { field: "year", headerClass: "resizable-header" },
+            { field: 'year', headerClass: 'resizable-header' },
             {
-              field: "date",
+              field: 'date',
               resizable: false,
-              headerClass: "fixed-size-header",
+              headerClass: 'fixed-size-header',
             },
             {
-              field: "sport",
+              field: 'sport',
               resizable: false,
-              headerClass: "fixed-size-header",
+              headerClass: 'fixed-size-header',
             },
           ],
         },
         {
-          headerName: "Nothing Resizes",
+          headerName: 'Nothing Resizes',
           children: [
             {
-              field: "gold",
+              field: 'gold',
               resizable: false,
-              headerClass: "fixed-size-header",
+              headerClass: 'fixed-size-header',
             },
             {
-              field: "silver",
+              field: 'silver',
               resizable: false,
-              headerClass: "fixed-size-header",
+              headerClass: 'fixed-size-header',
             },
             {
-              field: "bronze",
+              field: 'bronze',
               resizable: false,
-              headerClass: "fixed-size-header",
+              headerClass: 'fixed-size-header',
             },
             {
-              field: "total",
+              field: 'total',
               resizable: false,
-              headerClass: "fixed-size-header",
+              headerClass: 'fixed-size-header',
             },
           ],
         },
@@ -87,14 +87,14 @@ class GridExample extends Component {
 
     const updateData = (data) => params.api.setRowData(data);
 
-    fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+    fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .then((resp) => resp.json())
       .then((data) => updateData(data));
   };
 
   render() {
     return (
-      <div style={{ width: "100%", height: "100%" }}>
+      <div style={{ width: '100%', height: '100%' }}>
         <div className="example-wrapper">
           <div className="legend-bar">
             <span className="legend-box resizable-header"></span> Resizable
@@ -104,8 +104,8 @@ class GridExample extends Component {
           </div>
           <div
             style={{
-              height: "100%",
-              width: "100%",
+              height: '100%',
+              width: '100%',
             }}
             className="ag-theme-alpine"
           >
@@ -122,4 +122,4 @@ class GridExample extends Component {
   }
 }
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

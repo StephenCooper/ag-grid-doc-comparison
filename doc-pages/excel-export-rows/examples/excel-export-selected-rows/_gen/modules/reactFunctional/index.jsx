@@ -1,15 +1,15 @@
-"use strict";
+'use strict';
 
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { CsvExportModule } from "@ag-grid-community/csv-export";
-import { AgGridReact } from "@ag-grid-community/react";
-import { ExcelExportModule } from "@ag-grid-enterprise/excel-export";
-import { MenuModule } from "@ag-grid-enterprise/menu";
-import React, { useCallback, useMemo, useRef, useState } from "react";
-import { render } from "react-dom";
+import React, { useCallback, useMemo, useRef, useState } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from '@ag-grid-community/react';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import { MenuModule } from '@ag-grid-enterprise/menu';
+import { ExcelExportModule } from '@ag-grid-enterprise/excel-export';
+import { CsvExportModule } from '@ag-grid-community/csv-export';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([
@@ -21,18 +21,18 @@ ModuleRegistry.registerModules([
 
 const GridExample = () => {
   const gridRef = useRef();
-  const containerStyle = useMemo(() => ({ width: "100%", height: "100%" }), []);
-  const gridStyle = useMemo(() => ({ height: "100%", width: "100%" }), []);
+  const containerStyle = useMemo(() => ({ width: '100%', height: '100%' }), []);
+  const gridStyle = useMemo(() => ({ height: '100%', width: '100%' }), []);
   const [rowData, setRowData] = useState();
   const [columnDefs, setColumnDefs] = useState([
-    { checkboxSelection: true, field: "athlete", minWidth: 200 },
-    { field: "country", minWidth: 200 },
-    { headerName: "Group", valueGetter: "data.country.charAt(0)" },
-    { field: "sport", minWidth: 150 },
-    { field: "gold", hide: true },
-    { field: "silver", hide: true },
-    { field: "bronze", hide: true },
-    { field: "total", hide: true },
+    { checkboxSelection: true, field: 'athlete', minWidth: 200 },
+    { field: 'country', minWidth: 200 },
+    { headerName: 'Group', valueGetter: 'data.country.charAt(0)' },
+    { field: 'sport', minWidth: 150 },
+    { field: 'gold', hide: true },
+    { field: 'silver', hide: true },
+    { field: 'bronze', hide: true },
+    { field: 'total', hide: true },
   ]);
   const defaultColDef = useMemo(() => {
     return {
@@ -45,16 +45,16 @@ const GridExample = () => {
   }, []);
 
   const onGridReady = useCallback((params) => {
-    fetch("https://www.ag-grid.com/example-assets/small-olympic-winners.json")
+    fetch('https://www.ag-grid.com/example-assets/small-olympic-winners.json')
       .then((resp) => resp.json())
       .then((data) => setRowData(data.filter((rec) => rec.country != null)));
 
-    document.getElementById("selectedOnly").checked = true;
+    document.getElementById('selectedOnly').checked = true;
   }, []);
 
   const onBtExport = useCallback(() => {
     gridRef.current.api.exportDataAsExcel({
-      onlySelected: document.querySelector("#selectedOnly").checked,
+      onlySelected: document.querySelector('#selectedOnly').checked,
     });
   }, []);
 
@@ -62,12 +62,12 @@ const GridExample = () => {
     <div style={containerStyle}>
       <div className="container">
         <div className="columns">
-          <label className="option" for="selectedOnly">
+          <label className="option" htmlFor="selectedOnly">
             <input id="selectedOnly" type="checkbox" />
             Selected Rows Only
           </label>
           <div>
-            <button onClick={onBtExport} style={{ fontWeight: "bold" }}>
+            <button onClick={onBtExport} style={{ fontWeight: 'bold' }}>
               Export to Excel
             </button>
           </div>
@@ -80,7 +80,7 @@ const GridExample = () => {
               columnDefs={columnDefs}
               defaultColDef={defaultColDef}
               suppressRowClickSelection={true}
-              rowSelection={"multiple"}
+              rowSelection={'multiple'}
               onGridReady={onGridReady}
             ></AgGridReact>
           </div>
@@ -90,4 +90,4 @@ const GridExample = () => {
   );
 };
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

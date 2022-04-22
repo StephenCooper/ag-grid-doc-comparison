@@ -1,24 +1,24 @@
-"use strict";
+'use strict';
 
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine-dark.css";
-import "ag-grid-enterprise";
-import { AgGridReact } from "ag-grid-react";
-import React, { useCallback, useMemo, useState } from "react";
-import { render } from "react-dom";
-import ColourCellRenderer from "./colourCellRenderer.jsx";
+import React, { useCallback, useMemo, useRef, useState } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from 'ag-grid-react';
+import 'ag-grid-enterprise';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine-dark.css';
+import ColourCellRenderer from './colourCellRenderer.jsx';
 
 const carMappings = {
-  tyt: "Toyota",
-  frd: "Ford",
-  prs: "Porsche",
-  nss: "Nissan",
+  tyt: 'Toyota',
+  frd: 'Ford',
+  prs: 'Porsche',
+  nss: 'Nissan',
 };
 
 const colourMappings = {
-  cb: "Cadet Blue",
-  bw: "Burlywood",
-  fg: "Forest Green",
+  cb: 'Cadet Blue',
+  bw: 'Burlywood',
+  fg: 'Forest Green',
 };
 
 const extractValues = (mappings) => {
@@ -32,9 +32,9 @@ const colours = extractValues(colourMappings);
 const currencyFormatter = (params) => {
   const value = Math.floor(params.value);
   if (isNaN(value)) {
-    return "";
+    return '';
   }
-  return "£" + value.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
+  return '£' + value.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
 };
 
 const numberValueSetter = (params) => {
@@ -46,33 +46,33 @@ const numberValueSetter = (params) => {
 };
 
 const removeSpaces = (str) => {
-  return str ? str.replace(/\s/g, "") : str;
+  return str ? str.replace(/\s/g, '') : str;
 };
 
 const GridExample = () => {
-  const containerStyle = useMemo(() => ({ width: "100%", height: "100%" }), []);
-  const gridStyle = useMemo(() => ({ height: "100%", width: "100%" }), []);
+  const containerStyle = useMemo(() => ({ width: '100%', height: '100%' }), []);
+  const gridStyle = useMemo(() => ({ height: '100%', width: '100%' }), []);
   const [rowData, setRowData] = useState(getData());
   const [columnDefs, setColumnDefs] = useState([
     {
-      field: "make",
-      cellEditor: "agSelectCellEditor",
+      field: 'make',
+      cellEditor: 'agSelectCellEditor',
       cellEditorParams: {
         values: carBrands,
       },
-      filter: "agSetColumnFilter",
+      filter: 'agSetColumnFilter',
       refData: carMappings,
     },
     {
-      field: "exteriorColour",
+      field: 'exteriorColour',
       minWidth: 150,
-      cellEditor: "agRichSelectCellEditor",
+      cellEditor: 'agRichSelectCellEditor',
       cellEditorPopup: true,
       cellEditorParams: {
         values: colours,
         cellRenderer: ColourCellRenderer,
       },
-      filter: "agSetColumnFilter",
+      filter: 'agSetColumnFilter',
       filterParams: {
         cellRenderer: ColourCellRenderer,
       },
@@ -80,9 +80,9 @@ const GridExample = () => {
       cellRenderer: ColourCellRenderer,
     },
     {
-      field: "interiorColour",
+      field: 'interiorColour',
       minWidth: 150,
-      filter: "agSetColumnFilter",
+      filter: 'agSetColumnFilter',
       filterParams: {
         cellRenderer: ColourCellRenderer,
       },
@@ -90,10 +90,10 @@ const GridExample = () => {
       cellRenderer: ColourCellRenderer,
     },
     {
-      headerName: "Retail Price",
-      field: "price",
+      headerName: 'Retail Price',
+      field: 'price',
       minWidth: 140,
-      colId: "retailPrice",
+      colId: 'retailPrice',
       valueGetter: function (params) {
         return params.data.price;
       },
@@ -101,12 +101,12 @@ const GridExample = () => {
       valueSetter: numberValueSetter,
     },
     {
-      headerName: "Retail Price (incl Taxes)",
+      headerName: 'Retail Price (incl Taxes)',
       minWidth: 205,
       editable: false,
       valueGetter: function (params) {
         // example of chaining value getters
-        return params.getValue("retailPrice") * 1.2;
+        return params.getValue('retailPrice') * 1.2;
       },
       valueFormatter: currencyFormatter,
     },
@@ -121,7 +121,7 @@ const GridExample = () => {
 
   const onCellValueChanged = useCallback((params) => {
     // notice that the data always contains the keys rather than values after editing
-    console.log("onCellValueChanged: ", params);
+    console.log('onCellValueChanged: ', params);
   }, []);
 
   return (
@@ -138,4 +138,4 @@ const GridExample = () => {
   );
 };
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

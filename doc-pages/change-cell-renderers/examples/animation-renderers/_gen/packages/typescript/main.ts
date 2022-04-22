@@ -3,54 +3,54 @@ import {
   Grid,
   GridOptions,
   ValueParserParams,
-} from "ag-grid-community";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
+} from 'ag-grid-community';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 
 const columnDefs: ColDef[] = [
   {
-    headerName: "Editable A",
-    field: "a",
+    headerName: 'Editable A',
+    field: 'a',
     editable: true,
     valueParser: numberValueParser,
   },
   {
-    headerName: "Editable B",
-    field: "b",
+    headerName: 'Editable B',
+    field: 'b',
     editable: true,
     valueParser: numberValueParser,
   },
   {
-    headerName: "Editable C",
-    field: "c",
+    headerName: 'Editable C',
+    field: 'c',
     editable: true,
     valueParser: numberValueParser,
   },
   {
-    headerName: "API D",
-    field: "d",
+    headerName: 'API D',
+    field: 'd',
     minWidth: 140,
     valueParser: numberValueParser,
-    cellRenderer: "agAnimateShowChangeCellRenderer",
+    cellRenderer: 'agAnimateShowChangeCellRenderer',
   },
   {
-    headerName: "API E",
-    field: "e",
+    headerName: 'API E',
+    field: 'e',
     minWidth: 140,
     valueParser: numberValueParser,
-    cellRenderer: "agAnimateShowChangeCellRenderer",
+    cellRenderer: 'agAnimateShowChangeCellRenderer',
   },
   {
-    headerName: "Total",
+    headerName: 'Total',
     minWidth: 140,
-    valueGetter: "data.a + data.b + data.c + data.d + data.e",
-    cellRenderer: "agAnimateShowChangeCellRenderer",
+    valueGetter: 'data.a + data.b + data.c + data.d + data.e',
+    cellRenderer: 'agAnimateShowChangeCellRenderer',
   },
   {
-    headerName: "Average",
+    headerName: 'Average',
     minWidth: 140,
-    valueGetter: "(data.a + data.b + data.c + data.d + data.e) / 5",
-    cellRenderer: "agAnimateSlideCellRenderer",
+    valueGetter: '(data.a + data.b + data.c + data.d + data.e) / 5',
+    cellRenderer: 'agAnimateSlideCellRenderer',
   },
 ];
 
@@ -60,7 +60,7 @@ const gridOptions: GridOptions = {
     flex: 1,
     minWidth: 120,
     resizable: true,
-    cellClass: "align-right",
+    cellClass: 'align-right',
     valueFormatter: function (params) {
       return formatNumber(params.value);
     },
@@ -77,7 +77,7 @@ function formatNumber(number: number) {
   // i pulled this from stack overflow, i have no idea how it works
   return Math.floor(number)
     .toString()
-    .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
+    .replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
 }
 
 function onUpdateSomeValues() {
@@ -85,8 +85,8 @@ function onUpdateSomeValues() {
   for (let i = 0; i < 10; i++) {
     const row = Math.floor(Math.random() * rowCount);
     const rowNode = gridOptions.api!.getDisplayedRowAtIndex(row)!;
-    rowNode.setDataValue("d", Math.floor(Math.random() * 10000));
-    rowNode.setDataValue("e", Math.floor(Math.random() * 10000));
+    rowNode.setDataValue('d', Math.floor(Math.random() * 10000));
+    rowNode.setDataValue('e', Math.floor(Math.random() * 10000));
   }
 }
 
@@ -107,13 +107,13 @@ function createRowData() {
 }
 
 // setup the grid after the page has finished loading
-const gridDiv = document.querySelector<HTMLElement>("#myGrid")!;
+const gridDiv = document.querySelector<HTMLElement>('#myGrid')!;
 new Grid(gridDiv, gridOptions);
 setTimeout(function () {
   gridOptions.api!.sizeColumnsToFit();
 }, 200);
 
-if (typeof window !== "undefined") {
+if (typeof window !== 'undefined') {
   // Attach external event handlers to window so they can be called from index.html
   (<any>window).onUpdateSomeValues = onUpdateSomeValues;
 }

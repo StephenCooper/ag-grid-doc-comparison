@@ -1,10 +1,10 @@
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { AgGridVue } from "@ag-grid-community/vue";
-import { SparklinesModule } from "@ag-grid-enterprise/sparklines";
-import Vue from "vue";
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { AgGridVue } from '@ag-grid-community/vue';
+import { SparklinesModule } from '@ag-grid-enterprise/sparklines';
+import Vue from 'vue';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([ClientSideRowModelModule, SparklinesModule]);
@@ -24,47 +24,47 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
         {
-          field: "sparkline",
-          headerName: "Line Sparkline",
+          field: 'sparkline',
+          headerName: 'Line Sparkline',
           minWidth: 100,
-          cellRenderer: "agSparklineCellRenderer",
+          cellRenderer: 'agSparklineCellRenderer',
           cellRendererParams: {
             sparklineOptions: {
-              line: { stroke: "rgb(124, 255, 178)", strokeWidth: 3 },
+              line: { stroke: 'rgb(124, 255, 178)', strokeWidth: 3 },
               padding: { top: 10, bottom: 10 },
-              marker: { shape: "diamond", formatter: lineMarkerFormatter },
+              marker: { shape: 'diamond', formatter: lineMarkerFormatter },
             },
           },
         },
         {
-          field: "sparkline",
-          headerName: "Column Sparkline",
+          field: 'sparkline',
+          headerName: 'Column Sparkline',
           minWidth: 100,
-          cellRenderer: "agSparklineCellRenderer",
+          cellRenderer: 'agSparklineCellRenderer',
           cellRendererParams: {
             sparklineOptions: {
-              type: "column",
+              type: 'column',
               padding: { top: 10, bottom: 10 },
               formatter: columnFormatter,
             },
           },
         },
         {
-          field: "sparkline",
-          headerName: "Area Sparkline",
+          field: 'sparkline',
+          headerName: 'Area Sparkline',
           minWidth: 100,
-          cellRenderer: "agSparklineCellRenderer",
+          cellRenderer: 'agSparklineCellRenderer',
           cellRendererParams: {
             sparklineOptions: {
-              type: "area",
-              fill: "rgba(84, 112, 198, 0.3)",
-              line: { stroke: "rgb(84, 112, 198)" },
+              type: 'area',
+              fill: 'rgba(84, 112, 198, 0.3)',
+              line: { stroke: 'rgb(84, 112, 198)' },
               padding: { top: 10, bottom: 10 },
               marker: { formatter: areaMarkerFormatter },
             },
@@ -144,17 +144,17 @@ window.areaMarkerFormatter = function areaMarkerFormatter(params) {
 };
 
 const colors = {
-  firstLast: "rgb(253, 221, 96)",
-  min: "rgb(239, 108, 0)",
-  max: "rgb(59, 162, 114)",
-  negative: "rgb(255, 110, 118)",
-  positive: "rgba(0,128,0, 0.3)",
-  highlighted: "rgb(88, 217, 249)",
+  firstLast: 'rgb(253, 221, 96)',
+  min: 'rgb(239, 108, 0)',
+  max: 'rgb(59, 162, 114)',
+  negative: 'rgb(255, 110, 118)',
+  positive: 'rgba(0,128,0, 0.3)',
+  highlighted: 'rgb(88, 217, 249)',
 };
 
 new Vue({
-  el: "#app",
+  el: '#app',
   components: {
-    "my-component": VueExample,
+    'my-component': VueExample,
   },
 });

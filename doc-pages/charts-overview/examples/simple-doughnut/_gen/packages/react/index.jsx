@@ -1,8 +1,10 @@
-"use strict";
+'use strict';
 
-import { AgChartsReact } from "ag-charts-react";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { cloneDeep } from 'lodash';
+import { render } from 'react-dom';
+import * as agCharts from 'ag-charts-community';
+import { AgChartsReact } from 'ag-charts-react';
 
 class ChartExample extends Component {
   constructor(props) {
@@ -13,25 +15,25 @@ class ChartExample extends Component {
         autoSize: true,
         data: getData(),
         title: {
-          text: "Dwelling Fires (UK)",
+          text: 'Dwelling Fires (UK)',
           fontSize: 18,
         },
         subtitle: {
-          text: "Source: Home Office",
+          text: 'Source: Home Office',
         },
         series: [
           {
-            type: "pie",
-            labelKey: "type",
+            type: 'pie',
+            labelKey: 'type',
             fillOpacity: 0.9,
             strokeWidth: 0,
-            angleKey: "2018/19",
+            angleKey: '2018/19',
             label: {
               enabled: false,
             },
             title: {
               enabled: true,
-              text: "2018/19",
+              text: '2018/19',
             },
             innerRadiusOffset: -100,
           },
@@ -47,4 +49,4 @@ class ChartExample extends Component {
   }
 }
 
-render(<ChartExample />, document.querySelector("#root"));
+render(<ChartExample />, document.querySelector('#root'));

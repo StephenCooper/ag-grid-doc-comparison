@@ -1,16 +1,16 @@
-import { Component } from "@angular/core";
+import { Component } from '@angular/core';
 import {
   AreaSparklineOptions,
   ColDef,
   GridReadyEvent,
   TooltipRendererParams,
-} from "ag-grid-community";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
+} from 'ag-grid-community';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import 'ag-grid-enterprise';
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<ag-grid-angular
     style="width: 100%; height: 100%;"
     class="ag-theme-alpine"
@@ -23,22 +23,22 @@ import "ag-grid-enterprise";
 })
 export class AppComponent {
   public columnDefs: ColDef[] = [
-    { field: "symbol", maxWidth: 120 },
-    { field: "name", minWidth: 250 },
+    { field: 'symbol', maxWidth: 120 },
+    { field: 'name', minWidth: 250 },
     {
-      field: "change",
-      cellRenderer: "agSparklineCellRenderer",
+      field: 'change',
+      cellRenderer: 'agSparklineCellRenderer',
       cellRendererParams: {
         sparklineOptions: {
-          type: "area",
-          fill: "rgba(185,173,77,0.3)",
+          type: 'area',
+          fill: 'rgba(185,173,77,0.3)',
           line: {
-            stroke: "rgb(185,173,77)",
+            stroke: 'rgb(185,173,77)',
           },
           highlightStyle: {
             size: 4,
-            stroke: "rgb(185,173,77)",
-            fill: "rgb(185,173,77)",
+            stroke: 'rgb(185,173,77)',
+            fill: 'rgb(185,173,77)',
           },
           tooltip: {
             renderer: renderer,
@@ -46,32 +46,32 @@ export class AppComponent {
           crosshairs: {
             xLine: {
               enabled: true,
-              lineDash: "dash",
-              stroke: "rgba(0, 0, 0, 0.5)",
+              lineDash: 'dash',
+              stroke: 'rgba(0, 0, 0, 0.5)',
             },
             yLine: {
               enabled: true,
-              lineDash: "dash",
-              stroke: "rgba(0, 0, 0, 0.5)",
+              lineDash: 'dash',
+              stroke: 'rgba(0, 0, 0, 0.5)',
             },
           },
         } as AreaSparklineOptions,
       },
     },
     {
-      field: "rateOfChange",
-      cellRenderer: "agSparklineCellRenderer",
+      field: 'rateOfChange',
+      cellRenderer: 'agSparklineCellRenderer',
       cellRendererParams: {
         sparklineOptions: {
-          type: "area",
-          fill: "rgba(77,89,185, 0.3)",
+          type: 'area',
+          fill: 'rgba(77,89,185, 0.3)',
           line: {
-            stroke: "rgb(77,89,185)",
+            stroke: 'rgb(77,89,185)',
           },
           highlightStyle: {
             size: 4,
-            stroke: "rgb(77,89,185)",
-            fill: "rgb(77,89,185)",
+            stroke: 'rgb(77,89,185)',
+            fill: 'rgb(77,89,185)',
           },
           tooltip: {
             renderer: renderer,
@@ -85,8 +85,8 @@ export class AppComponent {
       },
     },
     {
-      field: "volume",
-      type: "numericColumn",
+      field: 'volume',
+      type: 'numericColumn',
       maxWidth: 140,
     },
   ];
@@ -103,8 +103,8 @@ export class AppComponent {
 
 function renderer(params: TooltipRendererParams) {
   return {
-    backgroundColor: "black",
+    backgroundColor: 'black',
     opacity: 0.5,
-    color: "white",
+    color: 'white',
   };
 }

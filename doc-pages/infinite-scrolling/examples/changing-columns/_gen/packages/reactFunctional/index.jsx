@@ -1,10 +1,10 @@
-"use strict";
+'use strict';
 
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import { AgGridReact } from "ag-grid-react";
-import React, { useCallback, useMemo, useRef, useState } from "react";
-import { render } from "react-dom";
+import React, { useCallback, useMemo, useRef, useState } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from 'ag-grid-react';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 
 const sortAndFilter = (allOfTheData, sortModel, filterModel) => {
   return sortData(sortModel, filterData(filterModel, allOfTheData));
@@ -26,7 +26,7 @@ const sortData = (sortModel, data) => {
       if (valueA == valueB) {
         continue;
       }
-      var sortDirection = sortColModel.sort === "asc" ? 1 : -1;
+      var sortDirection = sortColModel.sort === 'asc' ? 1 : -1;
       if (valueA > valueB) {
         return sortDirection;
       } else {
@@ -75,15 +75,15 @@ const filterData = (filterModel, data) => {
 
 const GridExample = () => {
   const gridRef = useRef();
-  const containerStyle = useMemo(() => ({ width: "100%", height: "100%" }), []);
-  const gridStyle = useMemo(() => ({ height: "100%", width: "100%" }), []);
+  const containerStyle = useMemo(() => ({ width: '100%', height: '100%' }), []);
+  const gridStyle = useMemo(() => ({ height: '100%', width: '100%' }), []);
 
   const [columnDefs, setColumnDefs] = useState([
-    { field: "athlete", colId: "athlete", minWidth: 180 },
-    { field: "age", colId: "age" },
-    { field: "country", colId: "country", minWidth: 180 },
-    { field: "year", colId: "year" },
-    { field: "sport", colId: "sport", minWidth: 180 },
+    { field: 'athlete', colId: 'athlete', minWidth: 180 },
+    { field: 'age', colId: 'age' },
+    { field: 'country', colId: 'country', minWidth: 180 },
+    { field: 'year', colId: 'year' },
+    { field: 'sport', colId: 'sport', minWidth: 180 },
   ]);
   const defaultColDef = useMemo(() => {
     return {
@@ -95,18 +95,18 @@ const GridExample = () => {
   }, []);
 
   const onGridReady = useCallback((params) => {
-    fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+    fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .then((resp) => resp.json())
       .then((data) => {
         // give each row an id
         data.forEach(function (d, index) {
-          d.id = "R" + (index + 1);
+          d.id = 'R' + (index + 1);
         });
         var dataSource = {
           rowCount: undefined,
           getRows: function (params) {
             console.log(
-              "asking for " + params.startRow + " to " + params.endRow
+              'asking for ' + params.startRow + ' to ' + params.endRow
             );
             // At this point in your code, you would call the server.
             // To make the demo look real, wait for 500ms before returning
@@ -137,20 +137,20 @@ const GridExample = () => {
 
   const onBtShowYearColumn = useCallback(() => {
     gridRef.current.api.setColumnDefs([
-      { field: "athlete", colId: "athlete" },
-      { field: "age", colId: "age" },
-      { field: "country", colId: "country" },
-      { field: "year", colId: "year" },
-      { field: "sport", colId: "sport" },
+      { field: 'athlete', colId: 'athlete' },
+      { field: 'age', colId: 'age' },
+      { field: 'country', colId: 'country' },
+      { field: 'year', colId: 'year' },
+      { field: 'sport', colId: 'sport' },
     ]);
   }, []);
 
   const onBtHideYearColumn = useCallback(() => {
     gridRef.current.api.setColumnDefs([
-      { field: "athlete", colId: "athlete" },
-      { field: "age", colId: "age" },
-      { field: "country", colId: "country" },
-      { field: "sport", colId: "sport" },
+      { field: 'athlete', colId: 'athlete' },
+      { field: 'age', colId: 'age' },
+      { field: 'country', colId: 'country' },
+      { field: 'sport', colId: 'sport' },
     ]);
   }, []);
 
@@ -167,7 +167,7 @@ const GridExample = () => {
             ref={gridRef}
             columnDefs={columnDefs}
             defaultColDef={defaultColDef}
-            rowModelType={"infinite"}
+            rowModelType={'infinite'}
             onGridReady={onGridReady}
           ></AgGridReact>
         </div>
@@ -176,4 +176,4 @@ const GridExample = () => {
   );
 };
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

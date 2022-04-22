@@ -1,107 +1,107 @@
 let rowData = [
   {
-    orgHierarchy: ["Erica Rogers"],
-    jobTitle: "CEO",
-    employmentType: "Permanent",
+    orgHierarchy: ['Erica Rogers'],
+    jobTitle: 'CEO',
+    employmentType: 'Permanent',
   },
   {
-    orgHierarchy: ["Erica Rogers", "Malcolm Barrett"],
-    jobTitle: "Exec. Vice President",
-    employmentType: "Permanent",
-  },
-
-  {
-    orgHierarchy: ["Erica Rogers", "Malcolm Barrett", "Esther Baker"],
-    jobTitle: "Director of Operations",
-    employmentType: "Permanent",
-  },
-  {
-    orgHierarchy: [
-      "Erica Rogers",
-      "Malcolm Barrett",
-      "Esther Baker",
-      "Brittany Hanson",
-    ],
-    jobTitle: "Fleet Coordinator",
-    employmentType: "Permanent",
-  },
-  {
-    orgHierarchy: [
-      "Erica Rogers",
-      "Malcolm Barrett",
-      "Esther Baker",
-      "Brittany Hanson",
-      "Leah Flowers",
-    ],
-    jobTitle: "Parts Technician",
-    employmentType: "Contract",
-  },
-  {
-    orgHierarchy: [
-      "Erica Rogers",
-      "Malcolm Barrett",
-      "Esther Baker",
-      "Brittany Hanson",
-      "Tammy Sutton",
-    ],
-    jobTitle: "Service Technician",
-    employmentType: "Contract",
-  },
-  {
-    orgHierarchy: [
-      "Erica Rogers",
-      "Malcolm Barrett",
-      "Esther Baker",
-      "Derek Paul",
-    ],
-    jobTitle: "Inventory Control",
-    employmentType: "Permanent",
+    orgHierarchy: ['Erica Rogers', 'Malcolm Barrett'],
+    jobTitle: 'Exec. Vice President',
+    employmentType: 'Permanent',
   },
 
   {
-    orgHierarchy: ["Erica Rogers", "Malcolm Barrett", "Francis Strickland"],
-    jobTitle: "VP Sales",
-    employmentType: "Permanent",
+    orgHierarchy: ['Erica Rogers', 'Malcolm Barrett', 'Esther Baker'],
+    jobTitle: 'Director of Operations',
+    employmentType: 'Permanent',
   },
   {
     orgHierarchy: [
-      "Erica Rogers",
-      "Malcolm Barrett",
-      "Francis Strickland",
-      "Morris Hanson",
+      'Erica Rogers',
+      'Malcolm Barrett',
+      'Esther Baker',
+      'Brittany Hanson',
     ],
-    jobTitle: "Sales Manager",
-    employmentType: "Permanent",
+    jobTitle: 'Fleet Coordinator',
+    employmentType: 'Permanent',
   },
   {
     orgHierarchy: [
-      "Erica Rogers",
-      "Malcolm Barrett",
-      "Francis Strickland",
-      "Todd Tyler",
+      'Erica Rogers',
+      'Malcolm Barrett',
+      'Esther Baker',
+      'Brittany Hanson',
+      'Leah Flowers',
     ],
-    jobTitle: "Sales Executive",
-    employmentType: "Contract",
+    jobTitle: 'Parts Technician',
+    employmentType: 'Contract',
   },
   {
     orgHierarchy: [
-      "Erica Rogers",
-      "Malcolm Barrett",
-      "Francis Strickland",
-      "Bennie Wise",
+      'Erica Rogers',
+      'Malcolm Barrett',
+      'Esther Baker',
+      'Brittany Hanson',
+      'Tammy Sutton',
     ],
-    jobTitle: "Sales Executive",
-    employmentType: "Contract",
+    jobTitle: 'Service Technician',
+    employmentType: 'Contract',
   },
   {
     orgHierarchy: [
-      "Erica Rogers",
-      "Malcolm Barrett",
-      "Francis Strickland",
-      "Joel Cooper",
+      'Erica Rogers',
+      'Malcolm Barrett',
+      'Esther Baker',
+      'Derek Paul',
     ],
-    jobTitle: "Sales Executive",
-    employmentType: "Permanent",
+    jobTitle: 'Inventory Control',
+    employmentType: 'Permanent',
+  },
+
+  {
+    orgHierarchy: ['Erica Rogers', 'Malcolm Barrett', 'Francis Strickland'],
+    jobTitle: 'VP Sales',
+    employmentType: 'Permanent',
+  },
+  {
+    orgHierarchy: [
+      'Erica Rogers',
+      'Malcolm Barrett',
+      'Francis Strickland',
+      'Morris Hanson',
+    ],
+    jobTitle: 'Sales Manager',
+    employmentType: 'Permanent',
+  },
+  {
+    orgHierarchy: [
+      'Erica Rogers',
+      'Malcolm Barrett',
+      'Francis Strickland',
+      'Todd Tyler',
+    ],
+    jobTitle: 'Sales Executive',
+    employmentType: 'Contract',
+  },
+  {
+    orgHierarchy: [
+      'Erica Rogers',
+      'Malcolm Barrett',
+      'Francis Strickland',
+      'Bennie Wise',
+    ],
+    jobTitle: 'Sales Executive',
+    employmentType: 'Contract',
+  },
+  {
+    orgHierarchy: [
+      'Erica Rogers',
+      'Malcolm Barrett',
+      'Francis Strickland',
+      'Joel Cooper',
+    ],
+    jobTitle: 'Sales Executive',
+    employmentType: 'Permanent',
   },
 ];
 
@@ -111,7 +111,7 @@ function convertGridTreeData(data) {
   const root = {};
 
   rowData.forEach((row) => {
-    insert(root, row, "orgHierarchy");
+    insert(root, row, 'orgHierarchy');
   });
 
   return root;

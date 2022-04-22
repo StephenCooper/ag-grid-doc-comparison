@@ -1,9 +1,9 @@
 function getData() {
   return [
     {
-      symbol: "A",
-      name: "Agilent Technologies Inc. Common Stock",
-      volume: "$971,760",
+      symbol: 'A',
+      name: 'Agilent Technologies Inc. Common Stock',
+      volume: '$971,760',
       change: [
         [1, -37.3],
         [5, 16.92],
@@ -17,9 +17,9 @@ function getData() {
       ],
     },
     {
-      symbol: "AAL",
-      name: "American Airlines Group Inc. Common Stock",
-      volume: "$20,309,670",
+      symbol: 'AAL',
+      name: 'American Airlines Group Inc. Common Stock',
+      volume: '$20,309,670',
       change: [
         [3, 33.93],
         [4, -80.1],
@@ -33,9 +33,9 @@ function getData() {
       ],
     },
     {
-      symbol: "AAP",
-      name: "Advance Auto Parts Inc Advance Auto Parts Inc W/I",
-      volume: "$699,427",
+      symbol: 'AAP',
+      name: 'Advance Auto Parts Inc Advance Auto Parts Inc W/I',
+      volume: '$699,427',
       change: [
         [2, -86.2],
         [3, -41.2],
@@ -49,9 +49,9 @@ function getData() {
       ],
     },
     {
-      symbol: "AAPL",
-      name: "Apple Inc. Common Stock",
-      volume: "$57,807,909",
+      symbol: 'AAPL',
+      name: 'Apple Inc. Common Stock',
+      volume: '$57,807,909',
       change: [
         [3, -40.6],
         [5, -48.07],
@@ -65,9 +65,9 @@ function getData() {
       ],
     },
     {
-      symbol: "ABB",
-      name: "ABB Ltd Common Stock",
-      volume: "$901,811",
+      symbol: 'ABB',
+      name: 'ABB Ltd Common Stock',
+      volume: '$901,811',
       change: [
         [1, 96.6],
         [3, -76],
@@ -81,9 +81,9 @@ function getData() {
       ],
     },
     {
-      symbol: "ABBV",
-      name: "AbbVie Inc. Common Stock",
-      volume: "$5,364,090",
+      symbol: 'ABBV',
+      name: 'AbbVie Inc. Common Stock',
+      volume: '$5,364,090',
       change: [
         [2, 74.34],
         [4, 65.46],
@@ -97,9 +97,9 @@ function getData() {
       ],
     },
     {
-      symbol: "ABC",
-      name: "AmerisourceBergen Corporation Common Stock",
-      volume: "$549,618",
+      symbol: 'ABC',
+      name: 'AmerisourceBergen Corporation Common Stock',
+      volume: '$549,618',
       change: [
         [1, 50.73],
         [7, 88.25],
@@ -113,9 +113,9 @@ function getData() {
       ],
     },
     {
-      symbol: "ABEV",
-      name: "Ambev S.A. American Depositary Shares",
-      volume: "$27,226,664",
+      symbol: 'ABEV',
+      name: 'Ambev S.A. American Depositary Shares',
+      volume: '$27,226,664',
       change: [
         [0, -22.48],
         [2, -54.87],
@@ -129,9 +129,9 @@ function getData() {
       ],
     },
     {
-      symbol: "ABMD",
-      name: "ABIOMED Inc. Common Stock",
-      volume: "$137,763",
+      symbol: 'ABMD',
+      name: 'ABIOMED Inc. Common Stock',
+      volume: '$137,763',
       change: [
         [0, -83.29],
         [2, 52.28],
@@ -145,9 +145,9 @@ function getData() {
       ],
     },
     {
-      symbol: "ABNB",
-      name: "Airbnb Inc. Class A Common Stock",
-      volume: "$4,456,806",
+      symbol: 'ABNB',
+      name: 'Airbnb Inc. Class A Common Stock',
+      volume: '$4,456,806',
       change: [
         [3, 82.41],
         [5, 8.96],

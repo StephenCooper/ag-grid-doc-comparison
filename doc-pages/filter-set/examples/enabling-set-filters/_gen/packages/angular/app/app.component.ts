@@ -1,12 +1,12 @@
-import { HttpClient } from "@angular/common/http";
-import { Component } from "@angular/core";
-import { ColDef, GridReadyEvent } from "ag-grid-community";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
+import { HttpClient } from '@angular/common/http';
+import { Component } from '@angular/core';
+import { ColDef, GridReadyEvent } from 'ag-grid-community';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import 'ag-grid-enterprise';
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<ag-grid-angular
     style="width: 100%; height: 100%;"
     class="ag-theme-alpine"
@@ -19,12 +19,12 @@ import "ag-grid-enterprise";
 export class AppComponent {
   public columnDefs: ColDef[] = [
     // set filters
-    { field: "athlete", filter: true },
-    { field: "country", filter: "agSetColumnFilter" },
+    { field: 'athlete', filter: true },
+    { field: 'country', filter: 'agSetColumnFilter' },
     // number filters
-    { field: "gold", filter: "agNumberColumnFilter" },
-    { field: "silver", filter: "agNumberColumnFilter" },
-    { field: "bronze", filter: "agNumberColumnFilter" },
+    { field: 'gold', filter: 'agNumberColumnFilter' },
+    { field: 'silver', filter: 'agNumberColumnFilter' },
+    { field: 'bronze', filter: 'agNumberColumnFilter' },
   ];
   public defaultColDef: ColDef = {
     flex: 1,
@@ -38,7 +38,7 @@ export class AppComponent {
 
   onGridReady(params: GridReadyEvent) {
     this.http
-      .get<any[]>("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      .get<any[]>('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .subscribe((data) => (this.rowData = data));
   }
 }

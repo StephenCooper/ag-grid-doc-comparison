@@ -1,11 +1,11 @@
-"use strict";
+'use strict';
 
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
-import { AgGridReact } from "ag-grid-react";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from 'ag-grid-react';
+import 'ag-grid-enterprise';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 
 class GridExample extends Component {
   constructor(props) {
@@ -13,12 +13,12 @@ class GridExample extends Component {
 
     this.state = {
       columnDefs: [
-        { field: "athlete", minWidth: 150 },
-        { field: "age", maxWidth: 90 },
-        { field: "country", minWidth: 150 },
-        { field: "year", maxWidth: 90 },
-        { field: "date", minWidth: 150 },
-        { field: "sport", minWidth: 150 },
+        { field: 'athlete', minWidth: 150 },
+        { field: 'age', maxWidth: 90 },
+        { field: 'country', minWidth: 150 },
+        { field: 'year', maxWidth: 90 },
+        { field: 'date', minWidth: 150 },
+        { field: 'sport', minWidth: 150 },
       ],
       defaultColDef: {
         flex: 1,
@@ -26,7 +26,7 @@ class GridExample extends Component {
         editable: true,
       },
       fillOperation: function (params) {
-        if (params.column.getColId() === "country") {
+        if (params.column.getColId() === 'country') {
           return params.currentCellValue;
         }
         return params.values[params.values.length - 1];
@@ -43,18 +43,18 @@ class GridExample extends Component {
       params.api.setRowData(createRowData(data));
     };
 
-    fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+    fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .then((resp) => resp.json())
       .then((data) => updateData(data));
   };
 
   render() {
     return (
-      <div style={{ width: "100%", height: "100%" }}>
+      <div style={{ width: '100%', height: '100%' }}>
         <div
           style={{
-            height: "100%",
-            width: "100%",
+            height: '100%',
+            width: '100%',
           }}
           className="ag-theme-alpine"
         >
@@ -79,4 +79,4 @@ function createRowData(data) {
   return rowData;
 }
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

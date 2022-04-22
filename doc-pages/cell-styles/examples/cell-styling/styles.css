@@ -1,21 +1,21 @@
 .rag-red {
-  background-color: lightcoral;
+    background-color: lightcoral;
 }
 .rag-green {
-  background-color: lightgreen;
+    background-color: lightgreen;
 }
 .rag-amber {
-  background-color: lightsalmon;
+    background-color: lightsalmon;
 }
 
 .rag-red-outer .rag-element {
-  background-color: lightcoral;
+    background-color: lightcoral;
 }
 
 .rag-green-outer .rag-element {
-  background-color: lightgreen;
+    background-color: lightgreen;
 }
 
 .rag-amber-outer .rag-element {
-  background-color: lightsalmon;
+    background-color: lightsalmon;
 }

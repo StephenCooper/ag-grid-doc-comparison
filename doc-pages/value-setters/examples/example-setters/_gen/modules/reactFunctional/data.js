@@ -1,14 +1,14 @@
 function getData() {
   var rowData = [];
-  var firstNames = ["Niall", "John", "Rob", "Alberto", "Bas", "Dimple", "Sean"];
+  var firstNames = ['Niall', 'John', 'Rob', 'Alberto', 'Bas', 'Dimple', 'Sean'];
   var lastNames = [
-    "Pink",
-    "Black",
-    "White",
-    "Brown",
-    "Smith",
-    "Smooth",
-    "Anderson",
+    'Pink',
+    'Black',
+    'White',
+    'Brown',
+    'Smith',
+    'Smooth',
+    'Anderson',
   ];
 
   for (var i = 0; i < 100; i++) {

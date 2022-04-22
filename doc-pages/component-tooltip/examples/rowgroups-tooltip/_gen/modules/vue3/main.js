@@ -1,13 +1,13 @@
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { AgGridVue } from "@ag-grid-community/vue3";
-import { ColumnsToolPanelModule } from "@ag-grid-enterprise/column-tool-panel";
-import { MenuModule } from "@ag-grid-enterprise/menu";
-import { RowGroupingModule } from "@ag-grid-enterprise/row-grouping";
-import { SetFilterModule } from "@ag-grid-enterprise/set-filter";
-import { createApp } from "vue";
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { AgGridVue } from '@ag-grid-community/vue3';
+import { ColumnsToolPanelModule } from '@ag-grid-enterprise/column-tool-panel';
+import { MenuModule } from '@ag-grid-enterprise/menu';
+import { RowGroupingModule } from '@ag-grid-enterprise/row-grouping';
+import { SetFilterModule } from '@ag-grid-enterprise/set-filter';
+import { createApp } from 'vue';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([
@@ -34,21 +34,21 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
-        { field: "country", width: 120, rowGroup: true },
-        { field: "year", width: 90, rowGroup: true },
-        { field: "sport", width: 110 },
-        { field: "athlete", width: 200 },
-        { field: "gold", width: 100 },
-        { field: "silver", width: 100 },
-        { field: "bronze", width: 100 },
-        { field: "total", width: 100 },
-        { field: "age", width: 90 },
-        { field: "date", width: 110 },
+        { field: 'country', width: 120, rowGroup: true },
+        { field: 'year', width: 90, rowGroup: true },
+        { field: 'sport', width: 110 },
+        { field: 'athlete', width: 200 },
+        { field: 'gold', width: 100 },
+        { field: 'silver', width: 100 },
+        { field: 'bronze', width: 100 },
+        { field: 'total', width: 100 },
+        { field: 'age', width: 90 },
+        { field: 'date', width: 110 },
       ],
       gridApi: null,
       columnApi: null,
@@ -66,12 +66,12 @@ const VueExample = {
   },
   created() {
     this.autoGroupColumnDef = {
-      headerTooltip: "Group",
+      headerTooltip: 'Group',
       minWidth: 190,
       tooltipValueGetter: (params) => {
         const count = params.node && params.node.allChildrenCount;
         if (count != null) {
-          return params.value + " (" + count + ")";
+          return params.value + ' (' + count + ')';
         }
         return params.value;
       },
@@ -86,11 +86,11 @@ const VueExample = {
         this.rowData = data;
       };
 
-      fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
         .then((resp) => resp.json())
         .then((data) => updateData(data));
     },
   },
 };
 
-createApp(VueExample).mount("#app");
+createApp(VueExample).mount('#app');

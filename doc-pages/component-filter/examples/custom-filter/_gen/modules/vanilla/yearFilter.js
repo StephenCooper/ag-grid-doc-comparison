@@ -1,6 +1,6 @@
 class YearFilter {
   init(params) {
-    this.eGui = document.createElement("div");
+    this.eGui = document.createElement('div');
     this.eGui.innerHTML = `<div style="display: inline-block; width: 400px;">
                 <div style="padding: 10px; background-color: #d3d3d3; text-align: center;">This is a very wide filter</div>
                 <label style="margin: 10px; padding: 50px; display: inline-block; background-color: #999999">  
@@ -10,10 +10,10 @@ class YearFilter {
                     <input type="radio" name="yearFilter" id="rbSince2010" filter-checkbox="true"/> Since 2010
                 </label>
             </div>`;
-    this.rbAllYears = this.eGui.querySelector("#rbAllYears");
-    this.rbSince2010 = this.eGui.querySelector("#rbSince2010");
-    this.rbAllYears.addEventListener("change", this.onRbChanged.bind(this));
-    this.rbSince2010.addEventListener("change", this.onRbChanged.bind(this));
+    this.rbAllYears = this.eGui.querySelector('#rbAllYears');
+    this.rbSince2010 = this.eGui.querySelector('#rbSince2010');
+    this.rbAllYears.addEventListener('change', this.onRbChanged.bind(this));
+    this.rbSince2010.addEventListener('change', this.onRbChanged.bind(this));
     this.filterActive = false;
     this.filterChangedCallback = params.filterChangedCallback;
   }

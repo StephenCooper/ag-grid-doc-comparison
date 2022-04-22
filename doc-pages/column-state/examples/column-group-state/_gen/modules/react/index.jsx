@@ -1,13 +1,13 @@
-"use strict";
+'use strict';
 
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { AgGridReact } from "@ag-grid-community/react";
-import { RowGroupingModule } from "@ag-grid-enterprise/row-grouping";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from '@ag-grid-community/react';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import { RowGroupingModule } from '@ag-grid-enterprise/row-grouping';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([ClientSideRowModelModule, RowGroupingModule]);
@@ -19,22 +19,22 @@ class GridExample extends Component {
     this.state = {
       columnDefs: [
         {
-          headerName: "Athlete",
+          headerName: 'Athlete',
           children: [
-            { field: "athlete" },
-            { field: "country", columnGroupShow: "open" },
-            { field: "sport", columnGroupShow: "open" },
-            { field: "year", columnGroupShow: "open" },
-            { field: "date", columnGroupShow: "open" },
+            { field: 'athlete' },
+            { field: 'country', columnGroupShow: 'open' },
+            { field: 'sport', columnGroupShow: 'open' },
+            { field: 'year', columnGroupShow: 'open' },
+            { field: 'date', columnGroupShow: 'open' },
           ],
         },
         {
-          headerName: "Medals",
+          headerName: 'Medals',
           children: [
-            { field: "total", columnGroupShow: "closed" },
-            { field: "gold", columnGroupShow: "open" },
-            { field: "silver", columnGroupShow: "open" },
-            { field: "bronze", columnGroupShow: "open" },
+            { field: 'total', columnGroupShow: 'closed' },
+            { field: 'gold', columnGroupShow: 'open' },
+            { field: 'silver', columnGroupShow: 'open' },
+            { field: 'bronze', columnGroupShow: 'open' },
           ],
         },
       ],
@@ -52,34 +52,34 @@ class GridExample extends Component {
 
     const updateData = (data) => params.api.setRowData(data);
 
-    fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+    fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .then((resp) => resp.json())
       .then((data) => updateData(data));
   };
 
   saveState = () => {
     window.groupState = this.gridColumnApi.getColumnGroupState();
-    console.log("group state saved", window.groupState);
-    console.log("column state saved");
+    console.log('group state saved', window.groupState);
+    console.log('column state saved');
   };
 
   restoreState = () => {
     if (!window.groupState) {
-      console.log("no columns state to restore by, you must save state first");
+      console.log('no columns state to restore by, you must save state first');
       return;
     }
     this.gridColumnApi.setColumnGroupState(window.groupState);
-    console.log("column state restored");
+    console.log('column state restored');
   };
 
   resetState = () => {
     this.gridColumnApi.resetColumnGroupState();
-    console.log("column state reset");
+    console.log('column state reset');
   };
 
   render() {
     return (
-      <div style={{ width: "100%", height: "100%" }}>
+      <div style={{ width: '100%', height: '100%' }}>
         <div className="test-container">
           <div className="test-header">
             <div className="example-section">
@@ -91,8 +91,8 @@ class GridExample extends Component {
           </div>
           <div
             style={{
-              height: "100%",
-              width: "100%",
+              height: '100%',
+              width: '100%',
             }}
             className="ag-theme-alpine"
           >
@@ -109,4 +109,4 @@ class GridExample extends Component {
   }
 }
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

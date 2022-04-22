@@ -1,28 +1,28 @@
-"use strict";
+'use strict';
 
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
-import { AgGridReact } from "ag-grid-react";
-import React, { useCallback, useMemo, useRef, useState } from "react";
-import { render } from "react-dom";
+import React, { useCallback, useMemo, useRef, useState } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from 'ag-grid-react';
+import 'ag-grid-enterprise';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 
 const GridExample = () => {
   const gridRef = useRef();
-  const containerStyle = useMemo(() => ({ width: "100%", height: "100%" }), []);
-  const gridStyle = useMemo(() => ({ height: "100%", width: "100%" }), []);
+  const containerStyle = useMemo(() => ({ width: '100%', height: '100%' }), []);
+  const gridStyle = useMemo(() => ({ height: '100%', width: '100%' }), []);
   const [rowData, setRowData] = useState();
   const [columnDefs, setColumnDefs] = useState([
-    { field: "athlete" },
-    { field: "age" },
-    { field: "country" },
-    { field: "sport" },
-    { field: "year" },
-    { field: "date" },
-    { field: "gold" },
-    { field: "silver" },
-    { field: "bronze" },
-    { field: "total" },
+    { field: 'athlete' },
+    { field: 'age' },
+    { field: 'country' },
+    { field: 'sport' },
+    { field: 'year' },
+    { field: 'date' },
+    { field: 'gold' },
+    { field: 'silver' },
+    { field: 'bronze' },
+    { field: 'total' },
   ]);
   const defaultColDef = useMemo(() => {
     return {
@@ -36,12 +36,12 @@ const GridExample = () => {
   }, []);
   const sideBar = useMemo(() => {
     return {
-      toolPanels: ["columns"],
+      toolPanels: ['columns'],
     };
   }, []);
 
   const onGridReady = useCallback((params) => {
-    fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+    fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .then((resp) => resp.json())
       .then((data) => setRowData(data));
   }, []);
@@ -54,18 +54,18 @@ const GridExample = () => {
       sortIndex: state.sortIndex,
     }));
     window.sortState = sortState;
-    console.log("sort state saved", sortState);
+    console.log('sort state saved', sortState);
   }, []);
 
   const onBtRestoreSortState = useCallback(() => {
     if (!window.sortState) {
-      console.log("no sort state to restore, you must save sort state first");
+      console.log('no sort state to restore, you must save sort state first');
       return;
     }
     gridRef.current.columnApi.applyColumnState({
       state: window.sortState,
     });
-    console.log("sort state restored");
+    console.log('sort state restored');
   }, []);
 
   const onBtSaveOrderAndVisibilityState = useCallback(() => {
@@ -75,13 +75,13 @@ const GridExample = () => {
       hide: state.hide,
     }));
     window.orderAndVisibilityState = orderAndVisibilityState;
-    console.log("order and visibility state saved", orderAndVisibilityState);
+    console.log('order and visibility state saved', orderAndVisibilityState);
   }, []);
 
   const onBtRestoreOrderAndVisibilityState = useCallback(() => {
     if (!window.orderAndVisibilityState) {
       console.log(
-        "no order and visibility state to restore by, you must save order and visibility state first"
+        'no order and visibility state to restore by, you must save order and visibility state first'
       );
       return;
     }
@@ -89,7 +89,7 @@ const GridExample = () => {
       state: window.orderAndVisibilityState,
       applyOrder: true,
     });
-    console.log("column state restored");
+    console.log('column state restored');
   }, []);
 
   return (
@@ -116,8 +116,8 @@ const GridExample = () => {
             columnDefs={columnDefs}
             defaultColDef={defaultColDef}
             sideBar={sideBar}
-            rowGroupPanelShow={"always"}
-            pivotPanelShow={"always"}
+            rowGroupPanelShow={'always'}
+            pivotPanelShow={'always'}
             onGridReady={onGridReady}
           ></AgGridReact>
         </div>
@@ -126,4 +126,4 @@ const GridExample = () => {
   );
 };
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

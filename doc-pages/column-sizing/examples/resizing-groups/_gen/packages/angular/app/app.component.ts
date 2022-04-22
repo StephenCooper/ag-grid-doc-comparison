@@ -1,11 +1,11 @@
-import { HttpClient } from "@angular/common/http";
-import { Component } from "@angular/core";
-import { ColDef, ColGroupDef, GridReadyEvent } from "ag-grid-community";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
+import { HttpClient } from '@angular/common/http';
+import { Component } from '@angular/core';
+import { ColDef, ColGroupDef, GridReadyEvent } from 'ag-grid-community';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<div class="example-wrapper">
     <div class="legend-bar">
       <span class="legend-box resizable-header"></span> Resizable Column
@@ -25,57 +25,57 @@ import "ag-grid-community/dist/styles/ag-theme-alpine.css";
 export class AppComponent {
   public columnDefs: (ColDef | ColGroupDef)[] = [
     {
-      headerName: "Everything Resizes",
+      headerName: 'Everything Resizes',
       children: [
         {
-          field: "athlete",
-          headerClass: "resizable-header",
+          field: 'athlete',
+          headerClass: 'resizable-header',
         },
-        { field: "age", headerClass: "resizable-header" },
+        { field: 'age', headerClass: 'resizable-header' },
         {
-          field: "country",
-          headerClass: "resizable-header",
+          field: 'country',
+          headerClass: 'resizable-header',
         },
       ],
     },
     {
-      headerName: "Only Year Resizes",
+      headerName: 'Only Year Resizes',
       children: [
-        { field: "year", headerClass: "resizable-header" },
+        { field: 'year', headerClass: 'resizable-header' },
         {
-          field: "date",
+          field: 'date',
           resizable: false,
-          headerClass: "fixed-size-header",
+          headerClass: 'fixed-size-header',
         },
         {
-          field: "sport",
+          field: 'sport',
           resizable: false,
-          headerClass: "fixed-size-header",
+          headerClass: 'fixed-size-header',
         },
       ],
     },
     {
-      headerName: "Nothing Resizes",
+      headerName: 'Nothing Resizes',
       children: [
         {
-          field: "gold",
+          field: 'gold',
           resizable: false,
-          headerClass: "fixed-size-header",
+          headerClass: 'fixed-size-header',
         },
         {
-          field: "silver",
+          field: 'silver',
           resizable: false,
-          headerClass: "fixed-size-header",
+          headerClass: 'fixed-size-header',
         },
         {
-          field: "bronze",
+          field: 'bronze',
           resizable: false,
-          headerClass: "fixed-size-header",
+          headerClass: 'fixed-size-header',
         },
         {
-          field: "total",
+          field: 'total',
           resizable: false,
-          headerClass: "fixed-size-header",
+          headerClass: 'fixed-size-header',
         },
       ],
     },
@@ -90,7 +90,7 @@ export class AppComponent {
 
   onGridReady(params: GridReadyEvent) {
     this.http
-      .get<any[]>("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      .get<any[]>('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .subscribe((data) => (this.rowData = data));
   }
 }

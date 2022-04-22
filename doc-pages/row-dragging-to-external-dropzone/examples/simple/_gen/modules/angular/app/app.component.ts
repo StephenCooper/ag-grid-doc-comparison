@@ -3,14 +3,14 @@ import {
   GridReadyEvent,
   RowClassRules,
   RowDropZoneParams,
-} from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { Component } from "@angular/core";
+} from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { Component } from '@angular/core';
 // Required feature modules are registered in app.module.ts
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<div class="example-wrapper">
     <div class="toolbar">
       <label
@@ -40,10 +40,10 @@ import { Component } from "@angular/core";
 })
 export class AppComponent {
   public columnDefs: ColDef[] = [
-    { field: "id", rowDrag: true },
-    { field: "color" },
-    { field: "value1" },
-    { field: "value2" },
+    { field: 'id', rowDrag: true },
+    { field: 'color' },
+    { field: 'value1' },
+    { field: 'value2' },
   ];
   public defaultColDef: ColDef = {
     sortable: true,
@@ -52,9 +52,9 @@ export class AppComponent {
     flex: 1,
   };
   public rowClassRules: RowClassRules = {
-    "red-row": 'data.color == "Red"',
-    "green-row": 'data.color == "Green"',
-    "blue-row": 'data.color == "Blue"',
+    'red-row': 'data.color == "Red"',
+    'green-row': 'data.color == "Green"',
+    'blue-row': 'data.color == "Blue"',
   };
   public rowData: any[] | null = createRowData();
 
@@ -66,23 +66,23 @@ export class AppComponent {
 
 var rowIdSequence = 100;
 function addCheckboxListener(params: GridReadyEvent) {
-  var checkbox = document.querySelector("input[type=checkbox]")! as any;
-  checkbox.addEventListener("change", function () {
+  var checkbox = document.querySelector('input[type=checkbox]')! as any;
+  checkbox.addEventListener('change', function () {
     params.api.setSuppressMoveWhenRowDragging(checkbox.checked);
   });
 }
 function createRowData() {
   var data: any[] = [];
   [
-    "Red",
-    "Green",
-    "Blue",
-    "Red",
-    "Green",
-    "Blue",
-    "Red",
-    "Green",
-    "Blue",
+    'Red',
+    'Green',
+    'Blue',
+    'Red',
+    'Green',
+    'Blue',
+    'Red',
+    'Green',
+    'Blue',
   ].forEach(function (color) {
     var newDataItem = {
       id: rowIdSequence++,
@@ -95,23 +95,23 @@ function createRowData() {
   return data;
 }
 function createTile(data: any) {
-  var el = document.createElement("div");
-  el.classList.add("tile");
+  var el = document.createElement('div');
+  el.classList.add('tile');
   el.classList.add(data.color.toLowerCase());
   el.innerHTML =
     '<div class="id">' +
     data.id +
-    "</div>" +
+    '</div>' +
     '<div class="value">' +
     data.value1 +
-    "</div>" +
+    '</div>' +
     '<div class="value">' +
     data.value2 +
-    "</div>";
+    '</div>';
   return el;
 }
 function addDropZones(params: GridReadyEvent) {
-  var tileContainer = document.querySelector(".tile-container") as any;
+  var tileContainer = document.querySelector('.tile-container') as any;
   var dropZone: RowDropZoneParams = {
     getContainer: function () {
       return tileContainer as any;

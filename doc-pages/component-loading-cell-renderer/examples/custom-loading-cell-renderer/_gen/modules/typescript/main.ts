@@ -5,25 +5,25 @@ import {
   IServerSideDatasource,
   IServerSideGetRowsRequest,
   ModuleRegistry,
-} from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { ServerSideRowModelModule } from "@ag-grid-enterprise/server-side-row-model";
-import { CustomLoadingCellRenderer } from "./customLoadingCellRenderer";
+} from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { ServerSideRowModelModule } from '@ag-grid-enterprise/server-side-row-model';
+import { CustomLoadingCellRenderer } from './customLoadingCellRenderer';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([ServerSideRowModelModule]);
 
 const columnDefs: ColDef[] = [
-  { field: "id" },
-  { field: "athlete", width: 150 },
-  { field: "age" },
-  { field: "country" },
-  { field: "year" },
-  { field: "sport" },
-  { field: "gold" },
-  { field: "silver" },
-  { field: "bronze" },
+  { field: 'id' },
+  { field: 'athlete', width: 150 },
+  { field: 'age' },
+  { field: 'country' },
+  { field: 'year' },
+  { field: 'sport' },
+  { field: 'gold' },
+  { field: 'silver' },
+  { field: 'bronze' },
 ];
 
 const gridOptions: GridOptions = {
@@ -37,15 +37,15 @@ const gridOptions: GridOptions = {
   },
   loadingCellRenderer: CustomLoadingCellRenderer,
   loadingCellRendererParams: {
-    loadingMessage: "One moment please...",
+    loadingMessage: 'One moment please...',
   },
 
   columnDefs: columnDefs,
 
   // use the server-side row model
-  rowModelType: "serverSide",
+  rowModelType: 'serverSide',
 
-  serverSideStoreType: "partial",
+  serverSideStoreType: 'partial',
 
   // fetch 100 rows per at a time
   cacheBlockSize: 100,
@@ -58,10 +58,10 @@ const gridOptions: GridOptions = {
 };
 
 // setup the grid after the page has finished loading
-const gridDiv = document.querySelector<HTMLElement>("#myGrid")!;
+const gridDiv = document.querySelector<HTMLElement>('#myGrid')!;
 new Grid(gridDiv, gridOptions);
 
-fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
   .then((response) => response.json())
   .then((data) => {
     // add id to data
@@ -101,7 +101,7 @@ function getFakeServer(allData: any[]): any {
   return {
     getResponse: (request: IServerSideGetRowsRequest) => {
       console.log(
-        "asking for rows: " + request.startRow + " to " + request.endRow
+        'asking for rows: ' + request.startRow + ' to ' + request.endRow
       );
 
       // take a slice of the total rows

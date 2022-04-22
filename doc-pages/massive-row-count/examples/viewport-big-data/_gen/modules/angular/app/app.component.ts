@@ -3,14 +3,14 @@ import {
   GridReadyEvent,
   IViewportDatasource,
   IViewportDatasourceParams,
-} from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { Component } from "@angular/core";
+} from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { Component } from '@angular/core';
 // Required feature modules are registered in app.module.ts
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<ag-grid-angular
     style="width: 100%; height: 100%;"
     class="ag-theme-alpine"
@@ -25,25 +25,25 @@ import { Component } from "@angular/core";
 export class AppComponent {
   public columnDefs: ColDef[] = [
     {
-      headerName: "ID",
-      field: "id",
+      headerName: 'ID',
+      field: 'id',
     },
     {
-      headerName: "Expected Position",
+      headerName: 'Expected Position',
       valueGetter: '"translateY(" + node.rowIndex * 100 + "px)"',
     },
     {
-      field: "a",
+      field: 'a',
     },
     {
-      field: "b",
+      field: 'b',
     },
     {
-      field: "c",
+      field: 'c',
     },
   ];
   public rowHeight = 100;
-  public rowModelType = "viewport";
+  public rowModelType = 'viewport';
   public viewportDatasource: IViewportDatasource = createViewportDatasource();
   public rowData!: any[];
 
@@ -63,9 +63,9 @@ function createViewportDatasource(): IViewportDatasource {
       for (var rowIndex = firstRow; rowIndex <= lastRow; rowIndex++) {
         var item: any = {};
         item.id = rowIndex;
-        item.a = "A-" + rowIndex;
-        item.b = "B-" + rowIndex;
-        item.c = "C-" + rowIndex;
+        item.a = 'A-' + rowIndex;
+        item.b = 'B-' + rowIndex;
+        item.c = 'C-' + rowIndex;
         rowData[rowIndex] = item;
       }
       initParams.setRowData(rowData);

@@ -1,4 +1,4 @@
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
 import {
   Grid,
   GridOptions,
@@ -6,13 +6,13 @@ import {
   ModuleRegistry,
   ValueFormatterParams,
   ValueGetterParams,
-} from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { ColumnsToolPanelModule } from "@ag-grid-enterprise/column-tool-panel";
-import { FiltersToolPanelModule } from "@ag-grid-enterprise/filter-tool-panel";
-import { MenuModule } from "@ag-grid-enterprise/menu";
-import { SetFilterModule } from "@ag-grid-enterprise/set-filter";
+} from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { ColumnsToolPanelModule } from '@ag-grid-enterprise/column-tool-panel';
+import { FiltersToolPanelModule } from '@ag-grid-enterprise/filter-tool-panel';
+import { MenuModule } from '@ag-grid-enterprise/menu';
+import { SetFilterModule } from '@ag-grid-enterprise/set-filter';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([
@@ -24,7 +24,7 @@ ModuleRegistry.registerModules([
 ]);
 
 var valueGetter = function (params: ValueGetterParams) {
-  return params.data["animalsString"].split("|");
+  return params.data['animalsString'].split('|');
 };
 
 var valueFormatter = function (params: ValueFormatterParams) {
@@ -32,7 +32,7 @@ var valueFormatter = function (params: ValueFormatterParams) {
     .map(function (animal: any) {
       return animal.name;
     })
-    .join(", ");
+    .join(', ');
 };
 
 var keyCreator = function (params: KeyCreatorParams) {
@@ -44,19 +44,19 @@ var keyCreator = function (params: KeyCreatorParams) {
 const gridOptions: GridOptions = {
   columnDefs: [
     {
-      headerName: "Animals (array)",
-      field: "animalsArray",
-      filter: "agSetColumnFilter",
+      headerName: 'Animals (array)',
+      field: 'animalsArray',
+      filter: 'agSetColumnFilter',
     },
     {
-      headerName: "Animals (string)",
-      filter: "agSetColumnFilter",
+      headerName: 'Animals (string)',
+      filter: 'agSetColumnFilter',
       valueGetter: valueGetter,
     },
     {
-      headerName: "Animals (objects)",
-      field: "animalsObjects",
-      filter: "agSetColumnFilter",
+      headerName: 'Animals (objects)',
+      field: 'animalsObjects',
+      filter: 'agSetColumnFilter',
       valueFormatter: valueFormatter,
       keyCreator: keyCreator,
     },
@@ -65,9 +65,9 @@ const gridOptions: GridOptions = {
     flex: 1,
   },
   rowData: getData(),
-  sideBar: "filters",
+  sideBar: 'filters',
 };
 
 // setup the grid after the page has finished loading
-var gridDiv = document.querySelector<HTMLElement>("#myGrid")!;
+var gridDiv = document.querySelector<HTMLElement>('#myGrid')!;
 new Grid(gridDiv, gridOptions);

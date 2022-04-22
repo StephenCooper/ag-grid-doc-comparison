@@ -1,27 +1,27 @@
-"use strict";
+'use strict';
 
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
-import { AgGridReact } from "ag-grid-react";
-import React, { useCallback, useMemo, useState } from "react";
-import { render } from "react-dom";
-import CustomStatsToolPanel from "./customStatsToolPanel.jsx";
+import React, { useCallback, useMemo, useRef, useState } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from 'ag-grid-react';
+import 'ag-grid-enterprise';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import CustomStatsToolPanel from './customStatsToolPanel.jsx';
 
 const GridExample = () => {
-  const containerStyle = useMemo(() => ({ width: "100%", height: "100%" }), []);
-  const gridStyle = useMemo(() => ({ height: "100%", width: "100%" }), []);
+  const containerStyle = useMemo(() => ({ width: '100%', height: '100%' }), []);
+  const gridStyle = useMemo(() => ({ height: '100%', width: '100%' }), []);
   const [rowData, setRowData] = useState();
   const [columnDefs, setColumnDefs] = useState([
-    { field: "athlete", width: 150, filter: "agTextColumnFilter" },
-    { field: "age", width: 90 },
-    { field: "country", width: 120 },
-    { field: "year", width: 90 },
-    { field: "date", width: 110 },
-    { field: "gold", width: 100, filter: false },
-    { field: "silver", width: 100, filter: false },
-    { field: "bronze", width: 100, filter: false },
-    { field: "total", width: 100, filter: false },
+    { field: 'athlete', width: 150, filter: 'agTextColumnFilter' },
+    { field: 'age', width: 90 },
+    { field: 'country', width: 120 },
+    { field: 'year', width: 90 },
+    { field: 'date', width: 110 },
+    { field: 'gold', width: 100, filter: false },
+    { field: 'silver', width: 100, filter: false },
+    { field: 'bronze', width: 100, filter: false },
+    { field: 'total', width: 100, filter: false },
   ]);
   const defaultColDef = useMemo(() => {
     return {
@@ -35,40 +35,40 @@ const GridExample = () => {
   }, []);
   const icons = useMemo(() => {
     return {
-      "custom-stats": '<span class="ag-icon ag-icon-custom-stats"></span>',
+      'custom-stats': '<span class="ag-icon ag-icon-custom-stats"></span>',
     };
   }, []);
   const sideBar = useMemo(() => {
     return {
       toolPanels: [
         {
-          id: "columns",
-          labelDefault: "Columns",
-          labelKey: "columns",
-          iconKey: "columns",
-          toolPanel: "agColumnsToolPanel",
+          id: 'columns',
+          labelDefault: 'Columns',
+          labelKey: 'columns',
+          iconKey: 'columns',
+          toolPanel: 'agColumnsToolPanel',
         },
         {
-          id: "filters",
-          labelDefault: "Filters",
-          labelKey: "filters",
-          iconKey: "filter",
-          toolPanel: "agFiltersToolPanel",
+          id: 'filters',
+          labelDefault: 'Filters',
+          labelKey: 'filters',
+          iconKey: 'filter',
+          toolPanel: 'agFiltersToolPanel',
         },
         {
-          id: "customStats",
-          labelDefault: "Custom Stats",
-          labelKey: "customStats",
-          iconKey: "custom-stats",
+          id: 'customStats',
+          labelDefault: 'Custom Stats',
+          labelKey: 'customStats',
+          iconKey: 'custom-stats',
           toolPanel: CustomStatsToolPanel,
         },
       ],
-      defaultToolPanel: "customStats",
+      defaultToolPanel: 'customStats',
     };
   }, []);
 
   const onGridReady = useCallback((params) => {
-    fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+    fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .then((resp) => resp.json())
       .then((data) => {
         setRowData(data);
@@ -77,7 +77,7 @@ const GridExample = () => {
 
   return (
     <div style={containerStyle}>
-      <div style={{ height: "100%", boxSizing: "border-box" }}>
+      <div style={{ height: '100%', boxSizing: 'border-box' }}>
         <div style={gridStyle} className="ag-theme-alpine">
           <AgGridReact
             rowData={rowData}
@@ -93,4 +93,4 @@ const GridExample = () => {
   );
 };
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

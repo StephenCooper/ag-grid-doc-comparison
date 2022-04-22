@@ -1,9 +1,9 @@
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { AgGridVue } from "@ag-grid-community/vue3";
-import { createApp } from "vue";
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { AgGridVue } from '@ag-grid-community/vue3';
+import { createApp } from 'vue';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([ClientSideRowModelModule]);
@@ -32,19 +32,19 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
-        { field: "athlete", rowDrag: true },
-        { field: "country" },
-        { field: "year", width: 100 },
-        { field: "date" },
-        { field: "sport" },
-        { field: "gold" },
-        { field: "silver" },
-        { field: "bronze" },
+        { field: 'athlete', rowDrag: true },
+        { field: 'country' },
+        { field: 'year', width: 100 },
+        { field: 'date' },
+        { field: 'sport' },
+        { field: 'gold' },
+        { field: 'silver' },
+        { field: 'bronze' },
       ],
       gridApi: null,
       columnApi: null,
@@ -59,16 +59,16 @@ const VueExample = {
   created() {},
   methods: {
     onRowDragEnter(e) {
-      console.log("onRowDragEnter", e);
+      console.log('onRowDragEnter', e);
     },
     onRowDragEnd(e) {
-      console.log("onRowDragEnd", e);
+      console.log('onRowDragEnd', e);
     },
     onRowDragMove(e) {
-      console.log("onRowDragMove", e);
+      console.log('onRowDragMove', e);
     },
     onRowDragLeave(e) {
-      console.log("onRowDragLeave", e);
+      console.log('onRowDragLeave', e);
     },
     onGridReady(params) {
       this.gridApi = params.api;
@@ -76,11 +76,11 @@ const VueExample = {
 
       const updateData = (data) => params.api.setRowData(data);
 
-      fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
         .then((resp) => resp.json())
         .then((data) => updateData(data));
     },
   },
 };
 
-createApp(VueExample).mount("#app");
+createApp(VueExample).mount('#app');

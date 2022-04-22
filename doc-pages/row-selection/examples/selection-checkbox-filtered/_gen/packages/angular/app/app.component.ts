@@ -1,12 +1,12 @@
-import { HttpClient } from "@angular/common/http";
-import { Component } from "@angular/core";
-import { ColDef, GridApi, GridReadyEvent } from "ag-grid-community";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
+import { HttpClient } from '@angular/common/http';
+import { Component } from '@angular/core';
+import { ColDef, GridApi, GridReadyEvent } from 'ag-grid-community';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import 'ag-grid-enterprise';
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<div class="example-wrapper">
     <div style="margin-bottom: 5px;">
       <button (click)="filterSwimming()">Filter Only Swimming</button>
@@ -35,15 +35,15 @@ export class AppComponent {
   private gridApi!: GridApi;
 
   public columnDefs: ColDef[] = [
-    { field: "country", rowGroup: true, hide: true },
-    { field: "sport", rowGroup: true, hide: true },
-    { field: "age", minWidth: 120, aggFunc: "sum" },
-    { field: "year", maxWidth: 120 },
-    { field: "date", minWidth: 150 },
-    { field: "gold", aggFunc: "sum" },
-    { field: "silver", aggFunc: "sum" },
-    { field: "bronze", aggFunc: "sum" },
-    { field: "total", aggFunc: "sum" },
+    { field: 'country', rowGroup: true, hide: true },
+    { field: 'sport', rowGroup: true, hide: true },
+    { field: 'age', minWidth: 120, aggFunc: 'sum' },
+    { field: 'year', maxWidth: 120 },
+    { field: 'date', minWidth: 150 },
+    { field: 'gold', aggFunc: 'sum' },
+    { field: 'silver', aggFunc: 'sum' },
+    { field: 'bronze', aggFunc: 'sum' },
+    { field: 'total', aggFunc: 'sum' },
   ];
   public defaultColDef: ColDef = {
     flex: 1,
@@ -52,15 +52,15 @@ export class AppComponent {
     resizable: true,
   };
   public autoGroupColumnDef: ColDef = {
-    headerName: "Athlete",
-    field: "athlete",
+    headerName: 'Athlete',
+    field: 'athlete',
     minWidth: 250,
-    cellRenderer: "agGroupCellRenderer",
+    cellRenderer: 'agGroupCellRenderer',
     cellRendererParams: {
       checkbox: true,
     },
   };
-  public rowSelection = "multiple";
+  public rowSelection = 'multiple';
   public rowData!: any[];
 
   constructor(private http: HttpClient) {}
@@ -68,8 +68,8 @@ export class AppComponent {
   filterSwimming() {
     this.gridApi.setFilterModel({
       sport: {
-        type: "set",
-        values: ["Swimming"],
+        type: 'set',
+        values: ['Swimming'],
       },
     });
   }
@@ -77,8 +77,8 @@ export class AppComponent {
   ages16And20() {
     this.gridApi.setFilterModel({
       age: {
-        type: "set",
-        values: ["16", "20"],
+        type: 'set',
+        values: ['16', '20'],
       },
     });
   }
@@ -91,7 +91,7 @@ export class AppComponent {
     this.gridApi = params.api;
 
     this.http
-      .get<any[]>("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      .get<any[]>('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .subscribe((data) => (this.rowData = data));
   }
 }

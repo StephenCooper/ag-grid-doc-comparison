@@ -1,23 +1,18 @@
-import React, { Component } from "react";
+import React, {Component} from "react";
 
 export default class DragSourceRenderer extends Component {
-  constructor(props) {
-    super(props);
-  }
+    constructor(props) {
+        super(props);
+    }
 
-  onDragStart = (dragEvent) => {
-    var userAgent = window.navigator.userAgent;
-    dragEvent.dataTransfer.setData(
-      "text/plain",
-      "Dragged item with ID: " + this.props.node.data.id
-    );
-  };
+    onDragStart = (dragEvent) => {
+        var userAgent = window.navigator.userAgent;
+        dragEvent.dataTransfer.setData('text/plain', 'Dragged item with ID: ' + this.props.node.data.id);
+    };
 
-  render() {
-    return (
-      <div draggable="true" onDragStart={this.onDragStart}>
-        Drag Me!
-      </div>
-    );
-  }
-}
+    render() {
+        return (
+            <div draggable="true" onDragStart={this.onDragStart}>Drag Me!</div>
+        );
+    }
+};

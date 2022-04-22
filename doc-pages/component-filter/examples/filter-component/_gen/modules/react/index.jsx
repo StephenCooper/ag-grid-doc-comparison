@@ -1,13 +1,13 @@
-"use strict";
+'use strict';
 
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { AgGridReact } from "@ag-grid-community/react";
-import React, { Component } from "react";
-import { render } from "react-dom";
-import PartialMatchFilter from "./partialMatchFilter.jsx";
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from '@ag-grid-community/react';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import PartialMatchFilter from './partialMatchFilter.jsx';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([ClientSideRowModelModule]);
@@ -18,11 +18,11 @@ class GridExample extends Component {
 
     this.state = {
       columnDefs: [
-        { field: "row" },
+        { field: 'row' },
         {
-          field: "name",
+          field: 'name',
           filter: PartialMatchFilter,
-          menuTabs: ["filterMenuTab"],
+          menuTabs: ['filterMenuTab'],
         },
       ],
       defaultColDef: {
@@ -44,17 +44,17 @@ class GridExample extends Component {
   };
 
   onClicked = () => {
-    this.gridApi.getFilterInstance("name", function (instance) {
-      instance.componentMethod("Hello World!");
+    this.gridApi.getFilterInstance('name', function (instance) {
+      instance.componentMethod('Hello World!');
     });
   };
 
   render() {
     return (
-      <div style={{ width: "100%", height: "100%" }}>
+      <div style={{ width: '100%', height: '100%' }}>
         <div className="example-wrapper">
           <button
-            style={{ marginBottom: "5px" }}
+            style={{ marginBottom: '5px' }}
             onClick={() => this.onClicked()}
             className="btn btn-primary"
           >
@@ -62,8 +62,8 @@ class GridExample extends Component {
           </button>
           <div
             style={{
-              height: "100%",
-              width: "100%",
+              height: '100%',
+              width: '100%',
             }}
             className="ag-theme-alpine"
           >
@@ -80,4 +80,4 @@ class GridExample extends Component {
   }
 }
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

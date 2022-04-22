@@ -1,16 +1,16 @@
-import { HttpClient } from "@angular/common/http";
-import { Component } from "@angular/core";
+import { HttpClient } from '@angular/common/http';
+import { Component } from '@angular/core';
 import {
   ColDef,
   GridApi,
   GridReadyEvent,
   ValueGetterParams,
-} from "ag-grid-community";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
+} from 'ag-grid-community';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<div class="test-container">
     <div class="test-header">
       <button (click)="onBtIncludeMedalColumns()">Include Medal Columns</button>
@@ -51,13 +51,13 @@ export class AppComponent {
     this.gridApi = params.api;
 
     this.http
-      .get<any[]>("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      .get<any[]>('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .subscribe((data) => (this.rowData = data));
   }
 }
 
 const athleteColumn = {
-  headerName: "Athlete",
+  headerName: 'Athlete',
   valueGetter: function (params: ValueGetterParams) {
     return params.data.athlete;
   },
@@ -66,47 +66,47 @@ function getColDefsMedalsIncluded() {
   return [
     athleteColumn,
     {
-      colId: "myAgeCol",
-      headerName: "Age",
+      colId: 'myAgeCol',
+      headerName: 'Age',
       valueGetter: function (params: ValueGetterParams) {
         return params.data.age;
       },
     },
     {
-      headerName: "Country",
-      headerClass: "country-header",
+      headerName: 'Country',
+      headerClass: 'country-header',
       valueGetter: function (params: ValueGetterParams) {
         return params.data.country;
       },
     },
-    { field: "sport" },
-    { field: "year" },
-    { field: "date" },
-    { field: "gold" },
-    { field: "silver" },
-    { field: "bronze" },
-    { field: "total" },
+    { field: 'sport' },
+    { field: 'year' },
+    { field: 'date' },
+    { field: 'gold' },
+    { field: 'silver' },
+    { field: 'bronze' },
+    { field: 'total' },
   ];
 }
 function getColDefsMedalsExcluded() {
   return [
     athleteColumn,
     {
-      colId: "myAgeCol",
-      headerName: "Age",
+      colId: 'myAgeCol',
+      headerName: 'Age',
       valueGetter: function (params: ValueGetterParams) {
         return params.data.age;
       },
     },
     {
-      headerName: "Country",
-      headerClass: "country-header",
+      headerName: 'Country',
+      headerClass: 'country-header',
       valueGetter: function (params: ValueGetterParams) {
         return params.data.country;
       },
     },
-    { field: "sport" },
-    { field: "year" },
-    { field: "date" },
+    { field: 'sport' },
+    { field: 'year' },
+    { field: 'date' },
   ];
 }

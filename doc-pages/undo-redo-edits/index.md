@@ -30,9 +30,11 @@ const gridOptions = {
 
 As shown in the snippet above, undo / redo is enabled through the `undoRedoCellEditing` property.
 
+
 The default number of undo / redo steps is `10`. To change this default the `undoRedoCellEditingLimit` property can be used.
 
 ## Undo / Redo Shortcuts
+
 
 The following keyboard shortcuts are available when undo / redo is enabled:
 

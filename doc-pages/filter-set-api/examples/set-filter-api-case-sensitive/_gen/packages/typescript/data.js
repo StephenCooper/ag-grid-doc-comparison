@@ -1,67 +1,67 @@
 function getData() {
   return [
     {
-      colour: "Black",
+      colour: 'Black',
     },
     {
-      colour: "BLACK",
+      colour: 'BLACK',
     },
     {
-      colour: "black",
+      colour: 'black',
     },
     {
-      colour: "Red",
+      colour: 'Red',
     },
     {
-      colour: "RED",
+      colour: 'RED',
     },
     {
-      colour: "red",
+      colour: 'red',
     },
     {
-      colour: "Orange",
+      colour: 'Orange',
     },
     {
-      colour: "ORANGE",
+      colour: 'ORANGE',
     },
     {
-      colour: "orange",
+      colour: 'orange',
     },
     {
-      colour: "White",
+      colour: 'White',
     },
     {
-      colour: "WHITE",
+      colour: 'WHITE',
     },
     {
-      colour: "white",
+      colour: 'white',
     },
     {
-      colour: "Yellow",
+      colour: 'Yellow',
     },
     {
-      colour: "YELLOW",
+      colour: 'YELLOW',
     },
     {
-      colour: "yellow",
+      colour: 'yellow',
     },
     {
-      colour: "Green",
+      colour: 'Green',
     },
     {
-      colour: "GREEN",
+      colour: 'GREEN',
     },
     {
-      colour: "green",
+      colour: 'green',
     },
     {
-      colour: "Purple",
+      colour: 'Purple',
     },
     {
-      colour: "PURPLE",
+      colour: 'PURPLE',
     },
     {
-      colour: "purple",
+      colour: 'purple',
     },
   ];
 }

@@ -1,9 +1,9 @@
-import { Component } from "@angular/core";
-import { ICellRendererAngularComp } from "ag-grid-angular";
-import { ICellRendererParams } from "ag-grid-community";
+import { Component } from '@angular/core';
+import { ICellRendererAngularComp } from 'ag-grid-angular';
+import { ICellRendererParams } from 'ag-grid-community';
 
 @Component({
-  selector: "simple-component",
+  selector: 'simple-component',
   template: `
     <span [style.backgroundColor]="color" style="padding: 2px">{{
       params.value
@@ -15,7 +15,7 @@ export class SimpleCellRenderer implements ICellRendererAngularComp {
   public color!: string;
   agInit(params: ICellRendererParams): void {
     this.params = params;
-    this.color = this.params.node.group ? "coral" : "lightgreen";
+    this.color = this.params.node.group ? 'coral' : 'lightgreen';
   }
 
   refresh(params: ICellRendererParams) {

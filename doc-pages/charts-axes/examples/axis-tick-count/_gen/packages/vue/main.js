@@ -1,6 +1,6 @@
-import { AgChartsVue } from "ag-charts-vue";
-import { cloneDeep } from "lodash";
-import Vue from "vue";
+import { AgChartsVue } from 'ag-charts-vue';
+import { cloneDeep } from 'lodash';
+import Vue from 'vue';
 
 const ChartExample = {
   template: `
@@ -15,7 +15,7 @@ const ChartExample = {
             </div>
     `,
   components: {
-    "ag-charts-vue": AgChartsVue,
+    'ag-charts-vue': AgChartsVue,
   },
   data: function () {
     return {
@@ -27,9 +27,9 @@ const ChartExample = {
       data: generateSpiralData(),
       series: [
         {
-          type: "line",
-          xKey: "x",
-          yKey: "y",
+          type: 'line',
+          xKey: 'x',
+          yKey: 'y',
           marker: {
             enabled: false,
           },
@@ -37,15 +37,15 @@ const ChartExample = {
       ],
       axes: [
         {
-          type: "number",
-          position: "bottom",
+          type: 'number',
+          position: 'bottom',
           tick: {
             count: 10,
           },
         },
         {
-          type: "number",
-          position: "left",
+          type: 'number',
+          position: 'left',
           tick: {
             count: 10,
           },
@@ -94,8 +94,8 @@ window.generateSpiralData = function generateSpiralData() {
 };
 
 new Vue({
-  el: "#app",
+  el: '#app',
   components: {
-    "my-component": ChartExample,
+    'my-component': ChartExample,
   },
 });

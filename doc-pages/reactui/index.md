@@ -3,9 +3,12 @@ title: "Rendering"
 frameworks: ["react"]
 ---
 
+<video-section id="oAQ5vavDupU" title="React Rendering" header="true">
 When using AG Grid React, all of the grid's core rendering (headers, rows, cells etc) is rendered using React.
-
 AG Grid React shares the same 'business logic layer' as the other AG Grid versions (Angular, Vue, or just JavaScript) frameworks. This means the features of AG Grid React are identical to the features in AG Grid's other framework flavours. However because the rendering is done 100% in React, the grid works as a native React Component.
+</video-section>
+
+
 
 The remainder of this page takes a deeper look at the grid's React rendering, including React Render Cycles and also React Developer Tools.
 
@@ -27,7 +30,6 @@ See [Cell Renderers](/component-cell-renderer/) for full details on creating Cel
 You can profile the example above using the React Developer Tools and see the internals of AG Grid written in React.
 
 If you want to profile (using React Developer Tools) the example above, do the following:
-
 1. Open the example in Plunker.
 1. From inside Plunker, open in a new tab.
 1. Open React Developer Tools
@@ -43,21 +45,23 @@ As the grid is written in React, we welcome trashing it using React profiling to
 
 Below is an example showing different types of React Cell Editors. Note the following:
 
-- Edit any cell by double clicking the mouse.
-- **Country** and **Athlete Columns** have default editors (not customised).
-- **Gold Column** is using a **React Inline Cell Renderer**. The editing happens inside the cells.
-- **Silver Column** is using a **React Popup Cell Renderer** (`cellEditorPopup=true`). The editing happens in a popup.
+* Edit any cell by double clicking the mouse.
+* **Country** and **Athlete Columns** have default editors (not customised).
+* **Gold Column** is using a **React Inline Cell Renderer**. The editing happens inside the cells.
+* **Silver Column** is using a **React Popup Cell Renderer** (`cellEditorPopup=true`). The editing happens in a popup.
 
 <grid-example title='React UI Editors' name='editors' type='react' options=' { "enterprise": true, "showImportsDropdown": false }'></grid-example>
 
 See [Cell Editors](/component-cell-editor/) for full details on creating Cell Editors.
 
+
 ## Customising Headers
 
 Below is an example showing a grid configured with a custom React Column Header component.
 
-- Columns Athlete and Age use a Header Comp that displays the Header name and allows sorting (by clicking on the header).
-- All other columns do not have their Headers customised and work as normal.
+* Columns Athlete and Age use a Header Comp that displays the Header name and allows sorting (by clicking on the header).
+* All other columns do not have their Headers customised and work as normal.
+
 
 <grid-example title='React UI Headers' name='headers' type='react' options=' { "showImportsDropdown": false }'></grid-example>
 
@@ -68,7 +72,6 @@ See [Header Components](/component-header/) for full details on creating Header 
 AG Grid does not cause unnecessary render cycles. The following example demonstrates this.
 
 Below each Column is configured to use a Cell Renderer that prints into the Cell the number of times the Cell has had it's render method called. This tells us how many times the render method is called. For non wasted renders, the render method should only get called if it's contents change. Note that the number stays at '1' even if you do any of the following:
-
 1. Move columns by dragging the headers. The Cell Renderer does not re-render despite the cell moving.
 1. Create a Cell Range by dragging the mouse over some cells. The Cell Renderers do not re-render despite the cell UI background and border changing.
 
@@ -104,7 +107,6 @@ Above we saw customising the grid Cells (Renderers and Editors) and Headers usin
 All of the other customisations allowed by AG Grid are also supported when `reactUi=true`.
 
 The example below shows the following customisations:
-
 1. Column Filters and Floating Filters.
 1. Tool Panels.
 1. Status Bar.

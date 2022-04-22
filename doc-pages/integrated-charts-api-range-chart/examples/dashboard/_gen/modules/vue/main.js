@@ -1,12 +1,12 @@
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { AgGridVue } from "@ag-grid-community/vue";
-import { GridChartsModule } from "@ag-grid-enterprise/charts";
-import { MenuModule } from "@ag-grid-enterprise/menu";
-import { RowGroupingModule } from "@ag-grid-enterprise/row-grouping";
-import Vue from "vue";
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { AgGridVue } from '@ag-grid-community/vue';
+import { GridChartsModule } from '@ag-grid-enterprise/charts';
+import { MenuModule } from '@ag-grid-enterprise/menu';
+import { RowGroupingModule } from '@ag-grid-enterprise/row-grouping';
+import Vue from 'vue';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([
@@ -42,52 +42,52 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
-        { field: "country", width: 150, chartDataType: "category" },
-        { field: "group", chartDataType: "category" },
+        { field: 'country', width: 150, chartDataType: 'category' },
+        { field: 'group', chartDataType: 'category' },
         {
-          field: "gold",
-          chartDataType: "series",
+          field: 'gold',
+          chartDataType: 'series',
           editable: true,
           valueParser: numberValueParser,
         },
         {
-          field: "silver",
-          chartDataType: "series",
+          field: 'silver',
+          chartDataType: 'series',
           editable: true,
           valueParser: numberValueParser,
         },
         {
-          field: "bronze",
-          chartDataType: "series",
+          field: 'bronze',
+          chartDataType: 'series',
           editable: true,
           valueParser: numberValueParser,
         },
         {
-          field: "a",
-          chartDataType: "series",
+          field: 'a',
+          chartDataType: 'series',
           editable: true,
           valueParser: numberValueParser,
         },
         {
-          field: "b",
-          chartDataType: "series",
+          field: 'b',
+          chartDataType: 'series',
           editable: true,
           valueParser: numberValueParser,
         },
         {
-          field: "c",
-          chartDataType: "series",
+          field: 'c',
+          chartDataType: 'series',
           editable: true,
           valueParser: numberValueParser,
         },
         {
-          field: "d",
-          chartDataType: "series",
+          field: 'd',
+          chartDataType: 'series',
           editable: true,
           valueParser: numberValueParser,
         },
@@ -112,25 +112,25 @@ const VueExample = {
   },
   methods: {
     onFirstDataRendered(event) {
-      var eContainer1 = document.querySelector("#chart1");
+      var eContainer1 = document.querySelector('#chart1');
       var params1 = {
         cellRange: {
           rowStartIndex: 0,
           rowEndIndex: 4,
-          columns: ["country", "gold", "silver"],
+          columns: ['country', 'gold', 'silver'],
         },
-        chartType: "groupedBar",
+        chartType: 'groupedBar',
         chartContainer: eContainer1,
       };
       event.api.createRangeChart(params1);
-      var eContainer2 = document.querySelector("#chart2");
+      var eContainer2 = document.querySelector('#chart2');
       var params2 = {
         cellRange: {
-          columns: ["group", "gold"],
+          columns: ['group', 'gold'],
         },
-        chartType: "pie",
+        chartType: 'pie',
         chartContainer: eContainer2,
-        aggFunc: "sum",
+        aggFunc: 'sum',
         chartThemeOverrides: {
           common: {
             padding: {
@@ -141,20 +141,20 @@ const VueExample = {
             },
             legend: {
               enabled: true,
-              position: "bottom",
+              position: 'bottom',
             },
           },
         },
       };
       event.api.createRangeChart(params2);
-      var eContainer3 = document.querySelector("#chart3");
+      var eContainer3 = document.querySelector('#chart3');
       var params3 = {
         cellRange: {
-          columns: ["group", "silver"],
+          columns: ['group', 'silver'],
         },
-        chartType: "pie",
+        chartType: 'pie',
         chartContainer: eContainer3,
-        aggFunc: "sum",
+        aggFunc: 'sum',
         chartThemeOverrides: {
           common: {
             padding: {
@@ -165,7 +165,7 @@ const VueExample = {
             },
             legend: {
               enabled: true,
-              position: "bottom",
+              position: 'bottom',
             },
           },
         },
@@ -191,8 +191,8 @@ window.numberValueParser = function numberValueParser(params) {
 };
 
 new Vue({
-  el: "#app",
+  el: '#app',
   components: {
-    "my-component": VueExample,
+    'my-component': VueExample,
   },
 });

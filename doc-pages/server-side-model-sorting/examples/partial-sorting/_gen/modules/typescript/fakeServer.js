@@ -19,31 +19,31 @@ function FakeServer(allData) {
   function executeQuery(request) {
     var sql = buildSql(request);
 
-    console.log("[FakeServer] - about to execute query:", sql);
+    console.log('[FakeServer] - about to execute query:', sql);
 
     return alasql(sql, [allData]);
   }
 
   function buildSql(request) {
-    return "SELECT * FROM ?" + orderBySql(request) + limitSql(request);
+    return 'SELECT * FROM ?' + orderBySql(request) + limitSql(request);
   }
 
   function orderBySql(request) {
     var sortModel = request.sortModel;
 
-    if (sortModel.length === 0) return "";
+    if (sortModel.length === 0) return '';
 
     var sorts = sortModel.map(function (s) {
-      return s.colId + " " + s.sort.toUpperCase();
+      return s.colId + ' ' + s.sort.toUpperCase();
     });
 
-    return " ORDER BY " + sorts.join(", ");
+    return ' ORDER BY ' + sorts.join(', ');
   }
 
   function limitSql(request) {
     var blockSize = request.endRow - request.startRow;
 
-    return " LIMIT " + (blockSize + 1) + " OFFSET " + request.startRow;
+    return ' LIMIT ' + (blockSize + 1) + ' OFFSET ' + request.startRow;
   }
 
   function getLastRowIndex(request, results) {

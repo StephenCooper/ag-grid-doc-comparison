@@ -1,48 +1,48 @@
-"use strict";
+'use strict';
 
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine-dark.css";
-import "ag-grid-enterprise";
-import { AgGridReact } from "ag-grid-react";
-import React, { useCallback, useMemo, useRef, useState } from "react";
-import { render } from "react-dom";
+import React, { useCallback, useMemo, useRef, useState } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from 'ag-grid-react';
+import 'ag-grid-enterprise';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine-dark.css';
 
 const GridExample = () => {
   const gridRef = useRef();
-  const containerStyle = useMemo(() => ({ width: "100%", height: "100%" }), []);
-  const gridStyle = useMemo(() => ({ height: "100%", width: "100%" }), []);
+  const containerStyle = useMemo(() => ({ width: '100%', height: '100%' }), []);
+  const gridStyle = useMemo(() => ({ height: '100%', width: '100%' }), []);
   const [rowData, setRowData] = useState(getData());
   const [columnDefs, setColumnDefs] = useState([
-    { field: "salesRep", chartDataType: "category" },
-    { field: "handset", chartDataType: "category" },
-    { field: "sale", chartDataType: "series" },
-    { field: "saleDate", chartDataType: "category" },
+    { field: 'salesRep', chartDataType: 'category' },
+    { field: 'handset', chartDataType: 'category' },
+    { field: 'sale', chartDataType: 'series' },
+    { field: 'saleDate', chartDataType: 'category' },
   ]);
   const defaultColDef = useMemo(() => {
     return {
       flex: 1,
       sortable: true,
-      filter: "agSetColumnFilter",
+      filter: 'agSetColumnFilter',
       floatingFilter: true,
       resizable: true,
     };
   }, []);
   const chartThemes = useMemo(() => {
-    return ["ag-default-dark"];
+    return ['ag-default-dark'];
   }, []);
 
   const onFirstDataRendered = useCallback((params) => {
     gridRef.current.api.createCrossFilterChart({
-      chartType: "pie",
+      chartType: 'pie',
       cellRange: {
-        columns: ["salesRep", "sale"],
+        columns: ['salesRep', 'sale'],
       },
-      aggFunc: "sum",
+      aggFunc: 'sum',
       chartThemeOverrides: {
         common: {
           title: {
             enabled: true,
-            text: "Sales by Representative ($)",
+            text: 'Sales by Representative ($)',
           },
         },
         pie: {
@@ -56,7 +56,7 @@ const GridExample = () => {
           },
         },
       },
-      chartContainer: document.querySelector("#pieChart"),
+      chartContainer: document.querySelector('#pieChart'),
     });
   }, []);
 
@@ -81,4 +81,4 @@ const GridExample = () => {
   );
 };
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

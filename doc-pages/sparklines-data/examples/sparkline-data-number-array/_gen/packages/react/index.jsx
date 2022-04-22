@@ -1,11 +1,11 @@
-"use strict";
+'use strict';
 
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
-import { AgGridReact } from "ag-grid-react";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from 'ag-grid-react';
+import 'ag-grid-enterprise';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 
 class GridExample extends Component {
   constructor(props) {
@@ -13,18 +13,18 @@ class GridExample extends Component {
 
     this.state = {
       columnDefs: [
-        { field: "symbol", maxWidth: 110 },
-        { field: "name", minWidth: 250 },
+        { field: 'symbol', maxWidth: 110 },
+        { field: 'name', minWidth: 250 },
         {
-          field: "rateOfChange",
-          cellRenderer: "agSparklineCellRenderer",
+          field: 'rateOfChange',
+          cellRenderer: 'agSparklineCellRenderer',
           cellRendererParams: {
             sparklineOptions: {
-              type: "area",
+              type: 'area',
             },
           },
         },
-        { field: "volume", type: "numericColumn", maxWidth: 140 },
+        { field: 'volume', type: 'numericColumn', maxWidth: 140 },
       ],
       defaultColDef: {
         flex: 1,
@@ -43,11 +43,11 @@ class GridExample extends Component {
 
   render() {
     return (
-      <div style={{ width: "100%", height: "100%" }}>
+      <div style={{ width: '100%', height: '100%' }}>
         <div
           style={{
-            height: "100%",
-            width: "100%",
+            height: '100%',
+            width: '100%',
           }}
           className="ag-theme-alpine"
         >
@@ -64,4 +64,4 @@ class GridExample extends Component {
   }
 }
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

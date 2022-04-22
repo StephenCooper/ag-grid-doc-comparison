@@ -1,5 +1,5 @@
-import { HttpClient } from "@angular/common/http";
-import { Component } from "@angular/core";
+import { HttpClient } from '@angular/common/http';
+import { Component } from '@angular/core';
 import {
   ColDef,
   GetRowIdFunc,
@@ -7,15 +7,16 @@ import {
   GridReadyEvent,
   IServerSideDatasource,
   IsRowSelectable,
+  RowNode,
   ServerSideStoreType,
-} from "ag-grid-community";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine-dark.css";
-import "ag-grid-enterprise";
+} from 'ag-grid-community';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine-dark.css';
+import 'ag-grid-enterprise';
 declare var FakeServer: any;
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<ag-grid-angular
     style="width: 100%; height: 100%;"
     class="ag-theme-alpine-dark"
@@ -36,12 +37,12 @@ declare var FakeServer: any;
 })
 export class AppComponent {
   public columnDefs: ColDef[] = [
-    { field: "year", rowGroup: true, hide: true },
-    { field: "athlete", hide: true },
-    { field: "sport", checkboxSelection: true },
-    { field: "gold", aggFunc: "sum" },
-    { field: "silver", aggFunc: "sum" },
-    { field: "bronze", aggFunc: "sum" },
+    { field: 'year', rowGroup: true, hide: true },
+    { field: 'athlete', hide: true },
+    { field: 'sport', checkboxSelection: true },
+    { field: 'gold', aggFunc: 'sum' },
+    { field: 'silver', aggFunc: 'sum' },
+    { field: 'bronze', aggFunc: 'sum' },
   ];
   public defaultColDef: ColDef = {
     flex: 1,
@@ -52,10 +53,10 @@ export class AppComponent {
   public getRowId: GetRowIdFunc = function (params: GetRowIdParams) {
     var data = params.data;
     // use year for group level ids, or the id we assigned for leaf level
-    return data.id || data.year;
+    return data.id != null ? 'id-' + data.id : 'year-' + data.year;
   };
   public autoGroupColumnDef: ColDef = {
-    field: "athlete",
+    field: 'athlete',
     flex: 1,
     minWidth: 240,
     // headerCheckboxSelection: true, // not supported for Enterprise Model
@@ -63,10 +64,10 @@ export class AppComponent {
       checkbox: true,
     },
   };
-  public rowModelType = "serverSide";
-  public serverSideStoreType: ServerSideStoreType = "partial";
-  public rowSelection = "multiple";
-  public isRowSelectable: IsRowSelectable = function (rowNode) {
+  public rowModelType = 'serverSide';
+  public serverSideStoreType: ServerSideStoreType = 'partial';
+  public rowSelection = 'multiple';
+  public isRowSelectable: IsRowSelectable = function (rowNode: RowNode) {
     return !rowNode.group;
   };
   public rowData!: any[];
@@ -75,7 +76,7 @@ export class AppComponent {
 
   onGridReady(params: GridReadyEvent) {
     this.http
-      .get<any[]>("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      .get<any[]>('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .subscribe((data) => {
         // assign a unique ID to each data item
         data.forEach(function (item: any, index: number) {
@@ -94,7 +95,7 @@ export class AppComponent {
 function getServerSideDatasource(server: any): IServerSideDatasource {
   return {
     getRows: function (params) {
-      console.log("[Datasource] - rows requested by grid: ", params.request);
+      console.log('[Datasource] - rows requested by grid: ', params.request);
       var response = server.getData(params.request);
       // adding delay to simulate real server call
       setTimeout(function () {

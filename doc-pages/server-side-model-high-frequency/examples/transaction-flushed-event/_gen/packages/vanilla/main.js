@@ -1,4 +1,4 @@
-const columnDefs = [{ field: "product" }, { field: "value" }];
+const columnDefs = [{ field: 'product' }, { field: 'value' }];
 
 const gridOptions = {
   defaultColDef: {
@@ -21,11 +21,11 @@ const gridOptions = {
   getRowId: function (params) {
     return params.data.product;
   },
-  rowSelection: "multiple",
-  serverSideStoreType: "full",
+  rowSelection: 'multiple',
+  serverSideStoreType: 'full',
   columnDefs: columnDefs,
   // use the enterprise row model
-  rowModelType: "serverSide",
+  rowModelType: 'serverSide',
   animateRows: true,
   asyncTransactionWaitMillis: 4000,
 };
@@ -39,42 +39,42 @@ function onAsyncTransactionsFlushed(e) {
     }
     summary[status]++;
   });
-  console.log("onAsyncTransactionsFlushed: " + JSON.stringify(summary));
+  console.log('onAsyncTransactionsFlushed: ' + JSON.stringify(summary));
 }
 
-var products = ["Palm Oil", "Rubber", "Wool", "Amber", "Copper"];
+var products = ['Palm Oil', 'Rubber', 'Wool', 'Amber', 'Copper'];
 
 var newProductSequence = 0;
 
 var all_products = [
-  "Palm Oil",
-  "Rubber",
-  "Wool",
-  "Amber",
-  "Copper",
-  "Lead",
-  "Zinc",
-  "Tin",
-  "Aluminium",
-  "Aluminium Alloy",
-  "Nickel",
-  "Cobalt",
-  "Molybdenum",
-  "Recycled Steel",
-  "Corn",
-  "Oats",
-  "Rough Rice",
-  "Soybeans",
-  "Rapeseed",
-  "Soybean Meal",
-  "Soybean Oil",
-  "Wheat",
-  "Milk",
-  "Coca",
-  "Coffee C",
-  "Cotton No.2",
-  "Sugar No.11",
-  "Sugar No.14",
+  'Palm Oil',
+  'Rubber',
+  'Wool',
+  'Amber',
+  'Copper',
+  'Lead',
+  'Zinc',
+  'Tin',
+  'Aluminium',
+  'Aluminium Alloy',
+  'Nickel',
+  'Cobalt',
+  'Molybdenum',
+  'Recycled Steel',
+  'Corn',
+  'Oats',
+  'Rough Rice',
+  'Soybeans',
+  'Rapeseed',
+  'Soybean Meal',
+  'Soybean Oil',
+  'Wheat',
+  'Milk',
+  'Coca',
+  'Coffee C',
+  'Cotton No.2',
+  'Sugar No.11',
+  'Sugar No.14',
 ];
 
 var allServerSideData = [];
@@ -92,7 +92,7 @@ function onBtAdd() {
   var newProductName =
     all_products[Math.floor(all_products.length * Math.random())];
   var newItem = {
-    product: newProductName + " " + newProductSequence++,
+    product: newProductName + ' ' + newProductSequence++,
     value: Math.floor(Math.random() * 10000),
   };
   allServerSideData.push(newItem);
@@ -113,7 +113,7 @@ function getNextValue() {
 }
 
 // setup the grid after the page has finished loading
-document.addEventListener("DOMContentLoaded", function () {
-  var gridDiv = document.querySelector("#myGrid");
+document.addEventListener('DOMContentLoaded', function () {
+  var gridDiv = document.querySelector('#myGrid');
   new agGrid.Grid(gridDiv, gridOptions);
 });

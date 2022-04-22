@@ -1,17 +1,17 @@
-import { HttpClient } from "@angular/common/http";
-import { Component } from "@angular/core";
+import { HttpClient } from '@angular/common/http';
+import { Component } from '@angular/core';
 import {
   ColDef,
   GridReadyEvent,
   RowGroupingDisplayType,
   ValueGetterParams,
-} from "ag-grid-community";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
+} from 'ag-grid-community';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import 'ag-grid-enterprise';
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<div class="example-wrapper">
     <div class="example-header">
       <span class="legend-item ag-row-level-0"></span>
@@ -38,28 +38,28 @@ import "ag-grid-enterprise";
 export class AppComponent {
   public columnDefs: ColDef[] = [
     {
-      headerName: "Country",
-      showRowGroup: "country",
-      cellRenderer: "agGroupCellRenderer",
+      headerName: 'Country',
+      showRowGroup: 'country',
+      cellRenderer: 'agGroupCellRenderer',
       minWidth: 200,
     },
     {
-      headerName: "Year",
+      headerName: 'Year',
       valueGetter: function (params: ValueGetterParams) {
         if (params.data) {
           return params.data.year;
         }
       },
-      showRowGroup: "year",
-      cellRenderer: "agGroupCellRenderer",
+      showRowGroup: 'year',
+      cellRenderer: 'agGroupCellRenderer',
     },
-    { field: "athlete", minWidth: 200 },
-    { field: "gold", aggFunc: "sum" },
-    { field: "silver", aggFunc: "sum" },
-    { field: "bronze", aggFunc: "sum" },
-    { field: "total", aggFunc: "sum" },
-    { field: "country", rowGroup: true, hide: true },
-    { field: "year", rowGroup: true, hide: true },
+    { field: 'athlete', minWidth: 200 },
+    { field: 'gold', aggFunc: 'sum' },
+    { field: 'silver', aggFunc: 'sum' },
+    { field: 'bronze', aggFunc: 'sum' },
+    { field: 'total', aggFunc: 'sum' },
+    { field: 'country', rowGroup: true, hide: true },
+    { field: 'year', rowGroup: true, hide: true },
   ];
   public defaultColDef: ColDef = {
     flex: 1,
@@ -67,14 +67,14 @@ export class AppComponent {
     sortable: true,
     resizable: true,
   };
-  public groupDisplayType: RowGroupingDisplayType = "custom";
+  public groupDisplayType: RowGroupingDisplayType = 'custom';
   public rowData!: any[];
 
   constructor(private http: HttpClient) {}
 
   onGridReady(params: GridReadyEvent) {
     this.http
-      .get<any[]>("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      .get<any[]>('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .subscribe((data) => (this.rowData = data));
   }
 }

@@ -2,14 +2,14 @@ import {
   ColDef,
   ColumnSparklineOptions,
   GridReadyEvent,
-} from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { Component } from "@angular/core";
+} from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { Component } from '@angular/core';
 // Required feature modules are registered in app.module.ts
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<ag-grid-angular
     style="width: 100%; height: 100%;"
     class="ag-theme-alpine"
@@ -22,18 +22,18 @@ import { Component } from "@angular/core";
 })
 export class AppComponent {
   public columnDefs: ColDef[] = [
-    { field: "symbol", maxWidth: 120 },
-    { field: "name", minWidth: 250 },
+    { field: 'symbol', maxWidth: 120 },
+    { field: 'name', minWidth: 250 },
     {
-      field: "change",
-      cellRenderer: "agSparklineCellRenderer",
+      field: 'change',
+      cellRenderer: 'agSparklineCellRenderer',
       cellRendererParams: {
         sparklineOptions: {
-          type: "column",
-          fill: "#91cc75",
-          stroke: "#91cc75",
+          type: 'column',
+          fill: '#91cc75',
+          stroke: '#91cc75',
           highlightStyle: {
-            fill: "orange",
+            fill: 'orange',
           },
           paddingInner: 0.3,
           paddingOuter: 0.1,
@@ -41,8 +41,8 @@ export class AppComponent {
       },
     },
     {
-      field: "volume",
-      type: "numericColumn",
+      field: 'volume',
+      type: 'numericColumn',
       maxWidth: 140,
     },
   ];

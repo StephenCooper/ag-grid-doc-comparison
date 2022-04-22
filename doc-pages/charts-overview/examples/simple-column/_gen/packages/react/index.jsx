@@ -1,8 +1,10 @@
-"use strict";
+'use strict';
 
-import { AgChartsReact } from "ag-charts-react";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { cloneDeep } from 'lodash';
+import { render } from 'react-dom';
+import * as agCharts from 'ag-charts-community';
+import { AgChartsReact } from 'ag-charts-react';
 
 class ChartExample extends Component {
   constructor(props) {
@@ -13,18 +15,18 @@ class ChartExample extends Component {
         autoSize: true,
         data: getData(),
         title: {
-          text: "Total Visitors to Museums and Galleries",
+          text: 'Total Visitors to Museums and Galleries',
           fontSize: 18,
         },
         subtitle: {
-          text: "Source: Department for Digital, Culture, Media & Sport",
+          text: 'Source: Department for Digital, Culture, Media & Sport',
         },
         series: [
           {
-            type: "column",
-            xKey: "year",
-            yKey: "visitors",
-            fill: "#0084e7",
+            type: 'column',
+            xKey: 'year',
+            yKey: 'visitors',
+            fill: '#0084e7',
             strokeWidth: 0,
             shadow: {
               enabled: true,
@@ -34,23 +36,23 @@ class ChartExample extends Component {
         ],
         axes: [
           {
-            type: "category",
-            position: "bottom",
+            type: 'category',
+            position: 'bottom',
             title: {
               enabled: true,
-              text: "Year",
+              text: 'Year',
             },
           },
           {
-            type: "number",
-            position: "left",
+            type: 'number',
+            position: 'left',
             title: {
               enabled: true,
-              text: "Total visitors",
+              text: 'Total visitors',
             },
             label: {
               formatter: function (params) {
-                return params.value / 1000000 + "M";
+                return params.value / 1000000 + 'M';
               },
             },
           },
@@ -69,4 +71,4 @@ class ChartExample extends Component {
   }
 }
 
-render(<ChartExample />, document.querySelector("#root"));
+render(<ChartExample />, document.querySelector('#root'));

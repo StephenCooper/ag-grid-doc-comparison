@@ -1,6 +1,6 @@
-import * as agCharts from "ag-charts-community";
-import { AgChartsVue } from "ag-charts-vue";
-import Vue from "vue";
+import * as agCharts from 'ag-charts-community';
+import { AgChartsVue } from 'ag-charts-vue';
+import Vue from 'vue';
 
 const ChartExample = {
   template: `
@@ -8,7 +8,7 @@ const ChartExample = {
                 :options="options"></ag-charts-vue>
     `,
   components: {
-    "ag-charts-vue": AgChartsVue,
+    'ag-charts-vue': AgChartsVue,
   },
   data: function () {
     return {
@@ -18,14 +18,14 @@ const ChartExample = {
   created() {
     this.options = {
       title: {
-        text: "Fuel Spending (2019)",
+        text: 'Fuel Spending (2019)',
       },
       data: getData(),
       series: [
         {
-          xKey: "quarter",
-          yKey: "electric",
-          title: "Electric",
+          xKey: 'quarter',
+          yKey: 'electric',
+          title: 'Electric',
           marker: {
             shape: heartFactory(),
             size: 16,
@@ -33,7 +33,7 @@ const ChartExample = {
         },
       ],
       legend: {
-        position: "bottom",
+        position: 'bottom',
       },
     };
   },
@@ -61,8 +61,8 @@ window.heartFactory = function heartFactory() {
 };
 
 new Vue({
-  el: "#app",
+  el: '#app',
   components: {
-    "my-component": ChartExample,
+    'my-component': ChartExample,
   },
 });

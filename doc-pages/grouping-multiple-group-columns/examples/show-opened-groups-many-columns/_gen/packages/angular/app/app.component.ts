@@ -1,16 +1,16 @@
-import { HttpClient } from "@angular/common/http";
-import { Component } from "@angular/core";
+import { HttpClient } from '@angular/common/http';
+import { Component } from '@angular/core';
 import {
   ColDef,
   GridReadyEvent,
   RowGroupingDisplayType,
-} from "ag-grid-community";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
+} from 'ag-grid-community';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import 'ag-grid-enterprise';
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<ag-grid-angular
     style="width: 100%; height: 100%;"
     class="ag-theme-alpine"
@@ -26,16 +26,16 @@ import "ag-grid-enterprise";
 })
 export class AppComponent {
   public columnDefs: ColDef[] = [
-    { field: "country", rowGroup: true, hide: true },
-    { field: "year", rowGroup: true, hide: true },
-    { field: "athlete" },
-    { field: "gold", aggFunc: "sum" },
-    { field: "silver", aggFunc: "sum" },
-    { field: "bronze", aggFunc: "sum" },
-    { field: "total", aggFunc: "sum" },
-    { field: "age" },
-    { field: "date" },
-    { field: "sport" },
+    { field: 'country', rowGroup: true, hide: true },
+    { field: 'year', rowGroup: true, hide: true },
+    { field: 'athlete' },
+    { field: 'gold', aggFunc: 'sum' },
+    { field: 'silver', aggFunc: 'sum' },
+    { field: 'bronze', aggFunc: 'sum' },
+    { field: 'total', aggFunc: 'sum' },
+    { field: 'age' },
+    { field: 'date' },
+    { field: 'sport' },
   ];
   public defaultColDef: ColDef = {
     flex: 1,
@@ -45,14 +45,14 @@ export class AppComponent {
   public autoGroupColumnDef: ColDef = {
     minWidth: 300,
   };
-  public groupDisplayType: RowGroupingDisplayType = "multipleColumns";
+  public groupDisplayType: RowGroupingDisplayType = 'multipleColumns';
   public rowData!: any[];
 
   constructor(private http: HttpClient) {}
 
   onGridReady(params: GridReadyEvent) {
     this.http
-      .get<any[]>("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      .get<any[]>('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .subscribe((data) => (this.rowData = data));
   }
 }

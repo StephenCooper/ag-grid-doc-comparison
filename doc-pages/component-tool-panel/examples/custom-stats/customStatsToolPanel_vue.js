@@ -1,5 +1,5 @@
 export default {
-  template: `
+    template: `
       <div style="text-align: center">
       <span>
            <h2><i class="fa fa-calculator"></i> Custom Stats</h2>
@@ -12,27 +12,24 @@ export default {
       </span>
       </div>
     `,
-  data() {
-    return {
-      numGold: 0,
-      numSilver: 0,
-      numBronze: 0,
-    };
-  },
-  methods: {
-    renderStats() {
-      this.params.api.forEachNode((rowNode) => {
-        const data = rowNode.data;
-        if (data.gold) this.numGold += data.gold;
-        if (data.silver) this.numSilver += data.silver;
-        if (data.bronze) this.numBronze += data.bronze;
-      });
+    data() {
+        return {
+            numGold: 0,
+            numSilver: 0,
+            numBronze: 0
+        };
     },
-  },
-  created() {
-    this.params.api.addEventListener(
-      "modelUpdated",
-      this.renderStats.bind(this)
-    );
-  },
+    methods: {
+        renderStats() {
+            this.params.api.forEachNode((rowNode) => {
+                const data = rowNode.data;
+                if (data.gold) this.numGold += data.gold;
+                if (data.silver) this.numSilver += data.silver;
+                if (data.bronze) this.numBronze += data.bronze;
+            });
+        }
+    },
+    created() {
+        this.params.api.addEventListener('modelUpdated', this.renderStats.bind(this));
+    }
 };

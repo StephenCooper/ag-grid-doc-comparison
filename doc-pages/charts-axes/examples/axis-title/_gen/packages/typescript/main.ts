@@ -1,34 +1,34 @@
-import * as agCharts from "ag-charts-community";
-import { AgCartesianChartOptions } from "ag-charts-community";
+import * as agCharts from 'ag-charts-community';
+import { AgCartesianChartOptions } from 'ag-charts-community';
 
 const options: AgCartesianChartOptions = {
-  container: document.getElementById("myChart"),
+  container: document.getElementById('myChart'),
   data: [
-    { os: "Windows", share: 88.07 },
-    { os: "macOS", share: 9.44 },
-    { os: "Linux", share: 1.87 },
+    { os: 'Windows', share: 88.07 },
+    { os: 'macOS', share: 9.44 },
+    { os: 'Linux', share: 1.87 },
   ],
   series: [
     {
-      type: "column",
-      xKey: "os",
-      yKey: "share",
+      type: 'column',
+      xKey: 'os',
+      yKey: 'share',
     },
   ],
   axes: [
     {
-      type: "category",
-      position: "bottom",
+      type: 'category',
+      position: 'bottom',
       title: {
-        text: "Desktop Operating Systems",
+        text: 'Desktop Operating Systems',
         enabled: false,
       },
     },
     {
-      type: "number",
-      position: "left",
+      type: 'number',
+      position: 'left',
       title: {
-        text: "Market Share (%)",
+        text: 'Market Share (%)',
         enabled: false,
       },
     },
@@ -52,7 +52,7 @@ function hideAxisTitles() {
   agCharts.AgChart.update(chart, options);
 }
 
-if (typeof window !== "undefined") {
+if (typeof window !== 'undefined') {
   // Attach external event handlers to window so they can be called from index.html
   (<any>window).showAxisTitles = showAxisTitles;
   (<any>window).hideAxisTitles = hideAxisTitles;

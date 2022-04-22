@@ -1,7 +1,7 @@
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import { AgGridVue } from "ag-grid-vue";
-import Vue from "vue";
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import { AgGridVue } from 'ag-grid-vue';
+import Vue from 'vue';
 
 const VueExample = {
   template: `
@@ -27,11 +27,11 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
-      columnDefs: [{ field: "make" }, { field: "model" }, { field: "price" }],
+      columnDefs: [{ field: 'make' }, { field: 'model' }, { field: 'price' }],
       gridApi: null,
       columnApi: null,
 
@@ -42,7 +42,7 @@ const VueExample = {
   },
   created() {
     this.rowData = rowDataA;
-    this.rowSelection = "single";
+    this.rowSelection = 'single';
     this.getRowId = (params) => params.data.id;
   },
   methods: {
@@ -61,22 +61,22 @@ const VueExample = {
 
 // specify the data
 var rowDataA = [
-  { id: "1", make: "Toyota", model: "Celica", price: 35000 },
-  { id: "4", make: "BMW", model: "M50", price: 60000 },
-  { id: "5", make: "Aston Martin", model: "DBX", price: 190000 },
+  { id: '1', make: 'Toyota', model: 'Celica', price: 35000 },
+  { id: '4', make: 'BMW', model: 'M50', price: 60000 },
+  { id: '5', make: 'Aston Martin', model: 'DBX', price: 190000 },
 ];
 
 var rowDataB = [
-  { id: "1", make: "Toyota", model: "Celica", price: 35000 },
-  { id: "2", make: "Ford", model: "Mondeo", price: 32000 },
-  { id: "3", make: "Porsche", model: "Boxter", price: 72000 },
-  { id: "4", make: "BMW", model: "M50", price: 60000 },
-  { id: "5", make: "Aston Martin", model: "DBX", price: 190000 },
+  { id: '1', make: 'Toyota', model: 'Celica', price: 35000 },
+  { id: '2', make: 'Ford', model: 'Mondeo', price: 32000 },
+  { id: '3', make: 'Porsche', model: 'Boxster', price: 72000 },
+  { id: '4', make: 'BMW', model: 'M50', price: 60000 },
+  { id: '5', make: 'Aston Martin', model: 'DBX', price: 190000 },
 ];
 
 new Vue({
-  el: "#app",
+  el: '#app',
   components: {
-    "my-component": VueExample,
+    'my-component': VueExample,
   },
 });

@@ -1,10 +1,10 @@
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { AgGridVue } from "@ag-grid-community/vue";
-import { RowGroupingModule } from "@ag-grid-enterprise/row-grouping";
-import Vue from "vue";
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { AgGridVue } from '@ag-grid-community/vue';
+import { RowGroupingModule } from '@ag-grid-enterprise/row-grouping';
+import Vue from 'vue';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([ClientSideRowModelModule, RowGroupingModule]);
@@ -15,7 +15,7 @@ const VueExample = {
             <div class="example-wrapper">
                 <div style="margin-bottom: 5px;">
                     <button v-on:click="addNewGroup()">Add New Group</button>
-                    <button v-on:click="moveSelectedNodeToTarget(9)">Move Selected to 'stuff'</button>
+                    <button v-on:click="moveSelectedNodeToTarget('9')">Move Selected to 'stuff'</button>
                     <button v-on:click="removeSelected()">Remove Selected</button>
                 </div>
                 <ag-grid-vue
@@ -36,25 +36,25 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
         {
-          field: "dateModified",
+          field: 'dateModified',
           minWidth: 250,
           comparator: (d1, d2) => {
             return new Date(d1).getTime() < new Date(d2).getTime() ? -1 : 1;
           },
         },
         {
-          field: "size",
-          aggFunc: "sum",
+          field: 'size',
+          aggFunc: 'sum',
           valueFormatter: (params) => {
             return params.value
-              ? Math.round(params.value * 10) / 10 + " MB"
-              : "0 MB";
+              ? Math.round(params.value * 10) / 10 + ' MB'
+              : '0 MB';
           },
         },
       ],
@@ -75,7 +75,7 @@ const VueExample = {
   },
   created() {
     this.autoGroupColumnDef = {
-      headerName: "Files",
+      headerName: 'Files',
       minWidth: 330,
       cellRendererParams: {
         checkbox: true,
@@ -97,8 +97,8 @@ const VueExample = {
       var newGroupData = [
         {
           id: getNextId(),
-          filePath: ["Music", "wav", "hit_" + new Date().getTime() + ".wav"],
-          dateModified: "Aug 23 2017 11:52:00 PM",
+          filePath: ['Music', 'wav', 'hit_' + new Date().getTime() + '.wav'],
+          dateModified: 'Aug 23 2017 11:52:00 PM',
           size: 58.9,
         },
       ];
@@ -107,7 +107,7 @@ const VueExample = {
     removeSelected() {
       var selectedNode = this.gridApi.getSelectedNodes()[0]; // single selection
       if (!selectedNode) {
-        console.warn("No nodes selected!");
+        console.warn('No nodes selected!');
         return;
       }
       this.gridApi.applyTransaction({ remove: getRowsToRemove(selectedNode) });
@@ -115,7 +115,7 @@ const VueExample = {
     moveSelectedNodeToTarget(targetRowId) {
       var selectedNode = this.gridApi.getSelectedNodes()[0]; // single selection
       if (!selectedNode) {
-        console.warn("No nodes selected!");
+        console.warn('No nodes selected!');
         return;
       }
       var targetNode = this.gridApi.getRowNode(targetRowId);
@@ -124,7 +124,7 @@ const VueExample = {
         isSelectionParentOfTarget(selectedNode, targetNode);
       if (invalidMove) {
         console.warn(
-          "Invalid selection - must not be parent or same as target!"
+          'Invalid selection - must not be parent or same as target!'
         );
         return;
       }
@@ -153,7 +153,7 @@ window.getNextId = function getNextId() {
 window.getFileCellRenderer = function getFileCellRenderer() {
   class FileCellRenderer {
     init(params) {
-      var tempDiv = document.createElement("div");
+      var tempDiv = document.createElement('div');
       var value = params.value;
       var icon = getFileIcon(params.value);
       tempDiv.innerHTML = icon
@@ -162,7 +162,7 @@ window.getFileCellRenderer = function getFileCellRenderer() {
           '"></i>' +
           '<span class="filename"></span>' +
           value +
-          "</span>"
+          '</span>'
         : value;
       this.eGui = tempDiv.firstChild;
     }
@@ -215,15 +215,15 @@ window.getRowsToUpdate = function getRowsToUpdate(node, parentPath) {
 };
 
 window.getFileIcon = function getFileIcon(name) {
-  return endsWith(name, ".mp3") || endsWith(name, ".wav")
-    ? "far fa-file-audio"
-    : endsWith(name, ".xls")
-    ? "far fa-file-excel"
-    : endsWith(name, ".txt")
-    ? "far fa-file"
-    : endsWith(name, ".pdf")
-    ? "far fa-file-pdf"
-    : "far fa-folder";
+  return endsWith(name, '.mp3') || endsWith(name, '.wav')
+    ? 'far fa-file-audio'
+    : endsWith(name, '.xls')
+    ? 'far fa-file-excel'
+    : endsWith(name, '.txt')
+    ? 'far fa-file'
+    : endsWith(name, '.pdf')
+    ? 'far fa-file-pdf'
+    : 'far fa-folder';
 };
 
 window.endsWith = function endsWith(str, match) {
@@ -236,8 +236,8 @@ window.endsWith = function endsWith(str, match) {
 };
 
 new Vue({
-  el: "#app",
+  el: '#app',
   components: {
-    "my-component": VueExample,
+    'my-component': VueExample,
   },
 });

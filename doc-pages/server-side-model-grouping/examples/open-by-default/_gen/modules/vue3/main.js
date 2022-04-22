@@ -1,9 +1,9 @@
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine-dark.css";
-import { AgGridVue } from "@ag-grid-community/vue3";
-import { ServerSideRowModelModule } from "@ag-grid-enterprise/server-side-row-model";
-import { createApp } from "vue";
+import { ModuleRegistry } from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine-dark.css';
+import { AgGridVue } from '@ag-grid-community/vue3';
+import { ServerSideRowModelModule } from '@ag-grid-enterprise/server-side-row-model';
+import { createApp } from 'vue';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([ServerSideRowModelModule]);
@@ -34,17 +34,17 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
-        { field: "country", enableRowGroup: true, rowGroup: true, hide: true },
-        { field: "sport", enableRowGroup: true, rowGroup: true, hide: true },
-        { field: "year", minWidth: 100 },
-        { field: "gold", aggFunc: "sum" },
-        { field: "silver", aggFunc: "sum" },
-        { field: "bronze", aggFunc: "sum" },
+        { field: 'country', enableRowGroup: true, rowGroup: true, hide: true },
+        { field: 'sport', enableRowGroup: true, rowGroup: true, hide: true },
+        { field: 'year', minWidth: 100 },
+        { field: 'gold', aggFunc: 'sum' },
+        { field: 'silver', aggFunc: 'sum' },
+        { field: 'bronze', aggFunc: 'sum' },
       ],
       gridApi: null,
       columnApi: null,
@@ -67,20 +67,20 @@ const VueExample = {
     };
     this.getServerSideStoreParams = (params) => {
       var res = {
-        storeType: params.level == 0 ? "partial" : "full",
+        storeType: params.level == 0 ? 'partial' : 'full',
       };
       return res;
     };
-    this.rowModelType = "serverSide";
-    this.rowSelection = "multiple";
+    this.rowModelType = 'serverSide';
+    this.rowSelection = 'multiple';
   },
   methods: {
     onBtRouteOfSelected() {
       var selectedNodes = this.gridApi.getSelectedNodes();
       selectedNodes.forEach(function (rowNode, index) {
         var route = rowNode.getRoute();
-        var routeString = route ? route.join(",") : undefined;
-        console.log("#" + index + ", route = [" + routeString + "]");
+        var routeString = route ? route.join(',') : undefined;
+        console.log('#' + index + ', route = [' + routeString + ']');
       });
     },
     onGridReady(params) {
@@ -96,7 +96,7 @@ const VueExample = {
         params.api.setServerSideDatasource(datasource);
       };
 
-      fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
         .then((resp) => resp.json())
         .then((data) => updateData(data));
     },
@@ -108,11 +108,11 @@ const VueExample = {
       if (!route) {
         return false;
       }
-      var routeAsString = route.join(",");
+      var routeAsString = route.join(',');
       var routesToOpenByDefault = [
-        "Zimbabwe",
-        "Zimbabwe,Swimming",
-        "United States,Swimming",
+        'Zimbabwe',
+        'Zimbabwe,Swimming',
+        'United States,Swimming',
       ];
       return routesToOpenByDefault.indexOf(routeAsString) >= 0;
     },
@@ -122,7 +122,7 @@ const VueExample = {
 window.getServerSideDatasource = function getServerSideDatasource(server) {
   return {
     getRows: function (params) {
-      console.log("[Datasource] - rows requested by grid: ", params.request);
+      console.log('[Datasource] - rows requested by grid: ', params.request);
       var response = server.getData(params.request);
       // adding delay to simulate real server call
       setTimeout(function () {
@@ -141,4 +141,4 @@ window.getServerSideDatasource = function getServerSideDatasource(server) {
   };
 };
 
-createApp(VueExample).mount("#app");
+createApp(VueExample).mount('#app');

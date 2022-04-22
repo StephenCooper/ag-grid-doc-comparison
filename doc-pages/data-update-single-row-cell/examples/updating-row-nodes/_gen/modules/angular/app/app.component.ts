@@ -1,16 +1,17 @@
 import {
   ColDef,
   GetRowIdFunc,
+  GetRowIdParams,
   GridApi,
   GridReadyEvent,
-} from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { Component } from "@angular/core";
+} from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { Component } from '@angular/core';
 // Required feature modules are registered in app.module.ts
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<div class="example-wrapper">
     <div style="margin-bottom: 1rem;">
       <button (click)="setPriceOnToyota()">Set Price on Toyota</button>
@@ -34,18 +35,18 @@ export class AppComponent {
   private gridApi!: GridApi;
 
   public rowData: any[] | null = [
-    { id: "aa", make: "Toyota", model: "Celica", price: 35000 },
-    { id: "bb", make: "Ford", model: "Mondeo", price: 32000 },
-    { id: "cc", make: "Porsche", model: "Boxter", price: 72000 },
-    { id: "dd", make: "BMW", model: "5 Series", price: 59000 },
-    { id: "ee", make: "Dodge", model: "Challanger", price: 35000 },
-    { id: "ff", make: "Mazda", model: "MX5", price: 28000 },
-    { id: "gg", make: "Horse", model: "Outside", price: 99000 },
+    { id: 'aa', make: 'Toyota', model: 'Celica', price: 35000 },
+    { id: 'bb', make: 'Ford', model: 'Mondeo', price: 32000 },
+    { id: 'cc', make: 'Porsche', model: 'Boxster', price: 72000 },
+    { id: 'dd', make: 'BMW', model: '5 Series', price: 59000 },
+    { id: 'ee', make: 'Dodge', model: 'Challanger', price: 35000 },
+    { id: 'ff', make: 'Mazda', model: 'MX5', price: 28000 },
+    { id: 'gg', make: 'Horse', model: 'Outside', price: 99000 },
   ];
   public columnDefs: ColDef[] = [
-    { field: "make" },
-    { field: "model" },
-    { field: "price", filter: "agNumberColumnFilter" },
+    { field: 'make' },
+    { field: 'model' },
+    { field: 'price', filter: 'agNumberColumnFilter' },
   ];
   public defaultColDef: ColDef = {
     flex: 1,
@@ -53,31 +54,31 @@ export class AppComponent {
     sortable: true,
     filter: true,
   };
-  public getRowId: GetRowIdFunc = function (params) {
+  public getRowId: GetRowIdFunc = function (params: GetRowIdParams) {
     return params.data.id;
   };
 
   updateSort() {
-    this.gridApi.refreshClientSideRowModel("sort");
+    this.gridApi.refreshClientSideRowModel('sort');
   }
 
   updateFilter() {
-    this.gridApi.refreshClientSideRowModel("filter");
+    this.gridApi.refreshClientSideRowModel('filter');
   }
 
   setPriceOnToyota() {
-    var rowNode = this.gridApi.getRowNode("aa")!;
+    var rowNode = this.gridApi.getRowNode('aa')!;
     var newPrice = Math.floor(Math.random() * 100000);
-    rowNode.setDataValue("price", newPrice);
+    rowNode.setDataValue('price', newPrice);
   }
 
   setDataOnFord() {
-    var rowNode = this.gridApi.getRowNode("bb")!;
+    var rowNode = this.gridApi.getRowNode('bb')!;
     var newPrice = Math.floor(Math.random() * 100000);
-    var newModel = "T-" + Math.floor(Math.random() * 1000);
+    var newModel = 'T-' + Math.floor(Math.random() * 1000);
     var newData = {
-      id: "bb",
-      make: "Ford",
+      id: 'bb',
+      make: 'Ford',
       model: newModel,
       price: newPrice,
     };

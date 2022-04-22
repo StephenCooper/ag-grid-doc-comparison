@@ -1,15 +1,15 @@
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
 import {
   Grid,
   GridOptions,
   ModuleRegistry,
   SideBarDef,
-} from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { ColumnsToolPanelModule } from "@ag-grid-enterprise/column-tool-panel";
-import { FiltersToolPanelModule } from "@ag-grid-enterprise/filter-tool-panel";
-import { SetFilterModule } from "@ag-grid-enterprise/set-filter";
+} from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { ColumnsToolPanelModule } from '@ag-grid-enterprise/column-tool-panel';
+import { FiltersToolPanelModule } from '@ag-grid-enterprise/filter-tool-panel';
+import { SetFilterModule } from '@ag-grid-enterprise/set-filter';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([
@@ -21,15 +21,15 @@ ModuleRegistry.registerModules([
 
 const gridOptions: GridOptions = {
   columnDefs: [
-    { field: "athlete", filter: "agTextColumnFilter", minWidth: 200 },
-    { field: "age" },
-    { field: "country", minWidth: 200 },
-    { field: "year" },
-    { field: "date", minWidth: 160 },
-    { field: "gold" },
-    { field: "silver" },
-    { field: "bronze" },
-    { field: "total" },
+    { field: 'athlete', filter: 'agTextColumnFilter', minWidth: 200 },
+    { field: 'age' },
+    { field: 'country', minWidth: 200 },
+    { field: 'year' },
+    { field: 'date', minWidth: 160 },
+    { field: 'gold' },
+    { field: 'silver' },
+    { field: 'bronze' },
+    { field: 'total' },
   ],
   defaultColDef: {
     flex: 1,
@@ -46,21 +46,21 @@ const gridOptions: GridOptions = {
   sideBar: {
     toolPanels: [
       {
-        id: "columns",
-        labelDefault: "Columns",
-        labelKey: "columns",
-        iconKey: "columns",
-        toolPanel: "agColumnsToolPanel",
+        id: 'columns',
+        labelDefault: 'Columns',
+        labelKey: 'columns',
+        iconKey: 'columns',
+        toolPanel: 'agColumnsToolPanel',
       },
       {
-        id: "filters",
-        labelDefault: "Filters",
-        labelKey: "filters",
-        iconKey: "filter",
-        toolPanel: "agFiltersToolPanel",
+        id: 'filters',
+        labelDefault: 'Filters',
+        labelKey: 'filters',
+        iconKey: 'filter',
+        toolPanel: 'agFiltersToolPanel',
       },
     ],
-    defaultToolPanel: "filters",
+    defaultToolPanel: 'filters',
     hiddenByDefault: true,
   },
 };
@@ -85,7 +85,7 @@ function getOpenedToolPanel() {
   alert(gridOptions.api!.getOpenedToolPanel());
 }
 
-function setSideBar(def: SideBarDef) {
+function setSideBar(def: SideBarDef | string | string[] | boolean) {
   gridOptions.api!.setSideBar(def);
 }
 
@@ -95,19 +95,19 @@ function getSideBar() {
   console.log(sideBar);
 }
 
-function setSideBarPosition(position: "left" | "right") {
+function setSideBarPosition(position: 'left' | 'right') {
   gridOptions.api!.setSideBarPosition(position);
 }
 
 // setup the grid after the page has finished loading
-var gridDiv = document.querySelector<HTMLElement>("#myGrid")!;
+var gridDiv = document.querySelector<HTMLElement>('#myGrid')!;
 new Grid(gridDiv, gridOptions);
 
-fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
   .then((response) => response.json())
   .then((data) => gridOptions.api!.setRowData(data));
 
-if (typeof window !== "undefined") {
+if (typeof window !== 'undefined') {
   // Attach external event handlers to window so they can be called from index.html
   (<any>window).setSideBarVisible = setSideBarVisible;
   (<any>window).isSideBarVisible = isSideBarVisible;

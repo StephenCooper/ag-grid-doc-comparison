@@ -1,12 +1,12 @@
-import { ColDef, GridReadyEvent } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { Component } from "@angular/core";
-import { SliderFloatingFilter } from "./slider-floating-filter.component";
+import { ColDef, GridReadyEvent } from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { Component } from '@angular/core';
+import { SliderFloatingFilter } from './slider-floating-filter.component';
 // Required feature modules are registered in app.module.ts
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `
     <div style="height: 100%; box-sizing: border-box;">
       <ag-grid-angular
@@ -22,22 +22,22 @@ import { SliderFloatingFilter } from "./slider-floating-filter.component";
 })
 export class AppComponent {
   public columnDefs: ColDef[] = [
-    { field: "country", filter: false },
-    { field: "language", filter: false },
-    { field: "name", filter: false },
+    { field: 'country', filter: false },
+    { field: 'language', filter: false },
+    { field: 'name', filter: false },
     {
-      field: "gold",
+      field: 'gold',
       floatingFilterComponent: SliderFloatingFilter,
       floatingFilterComponentParams: {
         maxValue: 7,
         suppressFilterButton: true,
       },
-      filter: "agNumberColumnFilter",
+      filter: 'agNumberColumnFilter',
       suppressMenu: false,
     },
     {
-      field: "silver",
-      filter: "agNumberColumnFilter",
+      field: 'silver',
+      filter: 'agNumberColumnFilter',
       floatingFilterComponent: SliderFloatingFilter,
       floatingFilterComponentParams: {
         maxValue: 5,
@@ -46,8 +46,8 @@ export class AppComponent {
       suppressMenu: false,
     },
     {
-      field: "bronze",
-      filter: "agNumberColumnFilter",
+      field: 'bronze',
+      filter: 'agNumberColumnFilter',
       floatingFilterComponent: SliderFloatingFilter,
       floatingFilterComponentParams: {
         maxValue: 10,

@@ -1,11 +1,11 @@
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { AgGridVue } from "@ag-grid-community/vue3";
-import { GridChartsModule } from "@ag-grid-enterprise/charts";
-import { MenuModule } from "@ag-grid-enterprise/menu";
-import { createApp } from "vue";
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { AgGridVue } from '@ag-grid-community/vue3';
+import { GridChartsModule } from '@ag-grid-enterprise/charts';
+import { MenuModule } from '@ag-grid-enterprise/menu';
+import { createApp } from 'vue';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([
@@ -43,15 +43,15 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
-        { field: "country", chartDataType: "category" },
-        { field: "sugar", chartDataType: "series" },
-        { field: "fat", chartDataType: "series" },
-        { field: "weight", chartDataType: "series" },
+        { field: 'country', chartDataType: 'category' },
+        { field: 'sugar', chartDataType: 'series' },
+        { field: 'fat', chartDataType: 'series' },
+        { field: 'weight', chartDataType: 'series' },
       ],
       gridApi: null,
       columnApi: null,
@@ -87,10 +87,10 @@ const VueExample = {
     onFirstDataRendered(params) {
       const createRangeChartParams = {
         cellRange: {
-          columns: ["country", "sugar", "fat", "weight"],
+          columns: ['country', 'sugar', 'fat', 'weight'],
         },
-        chartType: "groupedColumn",
-        chartContainer: document.querySelector("#myChart"),
+        chartType: 'groupedColumn',
+        chartContainer: document.querySelector('#myChart'),
       };
       params.api.createRangeChart(createRangeChartParams);
     },
@@ -104,10 +104,10 @@ const VueExample = {
       const params = { fileFormat, chartId };
       const imageDataURL = this.gridApi.getChartImageDataURL(params);
       if (imageDataURL) {
-        const a = document.createElement("a");
+        const a = document.createElement('a');
         a.href = imageDataURL;
-        a.download = "image";
-        a.style.display = "none";
+        a.download = 'image';
+        a.style.display = 'none';
         document.body.appendChild(a);
         a.click();
         document.body.removeChild(a);
@@ -122,7 +122,7 @@ const VueExample = {
       if (imageDataURL) {
         const image = new Image();
         image.src = imageDataURL;
-        const w = window.open("");
+        const w = window.open('');
         w.document.write(image.outerHTML);
         w.document.close();
       }
@@ -136,4 +136,4 @@ const VueExample = {
 
 var chartId;
 
-createApp(VueExample).mount("#app");
+createApp(VueExample).mount('#app');

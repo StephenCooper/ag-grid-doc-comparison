@@ -1,5 +1,5 @@
-import * as agCharts from "ag-charts-community";
-import { AgChartOptions, AgChartTheme } from "ag-charts-community";
+import * as agCharts from "ag-charts-community"
+import { AgChartOptions, AgChartTheme } from "ag-charts-community"
 
 var myTheme: AgChartTheme = {
   baseTheme: "ag-default-dark",
@@ -70,7 +70,7 @@ var myTheme: AgChartTheme = {
       },
     },
   },
-};
+}
 
 var data = [
   { label: "Android", v1: 5.67, v2: 8.63, v3: 8.14, v4: 6.45, v5: 1.37 },
@@ -78,7 +78,7 @@ var data = [
   { label: "BlackBerry", v1: 7.54, v2: 1.98, v3: 9.88, v4: 1.38, v5: 4.44 },
   { label: "Symbian", v1: 9.27, v2: 4.21, v3: 2.53, v4: 6.31, v5: 4.44 },
   { label: "Windows", v1: 2.8, v2: 1.908, v3: 7.48, v4: 5.29, v5: 8.8 },
-];
+]
 
 var chartOptions1: AgChartOptions = {
   type: "cartesian",
@@ -119,7 +119,7 @@ var chartOptions1: AgChartOptions = {
       yName: "Price",
     },
   ],
-};
+}
 
 var chartOptions2: AgChartOptions = {
   theme: myTheme,
@@ -137,7 +137,7 @@ var chartOptions2: AgChartOptions = {
       labelKey: "label",
     },
   ],
-};
+}
 
-var chart1 = agCharts.AgChart.create(chartOptions1);
-var chart2 = agCharts.AgChart.create(chartOptions2);
+var chart1 = agCharts.AgChart.create(chartOptions1)
+var chart2 = agCharts.AgChart.create(chartOptions2)

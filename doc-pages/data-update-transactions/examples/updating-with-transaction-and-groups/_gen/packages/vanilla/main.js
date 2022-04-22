@@ -1,19 +1,19 @@
 function poundFormatter(params) {
   return (
-    "£" +
+    '£' +
     Math.floor(params.value)
       .toString()
-      .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")
+      .replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
   );
 }
 
 const gridOptions = {
   columnDefs: [
-    { field: "category", rowGroupIndex: 1, hide: true },
-    { field: "price", aggFunc: "sum", valueFormatter: poundFormatter },
-    { field: "zombies" },
-    { field: "style" },
-    { field: "clothes" },
+    { field: 'category', rowGroupIndex: 1, hide: true },
+    { field: 'price', aggFunc: 'sum', valueFormatter: poundFormatter },
+    { field: 'zombies' },
+    { field: 'style' },
+    { field: 'clothes' },
   ],
   defaultColDef: {
     flex: 1,
@@ -21,11 +21,11 @@ const gridOptions = {
     sortable: true,
   },
   autoGroupColumnDef: {
-    headerName: "Group",
+    headerName: 'Group',
     minWidth: 250,
-    field: "model",
+    field: 'model',
     rowGroupIndex: 1,
-    cellRenderer: "agGroupCellRenderer",
+    cellRenderer: 'agGroupCellRenderer',
     cellRendererParams: {
       checkbox: true,
     },
@@ -33,7 +33,7 @@ const gridOptions = {
   groupDefaultExpanded: 1,
   rowData: getData(),
   suppressRowClickSelection: true,
-  rowSelection: "multiple",
+  rowSelection: 'multiple',
   animateRows: true,
   groupSelectsChildren: true,
   suppressAggFuncInHeader: true,
@@ -43,12 +43,12 @@ const gridOptions = {
     var rowNode = params.node;
     if (rowNode.group) {
       switch (rowNode.key) {
-        case "In Workshop":
-          return "category-in-workshop";
-        case "Sold":
-          return "category-sold";
-        case "For Sale":
-          return "category-for-sale";
+        case 'In Workshop':
+          return 'category-in-workshop';
+        case 'Sold':
+          return 'category-sold';
+        case 'For Sale':
+          return 'category-for-sale';
         default:
           return undefined;
       }
@@ -64,7 +64,7 @@ function getRowData() {
   gridOptions.api.forEachNode(function (node) {
     rowData.push(node.data);
   });
-  console.log("Row Data:");
+  console.log('Row Data:');
   console.log(rowData);
 }
 
@@ -88,7 +88,7 @@ function onRemoveSelected() {
 
 // wait for the document to be loaded, otherwise
 // AG Grid will not find the div in the document.
-document.addEventListener("DOMContentLoaded", function () {
-  var eGridDiv = document.querySelector("#myGrid");
+document.addEventListener('DOMContentLoaded', function () {
+  var eGridDiv = document.querySelector('#myGrid');
   new agGrid.Grid(eGridDiv, gridOptions);
 });

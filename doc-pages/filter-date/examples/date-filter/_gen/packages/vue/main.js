@@ -1,7 +1,7 @@
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import { AgGridVue } from "ag-grid-vue";
-import Vue from "vue";
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import { AgGridVue } from 'ag-grid-vue';
+import Vue from 'vue';
 
 const VueExample = {
   template: `
@@ -17,18 +17,18 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
-        { field: "athlete" },
+        { field: 'athlete' },
         {
-          field: "date",
-          filter: "agDateColumnFilter",
+          field: 'date',
+          filter: 'agDateColumnFilter',
           filterParams: filterParams,
         },
-        { field: "total", filter: false },
+        { field: 'total', filter: false },
       ],
       gridApi: null,
       columnApi: null,
@@ -48,7 +48,7 @@ const VueExample = {
 
       const updateData = (data) => params.api.setRowData(data);
 
-      fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
         .then((resp) => resp.json())
         .then((data) => updateData(data));
     },
@@ -59,7 +59,7 @@ var filterParams = {
   comparator: function (filterLocalDateAtMidnight, cellValue) {
     var dateAsString = cellValue;
     if (dateAsString == null) return -1;
-    var dateParts = dateAsString.split("/");
+    var dateParts = dateAsString.split('/');
     var cellDate = new Date(
       Number(dateParts[2]),
       Number(dateParts[1]) - 1,
@@ -81,8 +81,8 @@ var filterParams = {
 };
 
 new Vue({
-  el: "#app",
+  el: '#app',
   components: {
-    "my-component": VueExample,
+    'my-component': VueExample,
   },
 });

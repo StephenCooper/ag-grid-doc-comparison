@@ -1,10 +1,10 @@
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import { AgGridVue } from "ag-grid-vue";
-import Vue from "vue";
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import { AgGridVue } from 'ag-grid-vue';
+import Vue from 'vue';
 
 const athleteColumn = {
-  headerName: "Athlete",
+  headerName: 'Athlete',
   valueGetter: function (params) {
     return params.data.athlete;
   },
@@ -29,7 +29,7 @@ const VueExample = {
       </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
@@ -62,7 +62,7 @@ const VueExample = {
         this.rowData = data;
       };
 
-      fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
         .then((resp) => resp.json())
         .then((data) => updateData(data));
     },
@@ -70,56 +70,56 @@ const VueExample = {
       return [
         athleteColumn,
         {
-          colId: "myAgeCol",
-          headerName: "Age",
+          colId: 'myAgeCol',
+          headerName: 'Age',
           valueGetter: function (params) {
             return params.data.age;
           },
         },
         {
-          headerName: "Country",
-          headerClass: "country-header",
+          headerName: 'Country',
+          headerClass: 'country-header',
           valueGetter: function (params) {
             return params.data.country;
           },
         },
-        { field: "sport" },
-        { field: "year" },
-        { field: "date" },
-        { field: "gold" },
-        { field: "silver" },
-        { field: "bronze" },
-        { field: "total" },
+        { field: 'sport' },
+        { field: 'year' },
+        { field: 'date' },
+        { field: 'gold' },
+        { field: 'silver' },
+        { field: 'bronze' },
+        { field: 'total' },
       ];
     },
     getColDefsMedalsExcluded() {
       return [
         athleteColumn,
         {
-          colId: "myAgeCol",
-          headerName: "Age",
+          colId: 'myAgeCol',
+          headerName: 'Age',
           valueGetter: function (params) {
             return params.data.age;
           },
         },
         {
-          headerName: "Country",
-          headerClass: "country-header",
+          headerName: 'Country',
+          headerClass: 'country-header',
           valueGetter: function (params) {
             return params.data.country;
           },
         },
-        { field: "sport" },
-        { field: "year" },
-        { field: "date" },
+        { field: 'sport' },
+        { field: 'year' },
+        { field: 'date' },
       ];
     },
   },
 };
 
 new Vue({
-  el: "#app",
+  el: '#app',
   components: {
-    "my-component": VueExample,
+    'my-component': VueExample,
   },
 });

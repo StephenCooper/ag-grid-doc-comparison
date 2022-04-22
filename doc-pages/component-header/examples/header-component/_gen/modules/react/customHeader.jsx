@@ -1,16 +1,16 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 
 export default class CustomHeader extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      ascSort: "inactive",
-      descSort: "inactive",
-      noSort: "inactive",
+      ascSort: 'inactive',
+      descSort: 'inactive',
+      noSort: 'inactive',
     };
 
-    props.column.addEventListener("sortChanged", this.onSortChanged.bind(this));
+    props.column.addEventListener('sortChanged', this.onSortChanged.bind(this));
   }
 
   componentDidMount() {
@@ -36,24 +36,24 @@ export default class CustomHeader extends Component {
     let sort = null;
     if (this.props.enableSorting) {
       sort = (
-        <div style={{ display: "inline-block" }}>
+        <div style={{ display: 'inline-block' }}>
           <div
-            onClick={this.onSortRequested.bind(this, "asc")}
-            onTouchEnd={this.onSortRequested.bind(this, "asc")}
+            onClick={this.onSortRequested.bind(this, 'asc')}
+            onTouchEnd={this.onSortRequested.bind(this, 'asc')}
             className={`customSortDownLabel ${this.state.ascSort}`}
           >
             <i class="fa fa-long-arrow-alt-down"></i>
           </div>
           <div
-            onClick={this.onSortRequested.bind(this, "desc")}
-            onTouchEnd={this.onSortRequested.bind(this, "desc")}
+            onClick={this.onSortRequested.bind(this, 'desc')}
+            onTouchEnd={this.onSortRequested.bind(this, 'desc')}
             className={`customSortUpLabel ${this.state.descSort}`}
           >
             <i class="fa fa-long-arrow-alt-up"></i>
           </div>
           <div
-            onClick={this.onSortRequested.bind(this, "")}
-            onTouchEnd={this.onSortRequested.bind(this, "")}
+            onClick={this.onSortRequested.bind(this, '')}
+            onTouchEnd={this.onSortRequested.bind(this, '')}
             className={`customSortRemoveLabel ${this.state.noSort}`}
           >
             <i class="fa fa-times"></i>
@@ -77,13 +77,13 @@ export default class CustomHeader extends Component {
 
   onSortChanged() {
     this.setState({
-      ascSort: this.props.column.isSortAscending() ? "active" : "inactive",
-      descSort: this.props.column.isSortDescending() ? "active" : "inactive",
+      ascSort: this.props.column.isSortAscending() ? 'active' : 'inactive',
+      descSort: this.props.column.isSortDescending() ? 'active' : 'inactive',
       noSort:
         !this.props.column.isSortAscending() &&
         !this.props.column.isSortDescending()
-          ? "active"
-          : "inactive",
+          ? 'active'
+          : 'inactive',
     });
   }
 

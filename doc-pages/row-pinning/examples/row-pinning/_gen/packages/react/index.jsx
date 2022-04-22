@@ -1,11 +1,11 @@
-"use strict";
+'use strict';
 
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import { AgGridReact } from "ag-grid-react";
-import React, { Component } from "react";
-import { render } from "react-dom";
-import CustomPinnedRowRenderer from "./customPinnedRowRenderer.jsx";
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from 'ag-grid-react';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import CustomPinnedRowRenderer from './customPinnedRowRenderer.jsx';
 
 class GridExample extends Component {
   constructor(props) {
@@ -14,13 +14,13 @@ class GridExample extends Component {
     this.state = {
       columnDefs: [
         {
-          field: "athlete",
+          field: 'athlete',
           cellRendererSelector: function (params) {
             if (params.node.rowPinned) {
               return {
                 component: CustomPinnedRowRenderer,
                 params: {
-                  style: { color: "blue" },
+                  style: { color: 'blue' },
                 },
               };
             } else {
@@ -30,13 +30,13 @@ class GridExample extends Component {
           },
         },
         {
-          field: "age",
+          field: 'age',
           cellRendererSelector: function (params) {
             if (params.node.rowPinned) {
               return {
                 component: CustomPinnedRowRenderer,
                 params: {
-                  style: { "font-style": "italic" },
+                  style: { 'font-style': 'italic' },
                 },
               };
             } else {
@@ -45,10 +45,10 @@ class GridExample extends Component {
             }
           },
         },
-        { field: "country" },
-        { field: "year" },
-        { field: "date" },
-        { field: "sport" },
+        { field: 'country' },
+        { field: 'year' },
+        { field: 'date' },
+        { field: 'sport' },
       ],
       defaultColDef: {
         width: 200,
@@ -59,11 +59,11 @@ class GridExample extends Component {
       rowData: null,
       getRowStyle: function (params) {
         if (params.node.rowPinned) {
-          return { "font-weight": "bold" };
+          return { 'font-weight': 'bold' };
         }
       },
-      pinnedTopRowData: createData(1, "Top"),
-      pinnedBottomRowData: createData(1, "Bottom"),
+      pinnedTopRowData: createData(1, 'Top'),
+      pinnedBottomRowData: createData(1, 'Bottom'),
     };
   }
 
@@ -73,35 +73,35 @@ class GridExample extends Component {
 
     const updateData = (data) => params.api.setRowData(data);
 
-    fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+    fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .then((resp) => resp.json())
       .then((data) => updateData(data));
   };
 
   onPinnedRowTopCount = () => {
-    var headerRowsToFloat = document.getElementById("top-row-count").value;
+    var headerRowsToFloat = document.getElementById('top-row-count').value;
     var count = Number(headerRowsToFloat);
-    var rows = createData(count, "Top");
+    var rows = createData(count, 'Top');
     this.gridApi.setPinnedTopRowData(rows);
   };
 
   onPinnedRowBottomCount = () => {
-    var footerRowsToFloat = document.getElementById("bottom-row-count").value;
+    var footerRowsToFloat = document.getElementById('bottom-row-count').value;
     var count = Number(footerRowsToFloat);
-    var rows = createData(count, "Bottom");
+    var rows = createData(count, 'Bottom');
     this.gridApi.setPinnedBottomRowData(rows);
   };
 
   render() {
     return (
-      <div style={{ width: "100%", height: "100%" }}>
+      <div style={{ width: '100%', height: '100%' }}>
         <div className="example-wrapper">
           <div className="example-header">
             <span>Rows to Pin on Top:</span>
             <select
               onChange={() => this.onPinnedRowTopCount()}
               id="top-row-count"
-              style={{ marginLeft: "10px", marginRight: "20px" }}
+              style={{ marginLeft: '10px', marginRight: '20px' }}
             >
               <option value="0">0</option>
               <option value="1" selected={true}>
@@ -115,7 +115,7 @@ class GridExample extends Component {
             <select
               onChange={() => this.onPinnedRowBottomCount()}
               id="bottom-row-count"
-              style={{ marginLeft: "10px" }}
+              style={{ marginLeft: '10px' }}
             >
               <option value="0">0</option>
               <option value="1" selected={true}>
@@ -128,8 +128,8 @@ class GridExample extends Component {
           </div>
           <div
             style={{
-              height: "100%",
-              width: "100%",
+              height: '100%',
+              width: '100%',
             }}
             className="ag-theme-alpine"
           >
@@ -153,15 +153,15 @@ function createData(count, prefix) {
   var result = [];
   for (var i = 0; i < count; i++) {
     result.push({
-      athlete: prefix + " Athlete " + i,
-      age: prefix + " Age " + i,
-      country: prefix + " Country " + i,
-      year: prefix + " Year " + i,
-      date: prefix + " Date " + i,
-      sport: prefix + " Sport " + i,
+      athlete: prefix + ' Athlete ' + i,
+      age: prefix + ' Age ' + i,
+      country: prefix + ' Country ' + i,
+      year: prefix + ' Year ' + i,
+      date: prefix + ' Date ' + i,
+      sport: prefix + ' Sport ' + i,
     });
   }
   return result;
 }
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

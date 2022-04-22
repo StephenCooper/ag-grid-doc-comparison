@@ -1,15 +1,15 @@
-"use strict";
+'use strict';
 
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { AgGridReact } from "@ag-grid-community/react";
-import { FiltersToolPanelModule } from "@ag-grid-enterprise/filter-tool-panel";
-import { MenuModule } from "@ag-grid-enterprise/menu";
-import { SetFilterModule } from "@ag-grid-enterprise/set-filter";
-import React, { useCallback, useMemo, useRef, useState } from "react";
-import { render } from "react-dom";
+import React, { useCallback, useMemo, useRef, useState } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from '@ag-grid-community/react';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import { MenuModule } from '@ag-grid-enterprise/menu';
+import { SetFilterModule } from '@ag-grid-enterprise/set-filter';
+import { FiltersToolPanelModule } from '@ag-grid-enterprise/filter-tool-panel';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([
@@ -21,37 +21,37 @@ ModuleRegistry.registerModules([
 
 const GridExample = () => {
   const gridRef = useRef();
-  const containerStyle = useMemo(() => ({ width: "100%", height: "100%" }), []);
-  const gridStyle = useMemo(() => ({ height: "100%", width: "100%" }), []);
+  const containerStyle = useMemo(() => ({ width: '100%', height: '100%' }), []);
+  const gridStyle = useMemo(() => ({ height: '100%', width: '100%' }), []);
   const [rowData, setRowData] = useState();
   const [columnDefs, setColumnDefs] = useState([
     {
-      groupId: "athleteGroupId",
-      headerName: "Athlete",
+      groupId: 'athleteGroupId',
+      headerName: 'Athlete',
       children: [
         {
-          headerName: "Name",
-          field: "athlete",
+          headerName: 'Name',
+          field: 'athlete',
           minWidth: 200,
-          filter: "agTextColumnFilter",
+          filter: 'agTextColumnFilter',
         },
-        { field: "age" },
+        { field: 'age' },
         {
-          groupId: "competitionGroupId",
-          headerName: "Competition",
-          children: [{ field: "year" }, { field: "date", minWidth: 180 }],
+          groupId: 'competitionGroupId',
+          headerName: 'Competition',
+          children: [{ field: 'year' }, { field: 'date', minWidth: 180 }],
         },
-        { field: "country", minWidth: 200 },
+        { field: 'country', minWidth: 200 },
       ],
     },
-    { colId: "sport", field: "sport", minWidth: 200 },
+    { colId: 'sport', field: 'sport', minWidth: 200 },
     {
-      headerName: "Medals",
+      headerName: 'Medals',
       children: [
-        { field: "gold" },
-        { field: "silver" },
-        { field: "bronze" },
-        { field: "total" },
+        { field: 'gold' },
+        { field: 'silver' },
+        { field: 'bronze' },
+        { field: 'total' },
       ],
     },
   ]);
@@ -65,32 +65,32 @@ const GridExample = () => {
   }, []);
 
   const onGridReady = useCallback((params) => {
-    fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+    fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .then((resp) => resp.json())
       .then((data) => setRowData(data));
 
     // initially collapse all filter groups
-    params.api.getToolPanelInstance("filters").collapseFilterGroups();
+    params.api.getToolPanelInstance('filters').collapseFilterGroups();
   }, []);
 
   const collapseAll = useCallback(() => {
-    gridRef.current.api.getToolPanelInstance("filters").collapseFilterGroups();
+    gridRef.current.api.getToolPanelInstance('filters').collapseFilterGroups();
   }, []);
 
   const expandAthleteAndCompetition = useCallback(() => {
     gridRef.current.api
-      .getToolPanelInstance("filters")
-      .expandFilterGroups(["athleteGroupId", "competitionGroupId"]);
+      .getToolPanelInstance('filters')
+      .expandFilterGroups(['athleteGroupId', 'competitionGroupId']);
   }, []);
 
   const collapseCompetition = useCallback(() => {
     gridRef.current.api
-      .getToolPanelInstance("filters")
-      .collapseFilterGroups(["competitionGroupId"]);
+      .getToolPanelInstance('filters')
+      .collapseFilterGroups(['competitionGroupId']);
   }, []);
 
   const expandAll = useCallback(() => {
-    gridRef.current.api.getToolPanelInstance("filters").expandFilterGroups();
+    gridRef.current.api.getToolPanelInstance('filters').expandFilterGroups();
   }, []);
 
   return (
@@ -113,7 +113,7 @@ const GridExample = () => {
             rowData={rowData}
             columnDefs={columnDefs}
             defaultColDef={defaultColDef}
-            sideBar={"filters"}
+            sideBar={'filters'}
             onGridReady={onGridReady}
           ></AgGridReact>
         </div>
@@ -122,4 +122,4 @@ const GridExample = () => {
   );
 };
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

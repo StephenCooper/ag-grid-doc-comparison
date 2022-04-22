@@ -1,11 +1,11 @@
-import { ColDef, GridReadyEvent } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { Component } from "@angular/core";
+import { ColDef, GridReadyEvent } from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { Component } from '@angular/core';
 // Required feature modules are registered in app.module.ts
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<div style="height: 100%; box-sizing: border-box;">
     <ag-grid-angular
       style="width: 100%; height: 100%;"
@@ -19,16 +19,16 @@ import { Component } from "@angular/core";
 export class AppComponent {
   public columnDefs: ColDef[] = [
     // colId will be 'firstCol'
-    { headerName: "Col 1", colId: "firstCol", field: "height" },
+    { headerName: 'Col 1', colId: 'firstCol', field: 'height' },
     // colId will be 'firstCol_1', cos 'firstCol' already taken
-    { headerName: "Col 2", colId: "firstCol", field: "height" },
+    { headerName: 'Col 2', colId: 'firstCol', field: 'height' },
     // colId will be 'height'
-    { headerName: "Col 3", field: "height" },
+    { headerName: 'Col 3', field: 'height' },
     // colId will be 'height_1', cos 'height' already taken
-    { headerName: "Col 4", field: "height" },
+    { headerName: 'Col 4', field: 'height' },
     // no colId, no field, so grid generated ID
-    { headerName: "Col 5", valueGetter: "data.width" },
-    { headerName: "Col 6", valueGetter: "data.width" },
+    { headerName: 'Col 5', valueGetter: 'data.width' },
+    { headerName: 'Col 6', valueGetter: 'data.width' },
   ];
   public rowData: any[] | null = createRowData();
 
@@ -37,7 +37,7 @@ export class AppComponent {
     cols.forEach(function (col) {
       var colDef = col.getColDef();
       console.log(
-        colDef.headerName + ", Column ID = " + col.getId(),
+        colDef.headerName + ', Column ID = ' + col.getId(),
         JSON.stringify(colDef)
       );
     });

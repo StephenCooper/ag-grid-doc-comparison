@@ -3,15 +3,15 @@ import {
   ColGroupDef,
   GridApi,
   GridReadyEvent,
-} from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { HttpClient } from "@angular/common/http";
-import { Component } from "@angular/core";
+} from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { HttpClient } from '@angular/common/http';
+import { Component } from '@angular/core';
 // Required feature modules are registered in app.module.ts
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<div class="container">
     <div>
       <button
@@ -38,20 +38,20 @@ export class AppComponent {
 
   public columnDefs: (ColDef | ColGroupDef)[] = [
     {
-      headerName: "Group A",
+      headerName: 'Group A',
       children: [
-        { field: "athlete", minWidth: 200 },
-        { field: "country", minWidth: 200 },
+        { field: 'athlete', minWidth: 200 },
+        { field: 'country', minWidth: 200 },
       ],
     },
     {
-      headerName: "Group B",
+      headerName: 'Group B',
       children: [
-        { field: "sport", minWidth: 150 },
-        { field: "gold" },
-        { field: "silver" },
-        { field: "bronze" },
-        { field: "total" },
+        { field: 'sport', minWidth: 150 },
+        { field: 'gold' },
+        { field: 'silver' },
+        { field: 'bronze' },
+        { field: 'total' },
       ],
     },
   ];
@@ -75,7 +75,7 @@ export class AppComponent {
 
     this.http
       .get<any[]>(
-        "https://www.ag-grid.com/example-assets/small-olympic-winners.json"
+        'https://www.ag-grid.com/example-assets/small-olympic-winners.json'
       )
       .subscribe((data) => {
         this.rowData = data;

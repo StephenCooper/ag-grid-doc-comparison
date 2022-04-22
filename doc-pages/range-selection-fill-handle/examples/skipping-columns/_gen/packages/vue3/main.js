@@ -1,8 +1,8 @@
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
-import { AgGridVue } from "ag-grid-vue3";
-import { createApp } from "vue";
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import 'ag-grid-enterprise';
+import { AgGridVue } from 'ag-grid-vue3';
+import { createApp } from 'vue';
 
 const VueExample = {
   template: `
@@ -22,17 +22,17 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
-        { field: "athlete", minWidth: 150 },
-        { field: "age", maxWidth: 90 },
-        { field: "country", minWidth: 150 },
-        { field: "year", maxWidth: 90 },
-        { field: "date", minWidth: 150 },
-        { field: "sport", minWidth: 150 },
+        { field: 'athlete', minWidth: 150 },
+        { field: 'age', maxWidth: 90 },
+        { field: 'country', minWidth: 150 },
+        { field: 'year', maxWidth: 90 },
+        { field: 'date', minWidth: 150 },
+        { field: 'sport', minWidth: 150 },
       ],
       gridApi: null,
       columnApi: null,
@@ -47,7 +47,7 @@ const VueExample = {
   },
   created() {
     this.fillOperation = (params) => {
-      if (params.column.getColId() === "country") {
+      if (params.column.getColId() === 'country') {
         return params.currentCellValue;
       }
       return params.values[params.values.length - 1];
@@ -62,7 +62,7 @@ const VueExample = {
         params.api.setRowData(createRowData(data));
       };
 
-      fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
         .then((resp) => resp.json())
         .then((data) => updateData(data));
     },
@@ -74,4 +74,4 @@ window.createRowData = function createRowData(data) {
   return rowData;
 };
 
-createApp(VueExample).mount("#app");
+createApp(VueExample).mount('#app');

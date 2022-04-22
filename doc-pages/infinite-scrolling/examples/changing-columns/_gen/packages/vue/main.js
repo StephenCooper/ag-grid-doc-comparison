@@ -1,7 +1,7 @@
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import { AgGridVue } from "ag-grid-vue";
-import Vue from "vue";
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import { AgGridVue } from 'ag-grid-vue';
+import Vue from 'vue';
 
 const VueExample = {
   template: `
@@ -23,16 +23,16 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
-        { field: "athlete", colId: "athlete", minWidth: 180 },
-        { field: "age", colId: "age" },
-        { field: "country", colId: "country", minWidth: 180 },
-        { field: "year", colId: "year" },
-        { field: "sport", colId: "sport", minWidth: 180 },
+        { field: 'athlete', colId: 'athlete', minWidth: 180 },
+        { field: 'age', colId: 'age' },
+        { field: 'country', colId: 'country', minWidth: 180 },
+        { field: 'year', colId: 'year' },
+        { field: 'sport', colId: 'sport', minWidth: 180 },
       ],
       gridApi: null,
       columnApi: null,
@@ -46,24 +46,24 @@ const VueExample = {
     };
   },
   created() {
-    this.rowModelType = "infinite";
+    this.rowModelType = 'infinite';
   },
   methods: {
     onBtShowYearColumn() {
       this.gridApi.setColumnDefs([
-        { field: "athlete", colId: "athlete" },
-        { field: "age", colId: "age" },
-        { field: "country", colId: "country" },
-        { field: "year", colId: "year" },
-        { field: "sport", colId: "sport" },
+        { field: 'athlete', colId: 'athlete' },
+        { field: 'age', colId: 'age' },
+        { field: 'country', colId: 'country' },
+        { field: 'year', colId: 'year' },
+        { field: 'sport', colId: 'sport' },
       ]);
     },
     onBtHideYearColumn() {
       this.gridApi.setColumnDefs([
-        { field: "athlete", colId: "athlete" },
-        { field: "age", colId: "age" },
-        { field: "country", colId: "country" },
-        { field: "sport", colId: "sport" },
+        { field: 'athlete', colId: 'athlete' },
+        { field: 'age', colId: 'age' },
+        { field: 'country', colId: 'country' },
+        { field: 'sport', colId: 'sport' },
       ]);
     },
     onGridReady(params) {
@@ -73,13 +73,13 @@ const VueExample = {
       const updateData = (data) => {
         // give each row an id
         data.forEach(function (d, index) {
-          d.id = "R" + (index + 1);
+          d.id = 'R' + (index + 1);
         });
         var dataSource = {
           rowCount: undefined,
           getRows: function (params) {
             console.log(
-              "asking for " + params.startRow + " to " + params.endRow
+              'asking for ' + params.startRow + ' to ' + params.endRow
             );
             // At this point in your code, you would call the server.
             // To make the demo look real, wait for 500ms before returning
@@ -107,7 +107,7 @@ const VueExample = {
         params.api.setDatasource(dataSource);
       };
 
-      fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
         .then((resp) => resp.json())
         .then((data) => updateData(data));
     },
@@ -138,7 +138,7 @@ window.sortData = function sortData(sortModel, data) {
       if (valueA == valueB) {
         continue;
       }
-      var sortDirection = sortColModel.sort === "asc" ? 1 : -1;
+      var sortDirection = sortColModel.sort === 'asc' ? 1 : -1;
       if (valueA > valueB) {
         return sortDirection;
       } else {
@@ -186,8 +186,8 @@ window.filterData = function filterData(filterModel, data) {
 };
 
 new Vue({
-  el: "#app",
+  el: '#app',
   components: {
-    "my-component": VueExample,
+    'my-component': VueExample,
   },
 });

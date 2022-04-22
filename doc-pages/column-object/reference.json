@@ -1,123 +1,123 @@
 {
-  "_config_": {
-    "codeSrc": "column-object/column.AUTO.json"
-  },
-  "methods": {
-    "meta": {
-      "displayName": "Column Methods"
+    "_config_": {
+        "codeSrc": "column-object/column.AUTO.json"
     },
-    "getColId": {},
-    "getColDef": {},
-    "getUserProvidedColDef": {},
-    "getParent": {},
-    "isFilterAllowed": {},
-    "isFilterActive": {},
-    "getSort": {},
-    "getAggFunc": {},
-    "getActualWidth": {},
-    "isRowGroupActive": {},
-    "isPivotActive": {},
-    "isValueActive": {},
-    "isPrimary": {},
-    "addEventListener": {},
-    "removeEventListener": {}
-  },
-  "events": {
-    "meta": {
-      "displayName": "Events on Column",
-      "description": "Columns emit the following events:",
-      "isEvent": true,
-      "suppressMissingPropCheck": true
-    },
-    "filterActiveChanged": {
-      "description": "The filter active value has changed.",
-      "type": {
-        "arguments": {
-          "event": "ColumnEvent"
+    "methods": {
+        "meta": {
+            "displayName": "Column Methods"
         },
-        "returnType": "void"
-      }
+        "getColId": {},
+        "getColDef": {},
+        "getUserProvidedColDef": {},
+        "getParent": {},
+        "isFilterAllowed": {},
+        "isFilterActive": {},
+        "getSort": {},
+        "getAggFunc": {},
+        "getActualWidth": {},
+        "isRowGroupActive": {},
+        "isPivotActive": {},
+        "isValueActive": {},
+        "isPrimary": {},
+        "addEventListener": {},
+        "removeEventListener": {}
     },
-    "sortChanged": {
-      "description": "The sort value has changed.",
-      "type": {
-        "arguments": {
-          "event": "ColumnEvent"
+    "events": {
+        "meta": {
+            "displayName": "Events on Column",
+            "description": "Columns emit the following events:",
+            "isEvent": true,
+            "suppressMissingPropCheck": true
         },
-        "returnType": "void"
-      }
-    },
-    "leftChanged": {
-      "description": "The left position has changed (e.g. column has moved).",
-      "type": {
-        "arguments": {
-          "event": "ColumnEvent"
+        "filterActiveChanged": {
+            "description": "The filter active value has changed.",
+            "type": {
+                "arguments": {
+                    "event": "ColumnEvent"
+                },
+                "returnType": "void"
+            }
         },
-        "returnType": "void"
-      }
-    },
-    "movingChanged": {
-      "description": "The column has started / finished moving (i.e. user is dragging the column to a new location).",
-      "type": {
-        "arguments": {
-          "event": "ColumnEvent"
+        "sortChanged": {
+            "description": "The sort value has changed.",
+            "type": {
+                "arguments": {
+                    "event": "ColumnEvent"
+                },
+                "returnType": "void"
+            }
         },
-        "returnType": "void"
-      }
-    },
-    "widthChanged": {
-      "description": "The width value has changed.",
-      "type": {
-        "arguments": {
-          "event": "ColumnEvent"
+        "leftChanged": {
+            "description": "The left position has changed (e.g. column has moved).",
+            "type": {
+                "arguments": {
+                    "event": "ColumnEvent"
+                },
+                "returnType": "void"
+            }
         },
-        "returnType": "void"
-      }
-    },
-    "visibleChanged": {
-      "description": "The visibility value has changed.",
-      "type": {
-        "arguments": {
-          "event": "ColumnEvent"
+        "movingChanged": {
+            "description": "The column has started / finished moving (i.e. user is dragging the column to a new location).",
+            "type": {
+                "arguments": {
+                    "event": "ColumnEvent"
+                },
+                "returnType": "void"
+            }
         },
-        "returnType": "void"
-      }
-    },
-    "menuVisibleChanged": {
-      "description": "The column menu was shown / hidden.",
-      "type": {
-        "arguments": {
-          "event": "ColumnEvent"
+        "widthChanged": {
+            "description": "The width value has changed.",
+            "type": {
+                "arguments": {
+                    "event": "ColumnEvent"
+                },
+                "returnType": "void"
+            }
         },
-        "returnType": "void"
-      }
-    },
-    "columnRowGroupChanged": {
-      "description": "The row group value has changed.",
-      "type": {
-        "arguments": {
-          "event": "ColumnEvent"
+        "visibleChanged": {
+            "description": "The visibility value has changed.",
+            "type": {
+                "arguments": {
+                    "event": "ColumnEvent"
+                },
+                "returnType": "void"
+            }
         },
-        "returnType": "void"
-      }
-    },
-    "columnPivotChanged": {
-      "description": "The pivot value has changed.",
-      "type": {
-        "arguments": {
-          "event": "ColumnEvent"
+        "menuVisibleChanged": {
+            "description": "The column menu was shown / hidden.",
+            "type": {
+                "arguments": {
+                    "event": "ColumnEvent"
+                },
+                "returnType": "void"
+            }
         },
-        "returnType": "void"
-      }
-    },
-    "columnValueChanged": {
-      "description": "The 'value' value has changed.",
-      "type": {
-        "arguments": {
-          "event": "ColumnEvent"
+        "columnRowGroupChanged": {
+            "description": "The row group value has changed.",
+            "type": {
+                "arguments": {
+                    "event": "ColumnEvent"
+                },
+                "returnType": "void"
+            }
         },
-        "returnType": "void"
-      }
+        "columnPivotChanged": {
+            "description": "The pivot value has changed.",
+            "type": {
+                "arguments": {
+                    "event": "ColumnEvent"
+                },
+                "returnType": "void"
+            }
+        },
+        "columnValueChanged": {
+            "description": "The 'value' value has changed.",
+            "type": {
+                "arguments": {
+                    "event": "ColumnEvent"
+                },
+                "returnType": "void"
+            }
+        }
     }
-  }
 }

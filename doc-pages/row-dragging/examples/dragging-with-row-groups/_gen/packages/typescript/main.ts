@@ -3,10 +3,10 @@ import {
   GridOptions,
   RowDragCallbackParams,
   RowDragEndEvent,
-} from "ag-grid-community";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
+} from 'ag-grid-community';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import 'ag-grid-enterprise';
 
 var rowDrag = function (params: RowDragCallbackParams) {
   // only rows that are NOT groups should be draggable
@@ -15,14 +15,14 @@ var rowDrag = function (params: RowDragCallbackParams) {
 
 const gridOptions: GridOptions = {
   columnDefs: [
-    { field: "athlete", rowDrag: rowDrag },
-    { field: "country", rowGroup: true },
-    { field: "year", width: 100 },
-    { field: "date" },
-    { field: "sport" },
-    { field: "gold" },
-    { field: "silver" },
-    { field: "bronze" },
+    { field: 'athlete', rowDrag: rowDrag },
+    { field: 'country', rowGroup: true },
+    { field: 'year', width: 100 },
+    { field: 'date' },
+    { field: 'sport' },
+    { field: 'gold' },
+    { field: 'silver' },
+    { field: 'bronze' },
   ],
   defaultColDef: {
     width: 170,
@@ -65,5 +65,5 @@ function onRowDragMove(event: RowDragEndEvent) {
 }
 
 // setup the grid after the page has finished loading
-var gridDiv = document.querySelector<HTMLElement>("#myGrid")!;
+var gridDiv = document.querySelector<HTMLElement>('#myGrid')!;
 new Grid(gridDiv, gridOptions);

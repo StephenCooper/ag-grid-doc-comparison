@@ -1,11 +1,11 @@
-"use strict";
+'use strict';
 
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
-import { AgGridReact } from "ag-grid-react";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from 'ag-grid-react';
+import 'ag-grid-enterprise';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 
 class GridExample extends Component {
   constructor(props) {
@@ -19,11 +19,11 @@ class GridExample extends Component {
         flex: 1,
       },
       popupParent: document.body,
-      columnDefs: [{ field: "make" }, { field: "model" }, { field: "price" }],
+      columnDefs: [{ field: 'make' }, { field: 'model' }, { field: 'price' }],
       rowData: [
-        { make: "Toyota", model: "Celica", price: 35000 },
-        { make: "Ford", model: "Mondeo", price: 32000 },
-        { make: "Porsche", model: "Boxter", price: 72000 },
+        { make: 'Toyota', model: 'Celica', price: 35000 },
+        { make: 'Ford', model: 'Mondeo', price: 32000 },
+        { make: 'Porsche', model: 'Boxster', price: 72000 },
       ],
     };
   }
@@ -37,26 +37,26 @@ class GridExample extends Component {
     var params = getParams();
     if (params.suppressQuotes || params.columnSeparator) {
       alert(
-        "NOTE: you are downloading a file with non-standard quotes or separators - it may not render correctly in Excel."
+        'NOTE: you are downloading a file with non-standard quotes or separators - it may not render correctly in Excel.'
       );
     }
     this.gridApi.exportDataAsCsv(params);
   };
 
   onBtnUpdate = () => {
-    document.querySelector("#csvResult").value = this.gridApi.getDataAsCsv(
+    document.querySelector('#csvResult').value = this.gridApi.getDataAsCsv(
       getParams()
     );
   };
 
   render() {
     return (
-      <div style={{ width: "100%", height: "100%" }}>
+      <div style={{ width: '100%', height: '100%' }}>
         <div
-          style={{ display: "flex", flexDirection: "column", height: "100%" }}
+          style={{ display: 'flex', flexDirection: 'column', height: '100%' }}
         >
-          <div style={{ display: "flex" }}>
-            <div style={{ marginLeft: "10px" }}>
+          <div style={{ display: 'flex' }}>
+            <div style={{ marginLeft: '10px' }}>
               <div className="row">
                 <label>prependContent = </label>
                 <select id="prependContent">
@@ -80,7 +80,7 @@ class GridExample extends Component {
             </div>
           </div>
 
-          <div style={{ margin: "10px 0" }}>
+          <div style={{ margin: '10px 0' }}>
             <button onClick={() => this.onBtnUpdate()}>
               Show CSV export content text
             </button>
@@ -89,12 +89,12 @@ class GridExample extends Component {
             </button>
           </div>
 
-          <div style={{ flex: "1 1 0px", position: "relative" }}>
+          <div style={{ flex: '1 1 0px', position: 'relative' }}>
             <div id="gridContainer">
               <div
                 style={{
-                  height: "100%",
-                  width: "100%",
+                  height: '100%',
+                  width: '100%',
                 }}
                 className="ag-theme-alpine"
               >
@@ -121,21 +121,21 @@ class GridExample extends Component {
 function getValue(inputSelector) {
   var text = document.querySelector(inputSelector).value;
   switch (text) {
-    case "string":
+    case 'string':
       return (
         'Here is a comma, and a some "quotes". You can see them using the\n' +
-        "api.getDataAsCsv() button but they will not be visible when the downloaded\n" +
-        "CSV file is opened in Excel because string content passed to\n" +
-        "prependContent and appendContent is not escaped."
+        'api.getDataAsCsv() button but they will not be visible when the downloaded\n' +
+        'CSV file is opened in Excel because string content passed to\n' +
+        'prependContent and appendContent is not escaped.'
       );
-    case "array":
+    case 'array':
       return [
         [],
         [
           {
             data: {
               value: 'Here is a comma, and a some "quotes".',
-              type: "String",
+              type: 'String',
             },
           },
         ],
@@ -143,23 +143,23 @@ function getValue(inputSelector) {
           {
             data: {
               value:
-                "They are visible when the downloaded CSV file is opened in Excel because custom content is properly escaped (provided that suppressQuotes is not set to true)",
-              type: "String",
+                'They are visible when the downloaded CSV file is opened in Excel because custom content is properly escaped (provided that suppressQuotes is not set to true)',
+              type: 'String',
             },
           },
         ],
         [
-          { data: { value: "this cell:", type: "String" }, mergeAcross: 1 },
+          { data: { value: 'this cell:', type: 'String' }, mergeAcross: 1 },
           {
             data: {
-              value: "is empty because the first cell has mergeAcross=1",
-              type: "String",
+              value: 'is empty because the first cell has mergeAcross=1',
+              type: 'String',
             },
           },
         ],
         [],
       ];
-    case "none":
+    case 'none':
       return;
     default:
       return text;
@@ -167,11 +167,11 @@ function getValue(inputSelector) {
 }
 function getParams() {
   return {
-    prependContent: getValue("#prependContent"),
-    appendContent: getValue("#appendContent"),
+    prependContent: getValue('#prependContent'),
+    appendContent: getValue('#appendContent'),
     suppressQuotes: undefined,
     columnSeparator: undefined,
   };
 }
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

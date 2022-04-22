@@ -2,14 +2,14 @@ import {
   CellValueChangedEvent,
   ColDef,
   GridReadyEvent,
-} from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine-dark.css";
-import { Component } from "@angular/core";
+} from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine-dark.css';
+import { Component } from '@angular/core';
 // Required feature modules are registered in app.module.ts
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<ag-grid-angular
     style="width: 100%; height: 100%;"
     class="ag-theme-alpine-dark"
@@ -24,24 +24,24 @@ import { Component } from "@angular/core";
 export class AppComponent {
   public columnDefs: ColDef[] = [
     {
-      headerName: "String (editable)",
-      field: "simple",
+      headerName: 'String (editable)',
+      field: 'simple',
       editable: true,
     },
     {
-      headerName: "Bad Number (editable)",
-      field: "numberBad",
+      headerName: 'Bad Number (editable)',
+      field: 'numberBad',
       editable: true,
     },
     {
-      headerName: "Good Number (editable)",
-      field: "numberGood",
+      headerName: 'Good Number (editable)',
+      field: 'numberGood',
       editable: true,
       valueFormatter: `"£" + Math.floor(value).toString().replace(/(\\d)(?=(\\d{3})+(?!\\d))/g, "$1,")`,
-      valueParser: "Number(newValue)",
+      valueParser: 'Number(newValue)',
     },
     {
-      headerName: "Name (editable)",
+      headerName: 'Name (editable)',
       editable: true,
       valueGetter: 'data.firstName + " " + data.lastName',
       valueSetter:
@@ -57,9 +57,9 @@ export class AppComponent {
                 return false;
             }`,
     },
-    { headerName: "A", field: "a", maxWidth: 120 },
-    { headerName: "B", field: "b", maxWidth: 120 },
-    { headerName: "A + B", valueGetter: "data.a + data.b", maxWidth: 120 },
+    { headerName: 'A', field: 'a', maxWidth: 120 },
+    { headerName: 'B', field: 'b', maxWidth: 120 },
+    { headerName: 'A + B', valueGetter: 'data.a + data.b', maxWidth: 120 },
   ];
   public defaultColDef: ColDef = {
     flex: 1,
@@ -69,7 +69,7 @@ export class AppComponent {
   public rowData: any[] | null = getData();
 
   onCellValueChanged(event: CellValueChangedEvent) {
-    console.log("data after changes is: ", event.data);
+    console.log('data after changes is: ', event.data);
   }
 
   onGridReady(params: GridReadyEvent) {

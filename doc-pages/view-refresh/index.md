@@ -8,6 +8,7 @@ However sometimes you may be updating the data outside of the grids control. Whe
 
 To deal with the scenario where the row data is changed without the grid been aware, the grid provides the following methods:
 
+
 - **Refresh Cells**: `api.refreshCells(cellRefreshParams)` - Gets the grid to refresh all cells. Change detection will be used to refresh only cells whose display cell values are out of sync with the actual value. If using a [cellRenderer](/component-cell-renderer/) with a refresh method, the refresh method will get called.
 
 - **Redraw Rows**: `api.redrawRows(redrawRowsParams)` - Removes the rows from the DOM and draws them again from scratch. The cells are created again from scratch. No change detection is done. No refreshing of cells is done.
@@ -19,6 +20,7 @@ Your preference should be to use `refreshCells()` over `redrawRows()`. Only use 
 To get the grid to refresh the cells, call `api.refreshCells()`. The interface is as follows:
 
 <api-documentation source='grid-api/api.json' section='refresh' names='["refreshCells"]' ></api-documentation>
+
 
 Each parameter is optional. The simplest is to call with no parameters which will refresh all cells using [change detection](/change-detection/) (change detection means it will only refresh cells whose values have changed).
 
@@ -59,6 +61,7 @@ Below shows calling `api.refreshCells()` with different scenarios using a mixtur
 Redraw rows is a much heavier operation than refreshing cells. If refreshing cells meets your needs, then don't use redraw rows. A row redraw will rip the row out of the DOM and draw it again from scratch.
 
 Use redraw row if you want to create the row again from scratch. This is useful when you have changed property that only gets used when the row is created for the first time such as:
+
 
 - Whether the row is [fullWidth](/full-width-rows/) or not.
 - The cellRenderer used for any cell (as this is specified once when the cell is created).

@@ -4,11 +4,11 @@ import React, {
   useImperativeHandle,
   useRef,
   useState,
-} from "react";
-import ReactDOM from "react-dom";
+} from 'react';
+import ReactDOM from 'react-dom';
 
 export default forwardRef((props, ref) => {
-  const [text, setText] = useState("");
+  const [text, setText] = useState('');
   const refInput = useRef(null);
 
   useEffect(() => {
@@ -18,7 +18,7 @@ export default forwardRef((props, ref) => {
   useImperativeHandle(ref, () => {
     return {
       isFilterActive() {
-        return text != null && text !== "";
+        return text != null && text !== '';
       },
 
       doesFilterPass(params) {
@@ -39,7 +39,7 @@ export default forwardRef((props, ref) => {
 
         return text
           .toLowerCase()
-          .split(" ")
+          .split(' ')
           .every((filterWord) => value.indexOf(filterWord) >= 0);
       },
 
@@ -52,7 +52,7 @@ export default forwardRef((props, ref) => {
       },
 
       setModel(model) {
-        setText(model ? model.value : "");
+        setText(model ? model.value : '');
       },
 
       afterGuiAttached(params) {
@@ -82,18 +82,18 @@ export default forwardRef((props, ref) => {
   };
 
   const style = {
-    border: "2px solid #22ff22",
-    borderRadius: "5px",
-    backgroundColor: "#bbffbb",
-    width: "200px",
-    height: "50px",
+    border: '2px solid #22ff22',
+    borderRadius: '5px',
+    backgroundColor: '#bbffbb',
+    width: '200px',
+    height: '50px',
   };
 
   return (
     <div style={style}>
       Filter:
       <input
-        style={{ height: "20px" }}
+        style={{ height: '20px' }}
         ref={refInput}
         value={text}
         onChange={onChange}

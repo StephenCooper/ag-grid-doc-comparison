@@ -1,9 +1,10 @@
-"use strict";
+'use strict';
 
-import { AgChartsReact } from "ag-charts-react";
-import { cloneDeep } from "lodash";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { cloneDeep } from 'lodash';
+import { render } from 'react-dom';
+import * as agCharts from 'ag-charts-community';
+import { AgChartsReact } from 'ag-charts-react';
 
 class ChartExample extends Component {
   constructor(props) {
@@ -15,31 +16,31 @@ class ChartExample extends Component {
           text: "Try dragging the Navigator's handles to zoom in",
         },
         subtitle: {
-          text: "or the area between them to pan around",
+          text: 'or the area between them to pan around',
         },
         data: [
-          { label: "Android", value: 56.9 },
-          { label: "iOS", value: 22.5 },
-          { label: "BlackBerry", value: 6.8 },
-          { label: "Symbian", value: 8.5 },
-          { label: "Bada", value: 2.6 },
-          { label: "Windows", value: 1.9 },
+          { label: 'Android', value: 56.9 },
+          { label: 'iOS', value: 22.5 },
+          { label: 'BlackBerry', value: 6.8 },
+          { label: 'Symbian', value: 8.5 },
+          { label: 'Bada', value: 2.6 },
+          { label: 'Windows', value: 1.9 },
         ],
         series: [
           {
-            type: "column",
-            xKey: "label",
-            yKey: "value",
+            type: 'column',
+            xKey: 'label',
+            yKey: 'value',
           },
         ],
         axes: [
           {
-            type: "number",
-            position: "left",
+            type: 'number',
+            position: 'left',
           },
           {
-            type: "category",
-            position: "bottom",
+            type: 'category',
+            position: 'bottom',
           },
         ],
         legend: {
@@ -79,4 +80,4 @@ class ChartExample extends Component {
   }
 }
 
-render(<ChartExample />, document.querySelector("#root"));
+render(<ChartExample />, document.querySelector('#root'));

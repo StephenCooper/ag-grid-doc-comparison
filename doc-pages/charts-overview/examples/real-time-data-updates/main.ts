@@ -1,45 +1,45 @@
-import * as agCharts from "ag-charts-community";
-import { AgCartesianChartOptions } from "ag-charts-community";
+import { AgCartesianChartOptions } from "ag-charts-community"
+import * as agCharts from "ag-charts-community"
 
-var systemLoad = 0;
-var userLoad = 0;
-var data: any[] = [];
-var refreshRateInMilliseconds = 50;
-var millisecondsOfData = 30 * 1000;
+var systemLoad = 0
+var userLoad = 0
+var data: any[] = []
+var refreshRateInMilliseconds = 50
+var millisecondsOfData = 30 * 1000
 
 function calculateRandomDelta(maxChange: number) {
-  return maxChange / 2 - Math.floor(Math.random() * Math.floor(maxChange + 1));
+  return maxChange / 2 - Math.floor(Math.random() * Math.floor(maxChange + 1))
 }
 
 function ensureBounds(load: number, max: number) {
   if (load > max) {
-    return max;
+    return max
   } else if (load < 0) {
-    return 0;
+    return 0
   }
 
-  return load;
+  return load
 }
 
 function calculateCpuUsage() {
-  systemLoad = ensureBounds(systemLoad + calculateRandomDelta(2), 30);
-  userLoad = ensureBounds(userLoad + calculateRandomDelta(4), 70);
+  systemLoad = ensureBounds(systemLoad + calculateRandomDelta(2), 30)
+  userLoad = ensureBounds(userLoad + calculateRandomDelta(4), 70)
 }
 
 function getData() {
-  var dataCount = millisecondsOfData / refreshRateInMilliseconds;
-  data.shift();
+  var dataCount = millisecondsOfData / refreshRateInMilliseconds
+  data.shift()
 
-  var timeDelta = (dataCount - data.length - 1) * refreshRateInMilliseconds;
-  var now = Date.now();
+  var timeDelta = (dataCount - data.length - 1) * refreshRateInMilliseconds
+  var now = Date.now()
 
   while (data.length < dataCount) {
-    calculateCpuUsage();
-    data.push({ time: now - timeDelta, system: systemLoad, user: userLoad });
-    timeDelta -= refreshRateInMilliseconds;
+    calculateCpuUsage()
+    data.push({ time: now - timeDelta, system: systemLoad, user: userLoad })
+    timeDelta -= refreshRateInMilliseconds
   }
 
-  return data;
+  return data
 }
 
 const options: AgCartesianChartOptions = {
@@ -58,13 +58,7 @@ const options: AgCartesianChartOptions = {
     fontSize: 18,
   },
   series: [
-    {
-      type: "area",
-      xKey: "time",
-      yKey: "system",
-      stacked: true,
-      yName: "System",
-    },
+    { type: "area", xKey: "time", yKey: "system", stacked: true, yName: "System" },
     { type: "area", xKey: "time", yKey: "user", stacked: true, yName: "User" },
   ],
   axes: [
@@ -87,15 +81,15 @@ const options: AgCartesianChartOptions = {
   legend: {
     position: "bottom",
   },
-};
+}
 
-var chart = agCharts.AgChart.create(options);
+var chart = agCharts.AgChart.create(options)
 
 /** inScope */
 function updateData() {
-  var now = Date.now();
-  options.data = getData();
-  agCharts.AgChart.update(chart, options);
+  var now = Date.now()
+  options.data = getData()
+  agCharts.AgChart.update(chart, options)
 }
 //@ts-ignore
-setInterval(this.updateData, refreshRateInMilliseconds);
+setInterval(this.updateData, refreshRateInMilliseconds)

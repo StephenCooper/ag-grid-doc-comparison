@@ -1,8 +1,8 @@
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
-import { AgGridVue } from "ag-grid-vue";
-import Vue from "vue";
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import 'ag-grid-enterprise';
+import { AgGridVue } from 'ag-grid-vue';
+import Vue from 'vue';
 
 const VueExample = {
   template: `
@@ -23,15 +23,15 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
         {
-          field: "groupType",
+          field: 'groupType',
           valueGetter: (params) => {
-            return params.data ? "Provided" : "Filler";
+            return params.data ? 'Provided' : 'Filler';
           },
         },
       ],
@@ -48,13 +48,13 @@ const VueExample = {
   },
   created() {
     this.rowData = [
-      { orgHierarchy: ["A"] },
-      { orgHierarchy: ["A", "B"] },
-      { orgHierarchy: ["C", "D"] },
-      { orgHierarchy: ["E", "F", "G", "H"] },
+      { orgHierarchy: ['A'] },
+      { orgHierarchy: ['A', 'B'] },
+      { orgHierarchy: ['C', 'D'] },
+      { orgHierarchy: ['E', 'F', 'G', 'H'] },
     ];
     this.autoGroupColumnDef = {
-      headerName: "Organisation Hierarchy",
+      headerName: 'Organisation Hierarchy',
       cellRendererParams: {
         suppressCount: true,
       },
@@ -73,8 +73,8 @@ const VueExample = {
 };
 
 new Vue({
-  el: "#app",
+  el: '#app',
   components: {
-    "my-component": VueExample,
+    'my-component': VueExample,
   },
 });

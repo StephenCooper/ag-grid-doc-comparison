@@ -1,10 +1,10 @@
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine-dark.css";
-import { AgGridVue } from "@ag-grid-community/vue3";
-import { MenuModule } from "@ag-grid-enterprise/menu";
-import { ServerSideRowModelModule } from "@ag-grid-enterprise/server-side-row-model";
-import { createApp } from "vue";
+import { ModuleRegistry } from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine-dark.css';
+import { AgGridVue } from '@ag-grid-community/vue3';
+import { MenuModule } from '@ag-grid-enterprise/menu';
+import { ServerSideRowModelModule } from '@ag-grid-enterprise/server-side-row-model';
+import { createApp } from 'vue';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([ServerSideRowModelModule, MenuModule]);
@@ -26,24 +26,24 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
-        { field: "athlete", filter: "agTextColumnFilter", minWidth: 220 },
+        { field: 'athlete', filter: 'agTextColumnFilter', minWidth: 220 },
         {
-          field: "year",
-          filter: "agNumberColumnFilter",
+          field: 'year',
+          filter: 'agNumberColumnFilter',
           filterParams: {
-            buttons: ["reset"],
+            buttons: ['reset'],
             debounceMs: 1000,
             suppressAndOrCondition: true,
           },
         },
-        { field: "gold", type: "number" },
-        { field: "silver", type: "number" },
-        { field: "bronze", type: "number" },
+        { field: 'gold', type: 'number' },
+        { field: 'silver', type: 'number' },
+        { field: 'bronze', type: 'number' },
       ],
       gridApi: null,
       columnApi: null,
@@ -52,7 +52,7 @@ const VueExample = {
         minWidth: 100,
         sortable: true,
         resizable: true,
-        menuTabs: ["filterMenuTab"],
+        menuTabs: ['filterMenuTab'],
       },
       columnTypes: null,
       rowModelType: null,
@@ -61,10 +61,10 @@ const VueExample = {
   },
   created() {
     this.columnTypes = {
-      number: { filter: "agNumberColumnFilter" },
+      number: { filter: 'agNumberColumnFilter' },
     };
-    this.rowModelType = "serverSide";
-    this.serverSideStoreType = "partial";
+    this.rowModelType = 'serverSide';
+    this.serverSideStoreType = 'partial';
   },
   methods: {
     onGridReady(params) {
@@ -80,7 +80,7 @@ const VueExample = {
         params.api.setServerSideDatasource(datasource);
       };
 
-      fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
         .then((resp) => resp.json())
         .then((data) => updateData(data));
     },
@@ -90,7 +90,7 @@ const VueExample = {
 window.getServerSideDatasource = function getServerSideDatasource(server) {
   return {
     getRows: function (params) {
-      console.log("[Datasource] - rows requested by grid: ", params.request);
+      console.log('[Datasource] - rows requested by grid: ', params.request);
       // get data for request from our fake server
       var response = server.getData(params.request);
       // simulating real server call with a 500ms delay
@@ -109,4 +109,4 @@ window.getServerSideDatasource = function getServerSideDatasource(server) {
   };
 };
 
-createApp(VueExample).mount("#app");
+createApp(VueExample).mount('#app');

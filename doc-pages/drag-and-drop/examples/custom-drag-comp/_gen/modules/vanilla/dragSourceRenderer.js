@@ -1,20 +1,20 @@
 class DragSourceRenderer {
   init(params) {
-    var eTemp = document.createElement("div");
+    var eTemp = document.createElement('div');
     eTemp.innerHTML = '<div draggable="true">Drag Me!</div>';
 
     this.eGui = eTemp.firstChild;
     this.rowNode = params.node;
 
     this.onDragStartListener = this.onDragStart.bind(this);
-    this.eGui.addEventListener("dragstart", this.onDragStartListener);
+    this.eGui.addEventListener('dragstart', this.onDragStartListener);
   }
 
   onDragStart(dragEvent) {
     var userAgent = window.navigator.userAgent;
     dragEvent.dataTransfer.setData(
-      "text/plain",
-      "Dragged item with ID: " + this.rowNode.data.id
+      'text/plain',
+      'Dragged item with ID: ' + this.rowNode.data.id
     );
   }
 
@@ -27,6 +27,6 @@ class DragSourceRenderer {
   }
 
   destroy() {
-    this.eGui.removeEventListener("dragstart", this.onDragStartListener);
+    this.eGui.removeEventListener('dragstart', this.onDragStartListener);
   }
 }

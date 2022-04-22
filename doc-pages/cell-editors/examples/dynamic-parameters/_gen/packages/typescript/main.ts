@@ -3,11 +3,11 @@ import {
   Grid,
   GridOptions,
   ICellEditorParams,
-} from "ag-grid-community";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
-import { GenderCellRenderer } from "./genderCellRenderer";
+} from 'ag-grid-community';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import 'ag-grid-enterprise';
+import { GenderCellRenderer } from './genderCellRenderer';
 
 const cellCellEditorParams = (params: ICellEditorParams) => {
   const selectedCountry = params.data.country;
@@ -21,36 +21,36 @@ const cellCellEditorParams = (params: ICellEditorParams) => {
 
 const gridOptions: GridOptions = {
   columnDefs: [
-    { field: "name" },
+    { field: 'name' },
     {
-      field: "gender",
+      field: 'gender',
       cellRenderer: GenderCellRenderer,
-      cellEditor: "agRichSelectCellEditor",
+      cellEditor: 'agRichSelectCellEditor',
       cellEditorPopup: true,
       cellEditorParams: {
-        values: ["Male", "Female"],
+        values: ['Male', 'Female'],
         cellRenderer: GenderCellRenderer,
         cellEditorPopup: true,
       },
     },
     {
-      field: "country",
-      cellEditor: "agRichSelectCellEditor",
+      field: 'country',
+      cellEditor: 'agRichSelectCellEditor',
       cellEditorPopup: true,
       cellEditorParams: {
         cellHeight: 50,
-        values: ["Ireland", "USA"],
+        values: ['Ireland', 'USA'],
       },
     },
     {
-      field: "city",
-      cellEditor: "agRichSelectCellEditor",
+      field: 'city',
+      cellEditor: 'agRichSelectCellEditor',
       cellEditorPopup: true,
       cellEditorParams: cellCellEditorParams,
     },
     {
-      field: "address",
-      cellEditor: "agLargeTextCellEditor",
+      field: 'address',
+      cellEditor: 'agLargeTextCellEditor',
       cellEditorPopup: true,
       minWidth: 550,
     },
@@ -67,8 +67,8 @@ const gridOptions: GridOptions = {
 
 function countyToCityMap(match: string): string[] {
   const map: { [key: string]: string[] } = {
-    Ireland: ["Dublin", "Cork", "Galway"],
-    USA: ["New York", "Los Angeles", "Chicago", "Houston"],
+    Ireland: ['Dublin', 'Cork', 'Galway'],
+    USA: ['New York', 'Los Angeles', 'Chicago', 'Houston'],
   };
 
   return map[match];
@@ -77,18 +77,18 @@ function countyToCityMap(match: string): string[] {
 function onCellValueChanged(params: CellValueChangedEvent) {
   const colId = params.column.getId();
 
-  if (colId === "country") {
+  if (colId === 'country') {
     const selectedCountry = params.data.country;
     const selectedCity = params.data.city;
     const allowedCities = countyToCityMap(selectedCountry);
     const cityMismatch = allowedCities.indexOf(selectedCity) < 0;
 
     if (cityMismatch) {
-      params.node.setDataValue("city", null);
+      params.node.setDataValue('city', null);
     }
   }
 }
 
 // setup the grid after the page has finished loading
-const gridDiv = document.querySelector<HTMLElement>("#myGrid")!;
+const gridDiv = document.querySelector<HTMLElement>('#myGrid')!;
 new Grid(gridDiv, gridOptions);

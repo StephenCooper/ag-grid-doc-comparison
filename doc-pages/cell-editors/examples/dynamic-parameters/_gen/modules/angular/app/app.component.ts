@@ -3,15 +3,15 @@ import {
   ColDef,
   GridReadyEvent,
   ICellEditorParams,
-} from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { Component } from "@angular/core";
-import { GenderCellRenderer } from "./gender-cell-renderer.component";
+} from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { Component } from '@angular/core';
+import { GenderCellRenderer } from './gender-cell-renderer.component';
 // Required feature modules are registered in app.module.ts
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<ag-grid-angular
     style="width: 100%; height: 100%;"
     class="ag-theme-alpine"
@@ -24,36 +24,36 @@ import { GenderCellRenderer } from "./gender-cell-renderer.component";
 })
 export class AppComponent {
   public columnDefs: ColDef[] = [
-    { field: "name" },
+    { field: 'name' },
     {
-      field: "gender",
+      field: 'gender',
       cellRenderer: GenderCellRenderer,
-      cellEditor: "agRichSelectCellEditor",
+      cellEditor: 'agRichSelectCellEditor',
       cellEditorPopup: true,
       cellEditorParams: {
-        values: ["Male", "Female"],
+        values: ['Male', 'Female'],
         cellRenderer: GenderCellRenderer,
         cellEditorPopup: true,
       },
     },
     {
-      field: "country",
-      cellEditor: "agRichSelectCellEditor",
+      field: 'country',
+      cellEditor: 'agRichSelectCellEditor',
       cellEditorPopup: true,
       cellEditorParams: {
         cellHeight: 50,
-        values: ["Ireland", "USA"],
+        values: ['Ireland', 'USA'],
       },
     },
     {
-      field: "city",
-      cellEditor: "agRichSelectCellEditor",
+      field: 'city',
+      cellEditor: 'agRichSelectCellEditor',
       cellEditorPopup: true,
       cellEditorParams: cellCellEditorParams,
     },
     {
-      field: "address",
-      cellEditor: "agLargeTextCellEditor",
+      field: 'address',
+      cellEditor: 'agLargeTextCellEditor',
       cellEditorPopup: true,
       minWidth: 550,
     },
@@ -68,13 +68,13 @@ export class AppComponent {
 
   onCellValueChanged(params: CellValueChangedEvent) {
     const colId = params.column.getId();
-    if (colId === "country") {
+    if (colId === 'country') {
       const selectedCountry = params.data.country;
       const selectedCity = params.data.city;
       const allowedCities = countyToCityMap(selectedCountry);
       const cityMismatch = allowedCities.indexOf(selectedCity) < 0;
       if (cityMismatch) {
-        params.node.setDataValue("city", null);
+        params.node.setDataValue('city', null);
       }
     }
   }
@@ -94,8 +94,8 @@ function countyToCityMap(match: string): string[] {
   const map: {
     [key: string]: string[];
   } = {
-    Ireland: ["Dublin", "Cork", "Galway"],
-    USA: ["New York", "Los Angeles", "Chicago", "Houston"],
+    Ireland: ['Dublin', 'Cork', 'Galway'],
+    USA: ['New York', 'Los Angeles', 'Chicago', 'Houston'],
   };
   return map[match];
 }

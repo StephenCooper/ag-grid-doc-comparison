@@ -8,17 +8,18 @@ import {
   IFilterComp,
   IFilterParams,
   IFilterType,
-} from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { Component } from "@angular/core";
+  IsGroupOpenByDefaultParams,
+} from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { Component } from '@angular/core';
 // Required feature modules are registered in app.module.ts
 declare var LINUX_DISTROS: string[];
 declare var CITIES: string[];
 declare var LAPTOPS: string[];
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<div class="test-container">
     <div class="test-header">
       <button (click)="onBtUpdate()">Update</button>
@@ -40,6 +41,7 @@ declare var LAPTOPS: string[];
       [suppressAggAtRootLevel]="true"
       [suppressRowClickSelection]="true"
       [autoGroupColumnDef]="autoGroupColumnDef"
+      [isGroupOpenByDefault]="isGroupOpenByDefault"
       [rowData]="rowData"
       (gridReady)="onGridReady($event)"
     ></ag-grid-angular>
@@ -49,11 +51,11 @@ export class AppComponent {
   private gridApi!: GridApi;
 
   public columnDefs: ColDef[] = [
-    { field: "city", rowGroup: true, hide: true },
-    { field: "laptop", rowGroup: true, hide: true },
-    { field: "distro", sort: "asc", comparator: myComparator },
+    { field: 'city', rowGroup: true, hide: true },
+    { field: 'laptop', rowGroup: true, hide: true },
+    { field: 'distro', sort: 'asc', comparator: myComparator },
     {
-      field: "value",
+      field: 'value',
       enableCellChangeFlash: true,
       aggFunc: myAggFunc,
       filter: myFilter,
@@ -65,10 +67,15 @@ export class AppComponent {
     sortable: true,
     resizable: true,
   };
-  public rowSelection = "multiple";
+  public rowSelection = 'multiple';
   public autoGroupColumnDef: ColDef = {
-    field: "name",
+    field: 'name',
     cellRendererParams: { checkbox: true },
+  };
+  public isGroupOpenByDefault: (
+    params: IsGroupOpenByDefaultParams
+  ) => boolean = function (params) {
+    return ['Delhi', 'Seoul'].includes(params.key);
   };
   public rowData!: any[];
 
@@ -77,7 +84,7 @@ export class AppComponent {
     // get the first child of the
     const selectedRows = api.getSelectedRows();
     if (!selectedRows || selectedRows.length === 0) {
-      console.log("No rows selected!");
+      console.log('No rows selected!');
       return;
     }
     const newItems: any[] = [];
@@ -93,7 +100,7 @@ export class AppComponent {
       );
       newItems.push(newItem);
     });
-    timeOperation("Duplicate", function () {
+    timeOperation('Duplicate', function () {
       api.applyTransaction({ add: newItems });
     });
   }
@@ -103,7 +110,7 @@ export class AppComponent {
     // get the first child of the
     const selectedRows = api.getSelectedRows();
     if (!selectedRows || selectedRows.length === 0) {
-      console.log("No rows selected!");
+      console.log('No rows selected!');
       return;
     }
     const updatedItems: any[] = [];
@@ -119,7 +126,7 @@ export class AppComponent {
       );
       updatedItems.push(newItem);
     });
-    timeOperation("Update", function () {
+    timeOperation('Update', function () {
       api.applyTransaction({ update: updatedItems });
     });
   }
@@ -129,10 +136,10 @@ export class AppComponent {
     // get the first child of the
     const selectedRows = api.getSelectedRows();
     if (!selectedRows || selectedRows.length === 0) {
-      console.log("No rows selected!");
+      console.log('No rows selected!');
       return;
     }
-    timeOperation("Delete", function () {
+    timeOperation('Delete', function () {
       api.applyTransaction({ remove: selectedRows });
     });
   }
@@ -143,8 +150,8 @@ export class AppComponent {
 
   onBtUpdateModel() {
     const api = this.gridApi!;
-    timeOperation("Update Model", function () {
-      api.refreshClientSideRowModel("filter");
+    timeOperation('Update Model', function () {
+      api.refreshClientSideRowModel('filter');
     });
   }
 
@@ -152,13 +159,11 @@ export class AppComponent {
     this.gridApi = params.api;
 
     params.api.setFilterModel({
-      value: { value: "50" },
+      value: { value: '50' },
     });
-    timeOperation("Initialisation", function () {
+    timeOperation('Initialisation', function () {
       params.api.setRowData(getData());
     });
-    params.api.getDisplayedRowAtIndex(2)!.setExpanded(true);
-    params.api.getDisplayedRowAtIndex(4)!.setExpanded(true);
   }
 
   getRowId(params: GetRowIdParams) {
@@ -191,10 +196,10 @@ function getMyFilter(): IFilterType {
     init(params: IFilterParams) {
       this.filterParams = params;
       this.filterValue = null;
-      this.eGui = document.createElement("div");
+      this.eGui = document.createElement('div');
       this.eGui.innerHTML = '<div>Greater Than: <input type="text"/></div>';
-      this.eInput = this.eGui.querySelector("input");
-      this.eInput.addEventListener("input", () => {
+      this.eInput = this.eGui.querySelector('input');
+      this.eInput.addEventListener('input', () => {
         this.getValueFromInput();
         params.filterChangedCallback();
       });
@@ -248,18 +253,18 @@ function timeOperation(name: string, operation: any) {
   const end = new Date().getTime();
   console.log(
     name +
-      " finished in " +
+      ' finished in ' +
       (end - start) +
-      "ms, aggCallCount = " +
+      'ms, aggCallCount = ' +
       aggCallCount +
-      ", compareCallCount = " +
+      ', compareCallCount = ' +
       compareCallCount +
-      ", filterCallCount = " +
+      ', filterCallCount = ' +
       filterCallCount
   );
 }
 function letter(i: number) {
-  return "abcdefghijklmnopqrstuvwxyz".substring(i, i + 1);
+  return 'abcdefghijklmnopqrstuvwxyz'.substring(i, i + 1);
 }
 function randomLetter() {
   return letter(Math.floor(Math.random() * 26 + 1));
@@ -268,9 +273,9 @@ function getData() {
   const myRowData = [];
   for (let i = 0; i < 10000; i++) {
     const name =
-      "Mr " +
+      'Mr ' +
       randomLetter().toUpperCase() +
-      " " +
+      ' ' +
       randomLetter().toUpperCase() +
       randomLetter() +
       randomLetter() +
@@ -279,7 +284,7 @@ function getData() {
     const city = CITIES[i % CITIES.length];
     const distro =
       LINUX_DISTROS[i % LINUX_DISTROS.length] +
-      " v" +
+      ' v' +
       Math.floor(Math.random() * 100 + 1) / 10;
     const university = LAPTOPS[i % LAPTOPS.length];
     const value = Math.floor(Math.random() * 100) + 10; // between 10 and 110

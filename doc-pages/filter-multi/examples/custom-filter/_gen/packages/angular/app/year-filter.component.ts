@@ -1,9 +1,9 @@
-import { Component } from "@angular/core";
-import { IFilterAngularComp } from "ag-grid-angular";
-import { IDoesFilterPassParams, IFilterParams } from "ag-grid-community";
+import { Component } from '@angular/core';
+import { IFilterAngularComp } from 'ag-grid-angular';
+import { IDoesFilterPassParams, IFilterParams } from 'ag-grid-community';
 
 @Component({
-  selector: "year-filter",
+  selector: 'year-filter',
   template: ` <div class="year-filter">
     <label>
       <input

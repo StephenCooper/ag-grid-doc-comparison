@@ -1,4 +1,4 @@
-import { IDateComp, IDateParams } from "@ag-grid-community/core";
+import { IDateComp, IDateParams } from '@ag-grid-community/core';
 // we'll be using the globally provided flatpickr for our example
 declare var flatpickr: any;
 
@@ -17,21 +17,21 @@ export class CustomDateComponent implements IDateComp {
 
     this.params = params;
 
-    this.eGui = document.createElement("div");
-    this.eGui.setAttribute("role", "presentation");
-    this.eGui.classList.add("ag-input-wrapper");
-    this.eGui.classList.add("custom-date-filter");
+    this.eGui = document.createElement('div');
+    this.eGui.setAttribute('role', 'presentation');
+    this.eGui.classList.add('ag-input-wrapper');
+    this.eGui.classList.add('custom-date-filter');
     this.eGui.innerHTML = template;
 
-    this.eInput = this.eGui.querySelector("input")!;
+    this.eInput = this.eGui.querySelector('input')!;
 
     this.picker = flatpickr(this.eGui, {
       onChange: this.onDateChanged.bind(this),
-      dateFormat: "d/m/Y",
+      dateFormat: 'd/m/Y',
       wrap: true,
     });
 
-    this.picker.calendarContainer.classList.add("ag-custom-component-popup");
+    this.picker.calendarContainer.classList.add('ag-custom-component-popup');
 
     this.date = null;
   }
@@ -55,6 +55,6 @@ export class CustomDateComponent implements IDateComp {
   }
 
   setInputPlaceholder(placeholder: any) {
-    this.eInput.setAttribute("placeholder", placeholder);
+    this.eInput.setAttribute('placeholder', placeholder);
   }
 }

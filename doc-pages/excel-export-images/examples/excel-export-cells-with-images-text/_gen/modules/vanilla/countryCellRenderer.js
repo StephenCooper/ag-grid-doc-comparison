@@ -1,6 +1,6 @@
 class CountryCellRenderer {
   init(params) {
-    this.eGui = document.createElement("img");
+    this.eGui = document.createElement('img');
     this.eGui.alt = params.data;
 
     const context = params.context;

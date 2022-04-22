@@ -1,10 +1,10 @@
-"use strict";
+'use strict';
 
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import { AgGridReact } from "ag-grid-react";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from 'ag-grid-react';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 
 class GridExample extends Component {
   constructor(props) {
@@ -12,13 +12,13 @@ class GridExample extends Component {
 
     this.state = {
       columnDefs: [
-        { field: "firstName" },
-        { field: "lastName" },
-        { field: "gender" },
-        { field: "age" },
-        { field: "mood" },
-        { field: "country" },
-        { field: "address", minWidth: 550 },
+        { field: 'firstName' },
+        { field: 'lastName' },
+        { field: 'gender' },
+        { field: 'age' },
+        { field: 'mood' },
+        { field: 'country' },
+        { field: 'address', minWidth: 550 },
       ],
       defaultColDef: {
         flex: 1,
@@ -42,10 +42,10 @@ class GridExample extends Component {
   };
 
   onBtStartEditing = (key, char, pinned) => {
-    this.gridApi.setFocusedCell(0, "lastName", pinned);
+    this.gridApi.setFocusedCell(0, 'lastName', pinned);
     this.gridApi.startEditingCell({
       rowIndex: 0,
-      colKey: "lastName",
+      colKey: 'lastName',
       // set to 'top', 'bottom' or undefined
       rowPinned: pinned,
       key: key,
@@ -66,47 +66,49 @@ class GridExample extends Component {
     if (cellDefs.length > 0) {
       var cellDef = cellDefs[0];
       console.log(
-        "editing cell is: row = " +
+        'editing cell is: row = ' +
           cellDef.rowIndex +
-          ", col = " +
+          ', col = ' +
           cellDef.column.getId() +
-          ", floating = " +
+          ', floating = ' +
           cellDef.rowPinned
       );
     } else {
-      console.log("no cells are editing");
+      console.log('no cells are editing');
     }
   };
 
   render() {
     return (
-      <div style={{ width: "100%", height: "100%" }}>
+      <div style={{ width: '100%', height: '100%' }}>
         <div className="example-wrapper">
           <div
             style={{
-              marginBottom: "5px",
-              display: "flex",
-              justifyContent: "space-between",
+              marginBottom: '5px',
+              display: 'flex',
+              justifyContent: 'space-between',
             }}
           >
             <div>
-              <button onClick={() => this.onBtStartEditing()}>edit (0)</button>
-              <button onClick={() => this.onBtStartEditing("Delete")}>
+              <button onClick={() => this.onBtStartEditing(undefined)}>
+                edit (0)
+              </button>
+              <button onClick={() => this.onBtStartEditing('Delete')}>
                 edit (0, Delete)
               </button>
-              <button onClick={() => this.onBtStartEditing(undefined, "T")}>
+              <button onClick={() => this.onBtStartEditing(undefined, 'T')}>
                 edit (0, 'T')
               </button>
               <button
                 onClick={() =>
-                  this.onBtStartEditing(undefined, undefined, "top")
+                  this.onBtStartEditing(undefined, undefined, 'top')
                 }
               >
                 edit (0, Top)
               </button>
               <button
                 onClick={() =>
-                  this.onBtStartEditing(undefined, undefined, "bottom")
+                  this.onBtStartEditing(undefined, undefined, 'bottom')
                 }
               >
                 edit (0, Bottom)
@@ -126,8 +128,8 @@ class GridExample extends Component {
           <div className="grid-wrapper">
             <div
               style={{
-                height: "100%",
-                width: "100%",
+                height: '100%',
+                width: '100%',
               }}
               className="ag-theme-alpine"
             >
@@ -150,26 +152,26 @@ class GridExample extends Component {
 function getPinnedTopData() {
   return [
     {
-      firstName: "##",
-      lastName: "##",
-      gender: "##",
-      address: "##",
-      mood: "##",
-      country: "##",
+      firstName: '##',
+      lastName: '##',
+      gender: '##',
+      address: '##',
+      mood: '##',
+      country: '##',
     },
   ];
 }
 function getPinnedBottomData() {
   return [
     {
-      firstName: "##",
-      lastName: "##",
-      gender: "##",
-      address: "##",
-      mood: "##",
-      country: "##",
+      firstName: '##',
+      lastName: '##',
+      gender: '##',
+      address: '##',
+      mood: '##',
+      country: '##',
     },
   ];
 }
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

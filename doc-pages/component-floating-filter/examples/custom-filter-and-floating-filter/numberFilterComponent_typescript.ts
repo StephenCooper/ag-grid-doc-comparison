@@ -1,26 +1,22 @@
-import {
-  IDoesFilterPassParams,
-  IFilterComp,
-  IFilterParams,
-} from "@ag-grid-community/core";
+import { IDoesFilterPassParams, IFilterComp, IFilterParams } from "@ag-grid-community/core";
 
 export class NumberFilterComponent implements IFilterComp {
-  filterText!: string | null;
-  params!: IFilterParams;
-  gui!: HTMLDivElement;
-  eFilterText: any;
-  onFilterChanged!: () => void;
+    filterText!: string | null;
+    params!: IFilterParams;
+    gui!: HTMLDivElement;
+    eFilterText: any;
+    onFilterChanged!: () => void;
 
-  init(params: IFilterParams) {
-    this.filterText = null;
-    this.params = params;
-    this.setupGui();
-  }
+    init(params: IFilterParams) {
+        this.filterText = null;
+        this.params = params;
+        this.setupGui();
+    }
 
-  // not called by AG Grid, just for us to help setup
-  setupGui() {
-    this.gui = document.createElement("div");
-    this.gui.innerHTML = `
+    // not called by AG Grid, just for us to help setup
+    setupGui() {
+        this.gui = document.createElement('div');
+        this.gui.innerHTML = `
             <div style="padding: 4px">
                 <div style="font-weight: bold;">Greater than: </div>
                 <div>
@@ -29,75 +25,70 @@ export class NumberFilterComponent implements IFilterComp {
             </div>
         `;
 
-    this.onFilterChanged = () => {
-      this.extractFilterText();
-      this.params.filterChangedCallback();
-    };
+        this.onFilterChanged = () => {
+            this.extractFilterText();
+            this.params.filterChangedCallback();
+        };
 
-    this.eFilterText = this.gui.querySelector("#filterText");
-    this.eFilterText.addEventListener("input", this.onFilterChanged);
-  }
-
-  isNumeric = (n: any) => !isNaN(parseFloat(n)) && isFinite(n);
-
-  myMethodForTakingValueFromFloatingFilter(value: any) {
-    this.eFilterText.value = value;
-    this.onFilterChanged();
-  }
-
-  extractFilterText() {
-    this.filterText = this.eFilterText.value;
-  }
-
-  getGui() {
-    return this.gui;
-  }
-
-  doesFilterPass(params: IDoesFilterPassParams) {
-    if (!this.isFilterActive()) {
-      return false;
+        this.eFilterText = this.gui.querySelector('#filterText');
+        this.eFilterText.addEventListener('input', this.onFilterChanged);
     }
 
-    const { api, colDef, column, columnApi, context, valueGetter } =
-      this.params;
-    const { node } = params;
+    isNumeric = (n: any) => !isNaN(parseFloat(n)) && isFinite(parseFloat(n));
 
-    const value = valueGetter({
-      api,
-      colDef,
-      column,
-      columnApi,
-      context,
-      data: node.data,
-      getValue: (field) => node.data[field],
-      node,
-    });
+    myMethodForTakingValueFromFloatingFilter(value: any) {
+        this.eFilterText.value = value;
+        this.onFilterChanged();
+    }
 
-    const filterValue = this.filterText;
+    extractFilterText() {
+        this.filterText = this.eFilterText.value;
+    }
 
-    if (!value) return false;
-    return Number(value) > Number(filterValue);
-  }
+    getGui() {
+        return this.gui;
+    }
 
-  isFilterActive() {
-    return (
-      this.filterText !== null &&
-      this.filterText !== undefined &&
-      this.filterText !== "" &&
-      this.isNumeric(this.filterText)
-    );
-  }
+    doesFilterPass(params: IDoesFilterPassParams) {
+        if (!this.isFilterActive()) { return false; }
 
-  getModel() {
-    return this.isFilterActive() ? Number(this.eFilterText.value) : null;
-  }
+        const { api, colDef, column, columnApi, context, valueGetter } = this.params;
+        const { node } = params;
 
-  setModel(model: any) {
-    this.eFilterText.value = model;
-    this.extractFilterText();
-  }
+        const value = valueGetter({
+            api,
+            colDef,
+            column,
+            columnApi,
+            context,
+            data: node.data,
+            getValue: (field) => node.data[field],
+            node,
+        });
 
-  destroy() {
-    this.eFilterText.removeEventListener("input", this.onFilterChanged);
-  }
+        const filterValue = this.filterText;
+
+        if (!value) return false;
+        return Number(value) > Number(filterValue);
+    }
+
+    isFilterActive() {
+        return this.filterText !== null &&
+            this.filterText !== undefined &&
+            this.filterText !== '' &&
+            this.isNumeric(this.filterText);
+    }
+
+    getModel() {
+        return this.isFilterActive() ? Number(this.eFilterText.value) : null;
+    }
+
+    setModel(model: any) {
+        this.eFilterText.value = model;
+        this.extractFilterText();
+    }
+
+    destroy() {
+        this.eFilterText.removeEventListener('input', this.onFilterChanged);
+    }
 }

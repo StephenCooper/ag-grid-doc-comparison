@@ -1,10 +1,10 @@
-"use strict";
+'use strict';
 
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import { AgGridReact } from "ag-grid-react";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from 'ag-grid-react';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 
 class GridExample extends Component {
   constructor(props) {
@@ -17,11 +17,11 @@ class GridExample extends Component {
         filter: true,
         resizable: true,
       },
-      rowSelection: "multiple",
+      rowSelection: 'multiple',
       rowClassRules: {
-        "red-row": 'data.color == "Red"',
-        "green-row": 'data.color == "Green"',
-        "blue-row": 'data.color == "Blue"',
+        'red-row': 'data.color == "Red"',
+        'green-row': 'data.color == "Green"',
+        'blue-row': 'data.color == "Blue"',
       },
       rowData: getData(),
       columnDefs: [
@@ -31,10 +31,10 @@ class GridExample extends Component {
           dndSourceOnRowDrag: onRowDrag,
           checkboxSelection: true,
         },
-        { field: "id" },
-        { field: "color" },
-        { field: "value1" },
-        { field: "value2" },
+        { field: 'id' },
+        { field: 'color' },
+        { field: 'value1' },
+        { field: 'value2' },
       ],
     };
   }
@@ -47,30 +47,30 @@ class GridExample extends Component {
   onDragOver = (event) => {
     var dragSupported = event.dataTransfer.types.length;
     if (dragSupported) {
-      event.dataTransfer.dropEffect = "move";
+      event.dataTransfer.dropEffect = 'move';
     }
     event.preventDefault();
   };
 
   onDrop = (event) => {
     event.preventDefault();
-    var jsonData = event.dataTransfer.getData("application/json");
-    var eJsonRow = document.createElement("div");
-    eJsonRow.classList.add("json-row");
+    var jsonData = event.dataTransfer.getData('application/json');
+    var eJsonRow = document.createElement('div');
+    eJsonRow.classList.add('json-row');
     eJsonRow.innerText = jsonData;
-    var eJsonDisplay = document.querySelector("#eJsonDisplay");
+    var eJsonDisplay = document.querySelector('#eJsonDisplay');
     eJsonDisplay.appendChild(eJsonRow);
   };
 
   render() {
     return (
-      <div style={{ width: "100%", height: "100%" }}>
+      <div style={{ width: '100%', height: '100%' }}>
         <div className="outer">
           <div className="grid-col">
             <div
               style={{
-                height: "100%",
-                width: "100%",
+                height: '100%',
+                width: '100%',
               }}
               className="ag-theme-alpine"
             >
@@ -109,14 +109,14 @@ function onRowDrag(params) {
   var rowNode = params.rowNode;
   var e = params.dragEvent;
   var jsonObject = {
-    grid: "GRID_001",
-    operation: "Drag on Column",
+    grid: 'GRID_001',
+    operation: 'Drag on Column',
     rowId: rowNode.data.id,
     selected: rowNode.isSelected(),
   };
   var jsonData = JSON.stringify(jsonObject);
-  e.dataTransfer.setData("application/json", jsonData);
-  e.dataTransfer.setData("text/plain", jsonData);
+  e.dataTransfer.setData('application/json', jsonData);
+  e.dataTransfer.setData('text/plain', jsonData);
 }
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

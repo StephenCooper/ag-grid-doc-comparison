@@ -1,7 +1,7 @@
 class MultilineCellRenderer {
   init(params) {
-    this.eGui = document.createElement("div");
-    this.eGui.innerHTML = params.value.replace("\n", "<br/>");
+    this.eGui = document.createElement('div');
+    this.eGui.innerHTML = params.value.replace('\n', '<br/>');
   }
 
   getGui() {

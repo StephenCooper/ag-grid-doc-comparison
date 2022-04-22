@@ -1,14 +1,14 @@
-"use strict";
+'use strict';
 
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { AgGridReact } from "@ag-grid-community/react";
-import React, { Component } from "react";
-import { render } from "react-dom";
-import NumberFilterComponent from "./numberFilterComponent.jsx";
-import NumberFloatingFilterComponent from "./numberFloatingFilterComponent.jsx";
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from '@ag-grid-community/react';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import NumberFilterComponent from './numberFilterComponent.jsx';
+import NumberFloatingFilterComponent from './numberFloatingFilterComponent.jsx';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([ClientSideRowModelModule]);
@@ -19,9 +19,9 @@ class GridExample extends Component {
 
     this.state = {
       columnDefs: [
-        { field: "athlete", filter: "agTextColumnFilter" },
+        { field: 'athlete', filter: 'agTextColumnFilter' },
         {
-          field: "gold",
+          field: 'gold',
           floatingFilterComponent: NumberFloatingFilterComponent,
           floatingFilterComponentParams: {
             suppressFilterButton: true,
@@ -29,7 +29,7 @@ class GridExample extends Component {
           filter: NumberFilterComponent,
         },
         {
-          field: "silver",
+          field: 'silver',
           floatingFilterComponent: NumberFloatingFilterComponent,
           floatingFilterComponentParams: {
             suppressFilterButton: true,
@@ -37,7 +37,7 @@ class GridExample extends Component {
           filter: NumberFilterComponent,
         },
         {
-          field: "bronze",
+          field: 'bronze',
           floatingFilterComponent: NumberFloatingFilterComponent,
           floatingFilterComponentParams: {
             suppressFilterButton: true,
@@ -45,7 +45,7 @@ class GridExample extends Component {
           filter: NumberFilterComponent,
         },
         {
-          field: "total",
+          field: 'total',
           floatingFilterComponent: NumberFloatingFilterComponent,
           floatingFilterComponentParams: {
             suppressFilterButton: true,
@@ -74,18 +74,18 @@ class GridExample extends Component {
       this.setState({ rowData: data });
     };
 
-    fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+    fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .then((resp) => resp.json())
       .then((data) => updateData(data));
   };
 
   render() {
     return (
-      <div style={{ width: "100%", height: "100%" }}>
+      <div style={{ width: '100%', height: '100%' }}>
         <div
           style={{
-            height: "100%",
-            width: "100%",
+            height: '100%',
+            width: '100%',
           }}
           className="ag-theme-alpine"
         >
@@ -101,4 +101,4 @@ class GridExample extends Component {
   }
 }
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

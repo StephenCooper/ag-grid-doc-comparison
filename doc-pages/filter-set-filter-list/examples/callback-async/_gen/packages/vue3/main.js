@@ -1,8 +1,8 @@
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
-import { AgGridVue } from "ag-grid-vue3";
-import { createApp } from "vue";
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import 'ag-grid-enterprise';
+import { AgGridVue } from 'ag-grid-vue3';
+import { createApp } from 'vue';
 
 const VueExample = {
   template: `
@@ -17,16 +17,16 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
         {
-          headerName: "Set filter column",
-          field: "value",
+          headerName: 'Set filter column',
+          field: 'value',
           flex: 1,
-          filter: "agSetColumnFilter",
+          filter: 'agSetColumnFilter',
           floatingFilter: true,
           filterParams: filterParams,
         },
@@ -39,15 +39,15 @@ const VueExample = {
   },
   created() {
     this.rowData = [
-      { value: "value 1" },
-      { value: "value 1" },
-      { value: "value 1" },
-      { value: "value 1" },
-      { value: "value 2" },
-      { value: "value 2" },
-      { value: "value 2" },
-      { value: "value 2" },
-      { value: "value 2" },
+      { value: 'value 1' },
+      { value: 'value 1' },
+      { value: 'value 1' },
+      { value: 'value 1' },
+      { value: 'value 2' },
+      { value: 'value 2' },
+      { value: 'value 2' },
+      { value: 'value 2' },
+      { value: 'value 2' },
     ];
   },
   methods: {
@@ -61,9 +61,9 @@ const VueExample = {
 var filterParams = {
   values: function (params) {
     setTimeout(function () {
-      params.success(["value 1", "value 2"]);
+      params.success(['value 1', 'value 2']);
     }, 3000);
   },
 };
 
-createApp(VueExample).mount("#app");
+createApp(VueExample).mount('#app');

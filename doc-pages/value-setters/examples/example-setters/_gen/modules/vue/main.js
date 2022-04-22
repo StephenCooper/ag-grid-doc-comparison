@@ -1,9 +1,9 @@
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine-dark.css";
-import { AgGridVue } from "@ag-grid-community/vue";
-import Vue from "vue";
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine-dark.css';
+import { AgGridVue } from '@ag-grid-community/vue';
+import Vue from 'vue';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([ClientSideRowModelModule]);
@@ -23,19 +23,19 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
         {
-          headerName: "Name",
+          headerName: 'Name',
           valueGetter: (params) => {
-            return params.data.firstName + " " + params.data.lastName;
+            return params.data.firstName + ' ' + params.data.lastName;
           },
           valueSetter: (params) => {
             var fullName = params.newValue;
-            var nameSplit = fullName.split(" ");
+            var nameSplit = fullName.split(' ');
             var newFirstName = nameSplit[0];
             var newLastName = nameSplit[1];
             var data = params.data;
@@ -54,9 +54,9 @@ const VueExample = {
             }
           },
         },
-        { headerName: "A", field: "a" },
+        { headerName: 'A', field: 'a' },
         {
-          headerName: "B",
+          headerName: 'B',
           valueGetter: (params) => {
             return params.data.b;
           },
@@ -70,7 +70,7 @@ const VueExample = {
           },
         },
         {
-          headerName: "C.X",
+          headerName: 'C.X',
           valueGetter: (params) => {
             if (params.data.c) {
               return params.data.c.x;
@@ -87,7 +87,7 @@ const VueExample = {
           },
         },
         {
-          headerName: "C.Y",
+          headerName: 'C.Y',
           valueGetter: (params) => {
             if (params.data.c) {
               return params.data.c.y;
@@ -119,7 +119,7 @@ const VueExample = {
   },
   methods: {
     onCellValueChanged(event) {
-      console.log("Data after change is", event.data);
+      console.log('Data after change is', event.data);
     },
     onGridReady(params) {
       this.gridApi = params.api;
@@ -129,8 +129,8 @@ const VueExample = {
 };
 
 new Vue({
-  el: "#app",
+  el: '#app',
   components: {
-    "my-component": VueExample,
+    'my-component': VueExample,
   },
 });

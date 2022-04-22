@@ -1,9 +1,9 @@
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import { AgGridReact } from "ag-grid-react";
-import React, { Component } from "react";
-import { render } from "react-dom";
-("use strict");
+'use strict';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from 'ag-grid-react';
 
 class GridExample extends Component {
   constructor(props) {
@@ -13,11 +13,11 @@ class GridExample extends Component {
       columnDefs: [
         // this row shows the row index, doesn't use any data from the row
         {
-          headerName: "ID",
+          headerName: 'ID',
           maxWidth: 100,
           // it is important to have node.id here, so that when the id changes (which happens
           // when the row is loaded) then the cell is refreshed.
-          valueGetter: "node.id",
+          valueGetter: 'node.id',
           cellRenderer: (props) => {
             if (props.value !== undefined) {
               return props.value;
@@ -28,16 +28,16 @@ class GridExample extends Component {
             }
           },
         },
-        { field: "athlete", minWidth: 150 },
-        { field: "age" },
-        { field: "country", minWidth: 150 },
-        { field: "year" },
-        { field: "date", minWidth: 150 },
-        { field: "sport", minWidth: 150 },
-        { field: "gold" },
-        { field: "silver" },
-        { field: "bronze" },
-        { field: "total" },
+        { field: 'athlete', minWidth: 150 },
+        { field: 'age' },
+        { field: 'country', minWidth: 150 },
+        { field: 'year' },
+        { field: 'date', minWidth: 150 },
+        { field: 'sport', minWidth: 150 },
+        { field: 'gold' },
+        { field: 'silver' },
+        { field: 'bronze' },
+        { field: 'total' },
       ],
       defaultColDef: {
         flex: 1,
@@ -45,8 +45,8 @@ class GridExample extends Component {
         minWidth: 100,
       },
       rowBuffer: 0,
-      rowSelection: "multiple",
-      rowModelType: "infinite",
+      rowSelection: 'multiple',
+      rowModelType: 'infinite',
       cacheBlockSize: 100,
       cacheOverflowSize: 2,
       maxConcurrentDatasourceRequests: 1,
@@ -63,7 +63,7 @@ class GridExample extends Component {
       const dataSource = {
         rowCount: undefined,
         getRows: function (params) {
-          console.log("asking for " + params.startRow + " to " + params.endRow);
+          console.log('asking for ' + params.startRow + ' to ' + params.endRow);
           // At this point in your code, you would call the server.
           // To make the demo look real, wait for 500ms before returning
           setTimeout(function () {
@@ -82,18 +82,18 @@ class GridExample extends Component {
       params.api.setDatasource(dataSource);
     };
 
-    fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+    fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .then((resp) => resp.json())
       .then((data) => updateData(data));
   };
 
   render() {
     return (
-      <div style={{ width: "100%", height: "100%" }}>
+      <div style={{ width: '100%', height: '100%' }}>
         <div
           style={{
-            height: "100%",
-            width: "100%",
+            height: '100%',
+            width: '100%',
           }}
           className="ag-theme-alpine"
         >
@@ -118,4 +118,4 @@ class GridExample extends Component {
   }
 }
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

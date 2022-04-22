@@ -3,22 +3,22 @@ import {
   Grid,
   GridOptions,
   RowDragMoveEvent,
-} from "ag-grid-community";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
+} from 'ag-grid-community';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 
 var immutableStore: any[] = getData();
 
 const gridOptions: GridOptions = {
   columnDefs: [
-    { field: "athlete", rowDrag: true },
-    { field: "country" },
-    { field: "year", width: 100 },
-    { field: "date" },
-    { field: "sport" },
-    { field: "gold" },
-    { field: "silver" },
-    { field: "bronze" },
+    { field: 'athlete', rowDrag: true },
+    { field: 'country' },
+    { field: 'year', width: 100 },
+    { field: 'date' },
+    { field: 'sport' },
+    { field: 'gold' },
+    { field: 'silver' },
+    { field: 'bronze' },
   ],
   defaultColDef: {
     width: 170,
@@ -51,11 +51,11 @@ function onSortChanged() {
   // suppress row drag if either sort or filter is active
   var suppressRowDrag = sortActive || filterActive;
   console.log(
-    "sortActive = " +
+    'sortActive = ' +
       sortActive +
-      ", filterActive = " +
+      ', filterActive = ' +
       filterActive +
-      ", allowRowDrag = " +
+      ', allowRowDrag = ' +
       suppressRowDrag
   );
   gridOptions.api!.setSuppressRowDrag(suppressRowDrag);
@@ -67,11 +67,11 @@ function onFilterChanged() {
   // suppress row drag if either sort or filter is active
   var suppressRowDrag = sortActive || filterActive;
   console.log(
-    "sortActive = " +
+    'sortActive = ' +
       sortActive +
-      ", filterActive = " +
+      ', filterActive = ' +
       filterActive +
-      ", allowRowDrag = " +
+      ', allowRowDrag = ' +
       suppressRowDrag
   );
   gridOptions.api!.setSuppressRowDrag(suppressRowDrag);
@@ -112,5 +112,5 @@ function onRowDragMove(event: RowDragMoveEvent) {
 }
 
 // setup the grid after the page has finished loading
-var gridDiv = document.querySelector<HTMLElement>("#myGrid")!;
+var gridDiv = document.querySelector<HTMLElement>('#myGrid')!;
 new Grid(gridDiv, gridOptions);

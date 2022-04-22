@@ -23,15 +23,48 @@ By default the grid will use the browser provided date picker for Chrome and Fir
 You can use your own date picker in AG Grid by providing a custom Date Component as follows:
 
 [[only-javascript]]
-|`js |const gridOptions = { | // Here is where we specify the component to be used as the date picker widget | components: { | agDateInput: CustomDateComponent | } |}; |`
+|```js
+|const gridOptions = {
+|    // Here is where we specify the component to be used as the date picker widget
+|    components: {
+|        agDateInput: CustomDateComponent
+|    }
+|};
+|```
 [[only-angular]]
-|`` ts |@Component({ | selector: 'my-app', | template: ` | <ag-grid-angular | class="ag-theme-alpine" | [components]="components" | ...other properties... | ></ag-grid-angular> | ` |}) |export class AppComponent { | public components = { | agDateInput: CustomDateComponent | }; | ``
+|```ts
+|@Component({
+|    selector: 'my-app',
+|    template: `
+|      <ag-grid-angular
+|          class="ag-theme-alpine"
+|          [components]="components"
+|          ...other properties...  
+|      ></ag-grid-angular>
+|    `
+|})
+|export class AppComponent {
+|    public components = {
+|        agDateInput: CustomDateComponent
+|    };
+|```
 [[only-react]]
-|`jsx |<AgGridReact | components={{ agDateInput: CustomDateComponent }} | ...other properties... |/> |`
+|```jsx
+|<AgGridReact
+|    components={{ agDateInput: CustomDateComponent }}
+|    ...other properties...
+|/>
+|```
 [[only-vue]]
-|`js |const MyApp = { | components: { | 'ag-grid-vue': AgGridVue | agDateInput: CustomDateComponent | }, |`
+|```js
+|const MyApp = {
+|    components: {
+|        'ag-grid-vue': AgGridVue
+|        agDateInput: CustomDateComponent
+|    },
+|```
 |
-
+ 
 Please see [Provided Components](../components/#grid-provided-components) for more information about overridden AG Grid provided components (as we're doing here
 by overriding `agDateInput`).
 
@@ -41,3 +74,6 @@ md-include:component-interface-react.md
 md-include:component-interface-vue.md
 
 <interface-documentation interfaceName='IDateParams' overridesrc='component-date/resources/dateParams.json' ></interface-documentation>
+
+
+

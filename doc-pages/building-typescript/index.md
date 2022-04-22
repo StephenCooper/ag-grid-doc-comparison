@@ -69,7 +69,7 @@ class SimpleGrid {
         return [
             { make: "Toyota", model: "Celica", price: 35000 },
             { make: "Ford", model: "Mondeo", price: 32000 },
-            { make: "Porsche", model: "Boxter", price: 72000 }
+            { make: "Porsche", model: "Boxster", price: 72000 }
         ];
     }
 }
@@ -80,53 +80,50 @@ new SimpleGrid();
 ```html
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>AG Grid</title>
-  </head>
+<head>
+<title>AG Grid</title>
+</head>
 
-  <body>
-    <div
-      id="myGrid"
-      style="height: 200px;width: 600px"
-      class="ag-theme-alpine"
-    ></div>
-  </body>
+<body>
+    <div id="myGrid" style="height: 200px;width: 600px" class="ag-theme-alpine"></div>
+</body>
 </html>
 ```
+
 
 ## Webpack Configuration
 
 ```js
-const path = require("path");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
+const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  entry: "./src/SimpleGrid.ts",
-  module: {
-    rules: [
-      {
-        test: /\.tsx?$/,
-        use: "ts-loader",
-        exclude: /node_modules/,
-      },
-      {
-        test: /\.(sa|sc|c)ss$/,
-        use: ["style-loader", "css-loader", "sass-loader"],
-      },
-    ],
-  },
-  resolve: {
-    extensions: [".tsx", ".ts", ".js"],
-  },
-  output: {
-    filename: "bundle.js",
-    path: path.resolve(__dirname, "dist"),
-  },
-  plugins: [
-    new HtmlWebpackPlugin({
-      template: "src/index.html",
-    }),
-  ],
+    entry: './src/SimpleGrid.ts',
+    module: {
+        rules: [
+            {
+                test: /\.tsx?$/,
+                use: 'ts-loader',
+                exclude: /node_modules/,
+            },
+            {
+                test: /\.(sa|sc|c)ss$/,
+                use: ["style-loader", "css-loader", "sass-loader"]
+            }
+        ],
+    },
+    resolve: {
+        extensions: ['.tsx', '.ts', '.js'],
+    },
+    output: {
+        filename: 'bundle.js',
+        path: path.resolve(__dirname, 'dist'),
+    },
+    plugins: [
+        new HtmlWebpackPlugin({
+            template: 'src/index.html'
+        })
+    ]
 };
 ```
 

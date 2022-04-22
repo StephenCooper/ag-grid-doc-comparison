@@ -1,5 +1,5 @@
-import { AgChartsVue } from "ag-charts-vue";
-import Vue from "vue";
+import { AgChartsVue } from 'ag-charts-vue';
+import Vue from 'vue';
 
 const ChartExample = {
   template: `
@@ -7,7 +7,7 @@ const ChartExample = {
                 :options="options"></ag-charts-vue>
     `,
   components: {
-    "ag-charts-vue": AgChartsVue,
+    'ag-charts-vue': AgChartsVue,
   },
   data: function () {
     return {
@@ -31,94 +31,94 @@ const ChartExample = {
         },
       },
       title: {
-        text: "WEEE Collected in UK (2019)",
+        text: 'WEEE Collected in UK (2019)',
         fontSize: 18,
       },
       subtitle: {
-        text: "Source: Environmental Agency",
+        text: 'Source: Environmental Agency',
       },
       tooltip: {
-        class: "my-tooltip",
+        class: 'my-tooltip',
       },
       series: [
         {
-          type: "column",
-          xKey: "quarter",
-          yKey: "largeHousehold",
-          yName: "Large household appliances",
+          type: 'column',
+          xKey: 'quarter',
+          yKey: 'largeHousehold',
+          yName: 'Large household appliances',
           stacked: true,
         },
         {
-          type: "column",
-          xKey: "quarter",
-          yKey: "smallHousehold",
-          yName: "Small household appliances",
+          type: 'column',
+          xKey: 'quarter',
+          yKey: 'smallHousehold',
+          yName: 'Small household appliances',
           stacked: true,
         },
         {
-          type: "column",
-          xKey: "quarter",
-          yKey: "itTelecomms",
-          yName: "IT and telecomms equipment",
+          type: 'column',
+          xKey: 'quarter',
+          yKey: 'itTelecomms',
+          yName: 'IT and telecomms equipment',
           stacked: true,
         },
         {
-          type: "column",
-          xKey: "quarter",
-          yKey: "consumer",
-          yName: "Consumer equipment",
+          type: 'column',
+          xKey: 'quarter',
+          yKey: 'consumer',
+          yName: 'Consumer equipment',
           stacked: true,
         },
         {
-          type: "column",
-          xKey: "quarter",
-          yKey: "tools",
-          yName: "Electrical and electronic tools",
+          type: 'column',
+          xKey: 'quarter',
+          yKey: 'tools',
+          yName: 'Electrical and electronic tools',
           stacked: true,
         },
         {
-          type: "column",
-          xKey: "quarter",
-          yKey: "displays",
-          yName: "Display equipment",
+          type: 'column',
+          xKey: 'quarter',
+          yKey: 'displays',
+          yName: 'Display equipment',
           stacked: true,
         },
         {
-          type: "column",
-          xKey: "quarter",
-          yKey: "cooling",
-          yName: "Cooling appliances containing refrigerants",
+          type: 'column',
+          xKey: 'quarter',
+          yKey: 'cooling',
+          yName: 'Cooling appliances containing refrigerants',
           stacked: true,
         },
         {
-          type: "column",
-          xKey: "quarter",
-          yKey: "gasLampsLed",
-          yName: "Gas discharge lamps and LED light sources",
+          type: 'column',
+          xKey: 'quarter',
+          yKey: 'gasLampsLed',
+          yName: 'Gas discharge lamps and LED light sources',
           stacked: true,
         },
       ],
       axes: [
         {
-          type: "category",
-          position: "bottom",
+          type: 'category',
+          position: 'bottom',
         },
         {
-          type: "number",
-          position: "left",
+          type: 'number',
+          position: 'left',
           title: {
             enabled: true,
-            text: "Waste collected (tonnes)",
+            text: 'Waste collected (tonnes)',
           },
           label: {
             formatter: (params) => {
-              return params.value / 1000 + "k";
+              return params.value / 1000 + 'k';
             },
           },
         },
       ],
       legend: {
-        position: "bottom",
+        position: 'bottom',
       },
     };
   },
@@ -128,7 +128,7 @@ const ChartExample = {
 
 window.tooltipRenderer = function tooltipRenderer(params) {
   var formatThousands = function (value) {
-    return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
   };
   var tooltipHtml = [
     '<div class="my-tooltip">',
@@ -136,19 +136,19 @@ window.tooltipRenderer = function tooltipRenderer(params) {
       params.color +
       '">' +
       params.yName,
-    "(" +
+    '(' +
       params.datum[params.xKey] +
-      "):</span> " +
+      '):</span> ' +
       formatThousands(params.datum[params.yKey]) +
-      " tonnes",
-    "</div>",
+      ' tonnes',
+    '</div>',
   ];
-  return tooltipHtml.join("\n");
+  return tooltipHtml.join('\n');
 };
 
 new Vue({
-  el: "#app",
+  el: '#app',
   components: {
-    "my-component": ChartExample,
+    'my-component': ChartExample,
   },
 });

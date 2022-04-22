@@ -1,15 +1,15 @@
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
+import { createApp } from 'vue';
+import { AgGridVue } from '@ag-grid-community/vue3';
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
 import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { AgGridVue } from "@ag-grid-community/vue3";
-import { createApp } from "vue";
 
+import { ModuleRegistry } from '@ag-grid-community/core';
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([ClientSideRowModelModule]);
 
 const VueExample = {
-  template: `
+    template: `
       <div style="height: 100%">
       <div class="test-container">
         <div class="test-header">
@@ -27,66 +27,70 @@ const VueExample = {
       </div>
       </div>
     `,
-  components: {
-    "ag-grid-vue": AgGridVue,
-  },
-  data: function () {
-    return {
-      columnDefs: [],
-      gridApi: null,
-      columnApi: null,
-      defaultColDef: {
-        initialWidth: 100,
-        sortable: true,
-        resizable: true,
-      },
-      rowData: null,
-    };
-  },
-  beforeMount() {
-    this.columnDefs = this.getColumnDefs();
-  },
-  methods: {
-    onBtWithDefault() {
-      this.gridApi.setColumnDefs(this.getColumnDefs());
-    },
-    onBtRemove() {
-      this.gridApi.setColumnDefs([]);
-    },
-    onGridReady(params) {
-      this.gridApi = params.api;
-      this.gridColumnApi = params.columnApi;
+    components: {
+        'ag-grid-vue': AgGridVue,
 
-      const updateData = (data) => {
-        this.rowData = data;
-      };
-
-      fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
-        .then((resp) => resp.json())
-        .then((data) => updateData(data));
     },
-    getColumnDefs() {
-      return [
-        {
-          field: "athlete",
-          initialWidth: 100,
-          initialSort: "asc",
+    data: function () {
+        return {
+            columnDefs: [],
+            gridApi: null,
+            columnApi: null,
+            defaultColDef: {
+                initialWidth: 100,
+                sortable: true,
+                resizable: true
+            },
+            rowData: null
+        }
+    },
+    beforeMount() {
+        this.columnDefs = this.getColumnDefs();
+    },
+    methods: {
+        onBtWithDefault() {
+            this.gridApi.setColumnDefs(this.getColumnDefs());
         },
-        { field: "age" },
-        {
-          field: "country",
-          initialPinned: "left",
+        onBtRemove() {
+            this.gridApi.setColumnDefs([]);
         },
-        { field: "sport" },
-        { field: "year" },
-        { field: "date" },
-        { field: "gold" },
-        { field: "silver" },
-        { field: "bronze" },
-        { field: "total" },
-      ];
-    },
-  },
-};
+        onGridReady(params) {
+            this.gridApi = params.api;
+            this.gridColumnApi = params.columnApi;
 
-createApp(VueExample).mount("#app");
+
+            const updateData = (data) => {
+                this.rowData = data;
+            };
+
+            fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
+                .then(resp => resp.json())
+                .then(data => updateData(data));
+        },
+        getColumnDefs() {
+            return [
+                {
+                    field: 'athlete',
+                    initialWidth: 100,
+                    initialSort: 'asc'
+                },
+                { field: 'age' },
+                {
+                    field: 'country',
+                    initialPinned: 'left'
+                },
+                { field: 'sport' },
+                { field: 'year' },
+                { field: 'date' },
+                { field: 'gold' },
+                { field: 'silver' },
+                { field: 'bronze' },
+                { field: 'total' }
+            ];
+        }
+    }
+}
+
+createApp(VueExample)
+    .mount("#app")
+

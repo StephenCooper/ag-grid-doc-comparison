@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 
 export default class CurrencyRenderer extends Component {
   constructor(props) {
@@ -22,6 +22,6 @@ export default class CurrencyRenderer extends Component {
   }
 
   render() {
-    return <span>{this.formatValueToCurrency("EUR", this.state.value)}</span>;
+    return <span>{this.formatValueToCurrency('EUR', this.state.value)}</span>;
   }
 }

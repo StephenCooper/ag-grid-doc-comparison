@@ -1,11 +1,11 @@
-"use strict";
+'use strict';
 
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
-import { AgGridReact } from "ag-grid-react";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from 'ag-grid-react';
+import 'ag-grid-enterprise';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 
 class GridExample extends Component {
   constructor(props) {
@@ -14,30 +14,30 @@ class GridExample extends Component {
     this.state = {
       columnDefs: [
         {
-          headerName: "Athlete",
+          headerName: 'Athlete',
           children: [
             {
-              headerName: "Name",
-              field: "athlete",
+              headerName: 'Name',
+              field: 'athlete',
               minWidth: 200,
-              filter: "agTextColumnFilter",
+              filter: 'agTextColumnFilter',
             },
-            { field: "age" },
-            { field: "country", minWidth: 200 },
+            { field: 'age' },
+            { field: 'country', minWidth: 200 },
           ],
         },
         {
-          headerName: "Competition",
-          children: [{ field: "year" }, { field: "date", minWidth: 180 }],
+          headerName: 'Competition',
+          children: [{ field: 'year' }, { field: 'date', minWidth: 180 }],
         },
-        { colId: "sport", field: "sport", minWidth: 200 },
+        { colId: 'sport', field: 'sport', minWidth: 200 },
         {
-          headerName: "Medals",
+          headerName: 'Medals',
           children: [
-            { field: "gold" },
-            { field: "silver" },
-            { field: "bronze" },
-            { field: "total" },
+            { field: 'gold' },
+            { field: 'silver' },
+            { field: 'bronze' },
+            { field: 'total' },
           ],
         },
       ],
@@ -57,11 +57,11 @@ class GridExample extends Component {
       sideBar: {
         toolPanels: [
           {
-            id: "columns",
-            labelDefault: "Columns",
-            labelKey: "columns",
-            iconKey: "columns",
-            toolPanel: "agColumnsToolPanel",
+            id: 'columns',
+            labelDefault: 'Columns',
+            labelKey: 'columns',
+            iconKey: 'columns',
+            toolPanel: 'agColumnsToolPanel',
             toolPanelParams: {
               // prevents custom layout changing when columns are reordered in the grid
               suppressSyncLayoutWithGrid: true,
@@ -70,7 +70,7 @@ class GridExample extends Component {
             },
           },
         ],
-        defaultToolPanel: "columns",
+        defaultToolPanel: 'columns',
       },
       rowData: null,
     };
@@ -82,24 +82,24 @@ class GridExample extends Component {
 
     const updateData = (data) => params.api.setRowData(data);
 
-    fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+    fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .then((resp) => resp.json())
       .then((data) => updateData(data));
   };
 
   setCustomSortLayout = () => {
-    var columnToolPanel = this.gridApi.getToolPanelInstance("columns");
+    var columnToolPanel = this.gridApi.getToolPanelInstance('columns');
     columnToolPanel.setColumnLayout(sortedToolPanelColumnDefs);
   };
 
   setCustomGroupLayout = () => {
-    var columnToolPanel = this.gridApi.getToolPanelInstance("columns");
+    var columnToolPanel = this.gridApi.getToolPanelInstance('columns');
     columnToolPanel.setColumnLayout(customToolPanelColumnDefs);
   };
 
   render() {
     return (
-      <div style={{ width: "100%", height: "100%" }}>
+      <div style={{ width: '100%', height: '100%' }}>
         <div className="example-wrapper">
           <div>
             <span className="button-group">
@@ -113,8 +113,8 @@ class GridExample extends Component {
           </div>
           <div
             style={{
-              height: "100%",
-              width: "100%",
+              height: '100%',
+              width: '100%',
             }}
             className="ag-theme-alpine"
           >
@@ -134,51 +134,51 @@ class GridExample extends Component {
 
 var sortedToolPanelColumnDefs = [
   {
-    headerName: "Athlete",
+    headerName: 'Athlete',
     children: [
-      { field: "age" },
-      { field: "country" },
-      { headerName: "Name", field: "athlete" },
+      { field: 'age' },
+      { field: 'country' },
+      { headerName: 'Name', field: 'athlete' },
     ],
   },
   {
-    headerName: "Competition",
-    children: [{ field: "date" }, { field: "year" }],
+    headerName: 'Competition',
+    children: [{ field: 'date' }, { field: 'year' }],
   },
   {
-    headerName: "Medals",
+    headerName: 'Medals',
     children: [
-      { field: "bronze" },
-      { field: "gold" },
-      { field: "silver" },
-      { field: "total" },
+      { field: 'bronze' },
+      { field: 'gold' },
+      { field: 'silver' },
+      { field: 'total' },
     ],
   },
-  { colId: "sport", field: "sport" },
+  { colId: 'sport', field: 'sport' },
 ];
 var customToolPanelColumnDefs = [
   {
-    headerName: "Dummy Group 1",
+    headerName: 'Dummy Group 1',
     children: [
-      { field: "age" },
-      { headerName: "Name", field: "athlete" },
+      { field: 'age' },
+      { headerName: 'Name', field: 'athlete' },
       {
-        headerName: "Dummy Group 2",
-        children: [{ colId: "sport" }, { field: "country" }],
+        headerName: 'Dummy Group 2',
+        children: [{ colId: 'sport' }, { field: 'country' }],
       },
     ],
   },
   {
-    headerName: "Medals",
+    headerName: 'Medals',
     children: [
-      { field: "total" },
-      { field: "bronze" },
+      { field: 'total' },
+      { field: 'bronze' },
       {
-        headerName: "Dummy Group 3",
-        children: [{ field: "silver" }, { field: "gold" }],
+        headerName: 'Dummy Group 3',
+        children: [{ field: 'silver' }, { field: 'gold' }],
       },
     ],
   },
 ];
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

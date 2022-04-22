@@ -10,14 +10,14 @@ var filterParams = {
 const gridOptions = {
   columnDefs: [
     {
-      headerName: "Age (No Comparator)",
-      field: "age",
-      filter: "agSetColumnFilter",
+      headerName: 'Age (No Comparator)',
+      field: 'age',
+      filter: 'agSetColumnFilter',
     },
     {
-      headerName: "Age (With Comparator)",
-      field: "age",
-      filter: "agSetColumnFilter",
+      headerName: 'Age (With Comparator)',
+      field: 'age',
+      filter: 'agSetColumnFilter',
       filterParams: filterParams,
     },
   ],
@@ -27,9 +27,9 @@ const gridOptions = {
     resizable: true,
   },
   rowData: getRowData(),
-  sideBar: "filters",
+  sideBar: 'filters',
   onGridReady: function (params) {
-    params.api.getToolPanelInstance("filters").expandFilters();
+    params.api.getToolPanelInstance('filters').expandFilters();
   },
 };
 
@@ -42,7 +42,7 @@ function getRowData() {
 }
 
 // setup the grid after the page has finished loading
-document.addEventListener("DOMContentLoaded", function () {
-  var gridDiv = document.querySelector("#myGrid");
+document.addEventListener('DOMContentLoaded', function () {
+  var gridDiv = document.querySelector('#myGrid');
   new agGrid.Grid(gridDiv, gridOptions);
 });

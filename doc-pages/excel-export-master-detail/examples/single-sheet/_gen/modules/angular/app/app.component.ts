@@ -9,15 +9,15 @@ import {
   GridReadyEvent,
   IDetailCellRendererParams,
   ProcessRowGroupForExportParams,
-} from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { HttpClient } from "@angular/common/http";
-import { Component } from "@angular/core";
+} from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { HttpClient } from '@angular/common/http';
+import { Component } from '@angular/core';
 // Required feature modules are registered in app.module.ts
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<div class="container">
     <div>
       <button
@@ -56,10 +56,10 @@ export class AppComponent {
   };
   public columnDefs: ColDef[] = [
     // group cell renderer needed for expand / collapse icons
-    { field: "name", cellRenderer: "agGroupCellRenderer" },
-    { field: "account" },
-    { field: "calls" },
-    { field: "minutes", valueFormatter: "x.toLocaleString() + 'm'" },
+    { field: 'name', cellRenderer: 'agGroupCellRenderer' },
+    { field: 'account' },
+    { field: 'calls' },
+    { field: 'minutes', valueFormatter: "x.toLocaleString() + 'm'" },
   ];
   public defaultColDef: ColDef = {
     flex: 1,
@@ -67,11 +67,11 @@ export class AppComponent {
   public detailCellRendererParams: any = {
     detailGridOptions: {
       columnDefs: [
-        { field: "callId" },
-        { field: "direction" },
-        { field: "number", minWidth: 150 },
-        { field: "duration", valueFormatter: "x.toLocaleString() + 's'" },
-        { field: "switchCode", minWidth: 150 },
+        { field: 'callId' },
+        { field: 'direction' },
+        { field: 'number', minWidth: 150 },
+        { field: 'duration', valueFormatter: "x.toLocaleString() + 's'" },
+        { field: 'switchCode', minWidth: 150 },
       ],
       defaultColDef: {
         flex: 1,
@@ -83,17 +83,17 @@ export class AppComponent {
   } as IDetailCellRendererParams;
   public excelStyles: ExcelStyle[] = [
     {
-      id: "header",
+      id: 'header',
       interior: {
-        color: "#aaaaaa",
-        pattern: "Solid",
+        color: '#aaaaaa',
+        pattern: 'Solid',
       },
     },
     {
-      id: "body",
+      id: 'body',
       interior: {
-        color: "#dddddd",
-        pattern: "Solid",
+        color: '#dddddd',
+        pattern: 'Solid',
       },
     },
   ];
@@ -110,7 +110,7 @@ export class AppComponent {
 
     this.http
       .get<any[]>(
-        "https://www.ag-grid.com/example-assets/master-detail-data.json"
+        'https://www.ag-grid.com/example-assets/master-detail-data.json'
       )
       .subscribe((data) => {
         this.rowData = data;
@@ -121,22 +121,22 @@ export class AppComponent {
 var getCells = (params: ProcessRowGroupForExportParams) => {
   const cells: ExcelCell[][] = [
     [
-      cell(""),
-      cell("Call Id", "header"),
-      cell("Direction", "header"),
-      cell("Number", "header"),
-      cell("Duration", "header"),
-      cell("Switch Code", "header"),
+      cell(''),
+      cell('Call Id', 'header'),
+      cell('Direction', 'header'),
+      cell('Number', 'header'),
+      cell('Duration', 'header'),
+      cell('Switch Code', 'header'),
     ],
   ].concat(
     params.node.data.callRecords.map(function (record: any) {
       return [
-        cell(""),
-        cell(record.callId, "body"),
-        cell(record.direction, "body"),
-        cell(record.number, "body"),
-        cell(record.duration, "body"),
-        cell(record.switchCode, "body"),
+        cell(''),
+        cell(record.callId, 'body'),
+        cell(record.direction, 'body'),
+        cell(record.number, 'body'),
+        cell(record.duration, 'body'),
+        cell(record.switchCode, 'body'),
       ];
     }),
     [[]]
@@ -147,7 +147,7 @@ function cell(text: string, styleId?: string): ExcelCell {
   return {
     styleId: styleId,
     data: {
-      type: /^\d+$/.test(text) ? "Number" : "String",
+      type: /^\d+$/.test(text) ? 'Number' : 'String',
       value: String(text),
     },
   };

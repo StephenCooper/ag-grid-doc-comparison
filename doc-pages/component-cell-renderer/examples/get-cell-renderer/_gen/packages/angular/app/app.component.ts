@@ -1,12 +1,12 @@
-import { HttpClient } from "@angular/common/http";
-import { Component } from "@angular/core";
-import { ColDef, GridApi, GridReadyEvent } from "ag-grid-community";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import { MedalCellRenderer } from "./medal-cell-renderer.component";
+import { HttpClient } from '@angular/common/http';
+import { Component } from '@angular/core';
+import { ColDef, GridApi, GridReadyEvent } from 'ag-grid-community';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import { MedalCellRenderer } from './medal-cell-renderer.component';
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<div class="example-wrapper">
     <div style="margin-bottom: 5px;">
       <button (click)="onCallGold()">Gold</button>
@@ -28,13 +28,13 @@ export class AppComponent {
   private gridApi!: GridApi;
 
   public columnDefs: ColDef[] = [
-    { field: "athlete", width: 150 },
-    { field: "country", width: 150 },
-    { field: "year", width: 100 },
-    { field: "gold", width: 100, cellRenderer: MedalCellRenderer },
-    { field: "silver", width: 100, cellRenderer: MedalCellRenderer },
-    { field: "bronze", width: 100, cellRenderer: MedalCellRenderer },
-    { field: "total", width: 100 },
+    { field: 'athlete', width: 150 },
+    { field: 'country', width: 150 },
+    { field: 'year', width: 100 },
+    { field: 'gold', width: 100, cellRenderer: MedalCellRenderer },
+    { field: 'silver', width: 100, cellRenderer: MedalCellRenderer },
+    { field: 'bronze', width: 100, cellRenderer: MedalCellRenderer },
+    { field: 'total', width: 100 },
   ];
   public defaultColDef: ColDef = {
     editable: true,
@@ -49,9 +49,9 @@ export class AppComponent {
   constructor(private http: HttpClient) {}
 
   onCallGold() {
-    console.log("=========> calling all gold");
+    console.log('=========> calling all gold');
     // pass in list of columns, here it's gold only
-    const params = { columns: ["gold"] };
+    const params = { columns: ['gold'] };
     const instances = this.gridApi.getCellRendererInstances(params) as any[];
     instances.forEach((instance) => {
       instance.medalUserFunction();
@@ -59,10 +59,10 @@ export class AppComponent {
   }
 
   onFirstRowGold() {
-    console.log("=========> calling gold row one");
+    console.log('=========> calling gold row one');
     // pass in one column and one row to identify one cell
     const firstRowNode = this.gridApi.getDisplayedRowAtIndex(0)!;
-    const params = { columns: ["gold"], rowNodes: [firstRowNode] };
+    const params = { columns: ['gold'], rowNodes: [firstRowNode] };
     const instances = this.gridApi.getCellRendererInstances(params) as any[];
     instances.forEach((instance) => {
       instance.medalUserFunction();
@@ -70,7 +70,7 @@ export class AppComponent {
   }
 
   onCallAllCells() {
-    console.log("=========> calling everything");
+    console.log('=========> calling everything');
     // no params, goes through all rows and columns where cell renderer exists
     const instances = this.gridApi.getCellRendererInstances() as any[];
     instances.forEach((instance) => {
@@ -82,7 +82,7 @@ export class AppComponent {
     this.gridApi = params.api;
 
     this.http
-      .get<any[]>("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      .get<any[]>('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .subscribe((data) => {
         this.rowData = data;
       });

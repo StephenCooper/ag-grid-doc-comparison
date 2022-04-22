@@ -8,13 +8,13 @@ import {
   IServerSideGetRowsRequest,
   IsServerSideGroupOpenByDefaultParams,
   ModuleRegistry,
-} from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine-dark.css";
-import { ColumnsToolPanelModule } from "@ag-grid-enterprise/column-tool-panel";
-import { MenuModule } from "@ag-grid-enterprise/menu";
-import { RowGroupingModule } from "@ag-grid-enterprise/row-grouping";
-import { ServerSideRowModelModule } from "@ag-grid-enterprise/server-side-row-model";
+} from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine-dark.css';
+import { ColumnsToolPanelModule } from '@ag-grid-enterprise/column-tool-panel';
+import { MenuModule } from '@ag-grid-enterprise/menu';
+import { RowGroupingModule } from '@ag-grid-enterprise/row-grouping';
+import { ServerSideRowModelModule } from '@ag-grid-enterprise/server-side-row-model';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([
@@ -24,20 +24,20 @@ ModuleRegistry.registerModules([
   ColumnsToolPanelModule,
 ]);
 const columnDefs: ColDef[] = [
-  { field: "employeeId", hide: true },
-  { field: "employeeName", hide: true },
-  { field: "jobTitle" },
-  { field: "employmentType" },
+  { field: 'employeeId', hide: true },
+  { field: 'employeeName', hide: true },
+  { field: 'jobTitle' },
+  { field: 'employmentType' },
 ];
 
 const gridOptions: GridOptions = {
   defaultColDef: {
     width: 240,
-    filter: "agTextColumnFilter",
+    filter: 'agTextColumnFilter',
     flex: 1,
   },
   autoGroupColumnDef: {
-    field: "employeeName",
+    field: 'employeeName',
     cellRendererParams: {
       innerRenderer: function (params: ICellRendererParams) {
         // display employeeName rather than group key (employeeId)
@@ -45,8 +45,8 @@ const gridOptions: GridOptions = {
       },
     },
   },
-  rowModelType: "serverSide",
-  serverSideStoreType: "partial",
+  rowModelType: 'serverSide',
+  serverSideStoreType: 'partial',
   treeData: true,
   columnDefs: columnDefs,
   animateRows: true,
@@ -67,10 +67,10 @@ const gridOptions: GridOptions = {
 };
 
 // setup the grid after the page has finished loading
-var gridDiv = document.querySelector<HTMLElement>("#myGrid")!;
+var gridDiv = document.querySelector<HTMLElement>('#myGrid')!;
 new Grid(gridDiv, gridOptions);
 
-fetch("https://www.ag-grid.com/example-assets/small-tree-data.json")
+fetch('https://www.ag-grid.com/example-assets/small-tree-data.json')
   .then((response) => response.json())
   .then(function (data) {
     var fakeServer = createFakeServer(data);
@@ -116,7 +116,7 @@ function createFakeServer(fakeServerData: any[]) {
 function createServerSideDatasource(fakeServer: any) {
   const dataSource: IServerSideDatasource = {
     getRows: function (params: IServerSideGetRowsParams) {
-      console.log("ServerSideDatasource.getRows: params = ", params);
+      console.log('ServerSideDatasource.getRows: params = ', params);
 
       var allRows = fakeServer.getData(params.request);
 
@@ -128,7 +128,7 @@ function createServerSideDatasource(fakeServer: any) {
             rowCount: allRows.length,
           }
         : { rowData: allRows };
-      console.log("getRows: result = ", result);
+      console.log('getRows: result = ', result);
       setTimeout(function () {
         params.success(result);
       }, 200);

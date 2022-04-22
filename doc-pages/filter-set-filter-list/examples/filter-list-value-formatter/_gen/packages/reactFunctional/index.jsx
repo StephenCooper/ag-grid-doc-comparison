@@ -1,59 +1,59 @@
-"use strict";
+'use strict';
 
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
-import { AgGridReact } from "ag-grid-react";
-import React, { useCallback, useMemo, useRef, useState } from "react";
-import { render } from "react-dom";
+import React, { useCallback, useMemo, useRef, useState } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from 'ag-grid-react';
+import 'ag-grid-enterprise';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 
 const countryValueFormatter = (params) => {
   var value = params.value;
-  return value + " (" + COUNTRY_CODES[value].toUpperCase() + ")";
+  return value + ' (' + COUNTRY_CODES[value].toUpperCase() + ')';
 };
 
 var COUNTRY_CODES = {
-  Ireland: "ie",
-  Luxembourg: "lu",
-  Belgium: "be",
-  Spain: "es",
-  France: "fr",
-  Germany: "de",
-  Sweden: "se",
-  Italy: "it",
-  Greece: "gr",
-  Iceland: "is",
-  Portugal: "pt",
-  Malta: "mt",
-  Norway: "no",
-  Brazil: "br",
-  Argentina: "ar",
-  Colombia: "co",
-  Peru: "pe",
-  Venezuela: "ve",
-  Uruguay: "uy",
+  Ireland: 'ie',
+  Luxembourg: 'lu',
+  Belgium: 'be',
+  Spain: 'es',
+  France: 'fr',
+  Germany: 'de',
+  Sweden: 'se',
+  Italy: 'it',
+  Greece: 'gr',
+  Iceland: 'is',
+  Portugal: 'pt',
+  Malta: 'mt',
+  Norway: 'no',
+  Brazil: 'br',
+  Argentina: 'ar',
+  Colombia: 'co',
+  Peru: 'pe',
+  Venezuela: 've',
+  Uruguay: 'uy',
 };
 
 const GridExample = () => {
   const gridRef = useRef();
-  const containerStyle = useMemo(() => ({ width: "100%", height: "100%" }), []);
-  const gridStyle = useMemo(() => ({ height: "100%", width: "100%" }), []);
+  const containerStyle = useMemo(() => ({ width: '100%', height: '100%' }), []);
+  const gridStyle = useMemo(() => ({ height: '100%', width: '100%' }), []);
   const [rowData, setRowData] = useState();
   const [columnDefs, setColumnDefs] = useState([
     {
-      headerName: "No Value Formatter",
-      field: "country",
+      headerName: 'No Value Formatter',
+      field: 'country',
       valueFormatter: countryValueFormatter,
-      filter: "agSetColumnFilter",
+      filter: 'agSetColumnFilter',
       filterParams: {
         // no value formatter!
       },
     },
     {
-      headerName: "With Value Formatter",
-      field: "country",
+      headerName: 'With Value Formatter',
+      field: 'country',
       valueFormatter: countryValueFormatter,
-      filter: "agSetColumnFilter",
+      filter: 'agSetColumnFilter',
       filterParams: {
         valueFormatter: countryValueFormatter,
       },
@@ -69,7 +69,7 @@ const GridExample = () => {
   }, []);
 
   const onGridReady = useCallback((params) => {
-    fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+    fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .then((resp) => resp.json())
       .then((data) => {
         // only return data that has corresponding country codes
@@ -81,7 +81,7 @@ const GridExample = () => {
   }, []);
 
   const onFirstDataRendered = useCallback((params) => {
-    gridRef.current.api.getToolPanelInstance("filters").expandFilters();
+    gridRef.current.api.getToolPanelInstance('filters').expandFilters();
   }, []);
 
   const printFilterModel = useCallback(() => {
@@ -91,8 +91,8 @@ const GridExample = () => {
 
   return (
     <div style={containerStyle}>
-      <div style={{ display: "flex", flexDirection: "column", height: "100%" }}>
-        <div style={{ paddingBottom: "5px" }}>
+      <div style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
+        <div style={{ paddingBottom: '5px' }}>
           <button onClick={printFilterModel}>Print Filter Model</button>
         </div>
 
@@ -102,7 +102,7 @@ const GridExample = () => {
             rowData={rowData}
             columnDefs={columnDefs}
             defaultColDef={defaultColDef}
-            sideBar={"filters"}
+            sideBar={'filters'}
             onGridReady={onGridReady}
             onFirstDataRendered={onFirstDataRendered}
           ></AgGridReact>
@@ -112,4 +112,4 @@ const GridExample = () => {
   );
 };
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

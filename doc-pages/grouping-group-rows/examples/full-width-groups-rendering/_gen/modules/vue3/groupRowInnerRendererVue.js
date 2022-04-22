@@ -13,7 +13,7 @@ export default {
     `,
   data: function () {
     return {
-      flagCodeImg: "",
+      flagCodeImg: '',
       key: null,
       gold: null,
       silver: null,
@@ -21,8 +21,8 @@ export default {
     };
   },
   beforeMount() {
-    this.params.api.addEventListener("cellValueChanged", this.updateGui);
-    this.params.api.addEventListener("filterChanged", this.updateGui);
+    this.params.api.addEventListener('cellValueChanged', this.updateGui);
+    this.params.api.addEventListener('filterChanged', this.updateGui);
 
     this.updateGui();
   },

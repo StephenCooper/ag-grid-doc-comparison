@@ -1,28 +1,28 @@
-"use strict";
+'use strict';
 
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
-import { AgGridReact } from "ag-grid-react";
-import React, { useCallback, useMemo, useRef, useState } from "react";
-import { render } from "react-dom";
+import React, { useCallback, useMemo, useRef, useState } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from 'ag-grid-react';
+import 'ag-grid-enterprise';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 
 const getColumnDefs = () => {
   return [
-    { field: "athlete" },
-    { field: "age" },
-    { field: "country" },
-    { field: "sport" },
-    { field: "gold" },
-    { field: "silver" },
-    { field: "bronze" },
+    { field: 'athlete' },
+    { field: 'age' },
+    { field: 'country' },
+    { field: 'sport' },
+    { field: 'gold' },
+    { field: 'silver' },
+    { field: 'bronze' },
   ];
 };
 
 const GridExample = () => {
   const gridRef = useRef();
-  const containerStyle = useMemo(() => ({ width: "100%", height: "100%" }), []);
-  const gridStyle = useMemo(() => ({ height: "100%", width: "100%" }), []);
+  const containerStyle = useMemo(() => ({ width: '100%', height: '100%' }), []);
+  const gridStyle = useMemo(() => ({ height: '100%', width: '100%' }), []);
   const [rowData, setRowData] = useState();
   const defaultColDef = useMemo(() => {
     return {
@@ -37,51 +37,51 @@ const GridExample = () => {
   const [columnDefs, setColumnDefs] = useState(getColumnDefs());
 
   const onGridReady = useCallback((params) => {
-    fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+    fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .then((resp) => resp.json())
       .then((data) => setRowData(data));
   }, []);
 
   const onSortChanged = useCallback((e) => {
-    console.log("Event Sort Changed", e);
+    console.log('Event Sort Changed', e);
   }, []);
 
   const onColumnResized = useCallback((e) => {
-    console.log("Event Column Resized", e);
+    console.log('Event Column Resized', e);
   }, []);
 
   const onColumnVisible = useCallback((e) => {
-    console.log("Event Column Visible", e);
+    console.log('Event Column Visible', e);
   }, []);
 
   const onColumnPivotChanged = useCallback((e) => {
-    console.log("Event Pivot Changed", e);
+    console.log('Event Pivot Changed', e);
   }, []);
 
   const onColumnRowGroupChanged = useCallback((e) => {
-    console.log("Event Row Group Changed", e);
+    console.log('Event Row Group Changed', e);
   }, []);
 
   const onColumnValueChanged = useCallback((e) => {
-    console.log("Event Value Changed", e);
+    console.log('Event Value Changed', e);
   }, []);
 
   const onColumnMoved = useCallback((e) => {
-    console.log("Event Column Moved", e);
+    console.log('Event Column Moved', e);
   }, []);
 
   const onColumnPinned = useCallback((e) => {
-    console.log("Event Column Pinned", e);
+    console.log('Event Column Pinned', e);
   }, []);
 
   const onBtSortOn = useCallback(() => {
     const columnDefs = getColumnDefs();
     columnDefs.forEach(function (colDef) {
-      if (colDef.field === "age") {
-        colDef.sort = "desc";
+      if (colDef.field === 'age') {
+        colDef.sort = 'desc';
       }
-      if (colDef.field === "athlete") {
-        colDef.sort = "asc";
+      if (colDef.field === 'athlete') {
+        colDef.sort = 'asc';
       }
     });
     gridRef.current.api.setColumnDefs(columnDefs);
@@ -98,7 +98,7 @@ const GridExample = () => {
   const onBtWidthNarrow = useCallback(() => {
     const columnDefs = getColumnDefs();
     columnDefs.forEach(function (colDef) {
-      if (colDef.field === "age" || colDef.field === "athlete") {
+      if (colDef.field === 'age' || colDef.field === 'athlete') {
         colDef.width = 100;
       }
     });
@@ -116,7 +116,7 @@ const GridExample = () => {
   const onBtHide = useCallback(() => {
     const columnDefs = getColumnDefs();
     columnDefs.forEach(function (colDef) {
-      if (colDef.field === "age" || colDef.field === "athlete") {
+      if (colDef.field === 'age' || colDef.field === 'athlete') {
         colDef.hide = true;
       }
     });
@@ -135,7 +135,7 @@ const GridExample = () => {
     gridRef.current.columnApi.setPivotMode(true);
     const columnDefs = getColumnDefs();
     columnDefs.forEach(function (colDef) {
-      if (colDef.field === "country") {
+      if (colDef.field === 'country') {
         colDef.pivot = true;
       }
     });
@@ -154,7 +154,7 @@ const GridExample = () => {
   const onBtRowGroupOn = useCallback(() => {
     const columnDefs = getColumnDefs();
     columnDefs.forEach(function (colDef) {
-      if (colDef.field === "sport") {
+      if (colDef.field === 'sport') {
         colDef.rowGroup = true;
       }
     });
@@ -173,11 +173,11 @@ const GridExample = () => {
     const columnDefs = getColumnDefs();
     columnDefs.forEach(function (colDef) {
       if (
-        colDef.field === "gold" ||
-        colDef.field === "silver" ||
-        colDef.field === "bronze"
+        colDef.field === 'gold' ||
+        colDef.field === 'silver' ||
+        colDef.field === 'bronze'
       ) {
-        colDef.aggFunc = "sum";
+        colDef.aggFunc = 'sum';
       }
     });
     gridRef.current.api.setColumnDefs(columnDefs);
@@ -194,11 +194,11 @@ const GridExample = () => {
   const onBtPinnedOn = useCallback(() => {
     const columnDefs = getColumnDefs();
     columnDefs.forEach(function (colDef) {
-      if (colDef.field === "athlete") {
-        colDef.pinned = "left";
+      if (colDef.field === 'athlete') {
+        colDef.pinned = 'left';
       }
-      if (colDef.field === "age") {
-        colDef.pinned = "right";
+      if (colDef.field === 'age') {
+        colDef.pinned = 'right';
       }
     });
     gridRef.current.api.setColumnDefs(columnDefs);
@@ -277,4 +277,4 @@ const GridExample = () => {
   );
 };
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

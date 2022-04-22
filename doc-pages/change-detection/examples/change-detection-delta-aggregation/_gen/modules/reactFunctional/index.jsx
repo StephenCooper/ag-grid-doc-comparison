@@ -1,14 +1,14 @@
-"use strict";
+'use strict';
 
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine-dark.css";
-import { AgGridReact } from "@ag-grid-community/react";
-import { RowGroupingModule } from "@ag-grid-enterprise/row-grouping";
-import { SetFilterModule } from "@ag-grid-enterprise/set-filter";
-import React, { useCallback, useMemo, useRef, useState } from "react";
-import { render } from "react-dom";
+import React, { useCallback, useMemo, useRef, useState } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from '@ag-grid-community/react';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine-dark.css';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import { RowGroupingModule } from '@ag-grid-enterprise/row-grouping';
+import { SetFilterModule } from '@ag-grid-enterprise/set-filter';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([
@@ -41,24 +41,24 @@ const createRowItem = (i, j, k) => {
     b: (j * k * 811) % 100,
     c: (j * k * 743) % 100,
     d: (j * k * 677) % 100,
-    topGroup: "Bottom",
-    group: "Group B" + j,
+    topGroup: 'Bottom',
+    group: 'Group B' + j,
   };
   if (i === 1) {
-    rowDataItem.topGroup = "Top";
-    rowDataItem.group = "Group A" + j;
+    rowDataItem.topGroup = 'Top';
+    rowDataItem.group = 'Group A' + j;
   }
   return rowDataItem;
 };
 
 // converts strings to numbers
 const numberValueParser = (params) => {
-  console.log("=> updating to " + params.newValue);
+  console.log('=> updating to ' + params.newValue);
   return Number(params.newValue);
 };
 
 const pickRandomColumn = () => {
-  var letters = ["a", "b", "c", "d"];
+  var letters = ['a', 'b', 'c', 'd'];
   var randomIndex = Math.floor(Math.random() * letters.length);
   return letters[randomIndex];
 };
@@ -86,20 +86,20 @@ const pickExistingRowNodeAtRandom = (gridApi) => {
 
 const GridExample = () => {
   const gridRef = useRef();
-  const containerStyle = useMemo(() => ({ width: "100%", height: "100%" }), []);
-  const gridStyle = useMemo(() => ({ height: "100%", width: "100%" }), []);
+  const containerStyle = useMemo(() => ({ width: '100%', height: '100%' }), []);
+  const gridStyle = useMemo(() => ({ height: '100%', width: '100%' }), []);
   const [rowData, setRowData] = useState();
   const [columnDefs, setColumnDefs] = useState([
-    { field: "topGroup", rowGroup: true, hide: true },
-    { field: "group", rowGroup: true, hide: true },
-    { headerName: "ID", field: "id", cellClass: "number-cell", maxWidth: 70 },
-    { field: "a", type: "valueColumn" },
-    { field: "b", type: "valueColumn" },
-    { field: "c", type: "valueColumn" },
-    { field: "d", type: "valueColumn" },
+    { field: 'topGroup', rowGroup: true, hide: true },
+    { field: 'group', rowGroup: true, hide: true },
+    { headerName: 'ID', field: 'id', cellClass: 'number-cell', maxWidth: 70 },
+    { field: 'a', type: 'valueColumn' },
+    { field: 'b', type: 'valueColumn' },
+    { field: 'c', type: 'valueColumn' },
+    { field: 'd', type: 'valueColumn' },
     {
-      headerName: "Total",
-      type: "totalColumn",
+      headerName: 'Total',
+      type: 'totalColumn',
       minWidth: 120,
       // we use getValue() instead of data.a so that it gets the aggregated values at the group level
       valueGetter:
@@ -122,15 +122,15 @@ const GridExample = () => {
     return {
       valueColumn: {
         editable: true,
-        aggFunc: "sum",
-        cellClass: "number-cell",
-        cellRenderer: "agAnimateShowChangeCellRenderer",
-        filter: "agNumberColumnFilter",
+        aggFunc: 'sum',
+        cellClass: 'number-cell',
+        cellRenderer: 'agAnimateShowChangeCellRenderer',
+        filter: 'agNumberColumnFilter',
         valueParser: numberValueParser,
       },
       totalColumn: {
-        cellRenderer: "agAnimateShowChangeCellRenderer",
-        cellClass: "number-cell",
+        cellRenderer: 'agAnimateShowChangeCellRenderer',
+        cellClass: 'number-cell',
       },
     };
   }, []);
@@ -141,7 +141,7 @@ const GridExample = () => {
         var result = 0;
         if (values) {
           values.forEach(function (value) {
-            if (typeof value === "number") {
+            if (typeof value === 'number') {
               result += value;
             }
           });
@@ -149,9 +149,9 @@ const GridExample = () => {
         callCount++;
         console.log(
           callCount +
-            " aggregation: sum([" +
-            values.join(",") +
-            "]) = " +
+            ' aggregation: sum([' +
+            values.join(',') +
+            ']) = ' +
             result
         );
         return result;
@@ -172,7 +172,7 @@ const GridExample = () => {
     var randomValue = createRandomNumber();
     var randomColumnId = pickRandomColumn();
     console.log(
-      "updating " + randomColumnId + " to " + randomValue + " on ",
+      'updating ' + randomColumnId + ' to ' + randomValue + ' on ',
       rowNodeToUpdate.data
     );
     rowNodeToUpdate.setDataValue(randomColumnId, randomValue);
@@ -183,13 +183,13 @@ const GridExample = () => {
     if (!itemToUpdate) {
       return;
     }
-    console.log("updating - before", itemToUpdate);
+    console.log('updating - before', itemToUpdate);
     itemToUpdate[pickRandomColumn()] = createRandomNumber();
     itemToUpdate[pickRandomColumn()] = createRandomNumber();
     var transaction = {
       update: [itemToUpdate],
     };
-    console.log("updating - after", itemToUpdate);
+    console.log('updating - after', itemToUpdate);
     gridRef.current.api.applyTransaction(transaction);
   }, []);
 
@@ -201,7 +201,7 @@ const GridExample = () => {
     var transaction = {
       remove: [itemToRemove],
     };
-    console.log("removing", itemToRemove);
+    console.log('removing', itemToRemove);
     gridRef.current.api.applyTransaction(transaction);
   }, []);
 
@@ -213,7 +213,7 @@ const GridExample = () => {
     var transaction = {
       add: [newItem],
     };
-    console.log("adding", newItem);
+    console.log('adding', newItem);
     gridRef.current.api.applyTransaction(transaction);
   }, []);
 
@@ -222,11 +222,11 @@ const GridExample = () => {
     if (!itemToUpdate) {
       return;
     }
-    itemToUpdate.topGroup = itemToUpdate.topGroup === "Top" ? "Bottom" : "Top";
+    itemToUpdate.topGroup = itemToUpdate.topGroup === 'Top' ? 'Bottom' : 'Top';
     var transaction = {
       update: [itemToUpdate],
     };
-    console.log("updating", itemToUpdate);
+    console.log('updating', itemToUpdate);
     gridRef.current.api.applyTransaction(transaction);
   }, []);
 
@@ -270,4 +270,4 @@ const GridExample = () => {
   );
 };
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

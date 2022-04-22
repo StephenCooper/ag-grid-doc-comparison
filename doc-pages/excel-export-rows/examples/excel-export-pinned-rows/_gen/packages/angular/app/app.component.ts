@@ -1,17 +1,17 @@
-import { HttpClient } from "@angular/common/http";
-import { Component } from "@angular/core";
+import { HttpClient } from '@angular/common/http';
+import { Component } from '@angular/core';
 import {
   ColDef,
   ColGroupDef,
   GridApi,
   GridReadyEvent,
-} from "ag-grid-community";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
+} from 'ag-grid-community';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import 'ag-grid-enterprise';
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<div class="container">
     <div class="columns">
       <div class="column">
@@ -55,25 +55,25 @@ export class AppComponent {
 
   public columnDefs: (ColDef | ColGroupDef)[] = [
     {
-      headerName: "Top Level Column Group",
+      headerName: 'Top Level Column Group',
       children: [
         {
-          headerName: "Group A",
+          headerName: 'Group A',
           children: [
-            { field: "athlete", minWidth: 200 },
-            { field: "country", minWidth: 200 },
-            { headerName: "Group", valueGetter: "data.country.charAt(0)" },
+            { field: 'athlete', minWidth: 200 },
+            { field: 'country', minWidth: 200 },
+            { headerName: 'Group', valueGetter: 'data.country.charAt(0)' },
           ],
         },
         {
-          headerName: "Group B",
+          headerName: 'Group B',
           children: [
-            { field: "date", minWidth: 150 },
-            { field: "sport", minWidth: 150 },
-            { field: "gold" },
-            { field: "silver" },
-            { field: "bronze" },
-            { field: "total" },
+            { field: 'date', minWidth: 150 },
+            { field: 'sport', minWidth: 150 },
+            { field: 'gold' },
+            { field: 'silver' },
+            { field: 'bronze' },
+            { field: 'total' },
           ],
         },
       ],
@@ -89,24 +89,24 @@ export class AppComponent {
   public popupParent: HTMLElement = document.body;
   public pinnedTopRowData: any[] = [
     {
-      athlete: "Floating <Top> Athlete",
-      country: "Floating <Top> Country",
-      date: "01/08/2020",
-      sport: "Track & Field",
+      athlete: 'Floating <Top> Athlete',
+      country: 'Floating <Top> Country',
+      date: '01/08/2020',
+      sport: 'Track & Field',
       gold: 22,
-      silver: "003",
+      silver: '003',
       bronze: 44,
       total: 55,
     },
   ];
   public pinnedBottomRowData: any[] = [
     {
-      athlete: "Floating <Bottom> Athlete",
-      country: "Floating <Bottom> Country",
-      date: "01/08/2030",
-      sport: "Track & Field",
+      athlete: 'Floating <Bottom> Athlete',
+      country: 'Floating <Bottom> Country',
+      date: '01/08/2030',
+      sport: 'Track & Field',
       gold: 222,
-      silver: "005",
+      silver: '005',
       bronze: 244,
       total: 255,
     },
@@ -124,7 +124,7 @@ export class AppComponent {
 
     this.http
       .get<any[]>(
-        "https://www.ag-grid.com/example-assets/small-olympic-winners.json"
+        'https://www.ag-grid.com/example-assets/small-olympic-winners.json'
       )
       .subscribe((data) =>
         params.api!.setRowData(data.filter((rec: any) => rec.country != null))
@@ -133,11 +133,11 @@ export class AppComponent {
 }
 
 function getBoolean(id: string) {
-  return !!(document.querySelector("#" + id) as HTMLInputElement).checked;
+  return !!(document.querySelector('#' + id) as HTMLInputElement).checked;
 }
 function getParams() {
   return {
-    skipPinnedTop: getBoolean("skipPinnedTop"),
-    skipPinnedBottom: getBoolean("skipPinnedBottom"),
+    skipPinnedTop: getBoolean('skipPinnedTop'),
+    skipPinnedBottom: getBoolean('skipPinnedBottom'),
   };
 }

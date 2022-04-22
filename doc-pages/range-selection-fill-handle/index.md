@@ -7,7 +7,7 @@ When working with a Range Selection, a Fill Handle allows you to run operations 
 
 ## Enabling the Fill Handle
 
-To enable the Fill Handle, simply set `enableFillHandle` to `true` in the `gridOptions` as shown below:
+To enable the Fill Handle, simply set `enableFillHandle` to `true` in the `gridOptions` as shown below: 
 
 <snippet>
 const gridOptions = {
@@ -26,8 +26,7 @@ const gridOptions = {
 | It's important to note that if you enable both `enableFillHandle` and `enableRangeHandle`, the Fill Handle will take precedence.
 
 ## Default Fill Handle
-
-The default Fill Handle behaviour will be as close as possible to other spreadsheet applications. Note the following:
+The default Fill Handle behaviour will be as close as possible to other spreadsheet applications. Note the following: 
 
 ### Single Cell
 
@@ -48,7 +47,7 @@ The default Fill Handle behaviour will be as close as possible to other spreadsh
 
 ## Preventing Range Reduction
 
-Reducing a range selection with the Fill Handle will clear cell contents by default, as can be observed in the
+Reducing a range selection with the Fill Handle will clear cell contents by default, as can be observed in the 
 [Range Reduction](/range-selection-fill-handle/#range-reduction) example above.
 
 If this behaviour for decreasing selection needs to be prevented, the flag `suppressClearOnFillReduction` should be set to `true`.
@@ -59,7 +58,7 @@ If this behaviour for decreasing selection needs to be prevented, the flag `supp
 
 By the default, the Fill Handle can be dragged horizontally or vertically. If dragging only vertically, or only horizontally is a requirement, the `gridOptions` property `fillHandleDirection` property can be set or set via the API using `setFillHandleDirection`. This default value is `xy`.
 
-<api-documentation source='grid-properties/properties.json' section='selection' names='["fillHandleDirection"]' config='{"overrideBottomMargin":"0"}'></api-documentation>
+<api-documentation source='grid-options/properties.json' section='selection' names='["fillHandleDirection"]' config='{"overrideBottomMargin":"0"}'></api-documentation>
 <api-documentation source='grid-api/api.json' section='selection' names='["setFillHandleDirection"]'></api-documentation>
 
 <snippet>
@@ -82,7 +81,7 @@ const gridOptions = {
 
 Often there is a need to use a custom method to fill values instead of simply copying values or increasing number values using linear progression. In these scenarios, the `fillOperation` callback should be used.
 
-<api-documentation source='grid-properties/properties.json' section='selection' names='["fillOperation"]'  ></api-documentation>
+<api-documentation source='grid-options/properties.json' section='selection' names='["fillOperation"]'  ></api-documentation>
 
 <snippet>
 const gridOptions = {
@@ -101,7 +100,6 @@ const gridOptions = {
 </snippet>
 
 ### FillOperationParams
-
 <interface-documentation interfaceName='FillOperationParams'></interface-documentation>
 
 [[note]]

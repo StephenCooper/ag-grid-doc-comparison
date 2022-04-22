@@ -1,10 +1,10 @@
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { AgGridVue } from "@ag-grid-community/vue";
-import { SparklinesModule } from "@ag-grid-enterprise/sparklines";
-import Vue from "vue";
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { AgGridVue } from '@ag-grid-community/vue';
+import { SparklinesModule } from '@ag-grid-enterprise/sparklines';
+import Vue from 'vue';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([ClientSideRowModelModule, SparklinesModule]);
@@ -24,22 +24,22 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
-        { field: "symbol", maxWidth: 120 },
-        { field: "name", minWidth: 250 },
+        { field: 'symbol', maxWidth: 120 },
+        { field: 'name', minWidth: 250 },
         {
-          field: "change",
-          cellRenderer: "agSparklineCellRenderer",
+          field: 'change',
+          cellRenderer: 'agSparklineCellRenderer',
           cellRendererParams: {
             sparklineOptions: {
-              type: "bar",
-              fill: "#5470c6",
-              stroke: "#91cc75",
-              highlightStyle: { fill: "#fac858" },
+              type: 'bar',
+              fill: '#5470c6',
+              stroke: '#91cc75',
+              highlightStyle: { fill: '#fac858' },
               valueAxisDomain: [0, 1],
               paddingOuter: 0,
               padding: { top: 0, bottom: 0 },
@@ -47,7 +47,7 @@ const VueExample = {
             },
           },
         },
-        { field: "volume", type: "numericColumn", maxWidth: 140 },
+        { field: 'volume', type: 'numericColumn', maxWidth: 140 },
       ],
       gridApi: null,
       columnApi: null,
@@ -73,8 +73,8 @@ const VueExample = {
 };
 
 new Vue({
-  el: "#app",
+  el: '#app',
   components: {
-    "my-component": VueExample,
+    'my-component': VueExample,
   },
 });

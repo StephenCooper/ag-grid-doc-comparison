@@ -2,19 +2,20 @@ import {
   ColDef,
   FirstDataRenderedEvent,
   GetRowIdFunc,
+  GetRowIdParams,
   GridApi,
   GridReadyEvent,
   IDetailCellRendererParams,
   IsRowMaster,
-} from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { HttpClient } from "@angular/common/http";
-import { Component } from "@angular/core";
+} from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { HttpClient } from '@angular/common/http';
+import { Component } from '@angular/core';
 // Required feature modules are registered in app.module.ts
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<div style="display: flex; flex-direction: column; height: 100%;">
     <div style="padding-bottom: 4px;">
       <button (click)="onBtClearMilaCalls()">Clear Mila Calls</button>
@@ -38,30 +39,30 @@ import { Component } from "@angular/core";
 export class AppComponent {
   private gridApi!: GridApi;
 
-  public isRowMaster: IsRowMaster = function (dataItem) {
+  public isRowMaster: IsRowMaster = function (dataItem: any) {
     return dataItem ? dataItem.callRecords.length > 0 : false;
   };
   public columnDefs: ColDef[] = [
     // group cell renderer needed for expand / collapse icons
-    { field: "name", cellRenderer: "agGroupCellRenderer" },
-    { field: "account" },
-    { field: "calls" },
-    { field: "minutes", valueFormatter: "x.toLocaleString() + 'm'" },
+    { field: 'name', cellRenderer: 'agGroupCellRenderer' },
+    { field: 'account' },
+    { field: 'calls' },
+    { field: 'minutes', valueFormatter: "x.toLocaleString() + 'm'" },
   ];
   public defaultColDef: ColDef = {
     flex: 1,
   };
-  public getRowId: GetRowIdFunc = function (params) {
+  public getRowId: GetRowIdFunc = function (params: GetRowIdParams) {
     return params.data.account;
   };
   public detailCellRendererParams: any = {
     detailGridOptions: {
       columnDefs: [
-        { field: "callId" },
-        { field: "direction" },
-        { field: "number", minWidth: 150 },
-        { field: "duration", valueFormatter: "x.toLocaleString() + 's'" },
-        { field: "switchCode", minWidth: 150 },
+        { field: 'callId' },
+        { field: 'direction' },
+        { field: 'number', minWidth: 150 },
+        { field: 'duration', valueFormatter: "x.toLocaleString() + 's'" },
+        { field: 'switchCode', minWidth: 150 },
       ],
       defaultColDef: {
         flex: 1,
@@ -83,31 +84,31 @@ export class AppComponent {
   }
 
   onBtClearMilaCalls() {
-    var milaSmithRowNode = this.gridApi.getRowNode("177001")!;
+    var milaSmithRowNode = this.gridApi.getRowNode('177001')!;
     var milaSmithData = milaSmithRowNode.data;
     milaSmithData.callRecords = [];
     this.gridApi.applyTransaction({ update: [milaSmithData] });
   }
 
   onBtSetMilaCalls() {
-    var milaSmithRowNode = this.gridApi.getRowNode("177001")!;
+    var milaSmithRowNode = this.gridApi.getRowNode('177001')!;
     var milaSmithData = milaSmithRowNode.data;
     milaSmithData.callRecords = [
       {
-        name: "susan",
+        name: 'susan',
         callId: 579,
         duration: 23,
-        switchCode: "SW5",
-        direction: "Out",
-        number: "(02) 47485405",
+        switchCode: 'SW5',
+        direction: 'Out',
+        number: '(02) 47485405',
       },
       {
-        name: "susan",
+        name: 'susan',
         callId: 580,
         duration: 52,
-        switchCode: "SW3",
-        direction: "In",
-        number: "(02) 32367069",
+        switchCode: 'SW3',
+        direction: 'In',
+        number: '(02) 32367069',
       },
     ];
     this.gridApi.applyTransaction({ update: [milaSmithData] });
@@ -118,7 +119,7 @@ export class AppComponent {
 
     this.http
       .get<any[]>(
-        "https://www.ag-grid.com/example-assets/master-detail-dynamic-data.json"
+        'https://www.ag-grid.com/example-assets/master-detail-dynamic-data.json'
       )
       .subscribe((data) => {
         this.rowData = data;

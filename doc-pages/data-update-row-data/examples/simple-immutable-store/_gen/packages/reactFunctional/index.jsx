@@ -1,18 +1,18 @@
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
-import { AgGridReact } from "ag-grid-react";
-import React, { useCallback, useMemo, useRef, useState } from "react";
-import { render } from "react-dom";
-("use strict");
+'use strict';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import React, { useCallback, useMemo, useRef, useState } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from 'ag-grid-react';
+import 'ag-grid-enterprise';
 
 // creates a unique symbol, eg 'ADG' or 'ZJD'
 function createUniqueRandomSymbol(data) {
   let symbol;
-  const possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  const possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
   let isUnique = false;
   while (!isUnique) {
-    symbol = "";
+    symbol = '';
     // create symbol
     for (let i = 0; i < 3; i++) {
       symbol += possible.charAt(Math.floor(Math.random() * possible.length));
@@ -38,7 +38,7 @@ function getInitialData() {
 
 function createItem(data) {
   const item = {
-    group: ["A", "B", "C"][Math.floor(Math.random() * 3)],
+    group: ['A', 'B', 'C'][Math.floor(Math.random() * 3)],
     symbol: createUniqueRandomSymbol(data),
     price: Math.floor(Math.random() * 100),
   };
@@ -49,36 +49,36 @@ function setGroupingEnabled(enabled, columnApi) {
   if (enabled) {
     columnApi.applyColumnState({
       state: [
-        { colId: "group", rowGroup: true, hide: true },
-        { colId: "symbol", hide: true },
+        { colId: 'group', rowGroup: true, hide: true },
+        { colId: 'symbol', hide: true },
       ],
     });
   } else {
     columnApi.applyColumnState({
       state: [
-        { colId: "group", rowGroup: false, hide: false },
-        { colId: "symbol", hide: false },
+        { colId: 'group', rowGroup: false, hide: false },
+        { colId: 'symbol', hide: false },
       ],
     });
   }
-  setItemVisible("groupingOn", !enabled);
-  setItemVisible("groupingOff", enabled);
+  setItemVisible('groupingOn', !enabled);
+  setItemVisible('groupingOff', enabled);
 }
 
 function setItemVisible(id, visible) {
-  const element = document.querySelector("#" + id);
-  element.style.display = visible ? "inline" : "none";
+  const element = document.querySelector('#' + id);
+  element.style.display = visible ? 'inline' : 'none';
 }
 
 const GridExample = () => {
-  const gridRef = useRef();
-  const containerStyle = useMemo(() => ({ width: "100%", height: "100%" }), []);
-  const gridStyle = useMemo(() => ({ height: "100%", width: "100%" }), []);
+  const gridRef = useRef(null);
+  const containerStyle = useMemo(() => ({ width: '100%', height: '100%' }), []);
+  const gridStyle = useMemo(() => ({ height: '100%', width: '100%' }), []);
   const [rowData, setRowData] = useState(getInitialData());
   const [columnDefs, setColumnDefs] = useState([
-    { headerName: "Symbol", field: "symbol" },
-    { headerName: "Price", field: "price" },
-    { headerName: "Group", field: "group" },
+    { headerName: 'Symbol', field: 'symbol' },
+    { headerName: 'Price', field: 'price' },
+    { headerName: 'Group', field: 'group' },
   ]);
   const defaultColDef = useMemo(() => {
     return {
@@ -89,14 +89,14 @@ const GridExample = () => {
   }, []);
   const autoGroupColumnDef = useMemo(() => {
     return {
-      headerName: "Symbol",
-      cellRenderer: "agGroupCellRenderer",
-      field: "symbol",
+      headerName: 'Symbol',
+      cellRenderer: 'agGroupCellRenderer',
+      field: 'symbol',
     };
   }, []);
   const statusBar = useMemo(() => {
     return {
-      statusPanels: [{ statusPanel: "agAggregationComponent", align: "right" }],
+      statusPanels: [{ statusPanel: 'agAggregationComponent', align: 'right' }],
     };
   }, []);
   const getRowId = useCallback(function (params) {
@@ -187,13 +187,13 @@ const GridExample = () => {
     <div style={containerStyle}>
       <div
         style={{
-          height: "100%",
-          width: "100%",
-          display: "flex",
-          flexDirection: "column",
+          height: '100%',
+          width: '100%',
+          display: 'flex',
+          flexDirection: 'column',
         }}
       >
-        <div style={{ marginBottom: "5px", minHeight: "30px" }}>
+        <div style={{ marginBottom: '5px', minHeight: '30px' }}>
           <button onClick={reverseItems}>Reverse</button>
           <button onClick={() => addFiveItems(true)}>Append</button>
           <button onClick={() => addFiveItems(false)}>Prepend</button>
@@ -208,20 +208,20 @@ const GridExample = () => {
           </button>
           <span
             style={{
-              border: "1px solid lightgrey",
-              marginLeft: "20px",
-              padding: "8px",
-              whiteSpace: "nowrap",
-              display: "inline-block",
+              border: '1px solid lightgrey',
+              marginLeft: '20px',
+              padding: '8px',
+              whiteSpace: 'nowrap',
+              display: 'inline-block',
             }}
           >
-            Group:
-            <button onClick={() => setSelectedToGroup("A")}>A</button>
-            <button onClick={() => setSelectedToGroup("B")}>B</button>
-            <button onClick={() => setSelectedToGroup("C")}>C</button>
+            Move to Group:
+            <button onClick={() => setSelectedToGroup('A')}>A</button>
+            <button onClick={() => setSelectedToGroup('B')}>B</button>
+            <button onClick={() => setSelectedToGroup('C')}>C</button>
           </span>
         </div>
-        <div style={{ flex: "1 1 0px" }}>
+        <div style={{ flex: '1 1 0px' }}>
           <div style={gridStyle} className="ag-theme-alpine">
             <AgGridReact
               ref={gridRef}
@@ -229,7 +229,7 @@ const GridExample = () => {
               columnDefs={columnDefs}
               defaultColDef={defaultColDef}
               animateRows={true}
-              rowSelection={"multiple"}
+              rowSelection={'multiple'}
               autoGroupColumnDef={autoGroupColumnDef}
               statusBar={statusBar}
               groupDefaultExpanded={1}
@@ -243,4 +243,4 @@ const GridExample = () => {
   );
 };
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

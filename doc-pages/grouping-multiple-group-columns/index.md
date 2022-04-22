@@ -3,7 +3,7 @@ title: "Row Grouping - Multiple Group Columns"
 enterprise: true
 ---
 
-This section covers the Multiple Group Columns display type, where a group column is automatically added by the grid for
+This section covers the Multiple Group Columns display type, where a group column is automatically added by the grid for 
 each row group.
 
 <image-caption src="grouping-multiple-group-columns/resources/multiple-group-columns.png" alt="Multiple Group Columns" maxWidth="80%" constrained="true" centered="true"></image-caption>
@@ -12,7 +12,7 @@ each row group.
 
 To display each row group under a separate group column set `groupDisplayType = 'multipleColumns'` as shown below:
 
-<snippet spaceBetweenProperties="true" inlineReactProperties="true">
+<snippet spaceBetweenProperties="true">
 const gridOptions = {
     columnDefs: [
         { field: 'country', rowGroup: true, hide: true },

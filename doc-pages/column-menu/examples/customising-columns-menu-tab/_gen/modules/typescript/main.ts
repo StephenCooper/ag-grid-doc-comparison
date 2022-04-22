@@ -1,14 +1,14 @@
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
 import {
   ColGroupDef,
   Grid,
   GridOptions,
   ModuleRegistry,
-} from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { ColumnsToolPanelModule } from "@ag-grid-enterprise/column-tool-panel";
-import { MenuModule } from "@ag-grid-enterprise/menu";
+} from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { ColumnsToolPanelModule } from '@ag-grid-enterprise/column-tool-panel';
+import { MenuModule } from '@ag-grid-enterprise/menu';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([
@@ -19,12 +19,12 @@ ModuleRegistry.registerModules([
 
 const columnDefs: ColGroupDef[] = [
   {
-    groupId: "athleteGroupId",
-    headerName: "Athlete",
+    groupId: 'athleteGroupId',
+    headerName: 'Athlete',
     children: [
       {
-        headerName: "Name",
-        field: "athlete",
+        headerName: 'Name',
+        field: 'athlete',
         minWidth: 200,
         columnsMenuParams: {
           // hides the Column Filter section
@@ -38,7 +38,7 @@ const columnDefs: ColGroupDef[] = [
         },
       },
       {
-        field: "age",
+        field: 'age',
         minWidth: 200,
         columnsMenuParams: {
           // contracts all column groups
@@ -48,9 +48,9 @@ const columnDefs: ColGroupDef[] = [
     ],
   },
   {
-    groupId: "medalsGroupId",
-    headerName: "Medals",
-    children: [{ field: "gold" }, { field: "silver" }, { field: "bronze" }],
+    groupId: 'medalsGroupId',
+    headerName: 'Medals',
+    children: [{ field: 'gold' }, { field: 'silver' }, { field: 'bronze' }],
   },
 ];
 
@@ -59,7 +59,7 @@ const gridOptions: GridOptions = {
   defaultColDef: {
     flex: 1,
     resizable: true,
-    menuTabs: ["columnsMenuTab"],
+    menuTabs: ['columnsMenuTab'],
     columnsMenuParams: {
       // suppresses updating the layout of columns as they are rearranged in the grid
       suppressSyncLayoutWithGrid: true,
@@ -68,9 +68,9 @@ const gridOptions: GridOptions = {
 };
 
 // setup the grid after the page has finished loading
-const gridDiv = document.querySelector<HTMLElement>("#myGrid")!;
+const gridDiv = document.querySelector<HTMLElement>('#myGrid')!;
 new Grid(gridDiv, gridOptions);
 
-fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
   .then((response) => response.json())
   .then((data) => gridOptions.api!.setRowData(data));

@@ -1,13 +1,13 @@
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { AgGridVue } from "@ag-grid-community/vue";
-import { ColumnsToolPanelModule } from "@ag-grid-enterprise/column-tool-panel";
-import { FiltersToolPanelModule } from "@ag-grid-enterprise/filter-tool-panel";
-import { MenuModule } from "@ag-grid-enterprise/menu";
-import { SetFilterModule } from "@ag-grid-enterprise/set-filter";
-import Vue from "vue";
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { AgGridVue } from '@ag-grid-community/vue';
+import { ColumnsToolPanelModule } from '@ag-grid-enterprise/column-tool-panel';
+import { FiltersToolPanelModule } from '@ag-grid-enterprise/filter-tool-panel';
+import { MenuModule } from '@ag-grid-enterprise/menu';
+import { SetFilterModule } from '@ag-grid-enterprise/set-filter';
+import Vue from 'vue';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([
@@ -34,21 +34,21 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
         {
-          headerName: "Days (Values Not Provided)",
-          field: "days",
-          filter: "agSetColumnFilter",
+          headerName: 'Days (Values Not Provided)',
+          field: 'days',
+          filter: 'agSetColumnFilter',
           filterParams: daysValuesNotProvidedFilterParams,
         },
         {
-          headerName: "Days (Values Provided)",
-          field: "days",
-          filter: "agSetColumnFilter",
+          headerName: 'Days (Values Provided)',
+          field: 'days',
+          filter: 'agSetColumnFilter',
           filterParams: daysValuesProvidedFilterParams,
         },
       ],
@@ -64,12 +64,12 @@ const VueExample = {
     };
   },
   created() {
-    this.sideBar = "filters";
+    this.sideBar = 'filters';
     this.rowData = getRowData();
   },
   methods: {
     onFirstDataRendered(params) {
-      params.api.getToolPanelInstance("filters").expandFilters();
+      params.api.getToolPanelInstance('filters').expandFilters();
     },
     onGridReady(params) {
       this.gridApi = params.api;
@@ -79,7 +79,7 @@ const VueExample = {
 };
 
 window.getRowData = function getRowData() {
-  var weekdays = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
+  var weekdays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
   var rows = [];
   for (var i = 0; i < 200; i++) {
     var index = Math.floor(Math.random() * 5);
@@ -89,13 +89,13 @@ window.getRowData = function getRowData() {
 };
 
 var listOfDays = [
-  "Monday",
-  "Tuesday",
-  "Wednesday",
-  "Thursday",
-  "Friday",
-  "Saturday",
-  "Sunday",
+  'Monday',
+  'Tuesday',
+  'Wednesday',
+  'Thursday',
+  'Friday',
+  'Saturday',
+  'Sunday',
 ];
 
 var daysValuesNotProvidedFilterParams = {
@@ -113,8 +113,8 @@ var daysValuesProvidedFilterParams = {
 };
 
 new Vue({
-  el: "#app",
+  el: '#app',
   components: {
-    "my-component": VueExample,
+    'my-component': VueExample,
   },
 });

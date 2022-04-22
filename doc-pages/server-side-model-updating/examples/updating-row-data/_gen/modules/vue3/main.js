@@ -1,10 +1,10 @@
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine-dark.css";
-import { AgGridVue } from "@ag-grid-community/vue3";
-import { RowGroupingModule } from "@ag-grid-enterprise/row-grouping";
-import { ServerSideRowModelModule } from "@ag-grid-enterprise/server-side-row-model";
-import { createApp } from "vue";
+import { ModuleRegistry } from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine-dark.css';
+import { AgGridVue } from '@ag-grid-community/vue3';
+import { RowGroupingModule } from '@ag-grid-enterprise/row-grouping';
+import { ServerSideRowModelModule } from '@ag-grid-enterprise/server-side-row-model';
+import { createApp } from 'vue';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([ServerSideRowModelModule, RowGroupingModule]);
@@ -35,17 +35,17 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
-        { field: "id", hide: true },
-        { field: "athlete" },
-        { field: "country", rowGroup: true, hide: true },
-        { field: "gold" },
-        { field: "silver" },
-        { field: "bronze" },
+        { field: 'id', hide: true },
+        { field: 'athlete' },
+        { field: 'country', rowGroup: true, hide: true },
+        { field: 'gold' },
+        { field: 'silver' },
+        { field: 'bronze' },
       ],
       gridApi: null,
       columnApi: null,
@@ -60,9 +60,9 @@ const VueExample = {
     };
   },
   created() {
-    this.rowSelection = "multiple";
-    this.rowModelType = "serverSide";
-    this.serverSideStoreType = "partial";
+    this.rowSelection = 'multiple';
+    this.rowModelType = 'serverSide';
+    this.serverSideStoreType = 'partial';
     this.cacheBlockSize = 75;
   },
   methods: {
@@ -118,7 +118,7 @@ const VueExample = {
         params.api.setServerSideDatasource(dataSource);
       };
 
-      fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
         .then((resp) => resp.json())
         .then((data) => updateData(data));
     },
@@ -139,7 +139,7 @@ window.getMockServerResponse = // ******* Mock Server Implementation *********
     var rowGroupColIds = request.rowGroupCols.map(function (x) {
       return x.id;
     });
-    var parentId = groupKeys.length > 0 ? groupKeys.join("") : "";
+    var parentId = groupKeys.length > 0 ? groupKeys.join('') : '';
     var rows = group(allData, rowGroupColIds, groupKeys, parentId);
     var rowsThisBlock = rows.slice(request.startRow, request.endRow);
     rowsThisBlock.sort();
@@ -160,7 +160,7 @@ window.group = function group(data, rowGroupColIds, groupKeys, parentId) {
       var res = {};
       // Note: the server provides group id's using a simple heuristic based on group keys:
       // i.e. group node ids will be in the following format: 'Russia', 'Russia-2002'
-      res["id"] = getGroupId(parentId, key);
+      res['id'] = getGroupId(parentId, key);
       res[groupColId] = key;
       return res;
     });
@@ -186,11 +186,11 @@ window.updateServerRows = function updateServerRows(rowsToUpdate) {
 };
 
 window.getGroupId = function getGroupId(parentId, key) {
-  return parentId ? parentId + "-" + key : key;
+  return parentId ? parentId + '-' + key : key;
 };
 
 var idSequence = 0;
 
 var allData = [];
 
-createApp(VueExample).mount("#app");
+createApp(VueExample).mount('#app');

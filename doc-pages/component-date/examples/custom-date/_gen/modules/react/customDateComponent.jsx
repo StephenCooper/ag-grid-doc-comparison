@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 
 export default class CustomDateComponent extends Component {
   constructor(props) {
@@ -17,7 +17,7 @@ export default class CustomDateComponent extends Component {
         role="presentation"
         ref="flatpickr"
       >
-        <input type="text" ref="eInput" data-input style={{ width: "100%" }} />
+        <input type="text" ref="eInput" data-input style={{ width: '100%' }} />
         <a class="input-button" title="clear" data-clear>
           <i class="fa fa-times"></i>
         </a>
@@ -28,13 +28,13 @@ export default class CustomDateComponent extends Component {
   componentDidMount() {
     this.picker = flatpickr(this.refs.flatpickr, {
       onChange: this.onDateChanged.bind(this),
-      dateFormat: "d/m/Y",
+      dateFormat: 'd/m/Y',
       wrap: true,
     });
 
     this.eInput = this.refs.eInput;
 
-    this.picker.calendarContainer.classList.add("ag-custom-component-popup");
+    this.picker.calendarContainer.classList.add('ag-custom-component-popup');
   }
 
   //*********************************************************************************
@@ -58,11 +58,11 @@ export default class CustomDateComponent extends Component {
   //*********************************************************************************
 
   setInputPlaceholder(placeholder) {
-    this.eInput.setAttribute("placeholder", placeholder);
+    this.eInput.setAttribute('placeholder', placeholder);
   }
 
   setInputAriaLabel(label) {
-    this.eInput.setAttribute("aria-label", label);
+    this.eInput.setAttribute('aria-label', label);
   }
 
   //*********************************************************************************

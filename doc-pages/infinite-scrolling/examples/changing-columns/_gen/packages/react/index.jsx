@@ -1,10 +1,10 @@
-"use strict";
+'use strict';
 
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import { AgGridReact } from "ag-grid-react";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from 'ag-grid-react';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 
 class GridExample extends Component {
   constructor(props) {
@@ -12,11 +12,11 @@ class GridExample extends Component {
 
     this.state = {
       columnDefs: [
-        { field: "athlete", colId: "athlete", minWidth: 180 },
-        { field: "age", colId: "age" },
-        { field: "country", colId: "country", minWidth: 180 },
-        { field: "year", colId: "year" },
-        { field: "sport", colId: "sport", minWidth: 180 },
+        { field: 'athlete', colId: 'athlete', minWidth: 180 },
+        { field: 'age', colId: 'age' },
+        { field: 'country', colId: 'country', minWidth: 180 },
+        { field: 'year', colId: 'year' },
+        { field: 'sport', colId: 'sport', minWidth: 180 },
       ],
       defaultColDef: {
         flex: 1,
@@ -24,7 +24,7 @@ class GridExample extends Component {
         resizable: true,
         filter: true,
       },
-      rowModelType: "infinite",
+      rowModelType: 'infinite',
     };
   }
 
@@ -35,12 +35,12 @@ class GridExample extends Component {
     const updateData = (data) => {
       // give each row an id
       data.forEach(function (d, index) {
-        d.id = "R" + (index + 1);
+        d.id = 'R' + (index + 1);
       });
       var dataSource = {
         rowCount: undefined,
         getRows: function (params) {
-          console.log("asking for " + params.startRow + " to " + params.endRow);
+          console.log('asking for ' + params.startRow + ' to ' + params.endRow);
           // At this point in your code, you would call the server.
           // To make the demo look real, wait for 500ms before returning
           setTimeout(function () {
@@ -67,33 +67,33 @@ class GridExample extends Component {
       params.api.setDatasource(dataSource);
     };
 
-    fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+    fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .then((resp) => resp.json())
       .then((data) => updateData(data));
   };
 
   onBtShowYearColumn = () => {
     this.gridApi.setColumnDefs([
-      { field: "athlete", colId: "athlete" },
-      { field: "age", colId: "age" },
-      { field: "country", colId: "country" },
-      { field: "year", colId: "year" },
-      { field: "sport", colId: "sport" },
+      { field: 'athlete', colId: 'athlete' },
+      { field: 'age', colId: 'age' },
+      { field: 'country', colId: 'country' },
+      { field: 'year', colId: 'year' },
+      { field: 'sport', colId: 'sport' },
     ]);
   };
 
   onBtHideYearColumn = () => {
     this.gridApi.setColumnDefs([
-      { field: "athlete", colId: "athlete" },
-      { field: "age", colId: "age" },
-      { field: "country", colId: "country" },
-      { field: "sport", colId: "sport" },
+      { field: 'athlete', colId: 'athlete' },
+      { field: 'age', colId: 'age' },
+      { field: 'country', colId: 'country' },
+      { field: 'sport', colId: 'sport' },
     ]);
   };
 
   render() {
     return (
-      <div style={{ width: "100%", height: "100%" }}>
+      <div style={{ width: '100%', height: '100%' }}>
         <div className="test-container">
           <div className="test-header">
             <button onClick={() => this.onBtShowYearColumn()}>Show Year</button>
@@ -102,8 +102,8 @@ class GridExample extends Component {
 
           <div
             style={{
-              height: "100%",
-              width: "100%",
+              height: '100%',
+              width: '100%',
             }}
             className="ag-theme-alpine"
           >
@@ -139,7 +139,7 @@ function sortData(sortModel, data) {
       if (valueA == valueB) {
         continue;
       }
-      var sortDirection = sortColModel.sort === "asc" ? 1 : -1;
+      var sortDirection = sortColModel.sort === 'asc' ? 1 : -1;
       if (valueA > valueB) {
         return sortDirection;
       } else {
@@ -185,4 +185,4 @@ function filterData(filterModel, data) {
   return resultOfFilter;
 }
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

@@ -17,18 +17,18 @@ var dateFilterParams = {
 };
 
 const columnDefs = [
-  { field: "athlete", minWidth: 180 },
-  { field: "age", filter: "agNumberColumnFilter", maxWidth: 80 },
-  { field: "country" },
-  { field: "year", maxWidth: 90 },
+  { field: 'athlete', minWidth: 180 },
+  { field: 'age', filter: 'agNumberColumnFilter', maxWidth: 80 },
+  { field: 'country' },
+  { field: 'year', maxWidth: 90 },
   {
-    field: "date",
-    filter: "agDateColumnFilter",
+    field: 'date',
+    filter: 'agDateColumnFilter',
     filterParams: dateFilterParams,
   },
-  { field: "gold", filter: "agNumberColumnFilter" },
-  { field: "silver", filter: "agNumberColumnFilter" },
-  { field: "bronze", filter: "agNumberColumnFilter" },
+  { field: 'gold', filter: 'agNumberColumnFilter' },
+  { field: 'silver', filter: 'agNumberColumnFilter' },
+  { field: 'bronze', filter: 'agNumberColumnFilter' },
 ];
 
 const gridOptions = {
@@ -43,22 +43,22 @@ const gridOptions = {
   doesExternalFilterPass: doesExternalFilterPass,
 };
 
-var ageType = "everyone";
+var ageType = 'everyone';
 
 function isExternalFilterPresent() {
   // if ageType is not everyone, then we are filtering
-  return ageType !== "everyone";
+  return ageType !== 'everyone';
 }
 
 function doesExternalFilterPass(node) {
   switch (ageType) {
-    case "below25":
+    case 'below25':
       return node.data.age < 25;
-    case "between25and50":
+    case 'between25and50':
       return node.data.age >= 25 && node.data.age <= 50;
-    case "above50":
+    case 'above50':
       return node.data.age > 50;
-    case "dateAfter2008":
+    case 'dateAfter2008':
       return asDate(node.data.date) > new Date(2008, 1, 1);
     default:
       return true;
@@ -66,7 +66,7 @@ function doesExternalFilterPass(node) {
 }
 
 function asDate(dateAsString) {
-  var splitFields = dateAsString.split("/");
+  var splitFields = dateAsString.split('/');
   return new Date(
     Number.parseInt(splitFields[2]),
     Number.parseInt(splitFields[1]) - 1,
@@ -80,14 +80,14 @@ function externalFilterChanged(newValue) {
 }
 
 // setup the grid after the page has finished loading
-document.addEventListener("DOMContentLoaded", function () {
-  var gridDiv = document.querySelector("#myGrid");
+document.addEventListener('DOMContentLoaded', function () {
+  var gridDiv = document.querySelector('#myGrid');
   new agGrid.Grid(gridDiv, gridOptions);
 
-  fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+  fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
     .then((response) => response.json())
     .then(function (data) {
-      document.querySelector("#everyone").checked = true;
+      document.querySelector('#everyone').checked = true;
       gridOptions.api.setRowData(data);
     });
 });

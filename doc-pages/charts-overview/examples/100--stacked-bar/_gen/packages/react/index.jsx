@@ -1,8 +1,10 @@
-"use strict";
+'use strict';
 
-import { AgChartsReact } from "ag-charts-react";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { cloneDeep } from 'lodash';
+import { render } from 'react-dom';
+import * as agCharts from 'ag-charts-community';
+import { AgChartsReact } from 'ag-charts-react';
 
 class ChartExample extends Component {
   constructor(props) {
@@ -14,8 +16,8 @@ class ChartExample extends Component {
         data: getData(),
         theme: {
           palette: {
-            fills: ["#00c851", "#ffbb33", "#ff4444"],
-            strokes: ["#006428", "#996500", "#a10000"],
+            fills: ['#00c851', '#ffbb33', '#ff4444'],
+            strokes: ['#006428', '#996500', '#a10000'],
           },
           overrides: {
             bar: {
@@ -32,51 +34,51 @@ class ChartExample extends Component {
           },
         },
         title: {
-          text: "Internet Users by Geographical Location (2019)",
+          text: 'Internet Users by Geographical Location (2019)',
           fontSize: 18,
         },
         subtitle: {
-          text: "Source: Office for National Statistics",
+          text: 'Source: Office for National Statistics',
         },
         series: [
           {
-            type: "bar",
-            xKey: "area",
-            yKey: "usedInLast3Months",
-            yName: "Used in last 3 months",
+            type: 'bar',
+            xKey: 'area',
+            yKey: 'usedInLast3Months',
+            yName: 'Used in last 3 months',
             normalizedTo: 1,
             stacked: true,
           },
           {
-            type: "bar",
-            xKey: "area",
-            yKey: "usedOver3MonthsAgo",
-            yName: "Used over 3 months ago",
+            type: 'bar',
+            xKey: 'area',
+            yKey: 'usedOver3MonthsAgo',
+            yName: 'Used over 3 months ago',
             normalizedTo: 1,
             stacked: true,
           },
           {
-            type: "bar",
-            xKey: "area",
-            yKey: "neverUsed",
-            yName: "Never used",
+            type: 'bar',
+            xKey: 'area',
+            yKey: 'neverUsed',
+            yName: 'Never used',
             normalizedTo: 1,
             stacked: true,
           },
         ],
         axes: [
           {
-            type: "category",
-            position: "left",
+            type: 'category',
+            position: 'left',
             label: {
               rotation: -30,
             },
           },
           {
-            type: "number",
-            position: "bottom",
+            type: 'number',
+            position: 'bottom',
             label: {
-              format: ".0%",
+              format: '.0%',
             },
           },
         ],
@@ -91,4 +93,4 @@ class ChartExample extends Component {
   }
 }
 
-render(<ChartExample />, document.querySelector("#root"));
+render(<ChartExample />, document.querySelector('#root'));

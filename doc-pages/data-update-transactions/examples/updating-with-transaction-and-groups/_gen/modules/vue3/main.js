@@ -1,10 +1,10 @@
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { AgGridVue } from "@ag-grid-community/vue3";
-import { RowGroupingModule } from "@ag-grid-enterprise/row-grouping";
-import { createApp } from "vue";
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { AgGridVue } from '@ag-grid-community/vue3';
+import { RowGroupingModule } from '@ag-grid-enterprise/row-grouping';
+import { createApp } from 'vue';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([ClientSideRowModelModule, RowGroupingModule]);
@@ -46,16 +46,16 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
-        { field: "category", rowGroupIndex: 1, hide: true },
-        { field: "price", aggFunc: "sum", valueFormatter: poundFormatter },
-        { field: "zombies" },
-        { field: "style" },
-        { field: "clothes" },
+        { field: 'category', rowGroupIndex: 1, hide: true },
+        { field: 'price', aggFunc: 'sum', valueFormatter: poundFormatter },
+        { field: 'zombies' },
+        { field: 'style' },
+        { field: 'clothes' },
       ],
       gridApi: null,
       columnApi: null,
@@ -73,28 +73,28 @@ const VueExample = {
   },
   created() {
     this.autoGroupColumnDef = {
-      headerName: "Group",
+      headerName: 'Group',
       minWidth: 250,
-      field: "model",
+      field: 'model',
       rowGroupIndex: 1,
-      cellRenderer: "agGroupCellRenderer",
+      cellRenderer: 'agGroupCellRenderer',
       cellRendererParams: {
         checkbox: true,
       },
     };
     this.groupDefaultExpanded = 1;
     this.rowData = getData();
-    this.rowSelection = "multiple";
+    this.rowSelection = 'multiple';
     this.getRowClass = (params) => {
       var rowNode = params.node;
       if (rowNode.group) {
         switch (rowNode.key) {
-          case "In Workshop":
-            return "category-in-workshop";
-          case "Sold":
-            return "category-sold";
-          case "For Sale":
-            return "category-for-sale";
+          case 'In Workshop':
+            return 'category-in-workshop';
+          case 'Sold':
+            return 'category-sold';
+          case 'For Sale':
+            return 'category-for-sale';
           default:
             return undefined;
         }
@@ -110,7 +110,7 @@ const VueExample = {
       this.gridApi.forEachNode(function (node) {
         rowData.push(node.data);
       });
-      console.log("Row Data:");
+      console.log('Row Data:');
       console.log(rowData);
     },
     onAddRow(category) {
@@ -137,11 +137,11 @@ const VueExample = {
 
 window.poundFormatter = function poundFormatter(params) {
   return (
-    "£" +
+    '£' +
     Math.floor(params.value)
       .toString()
-      .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")
+      .replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
   );
 };
 
-createApp(VueExample).mount("#app");
+createApp(VueExample).mount('#app');

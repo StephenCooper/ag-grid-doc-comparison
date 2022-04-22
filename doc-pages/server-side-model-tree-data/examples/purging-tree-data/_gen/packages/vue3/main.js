@@ -1,8 +1,8 @@
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine-dark.css";
-import "ag-grid-enterprise";
-import { AgGridVue } from "ag-grid-vue3";
-import { createApp } from "vue";
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine-dark.css';
+import 'ag-grid-enterprise';
+import { AgGridVue } from 'ag-grid-vue3';
+import { createApp } from 'vue';
 
 const VueExample = {
   template: `
@@ -32,15 +32,15 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
-        { field: "employeeId", hide: true },
-        { field: "employeeName", hide: true },
-        { field: "employmentType" },
-        { field: "startDate" },
+        { field: 'employeeId', hide: true },
+        { field: 'employeeName', hide: true },
+        { field: 'employmentType' },
+        { field: 'startDate' },
       ],
       gridApi: null,
       columnApi: null,
@@ -60,17 +60,17 @@ const VueExample = {
   },
   created() {
     this.autoGroupColumnDef = {
-      field: "employeeName",
+      field: 'employeeName',
     };
-    this.rowModelType = "serverSide";
-    this.serverSideStoreType = "partial";
+    this.rowModelType = 'serverSide';
+    this.serverSideStoreType = 'partial';
     this.cacheBlockSize = 10;
     this.isServerSideGroupOpenByDefault = (params) => {
       var isKathrynPowers =
         params.rowNode.level == 0 &&
-        params.data.employeeName == "Kathryn Powers";
+        params.data.employeeName == 'Kathryn Powers';
       var isMabelWard =
-        params.rowNode.level == 1 && params.data.employeeName == "Mabel Ward";
+        params.rowNode.level == 1 && params.data.employeeName == 'Mabel Ward';
       return isKathrynPowers || isMabelWard;
     };
     this.isServerSideGroup = (dataItem) => {
@@ -96,7 +96,7 @@ const VueExample = {
         params.api.setServerSideDatasource(datasource);
       };
 
-      fetch("https://www.ag-grid.com/example-assets/tree-data.json")
+      fetch('https://www.ag-grid.com/example-assets/tree-data.json')
         .then((resp) => resp.json())
         .then((data) => updateData(data));
     },
@@ -111,7 +111,7 @@ window.createFakeServer = function createFakeServer(fakeServerData) {
           return data.map(function (d) {
             return {
               group: !!d.underlings,
-              employeeId: d.employeeId + "",
+              employeeId: d.employeeId + '',
               employeeName: d.employeeName,
               employmentType: d.employmentType,
               startDate: d.startDate,
@@ -139,7 +139,7 @@ window.createServerSideDatasource = function createServerSideDatasource(
 ) {
   const dataSource = {
     getRows: function (params) {
-      console.log("ServerSideDatasource.getRows: params = ", params);
+      console.log('ServerSideDatasource.getRows: params = ', params);
       var request = params.request;
       var allRows = fakeServer.getData(request);
       var doingInfinite = request.startRow != null && request.endRow != null;
@@ -149,7 +149,7 @@ window.createServerSideDatasource = function createServerSideDatasource(
             rowCount: allRows.length,
           }
         : { rowData: allRows };
-      console.log("getRows: result = ", result);
+      console.log('getRows: result = ', result);
       setTimeout(function () {
         params.success(result);
       }, 500);
@@ -158,4 +158,4 @@ window.createServerSideDatasource = function createServerSideDatasource(
   return dataSource;
 };
 
-createApp(VueExample).mount("#app");
+createApp(VueExample).mount('#app');

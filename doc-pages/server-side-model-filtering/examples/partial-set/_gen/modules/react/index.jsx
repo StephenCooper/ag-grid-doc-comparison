@@ -1,14 +1,14 @@
-"use strict";
+'use strict';
 
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine-dark.css";
-import { AgGridReact } from "@ag-grid-community/react";
-import { MenuModule } from "@ag-grid-enterprise/menu";
-import { ServerSideRowModelModule } from "@ag-grid-enterprise/server-side-row-model";
-import { SetFilterModule } from "@ag-grid-enterprise/set-filter";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from '@ag-grid-community/react';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine-dark.css';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import { ServerSideRowModelModule } from '@ag-grid-enterprise/server-side-row-model';
+import { SetFilterModule } from '@ag-grid-enterprise/set-filter';
+import { MenuModule } from '@ag-grid-enterprise/menu';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([
@@ -24,22 +24,22 @@ class GridExample extends Component {
     this.state = {
       columnDefs: [
         {
-          field: "country",
-          filter: "agSetColumnFilter",
+          field: 'country',
+          filter: 'agSetColumnFilter',
           filterParams: {
             values: getCountryValuesAsync,
           },
-          menuTabs: ["filterMenuTab"],
+          menuTabs: ['filterMenuTab'],
         },
         {
-          field: "sport",
-          filter: "agSetColumnFilter",
+          field: 'sport',
+          filter: 'agSetColumnFilter',
           filterParams: {
             values: getSportValuesAsync,
           },
-          menuTabs: ["filterMenuTab"],
+          menuTabs: ['filterMenuTab'],
         },
-        { field: "athlete", menuTabs: undefined },
+        { field: 'athlete', menuTabs: undefined },
       ],
       defaultColDef: {
         flex: 1,
@@ -47,8 +47,8 @@ class GridExample extends Component {
         sortable: true,
         resizable: true,
       },
-      rowModelType: "serverSide",
-      serverSideStoreType: "partial",
+      rowModelType: 'serverSide',
+      serverSideStoreType: 'partial',
       cacheBlockSize: 100,
       maxBlocksInCache: 10,
     };
@@ -67,29 +67,29 @@ class GridExample extends Component {
       params.api.setServerSideDatasource(datasource);
     };
 
-    fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+    fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .then((resp) => resp.json())
       .then((data) => updateData(data));
   };
 
   onFilterChanged = () => {
-    var countryFilterModel = this.gridApi.getFilterModel()["country"];
+    var countryFilterModel = this.gridApi.getFilterModel()['country'];
     var selected = countryFilterModel && countryFilterModel.values;
     if (!areEqual(selectedCountries, selected)) {
       selectedCountries = selected;
-      console.log("Refreshing sports filter");
-      var sportFilter = this.gridApi.getFilterInstance("sport");
+      console.log('Refreshing sports filter');
+      var sportFilter = this.gridApi.getFilterInstance('sport');
       sportFilter.refreshFilterValues();
     }
   };
 
   render() {
     return (
-      <div style={{ width: "100%", height: "100%" }}>
+      <div style={{ width: '100%', height: '100%' }}>
         <div
           style={{
-            height: "100%",
-            width: "100%",
+            height: '100%',
+            width: '100%',
           }}
           className="ag-theme-alpine-dark"
         >
@@ -143,7 +143,7 @@ function getSportValuesAsync(params) {
 function getServerSideDatasource(server) {
   return {
     getRows: function (params) {
-      console.log("[Datasource] - rows requested by grid: ", params.request);
+      console.log('[Datasource] - rows requested by grid: ', params.request);
       // get data for request from our fake server
       var response = server.getData(params.request);
       // simulating real server call with a 500ms delay
@@ -162,4 +162,4 @@ function getServerSideDatasource(server) {
   };
 }
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

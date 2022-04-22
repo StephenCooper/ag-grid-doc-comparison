@@ -13,15 +13,15 @@ export default {
     };
   },
   mounted() {
-    this.picker = flatpickr(this.$refs["flatpickr"], {
+    this.picker = flatpickr(this.$refs['flatpickr'], {
       onChange: this.onDateChanged.bind(this),
-      dateFormat: "d/m/Y",
+      dateFormat: 'd/m/Y',
       wrap: true,
     });
 
-    this.eInput = this.$refs["eInput"];
+    this.eInput = this.$refs['eInput'];
 
-    this.picker.calendarContainer.classList.add("ag-custom-component-popup");
+    this.picker.calendarContainer.classList.add('ag-custom-component-popup');
   },
   methods: {
     onDateChanged(selectedDates) {
@@ -39,11 +39,11 @@ export default {
     },
 
     setInputPlaceholder(placeholder) {
-      this.eInput.setAttribute("placeholder", placeholder);
+      this.eInput.setAttribute('placeholder', placeholder);
     },
 
     setInputAriaLabel(label) {
-      this.eInput.setAttribute("aria-label", label);
+      this.eInput.setAttribute('aria-label', label);
     },
   },
 };

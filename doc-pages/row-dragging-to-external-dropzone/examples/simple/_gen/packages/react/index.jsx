@@ -1,10 +1,10 @@
-"use strict";
+'use strict';
 
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import { AgGridReact } from "ag-grid-react";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from 'ag-grid-react';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 
 class GridExample extends Component {
   constructor(props) {
@@ -12,10 +12,10 @@ class GridExample extends Component {
 
     this.state = {
       columnDefs: [
-        { field: "id", rowDrag: true },
-        { field: "color" },
-        { field: "value1" },
-        { field: "value2" },
+        { field: 'id', rowDrag: true },
+        { field: 'color' },
+        { field: 'value1' },
+        { field: 'value2' },
       ],
       defaultColDef: {
         sortable: true,
@@ -24,9 +24,9 @@ class GridExample extends Component {
         flex: 1,
       },
       rowClassRules: {
-        "red-row": 'data.color == "Red"',
-        "green-row": 'data.color == "Green"',
-        "blue-row": 'data.color == "Blue"',
+        'red-row': 'data.color == "Red"',
+        'green-row': 'data.color == "Green"',
+        'blue-row': 'data.color == "Blue"',
       },
       rowData: createRowData(),
     };
@@ -42,7 +42,7 @@ class GridExample extends Component {
 
   render() {
     return (
-      <div style={{ width: "100%", height: "100%" }}>
+      <div style={{ width: '100%', height: '100%' }}>
         <div className="example-wrapper">
           <div className="toolbar">
             <label>
@@ -53,8 +53,8 @@ class GridExample extends Component {
             <div className="grid-wrapper">
               <div
                 style={{
-                  height: "100%",
-                  width: "100%",
+                  height: '100%',
+                  width: '100%',
                 }}
                 className="ag-theme-alpine"
               >
@@ -84,23 +84,23 @@ class GridExample extends Component {
 
 var rowIdSequence = 100;
 function addCheckboxListener(params) {
-  var checkbox = document.querySelector("input[type=checkbox]");
-  checkbox.addEventListener("change", function () {
+  var checkbox = document.querySelector('input[type=checkbox]');
+  checkbox.addEventListener('change', function () {
     params.api.setSuppressMoveWhenRowDragging(checkbox.checked);
   });
 }
 function createRowData() {
   var data = [];
   [
-    "Red",
-    "Green",
-    "Blue",
-    "Red",
-    "Green",
-    "Blue",
-    "Red",
-    "Green",
-    "Blue",
+    'Red',
+    'Green',
+    'Blue',
+    'Red',
+    'Green',
+    'Blue',
+    'Red',
+    'Green',
+    'Blue',
   ].forEach(function (color) {
     var newDataItem = {
       id: rowIdSequence++,
@@ -113,23 +113,23 @@ function createRowData() {
   return data;
 }
 function createTile(data) {
-  var el = document.createElement("div");
-  el.classList.add("tile");
+  var el = document.createElement('div');
+  el.classList.add('tile');
   el.classList.add(data.color.toLowerCase());
   el.innerHTML =
     '<div class="id">' +
     data.id +
-    "</div>" +
+    '</div>' +
     '<div class="value">' +
     data.value1 +
-    "</div>" +
+    '</div>' +
     '<div class="value">' +
     data.value2 +
-    "</div>";
+    '</div>';
   return el;
 }
 function addDropZones(params) {
-  var tileContainer = document.querySelector(".tile-container");
+  var tileContainer = document.querySelector('.tile-container');
   var dropZone = {
     getContainer: function () {
       return tileContainer;
@@ -142,4 +142,4 @@ function addDropZones(params) {
   params.api.addRowDropZone(dropZone);
 }
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

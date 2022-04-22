@@ -2,8 +2,7 @@
 title: "Row Grouping - Row Group Panel"
 enterprise: true
 ---
-
-This section covers the Row Group Panel which allows users control which columns the rows are grouped by.
+This section covers the Row Group Panel which allows users control which columns the rows are grouped by.   
 
 ## Enabling Row Group Panel
 
@@ -42,7 +41,7 @@ This is demonstrated in the following example, note the following:
 
 ## Keeping Columns Visible
 
-By default, dragging a column out of the grid will make it hidden and un-grouping a column will make it visible again.
+By default, dragging a column out of the grid will make it hidden and un-grouping a column will make it visible again. 
 This default behaviour can be changed with the following properties:
 
 - `suppressDragLeaveHidesColumns`: When dragging a column out of the grid, e.g. when dragging a column from the grid to the group drop zone, the column will remain visible.

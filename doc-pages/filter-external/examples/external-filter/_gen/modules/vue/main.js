@@ -1,12 +1,12 @@
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { AgGridVue } from "@ag-grid-community/vue";
-import { ColumnsToolPanelModule } from "@ag-grid-enterprise/column-tool-panel";
-import { MenuModule } from "@ag-grid-enterprise/menu";
-import { SetFilterModule } from "@ag-grid-enterprise/set-filter";
-import Vue from "vue";
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { AgGridVue } from '@ag-grid-community/vue';
+import { ColumnsToolPanelModule } from '@ag-grid-enterprise/column-tool-panel';
+import { MenuModule } from '@ag-grid-enterprise/menu';
+import { SetFilterModule } from '@ag-grid-enterprise/set-filter';
+import Vue from 'vue';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([
@@ -57,23 +57,23 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
-        { field: "athlete", minWidth: 180 },
-        { field: "age", filter: "agNumberColumnFilter", maxWidth: 80 },
-        { field: "country" },
-        { field: "year", maxWidth: 90 },
+        { field: 'athlete', minWidth: 180 },
+        { field: 'age', filter: 'agNumberColumnFilter', maxWidth: 80 },
+        { field: 'country' },
+        { field: 'year', maxWidth: 90 },
         {
-          field: "date",
-          filter: "agDateColumnFilter",
+          field: 'date',
+          filter: 'agDateColumnFilter',
           filterParams: dateFilterParams,
         },
-        { field: "gold", filter: "agNumberColumnFilter" },
-        { field: "silver", filter: "agNumberColumnFilter" },
-        { field: "bronze", filter: "agNumberColumnFilter" },
+        { field: 'gold', filter: 'agNumberColumnFilter' },
+        { field: 'silver', filter: 'agNumberColumnFilter' },
+        { field: 'bronze', filter: 'agNumberColumnFilter' },
       ],
       gridApi: null,
       columnApi: null,
@@ -96,27 +96,27 @@ const VueExample = {
       this.gridColumnApi = params.columnApi;
 
       const updateData = (data) => {
-        document.querySelector("#everyone").checked = true;
+        document.querySelector('#everyone').checked = true;
         this.rowData = data;
       };
 
-      fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
         .then((resp) => resp.json())
         .then((data) => updateData(data));
     },
     isExternalFilterPresent() {
       // if ageType is not everyone, then we are filtering
-      return ageType !== "everyone";
+      return ageType !== 'everyone';
     },
     doesExternalFilterPass(node) {
       switch (ageType) {
-        case "below25":
+        case 'below25':
           return node.data.age < 25;
-        case "between25and50":
+        case 'between25and50':
           return node.data.age >= 25 && node.data.age <= 50;
-        case "above50":
+        case 'above50':
           return node.data.age > 50;
-        case "dateAfter2008":
+        case 'dateAfter2008':
           return asDate(node.data.date) > new Date(2008, 1, 1);
         default:
           return true;
@@ -126,7 +126,7 @@ const VueExample = {
 };
 
 window.asDate = function asDate(dateAsString) {
-  var splitFields = dateAsString.split("/");
+  var splitFields = dateAsString.split('/');
   return new Date(
     Number.parseInt(splitFields[2]),
     Number.parseInt(splitFields[1]) - 1,
@@ -149,11 +149,11 @@ var dateFilterParams = {
   },
 };
 
-var ageType = "everyone";
+var ageType = 'everyone';
 
 new Vue({
-  el: "#app",
+  el: '#app',
   components: {
-    "my-component": VueExample,
+    'my-component': VueExample,
   },
 });

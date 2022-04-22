@@ -1,13 +1,13 @@
-"use strict";
+'use strict';
 
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { AgGridReact } from "@ag-grid-community/react";
-import React, { Component } from "react";
-import { render } from "react-dom";
-import SliderFloatingFilter from "./sliderFloatingFilter.jsx";
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from '@ag-grid-community/react';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import SliderFloatingFilter from './sliderFloatingFilter.jsx';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([ClientSideRowModelModule]);
@@ -18,22 +18,22 @@ class GridExample extends Component {
 
     this.state = {
       columnDefs: [
-        { field: "country", filter: false },
-        { field: "language", filter: false },
-        { field: "name", filter: false },
+        { field: 'country', filter: false },
+        { field: 'language', filter: false },
+        { field: 'name', filter: false },
         {
-          field: "gold",
+          field: 'gold',
           floatingFilterComponent: SliderFloatingFilter,
           floatingFilterComponentParams: {
             maxValue: 7,
             suppressFilterButton: true,
           },
-          filter: "agNumberColumnFilter",
+          filter: 'agNumberColumnFilter',
           suppressMenu: false,
         },
         {
-          field: "silver",
-          filter: "agNumberColumnFilter",
+          field: 'silver',
+          filter: 'agNumberColumnFilter',
           floatingFilterComponent: SliderFloatingFilter,
           floatingFilterComponentParams: {
             maxValue: 5,
@@ -42,8 +42,8 @@ class GridExample extends Component {
           suppressMenu: false,
         },
         {
-          field: "bronze",
-          filter: "agNumberColumnFilter",
+          field: 'bronze',
+          filter: 'agNumberColumnFilter',
           floatingFilterComponent: SliderFloatingFilter,
           floatingFilterComponentParams: {
             maxValue: 10,
@@ -73,12 +73,12 @@ class GridExample extends Component {
 
   render() {
     return (
-      <div style={{ width: "100%", height: "100%" }}>
-        <div style={{ height: "100%", boxSizing: "border-box" }}>
+      <div style={{ width: '100%', height: '100%' }}>
+        <div style={{ height: '100%', boxSizing: 'border-box' }}>
           <div
             style={{
-              height: "100%",
-              width: "100%",
+              height: '100%',
+              width: '100%',
             }}
             className="ag-theme-alpine"
           >
@@ -95,4 +95,4 @@ class GridExample extends Component {
   }
 }
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

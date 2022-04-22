@@ -2,9 +2,7 @@
 title: "Combination Charts"
 ---
 
-This section shows how to create Combination Charts - charts consisting of different series types.
-
-A combination chart combines two or more series types allowing for flexible data visualisations.
+A combination chart combines two or more series types allowing for flexible data visualisations. They are ideal for making visual comparisons of different sets of data in a single chart.
 
 ## Combination Series Types
 
@@ -14,19 +12,19 @@ Unlike charts with a single series type, the `type` property must be specified e
 
 ```js
 series: [
-  {
-    type: "column", // use 'column' series
-    xKey: "year",
-    yKey: "men",
-    // ...other series options
-  },
-  {
-    type: "line", // use 'line' series
-    xKey: "year",
-    yKey: "portions",
-    // ...other series options
-  },
-];
+    {
+      type: "column", // use 'column' series
+      xKey: "year",
+      yKey: "men",
+      // ...other series options
+    },
+    {
+      type: "line", // use 'line' series
+      xKey: "year",
+      yKey: "portions",
+      // ...other series options
+    },
+]
 ```
 
 The snippet above shows the configuration required for a combination chart consisting of a `column` and `line` series.

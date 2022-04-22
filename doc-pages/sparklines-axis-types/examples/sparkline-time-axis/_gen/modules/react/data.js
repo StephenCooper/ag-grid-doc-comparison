@@ -1,9 +1,9 @@
 function getData() {
   return [
     {
-      symbol: "A",
-      name: "Agilent Technologies Inc. Common Stock",
-      volume: "$971,760",
+      symbol: 'A',
+      name: 'Agilent Technologies Inc. Common Stock',
+      volume: '$971,760',
       change: [
         [new Date(1976, 6, 4, 12, 30, 0, 0), -37.3],
         [new Date(1977, 6, 4, 12, 30, 0, 0), 16.92],
@@ -16,9 +16,9 @@ function getData() {
       ],
     },
     {
-      symbol: "AAL",
-      name: "American Airlines Group Inc. Common Stock",
-      volume: "$20,309,670",
+      symbol: 'AAL',
+      name: 'American Airlines Group Inc. Common Stock',
+      volume: '$20,309,670',
       change: [
         [new Date(1976, 6, 4, 12, 30, 0, 0), 33.93],
         [new Date(1979, 6, 4, 12, 30, 0, 0), -89.4],
@@ -31,9 +31,9 @@ function getData() {
       ],
     },
     {
-      symbol: "AAP",
-      name: "Advance Auto Parts Inc Advance Auto Parts Inc W/I",
-      volume: "$699,427",
+      symbol: 'AAP',
+      name: 'Advance Auto Parts Inc Advance Auto Parts Inc W/I',
+      volume: '$699,427',
       change: [
         [new Date(1976, 6, 4, 12, 30, 0, 0), -86.2],
         [new Date(1977, 6, 4, 12, 30, 0, 0), -14.9],
@@ -46,9 +46,9 @@ function getData() {
       ],
     },
     {
-      symbol: "AAPL",
-      name: "Apple Inc. Common Stock",
-      volume: "$57,807,909",
+      symbol: 'AAPL',
+      name: 'Apple Inc. Common Stock',
+      volume: '$57,807,909',
       change: [
         [new Date(1976, 6, 4, 12, 30, 0, 0), -40.6],
         [new Date(1977, 6, 4, 12, 30, 0, 0), -48.07],
@@ -61,9 +61,9 @@ function getData() {
       ],
     },
     {
-      symbol: "ABB",
-      name: "ABB Ltd Common Stock",
-      volume: "$901,811",
+      symbol: 'ABB',
+      name: 'ABB Ltd Common Stock',
+      volume: '$901,811',
       change: [
         [new Date(1976, 6, 4, 12, 30, 0, 0), 27.92],
         [new Date(1977, 6, 4, 12, 30, 0, 0), 78.59],
@@ -75,9 +75,9 @@ function getData() {
       ],
     },
     {
-      symbol: "ABBV",
-      name: "AbbVie Inc. Common Stock",
-      volume: "$5,364,090",
+      symbol: 'ABBV',
+      name: 'AbbVie Inc. Common Stock',
+      volume: '$5,364,090',
       change: [
         [new Date(1976, 6, 4, 12, 30, 0, 0), 84.02],
         [new Date(1977, 6, 4, 12, 30, 0, 0), 74.34],
@@ -89,9 +89,9 @@ function getData() {
       ],
     },
     {
-      symbol: "ABC",
-      name: "AmerisourceBergen Corporation Common Stock",
-      volume: "$549,618",
+      symbol: 'ABC',
+      name: 'AmerisourceBergen Corporation Common Stock',
+      volume: '$549,618',
       change: [
         [new Date(1976, 6, 4, 12, 30, 0, 0), 50.73],
         [new Date(1977, 6, 4, 12, 30, 0, 0), 24.81],
@@ -105,9 +105,10 @@ function getData() {
       ],
     },
     {
-      symbol: "ABEV",
-      name: "Ambev S.A. American Depositary Shares (Each representing 1 Common Share)",
-      volume: "$27,226,664",
+      symbol: 'ABEV',
+      name:
+        'Ambev S.A. American Depositary Shares (Each representing 1 Common Share)',
+      volume: '$27,226,664',
       change: [
         [new Date(1976, 6, 4, 12, 30, 0, 0), -22.48],
         [new Date(1977, 6, 4, 12, 30, 0, 0), -54.87],
@@ -118,9 +119,9 @@ function getData() {
       ],
     },
     {
-      symbol: "ABMD",
-      name: "ABIOMED Inc. Common Stock",
-      volume: "$137,763",
+      symbol: 'ABMD',
+      name: 'ABIOMED Inc. Common Stock',
+      volume: '$137,763',
       change: [
         [new Date(1976, 6, 4, 12, 30, 0, 0), -83.29],
         [new Date(1977, 6, 4, 12, 30, 0, 0), 52.28],
@@ -133,9 +134,9 @@ function getData() {
       ],
     },
     {
-      symbol: "ABNB",
-      name: "Airbnb Inc. Class A Common Stock",
-      volume: "$4,456,806",
+      symbol: 'ABNB',
+      name: 'Airbnb Inc. Class A Common Stock',
+      volume: '$4,456,806',
       change: [
         [new Date(1976, 6, 4, 12, 30, 0, 0), 19.76],
         [new Date(1977, 6, 4, 12, 30, 0, 0), 82.41],

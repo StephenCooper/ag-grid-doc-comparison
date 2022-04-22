@@ -1,8 +1,8 @@
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
-import { AgGridVue } from "ag-grid-vue";
-import Vue from "vue";
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import 'ag-grid-enterprise';
+import { AgGridVue } from 'ag-grid-vue';
+import Vue from 'vue';
 
 const VueExample = {
   template: `
@@ -34,30 +34,30 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
         {
-          headerName: "Top Level Column Group",
+          headerName: 'Top Level Column Group',
           children: [
             {
-              headerName: "Group A",
+              headerName: 'Group A',
               children: [
-                { field: "athlete", minWidth: 200 },
-                { field: "country", minWidth: 200 },
-                { headerName: "Group", valueGetter: "data.country.charAt(0)" },
+                { field: 'athlete', minWidth: 200 },
+                { field: 'country', minWidth: 200 },
+                { headerName: 'Group', valueGetter: 'data.country.charAt(0)' },
               ],
             },
             {
-              headerName: "Group B",
+              headerName: 'Group B',
               children: [
-                { field: "sport", minWidth: 150 },
-                { field: "gold" },
-                { field: "silver" },
-                { field: "bronze" },
-                { field: "total" },
+                { field: 'sport', minWidth: 150 },
+                { field: 'gold' },
+                { field: 'silver' },
+                { field: 'bronze' },
+                { field: 'total' },
               ],
             },
           ],
@@ -87,12 +87,12 @@ const VueExample = {
       this.gridApi = params.api;
       this.gridColumnApi = params.columnApi;
 
-      document.getElementById("columnGroups").checked = true;
+      document.getElementById('columnGroups').checked = true;
 
       const updateData = (data) =>
         params.api.setRowData(data.filter((rec) => rec.country != null));
 
-      fetch("https://www.ag-grid.com/example-assets/small-olympic-winners.json")
+      fetch('https://www.ag-grid.com/example-assets/small-olympic-winners.json')
         .then((resp) => resp.json())
         .then((data) => updateData(data));
     },
@@ -100,19 +100,19 @@ const VueExample = {
 };
 
 window.getBoolean = function getBoolean(id) {
-  return !!document.querySelector("#" + id).checked;
+  return !!document.querySelector('#' + id).checked;
 };
 
 window.getParams = function getParams() {
   return {
-    skipColumnGroupHeaders: getBoolean("columnGroups"),
-    skipColumnHeaders: getBoolean("skipHeader"),
+    skipColumnGroupHeaders: getBoolean('columnGroups'),
+    skipColumnHeaders: getBoolean('skipHeader'),
   };
 };
 
 new Vue({
-  el: "#app",
+  el: '#app',
   components: {
-    "my-component": VueExample,
+    'my-component': VueExample,
   },
 });

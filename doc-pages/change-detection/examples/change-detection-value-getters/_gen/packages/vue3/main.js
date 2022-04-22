@@ -1,7 +1,7 @@
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine-dark.css";
-import { AgGridVue } from "ag-grid-vue3";
-import { createApp } from "vue";
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine-dark.css';
+import { AgGridVue } from 'ag-grid-vue3';
+import { createApp } from 'vue';
 
 const VueExample = {
   template: `
@@ -22,22 +22,22 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
-        { field: "a", type: "valueColumn" },
-        { field: "b", type: "valueColumn" },
-        { field: "c", type: "valueColumn" },
-        { field: "d", type: "valueColumn" },
-        { field: "e", type: "valueColumn" },
-        { field: "f", type: "valueColumn" },
+        { field: 'a', type: 'valueColumn' },
+        { field: 'b', type: 'valueColumn' },
+        { field: 'c', type: 'valueColumn' },
+        { field: 'd', type: 'valueColumn' },
+        { field: 'e', type: 'valueColumn' },
+        { field: 'f', type: 'valueColumn' },
         {
-          headerName: "Total",
-          valueGetter: "data.a + data.b + data.c + data.d + data.e + data.f",
+          headerName: 'Total',
+          valueGetter: 'data.a + data.b + data.c + data.d + data.e + data.f',
           editable: false,
-          cellClass: "total-col",
+          cellClass: 'total-col',
         },
       ],
       gridApi: null,
@@ -55,8 +55,8 @@ const VueExample = {
     this.columnTypes = {
       valueColumn: {
         editable: true,
-        valueParser: "Number(newValue)",
-        filter: "agNumberColumnFilter",
+        valueParser: 'Number(newValue)',
+        filter: 'agNumberColumnFilter',
       },
     };
     this.rowData = getRowData();
@@ -74,7 +74,7 @@ window.getRowData = function getRowData() {
   var rowData = [];
   for (var i = 1; i <= 20; i++) {
     rowData.push({
-      group: i < 5 ? "A" : "B",
+      group: i < 5 ? 'A' : 'B',
       a: (i * 863) % 100,
       b: (i * 811) % 100,
       c: (i * 743) % 100,
@@ -86,4 +86,4 @@ window.getRowData = function getRowData() {
   return rowData;
 };
 
-createApp(VueExample).mount("#app");
+createApp(VueExample).mount('#app');

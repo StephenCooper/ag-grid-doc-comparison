@@ -1,13 +1,13 @@
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { AgGridVue } from "@ag-grid-community/vue";
-import { ClipboardModule } from "@ag-grid-enterprise/clipboard";
-import { MenuModule } from "@ag-grid-enterprise/menu";
-import { MultiFilterModule } from "@ag-grid-enterprise/multi-filter";
-import { SetFilterModule } from "@ag-grid-enterprise/set-filter";
-import Vue from "vue";
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { AgGridVue } from '@ag-grid-community/vue';
+import { ClipboardModule } from '@ag-grid-enterprise/clipboard';
+import { MenuModule } from '@ag-grid-enterprise/menu';
+import { MultiFilterModule } from '@ag-grid-enterprise/multi-filter';
+import { SetFilterModule } from '@ag-grid-enterprise/set-filter';
+import Vue from 'vue';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([
@@ -38,21 +38,21 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
         {
-          field: "athlete",
-          filter: "agMultiColumnFilter",
+          field: 'athlete',
+          filter: 'agMultiColumnFilter',
           filterParams: {
             filters: [
               {
-                filter: "agTextColumnFilter",
-                filterParams: { buttons: ["apply", "clear"] },
+                filter: 'agTextColumnFilter',
+                filterParams: { buttons: ['apply', 'clear'] },
               },
-              { filter: "agSetColumnFilter" },
+              { filter: 'agSetColumnFilter' },
             ],
           },
         },
@@ -63,7 +63,7 @@ const VueExample = {
         flex: 1,
         minWidth: 200,
         resizable: true,
-        menuTabs: ["filterMenuTab"],
+        menuTabs: ['filterMenuTab'],
       },
       rowData: null,
     };
@@ -72,16 +72,16 @@ const VueExample = {
   methods: {
     getTextModel() {
       var textFilter = this.gridApi
-        .getFilterInstance("athlete")
+        .getFilterInstance('athlete')
         .getChildFilterInstance(0);
-      console.log("Current Text Filter model: ", textFilter.getModel());
+      console.log('Current Text Filter model: ', textFilter.getModel());
     },
     getSetMiniFilter() {
       var setFilter = this.gridApi
-        .getFilterInstance("athlete")
+        .getFilterInstance('athlete')
         .getChildFilterInstance(1);
       console.log(
-        "Current Set Filter search text: ",
+        'Current Set Filter search text: ',
         setFilter.getMiniFilter()
       );
     },
@@ -91,7 +91,7 @@ const VueExample = {
 
       const updateData = (data) => params.api.setRowData(data);
 
-      fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
         .then((resp) => resp.json())
         .then((data) => updateData(data));
     },
@@ -99,8 +99,8 @@ const VueExample = {
 };
 
 new Vue({
-  el: "#app",
+  el: '#app',
   components: {
-    "my-component": VueExample,
+    'my-component': VueExample,
   },
 });

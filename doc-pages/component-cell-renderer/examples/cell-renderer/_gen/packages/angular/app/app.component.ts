@@ -1,26 +1,26 @@
-import { HttpClient } from "@angular/common/http";
-import { Component } from "@angular/core";
+import { HttpClient } from '@angular/common/http';
+import { Component } from '@angular/core';
 import {
   ColDef,
   GridApi,
   ICellRenderer,
   ICellRendererParams,
   RowNode,
-} from "ag-grid-community";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import { DaysFrostRenderer } from "./days-frost-renderer.component";
+} from 'ag-grid-community';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import { DaysFrostRenderer } from './days-frost-renderer.component';
 
 /*
  * It's unlikely you'll use functions that create and manipulate DOM elements like this in an Angular application, but it
  * demonstrates what is at least possible, and may be preferable in certain use cases
  */
 const createImageSpan = (imageMultiplier: number, image: string) => {
-  const resultElement = document.createElement("span");
+  const resultElement = document.createElement('span');
   for (let i = 0; i < imageMultiplier; i++) {
-    const imageElement = document.createElement("img");
+    const imageElement = document.createElement('img');
     imageElement.src =
-      "https://www.ag-grid.com/example-assets/weather/" + image;
+      'https://www.ag-grid.com/example-assets/weather/' + image;
     resultElement.appendChild(imageElement);
   }
   return resultElement;
@@ -30,14 +30,14 @@ const createImageSpan = (imageMultiplier: number, image: string) => {
 class DeltaIndicator implements ICellRenderer {
   private eGui!: HTMLElement;
   init(params: ICellRendererParams) {
-    const element = document.createElement("span");
-    const imageElement = document.createElement("img");
+    const element = document.createElement('span');
+    const imageElement = document.createElement('img');
     if (params.value > 15) {
       imageElement.src =
-        "https://www.ag-grid.com/example-assets/weather/fire-plus.png";
+        'https://www.ag-grid.com/example-assets/weather/fire-plus.png';
     } else {
       imageElement.src =
-        "https://www.ag-grid.com/example-assets/weather/fire-minus.png";
+        'https://www.ag-grid.com/example-assets/weather/fire-minus.png';
     }
     element.appendChild(imageElement);
     element.appendChild(document.createTextNode(params.value));
@@ -83,7 +83,7 @@ class RainPerTenMmRenderer implements ICellRenderer {
 }
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `
     <div class="example-wrapper">
       <div style="margin-bottom: 5px;">
@@ -105,43 +105,43 @@ export class AppComponent {
 
   public columnDefs: ColDef[] = [
     {
-      headerName: "Month",
-      field: "Month",
+      headerName: 'Month',
+      field: 'Month',
       width: 75,
-      cellStyle: { color: "darkred" },
+      cellStyle: { color: 'darkred' },
     },
     {
-      headerName: "Max Temp (\u02DAC)",
-      field: "Max temp (C)",
+      headerName: 'Max Temp (\u02DAC)',
+      field: 'Max temp (C)',
       width: 120,
       cellRenderer: DeltaIndicator,
     },
     {
-      headerName: "Min Temp (\u02DAC)",
-      field: "Min temp (C)",
+      headerName: 'Min Temp (\u02DAC)',
+      field: 'Min temp (C)',
       width: 120,
       cellRenderer: DeltaIndicator,
     },
     {
-      headerName: "Days of Air Frost",
-      field: "Days of air frost (days)",
+      headerName: 'Days of Air Frost',
+      field: 'Days of air frost (days)',
       width: 233,
       cellRenderer: DaysFrostRenderer,
-      cellRendererParams: { rendererImage: "frost.png" },
+      cellRendererParams: { rendererImage: 'frost.png' },
     },
     {
-      headerName: "Days Sunshine",
-      field: "Sunshine (hours)",
+      headerName: 'Days Sunshine',
+      field: 'Sunshine (hours)',
       width: 190,
       cellRenderer: DaysSunshineRenderer,
-      cellRendererParams: { rendererImage: "sun.png" },
+      cellRendererParams: { rendererImage: 'sun.png' },
     },
     {
-      headerName: "Rainfall (10mm)",
-      field: "Rainfall (mm)",
+      headerName: 'Rainfall (10mm)',
+      field: 'Rainfall (mm)',
       width: 180,
       cellRenderer: RainPerTenMmRenderer,
-      cellRendererParams: { rendererImage: "rain.png" },
+      cellRendererParams: { rendererImage: 'rain.png' },
     },
   ];
 
@@ -166,8 +166,8 @@ export class AppComponent {
     // iterate over the rows and make each "days of air frost"
     this.gridApi.forEachNode((rowNode: RowNode) => {
       rowNode.setDataValue(
-        "Days of air frost (days)",
-        rowNode.data["Days of air frost (days)"] + extraDaysFrost
+        'Days of air frost (days)',
+        rowNode.data['Days of air frost (days)'] + extraDaysFrost
       );
     });
   }
@@ -176,7 +176,7 @@ export class AppComponent {
     this.gridApi = params.api;
 
     this.http
-      .get("https://www.ag-grid.com/example-assets/weather-se-england.json")
+      .get('https://www.ag-grid.com/example-assets/weather-se-england.json')
       .subscribe((data) => params.api.setRowData(data));
   }
 }

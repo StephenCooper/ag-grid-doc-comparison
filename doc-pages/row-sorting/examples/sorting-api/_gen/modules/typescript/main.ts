@@ -1,27 +1,27 @@
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
 import {
   ColDef,
   Grid,
   GridOptions,
   ModuleRegistry,
-} from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
+} from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([ClientSideRowModelModule]);
 
 const columnDefs: ColDef[] = [
-  { field: "athlete" },
-  { field: "age", width: 90 },
-  { field: "country" },
-  { field: "year", width: 90 },
-  { field: "date" },
-  { field: "sport" },
-  { field: "gold" },
-  { field: "silver" },
-  { field: "bronze" },
-  { field: "total" },
+  { field: 'athlete' },
+  { field: 'age', width: 90 },
+  { field: 'country' },
+  { field: 'year', width: 90 },
+  { field: 'date' },
+  { field: 'sport' },
+  { field: 'gold' },
+  { field: 'silver' },
+  { field: 'bronze' },
+  { field: 'total' },
 ];
 
 const gridOptions: GridOptions = {
@@ -33,14 +33,14 @@ const gridOptions: GridOptions = {
 
 function sortByAthleteAsc() {
   gridOptions.columnApi!.applyColumnState({
-    state: [{ colId: "athlete", sort: "asc" }],
+    state: [{ colId: 'athlete', sort: 'asc' }],
     defaultState: { sort: null },
   });
 }
 
 function sortByAthleteDesc() {
   gridOptions.columnApi!.applyColumnState({
-    state: [{ colId: "athlete", sort: "desc" }],
+    state: [{ colId: 'athlete', sort: 'desc' }],
     defaultState: { sort: null },
   });
 }
@@ -48,8 +48,8 @@ function sortByAthleteDesc() {
 function sortByCountryThenSport() {
   gridOptions.columnApi!.applyColumnState({
     state: [
-      { colId: "country", sort: "asc", sortIndex: 0 },
-      { colId: "sport", sort: "asc", sortIndex: 1 },
+      { colId: 'country', sort: 'asc', sortIndex: 0 },
+      { colId: 'sport', sort: 'asc', sortIndex: 1 },
     ],
     defaultState: { sort: null },
   });
@@ -58,8 +58,8 @@ function sortByCountryThenSport() {
 function sortBySportThenCountry() {
   gridOptions.columnApi!.applyColumnState({
     state: [
-      { colId: "country", sort: "asc", sortIndex: 1 },
-      { colId: "sport", sort: "asc", sortIndex: 0 },
+      { colId: 'country', sort: 'asc', sortIndex: 1 },
+      { colId: 'sport', sort: 'asc', sortIndex: 0 },
     ],
     defaultState: { sort: null },
   });
@@ -83,7 +83,7 @@ function saveSort() {
       return { colId: s.colId, sort: s.sort, sortIndex: s.sortIndex };
     });
   savedSort = sortState;
-  console.log("saved sort", sortState);
+  console.log('saved sort', sortState);
 }
 
 function restoreFromSave() {
@@ -94,14 +94,14 @@ function restoreFromSave() {
 }
 
 // setup the grid after the page has finished loading
-var gridDiv = document.querySelector<HTMLElement>("#myGrid")!;
+var gridDiv = document.querySelector<HTMLElement>('#myGrid')!;
 new Grid(gridDiv, gridOptions);
 
-fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
   .then((response) => response.json())
   .then((data) => gridOptions.api!.setRowData(data));
 
-if (typeof window !== "undefined") {
+if (typeof window !== 'undefined') {
   // Attach external event handlers to window so they can be called from index.html
   (<any>window).sortByAthleteAsc = sortByAthleteAsc;
   (<any>window).sortByAthleteDesc = sortByAthleteDesc;

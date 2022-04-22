@@ -1,5 +1,5 @@
-import { HttpClient } from "@angular/common/http";
-import { Component } from "@angular/core";
+import { HttpClient } from '@angular/common/http';
+import { Component } from '@angular/core';
 import {
   ChartCreated,
   ChartDestroyed,
@@ -7,13 +7,13 @@ import {
   ChartRangeSelectionChanged,
   ColDef,
   GridReadyEvent,
-} from "ag-grid-community";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
+} from 'ag-grid-community';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import 'ag-grid-enterprise';
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<ag-grid-angular
     style="width: 100%; height: 100%;"
     class="ag-theme-alpine"
@@ -32,9 +32,9 @@ import "ag-grid-enterprise";
 })
 export class AppComponent {
   public columnDefs: ColDef[] = [
-    { field: "Month", width: 150, chartDataType: "category" },
-    { field: "Sunshine (hours)", chartDataType: "series" },
-    { field: "Rainfall (mm)", chartDataType: "series" },
+    { field: 'Month', width: 150, chartDataType: 'category' },
+    { field: 'Sunshine (hours)', chartDataType: 'series' },
+    { field: 'Rainfall (mm)', chartDataType: 'series' },
   ];
   public defaultColDef: ColDef = {
     editable: true,
@@ -50,28 +50,28 @@ export class AppComponent {
   constructor(private http: HttpClient) {}
 
   onChartCreated(event: ChartCreated) {
-    console.log("Created chart with ID " + event.chartId, event);
+    console.log('Created chart with ID ' + event.chartId, event);
   }
 
   onChartRangeSelectionChanged(event: ChartRangeSelectionChanged) {
     console.log(
-      "Changed range selection of chart with ID " + event.chartId,
+      'Changed range selection of chart with ID ' + event.chartId,
       event
     );
   }
 
   onChartOptionsChanged(event: ChartOptionsChanged) {
-    console.log("Changed options of chart with ID " + event.chartId, event);
+    console.log('Changed options of chart with ID ' + event.chartId, event);
   }
 
   onChartDestroyed(event: ChartDestroyed) {
-    console.log("Destroyed chart with ID " + event.chartId, event);
+    console.log('Destroyed chart with ID ' + event.chartId, event);
   }
 
   onGridReady(params: GridReadyEvent) {
     this.http
       .get<any[]>(
-        "https://www.ag-grid.com/example-assets/weather-se-england.json"
+        'https://www.ag-grid.com/example-assets/weather-se-england.json'
       )
       .subscribe((data) => {
         this.rowData = data;

@@ -1,5 +1,5 @@
-import { AgChartsVue } from "ag-charts-vue";
-import Vue from "vue";
+import { AgChartsVue } from 'ag-charts-vue';
+import Vue from 'vue';
 
 const ChartExample = {
   template: `
@@ -7,7 +7,7 @@ const ChartExample = {
                 :options="options"></ag-charts-vue>
     `,
   components: {
-    "ag-charts-vue": AgChartsVue,
+    'ag-charts-vue': AgChartsVue,
   },
   data: function () {
     return {
@@ -19,15 +19,15 @@ const ChartExample = {
       autoSize: true,
       data: getData(),
       title: {
-        text: "People Born",
+        text: 'People Born',
       },
       subtitle: {
-        text: "2008-2020",
+        text: '2008-2020',
       },
       series: [
         {
-          xKey: "year",
-          yKey: "visitors",
+          xKey: 'year',
+          yKey: 'visitors',
         },
       ],
       legend: {
@@ -40,8 +40,8 @@ const ChartExample = {
 };
 
 new Vue({
-  el: "#app",
+  el: '#app',
   components: {
-    "my-component": ChartExample,
+    'my-component': ChartExample,
   },
 });

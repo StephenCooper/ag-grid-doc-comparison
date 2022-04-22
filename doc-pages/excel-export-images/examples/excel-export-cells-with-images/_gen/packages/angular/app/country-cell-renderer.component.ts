@@ -1,9 +1,9 @@
-import { Component } from "@angular/core";
-import { ICellRendererAngularComp } from "ag-grid-angular";
-import { ICellRendererParams } from "ag-grid-community";
+import { Component } from '@angular/core';
+import { ICellRendererAngularComp } from 'ag-grid-angular';
+import { ICellRendererParams } from 'ag-grid-community';
 
 @Component({
-  selector: "simple-component",
+  selector: 'simple-component',
   template: `<img
     alt="{{ params.data.country }}"
     src="{{

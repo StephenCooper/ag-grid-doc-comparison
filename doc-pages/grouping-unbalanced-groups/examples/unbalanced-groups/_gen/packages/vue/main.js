@@ -1,13 +1,13 @@
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
-import { AgGridVue } from "ag-grid-vue";
-import Vue from "vue";
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import 'ag-grid-enterprise';
+import { AgGridVue } from 'ag-grid-vue';
+import Vue from 'vue';
 
 const COUNTRY_CODES = {
-  Ireland: "ie",
-  "United Kingdom": "gb",
-  USA: "us",
+  Ireland: 'ie',
+  'United Kingdom': 'gb',
+  USA: 'us',
 };
 
 const numberParser = function numberParser(params) {
@@ -16,7 +16,7 @@ const numberParser = function numberParser(params) {
 
 const countryCellRenderer = function countryCellRenderer(params) {
   if (params.value === undefined || params.value === null) {
-    return "";
+    return '';
   } else {
     const flag = `<img border="0" width="15" height="10" src="https://flagcdn.com/h20/${
       COUNTRY_CODES[params.value]
@@ -27,7 +27,7 @@ const countryCellRenderer = function countryCellRenderer(params) {
 
 const stateCellRenderer = function stateCellRenderer(params) {
   if (params.value === undefined || params.value === null) {
-    return "";
+    return '';
   } else {
     const flag =
       '<img border="0" height="10" src="https://www.ag-grid.com/example-assets/gold-star.png" width="15">';
@@ -37,7 +37,7 @@ const stateCellRenderer = function stateCellRenderer(params) {
 
 function cityCellRenderer(params) {
   if (params.value === undefined || params.value === null) {
-    return "";
+    return '';
   } else {
     const flag =
       '<img border="0" width="15" height="10" src="https://www.ag-grid.com/example-assets/weather/sun.png">';
@@ -64,36 +64,36 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
     countryCellRenderer,
   },
   data: function () {
     return {
       columnDefs: [
         {
-          field: "city",
-          type: "dimension",
+          field: 'city',
+          type: 'dimension',
           cellRenderer: cityCellRenderer,
         },
         {
-          field: "country",
-          type: "dimension",
+          field: 'country',
+          type: 'dimension',
           cellRenderer: countryCellRenderer,
           minWidth: 200,
         },
         {
-          field: "state",
-          type: "dimension",
+          field: 'state',
+          type: 'dimension',
           cellRenderer: stateCellRenderer,
           rowGroup: true,
         },
         {
-          field: "val1",
-          type: "numberValue",
+          field: 'val1',
+          type: 'numberValue',
         },
         {
-          field: "val2",
-          type: "numberValue",
+          field: 'val2',
+          type: 'numberValue',
         },
       ],
       gridApi: null,
@@ -112,13 +112,13 @@ const VueExample = {
   },
   created() {
     this.autoGroupColumnDef = {
-      field: "city",
+      field: 'city',
       minWidth: 200,
     };
     this.columnTypes = {
       numberValue: {
         enableValue: true,
-        aggFunc: "sum",
+        aggFunc: 'sum',
         editable: true,
         valueParser: numberParser,
       },
@@ -129,7 +129,7 @@ const VueExample = {
     };
     this.rowData = getData();
     this.groupDefaultExpanded = -1;
-    this.rowGroupPanelShow = "always";
+    this.rowGroupPanelShow = 'always';
   },
   methods: {
     onGridReady(params) {
@@ -140,8 +140,8 @@ const VueExample = {
 };
 
 new Vue({
-  el: "#app",
+  el: '#app',
   components: {
-    "my-component": VueExample,
+    'my-component': VueExample,
   },
 });

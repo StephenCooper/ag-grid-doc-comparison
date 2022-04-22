@@ -1,5 +1,5 @@
-import { AgChartsVue } from "ag-charts-vue";
-import Vue from "vue";
+import { AgChartsVue } from 'ag-charts-vue';
+import Vue from 'vue';
 
 const ChartExample = {
   template: `
@@ -9,7 +9,7 @@ const ChartExample = {
             </div>
     `,
   components: {
-    "ag-charts-vue": AgChartsVue,
+    'ag-charts-vue': AgChartsVue,
   },
   data: function () {
     return {
@@ -19,31 +19,31 @@ const ChartExample = {
   created() {
     this.options = {
       title: {
-        text: "Navigator Styling",
+        text: 'Navigator Styling',
       },
       data: [
-        { label: "Android", value: 56.9 },
-        { label: "iOS", value: 22.5 },
-        { label: "BlackBerry", value: 6.8 },
-        { label: "Symbian", value: 8.5 },
-        { label: "Bada", value: 2.6 },
-        { label: "Windows", value: 1.9 },
+        { label: 'Android', value: 56.9 },
+        { label: 'iOS', value: 22.5 },
+        { label: 'BlackBerry', value: 6.8 },
+        { label: 'Symbian', value: 8.5 },
+        { label: 'Bada', value: 2.6 },
+        { label: 'Windows', value: 1.9 },
       ],
       series: [
         {
-          type: "column",
-          xKey: "label",
-          yKey: "value",
+          type: 'column',
+          xKey: 'label',
+          yKey: 'value',
         },
       ],
       axes: [
         {
-          type: "number",
-          position: "left",
+          type: 'number',
+          position: 'left',
         },
         {
-          type: "category",
-          position: "bottom",
+          type: 'category',
+          position: 'bottom',
         },
       ],
       legend: {
@@ -55,13 +55,13 @@ const ChartExample = {
         min: 0.2,
         max: 0.7,
         mask: {
-          fill: "red",
+          fill: 'red',
           strokeWidth: 2,
           fillOpacity: 0.3,
         },
         minHandle: {
-          fill: "yellow",
-          stroke: "blue",
+          fill: 'yellow',
+          stroke: 'blue',
           width: 16,
           height: 30,
           gripLineGap: 4,
@@ -69,8 +69,8 @@ const ChartExample = {
           strokeWidth: 2,
         },
         maxHandle: {
-          fill: "lime",
-          stroke: "black",
+          fill: 'lime',
+          stroke: 'black',
         },
       },
     };
@@ -80,8 +80,8 @@ const ChartExample = {
 };
 
 new Vue({
-  el: "#app",
+  el: '#app',
   components: {
-    "my-component": ChartExample,
+    'my-component': ChartExample,
   },
 });

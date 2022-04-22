@@ -1,11 +1,11 @@
-"use strict";
+'use strict';
 
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine-dark.css";
-import "ag-grid-enterprise";
-import { AgGridReact } from "ag-grid-react";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from 'ag-grid-react';
+import 'ag-grid-enterprise';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine-dark.css';
 
 class GridExample extends Component {
   constructor(props) {
@@ -31,8 +31,8 @@ class GridExample extends Component {
       autoGroupColumnDef: {
         minWidth: 200,
       },
-      rowModelType: "serverSide",
-      serverSideStoreType: "partial",
+      rowModelType: 'serverSide',
+      serverSideStoreType: 'partial',
     };
   }
 
@@ -49,44 +49,44 @@ class GridExample extends Component {
       params.api.setServerSideDatasource(datasource);
     };
 
-    fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+    fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .then((resp) => resp.json())
       .then((data) => updateData(data));
 
-    document.getElementById("athlete").checked = true;
-    document.getElementById("age").checked = true;
-    document.getElementById("country").checked = true;
-    document.getElementById("year").checked = true;
-    document.getElementById("sport").checked = true;
-    document.getElementById("gold").checked = true;
-    document.getElementById("silver").checked = true;
-    document.getElementById("bronze").checked = true;
+    document.getElementById('athlete').checked = true;
+    document.getElementById('age').checked = true;
+    document.getElementById('country').checked = true;
+    document.getElementById('year').checked = true;
+    document.getElementById('sport').checked = true;
+    document.getElementById('gold').checked = true;
+    document.getElementById('silver').checked = true;
+    document.getElementById('bronze').checked = true;
   };
 
   onBtApply = () => {
     var cols = [];
-    if (getBooleanValue("#athlete")) {
+    if (getBooleanValue('#athlete')) {
       cols.push(colDefAthlete);
     }
-    if (getBooleanValue("#age")) {
+    if (getBooleanValue('#age')) {
       cols.push(colDefAge);
     }
-    if (getBooleanValue("#country")) {
+    if (getBooleanValue('#country')) {
       cols.push(colDefCountry);
     }
-    if (getBooleanValue("#year")) {
+    if (getBooleanValue('#year')) {
       cols.push(colDefYear);
     }
-    if (getBooleanValue("#sport")) {
+    if (getBooleanValue('#sport')) {
       cols.push(colDefSport);
     }
-    if (getBooleanValue("#gold")) {
+    if (getBooleanValue('#gold')) {
       cols.push(colDefGold);
     }
-    if (getBooleanValue("#silver")) {
+    if (getBooleanValue('#silver')) {
       cols.push(colDefSilver);
     }
-    if (getBooleanValue("#bronze")) {
+    if (getBooleanValue('#bronze')) {
       cols.push(colDefBronze);
     }
     this.gridApi.setColumnDefs(cols);
@@ -94,7 +94,7 @@ class GridExample extends Component {
 
   render() {
     return (
-      <div style={{ width: "100%", height: "100%" }}>
+      <div style={{ width: '100%', height: '100%' }}>
         <div className="test-container">
           <div className="test-header">
             Select columns to show then hit 'Apply'
@@ -140,8 +140,8 @@ class GridExample extends Component {
 
           <div
             style={{
-              height: "100%",
-              width: "100%",
+              height: '100%',
+              width: '100%',
             }}
             className="ag-theme-alpine-dark"
           >
@@ -162,21 +162,21 @@ class GridExample extends Component {
   }
 }
 
-var colDefCountry = { field: "country", rowGroup: true };
-var colDefYear = { field: "year", rowGroup: true };
+var colDefCountry = { field: 'country', rowGroup: true };
+var colDefYear = { field: 'year', rowGroup: true };
 var colDefAthlete = {
-  field: "athlete",
-  filter: "agSetColumnFilter",
+  field: 'athlete',
+  filter: 'agSetColumnFilter',
   filterParams: {
     values: getAthletesAsync,
   },
-  menuTabs: ["filterMenuTab"],
+  menuTabs: ['filterMenuTab'],
 };
-var colDefAge = { field: "age" };
-var colDefSport = { field: "sport" };
-var colDefGold = { field: "gold", aggFunc: "sum" };
-var colDefSilver = { field: "silver", aggFunc: "sum" };
-var colDefBronze = { field: "bronze", aggFunc: "sum" };
+var colDefAge = { field: 'age' };
+var colDefSport = { field: 'sport' };
+var colDefGold = { field: 'gold', aggFunc: 'sum' };
+var colDefSilver = { field: 'silver', aggFunc: 'sum' };
+var colDefBronze = { field: 'bronze', aggFunc: 'sum' };
 function getAthletesAsync(params) {
   var countries = fakeServer.getAthletes();
   // simulating real server call with a 500ms delay
@@ -190,7 +190,7 @@ function getBooleanValue(cssSelector) {
 function getServerSideDatasource(server) {
   return {
     getRows: function (params) {
-      console.log("[Datasource] - rows requested by grid: ", params.request);
+      console.log('[Datasource] - rows requested by grid: ', params.request);
       var response = server.getData(params.request);
       // adding delay to simulate real server call
       setTimeout(function () {
@@ -210,4 +210,4 @@ function getServerSideDatasource(server) {
 }
 var fakeServer = undefined;
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

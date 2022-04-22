@@ -1,8 +1,8 @@
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine-dark.css";
-import "ag-grid-enterprise";
-import { AgGridVue } from "ag-grid-vue3";
-import { createApp } from "vue";
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine-dark.css';
+import 'ag-grid-enterprise';
+import { AgGridVue } from 'ag-grid-vue3';
+import { createApp } from 'vue';
 
 const VueExample = {
   template: `
@@ -29,27 +29,27 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
-        { field: "salesRep", chartDataType: "category" },
-        { field: "handset", chartDataType: "category" },
+        { field: 'salesRep', chartDataType: 'category' },
+        { field: 'handset', chartDataType: 'category' },
         {
-          headerName: "Sale Price",
-          field: "sale",
+          headerName: 'Sale Price',
+          field: 'sale',
           maxWidth: 160,
-          aggFunc: "sum",
-          filter: "agNumberColumnFilter",
-          chartDataType: "series",
+          aggFunc: 'sum',
+          filter: 'agNumberColumnFilter',
+          chartDataType: 'series',
         },
-        { field: "saleDate", chartDataType: "category" },
+        { field: 'saleDate', chartDataType: 'category' },
         {
-          field: "quarter",
+          field: 'quarter',
           maxWidth: 160,
-          filter: "agSetColumnFilter",
-          chartDataType: "category",
+          filter: 'agSetColumnFilter',
+          chartDataType: 'category',
         },
       ],
       gridApi: null,
@@ -58,7 +58,7 @@ const VueExample = {
         flex: 1,
         editable: true,
         sortable: true,
-        filter: "agMultiColumnFilter",
+        filter: 'agMultiColumnFilter',
         floatingFilter: true,
         resizable: true,
       },
@@ -69,7 +69,7 @@ const VueExample = {
   },
   created() {
     this.rowData = getData();
-    this.chartThemes = ["ag-default-dark"];
+    this.chartThemes = ['ag-default-dark'];
     this.chartThemeOverrides = {
       common: {
         padding: {
@@ -105,16 +105,16 @@ const VueExample = {
 
 window.createQuarterlySalesChart = function createQuarterlySalesChart(gridApi) {
   gridApi.createCrossFilterChart({
-    chartType: "column",
+    chartType: 'column',
     cellRange: {
-      columns: ["quarter", "sale"],
+      columns: ['quarter', 'sale'],
     },
-    aggFunc: "sum",
+    aggFunc: 'sum',
     chartThemeOverrides: {
       common: {
         title: {
           enabled: true,
-          text: "Quarterly Sales ($)",
+          text: 'Quarterly Sales ($)',
         },
         legend: {
           enabled: false,
@@ -128,29 +128,29 @@ window.createQuarterlySalesChart = function createQuarterlySalesChart(gridApi) {
           number: {
             label: {
               formatter: function (params) {
-                return params.value / 1000 + "k";
+                return params.value / 1000 + 'k';
               },
             },
           },
         },
       },
     },
-    chartContainer: document.querySelector("#columnChart"),
+    chartContainer: document.querySelector('#columnChart'),
   });
 };
 
 window.createSalesByRefChart = function createSalesByRefChart(gridApi) {
   gridApi.createCrossFilterChart({
-    chartType: "pie",
+    chartType: 'pie',
     cellRange: {
-      columns: ["salesRep", "sale"],
+      columns: ['salesRep', 'sale'],
     },
-    aggFunc: "sum",
+    aggFunc: 'sum',
     chartThemeOverrides: {
       common: {
         title: {
           enabled: true,
-          text: "Sales by Representative ($)",
+          text: 'Sales by Representative ($)',
         },
       },
       pie: {
@@ -164,30 +164,30 @@ window.createSalesByRefChart = function createSalesByRefChart(gridApi) {
         },
       },
     },
-    chartContainer: document.querySelector("#pieChart"),
+    chartContainer: document.querySelector('#pieChart'),
   });
 };
 
 window.createHandsetSalesChart = function createHandsetSalesChart(gridApi) {
   gridApi.createCrossFilterChart({
-    chartType: "bar",
+    chartType: 'bar',
     cellRange: {
-      columns: ["handset", "sale"],
+      columns: ['handset', 'sale'],
     },
-    aggFunc: "count",
+    aggFunc: 'count',
     chartThemeOverrides: {
       common: {
         title: {
           enabled: true,
-          text: "Handsets Sold (Units)",
+          text: 'Handsets Sold (Units)',
         },
         legend: {
           enabled: false,
         },
       },
     },
-    chartContainer: document.querySelector("#barChart"),
+    chartContainer: document.querySelector('#barChart'),
   });
 };
 
-createApp(VueExample).mount("#app");
+createApp(VueExample).mount('#app');

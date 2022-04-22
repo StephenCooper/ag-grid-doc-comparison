@@ -31,7 +31,7 @@ export default {
       let passed = true;
       this.filterText
         .toLowerCase()
-        .split(" ")
+        .split(' ')
         .forEach((filterWord) => {
           const value = this.params.valueGetter({
             api,
@@ -53,7 +53,7 @@ export default {
     },
 
     isFilterActive() {
-      return this.filterText != null && this.filterText !== "";
+      return this.filterText != null && this.filterText !== '';
     },
 
     getModel() {

@@ -1,5 +1,5 @@
-import { AgChartsVue } from "ag-charts-vue3";
-import { createApp } from "vue";
+import { AgChartsVue } from 'ag-charts-vue3';
+import { createApp } from 'vue';
 
 const ChartExample = {
   template: `
@@ -7,7 +7,7 @@ const ChartExample = {
                 :options="options"></ag-charts-vue>
     `,
   components: {
-    "ag-charts-vue": AgChartsVue,
+    'ag-charts-vue': AgChartsVue,
   },
   data: function () {
     return {
@@ -20,8 +20,8 @@ const ChartExample = {
       data: getData(),
       theme: {
         palette: {
-          fills: ["#19A0AA", "#F15F36"],
-          strokes: ["#19A0AA", "#F15F36"],
+          fills: ['#19A0AA', '#F15F36'],
+          strokes: ['#19A0AA', '#F15F36'],
         },
         overrides: {
           column: {
@@ -36,34 +36,35 @@ const ChartExample = {
         },
       },
       title: {
-        text: "Changes in Prison Population (2019)",
+        text: 'Changes in Prison Population (2019)',
         fontSize: 18,
       },
       subtitle: {
-        text: "Source: Ministry of Justice, HM Prison Service, and Her Majesty’s Prison and Probation Service",
+        text:
+          'Source: Ministry of Justice, HM Prison Service, and Her Majesty’s Prison and Probation Service',
       },
       series: [
         {
-          type: "column",
-          xKey: "month",
-          yKey: "menDelta",
-          yName: "Male",
+          type: 'column',
+          xKey: 'month',
+          yKey: 'menDelta',
+          yName: 'Male',
         },
         {
-          type: "column",
-          xKey: "month",
-          yKey: "womenDelta",
-          yName: "Female",
+          type: 'column',
+          xKey: 'month',
+          yKey: 'womenDelta',
+          yName: 'Female',
         },
       ],
       axes: [
         {
-          type: "category",
-          position: "bottom",
+          type: 'category',
+          position: 'bottom',
         },
         {
-          type: "number",
-          position: "left",
+          type: 'number',
+          position: 'left',
         },
       ],
     };
@@ -72,4 +73,4 @@ const ChartExample = {
   methods: {},
 };
 
-createApp(ChartExample).mount("#app");
+createApp(ChartExample).mount('#app');

@@ -1,9 +1,9 @@
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { Grid, GridOptions, ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { ExcelExportModule } from "@ag-grid-enterprise/excel-export";
-import { MenuModule } from "@ag-grid-enterprise/menu";
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import { Grid, GridOptions, ModuleRegistry } from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { ExcelExportModule } from '@ag-grid-enterprise/excel-export';
+import { MenuModule } from '@ag-grid-enterprise/menu';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([
@@ -15,16 +15,16 @@ declare var XLSX: any;
 
 const gridOptions: GridOptions = {
   columnDefs: [
-    { field: "athlete", minWidth: 180 },
-    { field: "age" },
-    { field: "country", minWidth: 150 },
-    { field: "year" },
-    { field: "date", minWidth: 130 },
-    { field: "sport", minWidth: 100 },
-    { field: "gold" },
-    { field: "silver" },
-    { field: "bronze" },
-    { field: "total" },
+    { field: 'athlete', minWidth: 180 },
+    { field: 'age' },
+    { field: 'country', minWidth: 150 },
+    { field: 'year' },
+    { field: 'date', minWidth: 130 },
+    { field: 'sport', minWidth: 100 },
+    { field: 'gold' },
+    { field: 'silver' },
+    { field: 'bronze' },
+    { field: 'total' },
   ],
 
   defaultColDef: {
@@ -39,8 +39,8 @@ const gridOptions: GridOptions = {
 // XMLHttpRequest in promise format
 function makeRequest(method: string, url: string, success: any, error: any) {
   var httpRequest = new XMLHttpRequest();
-  httpRequest.open("GET", url, true);
-  httpRequest.responseType = "arraybuffer";
+  httpRequest.open('GET', url, true);
+  httpRequest.responseType = 'arraybuffer';
 
   httpRequest.open(method, url);
   httpRequest.onload = function () {
@@ -62,9 +62,9 @@ function convertDataToWorkbook(dataRows: any[]) {
     arr[i] = String.fromCharCode(data[i]);
   }
 
-  var bstr = arr.join("");
+  var bstr = arr.join('');
 
-  return XLSX.read(bstr, { type: "binary" });
+  return XLSX.read(bstr, { type: 'binary' });
 }
 
 // pull out the values we're after, converting it into an array of rowData
@@ -76,16 +76,16 @@ function populateGrid(workbook: any) {
 
   // we expect the following columns to be present
   var columns: Record<string, string> = {
-    A: "athlete",
-    B: "age",
-    C: "country",
-    D: "year",
-    E: "date",
-    F: "sport",
-    G: "gold",
-    H: "silver",
-    I: "bronze",
-    J: "total",
+    A: 'athlete',
+    B: 'age',
+    C: 'country',
+    D: 'year',
+    E: 'date',
+    F: 'sport',
+    G: 'gold',
+    H: 'silver',
+    I: 'bronze',
+    J: 'total',
   };
 
   var rowData = [];
@@ -94,7 +94,7 @@ function populateGrid(workbook: any) {
   var rowIndex = 2;
 
   // iterate over the worksheet pulling out the columns we're expecting
-  while (worksheet["A" + rowIndex]) {
+  while (worksheet['A' + rowIndex]) {
     var row: any = {};
     Object.keys(columns).forEach(function (column) {
       row[columns[column]] = worksheet[column + rowIndex].w;
@@ -111,8 +111,8 @@ function populateGrid(workbook: any) {
 
 function importExcel() {
   makeRequest(
-    "GET",
-    "https://www.ag-grid.com/example-assets/olympic-data.xlsx",
+    'GET',
+    'https://www.ag-grid.com/example-assets/olympic-data.xlsx',
     // success
     function (data: any[]) {
       var workbook = convertDataToWorkbook(data);
@@ -129,12 +129,12 @@ function importExcel() {
 // wait for the document to be loaded, otherwise
 // AG Grid will not find the div in the document.
 // lookup the container we want the Grid to use
-var eGridDiv = document.querySelector<HTMLElement>("#myGrid")!;
+var eGridDiv = document.querySelector<HTMLElement>('#myGrid')!;
 
 // create the grid passing in the div to use together with the columns & data we want to use
 new Grid(eGridDiv, gridOptions);
 
-if (typeof window !== "undefined") {
+if (typeof window !== 'undefined') {
   // Attach external event handlers to window so they can be called from index.html
   (<any>window).importExcel = importExcel;
 }

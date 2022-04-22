@@ -1,12 +1,12 @@
-import { ColDef, GridApi, GridReadyEvent } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { HttpClient } from "@angular/common/http";
-import { Component } from "@angular/core";
+import { ColDef, GridApi, GridReadyEvent } from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { HttpClient } from '@angular/common/http';
+import { Component } from '@angular/core';
 // Required feature modules are registered in app.module.ts
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<div class="example-wrapper">
     <div class="example-header">
       Selection:
@@ -28,37 +28,37 @@ export class AppComponent {
   private gridApi!: GridApi;
 
   public columnDefs: ColDef[] = [
-    { field: "athlete", minWidth: 150 },
-    { field: "age", maxWidth: 90 },
-    { field: "country", minWidth: 150 },
-    { field: "year", maxWidth: 90 },
-    { field: "date", minWidth: 150 },
-    { field: "sport", minWidth: 150 },
-    { field: "gold" },
-    { field: "silver" },
-    { field: "bronze" },
-    { field: "total" },
+    { field: 'athlete', minWidth: 150 },
+    { field: 'age', maxWidth: 90 },
+    { field: 'country', minWidth: 150 },
+    { field: 'year', maxWidth: 90 },
+    { field: 'date', minWidth: 150 },
+    { field: 'sport', minWidth: 150 },
+    { field: 'gold' },
+    { field: 'silver' },
+    { field: 'bronze' },
+    { field: 'total' },
   ];
   public defaultColDef: ColDef = {
     flex: 1,
     minWidth: 100,
   };
-  public rowSelection = "single";
+  public rowSelection = 'single';
   public rowData!: any[];
 
   constructor(private http: HttpClient) {}
 
   onSelectionChanged() {
     const selectedRows = this.gridApi.getSelectedRows();
-    (document.querySelector("#selectedRows") as any).innerHTML =
-      selectedRows.length === 1 ? selectedRows[0].athlete : "";
+    (document.querySelector('#selectedRows') as any).innerHTML =
+      selectedRows.length === 1 ? selectedRows[0].athlete : '';
   }
 
   onGridReady(params: GridReadyEvent) {
     this.gridApi = params.api;
 
     this.http
-      .get<any[]>("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      .get<any[]>('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .subscribe((data) => (this.rowData = data));
   }
 }

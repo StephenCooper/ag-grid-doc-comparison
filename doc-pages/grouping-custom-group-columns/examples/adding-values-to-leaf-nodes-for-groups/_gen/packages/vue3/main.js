@@ -1,8 +1,8 @@
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
-import { AgGridVue } from "ag-grid-vue3";
-import { createApp } from "vue";
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import 'ag-grid-enterprise';
+import { AgGridVue } from 'ag-grid-vue3';
+import { createApp } from 'vue';
 
 const VueExample = {
   template: `
@@ -21,38 +21,38 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
         {
-          headerName: "Country",
-          colId: "countryGroup",
-          showRowGroup: "country",
+          headerName: 'Country',
+          colId: 'countryGroup',
+          showRowGroup: 'country',
           minWidth: 200,
-          cellRenderer: "agGroupCellRenderer",
+          cellRenderer: 'agGroupCellRenderer',
           filterValueGetter: (params) => {
             return params.data ? params.data.country : null;
           },
         },
-        { field: "country", rowGroup: true, hide: true },
+        { field: 'country', rowGroup: true, hide: true },
         {
-          headerName: "Year / Athlete",
-          colId: "yearAthleteGroup",
+          headerName: 'Year / Athlete',
+          colId: 'yearAthleteGroup',
           minWidth: 220,
-          showRowGroup: "year",
-          cellRenderer: "agGroupCellRenderer",
-          valueGetter: "data ? data.athlete : null",
+          showRowGroup: 'year',
+          cellRenderer: 'agGroupCellRenderer',
+          valueGetter: 'data ? data.athlete : null',
         },
-        { field: "year", rowGroup: true, hide: true },
-        { field: "sport", minWidth: 200 },
-        { field: "gold" },
-        { field: "silver" },
-        { field: "bronze" },
-        { field: "total" },
-        { field: "age" },
-        { field: "date", minWidth: 140 },
+        { field: 'year', rowGroup: true, hide: true },
+        { field: 'sport', minWidth: 200 },
+        { field: 'gold' },
+        { field: 'silver' },
+        { field: 'bronze' },
+        { field: 'total' },
+        { field: 'age' },
+        { field: 'date', minWidth: 140 },
       ],
       gridApi: null,
       columnApi: null,
@@ -68,7 +68,7 @@ const VueExample = {
     };
   },
   created() {
-    this.groupDisplayType = "custom";
+    this.groupDisplayType = 'custom';
   },
   methods: {
     onGridReady(params) {
@@ -77,11 +77,11 @@ const VueExample = {
 
       const updateData = (data) => params.api.setRowData(data);
 
-      fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
         .then((resp) => resp.json())
         .then((data) => updateData(data));
     },
   },
 };
 
-createApp(VueExample).mount("#app");
+createApp(VueExample).mount('#app');

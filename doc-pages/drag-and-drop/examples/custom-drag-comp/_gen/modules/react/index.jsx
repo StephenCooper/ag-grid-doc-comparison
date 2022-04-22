@@ -1,13 +1,13 @@
-"use strict";
+'use strict';
 
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { AgGridReact } from "@ag-grid-community/react";
-import React, { Component } from "react";
-import { render } from "react-dom";
-import DragSourceRenderer from "./dragSourceRenderer.jsx";
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from '@ag-grid-community/react';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import DragSourceRenderer from './dragSourceRenderer.jsx';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([ClientSideRowModelModule]);
@@ -18,9 +18,9 @@ class GridExample extends Component {
 
     this.state = {
       rowClassRules: {
-        "red-row": 'data.color == "Red"',
-        "green-row": 'data.color == "Green"',
-        "blue-row": 'data.color == "Blue"',
+        'red-row': 'data.color == "Red"',
+        'green-row': 'data.color == "Green"',
+        'blue-row': 'data.color == "Blue"',
       },
       defaultColDef: {
         width: 80,
@@ -31,10 +31,10 @@ class GridExample extends Component {
       rowData: getData(),
       columnDefs: [
         { cellRenderer: DragSourceRenderer, minWidth: 100 },
-        { field: "id" },
-        { field: "color" },
-        { field: "value1" },
-        { field: "value2" },
+        { field: 'id' },
+        { field: 'color' },
+        { field: 'value1' },
+        { field: 'value2' },
       ],
     };
   }
@@ -48,30 +48,30 @@ class GridExample extends Component {
     var types = event.dataTransfer.types;
     var dragSupported = types.length;
     if (dragSupported) {
-      event.dataTransfer.dropEffect = "move";
+      event.dataTransfer.dropEffect = 'move';
     }
     event.preventDefault();
   };
 
   onDrop = (event) => {
     event.preventDefault();
-    var textData = event.dataTransfer.getData("text/plain");
-    var eJsonRow = document.createElement("div");
-    eJsonRow.classList.add("json-row");
+    var textData = event.dataTransfer.getData('text/plain');
+    var eJsonRow = document.createElement('div');
+    eJsonRow.classList.add('json-row');
     eJsonRow.innerText = textData;
-    var eJsonDisplay = document.querySelector("#eJsonDisplay");
+    var eJsonDisplay = document.querySelector('#eJsonDisplay');
     eJsonDisplay.appendChild(eJsonRow);
   };
 
   render() {
     return (
-      <div style={{ width: "100%", height: "100%" }}>
+      <div style={{ width: '100%', height: '100%' }}>
         <div className="outer">
           <div className="grid-col">
             <div
               style={{
-                height: "100%",
-                width: "100%",
+                height: '100%',
+                width: '100%',
               }}
               className="ag-theme-alpine"
             >
@@ -103,4 +103,4 @@ class GridExample extends Component {
   }
 }
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

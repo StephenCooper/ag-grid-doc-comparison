@@ -18,7 +18,7 @@ The example below shows a few simple cell editors in action.
 - The `Doubling` Cell Editor will double a given input and reject values over a 1000
 - The `Mood` Cell Editor illustrates a slightly more complicated editor with values changed depending on the smiley chosen
 - The `Numeric` Cell Editor illustrates a slightly more complicated numeric editor to the `Doubling` editor above, with
-  increased input validation and better initial carot behaviour
+increased input validation and better initial carot behaviour
 
 <grid-example title='Simple Editor Components' name='component-editor' type='mixed' options='{ "exampleHeight": 370, "includeNgFormsModule" : true }'></grid-example>
 
@@ -44,6 +44,7 @@ md-include:complementing-component-angular.md
 md-include:complementing-component-react.md
 md-include:complementing-component-vue.md
 
+
 ## Configure Popup
 
 [[only-react]]
@@ -55,10 +56,10 @@ md-include:complementing-component-vue.md
 |1. Specify `cellEditorPopup=true` on the [Column Definition](/column-definitions/).
 
 ```js
-colDef = {
-  cellEditorPopup: true,
-  // ...other props
-};
+ colDef = {
+    cellEditorPopup: true,
+    // ...other props
+}
 ```
 
 ## Configure Popup Position
@@ -71,14 +72,15 @@ By default Popup Editors appear over the editing Cell. It is also possible to ha
 [[only-javascript-or-angular-or-vue]]
 |Configure the Popup Editor to appear below the Cell in one of the following ways:
 |1. Implement the `getPopupPosition()` method on the Custom Cell Editor and return `under`.
-|1. Specify `cellEditorPopupPosition='undef'` on the [Column Definition](/column-definitions/).
+|1. Specify `cellEditorPopupPosition='under'` on the [Column Definition](/column-definitions/).
 
 ```js
-colDef = {
-  cellEditorPopupPosition: "under",
-  // ...other props
-};
+ colDef = {
+    cellEditorPopupPosition: 'under',
+    // ...other props
+}
 ```
+
 
 ## Keyboard Navigation While Editing
 
@@ -113,6 +115,7 @@ md-include:keyboard-option-2-angular.md
 md-include:keyboard-option-2-react.md
 md-include:keyboard-option-2-vue.md
 
+
 ## Cell Editing Example
 
 The example below illustrates:
@@ -138,7 +141,7 @@ An example of calling `getCellEditorInstances()` is as follows:
 ```js
 const instances = gridOptions.api.getCellEditorInstances(params);
 if (instances.length > 0) {
-  const instance = instances[0];
+    const instance = instances[0];
 }
 ```
 

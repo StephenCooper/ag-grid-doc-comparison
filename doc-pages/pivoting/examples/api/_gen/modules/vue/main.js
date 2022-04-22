@@ -1,15 +1,15 @@
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { CsvExportModule } from "@ag-grid-community/csv-export";
-import { AgGridVue } from "@ag-grid-community/vue";
-import { ColumnsToolPanelModule } from "@ag-grid-enterprise/column-tool-panel";
-import { FiltersToolPanelModule } from "@ag-grid-enterprise/filter-tool-panel";
-import { MenuModule } from "@ag-grid-enterprise/menu";
-import { RowGroupingModule } from "@ag-grid-enterprise/row-grouping";
-import { SetFilterModule } from "@ag-grid-enterprise/set-filter";
-import Vue from "vue";
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { CsvExportModule } from '@ag-grid-community/csv-export';
+import { AgGridVue } from '@ag-grid-community/vue';
+import { ColumnsToolPanelModule } from '@ag-grid-enterprise/column-tool-panel';
+import { FiltersToolPanelModule } from '@ag-grid-enterprise/filter-tool-panel';
+import { MenuModule } from '@ag-grid-enterprise/menu';
+import { RowGroupingModule } from '@ag-grid-enterprise/row-grouping';
+import { SetFilterModule } from '@ag-grid-enterprise/set-filter';
+import Vue from 'vue';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([
@@ -53,31 +53,31 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
         {
-          field: "athlete",
+          field: 'athlete',
           enableRowGroup: true,
           enablePivot: true,
           minWidth: 200,
         },
-        { field: "age", enableValue: true },
-        { field: "country", enableRowGroup: true, enablePivot: true },
-        { field: "year", enableRowGroup: true, enablePivot: true },
-        { field: "date", enableRowGroup: true, enablePivot: true },
+        { field: 'age', enableValue: true },
+        { field: 'country', enableRowGroup: true, enablePivot: true },
+        { field: 'year', enableRowGroup: true, enablePivot: true },
+        { field: 'date', enableRowGroup: true, enablePivot: true },
         {
-          field: "sport",
+          field: 'sport',
           enableRowGroup: true,
           enablePivot: true,
           minWidth: 200,
         },
-        { field: "gold", enableValue: true, aggFunc: "sum" },
-        { field: "silver", enableValue: true },
-        { field: "bronze", enableValue: true },
-        { field: "total", enableValue: true },
+        { field: 'gold', enableValue: true, aggFunc: 'sum' },
+        { field: 'silver', enableValue: true },
+        { field: 'bronze', enableValue: true },
+        { field: 'total', enableValue: true },
       ],
       gridApi: null,
       columnApi: null,
@@ -105,22 +105,22 @@ const VueExample = {
     },
     addPivotColumn() {
       this.gridColumnApi.applyColumnState({
-        state: [{ colId: "country", pivot: true }],
+        state: [{ colId: 'country', pivot: true }],
         defaultState: { pivot: false },
       });
     },
     addPivotColumns() {
       this.gridColumnApi.applyColumnState({
         state: [
-          { colId: "year", pivot: true },
-          { colId: "country", pivot: true },
+          { colId: 'year', pivot: true },
+          { colId: 'country', pivot: true },
         ],
         defaultState: { pivot: false },
       });
     },
     removePivotColumn() {
       this.gridColumnApi.applyColumnState({
-        state: [{ colId: "country", pivot: false }],
+        state: [{ colId: 'country', pivot: false }],
       });
     },
     emptyPivotColumns() {
@@ -137,7 +137,7 @@ const VueExample = {
 
       const updateData = (data) => params.api.setRowData(data);
 
-      fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
         .then((resp) => resp.json())
         .then((data) => updateData(data));
     },
@@ -145,8 +145,8 @@ const VueExample = {
 };
 
 new Vue({
-  el: "#app",
+  el: '#app',
   components: {
-    "my-component": VueExample,
+    'my-component': VueExample,
   },
 });

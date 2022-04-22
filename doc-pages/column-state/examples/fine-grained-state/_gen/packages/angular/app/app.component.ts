@@ -1,17 +1,17 @@
-import { HttpClient } from "@angular/common/http";
-import { Component } from "@angular/core";
+import { HttpClient } from '@angular/common/http';
+import { Component } from '@angular/core';
 import {
   ColDef,
   ColumnApi,
   GridReadyEvent,
   SideBarDef,
-} from "ag-grid-community";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
+} from 'ag-grid-community';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import 'ag-grid-enterprise';
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<div class="test-container">
     <div class="test-header">
       <table>
@@ -78,16 +78,16 @@ export class AppComponent {
   private gridColumnApi!: ColumnApi;
 
   public columnDefs: ColDef[] = [
-    { field: "athlete" },
-    { field: "age" },
-    { field: "country" },
-    { field: "sport" },
-    { field: "year" },
-    { field: "date" },
-    { field: "gold" },
-    { field: "silver" },
-    { field: "bronze" },
-    { field: "total" },
+    { field: 'athlete' },
+    { field: 'age' },
+    { field: 'country' },
+    { field: 'sport' },
+    { field: 'year' },
+    { field: 'date' },
+    { field: 'gold' },
+    { field: 'silver' },
+    { field: 'bronze' },
+    { field: 'total' },
   ];
   public defaultColDef: ColDef = {
     sortable: true,
@@ -97,26 +97,26 @@ export class AppComponent {
     enablePivot: true,
     enableValue: true,
   };
-  public sideBar: SideBarDef | string | boolean | null = {
-    toolPanels: ["columns"],
+  public sideBar: SideBarDef | string | string[] | boolean | null = {
+    toolPanels: ['columns'],
   };
-  public rowGroupPanelShow = "always";
-  public pivotPanelShow = "always";
+  public rowGroupPanelShow = 'always';
+  public pivotPanelShow = 'always';
   public rowData!: any[];
 
   constructor(private http: HttpClient) {}
 
   onBtSortAthlete() {
     this.gridColumnApi.applyColumnState({
-      state: [{ colId: "athlete", sort: "asc" }],
+      state: [{ colId: 'athlete', sort: 'asc' }],
     });
   }
 
   onBtSortCountryThenSportClearOthers() {
     this.gridColumnApi.applyColumnState({
       state: [
-        { colId: "country", sort: "asc", sortIndex: 0 },
-        { colId: "sport", sort: "asc", sortIndex: 1 },
+        { colId: 'country', sort: 'asc', sortIndex: 0 },
+        { colId: 'sport', sort: 'asc', sortIndex: 1 },
       ],
       defaultState: { sort: null },
     });
@@ -131,8 +131,8 @@ export class AppComponent {
   onBtRowGroupCountryThenSport() {
     this.gridColumnApi.applyColumnState({
       state: [
-        { colId: "country", rowGroupIndex: 0 },
-        { colId: "sport", rowGroupIndex: 1 },
+        { colId: 'country', rowGroupIndex: 0 },
+        { colId: 'sport', rowGroupIndex: 1 },
       ],
       defaultState: { rowGroup: false },
     });
@@ -140,7 +140,7 @@ export class AppComponent {
 
   onBtRemoveCountryRowGroup() {
     this.gridColumnApi.applyColumnState({
-      state: [{ colId: "country", rowGroup: false }],
+      state: [{ colId: 'country', rowGroup: false }],
     });
   }
 
@@ -153,16 +153,16 @@ export class AppComponent {
   onBtOrderColsMedalsFirst() {
     this.gridColumnApi.applyColumnState({
       state: [
-        { colId: "gold" },
-        { colId: "silver" },
-        { colId: "bronze" },
-        { colId: "total" },
-        { colId: "athlete" },
-        { colId: "age" },
-        { colId: "country" },
-        { colId: "sport" },
-        { colId: "year" },
-        { colId: "date" },
+        { colId: 'gold' },
+        { colId: 'silver' },
+        { colId: 'bronze' },
+        { colId: 'total' },
+        { colId: 'athlete' },
+        { colId: 'age' },
+        { colId: 'country' },
+        { colId: 'sport' },
+        { colId: 'year' },
+        { colId: 'date' },
       ],
       applyOrder: true,
     });
@@ -171,16 +171,16 @@ export class AppComponent {
   onBtOrderColsMedalsLast() {
     this.gridColumnApi.applyColumnState({
       state: [
-        { colId: "athlete" },
-        { colId: "age" },
-        { colId: "country" },
-        { colId: "sport" },
-        { colId: "year" },
-        { colId: "date" },
-        { colId: "gold" },
-        { colId: "silver" },
-        { colId: "bronze" },
-        { colId: "total" },
+        { colId: 'athlete' },
+        { colId: 'age' },
+        { colId: 'country' },
+        { colId: 'sport' },
+        { colId: 'year' },
+        { colId: 'date' },
+        { colId: 'gold' },
+        { colId: 'silver' },
+        { colId: 'bronze' },
+        { colId: 'total' },
       ],
       applyOrder: true,
     });
@@ -189,10 +189,10 @@ export class AppComponent {
   onBtHideMedals() {
     this.gridColumnApi.applyColumnState({
       state: [
-        { colId: "gold", hide: true },
-        { colId: "silver", hide: true },
-        { colId: "bronze", hide: true },
-        { colId: "total", hide: true },
+        { colId: 'gold', hide: true },
+        { colId: 'silver', hide: true },
+        { colId: 'bronze', hide: true },
+        { colId: 'total', hide: true },
       ],
     });
   }
@@ -200,10 +200,10 @@ export class AppComponent {
   onBtShowMedals() {
     this.gridColumnApi.applyColumnState({
       state: [
-        { colId: "gold", hide: false },
-        { colId: "silver", hide: false },
-        { colId: "bronze", hide: false },
-        { colId: "total", hide: false },
+        { colId: 'gold', hide: false },
+        { colId: 'silver', hide: false },
+        { colId: 'bronze', hide: false },
+        { colId: 'total', hide: false },
       ],
     });
   }
@@ -212,7 +212,7 @@ export class AppComponent {
     this.gridColumnApi = params.columnApi;
 
     this.http
-      .get<any[]>("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      .get<any[]>('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .subscribe((data) => (this.rowData = data));
   }
 }

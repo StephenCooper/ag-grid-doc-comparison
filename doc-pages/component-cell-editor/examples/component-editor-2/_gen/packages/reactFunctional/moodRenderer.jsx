@@ -1,9 +1,9 @@
-import React, { useMemo } from "react";
+import React, { useMemo } from 'react';
 
 export default (props) => {
   const imageForMood = (mood) =>
-    "https://www.ag-grid.com/example-assets/smileys/" +
-    (mood === "Happy" ? "happy.png" : "sad.png");
+    'https://www.ag-grid.com/example-assets/smileys/' +
+    (mood === 'Happy' ? 'happy.png' : 'sad.png');
 
   const mood = useMemo(() => imageForMood(props.value), [props.value]);
 

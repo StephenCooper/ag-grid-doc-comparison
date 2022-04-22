@@ -1,15 +1,15 @@
 function getColumnDefs() {
   return [
-    { field: "athlete", width: 150, sort: "asc" },
-    { field: "age" },
-    { field: "country", pinned: "left" },
-    { field: "sport" },
-    { field: "year" },
-    { field: "date" },
-    { field: "gold" },
-    { field: "silver" },
-    { field: "bronze" },
-    { field: "total" },
+    { field: 'athlete', width: 150, sort: 'asc' },
+    { field: 'age' },
+    { field: 'country', pinned: 'left' },
+    { field: 'sport' },
+    { field: 'year' },
+    { field: 'date' },
+    { field: 'gold' },
+    { field: 'silver' },
+    { field: 'bronze' },
+    { field: 'total' },
   ];
 }
 
@@ -34,11 +34,11 @@ function onBtRemove() {
 }
 
 // setup the grid after the page has finished loading
-document.addEventListener("DOMContentLoaded", () => {
-  const gridDiv = document.querySelector("#myGrid");
+document.addEventListener('DOMContentLoaded', () => {
+  const gridDiv = document.querySelector('#myGrid');
   new agGrid.Grid(gridDiv, gridOptions);
 
-  fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+  fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
     .then((response) => response.json())
     .then((data) => gridOptions.api.setRowData(data));
 });

@@ -1,7 +1,7 @@
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import { AgGridVue } from "ag-grid-vue3";
-import { createApp } from "vue";
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import { AgGridVue } from 'ag-grid-vue3';
+import { createApp } from 'vue';
 
 class ShowCellRenderer {
   init(params) {
@@ -10,15 +10,15 @@ class ShowCellRenderer {
       return;
     }
 
-    this.ui = document.createElement("div");
+    this.ui = document.createElement('div');
     this.ui.innerHTML =
       '<div class="show-name">' +
       params.value.name +
-      "" +
-      "</div>" +
+      '' +
+      '</div>' +
       '<div class="show-presenter">' +
       params.value.presenter +
-      "</div>";
+      '</div>';
   }
 
   getGui() {
@@ -45,24 +45,24 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
-        { field: "localTime" },
+        { field: 'localTime' },
         {
-          field: "show",
+          field: 'show',
           cellRenderer: ShowCellRenderer,
           rowSpan: rowSpan,
-          cellClassRules: { "show-cell": "value !== undefined" },
+          cellClassRules: { 'show-cell': 'value !== undefined' },
           width: 200,
         },
-        { field: "a" },
-        { field: "b" },
-        { field: "c" },
-        { field: "d" },
-        { field: "e" },
+        { field: 'a' },
+        { field: 'b' },
+        { field: 'c' },
+        { field: 'd' },
+        { field: 'e' },
       ],
       gridApi: null,
       columnApi: null,
@@ -92,4 +92,4 @@ window.rowSpan = function rowSpan(params) {
   }
 };
 
-createApp(VueExample).mount("#app");
+createApp(VueExample).mount('#app');

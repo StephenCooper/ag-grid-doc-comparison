@@ -1,14 +1,14 @@
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import { AgGridVue } from "ag-grid-vue";
-import Vue from "vue";
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import { AgGridVue } from 'ag-grid-vue';
+import Vue from 'vue';
 
 const VueExample = {
   template: `
         <div style="height: 100%">
             <div style="height: 100%; display: flex; flex-direction: column;">
                 <div style="margin-bottom: 4px;">
-                    <button v-on:click="addItems()">Add Items</button>
+                    <button v-on:click="addItems(undefined)">Add Items</button>
                     <button v-on:click="addItems(2)">Add Items addIndex=2</button>
                     <button v-on:click="updateItems()">Update Top 2</button>
                     <button v-on:click="onRemoveSelected()">Remove Selected</button>
@@ -31,17 +31,17 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
-        { field: "make" },
-        { field: "model" },
-        { field: "price" },
-        { field: "zombies" },
-        { field: "style" },
-        { field: "clothes" },
+        { field: 'make' },
+        { field: 'model' },
+        { field: 'price' },
+        { field: 'zombies' },
+        { field: 'style' },
+        { field: 'clothes' },
       ],
       gridApi: null,
       columnApi: null,
@@ -54,7 +54,7 @@ const VueExample = {
   },
   created() {
     this.rowData = getData();
-    this.rowSelection = "multiple";
+    this.rowSelection = 'multiple';
   },
   methods: {
     getRowData() {
@@ -62,8 +62,8 @@ const VueExample = {
       this.gridApi.forEachNode(function (node) {
         rowData.push(node.data);
       });
-      console.log("Row Data:");
-      console.log(rowData);
+      console.log('Row Data:');
+      console.table(rowData);
     },
     clearData() {
       this.gridApi.setRowData([]);
@@ -81,10 +81,10 @@ const VueExample = {
       printResult(res);
     },
     updateItems() {
-      // update the first 5 items
+      // update the first 2 items
       const itemsToUpdate = [];
       this.gridApi.forEachNodeAfterFilterAndSort(function (rowNode, index) {
-        // only do first 5
+        // only do first 2
         if (index >= 2) {
           return;
         }
@@ -109,32 +109,32 @@ const VueExample = {
 
 window.createNewRowData = function createNewRowData() {
   const newData = {
-    make: "Toyota " + newCount,
-    model: "Celica " + newCount,
+    make: 'Toyota ' + newCount,
+    model: 'Celica ' + newCount,
     price: 35000 + newCount * 17,
-    zombies: "Headless",
-    style: "Little",
-    clothes: "Airbag",
+    zombies: 'Headless',
+    style: 'Little',
+    clothes: 'Airbag',
   };
   newCount++;
   return newData;
 };
 
 window.printResult = function printResult(res) {
-  console.log("---------------------------------------");
+  console.log('---------------------------------------');
   if (res.add) {
     res.add.forEach(function (rowNode) {
-      console.log("Added Row Node", rowNode);
+      console.log('Added Row Node', rowNode);
     });
   }
   if (res.remove) {
     res.remove.forEach(function (rowNode) {
-      console.log("Removed Row Node", rowNode);
+      console.log('Removed Row Node', rowNode);
     });
   }
   if (res.update) {
     res.update.forEach(function (rowNode) {
-      console.log("Updated Row Node", rowNode);
+      console.log('Updated Row Node', rowNode);
     });
   }
 };
@@ -142,8 +142,8 @@ window.printResult = function printResult(res) {
 let newCount = 1;
 
 new Vue({
-  el: "#app",
+  el: '#app',
   components: {
-    "my-component": VueExample,
+    'my-component': VueExample,
   },
 });

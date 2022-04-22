@@ -1,11 +1,11 @@
-"use strict";
+'use strict';
 
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
-import { AgGridReact } from "ag-grid-react";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from 'ag-grid-react';
+import 'ag-grid-enterprise';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 
 class GridExample extends Component {
   constructor(props) {
@@ -13,22 +13,22 @@ class GridExample extends Component {
 
     this.state = {
       columnDefs: [
-        { field: "symbol", maxWidth: 120 },
-        { field: "name", minWidth: 250 },
+        { field: 'symbol', maxWidth: 120 },
+        { field: 'name', minWidth: 250 },
         {
-          field: "change",
-          cellRenderer: "agSparklineCellRenderer",
+          field: 'change',
+          cellRenderer: 'agSparklineCellRenderer',
           cellRendererParams: {
             sparklineOptions: {
-              type: "area",
-              fill: "rgba(185,173,77,0.3)",
+              type: 'area',
+              fill: 'rgba(185,173,77,0.3)',
               line: {
-                stroke: "rgb(185,173,77)",
+                stroke: 'rgb(185,173,77)',
               },
               highlightStyle: {
                 size: 4,
-                stroke: "rgb(185,173,77)",
-                fill: "rgb(185,173,77)",
+                stroke: 'rgb(185,173,77)',
+                fill: 'rgb(185,173,77)',
               },
               tooltip: {
                 renderer: renderer,
@@ -36,32 +36,32 @@ class GridExample extends Component {
               crosshairs: {
                 xLine: {
                   enabled: true,
-                  lineDash: "dash",
-                  stroke: "rgba(0, 0, 0, 0.5)",
+                  lineDash: 'dash',
+                  stroke: 'rgba(0, 0, 0, 0.5)',
                 },
                 yLine: {
                   enabled: true,
-                  lineDash: "dash",
-                  stroke: "rgba(0, 0, 0, 0.5)",
+                  lineDash: 'dash',
+                  stroke: 'rgba(0, 0, 0, 0.5)',
                 },
               },
             },
           },
         },
         {
-          field: "rateOfChange",
-          cellRenderer: "agSparklineCellRenderer",
+          field: 'rateOfChange',
+          cellRenderer: 'agSparklineCellRenderer',
           cellRendererParams: {
             sparklineOptions: {
-              type: "area",
-              fill: "rgba(77,89,185, 0.3)",
+              type: 'area',
+              fill: 'rgba(77,89,185, 0.3)',
               line: {
-                stroke: "rgb(77,89,185)",
+                stroke: 'rgb(77,89,185)',
               },
               highlightStyle: {
                 size: 4,
-                stroke: "rgb(77,89,185)",
-                fill: "rgb(77,89,185)",
+                stroke: 'rgb(77,89,185)',
+                fill: 'rgb(77,89,185)',
               },
               tooltip: {
                 renderer: renderer,
@@ -75,8 +75,8 @@ class GridExample extends Component {
           },
         },
         {
-          field: "volume",
-          type: "numericColumn",
+          field: 'volume',
+          type: 'numericColumn',
           maxWidth: 140,
         },
       ],
@@ -97,11 +97,11 @@ class GridExample extends Component {
 
   render() {
     return (
-      <div style={{ width: "100%", height: "100%" }}>
+      <div style={{ width: '100%', height: '100%' }}>
         <div
           style={{
-            height: "100%",
-            width: "100%",
+            height: '100%',
+            width: '100%',
           }}
           className="ag-theme-alpine"
         >
@@ -120,10 +120,10 @@ class GridExample extends Component {
 
 function renderer(params) {
   return {
-    backgroundColor: "black",
+    backgroundColor: 'black',
     opacity: 0.5,
-    color: "white",
+    color: 'white',
   };
 }
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

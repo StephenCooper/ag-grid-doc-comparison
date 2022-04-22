@@ -1,11 +1,11 @@
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { AgGridVue } from "@ag-grid-community/vue";
-import { MenuModule } from "@ag-grid-enterprise/menu";
-import { SetFilterModule } from "@ag-grid-enterprise/set-filter";
-import Vue from "vue";
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { AgGridVue } from '@ag-grid-community/vue';
+import { MenuModule } from '@ag-grid-enterprise/menu';
+import { SetFilterModule } from '@ag-grid-enterprise/set-filter';
+import Vue from 'vue';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([
@@ -59,45 +59,45 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
-        { field: "athlete", filter: PersonFilter, suppressMenu: true },
-        { field: "age", filter: "agNumberColumnFilter", suppressMenu: true },
-        { field: "country", filter: "agSetColumnFilter", suppressMenu: true },
+        { field: 'athlete', filter: PersonFilter, suppressMenu: true },
+        { field: 'age', filter: 'agNumberColumnFilter', suppressMenu: true },
+        { field: 'country', filter: 'agSetColumnFilter', suppressMenu: true },
         {
-          field: "year",
+          field: 'year',
           maxWidth: 120,
-          filter: "agNumberColumnFilter",
+          filter: 'agNumberColumnFilter',
           floatingFilter: false,
         },
         {
-          field: "date",
+          field: 'date',
           minWidth: 215,
-          filter: "agDateColumnFilter",
+          filter: 'agDateColumnFilter',
           filterParams: dateFilterParams,
           suppressMenu: true,
         },
-        { field: "sport", suppressMenu: true, filter: "agTextColumnFilter" },
+        { field: 'sport', suppressMenu: true, filter: 'agTextColumnFilter' },
         {
-          field: "gold",
-          filter: "agNumberColumnFilter",
-          filterParams: { buttons: ["apply"] },
+          field: 'gold',
+          filter: 'agNumberColumnFilter',
+          filterParams: { buttons: ['apply'] },
           suppressMenu: true,
         },
         {
-          field: "silver",
-          filter: "agNumberColumnFilter",
+          field: 'silver',
+          filter: 'agNumberColumnFilter',
           floatingFilterComponentParams: { suppressFilterButton: true },
         },
         {
-          field: "bronze",
-          filter: "agNumberColumnFilter",
+          field: 'bronze',
+          filter: 'agNumberColumnFilter',
           floatingFilterComponentParams: { suppressFilterButton: true },
         },
-        { field: "total", filter: false },
+        { field: 'total', filter: false },
       ],
       gridApi: null,
       columnApi: null,
@@ -114,97 +114,97 @@ const VueExample = {
   created() {},
   methods: {
     irelandAndUk() {
-      var countryFilterComponent = this.gridApi.getFilterInstance("country");
-      countryFilterComponent.setModel({ values: ["Ireland", "Great Britain"] });
+      var countryFilterComponent = this.gridApi.getFilterInstance('country');
+      countryFilterComponent.setModel({ values: ['Ireland', 'Great Britain'] });
       this.gridApi.onFilterChanged();
     },
     clearCountryFilter() {
-      var countryFilterComponent = this.gridApi.getFilterInstance("country");
+      var countryFilterComponent = this.gridApi.getFilterInstance('country');
       countryFilterComponent.setModel(null);
       this.gridApi.onFilterChanged();
     },
     destroyCountryFilter() {
-      this.gridApi.destroyFilter("country");
+      this.gridApi.destroyFilter('country');
     },
     endingStan() {
-      var countryFilterComponent = this.gridApi.getFilterInstance("country");
+      var countryFilterComponent = this.gridApi.getFilterInstance('country');
       var countriesEndingWithStan = countryFilterComponent
         .getValues()
         .filter(function (value) {
-          return value.indexOf("stan") === value.length - 4;
+          return value.indexOf('stan') === value.length - 4;
         });
       countryFilterComponent.setModel({ values: countriesEndingWithStan });
       this.gridApi.onFilterChanged();
     },
     printCountryModel() {
-      var countryFilterComponent = this.gridApi.getFilterInstance("country");
+      var countryFilterComponent = this.gridApi.getFilterInstance('country');
       var model = countryFilterComponent.getModel();
       if (model) {
-        console.log("Country model is: " + JSON.stringify(model));
+        console.log('Country model is: ' + JSON.stringify(model));
       } else {
-        console.log("Country model filter is not active");
+        console.log('Country model filter is not active');
       }
     },
     sportStartsWithS() {
-      var sportsFilterComponent = this.gridApi.getFilterInstance("sport");
+      var sportsFilterComponent = this.gridApi.getFilterInstance('sport');
       sportsFilterComponent.setModel({
-        type: "startsWith",
-        filter: "s",
+        type: 'startsWith',
+        filter: 's',
       });
       this.gridApi.onFilterChanged();
     },
     sportEndsWithG() {
-      var sportsFilterComponent = this.gridApi.getFilterInstance("sport");
+      var sportsFilterComponent = this.gridApi.getFilterInstance('sport');
       sportsFilterComponent.setModel({
-        type: "endsWith",
-        filter: "g",
+        type: 'endsWith',
+        filter: 'g',
       });
       this.gridApi.onFilterChanged();
     },
     sportsCombined() {
-      var sportsFilterComponent = this.gridApi.getFilterInstance("sport");
+      var sportsFilterComponent = this.gridApi.getFilterInstance('sport');
       sportsFilterComponent.setModel({
         condition2: {
-          type: "endsWith",
-          filter: "g",
+          type: 'endsWith',
+          filter: 'g',
         },
-        operator: "AND",
+        operator: 'AND',
         condition1: {
-          type: "startsWith",
-          filter: "s",
+          type: 'startsWith',
+          filter: 's',
         },
       });
       this.gridApi.onFilterChanged();
     },
     ageBelow25() {
-      var ageFilterComponent = this.gridApi.getFilterInstance("age");
+      var ageFilterComponent = this.gridApi.getFilterInstance('age');
       ageFilterComponent.setModel({
-        type: "lessThan",
+        type: 'lessThan',
         filter: 25,
         filterTo: null,
       });
       this.gridApi.onFilterChanged();
     },
     ageAbove30() {
-      var ageFilterComponent = this.gridApi.getFilterInstance("age");
+      var ageFilterComponent = this.gridApi.getFilterInstance('age');
       ageFilterComponent.setModel({
-        type: "greaterThan",
+        type: 'greaterThan',
         filter: 30,
         filterTo: null,
       });
       this.gridApi.onFilterChanged();
     },
     ageBelow25OrAbove30() {
-      var ageFilterComponent = this.gridApi.getFilterInstance("age");
+      var ageFilterComponent = this.gridApi.getFilterInstance('age');
       ageFilterComponent.setModel({
         condition1: {
-          type: "greaterThan",
+          type: 'greaterThan',
           filter: 30,
           filterTo: null,
         },
-        operator: "OR",
+        operator: 'OR',
         condition2: {
-          type: "lessThan",
+          type: 'lessThan',
           filter: 25,
           filterTo: null,
         },
@@ -212,56 +212,56 @@ const VueExample = {
       this.gridApi.onFilterChanged();
     },
     ageBetween25And30() {
-      var ageFilterComponent = this.gridApi.getFilterInstance("age");
+      var ageFilterComponent = this.gridApi.getFilterInstance('age');
       ageFilterComponent.setModel({
-        type: "inRange",
+        type: 'inRange',
         filter: 25,
         filterTo: 30,
       });
       this.gridApi.onFilterChanged();
     },
     clearAgeFilter() {
-      var ageFilterComponent = this.gridApi.getFilterInstance("age");
+      var ageFilterComponent = this.gridApi.getFilterInstance('age');
       ageFilterComponent.setModel(null);
       this.gridApi.onFilterChanged();
     },
     after2010() {
-      var dateFilterComponent = this.gridApi.getFilterInstance("date");
+      var dateFilterComponent = this.gridApi.getFilterInstance('date');
       dateFilterComponent.setModel({
-        type: "greaterThan",
-        dateFrom: "2010-01-01",
+        type: 'greaterThan',
+        dateFrom: '2010-01-01',
         dateTo: null,
       });
       this.gridApi.onFilterChanged();
     },
     before2012() {
-      var dateFilterComponent = this.gridApi.getFilterInstance("date");
+      var dateFilterComponent = this.gridApi.getFilterInstance('date');
       dateFilterComponent.setModel({
-        type: "lessThan",
-        dateFrom: "2012-01-01",
+        type: 'lessThan',
+        dateFrom: '2012-01-01',
         dateTo: null,
       });
       this.gridApi.onFilterChanged();
     },
     dateCombined() {
-      var dateFilterComponent = this.gridApi.getFilterInstance("date");
+      var dateFilterComponent = this.gridApi.getFilterInstance('date');
       dateFilterComponent.setModel({
         condition1: {
-          type: "lessThan",
-          dateFrom: "2012-01-01",
+          type: 'lessThan',
+          dateFrom: '2012-01-01',
           dateTo: null,
         },
-        operator: "OR",
+        operator: 'OR',
         condition2: {
-          type: "greaterThan",
-          dateFrom: "2010-01-01",
+          type: 'greaterThan',
+          dateFrom: '2010-01-01',
           dateTo: null,
         },
       });
       this.gridApi.onFilterChanged();
     },
     clearDateFilter() {
-      var dateFilterComponent = this.gridApi.getFilterInstance("date");
+      var dateFilterComponent = this.gridApi.getFilterInstance('date');
       dateFilterComponent.setModel(null);
       this.gridApi.onFilterChanged();
     },
@@ -271,7 +271,7 @@ const VueExample = {
 
       const updateData = (data) => params.api.setRowData(data);
 
-      fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
         .then((resp) => resp.json())
         .then((data) => updateData(data));
     },
@@ -282,7 +282,7 @@ var dateFilterParams = {
   comparator: function (filterLocalDateAtMidnight, cellValue) {
     var dateAsString = cellValue;
     if (dateAsString == null) return -1;
-    var dateParts = dateAsString.split("/");
+    var dateParts = dateAsString.split('/');
     var cellDate = new Date(
       Number(dateParts[2]),
       Number(dateParts[1]) - 1,
@@ -302,8 +302,8 @@ var dateFilterParams = {
 };
 
 new Vue({
-  el: "#app",
+  el: '#app',
   components: {
-    "my-component": VueExample,
+    'my-component': VueExample,
   },
 });

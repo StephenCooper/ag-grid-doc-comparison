@@ -1,7 +1,7 @@
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import { AgGridVue } from "ag-grid-vue3";
-import { createApp } from "vue";
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import { AgGridVue } from 'ag-grid-vue3';
+import { createApp } from 'vue';
 
 const VueExample = {
   template: `
@@ -24,13 +24,13 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
-        { headerName: "Employee", field: "employee" },
-        { headerName: "Number Sick Days", field: "sickDays", editable: true },
+        { headerName: 'Employee', field: 'employee' },
+        { headerName: 'Number Sick Days', field: 'sickDays', editable: true },
       ],
       gridApi: null,
       columnApi: null,
@@ -43,18 +43,18 @@ const VueExample = {
     this.rowData = getData();
     this.rowClassRules = {
       // row style function
-      "sick-days-warning": (params) => {
+      'sick-days-warning': (params) => {
         var numSickDays = params.data.sickDays;
         return numSickDays > 5 && numSickDays <= 7;
       },
       // row style expression
-      "sick-days-breach": "data.sickDays >= 8",
+      'sick-days-breach': 'data.sickDays >= 8',
     };
   },
   methods: {
     setDataValue() {
       this.gridApi.forEachNode(function (rowNode) {
-        rowNode.setDataValue("sickDays", randomInt());
+        rowNode.setDataValue('sickDays', randomInt());
       });
     },
     setData() {
@@ -86,4 +86,4 @@ window.randomInt = function randomInt() {
   return Math.floor(Math.random() * 10);
 };
 
-createApp(VueExample).mount("#app");
+createApp(VueExample).mount('#app');

@@ -1,17 +1,17 @@
-"use strict";
+'use strict';
 
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { AgGridReact } from "@ag-grid-community/react";
-import { ClipboardModule } from "@ag-grid-enterprise/clipboard";
-import { ColumnsToolPanelModule } from "@ag-grid-enterprise/column-tool-panel";
-import { ExcelExportModule } from "@ag-grid-enterprise/excel-export";
-import { MasterDetailModule } from "@ag-grid-enterprise/master-detail";
-import { MenuModule } from "@ag-grid-enterprise/menu";
-import React, { useCallback, useMemo, useRef, useState } from "react";
-import { render } from "react-dom";
+import React, { useCallback, useMemo, useRef, useState } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from '@ag-grid-community/react';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import { MasterDetailModule } from '@ag-grid-enterprise/master-detail';
+import { MenuModule } from '@ag-grid-enterprise/menu';
+import { ColumnsToolPanelModule } from '@ag-grid-enterprise/column-tool-panel';
+import { ClipboardModule } from '@ag-grid-enterprise/clipboard';
+import { ExcelExportModule } from '@ag-grid-enterprise/excel-export';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([
@@ -26,22 +26,22 @@ ModuleRegistry.registerModules([
 var getCells = (params) => {
   const cells = [
     [
-      cell(""),
-      cell("Call Id", "header"),
-      cell("Direction", "header"),
-      cell("Number", "header"),
-      cell("Duration", "header"),
-      cell("Switch Code", "header"),
+      cell(''),
+      cell('Call Id', 'header'),
+      cell('Direction', 'header'),
+      cell('Number', 'header'),
+      cell('Duration', 'header'),
+      cell('Switch Code', 'header'),
     ],
   ].concat(
     params.node.data.callRecords.map(function (record) {
       return [
-        cell(""),
-        cell(record.callId, "body"),
-        cell(record.direction, "body"),
-        cell(record.number, "body"),
-        cell(record.duration, "body"),
-        cell(record.switchCode, "body"),
+        cell(''),
+        cell(record.callId, 'body'),
+        cell(record.direction, 'body'),
+        cell(record.number, 'body'),
+        cell(record.duration, 'body'),
+        cell(record.switchCode, 'body'),
       ];
     }),
     [[]]
@@ -53,7 +53,7 @@ const cell = (text, styleId) => {
   return {
     styleId: styleId,
     data: {
-      type: /^\d+$/.test(text) ? "Number" : "String",
+      type: /^\d+$/.test(text) ? 'Number' : 'String',
       value: String(text),
     },
   };
@@ -61,8 +61,8 @@ const cell = (text, styleId) => {
 
 const GridExample = () => {
   const gridRef = useRef();
-  const containerStyle = useMemo(() => ({ width: "100%", height: "100%" }), []);
-  const gridStyle = useMemo(() => ({ height: "100%", width: "100%" }), []);
+  const containerStyle = useMemo(() => ({ width: '100%', height: '100%' }), []);
+  const gridStyle = useMemo(() => ({ height: '100%', width: '100%' }), []);
   const [rowData, setRowData] = useState();
   const defaultCsvExportParams = useMemo(() => {
     return {
@@ -77,10 +77,10 @@ const GridExample = () => {
   }, []);
   const [columnDefs, setColumnDefs] = useState([
     // group cell renderer needed for expand / collapse icons
-    { field: "name", cellRenderer: "agGroupCellRenderer" },
-    { field: "account" },
-    { field: "calls" },
-    { field: "minutes", valueFormatter: "x.toLocaleString() + 'm'" },
+    { field: 'name', cellRenderer: 'agGroupCellRenderer' },
+    { field: 'account' },
+    { field: 'calls' },
+    { field: 'minutes', valueFormatter: "x.toLocaleString() + 'm'" },
   ]);
   const defaultColDef = useMemo(() => {
     return {
@@ -91,11 +91,11 @@ const GridExample = () => {
     return {
       detailGridOptions: {
         columnDefs: [
-          { field: "callId" },
-          { field: "direction" },
-          { field: "number", minWidth: 150 },
-          { field: "duration", valueFormatter: "x.toLocaleString() + 's'" },
-          { field: "switchCode", minWidth: 150 },
+          { field: 'callId' },
+          { field: 'direction' },
+          { field: 'number', minWidth: 150 },
+          { field: 'duration', valueFormatter: "x.toLocaleString() + 's'" },
+          { field: 'switchCode', minWidth: 150 },
         ],
         defaultColDef: {
           flex: 1,
@@ -109,24 +109,24 @@ const GridExample = () => {
   const excelStyles = useMemo(() => {
     return [
       {
-        id: "header",
+        id: 'header',
         interior: {
-          color: "#aaaaaa",
-          pattern: "Solid",
+          color: '#aaaaaa',
+          pattern: 'Solid',
         },
       },
       {
-        id: "body",
+        id: 'body',
         interior: {
-          color: "#dddddd",
-          pattern: "Solid",
+          color: '#dddddd',
+          pattern: 'Solid',
         },
       },
     ];
   }, []);
 
   const onGridReady = useCallback((params) => {
-    fetch("https://www.ag-grid.com/example-assets/master-detail-data.json")
+    fetch('https://www.ag-grid.com/example-assets/master-detail-data.json')
       .then((resp) => resp.json())
       .then((data) => {
         setRowData(data);
@@ -143,7 +143,7 @@ const GridExample = () => {
         <div>
           <button
             onClick={onBtExport}
-            style={{ marginBottom: "5px", fontWeight: "bold" }}
+            style={{ marginBottom: '5px', fontWeight: 'bold' }}
           >
             Export to Excel
           </button>
@@ -169,4 +169,4 @@ const GridExample = () => {
   );
 };
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

@@ -12,7 +12,7 @@ function createViewportDatasource(mockServer) {
     // gets called by the grid, tells us what rows the grid is displaying, so time for
     // us to tell the server to give us the rows for that displayed range
     setViewportRange(firstRow, lastRow) {
-      console.log("setViewportRange: " + firstRow + " to " + lastRow);
+      console.log('setViewportRange: ' + firstRow + ' to ' + lastRow);
       this.mockServer.setViewportRange(this.connectionId, firstRow, lastRow);
     }
 
@@ -29,13 +29,13 @@ function createViewportDatasource(mockServer) {
     // manages events back from the server
     eventListener(event) {
       switch (event.eventType) {
-        case "rowCountChanged":
+        case 'rowCountChanged':
           this.onRowCountChanged(event);
           break;
-        case "rowData":
+        case 'rowData':
           this.onRowData(event);
           break;
-        case "dataUpdated":
+        case 'dataUpdated':
           this.onDataUpdated(event);
           break;
       }

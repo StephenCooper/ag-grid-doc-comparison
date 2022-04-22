@@ -1,17 +1,17 @@
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
 import {
   Grid,
   GridOptions,
   ModuleRegistry,
   RowDragCallbackParams,
   RowDragEndEvent,
-} from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { ColumnsToolPanelModule } from "@ag-grid-enterprise/column-tool-panel";
-import { MenuModule } from "@ag-grid-enterprise/menu";
-import { RowGroupingModule } from "@ag-grid-enterprise/row-grouping";
-import { SetFilterModule } from "@ag-grid-enterprise/set-filter";
+} from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { ColumnsToolPanelModule } from '@ag-grid-enterprise/column-tool-panel';
+import { MenuModule } from '@ag-grid-enterprise/menu';
+import { RowGroupingModule } from '@ag-grid-enterprise/row-grouping';
+import { SetFilterModule } from '@ag-grid-enterprise/set-filter';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([
@@ -29,14 +29,14 @@ var rowDrag = function (params: RowDragCallbackParams) {
 
 const gridOptions: GridOptions = {
   columnDefs: [
-    { field: "athlete", rowDrag: rowDrag },
-    { field: "country", rowGroup: true },
-    { field: "year", width: 100 },
-    { field: "date" },
-    { field: "sport" },
-    { field: "gold" },
-    { field: "silver" },
-    { field: "bronze" },
+    { field: 'athlete', rowDrag: rowDrag },
+    { field: 'country', rowGroup: true },
+    { field: 'year', width: 100 },
+    { field: 'date' },
+    { field: 'sport' },
+    { field: 'gold' },
+    { field: 'silver' },
+    { field: 'bronze' },
   ],
   defaultColDef: {
     width: 170,
@@ -79,5 +79,5 @@ function onRowDragMove(event: RowDragEndEvent) {
 }
 
 // setup the grid after the page has finished loading
-var gridDiv = document.querySelector<HTMLElement>("#myGrid")!;
+var gridDiv = document.querySelector<HTMLElement>('#myGrid')!;
 new Grid(gridDiv, gridOptions);

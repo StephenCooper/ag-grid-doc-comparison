@@ -1,12 +1,12 @@
 var valueFormatter = function (params) {
-  return params.value ? params.value + " MB" : "";
+  return params.value ? params.value + ' MB' : '';
 };
 
 const gridOptions = {
   columnDefs: [
-    { field: "dateModified" },
+    { field: 'dateModified' },
     {
-      field: "size",
+      field: 'size',
       valueFormatter: valueFormatter,
     },
   ],
@@ -26,7 +26,7 @@ const gridOptions = {
   },
   autoGroupColumnDef: {
     rowDrag: true,
-    headerName: "Files",
+    headerName: 'Files',
     minWidth: 300,
     cellRendererParams: {
       suppressCount: true,
@@ -45,7 +45,7 @@ function onRowDragEnd(event) {
 
   // folder to drop into is where we are going to move the file/folder to
   var folderToDropInto =
-    overNode.data.type === "folder"
+    overNode.data.type === 'folder'
       ? // if over a folder, we take the immediate row
         overNode
       : // if over a file, we take the parent row (which will be a folder)
@@ -64,7 +64,7 @@ function onRowDragEnd(event) {
   // check we are not moving a folder into a child folder
   var invalidMode = isSelectionParentOfTarget(event.node, folderToDropInto);
   if (invalidMode) {
-    console.log("invalid move");
+    console.log('invalid move');
   }
 
   if (needToChangeParent && !invalidMode) {
@@ -141,9 +141,9 @@ function arePathsEqual(path1, path2) {
 
 // wait for the document to be loaded, otherwise
 // AG Grid will not find the div in the document.
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener('DOMContentLoaded', function () {
   // lookup the container we want the Grid to use
-  var eGridDiv = document.querySelector("#myGrid");
+  var eGridDiv = document.querySelector('#myGrid');
 
   // create the grid passing in the div to use together with the columns & data we want to use
   new agGrid.Grid(eGridDiv, gridOptions);

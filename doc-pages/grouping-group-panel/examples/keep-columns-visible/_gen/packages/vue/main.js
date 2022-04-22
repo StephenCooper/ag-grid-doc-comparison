@@ -1,8 +1,8 @@
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
-import { AgGridVue } from "ag-grid-vue";
-import Vue from "vue";
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import 'ag-grid-enterprise';
+import { AgGridVue } from 'ag-grid-vue';
+import Vue from 'vue';
 
 const VueExample = {
   template: `
@@ -22,18 +22,18 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
-        { field: "country", enableRowGroup: true },
-        { field: "year", enableRowGroup: true },
-        { field: "athlete", minWidth: 180 },
-        { field: "gold", aggFunc: "sum" },
-        { field: "silver", aggFunc: "sum" },
-        { field: "bronze", aggFunc: "sum" },
-        { field: "total", aggFunc: "sum" },
+        { field: 'country', enableRowGroup: true },
+        { field: 'year', enableRowGroup: true },
+        { field: 'athlete', minWidth: 180 },
+        { field: 'gold', aggFunc: 'sum' },
+        { field: 'silver', aggFunc: 'sum' },
+        { field: 'bronze', aggFunc: 'sum' },
+        { field: 'total', aggFunc: 'sum' },
       ],
       gridApi: null,
       columnApi: null,
@@ -50,7 +50,7 @@ const VueExample = {
     this.autoGroupColumnDef = {
       minWidth: 200,
     };
-    this.rowGroupPanelShow = "always";
+    this.rowGroupPanelShow = 'always';
   },
   methods: {
     onGridReady(params) {
@@ -59,7 +59,7 @@ const VueExample = {
 
       const updateData = (data) => params.api.setRowData(data);
 
-      fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
         .then((resp) => resp.json())
         .then((data) => updateData(data));
     },
@@ -67,8 +67,8 @@ const VueExample = {
 };
 
 new Vue({
-  el: "#app",
+  el: '#app',
   components: {
-    "my-component": VueExample,
+    'my-component': VueExample,
   },
 });

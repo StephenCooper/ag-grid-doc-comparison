@@ -1,17 +1,17 @@
-import { HttpClient } from "@angular/common/http";
-import { Component } from "@angular/core";
+import { HttpClient } from '@angular/common/http';
+import { Component } from '@angular/core';
 import {
   ColDef,
   CreatePivotChartParams,
   FirstDataRenderedEvent,
   GridReadyEvent,
-} from "ag-grid-community";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
+} from 'ag-grid-community';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import 'ag-grid-enterprise';
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<div
     style="display: flex; flex-direction: column; height: 100%; width: 100%; overflow: hidden;"
   >
@@ -35,11 +35,11 @@ import "ag-grid-enterprise";
 })
 export class AppComponent {
   public columnDefs: ColDef[] = [
-    { field: "country", pivot: true },
-    { field: "year", rowGroup: true },
-    { field: "sport", rowGroup: true },
-    { field: "total", aggFunc: "sum" },
-    { field: "gold", aggFunc: "sum" },
+    { field: 'country', pivot: true },
+    { field: 'year', rowGroup: true },
+    { field: 'sport', rowGroup: true },
+    { field: 'total', aggFunc: 'sum' },
+    { field: 'gold', aggFunc: 'sum' },
   ];
   public defaultColDef: ColDef = {
     editable: true,
@@ -58,11 +58,11 @@ export class AppComponent {
   constructor(private http: HttpClient) {}
 
   onFirstDataRendered(event: FirstDataRenderedEvent) {
-    var chartContainer = document.querySelector("#chart") as any;
+    var chartContainer = document.querySelector('#chart') as any;
     var params: CreatePivotChartParams = {
-      chartType: "groupedColumn",
+      chartType: 'groupedColumn',
       chartContainer: chartContainer,
-      chartThemeName: "ag-vivid",
+      chartThemeName: 'ag-vivid',
       chartThemeOverrides: {
         common: {
           padding: {
@@ -73,7 +73,7 @@ export class AppComponent {
           },
           legend: {
             enabled: true,
-            position: "bottom",
+            position: 'bottom',
           },
           navigator: {
             enabled: true,
@@ -92,7 +92,7 @@ export class AppComponent {
   onGridReady(params: GridReadyEvent) {
     this.http
       .get<any[]>(
-        "https://www.ag-grid.com/example-assets/wide-spread-of-sports.json"
+        'https://www.ag-grid.com/example-assets/wide-spread-of-sports.json'
       )
       .subscribe((data) => {
         this.rowData = data;

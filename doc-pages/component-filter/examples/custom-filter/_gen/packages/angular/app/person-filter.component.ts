@@ -1,9 +1,9 @@
-import { Component } from "@angular/core";
-import { IFilterAngularComp } from "ag-grid-angular";
-import { IDoesFilterPassParams, IFilterParams } from "ag-grid-community";
+import { Component } from '@angular/core';
+import { IFilterAngularComp } from 'ag-grid-angular';
+import { IDoesFilterPassParams, IFilterParams } from 'ag-grid-community';
 
 @Component({
-  selector: "year-component",
+  selector: 'year-component',
   template: `
     <div style="padding: 4px; width: 200px;">
       <div style="font-weight: bold;">Custom Athlete Filter</div>
@@ -34,7 +34,7 @@ import { IDoesFilterPassParams, IFilterParams } from "ag-grid-community";
 })
 export class PersonFilter implements IFilterAngularComp {
   params!: IFilterParams;
-  filterText = "";
+  filterText = '';
 
   agInit(params: IFilterParams): void {
     this.params = params;
@@ -48,7 +48,7 @@ export class PersonFilter implements IFilterAngularComp {
 
     this.filterText
       .toLowerCase()
-      .split(" ")
+      .split(' ')
       .forEach((filterWord) => {
         const value = this.params.valueGetter({
           api,
@@ -70,7 +70,7 @@ export class PersonFilter implements IFilterAngularComp {
   }
 
   isFilterActive(): boolean {
-    return this.filterText != null && this.filterText !== "";
+    return this.filterText != null && this.filterText !== '';
   }
 
   getModel() {

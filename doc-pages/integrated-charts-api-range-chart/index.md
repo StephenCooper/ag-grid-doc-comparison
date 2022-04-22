@@ -34,7 +34,7 @@ The following example demonstrates how Range Charts can be created programmatica
 
 ## Range Chart Dashboard
 
-The following example passes a [Chart Container](/integrated-charts-container/) to the API to place the chart in a
+The following example passes a [Chart Container](/integrated-charts-container/) to the API to place the chart in a 
 location other than the grid's popup window. Note the following:
 
 - The charts are placed in `div` elements outside the grid.
@@ -63,7 +63,7 @@ It is possible to create the following combination chart types via `gridApi.crea
 - Custom Combination (`chartType: 'customCombo'`)
 
 When the `customCombo` chart type is specified a new `CreateRangeChartParams.seriesChartTypes` must also be supplied.
-Also note that when `seriesChartTypes` is present a `customCombo` chart type is assumed, regardless of which `chartType`
+Also note that when `seriesChartTypes` is present a `customCombo` chart type is assumed, regardless of which `chartType` 
 is supplied.
 
 The `seriesChartTypes` property accepts an array of `SeriesChartType` objects as shown below:
@@ -97,7 +97,7 @@ The following example demonstrates the above configuration, note the following:
 
 - The 'Rain' series uses a `groupedColumn` chart type and is plotted against the primary Y axis (`secondaryAxis=false`)
 - 'Pressure' and 'Temp' use a `line` chart type and are plotted against separate secondary Y axes (`secondaryAxis=true`)
-- Values are aggregated by the 'Month' category by setting `aggFunc: 'sum'`
+- Values are aggregated by the 'Month' category by setting `aggFunc: 'sum'` 
 - Chart Ranges are hidden using `suppressChartRanges=true`
 
 <grid-example title='Combination Chart' name='combination-chart' type='generated' options='{ "enterprise": true, "modules": ["clientside", "menu", "charts", "rowgrouping"], "exampleHeight": 790 }'></grid-example>

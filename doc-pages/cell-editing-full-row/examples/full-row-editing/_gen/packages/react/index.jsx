@@ -1,11 +1,11 @@
-"use strict";
+'use strict';
 
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
-import { AgGridReact } from "ag-grid-react";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from 'ag-grid-react';
+import 'ag-grid-enterprise';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 
 class GridExample extends Component {
   constructor(props) {
@@ -14,28 +14,28 @@ class GridExample extends Component {
     this.state = {
       columnDefs: [
         {
-          field: "make",
-          cellEditor: "agSelectCellEditor",
+          field: 'make',
+          cellEditor: 'agSelectCellEditor',
           cellEditorParams: {
-            values: ["Porsche", "Toyota", "Ford", "AAA", "BBB", "CCC"],
+            values: ['Porsche', 'Toyota', 'Ford', 'AAA', 'BBB', 'CCC'],
           },
         },
-        { field: "model" },
-        { field: "field4", headerName: "Read Only", editable: false },
-        { field: "price", cellEditor: NumericCellEditor },
+        { field: 'model' },
+        { field: 'field4', headerName: 'Read Only', editable: false },
+        { field: 'price', cellEditor: NumericCellEditor },
         {
-          headerName: "Suppress Navigable",
-          field: "field5",
+          headerName: 'Suppress Navigable',
+          field: 'field5',
           suppressNavigable: true,
           minWidth: 200,
         },
-        { headerName: "Read Only", field: "field6", editable: false },
+        { headerName: 'Read Only', field: 'field6', editable: false },
       ],
       defaultColDef: {
         flex: 1,
         editable: true,
       },
-      editType: "fullRow",
+      editType: 'fullRow',
       rowData: getRowData(),
     };
   }
@@ -47,22 +47,22 @@ class GridExample extends Component {
 
   onCellValueChanged = (event) => {
     console.log(
-      "onCellValueChanged: " + event.colDef.field + " = " + event.newValue
+      'onCellValueChanged: ' + event.colDef.field + ' = ' + event.newValue
     );
   };
 
   onRowValueChanged = (event) => {
     var data = event.data;
     console.log(
-      "onRowValueChanged: (" +
+      'onRowValueChanged: (' +
         data.make +
-        ", " +
+        ', ' +
         data.model +
-        ", " +
+        ', ' +
         data.price +
-        ", " +
+        ', ' +
         data.field5 +
-        ")"
+        ')'
     );
   };
 
@@ -71,26 +71,26 @@ class GridExample extends Component {
   };
 
   onBtStartEditing = () => {
-    this.gridApi.setFocusedCell(2, "make");
+    this.gridApi.setFocusedCell(1, 'make');
     this.gridApi.startEditingCell({
-      rowIndex: 2,
-      colKey: "make",
+      rowIndex: 1,
+      colKey: 'make',
     });
   };
 
   render() {
     return (
-      <div style={{ width: "100%", height: "100%" }}>
+      <div style={{ width: '100%', height: '100%' }}>
         <div className="example-wrapper">
-          <div style={{ marginBottom: "5px" }}>
+          <div style={{ marginBottom: '5px' }}>
             <button
-              style={{ fontSize: "12px" }}
+              style={{ fontSize: '12px' }}
               onClick={() => this.onBtStartEditing()}
             >
               Start Editing Line 2
             </button>
             <button
-              style={{ fontSize: "12px" }}
+              style={{ fontSize: '12px' }}
               onClick={() => this.onBtStopEditing()}
             >
               Stop Editing
@@ -98,8 +98,8 @@ class GridExample extends Component {
           </div>
           <div
             style={{
-              height: "100%",
-              width: "100%",
+              height: '100%',
+              width: '100%',
             }}
             className="ag-theme-alpine"
           >
@@ -123,31 +123,31 @@ function getRowData() {
   var rowData = [];
   for (var i = 0; i < 10; i++) {
     rowData.push({
-      make: "Toyota",
-      model: "Celica",
+      make: 'Toyota',
+      model: 'Celica',
       price: 35000 + i * 1000,
-      field4: "Sample XX",
-      field5: "Sample 22",
-      field6: "Sample 23",
+      field4: 'Sample XX',
+      field5: 'Sample 22',
+      field6: 'Sample 23',
     });
     rowData.push({
-      make: "Ford",
-      model: "Mondeo",
+      make: 'Ford',
+      model: 'Mondeo',
       price: 32000 + i * 1000,
-      field4: "Sample YY",
-      field5: "Sample 24",
-      field6: "Sample 25",
+      field4: 'Sample YY',
+      field5: 'Sample 24',
+      field6: 'Sample 25',
     });
     rowData.push({
-      make: "Porsche",
-      model: "Boxter",
+      make: 'Porsche',
+      model: 'Boxster',
       price: 72000 + i * 1000,
-      field4: "Sample ZZ",
-      field5: "Sample 26",
-      field6: "Sample 27",
+      field4: 'Sample ZZ',
+      field5: 'Sample 26',
+      field6: 'Sample 27',
     });
   }
   return rowData;
 }
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

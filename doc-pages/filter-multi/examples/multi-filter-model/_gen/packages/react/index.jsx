@@ -1,11 +1,11 @@
-"use strict";
+'use strict';
 
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
-import { AgGridReact } from "ag-grid-react";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from 'ag-grid-react';
+import 'ag-grid-enterprise';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 
 class GridExample extends Component {
   constructor(props) {
@@ -13,41 +13,41 @@ class GridExample extends Component {
 
     this.state = {
       columnDefs: [
-        { field: "athlete", filter: "agMultiColumnFilter" },
+        { field: 'athlete', filter: 'agMultiColumnFilter' },
         {
-          field: "country",
-          filter: "agMultiColumnFilter",
+          field: 'country',
+          filter: 'agMultiColumnFilter',
           filterParams: {
             filters: [
               {
-                filter: "agTextColumnFilter",
+                filter: 'agTextColumnFilter',
                 filterParams: {
-                  defaultOption: "startsWith",
+                  defaultOption: 'startsWith',
                 },
               },
               {
-                filter: "agSetColumnFilter",
+                filter: 'agSetColumnFilter',
               },
             ],
           },
         },
         {
-          field: "gold",
-          filter: "agMultiColumnFilter",
+          field: 'gold',
+          filter: 'agMultiColumnFilter',
           filterParams: {
             filters: [
               {
-                filter: "agNumberColumnFilter",
+                filter: 'agNumberColumnFilter',
               },
               {
-                filter: "agSetColumnFilter",
+                filter: 'agSetColumnFilter',
               },
             ],
           },
         },
         {
-          field: "date",
-          filter: "agMultiColumnFilter",
+          field: 'date',
+          filter: 'agMultiColumnFilter',
           filterParams: dateFilterParams,
         },
       ],
@@ -55,7 +55,7 @@ class GridExample extends Component {
         flex: 1,
         minWidth: 200,
         resizable: true,
-        menuTabs: ["filterMenuTab"],
+        menuTabs: ['filterMenuTab'],
       },
       rowData: null,
     };
@@ -67,36 +67,36 @@ class GridExample extends Component {
 
     const updateData = (data) => params.api.setRowData(data);
 
-    fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+    fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .then((resp) => resp.json())
       .then((data) => updateData(data));
   };
 
   printState = () => {
     var filterState = this.gridApi.getFilterModel();
-    console.log("Current filter state: ", filterState);
+    console.log('Current filter state: ', filterState);
   };
 
   saveState = () => {
     savedFilterState = this.gridApi.getFilterModel();
-    console.log("Filter state saved");
+    console.log('Filter state saved');
   };
 
   restoreState = () => {
     this.gridApi.setFilterModel(savedFilterState);
-    console.log("Filter state restored");
+    console.log('Filter state restored');
   };
 
   resetState = () => {
     this.gridApi.setFilterModel(null);
-    console.log("Filter state reset");
+    console.log('Filter state reset');
   };
 
   render() {
     return (
-      <div style={{ width: "100%", height: "100%" }}>
+      <div style={{ width: '100%', height: '100%' }}>
         <div className="example-wrapper">
-          <div style={{ marginBottom: "1rem" }}>
+          <div style={{ marginBottom: '1rem' }}>
             <button onClick={() => this.printState()}>Print State</button>
             <button onClick={() => this.saveState()}>Save State</button>
             <button onClick={() => this.restoreState()}>Restore State</button>
@@ -104,8 +104,8 @@ class GridExample extends Component {
           </div>
           <div
             style={{
-              height: "100%",
-              width: "100%",
+              height: '100%',
+              width: '100%',
             }}
             className="ag-theme-alpine"
           >
@@ -125,7 +125,7 @@ class GridExample extends Component {
 var dateFilterParams = {
   filters: [
     {
-      filter: "agDateColumnFilter",
+      filter: 'agDateColumnFilter',
       filterParams: {
         comparator: function (filterDate, cellValue) {
           if (cellValue == null) return -1;
@@ -134,7 +134,7 @@ var dateFilterParams = {
       },
     },
     {
-      filter: "agSetColumnFilter",
+      filter: 'agSetColumnFilter',
       filterParams: {
         comparator: function (a, b) {
           return getDate(a).getTime() - getDate(b).getTime();
@@ -144,7 +144,7 @@ var dateFilterParams = {
   ],
 };
 function getDate(value) {
-  var dateParts = value.split("/");
+  var dateParts = value.split('/');
   return new Date(
     Number(dateParts[2]),
     Number(dateParts[1]) - 1,
@@ -153,4 +153,4 @@ function getDate(value) {
 }
 var savedFilterState;
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

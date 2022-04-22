@@ -1,8 +1,10 @@
-"use strict";
+'use strict';
 
-import { AgChartsReact } from "ag-charts-react";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { cloneDeep } from 'lodash';
+import { render } from 'react-dom';
+import * as agCharts from 'ag-charts-community';
+import { AgChartsReact } from 'ag-charts-react';
 
 class ChartExample extends Component {
   constructor(props) {
@@ -14,8 +16,8 @@ class ChartExample extends Component {
         data: getData(),
         theme: {
           palette: {
-            fills: ["#FA7921", "#5BC0EB", "#9BC53D", "#E55934", "#FDE74C"],
-            strokes: ["#af5517", "#4086a4", "#6c8a2b", "#a03e24", "#b1a235"],
+            fills: ['#FA7921', '#5BC0EB', '#9BC53D', '#E55934', '#FDE74C'],
+            strokes: ['#af5517', '#4086a4', '#6c8a2b', '#a03e24', '#b1a235'],
           },
           overrides: {
             area: {
@@ -32,60 +34,60 @@ class ChartExample extends Component {
           },
         },
         title: {
-          text: "Changes in UK Energy Stock (2018)",
+          text: 'Changes in UK Energy Stock (2018)',
           fontSize: 18,
         },
         subtitle: {
-          text: "Source: Department for Business, Energy & Industrial Strategy",
+          text: 'Source: Department for Business, Energy & Industrial Strategy',
         },
         series: [
           {
-            type: "area",
-            xKey: "quarter",
-            yKey: "naturalGas",
-            yName: "Natural gas",
+            type: 'area',
+            xKey: 'quarter',
+            yKey: 'naturalGas',
+            yName: 'Natural gas',
           },
           {
-            type: "area",
-            xKey: "quarter",
-            yKey: "coal",
-            yName: "Coal",
+            type: 'area',
+            xKey: 'quarter',
+            yKey: 'coal',
+            yName: 'Coal',
           },
           {
-            type: "area",
-            xKey: "quarter",
-            yKey: "primaryOil",
-            yName: "Primary oil",
+            type: 'area',
+            xKey: 'quarter',
+            yKey: 'primaryOil',
+            yName: 'Primary oil',
           },
           {
-            type: "area",
-            xKey: "quarter",
-            yKey: "petroleum",
-            yName: "Petroleum",
+            type: 'area',
+            xKey: 'quarter',
+            yKey: 'petroleum',
+            yName: 'Petroleum',
           },
           {
-            type: "area",
-            xKey: "quarter",
-            yKey: "manufacturedFuels",
-            yName: "Manufactured fuels",
+            type: 'area',
+            xKey: 'quarter',
+            yKey: 'manufacturedFuels',
+            yName: 'Manufactured fuels',
           },
         ],
         axes: [
           {
-            type: "category",
-            position: "bottom",
+            type: 'category',
+            position: 'bottom',
           },
           {
-            type: "number",
-            position: "left",
+            type: 'number',
+            position: 'left',
             title: {
               enabled: true,
-              text: "Thousand tonnes of oil equivalent",
+              text: 'Thousand tonnes of oil equivalent',
             },
           },
         ],
         legend: {
-          position: "bottom",
+          position: 'bottom',
         },
       },
     };
@@ -98,4 +100,4 @@ class ChartExample extends Component {
   }
 }
 
-render(<ChartExample />, document.querySelector("#root"));
+render(<ChartExample />, document.querySelector('#root'));

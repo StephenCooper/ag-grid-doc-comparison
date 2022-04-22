@@ -1,30 +1,30 @@
-"use strict";
+'use strict';
 
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { AgGridReact } from "@ag-grid-community/react";
-import { RowGroupingModule } from "@ag-grid-enterprise/row-grouping";
-import React, { useCallback, useMemo, useRef, useState } from "react";
-import { render } from "react-dom";
+import React, { useCallback, useMemo, useRef, useState } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from '@ag-grid-community/react';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import { RowGroupingModule } from '@ag-grid-enterprise/row-grouping';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([ClientSideRowModelModule, RowGroupingModule]);
 
 const GridExample = () => {
   const gridRef = useRef();
-  const containerStyle = useMemo(() => ({ width: "100%", height: "100%" }), []);
-  const gridStyle = useMemo(() => ({ height: "100%", width: "100%" }), []);
+  const containerStyle = useMemo(() => ({ width: '100%', height: '100%' }), []);
+  const gridStyle = useMemo(() => ({ height: '100%', width: '100%' }), []);
   const [rowData, setRowData] = useState();
   const [columnDefs, setColumnDefs] = useState([
-    { field: "athlete" },
-    { field: "age" },
-    { field: "country" },
-    { field: "sport" },
-    { field: "gold" },
-    { field: "silver" },
-    { field: "bronze" },
+    { field: 'athlete' },
+    { field: 'age' },
+    { field: 'country' },
+    { field: 'sport' },
+    { field: 'gold' },
+    { field: 'silver' },
+    { field: 'bronze' },
   ]);
   const defaultColDef = useMemo(() => {
     return {
@@ -38,48 +38,48 @@ const GridExample = () => {
   }, []);
 
   const onGridReady = useCallback((params) => {
-    fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+    fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .then((resp) => resp.json())
       .then((data) => setRowData(data));
   }, []);
 
   const onSortChanged = useCallback((e) => {
-    console.log("Event Sort Changed", e);
+    console.log('Event Sort Changed', e);
   }, []);
 
   const onColumnResized = useCallback((e) => {
-    console.log("Event Column Resized", e);
+    console.log('Event Column Resized', e);
   }, []);
 
   const onColumnVisible = useCallback((e) => {
-    console.log("Event Column Visible", e);
+    console.log('Event Column Visible', e);
   }, []);
 
   const onColumnPivotChanged = useCallback((e) => {
-    console.log("Event Pivot Changed", e);
+    console.log('Event Pivot Changed', e);
   }, []);
 
   const onColumnRowGroupChanged = useCallback((e) => {
-    console.log("Event Row Group Changed", e);
+    console.log('Event Row Group Changed', e);
   }, []);
 
   const onColumnValueChanged = useCallback((e) => {
-    console.log("Event Value Changed", e);
+    console.log('Event Value Changed', e);
   }, []);
 
   const onColumnMoved = useCallback((e) => {
-    console.log("Event Column Moved", e);
+    console.log('Event Column Moved', e);
   }, []);
 
   const onColumnPinned = useCallback((e) => {
-    console.log("Event Column Pinned", e);
+    console.log('Event Column Pinned', e);
   }, []);
 
   const onBtSortOn = useCallback(() => {
     gridRef.current.columnApi.applyColumnState({
       state: [
-        { colId: "age", sort: "desc" },
-        { colId: "athlete", sort: "asc" },
+        { colId: 'age', sort: 'desc' },
+        { colId: 'athlete', sort: 'asc' },
       ],
     });
   }, []);
@@ -93,8 +93,8 @@ const GridExample = () => {
   const onBtWidthNarrow = useCallback(() => {
     gridRef.current.columnApi.applyColumnState({
       state: [
-        { colId: "age", width: 100 },
-        { colId: "athlete", width: 100 },
+        { colId: 'age', width: 100 },
+        { colId: 'athlete', width: 100 },
       ],
     });
   }, []);
@@ -102,8 +102,8 @@ const GridExample = () => {
   const onBtWidthNormal = useCallback(() => {
     gridRef.current.columnApi.applyColumnState({
       state: [
-        { colId: "age", width: 200 },
-        { colId: "athlete", width: 200 },
+        { colId: 'age', width: 200 },
+        { colId: 'athlete', width: 200 },
       ],
     });
   }, []);
@@ -111,8 +111,8 @@ const GridExample = () => {
   const onBtHide = useCallback(() => {
     gridRef.current.columnApi.applyColumnState({
       state: [
-        { colId: "age", hide: true },
-        { colId: "athlete", hide: true },
+        { colId: 'age', hide: true },
+        { colId: 'athlete', hide: true },
       ],
     });
   }, []);
@@ -126,7 +126,7 @@ const GridExample = () => {
   const onBtPivotOn = useCallback(() => {
     gridRef.current.columnApi.setPivotMode(true);
     gridRef.current.columnApi.applyColumnState({
-      state: [{ colId: "country", pivot: true }],
+      state: [{ colId: 'country', pivot: true }],
     });
   }, []);
 
@@ -139,7 +139,7 @@ const GridExample = () => {
 
   const onBtRowGroupOn = useCallback(() => {
     gridRef.current.columnApi.applyColumnState({
-      state: [{ colId: "sport", rowGroup: true }],
+      state: [{ colId: 'sport', rowGroup: true }],
     });
   }, []);
 
@@ -152,9 +152,9 @@ const GridExample = () => {
   const onBtAggFuncOn = useCallback(() => {
     gridRef.current.columnApi.applyColumnState({
       state: [
-        { colId: "gold", aggFunc: "sum" },
-        { colId: "silver", aggFunc: "sum" },
-        { colId: "bronze", aggFunc: "sum" },
+        { colId: 'gold', aggFunc: 'sum' },
+        { colId: 'silver', aggFunc: 'sum' },
+        { colId: 'bronze', aggFunc: 'sum' },
       ],
     });
   }, []);
@@ -168,13 +168,13 @@ const GridExample = () => {
   const onBtNormalOrder = useCallback(() => {
     gridRef.current.columnApi.applyColumnState({
       state: [
-        { colId: "athlete" },
-        { colId: "age" },
-        { colId: "country" },
-        { colId: "sport" },
-        { colId: "gold" },
-        { colId: "silver" },
-        { colId: "bronze" },
+        { colId: 'athlete' },
+        { colId: 'age' },
+        { colId: 'country' },
+        { colId: 'sport' },
+        { colId: 'gold' },
+        { colId: 'silver' },
+        { colId: 'bronze' },
       ],
       applyOrder: true,
     });
@@ -183,13 +183,13 @@ const GridExample = () => {
   const onBtReverseOrder = useCallback(() => {
     gridRef.current.columnApi.applyColumnState({
       state: [
-        { colId: "athlete" },
-        { colId: "age" },
-        { colId: "country" },
-        { colId: "sport" },
-        { colId: "bronze" },
-        { colId: "silver" },
-        { colId: "gold" },
+        { colId: 'athlete' },
+        { colId: 'age' },
+        { colId: 'country' },
+        { colId: 'sport' },
+        { colId: 'bronze' },
+        { colId: 'silver' },
+        { colId: 'gold' },
       ],
       applyOrder: true,
     });
@@ -198,8 +198,8 @@ const GridExample = () => {
   const onBtPinnedOn = useCallback(() => {
     gridRef.current.columnApi.applyColumnState({
       state: [
-        { colId: "athlete", pinned: "left" },
-        { colId: "age", pinned: "right" },
+        { colId: 'athlete', pinned: 'left' },
+        { colId: 'age', pinned: 'right' },
       ],
     });
   }, []);
@@ -280,4 +280,4 @@ const GridExample = () => {
   );
 };
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

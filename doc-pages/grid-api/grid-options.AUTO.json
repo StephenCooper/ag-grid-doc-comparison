@@ -5,7 +5,7 @@
   },
   "sideBar": {
     "description": "/** Specifies the side bar components. */",
-    "type": { "returnType": "SideBarDef | string | boolean | null" }
+    "type": { "returnType": "SideBarDef | string | string[] | boolean | null" }
   },
   "suppressContextMenu": {
     "description": "/** Set to `true` to not show the context menu. Use if you don't want to use the default 'right click' context menu. Default: `false` */",
@@ -615,6 +615,10 @@
     "description": "/** When `true`, if you select a group, the children of the group will also be selected. Default: `false` */",
     "type": { "returnType": "boolean" }
   },
+  "groupAggFiltering": {
+    "description": "/** Set to determine whether filters should be applied on aggregated group values. Default: `false` */",
+    "type": { "returnType": "boolean | IsRowFilterable" }
+  },
   "groupIncludeFooter": {
     "description": "/** If grouping, this controls whether to show a group footer when the group is expanded.\n * If `true`, then by default, the footer will contain aggregate data (if any) when shown and the header will be blank.\n * When closed, the header will contain the aggregate data regardless of this setting (as the footer is hidden anyway).\n * This is handy for 'total' rows, that are displayed below the data when the group is open, and alongside the group when it is closed.\n * Default: `false` */",
     "type": { "returnType": "boolean" }
@@ -907,6 +911,10 @@
     "description": "/** Set to `true` to suppress multi-sort when the user shift-clicks a column header. Default: `false` */",
     "type": { "returnType": "boolean" }
   },
+  "alwaysMultiSort": {
+    "description": "/** Set to `true` to always multi-sort when the user clicks a column header, regardless of key presses. Default: `false` */",
+    "type": { "returnType": "boolean" }
+  },
   "multiSortKey": {
     "description": "/** Set to `'ctrl'` to have multi sorting work using the `Ctrl` (or `Command ⌘` for Mac) key. */",
     "type": { "returnType": "string" }
@@ -1129,27 +1137,13 @@
     }
   },
   "processSecondaryColDef": {
-    "description": "/** @deprecated - Use `postProcessSecondaryColDef` instead\n */",
+    "description": "/** Callback to be used with pivoting, to allow changing the second column definition. */",
     "type": { "arguments": { "colDef": "ColDef" }, "returnType": "void" }
   },
   "processSecondaryColGroupDef": {
-    "description": "/** @deprecated - Use `postProcessSecondaryColGroupDef` instead.\n */",
-    "type": {
-      "arguments": { "colGroupDef": "ColGroupDef" },
-      "returnType": "void"
-    }
-  },
-  "postProcessSecondaryColDef": {
-    "description": "/** Callback to be used with pivoting, to allow changing the second column definition. */",
-    "type": {
-      "arguments": { "params": "PostProcessSecondaryColDefParams" },
-      "returnType": "void"
-    }
-  },
-  "postProcessSecondaryColGroupDef": {
     "description": "/** Callback to be used with pivoting, to allow changing the second column group definition. */",
     "type": {
-      "arguments": { "params": "PostProcessSecondaryColGroupDefParams" },
+      "arguments": { "colGroupDef": "ColGroupDef" },
       "returnType": "void"
     }
   },

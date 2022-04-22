@@ -1,8 +1,8 @@
-import { Component } from "@angular/core";
-import { AgChartOptions } from "ag-charts-community";
+import { Component } from '@angular/core';
+import { AgChartOptions } from 'ag-charts-community';
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<ag-charts-angular
     style="height: 100%"
     [options]="options"
@@ -17,8 +17,8 @@ export class AppComponent {
       data: getData(),
       theme: {
         palette: {
-          fills: ["#5BC0EB", "#FDE74C", "#9BC53D", "#E55934", "#FA7921"],
-          strokes: ["#4086a4", "#b1a235", "#6c8a2b", "#a03e24", "#af5517"],
+          fills: ['#5BC0EB', '#FDE74C', '#9BC53D', '#E55934', '#FA7921'],
+          strokes: ['#4086a4', '#b1a235', '#6c8a2b', '#a03e24', '#af5517'],
         },
         overrides: {
           column: {
@@ -35,70 +35,70 @@ export class AppComponent {
         },
       },
       title: {
-        text: "Average Station Entries: Victoria Line (2010)",
+        text: 'Average Station Entries: Victoria Line (2010)',
         fontSize: 18,
       },
       subtitle: {
-        text: "Source: Transport for London",
+        text: 'Source: Transport for London',
       },
       series: [
         {
-          type: "column",
-          xKey: "station",
-          yKey: "early",
+          type: 'column',
+          xKey: 'station',
+          yKey: 'early',
           stacked: true,
-          yName: "Early",
+          yName: 'Early',
         },
         {
-          type: "column",
-          xKey: "station",
-          yKey: "morningPeak",
-          yName: "Morning peak",
-          stacked: true,
-        },
-        {
-          type: "column",
-          xKey: "station",
-          yKey: "interPeak",
-          yName: "Between peak",
+          type: 'column',
+          xKey: 'station',
+          yKey: 'morningPeak',
+          yName: 'Morning peak',
           stacked: true,
         },
         {
-          type: "column",
-          xKey: "station",
-          yKey: "afternoonPeak",
-          yName: "Afternoon peak",
+          type: 'column',
+          xKey: 'station',
+          yKey: 'interPeak',
+          yName: 'Between peak',
           stacked: true,
         },
         {
-          type: "column",
-          xKey: "station",
-          yKey: "evening",
-          yName: "Evening",
+          type: 'column',
+          xKey: 'station',
+          yKey: 'afternoonPeak',
+          yName: 'Afternoon peak',
+          stacked: true,
+        },
+        {
+          type: 'column',
+          xKey: 'station',
+          yKey: 'evening',
+          yName: 'Evening',
           stacked: true,
         },
       ],
       axes: [
         {
-          type: "category",
-          position: "bottom",
+          type: 'category',
+          position: 'bottom',
           label: {
             rotation: 30,
           },
         },
         {
-          type: "number",
-          position: "left",
+          type: 'number',
+          position: 'left',
           label: {
             formatter: function (params) {
-              return params.value / 1000 + "k";
+              return params.value / 1000 + 'k';
             },
           },
         },
       ],
       legend: {
         spacing: 40,
-        position: "bottom",
+        position: 'bottom',
       },
     };
   }

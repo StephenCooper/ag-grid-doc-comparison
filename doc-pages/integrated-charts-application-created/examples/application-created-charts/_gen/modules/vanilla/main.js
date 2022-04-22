@@ -1,21 +1,21 @@
 const columnDefs = [
-  { field: "product", chartDataType: "category" },
-  { field: "book", chartDataType: "category" },
+  { field: 'product', chartDataType: 'category' },
+  { field: 'book', chartDataType: 'category' },
 
-  { field: "current", type: "measure" },
-  { field: "previous", type: "measure" },
-  { headerName: "PL 1", field: "pl1", type: "measure" },
-  { headerName: "PL 2", field: "pl2", type: "measure" },
-  { headerName: "Gain-DX", field: "gainDx", type: "measure" },
-  { headerName: "SX / PX", field: "sxPx", type: "measure" },
+  { field: 'current', type: 'measure' },
+  { field: 'previous', type: 'measure' },
+  { headerName: 'PL 1', field: 'pl1', type: 'measure' },
+  { headerName: 'PL 2', field: 'pl2', type: 'measure' },
+  { headerName: 'Gain-DX', field: 'gainDx', type: 'measure' },
+  { headerName: 'SX / PX', field: 'sxPx', type: 'measure' },
 
-  { field: "trade", type: "measure" },
-  { field: "submitterID", type: "measure" },
-  { field: "submitterDealID", type: "measure", minWidth: 170 },
+  { field: 'trade', type: 'measure' },
+  { field: 'submitterID', type: 'measure' },
+  { field: 'submitterDealID', type: 'measure', minWidth: 170 },
 
-  { field: "portfolio" },
-  { field: "dealType" },
-  { headerName: "Bid", field: "bidFlag" },
+  { field: 'portfolio' },
+  { field: 'dealType' },
+  { headerName: 'Bid', field: 'bidFlag' },
 ];
 
 var chartRef;
@@ -32,10 +32,10 @@ const gridOptions = {
   },
   columnTypes: {
     measure: {
-      chartDataType: "series",
-      cellClass: "number",
+      chartDataType: 'series',
+      cellClass: 'number',
       valueFormatter: numberCellFormatter,
-      cellRenderer: "agAnimateShowChangeCellRenderer",
+      cellRenderer: 'agAnimateShowChangeCellRenderer',
     },
   },
   animateRows: true,
@@ -48,28 +48,28 @@ const gridOptions = {
     var createRangeChartParams = {
       cellRange: {
         columns: [
-          "product",
-          "current",
-          "previous",
-          "pl1",
-          "pl2",
-          "gainDx",
-          "sxPx",
+          'product',
+          'current',
+          'previous',
+          'pl1',
+          'pl2',
+          'gainDx',
+          'sxPx',
         ],
       },
-      chartType: "groupedColumn",
-      chartContainer: document.querySelector("#myChart"),
+      chartType: 'groupedColumn',
+      chartContainer: document.querySelector('#myChart'),
       suppressChartRanges: true,
-      aggFunc: "sum",
+      aggFunc: 'sum',
     };
 
     chartRef = params.api.createRangeChart(createRangeChartParams);
   },
-  chartThemes: ["ag-pastel-dark"],
+  chartThemes: ['ag-pastel-dark'],
   chartThemeOverrides: {
     common: {
       legend: {
-        position: "bottom",
+        position: 'bottom',
       },
     },
     column: {
@@ -113,19 +113,19 @@ function createChart(type) {
   var params = {
     cellRange: {
       columns: [
-        "product",
-        "current",
-        "previous",
-        "pl1",
-        "pl2",
-        "gainDx",
-        "sxPx",
+        'product',
+        'current',
+        'previous',
+        'pl1',
+        'pl2',
+        'gainDx',
+        'sxPx',
       ],
     },
-    chartContainer: document.querySelector("#myChart"),
+    chartContainer: document.querySelector('#myChart'),
     chartType: type,
     suppressChartRanges: true,
-    aggFunc: "sum",
+    aggFunc: 'sum',
   };
 
   chartRef = gridOptions.api.createRangeChart(params);
@@ -134,53 +134,53 @@ function createChart(type) {
 function numberCellFormatter(params) {
   return Math.floor(params.value)
     .toString()
-    .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
+    .replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
 }
 
 function yAxisLabelFormatter(params) {
   var n = params.value;
   if (n < 1e3) return n;
-  if (n >= 1e3 && n < 1e6) return +(n / 1e3).toFixed(1) + "K";
-  if (n >= 1e6 && n < 1e9) return +(n / 1e6).toFixed(1) + "M";
-  if (n >= 1e9 && n < 1e12) return +(n / 1e9).toFixed(1) + "B";
-  if (n >= 1e12) return +(n / 1e12).toFixed(1) + "T";
+  if (n >= 1e3 && n < 1e6) return +(n / 1e3).toFixed(1) + 'K';
+  if (n >= 1e6 && n < 1e9) return +(n / 1e6).toFixed(1) + 'M';
+  if (n >= 1e9 && n < 1e12) return +(n / 1e9).toFixed(1) + 'B';
+  if (n >= 1e12) return +(n / 1e12).toFixed(1) + 'T';
 }
 
 function tooltipRenderer(params) {
   var value =
-    "$" +
+    '$' +
     params.datum[params.yKey]
       .toString()
-      .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
+      .replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
   var title = params.title || params.yName;
-  return '<div style="padding: 5px"><b>' + title + "</b>: " + value + "</div>";
+  return '<div style="padding: 5px"><b>' + title + '</b>: ' + value + '</div>';
 }
 
 // after page is loaded, create the grid
-document.addEventListener("DOMContentLoaded", function () {
-  var eGridDiv = document.querySelector("#myGrid");
+document.addEventListener('DOMContentLoaded', function () {
+  var eGridDiv = document.querySelector('#myGrid');
   new agGrid.Grid(eGridDiv, gridOptions);
 });
 
 var worker;
 (function startWorker() {
-  worker = new Worker(__basePath + "dataUpdateWorker.js");
+  worker = new Worker(__basePath + 'dataUpdateWorker.js');
   worker.onmessage = function (e) {
-    if (e.data.type === "setRowData") {
+    if (e.data.type === 'setRowData') {
       gridOptions.api.setRowData(e.data.records);
     }
-    if (e.data.type === "updateData") {
+    if (e.data.type === 'updateData') {
       gridOptions.api.applyTransactionAsync({ update: e.data.records });
     }
   };
 
-  worker.postMessage("start");
+  worker.postMessage('start');
 })();
 
 function onStartLoad() {
-  worker.postMessage("start");
+  worker.postMessage('start');
 }
 
 function onStopMessages() {
-  worker.postMessage("stop");
+  worker.postMessage('stop');
 }

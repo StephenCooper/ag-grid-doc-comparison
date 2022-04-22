@@ -2,12 +2,11 @@
 title: "Excel Export API Reference"
 enterprise: true
 ---
-
 This page documents the Excel Export API and Interfaces.
 
 ### Grid Properties
 
-<api-documentation source='grid-properties/properties.json' section='export' names='["defaultExcelExportParams", "suppressExcelExport", "excelStyles"]'></api-documentation>
+<api-documentation source='grid-options/properties.json' section='export' names='["defaultExcelExportParams", "suppressExcelExport", "excelStyles"]'></api-documentation>
 
 ### API Methods
 
@@ -87,31 +86,17 @@ This page documents the Excel Export API and Interfaces.
 
 <api-documentation source='excel-export-api/resources/excel-export-params.json' section='excelHeaderFooterContent'></api-documentation>
 
+
 ## Types
 
 ### ExcelDataType
 
 ```ts
-type ExcelDataType =
-  | "String"
-  | "Formula"
-  | "Number"
-  | "Boolean"
-  | "DateTime"
-  | "Error";
+type ExcelDataType = 'String' | 'Formula' | 'Number' | 'Boolean' | 'DateTime' | 'Error'
 ```
 
 ### ExcelOOXMLDataType
 
 ```ts
-type ExcelOOXMLDataType =
-  | "str"
-  | "s"
-  | "f"
-  | "inlineStr"
-  | "n"
-  | "b"
-  | "d"
-  | "e"
-  | "empty";
+type ExcelOOXMLDataType = 'str' | 's' | 'f' | 'inlineStr' | 'n' | 'b' | 'd' | 'e' | 'empty'
 ```

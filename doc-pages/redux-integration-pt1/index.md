@@ -33,6 +33,7 @@ Redux has a single store which contains all application state. It has one Root R
 responsible for transforming the application state and is typically created by combining several
 smaller reducers.
 
+
 <img src="resources/redux-store.png" alt="Redux Store" />
 
 Actions describe the operation the reducer should perform on the state. They may also contain
@@ -69,16 +70,16 @@ In our example we just require a single reducer which is supplied along with the
 ```jsx
 // store.jsx
 
-import { createStore } from "redux";
-import fileReducer from "./reducers/fileReducer.jsx";
+import { createStore } from 'redux';
+import fileReducer from './reducers/fileReducer.jsx';
 
 const initialState = {
-  files: [
-    { id: 1, file: "notes.txt", folder: "txt" },
-    { id: 2, file: "book.pdf", folder: "pdf" },
-    { id: 3, file: "cv.pdf", folder: "pdf" },
-    // more files ...
-  ],
+    files: [
+        { id: 1, file: 'notes.txt', folder: 'txt' },
+        { id: 2, file: 'book.pdf', folder: 'pdf' },
+        { id: 3, file: 'cv.pdf', folder: 'pdf' },
+        // more files ...
+    ]
 };
 
 export default createStore(fileReducer, initialState);
@@ -94,19 +95,22 @@ will be defined in the `fileReducer` shown below:
 // reducers/fileReducer.jsx
 
 export default function fileReducer(state = {}, action) {
-  const payload = action.payload;
-  switch (action.type) {
-    case types.NEW_FILE:
-      return {
-        files: [...state.files, newFile(state.files, payload.folder)],
-      };
-    case types.DELETE_FILE:
-      return {
-        files: deleteFile(state.files, payload.id),
-      };
-    default:
-      return state;
-  }
+    const payload = action.payload;
+    switch (action.type) {
+        case types.NEW_FILE:
+            return {
+                files: [
+                    ...state.files,
+                    newFile(state.files, payload.folder)
+                ]
+            };
+        case types.DELETE_FILE:
+            return {
+                files: deleteFile(state.files, payload.id)
+            };
+        default:
+            return state;
+    }
 }
 ```
 
@@ -126,18 +130,18 @@ Action Creators as shown below:
 // actions/fileActions.jsx
 
 export const actions = {
-  newFile(folder) {
-    return {
-      type: types.NEW_FILE,
-      payload: { folder },
-    };
-  },
-  deleteFiles(id) {
-    return {
-      type: types.DELETE_FILES,
-      payload: { id },
-    };
-  },
+    newFile(folder) {
+        return {
+            type: types.NEW_FILE,
+            payload: {folder}
+        };
+    },
+    deleteFiles(id) {
+        return {
+            type: types.DELETE_FILES,
+            payload: {id}
+        };
+    }
 };
 ```
 
@@ -146,24 +150,25 @@ export const actions = {
 Now that we have created our Redux store, we need to make it available to our React `FileView`
 component. This is achieved through the `Provider` component from the react-redux project.
 
+
 In the entry point of our application we wrap the `FileView` component in the `Provider`
 component as shown below:
 
 ```jsx
 // index.jsx
 
-import React from "react";
-import { render } from "react-dom";
-import { Provider } from "react-redux";
+import React from 'react';
+import { render } from 'react-dom';
+import { Provider } from 'react-redux';
 
-import store from "./store.jsx";
-import FileView from "./FileView.jsx";
+import store from './store.jsx';
+import FileView from './FileView.jsx';
 
 render(
-  <Provider store={store}>
-    <FileView />
-  </Provider>,
-  document.getElementById("root")
+    <Provider store={store}>
+        <FileView/>
+    </Provider>,
+    document.getElementById('root')
 );
 ```
 
@@ -220,6 +225,7 @@ which wraps our action creators into a `dispatch` call.
 Now that our stateless `FileView` component is connected to our Redux store, whenever the file state
 in the store changes, our component will re-render with the latest file state available in `this.props.files`.
 
+
 [[note]]
 | Bindings exist for most major javascript frameworks so Redux is not limited to React applications.
 
@@ -237,7 +243,7 @@ render() {
     return (
         <div className="ag-theme-alpine">
             <AgGridReact
-                {/* provide column definitions */}
+                {/* provide column definitions */}                 
                 columnDefs={this.colDefs}
                 {/* specify auto group column definition */}
                 autoGroupColumnDef={this.autoGroupColumnDef}
@@ -262,18 +268,18 @@ via the following configuration:
 
 ```js
 colDefs = [
-  { field: "file" },
-  { field: "folder", rowGroup: true, hide: true },
-  { field: "dateModified" },
-  { field: "size" },
+    { field: "file" },
+    { field: "folder", rowGroup: true, hide: true },
+    { field: "dateModified" },
+    { field: "size" }
 ];
 
 autoGroupColumnDef = {
-  headerName: "Files",
-  sort: "asc",
-  cellRendererParams: {
-    suppressCount: true,
-  },
+    headerName: "Files",
+    sort: 'asc',
+    cellRendererParams: {
+        suppressCount: true
+    }
 };
 ```
 
@@ -297,26 +303,23 @@ grid to retrieve the context menu items. Here is the implementation:
 
 ```js
 getContextMenuItems = (params) => {
-  const folderActions = [
-    {
-      name: "New File",
-      action: () => this.props.actions.newFile(params.node.key),
-    },
-  ];
+    const folderActions = [{
+        name: "New File",
+        action: () => this.props.actions.newFile(params.node.key)
+    }];
 
-  const fileActions = [
-    {
-      name: "Delete File",
-      action: () => this.props.actions.deleteFile(params.node.data.id),
-    },
-  ];
+    const fileActions = [{
+        name: "Delete File",
+        action: () => this.props.actions.deleteFile(params.node.data.id)
+    }];
 
-  return params.node.group ? folderActions : fileActions;
+    return params.node.group ? folderActions : fileActions;
 };
 ```
 
 Notice that we are simply dispatching actions to the Redux store here. For example, when the
 new file menu item is selected: `action: () => this.props.actions.newFile(folder)`.
+
 
 It is important to note that nothing will happen inside the grid when a menu item is selected
 until the Redux store triggers a re-render of the grid component with the updated state.
@@ -357,3 +360,4 @@ In this example we just touched on a few grid features to keep the example simpl
 
 Next up in [Redux Integration Part 2](/redux-integration-pt2/) we take things further and
 implement a feature rich File Browser which builds upon this File View example.
+

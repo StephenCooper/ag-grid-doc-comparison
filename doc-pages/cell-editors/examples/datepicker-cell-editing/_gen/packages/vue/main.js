@@ -1,21 +1,21 @@
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
-import { AgGridVue } from "ag-grid-vue";
-import Vue from "vue";
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import 'ag-grid-enterprise';
+import { AgGridVue } from 'ag-grid-vue';
+import Vue from 'vue';
 
 class DatePicker {
   // gets called once before the renderer is used
   init(params) {
     // create the cell
-    this.eInput = document.createElement("input");
+    this.eInput = document.createElement('input');
     this.eInput.value = params.value;
-    this.eInput.classList.add("ag-input");
-    this.eInput.style.height = "100%";
+    this.eInput.classList.add('ag-input');
+    this.eInput.style.height = '100%';
 
     // https://jqueryui.com/datepicker/
     $(this.eInput).datepicker({
-      dateFormat: "dd/mm/yy",
+      dateFormat: 'dd/mm/yy',
       onSelect: () => {
         this.eInput.focus();
       },
@@ -65,26 +65,26 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
-        { field: "athlete" },
+        { field: 'athlete' },
         {
-          field: "date",
+          field: 'date',
           editable: true,
           cellEditor: DatePicker,
           cellEditorPopup: true,
         },
-        { field: "age", maxWidth: 110 },
-        { field: "country" },
-        { field: "year", maxWidth: 120 },
-        { field: "sport" },
-        { field: "gold" },
-        { field: "silver" },
-        { field: "bronze" },
-        { field: "total" },
+        { field: 'age', maxWidth: 110 },
+        { field: 'country' },
+        { field: 'year', maxWidth: 120 },
+        { field: 'sport' },
+        { field: 'gold' },
+        { field: 'silver' },
+        { field: 'bronze' },
+        { field: 'total' },
       ],
       gridApi: null,
       columnApi: null,
@@ -103,7 +103,7 @@ const VueExample = {
 
       const updateData = (data) => params.api.setRowData(data);
 
-      fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
         .then((resp) => resp.json())
         .then((data) => updateData(data));
     },
@@ -111,8 +111,8 @@ const VueExample = {
 };
 
 new Vue({
-  el: "#app",
+  el: '#app',
   components: {
-    "my-component": VueExample,
+    'my-component': VueExample,
   },
 });

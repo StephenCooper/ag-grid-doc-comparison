@@ -27,7 +27,7 @@ function FakeServer(allData) {
     ];
     var sql = interpolate(template, args);
 
-    console.log("[FakeServer] - about to execute query:", sql);
+    console.log('[FakeServer] - about to execute query:', sql);
 
     var result = alasql(sql, [allData]);
 
@@ -71,7 +71,7 @@ function FakeServer(allData) {
 function interpolate(str, o) {
   return str.replace(/{([^{}]*)}/g, function (a, b) {
     var r = o[b];
-    return typeof r === "string" || typeof r === "number" ? r : a;
+    return typeof r === 'string' || typeof r === 'number' ? r : a;
   });
 }
 

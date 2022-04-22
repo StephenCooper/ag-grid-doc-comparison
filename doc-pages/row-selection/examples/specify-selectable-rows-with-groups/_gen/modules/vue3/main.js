@@ -1,13 +1,13 @@
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { AgGridVue } from "@ag-grid-community/vue3";
-import { ColumnsToolPanelModule } from "@ag-grid-enterprise/column-tool-panel";
-import { MenuModule } from "@ag-grid-enterprise/menu";
-import { RowGroupingModule } from "@ag-grid-enterprise/row-grouping";
-import { SetFilterModule } from "@ag-grid-enterprise/set-filter";
-import { createApp } from "vue";
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { AgGridVue } from '@ag-grid-community/vue3';
+import { ColumnsToolPanelModule } from '@ag-grid-enterprise/column-tool-panel';
+import { MenuModule } from '@ag-grid-enterprise/menu';
+import { RowGroupingModule } from '@ag-grid-enterprise/row-grouping';
+import { SetFilterModule } from '@ag-grid-enterprise/set-filter';
+import { createApp } from 'vue';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([
@@ -45,18 +45,18 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
-        { field: "country", rowGroup: true, hide: true },
-        { field: "year", maxWidth: 100 },
-        { field: "gold", aggFunc: "sum" },
-        { field: "silver", aggFunc: "sum" },
-        { field: "bronze", aggFunc: "sum" },
-        { field: "date" },
-        { field: "sport" },
+        { field: 'country', rowGroup: true, hide: true },
+        { field: 'year', maxWidth: 100 },
+        { field: 'gold', aggFunc: 'sum' },
+        { field: 'silver', aggFunc: 'sum' },
+        { field: 'bronze', aggFunc: 'sum' },
+        { field: 'date' },
+        { field: 'sport' },
       ],
       gridApi: null,
       columnApi: null,
@@ -75,15 +75,15 @@ const VueExample = {
   },
   created() {
     this.autoGroupColumnDef = {
-      headerName: "Athlete",
-      field: "athlete",
+      headerName: 'Athlete',
+      field: 'athlete',
       minWidth: 250,
-      cellRenderer: "agGroupCellRenderer",
+      cellRenderer: 'agGroupCellRenderer',
       cellRendererParams: {
         checkbox: true,
       },
     };
-    this.rowSelection = "multiple";
+    this.rowSelection = 'multiple';
     this.groupDefaultExpanded = -1;
     this.isRowSelectable = (node) => {
       return node.data
@@ -95,8 +95,8 @@ const VueExample = {
     filterBy2004() {
       this.gridApi.setFilterModel({
         year: {
-          type: "set",
-          values: ["2008", "2012"],
+          type: 'set',
+          values: ['2008', '2012'],
         },
       });
     },
@@ -111,11 +111,11 @@ const VueExample = {
         this.rowData = data;
       };
 
-      fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
         .then((resp) => resp.json())
         .then((data) => updateData(data));
     },
   },
 };
 
-createApp(VueExample).mount("#app");
+createApp(VueExample).mount('#app');

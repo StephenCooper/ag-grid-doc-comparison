@@ -1,12 +1,12 @@
 const gridOptions = {
   columnDefs: [
-    { field: "athlete", minWidth: 220 },
-    { field: "country", minWidth: 200 },
-    { field: "year" },
-    { field: "sport", minWidth: 200 },
-    { field: "gold" },
-    { field: "silver" },
-    { field: "bronze" },
+    { field: 'athlete', minWidth: 220 },
+    { field: 'country', minWidth: 200 },
+    { field: 'year' },
+    { field: 'sport', minWidth: 200 },
+    { field: 'gold' },
+    { field: 'silver' },
+    { field: 'bronze' },
   ],
 
   defaultColDef: {
@@ -15,17 +15,17 @@ const gridOptions = {
     sortable: true,
   },
 
-  rowModelType: "serverSide",
-  serverSideStoreType: "full",
+  rowModelType: 'serverSide',
+  serverSideStoreType: 'full',
   animateRows: true,
 };
 
 // setup the grid after the page has finished loading
-document.addEventListener("DOMContentLoaded", function () {
-  var gridDiv = document.querySelector("#myGrid");
+document.addEventListener('DOMContentLoaded', function () {
+  var gridDiv = document.querySelector('#myGrid');
   new agGrid.Grid(gridDiv, gridOptions);
 
-  fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+  fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
     .then((response) => response.json())
     .then(function (data) {
       // setup the fake server with entire dataset
@@ -43,9 +43,9 @@ function createServerSideDatasource(server) {
   return {
     getRows: function (params) {
       console.log(
-        "[Datasource] - rows requested by grid: startRow = " +
+        '[Datasource] - rows requested by grid: startRow = ' +
           params.request.startRow +
-          ", endRow = " +
+          ', endRow = ' +
           params.request.endRow
       );
 

@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component } from '@angular/core';
 import {
   AreaSparklineOptions,
   ColDef,
@@ -7,13 +7,13 @@ import {
   GridReadyEvent,
   LineSparklineOptions,
   MarkerFormatterParams,
-} from "ag-grid-community";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
+} from 'ag-grid-community';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import 'ag-grid-enterprise';
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<ag-grid-angular
     style="width: 100%; height: 100%;"
     class="ag-theme-alpine"
@@ -28,14 +28,14 @@ export class AppComponent {
   public rowHeight = 70;
   public columnDefs: ColDef[] = [
     {
-      field: "sparkline",
-      headerName: "Line Sparkline",
+      field: 'sparkline',
+      headerName: 'Line Sparkline',
       minWidth: 100,
-      cellRenderer: "agSparklineCellRenderer",
+      cellRenderer: 'agSparklineCellRenderer',
       cellRendererParams: {
         sparklineOptions: {
           line: {
-            stroke: "rgb(124, 255, 178)",
+            stroke: 'rgb(124, 255, 178)',
             strokeWidth: 3,
           },
           padding: {
@@ -43,20 +43,20 @@ export class AppComponent {
             bottom: 10,
           },
           marker: {
-            shape: "diamond",
+            shape: 'diamond',
             formatter: lineMarkerFormatter,
           },
         } as LineSparklineOptions,
       },
     },
     {
-      field: "sparkline",
-      headerName: "Column Sparkline",
+      field: 'sparkline',
+      headerName: 'Column Sparkline',
       minWidth: 100,
-      cellRenderer: "agSparklineCellRenderer",
+      cellRenderer: 'agSparklineCellRenderer',
       cellRendererParams: {
         sparklineOptions: {
-          type: "column",
+          type: 'column',
           padding: {
             top: 10,
             bottom: 10,
@@ -66,16 +66,16 @@ export class AppComponent {
       },
     },
     {
-      field: "sparkline",
-      headerName: "Area Sparkline",
+      field: 'sparkline',
+      headerName: 'Area Sparkline',
       minWidth: 100,
-      cellRenderer: "agSparklineCellRenderer",
+      cellRenderer: 'agSparklineCellRenderer',
       cellRendererParams: {
         sparklineOptions: {
-          type: "area",
-          fill: "rgba(84, 112, 198, 0.3)",
+          type: 'area',
+          fill: 'rgba(84, 112, 198, 0.3)',
           line: {
-            stroke: "rgb(84, 112, 198)",
+            stroke: 'rgb(84, 112, 198)',
           },
           padding: {
             top: 10,
@@ -99,12 +99,12 @@ export class AppComponent {
 }
 
 const colors = {
-  firstLast: "rgb(253, 221, 96)",
-  min: "rgb(239, 108, 0)",
-  max: "rgb(59, 162, 114)",
-  negative: "rgb(255, 110, 118)",
-  positive: "rgba(0,128,0, 0.3)",
-  highlighted: "rgb(88, 217, 249)",
+  firstLast: 'rgb(253, 221, 96)',
+  min: 'rgb(239, 108, 0)',
+  max: 'rgb(59, 162, 114)',
+  negative: 'rgb(255, 110, 118)',
+  positive: 'rgba(0,128,0, 0.3)',
+  highlighted: 'rgb(88, 217, 249)',
 };
 function lineMarkerFormatter(params: MarkerFormatterParams) {
   const { min, max, first, last, highlighted } = params;

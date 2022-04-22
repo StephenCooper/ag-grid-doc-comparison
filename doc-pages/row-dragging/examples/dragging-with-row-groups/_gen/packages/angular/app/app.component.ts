@@ -1,17 +1,17 @@
-import { Component } from "@angular/core";
+import { Component } from '@angular/core';
 import {
   ColDef,
   GridApi,
   GridReadyEvent,
   RowDragCallbackParams,
   RowDragEndEvent,
-} from "ag-grid-community";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
+} from 'ag-grid-community';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import 'ag-grid-enterprise';
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<ag-grid-angular
     style="width: 100%; height: 100%;"
     class="ag-theme-alpine"
@@ -28,14 +28,14 @@ export class AppComponent {
   private gridApi!: GridApi;
 
   public columnDefs: ColDef[] = [
-    { field: "athlete", rowDrag: rowDrag },
-    { field: "country", rowGroup: true },
-    { field: "year", width: 100 },
-    { field: "date" },
-    { field: "sport" },
-    { field: "gold" },
-    { field: "silver" },
-    { field: "bronze" },
+    { field: 'athlete', rowDrag: rowDrag },
+    { field: 'country', rowGroup: true },
+    { field: 'year', width: 100 },
+    { field: 'date' },
+    { field: 'sport' },
+    { field: 'gold' },
+    { field: 'silver' },
+    { field: 'bronze' },
   ];
   public defaultColDef: ColDef = {
     width: 170,

@@ -1,24 +1,24 @@
-"use strict";
+'use strict';
 
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
-import { AgGridReact } from "ag-grid-react";
-import React, { useCallback, useMemo, useRef, useState } from "react";
-import { render } from "react-dom";
+import React, { useCallback, useMemo, useRef, useState } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from 'ag-grid-react';
+import 'ag-grid-enterprise';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 
 var chartId;
 
 const GridExample = () => {
   const gridRef = useRef();
-  const containerStyle = useMemo(() => ({ width: "100%", height: "100%" }), []);
-  const gridStyle = useMemo(() => ({ height: "100%", width: "100%" }), []);
+  const containerStyle = useMemo(() => ({ width: '100%', height: '100%' }), []);
+  const gridStyle = useMemo(() => ({ height: '100%', width: '100%' }), []);
   const [rowData, setRowData] = useState(getData());
   const [columnDefs, setColumnDefs] = useState([
-    { field: "country", chartDataType: "category" },
-    { field: "sugar", chartDataType: "series" },
-    { field: "fat", chartDataType: "series" },
-    { field: "weight", chartDataType: "series" },
+    { field: 'country', chartDataType: 'category' },
+    { field: 'sugar', chartDataType: 'series' },
+    { field: 'fat', chartDataType: 'series' },
+    { field: 'weight', chartDataType: 'series' },
   ]);
   const defaultColDef = useMemo(() => {
     return {
@@ -50,10 +50,10 @@ const GridExample = () => {
   const onFirstDataRendered = useCallback((params) => {
     const createRangeChartParams = {
       cellRange: {
-        columns: ["country", "sugar", "fat", "weight"],
+        columns: ['country', 'sugar', 'fat', 'weight'],
       },
-      chartType: "groupedColumn",
-      chartContainer: document.querySelector("#myChart"),
+      chartType: 'groupedColumn',
+      chartContainer: document.querySelector('#myChart'),
     };
     gridRef.current.api.createRangeChart(createRangeChartParams);
   }, []);
@@ -70,10 +70,10 @@ const GridExample = () => {
       const params = { fileFormat, chartId };
       const imageDataURL = gridRef.current.api.getChartImageDataURL(params);
       if (imageDataURL) {
-        const a = document.createElement("a");
+        const a = document.createElement('a');
         a.href = imageDataURL;
-        a.download = "image";
-        a.style.display = "none";
+        a.download = 'image';
+        a.style.display = 'none';
         document.body.appendChild(a);
         a.click();
         document.body.removeChild(a);
@@ -92,7 +92,7 @@ const GridExample = () => {
       if (imageDataURL) {
         const image = new Image();
         image.src = imageDataURL;
-        const w = window.open("");
+        const w = window.open('');
         w.document.write(image.outerHTML);
         w.document.close();
       }
@@ -104,14 +104,14 @@ const GridExample = () => {
     <div style={containerStyle}>
       <div className="wrapper">
         <div id="buttons">
-          <button onClick={() => downloadChartImage("image/png")}>
+          <button onClick={() => downloadChartImage('image/png')}>
             Download chart PNG
           </button>
-          <button onClick={() => downloadChartImage("image/jpeg")}>
+          <button onClick={() => downloadChartImage('image/jpeg')}>
             Download chart JPEG
           </button>
-          <button onClick={() => openChartImage("image/png")}>Open PNG</button>
-          <button onClick={() => openChartImage("image/jpeg")}>
+          <button onClick={() => openChartImage('image/png')}>Open PNG</button>
+          <button onClick={() => openChartImage('image/jpeg')}>
             Open JPEG
           </button>
         </div>
@@ -136,4 +136,4 @@ const GridExample = () => {
   );
 };
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

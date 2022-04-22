@@ -1,11 +1,11 @@
-"use strict";
+'use strict';
 
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
-import { AgGridReact } from "ag-grid-react";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from 'ag-grid-react';
+import 'ag-grid-enterprise';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 
 class GridExample extends Component {
   constructor(props) {
@@ -15,14 +15,14 @@ class GridExample extends Component {
       rowData: getRowData(),
       columnDefs: [
         {
-          headerName: "Set Filter Column",
-          field: "col1",
-          filter: "agSetColumnFilter",
+          headerName: 'Set Filter Column',
+          field: 'col1',
+          filter: 'agSetColumnFilter',
           editable: true,
           flex: 1,
         },
       ],
-      sideBar: "filters",
+      sideBar: 'filters',
     };
   }
 
@@ -32,20 +32,20 @@ class GridExample extends Component {
   };
 
   onFirstDataRendered = (params) => {
-    params.api.getToolPanelInstance("filters").expandFilters();
+    params.api.getToolPanelInstance('filters').expandFilters();
   };
 
   updateFirstRow = () => {
     var firstRow = this.gridApi.getDisplayedRowAtIndex(0);
     if (firstRow) {
       var firstRowData = firstRow.data;
-      firstRowData["col1"] += "X";
+      firstRowData['col1'] += 'X';
       this.gridApi.applyTransaction({ update: [firstRowData] });
     }
   };
 
   addDRow = () => {
-    this.gridApi.applyTransaction({ add: [{ col1: "D" }] });
+    this.gridApi.applyTransaction({ add: [{ col1: 'D' }] });
   };
 
   reset = () => {
@@ -55,23 +55,23 @@ class GridExample extends Component {
 
   render() {
     return (
-      <div style={{ width: "100%", height: "100%" }}>
+      <div style={{ width: '100%', height: '100%' }}>
         <div className="example-wrapper">
-          <div style={{ marginBottom: "5px" }}>
+          <div style={{ marginBottom: '5px' }}>
             <label>Transaction Updates: </label>
             <button onClick={() => this.updateFirstRow()}>
               Update First Displayed Row
             </button>
             <button onClick={() => this.addDRow()}>Add New 'D' Row</button>
-            <button onClick={() => this.reset()} style={{ marginLeft: "20px" }}>
+            <button onClick={() => this.reset()} style={{ marginLeft: '20px' }}>
               Reset
             </button>
           </div>
 
           <div
             style={{
-              height: "100%",
-              width: "100%",
+              height: '100%',
+              width: '100%',
             }}
             className="ag-theme-alpine"
           >
@@ -91,13 +91,13 @@ class GridExample extends Component {
 
 function getRowData() {
   return [
-    { col1: "A" },
-    { col1: "A" },
-    { col1: "B" },
-    { col1: "B" },
-    { col1: "C" },
-    { col1: "C" },
+    { col1: 'A' },
+    { col1: 'A' },
+    { col1: 'B' },
+    { col1: 'B' },
+    { col1: 'C' },
+    { col1: 'C' },
   ];
 }
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

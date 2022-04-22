@@ -1,16 +1,16 @@
-"use strict";
+'use strict';
 
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { AgGridReact } from "@ag-grid-community/react";
-import { ColumnsToolPanelModule } from "@ag-grid-enterprise/column-tool-panel";
-import { FiltersToolPanelModule } from "@ag-grid-enterprise/filter-tool-panel";
-import { MenuModule } from "@ag-grid-enterprise/menu";
-import { SetFilterModule } from "@ag-grid-enterprise/set-filter";
-import React, { useMemo, useState } from "react";
-import { render } from "react-dom";
+import React, { useCallback, useMemo, useRef, useState } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from '@ag-grid-community/react';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import { SetFilterModule } from '@ag-grid-enterprise/set-filter';
+import { MenuModule } from '@ag-grid-enterprise/menu';
+import { ColumnsToolPanelModule } from '@ag-grid-enterprise/column-tool-panel';
+import { FiltersToolPanelModule } from '@ag-grid-enterprise/filter-tool-panel';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([
@@ -24,31 +24,31 @@ ModuleRegistry.registerModules([
 var filterParams = {
   values: function (params) {
     setTimeout(function () {
-      params.success(["value 1", "value 2"]);
+      params.success(['value 1', 'value 2']);
     }, 3000);
   },
 };
 
 const GridExample = () => {
-  const containerStyle = useMemo(() => ({ width: "100%", height: "100%" }), []);
-  const gridStyle = useMemo(() => ({ height: "100%", width: "100%" }), []);
+  const containerStyle = useMemo(() => ({ width: '100%', height: '100%' }), []);
+  const gridStyle = useMemo(() => ({ height: '100%', width: '100%' }), []);
   const [rowData, setRowData] = useState([
-    { value: "value 1" },
-    { value: "value 1" },
-    { value: "value 1" },
-    { value: "value 1" },
-    { value: "value 2" },
-    { value: "value 2" },
-    { value: "value 2" },
-    { value: "value 2" },
-    { value: "value 2" },
+    { value: 'value 1' },
+    { value: 'value 1' },
+    { value: 'value 1' },
+    { value: 'value 1' },
+    { value: 'value 2' },
+    { value: 'value 2' },
+    { value: 'value 2' },
+    { value: 'value 2' },
+    { value: 'value 2' },
   ]);
   const [columnDefs, setColumnDefs] = useState([
     {
-      headerName: "Set filter column",
-      field: "value",
+      headerName: 'Set filter column',
+      field: 'value',
       flex: 1,
-      filter: "agSetColumnFilter",
+      filter: 'agSetColumnFilter',
       floatingFilter: true,
       filterParams: filterParams,
     },
@@ -63,4 +63,4 @@ const GridExample = () => {
   );
 };
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

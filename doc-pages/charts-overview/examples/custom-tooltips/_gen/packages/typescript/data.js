@@ -2,7 +2,7 @@
 function getData() {
   return [
     {
-      quarter: "Q1",
+      quarter: 'Q1',
       largeHousehold: 43771.662,
       smallHousehold: 9191.245,
       itTelecomms: 10964.188,
@@ -19,7 +19,7 @@ function getData() {
       photovoltaic: 19.314,
     },
     {
-      quarter: "Q2",
+      quarter: 'Q2',
       largeHousehold: 41571.442,
       smallHousehold: 9560.735,
       itTelecomms: 11741.137,
@@ -36,7 +36,7 @@ function getData() {
       photovoltaic: 2.815,
     },
     {
-      quarter: "Q3",
+      quarter: 'Q3',
       largeHousehold: 43611.52,
       smallHousehold: 9310.022,
       itTelecomms: 12033.929,
@@ -53,7 +53,7 @@ function getData() {
       photovoltaic: 10.034,
     },
     {
-      quarter: "Q4",
+      quarter: 'Q4',
       largeHousehold: 45231.113,
       smallHousehold: 7475.194,
       itTelecomms: 9869.164,

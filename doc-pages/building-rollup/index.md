@@ -34,35 +34,39 @@ Our application will be a very simple one, consisting of a single file that will
 
 ```js
 // main-ag-grid.js
-import { Grid, ModuleRegistry } from "@ag-grid-community/core";
+import { Grid, ModuleRegistry } from '@ag-grid-community/core';
 import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
 // import { RangeSelectionModule } from "@ag-grid-enterprise/range-selection";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-balham.css";
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-balham.css';
 
-ModuleRegistry.registerModules([ClientSideRowModelModule]);
+ModuleRegistry.registerModules([ClientSideRowModelModule])
 
 // If using enterprise feature register that module too.
 // ModuleRegistry.registerModules([ClientSideRowModelModule, RangeSelectionModule])
 
 // specify the columns
-var columnDefs = [{ field: "make" }, { field: "model" }, { field: "price" }];
+var columnDefs = [
+    { field: "make" },
+    { field: "model" },
+    { field: "price" }
+];
 
 // specify the data
 var rowData = [
-  { make: "Toyota", model: "Celica", price: 35000 },
-  { make: "Ford", model: "Mondeo", price: 32000 },
-  { make: "Porsche", model: "Boxter", price: 72000 },
+    { make: "Toyota", model: "Celica", price: 35000 },
+    { make: "Ford", model: "Mondeo", price: 32000 },
+    { make: "Porsche", model: "Boxster", price: 72000 }
 ];
 
 // let the grid know which columns and what data to use
 var gridOptions = {
-  columnDefs: columnDefs,
-  rowData: rowData,
+    columnDefs: columnDefs,
+    rowData: rowData
 };
 
 // lookup the container we want the Grid to use
-var eGridDiv = document.querySelector("#myGrid");
+var eGridDiv = document.querySelector('#myGrid');
 
 // create the grid passing in the div to use together with the columns & data we want to use
 new Grid(eGridDiv, gridOptions);
@@ -71,16 +75,13 @@ new Grid(eGridDiv, gridOptions);
 ```html
 <!DOCTYPE html>
 <html>
-  <head> </head>
-  <body>
-    <div
-      id="myGrid"
-      style="height: 200px;width:500px;"
-      class="ag-theme-alpine"
-    ></div>
+<head>
+</head>
+<body>
+<div id="myGrid" style="height: 200px;width:500px;" class="ag-theme-alpine"></div>
 
-    <script src="./dist/ag-bundle.js"></script>
-  </body>
+<script src="./dist/ag-bundle.js"></script>
+</body>
 </html>
 ```
 
@@ -89,28 +90,28 @@ new Grid(eGridDiv, gridOptions);
 Our `rollup.ag-grid.json` is very simple in this example:
 
 ```jsx
-import { nodeResolve } from "@rollup/plugin-node-resolve";
-import postcss from "rollup-plugin-postcss";
+import { nodeResolve } from '@rollup/plugin-node-resolve';
+import postcss from 'rollup-plugin-postcss'
 
 export default {
-  input: "./main-ag-grid.js",
-  output: {
-    file: "./dist/ag-bundle.js",
-    format: "umd",
-  },
-  plugins: [
-    nodeResolve(),
-    postcss({
-      extract: true,
-      extensions: [".css"],
-    }),
-  ],
-  onwarn: (msg, warn) => {
-    if (msg.code === "THIS_IS_UNDEFINED") return;
-    if (!/Circular/.test(msg)) {
-      warn(msg);
+    input: './main-ag-grid.js',
+    output: {
+        file: './dist/ag-bundle.js',
+        format: 'umd',
+    },
+    plugins: [
+        nodeResolve(),
+        postcss({
+            extract: true,
+            extensions: [".css"]
+        })
+    ],
+    onwarn: (msg, warn) => {
+        if (msg.code === 'THIS_IS_UNDEFINED') return;
+        if (!/Circular/.test(msg)) {
+            warn(msg)
+        }
     }
-  },
 };
 ```
 

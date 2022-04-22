@@ -1,8 +1,8 @@
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
-import { AgGridVue } from "ag-grid-vue";
-import Vue from "vue";
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import 'ag-grid-enterprise';
+import { AgGridVue } from 'ag-grid-vue';
+import Vue from 'vue';
 
 const VueExample = {
   template: `
@@ -20,23 +20,23 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
-        { field: "colA", tooltipField: "colA", filter: "agSetColumnFilter" },
+        { field: 'colA', tooltipField: 'colA', filter: 'agSetColumnFilter' },
         {
-          field: "colB",
-          tooltipField: "colB",
-          filter: "agSetColumnFilter",
+          field: 'colB',
+          tooltipField: 'colB',
+          filter: 'agSetColumnFilter',
           filterParams: { showTooltips: true },
         },
         {
-          field: "colC",
-          tooltipField: "colC",
+          field: 'colC',
+          tooltipField: 'colC',
           tooltipComponent: CustomTooltip,
-          filter: "agSetColumnFilter",
+          filter: 'agSetColumnFilter',
           filterParams: { showTooltips: true },
         },
       ],
@@ -52,7 +52,7 @@ const VueExample = {
     };
   },
   created() {
-    this.sideBar = "filters";
+    this.sideBar = 'filters';
     this.tooltipShowDelay = 100;
     this.rowData = getData();
   },
@@ -65,8 +65,8 @@ const VueExample = {
 };
 
 new Vue({
-  el: "#app",
+  el: '#app',
   components: {
-    "my-component": VueExample,
+    'my-component': VueExample,
   },
 });

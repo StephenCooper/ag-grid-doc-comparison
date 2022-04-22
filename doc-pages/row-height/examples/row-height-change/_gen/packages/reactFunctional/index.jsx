@@ -1,11 +1,11 @@
-"use strict";
+'use strict';
 
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
-import { AgGridReact } from "ag-grid-react";
-import React, { useCallback, useMemo, useRef, useState } from "react";
-import { render } from "react-dom";
+import React, { useCallback, useMemo, useRef, useState } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from 'ag-grid-react';
+import 'ag-grid-enterprise';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 
 var swimmingHeight;
 
@@ -15,18 +15,18 @@ var russiaHeight;
 
 const GridExample = () => {
   const gridRef = useRef();
-  const containerStyle = useMemo(() => ({ width: "100%", height: "100%" }), []);
-  const gridStyle = useMemo(() => ({ height: "100%", width: "100%" }), []);
+  const containerStyle = useMemo(() => ({ width: '100%', height: '100%' }), []);
+  const gridStyle = useMemo(() => ({ height: '100%', width: '100%' }), []);
   const [rowData, setRowData] = useState(getData());
   const [columnDefs, setColumnDefs] = useState([
-    { field: "country", rowGroup: true },
-    { field: "athlete" },
-    { field: "date" },
-    { field: "sport" },
-    { field: "gold" },
-    { field: "silver" },
-    { field: "bronze" },
-    { field: "total" },
+    { field: 'country', rowGroup: true },
+    { field: 'athlete' },
+    { field: 'date' },
+    { field: 'sport' },
+    { field: 'gold' },
+    { field: 'silver' },
+    { field: 'bronze' },
+    { field: 'total' },
   ]);
 
   const setSwimmingHeight = useCallback((height) => {
@@ -43,7 +43,7 @@ const GridExample = () => {
     // this is used next time resetRowHeights is called
     russiaHeight = height;
     gridRef.current.api.forEachNode(function (rowNode) {
-      if (rowNode.data && rowNode.data.country === "Russia") {
+      if (rowNode.data && rowNode.data.country === 'Russia') {
         rowNode.setRowHeight(height);
       }
     });
@@ -56,13 +56,13 @@ const GridExample = () => {
         return groupHeight;
       } else if (
         params.data &&
-        params.data.country === "Russia" &&
+        params.data.country === 'Russia' &&
         russiaHeight != null
       ) {
         return russiaHeight;
       } else if (
         params.data &&
-        params.data.sport === "Swimming" &&
+        params.data.sport === 'Swimming' &&
         swimmingHeight != null
       ) {
         return swimmingHeight;
@@ -76,9 +76,9 @@ const GridExample = () => {
       <div className="example-wrapper">
         <div
           style={{
-            marginBottom: "5px",
-            fontFamily: "Verdana, Geneva, Tahoma, sans-serif",
-            fontSize: "13px",
+            marginBottom: '5px',
+            fontFamily: 'Verdana, Geneva, Tahoma, sans-serif',
+            fontSize: '13px',
           }}
         >
           <div>
@@ -87,13 +87,13 @@ const GridExample = () => {
             <button onClick={() => setGroupHeight(75)}>75px</button>
             <button onClick={() => setGroupHeight(125)}>125px</button>
           </div>
-          <div style={{ marginTop: "5px" }}>
+          <div style={{ marginTop: '5px' }}>
             Swimming Leaf Rows:
             <button onClick={() => setSwimmingHeight(42)}>42px</button>
             <button onClick={() => setSwimmingHeight(75)}>75px</button>
             <button onClick={() => setSwimmingHeight(125)}>125px</button>
           </div>
-          <div style={{ marginTop: "5px" }}>
+          <div style={{ marginTop: '5px' }}>
             Russia Leaf Rows:
             <button onClick={() => setRussiaHeight(42)}>42px</button>
             <button onClick={() => setRussiaHeight(75)}>75px</button>
@@ -116,4 +116,4 @@ const GridExample = () => {
   );
 };
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

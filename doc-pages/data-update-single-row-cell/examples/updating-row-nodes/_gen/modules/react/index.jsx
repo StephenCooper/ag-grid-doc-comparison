@@ -1,12 +1,12 @@
-"use strict";
+'use strict';
 
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { AgGridReact } from "@ag-grid-community/react";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from '@ag-grid-community/react';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([ClientSideRowModelModule]);
@@ -17,18 +17,18 @@ class GridExample extends Component {
 
     this.state = {
       rowData: [
-        { id: "aa", make: "Toyota", model: "Celica", price: 35000 },
-        { id: "bb", make: "Ford", model: "Mondeo", price: 32000 },
-        { id: "cc", make: "Porsche", model: "Boxter", price: 72000 },
-        { id: "dd", make: "BMW", model: "5 Series", price: 59000 },
-        { id: "ee", make: "Dodge", model: "Challanger", price: 35000 },
-        { id: "ff", make: "Mazda", model: "MX5", price: 28000 },
-        { id: "gg", make: "Horse", model: "Outside", price: 99000 },
+        { id: 'aa', make: 'Toyota', model: 'Celica', price: 35000 },
+        { id: 'bb', make: 'Ford', model: 'Mondeo', price: 32000 },
+        { id: 'cc', make: 'Porsche', model: 'Boxster', price: 72000 },
+        { id: 'dd', make: 'BMW', model: '5 Series', price: 59000 },
+        { id: 'ee', make: 'Dodge', model: 'Challanger', price: 35000 },
+        { id: 'ff', make: 'Mazda', model: 'MX5', price: 28000 },
+        { id: 'gg', make: 'Horse', model: 'Outside', price: 99000 },
       ],
       columnDefs: [
-        { field: "make" },
-        { field: "model" },
-        { field: "price", filter: "agNumberColumnFilter" },
+        { field: 'make' },
+        { field: 'model' },
+        { field: 'price', filter: 'agNumberColumnFilter' },
       ],
       defaultColDef: {
         flex: 1,
@@ -48,26 +48,26 @@ class GridExample extends Component {
   };
 
   updateSort = () => {
-    this.gridApi.refreshClientSideRowModel("sort");
+    this.gridApi.refreshClientSideRowModel('sort');
   };
 
   updateFilter = () => {
-    this.gridApi.refreshClientSideRowModel("filter");
+    this.gridApi.refreshClientSideRowModel('filter');
   };
 
   setPriceOnToyota = () => {
-    var rowNode = this.gridApi.getRowNode("aa");
+    var rowNode = this.gridApi.getRowNode('aa');
     var newPrice = Math.floor(Math.random() * 100000);
-    rowNode.setDataValue("price", newPrice);
+    rowNode.setDataValue('price', newPrice);
   };
 
   setDataOnFord = () => {
-    var rowNode = this.gridApi.getRowNode("bb");
+    var rowNode = this.gridApi.getRowNode('bb');
     var newPrice = Math.floor(Math.random() * 100000);
-    var newModel = "T-" + Math.floor(Math.random() * 1000);
+    var newModel = 'T-' + Math.floor(Math.random() * 1000);
     var newData = {
-      id: "bb",
-      make: "Ford",
+      id: 'bb',
+      make: 'Ford',
       model: newModel,
       price: newPrice,
     };
@@ -76,9 +76,9 @@ class GridExample extends Component {
 
   render() {
     return (
-      <div style={{ width: "100%", height: "100%" }}>
+      <div style={{ width: '100%', height: '100%' }}>
         <div className="example-wrapper">
-          <div style={{ marginBottom: "1rem" }}>
+          <div style={{ marginBottom: '1rem' }}>
             <button onClick={() => this.setPriceOnToyota()}>
               Set Price on Toyota
             </button>
@@ -87,7 +87,7 @@ class GridExample extends Component {
             </button>
             <button
               onClick={() => this.updateSort()}
-              style={{ marginLeft: "15px" }}
+              style={{ marginLeft: '15px' }}
             >
               Sort
             </button>
@@ -95,8 +95,8 @@ class GridExample extends Component {
           </div>
           <div
             style={{
-              height: "100%",
-              width: "100%",
+              height: '100%',
+              width: '100%',
             }}
             className="ag-theme-alpine"
           >
@@ -115,4 +115,4 @@ class GridExample extends Component {
   }
 }
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

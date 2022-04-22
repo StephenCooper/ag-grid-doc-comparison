@@ -1,15 +1,15 @@
-import { Component } from "@angular/core";
+import { Component } from '@angular/core';
 import {
   AreaSparklineOptions,
   ColDef,
   GridReadyEvent,
-} from "ag-grid-community";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
+} from 'ag-grid-community';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import 'ag-grid-enterprise';
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<ag-grid-angular
     style="width: 100%; height: 100%;"
     class="ag-theme-alpine"
@@ -22,30 +22,30 @@ import "ag-grid-enterprise";
 })
 export class AppComponent {
   public columnDefs: ColDef[] = [
-    { field: "symbol", maxWidth: 120 },
-    { field: "name", minWidth: 250 },
+    { field: 'symbol', maxWidth: 120 },
+    { field: 'name', minWidth: 250 },
     {
-      field: "change",
-      cellRenderer: "agSparklineCellRenderer",
+      field: 'change',
+      cellRenderer: 'agSparklineCellRenderer',
       cellRendererParams: {
         sparklineOptions: {
-          type: "area",
-          fill: "rgba(216, 204, 235, 0.3)",
+          type: 'area',
+          fill: 'rgba(216, 204, 235, 0.3)',
           line: {
-            stroke: "rgb(119,77,185)",
+            stroke: 'rgb(119,77,185)',
           },
           highlightStyle: {
-            fill: "rgb(143,185,77)",
+            fill: 'rgb(143,185,77)',
           },
           axis: {
-            stroke: "rgb(204, 204, 235)",
+            stroke: 'rgb(204, 204, 235)',
           },
         } as AreaSparklineOptions,
       },
     },
     {
-      field: "volume",
-      type: "numericColumn",
+      field: 'volume',
+      type: 'numericColumn',
       maxWidth: 140,
     },
   ];

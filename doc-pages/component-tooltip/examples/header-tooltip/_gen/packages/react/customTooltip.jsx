@@ -1,15 +1,15 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 
 export default class CustomTooltip extends Component {
   getReactContainerClasses() {
-    return ["custom-tooltip"];
+    return ['custom-tooltip'];
   }
 
   render() {
     var props = this.props,
       isHeader = props.rowIndex === undefined,
       isGroupedHeader = isHeader && !!props.colDef.children,
-      valueToDisplay = props.value.value ? props.value.value : "- Missing -";
+      valueToDisplay = props.value.value ? props.value.value : '- Missing -';
 
     return isHeader ? (
       <div className="custom-tooltip">

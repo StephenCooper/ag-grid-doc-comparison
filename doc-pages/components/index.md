@@ -24,7 +24,7 @@ md-include:declare-vue.md
 
 md-include:register-javascript.md
 md-include:register-angular.md
-md-include:register-react.md
+md-include:register-react.md 
 md-include:register-vue.md
 
 md-include:declare-angular.md
@@ -61,30 +61,29 @@ md-include:js-fw-common-end.md
 |
 |Function Components are not supported by AG Grid React. This is because the grid has no way to distinguish JavaScript Functional Components from React Functional Components. The grid identifies a JavaScript Class Component by looking for the `getGui()` method. If this method is missing, it assumes a React Component. Thus all functions will be treated as React Components / Hooks.
 |
-
 ## Component Usage
 
 The below table gives a summary of the components, where they are configured and using what attribute.
 
-| Component                     | Where                     | Attribute                                                    |
-| ----------------------------- | ------------------------- | ------------------------------------------------------------ |
-| Cell Renderer                 | Column Definition         | cellRenderer<br/>cellRendererParams<br/>cellRendererSelector |
-| Cell Editor                   | Column Definition         | cellEditor<br>cellEditorParams<br/>cellEditorSelector        |
-| Filter                        | Column Definition         | filter<br/>filterParams                                      |
-| Floating Filter               | Column Definition         | floatingFilter<br/>floatingFilterParams                      |
-| Header Component              | Column Definition         | headerComponent<br/>headerComponentParams                    |
-| Header Group Component        | Column Definition         | headerGroupComponent<br/>headerGroupComponentParams          |
-| Tooltip Component             | Column Definition         | tooltipComponent<br/>tooltipComponentParams                  |
-| Group Row Cell Renderer       | Grid Option               | groupRowRenderer<br/>groupRowRendererParams                  |
-| Group Row Inner Cell Renderer | Grid Option               | innerRenderer<br/>innerRendererParams                        |
-| Detail Cell Renderer          | Grid Option               | detailCellRenderer<br/>detailCellRendererParams              |
-| Full Width Cell Renderer      | Grid Option               | fullWidthCellRenderer<br/>fullWidthCellRendererParams        |
-| Loading Cell Renderer         | Grid Option               | loadingCellRenderer<br/>loadingCellRendererParams            |
-| Loading Overlay               | Grid Option               | loadingOverlayComponent<br/>loadingOverlayComponentParams    |
-| No Rows Overlay               | Grid Option               | noRowsOverlayComponent<br/>noRowsOverlayComponentParams      |
-| Date Component                | Grid Option               | dateComponent<br/>dateComponentParams                        |
-| Status Bar Component          | Grid Option -> Status Bar | statusPanel<br/>statusPanelParams                            |
-| Tool Panel                    | Grid Option -> Side Bar   | toolPanel<br/>toolPanelParams                                |
+| Component                     | Where                     | Attribute | 
+| ----------------------------- | ------------------------- | ------------------------ | 
+| Cell Renderer                 | Column Definition         | cellRenderer<br/>cellRendererParams<br/>cellRendererSelector         | 
+| Cell Editor                   | Column Definition         | cellEditor<br>cellEditorParams<br/>cellEditorSelector| 
+| Filter                        | Column Definition         | filter<br/>filterParams              | 
+| Floating Filter               | Column Definition         | floatingFilter<br/>floatingFilterParams       | 
+| Header Component              | Column Definition         | headerComponent<br/>headerComponentParams               | 
+| Header Group Component        | Column Definition         | headerGroupComponent<br/>headerGroupComponentParams         | 
+| Tooltip Component             | Column Definition         | tooltipComponent<br/>tooltipComponentParams              | 
+| Group Row Cell Renderer       | Grid Option               | groupRowRenderer<br/>groupRowRendererParams         | 
+| Group Row Inner Cell Renderer | Grid Option               | innerRenderer<br/>innerRendererParams            | 
+| Detail Cell Renderer          | Grid Option               | detailCellRenderer<br/>detailCellRendererParams        | 
+| Full Width Cell Renderer      | Grid Option               | fullWidthCellRenderer<br/>fullWidthCellRendererParams        | 
+| Loading Cell Renderer         | Grid Option               | loadingCellRenderer<br/>loadingCellRendererParams       |
+| Loading Overlay               | Grid Option               | loadingOverlayComponent<br/>loadingOverlayComponentParams       | 
+| No Rows Overlay               | Grid Option               | noRowsOverlayComponent<br/>noRowsOverlayComponentParams        |
+| Date Component                | Grid Option               | dateComponent<br/>dateComponentParams                  | 
+| Status Bar Component          | Grid Option -> Status Bar | statusPanel<br/>statusPanelParams          | 
+| Tool Panel                    | Grid Option -> Side Bar   | toolPanel<br/>toolPanelParams            | 
 
 ## Grid Provided Components
 
@@ -221,10 +220,10 @@ It is also possible to override components. Where the grid uses a default value,
 - **agNoRowsOverlay**: To change the default loading 'no rows' overlay.
 - **agTextCellEditor**: To change the default text cell editor.
 - **agDetailCellRenderer**: To change the default detail panel for master / detail grids.
-
+ 
 [[only-vue]]
 |[[note]]
-||Overridable grid components are the only components you need to additionally specify with `components` in order to tie their usage to the
+||Overridable grid components are the only components you need to additionally specify with `components` in order to tie their usage to the 
 ||actual component. All other registration types specify their usage in column definitions or on the `AgGridVue` component itself.
 ||
 ||For an example of this please refer to the [Date Component](../component-date/#registering-date-components) documentation.

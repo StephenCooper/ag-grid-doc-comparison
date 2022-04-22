@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component } from '@angular/core';
 import {
   CellEditingStartedEvent,
   CellEditingStoppedEvent,
@@ -7,15 +7,15 @@ import {
   ICellEditorParams,
   RowEditingStartedEvent,
   RowEditingStoppedEvent,
-} from "ag-grid-community";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
-import { MoodEditor } from "./mood-editor.component";
-import { NumericCellEditor } from "./numeric-cell-editor.component";
+} from 'ag-grid-community';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import 'ag-grid-enterprise';
+import { MoodEditor } from './mood-editor.component';
+import { NumericCellEditor } from './numeric-cell-editor.component';
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<ag-grid-angular
     style="width: 100%; height: 100%;"
     class="ag-theme-alpine"
@@ -31,9 +31,9 @@ import { NumericCellEditor } from "./numeric-cell-editor.component";
 })
 export class AppComponent {
   public columnDefs: ColDef[] = [
-    { field: "type" },
+    { field: 'type' },
     {
-      field: "value",
+      field: 'value',
       editable: true,
       cellEditorSelector: cellEditorSelector,
     },
@@ -44,44 +44,44 @@ export class AppComponent {
   public rowData: any[] | null = getData();
 
   onRowEditingStarted(event: RowEditingStartedEvent) {
-    console.log("never called - not doing row editing");
+    console.log('never called - not doing row editing');
   }
 
   onRowEditingStopped(event: RowEditingStoppedEvent) {
-    console.log("never called - not doing row editing");
+    console.log('never called - not doing row editing');
   }
 
   onCellEditingStarted(event: CellEditingStartedEvent) {
-    console.log("cellEditingStarted");
+    console.log('cellEditingStarted');
   }
 
   onCellEditingStopped(event: CellEditingStoppedEvent) {
-    console.log("cellEditingStopped");
+    console.log('cellEditingStopped');
   }
 
   onGridReady(params: GridReadyEvent) {}
 }
 
 function cellEditorSelector(params: ICellEditorParams) {
-  if (params.data.type === "age") {
+  if (params.data.type === 'age') {
     return {
       component: NumericCellEditor,
     };
   }
-  if (params.data.type === "gender") {
+  if (params.data.type === 'gender') {
     return {
-      component: "agRichSelectCellEditor",
+      component: 'agRichSelectCellEditor',
       params: {
-        values: ["Male", "Female"],
+        values: ['Male', 'Female'],
       },
       popup: true,
     };
   }
-  if (params.data.type === "mood") {
+  if (params.data.type === 'mood') {
     return {
       component: MoodEditor,
       popup: true,
-      popupPosition: "under",
+      popupPosition: 'under',
     };
   }
   return undefined;

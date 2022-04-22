@@ -1,24 +1,24 @@
-"use strict";
+'use strict';
 
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { AgGridReact } from "@ag-grid-community/react";
-import React, { useCallback, useMemo, useRef, useState } from "react";
-import { render } from "react-dom";
+import React, { useCallback, useMemo, useRef, useState } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from '@ag-grid-community/react';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([ClientSideRowModelModule]);
 
 // define some handy keycode constants
-const KEY_LEFT = "ArrowLeft";
+const KEY_LEFT = 'ArrowLeft';
 
-const KEY_UP = "ArrowUp";
+const KEY_UP = 'ArrowUp';
 
-const KEY_RIGHT = "ArrowRight";
+const KEY_RIGHT = 'ArrowRight';
 
-const KEY_DOWN = "ArrowDown";
+const KEY_DOWN = 'ArrowDown';
 
 const moveHeaderFocusUpDown = (previousHeader, headerRowCount, isUp) => {
   const previousColumn = previousHeader.column;
@@ -47,27 +47,27 @@ const moveHeaderFocusUpDown = (previousHeader, headerRowCount, isUp) => {
 
 const GridExample = () => {
   const gridRef = useRef();
-  const containerStyle = useMemo(() => ({ width: "100%", height: "100%" }), []);
-  const gridStyle = useMemo(() => ({ height: "100%", width: "100%" }), []);
+  const containerStyle = useMemo(() => ({ width: '100%', height: '100%' }), []);
+  const gridStyle = useMemo(() => ({ height: '100%', width: '100%' }), []);
   const [rowData, setRowData] = useState();
   const [columnDefs, setColumnDefs] = useState([
     {
-      headerName: "Athlete",
+      headerName: 'Athlete',
       children: [
-        { field: "athlete", headerName: "Name", minWidth: 170 },
-        { field: "age" },
-        { field: "country" },
+        { field: 'athlete', headerName: 'Name', minWidth: 170 },
+        { field: 'age' },
+        { field: 'country' },
       ],
     },
-    { field: "year" },
-    { field: "sport" },
+    { field: 'year' },
+    { field: 'sport' },
     {
-      headerName: "Medals",
+      headerName: 'Medals',
       children: [
-        { field: "gold" },
-        { field: "silver" },
-        { field: "bronze" },
-        { field: "total" },
+        { field: 'gold' },
+        { field: 'silver' },
+        { field: 'bronze' },
+        { field: 'total' },
       ],
     },
   ]);
@@ -83,20 +83,20 @@ const GridExample = () => {
   }, []);
 
   const onGridReady = useCallback((params) => {
-    fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+    fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .then((resp) => resp.json())
       .then((data) => setRowData(data));
   }, []);
 
   const navigateToNextHeader = useCallback((params) => {
     const nextHeader = params.nextHeaderPosition;
-    if (params.key !== "ArrowDown" && params.key !== "ArrowUp") {
+    if (params.key !== 'ArrowDown' && params.key !== 'ArrowUp') {
       return nextHeader;
     }
     const processedNextHeader = moveHeaderFocusUpDown(
       params.previousHeaderPosition,
       params.headerRowCount,
-      params.key === "ArrowDown"
+      params.key === 'ArrowDown'
     );
     return processedNextHeader === nextHeader ? null : processedNextHeader;
   }, []);
@@ -161,7 +161,7 @@ const GridExample = () => {
         return suggestedNextCell;
       default:
         throw Error(
-          "this will never happen, navigation is always one of the 4 keys above"
+          'this will never happen, navigation is always one of the 4 keys above'
         );
     }
   }, []);
@@ -185,4 +185,4 @@ const GridExample = () => {
   );
 };
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

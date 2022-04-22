@@ -309,6 +309,22 @@
     },
     "series": {
       "type": "AgCartesianSeriesOptions[]"
+    },
+    "theme": {
+      "default": "ag-default",
+      "options": [
+        "ag-default",
+        "ag-material",
+        "ag-pastel",
+        "ag-solar",
+        "ag-vivid",
+        "ag-default-dark",
+        "ag-material-dark",
+        "ag-pastel-dark",
+        "ag-solar-dark",
+        "ag-vivid-dark"
+      ],
+      "breakIndex": 5
     }
   },
   "AgPolarChartOptions": {
@@ -340,16 +356,34 @@
     },
     "series": {
       "type": "AgPolarSeriesOptions[]"
+    },
+    "theme": {
+      "default": "ag-default",
+      "options": [
+        "ag-default",
+        "ag-material",
+        "ag-pastel",
+        "ag-solar",
+        "ag-vivid",
+        "ag-default-dark",
+        "ag-material-dark",
+        "ag-pastel-dark",
+        "ag-solar-dark",
+        "ag-vivid-dark"
+      ],
+      "breakIndex": 5
     }
   },
   "AgHierarchyChartOptions": {
-    "ordering": {
-      "type": "high",
-      "data": "high",
-      "container": "high",
-      "axes": "high",
-      "series": "high",
-      "theme": "low"
+    "meta": {
+      "ordering": {
+        "type": "high",
+        "data": "high",
+        "container": "high",
+        "axes": "high",
+        "series": "high",
+        "theme": "low"
+      }
     },
     "data": {
       "isRequired": true
@@ -369,6 +403,22 @@
     },
     "series": {
       "type": "AgHierarchySeriesOptions[]"
+    },
+    "theme": {
+      "default": "ag-default",
+      "options": [
+        "ag-default",
+        "ag-material",
+        "ag-pastel",
+        "ag-solar",
+        "ag-vivid",
+        "ag-default-dark",
+        "ag-material-dark",
+        "ag-pastel-dark",
+        "ag-solar-dark",
+        "ag-vivid-dark"
+      ],
+      "breakIndex": 5
     }
   },
   "AgNumberAxisOptions": {
@@ -471,7 +521,11 @@
       "unit": "&deg;"
     },
     "format": {
-      "type": "string"
+      "type": "string",
+      "more": {
+        "name": "Axis Label Formatting",
+        "url": "/axes/#number-label-format-string"
+      }
     }
   },
   "AgAxisGridStyle": {

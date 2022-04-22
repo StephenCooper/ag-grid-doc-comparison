@@ -1,14 +1,14 @@
-"use strict";
+'use strict';
 
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { AgGridReact } from "@ag-grid-community/react";
-import { ExcelExportModule } from "@ag-grid-enterprise/excel-export";
-import { MenuModule } from "@ag-grid-enterprise/menu";
-import React, { useCallback, useMemo, useRef, useState } from "react";
-import { render } from "react-dom";
+import React, { useCallback, useMemo, useRef, useState } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from '@ag-grid-community/react';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import { ExcelExportModule } from '@ag-grid-enterprise/excel-export';
+import { MenuModule } from '@ag-grid-enterprise/menu';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([
@@ -19,23 +19,23 @@ ModuleRegistry.registerModules([
 
 const GridExample = () => {
   const gridRef = useRef();
-  const containerStyle = useMemo(() => ({ width: "100%", height: "100%" }), []);
-  const gridStyle = useMemo(() => ({ height: "100%", width: "100%" }), []);
+  const containerStyle = useMemo(() => ({ width: '100%', height: '100%' }), []);
+  const gridStyle = useMemo(() => ({ height: '100%', width: '100%' }), []);
   const [rowData, setRowData] = useState([
-    { company: "Google", url: "https://www.google.com" },
-    { company: "Adobe", url: "https://www.adobe.com" },
-    { company: "The New York Times", url: "https://www.nytimes.com" },
-    { company: "Twitter", url: "https://www.twitter.com" },
-    { company: "StackOverflow", url: "https://stackoverflow.com/" },
-    { company: "Reddit", url: "https://www.reddit.com" },
-    { company: "Github", url: "https://www.github.com" },
-    { company: "Microsoft", url: "https://www.microsoft.com" },
-    { company: "Gizmodo", url: "https://www.gizmodo.com" },
-    { company: "LinkedIN", url: "https://www.linkedin.com" },
+    { company: 'Google', url: 'https://www.google.com' },
+    { company: 'Adobe', url: 'https://www.adobe.com' },
+    { company: 'The New York Times', url: 'https://www.nytimes.com' },
+    { company: 'Twitter', url: 'https://www.twitter.com' },
+    { company: 'StackOverflow', url: 'https://stackoverflow.com/' },
+    { company: 'Reddit', url: 'https://www.reddit.com' },
+    { company: 'Github', url: 'https://www.github.com' },
+    { company: 'Microsoft', url: 'https://www.microsoft.com' },
+    { company: 'Gizmodo', url: 'https://www.gizmodo.com' },
+    { company: 'LinkedIN', url: 'https://www.linkedin.com' },
   ]);
   const [columnDefs, setColumnDefs] = useState([
-    { field: "company" },
-    { field: "url", cellClass: "hyperlinks" },
+    { field: 'company' },
+    { field: 'url', cellClass: 'hyperlinks' },
   ]);
   const defaultColDef = useMemo(() => {
     return {
@@ -49,17 +49,17 @@ const GridExample = () => {
       autoConvertFormulas: true,
       processCellCallback: (params) => {
         const field = params.column.getColDef().field;
-        return field === "url" ? `=HYPERLINK("${params.value}")` : params.value;
+        return field === 'url' ? `=HYPERLINK("${params.value}")` : params.value;
       },
     };
   }, []);
   const excelStyles = useMemo(() => {
     return [
       {
-        id: "hyperlinks",
+        id: 'hyperlinks',
         font: {
-          underline: "Single",
-          color: "#358ccb",
+          underline: 'Single',
+          color: '#358ccb',
         },
       },
     ];
@@ -75,7 +75,7 @@ const GridExample = () => {
         <div>
           <button
             onClick={onBtExport}
-            style={{ marginBottom: "5px", fontWeight: "bold" }}
+            style={{ marginBottom: '5px', fontWeight: 'bold' }}
           >
             Export to Excel
           </button>
@@ -97,4 +97,4 @@ const GridExample = () => {
   );
 };
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

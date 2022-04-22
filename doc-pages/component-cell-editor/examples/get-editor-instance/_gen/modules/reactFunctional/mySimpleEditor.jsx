@@ -1,60 +1,52 @@
-import React, {
-  forwardRef,
-  useEffect,
-  useImperativeHandle,
-  useRef,
-  useState,
-} from "react";
+import React, {forwardRef, useEffect, useImperativeHandle, useRef, useState} from 'react';
 
-const KEY_BACKSPACE = "Backspace";
-const KEY_DELETE = "Delete";
+const KEY_BACKSPACE = 'Backspace';
+const KEY_DELETE = 'Delete';
 
 export default forwardRef((props, ref) => {
-  const getInitialValue = (props) => {
-    let startValue = props.value;
+    const getInitialValue = props => {
+        let startValue = props.value;
 
-    const isBackspaceOrDelete =
-      props.eventKey === KEY_BACKSPACE || props.eventKey === KEY_DELETE;
-    if (isBackspaceOrDelete) {
-      startValue = "";
-    } else if (props.charPress) {
-      startValue = props.charPress;
+        const isBackspaceOrDelete = props.eventKey === KEY_BACKSPACE || props.eventKey === KEY_DELETE;
+        if (isBackspaceOrDelete) {
+            startValue = '';
+        } else if (props.charPress) {
+            startValue = props.charPress;
+        }
+
+        if (startValue !== null && startValue !== undefined) {
+            return startValue;
+        }
+
+        return '';
     }
 
-    if (startValue !== null && startValue !== undefined) {
-      return startValue;
-    }
+    const [value, setValue] = useState(getInitialValue(props));
+    const refInput = useRef(null);
 
-    return "";
-  };
+    useEffect(() => {
+        refInput.current.focus();
+    }, []);
 
-  const [value, setValue] = useState(getInitialValue(props));
-  const refInput = useRef(null);
 
-  useEffect(() => {
-    refInput.current.focus();
-  }, []);
-
-  useImperativeHandle(ref, () => {
-    return {
-      getValue() {
-        return value;
-      },
-
-      myCustomFunction() {
+    useImperativeHandle(ref, () => {
         return {
-          rowIndex: props.rowIndex,
-          colId: props.column.getId(),
-        };
-      },
-    };
-  });
+            getValue() {
+                return value;
+            },
 
-  return (
-    <input
-      value={value}
-      ref={refInput}
-      onChange={(event) => setValue(event.target.value)}
-    />
-  );
-});
+            myCustomFunction() {
+                return {
+                    rowIndex: props.rowIndex,
+                    colId: props.column.getId()
+                };
+            }
+        };
+    });
+
+    return (
+        <input value={value}
+               ref={refInput}
+               onChange={event => setValue(event.target.value)}/>
+    );
+})

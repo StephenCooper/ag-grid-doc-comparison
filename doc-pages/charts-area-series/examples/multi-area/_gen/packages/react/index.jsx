@@ -1,8 +1,10 @@
-"use strict";
+'use strict';
 
-import { AgChartsReact } from "ag-charts-react";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { cloneDeep } from 'lodash';
+import { render } from 'react-dom';
+import * as agCharts from 'ag-charts-community';
+import { AgChartsReact } from 'ag-charts-react';
 
 class ChartExample extends Component {
   constructor(props) {
@@ -12,33 +14,33 @@ class ChartExample extends Component {
       options: {
         theme: {
           palette: {
-            fills: ["#f44336", "#8bc34a"],
-            strokes: ["#ab2f26", "#618834"],
+            fills: ['#f3622d', '#41a9c9'],
+            strokes: ['#aa4520', '#2d768d'],
           },
         },
         title: {
-          text: "Microsoft Internet Explorer vs Google Chrome",
+          text: 'Microsoft Internet Explorer vs Google Chrome',
         },
         subtitle: {
-          text: "2009-2019",
+          text: '2009-2019',
         },
         data: getData(),
         series: [
           {
-            type: "area",
-            xKey: "year",
-            yKey: "ie",
-            yName: "IE",
+            type: 'area',
+            xKey: 'year',
+            yKey: 'ie',
+            yName: 'IE',
             fillOpacity: 0.7,
             marker: {
               enabled: true,
             },
           },
           {
-            type: "area",
-            xKey: "year",
-            yKey: "chrome",
-            yName: "Chrome",
+            type: 'area',
+            xKey: 'year',
+            yKey: 'chrome',
+            yName: 'Chrome',
             fillOpacity: 0.7,
             marker: {
               enabled: true,
@@ -46,7 +48,7 @@ class ChartExample extends Component {
           },
         ],
         legend: {
-          position: "top",
+          position: 'top',
         },
       },
     };
@@ -59,4 +61,4 @@ class ChartExample extends Component {
   }
 }
 
-render(<ChartExample />, document.querySelector("#root"));
+render(<ChartExample />, document.querySelector('#root'));

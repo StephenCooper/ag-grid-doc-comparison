@@ -1,8 +1,8 @@
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine-dark.css";
-import "ag-grid-enterprise";
-import { AgGridVue } from "ag-grid-vue3";
-import { createApp } from "vue";
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine-dark.css';
+import 'ag-grid-enterprise';
+import { AgGridVue } from 'ag-grid-vue3';
+import { createApp } from 'vue';
 
 const VueExample = {
   template: `
@@ -34,22 +34,22 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
         {
-          colId: "country",
-          valueGetter: "data.country",
+          colId: 'country',
+          valueGetter: 'data.country',
           rowGroup: true,
           hide: true,
         },
-        { field: "sport", rowGroup: true, hide: true },
-        { field: "year", minWidth: 100 },
-        { field: "gold", aggFunc: "sum" },
-        { field: "silver", aggFunc: "sum" },
-        { field: "bronze", aggFunc: "sum" },
+        { field: 'sport', rowGroup: true, hide: true },
+        { field: 'year', minWidth: 100 },
+        { field: 'gold', aggFunc: 'sum' },
+        { field: 'silver', aggFunc: 'sum' },
+        { field: 'bronze', aggFunc: 'sum' },
       ],
       gridApi: null,
       columnApi: null,
@@ -70,10 +70,10 @@ const VueExample = {
     this.autoGroupColumnDef = {
       flex: 1,
       minWidth: 280,
-      field: "athlete",
+      field: 'athlete',
     };
-    this.rowModelType = "serverSide";
-    this.serverSideStoreType = "full";
+    this.rowModelType = 'serverSide';
+    this.serverSideStoreType = 'full';
     this.maxConcurrentDatasourceRequests = 1;
     this.cacheBlockSize = 20;
   },
@@ -97,7 +97,7 @@ const VueExample = {
         params.api.setServerSideDatasource(datasource);
       };
 
-      fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
         .then((resp) => resp.json())
         .then((data) => updateData(data));
     },
@@ -107,7 +107,7 @@ const VueExample = {
 window.getServerSideDatasource = function getServerSideDatasource(server) {
   return {
     getRows: function (params) {
-      console.log("[Datasource] - rows requested by grid: ", params.request);
+      console.log('[Datasource] - rows requested by grid: ', params.request);
       var response = server.getData(params.request);
       // adding delay to simulate real server call
       setTimeout(function () {
@@ -126,4 +126,4 @@ window.getServerSideDatasource = function getServerSideDatasource(server) {
   };
 };
 
-createApp(VueExample).mount("#app");
+createApp(VueExample).mount('#app');

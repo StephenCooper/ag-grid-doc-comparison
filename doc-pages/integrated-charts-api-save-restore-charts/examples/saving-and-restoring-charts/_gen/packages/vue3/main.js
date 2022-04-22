@@ -1,8 +1,8 @@
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
-import { AgGridVue } from "ag-grid-vue3";
-import { createApp } from "vue";
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import 'ag-grid-enterprise';
+import { AgGridVue } from 'ag-grid-vue3';
+import { createApp } from 'vue';
 
 const VueExample = {
   template: `
@@ -30,15 +30,15 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
-        { field: "country", chartDataType: "category" },
-        { field: "sugar", chartDataType: "series" },
-        { field: "fat", chartDataType: "series" },
-        { field: "weight", chartDataType: "series" },
+        { field: 'country', chartDataType: 'category' },
+        { field: 'sugar', chartDataType: 'series' },
+        { field: 'fat', chartDataType: 'series' },
+        { field: 'weight', chartDataType: 'series' },
       ],
       gridApi: null,
       columnApi: null,
@@ -64,7 +64,7 @@ const VueExample = {
       if (chartModels.length > 0) {
         chartModel = chartModels[0];
       }
-      alert("Chart saved!");
+      alert('Chart saved!');
     },
     clearChart() {
       if (currentChartRef) {
@@ -86,7 +86,7 @@ const VueExample = {
         currentChartRef.destroyChart();
       }
       var eChart = chartRef.chartElement;
-      var eParent = document.querySelector("#myChart");
+      var eParent = document.querySelector('#myChart');
       eParent.appendChild(eChart);
       currentChartRef = chartRef;
     },
@@ -97,4 +97,4 @@ var chartModel;
 
 var currentChartRef;
 
-createApp(VueExample).mount("#app");
+createApp(VueExample).mount('#app');

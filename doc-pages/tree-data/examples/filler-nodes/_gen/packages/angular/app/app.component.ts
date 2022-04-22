@@ -1,11 +1,11 @@
-import { Component } from "@angular/core";
-import { ColDef, GetDataPath, GridReadyEvent } from "ag-grid-community";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
+import { Component } from '@angular/core';
+import { ColDef, GetDataPath, GridReadyEvent } from 'ag-grid-community';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import 'ag-grid-enterprise';
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<ag-grid-angular
     style="width: 100%; height: 100%;"
     class="ag-theme-alpine"
@@ -22,17 +22,17 @@ import "ag-grid-enterprise";
 })
 export class AppComponent {
   public rowData: any[] | null = [
-    { orgHierarchy: ["A"] },
-    { orgHierarchy: ["A", "B"] },
-    { orgHierarchy: ["C", "D"] },
-    { orgHierarchy: ["E", "F", "G", "H"] },
+    { orgHierarchy: ['A'] },
+    { orgHierarchy: ['A', 'B'] },
+    { orgHierarchy: ['C', 'D'] },
+    { orgHierarchy: ['E', 'F', 'G', 'H'] },
   ];
   public columnDefs: ColDef[] = [
     // we're using the auto group column by default!
     {
-      field: "groupType",
+      field: 'groupType',
       valueGetter: function (params) {
-        return params.data ? "Provided" : "Filler";
+        return params.data ? 'Provided' : 'Filler';
       },
     },
   ];
@@ -40,13 +40,13 @@ export class AppComponent {
     flex: 1,
   };
   public autoGroupColumnDef: ColDef = {
-    headerName: "Organisation Hierarchy",
+    headerName: 'Organisation Hierarchy',
     cellRendererParams: {
       suppressCount: true,
     },
   };
   public groupDefaultExpanded = -1;
-  public getDataPath: GetDataPath = function (data) {
+  public getDataPath: GetDataPath = function (data: any) {
     return data.orgHierarchy;
   };
 

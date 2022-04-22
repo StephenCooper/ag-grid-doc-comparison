@@ -6,17 +6,18 @@ Here we show examples of some unusual use cases of scrolling and the grid.
 
 ## Make scrollbars always visible
 
-It is possible to show scrollbars even when there is not enough data to need scrolling. This voids visual table 'jumps' when toggling short and long data sets. To make that work, override the `overflow` of the `.ag-body-viewport` to `scroll !important`. The `!important` is necessary to override the inline styling.
+It is possible to show scrollbars even when there is not enough data to need scrolling. This voids visual table 'jumps' when toggling short and long data sets. To make that work, use the [alwaysShowHorizontalScroll](/grid-options/#reference-scrolling-alwaysShowHorizontalScroll) and [alwaysShowVerticalScroll](/grid-options/#reference-scrolling-alwaysShowVerticalScroll) properties of the Grid.
 
 <grid-example title='Always visible scrollbars' name='scrollbars' type='generated'></grid-example>
+
 
 ## Auto Height, Full Width & Pagination
 
 Shows the autoHeight feature working with fullWidth and pagination.
 
 - The fullWidth rows are embedded. This means:
-  - Embedded rows are chopped into the pinned sections.
-  - Embedded rows scroll horizontally with the other rows.
+    - Embedded rows are chopped into the pinned sections.
+    - Embedded rows scroll horizontally with the other rows.
 - There are 15 rows and pagination page size is 10, so as you go from one page to the other, the grid re-sizes to fit the page (10 rows on the first page, 5 rows on the second page).
 
 <grid-example title='Auto Height & Full Width' name='auto-height-full-width' type='mixed' options='{ "enterprise": true, "modules": ["clientside", "rowgrouping" ], "noStyle": 1 }'></grid-example>

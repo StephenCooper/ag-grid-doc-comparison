@@ -1,12 +1,12 @@
-"use strict";
+'use strict';
 
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
-import { AgGridReact } from "ag-grid-react";
-import React, { useCallback, useMemo, useState } from "react";
-import { render } from "react-dom";
-import CustomLoadingCellRenderer from "./customLoadingCellRenderer.jsx";
+import React, { useCallback, useMemo, useRef, useState } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from 'ag-grid-react';
+import 'ag-grid-enterprise';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import CustomLoadingCellRenderer from './customLoadingCellRenderer.jsx';
 
 const getServerSideDatasource = (server) => {
   return {
@@ -33,7 +33,7 @@ const getFakeServer = (allData) => {
   return {
     getResponse: (request) => {
       console.log(
-        "asking for rows: " + request.startRow + " to " + request.endRow
+        'asking for rows: ' + request.startRow + ' to ' + request.endRow
       );
       // take a slice of the total rows
       const rowsThisPage = allData.slice(request.startRow, request.endRow);
@@ -50,19 +50,19 @@ const getFakeServer = (allData) => {
 };
 
 const GridExample = () => {
-  const containerStyle = useMemo(() => ({ width: "100%", height: "100%" }), []);
-  const gridStyle = useMemo(() => ({ height: "100%", width: "100%" }), []);
+  const containerStyle = useMemo(() => ({ width: '100%', height: '100%' }), []);
+  const gridStyle = useMemo(() => ({ height: '100%', width: '100%' }), []);
 
   const [columnDefs, setColumnDefs] = useState([
-    { field: "id" },
-    { field: "athlete", width: 150 },
-    { field: "age" },
-    { field: "country" },
-    { field: "year" },
-    { field: "sport" },
-    { field: "gold" },
-    { field: "silver" },
-    { field: "bronze" },
+    { field: 'id' },
+    { field: 'athlete', width: 150 },
+    { field: 'age' },
+    { field: 'country' },
+    { field: 'year' },
+    { field: 'sport' },
+    { field: 'gold' },
+    { field: 'silver' },
+    { field: 'bronze' },
   ]);
   const defaultColDef = useMemo(() => {
     return {
@@ -79,12 +79,12 @@ const GridExample = () => {
   }, []);
   const loadingCellRendererParams = useMemo(() => {
     return {
-      loadingMessage: "One moment please...",
+      loadingMessage: 'One moment please...',
     };
   }, []);
 
   const onGridReady = useCallback((params) => {
-    fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+    fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .then((resp) => resp.json())
       .then((data) => {
         // add id to data
@@ -101,7 +101,7 @@ const GridExample = () => {
   return (
     <div style={containerStyle}>
       <div
-        style={{ height: "100%", paddingTop: "25px", boxSizing: "border-box" }}
+        style={{ height: '100%', paddingTop: '25px', boxSizing: 'border-box' }}
       >
         <div style={gridStyle} className="ag-theme-alpine">
           <AgGridReact
@@ -109,8 +109,8 @@ const GridExample = () => {
             defaultColDef={defaultColDef}
             loadingCellRenderer={loadingCellRenderer}
             loadingCellRendererParams={loadingCellRendererParams}
-            rowModelType={"serverSide"}
-            serverSideStoreType={"partial"}
+            rowModelType={'serverSide'}
+            serverSideStoreType={'partial'}
             cacheBlockSize={100}
             maxBlocksInCache={10}
             animateRows={true}
@@ -122,4 +122,4 @@ const GridExample = () => {
   );
 };
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

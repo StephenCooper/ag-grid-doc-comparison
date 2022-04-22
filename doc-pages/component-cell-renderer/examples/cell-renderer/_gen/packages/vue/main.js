@@ -1,19 +1,19 @@
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import { AgGridVue } from "ag-grid-vue";
-import Vue from "vue";
-import DaysFrostRenderer from "./daysFrostRendererVue.js";
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import { AgGridVue } from 'ag-grid-vue';
+import Vue from 'vue';
+import DaysFrostRenderer from './daysFrostRendererVue.js';
 
 /*
  * It's unlikely you'll use functions that create and manipulate DOM elements like this in an React application, but it
  * demonstrates what is at least possible, and may be preferable in certain use cases
  */
 const createImageSpan = (imageMultiplier, image) => {
-  const resultElement = document.createElement("span");
+  const resultElement = document.createElement('span');
   for (let i = 0; i < imageMultiplier; i++) {
-    const imageElement = document.createElement("img");
+    const imageElement = document.createElement('img');
     imageElement.src =
-      "https://www.ag-grid.com/example-assets/weather/" + image;
+      'https://www.ag-grid.com/example-assets/weather/' + image;
     resultElement.appendChild(imageElement);
   }
   return resultElement;
@@ -22,14 +22,14 @@ const createImageSpan = (imageMultiplier, image) => {
 // This is a plain JS (not Vue) component
 class DeltaIndicator {
   init(params) {
-    const element = document.createElement("span");
-    const imageElement = document.createElement("img");
+    const element = document.createElement('span');
+    const imageElement = document.createElement('img');
     if (params.value > 15) {
       imageElement.src =
-        "https://www.ag-grid.com/example-assets/weather/fire-plus.png";
+        'https://www.ag-grid.com/example-assets/weather/fire-plus.png';
     } else {
       imageElement.src =
-        "https://www.ag-grid.com/example-assets/weather/fire-minus.png";
+        'https://www.ag-grid.com/example-assets/weather/fire-minus.png';
     }
     element.appendChild(imageElement);
     element.appendChild(document.createTextNode(params.value));
@@ -83,7 +83,7 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
     daysFrostRenderer: DaysFrostRenderer,
   },
   data: function () {
@@ -96,43 +96,43 @@ const VueExample = {
       gridApi: null,
       columnDefs: [
         {
-          headerName: "Month",
-          field: "Month",
+          headerName: 'Month',
+          field: 'Month',
           width: 75,
-          cellStyle: { color: "darkred" },
+          cellStyle: { color: 'darkred' },
         },
         {
-          headerName: "Max Temp (\u02DAC)",
-          field: "Max temp (C)",
+          headerName: 'Max Temp (\u02DAC)',
+          field: 'Max temp (C)',
           width: 120,
-          cellRenderer: "deltaIndicator",
+          cellRenderer: 'deltaIndicator',
         },
         {
-          headerName: "Min Temp (\u02DAC)",
-          field: "Min temp (C)",
+          headerName: 'Min Temp (\u02DAC)',
+          field: 'Min temp (C)',
           width: 120,
-          cellRenderer: "deltaIndicator",
+          cellRenderer: 'deltaIndicator',
         },
         {
-          headerName: "Days of Air Frost",
-          field: "Days of air frost (days)",
+          headerName: 'Days of Air Frost',
+          field: 'Days of air frost (days)',
           width: 233,
-          cellRenderer: "daysFrostRenderer",
-          cellRendererParams: { rendererImage: "frost.png" }, // Complementing the Cell Renderer parameters
+          cellRenderer: 'daysFrostRenderer',
+          cellRendererParams: { rendererImage: 'frost.png' }, // Complementing the Cell Renderer parameters
         },
         {
-          headerName: "Days Sunshine",
-          field: "Sunshine (hours)",
+          headerName: 'Days Sunshine',
+          field: 'Sunshine (hours)',
           width: 190,
-          cellRenderer: "daysSunshineRenderer",
-          cellRendererParams: { rendererImage: "sun.png" }, // Complementing the Cell Renderer parameters
+          cellRenderer: 'daysSunshineRenderer',
+          cellRendererParams: { rendererImage: 'sun.png' }, // Complementing the Cell Renderer parameters
         },
         {
-          headerName: "Rainfall (10mm)",
-          field: "Rainfall (mm)",
+          headerName: 'Rainfall (10mm)',
+          field: 'Rainfall (mm)',
           width: 180,
-          cellRenderer: "rainPerTenMmRenderer",
-          cellRendererParams: { rendererImage: "rain.png" }, // Complementing the Cell Renderer parameters
+          cellRenderer: 'rainPerTenMmRenderer',
+          cellRendererParams: { rendererImage: 'rain.png' }, // Complementing the Cell Renderer parameters
         },
       ],
       defaultColDef: {
@@ -152,7 +152,7 @@ const VueExample = {
 
       const updateData = (data) => this.gridApi.setRowData(data);
 
-      fetch("https://www.ag-grid.com/example-assets/weather-se-england.json")
+      fetch('https://www.ag-grid.com/example-assets/weather-se-england.json')
         .then((resp) => resp.json())
         .then((data) => updateData(data));
     },
@@ -164,8 +164,8 @@ const VueExample = {
       // iterate over the rows and make each "days of air frost"
       this.gridApi.forEachNode((rowNode) => {
         rowNode.setDataValue(
-          "Days of air frost (days)",
-          rowNode.data["Days of air frost (days)"] + extraDaysFrost
+          'Days of air frost (days)',
+          rowNode.data['Days of air frost (days)'] + extraDaysFrost
         );
       });
     },
@@ -173,8 +173,8 @@ const VueExample = {
 };
 
 new Vue({
-  el: "#app",
+  el: '#app',
   components: {
-    "my-component": VueExample,
+    'my-component': VueExample,
   },
 });

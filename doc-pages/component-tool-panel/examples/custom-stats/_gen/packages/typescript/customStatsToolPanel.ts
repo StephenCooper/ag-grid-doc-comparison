@@ -1,16 +1,16 @@
-import { IToolPanelComp, IToolPanelParams } from "ag-grid-community";
+import { IToolPanelComp, IToolPanelParams } from 'ag-grid-community';
 
 export class CustomStatsToolPanel implements IToolPanelComp {
   eGui!: HTMLDivElement;
   init(params: IToolPanelParams) {
-    this.eGui = document.createElement("div");
-    this.eGui.style.textAlign = "center";
+    this.eGui = document.createElement('div');
+    this.eGui.style.textAlign = 'center';
 
     // calculate stats when new rows loaded, i.e. onModelUpdated
     const renderStats = () => {
       this.eGui.innerHTML = this.calculateStats(params);
     };
-    params.api.addEventListener("modelUpdated", renderStats);
+    params.api.addEventListener('modelUpdated', renderStats);
   }
 
   getGui() {

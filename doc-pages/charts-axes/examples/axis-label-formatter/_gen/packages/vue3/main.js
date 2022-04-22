@@ -1,5 +1,5 @@
-import { AgChartsVue } from "ag-charts-vue3";
-import { createApp } from "vue";
+import { AgChartsVue } from 'ag-charts-vue3';
+import { createApp } from 'vue';
 
 const ChartExample = {
   template: `
@@ -9,7 +9,7 @@ const ChartExample = {
             </div>
     `,
   components: {
-    "ag-charts-vue": AgChartsVue,
+    'ag-charts-vue': AgChartsVue,
   },
   data: function () {
     return {
@@ -19,36 +19,36 @@ const ChartExample = {
   created() {
     this.options = {
       data: [
-        { os: "Windows", share: 88.07 },
-        { os: "macOS", share: 9.44 },
-        { os: "Linux", share: 1.87 },
+        { os: 'Windows', share: 88.07 },
+        { os: 'macOS', share: 9.44 },
+        { os: 'Linux', share: 1.87 },
       ],
       series: [
         {
-          type: "column",
-          xKey: "os",
-          yKey: "share",
+          type: 'column',
+          xKey: 'os',
+          yKey: 'share',
         },
       ],
       axes: [
         {
-          type: "category",
-          position: "bottom",
+          type: 'category',
+          position: 'bottom',
           title: {
-            text: "Desktop Operating Systems",
+            text: 'Desktop Operating Systems',
             enabled: false,
           },
         },
         {
-          type: "number",
-          position: "left",
+          type: 'number',
+          position: 'left',
           title: {
-            text: "Market Share (%)",
+            text: 'Market Share (%)',
             enabled: false,
           },
           label: {
             formatter: (params) => {
-              return params.value + "%";
+              return params.value + '%';
             },
           },
         },
@@ -62,4 +62,4 @@ const ChartExample = {
   methods: {},
 };
 
-createApp(ChartExample).mount("#app");
+createApp(ChartExample).mount('#app');

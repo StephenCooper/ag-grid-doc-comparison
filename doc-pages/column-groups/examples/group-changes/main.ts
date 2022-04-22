@@ -1,21 +1,16 @@
-import {
-  ColDef,
-  ColGroupDef,
-  Grid,
-  GridOptions,
-} from "@ag-grid-community/core";
+import { Grid, ColDef, ColGroupDef, GridOptions } from '@ag-grid-community/core'
 
 const columnDefs: ColDef[] = [
-  { field: "athlete", colId: "athlete" },
-  { field: "age", colId: "age" },
-  { field: "country", colId: "country" },
-  { field: "year", colId: "year" },
-  { field: "date", colId: "date" },
-  { field: "total", colId: "total" },
-  { field: "gold", colId: "gold" },
-  { field: "silver", colId: "silver" },
-  { field: "bronze", colId: "bronze" },
-];
+  { field: 'athlete', colId: 'athlete' },
+  { field: 'age', colId: 'age' },
+  { field: 'country', colId: 'country' },
+  { field: 'year', colId: 'year' },
+  { field: 'date', colId: 'date' },
+  { field: 'total', colId: 'total' },
+  { field: 'gold', colId: 'gold' },
+  { field: 'silver', colId: 'silver' },
+  { field: 'bronze', colId: 'bronze' },
+]
 
 const gridOptions: GridOptions = {
   defaultColDef: {
@@ -26,98 +21,98 @@ const gridOptions: GridOptions = {
   },
   columnDefs: columnDefs,
   maintainColumnOrder: true,
-};
+}
 
 function onBtNoGroups() {
   const columnDefs: ColDef[] = [
-    { field: "athlete", colId: "athlete" },
-    { field: "age", colId: "age" },
-    { field: "country", colId: "country" },
-    { field: "year", colId: "year" },
-    { field: "date", colId: "date" },
-    { field: "total", colId: "total" },
-    { field: "gold", colId: "gold" },
-    { field: "silver", colId: "silver" },
-    { field: "bronze", colId: "bronze" },
-  ];
-  gridOptions.api!.setColumnDefs(columnDefs);
+    { field: 'athlete', colId: 'athlete' },
+    { field: 'age', colId: 'age' },
+    { field: 'country', colId: 'country' },
+    { field: 'year', colId: 'year' },
+    { field: 'date', colId: 'date' },
+    { field: 'total', colId: 'total' },
+    { field: 'gold', colId: 'gold' },
+    { field: 'silver', colId: 'silver' },
+    { field: 'bronze', colId: 'bronze' },
+  ]
+  gridOptions.api!.setColumnDefs(columnDefs)
 }
 
 function onMedalsInGroupOnly() {
   const columnDefs: (ColDef | ColGroupDef)[] = [
-    { field: "athlete", colId: "athlete" },
-    { field: "age", colId: "age" },
-    { field: "country", colId: "country" },
-    { field: "year", colId: "year" },
-    { field: "date", colId: "date" },
+    { field: 'athlete', colId: 'athlete' },
+    { field: 'age', colId: 'age' },
+    { field: 'country', colId: 'country' },
+    { field: 'year', colId: 'year' },
+    { field: 'date', colId: 'date' },
     {
-      headerName: "Medals",
-      headerClass: "medals-group",
+      headerName: 'Medals',
+      headerClass: 'medals-group',
       children: [
-        { field: "total", colId: "total" },
-        { field: "gold", colId: "gold" },
-        { field: "silver", colId: "silver" },
-        { field: "bronze", colId: "bronze" },
+        { field: 'total', colId: 'total' },
+        { field: 'gold', colId: 'gold' },
+        { field: 'silver', colId: 'silver' },
+        { field: 'bronze', colId: 'bronze' },
       ],
     },
-  ];
-  gridOptions.api!.setColumnDefs(columnDefs);
+  ]
+  gridOptions.api!.setColumnDefs(columnDefs)
 }
 
 function onParticipantInGroupOnly() {
   const columnDefs: (ColDef | ColGroupDef)[] = [
     {
-      headerName: "Participant",
-      headerClass: "participant-group",
+      headerName: 'Participant',
+      headerClass: 'participant-group',
       children: [
-        { field: "athlete", colId: "athlete" },
-        { field: "age", colId: "age" },
-        { field: "country", colId: "country" },
-        { field: "year", colId: "year" },
-        { field: "date", colId: "date" },
+        { field: 'athlete', colId: 'athlete' },
+        { field: 'age', colId: 'age' },
+        { field: 'country', colId: 'country' },
+        { field: 'year', colId: 'year' },
+        { field: 'date', colId: 'date' },
       ],
     },
-    { field: "total", colId: "total" },
-    { field: "gold", colId: "gold" },
-    { field: "silver", colId: "silver" },
-    { field: "bronze", colId: "bronze" },
-  ];
-  gridOptions.api!.setColumnDefs(columnDefs);
+    { field: 'total', colId: 'total' },
+    { field: 'gold', colId: 'gold' },
+    { field: 'silver', colId: 'silver' },
+    { field: 'bronze', colId: 'bronze' },
+  ]
+  gridOptions.api!.setColumnDefs(columnDefs)
 }
 
 function onParticipantAndMedalsInGroups() {
   const columnDefs: (ColDef | ColGroupDef)[] = [
     {
-      headerName: "Participant",
-      headerClass: "participant-group",
+      headerName: 'Participant',
+      headerClass: 'participant-group',
       children: [
-        { field: "athlete", colId: "athlete" },
-        { field: "age", colId: "age" },
-        { field: "country", colId: "country" },
-        { field: "year", colId: "year" },
-        { field: "date", colId: "date" },
+        { field: 'athlete', colId: 'athlete' },
+        { field: 'age', colId: 'age' },
+        { field: 'country', colId: 'country' },
+        { field: 'year', colId: 'year' },
+        { field: 'date', colId: 'date' },
       ],
     },
     {
-      headerName: "Medals",
-      headerClass: "medals-group",
+      headerName: 'Medals',
+      headerClass: 'medals-group',
       children: [
-        { field: "total", colId: "total" },
-        { field: "gold", colId: "gold" },
-        { field: "silver", colId: "silver" },
-        { field: "bronze", colId: "bronze" },
+        { field: 'total', colId: 'total' },
+        { field: 'gold', colId: 'gold' },
+        { field: 'silver', colId: 'silver' },
+        { field: 'bronze', colId: 'bronze' },
       ],
     },
-  ];
-  gridOptions.api!.setColumnDefs(columnDefs);
+  ]
+  gridOptions.api!.setColumnDefs(columnDefs)
 }
 
 // setup the grid after the page has finished loading
-document.addEventListener("DOMContentLoaded", () => {
-  const gridDiv = document.querySelector<HTMLElement>("#myGrid")!;
-  new Grid(gridDiv, gridOptions);
+document.addEventListener('DOMContentLoaded', () => {
+  const gridDiv = document.querySelector<HTMLElement>('#myGrid')!
+  new Grid(gridDiv, gridOptions)
 
-  fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
-    .then((response) => response.json())
-    .then((data) => gridOptions.api!.setRowData(data));
-});
+  fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
+    .then(response => response.json())
+    .then(data => gridOptions.api!.setRowData(data))
+})

@@ -2,7 +2,7 @@
 function getData() {
   return [
     {
-      station: "Walthamstow Central",
+      station: 'Walthamstow Central',
       early: 2597,
       morningPeak: 9740,
       interPeak: 5337,
@@ -10,7 +10,7 @@ function getData() {
       evening: 1396,
     },
     {
-      station: "Blackhorse Road",
+      station: 'Blackhorse Road',
       early: 1156,
       morningPeak: 4403,
       interPeak: 2411,
@@ -18,7 +18,7 @@ function getData() {
       evening: 702,
     },
     {
-      station: "Tottenham Hale",
+      station: 'Tottenham Hale',
       early: 764,
       morningPeak: 5158,
       interPeak: 3511,
@@ -26,7 +26,7 @@ function getData() {
       evening: 1333,
     },
     {
-      station: "Seven Sisters",
+      station: 'Seven Sisters',
       early: 1927,
       morningPeak: 7581,
       interPeak: 5421,
@@ -34,7 +34,7 @@ function getData() {
       evening: 2036,
     },
     {
-      station: "Finsbury Park",
+      station: 'Finsbury Park',
       early: 1454,
       morningPeak: 16644,
       interPeak: 9338,
@@ -42,7 +42,7 @@ function getData() {
       evening: 3547,
     },
     {
-      station: "Highbury & Islington",
+      station: 'Highbury & Islington',
       early: 469,
       morningPeak: 6307,
       interPeak: 5209,
@@ -58,7 +58,7 @@ function getData() {
       evening: 18075,
     },
     {
-      station: "Euston",
+      station: 'Euston',
       early: 836,
       morningPeak: 12740,
       interPeak: 14964,
@@ -66,7 +66,7 @@ function getData() {
       evening: 8428,
     },
     {
-      station: "Warren Street",
+      station: 'Warren Street',
       early: 108,
       morningPeak: 1210,
       interPeak: 5902,
@@ -74,7 +74,7 @@ function getData() {
       evening: 5574,
     },
     {
-      station: "Oxford Circus",
+      station: 'Oxford Circus',
       early: 170,
       morningPeak: 1896,
       interPeak: 30616,
@@ -82,7 +82,7 @@ function getData() {
       evening: 32665,
     },
     {
-      station: "Green Park",
+      station: 'Green Park',
       early: 252,
       morningPeak: 1911,
       interPeak: 11971,
@@ -90,7 +90,7 @@ function getData() {
       evening: 11582,
     },
     {
-      station: "Victoria",
+      station: 'Victoria',
       early: 2711,
       morningPeak: 31696,
       interPeak: 39082,
@@ -98,7 +98,7 @@ function getData() {
       evening: 19407,
     },
     {
-      station: "Pimlico",
+      station: 'Pimlico',
       early: 240,
       morningPeak: 2924,
       interPeak: 4022,
@@ -106,7 +106,7 @@ function getData() {
       evening: 1762,
     },
     {
-      station: "Vauxhall",
+      station: 'Vauxhall',
       early: 940,
       morningPeak: 10104,
       interPeak: 8147,
@@ -114,7 +114,7 @@ function getData() {
       evening: 4146,
     },
     {
-      station: "Stockwell",
+      station: 'Stockwell',
       early: 731,
       morningPeak: 6821,
       interPeak: 3054,
@@ -122,7 +122,7 @@ function getData() {
       evening: 1416,
     },
     {
-      station: "Brixton",
+      station: 'Brixton',
       early: 1580,
       morningPeak: 15327,
       interPeak: 7699,

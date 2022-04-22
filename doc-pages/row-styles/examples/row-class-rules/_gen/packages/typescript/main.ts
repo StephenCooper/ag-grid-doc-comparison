@@ -1,27 +1,27 @@
-import { Grid, GridOptions } from "ag-grid-community";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
+import { Grid, GridOptions } from 'ag-grid-community';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 
 const gridOptions: GridOptions = {
   rowData: getData(),
   columnDefs: [
-    { headerName: "Employee", field: "employee" },
-    { headerName: "Number Sick Days", field: "sickDays", editable: true },
+    { headerName: 'Employee', field: 'employee' },
+    { headerName: 'Number Sick Days', field: 'sickDays', editable: true },
   ],
   rowClassRules: {
     // row style function
-    "sick-days-warning": function (params) {
+    'sick-days-warning': function (params) {
       var numSickDays = params.data.sickDays;
       return numSickDays > 5 && numSickDays <= 7;
     },
     // row style expression
-    "sick-days-breach": "data.sickDays >= 8",
+    'sick-days-breach': 'data.sickDays >= 8',
   },
 };
 
 function setDataValue() {
   gridOptions.api!.forEachNode(function (rowNode) {
-    rowNode.setDataValue("sickDays", randomInt());
+    rowNode.setDataValue('sickDays', randomInt());
   });
 }
 
@@ -51,10 +51,10 @@ function randomInt() {
 
 // wait for the document to be loaded, otherwise
 // AG Grid will not find the div in the document.
-var eGridDiv = document.querySelector<HTMLElement>("#myGrid")!;
+var eGridDiv = document.querySelector<HTMLElement>('#myGrid')!;
 new Grid(eGridDiv, gridOptions);
 
-if (typeof window !== "undefined") {
+if (typeof window !== 'undefined') {
   // Attach external event handlers to window so they can be called from index.html
   (<any>window).setDataValue = setDataValue;
   (<any>window).setData = setData;

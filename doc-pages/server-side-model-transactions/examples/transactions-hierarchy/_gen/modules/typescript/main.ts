@@ -1,24 +1,27 @@
 import {
   ColDef,
+  GetRowIdParams,
+  GetServerSideStoreParamsParams,
   Grid,
   GridOptions,
   GridReadyEvent,
   IServerSideDatasource,
   IServerSideGetRowsParams,
   ModuleRegistry,
-} from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine-dark.css";
-import { RowGroupingModule } from "@ag-grid-enterprise/row-grouping";
-import { ServerSideRowModelModule } from "@ag-grid-enterprise/server-side-row-model";
+  ServerSideStoreParams,
+} from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine-dark.css';
+import { RowGroupingModule } from '@ag-grid-enterprise/row-grouping';
+import { ServerSideRowModelModule } from '@ag-grid-enterprise/server-side-row-model';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([ServerSideRowModelModule, RowGroupingModule]);
 
 const columnDefs: ColDef[] = [
-  { field: "productName", rowGroup: true, hide: true },
-  { field: "tradeName" },
-  { field: "value" },
+  { field: 'productName', rowGroup: true, hide: true },
+  { field: 'tradeName' },
+  { field: 'value' },
 ];
 
 const gridOptions: GridOptions = {
@@ -26,11 +29,11 @@ const gridOptions: GridOptions = {
     width: 250,
     resizable: true,
   },
-  getRowId: function (params) {
+  getRowId: function (params: GetRowIdParams) {
     return params.data.id;
   },
-  rowModelType: "serverSide",
-  serverSideStoreType: "full",
+  rowModelType: 'serverSide',
+  serverSideStoreType: 'full',
   columnDefs: columnDefs,
   animateRows: true,
   purgeClosedRowNodes: true,
@@ -68,21 +71,23 @@ const gridOptions: GridOptions = {
 
     params.api.setServerSideDatasource(dataSource);
   },
-  getServerSideStoreParams: function (params) {
-    const type = params.level == 0 ? "partial" : "full";
+  getServerSideStoreParams: function (
+    params: GetServerSideStoreParamsParams
+  ): ServerSideStoreParams {
+    const type = params.level == 0 ? 'partial' : 'full';
     return {
       storeType: type,
     };
   },
 };
-const productsNames = ["Palm Oil", "Rubber", "Wool", "Amber", "Copper"];
+const productsNames = ['Palm Oil', 'Rubber', 'Wool', 'Amber', 'Copper'];
 const products: any[] = [];
 let idSequence = 0;
 
 function createOneTrade() {
   return {
     id: idSequence++,
-    tradeName: "TRD-" + Math.floor(Math.random() * 20000),
+    tradeName: 'TRD-' + Math.floor(Math.random() * 20000),
     value: Math.floor(Math.random() * 20000),
   };
 }
@@ -103,66 +108,66 @@ function setupData() {
 
 function onBtNewPalmOil() {
   const transaction = {
-    route: ["Palm Oil"],
+    route: ['Palm Oil'],
     add: [createOneTrade()],
   };
   const res = gridOptions.api!.applyServerSideTransaction(transaction);
-  console.log("New Palm Oil, result = " + (res && res.status));
+  console.log('New Palm Oil, result = ' + (res && res.status));
 }
 
 function onBtNewRubber() {
   const transaction = {
-    route: ["Rubber"],
+    route: ['Rubber'],
     add: [createOneTrade()],
   };
   const res = gridOptions.api!.applyServerSideTransaction(transaction);
-  console.log("New Rubber, result = " + (res && res.status));
+  console.log('New Rubber, result = ' + (res && res.status));
 }
 
 function onBtNewWoolAmber() {
   const transactions = [];
   transactions.push({
-    route: ["Wool"],
+    route: ['Wool'],
     add: [createOneTrade()],
   });
   transactions.push({
-    route: ["Amber"],
+    route: ['Amber'],
     add: [createOneTrade()],
   });
 
   const api = gridOptions.api!;
   transactions.forEach(function (tx) {
     const res = api.applyServerSideTransaction(tx);
-    console.log("New " + tx.route[0] + ", result = " + (res && res.status));
+    console.log('New ' + tx.route[0] + ', result = ' + (res && res.status));
   });
 }
 
 function onBtNewProduct() {
   const transaction = {
     route: [],
-    add: [{ id: idSequence++, productName: "Rice", trades: [] }],
+    add: [{ id: idSequence++, productName: 'Rice', trades: [] }],
   };
   const res = gridOptions.api!.applyServerSideTransaction(transaction);
-  console.log("New Product, result = " + (res && res.status));
+  console.log('New Product, result = ' + (res && res.status));
 }
 
 function onBtStoreState() {
   const storeState = gridOptions.api!.getServerSideStoreState();
-  console.log("Store States:");
+  console.log('Store States:');
   storeState.forEach(function (state, index) {
     console.log(
       index +
-        " - " +
-        JSON.stringify(state).replace(/"/g, "").replace(/,/g, ", ")
+        ' - ' +
+        JSON.stringify(state).replace(/"/g, '').replace(/,/g, ', ')
     );
   });
 }
 
 // setup the grid after the page has finished loading
-const gridDiv = document.querySelector<HTMLElement>("#myGrid")!;
+const gridDiv = document.querySelector<HTMLElement>('#myGrid')!;
 new Grid(gridDiv, gridOptions);
 
-if (typeof window !== "undefined") {
+if (typeof window !== 'undefined') {
   // Attach external event handlers to window so they can be called from index.html
   (<any>window).onBtNewPalmOil = onBtNewPalmOil;
   (<any>window).onBtNewRubber = onBtNewRubber;

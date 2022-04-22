@@ -1,9 +1,9 @@
-import { Component } from "@angular/core";
-import * as agCharts from "ag-charts-community";
-import { AgChartOptions } from "ag-charts-community";
+import { Component } from '@angular/core';
+import * as agCharts from 'ag-charts-community';
+import { AgChartOptions } from 'ag-charts-community';
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<ag-charts-angular
     style="height: 100%"
     [options]="options"
@@ -15,32 +15,32 @@ export class AppComponent {
   constructor() {
     this.options = {
       title: {
-        text: "Monthly average daily temperatures in the UK",
+        text: 'Monthly average daily temperatures in the UK',
       },
       series: [
         {
-          type: "line",
-          xKey: "date",
-          yKey: "temp",
+          type: 'line',
+          xKey: 'date',
+          yKey: 'temp',
         },
       ],
       axes: [
         {
-          type: "number",
-          position: "left",
+          type: 'number',
+          position: 'left',
           label: {
-            format: "🌧️ #{0>2.0f} °C",
+            format: '🌧️ #{0>2.0f} °C',
           },
         },
         {
-          type: "time",
+          type: 'time',
           nice: false,
-          position: "bottom",
+          position: 'bottom',
           tick: {
             count: agCharts.time.month,
           },
           label: {
-            format: "%b %Y",
+            format: '%b %Y',
           },
         },
       ],
@@ -55,23 +55,23 @@ export class AppComponent {
       },
       data: [
         {
-          date: new Date("01 Jan 2019 00:00:00 GMT"),
+          date: new Date('01 Jan 2019 00:00:00 GMT'),
           temp: 4.2,
         },
         {
-          date: new Date("01 Feb 2019 00:00:00 GMT"),
+          date: new Date('01 Feb 2019 00:00:00 GMT'),
           temp: 6.9,
         },
         {
-          date: new Date("01 Mar 2019 00:00:00 GMT"),
+          date: new Date('01 Mar 2019 00:00:00 GMT'),
           temp: 7.9,
         },
         {
-          date: new Date("01 Apr 2019 00:00:00 GMT"),
+          date: new Date('01 Apr 2019 00:00:00 GMT'),
           temp: 9.1,
         },
         {
-          date: new Date("01 May 2019 00:00:00 GMT"),
+          date: new Date('01 May 2019 00:00:00 GMT'),
           temp: 11.2,
         },
       ],

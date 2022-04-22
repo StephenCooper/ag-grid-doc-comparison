@@ -1,12 +1,12 @@
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { AgGridVue } from "@ag-grid-community/vue";
-import { FiltersToolPanelModule } from "@ag-grid-enterprise/filter-tool-panel";
-import { MenuModule } from "@ag-grid-enterprise/menu";
-import { SetFilterModule } from "@ag-grid-enterprise/set-filter";
-import Vue from "vue";
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { AgGridVue } from '@ag-grid-community/vue';
+import { FiltersToolPanelModule } from '@ag-grid-enterprise/filter-tool-panel';
+import { MenuModule } from '@ag-grid-enterprise/menu';
+import { SetFilterModule } from '@ag-grid-enterprise/set-filter';
+import Vue from 'vue';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([
@@ -40,36 +40,38 @@ const VueExample = {
                 :columnDefs="columnDefs"
                 @grid-ready="onGridReady"
                 :defaultColDef="defaultColDef"
-                :rowData="rowData"></ag-grid-vue>
+                :sideBar="sideBar"
+                :rowData="rowData"
+                @first-data-rendered="onFirstDataRendered"></ag-grid-vue>
             </div>
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
         {
-          field: "athlete",
-          filter: "agSetColumnFilter",
+          field: 'athlete',
+          filter: 'agSetColumnFilter',
           filterParams: { cellHeight: 20 },
         },
-        { field: "age", maxWidth: 120, filter: "agNumberColumnFilter" },
         {
-          field: "country",
+          field: 'country',
           valueFormatter: (params) => {
             return `${params.value.name} (${params.value.code})`;
           },
           keyCreator: countryKeyCreator,
         },
-        { field: "year", maxWidth: 120 },
-        { field: "date" },
-        { field: "sport" },
-        { field: "gold", filter: "agNumberColumnFilter" },
-        { field: "silver", filter: "agNumberColumnFilter" },
-        { field: "bronze", filter: "agNumberColumnFilter" },
-        { field: "total", filter: "agNumberColumnFilter" },
+        { field: 'age', maxWidth: 120, filter: 'agNumberColumnFilter' },
+        { field: 'year', maxWidth: 120 },
+        { field: 'date' },
+        { field: 'sport' },
+        { field: 'gold', filter: 'agNumberColumnFilter' },
+        { field: 'silver', filter: 'agNumberColumnFilter' },
+        { field: 'bronze', filter: 'agNumberColumnFilter' },
+        { field: 'total', filter: 'agNumberColumnFilter' },
       ],
       gridApi: null,
       columnApi: null,
@@ -79,34 +81,40 @@ const VueExample = {
         filter: true,
         resizable: true,
       },
+      sideBar: null,
       rowData: null,
     };
   },
-  created() {},
+  created() {
+    this.sideBar = 'filters';
+  },
   methods: {
+    onFirstDataRendered() {
+      this.gridApi.getToolPanelInstance('filters').expandFilters();
+    },
     selectJohnAndKenny() {
-      const instance = this.gridApi.getFilterInstance("athlete");
-      instance.setModel({ values: ["John Joe Nevin", "Kenny Egan"] });
+      const instance = this.gridApi.getFilterInstance('athlete');
+      instance.setModel({ values: ['John Joe Nevin', 'Kenny Egan'] });
       this.gridApi.onFilterChanged();
     },
     selectEverything() {
-      const instance = this.gridApi.getFilterInstance("athlete");
+      const instance = this.gridApi.getFilterInstance('athlete');
       instance.setModel(null);
       this.gridApi.onFilterChanged();
     },
     selectNothing() {
-      const instance = this.gridApi.getFilterInstance("athlete");
+      const instance = this.gridApi.getFilterInstance('athlete');
       instance.setModel({ values: [] });
       this.gridApi.onFilterChanged();
     },
     setCountriesToFranceAustralia() {
-      const instance = this.gridApi.getFilterInstance("country");
-      instance.setFilterValues(["France", "Australia"]);
+      const instance = this.gridApi.getFilterInstance('country');
+      instance.setFilterValues(['France', 'Australia']);
       instance.applyModel();
       this.gridApi.onFilterChanged();
     },
     setCountriesToAll() {
-      const instance = this.gridApi.getFilterInstance("country");
+      const instance = this.gridApi.getFilterInstance('country');
       instance.resetFilterValues();
       instance.applyModel();
       this.gridApi.onFilterChanged();
@@ -120,7 +128,7 @@ const VueExample = {
         this.rowData = data;
       };
 
-      fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
         .then((resp) => resp.json())
         .then((data) => updateData(data));
     },
@@ -144,8 +152,8 @@ window.patchData = function patchData(data) {
 };
 
 new Vue({
-  el: "#app",
+  el: '#app',
   components: {
-    "my-component": VueExample,
+    'my-component': VueExample,
   },
 });

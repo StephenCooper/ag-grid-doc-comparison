@@ -1,0 +1,28 @@
+{
+  "name": "ag-grid-modules",
+  "description": "NOTE: This package.json file is solely used by Plunker to look up type definitions.",
+  "dependencies": {
+    "@ag-grid-community/core": "*",
+    "@ag-grid-community/client-side-row-model": "*",
+    "@ag-grid-community/infinite-row-model": "*",
+    "@ag-grid-community/csv-export": "*",
+    "@ag-grid-enterprise/core": "*",
+    "@ag-grid-enterprise/charts": "*",
+    "@ag-grid-enterprise/sparklines": "*",
+    "@ag-grid-enterprise/clipboard": "*",
+    "@ag-grid-enterprise/column-tool-panel": "*",
+    "@ag-grid-enterprise/excel-export": "*",
+    "@ag-grid-enterprise/filter-tool-panel": "*",
+    "@ag-grid-enterprise/master-detail": "*",
+    "@ag-grid-enterprise/menu": "*",
+    "@ag-grid-enterprise/range-selection": "*",
+    "@ag-grid-enterprise/rich-select": "*",
+    "@ag-grid-enterprise/row-grouping": "*",
+    "@ag-grid-enterprise/server-side-row-model": "*",
+    "@ag-grid-enterprise/set-filter": "*",
+    "@ag-grid-enterprise/multi-filter": "*",
+    "@ag-grid-enterprise/side-bar": "*",
+    "@ag-grid-enterprise/status-bar": "*",
+    "@ag-grid-enterprise/viewport-row-model": "*"
+  }
+}

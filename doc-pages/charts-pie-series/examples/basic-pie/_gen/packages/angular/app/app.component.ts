@@ -1,8 +1,8 @@
-import { Component } from "@angular/core";
-import { AgChartOptions } from "ag-charts-community";
+import { Component } from '@angular/core';
+import { AgChartOptions } from 'ag-charts-community';
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<ag-charts-angular
     style="height: 100%"
     [options]="options"
@@ -23,8 +23,8 @@ export class AppComponent {
       ],
       series: [
         {
-          type: "pie",
-          angleKey: "value",
+          type: 'pie',
+          angleKey: 'value',
         },
       ],
     };

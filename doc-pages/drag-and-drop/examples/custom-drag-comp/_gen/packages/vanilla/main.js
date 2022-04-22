@@ -1,7 +1,7 @@
 var rowClassRules = {
-  "red-row": 'data.color == "Red"',
-  "green-row": 'data.color == "Green"',
-  "blue-row": 'data.color == "Blue"',
+  'red-row': 'data.color == "Red"',
+  'green-row': 'data.color == "Green"',
+  'blue-row': 'data.color == "Blue"',
 };
 
 const gridOptions = {
@@ -16,10 +16,10 @@ const gridOptions = {
   rowDragManaged: true,
   columnDefs: [
     { cellRenderer: DragSourceRenderer, minWidth: 100 },
-    { field: "id" },
-    { field: "color" },
-    { field: "value1" },
-    { field: "value2" },
+    { field: 'id' },
+    { field: 'color' },
+    { field: 'value1' },
+    { field: 'value2' },
   ],
   animateRows: true,
 };
@@ -30,7 +30,7 @@ function onDragOver(event) {
   var dragSupported = types.length;
 
   if (dragSupported) {
-    event.dataTransfer.dropEffect = "move";
+    event.dataTransfer.dropEffect = 'move';
   }
 
   event.preventDefault();
@@ -39,17 +39,17 @@ function onDragOver(event) {
 function onDrop(event) {
   event.preventDefault();
 
-  var textData = event.dataTransfer.getData("text/plain");
-  var eJsonRow = document.createElement("div");
-  eJsonRow.classList.add("json-row");
+  var textData = event.dataTransfer.getData('text/plain');
+  var eJsonRow = document.createElement('div');
+  eJsonRow.classList.add('json-row');
   eJsonRow.innerText = textData;
 
-  var eJsonDisplay = document.querySelector("#eJsonDisplay");
+  var eJsonDisplay = document.querySelector('#eJsonDisplay');
   eJsonDisplay.appendChild(eJsonRow);
 }
 
 // setup the grid after the page has finished loading
-document.addEventListener("DOMContentLoaded", function () {
-  var gridDiv = document.querySelector("#myGrid");
+document.addEventListener('DOMContentLoaded', function () {
+  var gridDiv = document.querySelector('#myGrid');
   new agGrid.Grid(gridDiv, gridOptions);
 });

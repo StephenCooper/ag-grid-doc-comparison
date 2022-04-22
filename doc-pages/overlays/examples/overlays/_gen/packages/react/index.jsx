@@ -1,10 +1,10 @@
-"use strict";
+'use strict';
 
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import { AgGridReact } from "ag-grid-react";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from 'ag-grid-react';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 
 class GridExample extends Component {
   constructor(props) {
@@ -12,16 +12,16 @@ class GridExample extends Component {
 
     this.state = {
       columnDefs: [
-        { field: "athlete", minWidth: 200 },
-        { field: "age" },
-        { field: "country", minWidth: 200 },
-        { field: "year" },
-        { field: "date", minWidth: 180 },
-        { field: "sport", minWidth: 200 },
-        { field: "gold" },
-        { field: "silver" },
-        { field: "bronze" },
-        { field: "total" },
+        { field: 'athlete', minWidth: 200 },
+        { field: 'age' },
+        { field: 'country', minWidth: 200 },
+        { field: 'year' },
+        { field: 'date', minWidth: 180 },
+        { field: 'sport', minWidth: 200 },
+        { field: 'gold' },
+        { field: 'silver' },
+        { field: 'bronze' },
+        { field: 'total' },
       ],
       defaultColDef: {
         flex: 1,
@@ -33,7 +33,7 @@ class GridExample extends Component {
       overlayLoadingTemplate:
         '<span class="ag-overlay-loading-center">Please wait while your rows are loading</span>',
       overlayNoRowsTemplate:
-        "<span style=\"padding: 10px; border: 2px solid #444; background: lightgoldenrodyellow;\">This is a custom 'no rows' overlay</span>",
+        '<span style="padding: 10px; border: 2px solid #444; background: lightgoldenrodyellow;">This is a custom \'no rows\' overlay</span>',
       rowData: null,
     };
   }
@@ -44,7 +44,7 @@ class GridExample extends Component {
 
     const updateData = (data) => params.api.setRowData(data);
 
-    fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+    fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .then((resp) => resp.json())
       .then((data) => updateData(data));
   };
@@ -63,9 +63,9 @@ class GridExample extends Component {
 
   render() {
     return (
-      <div style={{ width: "100%", height: "100%" }}>
+      <div style={{ width: '100%', height: '100%' }}>
         <div className="example-wrapper">
-          <div style={{ marginBottom: "5px" }}>
+          <div style={{ marginBottom: '5px' }}>
             <button onClick={() => this.onBtShowLoading()}>
               Show Loading Overlay
             </button>
@@ -76,8 +76,8 @@ class GridExample extends Component {
           </div>
           <div
             style={{
-              height: "100%",
-              width: "100%",
+              height: '100%',
+              width: '100%',
             }}
             className="ag-theme-alpine"
           >
@@ -96,4 +96,4 @@ class GridExample extends Component {
   }
 }
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

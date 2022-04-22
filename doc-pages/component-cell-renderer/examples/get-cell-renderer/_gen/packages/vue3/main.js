@@ -1,8 +1,8 @@
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import { AgGridVue } from "ag-grid-vue3";
-import { createApp } from "vue";
-import MedalCellRenderer from "./medalCellRendererVue.js";
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import { AgGridVue } from 'ag-grid-vue3';
+import { createApp } from 'vue';
+import MedalCellRenderer from './medalCellRendererVue.js';
 
 const VueExample = {
   template: `
@@ -26,19 +26,19 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
     MedalCellRenderer,
   },
   data: function () {
     return {
       columnDefs: [
-        { field: "athlete", width: 150 },
-        { field: "country", width: 150 },
-        { field: "year", width: 100 },
-        { field: "gold", width: 100, cellRenderer: "MedalCellRenderer" },
-        { field: "silver", width: 100, cellRenderer: "MedalCellRenderer" },
-        { field: "bronze", width: 100, cellRenderer: "MedalCellRenderer" },
-        { field: "total", width: 100 },
+        { field: 'athlete', width: 150 },
+        { field: 'country', width: 150 },
+        { field: 'year', width: 100 },
+        { field: 'gold', width: 100, cellRenderer: 'MedalCellRenderer' },
+        { field: 'silver', width: 100, cellRenderer: 'MedalCellRenderer' },
+        { field: 'bronze', width: 100, cellRenderer: 'MedalCellRenderer' },
+        { field: 'total', width: 100 },
       ],
       gridApi: null,
       columnApi: null,
@@ -56,26 +56,26 @@ const VueExample = {
   created() {},
   methods: {
     onCallGold() {
-      console.log("=========> calling all gold");
+      console.log('=========> calling all gold');
       // pass in list of columns, here it's gold only
-      const params = { columns: ["gold"] };
+      const params = { columns: ['gold'] };
       const instances = this.gridApi.getCellRendererInstances(params);
       instances.forEach((instance) => {
         instance.medalUserFunction();
       });
     },
     onFirstRowGold() {
-      console.log("=========> calling gold row one");
+      console.log('=========> calling gold row one');
       // pass in one column and one row to identify one cell
       const firstRowNode = this.gridApi.getDisplayedRowAtIndex(0);
-      const params = { columns: ["gold"], rowNodes: [firstRowNode] };
+      const params = { columns: ['gold'], rowNodes: [firstRowNode] };
       const instances = this.gridApi.getCellRendererInstances(params);
       instances.forEach((instance) => {
         instance.medalUserFunction();
       });
     },
     onCallAllCells() {
-      console.log("=========> calling everything");
+      console.log('=========> calling everything');
       // no params, goes through all rows and columns where cell renderer exists
       const instances = this.gridApi.getCellRendererInstances();
       instances.forEach((instance) => {
@@ -90,11 +90,11 @@ const VueExample = {
         this.rowData = data;
       };
 
-      fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
         .then((resp) => resp.json())
         .then((data) => updateData(data));
     },
   },
 };
 
-createApp(VueExample).mount("#app");
+createApp(VueExample).mount('#app');

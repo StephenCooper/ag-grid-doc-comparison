@@ -1,0 +1,99 @@
+'use strict';
+
+import React, { useCallback, useMemo, useRef, useState } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from '@ag-grid-community/react';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine-dark.css';
+import {
+  CellValueChangedEvent,
+  ColDef,
+  ColGroupDef,
+  Grid,
+  GridOptions,
+  GridReadyEvent,
+} from '@ag-grid-community/core';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+
+// Register the required feature modules with the Grid
+ModuleRegistry.registerModules([ClientSideRowModelModule]);
+
+const GridExample = () => {
+  const gridRef = useRef<AgGridReact>(null);
+  const containerStyle = useMemo(() => ({ width: '100%', height: '100%' }), []);
+  const gridStyle = useMemo(() => ({ height: '100%', width: '100%' }), []);
+  const [rowData, setRowData] = useState<any[]>(getData());
+  const [columnDefs, setColumnDefs] = useState<ColDef[]>([
+    {
+      headerName: 'String (editable)',
+      field: 'simple',
+      editable: true,
+    },
+    {
+      headerName: 'Bad Number (editable)',
+      field: 'numberBad',
+      editable: true,
+    },
+    {
+      headerName: 'Good Number (editable)',
+      field: 'numberGood',
+      editable: true,
+      valueFormatter: `"£" + Math.floor(value).toString().replace(/(\\d)(?=(\\d{3})+(?!\\d))/g, "$1,")`,
+      valueParser: 'Number(newValue)',
+    },
+    {
+      headerName: 'Name (editable)',
+      editable: true,
+      valueGetter: 'data.firstName + " " + data.lastName',
+      valueSetter:
+        // an expression can span multiple lines!!!
+        `var nameSplit = newValue.split(" ");
+             var newFirstName = nameSplit[0];
+             var newLastName = nameSplit[1];
+             if (data.firstName !== newFirstName || data.lastName !== newLastName) {  
+                data.firstName = newFirstName;  
+                data.lastName = newLastName;  
+                return true;
+            } else {  
+                return false;
+            }`,
+    },
+    { headerName: 'A', field: 'a', maxWidth: 120 },
+    { headerName: 'B', field: 'b', maxWidth: 120 },
+    { headerName: 'A + B', valueGetter: 'data.a + data.b', maxWidth: 120 },
+  ]);
+  const defaultColDef = useMemo<ColDef>(() => {
+    return {
+      flex: 1,
+      minWidth: 200,
+      resizable: true,
+    };
+  }, []);
+
+  const onGridReady = useCallback((params: GridReadyEvent) => {
+    gridRef.current!.api.sizeColumnsToFit();
+  }, []);
+
+  const onCellValueChanged = useCallback((event: CellValueChangedEvent) => {
+    console.log('data after changes is: ', event.data);
+  }, []);
+
+  return (
+    <div style={containerStyle}>
+      <div style={gridStyle} className="ag-theme-alpine-dark">
+        <AgGridReact
+          ref={gridRef}
+          rowData={rowData}
+          columnDefs={columnDefs}
+          defaultColDef={defaultColDef}
+          enableRangeSelection={true}
+          onGridReady={onGridReady}
+          onCellValueChanged={onCellValueChanged}
+        ></AgGridReact>
+      </div>
+    </div>
+  );
+};
+
+render(<GridExample></GridExample>, document.querySelector('#root'));

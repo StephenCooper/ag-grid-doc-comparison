@@ -1,15 +1,15 @@
-import { Component } from "@angular/core";
+import { Component } from '@angular/core';
 import {
   ColDef,
   GridReadyEvent,
   RowGroupingDisplayType,
-} from "ag-grid-community";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
+} from 'ag-grid-community';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import 'ag-grid-enterprise';
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<ag-grid-angular
     style="width: 100%; height: 100%;"
     class="ag-theme-alpine"
@@ -26,9 +26,9 @@ import "ag-grid-enterprise";
 })
 export class AppComponent {
   public columnDefs: ColDef[] = [
-    { field: "assignee", rowGroup: true, hide: true },
-    { field: "priority", rowGroup: true, hide: true },
-    { field: "task" },
+    { field: 'assignee', rowGroup: true, hide: true },
+    { field: 'priority', rowGroup: true, hide: true },
+    { field: 'task' },
   ];
   public defaultColDef: ColDef = {
     flex: 1,
@@ -39,7 +39,7 @@ export class AppComponent {
   public autoGroupColumnDef: ColDef = {
     minWidth: 200,
   };
-  public groupDisplayType: RowGroupingDisplayType = "multipleColumns";
+  public groupDisplayType: RowGroupingDisplayType = 'multipleColumns';
   public groupDefaultExpanded = -1;
   public rowData: any[] | null = getData();
 

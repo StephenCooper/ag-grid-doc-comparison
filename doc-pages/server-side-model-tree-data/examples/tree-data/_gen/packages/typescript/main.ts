@@ -7,25 +7,25 @@ import {
   IServerSideGetRowsParams,
   IServerSideGetRowsRequest,
   IsServerSideGroupOpenByDefaultParams,
-} from "ag-grid-community";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine-dark.css";
-import "ag-grid-enterprise";
+} from 'ag-grid-community';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine-dark.css';
+import 'ag-grid-enterprise';
 const columnDefs: ColDef[] = [
-  { field: "employeeId", hide: true },
-  { field: "employeeName", hide: true },
-  { field: "jobTitle" },
-  { field: "employmentType" },
+  { field: 'employeeId', hide: true },
+  { field: 'employeeName', hide: true },
+  { field: 'jobTitle' },
+  { field: 'employmentType' },
 ];
 
 const gridOptions: GridOptions = {
   defaultColDef: {
     width: 240,
-    filter: "agTextColumnFilter",
+    filter: 'agTextColumnFilter',
     flex: 1,
   },
   autoGroupColumnDef: {
-    field: "employeeName",
+    field: 'employeeName',
     cellRendererParams: {
       innerRenderer: function (params: ICellRendererParams) {
         // display employeeName rather than group key (employeeId)
@@ -33,8 +33,8 @@ const gridOptions: GridOptions = {
       },
     },
   },
-  rowModelType: "serverSide",
-  serverSideStoreType: "partial",
+  rowModelType: 'serverSide',
+  serverSideStoreType: 'partial',
   treeData: true,
   columnDefs: columnDefs,
   animateRows: true,
@@ -55,10 +55,10 @@ const gridOptions: GridOptions = {
 };
 
 // setup the grid after the page has finished loading
-var gridDiv = document.querySelector<HTMLElement>("#myGrid")!;
+var gridDiv = document.querySelector<HTMLElement>('#myGrid')!;
 new Grid(gridDiv, gridOptions);
 
-fetch("https://www.ag-grid.com/example-assets/small-tree-data.json")
+fetch('https://www.ag-grid.com/example-assets/small-tree-data.json')
   .then((response) => response.json())
   .then(function (data) {
     var fakeServer = createFakeServer(data);
@@ -104,7 +104,7 @@ function createFakeServer(fakeServerData: any[]) {
 function createServerSideDatasource(fakeServer: any) {
   const dataSource: IServerSideDatasource = {
     getRows: function (params: IServerSideGetRowsParams) {
-      console.log("ServerSideDatasource.getRows: params = ", params);
+      console.log('ServerSideDatasource.getRows: params = ', params);
 
       var allRows = fakeServer.getData(params.request);
 
@@ -116,7 +116,7 @@ function createServerSideDatasource(fakeServer: any) {
             rowCount: allRows.length,
           }
         : { rowData: allRows };
-      console.log("getRows: result = ", result);
+      console.log('getRows: result = ', result);
       setTimeout(function () {
         params.success(result);
       }, 200);

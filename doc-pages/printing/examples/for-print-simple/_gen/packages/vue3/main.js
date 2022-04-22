@@ -1,7 +1,7 @@
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import { AgGridVue } from "ag-grid-vue3";
-import { createApp } from "vue";
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import { AgGridVue } from 'ag-grid-vue3';
+import { createApp } from 'vue';
 
 const VueExample = {
   template: `
@@ -31,17 +31,17 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
-        { headerName: "ID", valueGetter: "node.rowIndex + 1", width: 70 },
-        { field: "model", width: 150 },
-        { field: "color" },
-        { field: "price", valueFormatter: "'$' + value.toLocaleString()" },
-        { field: "year" },
-        { field: "country" },
+        { headerName: 'ID', valueGetter: 'node.rowIndex + 1', width: 70 },
+        { field: 'model', width: 150 },
+        { field: 'color' },
+        { field: 'price', valueFormatter: "'$' + value.toLocaleString()" },
+        { field: 'year' },
+        { field: 'country' },
       ],
       gridApi: null,
       columnApi: null,
@@ -56,15 +56,15 @@ const VueExample = {
   },
   methods: {
     onBtPrinterFriendly() {
-      var eGridDiv = document.querySelector("#myGrid");
-      eGridDiv.style.width = "";
-      eGridDiv.style.height = "";
-      this.gridApi.setDomLayout("print");
+      var eGridDiv = document.querySelector('#myGrid');
+      eGridDiv.style.width = '';
+      eGridDiv.style.height = '';
+      this.gridApi.setDomLayout('print');
     },
     onBtNormal() {
-      var eGridDiv = document.querySelector("#myGrid");
-      eGridDiv.style.width = "400px";
-      eGridDiv.style.height = "200px";
+      var eGridDiv = document.querySelector('#myGrid');
+      eGridDiv.style.width = '400px';
+      eGridDiv.style.height = '200px';
       // Same as setting to 'normal' as it is the default
       this.gridApi.setDomLayout();
     },
@@ -75,4 +75,4 @@ const VueExample = {
   },
 };
 
-createApp(VueExample).mount("#app");
+createApp(VueExample).mount('#app');

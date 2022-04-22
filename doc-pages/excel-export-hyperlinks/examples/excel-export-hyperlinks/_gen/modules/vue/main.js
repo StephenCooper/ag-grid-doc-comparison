@@ -1,11 +1,11 @@
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { AgGridVue } from "@ag-grid-community/vue";
-import { ExcelExportModule } from "@ag-grid-enterprise/excel-export";
-import { MenuModule } from "@ag-grid-enterprise/menu";
-import Vue from "vue";
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { AgGridVue } from '@ag-grid-community/vue';
+import { ExcelExportModule } from '@ag-grid-enterprise/excel-export';
+import { MenuModule } from '@ag-grid-enterprise/menu';
+import Vue from 'vue';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([
@@ -37,13 +37,13 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
-        { field: "company" },
-        { field: "url", cellClass: "hyperlinks" },
+        { field: 'company' },
+        { field: 'url', cellClass: 'hyperlinks' },
       ],
       gridApi: null,
       columnApi: null,
@@ -62,29 +62,29 @@ const VueExample = {
       autoConvertFormulas: true,
       processCellCallback: (params) => {
         const field = params.column.getColDef().field;
-        return field === "url" ? `=HYPERLINK("${params.value}")` : params.value;
+        return field === 'url' ? `=HYPERLINK("${params.value}")` : params.value;
       },
     };
     this.excelStyles = [
       {
-        id: "hyperlinks",
+        id: 'hyperlinks',
         font: {
-          underline: "Single",
-          color: "#358ccb",
+          underline: 'Single',
+          color: '#358ccb',
         },
       },
     ];
     this.rowData = [
-      { company: "Google", url: "https://www.google.com" },
-      { company: "Adobe", url: "https://www.adobe.com" },
-      { company: "The New York Times", url: "https://www.nytimes.com" },
-      { company: "Twitter", url: "https://www.twitter.com" },
-      { company: "StackOverflow", url: "https://stackoverflow.com/" },
-      { company: "Reddit", url: "https://www.reddit.com" },
-      { company: "Github", url: "https://www.github.com" },
-      { company: "Microsoft", url: "https://www.microsoft.com" },
-      { company: "Gizmodo", url: "https://www.gizmodo.com" },
-      { company: "LinkedIN", url: "https://www.linkedin.com" },
+      { company: 'Google', url: 'https://www.google.com' },
+      { company: 'Adobe', url: 'https://www.adobe.com' },
+      { company: 'The New York Times', url: 'https://www.nytimes.com' },
+      { company: 'Twitter', url: 'https://www.twitter.com' },
+      { company: 'StackOverflow', url: 'https://stackoverflow.com/' },
+      { company: 'Reddit', url: 'https://www.reddit.com' },
+      { company: 'Github', url: 'https://www.github.com' },
+      { company: 'Microsoft', url: 'https://www.microsoft.com' },
+      { company: 'Gizmodo', url: 'https://www.gizmodo.com' },
+      { company: 'LinkedIN', url: 'https://www.linkedin.com' },
     ];
   },
   methods: {
@@ -99,8 +99,8 @@ const VueExample = {
 };
 
 new Vue({
-  el: "#app",
+  el: '#app',
   components: {
-    "my-component": VueExample,
+    'my-component': VueExample,
   },
 });

@@ -5,16 +5,16 @@ import {
   IServerSideDatasource,
   ServerSideStoreParams,
   ServerSideStoreType,
-} from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine-dark.css";
-import { HttpClient } from "@angular/common/http";
-import { Component } from "@angular/core";
+} from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine-dark.css';
+import { HttpClient } from '@angular/common/http';
+import { Component } from '@angular/core';
 // Required feature modules are registered in app.module.ts
 declare var FakeServer: any;
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<ag-grid-angular
     style="width: 100%; height: 100%;"
     class="ag-theme-alpine-dark"
@@ -34,12 +34,12 @@ declare var FakeServer: any;
 })
 export class AppComponent {
   public columnDefs: ColDef[] = [
-    { field: "country", enableRowGroup: true, rowGroup: true },
-    { field: "sport", enableRowGroup: true, rowGroup: true },
-    { field: "year", minWidth: 100 },
-    { field: "gold", aggFunc: "sum" },
-    { field: "silver", aggFunc: "sum" },
-    { field: "bronze", aggFunc: "sum" },
+    { field: 'country', enableRowGroup: true, rowGroup: true },
+    { field: 'sport', enableRowGroup: true, rowGroup: true },
+    { field: 'year', minWidth: 100 },
+    { field: 'gold', aggFunc: 'sum' },
+    { field: 'silver', aggFunc: 'sum' },
+    { field: 'bronze', aggFunc: 'sum' },
   ];
   public defaultColDef: ColDef = {
     flex: 1,
@@ -47,25 +47,25 @@ export class AppComponent {
     resizable: true,
     sortable: true,
   };
-  public rowGroupPanelShow = "always";
+  public rowGroupPanelShow = 'always';
   public autoGroupColumnDef: ColDef = {
     flex: 1,
     minWidth: 280,
   };
   public cacheBlockSize = 4;
-  public rowModelType = "serverSide";
-  public serverSideStoreType: ServerSideStoreType = "partial";
+  public rowModelType = 'serverSide';
+  public serverSideStoreType: ServerSideStoreType = 'partial';
   public getServerSideStoreParams: (
     params: GetServerSideStoreParamsParams
   ) => ServerSideStoreParams = function (
     params: GetServerSideStoreParamsParams
-  ) {
+  ): ServerSideStoreParams {
     var noGroupingActive = params.rowGroupColumns.length == 0;
     var res: ServerSideStoreParams;
     if (noGroupingActive) {
       res = {
         // infinite scrolling
-        storeType: "partial",
+        storeType: 'partial',
         // 100 rows per block
         cacheBlockSize: 100,
         // purge blocks that are not needed
@@ -74,16 +74,16 @@ export class AppComponent {
     } else {
       var topLevelRows = params.level == 0;
       res = {
-        storeType: topLevelRows ? "full" : "partial",
+        storeType: topLevelRows ? 'full' : 'partial',
         cacheBlockSize: params.level == 1 ? 5 : 2,
         maxBlocksInCache: -1, // never purge blocks
       };
     }
-    console.log("############## NEW STORE ##############");
+    console.log('############## NEW STORE ##############');
     console.log(
-      "getServerSideStoreParams, level = " +
+      'getServerSideStoreParams, level = ' +
         params.level +
-        ", result = " +
+        ', result = ' +
         JSON.stringify(res)
     );
     return res;
@@ -94,7 +94,7 @@ export class AppComponent {
 
   onGridReady(params: GridReadyEvent) {
     this.http
-      .get<any[]>("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      .get<any[]>('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .subscribe((data) => {
         // setup the fake server with entire dataset
         var fakeServer = new FakeServer(data);
@@ -109,7 +109,7 @@ export class AppComponent {
 function getServerSideDatasource(server: any): IServerSideDatasource {
   return {
     getRows: function (params) {
-      console.log("[Datasource] - rows requested by grid: ", params.request);
+      console.log('[Datasource] - rows requested by grid: ', params.request);
       var response = server.getData(params.request);
       // adding delay to simulate real server call
       setTimeout(function () {

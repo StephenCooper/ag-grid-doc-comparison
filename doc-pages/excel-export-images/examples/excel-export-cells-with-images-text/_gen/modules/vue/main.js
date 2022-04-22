@@ -1,12 +1,12 @@
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { AgGridVue } from "@ag-grid-community/vue";
-import { ExcelExportModule } from "@ag-grid-enterprise/excel-export";
-import { MenuModule } from "@ag-grid-enterprise/menu";
-import Vue from "vue";
-import CountryCellRenderer from "./countryCellRendererVue.js";
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { AgGridVue } from '@ag-grid-community/vue';
+import { ExcelExportModule } from '@ag-grid-enterprise/excel-export';
+import { MenuModule } from '@ag-grid-enterprise/menu';
+import Vue from 'vue';
+import CountryCellRenderer from './countryCellRendererVue.js';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([
@@ -38,26 +38,26 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
     CountryCellRenderer,
   },
   data: function () {
     return {
       columnDefs: [
-        { field: "athlete", width: 200 },
+        { field: 'athlete', width: 200 },
         {
-          field: "country",
-          cellClass: "countryCell",
-          cellRenderer: "CountryCellRenderer",
+          field: 'country',
+          cellClass: 'countryCell',
+          cellRenderer: 'CountryCellRenderer',
         },
-        { field: "age" },
-        { field: "year" },
-        { field: "date" },
-        { field: "sport" },
-        { field: "gold" },
-        { field: "silver" },
-        { field: "bronze" },
-        { field: "total" },
+        { field: 'age' },
+        { field: 'year' },
+        { field: 'date' },
+        { field: 'sport' },
+        { field: 'gold' },
+        { field: 'silver' },
+        { field: 'bronze' },
+        { field: 'total' },
       ],
       gridApi: null,
       columnApi: null,
@@ -73,16 +73,16 @@ const VueExample = {
   created() {
     this.excelStyles = [
       {
-        id: "countryCell",
+        id: 'countryCell',
         alignment: {
-          vertical: "Center",
+          vertical: 'Center',
           indent: 4,
         },
       },
     ];
     this.defaultExcelExportParams = {
       addImageToCell: (rowIndex, col, value) => {
-        if (col.getColId() !== "country") {
+        if (col.getColId() !== 'country') {
           return;
         }
         const countryCode = countryCodes[value];
@@ -90,7 +90,7 @@ const VueExample = {
           image: {
             id: countryCode,
             base64: base64flags[countryCode],
-            imageType: "png",
+            imageType: 'png',
             width: 20,
             height: 11,
             position: {
@@ -115,7 +115,7 @@ const VueExample = {
       this.gridApi = params.api;
       this.gridColumnApi = params.columnApi;
 
-      fetch("https://www.ag-grid.com/example-assets/small-olympic-winners.json")
+      fetch('https://www.ag-grid.com/example-assets/small-olympic-winners.json')
         .then((data) =>
           createBase64FlagsFromResponse(data, countryCodes, base64flags)
         )
@@ -129,8 +129,8 @@ const countryCodes = {};
 const base64flags = {};
 
 new Vue({
-  el: "#app",
+  el: '#app',
   components: {
-    "my-component": VueExample,
+    'my-component': VueExample,
   },
 });

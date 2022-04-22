@@ -5,15 +5,15 @@ import {
   ColDef,
   GridApi,
   GridReadyEvent,
-} from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { HttpClient } from "@angular/common/http";
-import { Component } from "@angular/core";
+} from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { HttpClient } from '@angular/common/http';
+import { Component } from '@angular/core';
 // Required feature modules are registered in app.module.ts
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<ag-grid-angular
     style="width: 100%; height: 100%;"
     class="ag-theme-alpine"
@@ -33,9 +33,9 @@ export class AppComponent {
   private gridApi!: GridApi;
 
   public columnDefs: ColDef[] = [
-    { field: "Month", width: 150, chartDataType: "category" },
-    { field: "Sunshine (hours)", chartDataType: "series" },
-    { field: "Rainfall (mm)", chartDataType: "series" },
+    { field: 'Month', width: 150, chartDataType: 'category' },
+    { field: 'Sunshine (hours)', chartDataType: 'series' },
+    { field: 'Rainfall (mm)', chartDataType: 'series' },
   ];
   public defaultColDef: ColDef = {
     editable: true,
@@ -51,19 +51,19 @@ export class AppComponent {
   constructor(private http: HttpClient) {}
 
   onChartCreated(event: ChartCreated) {
-    console.log("Created chart with ID " + event.chartId);
+    console.log('Created chart with ID ' + event.chartId);
     const chartRef = this.gridApi.getChartRef(event.chartId)!;
     chart = chartRef.chart;
     updateTitle(this.gridApi!, chart);
   }
 
   onChartRangeSelectionChanged(event: ChartRangeSelectionChanged) {
-    console.log("Changed range selection of chart with ID " + event.chartId);
+    console.log('Changed range selection of chart with ID ' + event.chartId);
     updateTitle(this.gridApi!, chart);
   }
 
   onChartDestroyed(event: ChartDestroyed) {
-    console.log("Destroyed chart with ID " + event.chartId);
+    console.log('Destroyed chart with ID ' + event.chartId);
     chart = null;
   }
 
@@ -72,7 +72,7 @@ export class AppComponent {
 
     this.http
       .get<any[]>(
-        "https://www.ag-grid.com/example-assets/weather-se-england.json"
+        'https://www.ag-grid.com/example-assets/weather-se-england.json'
       )
       .subscribe((data) => {
         this.rowData = data;
@@ -87,12 +87,12 @@ function updateTitle(api: GridApi, chart: any) {
   var columnCount = cellRange.columns.length;
   var rowCount = cellRange.endRow!.rowIndex - cellRange.startRow!.rowIndex + 1;
   chart.title.enabled = true;
-  chart.title.text = "Monthly Weather";
+  chart.title.text = 'Monthly Weather';
   chart.subtitle.enabled = true;
   chart.subtitle.text =
-    "Using series data from " +
+    'Using series data from ' +
     columnCount +
-    " column(s) and " +
+    ' column(s) and ' +
     rowCount +
-    " row(s)";
+    ' row(s)';
 }

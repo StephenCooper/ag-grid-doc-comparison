@@ -10,8 +10,8 @@ function createMockServer() {
           // you will probably use a framework like JQuery, Angular or something else to do your HTTP calls.
           let httpRequest = new XMLHttpRequest();
           httpRequest.open(
-            "GET",
-            "https://www.ag-grid.com/example-assets/stocks.json"
+            'GET',
+            'https://www.ag-grid.com/example-assets/stocks.json'
           );
           httpRequest.send();
           httpRequest.onreadystatechange = () => {

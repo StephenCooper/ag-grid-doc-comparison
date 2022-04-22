@@ -1,11 +1,11 @@
-"use strict";
+'use strict';
 
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
-import { AgGridReact } from "ag-grid-react";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from 'ag-grid-react';
+import 'ag-grid-enterprise';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 
 class GridExample extends Component {
   constructor(props) {
@@ -14,27 +14,27 @@ class GridExample extends Component {
     this.state = {
       columnDefs: [
         {
-          field: "athlete",
-          filter: "agSetColumnFilter",
+          field: 'athlete',
+          filter: 'agSetColumnFilter',
           filterParams: {
             cellHeight: 20,
           },
         },
-        { field: "age", maxWidth: 120, filter: "agNumberColumnFilter" },
         {
-          field: "country",
+          field: 'country',
           valueFormatter: function (params) {
             return `${params.value.name} (${params.value.code})`;
           },
           keyCreator: countryKeyCreator,
         },
-        { field: "year", maxWidth: 120 },
-        { field: "date" },
-        { field: "sport" },
-        { field: "gold", filter: "agNumberColumnFilter" },
-        { field: "silver", filter: "agNumberColumnFilter" },
-        { field: "bronze", filter: "agNumberColumnFilter" },
-        { field: "total", filter: "agNumberColumnFilter" },
+        { field: 'age', maxWidth: 120, filter: 'agNumberColumnFilter' },
+        { field: 'year', maxWidth: 120 },
+        { field: 'date' },
+        { field: 'sport' },
+        { field: 'gold', filter: 'agNumberColumnFilter' },
+        { field: 'silver', filter: 'agNumberColumnFilter' },
+        { field: 'bronze', filter: 'agNumberColumnFilter' },
+        { field: 'total', filter: 'agNumberColumnFilter' },
       ],
       defaultColDef: {
         flex: 1,
@@ -42,6 +42,7 @@ class GridExample extends Component {
         filter: true,
         resizable: true,
       },
+      sideBar: 'filters',
       rowData: null,
     };
   }
@@ -55,38 +56,42 @@ class GridExample extends Component {
       this.setState({ rowData: data });
     };
 
-    fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+    fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .then((resp) => resp.json())
       .then((data) => updateData(data));
   };
 
+  onFirstDataRendered = () => {
+    this.gridApi.getToolPanelInstance('filters').expandFilters();
+  };
+
   selectJohnAndKenny = () => {
-    const instance = this.gridApi.getFilterInstance("athlete");
-    instance.setModel({ values: ["John Joe Nevin", "Kenny Egan"] });
+    const instance = this.gridApi.getFilterInstance('athlete');
+    instance.setModel({ values: ['John Joe Nevin', 'Kenny Egan'] });
     this.gridApi.onFilterChanged();
   };
 
   selectEverything = () => {
-    const instance = this.gridApi.getFilterInstance("athlete");
+    const instance = this.gridApi.getFilterInstance('athlete');
     instance.setModel(null);
     this.gridApi.onFilterChanged();
   };
 
   selectNothing = () => {
-    const instance = this.gridApi.getFilterInstance("athlete");
+    const instance = this.gridApi.getFilterInstance('athlete');
     instance.setModel({ values: [] });
     this.gridApi.onFilterChanged();
   };
 
   setCountriesToFranceAustralia = () => {
-    const instance = this.gridApi.getFilterInstance("country");
-    instance.setFilterValues(["France", "Australia"]);
+    const instance = this.gridApi.getFilterInstance('country');
+    instance.setFilterValues(['France', 'Australia']);
     instance.applyModel();
     this.gridApi.onFilterChanged();
   };
 
   setCountriesToAll = () => {
-    const instance = this.gridApi.getFilterInstance("country");
+    const instance = this.gridApi.getFilterInstance('country');
     instance.resetFilterValues();
     instance.applyModel();
     this.gridApi.onFilterChanged();
@@ -94,7 +99,7 @@ class GridExample extends Component {
 
   render() {
     return (
-      <div style={{ width: "100%", height: "100%" }}>
+      <div style={{ width: '100%', height: '100%' }}>
         <div className="example-wrapper">
           <div className="example-header">
             <div>
@@ -109,7 +114,7 @@ class GridExample extends Component {
                 API: Remove filter
               </button>
             </div>
-            <div style={{ paddingTop: "10px" }}>
+            <div style={{ paddingTop: '10px' }}>
               Country - available filter values
               <button onClick={() => this.setCountriesToFranceAustralia()}>
                 Filter values restricted to France and Australia
@@ -121,15 +126,17 @@ class GridExample extends Component {
           </div>
           <div
             style={{
-              height: "100%",
-              width: "100%",
+              height: '100%',
+              width: '100%',
             }}
             className="ag-theme-alpine"
           >
             <AgGridReact
               columnDefs={this.state.columnDefs}
               defaultColDef={this.state.defaultColDef}
+              sideBar={this.state.sideBar}
               onGridReady={this.onGridReady}
+              onFirstDataRendered={this.onFirstDataRendered.bind(this)}
               rowData={this.state.rowData}
             />
           </div>
@@ -154,4 +161,4 @@ function patchData(data) {
   });
 }
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

@@ -1,12 +1,12 @@
-"use strict";
+'use strict';
 
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine-dark.css";
-import { AgGridReact } from "@ag-grid-community/react";
-import { ServerSideRowModelModule } from "@ag-grid-enterprise/server-side-row-model";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from '@ag-grid-community/react';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine-dark.css';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import { ServerSideRowModelModule } from '@ag-grid-enterprise/server-side-row-model';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([ServerSideRowModelModule]);
@@ -16,7 +16,7 @@ class GridExample extends Component {
     super(props);
 
     this.state = {
-      columnDefs: [{ field: "product" }, { field: "value" }],
+      columnDefs: [{ field: 'product' }, { field: 'value' }],
       defaultColDef: {
         width: 250,
         resizable: true,
@@ -24,8 +24,8 @@ class GridExample extends Component {
       getRowId: function (params) {
         return params.data.product;
       },
-      rowModelType: "serverSide",
-      serverSideStoreType: "full",
+      rowModelType: 'serverSide',
+      serverSideStoreType: 'full',
     };
   }
 
@@ -37,7 +37,7 @@ class GridExample extends Component {
     var dataSource = {
       getRows: function (params) {
         var rowData = allServerSideData.slice();
-        console.log("getRows: found " + rowData.length + " records on server.");
+        console.log('getRows: found ' + rowData.length + ' records on server.');
         setTimeout(function () {
           params.success({ rowData: rowData });
         }, 2000);
@@ -55,14 +55,14 @@ class GridExample extends Component {
       }
       summary[status]++;
     });
-    console.log("onAsyncTransactionsFlushed: " + JSON.stringify(summary));
+    console.log('onAsyncTransactionsFlushed: ' + JSON.stringify(summary));
   };
 
   onBtAdd = () => {
     var newProductName =
       all_products[Math.floor(all_products.length * Math.random())];
     var newItem = {
-      product: newProductName + " " + newProductSequence++,
+      product: newProductName + ' ' + newProductSequence++,
       value: Math.floor(Math.random() * 10000),
     };
     allServerSideData.push(newItem);
@@ -78,16 +78,16 @@ class GridExample extends Component {
 
   render() {
     return (
-      <div style={{ width: "100%", height: "100%" }}>
+      <div style={{ width: '100%', height: '100%' }}>
         <div className="example-wrapper">
-          <div style={{ marginBottom: "5px" }}>
+          <div style={{ marginBottom: '5px' }}>
             <button onClick={() => this.onBtAdd()}>Add</button>
             <button onClick={() => this.onBtRefresh()}>Refresh</button>
           </div>
           <div
             style={{
-              height: "100%",
-              width: "100%",
+              height: '100%',
+              width: '100%',
             }}
             className="ag-theme-alpine-dark"
           >
@@ -109,37 +109,37 @@ class GridExample extends Component {
   }
 }
 
-var products = ["Palm Oil", "Rubber", "Wool", "Amber", "Copper"];
+var products = ['Palm Oil', 'Rubber', 'Wool', 'Amber', 'Copper'];
 var newProductSequence = 0;
 var all_products = [
-  "Palm Oil",
-  "Rubber",
-  "Wool",
-  "Amber",
-  "Copper",
-  "Lead",
-  "Zinc",
-  "Tin",
-  "Aluminium",
-  "Aluminium Alloy",
-  "Nickel",
-  "Cobalt",
-  "Molybdenum",
-  "Recycled Steel",
-  "Corn",
-  "Oats",
-  "Rough Rice",
-  "Soybeans",
-  "Rapeseed",
-  "Soybean Meal",
-  "Soybean Oil",
-  "Wheat",
-  "Milk",
-  "Coca",
-  "Coffee C",
-  "Cotton No.2",
-  "Sugar No.11",
-  "Sugar No.14",
+  'Palm Oil',
+  'Rubber',
+  'Wool',
+  'Amber',
+  'Copper',
+  'Lead',
+  'Zinc',
+  'Tin',
+  'Aluminium',
+  'Aluminium Alloy',
+  'Nickel',
+  'Cobalt',
+  'Molybdenum',
+  'Recycled Steel',
+  'Corn',
+  'Oats',
+  'Rough Rice',
+  'Soybeans',
+  'Rapeseed',
+  'Soybean Meal',
+  'Soybean Oil',
+  'Wheat',
+  'Milk',
+  'Coca',
+  'Coffee C',
+  'Cotton No.2',
+  'Sugar No.11',
+  'Sugar No.14',
 ];
 var allServerSideData = [];
 function setupData() {
@@ -151,4 +151,4 @@ function setupData() {
   });
 }
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

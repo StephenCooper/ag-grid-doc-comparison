@@ -1,10 +1,10 @@
 const gridOptions = {
   columnDefs: [
-    { field: "athlete", colId: "athlete", minWidth: 180 },
-    { field: "age", colId: "age" },
-    { field: "country", colId: "country", minWidth: 180 },
-    { field: "year", colId: "year" },
-    { field: "sport", colId: "sport", minWidth: 180 },
+    { field: 'athlete', colId: 'athlete', minWidth: 180 },
+    { field: 'age', colId: 'age' },
+    { field: 'country', colId: 'country', minWidth: 180 },
+    { field: 'year', colId: 'year' },
+    { field: 'sport', colId: 'sport', minWidth: 180 },
   ],
   defaultColDef: {
     flex: 1,
@@ -12,25 +12,25 @@ const gridOptions = {
     resizable: true,
     filter: true,
   },
-  rowModelType: "infinite",
+  rowModelType: 'infinite',
 };
 
 function onBtShowYearColumn() {
   gridOptions.api.setColumnDefs([
-    { field: "athlete", colId: "athlete" },
-    { field: "age", colId: "age" },
-    { field: "country", colId: "country" },
-    { field: "year", colId: "year" },
-    { field: "sport", colId: "sport" },
+    { field: 'athlete', colId: 'athlete' },
+    { field: 'age', colId: 'age' },
+    { field: 'country', colId: 'country' },
+    { field: 'year', colId: 'year' },
+    { field: 'sport', colId: 'sport' },
   ]);
 }
 
 function onBtHideYearColumn() {
   gridOptions.api.setColumnDefs([
-    { field: "athlete", colId: "athlete" },
-    { field: "age", colId: "age" },
-    { field: "country", colId: "country" },
-    { field: "sport", colId: "sport" },
+    { field: 'athlete', colId: 'athlete' },
+    { field: 'age', colId: 'age' },
+    { field: 'country', colId: 'country' },
+    { field: 'sport', colId: 'sport' },
   ]);
 }
 
@@ -54,7 +54,7 @@ function sortData(sortModel, data) {
       if (valueA == valueB) {
         continue;
       }
-      var sortDirection = sortColModel.sort === "asc" ? 1 : -1;
+      var sortDirection = sortColModel.sort === 'asc' ? 1 : -1;
       if (valueA > valueB) {
         return sortDirection;
       } else {
@@ -109,22 +109,22 @@ function filterData(filterModel, data) {
 }
 
 // setup the grid after the page has finished loading
-document.addEventListener("DOMContentLoaded", function () {
-  var gridDiv = document.querySelector("#myGrid");
+document.addEventListener('DOMContentLoaded', function () {
+  var gridDiv = document.querySelector('#myGrid');
   new agGrid.Grid(gridDiv, gridOptions);
 
-  fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+  fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
     .then((response) => response.json())
     .then(function (data) {
       // give each row an id
       data.forEach(function (d, index) {
-        d.id = "R" + (index + 1);
+        d.id = 'R' + (index + 1);
       });
 
       var dataSource = {
         rowCount: undefined, // behave as infinite scroll
         getRows: function (params) {
-          console.log("asking for " + params.startRow + " to " + params.endRow);
+          console.log('asking for ' + params.startRow + ' to ' + params.endRow);
           // At this point in your code, you would call the server.
           // To make the demo look real, wait for 500ms before returning
           setTimeout(function () {

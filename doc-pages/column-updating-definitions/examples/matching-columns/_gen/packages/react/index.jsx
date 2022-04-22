@@ -1,10 +1,10 @@
-"use strict";
+'use strict';
 
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import { AgGridReact } from "ag-grid-react";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from 'ag-grid-react';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 
 class GridExample extends Component {
   constructor(props) {
@@ -27,7 +27,7 @@ class GridExample extends Component {
 
     const updateData = (data) => params.api.setRowData(data);
 
-    fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+    fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .then((resp) => resp.json())
       .then((data) => updateData(data));
   };
@@ -42,7 +42,7 @@ class GridExample extends Component {
 
   render() {
     return (
-      <div style={{ width: "100%", height: "100%" }}>
+      <div style={{ width: '100%', height: '100%' }}>
         <div className="test-container">
           <div className="test-header">
             <button onClick={() => this.onBtIncludeMedalColumns()}>
@@ -54,8 +54,8 @@ class GridExample extends Component {
           </div>
           <div
             style={{
-              height: "100%",
-              width: "100%",
+              height: '100%',
+              width: '100%',
             }}
             className="ag-theme-alpine"
           >
@@ -73,7 +73,7 @@ class GridExample extends Component {
 }
 
 const athleteColumn = {
-  headerName: "Athlete",
+  headerName: 'Athlete',
   valueGetter: function (params) {
     return params.data.athlete;
   },
@@ -82,49 +82,49 @@ function getColDefsMedalsIncluded() {
   return [
     athleteColumn,
     {
-      colId: "myAgeCol",
-      headerName: "Age",
+      colId: 'myAgeCol',
+      headerName: 'Age',
       valueGetter: function (params) {
         return params.data.age;
       },
     },
     {
-      headerName: "Country",
-      headerClass: "country-header",
+      headerName: 'Country',
+      headerClass: 'country-header',
       valueGetter: function (params) {
         return params.data.country;
       },
     },
-    { field: "sport" },
-    { field: "year" },
-    { field: "date" },
-    { field: "gold" },
-    { field: "silver" },
-    { field: "bronze" },
-    { field: "total" },
+    { field: 'sport' },
+    { field: 'year' },
+    { field: 'date' },
+    { field: 'gold' },
+    { field: 'silver' },
+    { field: 'bronze' },
+    { field: 'total' },
   ];
 }
 function getColDefsMedalsExcluded() {
   return [
     athleteColumn,
     {
-      colId: "myAgeCol",
-      headerName: "Age",
+      colId: 'myAgeCol',
+      headerName: 'Age',
       valueGetter: function (params) {
         return params.data.age;
       },
     },
     {
-      headerName: "Country",
-      headerClass: "country-header",
+      headerName: 'Country',
+      headerClass: 'country-header',
       valueGetter: function (params) {
         return params.data.country;
       },
     },
-    { field: "sport" },
-    { field: "year" },
-    { field: "date" },
+    { field: 'sport' },
+    { field: 'year' },
+    { field: 'date' },
   ];
 }
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

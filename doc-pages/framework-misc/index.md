@@ -11,8 +11,8 @@ This section describes some of the finer grain tuning you might want to do with 
 
 You can bind row data in the usual way with `:rowData="rowData"`, but you can also do so by using `v-model`.
 
-The advantage of doing so is that this will facilitate unidirectional data flow (see next section).
-The main difference over normal binding is that any data changes will emit an `data-model-changed`
+The advantage of doing so is that this will facilitate unidirectional data flow (see next section). 
+The main difference over normal binding is that any data changes will emit an `data-model-changed` 
 event which will have the current row data as a parameter.
 
 Please refer to the section below for a practical application of this binding.
@@ -32,7 +32,7 @@ resolve: {
 }
 ```
 
-Here we're telling Webpack to use the full build. You may need to change the value according
+Here we're telling Webpack to use the full build. You may need to change the value according 
 to the build you need.
 
 The longer term fix is something the Vue team are contemplating - please refer to this
@@ -49,3 +49,4 @@ The following Vue repos are available, with each demonstrating a different featu
 - [Typescript](https://github.com/seanlandsman/ag-grid-vue-typescript)
 - [UMD](https://github.com/seanlandsman/ag-grid-vue-umd)
 - [Playground](https://github.com/seanlandsman/ag-grid-vue-playground): Declarative, Auto Refresh and Model Driven Examples
+

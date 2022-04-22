@@ -4,19 +4,19 @@ import React, {
   useImperativeHandle,
   useRef,
   useState,
-} from "react";
+} from 'react';
 
 export default forwardRef((props, ref) => {
   const [date, setDate] = useState(null);
   const [picker, setPicker] = useState(null);
-  const refFlatPickr = useRef();
-  const refInput = useRef();
+  const refFlatPickr = useRef(null);
+  const refInput = useRef(null);
 
   // we use a ref as well as state, as state is async,
   // and after the grid calls setDate() (eg when setting filter model)
   // it then can call getDate() immediately (eg to execute the filter)
   // and we need to pass back the most recent value, not the old 'current state'.
-  const dateRef = useRef();
+  const dateRef = useRef(null);
 
   //*********************************************************************************
   //          LINKING THE UI, THE STATE AND AG-GRID
@@ -33,7 +33,7 @@ export default forwardRef((props, ref) => {
     setPicker(
       flatpickr(refFlatPickr.current, {
         onChange: onDateChanged,
-        dateFormat: "d/m/Y",
+        dateFormat: 'd/m/Y',
         wrap: true,
       })
     );
@@ -41,7 +41,7 @@ export default forwardRef((props, ref) => {
 
   useEffect(() => {
     if (picker) {
-      picker.calendarContainer.classList.add("ag-custom-component-popup");
+      picker.calendarContainer.classList.add('ag-custom-component-popup');
     }
   }, [picker]);
 
@@ -75,13 +75,13 @@ export default forwardRef((props, ref) => {
 
     setInputPlaceholder(placeholder) {
       if (refInput.current) {
-        refInput.current.setAttribute("placeholder", placeholder);
+        refInput.current.setAttribute('placeholder', placeholder);
       }
     },
 
     setInputAriaLabel(label) {
       if (refInput.current) {
-        refInput.current.setAttribute("aria-label", label);
+        refInput.current.setAttribute('aria-label', label);
       }
     },
   }));
@@ -93,7 +93,7 @@ export default forwardRef((props, ref) => {
       role="presentation"
       ref={refFlatPickr}
     >
-      <input type="text" ref={refInput} data-input style={{ width: "100%" }} />
+      <input type="text" ref={refInput} data-input style={{ width: '100%' }} />
       <a class="input-button" title="clear" data-clear>
         <i class="fa fa-times"></i>
       </a>

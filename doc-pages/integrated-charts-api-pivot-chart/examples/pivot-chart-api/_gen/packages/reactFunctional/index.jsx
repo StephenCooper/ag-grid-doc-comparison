@@ -1,22 +1,22 @@
-"use strict";
+'use strict';
 
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
-import { AgGridReact } from "ag-grid-react";
-import React, { useCallback, useMemo, useState } from "react";
-import { render } from "react-dom";
+import React, { useCallback, useMemo, useRef, useState } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from 'ag-grid-react';
+import 'ag-grid-enterprise';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 
 const GridExample = () => {
-  const containerStyle = useMemo(() => ({ width: "100%", height: "100%" }), []);
-  const gridStyle = useMemo(() => ({ height: "40%", width: "100%" }), []);
+  const containerStyle = useMemo(() => ({ width: '100%', height: '100%' }), []);
+  const gridStyle = useMemo(() => ({ height: '40%', width: '100%' }), []);
   const [rowData, setRowData] = useState();
   const [columnDefs, setColumnDefs] = useState([
-    { field: "country", pivot: true },
-    { field: "year", rowGroup: true },
-    { field: "sport", rowGroup: true },
-    { field: "total", aggFunc: "sum" },
-    { field: "gold", aggFunc: "sum" },
+    { field: 'country', pivot: true },
+    { field: 'year', rowGroup: true },
+    { field: 'sport', rowGroup: true },
+    { field: 'total', aggFunc: 'sum' },
+    { field: 'gold', aggFunc: 'sum' },
   ]);
   const defaultColDef = useMemo(() => {
     return {
@@ -38,7 +38,7 @@ const GridExample = () => {
   }, []);
 
   const onGridReady = useCallback((params) => {
-    fetch("https://www.ag-grid.com/example-assets/wide-spread-of-sports.json")
+    fetch('https://www.ag-grid.com/example-assets/wide-spread-of-sports.json')
       .then((resp) => resp.json())
       .then((data) => {
         setRowData(data);
@@ -46,11 +46,11 @@ const GridExample = () => {
   }, []);
 
   const onFirstDataRendered = useCallback((event) => {
-    var chartContainer = document.querySelector("#chart");
+    var chartContainer = document.querySelector('#chart');
     var params = {
-      chartType: "groupedColumn",
+      chartType: 'groupedColumn',
       chartContainer: chartContainer,
-      chartThemeName: "ag-vivid",
+      chartThemeName: 'ag-vivid',
       chartThemeOverrides: {
         common: {
           padding: {
@@ -61,7 +61,7 @@ const GridExample = () => {
           },
           legend: {
             enabled: true,
-            position: "bottom",
+            position: 'bottom',
           },
           navigator: {
             enabled: true,
@@ -81,11 +81,11 @@ const GridExample = () => {
     <div style={containerStyle}>
       <div
         style={{
-          display: "flex",
-          flexDirection: "column",
-          height: "100%",
-          width: "100%",
-          overflow: "hidden",
+          display: 'flex',
+          flexDirection: 'column',
+          height: '100%',
+          width: '100%',
+          overflow: 'hidden',
         }}
       >
         <div style={gridStyle} className="ag-theme-alpine">
@@ -102,11 +102,11 @@ const GridExample = () => {
         </div>
         <div
           id="chart"
-          style={{ flex: "1 1 auto", overflow: "hidden", height: "60%" }}
+          style={{ flex: '1 1 auto', overflow: 'hidden', height: '60%' }}
         ></div>
       </div>
     </div>
   );
 };
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

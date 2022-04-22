@@ -1,21 +1,21 @@
-import { Component } from "@angular/core";
+import { Component } from '@angular/core';
 import {
   ColDef,
   ColumnApi,
   GridApi,
   GridReadyEvent,
   RowNode,
-} from "ag-grid-community";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import { ChildMessageRenderer } from "./child-message-renderer.component";
-import { CubeRenderer } from "./cube-renderer.component";
-import { CurrencyRenderer } from "./currency-renderer.component";
-import { ParamsRenderer } from "./params-renderer.component";
-import { SquareRenderer } from "./square-renderer.component";
+} from 'ag-grid-community';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import { ChildMessageRenderer } from './child-message-renderer.component';
+import { CubeRenderer } from './cube-renderer.component';
+import { CurrencyRenderer } from './currency-renderer.component';
+import { ParamsRenderer } from './params-renderer.component';
+import { SquareRenderer } from './square-renderer.component';
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: ` <div class="example-wrapper">
     <button
       (click)="refreshEvenRowsCurrencyData()"
@@ -43,44 +43,44 @@ export class AppComponent {
 
   public columnDefs: ColDef[] = [
     {
-      headerName: "Row",
-      field: "row",
+      headerName: 'Row',
+      field: 'row',
       width: 150,
     },
     {
-      headerName: "Square",
-      field: "value",
+      headerName: 'Square',
+      field: 'value',
       cellRenderer: SquareRenderer,
       editable: true,
-      colId: "square",
+      colId: 'square',
       width: 150,
     },
     {
-      headerName: "Cube",
-      field: "value",
+      headerName: 'Cube',
+      field: 'value',
       cellRenderer: CubeRenderer,
-      colId: "cube",
+      colId: 'cube',
       width: 150,
     },
     {
-      headerName: "Row Params",
-      field: "row",
+      headerName: 'Row Params',
+      field: 'row',
       cellRenderer: ParamsRenderer,
-      colId: "params",
+      colId: 'params',
       width: 150,
     },
     {
-      headerName: "Currency (Pipe)",
-      field: "currency",
+      headerName: 'Currency (Pipe)',
+      field: 'currency',
       cellRenderer: CurrencyRenderer,
-      colId: "currency",
+      colId: 'currency',
       width: 120,
     },
     {
-      headerName: "Child/Parent",
-      field: "value",
+      headerName: 'Child/Parent',
+      field: 'value',
       cellRenderer: ChildMessageRenderer,
-      colId: "params",
+      colId: 'params',
       editable: false,
       minWidth: 150,
     },
@@ -107,12 +107,12 @@ export class AppComponent {
     this.gridApi.forEachNode((rowNode: RowNode) => {
       if (rowNode.data.value % 2 === 0) {
         rowNode.setDataValue(
-          "currency",
+          'currency',
           rowNode.data.value + Number(Math.random().toFixed(2))
         );
       }
     });
-    this.gridApi.refreshCells({ columns: ["currency"] });
+    this.gridApi.refreshCells({ columns: ['currency'] });
   }
 
   onGridReady(params: GridReadyEvent) {
@@ -121,14 +121,14 @@ export class AppComponent {
   }
 
   methodFromParent(cell: any) {
-    alert("Parent Component Method from " + cell + "!");
+    alert('Parent Component Method from ' + cell + '!');
   }
 
   createRowData() {
     const rowData = [];
     for (let i = 0; i < 15; i++) {
       rowData.push({
-        row: "Row " + i,
+        row: 'Row ' + i,
         value: i,
         currency: i + Number(Math.random().toFixed(2)),
       });

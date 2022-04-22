@@ -1,4 +1,4 @@
-import { ICellRendererComp, ICellRendererParams } from "ag-grid-community";
+import { ICellRendererComp, ICellRendererParams } from 'ag-grid-community';
 
 export interface GroupFlagCellRendererParams extends ICellRendererParams {
   flagCodes: Record<string, string>;
@@ -10,8 +10,8 @@ export class GroupRowInnerRenderer implements ICellRendererComp {
   dataChangedListener!: () => void;
 
   init(params: GroupFlagCellRendererParams) {
-    this.eGui = document.createElement("div");
-    this.eGui.style.display = "inline-block";
+    this.eGui = document.createElement('div');
+    this.eGui.style.display = 'inline-block';
     this.params = params;
     this.refreshGui();
 
@@ -19,14 +19,14 @@ export class GroupRowInnerRenderer implements ICellRendererComp {
       this.refreshGui();
     };
 
-    params.api.addEventListener("cellValueChanged", this.dataChangedListener);
-    params.api.addEventListener("filterChanged", this.dataChangedListener);
+    params.api.addEventListener('cellValueChanged', this.dataChangedListener);
+    params.api.addEventListener('filterChanged', this.dataChangedListener);
   }
 
   refreshGui() {
     var flagCode = this.params.flagCodes[this.params.node.key!];
 
-    var html = "";
+    var html = '';
 
     if (flagCode) {
       html +=
@@ -57,11 +57,11 @@ export class GroupRowInnerRenderer implements ICellRendererComp {
 
   destroy() {
     this.params.api.removeEventListener(
-      "cellValueChanged",
+      'cellValueChanged',
       this.dataChangedListener
     );
     this.params.api.removeEventListener(
-      "filterChanged",
+      'filterChanged',
       this.dataChangedListener
     );
   }

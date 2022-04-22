@@ -1,6 +1,6 @@
-import { AgChartsVue } from "ag-charts-vue";
-import { cloneDeep } from "lodash";
-import Vue from "vue";
+import { AgChartsVue } from 'ag-charts-vue';
+import { cloneDeep } from 'lodash';
+import Vue from 'vue';
 
 const ChartExample = {
   template: `
@@ -17,7 +17,7 @@ const ChartExample = {
             </div>
     `,
   components: {
-    "ag-charts-vue": AgChartsVue,
+    'ag-charts-vue': AgChartsVue,
   },
   data: function () {
     return {
@@ -30,30 +30,30 @@ const ChartExample = {
         text: "Most Common Girls' First Names In English",
       },
       subtitle: {
-        text: "over the past 100 years",
+        text: 'over the past 100 years',
       },
       data: [
-        { name: "Mary", count: 234000 },
-        { name: "Patricia", count: 211000 },
-        { name: "Jennifer", count: 178000 },
-        { name: "Elizabeth", count: 153000 },
-        { name: "Linda", count: 123000 },
+        { name: 'Mary', count: 234000 },
+        { name: 'Patricia', count: 211000 },
+        { name: 'Jennifer', count: 178000 },
+        { name: 'Elizabeth', count: 153000 },
+        { name: 'Linda', count: 123000 },
       ],
       series: [
         {
-          type: "line",
-          xKey: "name",
-          yKey: "count",
+          type: 'line',
+          xKey: 'name',
+          yKey: 'count',
         },
       ],
       axes: [
         {
-          type: "category",
-          position: "bottom",
+          type: 'category',
+          position: 'bottom',
         },
         {
-          type: "number",
-          position: "left",
+          type: 'number',
+          position: 'left',
         },
       ],
       legend: {
@@ -68,11 +68,11 @@ const ChartExample = {
 
       var gridStyle = [
         {
-          stroke: "gray",
+          stroke: 'gray',
           lineDash: [10, 5],
         },
         {
-          stroke: "lightgray",
+          stroke: 'lightgray',
           lineDash: [5, 5],
         },
       ];
@@ -86,13 +86,13 @@ const ChartExample = {
 
       var xGridStyle = [
         {
-          stroke: "red",
+          stroke: 'red',
           lineDash: [3, 3],
         },
       ];
       var yGridStyle = [
         {
-          stroke: "green",
+          stroke: 'green',
           lineDash: [8, 3, 3, 3],
         },
       ];
@@ -106,7 +106,7 @@ const ChartExample = {
 
       var gridStyle = [
         {
-          stroke: "rgba(219, 219, 219, 1)",
+          stroke: 'rgba(219, 219, 219, 1)',
           lineDash: [4, 2],
         },
       ];
@@ -119,8 +119,8 @@ const ChartExample = {
 };
 
 new Vue({
-  el: "#app",
+  el: '#app',
   components: {
-    "my-component": ChartExample,
+    'my-component': ChartExample,
   },
 });

@@ -1,14 +1,14 @@
-"use strict";
+'use strict';
 
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { AgGridReact } from "@ag-grid-community/react";
-import { GridChartsModule } from "@ag-grid-enterprise/charts";
-import { MenuModule } from "@ag-grid-enterprise/menu";
-import React, { useCallback, useMemo, useRef, useState } from "react";
-import { render } from "react-dom";
+import React, { useCallback, useMemo, useRef, useState } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from '@ag-grid-community/react';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import { MenuModule } from '@ag-grid-enterprise/menu';
+import { GridChartsModule } from '@ag-grid-enterprise/charts';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([
@@ -19,33 +19,33 @@ ModuleRegistry.registerModules([
 
 const GridExample = () => {
   const gridRef = useRef();
-  const containerStyle = useMemo(() => ({ width: "100%", height: "100%" }), []);
-  const gridStyle = useMemo(() => ({ height: "100%", width: "100%" }), []);
+  const containerStyle = useMemo(() => ({ width: '100%', height: '100%' }), []);
+  const gridStyle = useMemo(() => ({ height: '100%', width: '100%' }), []);
   const [rowData, setRowData] = useState(getData());
   const [columnDefs, setColumnDefs] = useState([
-    { field: "country", width: 150, chartDataType: "category" },
-    { field: "gold", chartDataType: "series" },
-    { field: "silver", chartDataType: "series" },
-    { field: "bronze", chartDataType: "series" },
+    { field: 'country', width: 150, chartDataType: 'category' },
+    { field: 'gold', chartDataType: 'series' },
+    { field: 'silver', chartDataType: 'series' },
+    { field: 'bronze', chartDataType: 'series' },
     {
-      headerName: "A",
-      valueGetter: "Math.floor(Math.random()*1000)",
-      chartDataType: "series",
+      headerName: 'A',
+      valueGetter: 'Math.floor(Math.random()*1000)',
+      chartDataType: 'series',
     },
     {
-      headerName: "B",
-      valueGetter: "Math.floor(Math.random()*1000)",
-      chartDataType: "series",
+      headerName: 'B',
+      valueGetter: 'Math.floor(Math.random()*1000)',
+      chartDataType: 'series',
     },
     {
-      headerName: "C",
-      valueGetter: "Math.floor(Math.random()*1000)",
-      chartDataType: "series",
+      headerName: 'C',
+      valueGetter: 'Math.floor(Math.random()*1000)',
+      chartDataType: 'series',
     },
     {
-      headerName: "D",
-      valueGetter: "Math.floor(Math.random()*1000)",
-      chartDataType: "series",
+      headerName: 'D',
+      valueGetter: 'Math.floor(Math.random()*1000)',
+      chartDataType: 'series',
     },
   ]);
   const defaultColDef = useMemo(() => {
@@ -70,50 +70,50 @@ const GridExample = () => {
           strokeWidth: 2,
           title: {
             enabled: true,
-            fontStyle: "italic",
-            fontWeight: "bold",
+            fontStyle: 'italic',
+            fontWeight: 'bold',
             fontSize: 14,
-            fontFamily: "Arial, sans-serif",
-            color: "maroon",
+            fontFamily: 'Arial, sans-serif',
+            color: 'maroon',
           },
           highlightStyle: {
             item: {
-              fill: "red",
-              stroke: "yellow",
+              fill: 'red',
+              stroke: 'yellow',
             },
           },
           shadow: {
-            color: "rgba(96, 96, 175, 0.5)",
+            color: 'rgba(96, 96, 175, 0.5)',
             xOffset: 0,
             yOffset: 0,
             blur: 1,
           },
           label: {
             enabled: true,
-            fontStyle: "italic",
-            fontWeight: "bold",
+            fontStyle: 'italic',
+            fontWeight: 'bold',
             fontSize: 14,
-            fontFamily: "Arial, sans-serif",
-            color: "#2222aa",
+            fontFamily: 'Arial, sans-serif',
+            color: '#2222aa',
             minAngle: 30,
           },
           callout: {
             strokeWidth: 3,
-            colors: ["black", "#00ff00"],
+            colors: ['black', '#00ff00'],
             length: 15,
           },
           tooltip: {
             renderer: function (params) {
               return {
                 content:
-                  "<b>" +
+                  '<b>' +
                   params.angleName.toUpperCase() +
-                  ":</b> " +
+                  ':</b> ' +
                   params.angleValue +
-                  "<br>" +
-                  "<b>" +
+                  '<br>' +
+                  '<b>' +
                   params.labelName.toUpperCase() +
-                  ":</b> " +
+                  ':</b> ' +
                   params.datum[params.labelKey],
               };
             },
@@ -127,11 +127,11 @@ const GridExample = () => {
     var cellRange = {
       rowStartIndex: 0,
       rowEndIndex: 4,
-      columns: ["country", "gold", "silver"],
+      columns: ['country', 'gold', 'silver'],
     };
     var createRangeChartParams = {
       cellRange: cellRange,
-      chartType: "doughnut",
+      chartType: 'doughnut',
     };
     gridRef.current.api.createRangeChart(createRangeChartParams);
   }, []);
@@ -155,4 +155,4 @@ const GridExample = () => {
   );
 };
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

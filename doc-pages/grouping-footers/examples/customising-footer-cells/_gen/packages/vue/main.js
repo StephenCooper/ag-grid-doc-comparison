@@ -1,9 +1,9 @@
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
-import { AgGridVue } from "ag-grid-vue";
-import Vue from "vue";
-import MyInnerRenderer from "./myInnerRendererVue.js";
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import 'ag-grid-enterprise';
+import { AgGridVue } from 'ag-grid-vue';
+import Vue from 'vue';
+import MyInnerRenderer from './myInnerRendererVue.js';
 
 const VueExample = {
   template: `
@@ -22,33 +22,33 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
     MyInnerRenderer,
   },
   data: function () {
     return {
       columnDefs: [
         {
-          field: "country",
+          field: 'country',
           rowGroup: true,
           hide: true,
         },
         {
-          field: "year",
+          field: 'year',
           rowGroup: true,
           hide: true,
         },
         {
-          field: "gold",
-          aggFunc: "sum",
+          field: 'gold',
+          aggFunc: 'sum',
         },
         {
-          field: "silver",
-          aggFunc: "sum",
+          field: 'silver',
+          aggFunc: 'sum',
         },
         {
-          field: "bronze",
-          aggFunc: "sum",
+          field: 'bronze',
+          aggFunc: 'sum',
         },
       ],
       gridApi: null,
@@ -62,7 +62,7 @@ const VueExample = {
       autoGroupColumnDef: {
         minWidth: 300,
         cellRendererParams: {
-          innerRenderer: "MyInnerRenderer",
+          innerRenderer: 'MyInnerRenderer',
         },
       },
       rowData: null,
@@ -74,8 +74,8 @@ const VueExample = {
 };
 
 new Vue({
-  el: "#app",
+  el: '#app',
   components: {
-    "my-component": VueExample,
+    'my-component': VueExample,
   },
 });

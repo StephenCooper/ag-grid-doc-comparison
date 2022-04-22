@@ -1,10 +1,10 @@
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { AgGridVue } from "@ag-grid-community/vue3";
-import { RowGroupingModule } from "@ag-grid-enterprise/row-grouping";
-import { createApp } from "vue";
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { AgGridVue } from '@ag-grid-community/vue3';
+import { RowGroupingModule } from '@ag-grid-enterprise/row-grouping';
+import { createApp } from 'vue';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([ClientSideRowModelModule, RowGroupingModule]);
@@ -28,15 +28,15 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
         {
-          field: "groupType",
+          field: 'groupType',
           valueGetter: (params) => {
-            return params.data ? "Provided" : "Filler";
+            return params.data ? 'Provided' : 'Filler';
           },
         },
       ],
@@ -53,13 +53,13 @@ const VueExample = {
   },
   created() {
     this.rowData = [
-      { orgHierarchy: ["A"] },
-      { orgHierarchy: ["A", "B"] },
-      { orgHierarchy: ["C", "D"] },
-      { orgHierarchy: ["E", "F", "G", "H"] },
+      { orgHierarchy: ['A'] },
+      { orgHierarchy: ['A', 'B'] },
+      { orgHierarchy: ['C', 'D'] },
+      { orgHierarchy: ['E', 'F', 'G', 'H'] },
     ];
     this.autoGroupColumnDef = {
-      headerName: "Organisation Hierarchy",
+      headerName: 'Organisation Hierarchy',
       cellRendererParams: {
         suppressCount: true,
       },
@@ -77,4 +77,4 @@ const VueExample = {
   },
 };
 
-createApp(VueExample).mount("#app");
+createApp(VueExample).mount('#app');

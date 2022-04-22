@@ -1,11 +1,11 @@
-"use strict";
+'use strict';
 
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
-import { AgGridReact } from "ag-grid-react";
-import React, { useCallback, useMemo, useRef, useState } from "react";
-import { render } from "react-dom";
+import React, { useCallback, useMemo, useRef, useState } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from 'ag-grid-react';
+import 'ag-grid-enterprise';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 
 const getBooleanValue = (cssSelector) => {
   return document.querySelector(cssSelector).checked === true;
@@ -18,7 +18,7 @@ const getTextValue = (cssSelector) => {
 const getNumericValue = (cssSelector) => {
   var value = parseFloat(getTextValue(cssSelector));
   if (isNaN(value)) {
-    var message = "Invalid number entered in " + cssSelector + " field";
+    var message = 'Invalid number entered in ' + cssSelector + ' field';
     alert(message);
     throw new Error(message);
   }
@@ -27,20 +27,20 @@ const getNumericValue = (cssSelector) => {
 
 const GridExample = () => {
   const gridRef = useRef();
-  const containerStyle = useMemo(() => ({ width: "100%", height: "100%" }), []);
-  const gridStyle = useMemo(() => ({ height: "100%", width: "100%" }), []);
+  const containerStyle = useMemo(() => ({ width: '100%', height: '100%' }), []);
+  const gridStyle = useMemo(() => ({ height: '100%', width: '100%' }), []);
   const [rowData, setRowData] = useState();
   const [columnDefs, setColumnDefs] = useState([
     {
-      headerName: "Top Level Column Group",
+      headerName: 'Top Level Column Group',
       children: [
         {
-          headerName: "Group A",
+          headerName: 'Group A',
           children: [
-            { field: "athlete", minWidth: 200 },
+            { field: 'athlete', minWidth: 200 },
             {
-              field: "age",
-              cellClass: "twoDecimalPlaces",
+              field: 'age',
+              cellClass: 'twoDecimalPlaces',
               cellClassRules: {
                 greenBackground: function (params) {
                   return params.value < 23;
@@ -51,26 +51,26 @@ const GridExample = () => {
               },
             },
             {
-              field: "country",
+              field: 'country',
               minWidth: 200,
               cellClassRules: {
                 redFont: function (params) {
-                  return params.value === "United States";
+                  return params.value === 'United States';
                 },
               },
             },
             {
-              headerName: "Group",
-              valueGetter: "data.country.charAt(0)",
+              headerName: 'Group',
+              valueGetter: 'data.country.charAt(0)',
               cellClassRules: {
                 boldBorders: function (params) {
-                  return params.value === "U";
+                  return params.value === 'U';
                 },
               },
-              cellClass: ["redFont", "greenBackground"],
+              cellClass: ['redFont', 'greenBackground'],
             },
             {
-              field: "year",
+              field: 'year',
               cellClassRules: {
                 notInExcel: function (params) {
                   return true;
@@ -80,33 +80,33 @@ const GridExample = () => {
           ],
         },
         {
-          headerName: "Group B",
+          headerName: 'Group B',
           children: [
             {
-              field: "date",
+              field: 'date',
               minWidth: 150,
-              cellClass: "dateFormat",
+              cellClass: 'dateFormat',
               valueGetter: function (params) {
                 var val = params.data.date;
-                if (val.indexOf("/") < 0) {
+                if (val.indexOf('/') < 0) {
                   return val;
                 }
-                var split = val.split("/");
-                return split[2] + "-" + split[1] + "-" + split[0];
+                var split = val.split('/');
+                return split[2] + '-' + split[1] + '-' + split[0];
               },
             },
-            { field: "sport", minWidth: 150 },
+            { field: 'sport', minWidth: 150 },
             {
-              field: "gold",
+              field: 'gold',
               cellClassRules: {
                 boldBorders: function (params) {
                   return params.value > 2;
                 },
               },
             },
-            { field: "silver", cellClass: "textFormat" },
-            { field: "bronze" },
-            { field: "total" },
+            { field: 'silver', cellClass: 'textFormat' },
+            { field: 'bronze' },
+            { field: 'total' },
           ],
         },
       ],
@@ -129,14 +129,14 @@ const GridExample = () => {
   const pinnedTopRowData = useMemo(() => {
     return [
       {
-        athlete: "Floating <Top> Athlete",
+        athlete: 'Floating <Top> Athlete',
         age: 999,
-        country: "Floating <Top> Country",
+        country: 'Floating <Top> Country',
         year: 2020,
-        date: "2020-08-01",
-        sport: "Track & Field",
+        date: '2020-08-01',
+        sport: 'Track & Field',
         gold: 22,
-        silver: "003",
+        silver: '003',
         bronze: 44,
         total: 55,
       },
@@ -145,14 +145,14 @@ const GridExample = () => {
   const pinnedBottomRowData = useMemo(() => {
     return [
       {
-        athlete: "Floating <Bottom> Athlete",
+        athlete: 'Floating <Bottom> Athlete',
         age: 888,
-        country: "Floating <Bottom> Country",
+        country: 'Floating <Bottom> Country',
         year: 2030,
-        date: "2030-08-01",
-        sport: "Track & Field",
+        date: '2030-08-01',
+        sport: 'Track & Field',
         gold: 222,
-        silver: "005",
+        silver: '005',
         bronze: 244,
         total: 255,
       },
@@ -161,127 +161,127 @@ const GridExample = () => {
   const excelStyles = useMemo(() => {
     return [
       {
-        id: "cell",
+        id: 'cell',
         alignment: {
-          vertical: "Center",
+          vertical: 'Center',
         },
       },
       {
-        id: "header",
+        id: 'header',
         alignment: {
-          vertical: "Center",
+          vertical: 'Center',
         },
         interior: {
-          color: "#f8f8f8",
-          pattern: "Solid",
+          color: '#f8f8f8',
+          pattern: 'Solid',
           patternColor: undefined,
         },
         borders: {
           borderBottom: {
-            color: "#babfc7",
-            lineStyle: "Continuous",
+            color: '#babfc7',
+            lineStyle: 'Continuous',
             weight: 1,
           },
         },
       },
       {
-        id: "headerGroup",
+        id: 'headerGroup',
         font: {
           bold: true,
         },
       },
       {
-        id: "greenBackground",
+        id: 'greenBackground',
         interior: {
-          color: "#b5e6b5",
-          pattern: "Solid",
+          color: '#b5e6b5',
+          pattern: 'Solid',
         },
       },
       {
-        id: "redFont",
+        id: 'redFont',
         font: {
-          fontName: "Calibri Light",
-          underline: "Single",
+          fontName: 'Calibri Light',
+          underline: 'Single',
           italic: true,
-          color: "#ff0000",
+          color: '#ff0000',
         },
       },
       {
-        id: "darkGreyBackground",
+        id: 'darkGreyBackground',
         interior: {
-          color: "#888888",
-          pattern: "Solid",
+          color: '#888888',
+          pattern: 'Solid',
         },
         font: {
-          fontName: "Calibri Light",
-          color: "#ffffff",
+          fontName: 'Calibri Light',
+          color: '#ffffff',
         },
       },
       {
-        id: "boldBorders",
+        id: 'boldBorders',
         borders: {
           borderBottom: {
-            color: "#000000",
-            lineStyle: "Continuous",
+            color: '#000000',
+            lineStyle: 'Continuous',
             weight: 3,
           },
           borderLeft: {
-            color: "#000000",
-            lineStyle: "Continuous",
+            color: '#000000',
+            lineStyle: 'Continuous',
             weight: 3,
           },
           borderRight: {
-            color: "#000000",
-            lineStyle: "Continuous",
+            color: '#000000',
+            lineStyle: 'Continuous',
             weight: 3,
           },
           borderTop: {
-            color: "#000000",
-            lineStyle: "Continuous",
+            color: '#000000',
+            lineStyle: 'Continuous',
             weight: 3,
           },
         },
       },
       {
-        id: "dateFormat",
-        dataType: "DateTime",
+        id: 'dateFormat',
+        dataType: 'DateTime',
         numberFormat: {
-          format: "mm/dd/yyyy;@",
+          format: 'mm/dd/yyyy;@',
         },
       },
       {
-        id: "twoDecimalPlaces",
+        id: 'twoDecimalPlaces',
         numberFormat: {
-          format: "#,##0.00",
+          format: '#,##0.00',
         },
       },
       {
-        id: "textFormat",
-        dataType: "String",
+        id: 'textFormat',
+        dataType: 'String',
       },
     ];
   }, []);
 
   const onGridReady = useCallback((params) => {
-    fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+    fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .then((resp) => resp.json())
       .then((data) => setRowData(data));
 
-    document.getElementById("fontSize").checked = true;
-    document.getElementById("rowHeight").checked = true;
-    document.getElementById("headerRowHeight").checked = true;
+    document.getElementById('fontSize').checked = true;
+    document.getElementById('rowHeight').checked = true;
+    document.getElementById('headerRowHeight').checked = true;
   }, []);
 
   const onBtExport = useCallback(() => {
     var params = {
-      fontSize: getBooleanValue("#fontSize")
-        ? getNumericValue("#fontSizeValue")
+      fontSize: getBooleanValue('#fontSize')
+        ? getNumericValue('#fontSizeValue')
         : undefined,
-      rowHeight: getBooleanValue("#rowHeight")
-        ? getNumericValue("#rowHeightValue")
+      rowHeight: getBooleanValue('#rowHeight')
+        ? getNumericValue('#rowHeightValue')
         : undefined,
-      headerRowHeight: getBooleanValue("#headerRowHeight")
-        ? getNumericValue("#headerRowHeightValue")
+      headerRowHeight: getBooleanValue('#headerRowHeight')
+        ? getNumericValue('#headerRowHeightValue')
         : undefined,
     };
     gridRef.current.api.exportDataAsExcel(params);
@@ -292,7 +292,7 @@ const GridExample = () => {
       <div className="container">
         <div className="columns">
           <div className="option">
-            <label for="fontSize">
+            <label htmlFor="fontSize">
               <input type="checkbox" id="fontSize" />
               Font Size =
             </label>
@@ -300,11 +300,11 @@ const GridExample = () => {
               type="text"
               id="fontSizeValue"
               value="14"
-              style={{ width: "40px" }}
+              style={{ width: '40px' }}
             />
           </div>
           <div className="option">
-            <label for="rowHeight">
+            <label htmlFor="rowHeight">
               <input type="checkbox" id="rowHeight" />
               Row Height =
             </label>
@@ -312,11 +312,11 @@ const GridExample = () => {
               type="text"
               id="rowHeightValue"
               value="30"
-              style={{ width: "40px" }}
+              style={{ width: '40px' }}
             />
           </div>
           <div className="option">
-            <label for="headerRowHeight">
+            <label htmlFor="headerRowHeight">
               <input type="checkbox" id="headerRowHeight" />
               Header Row Height =
             </label>
@@ -324,7 +324,7 @@ const GridExample = () => {
               type="text"
               id="headerRowHeightValue"
               value="30"
-              style={{ width: "40px" }}
+              style={{ width: '40px' }}
             />
           </div>
         </div>
@@ -332,7 +332,7 @@ const GridExample = () => {
           <label>
             <button
               onClick={onBtExport}
-              style={{ marginBottom: "5px", fontWeight: "bold" }}
+              style={{ marginBottom: '5px', fontWeight: 'bold' }}
             >
               Export to Excel
             </button>
@@ -357,4 +357,4 @@ const GridExample = () => {
   );
 };
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

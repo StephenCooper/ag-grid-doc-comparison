@@ -1,8 +1,8 @@
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
-import { AgGridVue } from "ag-grid-vue3";
-import { createApp } from "vue";
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import 'ag-grid-enterprise';
+import { AgGridVue } from 'ag-grid-vue3';
+import { createApp } from 'vue';
 
 const VueExample = {
   template: `
@@ -27,15 +27,15 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
         {
-          headerName: "Set Filter Column",
-          field: "col1",
-          filter: "agSetColumnFilter",
+          headerName: 'Set Filter Column',
+          field: 'col1',
+          filter: 'agSetColumnFilter',
           editable: true,
           flex: 1,
         },
@@ -49,22 +49,22 @@ const VueExample = {
   },
   created() {
     this.rowData = getRowData();
-    this.sideBar = "filters";
+    this.sideBar = 'filters';
   },
   methods: {
     onFirstDataRendered(params) {
-      params.api.getToolPanelInstance("filters").expandFilters();
+      params.api.getToolPanelInstance('filters').expandFilters();
     },
     updateFirstRow() {
       var firstRow = this.gridApi.getDisplayedRowAtIndex(0);
       if (firstRow) {
         var firstRowData = firstRow.data;
-        firstRowData["col1"] += "X";
+        firstRowData['col1'] += 'X';
         this.gridApi.applyTransaction({ update: [firstRowData] });
       }
     },
     addDRow() {
-      this.gridApi.applyTransaction({ add: [{ col1: "D" }] });
+      this.gridApi.applyTransaction({ add: [{ col1: 'D' }] });
     },
     reset() {
       this.gridApi.setFilterModel(null);
@@ -79,13 +79,13 @@ const VueExample = {
 
 window.getRowData = function getRowData() {
   return [
-    { col1: "A" },
-    { col1: "A" },
-    { col1: "B" },
-    { col1: "B" },
-    { col1: "C" },
-    { col1: "C" },
+    { col1: 'A' },
+    { col1: 'A' },
+    { col1: 'B' },
+    { col1: 'B' },
+    { col1: 'C' },
+    { col1: 'C' },
   ];
 };
 
-createApp(VueExample).mount("#app");
+createApp(VueExample).mount('#app');

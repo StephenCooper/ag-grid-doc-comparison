@@ -1,6 +1,7 @@
-import { HttpClient } from "@angular/common/http";
-import { Component } from "@angular/core";
+import { HttpClient } from '@angular/common/http';
+import { Component } from '@angular/core';
 import {
+  CellPosition,
   ColDef,
   ColGroupDef,
   GridApi,
@@ -10,12 +11,12 @@ import {
   NavigateToNextHeaderParams,
   TabToNextCellParams,
   TabToNextHeaderParams,
-} from "ag-grid-community";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
+} from 'ag-grid-community';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<ag-grid-angular
     style="width: 100%; height: 100%;"
     class="ag-theme-alpine"
@@ -34,22 +35,22 @@ export class AppComponent {
 
   public columnDefs: (ColDef | ColGroupDef)[] = [
     {
-      headerName: "Athlete",
+      headerName: 'Athlete',
       children: [
-        { field: "athlete", headerName: "Name", minWidth: 170 },
-        { field: "age" },
-        { field: "country" },
+        { field: 'athlete', headerName: 'Name', minWidth: 170 },
+        { field: 'age' },
+        { field: 'country' },
       ],
     },
-    { field: "year" },
-    { field: "sport" },
+    { field: 'year' },
+    { field: 'sport' },
     {
-      headerName: "Medals",
+      headerName: 'Medals',
       children: [
-        { field: "gold" },
-        { field: "silver" },
-        { field: "bronze" },
-        { field: "total" },
+        { field: 'gold' },
+        { field: 'silver' },
+        { field: 'bronze' },
+        { field: 'total' },
       ],
     },
   ];
@@ -69,24 +70,26 @@ export class AppComponent {
     this.gridApi = params.api;
 
     this.http
-      .get<any[]>("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      .get<any[]>('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .subscribe((data) => (this.rowData = data));
   }
 
-  navigateToNextHeader(params: NavigateToNextHeaderParams) {
+  navigateToNextHeader(
+    params: NavigateToNextHeaderParams
+  ): HeaderPosition | null {
     const nextHeader = params.nextHeaderPosition;
-    if (params.key !== "ArrowDown" && params.key !== "ArrowUp") {
+    if (params.key !== 'ArrowDown' && params.key !== 'ArrowUp') {
       return nextHeader;
     }
     const processedNextHeader = moveHeaderFocusUpDown(
       params.previousHeaderPosition!,
       params.headerRowCount,
-      params.key === "ArrowDown"
+      params.key === 'ArrowDown'
     );
     return processedNextHeader === nextHeader ? null : processedNextHeader;
   }
 
-  tabToNextHeader(params: TabToNextHeaderParams) {
+  tabToNextHeader(params: TabToNextHeaderParams): HeaderPosition | null {
     return moveHeaderFocusUpDown(
       params.previousHeaderPosition!,
       params.headerRowCount,
@@ -94,7 +97,7 @@ export class AppComponent {
     );
   }
 
-  tabToNextCell(params: TabToNextCellParams) {
+  tabToNextCell(params: TabToNextCellParams): CellPosition | null {
     const previousCell = params.previousCellPosition;
     const lastRowIndex = previousCell.rowIndex;
     let nextRowIndex = params.backwards ? lastRowIndex - 1 : lastRowIndex + 1;
@@ -113,7 +116,7 @@ export class AppComponent {
     return result;
   }
 
-  navigateToNextCell(params: NavigateToNextCellParams) {
+  navigateToNextCell(params: NavigateToNextCellParams): CellPosition | null {
     const previousCell = params.previousCellPosition,
       suggestedNextCell = params.nextCellPosition;
     let nextRowIndex, renderedRowCount;
@@ -146,17 +149,17 @@ export class AppComponent {
         return suggestedNextCell;
       default:
         throw Error(
-          "this will never happen, navigation is always one of the 4 keys above"
+          'this will never happen, navigation is always one of the 4 keys above'
         );
     }
   }
 }
 
 // define some handy keycode constants
-const KEY_LEFT = "ArrowLeft";
-const KEY_UP = "ArrowUp";
-const KEY_RIGHT = "ArrowRight";
-const KEY_DOWN = "ArrowDown";
+const KEY_LEFT = 'ArrowLeft';
+const KEY_UP = 'ArrowUp';
+const KEY_RIGHT = 'ArrowRight';
+const KEY_DOWN = 'ArrowDown';
 function moveHeaderFocusUpDown(
   previousHeader: HeaderPosition,
   headerRowCount: number,

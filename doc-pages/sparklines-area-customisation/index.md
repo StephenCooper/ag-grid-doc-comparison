@@ -109,7 +109,6 @@ sparklineOptions: {
     fill: 'lavender', // sets the colour between the area line and axis
 }
 ```
-
 Here is the result of the configuration shown in the above snippet:
 
 <div style="display: flex; justify-content: center;">
@@ -118,7 +117,6 @@ Here is the result of the configuration shown in the above snippet:
 </div>
 
 The given `fill` string can be in one of the following formats:
-
 - `#rgb` - Short Hex Code
 - `#rrggbb` - Hex Code
 - `rgb(r, g, b)` - RGB
@@ -150,6 +148,7 @@ Here is the result of the configuration shown in the above snippet:
 
 [[note]]
 | It is possible to remove the x-axis line entirely by setting the axis `strokeWidth` to `0`.
+
 
 ## Crosshairs Options
 
@@ -193,8 +192,9 @@ sparklineOptions: {
 
 Below is an example to show crosshair customisation. Note that:
 
-- The sparklines in the `Change` column have been configured so that both the vertical and horizontal crosshairs (xLine and yLine) are displayed as a dashed grey line.
-- The sparklines in the `Rate Of Change` column have been configured so that no crosshairs are displayed when the sparklines are hovered.
+- The sparklines in the **Change** column have been configured so that both the vertical and horizontal crosshairs (xLine and yLine) are displayed as a dashed grey line.
+- The sparklines in the **Rate Of Change** column have been configured so that no crosshairs are displayed when the sparklines are hovered.
+
 
 <grid-example title='Sparkline Crosshairs' name='sparkline-crosshairs' type='generated' options='{ "enterprise": true, "exampleHeight": 585, "modules": ["clientside", "sparklines"] }'></grid-example>
 

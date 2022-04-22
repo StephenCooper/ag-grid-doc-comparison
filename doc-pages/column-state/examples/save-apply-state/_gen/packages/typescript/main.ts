@@ -1,19 +1,19 @@
-import { ColDef, Grid, GridOptions } from "ag-grid-community";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
+import { ColDef, Grid, GridOptions } from 'ag-grid-community';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import 'ag-grid-enterprise';
 declare var window: any;
 const columnDefs: ColDef[] = [
-  { field: "athlete" },
-  { field: "age" },
-  { field: "country" },
-  { field: "sport" },
-  { field: "year" },
-  { field: "date" },
-  { field: "gold" },
-  { field: "silver" },
-  { field: "bronze" },
-  { field: "total" },
+  { field: 'athlete' },
+  { field: 'age' },
+  { field: 'country' },
+  { field: 'sport' },
+  { field: 'year' },
+  { field: 'date' },
+  { field: 'gold' },
+  { field: 'silver' },
+  { field: 'bronze' },
+  { field: 'total' },
 ];
 
 const gridOptions: GridOptions = {
@@ -26,10 +26,10 @@ const gridOptions: GridOptions = {
     enableValue: true,
   },
   sideBar: {
-    toolPanels: ["columns"],
+    toolPanels: ['columns'],
   },
-  rowGroupPanelShow: "always",
-  pivotPanelShow: "always",
+  rowGroupPanelShow: 'always',
+  pivotPanelShow: 'always',
   // debug: true,
   columnDefs: columnDefs,
   rowData: null,
@@ -37,35 +37,35 @@ const gridOptions: GridOptions = {
 
 function saveState() {
   window.colState = gridOptions.columnApi!.getColumnState();
-  console.log("column state saved");
+  console.log('column state saved');
 }
 
 function restoreState() {
   if (!window.colState) {
-    console.log("no columns state to restore by, you must save state first");
+    console.log('no columns state to restore by, you must save state first');
     return;
   }
   gridOptions.columnApi!.applyColumnState({
     state: window.colState,
     applyOrder: true,
   });
-  console.log("column state restored");
+  console.log('column state restored');
 }
 
 function resetState() {
   gridOptions.columnApi!.resetColumnState();
-  console.log("column state reset");
+  console.log('column state reset');
 }
 
 // setup the grid after the page has finished loading
-const gridDiv = document.querySelector<HTMLElement>("#myGrid")!;
+const gridDiv = document.querySelector<HTMLElement>('#myGrid')!;
 new Grid(gridDiv, gridOptions);
 
-fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
   .then((response) => response.json())
   .then((data) => gridOptions.api!.setRowData(data));
 
-if (typeof window !== "undefined") {
+if (typeof window !== 'undefined') {
   // Attach external event handlers to window so they can be called from index.html
   (<any>window).saveState = saveState;
   (<any>window).restoreState = restoreState;

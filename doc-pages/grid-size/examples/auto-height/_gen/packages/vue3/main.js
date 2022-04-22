@@ -1,8 +1,8 @@
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
-import { AgGridVue } from "ag-grid-vue3";
-import { createApp } from "vue";
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import 'ag-grid-enterprise';
+import { AgGridVue } from 'ag-grid-vue3';
+import { createApp } from 'vue';
 
 const VueExample = {
   template: `
@@ -66,32 +66,32 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
         {
-          headerName: "Core",
+          headerName: 'Core',
           children: [
-            { headerName: "ID", field: "id" },
-            { field: "make" },
-            { field: "price", filter: "agNumberColumnFilter" },
+            { headerName: 'ID', field: 'id' },
+            { field: 'make' },
+            { field: 'price', filter: 'agNumberColumnFilter' },
           ],
         },
         {
-          headerName: "Extra",
+          headerName: 'Extra',
           children: [
-            { field: "val1", filter: "agNumberColumnFilter" },
-            { field: "val2", filter: "agNumberColumnFilter" },
-            { field: "val3", filter: "agNumberColumnFilter" },
-            { field: "val4", filter: "agNumberColumnFilter" },
-            { field: "val5", filter: "agNumberColumnFilter" },
-            { field: "val6", filter: "agNumberColumnFilter" },
-            { field: "val7", filter: "agNumberColumnFilter" },
-            { field: "val8", filter: "agNumberColumnFilter" },
-            { field: "val9", filter: "agNumberColumnFilter" },
-            { field: "val10", filter: "agNumberColumnFilter" },
+            { field: 'val1', filter: 'agNumberColumnFilter' },
+            { field: 'val2', filter: 'agNumberColumnFilter' },
+            { field: 'val3', filter: 'agNumberColumnFilter' },
+            { field: 'val4', filter: 'agNumberColumnFilter' },
+            { field: 'val5', filter: 'agNumberColumnFilter' },
+            { field: 'val6', filter: 'agNumberColumnFilter' },
+            { field: 'val7', filter: 'agNumberColumnFilter' },
+            { field: 'val8', filter: 'agNumberColumnFilter' },
+            { field: 'val9', filter: 'agNumberColumnFilter' },
+            { field: 'val10', filter: 'agNumberColumnFilter' },
           ],
         },
       ],
@@ -112,16 +112,16 @@ const VueExample = {
   },
   created() {
     this.rowData = getData(5);
-    this.domLayout = "autoHeight";
+    this.domLayout = 'autoHeight';
     this.popupParent = document.body;
   },
   methods: {
     updateRowData(rowCount) {
       this.gridApi.setRowData(getData(rowCount));
-      document.querySelector("#currentRowCount").innerHTML = `${rowCount}`;
+      document.querySelector('#currentRowCount').innerHTML = `${rowCount}`;
     },
     cbFloatingRows() {
-      var show = document.getElementById("floating-rows").checked;
+      var show = document.getElementById('floating-rows').checked;
       if (show) {
         this.gridApi.setPinnedTopRowData([createRow(999), createRow(998)]);
         this.gridApi.setPinnedBottomRowData([createRow(997), createRow(996)]);
@@ -131,31 +131,31 @@ const VueExample = {
       }
     },
     setAutoHeight() {
-      this.gridApi.setDomLayout("autoHeight");
+      this.gridApi.setDomLayout('autoHeight');
       // auto height will get the grid to fill the height of the contents,
       // so the grid div should have no height set, the height is dynamic.
-      document.querySelector("#myGrid").style.height = "";
+      document.querySelector('#myGrid').style.height = '';
     },
     setFixedHeight() {
       // we could also call setDomLayout() here as normal is the default
-      this.gridApi.setDomLayout("normal");
+      this.gridApi.setDomLayout('normal');
       // when auto height is off, the grid ahs a fixed height, and then the grid
       // will provide scrollbars if the data does not fit into it.
-      document.querySelector("#myGrid").style.height = "400px";
+      document.querySelector('#myGrid').style.height = '400px';
     },
     onGridReady(params) {
       this.gridApi = params.api;
       this.gridColumnApi = params.columnApi;
 
-      document.querySelector("#currentRowCount").innerHTML = "5";
+      document.querySelector('#currentRowCount').innerHTML = '5';
     },
   },
 };
 
 window.createRow = function createRow(index) {
-  var makes = ["Toyota", "Ford", "BMW", "Phantom", "Porsche"];
+  var makes = ['Toyota', 'Ford', 'BMW', 'Phantom', 'Porsche'];
   return {
-    id: "D" + (1000 + index),
+    id: 'D' + (1000 + index),
     make: makes[Math.floor(Math.random() * makes.length)],
     price: Math.floor(Math.random() * 100000),
     val1: Math.floor(Math.random() * 1000),
@@ -179,4 +179,4 @@ window.getData = function getData(count) {
   return rowData;
 };
 
-createApp(VueExample).mount("#app");
+createApp(VueExample).mount('#app');

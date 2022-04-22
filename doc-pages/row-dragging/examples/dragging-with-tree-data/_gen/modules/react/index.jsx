@@ -1,13 +1,13 @@
-"use strict";
+'use strict';
 
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { AgGridReact } from "@ag-grid-community/react";
-import { RowGroupingModule } from "@ag-grid-enterprise/row-grouping";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from '@ag-grid-community/react';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import { RowGroupingModule } from '@ag-grid-enterprise/row-grouping';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([ClientSideRowModelModule, RowGroupingModule]);
@@ -18,9 +18,9 @@ class GridExample extends Component {
 
     this.state = {
       columnDefs: [
-        { field: "dateModified" },
+        { field: 'dateModified' },
         {
-          field: "size",
+          field: 'size',
           valueFormatter: valueFormatter,
         },
       ],
@@ -38,7 +38,7 @@ class GridExample extends Component {
       },
       autoGroupColumnDef: {
         rowDrag: true,
-        headerName: "Files",
+        headerName: 'Files',
         minWidth: 300,
         cellRendererParams: {
           suppressCount: true,
@@ -61,7 +61,7 @@ class GridExample extends Component {
     }
     // folder to drop into is where we are going to move the file/folder to
     var folderToDropInto =
-      overNode.data.type === "folder"
+      overNode.data.type === 'folder'
         ? // if over a folder, we take the immediate row
           overNode
         : // if over a file, we take the parent row (which will be a folder)
@@ -77,7 +77,7 @@ class GridExample extends Component {
     // check we are not moving a folder into a child folder
     var invalidMode = isSelectionParentOfTarget(event.node, folderToDropInto);
     if (invalidMode) {
-      console.log("invalid move");
+      console.log('invalid move');
     }
     if (needToChangeParent && !invalidMode) {
       var updatedRows = [];
@@ -91,11 +91,11 @@ class GridExample extends Component {
 
   render() {
     return (
-      <div style={{ width: "100%", height: "100%" }}>
+      <div style={{ width: '100%', height: '100%' }}>
         <div
           style={{
-            height: "100%",
-            width: "100%",
+            height: '100%',
+            width: '100%',
           }}
           className="ag-theme-alpine"
         >
@@ -119,7 +119,7 @@ class GridExample extends Component {
 }
 
 var valueFormatter = function (params) {
-  return params.value ? params.value + " MB" : "";
+  return params.value ? params.value + ' MB' : '';
 };
 // this updates the filePath locations in our data, we update the data
 // before we send it to AG Grid
@@ -169,4 +169,4 @@ function arePathsEqual(path1, path2) {
   return equal;
 }
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

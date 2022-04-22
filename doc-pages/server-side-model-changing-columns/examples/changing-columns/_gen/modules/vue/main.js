@@ -1,12 +1,12 @@
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine-dark.css";
-import { AgGridVue } from "@ag-grid-community/vue";
-import { ColumnsToolPanelModule } from "@ag-grid-enterprise/column-tool-panel";
-import { MenuModule } from "@ag-grid-enterprise/menu";
-import { RowGroupingModule } from "@ag-grid-enterprise/row-grouping";
-import { ServerSideRowModelModule } from "@ag-grid-enterprise/server-side-row-model";
-import Vue from "vue";
+import { ModuleRegistry } from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine-dark.css';
+import { AgGridVue } from '@ag-grid-community/vue';
+import { ColumnsToolPanelModule } from '@ag-grid-enterprise/column-tool-panel';
+import { MenuModule } from '@ag-grid-enterprise/menu';
+import { RowGroupingModule } from '@ag-grid-enterprise/row-grouping';
+import { ServerSideRowModelModule } from '@ag-grid-enterprise/server-side-row-model';
+import Vue from 'vue';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([
@@ -50,7 +50,7 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
@@ -81,34 +81,34 @@ const VueExample = {
     this.autoGroupColumnDef = {
       minWidth: 200,
     };
-    this.rowModelType = "serverSide";
-    this.serverSideStoreType = "partial";
+    this.rowModelType = 'serverSide';
+    this.serverSideStoreType = 'partial';
   },
   methods: {
     onBtApply() {
       var cols = [];
-      if (getBooleanValue("#athlete")) {
+      if (getBooleanValue('#athlete')) {
         cols.push(colDefAthlete);
       }
-      if (getBooleanValue("#age")) {
+      if (getBooleanValue('#age')) {
         cols.push(colDefAge);
       }
-      if (getBooleanValue("#country")) {
+      if (getBooleanValue('#country')) {
         cols.push(colDefCountry);
       }
-      if (getBooleanValue("#year")) {
+      if (getBooleanValue('#year')) {
         cols.push(colDefYear);
       }
-      if (getBooleanValue("#sport")) {
+      if (getBooleanValue('#sport')) {
         cols.push(colDefSport);
       }
-      if (getBooleanValue("#gold")) {
+      if (getBooleanValue('#gold')) {
         cols.push(colDefGold);
       }
-      if (getBooleanValue("#silver")) {
+      if (getBooleanValue('#silver')) {
         cols.push(colDefSilver);
       }
-      if (getBooleanValue("#bronze")) {
+      if (getBooleanValue('#bronze')) {
         cols.push(colDefBronze);
       }
       this.gridApi.setColumnDefs(cols);
@@ -117,14 +117,14 @@ const VueExample = {
       this.gridApi = params.api;
       this.gridColumnApi = params.columnApi;
 
-      document.getElementById("athlete").checked = true;
-      document.getElementById("age").checked = true;
-      document.getElementById("country").checked = true;
-      document.getElementById("year").checked = true;
-      document.getElementById("sport").checked = true;
-      document.getElementById("gold").checked = true;
-      document.getElementById("silver").checked = true;
-      document.getElementById("bronze").checked = true;
+      document.getElementById('athlete').checked = true;
+      document.getElementById('age').checked = true;
+      document.getElementById('country').checked = true;
+      document.getElementById('year').checked = true;
+      document.getElementById('sport').checked = true;
+      document.getElementById('gold').checked = true;
+      document.getElementById('silver').checked = true;
+      document.getElementById('bronze').checked = true;
 
       const updateData = (data) => {
         // setup the fake server with entire dataset
@@ -135,7 +135,7 @@ const VueExample = {
         params.api.setServerSideDatasource(datasource);
       };
 
-      fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
         .then((resp) => resp.json())
         .then((data) => updateData(data));
     },
@@ -157,7 +157,7 @@ window.getBooleanValue = function getBooleanValue(cssSelector) {
 window.getServerSideDatasource = function getServerSideDatasource(server) {
   return {
     getRows: function (params) {
-      console.log("[Datasource] - rows requested by grid: ", params.request);
+      console.log('[Datasource] - rows requested by grid: ', params.request);
       var response = server.getData(params.request);
       // adding delay to simulate real server call
       setTimeout(function () {
@@ -176,34 +176,34 @@ window.getServerSideDatasource = function getServerSideDatasource(server) {
   };
 };
 
-var colDefCountry = { field: "country", rowGroup: true };
+var colDefCountry = { field: 'country', rowGroup: true };
 
-var colDefYear = { field: "year", rowGroup: true };
+var colDefYear = { field: 'year', rowGroup: true };
 
 var colDefAthlete = {
-  field: "athlete",
-  filter: "agSetColumnFilter",
+  field: 'athlete',
+  filter: 'agSetColumnFilter',
   filterParams: {
     values: getAthletesAsync,
   },
-  menuTabs: ["filterMenuTab"],
+  menuTabs: ['filterMenuTab'],
 };
 
-var colDefAge = { field: "age" };
+var colDefAge = { field: 'age' };
 
-var colDefSport = { field: "sport" };
+var colDefSport = { field: 'sport' };
 
-var colDefGold = { field: "gold", aggFunc: "sum" };
+var colDefGold = { field: 'gold', aggFunc: 'sum' };
 
-var colDefSilver = { field: "silver", aggFunc: "sum" };
+var colDefSilver = { field: 'silver', aggFunc: 'sum' };
 
-var colDefBronze = { field: "bronze", aggFunc: "sum" };
+var colDefBronze = { field: 'bronze', aggFunc: 'sum' };
 
 var fakeServer = undefined;
 
 new Vue({
-  el: "#app",
+  el: '#app',
   components: {
-    "my-component": VueExample,
+    'my-component': VueExample,
   },
 });

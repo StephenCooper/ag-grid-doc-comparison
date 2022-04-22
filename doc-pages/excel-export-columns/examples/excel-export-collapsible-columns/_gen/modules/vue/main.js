@@ -1,12 +1,12 @@
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { CsvExportModule } from "@ag-grid-community/csv-export";
-import { AgGridVue } from "@ag-grid-community/vue";
-import { ExcelExportModule } from "@ag-grid-enterprise/excel-export";
-import { MenuModule } from "@ag-grid-enterprise/menu";
-import Vue from "vue";
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { CsvExportModule } from '@ag-grid-community/csv-export';
+import { AgGridVue } from '@ag-grid-community/vue';
+import { ExcelExportModule } from '@ag-grid-enterprise/excel-export';
+import { MenuModule } from '@ag-grid-enterprise/menu';
+import Vue from 'vue';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([
@@ -40,46 +40,46 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
         {
-          headerName: "Athlete Details",
+          headerName: 'Athlete Details',
           children: [
-            { field: "athlete", width: 180, filter: "agTextColumnFilter" },
-            { field: "age", width: 90, filter: "agNumberColumnFilter" },
-            { headerName: "Country", field: "country", width: 140 },
+            { field: 'athlete', width: 180, filter: 'agTextColumnFilter' },
+            { field: 'age', width: 90, filter: 'agNumberColumnFilter' },
+            { headerName: 'Country', field: 'country', width: 140 },
           ],
         },
         {
-          headerName: "Sports Results",
+          headerName: 'Sports Results',
           children: [
-            { field: "sport", width: 140 },
+            { field: 'sport', width: 140 },
             {
-              columnGroupShow: "closed",
-              field: "total",
+              columnGroupShow: 'closed',
+              field: 'total',
               width: 100,
-              filter: "agNumberColumnFilter",
+              filter: 'agNumberColumnFilter',
             },
             {
-              columnGroupShow: "open",
-              field: "gold",
+              columnGroupShow: 'open',
+              field: 'gold',
               width: 100,
-              filter: "agNumberColumnFilter",
+              filter: 'agNumberColumnFilter',
             },
             {
-              columnGroupShow: "open",
-              field: "silver",
+              columnGroupShow: 'open',
+              field: 'silver',
               width: 100,
-              filter: "agNumberColumnFilter",
+              filter: 'agNumberColumnFilter',
             },
             {
-              columnGroupShow: "open",
-              field: "bronze",
+              columnGroupShow: 'open',
+              field: 'bronze',
               width: 100,
-              filter: "agNumberColumnFilter",
+              filter: 'agNumberColumnFilter',
             },
           ],
         },
@@ -110,7 +110,7 @@ const VueExample = {
 
       const updateData = (data) => params.api.setRowData(data);
 
-      fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
         .then((resp) => resp.json())
         .then((data) => updateData(data));
     },
@@ -118,8 +118,8 @@ const VueExample = {
 };
 
 new Vue({
-  el: "#app",
+  el: '#app',
   components: {
-    "my-component": VueExample,
+    'my-component': VueExample,
   },
 });

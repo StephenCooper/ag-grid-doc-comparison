@@ -1,12 +1,12 @@
-import { ColDef, GridApi, GridReadyEvent } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { HttpClient } from "@angular/common/http";
-import { Component } from "@angular/core";
+import { ColDef, GridApi, GridReadyEvent } from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { HttpClient } from '@angular/common/http';
+import { Component } from '@angular/core';
 // Required feature modules are registered in app.module.ts
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<div class="example-wrapper">
     <div style="margin-bottom: 5px;">
       <button (click)="jumbleData()">Jumble Ages</button>
@@ -26,14 +26,14 @@ export class AppComponent {
   private gridApi!: GridApi;
 
   public columnDefs: ColDef[] = [
-    { field: "athlete" },
-    { field: "age", filter: "agNumberColumnFilter", maxWidth: 100 },
+    { field: 'athlete' },
+    { field: 'age', filter: 'agNumberColumnFilter', maxWidth: 100 },
     {
-      field: "date",
-      filter: "agDateColumnFilter",
+      field: 'date',
+      filter: 'agDateColumnFilter',
       filterParams: filterParams,
     },
-    { field: "total", filter: false },
+    { field: 'total', filter: false },
   ];
   public defaultColDef: ColDef = {
     flex: 1,
@@ -60,7 +60,7 @@ export class AppComponent {
     this.gridApi = params.api;
 
     this.http
-      .get<any[]>("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      .get<any[]>('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .subscribe((data) => {
         fetchedData = data.slice(0, 9);
         params.api!.setRowData(fetchedData);
@@ -72,7 +72,7 @@ var filterParams = {
   comparator: function (filterLocalDateAtMidnight: Date, cellValue: string) {
     var dateAsString = cellValue;
     if (dateAsString == null) return -1;
-    var dateParts = dateAsString.split("/");
+    var dateParts = dateAsString.split('/');
     var cellDate = new Date(
       Number(dateParts[2]),
       Number(dateParts[1]) - 1,

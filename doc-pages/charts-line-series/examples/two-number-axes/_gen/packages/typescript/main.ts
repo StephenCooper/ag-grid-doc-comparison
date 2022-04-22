@@ -1,26 +1,26 @@
-import * as agCharts from "ag-charts-community";
-import { AgChartOptions } from "ag-charts-community";
+import * as agCharts from 'ag-charts-community';
+import { AgChartOptions } from 'ag-charts-community';
 
 const options: AgChartOptions = {
-  container: document.getElementById("myChart"),
+  container: document.getElementById('myChart'),
   autoSize: false,
   data: generateSpiralData(),
   width: 550,
   height: 550,
   series: [
     {
-      xKey: "x",
-      yKey: "y",
+      xKey: 'x',
+      yKey: 'y',
     },
   ],
   axes: [
     {
-      type: "number",
-      position: "left",
+      type: 'number',
+      position: 'left',
     },
     {
-      type: "number",
-      position: "bottom",
+      type: 'number',
+      position: 'bottom',
     },
   ],
   legend: {

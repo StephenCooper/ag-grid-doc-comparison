@@ -1,17 +1,17 @@
-import { HttpClient } from "@angular/common/http";
-import { Component } from "@angular/core";
+import { HttpClient } from '@angular/common/http';
+import { Component } from '@angular/core';
 import {
   ColDef,
   GridReadyEvent,
   IServerSideDatasource,
   ServerSideStoreType,
-} from "ag-grid-community";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine-dark.css";
-import "ag-grid-enterprise";
+} from 'ag-grid-community';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine-dark.css';
+import 'ag-grid-enterprise';
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<ag-grid-angular
     style="width: 100%; height: 100%;"
     class="ag-theme-alpine-dark"
@@ -26,42 +26,42 @@ import "ag-grid-enterprise";
 })
 export class AppComponent {
   public columnDefs: ColDef[] = [
-    { field: "athlete", minWidth: 220, filter: "agTextColumnFilter" },
+    { field: 'athlete', minWidth: 220, filter: 'agTextColumnFilter' },
     {
-      field: "country",
+      field: 'country',
       minWidth: 200,
-      filter: "agSetColumnFilter",
+      filter: 'agSetColumnFilter',
       filterParams: {
         values: [
-          "United States",
-          "Ireland",
-          "United Kingdom",
-          "Russia",
-          "Australia",
-          "Canada",
-          "Norway",
+          'United States',
+          'Ireland',
+          'United Kingdom',
+          'Russia',
+          'Australia',
+          'Canada',
+          'Norway',
         ],
       },
     },
-    { field: "year", filter: "agNumberColumnFilter" },
-    { field: "sport", minWidth: 200 },
-    { field: "gold" },
-    { field: "silver" },
-    { field: "bronze" },
+    { field: 'year', filter: 'agNumberColumnFilter' },
+    { field: 'sport', minWidth: 200 },
+    { field: 'gold' },
+    { field: 'silver' },
+    { field: 'bronze' },
   ];
   public defaultColDef: ColDef = {
     flex: 1,
     minWidth: 100,
   };
-  public rowModelType = "serverSide";
-  public serverSideStoreType: ServerSideStoreType = "full";
+  public rowModelType = 'serverSide';
+  public serverSideStoreType: ServerSideStoreType = 'full';
   public rowData!: any[];
 
   constructor(private http: HttpClient) {}
 
   onGridReady(params: GridReadyEvent) {
     this.http
-      .get<any[]>("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      .get<any[]>('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .subscribe((data) => {
         // setup the fake server with entire dataset
         var fakeServer = createFakeServer(data);
@@ -77,9 +77,9 @@ function createServerSideDatasource(server: any): IServerSideDatasource {
   return {
     getRows: function (params) {
       console.log(
-        "[Datasource] - rows requested by grid: startRow = " +
+        '[Datasource] - rows requested by grid: startRow = ' +
           params.request.startRow +
-          ", endRow = " +
+          ', endRow = ' +
           params.request.endRow
       );
       // get data for request from our fake server

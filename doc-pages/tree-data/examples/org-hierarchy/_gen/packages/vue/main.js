@@ -1,8 +1,8 @@
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
-import { AgGridVue } from "ag-grid-vue";
-import Vue from "vue";
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import 'ag-grid-enterprise';
+import { AgGridVue } from 'ag-grid-vue';
+import Vue from 'vue';
 
 const VueExample = {
   template: `
@@ -28,11 +28,11 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
-      columnDefs: [{ field: "jobTitle" }, { field: "employmentType" }],
+      columnDefs: [{ field: 'jobTitle' }, { field: 'employmentType' }],
       gridApi: null,
       columnApi: null,
       defaultColDef: {
@@ -46,7 +46,7 @@ const VueExample = {
   },
   created() {
     this.autoGroupColumnDef = {
-      headerName: "Organisation Hierarchy",
+      headerName: 'Organisation Hierarchy',
       minWidth: 300,
       cellRendererParams: {
         suppressCount: true,
@@ -61,7 +61,7 @@ const VueExample = {
   methods: {
     onFilterTextBoxChanged() {
       this.gridApi.setQuickFilter(
-        document.getElementById("filter-text-box").value
+        document.getElementById('filter-text-box').value
       );
     },
     onGridReady(params) {
@@ -72,8 +72,8 @@ const VueExample = {
 };
 
 new Vue({
-  el: "#app",
+  el: '#app',
   components: {
-    "my-component": VueExample,
+    'my-component': VueExample,
   },
 });

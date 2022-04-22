@@ -1,6 +1,6 @@
-import { AgChartsVue } from "ag-charts-vue";
-import { cloneDeep } from "lodash";
-import Vue from "vue";
+import { AgChartsVue } from 'ag-charts-vue';
+import { cloneDeep } from 'lodash';
+import Vue from 'vue';
 
 const ChartExample = {
   template: `
@@ -15,7 +15,7 @@ const ChartExample = {
             </div>
     `,
   components: {
-    "ag-charts-vue": AgChartsVue,
+    'ag-charts-vue': AgChartsVue,
   },
   data: function () {
     return {
@@ -25,31 +25,31 @@ const ChartExample = {
   created() {
     this.options = {
       data: [
-        { os: "Windows", share: 88.07 },
-        { os: "macOS", share: 9.44 },
-        { os: "Linux", share: 1.87 },
+        { os: 'Windows', share: 88.07 },
+        { os: 'macOS', share: 9.44 },
+        { os: 'Linux', share: 1.87 },
       ],
       series: [
         {
-          type: "column",
-          xKey: "os",
-          yKey: "share",
+          type: 'column',
+          xKey: 'os',
+          yKey: 'share',
         },
       ],
       axes: [
         {
-          type: "category",
-          position: "bottom",
+          type: 'category',
+          position: 'bottom',
           title: {
-            text: "Desktop Operating Systems",
+            text: 'Desktop Operating Systems',
             enabled: false,
           },
         },
         {
-          type: "number",
-          position: "left",
+          type: 'number',
+          position: 'left',
           title: {
-            text: "Market Share (%)",
+            text: 'Market Share (%)',
             enabled: false,
           },
         },
@@ -81,8 +81,8 @@ const ChartExample = {
 };
 
 new Vue({
-  el: "#app",
+  el: '#app',
   components: {
-    "my-component": ChartExample,
+    'my-component': ChartExample,
   },
 });

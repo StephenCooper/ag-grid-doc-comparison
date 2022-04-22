@@ -1,12 +1,12 @@
-"use strict";
+'use strict';
 
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { AgGridReact } from "@ag-grid-community/react";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from '@ag-grid-community/react';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([ClientSideRowModelModule]);
@@ -17,11 +17,11 @@ class GridExample extends Component {
 
     this.state = {
       rowData: [
-        { make: "Toyota", model: "Celica", price: 35000 },
-        { make: "Ford", model: "Mondeo", price: 32000 },
-        { make: "Porsche", model: "Boxter", price: 72000 },
+        { make: 'Toyota', model: 'Celica', price: 35000 },
+        { make: 'Ford', model: 'Mondeo', price: 32000 },
+        { make: 'Porsche', model: 'Boxster', price: 72000 },
       ],
-      columnDefs: [{ field: "make" }, { field: "model" }, { field: "price" }],
+      columnDefs: [{ field: 'make' }, { field: 'model' }, { field: 'price' }],
     };
   }
 
@@ -30,7 +30,7 @@ class GridExample extends Component {
     this.gridColumnApi = params.columnApi;
 
     params.api.sizeColumnsToFit();
-    window.addEventListener("resize", function () {
+    window.addEventListener('resize', function () {
       setTimeout(function () {
         params.api.sizeColumnsToFit();
       });
@@ -41,14 +41,14 @@ class GridExample extends Component {
 
   render() {
     return (
-      <div style={{ width: "100%", height: "100%" }}>
+      <div style={{ width: '100%', height: '100%' }}>
         <div className="container">
           <div id="left">left</div>
           <div id="center">
             <div
               style={{
-                height: "100%",
-                width: "100%",
+                height: '100%',
+                width: '100%',
               }}
               className="ag-theme-alpine"
             >
@@ -66,4 +66,4 @@ class GridExample extends Component {
   }
 }
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

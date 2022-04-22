@@ -1,6 +1,6 @@
 const columnDefs = [
   {
-    headerName: " ",
+    headerName: ' ',
     headerCheckboxSelection: true,
     checkboxSelection: true,
     floatingFilter: false,
@@ -16,53 +16,53 @@ const columnDefs = [
     suppressColumnsToolPanel: true,
   },
   {
-    headerName: "Participant",
+    headerName: 'Participant',
     children: [
-      { field: "athlete", minWidth: 170 },
-      { field: "country", minWidth: 150 },
+      { field: 'athlete', minWidth: 170 },
+      { field: 'country', minWidth: 150 },
     ],
   },
-  { field: "sport" },
+  { field: 'sport' },
   {
-    headerName: "Medals",
+    headerName: 'Medals',
     children: [
       {
-        field: "total",
-        columnGroupShow: "closed",
-        filter: "agNumberColumnFilter",
+        field: 'total',
+        columnGroupShow: 'closed',
+        filter: 'agNumberColumnFilter',
         width: 120,
         flex: 0,
       },
       {
-        field: "gold",
-        columnGroupShow: "open",
-        filter: "agNumberColumnFilter",
+        field: 'gold',
+        columnGroupShow: 'open',
+        filter: 'agNumberColumnFilter',
         width: 100,
         flex: 0,
       },
       {
-        field: "silver",
-        columnGroupShow: "open",
-        filter: "agNumberColumnFilter",
+        field: 'silver',
+        columnGroupShow: 'open',
+        filter: 'agNumberColumnFilter',
         width: 100,
         flex: 0,
       },
       {
-        field: "bronze",
-        columnGroupShow: "open",
-        filter: "agNumberColumnFilter",
+        field: 'bronze',
+        columnGroupShow: 'open',
+        filter: 'agNumberColumnFilter',
         width: 100,
         flex: 0,
       },
     ],
   },
-  { field: "year", filter: "agNumberColumnFilter" },
+  { field: 'year', filter: 'agNumberColumnFilter' },
 ];
 
 const gridOptions = {
   rowData: null,
   columnDefs: columnDefs,
-  rowSelection: "multiple",
+  rowSelection: 'multiple',
   suppressRowClickSelection: true,
   defaultColDef: {
     editable: true,
@@ -74,17 +74,17 @@ const gridOptions = {
     flex: 1,
   },
   sideBar: {
-    toolPanels: ["columns", "filters"],
-    defaultToolPanel: "",
+    toolPanels: ['columns', 'filters'],
+    defaultToolPanel: '',
   },
 };
 
 // setup the grid after the page has finished loading
-document.addEventListener("DOMContentLoaded", function () {
-  var gridDiv = document.querySelector("#myGrid");
+document.addEventListener('DOMContentLoaded', function () {
+  var gridDiv = document.querySelector('#myGrid');
   new agGrid.Grid(gridDiv, gridOptions);
 
-  fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+  fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
     .then((response) => response.json())
     .then((data) => gridOptions.api.setRowData(data));
 });

@@ -1,11 +1,11 @@
-"use strict";
+'use strict';
 
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
-import { AgGridReact } from "ag-grid-react";
-import React, { useCallback, useMemo, useRef, useState } from "react";
-import { render } from "react-dom";
+import React, { useCallback, useMemo, useRef, useState } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from 'ag-grid-react';
+import 'ag-grid-enterprise';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 
 var dateFilterParams = {
   comparator: function (filterLocalDateAtMidnight, cellValue) {
@@ -22,10 +22,10 @@ var dateFilterParams = {
   },
 };
 
-var ageType = "everyone";
+var ageType = 'everyone';
 
 const asDate = (dateAsString) => {
-  var splitFields = dateAsString.split("/");
+  var splitFields = dateAsString.split('/');
   return new Date(
     Number.parseInt(splitFields[2]),
     Number.parseInt(splitFields[1]) - 1,
@@ -35,22 +35,22 @@ const asDate = (dateAsString) => {
 
 const GridExample = () => {
   const gridRef = useRef();
-  const containerStyle = useMemo(() => ({ width: "100%", height: "100%" }), []);
-  const gridStyle = useMemo(() => ({ height: "100%", width: "100%" }), []);
+  const containerStyle = useMemo(() => ({ width: '100%', height: '100%' }), []);
+  const gridStyle = useMemo(() => ({ height: '100%', width: '100%' }), []);
   const [rowData, setRowData] = useState();
   const [columnDefs, setColumnDefs] = useState([
-    { field: "athlete", minWidth: 180 },
-    { field: "age", filter: "agNumberColumnFilter", maxWidth: 80 },
-    { field: "country" },
-    { field: "year", maxWidth: 90 },
+    { field: 'athlete', minWidth: 180 },
+    { field: 'age', filter: 'agNumberColumnFilter', maxWidth: 80 },
+    { field: 'country' },
+    { field: 'year', maxWidth: 90 },
     {
-      field: "date",
-      filter: "agDateColumnFilter",
+      field: 'date',
+      filter: 'agDateColumnFilter',
       filterParams: dateFilterParams,
     },
-    { field: "gold", filter: "agNumberColumnFilter" },
-    { field: "silver", filter: "agNumberColumnFilter" },
-    { field: "bronze", filter: "agNumberColumnFilter" },
+    { field: 'gold', filter: 'agNumberColumnFilter' },
+    { field: 'silver', filter: 'agNumberColumnFilter' },
+    { field: 'bronze', filter: 'agNumberColumnFilter' },
   ]);
   const defaultColDef = useMemo(() => {
     return {
@@ -61,10 +61,10 @@ const GridExample = () => {
   }, []);
 
   const onGridReady = useCallback((params) => {
-    fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+    fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .then((resp) => resp.json())
       .then((data) => {
-        document.querySelector("#everyone").checked = true;
+        document.querySelector('#everyone').checked = true;
         setRowData(data);
       });
   }, []);
@@ -76,19 +76,19 @@ const GridExample = () => {
 
   const isExternalFilterPresent = useCallback(() => {
     // if ageType is not everyone, then we are filtering
-    return ageType !== "everyone";
+    return ageType !== 'everyone';
   }, []);
 
   const doesExternalFilterPass = useCallback(
     (node) => {
       switch (ageType) {
-        case "below25":
+        case 'below25':
           return node.data.age < 25;
-        case "between25and50":
+        case 'between25and50':
           return node.data.age >= 25 && node.data.age <= 50;
-        case "above50":
+        case 'above50':
           return node.data.age > 50;
-        case "dateAfter2008":
+        case 'dateAfter2008':
           return asDate(node.data.date) > new Date(2008, 1, 1);
         default:
           return true;
@@ -106,7 +106,7 @@ const GridExample = () => {
               type="radio"
               name="filter"
               id="everyone"
-              onChange={() => externalFilterChanged("everyone")}
+              onChange={() => externalFilterChanged('everyone')}
             />
             Everyone
           </label>
@@ -115,7 +115,7 @@ const GridExample = () => {
               type="radio"
               name="filter"
               id="below25"
-              onChange={() => externalFilterChanged("below25")}
+              onChange={() => externalFilterChanged('below25')}
             />
             Below 25
           </label>
@@ -124,7 +124,7 @@ const GridExample = () => {
               type="radio"
               name="filter"
               id="between25and50"
-              onChange={() => externalFilterChanged("between25and50")}
+              onChange={() => externalFilterChanged('between25and50')}
             />
             Between 25 and 50
           </label>
@@ -133,7 +133,7 @@ const GridExample = () => {
               type="radio"
               name="filter"
               id="above50"
-              onChange={() => externalFilterChanged("above50")}
+              onChange={() => externalFilterChanged('above50')}
             />
             Above 50
           </label>
@@ -142,7 +142,7 @@ const GridExample = () => {
               type="radio"
               name="filter"
               id="dateAfter2008"
-              onChange={() => externalFilterChanged("dateAfter2008")}
+              onChange={() => externalFilterChanged('dateAfter2008')}
             />
             After 01/01/2008
           </label>
@@ -165,4 +165,4 @@ const GridExample = () => {
   );
 };
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

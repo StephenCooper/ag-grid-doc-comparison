@@ -1,13 +1,13 @@
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { AgGridVue } from "@ag-grid-community/vue";
-import { ColumnsToolPanelModule } from "@ag-grid-enterprise/column-tool-panel";
-import { FiltersToolPanelModule } from "@ag-grid-enterprise/filter-tool-panel";
-import { MenuModule } from "@ag-grid-enterprise/menu";
-import { SetFilterModule } from "@ag-grid-enterprise/set-filter";
-import Vue from "vue";
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { AgGridVue } from '@ag-grid-community/vue';
+import { ColumnsToolPanelModule } from '@ag-grid-enterprise/column-tool-panel';
+import { FiltersToolPanelModule } from '@ag-grid-enterprise/filter-tool-panel';
+import { MenuModule } from '@ag-grid-enterprise/menu';
+import { SetFilterModule } from '@ag-grid-enterprise/set-filter';
+import Vue from 'vue';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([
@@ -40,23 +40,23 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
         {
-          colId: "array",
-          headerName: "Values Array",
-          field: "animal",
-          filter: "agSetColumnFilter",
+          colId: 'array',
+          headerName: 'Values Array',
+          field: 'animal',
+          filter: 'agSetColumnFilter',
           filterParams: arrayFilterParams,
         },
         {
-          colId: "callback",
-          headerName: "Values Callback",
-          field: "animal",
-          filter: "agSetColumnFilter",
+          colId: 'callback',
+          headerName: 'Values Callback',
+          field: 'animal',
+          filter: 'agSetColumnFilter',
           filterParams: callbackFilterParams,
         },
       ],
@@ -72,30 +72,30 @@ const VueExample = {
     };
   },
   created() {
-    this.sideBar = "filters";
+    this.sideBar = 'filters';
     this.rowData = getData();
   },
   methods: {
     onFirstDataRendered(params) {
-      params.api.getToolPanelInstance("filters").expandFilters();
+      params.api.getToolPanelInstance('filters').expandFilters();
     },
     useList1() {
-      console.log("Updating values to " + list1);
+      console.log('Updating values to ' + list1);
       valuesArray.length = 0;
       list1.forEach(function (value) {
         valuesArray.push(value);
       });
-      var filter = this.gridApi.getFilterInstance("array");
+      var filter = this.gridApi.getFilterInstance('array');
       filter.refreshFilterValues();
       valuesCallbackList = list1;
     },
     useList2() {
-      console.log("Updating values to " + list2);
+      console.log('Updating values to ' + list2);
       valuesArray.length = 0;
       list2.forEach(function (value) {
         valuesArray.push(value);
       });
-      var filter = this.gridApi.getFilterInstance("array");
+      var filter = this.gridApi.getFilterInstance('array');
       filter.refreshFilterValues();
       valuesCallbackList = list2;
     },
@@ -112,9 +112,9 @@ window.valuesCallback = function valuesCallback(params) {
   }, 1000);
 };
 
-var list1 = ["Elephant", "Lion", "Monkey"];
+var list1 = ['Elephant', 'Lion', 'Monkey'];
 
-var list2 = ["Elephant", "Giraffe", "Tiger"];
+var list2 = ['Elephant', 'Giraffe', 'Tiger'];
 
 var valuesArray = list1.slice();
 
@@ -130,8 +130,8 @@ var callbackFilterParams = {
 };
 
 new Vue({
-  el: "#app",
+  el: '#app',
   components: {
-    "my-component": VueExample,
+    'my-component': VueExample,
   },
 });

@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import ReactDOM from "react-dom";
+import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
 
 export default class MoodEditor extends Component {
   constructor(props) {
@@ -14,12 +14,12 @@ export default class MoodEditor extends Component {
   }
 
   componentWillMount() {
-    this.setHappy(this.props.value === "Happy");
+    this.setHappy(this.props.value === 'Happy');
   }
 
   componentDidMount() {
     this.refs.container.addEventListener(
-      "keydown",
+      'keydown',
       this.checkAndToggleMoodIfLeftRight
     );
     this.focus();
@@ -27,13 +27,13 @@ export default class MoodEditor extends Component {
 
   componentWillUnmount() {
     this.refs.container.removeEventListener(
-      "keydown",
+      'keydown',
       this.checkAndToggleMoodIfLeftRight
     );
   }
 
   checkAndToggleMoodIfLeftRight = (event) => {
-    if (["ArrowLeft", "ArrowRight"].indexOf(event.key) > -1) {
+    if (['ArrowLeft', 'ArrowRight'].indexOf(event.key) > -1) {
       // left and right
       this.toggleMood();
       event.stopPropagation();
@@ -55,7 +55,7 @@ export default class MoodEditor extends Component {
 
   getValue() {
     // renderer is updated but not re-rendered in grid
-    return this.state.happy ? "Happy" : "Sad";
+    return this.state.happy ? 'Happy' : 'Sad';
   }
 
   isPopup() {
@@ -93,24 +93,24 @@ export default class MoodEditor extends Component {
   render() {
     let mood = {
       borderRadius: 15,
-      border: "1px solid grey",
-      background: "#e6e6e6",
+      border: '1px solid grey',
+      background: '#e6e6e6',
       padding: 15,
-      textAlign: "center",
-      display: "inline-block",
+      textAlign: 'center',
+      display: 'inline-block',
     };
 
     let unselected = {
       paddingLeft: 10,
       paddingRight: 10,
-      border: "1px solid transparent",
+      border: '1px solid transparent',
       padding: 4,
     };
 
     let selected = {
       paddingLeft: 10,
       paddingRight: 10,
-      border: "1px solid lightgreen",
+      border: '1px solid lightgreen',
       padding: 4,
     };
 

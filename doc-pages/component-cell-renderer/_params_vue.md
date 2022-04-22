@@ -7,5 +7,12 @@
 ||
 ||For example:
 ||
-||`js ||<script lang="ts"> || import {defineComponent} from "vue"; || || export default defineComponent({ || name: "MyComponent", || props: ['params'], // required for TypeScript ... ||`
+||```js
+||<script lang="ts">
+||    import {defineComponent} from "vue";
+||
+||    export default defineComponent({
+||        name: "MyComponent",
+||        props: ['params'],  // required for TypeScript ...
+||```
 ||

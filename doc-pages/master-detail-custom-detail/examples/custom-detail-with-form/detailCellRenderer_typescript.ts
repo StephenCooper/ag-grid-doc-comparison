@@ -1,51 +1,43 @@
-import {
-  ICellRendererComp,
-  ICellRendererParams,
-} from "@ag-grid-community/core";
+import { ICellRendererComp, ICellRendererParams } from "@ag-grid-community/core";
 
 export class DetailCellRenderer implements ICellRendererComp {
-  eGui!: HTMLElement;
+    eGui!: HTMLElement;
 
-  init(params: ICellRendererParams) {
-    var firstRecord = params.data.callRecords[0];
+    init(params: ICellRendererParams) {
 
-    this.eGui = document.createElement("div");
-    this.eGui.innerHTML =
-      "<form>" +
-      "  <div>" +
-      "  <p>" +
-      "    <label>" +
-      "      Call Id:<br>" +
-      '    <input type="text" value="' +
-      firstRecord.callId +
-      '">' +
-      "    </label>" +
-      "  </p>" +
-      "  <p>" +
-      "    <label>" +
-      "      Number:<br>" +
-      '    <input type="text" value="' +
-      firstRecord.number +
-      '">' +
-      "    </label>" +
-      "  </p>" +
-      "  <p>" +
-      "    <label>" +
-      "      Direction:<br>" +
-      '    <input type="text" value="' +
-      firstRecord.direction +
-      '">' +
-      "    </label>" +
-      "  </p>" +
-      "</form>" +
-      "</div>";
-  }
+        var firstRecord = params.data.callRecords[0];
 
-  getGui() {
-    return this.eGui;
-  }
+        this.eGui = document.createElement('div');
+        this.eGui.innerHTML =
+            '<form>' +
+            '  <div>' +
+            '  <p>' +
+            '    <label>' +
+            '      Call Id:<br>' +
+            '    <input type="text" value="' + firstRecord.callId + '">' +
+            '    </label>' +
+            '  </p>' +
+            '  <p>' +
+            '    <label>' +
+            '      Number:<br>' +
+            '    <input type="text" value="' + firstRecord.number + '">' +
+            '    </label>' +
+            '  </p>' +
+            '  <p>' +
+            '    <label>' +
+            '      Direction:<br>' +
+            '    <input type="text" value="' + firstRecord.direction + '">' +
+            '    </label>' +
+            '  </p>' +
+            '</form>' +
+            '</div>';
+    }
 
-  refresh(params: ICellRendererParams): boolean {
-    return false;
-  }
+    getGui() {
+        return this.eGui;
+    }
+
+    refresh(params: ICellRendererParams): boolean {
+        return false;
+    }
 }

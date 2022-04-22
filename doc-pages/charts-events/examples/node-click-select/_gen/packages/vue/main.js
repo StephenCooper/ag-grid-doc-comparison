@@ -1,5 +1,5 @@
-import { AgChartsVue } from "ag-charts-vue";
-import Vue from "vue";
+import { AgChartsVue } from 'ag-charts-vue';
+import Vue from 'vue';
 
 const ChartExample = {
   template: `
@@ -9,7 +9,7 @@ const ChartExample = {
             </div>
     `,
   components: {
-    "ag-charts-vue": AgChartsVue,
+    'ag-charts-vue': AgChartsVue,
   },
   data: function () {
     return {
@@ -19,21 +19,21 @@ const ChartExample = {
   created() {
     this.options = {
       title: {
-        text: "Number of Cars Sold",
+        text: 'Number of Cars Sold',
       },
       subtitle: {
-        text: "(click a marker to toggle its selected state)",
+        text: '(click a marker to toggle its selected state)',
       },
       data: [
-        { month: "March", units: 25, brands: { BMW: 10, Toyota: 15 } },
-        { month: "April", units: 27, brands: { Ford: 17, BMW: 10 } },
-        { month: "May", units: 42, brands: { Nissan: 20, Toyota: 22 } },
+        { month: 'March', units: 25, brands: { BMW: 10, Toyota: 15 } },
+        { month: 'April', units: 27, brands: { Ford: 17, BMW: 10 } },
+        { month: 'May', units: 42, brands: { Nissan: 20, Toyota: 22 } },
       ],
       series: [
         {
-          type: "line",
-          xKey: "month",
-          yKey: "units",
+          type: 'line',
+          xKey: 'month',
+          yKey: 'units',
           listeners: {
             nodeClick: (event) => {
               event.datum.selected = !event.datum.selected;
@@ -46,23 +46,23 @@ const ChartExample = {
               // Use a different size and color for selected nodes.
               if (params.datum.selected) {
                 return {
-                  fill: "red",
+                  fill: 'red',
                   size: 24,
                 };
               }
             },
           },
-          cursor: "pointer",
+          cursor: 'pointer',
         },
       ],
       axes: [
         {
-          type: "category",
-          position: "bottom",
+          type: 'category',
+          position: 'bottom',
         },
         {
-          type: "number",
-          position: "left",
+          type: 'number',
+          position: 'left',
         },
       ],
       legend: {
@@ -75,16 +75,16 @@ const ChartExample = {
 };
 
 window.listUnitsSoldByBrand = function listUnitsSoldByBrand(brands) {
-  var result = "";
+  var result = '';
   for (var key in brands) {
-    result += key + ": " + brands[key] + "\n";
+    result += key + ': ' + brands[key] + '\n';
   }
   return result;
 };
 
 new Vue({
-  el: "#app",
+  el: '#app',
   components: {
-    "my-component": ChartExample,
+    'my-component': ChartExample,
   },
 });

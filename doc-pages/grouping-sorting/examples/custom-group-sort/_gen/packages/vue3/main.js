@@ -1,8 +1,8 @@
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
-import { AgGridVue } from "ag-grid-vue3";
-import { createApp } from "vue";
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import 'ag-grid-enterprise';
+import { AgGridVue } from 'ag-grid-vue3';
+import { createApp } from 'vue';
 
 const VueExample = {
   template: `
@@ -20,38 +20,38 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
-        { field: "year", rowGroup: true, hide: true },
+        { field: 'year', rowGroup: true, hide: true },
         {
-          field: "month",
+          field: 'month',
           rowGroup: true,
           hide: true,
           comparator: (a, b) => {
             const months = [
-              "January",
-              "February",
-              "March",
-              "April",
-              "May",
-              "June",
-              "July",
-              "August",
-              "September",
-              "October",
-              "November",
-              "December",
+              'January',
+              'February',
+              'March',
+              'April',
+              'May',
+              'June',
+              'July',
+              'August',
+              'September',
+              'October',
+              'November',
+              'December',
             ];
             // sorts 'months' in chronological order
             return months.indexOf(a) - months.indexOf(b);
           },
         },
-        { field: "salesRep" },
-        { field: "handset" },
-        { field: "sale" },
+        { field: 'salesRep' },
+        { field: 'handset' },
+        { field: 'sale' },
       ],
       gridApi: null,
       columnApi: null,
@@ -69,7 +69,7 @@ const VueExample = {
   },
   created() {
     this.autoGroupColumnDef = {
-      sort: "asc",
+      sort: 'asc',
       minWidth: 300,
     };
     this.groupDefaultExpanded = 1;
@@ -83,4 +83,4 @@ const VueExample = {
   },
 };
 
-createApp(VueExample).mount("#app");
+createApp(VueExample).mount('#app');

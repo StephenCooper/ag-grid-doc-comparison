@@ -1,17 +1,17 @@
-import { Component } from "@angular/core";
+import { Component } from '@angular/core';
 import {
   ColDef,
   ExcelExportParams,
   GridApi,
   GridReadyEvent,
-} from "ag-grid-community";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
+} from 'ag-grid-community';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import 'ag-grid-enterprise';
 declare var logos: any;
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<div class="container">
     <div>
       <button class="export" (click)="onBtExport()">Export to Excel</button>
@@ -33,16 +33,16 @@ export class AppComponent {
   private gridApi!: GridApi;
 
   public columnDefs: ColDef[] = [
-    { field: "athlete" },
-    { field: "country" },
-    { field: "age" },
-    { field: "year" },
-    { field: "date" },
-    { field: "sport" },
-    { field: "gold" },
-    { field: "silver" },
-    { field: "bronze" },
-    { field: "total" },
+    { field: 'athlete' },
+    { field: 'country' },
+    { field: 'age' },
+    { field: 'year' },
+    { field: 'date' },
+    { field: 'sport' },
+    { field: 'gold' },
+    { field: 'silver' },
+    { field: 'bronze' },
+    { field: 'total' },
   ];
   public defaultColDef: ColDef = {
     width: 150,
@@ -53,7 +53,7 @@ export class AppComponent {
       [
         {
           data: {
-            type: "String",
+            type: 'String',
             value: logos.AgGrid, // see imageUtils
           },
           mergeAcross: 1,
@@ -62,14 +62,14 @@ export class AppComponent {
     ],
     rowHeight: (params) => (params.rowIndex === 1 ? 82 : 20),
     addImageToCell: (rowIndex, col, value) => {
-      if (rowIndex !== 1 || col.getColId() !== "athlete") {
+      if (rowIndex !== 1 || col.getColId() !== 'athlete') {
         return;
       }
       return {
         image: {
-          id: "logo",
+          id: 'logo',
           base64: value,
-          imageType: "png",
+          imageType: 'png',
           width: 295,
           height: 100,
           position: {
@@ -88,7 +88,7 @@ export class AppComponent {
   onGridReady(params: GridReadyEvent) {
     this.gridApi = params.api;
 
-    fetch("https://www.ag-grid.com/example-assets/small-olympic-winners.json")
+    fetch('https://www.ag-grid.com/example-assets/small-olympic-winners.json')
       .then((response) => response.json())
       .then((data) => params.api.setRowData(data));
   }

@@ -3,15 +3,15 @@ import React, {
   useEffect,
   useImperativeHandle,
   useState,
-} from "react";
+} from 'react';
 
 export default forwardRef((props, ref) => {
   const [currentValue, setCurrentValue] = useState(0);
 
   useEffect(() => {
-    let valueToUse = currentValue === "0" ? null : currentValue;
+    let valueToUse = currentValue === '0' ? null : currentValue;
     props.parentFilterInstance((instance) =>
-      instance.onFloatingFilterChanged("greaterThan", valueToUse)
+      instance.onFloatingFilterChanged('greaterThan', valueToUse)
     );
   }, [currentValue]);
 
@@ -30,11 +30,11 @@ export default forwardRef((props, ref) => {
   };
 
   const style = {
-    border: "2px solid #22ff22",
-    borderRadius: "5px",
-    backgroundColor: "#bbffbb",
-    width: "200px",
-    height: "50px",
+    border: '2px solid #22ff22',
+    borderRadius: '5px',
+    backgroundColor: '#bbffbb',
+    width: '200px',
+    height: '50px',
   };
 
   return (

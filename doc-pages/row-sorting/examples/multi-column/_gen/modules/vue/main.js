@@ -1,9 +1,9 @@
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { AgGridVue } from "@ag-grid-community/vue";
-import Vue from "vue";
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { AgGridVue } from '@ag-grid-community/vue';
+import Vue from 'vue';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([ClientSideRowModelModule]);
@@ -23,21 +23,21 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
-        { field: "athlete" },
-        { field: "age", width: 100 },
-        { field: "country" },
-        { field: "year", width: 100 },
-        { field: "date" },
-        { field: "sport" },
-        { field: "gold" },
-        { field: "silver" },
-        { field: "bronze" },
-        { field: "total" },
+        { field: 'athlete' },
+        { field: 'age', width: 100 },
+        { field: 'country' },
+        { field: 'year', width: 100 },
+        { field: 'date' },
+        { field: 'sport' },
+        { field: 'gold' },
+        { field: 'silver' },
+        { field: 'bronze' },
+        { field: 'total' },
       ],
       gridApi: null,
       columnApi: null,
@@ -50,7 +50,7 @@ const VueExample = {
     };
   },
   created() {
-    this.multiSortKey = "ctrl";
+    this.multiSortKey = 'ctrl';
   },
   methods: {
     onGridReady(params) {
@@ -58,14 +58,14 @@ const VueExample = {
       this.gridColumnApi = params.columnApi;
 
       var defaultSortModel = [
-        { colId: "country", sort: "asc", sortIndex: 0 },
-        { colId: "athlete", sort: "asc", sortIndex: 1 },
+        { colId: 'country', sort: 'asc', sortIndex: 0 },
+        { colId: 'athlete', sort: 'asc', sortIndex: 1 },
       ];
       params.columnApi.applyColumnState({ state: defaultSortModel });
 
       const updateData = (data) => params.api.setRowData(data);
 
-      fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
         .then((resp) => resp.json())
         .then((data) => updateData(data));
     },
@@ -73,8 +73,8 @@ const VueExample = {
 };
 
 new Vue({
-  el: "#app",
+  el: '#app',
   components: {
-    "my-component": VueExample,
+    'my-component': VueExample,
   },
 });

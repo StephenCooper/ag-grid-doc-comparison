@@ -1,10 +1,10 @@
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { AgGridVue } from "@ag-grid-community/vue";
-import { SparklinesModule } from "@ag-grid-enterprise/sparklines";
-import Vue from "vue";
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { AgGridVue } from '@ag-grid-community/vue';
+import { SparklinesModule } from '@ag-grid-enterprise/sparklines';
+import Vue from 'vue';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([ClientSideRowModelModule, SparklinesModule]);
@@ -24,25 +24,25 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
-        { field: "symbol", maxWidth: 120 },
-        { field: "name", minWidth: 250 },
+        { field: 'symbol', maxWidth: 120 },
+        { field: 'name', minWidth: 250 },
         {
-          field: "change",
-          cellRenderer: "agSparklineCellRenderer",
+          field: 'change',
+          cellRenderer: 'agSparklineCellRenderer',
           cellRendererParams: {
             sparklineOptions: {
               tooltip: { renderer: tooltipRenderer },
-              line: { stroke: "rgb(103,103,255)", strokeWidth: 1 },
-              highlightStyle: { fill: "white", strokeWidth: 0 },
+              line: { stroke: 'rgb(103,103,255)', strokeWidth: 1 },
+              highlightStyle: { fill: 'white', strokeWidth: 0 },
             },
           },
         },
-        { field: "volume", type: "numericColumn", maxWidth: 140 },
+        { field: 'volume', type: 'numericColumn', maxWidth: 140 },
       ],
       gridApi: null,
       columnApi: null,
@@ -71,15 +71,15 @@ window.tooltipRenderer = function tooltipRenderer(params) {
   return {
     title: params.context.data.symbol,
     // sets styles for tooltip
-    color: "white",
-    backgroundColor: "rgb(78,78,255)",
+    color: 'white',
+    backgroundColor: 'rgb(78,78,255)',
     opacity: 0.7,
   };
 };
 
 new Vue({
-  el: "#app",
+  el: '#app',
   components: {
-    "my-component": VueExample,
+    'my-component': VueExample,
   },
 });

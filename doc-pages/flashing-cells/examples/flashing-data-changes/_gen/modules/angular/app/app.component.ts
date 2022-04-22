@@ -1,11 +1,11 @@
-import { ColDef, GridApi, GridReadyEvent } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { Component } from "@angular/core";
+import { ColDef, GridApi, GridReadyEvent } from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { Component } from '@angular/core';
 // Required feature modules are registered in app.module.ts
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<div style="height: 100%; display: flex; flex-direction: column;">
     <div style="margin-bottom: 4px;">
       <button (click)="onUpdateSomeValues()">Update Some Data</button>
@@ -31,16 +31,16 @@ export class AppComponent {
   private gridApi!: GridApi;
 
   public columnDefs: ColDef[] = [
-    { field: "a" },
-    { field: "b" },
-    { field: "c" },
-    { field: "d" },
-    { field: "e" },
-    { field: "f" },
+    { field: 'a' },
+    { field: 'b' },
+    { field: 'c' },
+    { field: 'd' },
+    { field: 'e' },
+    { field: 'f' },
   ];
   public defaultColDef: ColDef = {
     flex: 1,
-    cellClass: "align-right",
+    cellClass: 'align-right',
     enableCellChangeFlash: true,
     resizable: true,
     valueFormatter: function (params) {
@@ -55,7 +55,7 @@ export class AppComponent {
     for (var i = 0; i < 20; i++) {
       var row = Math.floor(Math.random() * rowCount);
       var rowNode = this.gridApi.getDisplayedRowAtIndex(row)!;
-      var col = ["a", "b", "c", "d", "e", "f"][i % 6];
+      var col = ['a', 'b', 'c', 'd', 'e', 'f'][i % 6];
       rowNode.setDataValue(col, Math.floor(Math.random() * 10000));
     }
   }
@@ -64,12 +64,12 @@ export class AppComponent {
     // pick fourth row at random
     var rowNode = this.gridApi.getDisplayedRowAtIndex(4)!;
     // pick 'c' column
-    this.gridApi.flashCells({ rowNodes: [rowNode], columns: ["c"] });
+    this.gridApi.flashCells({ rowNodes: [rowNode], columns: ['c'] });
   }
 
   onFlashTwoColumns() {
     // flash whole column, so leave row selection out
-    this.gridApi.flashCells({ columns: ["c", "d"] });
+    this.gridApi.flashCells({ columns: ['c', 'd'] });
   }
 
   onFlashTwoRows() {
@@ -90,7 +90,7 @@ function formatNumber(number: number) {
   // i pulled this from stack overflow, i have no idea how it works
   return Math.floor(number)
     .toString()
-    .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
+    .replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
 }
 function createRowData() {
   var rowData = [];

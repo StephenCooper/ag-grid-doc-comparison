@@ -1,11 +1,11 @@
-"use strict";
+'use strict';
 
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import { AgGridReact } from "ag-grid-react";
-import React, { Component } from "react";
-import { render } from "react-dom";
-import CustomHeader from "./customHeader.jsx";
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from 'ag-grid-react';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import CustomHeader from './customHeader.jsx';
 
 class GridExample extends Component {
   constructor(props) {
@@ -13,24 +13,24 @@ class GridExample extends Component {
 
     this.state = {
       columnDefs: [
-        { field: "athlete", suppressMenu: true, minWidth: 120 },
+        { field: 'athlete', suppressMenu: true, minWidth: 120 },
         {
-          field: "age",
+          field: 'age',
           sortable: false,
-          headerComponentParams: { menuIcon: "fa-external-link-alt" },
+          headerComponentParams: { menuIcon: 'fa-external-link-alt' },
         },
-        { field: "country", suppressMenu: true, minWidth: 120 },
-        { field: "year", sortable: false },
-        { field: "date", suppressMenu: true },
-        { field: "sport", sortable: false },
+        { field: 'country', suppressMenu: true, minWidth: 120 },
+        { field: 'year', sortable: false },
+        { field: 'date', suppressMenu: true },
+        { field: 'sport', sortable: false },
         {
-          field: "gold",
-          headerComponentParams: { menuIcon: "fa-cog" },
+          field: 'gold',
+          headerComponentParams: { menuIcon: 'fa-cog' },
           minWidth: 120,
         },
-        { field: "silver", sortable: false },
-        { field: "bronze", suppressMenu: true, minWidth: 120 },
-        { field: "total", sortable: false },
+        { field: 'silver', sortable: false },
+        { field: 'bronze', suppressMenu: true, minWidth: 120 },
+        { field: 'total', sortable: false },
       ],
       rowData: null,
       components: {
@@ -44,7 +44,7 @@ class GridExample extends Component {
         filter: true,
         resizable: true,
         headerComponentParams: {
-          menuIcon: "fa-bars",
+          menuIcon: 'fa-bars',
         },
       },
     };
@@ -58,18 +58,18 @@ class GridExample extends Component {
       this.setState({ rowData: data });
     };
 
-    fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+    fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .then((resp) => resp.json())
       .then((data) => updateData(data));
   };
 
   render() {
     return (
-      <div style={{ width: "100%", height: "100%" }}>
+      <div style={{ width: '100%', height: '100%' }}>
         <div
           style={{
-            height: "100%",
-            width: "100%",
+            height: '100%',
+            width: '100%',
           }}
           className="ag-theme-alpine"
         >
@@ -87,4 +87,4 @@ class GridExample extends Component {
   }
 }
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

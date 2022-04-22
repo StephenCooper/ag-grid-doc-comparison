@@ -6,13 +6,13 @@ function _optionalChain(ops) {
     const op = ops[i];
     const fn = ops[i + 1];
     i += 2;
-    if ((op === "optionalAccess" || op === "optionalCall") && value == null) {
+    if ((op === 'optionalAccess' || op === 'optionalCall') && value == null) {
       return undefined;
     }
-    if (op === "access" || op === "optionalAccess") {
+    if (op === 'access' || op === 'optionalAccess') {
       lastAccessLHS = value;
       value = fn(value);
-    } else if (op === "call" || op === "optionalCall") {
+    } else if (op === 'call' || op === 'optionalCall') {
       value = fn((...args) => value.call(lastAccessLHS, ...args));
       lastAccessLHS = undefined;
     }
@@ -28,7 +28,7 @@ class PersonFilter {
 
   // not called by AG Grid, just for us to help setup
   setupGui(params) {
-    this.gui = document.createElement("div");
+    this.gui = document.createElement('div');
     this.gui.innerHTML = `<div style="padding: 4px; width: 200px;">
                 <div style="font-weight: bold;">Custom Athlete Filter</div>
                 <div>
@@ -47,10 +47,10 @@ class PersonFilter {
       params.filterChangedCallback();
     };
 
-    this.eFilterText = this.gui.querySelector("#filterText");
-    this.eFilterText.addEventListener("changed", listener);
-    this.eFilterText.addEventListener("paste", listener);
-    this.eFilterText.addEventListener("input", listener);
+    this.eFilterText = this.gui.querySelector('#filterText');
+    this.eFilterText.addEventListener('changed', listener);
+    this.eFilterText.addEventListener('paste', listener);
+    this.eFilterText.addEventListener('input', listener);
   }
 
   getGui() {
@@ -65,19 +65,19 @@ class PersonFilter {
     let passed = true;
     _optionalChain([
       this,
-      "access",
+      'access',
       (_) => _.filterText,
-      "optionalAccess",
+      'optionalAccess',
       (_2) => _2.toLowerCase,
-      "call",
+      'call',
       (_3) => _3(),
-      "access",
+      'access',
       (_4) => _4.split,
-      "call",
-      (_5) => _5(" "),
-      "access",
+      'call',
+      (_5) => _5(' '),
+      'access',
       (_6) => _6.forEach,
-      "call",
+      'call',
       (_7) =>
         _7((filterWord) => {
           const value = this.params.valueGetter({
@@ -101,7 +101,7 @@ class PersonFilter {
   }
 
   isFilterActive() {
-    return this.filterText != null && this.filterText !== "";
+    return this.filterText != null && this.filterText !== '';
   }
 
   getModel() {

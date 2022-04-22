@@ -1,9 +1,9 @@
-import { Component } from "@angular/core";
-import { IToolPanelAngularComp } from "ag-grid-angular";
-import { IToolPanelParams, RowNode } from "ag-grid-community";
+import { Component } from '@angular/core';
+import { IToolPanelAngularComp } from 'ag-grid-angular';
+import { IToolPanelParams, RowNode } from 'ag-grid-community';
 
 @Component({
-  selector: "custom-stats",
+  selector: 'custom-stats',
   template: ` <div style="text-align: center">
     <span>
       <h2><i class="fa fa-calculator"></i> Custom Stats</h2>
@@ -49,7 +49,7 @@ export class CustomStatsToolPanel implements IToolPanelAngularComp {
 
     // calculate stats when new rows loaded, i.e. onModelUpdated
     this.params.api.addEventListener(
-      "modelUpdated",
+      'modelUpdated',
       this.updateTotals.bind(this)
     );
   }

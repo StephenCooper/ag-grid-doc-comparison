@@ -1,12 +1,12 @@
-"use strict";
+'use strict';
 
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { AgGridReact } from "@ag-grid-community/react";
-import React, { useCallback, useMemo, useRef, useState } from "react";
-import { render } from "react-dom";
+import React, { useCallback, useMemo, useRef, useState } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from '@ag-grid-community/react';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([ClientSideRowModelModule]);
@@ -15,20 +15,20 @@ var savedSort;
 
 const GridExample = () => {
   const gridRef = useRef();
-  const containerStyle = useMemo(() => ({ width: "100%", height: "100%" }), []);
-  const gridStyle = useMemo(() => ({ height: "100%", width: "100%" }), []);
+  const containerStyle = useMemo(() => ({ width: '100%', height: '100%' }), []);
+  const gridStyle = useMemo(() => ({ height: '100%', width: '100%' }), []);
   const [rowData, setRowData] = useState();
   const [columnDefs, setColumnDefs] = useState([
-    { field: "athlete" },
-    { field: "age", width: 90 },
-    { field: "country" },
-    { field: "year", width: 90 },
-    { field: "date" },
-    { field: "sport" },
-    { field: "gold" },
-    { field: "silver" },
-    { field: "bronze" },
-    { field: "total" },
+    { field: 'athlete' },
+    { field: 'age', width: 90 },
+    { field: 'country' },
+    { field: 'year', width: 90 },
+    { field: 'date' },
+    { field: 'sport' },
+    { field: 'gold' },
+    { field: 'silver' },
+    { field: 'bronze' },
+    { field: 'total' },
   ]);
   const defaultColDef = useMemo(() => {
     return {
@@ -37,21 +37,21 @@ const GridExample = () => {
   }, []);
 
   const onGridReady = useCallback((params) => {
-    fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+    fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .then((resp) => resp.json())
       .then((data) => setRowData(data));
   }, []);
 
   const sortByAthleteAsc = useCallback(() => {
     gridRef.current.columnApi.applyColumnState({
-      state: [{ colId: "athlete", sort: "asc" }],
+      state: [{ colId: 'athlete', sort: 'asc' }],
       defaultState: { sort: null },
     });
   }, []);
 
   const sortByAthleteDesc = useCallback(() => {
     gridRef.current.columnApi.applyColumnState({
-      state: [{ colId: "athlete", sort: "desc" }],
+      state: [{ colId: 'athlete', sort: 'desc' }],
       defaultState: { sort: null },
     });
   }, []);
@@ -59,8 +59,8 @@ const GridExample = () => {
   const sortByCountryThenSport = useCallback(() => {
     gridRef.current.columnApi.applyColumnState({
       state: [
-        { colId: "country", sort: "asc", sortIndex: 0 },
-        { colId: "sport", sort: "asc", sortIndex: 1 },
+        { colId: 'country', sort: 'asc', sortIndex: 0 },
+        { colId: 'sport', sort: 'asc', sortIndex: 1 },
       ],
       defaultState: { sort: null },
     });
@@ -69,8 +69,8 @@ const GridExample = () => {
   const sortBySportThenCountry = useCallback(() => {
     gridRef.current.columnApi.applyColumnState({
       state: [
-        { colId: "country", sort: "asc", sortIndex: 1 },
-        { colId: "sport", sort: "asc", sortIndex: 0 },
+        { colId: 'country', sort: 'asc', sortIndex: 1 },
+        { colId: 'sport', sort: 'asc', sortIndex: 0 },
       ],
       defaultState: { sort: null },
     });
@@ -92,7 +92,7 @@ const GridExample = () => {
         return { colId: s.colId, sort: s.sort, sortIndex: s.sortIndex };
       });
     savedSort = sortState;
-    console.log("saved sort", sortState);
+    console.log('saved sort', sortState);
   }, []);
 
   const restoreFromSave = useCallback(() => {
@@ -105,7 +105,7 @@ const GridExample = () => {
   return (
     <div style={containerStyle}>
       <div className="example-wrapper">
-        <div style={{ marginBottom: "1rem" }}>
+        <div style={{ marginBottom: '1rem' }}>
           <div>
             <button onClick={sortByAthleteAsc}>Athlete Ascending</button>
             <button onClick={sortByAthleteDesc}>Athlete Descending</button>
@@ -116,7 +116,7 @@ const GridExample = () => {
               Sport, then Country
             </button>
           </div>
-          <div style={{ marginTop: "0.25rem" }}>
+          <div style={{ marginTop: '0.25rem' }}>
             <button onClick={clearSort}>Clear Sort</button>
             <button onClick={saveSort}>Save Sort</button>
             <button onClick={restoreFromSave}>Restore from Save</button>
@@ -137,4 +137,4 @@ const GridExample = () => {
   );
 };
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

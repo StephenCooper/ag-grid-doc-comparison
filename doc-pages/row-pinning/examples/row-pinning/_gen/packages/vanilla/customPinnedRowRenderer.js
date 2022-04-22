@@ -5,7 +5,7 @@ function setStyle(element, propertyObject) {
 }
 class CustomPinnedRowRenderer {
   init(params) {
-    this.eGui = document.createElement("div");
+    this.eGui = document.createElement('div');
     setStyle(this.eGui, params.style);
     this.eGui.innerHTML = params.value;
   }

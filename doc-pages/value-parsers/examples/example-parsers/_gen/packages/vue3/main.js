@@ -1,7 +1,7 @@
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine-dark.css";
-import { AgGridVue } from "ag-grid-vue3";
-import { createApp } from "vue";
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine-dark.css';
+import { AgGridVue } from 'ag-grid-vue3';
+import { createApp } from 'vue';
 
 const VueExample = {
   template: `
@@ -18,16 +18,16 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
-        { headerName: "Name", field: "simple" },
-        { headerName: "Bad Number", field: "numberBad" },
+        { headerName: 'Name', field: 'simple' },
+        { headerName: 'Bad Number', field: 'numberBad' },
         {
-          headerName: "Good Number",
-          field: "numberGood",
+          headerName: 'Good Number',
+          field: 'numberGood',
           valueParser: numberParser,
         },
       ],
@@ -46,7 +46,7 @@ const VueExample = {
   },
   methods: {
     onCellValueChanged(event) {
-      console.log("data after changes is: ", event.data);
+      console.log('data after changes is: ', event.data);
     },
     onGridReady(params) {
       this.gridApi = params.api;
@@ -61,4 +61,4 @@ window.numberParser = function numberParser(params) {
   return Number(params.newValue);
 };
 
-createApp(VueExample).mount("#app");
+createApp(VueExample).mount('#app');

@@ -1,12 +1,12 @@
-"use strict";
+'use strict';
 
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import { AgGridReact } from "ag-grid-react";
-import React, { Component } from "react";
-import { render } from "react-dom";
-import GenderRenderer from "./genderRenderer.jsx";
-import MoodRenderer from "./moodRenderer.jsx";
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from 'ag-grid-react';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import GenderRenderer from './genderRenderer.jsx';
+import MoodRenderer from './moodRenderer.jsx';
 
 class GridExample extends Component {
   constructor(props) {
@@ -14,32 +14,32 @@ class GridExample extends Component {
 
     this.state = {
       rowData: [
-        { value: 14, type: "age" },
-        { value: "female", type: "gender" },
-        { value: "Happy", type: "mood" },
-        { value: 21, type: "age" },
-        { value: "male", type: "gender" },
-        { value: "Sad", type: "mood" },
+        { value: 14, type: 'age' },
+        { value: 'female', type: 'gender' },
+        { value: 'Happy', type: 'mood' },
+        { value: 21, type: 'age' },
+        { value: 'male', type: 'gender' },
+        { value: 'Sad', type: 'mood' },
       ],
       columnDefs: [
-        { field: "value" },
+        { field: 'value' },
         {
-          headerName: "Rendered Value",
-          field: "value",
+          headerName: 'Rendered Value',
+          field: 'value',
           cellRendererSelector: function (params) {
             const moodDetails = {
               component: MoodRenderer,
             };
             const genderDetails = {
               component: GenderRenderer,
-              params: { values: ["Male", "Female"] },
+              params: { values: ['Male', 'Female'] },
             };
-            if (params.data.type === "gender") return genderDetails;
-            else if (params.data.type === "mood") return moodDetails;
+            if (params.data.type === 'gender') return genderDetails;
+            else if (params.data.type === 'mood') return moodDetails;
             else return undefined;
           },
         },
-        { field: "type" },
+        { field: 'type' },
       ],
       defaultColDef: {
         flex: 1,
@@ -54,11 +54,11 @@ class GridExample extends Component {
 
   render() {
     return (
-      <div style={{ width: "100%", height: "100%" }}>
+      <div style={{ width: '100%', height: '100%' }}>
         <div
           style={{
-            height: "100%",
-            width: "100%",
+            height: '100%',
+            width: '100%',
           }}
           className="ag-theme-alpine"
         >
@@ -74,4 +74,4 @@ class GridExample extends Component {
   }
 }
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

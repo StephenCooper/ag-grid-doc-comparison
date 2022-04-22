@@ -1,16 +1,16 @@
-"use strict";
+'use strict';
 
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine-dark.css";
-import { AgGridReact } from "@ag-grid-community/react";
-import { ColumnsToolPanelModule } from "@ag-grid-enterprise/column-tool-panel";
-import { MasterDetailModule } from "@ag-grid-enterprise/master-detail";
-import { MenuModule } from "@ag-grid-enterprise/menu";
-import { ServerSideRowModelModule } from "@ag-grid-enterprise/server-side-row-model";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from '@ag-grid-community/react';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine-dark.css';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import { ServerSideRowModelModule } from '@ag-grid-enterprise/server-side-row-model';
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import { MasterDetailModule } from '@ag-grid-enterprise/master-detail';
+import { MenuModule } from '@ag-grid-enterprise/menu';
+import { ColumnsToolPanelModule } from '@ag-grid-enterprise/column-tool-panel';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([
@@ -28,25 +28,25 @@ class GridExample extends Component {
     this.state = {
       columnDefs: [
         // group cell renderer needed for expand / collapse icons
-        { field: "accountId", cellRenderer: "agGroupCellRenderer" },
-        { field: "name" },
-        { field: "country" },
-        { field: "calls" },
-        { field: "totalDuration" },
+        { field: 'accountId', cellRenderer: 'agGroupCellRenderer' },
+        { field: 'name' },
+        { field: 'country' },
+        { field: 'calls' },
+        { field: 'totalDuration' },
       ],
       defaultColDef: {
         flex: 1,
       },
-      rowModelType: "serverSide",
-      serverSideStoreType: "partial",
+      rowModelType: 'serverSide',
+      serverSideStoreType: 'partial',
       detailCellRendererParams: {
         detailGridOptions: {
           columnDefs: [
-            { field: "callId" },
-            { field: "direction" },
-            { field: "duration", valueFormatter: "x.toLocaleString() + 's'" },
-            { field: "switchCode", minWidth: 150 },
-            { field: "number", minWidth: 180 },
+            { field: 'callId' },
+            { field: 'direction' },
+            { field: 'duration', valueFormatter: "x.toLocaleString() + 's'" },
+            { field: 'switchCode', minWidth: 150 },
+            { field: 'number', minWidth: 180 },
           ],
           defaultColDef: {
             flex: 1,
@@ -70,13 +70,13 @@ class GridExample extends Component {
       params.api.setServerSideDatasource(datasource);
     };
 
-    fetch("https://www.ag-grid.com/example-assets/call-data.json")
+    fetch('https://www.ag-grid.com/example-assets/call-data.json')
       .then((resp) => resp.json())
       .then((data) => updateData(data));
 
     setTimeout(function () {
       // expand some master row
-      var someRow = params.api.getRowNode("1");
+      var someRow = params.api.getRowNode('1');
       if (someRow) {
         someRow.setExpanded(true);
       }
@@ -85,12 +85,12 @@ class GridExample extends Component {
 
   render() {
     return (
-      <div style={{ width: "100%", height: "100%" }}>
-        <div style={{ height: "100%", boxSizing: "border-box" }}>
+      <div style={{ width: '100%', height: '100%' }}>
+        <div style={{ height: '100%', boxSizing: 'border-box' }}>
           <div
             style={{
-              height: "100%",
-              width: "100%",
+              height: '100%',
+              width: '100%',
             }}
             className="ag-theme-alpine-dark"
           >
@@ -135,7 +135,7 @@ function getFakeServer(allData) {
   return {
     getResponse: function (request) {
       console.log(
-        "asking for rows: " + request.startRow + " to " + request.endRow
+        'asking for rows: ' + request.startRow + ' to ' + request.endRow
       );
       // take a slice of the total rows
       var rowsThisPage = allData.slice(request.startRow, request.endRow);
@@ -150,4 +150,4 @@ function getFakeServer(allData) {
   };
 }
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

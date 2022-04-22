@@ -9,7 +9,7 @@ This section covers the Server-Side Row Model (SSRM) configuration options.
 
 Applications can fine-tune the Server-Side Row Model based on specific application requirements using the following configurations:
 
-<api-documentation source='grid-properties/properties.json' section='serverSideRowModel'></api-documentation>
+<api-documentation source='grid-options/properties.json' section='serverSideRowModel'></api-documentation>
 
 ## Debug Info
 
@@ -58,3 +58,5 @@ The example below demonstrates debouncing the block loading. Note the following:
 ## Next Up
 
 Continue to the next section to learn about [Sorting](/server-side-model-sorting/).
+
+

@@ -1,18 +1,18 @@
 const gridOptions = {
   columnDefs: [
     {
-      headerName: "Country (Complex Object)",
-      field: "country",
+      headerName: 'Country (Complex Object)',
+      field: 'country',
       keyCreator: countryKeyCreator,
       valueFormatter: countryValueFormatter,
-      filter: "agSetColumnFilter",
+      filter: 'agSetColumnFilter',
     },
   ],
   defaultColDef: {
     flex: 1,
     floatingFilter: true,
   },
-  sideBar: "filters",
+  sideBar: 'filters',
   onFirstDataRendered: onFirstDataRendered,
 };
 
@@ -31,15 +31,15 @@ function printFilterModel() {
 }
 
 function onFirstDataRendered(params) {
-  params.api.getToolPanelInstance("filters").expandFilters();
+  params.api.getToolPanelInstance('filters').expandFilters();
 }
 
 // setup the grid after the page has finished loading
-document.addEventListener("DOMContentLoaded", function () {
-  var gridDiv = document.querySelector("#myGrid");
+document.addEventListener('DOMContentLoaded', function () {
+  var gridDiv = document.querySelector('#myGrid');
   new agGrid.Grid(gridDiv, gridOptions);
 
-  fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+  fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
     .then((response) => response.json())
     .then(function (data) {
       // hack the data, replace each country with an object of country name and code

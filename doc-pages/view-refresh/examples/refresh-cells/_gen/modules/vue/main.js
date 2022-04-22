@@ -1,9 +1,9 @@
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine-dark.css";
-import { AgGridVue } from "@ag-grid-community/vue";
-import Vue from "vue";
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine-dark.css';
+import { AgGridVue } from '@ag-grid-community/vue';
+import Vue from 'vue';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([ClientSideRowModelModule]);
@@ -44,17 +44,17 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
-        { field: "a", suppressCellFlash: true },
-        { field: "b" },
-        { field: "c" },
-        { field: "d" },
-        { field: "e" },
-        { field: "f" },
+        { field: 'a', suppressCellFlash: true },
+        { field: 'b' },
+        { field: 'c' },
+        { field: 'd' },
+        { field: 'e' },
+        { field: 'f' },
       ],
       gridApi: null,
       columnApi: null,
@@ -83,7 +83,7 @@ const VueExample = {
     scrambleAndRefreshLeftToRight() {
       scramble();
       var api = this.gridApi;
-      ["a", "b", "c", "d", "e", "f"].forEach(function (col, index) {
+      ['a', 'b', 'c', 'd', 'e', 'f'].forEach(function (col, index) {
         var millis = index * 100;
         var params = {
           force: isForceRefreshSelected(),
@@ -103,12 +103,12 @@ const VueExample = {
         rowNode = api.getPinnedTopRow(i);
         refreshRow(rowNode, api);
       }
-      for (i = 0; i < this.gridApi.getDisplayedRowCount(); i++) {
-        rowNode = this.gridApi.getDisplayedRowAtIndex(i);
+      for (i = 0; i < api.getDisplayedRowCount(); i++) {
+        rowNode = api.getDisplayedRowAtIndex(i);
         refreshRow(rowNode, api);
       }
-      for (i = 0; i < this.gridApi.getPinnedBottomRowCount(); i++) {
-        rowNode = this.gridApi.getPinnedBottomRow(i);
+      for (i = 0; i < api.getPinnedBottomRowCount(); i++) {
+        rowNode = api.getPinnedBottomRow(i);
         refreshRow(rowNode, api);
       }
       function refreshRow(rowNode, api) {
@@ -154,11 +154,11 @@ window.createData = function createData(count) {
 };
 
 window.isForceRefreshSelected = function isForceRefreshSelected() {
-  return document.querySelector("#forceRefresh").checked;
+  return document.querySelector('#forceRefresh').checked;
 };
 
 window.isSuppressFlashSelected = function isSuppressFlashSelected() {
-  return document.querySelector("#suppressFlash").checked;
+  return document.querySelector('#suppressFlash').checked;
 };
 
 window.callRefreshAfterMillis = function callRefreshAfterMillis(
@@ -178,7 +178,7 @@ window.scramble = function scramble() {
 };
 
 window.scrambleItem = function scrambleItem(item) {
-  ["a", "b", "c", "d", "e", "f"].forEach(function (colId) {
+  ['a', 'b', 'c', 'd', 'e', 'f'].forEach(function (colId) {
     // skip 50% of the cells so updates are random
     if (Math.random() > 0.5) {
       return;
@@ -196,8 +196,8 @@ var topRowData = [];
 var bottomRowData = [];
 
 new Vue({
-  el: "#app",
+  el: '#app',
   components: {
-    "my-component": VueExample,
+    'my-component': VueExample,
   },
 });

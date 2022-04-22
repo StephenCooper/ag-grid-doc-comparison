@@ -1,138 +1,120 @@
-import React, { Component } from "react";
-import ReactDOM from "react-dom";
+import React, {Component} from 'react';
+import ReactDOM from 'react-dom';
 
 export default class MoodEditor extends Component {
-  constructor(props) {
-    super(props);
+    constructor(props) {
+        super(props);
 
-    this.onHappyClick = this.onHappyClick.bind(this);
-    this.onSadClick = this.onSadClick.bind(this);
+        this.onHappyClick = this.onHappyClick.bind(this);
+        this.onSadClick = this.onSadClick.bind(this);
 
-    this.state = {
-      happy: false,
-    };
-  }
-
-  componentWillMount() {
-    this.setHappy(this.props.value === "Happy");
-  }
-
-  componentDidMount() {
-    this.refs.container.addEventListener(
-      "keydown",
-      this.checkAndToggleMoodIfLeftRight
-    );
-    this.focus();
-  }
-
-  componentWillUnmount() {
-    this.refs.container.removeEventListener(
-      "keydown",
-      this.checkAndToggleMoodIfLeftRight
-    );
-  }
-
-  checkAndToggleMoodIfLeftRight = (event) => {
-    if (["ArrowLeft", "ArrowRight"].indexOf(event.key) > -1) {
-      // left and right
-      this.toggleMood();
-      event.stopPropagation();
+        this.state = {
+            happy: false
+        };
     }
-  };
 
-  componentDidUpdate() {
-    this.focus();
-  }
+    componentWillMount() {
+        this.setHappy(this.props.value === 'Happy');
+    }
 
-  focus() {
-    window.setTimeout(() => {
-      let container = ReactDOM.findDOMNode(this.refs.container);
-      if (container) {
-        container.focus();
-      }
-    }, 10);
-  }
+    componentDidMount() {
+        this.refs.container.addEventListener('keydown', this.checkAndToggleMoodIfLeftRight);
+        this.focus();
+    }
 
-  getValue() {
-    return this.state.happy ? "Happy" : "Sad";
-  }
+    componentWillUnmount() {
+        this.refs.container.removeEventListener('keydown', this.checkAndToggleMoodIfLeftRight);
+    }
 
-  isPopup() {
-    return true;
-  }
-
-  setHappy(happy) {
-    this.setState({
-      happy,
-    });
-  }
-
-  onHappyClick() {
-    this.setState(
-      {
-        happy: true,
-      },
-      () => this.props.api.stopEditing()
-    );
-  }
-
-  onSadClick() {
-    this.setState(
-      {
-        happy: false,
-      },
-      () => this.props.api.stopEditing()
-    );
-  }
-
-  toggleMood() {
-    this.setHappy(!this.state.happy);
-  }
-
-  render() {
-    let mood = {
-      borderRadius: 15,
-      border: "1px solid grey",
-      background: "#e6e6e6",
-      padding: 15,
-      textAlign: "center",
-      display: "inline-block",
+    checkAndToggleMoodIfLeftRight = (event) => {
+        if (['ArrowLeft', 'ArrowRight'].indexOf(event.key) > -1) { // left and right
+            this.toggleMood();
+            event.stopPropagation();
+        }
     };
 
-    let unselected = {
-      paddingLeft: 10,
-      paddingRight: 10,
-      border: "1px solid transparent",
-      padding: 4,
-    };
+    componentDidUpdate() {
+        this.focus();
+    }
 
-    let selected = {
-      paddingLeft: 10,
-      paddingRight: 10,
-      border: "1px solid lightgreen",
-      padding: 4,
-    };
+    focus() {
+        window.setTimeout(() => {
+            let container = ReactDOM.findDOMNode(this.refs.container);
+            if (container) {
+                container.focus();
+            }
+        }, 10);
+    }
 
-    let happyStyle = this.state.happy ? selected : unselected;
-    let sadStyle = !this.state.happy ? selected : unselected;
+    getValue() {
+        return this.state.happy ? 'Happy' : 'Sad';
+    }
 
-    return (
-      <div
-        ref="container"
-        style={mood}
-        tabIndex={1} // important - without this the keypresses wont be caught
-      >
-        <img
-          src="https://www.ag-grid.com/example-assets/smileys/happy.png"
-          onClick={this.onHappyClick}
-          style={happyStyle}
-        />
-        <img
-          src="https://www.ag-grid.com/example-assets/smileys/sad.png"
-          onClick={this.onSadClick}
-          style={sadStyle}
-        />
-      </div>
-    );
-  }
+    isPopup() {
+        return true;
+    }
+
+    setHappy(happy) {
+        this.setState({
+            happy
+        });
+    }
+
+    onHappyClick() {
+        this.setState({
+                happy: true
+            },
+            () => this.props.api.stopEditing()
+        );
+    }
+
+    onSadClick() {
+        this.setState({
+                happy: false
+            },
+            () => this.props.api.stopEditing()
+        );
+    }
+
+    toggleMood() {
+        this.setHappy(!this.state.happy);
+    }
+
+    render() {
+        let mood = {
+            borderRadius: 15,
+            border: '1px solid grey',
+            background: '#e6e6e6',
+            padding: 15,
+            textAlign: 'center',
+            display: 'inline-block'
+        };
+
+        let unselected = {
+            paddingLeft: 10,
+            paddingRight: 10,
+            border: '1px solid transparent',
+            padding: 4
+        };
+
+        let selected = {
+            paddingLeft: 10,
+            paddingRight: 10,
+            border: '1px solid lightgreen',
+            padding: 4
+        };
+
+        let happyStyle = this.state.happy ? selected : unselected;
+        let sadStyle = !this.state.happy ? selected : unselected;
+
+        return (
+            <div ref="container"
+                 style={mood}
+                 tabIndex={1} // important - without this the keypresses wont be caught
+            >
+                <img src="https://www.ag-grid.com/example-assets/smileys/happy.png" onClick={this.onHappyClick} style={happyStyle}/>
+                <img src="https://www.ag-grid.com/example-assets/smileys/sad.png" onClick={this.onSadClick} style={sadStyle}/>
+            </div>
+        );
+    }
 }

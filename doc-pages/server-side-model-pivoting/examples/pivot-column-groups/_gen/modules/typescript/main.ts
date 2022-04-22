@@ -7,13 +7,13 @@ import {
   IServerSideDatasource,
   IServerSideGetRowsRequest,
   ModuleRegistry,
-} from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine-dark.css";
-import { ColumnsToolPanelModule } from "@ag-grid-enterprise/column-tool-panel";
-import { MenuModule } from "@ag-grid-enterprise/menu";
-import { RowGroupingModule } from "@ag-grid-enterprise/row-grouping";
-import { ServerSideRowModelModule } from "@ag-grid-enterprise/server-side-row-model";
+} from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine-dark.css';
+import { ColumnsToolPanelModule } from '@ag-grid-enterprise/column-tool-panel';
+import { MenuModule } from '@ag-grid-enterprise/menu';
+import { RowGroupingModule } from '@ag-grid-enterprise/row-grouping';
+import { ServerSideRowModelModule } from '@ag-grid-enterprise/server-side-row-model';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([
@@ -25,12 +25,12 @@ ModuleRegistry.registerModules([
 declare var FakeServer: any;
 const gridOptions: GridOptions = {
   columnDefs: [
-    { field: "country", rowGroup: true },
-    { field: "sport", rowGroup: true },
-    { field: "year", pivot: true }, // pivot on 'year'
-    { field: "gold", aggFunc: "sum" },
-    { field: "silver", aggFunc: "sum" },
-    { field: "bronze", aggFunc: "sum" },
+    { field: 'country', rowGroup: true },
+    { field: 'sport', rowGroup: true },
+    { field: 'year', pivot: true }, // pivot on 'year'
+    { field: 'gold', aggFunc: 'sum' },
+    { field: 'silver', aggFunc: 'sum' },
+    { field: 'bronze', aggFunc: 'sum' },
   ],
   defaultColDef: {
     width: 150,
@@ -42,8 +42,8 @@ const gridOptions: GridOptions = {
   },
 
   // use the server-side row model
-  rowModelType: "serverSide",
-  serverSideStoreType: "partial",
+  rowModelType: 'serverSide',
+  serverSideStoreType: 'partial',
 
   // enable pivoting
   pivotMode: true,
@@ -53,10 +53,10 @@ const gridOptions: GridOptions = {
 };
 
 // setup the grid after the page has finished loading
-var gridDiv = document.querySelector<HTMLElement>("#myGrid")!;
+var gridDiv = document.querySelector<HTMLElement>('#myGrid')!;
 new Grid(gridDiv, gridOptions);
 
-fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
   .then((response) => response.json())
   .then(function (data) {
     // setup the fake server with entire dataset
@@ -74,7 +74,7 @@ function getServerSideDatasource(server: any): IServerSideDatasource {
     getRows: function (params) {
       var request = params.request;
 
-      console.log("[Datasource] - rows requested by grid: ", params.request);
+      console.log('[Datasource] - rows requested by grid: ', params.request);
 
       var response = server.getData(request);
 
@@ -129,27 +129,27 @@ function createPivotColDefs(
     var first = parts.shift();
 
     var existing: ColGroupDef = res.filter(function (r: ColDef | ColGroupDef) {
-      return "groupId" in r && r.groupId === first;
+      return 'groupId' in r && r.groupId === first;
     })[0] as ColGroupDef;
     if (existing) {
-      existing["children"] = addColDef(colId, parts, existing.children);
+      existing['children'] = addColDef(colId, parts, existing.children);
     } else {
       var colDef: any = {};
       var isGroup = parts.length > 0;
       if (isGroup) {
-        colDef["groupId"] = first;
-        colDef["headerName"] = first;
+        colDef['groupId'] = first;
+        colDef['headerName'] = first;
       } else {
         var valueCol = request.valueCols.filter(function (r) {
           return r.field === first;
         })[0];
-        colDef["colId"] = colId;
-        colDef["headerName"] = valueCol.displayName;
-        colDef["field"] = colId;
+        colDef['colId'] = colId;
+        colDef['headerName'] = valueCol.displayName;
+        colDef['field'] = colId;
       }
 
       var children = addColDef(colId, parts, []);
-      children.length > 0 ? (colDef["children"] = children) : null;
+      children.length > 0 ? (colDef['children'] = children) : null;
 
       res.push(colDef);
     }
@@ -160,7 +160,7 @@ function createPivotColDefs(
   if (request.pivotMode && request.pivotCols.length > 0) {
     var secondaryCols: ColGroupDef[] = [];
     pivotFields.forEach(function (field) {
-      addColDef(field, field.split("_"), secondaryCols);
+      addColDef(field, field.split('_'), secondaryCols);
     });
     return secondaryCols;
   }

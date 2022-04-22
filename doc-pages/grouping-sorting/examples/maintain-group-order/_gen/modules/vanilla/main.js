@@ -1,8 +1,8 @@
 const gridOptions = {
   columnDefs: [
-    { field: "assignee", rowGroup: true, hide: true },
-    { field: "priority", rowGroup: true, hide: true },
-    { field: "task" },
+    { field: 'assignee', rowGroup: true, hide: true },
+    { field: 'priority', rowGroup: true, hide: true },
+    { field: 'task' },
   ],
   defaultColDef: {
     flex: 1,
@@ -13,7 +13,7 @@ const gridOptions = {
   autoGroupColumnDef: {
     minWidth: 200,
   },
-  groupDisplayType: "multipleColumns",
+  groupDisplayType: 'multipleColumns',
   groupMaintainOrder: true,
   groupDefaultExpanded: -1,
   animateRows: true,
@@ -21,7 +21,7 @@ const gridOptions = {
 };
 
 // setup the grid after the page has finished loading
-document.addEventListener("DOMContentLoaded", function () {
-  var gridDiv = document.querySelector("#myGrid");
+document.addEventListener('DOMContentLoaded', function () {
+  var gridDiv = document.querySelector('#myGrid');
   new agGrid.Grid(gridDiv, gridOptions);
 });

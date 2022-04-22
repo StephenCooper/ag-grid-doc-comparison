@@ -1,11 +1,11 @@
-"use strict";
+'use strict';
 
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
-import { AgGridReact } from "ag-grid-react";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from 'ag-grid-react';
+import 'ag-grid-enterprise';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 
 class GridExample extends Component {
   constructor(props) {
@@ -21,18 +21,18 @@ class GridExample extends Component {
       popupParent: document.body,
       columnDefs: [
         {
-          headerName: "Brand",
-          children: [{ field: "make" }, { field: "model" }],
+          headerName: 'Brand',
+          children: [{ field: 'make' }, { field: 'model' }],
         },
         {
-          headerName: "Value",
-          children: [{ field: "price" }],
+          headerName: 'Value',
+          children: [{ field: 'price' }],
         },
       ],
       rowData: [
-        { make: "Toyota", model: "Celica", price: 35000 },
-        { make: "Ford", model: "Mondeo", price: 32000 },
-        { make: "Porsche", model: "Boxter", price: 72000 },
+        { make: 'Toyota', model: 'Celica', price: 35000 },
+        { make: 'Ford', model: 'Mondeo', price: 32000 },
+        { make: 'Porsche', model: 'Boxster', price: 72000 },
       ],
     };
   }
@@ -41,7 +41,7 @@ class GridExample extends Component {
     this.gridApi = params.api;
     this.gridColumnApi = params.columnApi;
 
-    document.getElementById("columnGroups").checked = true;
+    document.getElementById('columnGroups').checked = true;
   };
 
   onBtnExport = () => {
@@ -49,18 +49,18 @@ class GridExample extends Component {
   };
 
   onBtnUpdate = () => {
-    document.querySelector("#csvResult").value = this.gridApi.getDataAsCsv(
+    document.querySelector('#csvResult').value = this.gridApi.getDataAsCsv(
       getParams()
     );
   };
 
   render() {
     return (
-      <div style={{ width: "100%", height: "100%" }}>
+      <div style={{ width: '100%', height: '100%' }}>
         <div
-          style={{ display: "flex", flexDirection: "column", height: "100%" }}
+          style={{ display: 'flex', flexDirection: 'column', height: '100%' }}
         >
-          <div style={{ display: "flex" }}>
+          <div style={{ display: 'flex' }}>
             <div className="row">
               <label for="columnGroups">
                 <input id="columnGroups" type="checkbox" />
@@ -73,7 +73,7 @@ class GridExample extends Component {
             </div>
           </div>
 
-          <div style={{ margin: "10px 0" }}>
+          <div style={{ margin: '10px 0' }}>
             <button onClick={() => this.onBtnUpdate()}>
               Show CSV export content text
             </button>
@@ -82,12 +82,12 @@ class GridExample extends Component {
             </button>
           </div>
 
-          <div style={{ flex: "1 1 0px", position: "relative" }}>
+          <div style={{ flex: '1 1 0px', position: 'relative' }}>
             <div id="gridContainer">
               <div
                 style={{
-                  height: "100%",
-                  width: "100%",
+                  height: '100%',
+                  width: '100%',
                 }}
                 className="ag-theme-alpine"
               >
@@ -112,14 +112,14 @@ class GridExample extends Component {
 }
 
 function getBoolean(id) {
-  var field = document.querySelector("#" + id);
+  var field = document.querySelector('#' + id);
   return !!field.checked;
 }
 function getParams() {
   return {
-    skipColumnGroupHeaders: getBoolean("columnGroups"),
-    skipColumnHeaders: getBoolean("skipHeader"),
+    skipColumnGroupHeaders: getBoolean('columnGroups'),
+    skipColumnHeaders: getBoolean('skipHeader'),
   };
 }
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

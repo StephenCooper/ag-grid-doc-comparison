@@ -1,9 +1,9 @@
 const gridOptions = {
   columnDefs: [
-    { field: "country", chartDataType: "category" },
-    { field: "sugar", chartDataType: "series" },
-    { field: "fat", chartDataType: "series" },
-    { field: "weight", chartDataType: "series" },
+    { field: 'country', chartDataType: 'category' },
+    { field: 'sugar', chartDataType: 'series' },
+    { field: 'fat', chartDataType: 'series' },
+    { field: 'weight', chartDataType: 'series' },
   ],
   defaultColDef: {
     editable: true,
@@ -28,7 +28,7 @@ function saveChart() {
   if (chartModels.length > 0) {
     chartModel = chartModels[0];
   }
-  alert("Chart saved!");
+  alert('Chart saved!');
 }
 
 function clearChart() {
@@ -50,13 +50,13 @@ function createChartContainer(chartRef) {
   }
 
   var eChart = chartRef.chartElement;
-  var eParent = document.querySelector("#myChart");
+  var eParent = document.querySelector('#myChart');
   eParent.appendChild(eChart);
   currentChartRef = chartRef;
 }
 
 // setup the grid after the page has finished loading
-document.addEventListener("DOMContentLoaded", function () {
-  var gridDiv = document.querySelector("#myGrid");
+document.addEventListener('DOMContentLoaded', function () {
+  var gridDiv = document.querySelector('#myGrid');
   new agGrid.Grid(gridDiv, gridOptions);
 });

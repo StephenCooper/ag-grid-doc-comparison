@@ -1,21 +1,21 @@
 class YearFilter {
   init(params) {
     this.filterChangedCallback = params.filterChangedCallback.bind(this);
-    this.eGui = document.createElement("div");
+    this.eGui = document.createElement('div');
     this.eGui.innerHTML =
       '<div class="year-filter">' +
-      "<label>" +
+      '<label>' +
       '  <input type="radio" name="yearFilter" checked="checked" id="rbYearAll" /> All' +
-      "</label>" +
-      "<label>" +
+      '</label>' +
+      '<label>' +
       '  <input type="radio" name="yearFilter" id="rbYearAfter2004" /> After 2004' +
-      "</label>" +
-      "</div>";
+      '</label>' +
+      '</div>';
 
-    this.rbAllYears = this.eGui.querySelector("#rbYearAll");
-    this.rbAllYears.addEventListener("change", this.filterChangedCallback);
-    this.rbAfter2004 = this.eGui.querySelector("#rbYearAfter2004");
-    this.rbAfter2004.addEventListener("change", this.filterChangedCallback);
+    this.rbAllYears = this.eGui.querySelector('#rbYearAll');
+    this.rbAllYears.addEventListener('change', this.filterChangedCallback);
+    this.rbAfter2004 = this.eGui.querySelector('#rbYearAfter2004');
+    this.rbAfter2004.addEventListener('change', this.filterChangedCallback);
     this.filterActive = false;
   }
 

@@ -1,8 +1,10 @@
-"use strict";
+'use strict';
 
-import { AgChartsReact } from "ag-charts-react";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { cloneDeep } from 'lodash';
+import { render } from 'react-dom';
+import * as agCharts from 'ag-charts-community';
+import { AgChartsReact } from 'ag-charts-react';
 
 class ChartExample extends Component {
   constructor(props) {
@@ -11,7 +13,7 @@ class ChartExample extends Component {
     this.state = {
       options: {
         title: {
-          text: "Internet Explorer Market Share",
+          text: 'Internet Explorer Market Share',
         },
         subtitle: {
           text: '2009-2019 (aka "good times")',
@@ -19,22 +21,17 @@ class ChartExample extends Component {
         data: getData(),
         series: [
           {
-            type: "area",
-            xKey: "year",
-            yKey: "ie",
-            yName: "IE",
+            type: 'area',
+            xKey: 'year',
+            yKey: 'ie',
+            yName: 'IE',
             marker: {
               enabled: true,
             },
             tooltip: {
               renderer: function (params) {
                 return {
-                  content:
-                    params.yName +
-                    " - " +
-                    params.yValue +
-                    "% - Jan " +
-                    params.xValue,
+                  content: `${params.xValue}: ${params.yValue.toFixed(1)}%`,
                 };
               },
             },
@@ -54,4 +51,4 @@ class ChartExample extends Component {
   }
 }
 
-render(<ChartExample />, document.querySelector("#root"));
+render(<ChartExample />, document.querySelector('#root'));

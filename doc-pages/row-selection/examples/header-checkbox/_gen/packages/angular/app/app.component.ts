@@ -1,11 +1,11 @@
-import { HttpClient } from "@angular/common/http";
-import { Component } from "@angular/core";
-import { ColDef, GridApi, GridReadyEvent } from "ag-grid-community";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
+import { HttpClient } from '@angular/common/http';
+import { Component } from '@angular/core';
+import { ColDef, GridApi, GridReadyEvent } from 'ag-grid-community';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<div class="example-wrapper">
     <div style="margin-bottom: 5px;">
       <input
@@ -32,36 +32,36 @@ export class AppComponent {
 
   public columnDefs: ColDef[] = [
     {
-      headerName: "Athlete",
-      field: "athlete",
+      headerName: 'Athlete',
+      field: 'athlete',
       minWidth: 180,
       headerCheckboxSelection: true,
       headerCheckboxSelectionFilteredOnly: true,
       checkboxSelection: true,
     },
-    { field: "age" },
-    { field: "country", minWidth: 150 },
-    { field: "year" },
-    { field: "date", minWidth: 150 },
-    { field: "sport", minWidth: 150 },
-    { field: "gold" },
-    { field: "silver" },
-    { field: "bronze" },
-    { field: "total" },
+    { field: 'age' },
+    { field: 'country', minWidth: 150 },
+    { field: 'year' },
+    { field: 'date', minWidth: 150 },
+    { field: 'sport', minWidth: 150 },
+    { field: 'gold' },
+    { field: 'silver' },
+    { field: 'bronze' },
+    { field: 'total' },
   ];
   public defaultColDef: ColDef = {
     flex: 1,
     minWidth: 100,
     resizable: true,
   };
-  public rowSelection = "multiple";
+  public rowSelection = 'multiple';
   public rowData!: any[];
 
   constructor(private http: HttpClient) {}
 
   onQuickFilterChanged() {
     this.gridApi.setQuickFilter(
-      (document.getElementById("quickFilter") as HTMLInputElement).value
+      (document.getElementById('quickFilter') as HTMLInputElement).value
     );
   }
 
@@ -69,7 +69,7 @@ export class AppComponent {
     this.gridApi = params.api;
 
     this.http
-      .get<any[]>("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      .get<any[]>('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .subscribe((data) => (this.rowData = data));
   }
 }

@@ -1,12 +1,12 @@
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { AgGridVue } from "@ag-grid-community/vue";
-import { ColumnsToolPanelModule } from "@ag-grid-enterprise/column-tool-panel";
-import { MenuModule } from "@ag-grid-enterprise/menu";
-import { RowGroupingModule } from "@ag-grid-enterprise/row-grouping";
-import Vue from "vue";
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { AgGridVue } from '@ag-grid-community/vue';
+import { ColumnsToolPanelModule } from '@ag-grid-enterprise/column-tool-panel';
+import { MenuModule } from '@ag-grid-enterprise/menu';
+import { RowGroupingModule } from '@ag-grid-enterprise/row-grouping';
+import Vue from 'vue';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([
@@ -35,24 +35,24 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
-        { field: "country", rowGroup: true, hide: true },
-        { field: "sport", rowGroup: true, hide: true },
-        { field: "gold", aggFunc: "sum" },
-        { field: "silver", aggFunc: "sum" },
-        { field: "bronze", aggFunc: "sum" },
+        { field: 'country', rowGroup: true, hide: true },
+        { field: 'sport', rowGroup: true, hide: true },
+        { field: 'gold', aggFunc: 'sum' },
+        { field: 'silver', aggFunc: 'sum' },
+        { field: 'bronze', aggFunc: 'sum' },
         {
-          field: "age",
+          field: 'age',
           minWidth: 120,
           checkboxSelection: checkboxSelection,
-          aggFunc: "sum",
+          aggFunc: 'sum',
         },
-        { field: "year", maxWidth: 120 },
-        { field: "date", minWidth: 150 },
+        { field: 'year', maxWidth: 120 },
+        { field: 'date', minWidth: 150 },
       ],
       gridApi: null,
       columnApi: null,
@@ -67,15 +67,15 @@ const VueExample = {
   },
   created() {
     this.autoGroupColumnDef = {
-      headerName: "Athlete",
-      field: "athlete",
+      headerName: 'Athlete',
+      field: 'athlete',
       minWidth: 250,
-      cellRenderer: "agGroupCellRenderer",
+      cellRenderer: 'agGroupCellRenderer',
       cellRendererParams: {
         checkbox,
       },
     };
-    this.rowSelection = "multiple";
+    this.rowSelection = 'multiple';
   },
   methods: {
     onGridReady(params) {
@@ -84,7 +84,7 @@ const VueExample = {
 
       const updateData = (data) => params.api.setRowData(data);
 
-      fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
         .then((resp) => resp.json())
         .then((data) => updateData(data));
     },
@@ -100,8 +100,8 @@ window.checkbox = function checkbox(params) {
 };
 
 new Vue({
-  el: "#app",
+  el: '#app',
   components: {
-    "my-component": VueExample,
+    'my-component': VueExample,
   },
 });

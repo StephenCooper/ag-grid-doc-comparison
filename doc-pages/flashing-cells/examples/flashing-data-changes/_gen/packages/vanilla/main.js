@@ -3,21 +3,21 @@ function formatNumber(number) {
   // i pulled this from stack overflow, i have no idea how it works
   return Math.floor(number)
     .toString()
-    .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
+    .replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
 }
 
 const gridOptions = {
   columnDefs: [
-    { field: "a" },
-    { field: "b" },
-    { field: "c" },
-    { field: "d" },
-    { field: "e" },
-    { field: "f" },
+    { field: 'a' },
+    { field: 'b' },
+    { field: 'c' },
+    { field: 'd' },
+    { field: 'e' },
+    { field: 'f' },
   ],
   defaultColDef: {
     flex: 1,
-    cellClass: "align-right",
+    cellClass: 'align-right',
     enableCellChangeFlash: true,
     resizable: true,
     valueFormatter: function (params) {
@@ -33,7 +33,7 @@ function onUpdateSomeValues() {
   for (var i = 0; i < 20; i++) {
     var row = Math.floor(Math.random() * rowCount);
     var rowNode = gridOptions.api.getDisplayedRowAtIndex(row);
-    var col = ["a", "b", "c", "d", "e", "f"][i % 6];
+    var col = ['a', 'b', 'c', 'd', 'e', 'f'][i % 6];
     rowNode.setDataValue(col, Math.floor(Math.random() * 10000));
   }
 }
@@ -42,12 +42,12 @@ function onFlashOneCell() {
   // pick fourth row at random
   var rowNode = gridOptions.api.getDisplayedRowAtIndex(4);
   // pick 'c' column
-  gridOptions.api.flashCells({ rowNodes: [rowNode], columns: ["c"] });
+  gridOptions.api.flashCells({ rowNodes: [rowNode], columns: ['c'] });
 }
 
 function onFlashTwoColumns() {
   // flash whole column, so leave row selection out
-  gridOptions.api.flashCells({ columns: ["c", "d"] });
+  gridOptions.api.flashCells({ columns: ['c', 'd'] });
 }
 
 function onFlashTwoRows() {
@@ -59,8 +59,8 @@ function onFlashTwoRows() {
 }
 
 // setup the grid after the page has finished loading
-document.addEventListener("DOMContentLoaded", function () {
-  var gridDiv = document.querySelector("#myGrid");
+document.addEventListener('DOMContentLoaded', function () {
+  var gridDiv = document.querySelector('#myGrid');
   new agGrid.Grid(gridDiv, gridOptions);
 });
 

@@ -1,9 +1,10 @@
-"use strict";
+'use strict';
 
-import { AgChartsReact } from "ag-charts-react";
-import { cloneDeep } from "lodash";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { cloneDeep } from 'lodash';
+import { render } from 'react-dom';
+import * as agCharts from 'ag-charts-community';
+import { AgChartsReact } from 'ag-charts-react';
 
 class ChartExample extends Component {
   constructor(props) {
@@ -12,34 +13,34 @@ class ChartExample extends Component {
     this.state = {
       options: {
         data: [
-          { label: "USA", value: 56.9 },
-          { label: "UK", value: 22.5 },
-          { label: "China", value: 6.8 },
-          { label: "Russia", value: 8.5 },
-          { label: "India", value: 2.6 },
-          { label: "Germany", value: 18.2 },
-          { label: "France", value: 12.5 },
-          { label: "Canada", value: 3.9 },
-          { label: "Spain", value: 7.9 },
-          { label: "South Africa", value: 21.9 },
-          { label: "Portugal", value: 7.4 },
-          { label: "Netherlands", value: 4.7 },
-          { label: "Finland", value: 3.9 },
-          { label: "Sweden", value: 3.3 },
-          { label: "Norway", value: 3.2 },
-          { label: "Greece", value: 1.9 },
-          { label: "Italy", value: 2.5 },
+          { label: 'USA', value: 56.9 },
+          { label: 'UK', value: 22.5 },
+          { label: 'China', value: 6.8 },
+          { label: 'Russia', value: 8.5 },
+          { label: 'India', value: 2.6 },
+          { label: 'Germany', value: 18.2 },
+          { label: 'France', value: 12.5 },
+          { label: 'Canada', value: 3.9 },
+          { label: 'Spain', value: 7.9 },
+          { label: 'South Africa', value: 21.9 },
+          { label: 'Portugal', value: 7.4 },
+          { label: 'Netherlands', value: 4.7 },
+          { label: 'Finland', value: 3.9 },
+          { label: 'Sweden', value: 3.3 },
+          { label: 'Norway', value: 3.2 },
+          { label: 'Greece', value: 1.9 },
+          { label: 'Italy', value: 2.5 },
         ],
         series: [
           {
-            type: "pie",
-            angleKey: "value",
-            labelKey: "label",
+            type: 'pie',
+            angleKey: 'value',
+            labelKey: 'label',
             strokeWidth: 3,
           },
         ],
         legend: {
-          position: "bottom",
+          position: 'bottom',
           item: {
             paddingX: 32,
             paddingY: 8,
@@ -60,7 +61,7 @@ class ChartExample extends Component {
     var value = +event.target.value;
     options.legend.item.paddingX = value;
 
-    document.getElementById("xPaddingValue").innerHTML = String(value);
+    document.getElementById('xPaddingValue').innerHTML = String(value);
 
     this.setState({ options });
   };
@@ -71,7 +72,7 @@ class ChartExample extends Component {
     var value = event.target.value;
     options.legend.item.paddingY = +event.target.value;
 
-    document.getElementById("yPaddingValue").innerHTML = String(value);
+    document.getElementById('yPaddingValue').innerHTML = String(value);
 
     this.setState({ options });
   };
@@ -82,7 +83,7 @@ class ChartExample extends Component {
     var value = +event.target.value;
     options.legend.item.marker.padding = value;
 
-    document.getElementById("markerPaddingValue").innerHTML = String(value);
+    document.getElementById('markerPaddingValue').innerHTML = String(value);
 
     this.setState({ options });
   };
@@ -103,6 +104,7 @@ class ChartExample extends Component {
               id="xPaddingLabel"
               min="0"
               max="50"
+              defaultValue="32"
               onInput={() => this.updateLegendItemPaddingX(event)}
               onChange={() => this.updateLegendItemPaddingX(event)}
             />
@@ -121,6 +123,7 @@ class ChartExample extends Component {
               id="yPaddingLabel"
               min="0"
               max="30"
+              defaultValue="8"
               onInput={() => this.updateLegendItemPaddingY(event)}
               onChange={() => this.updateLegendItemPaddingY(event)}
             />
@@ -139,6 +142,7 @@ class ChartExample extends Component {
               id="markerPaddingLabel"
               min="0"
               max="30"
+              defaultValue="8"
               onInput={() => this.updateLegendItemSpacing(event)}
               onChange={() => this.updateLegendItemSpacing(event)}
             />
@@ -150,4 +154,4 @@ class ChartExample extends Component {
   }
 }
 
-render(<ChartExample />, document.querySelector("#root"));
+render(<ChartExample />, document.querySelector('#root'));

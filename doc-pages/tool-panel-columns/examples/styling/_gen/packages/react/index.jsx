@@ -1,11 +1,11 @@
-"use strict";
+'use strict';
 
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
-import { AgGridReact } from "ag-grid-react";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from 'ag-grid-react';
+import 'ag-grid-enterprise';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 
 class GridExample extends Component {
   constructor(props) {
@@ -14,64 +14,64 @@ class GridExample extends Component {
     this.state = {
       columnDefs: [
         {
-          field: "athlete",
+          field: 'athlete',
           minWidth: 200,
           enableRowGroup: true,
           enablePivot: true,
         },
         {
-          field: "age",
+          field: 'age',
           enableValue: true,
         },
         {
-          field: "country",
+          field: 'country',
           minWidth: 200,
           enableRowGroup: true,
           enablePivot: true,
           headerValueGetter: countryHeaderValueGetter,
         },
         {
-          field: "year",
+          field: 'year',
           enableRowGroup: true,
           enablePivot: true,
         },
         {
-          field: "date",
+          field: 'date',
           minWidth: 180,
           enableRowGroup: true,
           enablePivot: true,
         },
         {
-          field: "sport",
+          field: 'sport',
           minWidth: 200,
           enableRowGroup: true,
           enablePivot: true,
         },
         {
-          field: "gold",
+          field: 'gold',
           hide: true,
           enableValue: true,
-          toolPanelClass: "tp-gold",
+          toolPanelClass: 'tp-gold',
         },
         {
-          field: "silver",
+          field: 'silver',
           hide: true,
           enableValue: true,
-          toolPanelClass: ["tp-silver"],
+          toolPanelClass: ['tp-silver'],
         },
         {
-          field: "bronze",
+          field: 'bronze',
           hide: true,
           enableValue: true,
           toolPanelClass: function (params) {
-            return "tp-bronze";
+            return 'tp-bronze';
           },
         },
         {
-          headerName: "Total",
-          field: "totalAgg",
+          headerName: 'Total',
+          field: 'totalAgg',
           valueGetter:
-            "node.group ? data.totalAgg : data.gold + data.silver + data.bronze",
+            'node.group ? data.totalAgg : data.gold + data.silver + data.bronze',
         },
       ],
       defaultColDef: {
@@ -80,8 +80,8 @@ class GridExample extends Component {
         sortable: true,
         filter: true,
       },
-      sideBar: "columns",
-      rowGroupPanelShow: "always",
+      sideBar: 'columns',
+      rowGroupPanelShow: 'always',
       rowData: null,
     };
   }
@@ -92,18 +92,18 @@ class GridExample extends Component {
 
     const updateData = (data) => params.api.setRowData(data);
 
-    fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+    fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .then((resp) => resp.json())
       .then((data) => updateData(data));
   };
 
   render() {
     return (
-      <div style={{ width: "100%", height: "100%" }}>
+      <div style={{ width: '100%', height: '100%' }}>
         <div
           style={{
-            height: "100%",
-            width: "100%",
+            height: '100%',
+            width: '100%',
           }}
           className="ag-theme-alpine"
         >
@@ -123,19 +123,19 @@ class GridExample extends Component {
 
 function countryHeaderValueGetter(params) {
   switch (params.location) {
-    case "csv":
-      return "CSV Country";
-    case "clipboard":
-      return "CLIP Country";
-    case "columnToolPanel":
-      return "TP Country";
-    case "columnDrop":
-      return "CD Country";
-    case "header":
-      return "H Country";
+    case 'csv':
+      return 'CSV Country';
+    case 'clipboard':
+      return 'CLIP Country';
+    case 'columnToolPanel':
+      return 'TP Country';
+    case 'columnDrop':
+      return 'CD Country';
+    case 'header':
+      return 'H Country';
     default:
-      return "Should never happen!";
+      return 'Should never happen!';
   }
 }
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

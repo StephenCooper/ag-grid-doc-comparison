@@ -1,7 +1,7 @@
-import { Grid, GridOptions, RowHeightParams } from "ag-grid-community";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
+import { Grid, GridOptions, RowHeightParams } from 'ag-grid-community';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import 'ag-grid-enterprise';
 
 var swimmingHeight: number;
 var groupHeight: number;
@@ -9,14 +9,14 @@ var russiaHeight: number;
 
 const gridOptions: GridOptions = {
   columnDefs: [
-    { field: "country", rowGroup: true },
-    { field: "athlete" },
-    { field: "date" },
-    { field: "sport" },
-    { field: "gold" },
-    { field: "silver" },
-    { field: "bronze" },
-    { field: "total" },
+    { field: 'country', rowGroup: true },
+    { field: 'athlete' },
+    { field: 'date' },
+    { field: 'sport' },
+    { field: 'gold' },
+    { field: 'silver' },
+    { field: 'bronze' },
+    { field: 'total' },
   ],
   rowData: getData(),
   animateRows: true,
@@ -24,18 +24,18 @@ const gridOptions: GridOptions = {
   getRowHeight: getRowHeight,
 };
 
-function getRowHeight(params: RowHeightParams) {
+function getRowHeight(params: RowHeightParams): number | undefined | null {
   if (params.node.group && groupHeight != null) {
     return groupHeight;
   } else if (
     params.data &&
-    params.data.country === "Russia" &&
+    params.data.country === 'Russia' &&
     russiaHeight != null
   ) {
     return russiaHeight;
   } else if (
     params.data &&
-    params.data.sport === "Swimming" &&
+    params.data.sport === 'Swimming' &&
     swimmingHeight != null
   ) {
     return swimmingHeight;
@@ -57,7 +57,7 @@ function setRussiaHeight(height: number) {
   russiaHeight = height;
 
   gridOptions.api!.forEachNode(function (rowNode) {
-    if (rowNode.data && rowNode.data.country === "Russia") {
+    if (rowNode.data && rowNode.data.country === 'Russia') {
       rowNode.setRowHeight(height);
     }
   });
@@ -65,10 +65,10 @@ function setRussiaHeight(height: number) {
 }
 
 // setup the grid after the page has finished loading
-var gridDiv = document.querySelector<HTMLElement>("#myGrid")!;
+var gridDiv = document.querySelector<HTMLElement>('#myGrid')!;
 new Grid(gridDiv, gridOptions);
 
-if (typeof window !== "undefined") {
+if (typeof window !== 'undefined') {
   // Attach external event handlers to window so they can be called from index.html
   (<any>window).setSwimmingHeight = setSwimmingHeight;
   (<any>window).setGroupHeight = setGroupHeight;

@@ -1,8 +1,10 @@
-"use strict";
+'use strict';
 
-import { AgChartsReact } from "ag-charts-react";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { cloneDeep } from 'lodash';
+import { render } from 'react-dom';
+import * as agCharts from 'ag-charts-community';
+import { AgChartsReact } from 'ag-charts-react';
 
 class ChartExample extends Component {
   constructor(props) {
@@ -25,32 +27,32 @@ class ChartExample extends Component {
           },
         },
         title: {
-          text: "Regular Internet Users",
+          text: 'Regular Internet Users',
           fontSize: 18,
         },
         subtitle: {
-          text: "Source: Office for National Statistics",
+          text: 'Source: Office for National Statistics',
         },
         series: [
-          { type: "column", xKey: "year", yKey: "16-24" },
-          { type: "column", xKey: "year", yKey: "25-34" },
-          { type: "column", xKey: "year", yKey: "35-44" },
-          { type: "column", xKey: "year", yKey: "45-54" },
-          { type: "column", xKey: "year", yKey: "55-64" },
-          { type: "column", xKey: "year", yKey: "65-74" },
-          { type: "column", xKey: "year", yKey: "75+" },
+          { type: 'column', xKey: 'year', yKey: '16-24' },
+          { type: 'column', xKey: 'year', yKey: '25-34' },
+          { type: 'column', xKey: 'year', yKey: '35-44' },
+          { type: 'column', xKey: 'year', yKey: '45-54' },
+          { type: 'column', xKey: 'year', yKey: '55-64' },
+          { type: 'column', xKey: 'year', yKey: '65-74' },
+          { type: 'column', xKey: 'year', yKey: '75+' },
         ],
         axes: [
           {
-            type: "category",
-            position: "bottom",
+            type: 'category',
+            position: 'bottom',
           },
           {
-            type: "number",
-            position: "left",
+            type: 'number',
+            position: 'left',
             label: {
               formatter: function (params) {
-                return params.value / 1000 + "M";
+                return params.value / 1000 + 'M';
               },
             },
           },
@@ -66,4 +68,4 @@ class ChartExample extends Component {
   }
 }
 
-render(<ChartExample />, document.querySelector("#root"));
+render(<ChartExample />, document.querySelector('#root'));

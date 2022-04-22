@@ -1,13 +1,13 @@
-"use strict";
+'use strict';
 
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { AgGridReact } from "@ag-grid-community/react";
-import { RowGroupingModule } from "@ag-grid-enterprise/row-grouping";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from '@ag-grid-community/react';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import { RowGroupingModule } from '@ag-grid-enterprise/row-grouping';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([ClientSideRowModelModule, RowGroupingModule]);
@@ -18,11 +18,11 @@ class GridExample extends Component {
 
     this.state = {
       columnDefs: [
-        { field: "city", rowGroup: true, hide: true },
-        { field: "laptop", rowGroup: true, hide: true },
-        { field: "distro", sort: "asc", comparator: myComparator },
+        { field: 'city', rowGroup: true, hide: true },
+        { field: 'laptop', rowGroup: true, hide: true },
+        { field: 'distro', sort: 'asc', comparator: myComparator },
         {
-          field: "value",
+          field: 'value',
           enableCellChangeFlash: true,
           aggFunc: myAggFunc,
           filter: myFilter,
@@ -34,10 +34,13 @@ class GridExample extends Component {
         sortable: true,
         resizable: true,
       },
-      rowSelection: "multiple",
+      rowSelection: 'multiple',
       autoGroupColumnDef: {
-        field: "name",
+        field: 'name',
         cellRendererParams: { checkbox: true },
+      },
+      isGroupOpenByDefault: function (params) {
+        return ['Delhi', 'Seoul'].includes(params.key);
       },
     };
   }
@@ -47,13 +50,11 @@ class GridExample extends Component {
     this.gridColumnApi = params.columnApi;
 
     params.api.setFilterModel({
-      value: { value: "50" },
+      value: { value: '50' },
     });
-    timeOperation("Initialisation", function () {
+    timeOperation('Initialisation', function () {
       params.api.setRowData(getData());
     });
-    params.api.getDisplayedRowAtIndex(2).setExpanded(true);
-    params.api.getDisplayedRowAtIndex(4).setExpanded(true);
   };
 
   onBtDuplicate = () => {
@@ -61,7 +62,7 @@ class GridExample extends Component {
     // get the first child of the
     var selectedRows = api.getSelectedRows();
     if (!selectedRows || selectedRows.length === 0) {
-      console.log("No rows selected!");
+      console.log('No rows selected!');
       return;
     }
     var newItems = [];
@@ -77,7 +78,7 @@ class GridExample extends Component {
       );
       newItems.push(newItem);
     });
-    timeOperation("Duplicate", function () {
+    timeOperation('Duplicate', function () {
       api.applyTransaction({ add: newItems });
     });
   };
@@ -87,7 +88,7 @@ class GridExample extends Component {
     // get the first child of the
     var selectedRows = api.getSelectedRows();
     if (!selectedRows || selectedRows.length === 0) {
-      console.log("No rows selected!");
+      console.log('No rows selected!');
       return;
     }
     var updatedItems = [];
@@ -103,7 +104,7 @@ class GridExample extends Component {
       );
       updatedItems.push(newItem);
     });
-    timeOperation("Update", function () {
+    timeOperation('Update', function () {
       api.applyTransaction({ update: updatedItems });
     });
   };
@@ -113,10 +114,10 @@ class GridExample extends Component {
     // get the first child of the
     var selectedRows = api.getSelectedRows();
     if (!selectedRows || selectedRows.length === 0) {
-      console.log("No rows selected!");
+      console.log('No rows selected!');
       return;
     }
-    timeOperation("Delete", function () {
+    timeOperation('Delete', function () {
       api.applyTransaction({ remove: selectedRows });
     });
   };
@@ -131,7 +132,7 @@ class GridExample extends Component {
 
   render() {
     return (
-      <div style={{ width: "100%", height: "100%" }}>
+      <div style={{ width: '100%', height: '100%' }}>
         <div className="test-container">
           <div className="test-header">
             <button onClick={() => this.onBtUpdate()}>Update</button>
@@ -143,8 +144,8 @@ class GridExample extends Component {
           </div>
           <div
             style={{
-              height: "100%",
-              width: "100%",
+              height: '100%',
+              width: '100%',
             }}
             className="ag-theme-alpine"
           >
@@ -158,6 +159,7 @@ class GridExample extends Component {
               suppressAggAtRootLevel={true}
               suppressRowClickSelection={true}
               autoGroupColumnDef={this.state.autoGroupColumnDef}
+              isGroupOpenByDefault={this.state.isGroupOpenByDefault}
               onGridReady={this.onGridReady}
             />
           </div>
@@ -188,10 +190,10 @@ function getMyFilter() {
     init(params) {
       this.filterParams = params;
       this.filterValue = null;
-      this.eGui = document.createElement("div");
+      this.eGui = document.createElement('div');
       this.eGui.innerHTML = '<div>Greater Than: <input type="text"/></div>';
-      this.eInput = this.eGui.querySelector("input");
-      this.eInput.addEventListener("input", () => {
+      this.eInput = this.eGui.querySelector('input');
+      this.eInput.addEventListener('input', () => {
         this.getValueFromInput();
         params.filterChangedCallback();
       });
@@ -245,18 +247,18 @@ function timeOperation(name, operation) {
   var end = new Date().getTime();
   console.log(
     name +
-      " finished in " +
+      ' finished in ' +
       (end - start) +
-      "ms, aggCallCount = " +
+      'ms, aggCallCount = ' +
       aggCallCount +
-      ", compareCallCount = " +
+      ', compareCallCount = ' +
       compareCallCount +
-      ", filterCallCount = " +
+      ', filterCallCount = ' +
       filterCallCount
   );
 }
 function letter(i) {
-  return "abcdefghijklmnopqrstuvwxyz".substring(i, i + 1);
+  return 'abcdefghijklmnopqrstuvwxyz'.substring(i, i + 1);
 }
 function randomLetter() {
   return letter(Math.floor(Math.random() * 26 + 1));
@@ -265,9 +267,9 @@ function getData() {
   var myRowData = [];
   for (var i = 0; i < 10000; i++) {
     var name =
-      "Mr " +
+      'Mr ' +
       randomLetter().toUpperCase() +
-      " " +
+      ' ' +
       randomLetter().toUpperCase() +
       randomLetter() +
       randomLetter() +
@@ -276,7 +278,7 @@ function getData() {
     var city = CITIES[i % CITIES.length];
     var distro =
       LINUX_DISTROS[i % LINUX_DISTROS.length] +
-      " v" +
+      ' v' +
       Math.floor(Math.random() * 100 + 1) / 10;
     var university = LAPTOPS[i % LAPTOPS.length];
     var value = Math.floor(Math.random() * 100) + 10; // between 10 and 110
@@ -298,4 +300,4 @@ function createDataItem(id, name, distro, laptop, city, value) {
   };
 }
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

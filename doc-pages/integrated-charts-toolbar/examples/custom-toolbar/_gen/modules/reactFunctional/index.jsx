@@ -1,14 +1,14 @@
-"use strict";
+'use strict';
 
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { AgGridReact } from "@ag-grid-community/react";
-import { GridChartsModule } from "@ag-grid-enterprise/charts";
-import { MenuModule } from "@ag-grid-enterprise/menu";
-import React, { useCallback, useMemo, useRef, useState } from "react";
-import { render } from "react-dom";
+import React, { useCallback, useMemo, useRef, useState } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from '@ag-grid-community/react';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import { MenuModule } from '@ag-grid-enterprise/menu';
+import { GridChartsModule } from '@ag-grid-enterprise/charts';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([
@@ -19,33 +19,33 @@ ModuleRegistry.registerModules([
 
 const GridExample = () => {
   const gridRef = useRef();
-  const containerStyle = useMemo(() => ({ width: "100%", height: "100%" }), []);
-  const gridStyle = useMemo(() => ({ height: "100%", width: "100%" }), []);
+  const containerStyle = useMemo(() => ({ width: '100%', height: '100%' }), []);
+  const gridStyle = useMemo(() => ({ height: '100%', width: '100%' }), []);
   const [rowData, setRowData] = useState(getData());
   const [columnDefs, setColumnDefs] = useState([
-    { field: "country", width: 150, chartDataType: "category" },
-    { field: "gold", chartDataType: "series" },
-    { field: "silver", chartDataType: "series" },
-    { field: "bronze", chartDataType: "series" },
+    { field: 'country', width: 150, chartDataType: 'category' },
+    { field: 'gold', chartDataType: 'series' },
+    { field: 'silver', chartDataType: 'series' },
+    { field: 'bronze', chartDataType: 'series' },
     {
-      headerName: "A",
-      valueGetter: "Math.floor(Math.random()*1000)",
-      chartDataType: "series",
+      headerName: 'A',
+      valueGetter: 'Math.floor(Math.random()*1000)',
+      chartDataType: 'series',
     },
     {
-      headerName: "B",
-      valueGetter: "Math.floor(Math.random()*1000)",
-      chartDataType: "series",
+      headerName: 'B',
+      valueGetter: 'Math.floor(Math.random()*1000)',
+      chartDataType: 'series',
     },
     {
-      headerName: "C",
-      valueGetter: "Math.floor(Math.random()*1000)",
-      chartDataType: "series",
+      headerName: 'C',
+      valueGetter: 'Math.floor(Math.random()*1000)',
+      chartDataType: 'series',
     },
     {
-      headerName: "D",
-      valueGetter: "Math.floor(Math.random()*1000)",
-      chartDataType: "series",
+      headerName: 'D',
+      valueGetter: 'Math.floor(Math.random()*1000)',
+      chartDataType: 'series',
     },
   ]);
   const defaultColDef = useMemo(() => {
@@ -66,18 +66,18 @@ const GridExample = () => {
       pie: {
         title: {
           enabled: true,
-          text: "Precious Metals Production",
-          fontWeight: "bold",
+          text: 'Precious Metals Production',
+          fontWeight: 'bold',
           fontSize: 20,
-          color: "rgb(100, 100, 100)",
+          color: 'rgb(100, 100, 100)',
         },
         subtitle: {
           enabled: true,
-          text: "by country",
-          fontStyle: "italic",
-          fontWeight: "bold",
+          text: 'by country',
+          fontStyle: 'italic',
+          fontWeight: 'bold',
           fontSize: 14,
-          color: "rgb(100, 100, 100)",
+          color: 'rgb(100, 100, 100)',
         },
         padding: {
           top: 25,
@@ -105,15 +105,15 @@ const GridExample = () => {
       cellRange: {
         rowStartIndex: 0,
         rowEndIndex: 5,
-        columns: ["country", "gold"],
+        columns: ['country', 'gold'],
       },
-      chartType: "pie",
+      chartType: 'pie',
     };
     gridRef.current.api.createRangeChart(createRangeChartParams);
   }, []);
 
   const getChartToolbarItems = useCallback(() => {
-    return ["chartDownload", "chartData", "chartSettings"];
+    return ['chartDownload', 'chartData', 'chartSettings'];
   }, []);
 
   return (
@@ -136,4 +136,4 @@ const GridExample = () => {
   );
 };
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

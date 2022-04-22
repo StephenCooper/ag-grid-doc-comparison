@@ -34,7 +34,7 @@ function FakeServer(allData) {
 
     // add 'childCount' to group results
     return groupByResult.map(function (group) {
-      group["childCount"] = childCountResult[group[groupColId]];
+      group['childCount'] = childCountResult[group[groupColId]];
       return group;
     });
   }
@@ -43,7 +43,7 @@ function FakeServer(allData) {
     var groupByQuery = buildGroupBySql(request);
 
     console.log(
-      "[FakeServer] - about to execute row group query:",
+      '[FakeServer] - about to execute row group query:',
       groupByQuery
     );
 
@@ -52,12 +52,12 @@ function FakeServer(allData) {
 
   function executeGroupChildCountsQuery(request, groupId) {
     var SQL = interpolate(
-      "SELECT {0} FROM ? pivot (count({0}) for {0})" + whereSql(request),
+      'SELECT {0} FROM ? pivot (count({0}) for {0})' + whereSql(request),
       [groupId]
     );
 
     console.log(
-      "[FakeServer] - about to execute group child count query:",
+      '[FakeServer] - about to execute group child count query:',
       SQL
     );
 
@@ -67,7 +67,7 @@ function FakeServer(allData) {
   function buildGroupBySql(request) {
     return (
       selectSql(request) +
-      " FROM ?" +
+      ' FROM ?' +
       whereSql(request) +
       groupBySql(request) +
       orderBySql(request) +
@@ -86,14 +86,14 @@ function FakeServer(allData) {
 
       valueCols.forEach(function (valueCol) {
         colsToSelect.push(
-          valueCol.aggFunc + "(" + valueCol.id + ") AS " + valueCol.id
+          valueCol.aggFunc + '(' + valueCol.id + ') AS ' + valueCol.id
         );
       });
 
-      return "SELECT " + colsToSelect.join(", ");
+      return 'SELECT ' + colsToSelect.join(', ');
     }
 
-    return "SELECT *";
+    return 'SELECT *';
   }
 
   function whereSql(request) {
@@ -103,17 +103,17 @@ function FakeServer(allData) {
 
     if (groupKeys) {
       groupKeys.forEach(function (key, i) {
-        var value = typeof key === "string" ? "'" + key + "'" : key;
+        var value = typeof key === 'string' ? "'" + key + "'" : key;
 
-        whereParts.push(rowGroups[i].id + " = " + value);
+        whereParts.push(rowGroups[i].id + ' = ' + value);
       });
     }
 
     if (whereParts.length > 0) {
-      return " WHERE " + whereParts.join(" AND ");
+      return ' WHERE ' + whereParts.join(' AND ');
     }
 
-    return "";
+    return '';
   }
 
   function groupBySql(request) {
@@ -123,28 +123,28 @@ function FakeServer(allData) {
     if (isDoingGrouping(rowGroupCols, groupKeys)) {
       var rowGroupCol = rowGroupCols[groupKeys.length];
 
-      return " GROUP BY " + rowGroupCol.id;
+      return ' GROUP BY ' + rowGroupCol.id;
     }
 
-    return "";
+    return '';
   }
 
   function orderBySql(request) {
     var sortModel = request.sortModel;
 
-    if (sortModel.length === 0) return "";
+    if (sortModel.length === 0) return '';
 
     var sorts = sortModel.map(function (s) {
-      return s.colId + " " + s.sort.toUpperCase();
+      return s.colId + ' ' + s.sort.toUpperCase();
     });
 
-    return " ORDER BY " + sorts.join(", ");
+    return ' ORDER BY ' + sorts.join(', ');
   }
 
   function limitSql(request) {
     var blockSize = request.endRow - request.startRow;
 
-    return " LIMIT " + (blockSize + 1) + " OFFSET " + request.startRow;
+    return ' LIMIT ' + (blockSize + 1) + ' OFFSET ' + request.startRow;
   }
 
   function isDoingGrouping(rowGroupCols, groupKeys) {
@@ -167,6 +167,6 @@ function FakeServer(allData) {
 function interpolate(str, o) {
   return str.replace(/{([^{}]*)}/g, function (a, b) {
     var r = o[b];
-    return typeof r === "string" || typeof r === "number" ? r : a;
+    return typeof r === 'string' || typeof r === 'number' ? r : a;
   });
 }

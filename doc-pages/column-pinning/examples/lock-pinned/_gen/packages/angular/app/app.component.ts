@@ -1,11 +1,11 @@
-import { HttpClient } from "@angular/common/http";
-import { Component } from "@angular/core";
-import { ColDef, GridReadyEvent } from "ag-grid-community";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
+import { HttpClient } from '@angular/common/http';
+import { Component } from '@angular/core';
+import { ColDef, GridReadyEvent } from 'ag-grid-community';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<div class="example-wrapper">
     <div class="example-header">
       <span class="legend-box lock-pinned"></span> Locked Column
@@ -23,28 +23,28 @@ import "ag-grid-community/dist/styles/ag-theme-alpine.css";
 export class AppComponent {
   public columnDefs: ColDef[] = [
     {
-      headerName: "Athlete (locked as pinned)",
-      field: "athlete",
+      headerName: 'Athlete (locked as pinned)',
+      field: 'athlete',
       width: 240,
-      pinned: "left",
+      pinned: 'left',
       lockPinned: true,
-      cellClass: "lock-pinned",
+      cellClass: 'lock-pinned',
     },
     {
-      headerName: "Age (locked as not pinnable)",
-      field: "age",
+      headerName: 'Age (locked as not pinnable)',
+      field: 'age',
       width: 260,
       lockPinned: true,
-      cellClass: "lock-pinned",
+      cellClass: 'lock-pinned',
     },
-    { field: "country", width: 150 },
-    { field: "year", width: 90 },
-    { field: "date", width: 150 },
-    { field: "sport", width: 150 },
-    { field: "gold" },
-    { field: "silver" },
-    { field: "bronze" },
-    { field: "total" },
+    { field: 'country', width: 150 },
+    { field: 'year', width: 90 },
+    { field: 'date', width: 150 },
+    { field: 'sport', width: 150 },
+    { field: 'gold' },
+    { field: 'silver' },
+    { field: 'bronze' },
+    { field: 'total' },
   ];
   public defaultColDef: ColDef = {
     resizable: true,
@@ -55,7 +55,7 @@ export class AppComponent {
 
   onGridReady(params: GridReadyEvent) {
     this.http
-      .get<any[]>("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      .get<any[]>('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .subscribe((data) => (this.rowData = data));
   }
 }

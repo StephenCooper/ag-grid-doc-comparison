@@ -10,7 +10,7 @@ A legend can be positioned to any side of a chart using the `position` config:
 
 ```js
 legend: {
-  position: "right"; // 'bottom', 'left', 'top'
+    position: 'right' // 'bottom', 'left', 'top'
 }
 ```
 
@@ -18,7 +18,7 @@ A legend is shown by default but can be hidden using the `enabled` config:
 
 ```js
 legend: {
-  enabled: false;
+    enabled: false
 }
 ```
 
@@ -53,9 +53,9 @@ In addition to the width and height of the chart, the legend's layout is also af
 
 ```js
 legend: {
-  item: {
-    paddingX: 16;
-  }
+    item: {
+        paddingX: 16
+    }
 }
 ```
 
@@ -63,9 +63,9 @@ legend: {
 
 ```js
 legend: {
-  item: {
-    paddingY: 8;
-  }
+    item: {
+        paddingY: 8
+    }
 }
 ```
 
@@ -73,11 +73,11 @@ And the `legend.item.marker.padding` config is responsible for the amount of pad
 
 ```js
 legend: {
-  item: {
-    marker: {
-      padding: 8;
+    item: {
+        marker: {
+            padding: 8
+        }
     }
-  }
 }
 ```
 
@@ -93,36 +93,48 @@ There are a number of configs that affect the `fontSize`, `fontStyle`, `fontWeig
 
 ```js
 legend: {
-    fontSize: 14,
-    fontStyle: 'italic',
-    fontWeight: 'bold',
-    fontFamily: 'Papyrus',
-    color: 'red'
+    item: {
+        label: {
+            fontSize: 14,
+            fontStyle: 'italic',
+            fontWeight: 'bold',
+            fontFamily: 'Papyrus',
+            color: 'red'
+        }
+    }
 }
 ```
 
 ## Markers
 
-### Size and Stroke
+### Size and StrokeWidth
 
-All legend items use the same size and stroke width, regardless of the size and stroke width used by the series they represent. It's possible to adjust the defaults using the following configs:
+All legend items use the same `size` and `strokeWidth`, regardless of the `size` and `strokeWidth` used by the series they represent. It's possible to adjust the defaults using the following configs:
 
 ```js
 legend: {
-    markerSize: 20,
-    strokeWidth: 3
+    item: {
+        marker: {
+            size: 20,
+            strokeWidth: 3
+        }
+    }
 }
 ```
 
 ### Shape
 
-Normally, the legend mirrors the marker shapes used by the series, unless the series in question doesn't support markers (for example `'column'` series), in which case the legend will use the `'square'` marker shape for that series.
+Normally, the legend mirrors the marker shapes used by the series, unless the series in question doesn't support markers (for example `'column'` series), in which case the legend will use `'square'`.
 
-It's also possible to override the default behaviour and make the legend use a specified marker shape for all legend items, regardless of the shapes the series are using themselves:
+It's also possible to override the default behaviour and make the legend use a specified marker shape for all legend items, regardless of the shapes the series are using:
 
 ```js
 legend: {
-  markerShape: "circle"; // 'square', 'diamond', 'cross', 'plus', 'triangle'
+    item: {
+        marker: {
+            shape: 'circle', // 'square', 'diamond', 'cross', 'plus', 'triangle'
+        }
+    }
 }
 ```
 

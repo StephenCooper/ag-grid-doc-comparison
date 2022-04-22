@@ -1,10 +1,10 @@
-"use strict";
+'use strict';
 
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import { AgGridReact } from "ag-grid-react";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from 'ag-grid-react';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 
 class ShowCellRenderer {
   init(params) {
@@ -13,15 +13,15 @@ class ShowCellRenderer {
       return;
     }
 
-    this.ui = document.createElement("div");
+    this.ui = document.createElement('div');
     this.ui.innerHTML =
       '<div class="show-name">' +
       params.value.name +
-      "" +
-      "</div>" +
+      '' +
+      '</div>' +
       '<div class="show-presenter">' +
       params.value.presenter +
-      "</div>";
+      '</div>';
   }
 
   getGui() {
@@ -39,21 +39,21 @@ class GridExample extends Component {
 
     this.state = {
       columnDefs: [
-        { field: "localTime" },
+        { field: 'localTime' },
         {
-          field: "show",
+          field: 'show',
           cellRenderer: ShowCellRenderer,
           rowSpan: rowSpan,
           cellClassRules: {
-            "show-cell": "value !== undefined",
+            'show-cell': 'value !== undefined',
           },
           width: 200,
         },
-        { field: "a" },
-        { field: "b" },
-        { field: "c" },
-        { field: "d" },
-        { field: "e" },
+        { field: 'a' },
+        { field: 'b' },
+        { field: 'c' },
+        { field: 'd' },
+        { field: 'e' },
       ],
       defaultColDef: {
         resizable: true,
@@ -70,11 +70,11 @@ class GridExample extends Component {
 
   render() {
     return (
-      <div style={{ width: "100%", height: "100%" }}>
+      <div style={{ width: '100%', height: '100%' }}>
         <div
           style={{
-            height: "100%",
-            width: "100%",
+            height: '100%',
+            width: '100%',
           }}
           className="ag-theme-alpine"
         >
@@ -99,4 +99,4 @@ function rowSpan(params) {
   }
 }
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

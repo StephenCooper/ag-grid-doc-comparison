@@ -2,12 +2,12 @@ class DoublingEditor {
   init(params) {
     this.value = params.value;
 
-    this.input = document.createElement("input");
-    this.input.id = "input";
-    this.input.type = "number";
+    this.input = document.createElement('input');
+    this.input.id = 'input';
+    this.input.type = 'number';
     this.input.value = this.value;
 
-    this.input.addEventListener("input", (event) => {
+    this.input.addEventListener('input', (event) => {
       this.value = event.target.value;
     });
   }

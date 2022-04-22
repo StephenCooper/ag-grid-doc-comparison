@@ -1,7 +1,7 @@
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import { AgGridVue } from "ag-grid-vue3";
-import { createApp } from "vue";
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import { AgGridVue } from 'ag-grid-vue3';
+import { createApp } from 'vue';
 
 const VueExample = {
   template: `
@@ -21,19 +21,19 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
-        { field: "athlete", rowDrag: true },
-        { field: "country" },
-        { field: "year", width: 100 },
-        { field: "date" },
-        { field: "sport" },
-        { field: "gold" },
-        { field: "silver" },
-        { field: "bronze" },
+        { field: 'athlete', rowDrag: true },
+        { field: 'country' },
+        { field: 'year', width: 100 },
+        { field: 'date' },
+        { field: 'sport' },
+        { field: 'gold' },
+        { field: 'silver' },
+        { field: 'bronze' },
       ],
       gridApi: null,
       columnApi: null,
@@ -53,11 +53,11 @@ const VueExample = {
       // suppress row drag if either sort or filter is active
       var suppressRowDrag = sortActive || filterActive;
       console.log(
-        "sortActive = " +
+        'sortActive = ' +
           sortActive +
-          ", filterActive = " +
+          ', filterActive = ' +
           filterActive +
-          ", allowRowDrag = " +
+          ', allowRowDrag = ' +
           suppressRowDrag
       );
       this.gridApi.setSuppressRowDrag(suppressRowDrag);
@@ -68,11 +68,11 @@ const VueExample = {
       // suppress row drag if either sort or filter is active
       var suppressRowDrag = sortActive || filterActive;
       console.log(
-        "sortActive = " +
+        'sortActive = ' +
           sortActive +
-          ", filterActive = " +
+          ', filterActive = ' +
           filterActive +
-          ", allowRowDrag = " +
+          ', allowRowDrag = ' +
           suppressRowDrag
       );
       this.gridApi.setSuppressRowDrag(suppressRowDrag);
@@ -121,4 +121,4 @@ var sortActive = false;
 
 var filterActive = false;
 
-createApp(VueExample).mount("#app");
+createApp(VueExample).mount('#app');

@@ -1,8 +1,8 @@
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
-import { AgGridVue } from "ag-grid-vue3";
-import { createApp } from "vue";
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import 'ag-grid-enterprise';
+import { AgGridVue } from 'ag-grid-vue3';
+import { createApp } from 'vue';
 
 const VueExample = {
   template: `
@@ -25,23 +25,23 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
         {
-          headerName: "No Value Formatter",
-          field: "country",
+          headerName: 'No Value Formatter',
+          field: 'country',
           valueFormatter: countryValueFormatter,
-          filter: "agSetColumnFilter",
+          filter: 'agSetColumnFilter',
           filterParams: {},
         },
         {
-          headerName: "With Value Formatter",
-          field: "country",
+          headerName: 'With Value Formatter',
+          field: 'country',
           valueFormatter: countryValueFormatter,
-          filter: "agSetColumnFilter",
+          filter: 'agSetColumnFilter',
           filterParams: { valueFormatter: countryValueFormatter },
         },
       ],
@@ -58,11 +58,11 @@ const VueExample = {
     };
   },
   created() {
-    this.sideBar = "filters";
+    this.sideBar = 'filters';
   },
   methods: {
     onFirstDataRendered(params) {
-      params.api.getToolPanelInstance("filters").expandFilters();
+      params.api.getToolPanelInstance('filters').expandFilters();
     },
     printFilterModel() {
       var filterModel = this.gridApi.getFilterModel();
@@ -80,7 +80,7 @@ const VueExample = {
         params.api.setRowData(dataWithFlags);
       };
 
-      fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
         .then((resp) => resp.json())
         .then((data) => updateData(data));
     },
@@ -89,29 +89,29 @@ const VueExample = {
 
 window.countryValueFormatter = function countryValueFormatter(params) {
   var value = params.value;
-  return value + " (" + COUNTRY_CODES[value].toUpperCase() + ")";
+  return value + ' (' + COUNTRY_CODES[value].toUpperCase() + ')';
 };
 
 var COUNTRY_CODES = {
-  Ireland: "ie",
-  Luxembourg: "lu",
-  Belgium: "be",
-  Spain: "es",
-  France: "fr",
-  Germany: "de",
-  Sweden: "se",
-  Italy: "it",
-  Greece: "gr",
-  Iceland: "is",
-  Portugal: "pt",
-  Malta: "mt",
-  Norway: "no",
-  Brazil: "br",
-  Argentina: "ar",
-  Colombia: "co",
-  Peru: "pe",
-  Venezuela: "ve",
-  Uruguay: "uy",
+  Ireland: 'ie',
+  Luxembourg: 'lu',
+  Belgium: 'be',
+  Spain: 'es',
+  France: 'fr',
+  Germany: 'de',
+  Sweden: 'se',
+  Italy: 'it',
+  Greece: 'gr',
+  Iceland: 'is',
+  Portugal: 'pt',
+  Malta: 'mt',
+  Norway: 'no',
+  Brazil: 'br',
+  Argentina: 'ar',
+  Colombia: 'co',
+  Peru: 'pe',
+  Venezuela: 've',
+  Uruguay: 'uy',
 };
 
-createApp(VueExample).mount("#app");
+createApp(VueExample).mount('#app');

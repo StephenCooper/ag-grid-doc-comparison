@@ -1,12 +1,12 @@
-"use strict";
+'use strict';
 
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { AgGridReact } from "@ag-grid-community/react";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from '@ag-grid-community/react';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([ClientSideRowModelModule]);
@@ -18,28 +18,28 @@ class GridExample extends Component {
     this.state = {
       columnDefs: [
         {
-          headerName: "Athlete (locked as pinned)",
-          field: "athlete",
+          headerName: 'Athlete (locked as pinned)',
+          field: 'athlete',
           width: 240,
-          pinned: "left",
+          pinned: 'left',
           lockPinned: true,
-          cellClass: "lock-pinned",
+          cellClass: 'lock-pinned',
         },
         {
-          headerName: "Age (locked as not pinnable)",
-          field: "age",
+          headerName: 'Age (locked as not pinnable)',
+          field: 'age',
           width: 260,
           lockPinned: true,
-          cellClass: "lock-pinned",
+          cellClass: 'lock-pinned',
         },
-        { field: "country", width: 150 },
-        { field: "year", width: 90 },
-        { field: "date", width: 150 },
-        { field: "sport", width: 150 },
-        { field: "gold" },
-        { field: "silver" },
-        { field: "bronze" },
-        { field: "total" },
+        { field: 'country', width: 150 },
+        { field: 'year', width: 90 },
+        { field: 'date', width: 150 },
+        { field: 'sport', width: 150 },
+        { field: 'gold' },
+        { field: 'silver' },
+        { field: 'bronze' },
+        { field: 'total' },
       ],
       defaultColDef: {
         resizable: true,
@@ -54,22 +54,22 @@ class GridExample extends Component {
 
     const updateData = (data) => params.api.setRowData(data);
 
-    fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+    fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .then((resp) => resp.json())
       .then((data) => updateData(data));
   };
 
   render() {
     return (
-      <div style={{ width: "100%", height: "100%" }}>
+      <div style={{ width: '100%', height: '100%' }}>
         <div className="example-wrapper">
           <div className="example-header">
             <span className="legend-box lock-pinned"></span> Locked Column
           </div>
           <div
             style={{
-              height: "100%",
-              width: "100%",
+              height: '100%',
+              width: '100%',
             }}
             className="ag-theme-alpine"
           >
@@ -86,4 +86,4 @@ class GridExample extends Component {
   }
 }
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

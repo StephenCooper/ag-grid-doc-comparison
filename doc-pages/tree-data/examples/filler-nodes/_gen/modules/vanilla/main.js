@@ -1,18 +1,18 @@
 // specify the data
 var rowData = [
-  { orgHierarchy: ["A"] },
-  { orgHierarchy: ["A", "B"] },
-  { orgHierarchy: ["C", "D"] },
-  { orgHierarchy: ["E", "F", "G", "H"] },
+  { orgHierarchy: ['A'] },
+  { orgHierarchy: ['A', 'B'] },
+  { orgHierarchy: ['C', 'D'] },
+  { orgHierarchy: ['E', 'F', 'G', 'H'] },
 ];
 
 const gridOptions = {
   columnDefs: [
     // we're using the auto group column by default!
     {
-      field: "groupType",
+      field: 'groupType',
       valueGetter: function (params) {
-        return params.data ? "Provided" : "Filler";
+        return params.data ? 'Provided' : 'Filler';
       },
     },
   ],
@@ -20,7 +20,7 @@ const gridOptions = {
     flex: 1,
   },
   autoGroupColumnDef: {
-    headerName: "Organisation Hierarchy",
+    headerName: 'Organisation Hierarchy',
     cellRendererParams: {
       suppressCount: true,
     },
@@ -36,9 +36,9 @@ const gridOptions = {
 
 // wait for the document to be loaded, otherwise
 // AG Grid will not find the div in the document.
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener('DOMContentLoaded', function () {
   // lookup the container we want the Grid to use
-  var eGridDiv = document.querySelector("#myGrid");
+  var eGridDiv = document.querySelector('#myGrid');
 
   // create the grid passing in the div to use together with the columns & data we want to use
   new agGrid.Grid(eGridDiv, gridOptions);

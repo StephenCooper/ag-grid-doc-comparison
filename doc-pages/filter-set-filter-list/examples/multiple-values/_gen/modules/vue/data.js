@@ -1,1109 +1,1109 @@
 function getData() {
   return [
     {
-      animalsArray: ["Giraffe", "Monkey"],
-      animalsString: "Giraffe|Monkey",
+      animalsArray: ['Giraffe', 'Monkey'],
+      animalsString: 'Giraffe|Monkey',
       animalsObjects: [
         {
-          name: "Giraffe",
+          name: 'Giraffe',
         },
         {
-          name: "Monkey",
+          name: 'Monkey',
         },
       ],
     },
     {
-      animalsArray: ["Tiger"],
-      animalsString: "Tiger",
+      animalsArray: ['Tiger'],
+      animalsString: 'Tiger',
       animalsObjects: [
         {
-          name: "Tiger",
+          name: 'Tiger',
         },
       ],
     },
     {
-      animalsArray: ["Tiger"],
-      animalsString: "Tiger",
+      animalsArray: ['Tiger'],
+      animalsString: 'Tiger',
       animalsObjects: [
         {
-          name: "Tiger",
+          name: 'Tiger',
         },
       ],
     },
     {
-      animalsArray: ["Antelope", "Lion"],
-      animalsString: "Antelope|Lion",
+      animalsArray: ['Antelope', 'Lion'],
+      animalsString: 'Antelope|Lion',
       animalsObjects: [
         {
-          name: "Antelope",
+          name: 'Antelope',
         },
         {
-          name: "Lion",
+          name: 'Lion',
         },
       ],
     },
     {
-      animalsArray: ["Lion", "Giraffe"],
-      animalsString: "Lion|Giraffe",
+      animalsArray: ['Lion', 'Giraffe'],
+      animalsString: 'Lion|Giraffe',
       animalsObjects: [
         {
-          name: "Lion",
+          name: 'Lion',
         },
         {
-          name: "Giraffe",
+          name: 'Giraffe',
         },
       ],
     },
     {
-      animalsArray: ["Monkey"],
-      animalsString: "Monkey",
+      animalsArray: ['Monkey'],
+      animalsString: 'Monkey',
       animalsObjects: [
         {
-          name: "Monkey",
+          name: 'Monkey',
         },
       ],
     },
     {
-      animalsArray: ["Antelope"],
-      animalsString: "Antelope",
+      animalsArray: ['Antelope'],
+      animalsString: 'Antelope',
       animalsObjects: [
         {
-          name: "Antelope",
+          name: 'Antelope',
         },
       ],
     },
     {
-      animalsArray: ["Tiger", "Elephant"],
-      animalsString: "Tiger|Elephant",
+      animalsArray: ['Tiger', 'Elephant'],
+      animalsString: 'Tiger|Elephant',
       animalsObjects: [
         {
-          name: "Tiger",
+          name: 'Tiger',
         },
         {
-          name: "Elephant",
+          name: 'Elephant',
         },
       ],
     },
     {
-      animalsArray: ["Lion"],
-      animalsString: "Lion",
+      animalsArray: ['Lion'],
+      animalsString: 'Lion',
       animalsObjects: [
         {
-          name: "Lion",
+          name: 'Lion',
         },
       ],
     },
     {
-      animalsArray: ["Elephant", "Lion"],
-      animalsString: "Elephant|Lion",
+      animalsArray: ['Elephant', 'Lion'],
+      animalsString: 'Elephant|Lion',
       animalsObjects: [
         {
-          name: "Elephant",
+          name: 'Elephant',
         },
         {
-          name: "Lion",
+          name: 'Lion',
         },
       ],
     },
     {
-      animalsArray: ["Lion", "Elephant"],
-      animalsString: "Lion|Elephant",
+      animalsArray: ['Lion', 'Elephant'],
+      animalsString: 'Lion|Elephant',
       animalsObjects: [
         {
-          name: "Lion",
+          name: 'Lion',
         },
         {
-          name: "Elephant",
+          name: 'Elephant',
         },
       ],
     },
     {
-      animalsArray: ["Antelope"],
-      animalsString: "Antelope",
+      animalsArray: ['Antelope'],
+      animalsString: 'Antelope',
       animalsObjects: [
         {
-          name: "Antelope",
+          name: 'Antelope',
         },
       ],
     },
     {
-      animalsArray: ["Giraffe"],
-      animalsString: "Giraffe",
+      animalsArray: ['Giraffe'],
+      animalsString: 'Giraffe',
       animalsObjects: [
         {
-          name: "Giraffe",
+          name: 'Giraffe',
         },
       ],
     },
     {
-      animalsArray: ["Monkey", "Lion"],
-      animalsString: "Monkey|Lion",
+      animalsArray: ['Monkey', 'Lion'],
+      animalsString: 'Monkey|Lion',
       animalsObjects: [
         {
-          name: "Monkey",
+          name: 'Monkey',
         },
         {
-          name: "Lion",
+          name: 'Lion',
         },
       ],
     },
     {
-      animalsArray: ["Tiger", "Lion"],
-      animalsString: "Tiger|Lion",
+      animalsArray: ['Tiger', 'Lion'],
+      animalsString: 'Tiger|Lion',
       animalsObjects: [
         {
-          name: "Tiger",
+          name: 'Tiger',
         },
         {
-          name: "Lion",
+          name: 'Lion',
         },
       ],
     },
     {
-      animalsArray: ["Monkey", "Giraffe", "Lion"],
-      animalsString: "Monkey|Giraffe|Lion",
+      animalsArray: ['Monkey', 'Giraffe', 'Lion'],
+      animalsString: 'Monkey|Giraffe|Lion',
       animalsObjects: [
         {
-          name: "Monkey",
+          name: 'Monkey',
         },
         {
-          name: "Giraffe",
+          name: 'Giraffe',
         },
         {
-          name: "Lion",
+          name: 'Lion',
         },
       ],
     },
     {
-      animalsArray: ["Monkey"],
-      animalsString: "Monkey",
+      animalsArray: ['Monkey'],
+      animalsString: 'Monkey',
       animalsObjects: [
         {
-          name: "Monkey",
+          name: 'Monkey',
         },
       ],
     },
     {
-      animalsArray: ["Elephant", "Monkey"],
-      animalsString: "Elephant|Monkey",
+      animalsArray: ['Elephant', 'Monkey'],
+      animalsString: 'Elephant|Monkey',
       animalsObjects: [
         {
-          name: "Elephant",
+          name: 'Elephant',
         },
         {
-          name: "Monkey",
+          name: 'Monkey',
         },
       ],
     },
     {
-      animalsArray: ["Lion", "Antelope"],
-      animalsString: "Lion|Antelope",
+      animalsArray: ['Lion', 'Antelope'],
+      animalsString: 'Lion|Antelope',
       animalsObjects: [
         {
-          name: "Lion",
+          name: 'Lion',
         },
         {
-          name: "Antelope",
+          name: 'Antelope',
         },
       ],
     },
     {
-      animalsArray: ["Lion", "Elephant"],
-      animalsString: "Lion|Elephant",
+      animalsArray: ['Lion', 'Elephant'],
+      animalsString: 'Lion|Elephant',
       animalsObjects: [
         {
-          name: "Lion",
+          name: 'Lion',
         },
         {
-          name: "Elephant",
+          name: 'Elephant',
         },
       ],
     },
     {
-      animalsArray: ["Monkey", "Giraffe", "Tiger"],
-      animalsString: "Monkey|Giraffe|Tiger",
+      animalsArray: ['Monkey', 'Giraffe', 'Tiger'],
+      animalsString: 'Monkey|Giraffe|Tiger',
       animalsObjects: [
         {
-          name: "Monkey",
+          name: 'Monkey',
         },
         {
-          name: "Giraffe",
+          name: 'Giraffe',
         },
         {
-          name: "Tiger",
+          name: 'Tiger',
         },
       ],
     },
     {
-      animalsArray: ["Elephant"],
-      animalsString: "Elephant",
+      animalsArray: ['Elephant'],
+      animalsString: 'Elephant',
       animalsObjects: [
         {
-          name: "Elephant",
+          name: 'Elephant',
         },
       ],
     },
     {
-      animalsArray: ["Tiger", "Giraffe"],
-      animalsString: "Tiger|Giraffe",
+      animalsArray: ['Tiger', 'Giraffe'],
+      animalsString: 'Tiger|Giraffe',
       animalsObjects: [
         {
-          name: "Tiger",
+          name: 'Tiger',
         },
         {
-          name: "Giraffe",
+          name: 'Giraffe',
         },
       ],
     },
     {
-      animalsArray: ["Elephant", "Giraffe"],
-      animalsString: "Elephant|Giraffe",
+      animalsArray: ['Elephant', 'Giraffe'],
+      animalsString: 'Elephant|Giraffe',
       animalsObjects: [
         {
-          name: "Elephant",
+          name: 'Elephant',
         },
         {
-          name: "Giraffe",
+          name: 'Giraffe',
         },
       ],
     },
     {
-      animalsArray: ["Antelope"],
-      animalsString: "Antelope",
+      animalsArray: ['Antelope'],
+      animalsString: 'Antelope',
       animalsObjects: [
         {
-          name: "Antelope",
+          name: 'Antelope',
         },
       ],
     },
     {
-      animalsArray: ["Lion"],
-      animalsString: "Lion",
+      animalsArray: ['Lion'],
+      animalsString: 'Lion',
       animalsObjects: [
         {
-          name: "Lion",
+          name: 'Lion',
         },
       ],
     },
     {
-      animalsArray: ["Monkey", "Elephant"],
-      animalsString: "Monkey|Elephant",
+      animalsArray: ['Monkey', 'Elephant'],
+      animalsString: 'Monkey|Elephant',
       animalsObjects: [
         {
-          name: "Monkey",
+          name: 'Monkey',
         },
         {
-          name: "Elephant",
+          name: 'Elephant',
         },
       ],
     },
     {
-      animalsArray: ["Tiger"],
-      animalsString: "Tiger",
+      animalsArray: ['Tiger'],
+      animalsString: 'Tiger',
       animalsObjects: [
         {
-          name: "Tiger",
+          name: 'Tiger',
         },
       ],
     },
     {
-      animalsArray: ["Elephant", "Lion"],
-      animalsString: "Elephant|Lion",
+      animalsArray: ['Elephant', 'Lion'],
+      animalsString: 'Elephant|Lion',
       animalsObjects: [
         {
-          name: "Elephant",
+          name: 'Elephant',
         },
         {
-          name: "Lion",
+          name: 'Lion',
         },
       ],
     },
     {
-      animalsArray: ["Giraffe", "Tiger", "Monkey"],
-      animalsString: "Giraffe|Tiger|Monkey",
+      animalsArray: ['Giraffe', 'Tiger', 'Monkey'],
+      animalsString: 'Giraffe|Tiger|Monkey',
       animalsObjects: [
         {
-          name: "Giraffe",
+          name: 'Giraffe',
         },
         {
-          name: "Tiger",
+          name: 'Tiger',
         },
         {
-          name: "Monkey",
+          name: 'Monkey',
         },
       ],
     },
     {
-      animalsArray: ["Tiger"],
-      animalsString: "Tiger",
+      animalsArray: ['Tiger'],
+      animalsString: 'Tiger',
       animalsObjects: [
         {
-          name: "Tiger",
+          name: 'Tiger',
         },
       ],
     },
     {
-      animalsArray: ["Lion", "Giraffe"],
-      animalsString: "Lion|Giraffe",
+      animalsArray: ['Lion', 'Giraffe'],
+      animalsString: 'Lion|Giraffe',
       animalsObjects: [
         {
-          name: "Lion",
+          name: 'Lion',
         },
         {
-          name: "Giraffe",
+          name: 'Giraffe',
         },
       ],
     },
     {
-      animalsArray: ["Lion", "Monkey", "Giraffe"],
-      animalsString: "Lion|Monkey|Giraffe",
+      animalsArray: ['Lion', 'Monkey', 'Giraffe'],
+      animalsString: 'Lion|Monkey|Giraffe',
       animalsObjects: [
         {
-          name: "Lion",
+          name: 'Lion',
         },
         {
-          name: "Monkey",
+          name: 'Monkey',
         },
         {
-          name: "Giraffe",
+          name: 'Giraffe',
         },
       ],
     },
     {
-      animalsArray: ["Tiger"],
-      animalsString: "Tiger",
+      animalsArray: ['Tiger'],
+      animalsString: 'Tiger',
       animalsObjects: [
         {
-          name: "Tiger",
+          name: 'Tiger',
         },
       ],
     },
     {
-      animalsArray: ["Monkey"],
-      animalsString: "Monkey",
+      animalsArray: ['Monkey'],
+      animalsString: 'Monkey',
       animalsObjects: [
         {
-          name: "Monkey",
+          name: 'Monkey',
         },
       ],
     },
     {
-      animalsArray: ["Lion", "Giraffe"],
-      animalsString: "Lion|Giraffe",
+      animalsArray: ['Lion', 'Giraffe'],
+      animalsString: 'Lion|Giraffe',
       animalsObjects: [
         {
-          name: "Lion",
+          name: 'Lion',
         },
         {
-          name: "Giraffe",
+          name: 'Giraffe',
         },
       ],
     },
     {
-      animalsArray: ["Giraffe"],
-      animalsString: "Giraffe",
+      animalsArray: ['Giraffe'],
+      animalsString: 'Giraffe',
       animalsObjects: [
         {
-          name: "Giraffe",
+          name: 'Giraffe',
         },
       ],
     },
     {
-      animalsArray: ["Giraffe"],
-      animalsString: "Giraffe",
+      animalsArray: ['Giraffe'],
+      animalsString: 'Giraffe',
       animalsObjects: [
         {
-          name: "Giraffe",
+          name: 'Giraffe',
         },
       ],
     },
     {
-      animalsArray: ["Monkey"],
-      animalsString: "Monkey",
+      animalsArray: ['Monkey'],
+      animalsString: 'Monkey',
       animalsObjects: [
         {
-          name: "Monkey",
+          name: 'Monkey',
         },
       ],
     },
     {
-      animalsArray: ["Antelope"],
-      animalsString: "Antelope",
+      animalsArray: ['Antelope'],
+      animalsString: 'Antelope',
       animalsObjects: [
         {
-          name: "Antelope",
+          name: 'Antelope',
         },
       ],
     },
     {
-      animalsArray: ["Elephant", "Giraffe"],
-      animalsString: "Elephant|Giraffe",
+      animalsArray: ['Elephant', 'Giraffe'],
+      animalsString: 'Elephant|Giraffe',
       animalsObjects: [
         {
-          name: "Elephant",
+          name: 'Elephant',
         },
         {
-          name: "Giraffe",
+          name: 'Giraffe',
         },
       ],
     },
     {
-      animalsArray: ["Monkey"],
-      animalsString: "Monkey",
+      animalsArray: ['Monkey'],
+      animalsString: 'Monkey',
       animalsObjects: [
         {
-          name: "Monkey",
+          name: 'Monkey',
         },
       ],
     },
     {
-      animalsArray: ["Giraffe"],
-      animalsString: "Giraffe",
+      animalsArray: ['Giraffe'],
+      animalsString: 'Giraffe',
       animalsObjects: [
         {
-          name: "Giraffe",
+          name: 'Giraffe',
         },
       ],
     },
     {
-      animalsArray: ["Tiger", "Monkey"],
-      animalsString: "Tiger|Monkey",
+      animalsArray: ['Tiger', 'Monkey'],
+      animalsString: 'Tiger|Monkey',
       animalsObjects: [
         {
-          name: "Tiger",
+          name: 'Tiger',
         },
         {
-          name: "Monkey",
+          name: 'Monkey',
         },
       ],
     },
     {
-      animalsArray: ["Tiger"],
-      animalsString: "Tiger",
+      animalsArray: ['Tiger'],
+      animalsString: 'Tiger',
       animalsObjects: [
         {
-          name: "Tiger",
+          name: 'Tiger',
         },
       ],
     },
     {
-      animalsArray: ["Antelope", "Elephant"],
-      animalsString: "Antelope|Elephant",
+      animalsArray: ['Antelope', 'Elephant'],
+      animalsString: 'Antelope|Elephant',
       animalsObjects: [
         {
-          name: "Antelope",
+          name: 'Antelope',
         },
         {
-          name: "Elephant",
+          name: 'Elephant',
         },
       ],
     },
     {
-      animalsArray: ["Monkey", "Lion"],
-      animalsString: "Monkey|Lion",
+      animalsArray: ['Monkey', 'Lion'],
+      animalsString: 'Monkey|Lion',
       animalsObjects: [
         {
-          name: "Monkey",
+          name: 'Monkey',
         },
         {
-          name: "Lion",
+          name: 'Lion',
         },
       ],
     },
     {
-      animalsArray: ["Monkey"],
-      animalsString: "Monkey",
+      animalsArray: ['Monkey'],
+      animalsString: 'Monkey',
       animalsObjects: [
         {
-          name: "Monkey",
+          name: 'Monkey',
         },
       ],
     },
     {
-      animalsArray: ["Tiger", "Elephant", "Antelope"],
-      animalsString: "Tiger|Elephant|Antelope",
+      animalsArray: ['Tiger', 'Elephant', 'Antelope'],
+      animalsString: 'Tiger|Elephant|Antelope',
       animalsObjects: [
         {
-          name: "Tiger",
+          name: 'Tiger',
         },
         {
-          name: "Elephant",
+          name: 'Elephant',
         },
         {
-          name: "Antelope",
+          name: 'Antelope',
         },
       ],
     },
     {
-      animalsArray: ["Giraffe", "Antelope"],
-      animalsString: "Giraffe|Antelope",
+      animalsArray: ['Giraffe', 'Antelope'],
+      animalsString: 'Giraffe|Antelope',
       animalsObjects: [
         {
-          name: "Giraffe",
+          name: 'Giraffe',
         },
         {
-          name: "Antelope",
+          name: 'Antelope',
         },
       ],
     },
     {
-      animalsArray: ["Monkey", "Tiger", "Antelope"],
-      animalsString: "Monkey|Tiger|Antelope",
+      animalsArray: ['Monkey', 'Tiger', 'Antelope'],
+      animalsString: 'Monkey|Tiger|Antelope',
       animalsObjects: [
         {
-          name: "Monkey",
+          name: 'Monkey',
         },
         {
-          name: "Tiger",
+          name: 'Tiger',
         },
         {
-          name: "Antelope",
+          name: 'Antelope',
         },
       ],
     },
     {
-      animalsArray: ["Tiger", "Monkey"],
-      animalsString: "Tiger|Monkey",
+      animalsArray: ['Tiger', 'Monkey'],
+      animalsString: 'Tiger|Monkey',
       animalsObjects: [
         {
-          name: "Tiger",
+          name: 'Tiger',
         },
         {
-          name: "Monkey",
+          name: 'Monkey',
         },
       ],
     },
     {
-      animalsArray: ["Giraffe", "Antelope"],
-      animalsString: "Giraffe|Antelope",
+      animalsArray: ['Giraffe', 'Antelope'],
+      animalsString: 'Giraffe|Antelope',
       animalsObjects: [
         {
-          name: "Giraffe",
+          name: 'Giraffe',
         },
         {
-          name: "Antelope",
+          name: 'Antelope',
         },
       ],
     },
     {
-      animalsArray: ["Tiger"],
-      animalsString: "Tiger",
+      animalsArray: ['Tiger'],
+      animalsString: 'Tiger',
       animalsObjects: [
         {
-          name: "Tiger",
+          name: 'Tiger',
         },
       ],
     },
     {
-      animalsArray: ["Lion", "Giraffe"],
-      animalsString: "Lion|Giraffe",
+      animalsArray: ['Lion', 'Giraffe'],
+      animalsString: 'Lion|Giraffe',
       animalsObjects: [
         {
-          name: "Lion",
+          name: 'Lion',
         },
         {
-          name: "Giraffe",
+          name: 'Giraffe',
         },
       ],
     },
     {
-      animalsArray: ["Giraffe", "Tiger"],
-      animalsString: "Giraffe|Tiger",
+      animalsArray: ['Giraffe', 'Tiger'],
+      animalsString: 'Giraffe|Tiger',
       animalsObjects: [
         {
-          name: "Giraffe",
+          name: 'Giraffe',
         },
         {
-          name: "Tiger",
+          name: 'Tiger',
         },
       ],
     },
     {
-      animalsArray: ["Monkey"],
-      animalsString: "Monkey",
+      animalsArray: ['Monkey'],
+      animalsString: 'Monkey',
       animalsObjects: [
         {
-          name: "Monkey",
+          name: 'Monkey',
         },
       ],
     },
     {
-      animalsArray: ["Monkey", "Giraffe"],
-      animalsString: "Monkey|Giraffe",
+      animalsArray: ['Monkey', 'Giraffe'],
+      animalsString: 'Monkey|Giraffe',
       animalsObjects: [
         {
-          name: "Monkey",
+          name: 'Monkey',
         },
         {
-          name: "Giraffe",
+          name: 'Giraffe',
         },
       ],
     },
     {
-      animalsArray: ["Monkey"],
-      animalsString: "Monkey",
+      animalsArray: ['Monkey'],
+      animalsString: 'Monkey',
       animalsObjects: [
         {
-          name: "Monkey",
+          name: 'Monkey',
         },
       ],
     },
     {
-      animalsArray: ["Giraffe", "Monkey"],
-      animalsString: "Giraffe|Monkey",
+      animalsArray: ['Giraffe', 'Monkey'],
+      animalsString: 'Giraffe|Monkey',
       animalsObjects: [
         {
-          name: "Giraffe",
+          name: 'Giraffe',
         },
         {
-          name: "Monkey",
+          name: 'Monkey',
         },
       ],
     },
     {
-      animalsArray: ["Elephant", "Giraffe"],
-      animalsString: "Elephant|Giraffe",
+      animalsArray: ['Elephant', 'Giraffe'],
+      animalsString: 'Elephant|Giraffe',
       animalsObjects: [
         {
-          name: "Elephant",
+          name: 'Elephant',
         },
         {
-          name: "Giraffe",
+          name: 'Giraffe',
         },
       ],
     },
     {
-      animalsArray: ["Lion", "Monkey"],
-      animalsString: "Lion|Monkey",
+      animalsArray: ['Lion', 'Monkey'],
+      animalsString: 'Lion|Monkey',
       animalsObjects: [
         {
-          name: "Lion",
+          name: 'Lion',
         },
         {
-          name: "Monkey",
+          name: 'Monkey',
         },
       ],
     },
     {
-      animalsArray: ["Tiger", "Lion"],
-      animalsString: "Tiger|Lion",
+      animalsArray: ['Tiger', 'Lion'],
+      animalsString: 'Tiger|Lion',
       animalsObjects: [
         {
-          name: "Tiger",
+          name: 'Tiger',
         },
         {
-          name: "Lion",
+          name: 'Lion',
         },
       ],
     },
     {
-      animalsArray: ["Lion"],
-      animalsString: "Lion",
+      animalsArray: ['Lion'],
+      animalsString: 'Lion',
       animalsObjects: [
         {
-          name: "Lion",
+          name: 'Lion',
         },
       ],
     },
     {
-      animalsArray: ["Tiger", "Lion", "Giraffe"],
-      animalsString: "Tiger|Lion|Giraffe",
+      animalsArray: ['Tiger', 'Lion', 'Giraffe'],
+      animalsString: 'Tiger|Lion|Giraffe',
       animalsObjects: [
         {
-          name: "Tiger",
+          name: 'Tiger',
         },
         {
-          name: "Lion",
+          name: 'Lion',
         },
         {
-          name: "Giraffe",
+          name: 'Giraffe',
         },
       ],
     },
     {
-      animalsArray: ["Tiger", "Elephant", "Lion"],
-      animalsString: "Tiger|Elephant|Lion",
+      animalsArray: ['Tiger', 'Elephant', 'Lion'],
+      animalsString: 'Tiger|Elephant|Lion',
       animalsObjects: [
         {
-          name: "Tiger",
+          name: 'Tiger',
         },
         {
-          name: "Elephant",
+          name: 'Elephant',
         },
         {
-          name: "Lion",
+          name: 'Lion',
         },
       ],
     },
     {
-      animalsArray: ["Antelope"],
-      animalsString: "Antelope",
+      animalsArray: ['Antelope'],
+      animalsString: 'Antelope',
       animalsObjects: [
         {
-          name: "Antelope",
+          name: 'Antelope',
         },
       ],
     },
     {
-      animalsArray: ["Tiger", "Elephant", "Giraffe"],
-      animalsString: "Tiger|Elephant|Giraffe",
+      animalsArray: ['Tiger', 'Elephant', 'Giraffe'],
+      animalsString: 'Tiger|Elephant|Giraffe',
       animalsObjects: [
         {
-          name: "Tiger",
+          name: 'Tiger',
         },
         {
-          name: "Elephant",
+          name: 'Elephant',
         },
         {
-          name: "Giraffe",
+          name: 'Giraffe',
         },
       ],
     },
     {
-      animalsArray: ["Lion", "Antelope"],
-      animalsString: "Lion|Antelope",
+      animalsArray: ['Lion', 'Antelope'],
+      animalsString: 'Lion|Antelope',
       animalsObjects: [
         {
-          name: "Lion",
+          name: 'Lion',
         },
         {
-          name: "Antelope",
+          name: 'Antelope',
         },
       ],
     },
     {
-      animalsArray: ["Giraffe", "Antelope"],
-      animalsString: "Giraffe|Antelope",
+      animalsArray: ['Giraffe', 'Antelope'],
+      animalsString: 'Giraffe|Antelope',
       animalsObjects: [
         {
-          name: "Giraffe",
+          name: 'Giraffe',
         },
         {
-          name: "Antelope",
+          name: 'Antelope',
         },
       ],
     },
     {
-      animalsArray: ["Elephant"],
-      animalsString: "Elephant",
+      animalsArray: ['Elephant'],
+      animalsString: 'Elephant',
       animalsObjects: [
         {
-          name: "Elephant",
+          name: 'Elephant',
         },
       ],
     },
     {
-      animalsArray: ["Giraffe", "Tiger"],
-      animalsString: "Giraffe|Tiger",
+      animalsArray: ['Giraffe', 'Tiger'],
+      animalsString: 'Giraffe|Tiger',
       animalsObjects: [
         {
-          name: "Giraffe",
+          name: 'Giraffe',
         },
         {
-          name: "Tiger",
+          name: 'Tiger',
         },
       ],
     },
     {
-      animalsArray: ["Monkey"],
-      animalsString: "Monkey",
+      animalsArray: ['Monkey'],
+      animalsString: 'Monkey',
       animalsObjects: [
         {
-          name: "Monkey",
+          name: 'Monkey',
         },
       ],
     },
     {
-      animalsArray: ["Tiger", "Lion", "Antelope"],
-      animalsString: "Tiger|Lion|Antelope",
+      animalsArray: ['Tiger', 'Lion', 'Antelope'],
+      animalsString: 'Tiger|Lion|Antelope',
       animalsObjects: [
         {
-          name: "Tiger",
+          name: 'Tiger',
         },
         {
-          name: "Lion",
+          name: 'Lion',
         },
         {
-          name: "Antelope",
+          name: 'Antelope',
         },
       ],
     },
     {
-      animalsArray: ["Tiger"],
-      animalsString: "Tiger",
+      animalsArray: ['Tiger'],
+      animalsString: 'Tiger',
       animalsObjects: [
         {
-          name: "Tiger",
+          name: 'Tiger',
         },
       ],
     },
     {
-      animalsArray: ["Giraffe", "Tiger"],
-      animalsString: "Giraffe|Tiger",
+      animalsArray: ['Giraffe', 'Tiger'],
+      animalsString: 'Giraffe|Tiger',
       animalsObjects: [
         {
-          name: "Giraffe",
+          name: 'Giraffe',
         },
         {
-          name: "Tiger",
+          name: 'Tiger',
         },
       ],
     },
     {
-      animalsArray: ["Monkey", "Tiger"],
-      animalsString: "Monkey|Tiger",
+      animalsArray: ['Monkey', 'Tiger'],
+      animalsString: 'Monkey|Tiger',
       animalsObjects: [
         {
-          name: "Monkey",
+          name: 'Monkey',
         },
         {
-          name: "Tiger",
+          name: 'Tiger',
         },
       ],
     },
     {
-      animalsArray: ["Monkey"],
-      animalsString: "Monkey",
+      animalsArray: ['Monkey'],
+      animalsString: 'Monkey',
       animalsObjects: [
         {
-          name: "Monkey",
+          name: 'Monkey',
         },
       ],
     },
     {
-      animalsArray: ["Tiger"],
-      animalsString: "Tiger",
+      animalsArray: ['Tiger'],
+      animalsString: 'Tiger',
       animalsObjects: [
         {
-          name: "Tiger",
+          name: 'Tiger',
         },
       ],
     },
     {
-      animalsArray: ["Giraffe"],
-      animalsString: "Giraffe",
+      animalsArray: ['Giraffe'],
+      animalsString: 'Giraffe',
       animalsObjects: [
         {
-          name: "Giraffe",
+          name: 'Giraffe',
         },
       ],
     },
     {
-      animalsArray: ["Monkey"],
-      animalsString: "Monkey",
+      animalsArray: ['Monkey'],
+      animalsString: 'Monkey',
       animalsObjects: [
         {
-          name: "Monkey",
+          name: 'Monkey',
         },
       ],
     },
     {
-      animalsArray: ["Lion", "Giraffe"],
-      animalsString: "Lion|Giraffe",
+      animalsArray: ['Lion', 'Giraffe'],
+      animalsString: 'Lion|Giraffe',
       animalsObjects: [
         {
-          name: "Lion",
+          name: 'Lion',
         },
         {
-          name: "Giraffe",
+          name: 'Giraffe',
         },
       ],
     },
     {
-      animalsArray: ["Elephant", "Giraffe"],
-      animalsString: "Elephant|Giraffe",
+      animalsArray: ['Elephant', 'Giraffe'],
+      animalsString: 'Elephant|Giraffe',
       animalsObjects: [
         {
-          name: "Elephant",
+          name: 'Elephant',
         },
         {
-          name: "Giraffe",
+          name: 'Giraffe',
         },
       ],
     },
     {
-      animalsArray: ["Giraffe"],
-      animalsString: "Giraffe",
+      animalsArray: ['Giraffe'],
+      animalsString: 'Giraffe',
       animalsObjects: [
         {
-          name: "Giraffe",
+          name: 'Giraffe',
         },
       ],
     },
     {
-      animalsArray: ["Elephant", "Tiger"],
-      animalsString: "Elephant|Tiger",
+      animalsArray: ['Elephant', 'Tiger'],
+      animalsString: 'Elephant|Tiger',
       animalsObjects: [
         {
-          name: "Elephant",
+          name: 'Elephant',
         },
         {
-          name: "Tiger",
+          name: 'Tiger',
         },
       ],
     },
     {
-      animalsArray: ["Giraffe", "Antelope"],
-      animalsString: "Giraffe|Antelope",
+      animalsArray: ['Giraffe', 'Antelope'],
+      animalsString: 'Giraffe|Antelope',
       animalsObjects: [
         {
-          name: "Giraffe",
+          name: 'Giraffe',
         },
         {
-          name: "Antelope",
+          name: 'Antelope',
         },
       ],
     },
     {
-      animalsArray: ["Antelope", "Elephant"],
-      animalsString: "Antelope|Elephant",
+      animalsArray: ['Antelope', 'Elephant'],
+      animalsString: 'Antelope|Elephant',
       animalsObjects: [
         {
-          name: "Antelope",
+          name: 'Antelope',
         },
         {
-          name: "Elephant",
+          name: 'Elephant',
         },
       ],
     },
     {
-      animalsArray: ["Elephant"],
-      animalsString: "Elephant",
+      animalsArray: ['Elephant'],
+      animalsString: 'Elephant',
       animalsObjects: [
         {
-          name: "Elephant",
+          name: 'Elephant',
         },
       ],
     },
     {
-      animalsArray: ["Antelope", "Elephant"],
-      animalsString: "Antelope|Elephant",
+      animalsArray: ['Antelope', 'Elephant'],
+      animalsString: 'Antelope|Elephant',
       animalsObjects: [
         {
-          name: "Antelope",
+          name: 'Antelope',
         },
         {
-          name: "Elephant",
+          name: 'Elephant',
         },
       ],
     },
     {
-      animalsArray: ["Giraffe"],
-      animalsString: "Giraffe",
+      animalsArray: ['Giraffe'],
+      animalsString: 'Giraffe',
       animalsObjects: [
         {
-          name: "Giraffe",
+          name: 'Giraffe',
         },
       ],
     },
     {
-      animalsArray: ["Monkey", "Elephant"],
-      animalsString: "Monkey|Elephant",
+      animalsArray: ['Monkey', 'Elephant'],
+      animalsString: 'Monkey|Elephant',
       animalsObjects: [
         {
-          name: "Monkey",
+          name: 'Monkey',
         },
         {
-          name: "Elephant",
+          name: 'Elephant',
         },
       ],
     },
     {
-      animalsArray: ["Elephant"],
-      animalsString: "Elephant",
+      animalsArray: ['Elephant'],
+      animalsString: 'Elephant',
       animalsObjects: [
         {
-          name: "Elephant",
+          name: 'Elephant',
         },
       ],
     },
     {
-      animalsArray: ["Elephant", "Monkey"],
-      animalsString: "Elephant|Monkey",
+      animalsArray: ['Elephant', 'Monkey'],
+      animalsString: 'Elephant|Monkey',
       animalsObjects: [
         {
-          name: "Elephant",
+          name: 'Elephant',
         },
         {
-          name: "Monkey",
+          name: 'Monkey',
         },
       ],
     },
     {
-      animalsArray: ["Antelope", "Tiger"],
-      animalsString: "Antelope|Tiger",
+      animalsArray: ['Antelope', 'Tiger'],
+      animalsString: 'Antelope|Tiger',
       animalsObjects: [
         {
-          name: "Antelope",
+          name: 'Antelope',
         },
         {
-          name: "Tiger",
+          name: 'Tiger',
         },
       ],
     },
     {
-      animalsArray: ["Tiger", "Giraffe"],
-      animalsString: "Tiger|Giraffe",
+      animalsArray: ['Tiger', 'Giraffe'],
+      animalsString: 'Tiger|Giraffe',
       animalsObjects: [
         {
-          name: "Tiger",
+          name: 'Tiger',
         },
         {
-          name: "Giraffe",
+          name: 'Giraffe',
         },
       ],
     },
     {
-      animalsArray: ["Tiger"],
-      animalsString: "Tiger",
+      animalsArray: ['Tiger'],
+      animalsString: 'Tiger',
       animalsObjects: [
         {
-          name: "Tiger",
+          name: 'Tiger',
         },
       ],
     },
     {
-      animalsArray: ["Elephant"],
-      animalsString: "Elephant",
+      animalsArray: ['Elephant'],
+      animalsString: 'Elephant',
       animalsObjects: [
         {
-          name: "Elephant",
+          name: 'Elephant',
         },
       ],
     },
     {
-      animalsArray: ["Monkey", "Giraffe"],
-      animalsString: "Monkey|Giraffe",
+      animalsArray: ['Monkey', 'Giraffe'],
+      animalsString: 'Monkey|Giraffe',
       animalsObjects: [
         {
-          name: "Monkey",
+          name: 'Monkey',
         },
         {
-          name: "Giraffe",
+          name: 'Giraffe',
         },
       ],
     },
     {
-      animalsArray: ["Monkey"],
-      animalsString: "Monkey",
+      animalsArray: ['Monkey'],
+      animalsString: 'Monkey',
       animalsObjects: [
         {
-          name: "Monkey",
+          name: 'Monkey',
         },
       ],
     },
     {
-      animalsArray: ["Monkey", "Antelope", "Elephant"],
-      animalsString: "Monkey|Antelope|Elephant",
+      animalsArray: ['Monkey', 'Antelope', 'Elephant'],
+      animalsString: 'Monkey|Antelope|Elephant',
       animalsObjects: [
         {
-          name: "Monkey",
+          name: 'Monkey',
         },
         {
-          name: "Antelope",
+          name: 'Antelope',
         },
         {
-          name: "Elephant",
+          name: 'Elephant',
         },
       ],
     },

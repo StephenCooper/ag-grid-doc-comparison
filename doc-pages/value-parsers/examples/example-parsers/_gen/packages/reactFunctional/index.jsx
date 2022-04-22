@@ -1,10 +1,10 @@
-"use strict";
+'use strict';
 
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine-dark.css";
-import { AgGridReact } from "ag-grid-react";
-import React, { useCallback, useMemo, useRef, useState } from "react";
-import { render } from "react-dom";
+import React, { useCallback, useMemo, useRef, useState } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from 'ag-grid-react';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine-dark.css';
 
 const numberParser = (params) => {
   return Number(params.newValue);
@@ -12,15 +12,15 @@ const numberParser = (params) => {
 
 const GridExample = () => {
   const gridRef = useRef();
-  const containerStyle = useMemo(() => ({ width: "100%", height: "100%" }), []);
-  const gridStyle = useMemo(() => ({ height: "100%", width: "100%" }), []);
+  const containerStyle = useMemo(() => ({ width: '100%', height: '100%' }), []);
+  const gridStyle = useMemo(() => ({ height: '100%', width: '100%' }), []);
   const [rowData, setRowData] = useState(getData());
   const [columnDefs, setColumnDefs] = useState([
-    { headerName: "Name", field: "simple" },
-    { headerName: "Bad Number", field: "numberBad" },
+    { headerName: 'Name', field: 'simple' },
+    { headerName: 'Bad Number', field: 'numberBad' },
     {
-      headerName: "Good Number",
-      field: "numberGood",
+      headerName: 'Good Number',
+      field: 'numberGood',
       valueParser: numberParser,
     },
   ]);
@@ -37,7 +37,7 @@ const GridExample = () => {
   }, []);
 
   const onCellValueChanged = useCallback((event) => {
-    console.log("data after changes is: ", event.data);
+    console.log('data after changes is: ', event.data);
   }, []);
 
   return (
@@ -56,4 +56,4 @@ const GridExample = () => {
   );
 };
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

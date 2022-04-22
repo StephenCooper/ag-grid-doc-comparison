@@ -1,12 +1,12 @@
-import { ColDef, GridApi, GridReadyEvent } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { HttpClient } from "@angular/common/http";
-import { Component } from "@angular/core";
+import { ColDef, GridApi, GridReadyEvent } from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { HttpClient } from '@angular/common/http';
+import { Component } from '@angular/core';
 // Required feature modules are registered in app.module.ts
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<div class="container">
     <div class="columns">
       <div class="column">
@@ -97,13 +97,13 @@ export class AppComponent {
   private gridApi!: GridApi;
 
   public columnDefs: ColDef[] = [
-    { field: "athlete", minWidth: 200 },
-    { field: "country", minWidth: 200 },
-    { field: "sport", minWidth: 150 },
-    { field: "gold" },
-    { field: "silver" },
-    { field: "bronze" },
-    { field: "total" },
+    { field: 'athlete', minWidth: 200 },
+    { field: 'country', minWidth: 200 },
+    { field: 'sport', minWidth: 150 },
+    { field: 'gold' },
+    { field: 'silver' },
+    { field: 'bronze' },
+    { field: 'total' },
   ];
   public defaultColDef: ColDef = {
     sortable: true,
@@ -127,7 +127,7 @@ export class AppComponent {
 
     this.http
       .get<any[]>(
-        "https://www.ag-grid.com/example-assets/small-olympic-winners.json"
+        'https://www.ag-grid.com/example-assets/small-olympic-winners.json'
       )
       .subscribe((data) =>
         params.api!.setRowData(data.filter((rec: any) => rec.country != null))
@@ -148,16 +148,16 @@ function getValue(id: string) {
 function getSheetConfig() {
   return {
     pageSetup: {
-      orientation: getValue("#pageOrientation"),
-      pageSize: getValue("#pageSize"),
+      orientation: getValue('#pageOrientation'),
+      pageSize: getValue('#pageSize'),
     },
     margins: {
-      top: getNumber("#top"),
-      right: getNumber("#right"),
-      bottom: getNumber("#bottom"),
-      left: getNumber("#left"),
-      header: getNumber("#header"),
-      footer: getNumber("#footer"),
+      top: getNumber('#top'),
+      right: getNumber('#right'),
+      bottom: getNumber('#bottom'),
+      left: getNumber('#left'),
+      header: getNumber('#header'),
+      footer: getNumber('#footer'),
     },
   };
 }

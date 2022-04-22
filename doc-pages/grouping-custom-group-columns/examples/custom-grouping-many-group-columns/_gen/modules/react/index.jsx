@@ -1,13 +1,13 @@
-"use strict";
+'use strict';
 
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { AgGridReact } from "@ag-grid-community/react";
-import { RowGroupingModule } from "@ag-grid-enterprise/row-grouping";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from '@ag-grid-community/react';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import { RowGroupingModule } from '@ag-grid-enterprise/row-grouping';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([ClientSideRowModelModule, RowGroupingModule]);
@@ -19,27 +19,27 @@ class GridExample extends Component {
     this.state = {
       columnDefs: [
         {
-          headerName: "Country",
+          headerName: 'Country',
           minWidth: 200,
           // this tells the grid what values to put into the cell
-          showRowGroup: "country",
+          showRowGroup: 'country',
           // this tells the grid what to use to render the cell
-          cellRenderer: "agGroupCellRenderer",
+          cellRenderer: 'agGroupCellRenderer',
         },
         {
-          headerName: "Year",
+          headerName: 'Year',
           minWidth: 200,
-          showRowGroup: "year",
-          cellRenderer: "agGroupCellRenderer",
+          showRowGroup: 'year',
+          cellRenderer: 'agGroupCellRenderer',
         },
         // these are the two columns we use to group by. we also hide them, so there
         // is no duplication with the values above
-        { field: "country", rowGroup: true, hide: true },
-        { field: "year", rowGroup: true, hide: true },
-        { field: "athlete", minWidth: 220 },
-        { field: "gold" },
-        { field: "silver" },
-        { field: "bronze" },
+        { field: 'country', rowGroup: true, hide: true },
+        { field: 'year', rowGroup: true, hide: true },
+        { field: 'athlete', minWidth: 220 },
+        { field: 'gold' },
+        { field: 'silver' },
+        { field: 'bronze' },
       ],
       defaultColDef: {
         flex: 1,
@@ -47,7 +47,7 @@ class GridExample extends Component {
         sortable: true,
         resizable: true,
       },
-      groupDisplayType: "custom",
+      groupDisplayType: 'custom',
       rowData: null,
     };
   }
@@ -58,18 +58,18 @@ class GridExample extends Component {
 
     const updateData = (data) => params.api.setRowData(data);
 
-    fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+    fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .then((resp) => resp.json())
       .then((data) => updateData(data));
   };
 
   render() {
     return (
-      <div style={{ width: "100%", height: "100%" }}>
+      <div style={{ width: '100%', height: '100%' }}>
         <div
           style={{
-            height: "100%",
-            width: "100%",
+            height: '100%',
+            width: '100%',
           }}
           className="ag-theme-alpine"
         >
@@ -88,4 +88,4 @@ class GridExample extends Component {
   }
 }
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

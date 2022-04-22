@@ -1,9 +1,9 @@
-import { Component } from "@angular/core";
-import { AgChartOptions } from "ag-charts-community";
+import { Component } from '@angular/core';
+import { AgChartOptions } from 'ag-charts-community';
 declare var data: any;
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<ag-charts-angular
     style="height: 100%"
     [options]="options"
@@ -14,27 +14,27 @@ export class AppComponent {
 
   constructor() {
     this.options = {
-      type: "hierarchy",
+      type: 'hierarchy',
 
       data,
       series: [
         {
-          type: "treemap",
-          labelKey: "orgHierarchy",
+          type: 'treemap',
+          labelKey: 'orgHierarchy',
           colorParents: true,
           gradient: false,
           nodePadding: 5,
           sizeKey: undefined,
           colorKey: undefined,
           colorDomain: [0, 2, 4],
-          colorRange: ["#d73027", "#fee08b", "#1a9850"],
+          colorRange: ['#d73027', '#fee08b', '#1a9850'],
         },
       ],
       title: {
-        text: "Organizational Chart",
+        text: 'Organizational Chart',
       },
       subtitle: {
-        text: "of a top secret startup",
+        text: 'of a top secret startup',
       },
     };
   }

@@ -1,8 +1,8 @@
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
-import { AgGridVue } from "ag-grid-vue3";
-import { createApp } from "vue";
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import 'ag-grid-enterprise';
+import { AgGridVue } from 'ag-grid-vue3';
+import { createApp } from 'vue';
 
 const VueExample = {
   template: `
@@ -20,19 +20,19 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
-        { field: "athlete", rowDrag: rowDrag },
-        { field: "country", rowGroup: true },
-        { field: "year", width: 100 },
-        { field: "date" },
-        { field: "sport" },
-        { field: "gold" },
-        { field: "silver" },
-        { field: "bronze" },
+        { field: 'athlete', rowDrag: rowDrag },
+        { field: 'country', rowGroup: true },
+        { field: 'year', width: 100 },
+        { field: 'date' },
+        { field: 'sport' },
+        { field: 'gold' },
+        { field: 'silver' },
+        { field: 'bronze' },
       ],
       gridApi: null,
       columnApi: null,
@@ -85,4 +85,4 @@ var rowDrag = function (params) {
   return !params.node.group;
 };
 
-createApp(VueExample).mount("#app");
+createApp(VueExample).mount('#app');

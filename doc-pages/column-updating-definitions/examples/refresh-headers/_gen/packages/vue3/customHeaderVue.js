@@ -27,13 +27,13 @@ export default {
     this.displayName = this.params.displayName;
   },
   mounted() {
-    console.log("CustomHeader - mounted() -> " + this.params.column.getId());
+    console.log('CustomHeader - mounted() -> ' + this.params.column.getId());
 
-    this.params.column.addEventListener("sortChanged", this.onSortChanged);
+    this.params.column.addEventListener('sortChanged', this.onSortChanged);
     this.onSortChanged();
   },
   unmounted() {
-    console.log("CustomHeader unmounted() -> " + this.params.column.getId());
+    console.log('CustomHeader unmounted() -> ' + this.params.column.getId());
   },
   methods: {
     onMenuClicked() {
@@ -41,13 +41,13 @@ export default {
     },
 
     onSortChanged() {
-      this.ascSort = this.descSort = this.noSort = "inactive";
+      this.ascSort = this.descSort = this.noSort = 'inactive';
       if (this.params.column.isSortAscending()) {
-        this.ascSort = "active";
+        this.ascSort = 'active';
       } else if (this.params.column.isSortDescending()) {
-        this.descSort = "active";
+        this.descSort = 'active';
       } else {
-        this.noSort = "active";
+        this.noSort = 'active';
       }
     },
 
@@ -56,7 +56,7 @@ export default {
     },
 
     refresh(params) {
-      console.log("CustomHeader refresh() -> " + this.params.column.getId());
+      console.log('CustomHeader refresh() -> ' + this.params.column.getId());
 
       this.enableMenu = params.enableMenu;
       this.enableSorting = params.enableSorting;

@@ -1,19 +1,19 @@
-import { Grid, GridOptions } from "ag-grid-community";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
+import { Grid, GridOptions } from 'ag-grid-community';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import 'ag-grid-enterprise';
 
 const gridOptions: GridOptions = {
   columnDefs: [
-    { field: "athlete", minWidth: 150 },
-    { field: "age", minWidth: 50, filter: "agNumberColumnFilter" },
-    { field: "country", width: 120 },
-    { field: "year", width: 90 },
-    { field: "date", width: 110 },
-    { field: "sport", width: 110 },
-    { field: "gold", width: 110 },
-    { field: "silver", width: 110 },
-    { field: "bronze", width: 110 },
+    { field: 'athlete', minWidth: 150 },
+    { field: 'age', minWidth: 50, filter: 'agNumberColumnFilter' },
+    { field: 'country', width: 120 },
+    { field: 'year', width: 90 },
+    { field: 'date', width: 110 },
+    { field: 'sport', width: 110 },
+    { field: 'gold', width: 110 },
+    { field: 'silver', width: 110 },
+    { field: 'bronze', width: 110 },
   ],
   defaultColDef: {
     editable: true,
@@ -25,13 +25,13 @@ const gridOptions: GridOptions = {
   },
   ensureDomOrder: true,
   suppressColumnVirtualisation: true,
-  rowBuffer: 600,
+  suppressRowVirtualisation: true,
 };
 
 // setup the grid after the page has finished loading
-const gridDiv = document.querySelector<HTMLElement>("#myGrid")!;
+const gridDiv = document.querySelector<HTMLElement>('#myGrid')!;
 new Grid(gridDiv, gridOptions);
 
-fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
   .then((response) => response.json())
   .then((data) => gridOptions.api!.setRowData(data.slice(0, 600)));

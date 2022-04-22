@@ -1,12 +1,12 @@
 var countDownDirection = true;
 
 const columnDefs = [
-  { field: "athlete", minWidth: 150 },
-  { field: "country", minWidth: 150 },
-  { field: "year", minWidth: 120 },
-  { field: "gold", aggFunc: "sum" },
-  { field: "silver", aggFunc: "sum" },
-  { field: "bronze", aggFunc: "sum" },
+  { field: 'athlete', minWidth: 150 },
+  { field: 'country', minWidth: 150 },
+  { field: 'year', minWidth: 120 },
+  { field: 'gold', aggFunc: 'sum' },
+  { field: 'silver', aggFunc: 'sum' },
+  { field: 'bronze', aggFunc: 'sum' },
 ];
 
 const gridOptions = {
@@ -21,10 +21,10 @@ const gridOptions = {
   suppressAggFuncInHeader: true, // so we don't see sum() in gold, silver and bronze headers
   autoGroupColumnDef: {
     // to get 'athlete' showing in the leaf level in this column
-    cellRenderer: "agGroupCellRenderer",
-    headerName: "Athlete",
+    cellRenderer: 'agGroupCellRenderer',
+    headerName: 'Athlete',
     minWidth: 200,
-    field: "athlete",
+    field: 'athlete',
   },
 };
 
@@ -54,9 +54,9 @@ function startInterval(api, columnApi) {
 }
 
 function resetCountdown() {
-  document.querySelector("#animationCountdown").style.width = countDownDirection
-    ? "100%"
-    : "0%";
+  document.querySelector('#animationCountdown').style.width = countDownDirection
+    ? '100%'
+    : '0%';
   countDownDirection = !countDownDirection;
 }
 
@@ -69,55 +69,55 @@ function setTitleFormatted(apiName, methodName, paramsName) {
       '<span class="code-highlight-yellow">command:> </span> ' +
       '<span class="code-highlight-blue">' +
       apiName +
-      "</span>" +
+      '</span>' +
       '<span class="code-highlight-blue">.</span>' +
       '<span class="code-highlight-yellow">' +
       methodName +
-      "</span>" +
+      '</span>' +
       '<span class="code-highlight-blue"></span>' +
       '<span class="code-highlight-blue">(</span>' +
       '<span class="code-highlight-green">' +
       paramsName +
-      "</span>" +
+      '</span>' +
       '<span class="code-highlight-blue">)</span>';
   }
-  document.querySelector("#animationAction").innerHTML = html;
+  document.querySelector('#animationAction').innerHTML = html;
 }
 
 function getActions() {
   return [
     function (api, columnApi) {
       columnApi.applyColumnState({
-        state: [{ colId: "country", sort: "asc" }],
+        state: [{ colId: 'country', sort: 'asc' }],
         defaultState: { sort: null },
       });
-      setTitleFormatted("api", "applyColumnState", "country: 'asc'");
+      setTitleFormatted('api', 'applyColumnState', "country: 'asc'");
     },
     function (api, columnApi) {
       columnApi.applyColumnState({
         state: [
-          { colId: "year", sort: "asc" },
-          { colId: "country", sort: "asc" },
+          { colId: 'year', sort: 'asc' },
+          { colId: 'country', sort: 'asc' },
         ],
         defaultState: { sort: null },
       });
       setTitleFormatted(
-        "api",
-        "applyColumnState",
+        'api',
+        'applyColumnState',
         "year: 'asc', country 'asc'"
       );
     },
     function (api, columnApi) {
       columnApi.applyColumnState({
         state: [
-          { colId: "year", sort: "asc" },
-          { colId: "country", sort: "desc" },
+          { colId: 'year', sort: 'asc' },
+          { colId: 'country', sort: 'desc' },
         ],
         defaultState: { sort: null },
       });
       setTitleFormatted(
-        "api",
-        "applyColumnState",
+        'api',
+        'applyColumnState',
         "year: 'asc', country: 'desc'"
       );
     },
@@ -125,20 +125,20 @@ function getActions() {
       columnApi.applyColumnState({
         defaultState: { sort: null },
       });
-      setTitleFormatted("api", "applyColumnState", "clear sort");
+      setTitleFormatted('api', 'applyColumnState', 'clear sort');
     },
   ];
 }
 
 // from actual demo page (/animation/)
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener('DOMContentLoaded', function () {
   var gridDiv =
-    document.querySelector("#myGrid") ||
-    document.querySelector("#animationGrid");
+    document.querySelector('#myGrid') ||
+    document.querySelector('#animationGrid');
 
   new agGrid.Grid(gridDiv, gridOptions);
 
-  fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+  fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
     .then((response) => response.json())
     .then(function (data) {
       gridOptions.api.setRowData(data.slice(0, 50));

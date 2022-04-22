@@ -1,9 +1,9 @@
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
-import { AgGridVue } from "ag-grid-vue3";
-import { createApp } from "vue";
-import GenderCellRenderer from "./genderCellRendererVue.js";
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import 'ag-grid-enterprise';
+import { AgGridVue } from 'ag-grid-vue3';
+import { createApp } from 'vue';
+import GenderCellRenderer from './genderCellRendererVue.js';
 
 const VueExample = {
   template: `
@@ -20,39 +20,39 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
     GenderCellRenderer,
   },
   data: function () {
     return {
       columnDefs: [
-        { field: "name" },
+        { field: 'name' },
         {
-          field: "gender",
-          cellRenderer: "GenderCellRenderer",
-          cellEditor: "agRichSelectCellEditor",
+          field: 'gender',
+          cellRenderer: 'GenderCellRenderer',
+          cellEditor: 'agRichSelectCellEditor',
           cellEditorPopup: true,
           cellEditorParams: {
-            values: ["Male", "Female"],
-            cellRenderer: "GenderCellRenderer",
+            values: ['Male', 'Female'],
+            cellRenderer: 'GenderCellRenderer',
             cellEditorPopup: true,
           },
         },
         {
-          field: "country",
-          cellEditor: "agRichSelectCellEditor",
+          field: 'country',
+          cellEditor: 'agRichSelectCellEditor',
           cellEditorPopup: true,
-          cellEditorParams: { cellHeight: 50, values: ["Ireland", "USA"] },
+          cellEditorParams: { cellHeight: 50, values: ['Ireland', 'USA'] },
         },
         {
-          field: "city",
-          cellEditor: "agRichSelectCellEditor",
+          field: 'city',
+          cellEditor: 'agRichSelectCellEditor',
           cellEditorPopup: true,
           cellEditorParams: cellCellEditorParams,
         },
         {
-          field: "address",
-          cellEditor: "agLargeTextCellEditor",
+          field: 'address',
+          cellEditor: 'agLargeTextCellEditor',
           cellEditorPopup: true,
           minWidth: 550,
         },
@@ -74,13 +74,13 @@ const VueExample = {
   methods: {
     onCellValueChanged(params) {
       const colId = params.column.getId();
-      if (colId === "country") {
+      if (colId === 'country') {
         const selectedCountry = params.data.country;
         const selectedCity = params.data.city;
         const allowedCities = countyToCityMap(selectedCountry);
         const cityMismatch = allowedCities.indexOf(selectedCity) < 0;
         if (cityMismatch) {
-          params.node.setDataValue("city", null);
+          params.node.setDataValue('city', null);
         }
       }
     },
@@ -93,8 +93,8 @@ const VueExample = {
 
 window.countyToCityMap = function countyToCityMap(match) {
   const map = {
-    Ireland: ["Dublin", "Cork", "Galway"],
-    USA: ["New York", "Los Angeles", "Chicago", "Houston"],
+    Ireland: ['Dublin', 'Cork', 'Galway'],
+    USA: ['New York', 'Los Angeles', 'Chicago', 'Houston'],
   };
   return map[match];
 };
@@ -108,4 +108,4 @@ const cellCellEditorParams = (params) => {
   };
 };
 
-createApp(VueExample).mount("#app");
+createApp(VueExample).mount('#app');

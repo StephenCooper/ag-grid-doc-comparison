@@ -1,13 +1,13 @@
-"use strict";
+'use strict';
 
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { AgGridReact } from "@ag-grid-community/react";
-import { RowGroupingModule } from "@ag-grid-enterprise/row-grouping";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from '@ag-grid-community/react';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import { RowGroupingModule } from '@ag-grid-enterprise/row-grouping';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([ClientSideRowModelModule, RowGroupingModule]);
@@ -18,16 +18,16 @@ class GridExample extends Component {
 
     this.state = {
       columnDefs: [
-        { field: "athlete" },
-        { field: "age" },
-        { field: "country" },
-        { field: "sport" },
-        { field: "year" },
-        { field: "date" },
-        { field: "gold" },
-        { field: "silver" },
-        { field: "bronze" },
-        { field: "total" },
+        { field: 'athlete' },
+        { field: 'age' },
+        { field: 'country' },
+        { field: 'sport' },
+        { field: 'year' },
+        { field: 'date' },
+        { field: 'gold' },
+        { field: 'silver' },
+        { field: 'bronze' },
+        { field: 'total' },
       ],
       defaultColDef: {
         sortable: true,
@@ -38,10 +38,10 @@ class GridExample extends Component {
         enableValue: true,
       },
       sideBar: {
-        toolPanels: ["columns"],
+        toolPanels: ['columns'],
       },
-      rowGroupPanelShow: "always",
-      pivotPanelShow: "always",
+      rowGroupPanelShow: 'always',
+      pivotPanelShow: 'always',
       rowData: null,
     };
   }
@@ -52,36 +52,36 @@ class GridExample extends Component {
 
     const updateData = (data) => params.api.setRowData(data);
 
-    fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+    fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .then((resp) => resp.json())
       .then((data) => updateData(data));
   };
 
   saveState = () => {
     window.colState = this.gridColumnApi.getColumnState();
-    console.log("column state saved");
+    console.log('column state saved');
   };
 
   restoreState = () => {
     if (!window.colState) {
-      console.log("no columns state to restore by, you must save state first");
+      console.log('no columns state to restore by, you must save state first');
       return;
     }
     this.gridColumnApi.applyColumnState({
       state: window.colState,
       applyOrder: true,
     });
-    console.log("column state restored");
+    console.log('column state restored');
   };
 
   resetState = () => {
     this.gridColumnApi.resetColumnState();
-    console.log("column state reset");
+    console.log('column state reset');
   };
 
   render() {
     return (
-      <div style={{ width: "100%", height: "100%" }}>
+      <div style={{ width: '100%', height: '100%' }}>
         <div className="test-container">
           <div className="test-header">
             <div className="example-section">
@@ -92,8 +92,8 @@ class GridExample extends Component {
           </div>
           <div
             style={{
-              height: "100%",
-              width: "100%",
+              height: '100%',
+              width: '100%',
             }}
             className="ag-theme-alpine"
           >
@@ -113,4 +113,4 @@ class GridExample extends Component {
   }
 }
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

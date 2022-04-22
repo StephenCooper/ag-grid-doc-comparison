@@ -1,8 +1,8 @@
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import { AgGridVue } from "ag-grid-vue3";
-import { createApp } from "vue";
-import CustomTooltip from "./customTooltipVue.js";
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import { AgGridVue } from 'ag-grid-vue3';
+import { createApp } from 'vue';
+import CustomTooltip from './customTooltipVue.js';
 
 const VueExample = {
   template: `
@@ -20,27 +20,27 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
     CustomTooltip,
   },
   data: function () {
     return {
       columnDefs: [
         {
-          field: "athlete",
+          field: 'athlete',
           minWidth: 150,
-          tooltipField: "athlete",
-          tooltipComponentParams: { type: "success" },
+          tooltipField: 'athlete',
+          tooltipComponentParams: { type: 'success' },
         },
-        { field: "age" },
-        { field: "country", minWidth: 130, tooltipField: "country" },
-        { field: "year" },
-        { field: "date" },
-        { field: "sport" },
-        { field: "gold" },
-        { field: "silver" },
-        { field: "bronze" },
-        { field: "total" },
+        { field: 'age' },
+        { field: 'country', minWidth: 130, tooltipField: 'country' },
+        { field: 'year' },
+        { field: 'date' },
+        { field: 'sport' },
+        { field: 'gold' },
+        { field: 'silver' },
+        { field: 'bronze' },
+        { field: 'total' },
       ],
       gridApi: null,
       columnApi: null,
@@ -51,7 +51,7 @@ const VueExample = {
         minWidth: 100,
         filter: true,
         resizable: true,
-        tooltipComponent: "CustomTooltip",
+        tooltipComponent: 'CustomTooltip',
       },
       tooltipShowDelay: null,
       rowData: null,
@@ -69,11 +69,11 @@ const VueExample = {
         this.rowData = data;
       };
 
-      fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
         .then((resp) => resp.json())
         .then((data) => updateData(data));
     },
   },
 };
 
-createApp(VueExample).mount("#app");
+createApp(VueExample).mount('#app');

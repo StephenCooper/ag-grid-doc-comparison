@@ -1,8 +1,8 @@
-import { Component } from "@angular/core";
-import { AgChartOptions } from "ag-charts-community";
+import { Component } from '@angular/core';
+import { AgChartOptions } from 'ag-charts-community';
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<ag-charts-angular
     style="height: 100%"
     [options]="options"
@@ -14,19 +14,19 @@ export class AppComponent {
   constructor() {
     this.options = {
       data: [
-        { os: "Android", share: 56.9, satisfaction: 10 },
-        { os: "iOS", share: 22.5, satisfaction: 12 },
-        { os: "BlackBerry", share: 6.8, satisfaction: 9 },
-        { os: "Symbian", share: 8.5, satisfaction: 8 },
-        { os: "Bada", share: 2.6, satisfaction: 7 },
-        { os: "Windows", share: 1.9, satisfaction: 6 },
+        { os: 'Android', share: 56.9, satisfaction: 10 },
+        { os: 'iOS', share: 22.5, satisfaction: 12 },
+        { os: 'BlackBerry', share: 6.8, satisfaction: 9 },
+        { os: 'Symbian', share: 8.5, satisfaction: 8 },
+        { os: 'Bada', share: 2.6, satisfaction: 7 },
+        { os: 'Windows', share: 1.9, satisfaction: 6 },
       ],
       series: [
         {
-          type: "pie",
-          labelKey: "os",
-          angleKey: "share",
-          radiusKey: "satisfaction",
+          type: 'pie',
+          labelKey: 'os',
+          angleKey: 'share',
+          radiusKey: 'satisfaction',
         },
       ],
     };

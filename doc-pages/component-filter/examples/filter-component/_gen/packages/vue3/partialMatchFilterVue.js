@@ -8,17 +8,23 @@ export default {
     `,
   data() {
     return {
-      text: "",
+      text: '',
     };
   },
   methods: {
     isFilterActive() {
-      return this.text !== null && this.text !== undefined && this.text !== "";
+      return this.text !== null && this.text !== undefined && this.text !== '';
     },
 
     doesFilterPass(params) {
-      const { api, colDef, column, columnApi, context, valueGetter } =
-        this.params;
+      const {
+        api,
+        colDef,
+        column,
+        columnApi,
+        context,
+        valueGetter,
+      } = this.params;
       const { node } = params;
       const value = valueGetter({
         api,
@@ -37,7 +43,7 @@ export default {
         !this.text ||
         this.text
           .toLowerCase()
-          .split(" ")
+          .split(' ')
           .every((filterWord) => {
             return value.indexOf(filterWord) >= 0;
           })

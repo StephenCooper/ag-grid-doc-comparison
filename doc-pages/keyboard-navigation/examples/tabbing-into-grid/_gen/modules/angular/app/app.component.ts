@@ -2,15 +2,15 @@ import {
   ColDef,
   FirstDataRenderedEvent,
   GridReadyEvent,
-} from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { HttpClient } from "@angular/common/http";
-import { Component } from "@angular/core";
+} from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { HttpClient } from '@angular/common/http';
+import { Component } from '@angular/core';
 // Required feature modules are registered in app.module.ts
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<div class="test-container">
     <div>
       <div class="form-container">
@@ -45,17 +45,17 @@ import { Component } from "@angular/core";
 })
 export class AppComponent {
   public columnDefs: ColDef[] = [
-    { headerName: "#", colId: "rowNum", valueGetter: "node.id" },
-    { field: "athlete", minWidth: 170 },
-    { field: "age" },
-    { field: "country" },
-    { field: "year" },
-    { field: "date" },
-    { field: "sport" },
-    { field: "gold" },
-    { field: "silver" },
-    { field: "bronze" },
-    { field: "total" },
+    { headerName: '#', colId: 'rowNum', valueGetter: 'node.id' },
+    { field: 'athlete', minWidth: 170 },
+    { field: 'age' },
+    { field: 'country' },
+    { field: 'year' },
+    { field: 'date' },
+    { field: 'sport' },
+    { field: 'gold' },
+    { field: 'silver' },
+    { field: 'bronze' },
+    { field: 'total' },
   ];
   public defaultColDef: ColDef = {
     editable: true,
@@ -71,13 +71,13 @@ export class AppComponent {
 
   onFirstDataRendered(params: FirstDataRenderedEvent) {
     // obtain reference to input element
-    var myInput = document.getElementById("my-input")!;
+    var myInput = document.getElementById('my-input')!;
     // intercept key strokes within input element
     myInput.addEventListener(
-      "keydown",
+      'keydown',
       function (event) {
         // ignore non Tab key strokes
-        if (event.key !== "Tab") return;
+        if (event.key !== 'Tab') return;
         // prevents tabbing into the url section
         event.preventDefault();
         // scrolls to the first row
@@ -94,7 +94,7 @@ export class AppComponent {
 
   onGridReady(params: GridReadyEvent) {
     this.http
-      .get<any[]>("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      .get<any[]>('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .subscribe((data) => (this.rowData = data));
   }
 }

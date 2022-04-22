@@ -1,8 +1,10 @@
-"use strict";
+'use strict';
 
-import { AgChartsReact } from "ag-charts-react";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { cloneDeep } from 'lodash';
+import { render } from 'react-dom';
+import * as agCharts from 'ag-charts-community';
+import { AgChartsReact } from 'ag-charts-react';
 
 class ChartExample extends Component {
   constructor(props) {
@@ -16,18 +18,18 @@ class ChartExample extends Component {
         height: 550,
         series: [
           {
-            xKey: "x",
-            yKey: "y",
+            xKey: 'x',
+            yKey: 'y',
           },
         ],
         axes: [
           {
-            type: "number",
-            position: "left",
+            type: 'number',
+            position: 'left',
           },
           {
-            type: "number",
-            position: "bottom",
+            type: 'number',
+            position: 'bottom',
           },
         ],
         legend: {
@@ -66,4 +68,4 @@ function generateSpiralData() {
   return data;
 }
 
-render(<ChartExample />, document.querySelector("#root"));
+render(<ChartExample />, document.querySelector('#root'));

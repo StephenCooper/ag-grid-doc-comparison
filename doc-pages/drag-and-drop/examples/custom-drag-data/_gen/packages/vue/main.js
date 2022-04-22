@@ -1,7 +1,7 @@
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import { AgGridVue } from "ag-grid-vue";
-import Vue from "vue";
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import { AgGridVue } from 'ag-grid-vue';
+import Vue from 'vue';
 
 const VueExample = {
   template: `
@@ -33,7 +33,7 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
@@ -44,10 +44,10 @@ const VueExample = {
           dndSourceOnRowDrag: onRowDrag,
           checkboxSelection: true,
         },
-        { field: "id" },
-        { field: "color" },
-        { field: "value1" },
-        { field: "value2" },
+        { field: 'id' },
+        { field: 'color' },
+        { field: 'value1' },
+        { field: 'value2' },
       ],
       gridApi: null,
       columnApi: null,
@@ -63,11 +63,11 @@ const VueExample = {
     };
   },
   created() {
-    this.rowSelection = "multiple";
+    this.rowSelection = 'multiple';
     this.rowClassRules = {
-      "red-row": 'data.color == "Red"',
-      "green-row": 'data.color == "Green"',
-      "blue-row": 'data.color == "Blue"',
+      'red-row': 'data.color == "Red"',
+      'green-row': 'data.color == "Green"',
+      'blue-row': 'data.color == "Blue"',
     };
     this.rowData = getData();
   },
@@ -75,17 +75,17 @@ const VueExample = {
     onDragOver(event) {
       var dragSupported = event.dataTransfer.types.length;
       if (dragSupported) {
-        event.dataTransfer.dropEffect = "move";
+        event.dataTransfer.dropEffect = 'move';
       }
       event.preventDefault();
     },
     onDrop(event) {
       event.preventDefault();
-      var jsonData = event.dataTransfer.getData("application/json");
-      var eJsonRow = document.createElement("div");
-      eJsonRow.classList.add("json-row");
+      var jsonData = event.dataTransfer.getData('application/json');
+      var eJsonRow = document.createElement('div');
+      eJsonRow.classList.add('json-row');
       eJsonRow.innerText = jsonData;
-      var eJsonDisplay = document.querySelector("#eJsonDisplay");
+      var eJsonDisplay = document.querySelector('#eJsonDisplay');
       eJsonDisplay.appendChild(eJsonRow);
     },
     onGridReady(params) {
@@ -100,19 +100,19 @@ window.onRowDrag = function onRowDrag(params) {
   var rowNode = params.rowNode;
   var e = params.dragEvent;
   var jsonObject = {
-    grid: "GRID_001",
-    operation: "Drag on Column",
+    grid: 'GRID_001',
+    operation: 'Drag on Column',
     rowId: rowNode.data.id,
     selected: rowNode.isSelected(),
   };
   var jsonData = JSON.stringify(jsonObject);
-  e.dataTransfer.setData("application/json", jsonData);
-  e.dataTransfer.setData("text/plain", jsonData);
+  e.dataTransfer.setData('application/json', jsonData);
+  e.dataTransfer.setData('text/plain', jsonData);
 };
 
 new Vue({
-  el: "#app",
+  el: '#app',
   components: {
-    "my-component": VueExample,
+    'my-component': VueExample,
   },
 });

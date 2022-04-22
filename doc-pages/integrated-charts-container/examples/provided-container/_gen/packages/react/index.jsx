@@ -1,11 +1,11 @@
-"use strict";
+'use strict';
 
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
-import { AgGridReact } from "ag-grid-react";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from 'ag-grid-react';
+import 'ag-grid-enterprise';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 
 class GridExample extends Component {
   constructor(props) {
@@ -13,11 +13,11 @@ class GridExample extends Component {
 
     this.state = {
       columnDefs: [
-        { field: "athlete", width: 150, chartDataType: "category" },
-        { field: "gold", chartDataType: "series" },
-        { field: "silver", chartDataType: "series" },
-        { field: "bronze", chartDataType: "series" },
-        { field: "total", chartDataType: "series" },
+        { field: 'athlete', width: 150, chartDataType: 'category' },
+        { field: 'gold', chartDataType: 'series' },
+        { field: 'silver', chartDataType: 'series' },
+        { field: 'bronze', chartDataType: 'series' },
+        { field: 'total', chartDataType: 'series' },
       ],
       defaultColDef: {
         editable: true,
@@ -40,24 +40,24 @@ class GridExample extends Component {
       this.setState({ rowData: data });
     };
 
-    fetch("https://www.ag-grid.com/example-assets/wide-spread-of-sports.json")
+    fetch('https://www.ag-grid.com/example-assets/wide-spread-of-sports.json')
       .then((resp) => resp.json())
       .then((data) => updateData(data));
   };
 
   createChartContainer = (chartRef) => {
     var eChart = chartRef.chartElement;
-    var eTemp = document.createElement("div");
+    var eTemp = document.createElement('div');
     eTemp.innerHTML = chartPanelTemplate;
     var eChartWrapper = eTemp.firstChild;
-    var eParent = document.querySelector("#container");
+    var eParent = document.querySelector('#container');
     eParent.appendChild(eChartWrapper);
-    eChartWrapper.querySelector(".chart-wrapper-body").appendChild(eChart);
-    eChartWrapper.querySelector(".chart-wrapper-title").innerText =
-      "Chart Created At " + new Date();
+    eChartWrapper.querySelector('.chart-wrapper-body').appendChild(eChart);
+    eChartWrapper.querySelector('.chart-wrapper-title').innerText =
+      'Chart Created At ' + new Date();
     eChartWrapper
-      .querySelector(".chart-wrapper-close")
-      .addEventListener("click", function () {
+      .querySelector('.chart-wrapper-close')
+      .addEventListener('click', function () {
         chartRef.destroyChart();
         eParent.removeChild(eChartWrapper);
       });
@@ -65,12 +65,12 @@ class GridExample extends Component {
 
   render() {
     return (
-      <div style={{ width: "100%", height: "100%" }}>
+      <div style={{ width: '100%', height: '100%' }}>
         <div id="container">
           <div
             style={{
-              height: "300px",
-              width: "100%",
+              height: '300px',
+              width: '100%',
             }}
             className="ag-theme-alpine"
           >
@@ -96,8 +96,8 @@ var chartPanelTemplate =
   '<div class="chart-wrapper-top">' +
   '<span class="chart-wrapper-title"></span>' +
   '<button class="chart-wrapper-close">Destroy Chart</button>' +
-  "</div>" +
+  '</div>' +
   '<div class="chart-wrapper-body"></div>' +
-  "</div>";
+  '</div>';
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

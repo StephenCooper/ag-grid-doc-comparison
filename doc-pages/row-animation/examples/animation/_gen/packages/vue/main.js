@@ -1,8 +1,8 @@
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine-dark.css";
-import "ag-grid-enterprise";
-import { AgGridVue } from "ag-grid-vue";
-import Vue from "vue";
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine-dark.css';
+import 'ag-grid-enterprise';
+import { AgGridVue } from 'ag-grid-vue';
+import Vue from 'vue';
 
 const VueExample = {
   template: `
@@ -30,17 +30,17 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
-        { field: "athlete", minWidth: 150 },
-        { field: "country", minWidth: 150 },
-        { field: "year", minWidth: 120 },
-        { field: "gold", aggFunc: "sum" },
-        { field: "silver", aggFunc: "sum" },
-        { field: "bronze", aggFunc: "sum" },
+        { field: 'athlete', minWidth: 150 },
+        { field: 'country', minWidth: 150 },
+        { field: 'year', minWidth: 120 },
+        { field: 'gold', aggFunc: 'sum' },
+        { field: 'silver', aggFunc: 'sum' },
+        { field: 'bronze', aggFunc: 'sum' },
       ],
       gridApi: null,
       columnApi: null,
@@ -56,10 +56,10 @@ const VueExample = {
   created() {
     this.autoGroupColumnDef = {
       // to get 'athlete' showing in the leaf level in this column
-      cellRenderer: "agGroupCellRenderer",
-      headerName: "Athlete",
+      cellRenderer: 'agGroupCellRenderer',
+      headerName: 'Athlete',
       minWidth: 200,
-      field: "athlete",
+      field: 'athlete',
     };
   },
   methods: {
@@ -72,7 +72,7 @@ const VueExample = {
         startInterval(params.api, params.columnApi);
       };
 
-      fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
         .then((resp) => resp.json())
         .then((data) => updateData(data));
     },
@@ -102,9 +102,9 @@ window.startInterval = // the code below executes an action every 2,000 millisec
   };
 
 window.resetCountdown = function resetCountdown() {
-  document.querySelector("#animationCountdown").style.width = countDownDirection
-    ? "100%"
-    : "0%";
+  document.querySelector('#animationCountdown').style.width = countDownDirection
+    ? '100%'
+    : '0%';
   countDownDirection = !countDownDirection;
 };
 
@@ -121,55 +121,55 @@ window.setTitleFormatted = function setTitleFormatted(
       '<span class="code-highlight-yellow">command:> </span> ' +
       '<span class="code-highlight-blue">' +
       apiName +
-      "</span>" +
+      '</span>' +
       '<span class="code-highlight-blue">.</span>' +
       '<span class="code-highlight-yellow">' +
       methodName +
-      "</span>" +
+      '</span>' +
       '<span class="code-highlight-blue"></span>' +
       '<span class="code-highlight-blue">(</span>' +
       '<span class="code-highlight-green">' +
       paramsName +
-      "</span>" +
+      '</span>' +
       '<span class="code-highlight-blue">)</span>';
   }
-  document.querySelector("#animationAction").innerHTML = html;
+  document.querySelector('#animationAction').innerHTML = html;
 };
 
 window.getActions = function getActions() {
   return [
     function (api, columnApi) {
       columnApi.applyColumnState({
-        state: [{ colId: "country", sort: "asc" }],
+        state: [{ colId: 'country', sort: 'asc' }],
         defaultState: { sort: null },
       });
-      setTitleFormatted("api", "applyColumnState", "country: 'asc'");
+      setTitleFormatted('api', 'applyColumnState', "country: 'asc'");
     },
     function (api, columnApi) {
       columnApi.applyColumnState({
         state: [
-          { colId: "year", sort: "asc" },
-          { colId: "country", sort: "asc" },
+          { colId: 'year', sort: 'asc' },
+          { colId: 'country', sort: 'asc' },
         ],
         defaultState: { sort: null },
       });
       setTitleFormatted(
-        "api",
-        "applyColumnState",
+        'api',
+        'applyColumnState',
         "year: 'asc', country 'asc'"
       );
     },
     function (api, columnApi) {
       columnApi.applyColumnState({
         state: [
-          { colId: "year", sort: "asc" },
-          { colId: "country", sort: "desc" },
+          { colId: 'year', sort: 'asc' },
+          { colId: 'country', sort: 'desc' },
         ],
         defaultState: { sort: null },
       });
       setTitleFormatted(
-        "api",
-        "applyColumnState",
+        'api',
+        'applyColumnState',
         "year: 'asc', country: 'desc'"
       );
     },
@@ -177,7 +177,7 @@ window.getActions = function getActions() {
       columnApi.applyColumnState({
         defaultState: { sort: null },
       });
-      setTitleFormatted("api", "applyColumnState", "clear sort");
+      setTitleFormatted('api', 'applyColumnState', 'clear sort');
     },
   ];
 };
@@ -185,8 +185,8 @@ window.getActions = function getActions() {
 var countDownDirection = true;
 
 new Vue({
-  el: "#app",
+  el: '#app',
   components: {
-    "my-component": VueExample,
+    'my-component': VueExample,
   },
 });

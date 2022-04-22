@@ -1,29 +1,29 @@
-import { ColGroupDef, Grid, GridOptions } from "ag-grid-community";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
+import { ColGroupDef, Grid, GridOptions } from 'ag-grid-community';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import 'ag-grid-enterprise';
 
 const columnDefs: ColGroupDef[] = [
   {
-    headerName: "Top Level Column Group",
+    headerName: 'Top Level Column Group',
     children: [
       {
-        headerName: "Group A",
+        headerName: 'Group A',
         children: [
-          { field: "athlete", minWidth: 200 },
-          { field: "country", minWidth: 200 },
-          { headerName: "Group", valueGetter: "data.country.charAt(0)" },
+          { field: 'athlete', minWidth: 200 },
+          { field: 'country', minWidth: 200 },
+          { headerName: 'Group', valueGetter: 'data.country.charAt(0)' },
         ],
       },
       {
-        headerName: "Group B",
+        headerName: 'Group B',
         children: [
-          { field: "date", minWidth: 150 },
-          { field: "sport", minWidth: 150 },
-          { field: "gold" },
-          { field: "silver" },
-          { field: "bronze" },
-          { field: "total" },
+          { field: 'date', minWidth: 150 },
+          { field: 'sport', minWidth: 150 },
+          { field: 'gold' },
+          { field: 'silver' },
+          { field: 'bronze' },
+          { field: 'total' },
         ],
       },
     ],
@@ -44,12 +44,12 @@ const gridOptions: GridOptions = {
 
   pinnedTopRowData: [
     {
-      athlete: "Floating <Top> Athlete",
-      country: "Floating <Top> Country",
-      date: "01/08/2020",
-      sport: "Track & Field",
+      athlete: 'Floating <Top> Athlete',
+      country: 'Floating <Top> Country',
+      date: '01/08/2020',
+      sport: 'Track & Field',
       gold: 22,
-      silver: "003",
+      silver: '003',
       bronze: 44,
       total: 55,
     },
@@ -57,12 +57,12 @@ const gridOptions: GridOptions = {
 
   pinnedBottomRowData: [
     {
-      athlete: "Floating <Bottom> Athlete",
-      country: "Floating <Bottom> Country",
-      date: "01/08/2030",
-      sport: "Track & Field",
+      athlete: 'Floating <Bottom> Athlete',
+      country: 'Floating <Bottom> Country',
+      date: '01/08/2030',
+      sport: 'Track & Field',
       gold: 222,
-      silver: "005",
+      silver: '005',
       bronze: 244,
       total: 255,
     },
@@ -70,13 +70,13 @@ const gridOptions: GridOptions = {
 };
 
 function getBoolean(id: string) {
-  return !!(document.querySelector("#" + id) as HTMLInputElement).checked;
+  return !!(document.querySelector('#' + id) as HTMLInputElement).checked;
 }
 
 function getParams() {
   return {
-    skipPinnedTop: getBoolean("skipPinnedTop"),
-    skipPinnedBottom: getBoolean("skipPinnedBottom"),
+    skipPinnedTop: getBoolean('skipPinnedTop'),
+    skipPinnedBottom: getBoolean('skipPinnedBottom'),
   };
 }
 
@@ -85,15 +85,15 @@ function onBtExport() {
 }
 
 // setup the grid after the page has finished loading
-const gridDiv = document.querySelector<HTMLElement>("#myGrid")!;
+const gridDiv = document.querySelector<HTMLElement>('#myGrid')!;
 new Grid(gridDiv, gridOptions);
-fetch("https://www.ag-grid.com/example-assets/small-olympic-winners.json")
+fetch('https://www.ag-grid.com/example-assets/small-olympic-winners.json')
   .then((response) => response.json())
   .then((data) =>
     gridOptions.api!.setRowData(data.filter((rec: any) => rec.country != null))
   );
 
-if (typeof window !== "undefined") {
+if (typeof window !== 'undefined') {
   // Attach external event handlers to window so they can be called from index.html
   (<any>window).onBtExport = onBtExport;
 }

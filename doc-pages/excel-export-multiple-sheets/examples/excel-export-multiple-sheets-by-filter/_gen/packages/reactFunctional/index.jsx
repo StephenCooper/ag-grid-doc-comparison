@@ -1,26 +1,26 @@
-"use strict";
+'use strict';
 
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
-import { AgGridReact } from "ag-grid-react";
-import React, { useCallback, useMemo, useRef, useState } from "react";
-import { render } from "react-dom";
+import React, { useCallback, useMemo, useRef, useState } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from 'ag-grid-react';
+import 'ag-grid-enterprise';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 
 const GridExample = () => {
   const gridRef = useRef();
-  const containerStyle = useMemo(() => ({ width: "100%", height: "100%" }), []);
-  const gridStyle = useMemo(() => ({ height: "100%", width: "100%" }), []);
+  const containerStyle = useMemo(() => ({ width: '100%', height: '100%' }), []);
+  const gridStyle = useMemo(() => ({ height: '100%', width: '100%' }), []);
   const [rowData, setRowData] = useState();
   const [columnDefs, setColumnDefs] = useState([
-    { field: "athlete", minWidth: 200 },
-    { field: "age" },
-    { field: "country", minWidth: 200 },
-    { field: "year" },
-    { field: "date", minWidth: 150 },
-    { field: "sport", minWidth: 150 },
-    { field: "gold" },
-    { field: "silver" },
+    { field: 'athlete', minWidth: 200 },
+    { field: 'age' },
+    { field: 'country', minWidth: 200 },
+    { field: 'year' },
+    { field: 'date', minWidth: 150 },
+    { field: 'sport', minWidth: 150 },
+    { field: 'gold' },
+    { field: 'silver' },
   ]);
   const defaultColDef = useMemo(() => {
     return {
@@ -33,7 +33,7 @@ const GridExample = () => {
   }, []);
 
   const onGridReady = useCallback((params) => {
-    fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+    fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .then((resp) => resp.json())
       .then((data) => setRowData(data));
   }, []);
@@ -46,12 +46,12 @@ const GridExample = () => {
       }
     });
     var spreadsheets = [];
-    var sportFilterInstance = gridRef.current.api.getFilterInstance("sport");
+    var sportFilterInstance = gridRef.current.api.getFilterInstance('sport');
     for (var sport in sports) {
       sportFilterInstance.setModel({ values: [sport] });
       gridRef.current.api.onFilterChanged();
       if (sportFilterInstance.getModel() == null) {
-        throw new Error("Example error: Filter not applied");
+        throw new Error('Example error: Filter not applied');
       }
       const sheet = gridRef.current.api.getSheetDataForExcel({
         sheetName: sport,
@@ -64,7 +64,7 @@ const GridExample = () => {
     gridRef.current.api.onFilterChanged();
     gridRef.current.api.exportMultipleSheetsAsExcel({
       data: spreadsheets,
-      fileName: "ag-grid.xlsx",
+      fileName: 'ag-grid.xlsx',
     });
     spreadsheets = [];
   }, []);
@@ -75,7 +75,7 @@ const GridExample = () => {
         <div>
           <button
             onClick={onBtExport}
-            style={{ marginBottom: "5px", fontWeight: "bold" }}
+            style={{ marginBottom: '5px', fontWeight: 'bold' }}
           >
             Export to Excel
           </button>
@@ -96,4 +96,4 @@ const GridExample = () => {
   );
 };
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

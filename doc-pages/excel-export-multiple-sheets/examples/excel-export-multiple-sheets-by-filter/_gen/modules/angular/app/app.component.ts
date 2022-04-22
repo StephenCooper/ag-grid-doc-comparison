@@ -1,12 +1,12 @@
-import { ColDef, GridApi, GridReadyEvent } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { HttpClient } from "@angular/common/http";
-import { Component } from "@angular/core";
+import { ColDef, GridApi, GridReadyEvent } from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { HttpClient } from '@angular/common/http';
+import { Component } from '@angular/core';
 // Required feature modules are registered in app.module.ts
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<div class="container">
     <div>
       <button
@@ -32,14 +32,14 @@ export class AppComponent {
   private gridApi!: GridApi;
 
   public columnDefs: ColDef[] = [
-    { field: "athlete", minWidth: 200 },
-    { field: "age" },
-    { field: "country", minWidth: 200 },
-    { field: "year" },
-    { field: "date", minWidth: 150 },
-    { field: "sport", minWidth: 150 },
-    { field: "gold" },
-    { field: "silver" },
+    { field: 'athlete', minWidth: 200 },
+    { field: 'age' },
+    { field: 'country', minWidth: 200 },
+    { field: 'year' },
+    { field: 'date', minWidth: 150 },
+    { field: 'sport', minWidth: 150 },
+    { field: 'gold' },
+    { field: 'silver' },
   ];
   public defaultColDef: ColDef = {
     sortable: true,
@@ -60,12 +60,12 @@ export class AppComponent {
       }
     });
     var spreadsheets = [];
-    var sportFilterInstance = this.gridApi.getFilterInstance("sport")!;
+    var sportFilterInstance = this.gridApi.getFilterInstance('sport')!;
     for (var sport in sports) {
       sportFilterInstance.setModel({ values: [sport] });
       this.gridApi.onFilterChanged();
       if (sportFilterInstance.getModel() == null) {
-        throw new Error("Example error: Filter not applied");
+        throw new Error('Example error: Filter not applied');
       }
       const sheet = this.gridApi.getSheetDataForExcel({
         sheetName: sport,
@@ -78,7 +78,7 @@ export class AppComponent {
     this.gridApi.onFilterChanged();
     this.gridApi.exportMultipleSheetsAsExcel({
       data: spreadsheets,
-      fileName: "ag-grid.xlsx",
+      fileName: 'ag-grid.xlsx',
     });
     spreadsheets = [];
   }
@@ -87,7 +87,7 @@ export class AppComponent {
     this.gridApi = params.api;
 
     this.http
-      .get<any[]>("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      .get<any[]>('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .subscribe((data) => (this.rowData = data));
   }
 }

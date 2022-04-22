@@ -1,11 +1,11 @@
-"use strict";
+'use strict';
 
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine-dark.css";
-import "ag-grid-enterprise";
-import { AgGridReact } from "ag-grid-react";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from 'ag-grid-react';
+import 'ag-grid-enterprise';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine-dark.css';
 
 class GridExample extends Component {
   constructor(props) {
@@ -14,22 +14,22 @@ class GridExample extends Component {
     this.state = {
       columnDefs: [
         {
-          headerName: "Group",
-          field: "name",
+          headerName: 'Group',
+          field: 'name',
           rowGroup: true,
           hide: true,
         },
         {
-          field: "autoA",
+          field: 'autoA',
           wrapText: true,
           autoHeight: true,
-          aggFunc: "last",
+          aggFunc: 'last',
         },
         {
-          field: "autoB",
+          field: 'autoB',
           wrapText: true,
           autoHeight: true,
-          aggFunc: "last",
+          aggFunc: 'last',
         },
       ],
       defaultColDef: {
@@ -41,8 +41,8 @@ class GridExample extends Component {
         flex: 1,
         maxWidth: 200,
       },
-      rowModelType: "serverSide",
-      serverSideStoreType: "partial",
+      rowModelType: 'serverSide',
+      serverSideStoreType: 'partial',
     };
   }
 
@@ -62,11 +62,11 @@ class GridExample extends Component {
 
   render() {
     return (
-      <div style={{ width: "100%", height: "100%" }}>
+      <div style={{ width: '100%', height: '100%' }}>
         <div
           style={{
-            height: "100%",
-            width: "100%",
+            height: '100%',
+            width: '100%',
           }}
           className="ag-theme-alpine-dark"
         >
@@ -89,7 +89,7 @@ class GridExample extends Component {
 function getServerSideDatasource(server) {
   return {
     getRows: function (params) {
-      console.log("[Datasource] - rows requested by grid: ", params.request);
+      console.log('[Datasource] - rows requested by grid: ', params.request);
       var response = server.getData(params.request);
       // adding delay to simulate real server call
       setTimeout(function () {
@@ -108,4 +108,4 @@ function getServerSideDatasource(server) {
   };
 }
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

@@ -1,11 +1,11 @@
-"use strict";
+'use strict';
 
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine-dark.css";
-import "ag-grid-enterprise";
-import { AgGridReact } from "ag-grid-react";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from 'ag-grid-react';
+import 'ag-grid-enterprise';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine-dark.css';
 
 class GridExample extends Component {
   constructor(props) {
@@ -13,12 +13,12 @@ class GridExample extends Component {
 
     this.state = {
       columnDefs: [
-        { field: "country", enableRowGroup: true, rowGroup: true, hide: true },
-        { field: "sport", enableRowGroup: true, rowGroup: true, hide: true },
-        { field: "year", minWidth: 100 },
-        { field: "gold", aggFunc: "sum" },
-        { field: "silver", aggFunc: "sum" },
-        { field: "bronze", aggFunc: "sum" },
+        { field: 'country', enableRowGroup: true, rowGroup: true, hide: true },
+        { field: 'sport', enableRowGroup: true, rowGroup: true, hide: true },
+        { field: 'year', minWidth: 100 },
+        { field: 'gold', aggFunc: 'sum' },
+        { field: 'silver', aggFunc: 'sum' },
+        { field: 'bronze', aggFunc: 'sum' },
       ],
       defaultColDef: {
         flex: 1,
@@ -32,12 +32,12 @@ class GridExample extends Component {
       },
       getServerSideStoreParams: function (params) {
         var res = {
-          storeType: params.level == 0 ? "partial" : "full",
+          storeType: params.level == 0 ? 'partial' : 'full',
         };
         return res;
       },
-      rowModelType: "serverSide",
-      rowSelection: "multiple",
+      rowModelType: 'serverSide',
+      rowSelection: 'multiple',
     };
   }
 
@@ -54,7 +54,7 @@ class GridExample extends Component {
       params.api.setServerSideDatasource(datasource);
     };
 
-    fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+    fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .then((resp) => resp.json())
       .then((data) => updateData(data));
   };
@@ -63,8 +63,8 @@ class GridExample extends Component {
     var selectedNodes = this.gridApi.getSelectedNodes();
     selectedNodes.forEach(function (rowNode, index) {
       var route = rowNode.getRoute();
-      var routeString = route ? route.join(",") : undefined;
-      console.log("#" + index + ", route = [" + routeString + "]");
+      var routeString = route ? route.join(',') : undefined;
+      console.log('#' + index + ', route = [' + routeString + ']');
     });
   };
 
@@ -77,28 +77,28 @@ class GridExample extends Component {
     if (!route) {
       return false;
     }
-    var routeAsString = route.join(",");
+    var routeAsString = route.join(',');
     var routesToOpenByDefault = [
-      "Zimbabwe",
-      "Zimbabwe,Swimming",
-      "United States,Swimming",
+      'Zimbabwe',
+      'Zimbabwe,Swimming',
+      'United States,Swimming',
     ];
     return routesToOpenByDefault.indexOf(routeAsString) >= 0;
   };
 
   render() {
     return (
-      <div style={{ width: "100%", height: "100%" }}>
+      <div style={{ width: '100%', height: '100%' }}>
         <div className="example-wrapper">
-          <div style={{ marginBottom: "5px" }}>
+          <div style={{ marginBottom: '5px' }}>
             <button onClick={() => this.onBtRouteOfSelected()}>
               Route of Selected
             </button>
           </div>
           <div
             style={{
-              height: "100%",
-              width: "100%",
+              height: '100%',
+              width: '100%',
             }}
             className="ag-theme-alpine-dark"
           >
@@ -127,7 +127,7 @@ class GridExample extends Component {
 function getServerSideDatasource(server) {
   return {
     getRows: function (params) {
-      console.log("[Datasource] - rows requested by grid: ", params.request);
+      console.log('[Datasource] - rows requested by grid: ', params.request);
       var response = server.getData(params.request);
       // adding delay to simulate real server call
       setTimeout(function () {
@@ -146,4 +146,4 @@ function getServerSideDatasource(server) {
   };
 }
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

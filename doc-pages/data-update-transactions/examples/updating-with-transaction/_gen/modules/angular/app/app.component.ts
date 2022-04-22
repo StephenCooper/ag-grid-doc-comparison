@@ -3,17 +3,17 @@ import {
   GridApi,
   GridReadyEvent,
   RowNodeTransaction,
-} from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { Component } from "@angular/core";
+} from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { Component } from '@angular/core';
 // Required feature modules are registered in app.module.ts
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<div style="height: 100%; display: flex; flex-direction: column;">
     <div style="margin-bottom: 4px;">
-      <button (click)="addItems()">Add Items</button>
+      <button (click)="addItems(undefined)">Add Items</button>
       <button (click)="addItems(2)">Add Items addIndex=2</button>
       <button (click)="updateItems()">Update Top 2</button>
       <button (click)="onRemoveSelected()">Remove Selected</button>
@@ -32,39 +32,39 @@ import { Component } from "@angular/core";
         (gridReady)="onGridReady($event)"
       ></ag-grid-angular>
     </div>
-  </div> `,
+  </div>`,
 })
 export class AppComponent {
   private gridApi!: GridApi;
 
   public columnDefs: ColDef[] = [
-    { field: "make" },
-    { field: "model" },
-    { field: "price" },
-    { field: "zombies" },
-    { field: "style" },
-    { field: "clothes" },
+    { field: 'make' },
+    { field: 'model' },
+    { field: 'price' },
+    { field: 'zombies' },
+    { field: 'style' },
+    { field: 'clothes' },
   ];
   public defaultColDef: ColDef = {
     flex: 1,
   };
   public rowData: any[] | null = getData();
-  public rowSelection = "multiple";
+  public rowSelection = 'multiple';
 
   getRowData() {
     const rowData: any[] = [];
     this.gridApi.forEachNode(function (node) {
       rowData.push(node.data);
     });
-    console.log("Row Data:");
-    console.log(rowData);
+    console.log('Row Data:');
+    console.table(rowData);
   }
 
   clearData() {
     this.gridApi.setRowData([]);
   }
 
-  addItems(addIndex: number) {
+  addItems(addIndex: number | undefined) {
     const newItems = [
       createNewRowData(),
       createNewRowData(),
@@ -78,10 +78,10 @@ export class AppComponent {
   }
 
   updateItems() {
-    // update the first 5 items
+    // update the first 2 items
     const itemsToUpdate: any[] = [];
     this.gridApi.forEachNodeAfterFilterAndSort(function (rowNode, index) {
-      // only do first 5
+      // only do first 2
       if (index >= 2) {
         return;
       }
@@ -107,31 +107,31 @@ export class AppComponent {
 let newCount = 1;
 function createNewRowData() {
   const newData = {
-    make: "Toyota " + newCount,
-    model: "Celica " + newCount,
+    make: 'Toyota ' + newCount,
+    model: 'Celica ' + newCount,
     price: 35000 + newCount * 17,
-    zombies: "Headless",
-    style: "Little",
-    clothes: "Airbag",
+    zombies: 'Headless',
+    style: 'Little',
+    clothes: 'Airbag',
   };
   newCount++;
   return newData;
 }
 function printResult(res: RowNodeTransaction) {
-  console.log("---------------------------------------");
+  console.log('---------------------------------------');
   if (res.add) {
     res.add.forEach(function (rowNode) {
-      console.log("Added Row Node", rowNode);
+      console.log('Added Row Node', rowNode);
     });
   }
   if (res.remove) {
     res.remove.forEach(function (rowNode) {
-      console.log("Removed Row Node", rowNode);
+      console.log('Removed Row Node', rowNode);
     });
   }
   if (res.update) {
     res.update.forEach(function (rowNode) {
-      console.log("Updated Row Node", rowNode);
+      console.log('Updated Row Node', rowNode);
     });
   }
 }

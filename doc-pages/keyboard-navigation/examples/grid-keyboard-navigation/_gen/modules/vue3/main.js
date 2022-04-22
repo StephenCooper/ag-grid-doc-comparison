@@ -1,13 +1,13 @@
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { AgGridVue } from "@ag-grid-community/vue3";
-import { ColumnsToolPanelModule } from "@ag-grid-enterprise/column-tool-panel";
-import { FiltersToolPanelModule } from "@ag-grid-enterprise/filter-tool-panel";
-import { MenuModule } from "@ag-grid-enterprise/menu";
-import { SetFilterModule } from "@ag-grid-enterprise/set-filter";
-import { createApp } from "vue";
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { AgGridVue } from '@ag-grid-community/vue3';
+import { ColumnsToolPanelModule } from '@ag-grid-enterprise/column-tool-panel';
+import { FiltersToolPanelModule } from '@ag-grid-enterprise/filter-tool-panel';
+import { MenuModule } from '@ag-grid-enterprise/menu';
+import { SetFilterModule } from '@ag-grid-enterprise/set-filter';
+import { createApp } from 'vue';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([
@@ -35,13 +35,13 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
         {
-          headerName: " ",
+          headerName: ' ',
           headerCheckboxSelection: true,
           checkboxSelection: true,
           floatingFilter: false,
@@ -57,47 +57,47 @@ const VueExample = {
           suppressColumnsToolPanel: true,
         },
         {
-          headerName: "Participant",
+          headerName: 'Participant',
           children: [
-            { field: "athlete", minWidth: 170 },
-            { field: "country", minWidth: 150 },
+            { field: 'athlete', minWidth: 170 },
+            { field: 'country', minWidth: 150 },
           ],
         },
-        { field: "sport" },
+        { field: 'sport' },
         {
-          headerName: "Medals",
+          headerName: 'Medals',
           children: [
             {
-              field: "total",
-              columnGroupShow: "closed",
-              filter: "agNumberColumnFilter",
+              field: 'total',
+              columnGroupShow: 'closed',
+              filter: 'agNumberColumnFilter',
               width: 120,
               flex: 0,
             },
             {
-              field: "gold",
-              columnGroupShow: "open",
-              filter: "agNumberColumnFilter",
+              field: 'gold',
+              columnGroupShow: 'open',
+              filter: 'agNumberColumnFilter',
               width: 100,
               flex: 0,
             },
             {
-              field: "silver",
-              columnGroupShow: "open",
-              filter: "agNumberColumnFilter",
+              field: 'silver',
+              columnGroupShow: 'open',
+              filter: 'agNumberColumnFilter',
               width: 100,
               flex: 0,
             },
             {
-              field: "bronze",
-              columnGroupShow: "open",
-              filter: "agNumberColumnFilter",
+              field: 'bronze',
+              columnGroupShow: 'open',
+              filter: 'agNumberColumnFilter',
               width: 100,
               flex: 0,
             },
           ],
         },
-        { field: "year", filter: "agNumberColumnFilter" },
+        { field: 'year', filter: 'agNumberColumnFilter' },
       ],
       gridApi: null,
       columnApi: null,
@@ -116,8 +116,8 @@ const VueExample = {
     };
   },
   created() {
-    this.rowSelection = "multiple";
-    this.sideBar = { toolPanels: ["columns", "filters"], defaultToolPanel: "" };
+    this.rowSelection = 'multiple';
+    this.sideBar = { toolPanels: ['columns', 'filters'], defaultToolPanel: '' };
   },
   methods: {
     onGridReady(params) {
@@ -126,11 +126,11 @@ const VueExample = {
 
       const updateData = (data) => params.api.setRowData(data);
 
-      fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
         .then((resp) => resp.json())
         .then((data) => updateData(data));
     },
   },
 };
 
-createApp(VueExample).mount("#app");
+createApp(VueExample).mount('#app');

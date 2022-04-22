@@ -4,15 +4,15 @@ import {
   IServerSideDatasource,
   IServerSideGetRowsRequest,
   ServerSideStoreType,
-} from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine-dark.css";
-import { HttpClient } from "@angular/common/http";
-import { Component } from "@angular/core";
+} from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine-dark.css';
+import { HttpClient } from '@angular/common/http';
+import { Component } from '@angular/core';
 // Required feature modules are registered in app.module.ts
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<ag-grid-angular
     style="width: 100%; height: 100%;"
     class="ag-theme-alpine-dark"
@@ -30,14 +30,14 @@ import { Component } from "@angular/core";
 })
 export class AppComponent {
   public columnDefs: ColDef[] = [
-    { field: "id", maxWidth: 80 },
-    { field: "athlete", minWidth: 220 },
-    { field: "country", minWidth: 200 },
-    { field: "year" },
-    { field: "sport", minWidth: 200 },
-    { field: "gold" },
-    { field: "silver" },
-    { field: "bronze" },
+    { field: 'id', maxWidth: 80 },
+    { field: 'athlete', minWidth: 220 },
+    { field: 'country', minWidth: 200 },
+    { field: 'year' },
+    { field: 'sport', minWidth: 200 },
+    { field: 'gold' },
+    { field: 'silver' },
+    { field: 'bronze' },
   ];
   public defaultColDef: ColDef = {
     flex: 1,
@@ -45,8 +45,8 @@ export class AppComponent {
     resizable: true,
   };
   public rowBuffer = 0;
-  public rowModelType = "serverSide";
-  public serverSideStoreType: ServerSideStoreType = "partial";
+  public rowModelType = 'serverSide';
+  public serverSideStoreType: ServerSideStoreType = 'partial';
   public cacheBlockSize = 50;
   public maxBlocksInCache = 2;
   public rowData!: any[];
@@ -55,7 +55,7 @@ export class AppComponent {
 
   onGridReady(params: GridReadyEvent) {
     this.http
-      .get<any[]>("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      .get<any[]>('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .subscribe((data) => {
         // adding row id to data
         var idSequence = 0;
@@ -75,7 +75,7 @@ export class AppComponent {
 function createServerSideDatasource(server: any): IServerSideDatasource {
   return {
     getRows: function (params) {
-      console.log("[Datasource] - rows requested by grid: ", params.request);
+      console.log('[Datasource] - rows requested by grid: ', params.request);
       // get data for request from our fake server
       var response = server.getData(params.request);
       // simulating real server call with a 500ms delay

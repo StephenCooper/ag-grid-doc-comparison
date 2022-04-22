@@ -1,15 +1,15 @@
-"use strict";
+'use strict';
 
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { AgGridReact } from "@ag-grid-community/react";
-import { GridChartsModule } from "@ag-grid-enterprise/charts";
-import { MenuModule } from "@ag-grid-enterprise/menu";
-import { RowGroupingModule } from "@ag-grid-enterprise/row-grouping";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from '@ag-grid-community/react';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import { MenuModule } from '@ag-grid-enterprise/menu';
+import { GridChartsModule } from '@ag-grid-enterprise/charts';
+import { RowGroupingModule } from '@ag-grid-enterprise/row-grouping';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([
@@ -26,15 +26,15 @@ class GridExample extends Component {
     this.state = {
       columnDefs: [
         // different ways to define 'categories'
-        { field: "athlete", width: 150, chartDataType: "category" },
-        { field: "age", chartDataType: "category", sort: "asc" },
-        { field: "sport" },
+        { field: 'athlete', width: 150, chartDataType: 'category' },
+        { field: 'age', chartDataType: 'category', sort: 'asc' },
+        { field: 'sport' },
         // excludes year from charts
-        { field: "year", chartDataType: "excluded" },
+        { field: 'year', chartDataType: 'excluded' },
         // different ways to define 'series'
-        { field: "gold", chartDataType: "series" },
-        { field: "silver", chartDataType: "series" },
-        { field: "bronze" }, // inferred as series by grid
+        { field: 'gold', chartDataType: 'series' },
+        { field: 'silver', chartDataType: 'series' },
+        { field: 'bronze' }, // inferred as series by grid
       ],
       defaultColDef: {
         editable: true,
@@ -49,10 +49,10 @@ class GridExample extends Component {
         common: {
           title: {
             enabled: true,
-            text: "Medals by Age",
+            text: 'Medals by Age',
           },
           legend: {
-            position: "bottom",
+            position: 'bottom',
           },
         },
         column: {
@@ -77,7 +77,7 @@ class GridExample extends Component {
       this.setState({ rowData: data });
     };
 
-    fetch("https://www.ag-grid.com/example-assets/wide-spread-of-sports.json")
+    fetch('https://www.ag-grid.com/example-assets/wide-spread-of-sports.json')
       .then((resp) => resp.json())
       .then((data) => updateData(data));
   };
@@ -87,23 +87,23 @@ class GridExample extends Component {
       cellRange: {
         rowStartIndex: 0,
         rowEndIndex: 79,
-        columns: ["age", "gold", "silver", "bronze"],
+        columns: ['age', 'gold', 'silver', 'bronze'],
       },
-      chartType: "groupedColumn",
-      chartContainer: document.querySelector("#myChart"),
-      aggFunc: "sum",
+      chartType: 'groupedColumn',
+      chartContainer: document.querySelector('#myChart'),
+      aggFunc: 'sum',
     };
     params.api.createRangeChart(createRangeChartParams);
   };
 
   render() {
     return (
-      <div style={{ width: "100%", height: "100%" }}>
+      <div style={{ width: '100%', height: '100%' }}>
         <div className="wrapper">
           <div
             style={{
-              height: "100%",
-              width: "100%",
+              height: '100%',
+              width: '100%',
             }}
             className="ag-theme-alpine"
           >
@@ -126,4 +126,4 @@ class GridExample extends Component {
   }
 }
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

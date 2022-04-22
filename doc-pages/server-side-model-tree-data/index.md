@@ -14,36 +14,32 @@ the result of grouping. When working with Tree Data, there are no columns gettin
 An example of a Tree Data JSON structure is shown below:
 
 ```json
-[
-  {
+[{
     "employeeId": 101,
     "employeeName": "Erica Rogers",
     "jobTitle": "CEO",
     "employmentType": "Permanent",
-    "children": [
-      {
+    "children": [{
         "employeeId": 102,
         "employeeName": "Malcolm Barrett",
         "jobTitle": "Exec. Vice President",
         "employmentType": "Permanent",
         "children": [
-          {
-            "employeeId": 103,
-            "employeeName": "Leah Flowers",
-            "jobTitle": "Parts Technician",
-            "employmentType": "Contract"
-          },
-          {
-            "employeeId": 104,
-            "employeeName": "Tammy Sutton",
-            "jobTitle": "Service Technician",
-            "employmentType": "Contract"
-          }
+            {
+                "employeeId": 103,
+                "employeeName": "Leah Flowers",
+                "jobTitle": "Parts Technician",
+                "employmentType": "Contract"
+            },
+            {
+                "employeeId": 104,
+                "employeeName": "Tammy Sutton",
+                "jobTitle": "Service Technician",
+                "employmentType": "Contract"
+            }
         ]
-      }
-    ]
-  }
-]
+    }]
+}]
 ```
 
 It is expected that the data set will be too large to send over the network, hence the SSRM is used to
@@ -60,7 +56,7 @@ Tree Data is supplied via the [Server-Side Datasource](/server-side-model-dataso
 however there are two additional gridOptions callbacks: `isServerSideGroup(dataItem)`
 and `getServerSideGroupKey(dataItem)`.
 
-<api-documentation source='grid-properties/properties.json' section='serverSideRowModel' names='["isServerSideGroup", "getServerSideGroupKey"]' ></api-documentation>
+<api-documentation source='grid-options/properties.json' section='serverSideRowModel' names='["isServerSideGroup", "getServerSideGroupKey"]' ></api-documentation>
 
 The following code snippet shows the relevant `gridOptions` entries for configuring tree data with the
 server-side row model:
@@ -117,3 +113,4 @@ Sorting works in the same way when using Tree Data as when not using Tree Data w
 ## Filtering
 
 Changing the filter applied to a column will always refresh (reload) the data. This is true for both the Partial Store and Full Store.
+

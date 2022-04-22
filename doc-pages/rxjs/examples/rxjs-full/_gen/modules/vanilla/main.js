@@ -1,33 +1,33 @@
 const columnDefs = [
-  { field: "code", maxWidth: 90 },
-  { field: "name", minWidth: 200 },
+  { field: 'code', maxWidth: 90 },
+  { field: 'name', minWidth: 200 },
   {
-    field: "bid",
-    cellClass: "cell-number",
+    field: 'bid',
+    cellClass: 'cell-number',
     valueFormatter: numberFormatter,
-    cellRenderer: "agAnimateShowChangeCellRenderer",
+    cellRenderer: 'agAnimateShowChangeCellRenderer',
   },
   {
-    field: "mid",
-    cellClass: "cell-number",
+    field: 'mid',
+    cellClass: 'cell-number',
     valueFormatter: numberFormatter,
-    cellRenderer: "agAnimateShowChangeCellRenderer",
+    cellRenderer: 'agAnimateShowChangeCellRenderer',
   },
   {
-    field: "ask",
-    cellClass: "cell-number",
+    field: 'ask',
+    cellClass: 'cell-number',
     valueFormatter: numberFormatter,
-    cellRenderer: "agAnimateShowChangeCellRenderer",
+    cellRenderer: 'agAnimateShowChangeCellRenderer',
   },
   {
-    field: "volume",
-    cellClass: "cell-number",
-    cellRenderer: "agAnimateSlideCellRenderer",
+    field: 'volume',
+    cellClass: 'cell-number',
+    cellRenderer: 'agAnimateSlideCellRenderer',
   },
 ];
 
 function numberFormatter(params) {
-  if (typeof params.value === "number") {
+  if (typeof params.value === 'number') {
     return params.value.toFixed(2);
   }
 
@@ -67,7 +67,7 @@ const gridOptions = {
   },
 };
 
-document.addEventListener("DOMContentLoaded", function () {
-  const gridDiv = document.querySelector("#myGrid");
+document.addEventListener('DOMContentLoaded', function () {
+  const gridDiv = document.querySelector('#myGrid');
   new agGrid.Grid(gridDiv, gridOptions);
 });

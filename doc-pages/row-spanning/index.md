@@ -6,6 +6,7 @@ By default, each cell will take up the height of one row. You can change this be
 to allow cells to span multiple rows. This feature is similar to 'cell merging' in Excel
 or 'row spanning' in HTML tables.
 
+
 ## Configuring Row Spanning
 
 To allow row spanning, the grid must have property `suppressRowTransform=true`.
@@ -42,6 +43,7 @@ const gridOptions = {
 | when using CSS `transform`. The downside to not using `transform` is performance; row animation
 | (after sort or filter) will be slower.
 
+
 ## Row Spanning Simple Example
 
 Below shows a simple example using row spanning. The example doesn't make much sense,
@@ -49,6 +51,7 @@ it just arbitrarily sets row span on some cells for demonstration purposes.
 
 - The **Athlete** column is configured to span 2 rows for 'Aleksey Nemov' and 4 rows for 'Ryan Lochte'.
 - The **Athlete** column is configured to apply a CSS class to give a background to the cell. This is important because if a background was not set, the cell background would be transparent and the underlying cell would still be visible.
+
 
 <grid-example title='Row Spanning Simple' name='row-spanning-simple' type='generated' options=' { "exampleHeight":  580 }'></grid-example>
 
@@ -58,13 +61,16 @@ Row spanning will typically be used for creating reports with AG Grid. Below
 is something that would be more typical of the row spanning feature. The following
 can be noted from the example:
 
+
 - Column **Show** row spans by 4 rows when it has content.
 - Column **Show** uses CSS class rules to specify background and border.
 - Column **Show** has a custom cell renderer to make use of the extra space.
 
+
 <grid-example title='Row Spanning Complex' name='row-spanning-complex' type='generated' options=' { "exampleHeight": 580 } '></grid-example>
 
 ## Constraints with Row Spanning
+
 
 Row Spanning breaks out of the row / cell calculations that a lot of features in the grid are based on.
 If using Row Spanning, be aware of the following:

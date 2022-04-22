@@ -3,16 +3,16 @@ import {
   Grid,
   GridOptions,
   IServerSideDatasource,
-} from "ag-grid-community";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine-dark.css";
-import "ag-grid-enterprise";
+} from 'ag-grid-community';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine-dark.css';
+import 'ag-grid-enterprise';
 declare var FakeServer: any;
 const gridOptions: GridOptions = {
   columnDefs: [
-    { field: "country", rowGroup: true },
-    { field: "year", pivot: true }, // pivot on 'year'
-    { field: "total", aggFunc: "sum" },
+    { field: 'country', rowGroup: true },
+    { field: 'year', pivot: true }, // pivot on 'year'
+    { field: 'total', aggFunc: 'sum' },
   ],
   defaultColDef: {
     flex: 4,
@@ -25,8 +25,8 @@ const gridOptions: GridOptions = {
   },
 
   // use the server-side row model
-  rowModelType: "serverSide",
-  serverSideStoreType: "partial",
+  rowModelType: 'serverSide',
+  serverSideStoreType: 'partial',
 
   // enable pivoting
   pivotMode: true,
@@ -36,10 +36,10 @@ const gridOptions: GridOptions = {
 };
 
 // setup the grid after the page has finished loading
-var gridDiv = document.querySelector<HTMLElement>("#myGrid")!;
+var gridDiv = document.querySelector<HTMLElement>('#myGrid')!;
 new Grid(gridDiv, gridOptions);
 
-fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
   .then((response) => response.json())
   .then(function (data) {
     // setup the fake server with entire dataset
@@ -55,7 +55,7 @@ fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
 function getServerSideDatasource(server: any): IServerSideDatasource {
   return {
     getRows: function (params) {
-      console.log("[Datasource] - rows requested by grid: ", params.request);
+      console.log('[Datasource] - rows requested by grid: ', params.request);
 
       // get data for request from our fake server
       var response = server.getData(params.request);
@@ -88,7 +88,7 @@ function addPivotColDefs(response: any, columnApi: ColumnApi) {
 
   // create colDefs
   var pivotColDefs = response.pivotFields.map(function (field: string) {
-    var headerName = field.split("_")[0];
+    var headerName = field.split('_')[0];
     return { headerName: headerName, field: field };
   });
 

@@ -1,12 +1,12 @@
-"use strict";
+'use strict';
 
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
-import { AgGridReact } from "ag-grid-react";
-import React, { useCallback, useMemo, useRef, useState } from "react";
-import { render } from "react-dom";
-import CountryCellRenderer from "./countryCellRenderer.jsx";
+import React, { useCallback, useMemo, useRef, useState } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from 'ag-grid-react';
+import 'ag-grid-enterprise';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import CountryCellRenderer from './countryCellRenderer.jsx';
 
 const countryCodes = {};
 
@@ -14,24 +14,24 @@ const base64flags = {};
 
 const GridExample = () => {
   const gridRef = useRef();
-  const containerStyle = useMemo(() => ({ width: "100%", height: "100%" }), []);
-  const gridStyle = useMemo(() => ({ height: "100%", width: "100%" }), []);
+  const containerStyle = useMemo(() => ({ width: '100%', height: '100%' }), []);
+  const gridStyle = useMemo(() => ({ height: '100%', width: '100%' }), []);
   const [rowData, setRowData] = useState();
   const [columnDefs, setColumnDefs] = useState([
-    { field: "athlete", width: 200 },
+    { field: 'athlete', width: 200 },
     {
-      field: "country",
-      cellClass: "countryCell",
+      field: 'country',
+      cellClass: 'countryCell',
       cellRenderer: CountryCellRenderer,
     },
-    { field: "age" },
-    { field: "year" },
-    { field: "date" },
-    { field: "sport" },
-    { field: "gold" },
-    { field: "silver" },
-    { field: "bronze" },
-    { field: "total" },
+    { field: 'age' },
+    { field: 'year' },
+    { field: 'date' },
+    { field: 'sport' },
+    { field: 'gold' },
+    { field: 'silver' },
+    { field: 'bronze' },
+    { field: 'total' },
   ]);
   const defaultColDef = useMemo(() => {
     return {
@@ -42,9 +42,9 @@ const GridExample = () => {
   const excelStyles = useMemo(() => {
     return [
       {
-        id: "countryCell",
+        id: 'countryCell',
         alignment: {
-          vertical: "Center",
+          vertical: 'Center',
           indent: 4,
         },
       },
@@ -53,7 +53,7 @@ const GridExample = () => {
   const defaultExcelExportParams = useMemo(() => {
     return {
       addImageToCell: function (rowIndex, col, value) {
-        if (col.getColId() !== "country") {
+        if (col.getColId() !== 'country') {
           return;
         }
         const countryCode = countryCodes[value];
@@ -61,7 +61,7 @@ const GridExample = () => {
           image: {
             id: countryCode,
             base64: base64flags[countryCode],
-            imageType: "png",
+            imageType: 'png',
             width: 20,
             height: 11,
             position: {
@@ -82,7 +82,7 @@ const GridExample = () => {
   }, []);
 
   const onGridReady = useCallback((params) => {
-    fetch("https://www.ag-grid.com/example-assets/small-olympic-winners.json")
+    fetch('https://www.ag-grid.com/example-assets/small-olympic-winners.json')
       .then((data) =>
         createBase64FlagsFromResponse(data, countryCodes, base64flags)
       )
@@ -120,4 +120,4 @@ const GridExample = () => {
   );
 };
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

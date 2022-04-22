@@ -1,20 +1,20 @@
-import { ColDef, Grid, GridOptions } from "ag-grid-community";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import { CustomLoadingOverlay } from "./customLoadingOverlay";
-import { CustomNoRowsOverlay } from "./customNoRowsOverlay";
+import { ColDef, Grid, GridOptions } from 'ag-grid-community';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import { CustomLoadingOverlay } from './customLoadingOverlay';
+import { CustomNoRowsOverlay } from './customNoRowsOverlay';
 
 const columnDefs: ColDef[] = [
-  { field: "athlete", width: 150 },
-  { field: "age", width: 90 },
-  { field: "country", width: 120 },
-  { field: "year", width: 90 },
-  { field: "date", width: 110 },
-  { field: "sport", width: 110 },
-  { field: "gold", width: 100 },
-  { field: "silver", width: 100 },
-  { field: "bronze", width: 100 },
-  { field: "total", width: 100 },
+  { field: 'athlete', width: 150 },
+  { field: 'age', width: 90 },
+  { field: 'country', width: 120 },
+  { field: 'year', width: 90 },
+  { field: 'date', width: 110 },
+  { field: 'sport', width: 110 },
+  { field: 'gold', width: 100 },
+  { field: 'silver', width: 100 },
+  { field: 'bronze', width: 100 },
+  { field: 'total', width: 100 },
 ];
 
 const gridOptions: GridOptions = {
@@ -33,11 +33,11 @@ const gridOptions: GridOptions = {
 
   loadingOverlayComponent: CustomLoadingOverlay,
   loadingOverlayComponentParams: {
-    loadingMessage: "One moment please...",
+    loadingMessage: 'One moment please...',
   },
   noRowsOverlayComponent: CustomNoRowsOverlay,
   noRowsOverlayComponentParams: {
-    noRowsMessageFunc: () => "Sorry - no rows! at: " + new Date(),
+    noRowsMessageFunc: () => 'Sorry - no rows! at: ' + new Date(),
   },
 };
 
@@ -54,16 +54,16 @@ function onBtHide() {
 }
 
 // setup the grid after the page has finished loading
-const gridDiv = document.querySelector<HTMLElement>("#myGrid")!;
+const gridDiv = document.querySelector<HTMLElement>('#myGrid')!;
 new Grid(gridDiv, gridOptions);
 
-fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
   .then((response) => response.json())
   .then((data) => {
     gridOptions.api!.setRowData(data);
   });
 
-if (typeof window !== "undefined") {
+if (typeof window !== 'undefined') {
   // Attach external event handlers to window so they can be called from index.html
   (<any>window).onBtShowLoading = onBtShowLoading;
   (<any>window).onBtShowNoRows = onBtShowNoRows;

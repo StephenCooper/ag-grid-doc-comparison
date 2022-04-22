@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import ReactDOM from "react-dom";
+import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
 
 export default class MoodEditor extends Component {
   constructor(props) {
@@ -14,12 +14,12 @@ export default class MoodEditor extends Component {
   }
 
   componentWillMount() {
-    this.setHappy(this.props.value === "Happy");
+    this.setHappy(this.props.value === 'Happy');
   }
 
   componentDidMount() {
     this.refs.container.addEventListener(
-      "keydown",
+      'keydown',
       this.checkAndToggleMoodIfLeftRight
     );
     this.focus();
@@ -27,13 +27,13 @@ export default class MoodEditor extends Component {
 
   componentWillUnmount() {
     this.refs.container.removeEventListener(
-      "keydown",
+      'keydown',
       this.checkAndToggleMoodIfLeftRight
     );
   }
 
   checkAndToggleMoodIfLeftRight = (event) => {
-    if (["ArrowLeft", "ArrowRight"].indexOf(event.key) > -1) {
+    if (['ArrowLeft', 'ArrowRight'].indexOf(event.key) > -1) {
       // left and right
       this.toggleMood();
       event.stopPropagation();
@@ -54,7 +54,7 @@ export default class MoodEditor extends Component {
   }
 
   getValue() {
-    return this.state.happy ? "Happy" : "Sad";
+    return this.state.happy ? 'Happy' : 'Sad';
   }
 
   setHappy(happy) {
@@ -86,8 +86,8 @@ export default class MoodEditor extends Component {
   }
 
   render() {
-    let happyStyle = this.state.happy ? "selected" : "default";
-    let sadStyle = !this.state.happy ? "selected" : "default";
+    let happyStyle = this.state.happy ? 'selected' : 'default';
+    let sadStyle = !this.state.happy ? 'selected' : 'default';
 
     return (
       <div

@@ -1,9 +1,10 @@
-"use strict";
+'use strict';
 
-import { AgChartsReact } from "ag-charts-react";
-import { cloneDeep } from "lodash";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { cloneDeep } from 'lodash';
+import { render } from 'react-dom';
+import * as agCharts from 'ag-charts-community';
+import { AgChartsReact } from 'ag-charts-react';
 
 class ChartExample extends Component {
   constructor(props) {
@@ -13,24 +14,24 @@ class ChartExample extends Component {
       options: {
         data: [
           {
-            month: "Jun",
+            month: 'Jun',
             value1: 50,
             hats_made: 40,
           },
           {
-            month: "Jul",
+            month: 'Jul',
             value1: 70,
             hats_made: 50,
           },
           {
-            month: "Aug",
+            month: 'Aug',
             value1: 60,
             hats_made: 30,
           },
         ],
         series: [
-          { type: "column", xKey: "month", stacked: true, yKey: "value1" },
-          { type: "column", xKey: "month", stacked: true, yKey: "hats_made" },
+          { type: 'column', xKey: 'month', stacked: true, yKey: 'value1' },
+          { type: 'column', xKey: 'month', stacked: true, yKey: 'hats_made' },
         ],
       },
     };
@@ -41,8 +42,8 @@ class ChartExample extends Component {
   setYNames = () => {
     const options = cloneDeep(this.state.options);
 
-    options.series[0].yName = "Sweaters Made";
-    options.series[1].yName = "Hats Made";
+    options.series[0].yName = 'Sweaters Made';
+    options.series[1].yName = 'Hats Made';
 
     this.setState({ options });
   };
@@ -70,4 +71,4 @@ class ChartExample extends Component {
   }
 }
 
-render(<ChartExample />, document.querySelector("#root"));
+render(<ChartExample />, document.querySelector('#root'));

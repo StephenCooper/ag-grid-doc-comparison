@@ -1,30 +1,30 @@
 var myIcons = {
   sortAscending: function () {
-    return "ASC";
+    return 'ASC';
   },
   sortDescending: function () {
-    return "DESC";
+    return 'DESC';
   },
 };
 
 const columnDefs = [
   {
-    field: "athlete",
+    field: 'athlete',
     rowGroup: true,
     hide: true,
   },
   {
-    field: "age",
+    field: 'age',
     width: 90,
     enableValue: true,
     icons: {
       // not very useful, but demonstrates you can just have strings
-      sortAscending: "U",
-      sortDescending: "D",
+      sortAscending: 'U',
+      sortDescending: 'D',
     },
   },
   {
-    field: "country",
+    field: 'country',
     width: 150,
     rowGroupIndex: 0,
     icons: {
@@ -32,17 +32,17 @@ const columnDefs = [
       sortDescending: '<i class="fa fa-sort-alpha-down"/>',
     },
   },
-  { field: "year", width: 90, enableRowGroup: true },
-  { field: "date" },
+  { field: 'year', width: 90, enableRowGroup: true },
+  { field: 'date' },
   {
-    field: "sport",
+    field: 'sport',
     width: 110,
     icons: myIcons,
   },
-  { field: "gold", width: 100 },
-  { field: "silver", width: 100 },
-  { field: "bronze", width: 100 },
-  { field: "total", width: 100 },
+  { field: 'gold', width: 100 },
+  { field: 'silver', width: 100 },
+  { field: 'bronze', width: 100 },
+  { field: 'total', width: 100 },
 ];
 
 const gridOptions = {
@@ -57,8 +57,8 @@ const gridOptions = {
   rowData: null,
   sideBar: true,
   autoGroupColumnDef: {
-    headerName: "Athlete",
-    field: "athlete",
+    headerName: 'Athlete',
+    field: 'athlete',
     rowDrag: true,
     // use font awesome for first col, with numbers for sort
     icons: {
@@ -94,23 +94,23 @@ const gridOptions = {
     rowGroupPanel: '<i class="fa fa-university"/>',
     pivotPanel: '<i class="fa fa-magic"/>',
     valuePanel: '<i class="fa fa-magnet"/>',
-    menuPin: "P", // just showing letters, no graphic
-    menuValue: "V",
-    menuAddRowGroup: "A",
-    menuRemoveRowGroup: "R",
-    clipboardCopy: ">>",
-    clipboardPaste: ">>",
+    menuPin: 'P', // just showing letters, no graphic
+    menuValue: 'V',
+    menuAddRowGroup: 'A',
+    menuRemoveRowGroup: 'R',
+    clipboardCopy: '>>',
+    clipboardPaste: '>>',
     rowDrag: '<i class="fa fa-circle"/>',
   },
-  rowSelection: "multiple",
+  rowSelection: 'multiple',
 };
 
 // setup the grid after the page has finished loading
-document.addEventListener("DOMContentLoaded", function () {
-  var gridDiv = document.querySelector("#myGrid");
+document.addEventListener('DOMContentLoaded', function () {
+  var gridDiv = document.querySelector('#myGrid');
   new agGrid.Grid(gridDiv, gridOptions);
 
-  fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+  fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
     .then((response) => response.json())
     .then((data) => gridOptions.api.setRowData(data));
 });

@@ -1,9 +1,9 @@
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { AgGridVue } from "@ag-grid-community/vue3";
-import { createApp } from "vue";
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { AgGridVue } from '@ag-grid-community/vue3';
+import { createApp } from 'vue';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([ClientSideRowModelModule]);
@@ -22,29 +22,29 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
         {
-          headerName: "Athlete Details",
+          headerName: 'Athlete Details',
           marryChildren: true,
           children: [
-            { field: "athlete", colId: "athlete" },
-            { field: "country", colId: "country" },
+            { field: 'athlete', colId: 'athlete' },
+            { field: 'country', colId: 'country' },
           ],
         },
-        { field: "age", colId: "age" },
+        { field: 'age', colId: 'age' },
         {
-          headerName: "Sports Results",
+          headerName: 'Sports Results',
           marryChildren: true,
           children: [
-            { field: "sport", colId: "sport" },
-            { field: "total", colId: "total" },
-            { field: "gold", colId: "gold" },
-            { field: "silver", colId: "silver" },
-            { field: "bronze", colId: "bronze" },
+            { field: 'sport', colId: 'sport' },
+            { field: 'total', colId: 'total' },
+            { field: 'gold', colId: 'gold' },
+            { field: 'silver', colId: 'silver' },
+            { field: 'bronze', colId: 'bronze' },
           ],
         },
       ],
@@ -65,11 +65,11 @@ const VueExample = {
 
       const updateData = (data) => params.api.setRowData(data);
 
-      fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
         .then((resp) => resp.json())
         .then((data) => updateData(data));
     },
   },
 };
 
-createApp(VueExample).mount("#app");
+createApp(VueExample).mount('#app');

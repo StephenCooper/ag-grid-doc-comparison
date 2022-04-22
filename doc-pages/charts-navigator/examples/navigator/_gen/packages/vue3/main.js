@@ -1,6 +1,6 @@
-import { AgChartsVue } from "ag-charts-vue3";
-import { cloneDeep } from "lodash";
-import { createApp } from "vue";
+import { AgChartsVue } from 'ag-charts-vue3';
+import { cloneDeep } from 'lodash';
+import { createApp } from 'vue';
 
 const ChartExample = {
   template: `
@@ -14,7 +14,7 @@ const ChartExample = {
             </div>
     `,
   components: {
-    "ag-charts-vue": AgChartsVue,
+    'ag-charts-vue': AgChartsVue,
   },
   data: function () {
     return {
@@ -27,31 +27,31 @@ const ChartExample = {
         text: "Try dragging the Navigator's handles to zoom in",
       },
       subtitle: {
-        text: "or the area between them to pan around",
+        text: 'or the area between them to pan around',
       },
       data: [
-        { label: "Android", value: 56.9 },
-        { label: "iOS", value: 22.5 },
-        { label: "BlackBerry", value: 6.8 },
-        { label: "Symbian", value: 8.5 },
-        { label: "Bada", value: 2.6 },
-        { label: "Windows", value: 1.9 },
+        { label: 'Android', value: 56.9 },
+        { label: 'iOS', value: 22.5 },
+        { label: 'BlackBerry', value: 6.8 },
+        { label: 'Symbian', value: 8.5 },
+        { label: 'Bada', value: 2.6 },
+        { label: 'Windows', value: 1.9 },
       ],
       series: [
         {
-          type: "column",
-          xKey: "label",
-          yKey: "value",
+          type: 'column',
+          xKey: 'label',
+          yKey: 'value',
         },
       ],
       axes: [
         {
-          type: "number",
-          position: "left",
+          type: 'number',
+          position: 'left',
         },
         {
-          type: "category",
-          position: "bottom",
+          type: 'category',
+          position: 'bottom',
         },
       ],
       legend: {
@@ -74,4 +74,4 @@ const ChartExample = {
   },
 };
 
-createApp(ChartExample).mount("#app");
+createApp(ChartExample).mount('#app');

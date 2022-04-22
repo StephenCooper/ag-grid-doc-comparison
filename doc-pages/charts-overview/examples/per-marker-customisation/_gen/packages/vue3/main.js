@@ -1,5 +1,5 @@
-import { AgChartsVue } from "ag-charts-vue3";
-import { createApp } from "vue";
+import { AgChartsVue } from 'ag-charts-vue3';
+import { createApp } from 'vue';
 
 const ChartExample = {
   template: `
@@ -7,7 +7,7 @@ const ChartExample = {
                 :options="options"></ag-charts-vue>
     `,
   components: {
-    "ag-charts-vue": AgChartsVue,
+    'ag-charts-vue': AgChartsVue,
   },
   data: function () {
     return {
@@ -21,21 +21,21 @@ const ChartExample = {
         return d.magnitude > 4;
       }),
       title: {
-        text: "Worldwide Earthquakes (first week of February 2020)",
+        text: 'Worldwide Earthquakes (first week of February 2020)',
         fontSize: 18,
       },
       subtitle: {
-        text: "Source: US Geological Survey",
+        text: 'Source: US Geological Survey',
       },
       series: [
         {
-          type: "scatter",
-          xKey: "depth",
-          xName: "Depth",
-          yKey: "minDistance",
-          yName: "Minimum Distance",
-          sizeKey: "magnitude",
-          sizeName: "Magnitude",
+          type: 'scatter',
+          xKey: 'depth',
+          xName: 'Depth',
+          yKey: 'minDistance',
+          yName: 'Minimum Distance',
+          sizeKey: 'magnitude',
+          sizeName: 'Magnitude',
           marker: {
             size: minSize,
             maxSize: maxSize,
@@ -53,19 +53,19 @@ const ChartExample = {
       ],
       axes: [
         {
-          position: "bottom",
-          type: "number",
+          position: 'bottom',
+          type: 'number',
           title: {
             enabled: true,
-            text: "Depth (m)",
+            text: 'Depth (m)',
           },
         },
         {
-          position: "left",
-          type: "number",
+          position: 'left',
+          type: 'number',
           title: {
             enabled: true,
-            text: "Minimum distance (km)",
+            text: 'Minimum distance (km)',
           },
         },
       ],
@@ -93,16 +93,16 @@ window.find = function find(arr, predicate) {
 
 window.calculateColour = function calculateColour(size) {
   var colours = {
-    0.1: "#33CC00",
-    0.2: "#5CC200",
-    0.3: "#85B800",
-    0.4: "#ADAD00",
-    0.5: "#D6A300",
-    0.6: "#FF9900",
-    0.7: "#FF7300",
-    0.8: "#FF4D00",
-    0.9: "#FF2600",
-    1: "#FF0000",
+    0.1: '#33CC00',
+    0.2: '#5CC200',
+    0.3: '#85B800',
+    0.4: '#ADAD00',
+    0.5: '#D6A300',
+    0.6: '#FF9900',
+    0.7: '#FF7300',
+    0.8: '#FF4D00',
+    0.9: '#FF2600',
+    1: '#FF0000',
   };
   var position = (size - minSize) / (maxSize - minSize);
   var keys = Object.keys(colours)
@@ -116,4 +116,4 @@ window.calculateColour = function calculateColour(size) {
   return colours[matchingKey];
 };
 
-createApp(ChartExample).mount("#app");
+createApp(ChartExample).mount('#app');

@@ -1,18 +1,19 @@
-import { Component } from "@angular/core";
+import { Component } from '@angular/core';
 import {
   ColDef,
   GetRowIdFunc,
+  GetRowIdParams,
   GridApi,
   GridReadyEvent,
   ValueFormatterParams,
-} from "ag-grid-community";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
+} from 'ag-grid-community';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import 'ag-grid-enterprise';
 declare var globalRowData: any[];
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<div class="example-wrapper">
     <div style="margin-bottom: 5px;">
       <button (click)="onNormalUpdate()">Normal Update</button>
@@ -41,133 +42,133 @@ export class AppComponent {
   public columnDefs: ColDef[] = [
     // these are the row groups, so they are all hidden (they are show in the group column)
     {
-      headerName: "Product",
-      field: "product",
+      headerName: 'Product',
+      field: 'product',
       enableRowGroup: true,
       enablePivot: true,
       rowGroupIndex: 0,
       hide: true,
     },
     {
-      headerName: "Portfolio",
-      field: "portfolio",
+      headerName: 'Portfolio',
+      field: 'portfolio',
       enableRowGroup: true,
       enablePivot: true,
       rowGroupIndex: 1,
       hide: true,
     },
     {
-      headerName: "Book",
-      field: "book",
+      headerName: 'Book',
+      field: 'book',
       enableRowGroup: true,
       enablePivot: true,
       rowGroupIndex: 2,
       hide: true,
     },
-    { headerName: "Trade", field: "trade", width: 100 },
+    { headerName: 'Trade', field: 'trade', width: 100 },
     // all the other columns (visible and not grouped)
     {
-      field: "current",
+      field: 'current',
       width: 200,
-      aggFunc: "sum",
+      aggFunc: 'sum',
       enableValue: true,
-      cellClass: "number",
+      cellClass: 'number',
       valueFormatter: numberCellFormatter,
-      cellRenderer: "agAnimateShowChangeCellRenderer",
+      cellRenderer: 'agAnimateShowChangeCellRenderer',
     },
     {
-      field: "previous",
+      field: 'previous',
       width: 200,
-      aggFunc: "sum",
+      aggFunc: 'sum',
       enableValue: true,
-      cellClass: "number",
+      cellClass: 'number',
       valueFormatter: numberCellFormatter,
-      cellRenderer: "agAnimateShowChangeCellRenderer",
+      cellRenderer: 'agAnimateShowChangeCellRenderer',
     },
     {
-      field: "dealType",
+      field: 'dealType',
       enableRowGroup: true,
       enablePivot: true,
     },
     {
-      headerName: "Bid",
-      field: "bidFlag",
+      headerName: 'Bid',
+      field: 'bidFlag',
       enableRowGroup: true,
       enablePivot: true,
       width: 100,
     },
     {
-      headerName: "PL 1",
-      field: "pl1",
+      headerName: 'PL 1',
+      field: 'pl1',
       width: 200,
-      aggFunc: "sum",
+      aggFunc: 'sum',
       enableValue: true,
-      cellClass: "number",
+      cellClass: 'number',
       valueFormatter: numberCellFormatter,
-      cellRenderer: "agAnimateShowChangeCellRenderer",
+      cellRenderer: 'agAnimateShowChangeCellRenderer',
     },
     {
-      headerName: "PL 2",
-      field: "pl2",
+      headerName: 'PL 2',
+      field: 'pl2',
       width: 200,
-      aggFunc: "sum",
+      aggFunc: 'sum',
       enableValue: true,
-      cellClass: "number",
+      cellClass: 'number',
       valueFormatter: numberCellFormatter,
-      cellRenderer: "agAnimateShowChangeCellRenderer",
+      cellRenderer: 'agAnimateShowChangeCellRenderer',
     },
     {
-      headerName: "Gain-DX",
-      field: "gainDx",
+      headerName: 'Gain-DX',
+      field: 'gainDx',
       width: 200,
-      aggFunc: "sum",
+      aggFunc: 'sum',
       enableValue: true,
-      cellClass: "number",
+      cellClass: 'number',
       valueFormatter: numberCellFormatter,
-      cellRenderer: "agAnimateShowChangeCellRenderer",
+      cellRenderer: 'agAnimateShowChangeCellRenderer',
     },
     {
-      headerName: "SX / PX",
-      field: "sxPx",
+      headerName: 'SX / PX',
+      field: 'sxPx',
       width: 200,
-      aggFunc: "sum",
+      aggFunc: 'sum',
       enableValue: true,
-      cellClass: "number",
+      cellClass: 'number',
       valueFormatter: numberCellFormatter,
-      cellRenderer: "agAnimateShowChangeCellRenderer",
+      cellRenderer: 'agAnimateShowChangeCellRenderer',
     },
     {
-      headerName: "99 Out",
-      field: "_99Out",
+      headerName: '99 Out',
+      field: '_99Out',
       width: 200,
-      aggFunc: "sum",
+      aggFunc: 'sum',
       enableValue: true,
-      cellClass: "number",
+      cellClass: 'number',
       valueFormatter: numberCellFormatter,
-      cellRenderer: "agAnimateShowChangeCellRenderer",
+      cellRenderer: 'agAnimateShowChangeCellRenderer',
     },
     {
-      field: "submitterID",
+      field: 'submitterID',
       width: 200,
-      aggFunc: "sum",
+      aggFunc: 'sum',
       enableValue: true,
-      cellClass: "number",
+      cellClass: 'number',
       valueFormatter: numberCellFormatter,
-      cellRenderer: "agAnimateShowChangeCellRenderer",
+      cellRenderer: 'agAnimateShowChangeCellRenderer',
     },
     {
-      field: "submitterDealID",
+      field: 'submitterDealID',
       width: 200,
-      aggFunc: "sum",
+      aggFunc: 'sum',
       enableValue: true,
-      cellClass: "number",
+      cellClass: 'number',
       valueFormatter: numberCellFormatter,
-      cellRenderer: "agAnimateShowChangeCellRenderer",
+      cellRenderer: 'agAnimateShowChangeCellRenderer',
     },
   ];
-  public rowGroupPanelShow = "always";
-  public pivotPanelShow = "always";
-  public getRowId: GetRowIdFunc = function (params) {
+  public rowGroupPanelShow = 'always';
+  public pivotPanelShow = 'always';
+  public getRowId: GetRowIdFunc = function (params: GetRowIdParams) {
     return params.data.trade;
   };
   public defaultColDef: ColDef = {
@@ -182,7 +183,7 @@ export class AppComponent {
 
   onNormalUpdate() {
     var startMillis = new Date().getTime();
-    setMessage("Running Transaction");
+    setMessage('Running Transaction');
     var api = this.gridApi!;
     for (var i = 0; i < UPDATE_COUNT; i++) {
       setTimeout(function () {
@@ -204,17 +205,17 @@ export class AppComponent {
     setTimeout(function () {
       var endMillis = new Date().getTime();
       var duration = endMillis - startMillis;
-      setMessage("Transaction took " + duration.toLocaleString() + "ms");
+      setMessage('Transaction took ' + duration.toLocaleString() + 'ms');
     }, 0);
     function setMessage(msg: string) {
-      var eMessage = document.querySelector("#eMessage") as any;
+      var eMessage = document.querySelector('#eMessage') as any;
       eMessage.innerHTML = msg;
     }
   }
 
   onAsyncUpdate() {
     var startMillis = new Date().getTime();
-    setMessage("Running Async");
+    setMessage('Running Async');
     var updatedCount = 0;
     var api = this.gridApi!;
     for (var i = 0; i < UPDATE_COUNT; i++) {
@@ -240,12 +241,12 @@ export class AppComponent {
         setTimeout(function () {
           var endMillis = new Date().getTime();
           var duration = endMillis - startMillis;
-          setMessage("Async took " + duration.toLocaleString() + "ms");
+          setMessage('Async took ' + duration.toLocaleString() + 'ms');
         }, 0);
       }
     }
     function setMessage(msg: string) {
-      var eMessage = document.querySelector("#eMessage") as any;
+      var eMessage = document.querySelector('#eMessage') as any;
       eMessage.innerHTML = msg;
     }
   }
@@ -262,7 +263,7 @@ var UPDATE_COUNT = 200;
 function numberCellFormatter(params: ValueFormatterParams) {
   return Math.floor(params.value)
     .toString()
-    .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
+    .replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
 }
 // makes a copy of the original and merges in the new values
 function copyObject(object: any) {

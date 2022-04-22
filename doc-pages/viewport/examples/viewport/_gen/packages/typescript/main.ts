@@ -1,23 +1,24 @@
 import {
   ColDef,
+  GetRowIdParams,
   Grid,
   GridOptions,
   ICellRendererComp,
   ICellRendererParams,
   IViewportDatasource,
   ValueFormatterParams,
-} from "ag-grid-community";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
+} from 'ag-grid-community';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import 'ag-grid-enterprise';
 declare function createMockServer(): any;
 declare function createViewportDatasource(mockServer: any): IViewportDatasource;
 
 class RowIndexRenderer implements ICellRendererComp {
   eGui!: HTMLDivElement;
   init(params: ICellRendererParams) {
-    this.eGui = document.createElement("div");
-    this.eGui.innerHTML = "" + params.rowIndex;
+    this.eGui = document.createElement('div');
+    this.eGui.innerHTML = '' + params.rowIndex;
   }
   refresh(params: ICellRendererParams): boolean {
     return false;
@@ -30,34 +31,34 @@ class RowIndexRenderer implements ICellRendererComp {
 const columnDefs: ColDef[] = [
   // this col shows the row index, doesn't use any data from the row
   {
-    headerName: "#",
+    headerName: '#',
     maxWidth: 80,
     cellRenderer: RowIndexRenderer,
   },
-  { field: "code", maxWidth: 90 },
-  { field: "name", minWidth: 220 },
+  { field: 'code', maxWidth: 90 },
+  { field: 'name', minWidth: 220 },
   {
-    field: "bid",
-    cellClass: "cell-number",
+    field: 'bid',
+    cellClass: 'cell-number',
     valueFormatter: numberFormatter,
-    cellRenderer: "agAnimateShowChangeCellRenderer",
+    cellRenderer: 'agAnimateShowChangeCellRenderer',
   },
   {
-    field: "mid",
-    cellClass: "cell-number",
+    field: 'mid',
+    cellClass: 'cell-number',
     valueFormatter: numberFormatter,
-    cellRenderer: "agAnimateShowChangeCellRenderer",
+    cellRenderer: 'agAnimateShowChangeCellRenderer',
   },
   {
-    field: "ask",
-    cellClass: "cell-number",
+    field: 'ask',
+    cellClass: 'cell-number',
     valueFormatter: numberFormatter,
-    cellRenderer: "agAnimateShowChangeCellRenderer",
+    cellRenderer: 'agAnimateShowChangeCellRenderer',
   },
   {
-    field: "volume",
-    cellClass: "cell-number",
-    cellRenderer: "agAnimateSlideCellRenderer",
+    field: 'volume',
+    cellClass: 'cell-number',
+    cellRenderer: 'agAnimateSlideCellRenderer',
   },
 ];
 
@@ -68,10 +69,10 @@ const gridOptions: GridOptions = {
     minWidth: 140,
     resizable: true,
   },
-  rowSelection: "multiple",
-  rowModelType: "viewport",
+  rowSelection: 'multiple',
+  rowModelType: 'viewport',
   // implement this so that we can do selection
-  getRowId: function (params) {
+  getRowId: function (params: GetRowIdParams) {
     // the code is unique, so perfect for the id
     return params.data.code;
   },
@@ -79,7 +80,7 @@ const gridOptions: GridOptions = {
 };
 
 function numberFormatter(params: ValueFormatterParams) {
-  if (typeof params.value === "number") {
+  if (typeof params.value === 'number') {
     return params.value.toFixed(2);
   } else {
     return params.value;
@@ -87,12 +88,12 @@ function numberFormatter(params: ValueFormatterParams) {
 }
 
 // setup the grid after the page has finished loading
-var gridDiv = document.querySelector<HTMLElement>("#myGrid")!;
+var gridDiv = document.querySelector<HTMLElement>('#myGrid')!;
 new Grid(gridDiv, gridOptions);
 
 // do http request to get our sample data - not using any framework to keep the example self contained.
 // you will probably use a framework like JQuery, Angular or something else to do your HTTP calls.
-fetch("https://www.ag-grid.com/example-assets/stocks.json")
+fetch('https://www.ag-grid.com/example-assets/stocks.json')
   .then((response) => response.json())
   .then(function (data) {
     // set up a mock server - real code will not do this, it will contact your

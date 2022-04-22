@@ -3,15 +3,15 @@ import {
   ColumnApi,
   GridApi,
   GridReadyEvent,
-} from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine-dark.css";
-import { HttpClient } from "@angular/common/http";
-import { Component } from "@angular/core";
+} from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine-dark.css';
+import { HttpClient } from '@angular/common/http';
+import { Component } from '@angular/core';
 // Required feature modules are registered in app.module.ts
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<div class="example-wrapper">
     <div class="example-header">
       <div
@@ -41,12 +41,12 @@ import { Component } from "@angular/core";
 })
 export class AppComponent {
   public columnDefs: ColDef[] = [
-    { field: "athlete", minWidth: 150 },
-    { field: "country", minWidth: 150 },
-    { field: "year", minWidth: 120 },
-    { field: "gold", aggFunc: "sum" },
-    { field: "silver", aggFunc: "sum" },
-    { field: "bronze", aggFunc: "sum" },
+    { field: 'athlete', minWidth: 150 },
+    { field: 'country', minWidth: 150 },
+    { field: 'year', minWidth: 120 },
+    { field: 'gold', aggFunc: 'sum' },
+    { field: 'silver', aggFunc: 'sum' },
+    { field: 'bronze', aggFunc: 'sum' },
   ];
   public defaultColDef: ColDef = {
     flex: 1,
@@ -55,10 +55,10 @@ export class AppComponent {
   };
   public autoGroupColumnDef: ColDef = {
     // to get 'athlete' showing in the leaf level in this column
-    cellRenderer: "agGroupCellRenderer",
-    headerName: "Athlete",
+    cellRenderer: 'agGroupCellRenderer',
+    headerName: 'Athlete',
     minWidth: 200,
-    field: "athlete",
+    field: 'athlete',
   };
   public rowData!: any[];
 
@@ -66,7 +66,7 @@ export class AppComponent {
 
   onGridReady(params: GridReadyEvent) {
     this.http
-      .get<any[]>("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      .get<any[]>('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .subscribe((data) => {
         params.api!.setRowData(data.slice(0, 50));
         startInterval(params.api!, params.columnApi!);
@@ -97,8 +97,9 @@ function startInterval(api: GridApi, columnApi: ColumnApi) {
   setTitleFormatted(null);
 }
 function resetCountdown() {
-  (document.querySelector("#animationCountdown") as any).style.width =
-    countDownDirection ? "100%" : "0%";
+  (document.querySelector(
+    '#animationCountdown'
+  ) as any).style.width = countDownDirection ? '100%' : '0%';
   countDownDirection = !countDownDirection;
 }
 function setTitleFormatted(
@@ -114,54 +115,54 @@ function setTitleFormatted(
       '<span class="code-highlight-yellow">command:> </span> ' +
       '<span class="code-highlight-blue">' +
       apiName +
-      "</span>" +
+      '</span>' +
       '<span class="code-highlight-blue">.</span>' +
       '<span class="code-highlight-yellow">' +
       methodName +
-      "</span>" +
+      '</span>' +
       '<span class="code-highlight-blue"></span>' +
       '<span class="code-highlight-blue">(</span>' +
       '<span class="code-highlight-green">' +
       paramsName +
-      "</span>" +
+      '</span>' +
       '<span class="code-highlight-blue">)</span>';
   }
-  document.querySelector("#animationAction")!.innerHTML = html;
+  document.querySelector('#animationAction')!.innerHTML = html;
 }
 function getActions() {
   return [
     function (api: GridApi, columnApi: ColumnApi) {
       columnApi.applyColumnState({
-        state: [{ colId: "country", sort: "asc" }],
+        state: [{ colId: 'country', sort: 'asc' }],
         defaultState: { sort: null },
       });
-      setTitleFormatted("api", "applyColumnState", "country: 'asc'");
+      setTitleFormatted('api', 'applyColumnState', "country: 'asc'");
     },
     function (api: GridApi, columnApi: ColumnApi) {
       columnApi.applyColumnState({
         state: [
-          { colId: "year", sort: "asc" },
-          { colId: "country", sort: "asc" },
+          { colId: 'year', sort: 'asc' },
+          { colId: 'country', sort: 'asc' },
         ],
         defaultState: { sort: null },
       });
       setTitleFormatted(
-        "api",
-        "applyColumnState",
+        'api',
+        'applyColumnState',
         "year: 'asc', country 'asc'"
       );
     },
     function (api: GridApi, columnApi: ColumnApi) {
       columnApi.applyColumnState({
         state: [
-          { colId: "year", sort: "asc" },
-          { colId: "country", sort: "desc" },
+          { colId: 'year', sort: 'asc' },
+          { colId: 'country', sort: 'desc' },
         ],
         defaultState: { sort: null },
       });
       setTitleFormatted(
-        "api",
-        "applyColumnState",
+        'api',
+        'applyColumnState',
         "year: 'asc', country: 'desc'"
       );
     },
@@ -169,7 +170,7 @@ function getActions() {
       columnApi.applyColumnState({
         defaultState: { sort: null },
       });
-      setTitleFormatted("api", "applyColumnState", "clear sort");
+      setTitleFormatted('api', 'applyColumnState', 'clear sort');
     },
   ];
 }

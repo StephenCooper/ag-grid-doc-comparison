@@ -1,11 +1,11 @@
-import { Component } from "@angular/core";
-import { ColDef, GridApi, GridReadyEvent } from "ag-grid-community";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import { PartialMatchFilter } from "./partial-match-filter.component";
+import { Component } from '@angular/core';
+import { ColDef, GridApi, GridReadyEvent } from 'ag-grid-community';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import { PartialMatchFilter } from './partial-match-filter.component';
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<div class="example-wrapper">
     <button
       style="margin-bottom: 5px"
@@ -28,11 +28,11 @@ export class AppComponent {
   private gridApi!: GridApi;
 
   public columnDefs: ColDef[] = [
-    { field: "row" },
+    { field: 'row' },
     {
-      field: "name",
+      field: 'name',
       filter: PartialMatchFilter,
-      menuTabs: ["filterMenuTab"],
+      menuTabs: ['filterMenuTab'],
     },
   ];
   public defaultColDef: ColDef = {
@@ -46,8 +46,8 @@ export class AppComponent {
   public rowData: any[] | null = getData();
 
   onClicked() {
-    this.gridApi.getFilterInstance("name", function (instance) {
-      (instance as PartialMatchFilter).componentMethod("Hello World!");
+    this.gridApi.getFilterInstance('name', function (instance) {
+      (instance as PartialMatchFilter).componentMethod('Hello World!');
     });
   }
 

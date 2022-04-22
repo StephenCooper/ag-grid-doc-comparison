@@ -1,8 +1,10 @@
-"use strict";
+'use strict';
 
-import { AgChartsReact } from "ag-charts-react";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { cloneDeep } from 'lodash';
+import { render } from 'react-dom';
+import * as agCharts from 'ag-charts-community';
+import { AgChartsReact } from 'ag-charts-react';
 
 class ChartExample extends Component {
   constructor(props) {
@@ -13,44 +15,44 @@ class ChartExample extends Component {
         autoSize: true,
         data: getData(),
         title: {
-          text: "Change in Number of Jobs in UK (June to September 2019)",
+          text: 'Change in Number of Jobs in UK (June to September 2019)',
           fontSize: 18,
         },
         subtitle: {
-          text: "Source: Office for National Statistics",
+          text: 'Source: Office for National Statistics',
         },
         series: [
           {
-            type: "bar",
-            xKey: "job",
-            yKey: "change",
-            fill: "rgba(0, 117, 163, 0.9)",
-            stroke: "rgba(0, 117, 163, 0.9)",
+            type: 'bar',
+            xKey: 'job',
+            yKey: 'change',
+            fill: 'rgba(0, 117, 163, 0.9)',
+            stroke: 'rgba(0, 117, 163, 0.9)',
             highlightStyle: {
               item: {
-                fill: "#0ab9ff",
+                fill: '#0ab9ff',
               },
             },
             label: {
-              fontWeight: "bold",
-              color: "white",
+              fontWeight: 'bold',
+              color: 'white',
               formatter: function (params) {
-                return (params.value > 0 ? "+" : "") + params.value;
+                return (params.value > 0 ? '+' : '') + params.value;
               },
             },
           },
         ],
         axes: [
           {
-            type: "category",
-            position: "left",
+            type: 'category',
+            position: 'left',
           },
           {
-            type: "number",
-            position: "bottom",
+            type: 'number',
+            position: 'bottom',
             title: {
               enabled: true,
-              text: "Change in number of jobs (thousands)",
+              text: 'Change in number of jobs (thousands)',
             },
           },
         ],
@@ -68,4 +70,4 @@ class ChartExample extends Component {
   }
 }
 
-render(<ChartExample />, document.querySelector("#root"));
+render(<ChartExample />, document.querySelector('#root'));

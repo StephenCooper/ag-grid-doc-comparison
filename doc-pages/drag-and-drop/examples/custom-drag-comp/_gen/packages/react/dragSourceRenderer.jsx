@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 
 export default class DragSourceRenderer extends Component {
   constructor(props) {
@@ -8,8 +8,8 @@ export default class DragSourceRenderer extends Component {
   onDragStart = (dragEvent) => {
     var userAgent = window.navigator.userAgent;
     dragEvent.dataTransfer.setData(
-      "text/plain",
-      "Dragged item with ID: " + this.props.node.data.id
+      'text/plain',
+      'Dragged item with ID: ' + this.props.node.data.id
     );
   };
 

@@ -1,9 +1,9 @@
 class ColourCellRenderer {
   init(params) {
-    this.eGui = document.createElement("div");
+    this.eGui = document.createElement('div');
     this.eGui.innerText = params.value;
-    this.eGui.style.borderLeft = "10px solid " + params.value;
-    this.eGui.style.paddingLeft = "5px";
+    this.eGui.style.borderLeft = '10px solid ' + params.value;
+    this.eGui.style.paddingLeft = '5px';
   }
 
   getGui() {

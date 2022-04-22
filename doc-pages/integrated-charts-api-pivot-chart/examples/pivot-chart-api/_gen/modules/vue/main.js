@@ -1,12 +1,12 @@
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { AgGridVue } from "@ag-grid-community/vue";
-import { GridChartsModule } from "@ag-grid-enterprise/charts";
-import { MenuModule } from "@ag-grid-enterprise/menu";
-import { RowGroupingModule } from "@ag-grid-enterprise/row-grouping";
-import Vue from "vue";
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { AgGridVue } from '@ag-grid-community/vue';
+import { GridChartsModule } from '@ag-grid-enterprise/charts';
+import { MenuModule } from '@ag-grid-enterprise/menu';
+import { RowGroupingModule } from '@ag-grid-enterprise/row-grouping';
+import Vue from 'vue';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([
@@ -38,16 +38,16 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
-        { field: "country", pivot: true },
-        { field: "year", rowGroup: true },
-        { field: "sport", rowGroup: true },
-        { field: "total", aggFunc: "sum" },
-        { field: "gold", aggFunc: "sum" },
+        { field: 'country', pivot: true },
+        { field: 'year', rowGroup: true },
+        { field: 'sport', rowGroup: true },
+        { field: 'total', aggFunc: 'sum' },
+        { field: 'gold', aggFunc: 'sum' },
       ],
       gridApi: null,
       columnApi: null,
@@ -72,11 +72,11 @@ const VueExample = {
   },
   methods: {
     onFirstDataRendered(event) {
-      var chartContainer = document.querySelector("#chart");
+      var chartContainer = document.querySelector('#chart');
       var params = {
-        chartType: "groupedColumn",
+        chartType: 'groupedColumn',
         chartContainer: chartContainer,
-        chartThemeName: "ag-vivid",
+        chartThemeName: 'ag-vivid',
         chartThemeOverrides: {
           common: {
             padding: {
@@ -87,7 +87,7 @@ const VueExample = {
             },
             legend: {
               enabled: true,
-              position: "bottom",
+              position: 'bottom',
             },
             navigator: {
               enabled: true,
@@ -110,7 +110,7 @@ const VueExample = {
         this.rowData = data;
       };
 
-      fetch("https://www.ag-grid.com/example-assets/wide-spread-of-sports.json")
+      fetch('https://www.ag-grid.com/example-assets/wide-spread-of-sports.json')
         .then((resp) => resp.json())
         .then((data) => updateData(data));
     },
@@ -118,8 +118,8 @@ const VueExample = {
 };
 
 new Vue({
-  el: "#app",
+  el: '#app',
   components: {
-    "my-component": VueExample,
+    'my-component': VueExample,
   },
 });

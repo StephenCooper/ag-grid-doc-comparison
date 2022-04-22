@@ -1,11 +1,11 @@
-import { HttpClient } from "@angular/common/http";
-import { Component } from "@angular/core";
-import { ColDef, ColGroupDef, GridReadyEvent } from "ag-grid-community";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
+import { HttpClient } from '@angular/common/http';
+import { Component } from '@angular/core';
+import { ColDef, ColGroupDef, GridReadyEvent } from 'ag-grid-community';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<ag-grid-angular
     style="width: 100%; height: 100%;"
     class="ag-theme-alpine"
@@ -18,48 +18,48 @@ import "ag-grid-community/dist/styles/ag-theme-alpine.css";
 export class AppComponent {
   public columnDefs: (ColDef | ColGroupDef)[] = [
     {
-      headerName: "Athlete Details",
+      headerName: 'Athlete Details',
       children: [
         {
-          field: "athlete",
+          field: 'athlete',
           width: 180,
-          filter: "agTextColumnFilter",
+          filter: 'agTextColumnFilter',
         },
         {
-          field: "age",
+          field: 'age',
           width: 90,
-          filter: "agNumberColumnFilter",
+          filter: 'agNumberColumnFilter',
         },
-        { headerName: "Country", field: "country", width: 140 },
+        { headerName: 'Country', field: 'country', width: 140 },
       ],
     },
     {
-      headerName: "Sports Results",
+      headerName: 'Sports Results',
       children: [
-        { field: "sport", width: 140 },
+        { field: 'sport', width: 140 },
         {
-          columnGroupShow: "closed",
-          field: "total",
+          columnGroupShow: 'closed',
+          field: 'total',
           width: 100,
-          filter: "agNumberColumnFilter",
+          filter: 'agNumberColumnFilter',
         },
         {
-          columnGroupShow: "open",
-          field: "gold",
+          columnGroupShow: 'open',
+          field: 'gold',
           width: 100,
-          filter: "agNumberColumnFilter",
+          filter: 'agNumberColumnFilter',
         },
         {
-          columnGroupShow: "open",
-          field: "silver",
+          columnGroupShow: 'open',
+          field: 'silver',
           width: 100,
-          filter: "agNumberColumnFilter",
+          filter: 'agNumberColumnFilter',
         },
         {
-          columnGroupShow: "open",
-          field: "bronze",
+          columnGroupShow: 'open',
+          field: 'bronze',
           width: 100,
-          filter: "agNumberColumnFilter",
+          filter: 'agNumberColumnFilter',
         },
       ],
     },
@@ -75,7 +75,7 @@ export class AppComponent {
 
   onGridReady(params: GridReadyEvent) {
     this.http
-      .get<any[]>("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      .get<any[]>('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .subscribe((data) => (this.rowData = data));
   }
 }

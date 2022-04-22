@@ -3,20 +3,20 @@ import {
   ExcelHeaderFooterContent,
   Grid,
   GridOptions,
-} from "ag-grid-community";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
+} from 'ag-grid-community';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import 'ag-grid-enterprise';
 
 const gridOptions: GridOptions = {
   columnDefs: [
-    { field: "athlete", minWidth: 200 },
-    { field: "country", minWidth: 200 },
-    { field: "sport", minWidth: 150 },
-    { field: "gold" },
-    { field: "silver" },
-    { field: "bronze" },
-    { field: "total" },
+    { field: 'athlete', minWidth: 200 },
+    { field: 'country', minWidth: 200 },
+    { field: 'sport', minWidth: 150 },
+    { field: 'gold' },
+    { field: 'silver' },
+    { field: 'bronze' },
+    { field: 'total' },
   ],
   defaultColDef: {
     sortable: true,
@@ -30,9 +30,9 @@ const gridOptions: GridOptions = {
 };
 
 const getValues = (type: string) => {
-  const value = (
-    document.querySelector("#" + type + "Value") as HTMLInputElement
-  ).value;
+  const value = (document.querySelector(
+    '#' + type + 'Value'
+  ) as HTMLInputElement).value;
 
   if (value == null) {
     return;
@@ -42,47 +42,47 @@ const getValues = (type: string) => {
     value: value,
   };
 
-  obj.position = (
-    document.querySelector("#" + type + "Position") as HTMLInputElement
-  ).value as "Left" | "Center" | "Right";
+  obj.position = (document.querySelector(
+    '#' + type + 'Position'
+  ) as HTMLInputElement).value as 'Left' | 'Center' | 'Right';
 
-  const fontName = (
-    document.querySelector("#" + type + "FontName") as HTMLInputElement
-  ).value;
-  const fontSize = (
-    document.querySelector("#" + type + "FontSize") as HTMLInputElement
-  ).value;
-  const fontWeight = (
-    document.querySelector("#" + type + "FontWeight") as HTMLInputElement
-  ).value;
-  const underline = (
-    document.querySelector("#" + type + "Underline") as HTMLInputElement
-  ).checked;
+  const fontName = (document.querySelector(
+    '#' + type + 'FontName'
+  ) as HTMLInputElement).value;
+  const fontSize = (document.querySelector(
+    '#' + type + 'FontSize'
+  ) as HTMLInputElement).value;
+  const fontWeight = (document.querySelector(
+    '#' + type + 'FontWeight'
+  ) as HTMLInputElement).value;
+  const underline = (document.querySelector(
+    '#' + type + 'Underline'
+  ) as HTMLInputElement).checked;
 
   if (
-    fontName !== "Calibri" ||
-    fontSize != "11" ||
-    fontWeight !== "Regular" ||
+    fontName !== 'Calibri' ||
+    fontSize != '11' ||
+    fontWeight !== 'Regular' ||
     underline
   ) {
     obj.font = {};
-    if (fontName !== "Calibri") {
+    if (fontName !== 'Calibri') {
       obj.font.fontName = fontName;
     }
-    if (fontSize != "11") {
+    if (fontSize != '11') {
       obj.font.size = Number.parseInt(fontSize);
     }
-    if (fontWeight !== "Regular") {
-      if (fontWeight.indexOf("Bold") !== -1) {
+    if (fontWeight !== 'Regular') {
+      if (fontWeight.indexOf('Bold') !== -1) {
         obj.font.bold = true;
       }
-      if (fontWeight.indexOf("Italic") !== -1) {
+      if (fontWeight.indexOf('Italic') !== -1) {
         obj.font.italic = true;
       }
     }
 
     if (underline) {
-      obj.font.underline = "Single";
+      obj.font.underline = 'Single';
     }
   }
 
@@ -90,8 +90,8 @@ const getValues = (type: string) => {
 };
 
 const getParams: () => ExcelExportParams | undefined = () => {
-  const header = getValues("header");
-  const footer = getValues("footer");
+  const header = getValues('header');
+  const footer = getValues('footer');
 
   if (!header && !footer) {
     return undefined;
@@ -119,16 +119,16 @@ function onBtExport() {
 }
 
 // setup the grid after the page has finished loading
-const gridDiv = document.querySelector<HTMLElement>("#myGrid")!;
+const gridDiv = document.querySelector<HTMLElement>('#myGrid')!;
 new Grid(gridDiv, gridOptions);
 
-fetch("https://www.ag-grid.com/example-assets/small-olympic-winners.json")
+fetch('https://www.ag-grid.com/example-assets/small-olympic-winners.json')
   .then((response) => response.json())
   .then((data) =>
     gridOptions.api!.setRowData(data.filter((rec: any) => rec.country != null))
   );
 
-if (typeof window !== "undefined") {
+if (typeof window !== 'undefined') {
   // Attach external event handlers to window so they can be called from index.html
   (<any>window).onBtExport = onBtExport;
 }

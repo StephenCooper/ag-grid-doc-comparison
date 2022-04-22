@@ -1,8 +1,8 @@
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
-import { AgGridVue } from "ag-grid-vue3";
-import { createApp } from "vue";
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import 'ag-grid-enterprise';
+import { AgGridVue } from 'ag-grid-vue3';
+import { createApp } from 'vue';
 
 const VueExample = {
   template: `
@@ -25,21 +25,21 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
-        { field: "athlete" },
-        { field: "country" },
-        { field: "age" },
-        { field: "year" },
-        { field: "date" },
-        { field: "sport" },
-        { field: "gold" },
-        { field: "silver" },
-        { field: "bronze" },
-        { field: "total" },
+        { field: 'athlete' },
+        { field: 'country' },
+        { field: 'age' },
+        { field: 'year' },
+        { field: 'date' },
+        { field: 'sport' },
+        { field: 'gold' },
+        { field: 'silver' },
+        { field: 'bronze' },
+        { field: 'total' },
       ],
       gridApi: null,
       columnApi: null,
@@ -56,7 +56,7 @@ const VueExample = {
         [
           {
             data: {
-              type: "String",
+              type: 'String',
               value: logos.AgGrid, // see imageUtils
             },
             mergeAcross: 1,
@@ -65,14 +65,14 @@ const VueExample = {
       ],
       rowHeight: (params) => (params.rowIndex === 1 ? 82 : 20),
       addImageToCell: (rowIndex, col, value) => {
-        if (rowIndex !== 1 || col.getColId() !== "athlete") {
+        if (rowIndex !== 1 || col.getColId() !== 'athlete') {
           return;
         }
         return {
           image: {
-            id: "logo",
+            id: 'logo',
             base64: value,
-            imageType: "png",
+            imageType: 'png',
             width: 295,
             height: 100,
             position: {
@@ -91,11 +91,11 @@ const VueExample = {
       this.gridApi = params.api;
       this.gridColumnApi = params.columnApi;
 
-      fetch("https://www.ag-grid.com/example-assets/small-olympic-winners.json")
+      fetch('https://www.ag-grid.com/example-assets/small-olympic-winners.json')
         .then((response) => response.json())
         .then((data) => params.api.setRowData(data));
     },
   },
 };
 
-createApp(VueExample).mount("#app");
+createApp(VueExample).mount('#app');

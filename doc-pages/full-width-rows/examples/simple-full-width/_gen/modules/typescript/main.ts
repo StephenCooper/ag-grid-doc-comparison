@@ -1,4 +1,4 @@
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
 import {
   Grid,
   GridOptions,
@@ -6,10 +6,11 @@ import {
   ICellRendererParams,
   IsFullWidthRowParams,
   ModuleRegistry,
-} from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { FullWidthCellRenderer } from "./fullWidthCellRenderer";
+  RowHeightParams,
+} from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { FullWidthCellRenderer } from './fullWidthCellRenderer';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([ClientSideRowModelModule]);
@@ -20,7 +21,7 @@ class CountryCellRenderer implements ICellRendererComp {
   init(params: ICellRendererParams) {
     const flag = `<img border="0" width="15" height="10" src="https://www.ag-grid.com/example-assets/flags/${params.data.code}.png">`;
 
-    const eTemp = document.createElement("div");
+    const eTemp = document.createElement('div');
     eTemp.innerHTML = `<span style="cursor: default;">${flag} ${params.value}</span>`;
     this.eGui = eTemp.firstElementChild as HTMLElement;
   }
@@ -36,9 +37,9 @@ class CountryCellRenderer implements ICellRendererComp {
 
 const gridOptions: GridOptions = {
   columnDefs: [
-    { field: "name", cellRenderer: CountryCellRenderer },
-    { field: "continent" },
-    { field: "language" },
+    { field: 'name', cellRenderer: CountryCellRenderer },
+    { field: 'continent' },
+    { field: 'language' },
   ],
   defaultColDef: {
     flex: 1,
@@ -47,7 +48,7 @@ const gridOptions: GridOptions = {
     filter: true,
   },
   rowData: getData(),
-  getRowHeight: function (params) {
+  getRowHeight: function (params: RowHeightParams) {
     // return 100px height for full width rows
     if (isFullWidth(params.data)) {
       return 100;
@@ -62,9 +63,9 @@ const gridOptions: GridOptions = {
 
 function isFullWidth(data: any) {
   // return true when country is Peru, France or Italy
-  return ["Peru", "France", "Italy"].indexOf(data.name) >= 0;
+  return ['Peru', 'France', 'Italy'].indexOf(data.name) >= 0;
 }
 
 // setup the grid after the page has finished loading
-const gridDiv = document.querySelector<HTMLElement>("#myGrid")!;
+const gridDiv = document.querySelector<HTMLElement>('#myGrid')!;
 new Grid(gridDiv, gridOptions);

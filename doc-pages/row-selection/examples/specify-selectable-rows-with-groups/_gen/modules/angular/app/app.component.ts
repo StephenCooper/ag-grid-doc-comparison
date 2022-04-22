@@ -3,15 +3,16 @@ import {
   GridApi,
   GridReadyEvent,
   IsRowSelectable,
-} from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { HttpClient } from "@angular/common/http";
-import { Component } from "@angular/core";
+  RowNode,
+} from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { HttpClient } from '@angular/common/http';
+import { Component } from '@angular/core';
 // Required feature modules are registered in app.module.ts
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<div style="display: flex; flex-direction: column; height: 100%;">
     <div style="padding-bottom: 1rem;">
       <button (click)="filterBy2004()">Filter by Year 2008 &amp; 2012</button>
@@ -38,13 +39,13 @@ export class AppComponent {
   private gridApi!: GridApi;
 
   public columnDefs: ColDef[] = [
-    { field: "country", rowGroup: true, hide: true },
-    { field: "year", maxWidth: 100 },
-    { field: "gold", aggFunc: "sum" },
-    { field: "silver", aggFunc: "sum" },
-    { field: "bronze", aggFunc: "sum" },
-    { field: "date" },
-    { field: "sport" },
+    { field: 'country', rowGroup: true, hide: true },
+    { field: 'year', maxWidth: 100 },
+    { field: 'gold', aggFunc: 'sum' },
+    { field: 'silver', aggFunc: 'sum' },
+    { field: 'bronze', aggFunc: 'sum' },
+    { field: 'date' },
+    { field: 'sport' },
   ];
   public defaultColDef: ColDef = {
     flex: 1,
@@ -53,17 +54,17 @@ export class AppComponent {
     filter: true,
   };
   public autoGroupColumnDef: ColDef = {
-    headerName: "Athlete",
-    field: "athlete",
+    headerName: 'Athlete',
+    field: 'athlete',
     minWidth: 250,
-    cellRenderer: "agGroupCellRenderer",
+    cellRenderer: 'agGroupCellRenderer',
     cellRendererParams: {
       checkbox: true,
     },
   };
-  public rowSelection = "multiple";
+  public rowSelection = 'multiple';
   public groupDefaultExpanded = -1;
-  public isRowSelectable: IsRowSelectable = function (node) {
+  public isRowSelectable: IsRowSelectable = function (node: RowNode) {
     return node.data
       ? node.data.year === 2008 || node.data.year === 2004
       : false;
@@ -75,8 +76,8 @@ export class AppComponent {
   filterBy2004() {
     this.gridApi.setFilterModel({
       year: {
-        type: "set",
-        values: ["2008", "2012"],
+        type: 'set',
+        values: ['2008', '2012'],
       },
     });
   }
@@ -89,7 +90,7 @@ export class AppComponent {
     this.gridApi = params.api;
 
     this.http
-      .get<any[]>("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      .get<any[]>('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .subscribe((data) => {
         this.rowData = data;
       });

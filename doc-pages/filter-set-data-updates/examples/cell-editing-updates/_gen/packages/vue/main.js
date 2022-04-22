@@ -1,8 +1,8 @@
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
-import { AgGridVue } from "ag-grid-vue";
-import Vue from "vue";
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import 'ag-grid-enterprise';
+import { AgGridVue } from 'ag-grid-vue';
+import Vue from 'vue';
 
 const VueExample = {
   template: `
@@ -24,15 +24,15 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
         {
-          headerName: "Set Filter Column",
-          field: "col1",
-          filter: "agSetColumnFilter",
+          headerName: 'Set Filter Column',
+          field: 'col1',
+          filter: 'agSetColumnFilter',
           flex: 1,
           editable: true,
         },
@@ -46,11 +46,11 @@ const VueExample = {
   },
   created() {
     this.rowData = getRowData();
-    this.sideBar = "filters";
+    this.sideBar = 'filters';
   },
   methods: {
     onFirstDataRendered(params) {
-      params.api.getToolPanelInstance("filters").expandFilters();
+      params.api.getToolPanelInstance('filters').expandFilters();
     },
     reset() {
       this.gridApi.setFilterModel(null);
@@ -65,18 +65,18 @@ const VueExample = {
 
 window.getRowData = function getRowData() {
   return [
-    { col1: "A" },
-    { col1: "A" },
-    { col1: "B" },
-    { col1: "B" },
-    { col1: "C" },
-    { col1: "C" },
+    { col1: 'A' },
+    { col1: 'A' },
+    { col1: 'B' },
+    { col1: 'B' },
+    { col1: 'C' },
+    { col1: 'C' },
   ];
 };
 
 new Vue({
-  el: "#app",
+  el: '#app',
   components: {
-    "my-component": VueExample,
+    'my-component': VueExample,
   },
 });

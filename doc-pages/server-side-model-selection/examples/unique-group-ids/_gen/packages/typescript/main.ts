@@ -1,14 +1,19 @@
-import { Grid, GridOptions, IServerSideDatasource } from "ag-grid-community";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine-dark.css";
-import "ag-grid-enterprise";
+import {
+  GetRowIdParams,
+  Grid,
+  GridOptions,
+  IServerSideDatasource,
+} from 'ag-grid-community';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine-dark.css';
+import 'ag-grid-enterprise';
 declare var FakeServer: any;
 const gridOptions: GridOptions = {
   columnDefs: [
-    { field: "country", rowGroup: true, hide: true },
-    { field: "sport", rowGroup: true, hide: true },
-    { headerName: "Row ID", valueGetter: "node.id", sortable: false },
-    { field: "gold", aggFunc: "sum" },
+    { field: 'country', rowGroup: true, hide: true },
+    { field: 'sport', rowGroup: true, hide: true },
+    { headerName: 'Row ID', valueGetter: 'node.id', sortable: false },
+    { field: 'gold', aggFunc: 'sum' },
   ],
   defaultColDef: {
     flex: 1,
@@ -19,9 +24,9 @@ const gridOptions: GridOptions = {
   autoGroupColumnDef: {
     flex: 1,
     minWidth: 280,
-    field: "athlete",
+    field: 'athlete',
   },
-  getRowId: (params) => {
+  getRowId: (params: GetRowIdParams) => {
     // if leaf level, we have ID
     if (params.data.id != null) {
       return params.data.id;
@@ -42,15 +47,15 @@ const gridOptions: GridOptions = {
       parts.push(params.data[thisGroupCol.getColDef().field!]);
     }
 
-    return parts.join("-");
+    return parts.join('-');
   },
 
   // use the server-side row model
-  rowModelType: "serverSide",
-  serverSideStoreType: "partial",
+  rowModelType: 'serverSide',
+  serverSideStoreType: 'partial',
 
   // allow multiple row selections
-  rowSelection: "multiple",
+  rowSelection: 'multiple',
 
   suppressAggFuncInHeader: true,
 
@@ -60,7 +65,7 @@ const gridOptions: GridOptions = {
 function getServerSideDatasource(server: any): IServerSideDatasource {
   return {
     getRows: function (params) {
-      console.log("[Datasource] - rows requested by grid: ", params.request);
+      console.log('[Datasource] - rows requested by grid: ', params.request);
 
       var response = server.getData(params.request);
 
@@ -82,10 +87,10 @@ function getServerSideDatasource(server: any): IServerSideDatasource {
 }
 
 // setup the grid after the page has finished loading
-var gridDiv = document.querySelector<HTMLElement>("#myGrid")!;
+var gridDiv = document.querySelector<HTMLElement>('#myGrid')!;
 new Grid(gridDiv, gridOptions);
 
-fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
   .then((response) => response.json())
   .then(function (data) {
     // give an ID to each piece of row data

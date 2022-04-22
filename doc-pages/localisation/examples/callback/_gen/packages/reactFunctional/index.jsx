@@ -1,15 +1,15 @@
-"use strict";
+'use strict';
 
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
-import { AgGridReact } from "ag-grid-react";
-import React, { useCallback, useMemo, useState } from "react";
-import { render } from "react-dom";
+import React, { useCallback, useMemo, useRef, useState } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from 'ag-grid-react';
+import 'ag-grid-enterprise';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 
 class NodeIdRenderer {
   init(params) {
-    this.eGui = document.createElement("div");
+    this.eGui = document.createElement('div');
     this.eGui.innerHTML = params.node.id + 1;
   }
 
@@ -22,47 +22,47 @@ class NodeIdRenderer {
 }
 
 const GridExample = () => {
-  const containerStyle = useMemo(() => ({ width: "100%", height: "100%" }), []);
-  const gridStyle = useMemo(() => ({ height: "100%", width: "100%" }), []);
+  const containerStyle = useMemo(() => ({ width: '100%', height: '100%' }), []);
+  const gridStyle = useMemo(() => ({ height: '100%', width: '100%' }), []);
   const [rowData, setRowData] = useState();
   const [columnDefs, setColumnDefs] = useState([
     // this row just shows the row index, doesn't use any data from the row
     {
-      headerName: "#",
+      headerName: '#',
       cellRenderer: NodeIdRenderer,
     },
     {
-      field: "athlete",
-      filterParams: { buttons: ["clear", "reset", "apply"] },
+      field: 'athlete',
+      filterParams: { buttons: ['clear', 'reset', 'apply'] },
     },
     {
-      field: "age",
-      filterParams: { buttons: ["apply", "cancel"] },
+      field: 'age',
+      filterParams: { buttons: ['apply', 'cancel'] },
       enablePivot: true,
     },
-    { field: "country", enableRowGroup: true },
-    { field: "year", filter: "agNumberColumnFilter" },
-    { field: "date" },
+    { field: 'country', enableRowGroup: true },
+    { field: 'year', filter: 'agNumberColumnFilter' },
+    { field: 'date' },
     {
-      field: "sport",
-      filter: "agMultiColumnFilter",
+      field: 'sport',
+      filter: 'agMultiColumnFilter',
       filterParams: {
         filters: [
           {
-            filter: "agTextColumnFilter",
-            display: "accordion",
+            filter: 'agTextColumnFilter',
+            display: 'accordion',
           },
           {
-            filter: "agSetColumnFilter",
-            display: "accordion",
+            filter: 'agSetColumnFilter',
+            display: 'accordion',
           },
         ],
       },
     },
-    { field: "gold", enableValue: true },
-    { field: "silver", enableValue: true },
-    { field: "bronze", enableValue: true },
-    { field: "total", enableValue: true },
+    { field: 'gold', enableValue: true },
+    { field: 'silver', enableValue: true },
+    { field: 'bronze', enableValue: true },
+    { field: 'total', enableValue: true },
   ]);
   const defaultColDef = useMemo(() => {
     return {
@@ -77,24 +77,24 @@ const GridExample = () => {
   const statusBar = useMemo(() => {
     return {
       statusPanels: [
-        { statusPanel: "agTotalAndFilteredRowCountComponent", align: "left" },
-        { statusPanel: "agAggregationComponent" },
+        { statusPanel: 'agTotalAndFilteredRowCountComponent', align: 'left' },
+        { statusPanel: 'agAggregationComponent' },
       ],
     };
   }, []);
   const getLocaleText = useCallback(function (params) {
     switch (params.key) {
-      case "thousandSeparator":
-        return ".";
-      case "decimalSeparator":
-        return ",";
+      case 'thousandSeparator':
+        return '.';
+      case 'decimalSeparator':
+        return ',';
       default:
-        return params.defaultValue ? params.defaultValue.toUpperCase() : "";
+        return params.defaultValue ? params.defaultValue.toUpperCase() : '';
     }
   }, []);
 
   const onGridReady = useCallback((params) => {
-    fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+    fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .then((resp) => resp.json())
       .then((data) => setRowData(data));
   }, []);
@@ -108,7 +108,7 @@ const GridExample = () => {
           defaultColDef={defaultColDef}
           sideBar={true}
           statusBar={statusBar}
-          rowGroupPanelShow={"always"}
+          rowGroupPanelShow={'always'}
           pagination={true}
           paginationPageSize={500}
           enableRangeSelection={true}
@@ -121,4 +121,4 @@ const GridExample = () => {
   );
 };
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

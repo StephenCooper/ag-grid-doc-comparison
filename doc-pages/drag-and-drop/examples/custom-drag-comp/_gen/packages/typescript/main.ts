@@ -1,12 +1,12 @@
-import { Grid, GridOptions } from "ag-grid-community";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import { DragSourceRenderer } from "./dragSourceRenderer";
+import { Grid, GridOptions } from 'ag-grid-community';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import { DragSourceRenderer } from './dragSourceRenderer';
 
 var rowClassRules = {
-  "red-row": 'data.color == "Red"',
-  "green-row": 'data.color == "Green"',
-  "blue-row": 'data.color == "Blue"',
+  'red-row': 'data.color == "Red"',
+  'green-row': 'data.color == "Green"',
+  'blue-row': 'data.color == "Blue"',
 };
 
 const gridOptions: GridOptions = {
@@ -21,10 +21,10 @@ const gridOptions: GridOptions = {
   rowDragManaged: true,
   columnDefs: [
     { cellRenderer: DragSourceRenderer, minWidth: 100 },
-    { field: "id" },
-    { field: "color" },
-    { field: "value1" },
-    { field: "value2" },
+    { field: 'id' },
+    { field: 'color' },
+    { field: 'value1' },
+    { field: 'value2' },
   ],
   animateRows: true,
 };
@@ -35,7 +35,7 @@ function onDragOver(event: any) {
   var dragSupported = types.length;
 
   if (dragSupported) {
-    event.dataTransfer.dropEffect = "move";
+    event.dataTransfer.dropEffect = 'move';
   }
 
   event.preventDefault();
@@ -44,20 +44,20 @@ function onDragOver(event: any) {
 function onDrop(event: any) {
   event.preventDefault();
 
-  var textData = event.dataTransfer.getData("text/plain");
-  var eJsonRow = document.createElement("div");
-  eJsonRow.classList.add("json-row");
+  var textData = event.dataTransfer.getData('text/plain');
+  var eJsonRow = document.createElement('div');
+  eJsonRow.classList.add('json-row');
   eJsonRow.innerText = textData;
 
-  var eJsonDisplay = document.querySelector("#eJsonDisplay")!;
+  var eJsonDisplay = document.querySelector('#eJsonDisplay')!;
   eJsonDisplay.appendChild(eJsonRow);
 }
 
 // setup the grid after the page has finished loading
-var gridDiv = document.querySelector<HTMLElement>("#myGrid")!;
+var gridDiv = document.querySelector<HTMLElement>('#myGrid')!;
 new Grid(gridDiv, gridOptions);
 
-if (typeof window !== "undefined") {
+if (typeof window !== 'undefined') {
   // Attach external event handlers to window so they can be called from index.html
   (<any>window).onDragOver = onDragOver;
   (<any>window).onDrop = onDrop;

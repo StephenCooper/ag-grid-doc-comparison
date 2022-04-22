@@ -10,25 +10,19 @@ Every chart uses the `'ag-default'` theme unless configured otherwise:
 
 ```js
 AgChart.create({
-  theme: "ag-default", // optional, implied
-  //...
+    theme: 'ag-default', // optional, implied
+    //...
 });
 ```
 
 The following themes are provided out-of-the-box:
 
 ```ts
-type AgChartThemeName =
-  | "ag-default"
-  | "ag-default-dark"
-  | "ag-material"
-  | "ag-material-dark"
-  | "ag-pastel"
-  | "ag-pastel-dark"
-  | "ag-solar"
-  | "ag-solar-dark"
-  | "ag-vivid"
-  | "ag-vivid-dark";
+type AgChartThemeName = 'ag-default' | 'ag-default-dark'
+    | 'ag-material' | 'ag-material-dark'
+    | 'ag-pastel' | 'ag-pastel-dark'
+    | 'ag-solar' | 'ag-solar-dark'
+    | 'ag-vivid' | 'ag-vivid-dark';
 ```
 
 ### Example: Stock Themes
@@ -54,26 +48,33 @@ For example, the following snippet demonstrates a custom theme that uses the `'a
 
 ```js
 var myTheme = {
-  baseTheme: "ag-default-dark",
-  palette: {
-    fills: ["#5C2983", "#0076C5", "#21B372", "#FDDE02", "#F76700", "#D30018"],
-    strokes: ["black"],
-  },
-  overrides: {
-    cartesian: {
-      title: {
-        fontSize: 24,
-      },
-      series: {
-        column: {
-          label: {
-            enabled: true,
-            color: "black",
-          },
-        },
-      },
+    baseTheme: 'ag-default-dark',
+    palette: {
+        fills: [
+            '#5C2983',
+            '#0076C5',
+            '#21B372',
+            '#FDDE02',
+            '#F76700',
+            '#D30018'
+        ],
+        strokes: ['black']
     },
-  },
+    overrides: {
+        cartesian: {
+            title: {
+                fontSize: 24
+            },
+            series: {
+                column: {
+                    label: {
+                        enabled: true,
+                        color: 'black'
+                    }
+                }
+            }
+        }
+    }
 };
 ```
 
@@ -87,7 +88,7 @@ The theme shown in the above snippet is applied to the chart in the example belo
 
 This example demonstrates a more advanced theme, providing different settings for different series and axis types.
 
-<chart-example title='Advanced Themes' name='advanced-theme' type='multi' options='{ "exampleHeight": "80vh" }'></chart-example>
+<chart-example title='Advanced Themes' name='advanced-theme' type='multi'></chart-example>
 
 ## Next Up
 

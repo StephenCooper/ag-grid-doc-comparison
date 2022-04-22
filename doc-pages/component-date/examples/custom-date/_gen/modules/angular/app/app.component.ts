@@ -1,13 +1,13 @@
-import { ColDef, GridReadyEvent } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { HttpClient } from "@angular/common/http";
-import { Component } from "@angular/core";
-import { CustomDateComponent } from "./custom-date-component.component";
+import { ColDef, GridReadyEvent } from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { HttpClient } from '@angular/common/http';
+import { Component } from '@angular/core';
+import { CustomDateComponent } from './custom-date-component.component';
 // Required feature modules are registered in app.module.ts
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<ag-grid-angular
     style="width: 100%; height: 100%;"
     class="ag-theme-alpine"
@@ -20,21 +20,21 @@ import { CustomDateComponent } from "./custom-date-component.component";
 })
 export class AppComponent {
   public columnDefs: ColDef[] = [
-    { field: "athlete" },
-    { field: "age", filter: "agNumberColumnFilter" },
-    { field: "country" },
-    { field: "year" },
+    { field: 'athlete' },
+    { field: 'age', filter: 'agNumberColumnFilter' },
+    { field: 'country' },
+    { field: 'year' },
     {
-      field: "date",
+      field: 'date',
       minWidth: 190,
-      filter: "agDateColumnFilter",
+      filter: 'agDateColumnFilter',
       filterParams: filterParams,
     },
-    { field: "sport" },
-    { field: "gold", filter: "agNumberColumnFilter" },
-    { field: "silver", filter: "agNumberColumnFilter" },
-    { field: "bronze", filter: "agNumberColumnFilter" },
-    { field: "total", filter: false },
+    { field: 'sport' },
+    { field: 'gold', filter: 'agNumberColumnFilter' },
+    { field: 'silver', filter: 'agNumberColumnFilter' },
+    { field: 'bronze', filter: 'agNumberColumnFilter' },
+    { field: 'total', filter: false },
   ];
   public defaultColDef: ColDef = {
     editable: true,
@@ -56,7 +56,7 @@ export class AppComponent {
 
   onGridReady(params: GridReadyEvent) {
     this.http
-      .get<any[]>("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      .get<any[]>('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .subscribe((data) => {
         this.rowData = data;
       });
@@ -66,7 +66,7 @@ export class AppComponent {
 const filterParams = {
   comparator: (filterLocalDateAtMidnight: Date, cellValue: string) => {
     const dateAsString = cellValue;
-    const dateParts = dateAsString.split("/");
+    const dateParts = dateAsString.split('/');
     const cellDate = new Date(
       Number(dateParts[2]),
       Number(dateParts[1]) - 1,

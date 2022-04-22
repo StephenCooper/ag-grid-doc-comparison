@@ -1,8 +1,8 @@
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import { AgGridVue } from "ag-grid-vue";
-import Vue from "vue";
-import ControlsCellRenderer from "./controlsCellRendererVue.js";
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import { AgGridVue } from 'ag-grid-vue';
+import Vue from 'vue';
+import ControlsCellRenderer from './controlsCellRendererVue.js';
 
 const VueExample = {
   template: `
@@ -28,36 +28,36 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
     ControlsCellRenderer,
   },
   data: function () {
     return {
       columnDefs: [
         {
-          lockPosition: true,
-          valueGetter: "node.rowIndex",
-          cellClass: "locked-col",
+          lockPosition: 'left',
+          valueGetter: 'node.rowIndex',
+          cellClass: 'locked-col',
           width: 60,
           suppressNavigable: true,
         },
         {
-          lockPosition: true,
-          cellRenderer: "ControlsCellRenderer",
-          cellClass: "locked-col",
+          lockPosition: 'left',
+          cellRenderer: 'ControlsCellRenderer',
+          cellClass: 'locked-col',
           width: 120,
           suppressNavigable: true,
         },
-        { field: "athlete" },
-        { field: "age" },
-        { field: "country" },
-        { field: "year" },
-        { field: "date" },
-        { field: "sport" },
-        { field: "gold" },
-        { field: "silver" },
-        { field: "bronze" },
-        { field: "total" },
+        { field: 'athlete' },
+        { field: 'age' },
+        { field: 'country' },
+        { field: 'year' },
+        { field: 'date' },
+        { field: 'sport' },
+        { field: 'gold' },
+        { field: 'silver' },
+        { field: 'bronze' },
+        { field: 'total' },
       ],
       gridApi: null,
       columnApi: null,
@@ -79,7 +79,7 @@ const VueExample = {
         (col) => !col.getColDef().lockPosition
       );
       const pinnedCount = allNonFixedCols.filter(
-        (col) => col.getPinned() === "left"
+        (col) => col.getPinned() === 'left'
       ).length;
       const pinFixed = pinnedCount > 0;
       const columnStates = [];
@@ -87,7 +87,7 @@ const VueExample = {
         if (pinFixed !== col.isPinned()) {
           columnStates.push({
             colId: col.getId(),
-            pinned: pinFixed ? "left" : null,
+            pinned: pinFixed ? 'left' : null,
           });
         }
       });
@@ -97,12 +97,12 @@ const VueExample = {
     },
     onPinAthlete() {
       this.gridColumnApi.applyColumnState({
-        state: [{ colId: "athlete", pinned: "left" }],
+        state: [{ colId: 'athlete', pinned: 'left' }],
       });
     },
     onUnpinAthlete() {
       this.gridColumnApi.applyColumnState({
-        state: [{ colId: "athlete", pinned: null }],
+        state: [{ colId: 'athlete', pinned: null }],
       });
     },
     onGridReady(params) {
@@ -111,7 +111,7 @@ const VueExample = {
 
       const updateData = (data) => params.api.setRowData(data);
 
-      fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
         .then((resp) => resp.json())
         .then((data) => updateData(data));
     },
@@ -119,8 +119,8 @@ const VueExample = {
 };
 
 new Vue({
-  el: "#app",
+  el: '#app',
   components: {
-    "my-component": VueExample,
+    'my-component': VueExample,
   },
 });

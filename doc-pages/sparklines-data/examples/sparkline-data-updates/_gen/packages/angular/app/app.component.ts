@@ -1,11 +1,11 @@
-import { Component } from "@angular/core";
-import { ColDef, GridApi, GridReadyEvent } from "ag-grid-community";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
+import { Component } from '@angular/core';
+import { ColDef, GridApi, GridReadyEvent } from 'ag-grid-community';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import 'ag-grid-enterprise';
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<div style="height: 100%; display: flex; flex-direction: column;">
     <div style="margin-bottom: 4px;">
       <button (click)="start()">► Start</button>
@@ -28,15 +28,15 @@ export class AppComponent {
   private gridApi!: GridApi;
 
   public columnDefs: ColDef[] = [
-    { field: "symbol", maxWidth: 120 },
-    { field: "name", minWidth: 250 },
+    { field: 'symbol', maxWidth: 120 },
+    { field: 'name', minWidth: 250 },
     {
-      field: "change",
-      cellRenderer: "agSparklineCellRenderer",
+      field: 'change',
+      cellRenderer: 'agSparklineCellRenderer',
     },
     {
-      field: "volume",
-      type: "numericColumn",
+      field: 'volume',
+      type: 'numericColumn',
       maxWidth: 140,
     },
   ];

@@ -1,8 +1,8 @@
-import { ColDef, Grid, GridOptions } from "ag-grid-community";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
+import { ColDef, Grid, GridOptions } from 'ag-grid-community';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 
-const columnDefs: ColDef[] = [{ field: "accented", width: 150 }];
+const columnDefs: ColDef[] = [{ field: 'accented', width: 150 }];
 
 const gridOptions: GridOptions = {
   defaultColDef: {
@@ -10,11 +10,11 @@ const gridOptions: GridOptions = {
   },
   columnDefs: columnDefs,
   animateRows: true,
-  sortingOrder: ["desc", "asc", null],
+  sortingOrder: ['desc', 'asc', null],
   accentedSort: true,
-  rowData: [{ accented: "aáàä" }, { accented: "aàáä" }, { accented: "aäàá" }],
+  rowData: [{ accented: 'aáàä' }, { accented: 'aàáä' }, { accented: 'aäàá' }],
 };
 
 // setup the grid after the page has finished loading
-var gridDiv = document.querySelector<HTMLElement>("#myGrid")!;
+var gridDiv = document.querySelector<HTMLElement>('#myGrid')!;
 new Grid(gridDiv, gridOptions);

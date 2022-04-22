@@ -1,7 +1,7 @@
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import { AgGridVue } from "ag-grid-vue3";
-import { createApp } from "vue";
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import { AgGridVue } from 'ag-grid-vue3';
+import { createApp } from 'vue';
 
 const VueExample = {
   template: `
@@ -22,7 +22,7 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
@@ -40,8 +40,8 @@ const VueExample = {
     };
   },
   created() {
-    this.rowModelType = "infinite";
-    this.rowSelection = "multiple";
+    this.rowModelType = 'infinite';
+    this.rowSelection = 'multiple';
     this.maxBlocksInCache = 2;
     this.getRowId = (params) => {
       return params.data.a;
@@ -58,8 +58,8 @@ const VueExample = {
 
 window.getColumnDefs = function getColumnDefs() {
   const columnDefs = [
-    { checkboxSelection: true, headerName: "", width: 60 },
-    { headerName: "#", width: 80, valueGetter: "node.rowIndex" },
+    { checkboxSelection: true, headerName: '', width: 60 },
+    { headerName: '#', width: 80, valueGetter: 'node.rowIndex' },
   ];
   ALPHABET.forEach(function (letter) {
     columnDefs.push({
@@ -85,7 +85,7 @@ window.getDataSource = function getDataSource(count) {
         ALPHABET.forEach(function (letter, colIndex) {
           var randomNumber = 17 + rowIndex + colIndex;
           var cellKey = letter.toUpperCase() + (rowIndex + 1);
-          record[letter] = cellKey + " = " + randomNumber;
+          record[letter] = cellKey + ' = ' + randomNumber;
         });
         rowsThisPage.push(record);
       }
@@ -99,6 +99,6 @@ window.getDataSource = function getDataSource(count) {
   return dataSource;
 };
 
-var ALPHABET = "abcdefghijklmnopqrstuvwxyz".split("");
+var ALPHABET = 'abcdefghijklmnopqrstuvwxyz'.split('');
 
-createApp(VueExample).mount("#app");
+createApp(VueExample).mount('#app');

@@ -5,9 +5,9 @@ import {
   ICellRendererComp,
   ICellRendererParams,
   RowSpanParams,
-} from "ag-grid-community";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
+} from 'ag-grid-community';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 
 function rowSpan(params: RowSpanParams) {
   if (params.data.show) {
@@ -26,15 +26,15 @@ class ShowCellRenderer implements ICellRendererComp {
       return;
     }
 
-    this.ui = document.createElement("div");
+    this.ui = document.createElement('div');
     this.ui.innerHTML =
       '<div class="show-name">' +
       params.value.name +
-      "" +
-      "</div>" +
+      '' +
+      '</div>' +
       '<div class="show-presenter">' +
       params.value.presenter +
-      "</div>";
+      '</div>';
   }
 
   getGui() {
@@ -47,21 +47,21 @@ class ShowCellRenderer implements ICellRendererComp {
 }
 
 const columnDefs: ColDef[] = [
-  { field: "localTime" },
+  { field: 'localTime' },
   {
-    field: "show",
+    field: 'show',
     cellRenderer: ShowCellRenderer,
     rowSpan: rowSpan,
     cellClassRules: {
-      "show-cell": "value !== undefined",
+      'show-cell': 'value !== undefined',
     },
     width: 200,
   },
-  { field: "a" },
-  { field: "b" },
-  { field: "c" },
-  { field: "d" },
-  { field: "e" },
+  { field: 'a' },
+  { field: 'b' },
+  { field: 'c' },
+  { field: 'd' },
+  { field: 'e' },
 ];
 
 const gridOptions: GridOptions = {
@@ -75,5 +75,5 @@ const gridOptions: GridOptions = {
 };
 
 // setup the grid after the page has finished loading
-const gridDiv = document.querySelector<HTMLElement>("#myGrid")!;
+const gridDiv = document.querySelector<HTMLElement>('#myGrid')!;
 new Grid(gridDiv, gridOptions);

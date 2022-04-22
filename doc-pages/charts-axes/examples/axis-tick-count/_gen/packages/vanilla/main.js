@@ -1,11 +1,11 @@
 const options = {
-  container: document.getElementById("myChart"),
+  container: document.getElementById('myChart'),
   data: generateSpiralData(),
   series: [
     {
-      type: "line",
-      xKey: "x",
-      yKey: "y",
+      type: 'line',
+      xKey: 'x',
+      yKey: 'y',
       marker: {
         enabled: false,
       },
@@ -13,15 +13,15 @@ const options = {
   ],
   axes: [
     {
-      type: "number",
-      position: "bottom",
+      type: 'number',
+      position: 'bottom',
       tick: {
         count: 10,
       },
     },
     {
-      type: "number",
-      position: "left",
+      type: 'number',
+      position: 'left',
       tick: {
         count: 10,
       },

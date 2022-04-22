@@ -4,14 +4,14 @@ import {
   GridReadyEvent,
   ValueGetterParams,
   ValueSetterParams,
-} from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine-dark.css";
-import { Component } from "@angular/core";
+} from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine-dark.css';
+import { Component } from '@angular/core';
 // Required feature modules are registered in app.module.ts
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<ag-grid-angular
     style="width: 100%; height: 100%;"
     class="ag-theme-alpine-dark"
@@ -25,13 +25,13 @@ import { Component } from "@angular/core";
 export class AppComponent {
   public columnDefs: ColDef[] = [
     {
-      headerName: "Name",
+      headerName: 'Name',
       valueGetter: function (params: ValueGetterParams) {
-        return params.data.firstName + " " + params.data.lastName;
+        return params.data.firstName + ' ' + params.data.lastName;
       },
       valueSetter: function (params: ValueSetterParams) {
         var fullName = params.newValue;
-        var nameSplit = fullName.split(" ");
+        var nameSplit = fullName.split(' ');
         var newFirstName = nameSplit[0];
         var newLastName = nameSplit[1];
         var data = params.data;
@@ -48,11 +48,11 @@ export class AppComponent {
       },
     },
     {
-      headerName: "A",
-      field: "a",
+      headerName: 'A',
+      field: 'a',
     },
     {
-      headerName: "B",
+      headerName: 'B',
       valueGetter: function (params: ValueGetterParams) {
         return params.data.b;
       },
@@ -66,7 +66,7 @@ export class AppComponent {
       },
     },
     {
-      headerName: "C.X",
+      headerName: 'C.X',
       valueGetter: function (params: ValueGetterParams) {
         if (params.data.c) {
           return params.data.c.x;
@@ -83,7 +83,7 @@ export class AppComponent {
       },
     },
     {
-      headerName: "C.Y",
+      headerName: 'C.Y',
       valueGetter: function (params: ValueGetterParams) {
         if (params.data.c) {
           return params.data.c.y;
@@ -108,7 +108,7 @@ export class AppComponent {
   public rowData: any[] | null = getData();
 
   onCellValueChanged(event: CellValueChangedEvent) {
-    console.log("Data after change is", event.data);
+    console.log('Data after change is', event.data);
   }
 
   onGridReady(params: GridReadyEvent) {}

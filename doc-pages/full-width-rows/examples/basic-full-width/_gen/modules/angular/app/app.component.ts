@@ -3,15 +3,15 @@ import {
   GridReadyEvent,
   IsFullWidthRowParams,
   RowHeightParams,
-} from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { Component } from "@angular/core";
-import { FullWidthCellRenderer } from "./full-width-cell-renderer.component";
+} from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { Component } from '@angular/core';
+import { FullWidthCellRenderer } from './full-width-cell-renderer.component';
 // Required feature modules are registered in app.module.ts
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<ag-grid-angular
     style="width: 100%; height: 100%;"
     class="ag-theme-alpine"
@@ -26,9 +26,9 @@ import { FullWidthCellRenderer } from "./full-width-cell-renderer.component";
   ></ag-grid-angular>`,
 })
 export class AppComponent {
-  public rowData: any[] | null = createData(100, "body");
-  public pinnedTopRowData: any[] = createData(3, "pinned");
-  public pinnedBottomRowData: any[] = createData(3, "pinned");
+  public rowData: any[] | null = createData(100, 'body');
+  public pinnedTopRowData: any[] = createData(3, 'pinned');
+  public pinnedBottomRowData: any[] = createData(3, 'pinned');
   public columnDefs: ColDef[] = getColumnDefs();
   public isFullWidthRow: (params: IsFullWidthRowParams) => boolean = function (
     params: IsFullWidthRowParams
@@ -40,15 +40,16 @@ export class AppComponent {
     return params.rowNode.data.fullWidth;
   };
   public fullWidthCellRenderer: any = FullWidthCellRenderer;
-  public getRowHeight: (params: RowHeightParams) => number | undefined | null =
-    function (params) {
-      // you can have normal rows and full width rows any height that you want
-      const isBodyRow = params.node.rowPinned === undefined;
-      const isFullWidth = params.node.data.fullWidth;
-      if (isBodyRow && isFullWidth) {
-        return 75;
-      }
-    };
+  public getRowHeight: (
+    params: RowHeightParams
+  ) => number | undefined | null = function (params: RowHeightParams) {
+    // you can have normal rows and full width rows any height that you want
+    const isBodyRow = params.node.rowPinned === undefined;
+    const isFullWidth = params.node.data.fullWidth;
+    if (isBodyRow && isFullWidth) {
+      return 75;
+    }
+  };
 
   onGridReady(params: GridReadyEvent) {}
 }
@@ -61,18 +62,18 @@ function getColumnDefs() {
       field: letter,
       width: 150,
     };
-    if (letter === "A") {
-      colDef.pinned = "left";
+    if (letter === 'A') {
+      colDef.pinned = 'left';
     }
-    if (letter === "Z") {
-      colDef.pinned = "right";
+    if (letter === 'Z') {
+      colDef.pinned = 'right';
     }
     columnDefs.push(colDef);
   });
   return columnDefs;
 }
 function alphabet() {
-  return "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
+  return 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
 }
 function createData(count: number, prefix: string) {
   const rowData = [];
@@ -85,7 +86,7 @@ function createData(count: number, prefix: string) {
     item.fullWidth = i % 3 === 2;
     // put in a column for each letter of the alphabet
     alphabet().forEach(function (letter) {
-      item[letter] = prefix + " (" + letter + "," + i + ")";
+      item[letter] = prefix + ' (' + letter + ',' + i + ')';
     });
     rowData.push(item);
   }

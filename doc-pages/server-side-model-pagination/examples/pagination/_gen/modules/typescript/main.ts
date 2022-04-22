@@ -3,12 +3,12 @@ import {
   GridOptions,
   IServerSideDatasource,
   ModuleRegistry,
-} from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine-dark.css";
-import { ColumnsToolPanelModule } from "@ag-grid-enterprise/column-tool-panel";
-import { MenuModule } from "@ag-grid-enterprise/menu";
-import { ServerSideRowModelModule } from "@ag-grid-enterprise/server-side-row-model";
+} from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine-dark.css';
+import { ColumnsToolPanelModule } from '@ag-grid-enterprise/column-tool-panel';
+import { MenuModule } from '@ag-grid-enterprise/menu';
+import { ServerSideRowModelModule } from '@ag-grid-enterprise/server-side-row-model';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([
@@ -19,13 +19,13 @@ ModuleRegistry.registerModules([
 declare var FakeServer: any;
 const gridOptions: GridOptions = {
   columnDefs: [
-    { field: "id", maxWidth: 75 },
-    { field: "athlete", minWidth: 190 },
-    { field: "age" },
-    { field: "year" },
-    { field: "gold" },
-    { field: "silver" },
-    { field: "bronze" },
+    { field: 'id', maxWidth: 75 },
+    { field: 'athlete', minWidth: 190 },
+    { field: 'age' },
+    { field: 'year' },
+    { field: 'gold' },
+    { field: 'silver' },
+    { field: 'bronze' },
   ],
 
   defaultColDef: {
@@ -35,8 +35,8 @@ const gridOptions: GridOptions = {
   },
 
   // use the server-side row model
-  rowModelType: "serverSide",
-  serverSideStoreType: "partial",
+  rowModelType: 'serverSide',
+  serverSideStoreType: 'partial',
 
   // enable pagination
   pagination: true,
@@ -51,10 +51,10 @@ const gridOptions: GridOptions = {
 };
 
 // setup the grid after the page has finished loading
-var gridDiv = document.querySelector<HTMLElement>("#myGrid")!;
+var gridDiv = document.querySelector<HTMLElement>('#myGrid')!;
 new Grid(gridDiv, gridOptions);
 
-fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
   .then((response) => response.json())
   .then(function (data) {
     // add id to data
@@ -76,7 +76,7 @@ fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
 function getServerSideDatasource(server: any): IServerSideDatasource {
   return {
     getRows: function (params) {
-      console.log("[Datasource] - rows requested by grid: ", params.request);
+      console.log('[Datasource] - rows requested by grid: ', params.request);
 
       var response = server.getData(params.request);
 

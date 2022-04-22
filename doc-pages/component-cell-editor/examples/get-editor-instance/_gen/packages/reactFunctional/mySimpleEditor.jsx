@@ -4,10 +4,10 @@ import React, {
   useImperativeHandle,
   useRef,
   useState,
-} from "react";
+} from 'react';
 
-const KEY_BACKSPACE = "Backspace";
-const KEY_DELETE = "Delete";
+const KEY_BACKSPACE = 'Backspace';
+const KEY_DELETE = 'Delete';
 
 export default forwardRef((props, ref) => {
   const getInitialValue = (props) => {
@@ -16,7 +16,7 @@ export default forwardRef((props, ref) => {
     const isBackspaceOrDelete =
       props.eventKey === KEY_BACKSPACE || props.eventKey === KEY_DELETE;
     if (isBackspaceOrDelete) {
-      startValue = "";
+      startValue = '';
     } else if (props.charPress) {
       startValue = props.charPress;
     }
@@ -25,7 +25,7 @@ export default forwardRef((props, ref) => {
       return startValue;
     }
 
-    return "";
+    return '';
   };
 
   const [value, setValue] = useState(getInitialValue(props));

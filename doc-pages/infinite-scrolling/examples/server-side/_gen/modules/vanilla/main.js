@@ -3,9 +3,9 @@ const filterParams = { values: getCountries() };
 const columnDefs = [
   // this row just shows the row index, doesn't use any data from the row
   {
-    headerName: "ID",
+    headerName: 'ID',
     maxWidth: 100,
-    valueGetter: "node.id",
+    valueGetter: 'node.id',
     cellRenderer: function (params) {
       if (params.value !== undefined) {
         return params.value;
@@ -18,31 +18,31 @@ const columnDefs = [
     sortable: false,
     suppressMenu: true,
   },
-  { field: "athlete", suppressMenu: true },
+  { field: 'athlete', suppressMenu: true },
   {
-    field: "age",
-    filter: "agNumberColumnFilter",
+    field: 'age',
+    filter: 'agNumberColumnFilter',
     filterParams: {
-      filterOptions: ["equals", "lessThan", "greaterThan"],
+      filterOptions: ['equals', 'lessThan', 'greaterThan'],
       suppressAndOrCondition: true,
     },
   },
   {
-    field: "country",
-    filter: "agSetColumnFilter",
+    field: 'country',
+    filter: 'agSetColumnFilter',
     filterParams: filterParams,
   },
   {
-    field: "year",
-    filter: "agSetColumnFilter",
-    filterParams: { values: ["2000", "2004", "2008", "2012"] },
+    field: 'year',
+    filter: 'agSetColumnFilter',
+    filterParams: { values: ['2000', '2004', '2008', '2012'] },
   },
-  { field: "date" },
-  { field: "sport", suppressMenu: true },
-  { field: "gold", suppressMenu: true },
-  { field: "silver", suppressMenu: true },
-  { field: "bronze", suppressMenu: true },
-  { field: "total", suppressMenu: true },
+  { field: 'date' },
+  { field: 'sport', suppressMenu: true },
+  { field: 'gold', suppressMenu: true },
+  { field: 'silver', suppressMenu: true },
+  { field: 'bronze', suppressMenu: true },
+  { field: 'total', suppressMenu: true },
 ];
 
 const gridOptions = {
@@ -54,8 +54,8 @@ const gridOptions = {
     resizable: true,
     floatingFilter: true,
   },
-  rowSelection: "multiple",
-  rowModelType: "infinite",
+  rowSelection: 'multiple',
+  rowModelType: 'infinite',
   cacheBlockSize: 100,
   cacheOverflowSize: 2,
   maxConcurrentDatasourceRequests: 2,
@@ -86,7 +86,7 @@ function sortData(sortModel, data) {
       if (valueA == valueB) {
         continue;
       }
-      const sortDirection = sortColModel.sort === "asc" ? 1 : -1;
+      const sortDirection = sortColModel.sort === 'asc' ? 1 : -1;
       if (valueA > valueB) {
         return sortDirection;
       } else {
@@ -115,11 +115,11 @@ function filterData(filterModel, data) {
       // EQUALS = 1;
       // LESS_THAN = 2;
       // GREATER_THAN = 3;
-      if (filterModel.age.type == "equals") {
+      if (filterModel.age.type == 'equals') {
         if (age !== allowedAge) {
           continue;
         }
-      } else if (filterModel.age.type == "lessThan") {
+      } else if (filterModel.age.type == 'lessThan') {
         if (age >= allowedAge) {
           continue;
         }
@@ -150,23 +150,23 @@ function filterData(filterModel, data) {
 }
 
 // setup the grid after the page has finished loading
-document.addEventListener("DOMContentLoaded", function () {
-  const gridDiv = document.querySelector("#myGrid");
+document.addEventListener('DOMContentLoaded', function () {
+  const gridDiv = document.querySelector('#myGrid');
   new agGrid.Grid(gridDiv, gridOptions);
 
-  fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+  fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
     .then((response) => response.json())
     .then(function (data) {
       // give each row an id
       data.forEach(function (d, index) {
-        d.id = "R" + (index + 1);
+        d.id = 'R' + (index + 1);
       });
 
       const dataSource = {
         rowCount: undefined, // behave as infinite scroll
 
         getRows: function (params) {
-          console.log("asking for " + params.startRow + " to " + params.endRow);
+          console.log('asking for ' + params.startRow + ' to ' + params.endRow);
 
           // At this point in your code, you would call the server.
           // To make the demo look real, wait for 500ms before returning

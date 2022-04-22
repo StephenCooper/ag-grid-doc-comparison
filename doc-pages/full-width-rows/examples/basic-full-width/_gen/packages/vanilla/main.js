@@ -1,6 +1,6 @@
-const rowData = createData(100, "body");
-const pinnedTopRowData = createData(3, "pinned");
-const pinnedBottomRowData = createData(3, "pinned");
+const rowData = createData(100, 'body');
+const pinnedTopRowData = createData(3, 'pinned');
+const pinnedBottomRowData = createData(3, 'pinned');
 
 function getColumnDefs() {
   const columnDefs = [];
@@ -10,11 +10,11 @@ function getColumnDefs() {
       field: letter,
       width: 150,
     };
-    if (letter === "A") {
-      colDef.pinned = "left";
+    if (letter === 'A') {
+      colDef.pinned = 'left';
     }
-    if (letter === "Z") {
-      colDef.pinned = "right";
+    if (letter === 'Z') {
+      colDef.pinned = 'right';
     }
     columnDefs.push(colDef);
   });
@@ -47,7 +47,7 @@ const gridOptions = {
 };
 
 function alphabet() {
-  return "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
+  return 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
 }
 
 function createData(count, prefix) {
@@ -61,7 +61,7 @@ function createData(count, prefix) {
     item.fullWidth = i % 3 === 2;
     // put in a column for each letter of the alphabet
     alphabet().forEach(function (letter) {
-      item[letter] = prefix + " (" + letter + "," + i + ")";
+      item[letter] = prefix + ' (' + letter + ',' + i + ')';
     });
     rowData.push(item);
   }
@@ -69,7 +69,7 @@ function createData(count, prefix) {
 }
 
 // setup the grid after the page has finished loading
-document.addEventListener("DOMContentLoaded", () => {
-  const gridDiv = document.querySelector("#myGrid");
+document.addEventListener('DOMContentLoaded', () => {
+  const gridDiv = document.querySelector('#myGrid');
   new agGrid.Grid(gridDiv, gridOptions);
 });

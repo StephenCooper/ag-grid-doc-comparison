@@ -1,14 +1,14 @@
-import { IHeaderGroupAngularComp } from "@ag-grid-community/angular";
-import { IHeaderGroupParams } from "@ag-grid-community/core";
-import { Component } from "@angular/core";
+import { IHeaderGroupAngularComp } from '@ag-grid-community/angular';
+import { IHeaderGroupParams } from '@ag-grid-community/core';
+import { Component } from '@angular/core';
 @Component({
-  selector: "app-custom-header-group",
+  selector: 'app-custom-header-group',
   template: `
     <div class="ag-header-group-cell-label">
-      <div class="customHeaderLabel">{{ this.params.displayName }}</div>
+      <div class="customHeaderLabel">{{ params.displayName }}</div>
       <div
         class="customExpandButton"
-        [ngClass]="this.expandState"
+        [ngClass]="expandState"
         (click)="expandOrCollapse()"
       >
         <i class="fa fa-arrow-right"></i>
@@ -103,7 +103,7 @@ export class CustomHeaderGroup implements IHeaderGroupAngularComp {
 
     this.params.columnGroup
       .getProvidedColumnGroup()
-      .addEventListener("expandedChanged", this.syncExpandButtons.bind(this));
+      .addEventListener('expandedChanged', this.syncExpandButtons.bind(this));
 
     this.syncExpandButtons();
   }
@@ -117,9 +117,9 @@ export class CustomHeaderGroup implements IHeaderGroupAngularComp {
 
   syncExpandButtons() {
     if (this.params.columnGroup.getProvidedColumnGroup().isExpanded()) {
-      this.expandState = "expanded";
+      this.expandState = 'expanded';
     } else {
-      this.expandState = "collapsed";
+      this.expandState = 'collapsed';
     }
   }
 }

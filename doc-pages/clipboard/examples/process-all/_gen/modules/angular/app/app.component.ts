@@ -2,14 +2,14 @@ import {
   ColDef,
   GridReadyEvent,
   ProcessDataFromClipboardParams,
-} from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { Component } from "@angular/core";
+} from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { Component } from '@angular/core';
 // Required feature modules are registered in app.module.ts
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<ag-grid-angular
     style="width: 100%; height: 100%;"
     class="ag-theme-alpine"
@@ -23,17 +23,17 @@ import { Component } from "@angular/core";
 })
 export class AppComponent {
   public columnDefs: ColDef[] = [
-    { field: "a" },
-    { field: "b" },
-    { field: "c" },
-    { field: "d" },
-    { field: "e" },
-    { field: "f" },
-    { field: "g" },
-    { field: "h" },
-    { field: "i" },
-    { field: "j" },
-    { field: "k" },
+    { field: 'a' },
+    { field: 'b' },
+    { field: 'c' },
+    { field: 'd' },
+    { field: 'e' },
+    { field: 'f' },
+    { field: 'g' },
+    { field: 'h' },
+    { field: 'i' },
+    { field: 'j' },
+    { field: 'k' },
   ];
   public rowData: any[] | null = getData();
   public defaultColDef: ColDef = {
@@ -42,18 +42,20 @@ export class AppComponent {
     resizable: true,
     flex: 1,
     cellClassRules: {
-      "cell-green": 'value.startsWith("Green")',
-      "cell-blue": 'value.startsWith("Blue")',
-      "cell-red": 'value.startsWith("Red")',
-      "cell-yellow": 'value.startsWith("Yellow")',
-      "cell-orange": 'value.startsWith("Orange")',
-      "cell-grey": 'value.startsWith("Grey")',
+      'cell-green': 'value.startsWith("Green")',
+      'cell-blue': 'value.startsWith("Blue")',
+      'cell-red': 'value.startsWith("Red")',
+      'cell-yellow': 'value.startsWith("Yellow")',
+      'cell-orange': 'value.startsWith("Orange")',
+      'cell-grey': 'value.startsWith("Grey")',
     },
   };
 
   onGridReady(params: GridReadyEvent) {}
 
-  processDataFromClipboard(params: ProcessDataFromClipboardParams) {
+  processDataFromClipboard(
+    params: ProcessDataFromClipboardParams
+  ): string[][] | null {
     var containsRed;
     var containsYellow;
     var data = params.data;
@@ -62,9 +64,9 @@ export class AppComponent {
       for (var j = 0; j < row.length; j++) {
         var value = row[j];
         if (value) {
-          if (value.startsWith("Red")) {
+          if (value.startsWith('Red')) {
             containsRed = true;
-          } else if (value.startsWith("Yellow")) {
+          } else if (value.startsWith('Yellow')) {
             containsYellow = true;
           }
         }
@@ -73,8 +75,8 @@ export class AppComponent {
     if (containsRed) {
       // replace the paste request with another
       return [
-        ["Orange", "Orange"],
-        ["Grey", "Grey"],
+        ['Orange', 'Orange'],
+        ['Grey', 'Grey'],
       ];
     }
     if (containsYellow) {

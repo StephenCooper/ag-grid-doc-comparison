@@ -1,8 +1,8 @@
-import { Component } from "@angular/core";
-import { AgChartOptions } from "ag-charts-community";
+import { Component } from '@angular/core';
+import { AgChartOptions } from 'ag-charts-community';
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<div class="container">
     <ag-charts-angular
       style="height: 100%"
@@ -21,18 +21,18 @@ export class AppComponent {
       height: 550,
       series: [
         {
-          xKey: "x",
-          yKey: "y",
+          xKey: 'x',
+          yKey: 'y',
         },
       ],
       axes: [
         {
-          type: "number",
-          position: "left",
+          type: 'number',
+          position: 'left',
         },
         {
-          type: "number",
-          position: "bottom",
+          type: 'number',
+          position: 'bottom',
         },
       ],
       legend: {

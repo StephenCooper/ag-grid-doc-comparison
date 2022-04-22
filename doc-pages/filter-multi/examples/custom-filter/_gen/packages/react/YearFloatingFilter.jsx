@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 
 export default class YearFloatingFilter extends Component {
   constructor(props) {
@@ -28,7 +28,7 @@ export default class YearFloatingFilter extends Component {
             type="radio"
             checked={!this.state.isActive}
             onChange={() => this.toggleFilter(false)}
-          />{" "}
+          />{' '}
           All
         </label>
         <label>
@@ -36,7 +36,7 @@ export default class YearFloatingFilter extends Component {
             type="radio"
             checked={this.state.isActive}
             onChange={() => this.toggleFilter(true)}
-          />{" "}
+          />{' '}
           After 2004
         </label>
       </div>

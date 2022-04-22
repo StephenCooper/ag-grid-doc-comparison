@@ -1,11 +1,11 @@
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { AgGridVue } from "@ag-grid-community/vue";
-import { GridChartsModule } from "@ag-grid-enterprise/charts";
-import { MenuModule } from "@ag-grid-enterprise/menu";
-import Vue from "vue";
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { AgGridVue } from '@ag-grid-community/vue';
+import { GridChartsModule } from '@ag-grid-enterprise/charts';
+import { MenuModule } from '@ag-grid-enterprise/menu';
+import Vue from 'vue';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([
@@ -40,15 +40,15 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
-        { field: "country", chartDataType: "category" },
-        { field: "sugar", chartDataType: "series" },
-        { field: "fat", chartDataType: "series" },
-        { field: "weight", chartDataType: "series" },
+        { field: 'country', chartDataType: 'category' },
+        { field: 'sugar', chartDataType: 'series' },
+        { field: 'fat', chartDataType: 'series' },
+        { field: 'weight', chartDataType: 'series' },
       ],
       gridApi: null,
       columnApi: null,
@@ -74,7 +74,7 @@ const VueExample = {
       if (chartModels.length > 0) {
         chartModel = chartModels[0];
       }
-      alert("Chart saved!");
+      alert('Chart saved!');
     },
     clearChart() {
       if (currentChartRef) {
@@ -96,7 +96,7 @@ const VueExample = {
         currentChartRef.destroyChart();
       }
       var eChart = chartRef.chartElement;
-      var eParent = document.querySelector("#myChart");
+      var eParent = document.querySelector('#myChart');
       eParent.appendChild(eChart);
       currentChartRef = chartRef;
     },
@@ -108,8 +108,8 @@ var chartModel;
 var currentChartRef;
 
 new Vue({
-  el: "#app",
+  el: '#app',
   components: {
-    "my-component": VueExample,
+    'my-component': VueExample,
   },
 });

@@ -1,4 +1,4 @@
-import { nextTick } from "vue";
+import { nextTick } from 'vue';
 
 export default {
   template: `
@@ -15,7 +15,7 @@ export default {
   },
   methods: {
     getValue() {
-      return this.happy ? "Happy" : "Sad";
+      return this.happy ? 'Happy' : 'Sad';
     },
 
     setHappy(happy) {
@@ -34,8 +34,8 @@ export default {
     onKeyDown(event) {
       let key = event.key;
       if (
-        key === "ArrowLeft" || // left
-        key == "ArrowRight"
+        key === 'ArrowLeft' || // left
+        key == 'ArrowRight'
       ) {
         // right
         this.toggleMood();
@@ -44,7 +44,7 @@ export default {
     },
   },
   created() {
-    this.setHappy(this.params.value === "Happy");
+    this.setHappy(this.params.value === 'Happy');
   },
   mounted() {
     nextTick(() => {

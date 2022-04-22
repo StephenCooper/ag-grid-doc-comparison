@@ -1,13 +1,13 @@
-import { HttpClient } from "@angular/common/http";
-import { Component } from "@angular/core";
-import { ColDef, GridReadyEvent, SideBarDef } from "ag-grid-community";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
-import { CustomStatsToolPanel } from "./custom-stats-tool-panel.component";
+import { HttpClient } from '@angular/common/http';
+import { Component } from '@angular/core';
+import { ColDef, GridReadyEvent, SideBarDef } from 'ag-grid-community';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import 'ag-grid-enterprise';
+import { CustomStatsToolPanel } from './custom-stats-tool-panel.component';
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<div style="height: 100%; box-sizing: border-box;">
     <ag-grid-angular
       style="width: 100%; height: 100%;"
@@ -23,15 +23,15 @@ import { CustomStatsToolPanel } from "./custom-stats-tool-panel.component";
 })
 export class AppComponent {
   public columnDefs: ColDef[] = [
-    { field: "athlete", width: 150, filter: "agTextColumnFilter" },
-    { field: "age", width: 90 },
-    { field: "country", width: 120 },
-    { field: "year", width: 90 },
-    { field: "date", width: 110 },
-    { field: "gold", width: 100, filter: false },
-    { field: "silver", width: 100, filter: false },
-    { field: "bronze", width: 100, filter: false },
-    { field: "total", width: 100, filter: false },
+    { field: 'athlete', width: 150, filter: 'agTextColumnFilter' },
+    { field: 'age', width: 90 },
+    { field: 'country', width: 120 },
+    { field: 'year', width: 90 },
+    { field: 'date', width: 110 },
+    { field: 'gold', width: 100, filter: false },
+    { field: 'silver', width: 100, filter: false },
+    { field: 'bronze', width: 100, filter: false },
+    { field: 'total', width: 100, filter: false },
   ];
   public defaultColDef: ColDef = {
     editable: true,
@@ -44,33 +44,33 @@ export class AppComponent {
   public icons: {
     [key: string]: Function | string;
   } = {
-    "custom-stats": '<span class="ag-icon ag-icon-custom-stats"></span>',
+    'custom-stats': '<span class="ag-icon ag-icon-custom-stats"></span>',
   };
-  public sideBar: SideBarDef | string | boolean | null = {
+  public sideBar: SideBarDef | string | string[] | boolean | null = {
     toolPanels: [
       {
-        id: "columns",
-        labelDefault: "Columns",
-        labelKey: "columns",
-        iconKey: "columns",
-        toolPanel: "agColumnsToolPanel",
+        id: 'columns',
+        labelDefault: 'Columns',
+        labelKey: 'columns',
+        iconKey: 'columns',
+        toolPanel: 'agColumnsToolPanel',
       },
       {
-        id: "filters",
-        labelDefault: "Filters",
-        labelKey: "filters",
-        iconKey: "filter",
-        toolPanel: "agFiltersToolPanel",
+        id: 'filters',
+        labelDefault: 'Filters',
+        labelKey: 'filters',
+        iconKey: 'filter',
+        toolPanel: 'agFiltersToolPanel',
       },
       {
-        id: "customStats",
-        labelDefault: "Custom Stats",
-        labelKey: "customStats",
-        iconKey: "custom-stats",
+        id: 'customStats',
+        labelDefault: 'Custom Stats',
+        labelKey: 'customStats',
+        iconKey: 'custom-stats',
         toolPanel: CustomStatsToolPanel,
       },
     ],
-    defaultToolPanel: "customStats",
+    defaultToolPanel: 'customStats',
   };
   public rowData!: any[];
 
@@ -78,7 +78,7 @@ export class AppComponent {
 
   onGridReady(params: GridReadyEvent) {
     this.http
-      .get<any[]>("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      .get<any[]>('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .subscribe((data) => {
         this.rowData = data;
       });

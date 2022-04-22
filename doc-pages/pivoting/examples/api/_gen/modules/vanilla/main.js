@@ -1,20 +1,20 @@
 const gridOptions = {
   columnDefs: [
     {
-      field: "athlete",
+      field: 'athlete',
       enableRowGroup: true,
       enablePivot: true,
       minWidth: 200,
     },
-    { field: "age", enableValue: true },
-    { field: "country", enableRowGroup: true, enablePivot: true },
-    { field: "year", enableRowGroup: true, enablePivot: true },
-    { field: "date", enableRowGroup: true, enablePivot: true },
-    { field: "sport", enableRowGroup: true, enablePivot: true, minWidth: 200 },
-    { field: "gold", enableValue: true, aggFunc: "sum" },
-    { field: "silver", enableValue: true },
-    { field: "bronze", enableValue: true },
-    { field: "total", enableValue: true },
+    { field: 'age', enableValue: true },
+    { field: 'country', enableRowGroup: true, enablePivot: true },
+    { field: 'year', enableRowGroup: true, enablePivot: true },
+    { field: 'date', enableRowGroup: true, enablePivot: true },
+    { field: 'sport', enableRowGroup: true, enablePivot: true, minWidth: 200 },
+    { field: 'gold', enableValue: true, aggFunc: 'sum' },
+    { field: 'silver', enableValue: true },
+    { field: 'bronze', enableValue: true },
+    { field: 'total', enableValue: true },
   ],
   defaultColDef: {
     flex: 1,
@@ -38,7 +38,7 @@ function turnOnPivotMode() {
 
 function addPivotColumn() {
   gridOptions.columnApi.applyColumnState({
-    state: [{ colId: "country", pivot: true }],
+    state: [{ colId: 'country', pivot: true }],
     defaultState: { pivot: false },
   });
 }
@@ -46,8 +46,8 @@ function addPivotColumn() {
 function addPivotColumns() {
   gridOptions.columnApi.applyColumnState({
     state: [
-      { colId: "year", pivot: true },
-      { colId: "country", pivot: true },
+      { colId: 'year', pivot: true },
+      { colId: 'country', pivot: true },
     ],
     defaultState: { pivot: false },
   });
@@ -55,7 +55,7 @@ function addPivotColumns() {
 
 function removePivotColumn() {
   gridOptions.columnApi.applyColumnState({
-    state: [{ colId: "country", pivot: false }],
+    state: [{ colId: 'country', pivot: false }],
   });
 }
 
@@ -70,11 +70,11 @@ function exportToCsv() {
 }
 
 // setup the grid after the page has finished loading
-document.addEventListener("DOMContentLoaded", function () {
-  var gridDiv = document.querySelector("#myGrid");
+document.addEventListener('DOMContentLoaded', function () {
+  var gridDiv = document.querySelector('#myGrid');
   new agGrid.Grid(gridDiv, gridOptions);
 
-  fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+  fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
     .then((response) => response.json())
     .then((data) => gridOptions.api.setRowData(data));
 });

@@ -1,8 +1,8 @@
 const gridOptions = {
   columnDefs: [
-    { field: "name", cellRenderer: countryCellRenderer },
-    { field: "continent" },
-    { field: "language" },
+    { field: 'name', cellRenderer: countryCellRenderer },
+    { field: 'continent' },
+    { field: 'language' },
   ],
   defaultColDef: {
     flex: 1,
@@ -35,17 +35,17 @@ function countryCellRenderer(params) {
     params.data.code +
     '.png">';
   return (
-    '<span style="cursor: default;">' + flag + " " + params.value + "</span>"
+    '<span style="cursor: default;">' + flag + ' ' + params.value + '</span>'
   );
 }
 
 function isFullWidth(data) {
   // return true when country is Peru, France or Italy
-  return ["Peru", "France", "Italy"].indexOf(data.name) >= 0;
+  return ['Peru', 'France', 'Italy'].indexOf(data.name) >= 0;
 }
 
 // setup the grid after the page has finished loading
-document.addEventListener("DOMContentLoaded", function () {
-  var gridDiv = document.querySelector("#myGrid");
+document.addEventListener('DOMContentLoaded', function () {
+  var gridDiv = document.querySelector('#myGrid');
   new agGrid.Grid(gridDiv, gridOptions);
 });

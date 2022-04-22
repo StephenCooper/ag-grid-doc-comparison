@@ -1,9 +1,9 @@
-import { Component } from "@angular/core";
-import { ICellRendererAngularComp } from "ag-grid-angular";
-import { ICellRendererParams } from "ag-grid-community";
+import { Component } from '@angular/core';
+import { ICellRendererAngularComp } from 'ag-grid-angular';
+import { ICellRendererParams } from 'ag-grid-community';
 
 @Component({
-  selector: "simple-component",
+  selector: 'simple-component',
   template: ` <div [innerHTML]="value"></div>`,
 })
 export class CountryCellRenderer implements ICellRendererAngularComp {
@@ -13,7 +13,7 @@ export class CountryCellRenderer implements ICellRendererAngularComp {
   agInit(params: ICellRendererParams): void {
     this.params = params;
 
-    if (!params.value || params.value === "(Select All)") {
+    if (!params.value || params.value === '(Select All)') {
       this.value = params.value;
     } else {
       const url = `https://flags.fmcdn.net/data/flags/mini/${

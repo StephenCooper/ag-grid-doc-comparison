@@ -1,14 +1,14 @@
-import { ICellRendererAngularComp } from "@ag-grid-community/angular";
+import { ICellRendererAngularComp } from '@ag-grid-community/angular';
 import {
   ColDef,
   GridApi,
   GridReadyEvent,
   ICellRendererParams,
-} from "@ag-grid-community/core";
-import { Component } from "@angular/core";
+} from '@ag-grid-community/core';
+import { Component } from '@angular/core';
 
 @Component({
-  selector: "app-detail-cell-renderer",
+  selector: 'app-detail-cell-renderer',
   template: ` <div class="full-width-panel">
     <div class="full-width-details">
       <div class="full-width-detail"><b>Name: </b>{{ params.data.name }}</div>
@@ -45,11 +45,11 @@ export class DetailCellRenderer implements ICellRendererAngularComp {
     this.rowId = params.node.id!;
 
     this.colDefs = [
-      { field: "callId" },
-      { field: "direction" },
-      { field: "number" },
-      { field: "duration", valueFormatter: "x.toLocaleString() + 's'" },
-      { field: "switchCode" },
+      { field: 'callId' },
+      { field: 'direction' },
+      { field: 'number' },
+      { field: 'duration', valueFormatter: "x.toLocaleString() + 's'" },
+      { field: 'switchCode' },
     ];
 
     this.defaultColDef = {
@@ -72,14 +72,14 @@ export class DetailCellRenderer implements ICellRendererAngularComp {
       columnApi: params.columnApi,
     };
 
-    console.log("adding detail grid info with id: ", this.rowId);
+    console.log('adding detail grid info with id: ', this.rowId);
     this.masterGridApi.addDetailGridInfo(this.rowId, gridInfo);
   }
 
   ngOnDestroy(): void {
     // detail grid is automatically destroyed as it is an Angular component
 
-    console.log("removing detail grid info with id: ", this.rowId);
+    console.log('removing detail grid info with id: ', this.rowId);
     this.masterGridApi.removeDetailGridInfo(this.rowId);
   }
 }

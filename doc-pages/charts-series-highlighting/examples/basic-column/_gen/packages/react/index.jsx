@@ -1,8 +1,10 @@
-"use strict";
+'use strict';
 
-import { AgChartsReact } from "ag-charts-react";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { cloneDeep } from 'lodash';
+import { render } from 'react-dom';
+import * as agCharts from 'ag-charts-community';
+import { AgChartsReact } from 'ag-charts-react';
 
 class ChartExample extends Component {
   constructor(props) {
@@ -18,8 +20,8 @@ class ChartExample extends Component {
               series: {
                 highlightStyle: {
                   item: {
-                    fill: "red",
-                    stroke: "maroon",
+                    fill: 'red',
+                    stroke: 'maroon',
                     strokeWidth: 4,
                   },
                   series: {
@@ -32,16 +34,16 @@ class ChartExample extends Component {
           },
         },
         title: {
-          text: "Beverage Expenses",
+          text: 'Beverage Expenses',
         },
         subtitle: {
-          text: "per quarter",
+          text: 'per quarter',
         },
         series: [
-          { type: "column", xKey: "beverage", yKey: "Q1", stacked: true },
-          { type: "column", xKey: "beverage", yKey: "Q2", stacked: true },
-          { type: "column", xKey: "beverage", yKey: "Q3", stacked: true },
-          { type: "column", xKey: "beverage", yKey: "Q4", stacked: true },
+          { type: 'column', xKey: 'beverage', yKey: 'Q1', stacked: true },
+          { type: 'column', xKey: 'beverage', yKey: 'Q2', stacked: true },
+          { type: 'column', xKey: 'beverage', yKey: 'Q3', stacked: true },
+          { type: 'column', xKey: 'beverage', yKey: 'Q4', stacked: true },
         ],
       },
     };
@@ -56,21 +58,21 @@ class ChartExample extends Component {
 
 var data = [
   {
-    beverage: "Coffee",
+    beverage: 'Coffee',
     Q1: 450,
     Q2: 560,
     Q3: 600,
     Q4: 700,
   },
   {
-    beverage: "Tea",
+    beverage: 'Tea',
     Q1: 270,
     Q2: 380,
     Q3: 450,
     Q4: 520,
   },
   {
-    beverage: "Milk",
+    beverage: 'Milk',
     Q1: 180,
     Q2: 170,
     Q3: 190,
@@ -78,4 +80,4 @@ var data = [
   },
 ];
 
-render(<ChartExample />, document.querySelector("#root"));
+render(<ChartExample />, document.querySelector('#root'));

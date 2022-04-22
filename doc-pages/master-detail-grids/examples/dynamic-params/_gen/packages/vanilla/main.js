@@ -1,10 +1,10 @@
 const gridOptions = {
   columnDefs: [
     // group cell renderer needed for expand / collapse icons
-    { field: "name", cellRenderer: "agGroupCellRenderer" },
-    { field: "account" },
-    { field: "calls" },
-    { field: "minutes", valueFormatter: "x.toLocaleString() + 'm'" },
+    { field: 'name', cellRenderer: 'agGroupCellRenderer' },
+    { field: 'account' },
+    { field: 'calls' },
+    { field: 'minutes', valueFormatter: "x.toLocaleString() + 'm'" },
   ],
   defaultColDef: {
     flex: 1,
@@ -20,13 +20,13 @@ const gridOptions = {
     };
 
     var nameMatch =
-      params.data.name === "Mila Smith" ||
-      params.data.name === "Harper Johnson";
+      params.data.name === 'Mila Smith' ||
+      params.data.name === 'Harper Johnson';
 
     if (nameMatch) {
       // grid options for columns {callId, number}
       res.detailGridOptions = {
-        columnDefs: [{ field: "callId" }, { field: "number" }],
+        columnDefs: [{ field: 'callId' }, { field: 'number' }],
         defaultColDef: {
           flex: 1,
         },
@@ -35,10 +35,10 @@ const gridOptions = {
       // grid options for columns {callId, direction, duration, switchCode}
       res.detailGridOptions = {
         columnDefs: [
-          { field: "callId" },
-          { field: "direction" },
-          { field: "duration", valueFormatter: "x.toLocaleString() + 's'" },
-          { field: "switchCode" },
+          { field: 'callId' },
+          { field: 'direction' },
+          { field: 'duration', valueFormatter: "x.toLocaleString() + 's'" },
+          { field: 'switchCode' },
         ],
         defaultColDef: {
           flex: 1,
@@ -62,11 +62,11 @@ function onFirstDataRendered(params) {
 }
 
 // setup the grid after the page has finished loading
-document.addEventListener("DOMContentLoaded", function () {
-  var gridDiv = document.querySelector("#myGrid");
+document.addEventListener('DOMContentLoaded', function () {
+  var gridDiv = document.querySelector('#myGrid');
   new agGrid.Grid(gridDiv, gridOptions);
 
-  fetch("https://www.ag-grid.com/example-assets/master-detail-data.json")
+  fetch('https://www.ag-grid.com/example-assets/master-detail-data.json')
     .then((response) => response.json())
     .then(function (data) {
       gridOptions.api.setRowData(data);

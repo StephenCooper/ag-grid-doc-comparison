@@ -1,9 +1,9 @@
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
-import { AgGridVue } from "ag-grid-vue3";
-import { createApp } from "vue";
-import MultilineCellRenderer from "./multilineCellRendererVue.js";
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import 'ag-grid-enterprise';
+import { AgGridVue } from 'ag-grid-vue3';
+import { createApp } from 'vue';
+import MultilineCellRenderer from './multilineCellRendererVue.js';
 
 const VueExample = {
   template: `
@@ -27,27 +27,27 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
     MultilineCellRenderer,
   },
   data: function () {
     return {
       columnDefs: [
-        { field: "address" },
+        { field: 'address' },
         {
-          headerName: "Custom column",
+          headerName: 'Custom column',
           autoHeight: true,
           valueGetter: (param) => {
-            return param.data.col1 + "\n" + param.data.col2;
+            return param.data.col1 + '\n' + param.data.col2;
           },
-          cellRenderer: "MultilineCellRenderer",
+          cellRenderer: 'MultilineCellRenderer',
         },
       ],
       gridApi: null,
       columnApi: null,
       defaultColDef: {
         sortable: true,
-        cellClass: "multiline",
+        cellClass: 'multiline',
         filter: true,
         resizable: true,
         minWidth: 100,
@@ -61,32 +61,32 @@ const VueExample = {
     this.rowData = [
       {
         address:
-          "1197 Thunder Wagon Common,\nCataract, RI, \n02987-1016, US, \n(401) 747-0763",
-        col1: "abc",
-        col2: "xyz",
+          '1197 Thunder Wagon Common,\nCataract, RI, \n02987-1016, US, \n(401) 747-0763',
+        col1: 'abc',
+        col2: 'xyz',
       },
       {
         address:
-          "3685 Rocky Glade, Showtucket, NU, \nX1E-9I0, CA, \n(867) 371-4215",
-        col1: "abc",
-        col2: "xyz",
+          '3685 Rocky Glade, Showtucket, NU, \nX1E-9I0, CA, \n(867) 371-4215',
+        col1: 'abc',
+        col2: 'xyz',
       },
       {
         address:
-          "3235 High Forest, Glen Campbell, MS, \n39035-6845, US, \n(601) 638-8186",
-        col1: "abc",
-        col2: "xyz",
+          '3235 High Forest, Glen Campbell, MS, \n39035-6845, US, \n(601) 638-8186',
+        col1: 'abc',
+        col2: 'xyz',
       },
       {
         address:
-          "2234 Sleepy Pony Mall , Drain, DC, \n20078-4243, US, \n(202) 948-3634",
-        col1: "abc",
-        col2: "xyz",
+          '2234 Sleepy Pony Mall , Drain, DC, \n20078-4243, US, \n(202) 948-3634',
+        col1: 'abc',
+        col2: 'xyz',
       },
     ];
     this.excelStyles = [
       {
-        id: "multiline",
+        id: 'multiline',
         alignment: {
           wrapText: true,
         },
@@ -104,4 +104,4 @@ const VueExample = {
   },
 };
 
-createApp(VueExample).mount("#app");
+createApp(VueExample).mount('#app');

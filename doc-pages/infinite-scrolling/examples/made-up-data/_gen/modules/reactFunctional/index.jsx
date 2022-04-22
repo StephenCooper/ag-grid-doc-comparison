@@ -1,22 +1,22 @@
-"use strict";
+'use strict';
 
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { InfiniteRowModelModule } from "@ag-grid-community/infinite-row-model";
-import { AgGridReact } from "@ag-grid-community/react";
-import React, { useCallback, useMemo, useState } from "react";
-import { render } from "react-dom";
+import React, { useCallback, useMemo, useRef, useState } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from '@ag-grid-community/react';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import { InfiniteRowModelModule } from '@ag-grid-community/infinite-row-model';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([InfiniteRowModelModule]);
 
-var ALPHABET = "abcdefghijklmnopqrstuvwxyz".split("");
+var ALPHABET = 'abcdefghijklmnopqrstuvwxyz'.split('');
 
 const getColumnDefs = () => {
   const columnDefs = [
-    { checkboxSelection: true, headerName: "", width: 60 },
-    { headerName: "#", width: 80, valueGetter: "node.rowIndex" },
+    { checkboxSelection: true, headerName: '', width: 60 },
+    { headerName: '#', width: 80, valueGetter: 'node.rowIndex' },
   ];
   ALPHABET.forEach(function (letter) {
     columnDefs.push({
@@ -42,7 +42,7 @@ const getDataSource = (count) => {
         ALPHABET.forEach(function (letter, colIndex) {
           var randomNumber = 17 + rowIndex + colIndex;
           var cellKey = letter.toUpperCase() + (rowIndex + 1);
-          record[letter] = cellKey + " = " + randomNumber;
+          record[letter] = cellKey + ' = ' + randomNumber;
         });
         rowsThisPage.push(record);
       }
@@ -57,8 +57,8 @@ const getDataSource = (count) => {
 };
 
 const GridExample = () => {
-  const containerStyle = useMemo(() => ({ width: "100%", height: "100%" }), []);
-  const gridStyle = useMemo(() => ({ height: "100%", width: "100%" }), []);
+  const containerStyle = useMemo(() => ({ width: '100%', height: '100%' }), []);
+  const gridStyle = useMemo(() => ({ height: '100%', width: '100%' }), []);
 
   const [columnDefs, setColumnDefs] = useState(getColumnDefs());
   const defaultColDef = useMemo(() => {
@@ -79,8 +79,8 @@ const GridExample = () => {
         <AgGridReact
           columnDefs={columnDefs}
           defaultColDef={defaultColDef}
-          rowModelType={"infinite"}
-          rowSelection={"multiple"}
+          rowModelType={'infinite'}
+          rowSelection={'multiple'}
           maxBlocksInCache={2}
           suppressRowClickSelection={true}
           getRowId={getRowId}
@@ -91,4 +91,4 @@ const GridExample = () => {
   );
 };
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

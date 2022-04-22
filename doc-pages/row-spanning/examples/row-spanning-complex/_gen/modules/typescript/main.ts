@@ -1,4 +1,4 @@
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
 import {
   ColDef,
   Grid,
@@ -7,9 +7,9 @@ import {
   ICellRendererParams,
   ModuleRegistry,
   RowSpanParams,
-} from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
+} from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([ClientSideRowModelModule]);
@@ -31,15 +31,15 @@ class ShowCellRenderer implements ICellRendererComp {
       return;
     }
 
-    this.ui = document.createElement("div");
+    this.ui = document.createElement('div');
     this.ui.innerHTML =
       '<div class="show-name">' +
       params.value.name +
-      "" +
-      "</div>" +
+      '' +
+      '</div>' +
       '<div class="show-presenter">' +
       params.value.presenter +
-      "</div>";
+      '</div>';
   }
 
   getGui() {
@@ -52,21 +52,21 @@ class ShowCellRenderer implements ICellRendererComp {
 }
 
 const columnDefs: ColDef[] = [
-  { field: "localTime" },
+  { field: 'localTime' },
   {
-    field: "show",
+    field: 'show',
     cellRenderer: ShowCellRenderer,
     rowSpan: rowSpan,
     cellClassRules: {
-      "show-cell": "value !== undefined",
+      'show-cell': 'value !== undefined',
     },
     width: 200,
   },
-  { field: "a" },
-  { field: "b" },
-  { field: "c" },
-  { field: "d" },
-  { field: "e" },
+  { field: 'a' },
+  { field: 'b' },
+  { field: 'c' },
+  { field: 'd' },
+  { field: 'e' },
 ];
 
 const gridOptions: GridOptions = {
@@ -80,5 +80,5 @@ const gridOptions: GridOptions = {
 };
 
 // setup the grid after the page has finished loading
-const gridDiv = document.querySelector<HTMLElement>("#myGrid")!;
+const gridDiv = document.querySelector<HTMLElement>('#myGrid')!;
 new Grid(gridDiv, gridOptions);

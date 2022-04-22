@@ -1,27 +1,27 @@
-import { Grid, GridOptions } from "ag-grid-community";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
+import { Grid, GridOptions } from 'ag-grid-community';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 
 function formatNumber(number: number) {
   // this puts commas into the number eg 1000 goes to 1,000,
   // i pulled this from stack overflow, i have no idea how it works
   return Math.floor(number)
     .toString()
-    .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
+    .replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
 }
 
 const gridOptions: GridOptions = {
   columnDefs: [
-    { field: "a" },
-    { field: "b" },
-    { field: "c" },
-    { field: "d" },
-    { field: "e" },
-    { field: "f" },
+    { field: 'a' },
+    { field: 'b' },
+    { field: 'c' },
+    { field: 'd' },
+    { field: 'e' },
+    { field: 'f' },
   ],
   defaultColDef: {
     flex: 1,
-    cellClass: "align-right",
+    cellClass: 'align-right',
     enableCellChangeFlash: true,
     resizable: true,
     valueFormatter: function (params) {
@@ -39,7 +39,7 @@ function onUpdateSomeValues() {
   for (var i = 0; i < 20; i++) {
     var row = Math.floor(Math.random() * rowCount);
     var rowNode = gridOptions.api!.getDisplayedRowAtIndex(row)!;
-    var col = ["a", "b", "c", "d", "e", "f"][i % 6];
+    var col = ['a', 'b', 'c', 'd', 'e', 'f'][i % 6];
     rowNode.setDataValue(col, Math.floor(Math.random() * 10000));
   }
 }
@@ -74,10 +74,10 @@ function createRowData() {
 }
 
 // setup the grid after the page has finished loading
-var gridDiv = document.querySelector<HTMLElement>("#myGrid")!;
+var gridDiv = document.querySelector<HTMLElement>('#myGrid')!;
 new Grid(gridDiv, gridOptions);
 
-if (typeof window !== "undefined") {
+if (typeof window !== 'undefined') {
   // Attach external event handlers to window so they can be called from index.html
   (<any>window).onUpdateSomeValues = onUpdateSomeValues;
   (<any>window).onFlashTwoRows = onFlashTwoRows;

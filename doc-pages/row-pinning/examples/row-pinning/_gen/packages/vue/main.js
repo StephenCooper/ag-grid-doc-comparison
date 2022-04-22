@@ -1,8 +1,8 @@
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import { AgGridVue } from "ag-grid-vue";
-import Vue from "vue";
-import CustomPinnedRowRenderer from "./customPinnedRowRendererVue.js";
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import { AgGridVue } from 'ag-grid-vue';
+import Vue from 'vue';
+import CustomPinnedRowRenderer from './customPinnedRowRendererVue.js';
 
 const VueExample = {
   template: `
@@ -45,20 +45,20 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
     CustomPinnedRowRenderer,
   },
   data: function () {
     return {
       columnDefs: [
         {
-          field: "athlete",
+          field: 'athlete',
           cellRendererSelector: (params) => {
             if (params.node.rowPinned) {
               return {
-                component: "CustomPinnedRowRenderer",
+                component: 'CustomPinnedRowRenderer',
                 params: {
-                  style: { color: "blue" },
+                  style: { color: 'blue' },
                 },
               };
             } else {
@@ -68,13 +68,13 @@ const VueExample = {
           },
         },
         {
-          field: "age",
+          field: 'age',
           cellRendererSelector: (params) => {
             if (params.node.rowPinned) {
               return {
-                component: "CustomPinnedRowRenderer",
+                component: 'CustomPinnedRowRenderer',
                 params: {
-                  style: { "font-style": "italic" },
+                  style: { 'font-style': 'italic' },
                 },
               };
             } else {
@@ -83,10 +83,10 @@ const VueExample = {
             }
           },
         },
-        { field: "country" },
-        { field: "year" },
-        { field: "date" },
-        { field: "sport" },
+        { field: 'country' },
+        { field: 'year' },
+        { field: 'date' },
+        { field: 'sport' },
       ],
       gridApi: null,
       columnApi: null,
@@ -105,23 +105,23 @@ const VueExample = {
   created() {
     this.getRowStyle = (params) => {
       if (params.node.rowPinned) {
-        return { "font-weight": "bold" };
+        return { 'font-weight': 'bold' };
       }
     };
-    this.pinnedTopRowData = createData(1, "Top");
-    this.pinnedBottomRowData = createData(1, "Bottom");
+    this.pinnedTopRowData = createData(1, 'Top');
+    this.pinnedBottomRowData = createData(1, 'Bottom');
   },
   methods: {
     onPinnedRowTopCount() {
-      var headerRowsToFloat = document.getElementById("top-row-count").value;
+      var headerRowsToFloat = document.getElementById('top-row-count').value;
       var count = Number(headerRowsToFloat);
-      var rows = createData(count, "Top");
+      var rows = createData(count, 'Top');
       this.gridApi.setPinnedTopRowData(rows);
     },
     onPinnedRowBottomCount() {
-      var footerRowsToFloat = document.getElementById("bottom-row-count").value;
+      var footerRowsToFloat = document.getElementById('bottom-row-count').value;
       var count = Number(footerRowsToFloat);
-      var rows = createData(count, "Bottom");
+      var rows = createData(count, 'Bottom');
       this.gridApi.setPinnedBottomRowData(rows);
     },
     onGridReady(params) {
@@ -130,7 +130,7 @@ const VueExample = {
 
       const updateData = (data) => params.api.setRowData(data);
 
-      fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
         .then((resp) => resp.json())
         .then((data) => updateData(data));
     },
@@ -141,20 +141,20 @@ window.createData = function createData(count, prefix) {
   var result = [];
   for (var i = 0; i < count; i++) {
     result.push({
-      athlete: prefix + " Athlete " + i,
-      age: prefix + " Age " + i,
-      country: prefix + " Country " + i,
-      year: prefix + " Year " + i,
-      date: prefix + " Date " + i,
-      sport: prefix + " Sport " + i,
+      athlete: prefix + ' Athlete ' + i,
+      age: prefix + ' Age ' + i,
+      country: prefix + ' Country ' + i,
+      year: prefix + ' Year ' + i,
+      date: prefix + ' Date ' + i,
+      sport: prefix + ' Sport ' + i,
     });
   }
   return result;
 };
 
 new Vue({
-  el: "#app",
+  el: '#app',
   components: {
-    "my-component": VueExample,
+    'my-component': VueExample,
   },
 });

@@ -1,8 +1,8 @@
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
-import { AgGridVue } from "ag-grid-vue";
-import Vue from "vue";
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import 'ag-grid-enterprise';
+import { AgGridVue } from 'ag-grid-vue';
+import Vue from 'vue';
 
 const VueExample = {
   template: `
@@ -20,21 +20,21 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
-        { field: "athlete", minWidth: 170 },
-        { field: "age" },
-        { field: "country" },
-        { field: "year" },
-        { field: "date" },
-        { field: "sport" },
-        { field: "gold" },
-        { field: "silver" },
-        { field: "bronze" },
-        { field: "total" },
+        { field: 'athlete', minWidth: 170 },
+        { field: 'age' },
+        { field: 'country' },
+        { field: 'year' },
+        { field: 'date' },
+        { field: 'sport' },
+        { field: 'gold' },
+        { field: 'silver' },
+        { field: 'bronze' },
+        { field: 'total' },
       ],
       gridApi: null,
       columnApi: null,
@@ -52,20 +52,20 @@ const VueExample = {
   created() {},
   methods: {
     onCellKeyDown(e) {
-      console.log("onCellKeyDown", e);
+      console.log('onCellKeyDown', e);
     },
     onCellKeyPress(e) {
-      console.log("onCellKeyPress", e);
+      console.log('onCellKeyPress', e);
       if (e.event) {
         var keyPressed = e.event.key;
-        console.log("Key Pressed = " + keyPressed);
-        if (keyPressed === "s") {
+        console.log('Key Pressed = ' + keyPressed);
+        if (keyPressed === 's') {
           var rowNode = e.node;
           var newSelection = !rowNode.isSelected();
           console.log(
-            "setting selection on node " +
+            'setting selection on node ' +
               rowNode.data.athlete +
-              " to " +
+              ' to ' +
               newSelection
           );
           rowNode.setSelected(newSelection);
@@ -78,7 +78,7 @@ const VueExample = {
 
       const updateData = (data) => params.api.setRowData(data);
 
-      fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
         .then((resp) => resp.json())
         .then((data) => updateData(data));
     },
@@ -86,8 +86,8 @@ const VueExample = {
 };
 
 new Vue({
-  el: "#app",
+  el: '#app',
   components: {
-    "my-component": VueExample,
+    'my-component': VueExample,
   },
 });

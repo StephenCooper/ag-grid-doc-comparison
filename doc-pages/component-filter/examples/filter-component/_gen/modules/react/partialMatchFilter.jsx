@@ -1,19 +1,19 @@
-import React, { Component } from "react";
-import ReactDOM from "react-dom";
+import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
 
 export default class PartialMatchFilter extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      text: "",
+      text: '',
     };
 
     this.onChange = this.onChange.bind(this);
   }
 
   isFilterActive() {
-    return this.state.text != null && this.state.text !== "";
+    return this.state.text != null && this.state.text !== '';
   }
 
   doesFilterPass(params) {
@@ -34,7 +34,7 @@ export default class PartialMatchFilter extends Component {
 
     return this.state.text
       .toLowerCase()
-      .split(" ")
+      .split(' ')
       .every((filterWord) => value.indexOf(filterWord) >= 0);
   }
 
@@ -47,7 +47,7 @@ export default class PartialMatchFilter extends Component {
   }
 
   setModel(model) {
-    this.state.text = model ? model.value : "";
+    this.state.text = model ? model.value : '';
   }
 
   afterGuiAttached(params) {
@@ -85,18 +85,18 @@ export default class PartialMatchFilter extends Component {
 
   render() {
     const style = {
-      border: "2px solid #22ff22",
-      borderRadius: "5px",
-      backgroundColor: "#bbffbb",
-      width: "200px",
-      height: "50px",
+      border: '2px solid #22ff22',
+      borderRadius: '5px',
+      backgroundColor: '#bbffbb',
+      width: '200px',
+      height: '50px',
     };
 
     return (
       <div style={style}>
-        Filter:{" "}
+        Filter:{' '}
         <input
-          style={{ height: "20px" }}
+          style={{ height: '20px' }}
           ref="input"
           value={this.state.text}
           onChange={this.onChange}

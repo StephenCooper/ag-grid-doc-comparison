@@ -1,15 +1,15 @@
 const gridOptions = {
   columnDefs: [
-    { field: "athlete", minWidth: 150 },
-    { field: "age", maxWidth: 90 },
-    { field: "country", minWidth: 150 },
-    { field: "year", maxWidth: 90 },
-    { field: "date", minWidth: 150 },
-    { field: "sport", minWidth: 150 },
-    { field: "gold" },
-    { field: "silver" },
-    { field: "bronze" },
-    { field: "total" },
+    { field: 'athlete', minWidth: 150 },
+    { field: 'age', maxWidth: 90 },
+    { field: 'country', minWidth: 150 },
+    { field: 'year', maxWidth: 90 },
+    { field: 'date', minWidth: 150 },
+    { field: 'sport', minWidth: 150 },
+    { field: 'gold' },
+    { field: 'silver' },
+    { field: 'bronze' },
+    { field: 'total' },
   ],
   defaultColDef: {
     flex: 1,
@@ -21,7 +21,7 @@ const gridOptions = {
 
   processCellForClipboard: function (params) {
     if (
-      params.column.getColId() === "athlete" &&
+      params.column.getColId() === 'athlete' &&
       params.value &&
       params.value.toUpperCase
     ) {
@@ -33,7 +33,7 @@ const gridOptions = {
 
   processCellFromClipboard: function (params) {
     if (
-      params.column.getColId() === "athlete" &&
+      params.column.getColId() === 'athlete' &&
       params.value &&
       params.value.toLowerCase
     ) {
@@ -47,8 +47,8 @@ function onAddRange() {
   gridOptions.api.addCellRange({
     rowStartIndex: 4,
     rowEndIndex: 8,
-    columnStart: "age",
-    columnEnd: "date",
+    columnStart: 'age',
+    columnEnd: 'date',
   });
 }
 
@@ -57,21 +57,21 @@ function onClearRange() {
 }
 
 function onRangeSelectionChanged(event) {
-  var lbRangeCount = document.querySelector("#lbRangeCount");
-  var lbEagerSum = document.querySelector("#lbEagerSum");
-  var lbLazySum = document.querySelector("#lbLazySum");
+  var lbRangeCount = document.querySelector('#lbRangeCount');
+  var lbEagerSum = document.querySelector('#lbEagerSum');
+  var lbLazySum = document.querySelector('#lbLazySum');
   var cellRanges = gridOptions.api.getCellRanges();
 
   // if no selection, clear all the results and do nothing more
   if (!cellRanges || cellRanges.length === 0) {
-    lbRangeCount.innerHTML = "0";
-    lbEagerSum.innerHTML = "-";
-    lbLazySum.innerHTML = "-";
+    lbRangeCount.innerHTML = '0';
+    lbEagerSum.innerHTML = '-';
+    lbLazySum.innerHTML = '-';
     return;
   }
 
   // set range count to the number of ranges selected
-  lbRangeCount.innerHTML = cellRanges.length + "";
+  lbRangeCount.innerHTML = cellRanges.length + '';
 
   var sum = 0;
   var api = gridOptions.api;
@@ -87,7 +87,7 @@ function onRangeSelectionChanged(event) {
           var rowModel = api.getModel();
           var rowNode = rowModel.getRow(rowIndex);
           var value = api.getValue(column, rowNode);
-          if (typeof value === "number") {
+          if (typeof value === 'number') {
             sum += value;
           }
         });
@@ -95,22 +95,22 @@ function onRangeSelectionChanged(event) {
     });
   }
 
-  lbEagerSum.innerHTML = sum + "";
+  lbEagerSum.innerHTML = sum + '';
 
   if (event.started) {
-    lbLazySum.innerHTML = "?";
+    lbLazySum.innerHTML = '?';
   }
   if (event.finished) {
-    lbLazySum.innerHTML = sum + "";
+    lbLazySum.innerHTML = sum + '';
   }
 }
 
 // setup the grid after the page has finished loading
-document.addEventListener("DOMContentLoaded", function () {
-  var gridDiv = document.querySelector("#myGrid");
+document.addEventListener('DOMContentLoaded', function () {
+  var gridDiv = document.querySelector('#myGrid');
   new agGrid.Grid(gridDiv, gridOptions);
 
-  fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+  fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
     .then((response) => response.json())
     .then((data) => gridOptions.api.setRowData(data));
 });

@@ -1,8 +1,10 @@
-"use strict";
+'use strict';
 
-import { AgChartsReact } from "ag-charts-react";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { cloneDeep } from 'lodash';
+import { render } from 'react-dom';
+import * as agCharts from 'ag-charts-community';
+import { AgChartsReact } from 'ag-charts-react';
 
 class ChartExample extends Component {
   constructor(props) {
@@ -10,27 +12,27 @@ class ChartExample extends Component {
 
     this.state = {
       options: {
-        type: "hierarchy",
+        type: 'hierarchy',
 
         data,
         series: [
           {
-            type: "treemap",
-            labelKey: "orgHierarchy",
+            type: 'treemap',
+            labelKey: 'orgHierarchy',
             colorParents: true,
             gradient: false,
             nodePadding: 5,
             sizeKey: undefined,
             colorKey: undefined,
             colorDomain: [0, 2, 4],
-            colorRange: ["#d73027", "#fee08b", "#1a9850"],
+            colorRange: ['#d73027', '#fee08b', '#1a9850'],
           },
         ],
         title: {
-          text: "Organizational Chart",
+          text: 'Organizational Chart',
         },
         subtitle: {
-          text: "of a top secret startup",
+          text: 'of a top secret startup',
         },
       },
     };
@@ -43,4 +45,4 @@ class ChartExample extends Component {
   }
 }
 
-render(<ChartExample />, document.querySelector("#root"));
+render(<ChartExample />, document.querySelector('#root'));

@@ -5,14 +5,14 @@ import {
   CreateRangeChartParams,
   FirstDataRenderedEvent,
   GridReadyEvent,
-} from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { Component } from "@angular/core";
+} from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { Component } from '@angular/core';
 // Required feature modules are registered in app.module.ts
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<ag-grid-angular
     style="width: 100%; height: 100%;"
     class="ag-theme-alpine"
@@ -30,29 +30,29 @@ import { Component } from "@angular/core";
 })
 export class AppComponent {
   public columnDefs: ColDef[] = [
-    { field: "country", width: 150, chartDataType: "category" },
-    { field: "gold", chartDataType: "series" },
-    { field: "silver", chartDataType: "series" },
-    { field: "bronze", chartDataType: "series" },
+    { field: 'country', width: 150, chartDataType: 'category' },
+    { field: 'gold', chartDataType: 'series' },
+    { field: 'silver', chartDataType: 'series' },
+    { field: 'bronze', chartDataType: 'series' },
     {
-      headerName: "A",
-      valueGetter: "Math.floor(Math.random()*1000)",
-      chartDataType: "series",
+      headerName: 'A',
+      valueGetter: 'Math.floor(Math.random()*1000)',
+      chartDataType: 'series',
     },
     {
-      headerName: "B",
-      valueGetter: "Math.floor(Math.random()*1000)",
-      chartDataType: "series",
+      headerName: 'B',
+      valueGetter: 'Math.floor(Math.random()*1000)',
+      chartDataType: 'series',
     },
     {
-      headerName: "C",
-      valueGetter: "Math.floor(Math.random()*1000)",
-      chartDataType: "series",
+      headerName: 'C',
+      valueGetter: 'Math.floor(Math.random()*1000)',
+      chartDataType: 'series',
     },
     {
-      headerName: "D",
-      valueGetter: "Math.floor(Math.random()*1000)",
-      chartDataType: "series",
+      headerName: 'D',
+      valueGetter: 'Math.floor(Math.random()*1000)',
+      chartDataType: 'series',
     },
   ];
   public defaultColDef: ColDef = {
@@ -69,18 +69,18 @@ export class AppComponent {
     pie: {
       title: {
         enabled: true,
-        text: "Precious Metals Production",
-        fontWeight: "bold",
+        text: 'Precious Metals Production',
+        fontWeight: 'bold',
         fontSize: 20,
-        color: "rgb(100, 100, 100)",
+        color: 'rgb(100, 100, 100)',
       },
       subtitle: {
         enabled: true,
-        text: "by country",
-        fontStyle: "italic",
-        fontWeight: "bold",
+        text: 'by country',
+        fontStyle: 'italic',
+        fontWeight: 'bold',
         fontSize: 14,
-        color: "rgb(100, 100, 100)",
+        color: 'rgb(100, 100, 100)',
       },
       padding: {
         top: 25,
@@ -107,9 +107,9 @@ export class AppComponent {
       cellRange: {
         rowStartIndex: 0,
         rowEndIndex: 5,
-        columns: ["country", "gold"],
+        columns: ['country', 'gold'],
       },
-      chartType: "pie",
+      chartType: 'pie',
     };
     params.api.createRangeChart(createRangeChartParams);
   }
@@ -117,6 +117,6 @@ export class AppComponent {
   onGridReady(params: GridReadyEvent) {}
 
   getChartToolbarItems(): ChartMenuOptions[] {
-    return ["chartDownload", "chartData", "chartSettings"];
+    return ['chartDownload', 'chartData', 'chartSettings'];
   }
 }

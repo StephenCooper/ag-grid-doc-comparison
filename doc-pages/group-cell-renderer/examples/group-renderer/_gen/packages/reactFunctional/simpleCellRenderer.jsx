@@ -1,9 +1,9 @@
-import React from "react";
+import React from 'react';
 
 export default (props) => (
   <span
     style={{
-      backgroundColor: props.node.group ? "coral" : "lightgreen",
+      backgroundColor: props.node.group ? 'coral' : 'lightgreen',
       padding: 2,
     }}
   >

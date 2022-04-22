@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 // NOTE: The details of this web worker are not important it's just used to simulate streaming updates in the grid.
 
@@ -12,34 +12,34 @@ var TRADE_COUNT = 2;
 
 // add / remove products to change the data set
 var PRODUCTS = [
-  "Cobalt",
-  "Rubber",
-  "Wool",
-  "Amber",
-  "Corn",
-  "Nickel",
-  "Copper",
-  "Oats",
-  "Coffee",
-  "Wheat",
-  "Lead",
-  "Zinc",
-  "Tin",
-  "Coca",
+  'Cobalt',
+  'Rubber',
+  'Wool',
+  'Amber',
+  'Corn',
+  'Nickel',
+  'Copper',
+  'Oats',
+  'Coffee',
+  'Wheat',
+  'Lead',
+  'Zinc',
+  'Tin',
+  'Coca',
 ];
 
 // add / remove portfolios to change the data set
-var PORTFOLIOS = ["Aggressive", "Defensive", "Income", "Speculative", "Hybrid"];
+var PORTFOLIOS = ['Aggressive', 'Defensive', 'Income', 'Speculative', 'Hybrid'];
 
 // these are the list of columns that updates go to
 var VALUE_FIELDS = [
-  "current",
-  "previous",
-  "pl1",
-  "pl2",
-  "gainDx",
-  "sxPx",
-  "_99Out",
+  'current',
+  'previous',
+  'pl1',
+  'pl2',
+  'gainDx',
+  'sxPx',
+  '_99Out',
 ];
 
 // a list of the data, that we modify as we go
@@ -59,7 +59,7 @@ function createRowData() {
       var portfolio = PORTFOLIOS[j];
       for (var i = 0; i < PRODUCTS.length; i++) {
         var product = PRODUCTS[i];
-        var book = "GL-" + ++nextBookId;
+        var book = 'GL-' + ++nextBookId;
         for (var l = 0; l < TRADE_COUNT; l++) {
           var trade = createTradeRecord(product, portfolio, book, thisBatch);
           globalRowData.push(trade);
@@ -86,8 +86,8 @@ function createTradeRecord(product, portfolio, book, batch) {
     trade: ++nextTradeId,
     submitterID: randomBetween(10, 1000),
     submitterDealID: randomBetween(10, 1000),
-    dealType: Math.random() < 0.2 ? "Physical" : "Financial",
-    bidFlag: Math.random() < 0.5 ? "Buy" : "Sell",
+    dealType: Math.random() < 0.2 ? 'Physical' : 'Financial',
+    bidFlag: Math.random() < 0.5 ? 'Buy' : 'Sell',
     current: current,
     previous: previous,
     pl1: randomBetween(10000, 30000),
@@ -101,7 +101,7 @@ function createTradeRecord(product, portfolio, book, batch) {
 createRowData();
 
 postMessage({
-  type: "setRowData",
+  type: 'setRowData',
   records: globalRowData,
 });
 
@@ -126,7 +126,7 @@ function updateSomeItems(updateCount) {
 var latestUpdateId = 0;
 function startUpdates(thisUpdateId) {
   postMessage({
-    type: "start",
+    type: 'start',
     updateCount: UPDATES_PER_MESSAGE,
     interval: MILLISECONDS_BETWEEN_MESSAGES,
   });
@@ -134,7 +134,7 @@ function startUpdates(thisUpdateId) {
   var intervalId;
   function intervalFunc() {
     postMessage({
-      type: "updateData",
+      type: 'updateData',
       records: updateSomeItems(UPDATES_PER_MESSAGE),
     });
     if (thisUpdateId !== latestUpdateId) {
@@ -145,8 +145,8 @@ function startUpdates(thisUpdateId) {
   intervalId = setInterval(intervalFunc, MILLISECONDS_BETWEEN_MESSAGES);
 }
 
-self.addEventListener("message", function (e) {
+self.addEventListener('message', function (e) {
   // used to control start / stop of updates
   latestUpdateId++;
-  if (e.data === "start") startUpdates(latestUpdateId);
+  if (e.data === 'start') startUpdates(latestUpdateId);
 });

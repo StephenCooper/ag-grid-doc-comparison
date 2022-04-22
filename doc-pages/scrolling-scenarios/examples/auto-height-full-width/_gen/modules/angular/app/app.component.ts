@@ -5,14 +5,14 @@ import {
   ICellRendererParams,
   IsFullWidthRowParams,
   StatusPanelDef,
-} from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { Component } from "@angular/core";
+} from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { Component } from '@angular/core';
 // Required feature modules are registered in app.module.ts
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<ag-grid-angular
       class="ag-theme-alpine"
       [columnDefs]="columnDefs"
@@ -66,45 +66,45 @@ import { Component } from "@angular/core";
 export class AppComponent {
   public columnDefs: (ColDef | ColGroupDef)[] = [
     {
-      headerName: "Core",
+      headerName: 'Core',
       children: [
-        { headerName: "ID", field: "id" },
-        { headerName: "Make", field: "make" },
-        { headerName: "Price", field: "price", filter: "number" },
+        { headerName: 'ID', field: 'id' },
+        { headerName: 'Make', field: 'make' },
+        { headerName: 'Price', field: 'price', filter: 'number' },
       ],
     },
     {
-      headerName: "Extra",
+      headerName: 'Extra',
       children: [
         {
-          headerName: "Val 1",
-          field: "val1",
-          filter: "number",
-          pinned: "left",
+          headerName: 'Val 1',
+          field: 'val1',
+          filter: 'number',
+          pinned: 'left',
         },
         {
-          headerName: "Val 2",
-          field: "val2",
-          filter: "number",
-          pinned: "left",
+          headerName: 'Val 2',
+          field: 'val2',
+          filter: 'number',
+          pinned: 'left',
         },
-        { headerName: "Val 3", field: "val3", filter: "number" },
-        { headerName: "Val 4", field: "val4", filter: "number" },
-        { headerName: "Val 5", field: "val5", filter: "number" },
-        { headerName: "Val 6", field: "val6", filter: "number" },
-        { headerName: "Val 7", field: "val7", filter: "number" },
-        { headerName: "Val 8", field: "val8", filter: "number" },
+        { headerName: 'Val 3', field: 'val3', filter: 'number' },
+        { headerName: 'Val 4', field: 'val4', filter: 'number' },
+        { headerName: 'Val 5', field: 'val5', filter: 'number' },
+        { headerName: 'Val 6', field: 'val6', filter: 'number' },
+        { headerName: 'Val 7', field: 'val7', filter: 'number' },
+        { headerName: 'Val 8', field: 'val8', filter: 'number' },
         {
-          headerName: "Val 9",
-          field: "val9",
-          filter: "number",
-          pinned: "right",
+          headerName: 'Val 9',
+          field: 'val9',
+          filter: 'number',
+          pinned: 'right',
         },
         {
-          headerName: "Val 10",
-          field: "val10",
-          filter: "number",
-          pinned: "right",
+          headerName: 'Val 10',
+          field: 'val10',
+          filter: 'number',
+          pinned: 'right',
         },
       ],
     },
@@ -125,13 +125,13 @@ export class AppComponent {
   public statusBar: {
     statusPanels: StatusPanelDef[];
   } = {
-    statusPanels: [{ statusPanel: "agAggregationComponent" }],
+    statusPanels: [{ statusPanel: 'agAggregationComponent' }],
   };
-  public domLayout: "normal" | "autoHeight" | "print" = "autoHeight";
+  public domLayout: 'normal' | 'autoHeight' | 'print' = 'autoHeight';
 
   onGridReady(params: GridReadyEvent) {}
 
-  isFullWidthRow(params: IsFullWidthRowParams) {
+  isFullWidthRow(params: IsFullWidthRowParams): boolean {
     return params.rowNode.data.fullWidth;
   }
 
@@ -140,26 +140,26 @@ export class AppComponent {
     let cssClass;
     let message;
     if (params.node.rowPinned) {
-      cssClass = "example-full-width-floating-row";
-      message = "Floating full width row at index " + params.rowIndex;
+      cssClass = 'example-full-width-floating-row';
+      message = 'Floating full width row at index ' + params.rowIndex;
     } else {
-      cssClass = "example-full-width-row";
-      message = "Normal full width row at index" + params.rowIndex;
+      cssClass = 'example-full-width-row';
+      message = 'Normal full width row at index' + params.rowIndex;
     }
-    const eDiv = document.createElement("div");
+    const eDiv = document.createElement('div');
     eDiv.innerHTML = `<div class="${cssClass}"><button>Click</button> ${message}</div>`;
-    const eButton = eDiv.querySelector("button")!;
-    eButton.addEventListener("click", function () {
-      alert("button clicked");
+    const eButton = eDiv.querySelector('button')!;
+    eButton.addEventListener('click', function () {
+      alert('button clicked');
     });
     return eDiv;
   }
 }
 
-const makes = ["Toyota", "Ford", "BMW", "Phantom", "Porsche"];
+const makes = ['Toyota', 'Ford', 'BMW', 'Phantom', 'Porsche'];
 function createRow(index: number) {
   return {
-    id: "D" + (1000 + index),
+    id: 'D' + (1000 + index),
     make: makes[Math.floor(Math.random() * makes.length)],
     price: Math.floor(Math.random() * 100000),
     // every third row is full width

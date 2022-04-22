@@ -1,21 +1,21 @@
-"use strict";
+'use strict';
 
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import { AgGridReact } from "ag-grid-react";
-import React, { useCallback, useMemo, useState } from "react";
-import { render } from "react-dom";
-import NumberFilterComponent from "./numberFilterComponent.jsx";
-import NumberFloatingFilterComponent from "./numberFloatingFilterComponent.jsx";
+import React, { useCallback, useMemo, useRef, useState } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from 'ag-grid-react';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import NumberFilterComponent from './numberFilterComponent.jsx';
+import NumberFloatingFilterComponent from './numberFloatingFilterComponent.jsx';
 
 const GridExample = () => {
-  const containerStyle = useMemo(() => ({ width: "100%", height: "100%" }), []);
-  const gridStyle = useMemo(() => ({ height: "100%", width: "100%" }), []);
+  const containerStyle = useMemo(() => ({ width: '100%', height: '100%' }), []);
+  const gridStyle = useMemo(() => ({ height: '100%', width: '100%' }), []);
   const [rowData, setRowData] = useState();
   const [columnDefs, setColumnDefs] = useState([
-    { field: "athlete", filter: "agTextColumnFilter" },
+    { field: 'athlete', filter: 'agTextColumnFilter' },
     {
-      field: "gold",
+      field: 'gold',
       floatingFilterComponent: NumberFloatingFilterComponent,
       floatingFilterComponentParams: {
         suppressFilterButton: true,
@@ -23,7 +23,7 @@ const GridExample = () => {
       filter: NumberFilterComponent,
     },
     {
-      field: "silver",
+      field: 'silver',
       floatingFilterComponent: NumberFloatingFilterComponent,
       floatingFilterComponentParams: {
         suppressFilterButton: true,
@@ -31,7 +31,7 @@ const GridExample = () => {
       filter: NumberFilterComponent,
     },
     {
-      field: "bronze",
+      field: 'bronze',
       floatingFilterComponent: NumberFloatingFilterComponent,
       floatingFilterComponentParams: {
         suppressFilterButton: true,
@@ -39,7 +39,7 @@ const GridExample = () => {
       filter: NumberFilterComponent,
     },
     {
-      field: "total",
+      field: 'total',
       floatingFilterComponent: NumberFloatingFilterComponent,
       floatingFilterComponentParams: {
         suppressFilterButton: true,
@@ -60,7 +60,7 @@ const GridExample = () => {
   }, []);
 
   const onGridReady = useCallback((params) => {
-    fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+    fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .then((resp) => resp.json())
       .then((data) => {
         setRowData(data);
@@ -81,4 +81,4 @@ const GridExample = () => {
   );
 };
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

@@ -1,15 +1,15 @@
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine-dark.css";
-import "ag-grid-enterprise";
-import { AgGridVue } from "ag-grid-vue3";
-import { createApp } from "vue";
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine-dark.css';
+import 'ag-grid-enterprise';
+import { AgGridVue } from 'ag-grid-vue3';
+import { createApp } from 'vue';
 
 const VueExample = {
   template: `
         <div style="height: 100%">
             <div class="example-wrapper">
                 <div style="margin-bottom: 5px;">
-                    <button v-on:click="onAdd()">Add at End</button>
+                    <button v-on:click="onAdd(undefined)">Add at End</button>
                     <button v-on:click="onAdd(0)">Add at Start</button>
                     <button v-on:click="onUpdateSelected()">Update Selected</button>
                     <button v-on:click="onUpdateRandom()">Update Random</button>
@@ -33,11 +33,11 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
-      columnDefs: [{ field: "product" }, { field: "value" }],
+      columnDefs: [{ field: 'product' }, { field: 'value' }],
       gridApi: null,
       columnApi: null,
       defaultColDef: {
@@ -54,9 +54,9 @@ const VueExample = {
     this.getRowId = (params) => {
       return params.data.product;
     };
-    this.rowSelection = "multiple";
-    this.serverSideStoreType = "full";
-    this.rowModelType = "serverSide";
+    this.rowSelection = 'multiple';
+    this.serverSideStoreType = 'full';
+    this.rowModelType = 'serverSide';
   },
   methods: {
     onRemoveSelected() {
@@ -119,7 +119,7 @@ const VueExample = {
       const itemsToAdd = [];
       for (let i = 0; i < 5; i++) {
         itemsToAdd.push({
-          product: newProductName + " " + newProductSequence++,
+          product: newProductName + ' ' + newProductSequence++,
           value: getNextValue(),
         });
       }
@@ -153,7 +153,7 @@ const VueExample = {
         params.api.setServerSideDatasource(dataSource);
       };
 
-      fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
         .then((resp) => resp.json())
         .then((data) => updateData(data));
     },
@@ -165,41 +165,41 @@ window.getNextValue = function getNextValue() {
   return Math.floor((valueCounter * 987654321) / 7) % 10000;
 };
 
-const products = ["Palm Oil", "Rubber", "Wool", "Amber", "Copper"];
+const products = ['Palm Oil', 'Rubber', 'Wool', 'Amber', 'Copper'];
 
 const all_products = [
-  "Palm Oil",
-  "Rubber",
-  "Wool",
-  "Amber",
-  "Copper",
-  "Lead",
-  "Zinc",
-  "Tin",
-  "Aluminium",
-  "Aluminium Alloy",
-  "Nickel",
-  "Cobalt",
-  "Molybdenum",
-  "Recycled Steel",
-  "Corn",
-  "Oats",
-  "Rough Rice",
-  "Soybeans",
-  "Rapeseed",
-  "Soybean Meal",
-  "Soybean Oil",
-  "Wheat",
-  "Milk",
-  "Coca",
-  "Coffee C",
-  "Cotton No.2",
-  "Sugar No.11",
-  "Sugar No.14",
+  'Palm Oil',
+  'Rubber',
+  'Wool',
+  'Amber',
+  'Copper',
+  'Lead',
+  'Zinc',
+  'Tin',
+  'Aluminium',
+  'Aluminium Alloy',
+  'Nickel',
+  'Cobalt',
+  'Molybdenum',
+  'Recycled Steel',
+  'Corn',
+  'Oats',
+  'Rough Rice',
+  'Soybeans',
+  'Rapeseed',
+  'Soybean Meal',
+  'Soybean Oil',
+  'Wheat',
+  'Milk',
+  'Coca',
+  'Coffee C',
+  'Cotton No.2',
+  'Sugar No.11',
+  'Sugar No.14',
 ];
 
 let newProductSequence = 0;
 
 let valueCounter = 0;
 
-createApp(VueExample).mount("#app");
+createApp(VueExample).mount('#app');

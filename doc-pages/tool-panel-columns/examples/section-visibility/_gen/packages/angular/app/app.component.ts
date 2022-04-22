@@ -1,18 +1,18 @@
-import { HttpClient } from "@angular/common/http";
-import { Component } from "@angular/core";
+import { HttpClient } from '@angular/common/http';
+import { Component } from '@angular/core';
 import {
   ColDef,
   GridApi,
   GridReadyEvent,
   IColumnToolPanel,
   SideBarDef,
-} from "ag-grid-community";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
+} from 'ag-grid-community';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import 'ag-grid-enterprise';
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<div class="example-wrapper">
     <div>
       <span class="button-group">
@@ -41,16 +41,16 @@ export class AppComponent {
   private gridApi!: GridApi;
 
   public columnDefs: ColDef[] = [
-    { headerName: "Name", field: "athlete", minWidth: 200 },
-    { field: "age", enableRowGroup: true },
-    { field: "country", minWidth: 200 },
-    { field: "year" },
-    { field: "date", suppressColumnsToolPanel: true, minWidth: 180 },
-    { field: "sport", minWidth: 200 },
-    { field: "gold", aggFunc: "sum" },
-    { field: "silver", aggFunc: "sum" },
-    { field: "bronze", aggFunc: "sum" },
-    { field: "total", aggFunc: "sum" },
+    { headerName: 'Name', field: 'athlete', minWidth: 200 },
+    { field: 'age', enableRowGroup: true },
+    { field: 'country', minWidth: 200 },
+    { field: 'year' },
+    { field: 'date', suppressColumnsToolPanel: true, minWidth: 180 },
+    { field: 'sport', minWidth: 200 },
+    { field: 'gold', aggFunc: 'sum' },
+    { field: 'silver', aggFunc: 'sum' },
+    { field: 'bronze', aggFunc: 'sum' },
+    { field: 'total', aggFunc: 'sum' },
   ];
   public defaultColDef: ColDef = {
     flex: 1,
@@ -58,14 +58,14 @@ export class AppComponent {
     sortable: true,
     enablePivot: true,
   };
-  public sideBar: SideBarDef | string | boolean | null = {
+  public sideBar: SideBarDef | string | string[] | boolean | null = {
     toolPanels: [
       {
-        id: "columns",
-        labelDefault: "Columns",
-        labelKey: "columns",
-        iconKey: "columns",
-        toolPanel: "agColumnsToolPanel",
+        id: 'columns',
+        labelDefault: 'Columns',
+        labelKey: 'columns',
+        iconKey: 'columns',
+        toolPanel: 'agColumnsToolPanel',
         toolPanelParams: {
           suppressRowGroups: true,
           suppressValues: true,
@@ -77,37 +77,37 @@ export class AppComponent {
         },
       },
     ],
-    defaultToolPanel: "columns",
+    defaultToolPanel: 'columns',
   };
   public rowData!: any[];
 
   constructor(private http: HttpClient) {}
 
   showPivotModeSection() {
-    var columnToolPanel = this.gridApi.getToolPanelInstance(
-      "columns"
-    ) as unknown as IColumnToolPanel;
+    var columnToolPanel = (this.gridApi.getToolPanelInstance(
+      'columns'
+    ) as unknown) as IColumnToolPanel;
     columnToolPanel.setPivotModeSectionVisible(true);
   }
 
   showRowGroupsSection() {
-    var columnToolPanel = this.gridApi.getToolPanelInstance(
-      "columns"
-    ) as unknown as IColumnToolPanel;
+    var columnToolPanel = (this.gridApi.getToolPanelInstance(
+      'columns'
+    ) as unknown) as IColumnToolPanel;
     columnToolPanel.setRowGroupsSectionVisible(true);
   }
 
   showValuesSection() {
-    var columnToolPanel = this.gridApi.getToolPanelInstance(
-      "columns"
-    ) as unknown as IColumnToolPanel;
+    var columnToolPanel = (this.gridApi.getToolPanelInstance(
+      'columns'
+    ) as unknown) as IColumnToolPanel;
     columnToolPanel.setValuesSectionVisible(true);
   }
 
   showPivotSection() {
-    var columnToolPanel = this.gridApi.getToolPanelInstance(
-      "columns"
-    ) as unknown as IColumnToolPanel;
+    var columnToolPanel = (this.gridApi.getToolPanelInstance(
+      'columns'
+    ) as unknown) as IColumnToolPanel;
     columnToolPanel.setPivotSectionVisible(true);
   }
 
@@ -115,7 +115,7 @@ export class AppComponent {
     this.gridApi = params.api;
 
     this.http
-      .get<any[]>("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      .get<any[]>('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .subscribe((data) => (this.rowData = data));
   }
 }

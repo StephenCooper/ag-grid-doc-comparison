@@ -3,10 +3,10 @@ import React, {
   useEffect,
   useImperativeHandle,
   useState,
-} from "react";
+} from 'react';
 
 export default forwardRef((props, ref) => {
-  const [year, setYear] = useState("All");
+  const [year, setYear] = useState('All');
 
   // expose AG Grid Filter Lifecycle callbacks
   useImperativeHandle(ref, () => {
@@ -16,7 +16,7 @@ export default forwardRef((props, ref) => {
       },
 
       isFilterActive() {
-        return year === "2010";
+        return year === '2010';
       },
 
       // this example isn't using getModel() and setModel(),
@@ -37,35 +37,35 @@ export default forwardRef((props, ref) => {
 
   return (
     <div
-      style={{ display: "inline-block", width: "400px" }}
+      style={{ display: 'inline-block', width: '400px' }}
       onChange={onYearChange}
     >
       <div
         style={{
-          padding: "10px",
-          backgroundColor: "#d3d3d3",
-          textAlign: "center",
+          padding: '10px',
+          backgroundColor: '#d3d3d3',
+          textAlign: 'center',
         }}
       >
         This is a very wide filter
       </div>
       <label
         style={{
-          margin: "10px",
-          padding: "50px",
-          display: "inline-block",
-          backgroundColor: "#999999",
+          margin: '10px',
+          padding: '50px',
+          display: 'inline-block',
+          backgroundColor: '#999999',
         }}
       >
-        <input type="radio" name="year" value="All" checked={year === "All"} />{" "}
+        <input type="radio" name="year" value="All" checked={year === 'All'} />{' '}
         All
       </label>
       <label
         style={{
-          margin: "10px",
-          padding: "50px",
-          display: "inline-block",
-          backgroundColor: "#999999",
+          margin: '10px',
+          padding: '50px',
+          display: 'inline-block',
+          backgroundColor: '#999999',
         }}
       >
         <input type="radio" name="year" value="2010" /> Since 2010

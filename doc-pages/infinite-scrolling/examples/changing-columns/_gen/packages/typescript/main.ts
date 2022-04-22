@@ -3,17 +3,17 @@ import {
   GridOptions,
   IDatasource,
   SortModelItem,
-} from "ag-grid-community";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
+} from 'ag-grid-community';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 
 const gridOptions: GridOptions = {
   columnDefs: [
-    { field: "athlete", colId: "athlete", minWidth: 180 },
-    { field: "age", colId: "age" },
-    { field: "country", colId: "country", minWidth: 180 },
-    { field: "year", colId: "year" },
-    { field: "sport", colId: "sport", minWidth: 180 },
+    { field: 'athlete', colId: 'athlete', minWidth: 180 },
+    { field: 'age', colId: 'age' },
+    { field: 'country', colId: 'country', minWidth: 180 },
+    { field: 'year', colId: 'year' },
+    { field: 'sport', colId: 'sport', minWidth: 180 },
   ],
   defaultColDef: {
     flex: 1,
@@ -21,25 +21,25 @@ const gridOptions: GridOptions = {
     resizable: true,
     filter: true,
   },
-  rowModelType: "infinite",
+  rowModelType: 'infinite',
 };
 
 function onBtShowYearColumn() {
   gridOptions.api!.setColumnDefs([
-    { field: "athlete", colId: "athlete" },
-    { field: "age", colId: "age" },
-    { field: "country", colId: "country" },
-    { field: "year", colId: "year" },
-    { field: "sport", colId: "sport" },
+    { field: 'athlete', colId: 'athlete' },
+    { field: 'age', colId: 'age' },
+    { field: 'country', colId: 'country' },
+    { field: 'year', colId: 'year' },
+    { field: 'sport', colId: 'sport' },
   ]);
 }
 
 function onBtHideYearColumn() {
   gridOptions.api!.setColumnDefs([
-    { field: "athlete", colId: "athlete" },
-    { field: "age", colId: "age" },
-    { field: "country", colId: "country" },
-    { field: "sport", colId: "sport" },
+    { field: 'athlete', colId: 'athlete' },
+    { field: 'age', colId: 'age' },
+    { field: 'country', colId: 'country' },
+    { field: 'sport', colId: 'sport' },
   ]);
 }
 
@@ -67,7 +67,7 @@ function sortData(sortModel: SortModelItem[], data: any[]) {
       if (valueA == valueB) {
         continue;
       }
-      var sortDirection = sortColModel.sort === "asc" ? 1 : -1;
+      var sortDirection = sortColModel.sort === 'asc' ? 1 : -1;
       if (valueA > valueB) {
         return sortDirection;
       } else {
@@ -122,21 +122,21 @@ function filterData(filterModel: any, data: any[]) {
 }
 
 // setup the grid after the page has finished loading
-var gridDiv = document.querySelector<HTMLElement>("#myGrid")!;
+var gridDiv = document.querySelector<HTMLElement>('#myGrid')!;
 new Grid(gridDiv, gridOptions);
 
-fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
   .then((response) => response.json())
   .then(function (data) {
     // give each row an id
     data.forEach(function (d: any, index: number) {
-      d.id = "R" + (index + 1);
+      d.id = 'R' + (index + 1);
     });
 
     var dataSource: IDatasource = {
       rowCount: undefined, // behave as infinite scroll
       getRows: function (params) {
-        console.log("asking for " + params.startRow + " to " + params.endRow);
+        console.log('asking for ' + params.startRow + ' to ' + params.endRow);
         // At this point in your code, you would call the server.
         // To make the demo look real, wait for 500ms before returning
         setTimeout(function () {
@@ -164,7 +164,7 @@ fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
     gridOptions.api!.setDatasource(dataSource);
   });
 
-if (typeof window !== "undefined") {
+if (typeof window !== 'undefined') {
   // Attach external event handlers to window so they can be called from index.html
   (<any>window).onBtShowYearColumn = onBtShowYearColumn;
   (<any>window).onBtHideYearColumn = onBtHideYearColumn;

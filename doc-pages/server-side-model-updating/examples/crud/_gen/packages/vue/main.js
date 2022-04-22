@@ -1,8 +1,8 @@
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine-dark.css";
-import "ag-grid-enterprise";
-import { AgGridVue } from "ag-grid-vue";
-import Vue from "vue";
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine-dark.css';
+import 'ag-grid-enterprise';
+import { AgGridVue } from 'ag-grid-vue';
+import Vue from 'vue';
 
 const VueExample = {
   template: `
@@ -27,19 +27,19 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
-        { field: "athlete", width: 150 },
-        { field: "age" },
-        { field: "country", width: 150 },
-        { field: "year" },
-        { field: "sport" },
-        { field: "gold" },
-        { field: "silver" },
-        { field: "bronze" },
+        { field: 'athlete', width: 150 },
+        { field: 'age' },
+        { field: 'country', width: 150 },
+        { field: 'year' },
+        { field: 'sport' },
+        { field: 'gold' },
+        { field: 'silver' },
+        { field: 'bronze' },
       ],
       gridApi: null,
       columnApi: null,
@@ -53,9 +53,9 @@ const VueExample = {
     };
   },
   created() {
-    this.rowSelection = "single";
-    this.rowModelType = "serverSide";
-    this.serverSideStoreType = "partial";
+    this.rowSelection = 'single';
+    this.rowModelType = 'serverSide';
+    this.serverSideStoreType = 'partial';
   },
   methods: {
     onBtRemove() {
@@ -79,8 +79,8 @@ const VueExample = {
       var selectedRow = selectedRows[0];
       // insert new row in the source data, at the top of the page
       window.rowDataServerSide.splice(selectedRow.rowIndex, 0, {
-        athlete: "New Item" + newItemCount,
-        id: "" + Math.random(),
+        athlete: 'New Item' + newItemCount,
+        id: '' + Math.random(),
       });
       newItemCount++;
       this.gridApi.refreshServerSideStore();
@@ -99,7 +99,7 @@ const VueExample = {
         params.api.setServerSideDatasource(datasource);
       };
 
-      fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
         .then((resp) => resp.json())
         .then((data) => updateData(data));
     },
@@ -133,8 +133,8 @@ window.createMyDataSource = function createMyDataSource(data) {
 var newItemCount = 0;
 
 new Vue({
-  el: "#app",
+  el: '#app',
   components: {
-    "my-component": VueExample,
+    'my-component': VueExample,
   },
 });

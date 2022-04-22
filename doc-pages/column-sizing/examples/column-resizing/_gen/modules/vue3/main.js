@@ -1,9 +1,9 @@
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { AgGridVue } from "@ag-grid-community/vue3";
-import { createApp } from "vue";
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { AgGridVue } from '@ag-grid-community/vue3';
+import { createApp } from 'vue';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([ClientSideRowModelModule]);
@@ -31,27 +31,27 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
-        { field: "athlete", width: 150, suppressSizeToFit: true },
+        { field: 'athlete', width: 150, suppressSizeToFit: true },
         {
-          field: "age",
-          headerName: "Age of Athlete",
+          field: 'age',
+          headerName: 'Age of Athlete',
           width: 90,
           minWidth: 50,
           maxWidth: 150,
         },
-        { field: "country", width: 120 },
-        { field: "year", width: 90 },
-        { field: "date", width: 110 },
-        { field: "sport", width: 110 },
-        { field: "gold", width: 100 },
-        { field: "silver", width: 100 },
-        { field: "bronze", width: 100 },
-        { field: "total", width: 100 },
+        { field: 'country', width: 120 },
+        { field: 'year', width: 90 },
+        { field: 'date', width: 110 },
+        { field: 'sport', width: 110 },
+        { field: 'gold', width: 100 },
+        { field: 'silver', width: 100 },
+        { field: 'bronze', width: 100 },
+        { field: 'total', width: 100 },
       ],
       gridApi: null,
       columnApi: null,
@@ -79,11 +79,11 @@ const VueExample = {
 
       const updateData = (data) => params.api.setRowData(data);
 
-      fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
         .then((resp) => resp.json())
         .then((data) => updateData(data));
     },
   },
 };
 
-createApp(VueExample).mount("#app");
+createApp(VueExample).mount('#app');

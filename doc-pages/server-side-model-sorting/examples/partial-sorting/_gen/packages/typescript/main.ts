@@ -3,20 +3,20 @@ import {
   GridOptions,
   IServerSideDatasource,
   IServerSideGetRowsParams,
-} from "ag-grid-community";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine-dark.css";
-import "ag-grid-enterprise";
+} from 'ag-grid-community';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine-dark.css';
+import 'ag-grid-enterprise';
 declare var FakeServer: any;
 const gridOptions: GridOptions = {
   columnDefs: [
-    { field: "athlete", minWidth: 220 },
-    { field: "country", minWidth: 200 },
-    { field: "year" },
-    { field: "sport", minWidth: 200 },
-    { field: "gold" },
-    { field: "silver" },
-    { field: "bronze" },
+    { field: 'athlete', minWidth: 220 },
+    { field: 'country', minWidth: 200 },
+    { field: 'year' },
+    { field: 'sport', minWidth: 200 },
+    { field: 'gold' },
+    { field: 'silver' },
+    { field: 'bronze' },
   ],
 
   defaultColDef: {
@@ -29,8 +29,8 @@ const gridOptions: GridOptions = {
   },
 
   // use the server-side row model
-  rowModelType: "serverSide",
-  serverSideStoreType: "partial",
+  rowModelType: 'serverSide',
+  serverSideStoreType: 'partial',
   animateRows: true,
   // debug: true
 };
@@ -38,7 +38,7 @@ const gridOptions: GridOptions = {
 function getServerSideDatasource(server: any): IServerSideDatasource {
   return {
     getRows: function (params: IServerSideGetRowsParams) {
-      console.log("[Datasource] - rows requested by grid: ", params.request);
+      console.log('[Datasource] - rows requested by grid: ', params.request);
 
       // get data for request from our fake server
       var response = server.getData(params.request);
@@ -60,10 +60,10 @@ function getServerSideDatasource(server: any): IServerSideDatasource {
 }
 
 // setup the grid after the page has finished loading
-var gridDiv = document.querySelector<HTMLElement>("#myGrid")!;
+var gridDiv = document.querySelector<HTMLElement>('#myGrid')!;
 new Grid(gridDiv, gridOptions);
 
-fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
   .then((response) => response.json())
   .then(function (data) {
     // setup the fake server with entire dataset

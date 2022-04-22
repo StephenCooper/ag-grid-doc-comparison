@@ -1,10 +1,10 @@
-"use strict";
+'use strict';
 
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine-dark.css";
-import { AgGridReact } from "ag-grid-react";
-import React, { useCallback, useMemo, useRef, useState } from "react";
-import { render } from "react-dom";
+import React, { useCallback, useMemo, useRef, useState } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from 'ag-grid-react';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine-dark.css';
 
 // placing in 13 rows, so there are exactly enough rows to fill the grid, makes
 // the row animation look nice when you see all the rows
@@ -30,11 +30,11 @@ const createData = (count) => {
 };
 
 const isForceRefreshSelected = () => {
-  return document.querySelector("#forceRefresh").checked;
+  return document.querySelector('#forceRefresh').checked;
 };
 
 const isSuppressFlashSelected = () => {
-  return document.querySelector("#suppressFlash").checked;
+  return document.querySelector('#suppressFlash').checked;
 };
 
 const callRefreshAfterMillis = (params, millis, gridApi) => {
@@ -50,7 +50,7 @@ const scramble = () => {
 };
 
 const scrambleItem = (item) => {
-  ["a", "b", "c", "d", "e", "f"].forEach(function (colId) {
+  ['a', 'b', 'c', 'd', 'e', 'f'].forEach(function (colId) {
     // skip 50% of the cells so updates are random
     if (Math.random() > 0.5) {
       return;
@@ -61,16 +61,16 @@ const scrambleItem = (item) => {
 
 const GridExample = () => {
   const gridRef = useRef();
-  const containerStyle = useMemo(() => ({ width: "100%", height: "100%" }), []);
-  const gridStyle = useMemo(() => ({ height: "100%", width: "100%" }), []);
+  const containerStyle = useMemo(() => ({ width: '100%', height: '100%' }), []);
+  const gridStyle = useMemo(() => ({ height: '100%', width: '100%' }), []);
   const [rowData, setRowData] = useState([]);
   const [columnDefs, setColumnDefs] = useState([
-    { field: "a", suppressCellFlash: true },
-    { field: "b" },
-    { field: "c" },
-    { field: "d" },
-    { field: "e" },
-    { field: "f" },
+    { field: 'a', suppressCellFlash: true },
+    { field: 'b' },
+    { field: 'c' },
+    { field: 'd' },
+    { field: 'e' },
+    { field: 'f' },
   ]);
   const defaultColDef = useMemo(() => {
     return {
@@ -107,7 +107,7 @@ const GridExample = () => {
   const scrambleAndRefreshLeftToRight = useCallback(() => {
     scramble();
     var api = gridRef.current.api;
-    ["a", "b", "c", "d", "e", "f"].forEach(function (col, index) {
+    ['a', 'b', 'c', 'd', 'e', 'f'].forEach(function (col, index) {
       var millis = index * 100;
       var params = {
         force: isForceRefreshSelected(),
@@ -128,12 +128,12 @@ const GridExample = () => {
       rowNode = api.getPinnedTopRow(i);
       refreshRow(rowNode, api);
     }
-    for (i = 0; i < gridRef.current.api.getDisplayedRowCount(); i++) {
-      rowNode = gridRef.current.api.getDisplayedRowAtIndex(i);
+    for (i = 0; i < api.getDisplayedRowCount(); i++) {
+      rowNode = api.getDisplayedRowAtIndex(i);
       refreshRow(rowNode, api);
     }
-    for (i = 0; i < gridRef.current.api.getPinnedBottomRowCount(); i++) {
-      rowNode = gridRef.current.api.getPinnedBottomRow(i);
+    for (i = 0; i < api.getPinnedBottomRowCount(); i++) {
+      rowNode = api.getPinnedBottomRow(i);
       refreshRow(rowNode, api);
     }
     function refreshRow(rowNode, api) {
@@ -192,4 +192,4 @@ const GridExample = () => {
   );
 };
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

@@ -1,4 +1,4 @@
-var lastTime = new Date("07 Jan 2020 13:25:00 GMT").getTime();
+var lastTime = new Date('07 Jan 2020 13:25:00 GMT').getTime();
 var data = [];
 
 function getData() {
@@ -15,36 +15,36 @@ function getData() {
 }
 
 const options = {
-  container: document.getElementById("myChart"),
+  container: document.getElementById('myChart'),
   autoSize: true,
   data: getData(),
   series: [
     {
-      xKey: "time",
-      yKey: "voltage",
+      xKey: 'time',
+      yKey: 'voltage',
     },
   ],
   axes: [
     {
-      type: "time",
-      position: "bottom",
+      type: 'time',
+      position: 'bottom',
       tick: {
         count: agCharts.time.second.every(5),
       },
       label: {
-        format: "%H:%M:%S",
+        format: '%H:%M:%S',
       },
     },
     {
-      type: "number",
-      position: "left",
+      type: 'number',
+      position: 'left',
       label: {
-        format: "#{.2f}V",
+        format: '#{.2f}V',
       },
     },
   ],
   title: {
-    text: "Core Voltage",
+    text: 'Core Voltage',
   },
   legend: {
     enabled: false,

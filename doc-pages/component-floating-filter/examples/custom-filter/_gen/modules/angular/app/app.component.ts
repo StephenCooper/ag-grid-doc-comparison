@@ -4,15 +4,15 @@ import {
   IDoesFilterPassParams,
   IFilterComp,
   IFilterParams,
-} from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { HttpClient } from "@angular/common/http";
-import { Component } from "@angular/core";
+} from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { HttpClient } from '@angular/common/http';
+import { Component } from '@angular/core';
 // Required feature modules are registered in app.module.ts
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `
     <ag-grid-angular
       style="width: 100%; height: 100%;"
@@ -26,27 +26,27 @@ import { Component } from "@angular/core";
 })
 export class AppComponent {
   public columnDefs: ColDef[] = [
-    { field: "athlete", width: 150, filter: false },
+    { field: 'athlete', width: 150, filter: false },
     {
-      field: "gold",
+      field: 'gold',
       width: 100,
       filter: NumberFilter,
       suppressMenu: true,
     },
     {
-      field: "silver",
+      field: 'silver',
       width: 100,
       filter: NumberFilter,
       suppressMenu: true,
     },
     {
-      field: "bronze",
+      field: 'bronze',
       width: 100,
       filter: NumberFilter,
       suppressMenu: true,
     },
     {
-      field: "total",
+      field: 'total',
       width: 100,
       filter: NumberFilter,
       suppressMenu: true,
@@ -67,7 +67,7 @@ export class AppComponent {
 
   onGridReady(params: GridReadyEvent) {
     this.http
-      .get<any[]>("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      .get<any[]>('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .subscribe((data) => {
         this.rowData = data;
       });
@@ -91,20 +91,20 @@ class NumberFilter implements IFilterComp {
 
   // not called by AG Grid, just for us to help setup
   setupGui() {
-    this.gui = document.createElement("div");
+    this.gui = document.createElement('div');
     this.gui.innerHTML =
       '<div style="padding: 4px;">' +
       '<div style="font-weight: bold;">Greater than: </div>' +
       '<div><input style="margin: 4px 0px 4px 0px;" type="number" id="filterText" placeholder="Number of medals..."/></div>' +
-      "</div>";
+      '</div>';
 
     this.onFilterChanged = () => {
       this.extractFilterText();
       this.params.filterChangedCallback();
     };
 
-    this.eFilterText = this.gui.querySelector("#filterText");
-    this.eFilterText.addEventListener("input", this.onFilterChanged);
+    this.eFilterText = this.gui.querySelector('#filterText');
+    this.eFilterText.addEventListener('input', this.onFilterChanged);
   }
 
   extractFilterText() {
@@ -143,7 +143,7 @@ class NumberFilter implements IFilterComp {
     return (
       this.filterText !== null &&
       this.filterText !== undefined &&
-      this.filterText !== "" &&
+      this.filterText !== '' &&
       isNumeric(this.filterText)
     );
   }
@@ -158,11 +158,11 @@ class NumberFilter implements IFilterComp {
   }
 
   destroy() {
-    this.eFilterText.removeEventListener("input", this.onFilterChanged);
+    this.eFilterText.removeEventListener('input', this.onFilterChanged);
   }
 
   getModelAsString() {
-    return this.isFilterActive() ? ">" + this.filterText : "";
+    return this.isFilterActive() ? '>' + this.filterText : '';
   }
 }
 

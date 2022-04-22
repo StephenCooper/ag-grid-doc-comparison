@@ -1,8 +1,8 @@
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import { AgGridVue } from "ag-grid-vue";
-import Vue from "vue";
-import FullWidthCellRenderer from "./fullWidthCellRendererVue.js";
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import { AgGridVue } from 'ag-grid-vue';
+import Vue from 'vue';
+import FullWidthCellRenderer from './fullWidthCellRendererVue.js';
 
 const VueExample = {
   template: `
@@ -22,7 +22,7 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
     FullWidthCellRenderer,
   },
   data: function () {
@@ -40,9 +40,9 @@ const VueExample = {
     };
   },
   created() {
-    this.rowData = createData(100, "body");
-    this.pinnedTopRowData = createData(3, "pinned");
-    this.pinnedBottomRowData = createData(3, "pinned");
+    this.rowData = createData(100, 'body');
+    this.pinnedTopRowData = createData(3, 'pinned');
+    this.pinnedBottomRowData = createData(3, 'pinned');
     this.isFullWidthRow = (params) => {
       // in this example, we check the fullWidth attribute that we set
       // while creating the data. what check you do to decide if you
@@ -50,7 +50,7 @@ const VueExample = {
       // for this method.
       return params.rowNode.data.fullWidth;
     };
-    this.fullWidthCellRenderer = "FullWidthCellRenderer";
+    this.fullWidthCellRenderer = 'FullWidthCellRenderer';
     this.getRowHeight = (params) => {
       // you can have normal rows and full width rows any height that you want
       const isBodyRow = params.node.rowPinned === undefined;
@@ -76,11 +76,11 @@ window.getColumnDefs = function getColumnDefs() {
       field: letter,
       width: 150,
     };
-    if (letter === "A") {
-      colDef.pinned = "left";
+    if (letter === 'A') {
+      colDef.pinned = 'left';
     }
-    if (letter === "Z") {
-      colDef.pinned = "right";
+    if (letter === 'Z') {
+      colDef.pinned = 'right';
     }
     columnDefs.push(colDef);
   });
@@ -88,7 +88,7 @@ window.getColumnDefs = function getColumnDefs() {
 };
 
 window.alphabet = function alphabet() {
-  return "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
+  return 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
 };
 
 window.createData = function createData(count, prefix) {
@@ -102,7 +102,7 @@ window.createData = function createData(count, prefix) {
     item.fullWidth = i % 3 === 2;
     // put in a column for each letter of the alphabet
     alphabet().forEach(function (letter) {
-      item[letter] = prefix + " (" + letter + "," + i + ")";
+      item[letter] = prefix + ' (' + letter + ',' + i + ')';
     });
     rowData.push(item);
   }
@@ -110,8 +110,8 @@ window.createData = function createData(count, prefix) {
 };
 
 new Vue({
-  el: "#app",
+  el: '#app',
   components: {
-    "my-component": VueExample,
+    'my-component': VueExample,
   },
 });

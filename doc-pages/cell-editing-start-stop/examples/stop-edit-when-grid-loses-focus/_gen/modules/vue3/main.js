@@ -1,9 +1,9 @@
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { AgGridVue } from "@ag-grid-community/vue3";
-import { createApp } from "vue";
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { AgGridVue } from '@ag-grid-community/vue3';
+import { createApp } from 'vue';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([ClientSideRowModelModule]);
@@ -23,21 +23,21 @@ class YearCellEditor {
 
   init(params) {
     this.value = params.value;
-    const tempElement = document.createElement("div");
+    const tempElement = document.createElement('div');
     tempElement.innerHTML =
       '<div class="yearSelect">' +
-      "<div>Clicking here does not close the popup!</div>" +
+      '<div>Clicking here does not close the popup!</div>' +
       '<button id="bt2006" class="yearButton">2006</button>' +
       '<button id="bt2008" class="yearButton">2008</button>' +
       '<button id="bt2010" class="yearButton">2010</button>' +
       '<button id="bt2012" class="yearButton">2012</button>' +
-      "<div>" +
+      '<div>' +
       '<input type="text" style="width: 100%;" placeholder="clicking on this text field does not close"/>' +
-      "</div>" +
-      "</div>";
+      '</div>' +
+      '</div>';
 
     [2006, 2008, 2010, 2012].forEach((year) => {
-      tempElement.querySelector("#bt" + year).addEventListener("click", () => {
+      tempElement.querySelector('#bt' + year).addEventListener('click', () => {
         this.value = year;
         params.stopEditing();
       });
@@ -68,21 +68,21 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
-        { field: "athlete", minWidth: 160 },
-        { field: "age" },
-        { field: "country", minWidth: 140 },
-        { field: "year", cellEditor: YearCellEditor, cellEditorPopup: true },
-        { field: "date", minWidth: 140 },
-        { field: "sport", minWidth: 160 },
-        { field: "gold" },
-        { field: "silver" },
-        { field: "bronze" },
-        { field: "total" },
+        { field: 'athlete', minWidth: 160 },
+        { field: 'age' },
+        { field: 'country', minWidth: 140 },
+        { field: 'year', cellEditor: YearCellEditor, cellEditorPopup: true },
+        { field: 'date', minWidth: 140 },
+        { field: 'sport', minWidth: 160 },
+        { field: 'gold' },
+        { field: 'silver' },
+        { field: 'bronze' },
+        { field: 'total' },
       ],
       gridApi: null,
       columnApi: null,
@@ -103,11 +103,11 @@ const VueExample = {
 
       const updateData = (data) => params.api.setRowData(data);
 
-      fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
         .then((resp) => resp.json())
         .then((data) => updateData(data));
     },
   },
 };
 
-createApp(VueExample).mount("#app");
+createApp(VueExample).mount('#app');

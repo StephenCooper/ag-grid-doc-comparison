@@ -1,11 +1,11 @@
-"use strict";
+'use strict';
 
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
-import { AgGridReact } from "ag-grid-react";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from 'ag-grid-react';
+import 'ag-grid-enterprise';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 
 class GridExample extends Component {
   constructor(props) {
@@ -13,16 +13,16 @@ class GridExample extends Component {
 
     this.state = {
       columnDefs: [
-        { field: "day", maxWidth: 90 },
-        { field: "month", chartDataType: "category" },
-        { field: "rain", chartDataType: "series", valueParser: numberParser },
+        { field: 'day', maxWidth: 90 },
+        { field: 'month', chartDataType: 'category' },
+        { field: 'rain', chartDataType: 'series', valueParser: numberParser },
         {
-          field: "pressure",
-          chartDataType: "series",
+          field: 'pressure',
+          chartDataType: 'series',
           valueParser: numberParser,
         },
-        { field: "temp", chartDataType: "series", valueParser: numberParser },
-        { field: "wind", chartDataType: "series", valueParser: numberParser },
+        { field: 'temp', chartDataType: 'series', valueParser: numberParser },
+        { field: 'wind', chartDataType: 'series', valueParser: numberParser },
       ],
       defaultColDef: {
         flex: 1,
@@ -33,7 +33,7 @@ class GridExample extends Component {
         resizable: true,
       },
       rowData: getData(),
-      chartThemes: ["ag-pastel", "ag-vivid"],
+      chartThemes: ['ag-pastel', 'ag-vivid'],
       popupParent: document.body,
       chartThemeOverrides: {
         common: {
@@ -41,7 +41,7 @@ class GridExample extends Component {
             right: 40,
           },
           legend: {
-            position: "bottom",
+            position: 'bottom',
           },
         },
         column: {
@@ -67,29 +67,29 @@ class GridExample extends Component {
 
   onFirstDataRendered = (params) => {
     params.api.createRangeChart({
-      chartType: "customCombo",
+      chartType: 'customCombo',
       cellRange: {
-        columns: ["month", "rain", "pressure", "temp"],
+        columns: ['month', 'rain', 'pressure', 'temp'],
       },
       seriesChartTypes: [
-        { colId: "rain", chartType: "groupedColumn", secondaryAxis: false },
-        { colId: "pressure", chartType: "line", secondaryAxis: true },
-        { colId: "temp", chartType: "line", secondaryAxis: true },
+        { colId: 'rain', chartType: 'groupedColumn', secondaryAxis: false },
+        { colId: 'pressure', chartType: 'line', secondaryAxis: true },
+        { colId: 'temp', chartType: 'line', secondaryAxis: true },
       ],
-      aggFunc: "sum",
+      aggFunc: 'sum',
       suppressChartRanges: true,
-      chartContainer: document.querySelector("#myChart"),
+      chartContainer: document.querySelector('#myChart'),
     });
   };
 
   render() {
     return (
-      <div style={{ width: "100%", height: "100%" }}>
+      <div style={{ width: '100%', height: '100%' }}>
         <div className="wrapper">
           <div
             style={{
-              height: "100%",
-              width: "100%",
+              height: '100%',
+              width: '100%',
             }}
             className="ag-theme-alpine"
           >
@@ -115,10 +115,10 @@ class GridExample extends Component {
 
 function numberParser(params) {
   const value = params.newValue;
-  if (value === null || value === undefined || value === "") {
+  if (value === null || value === undefined || value === '') {
     return null;
   }
   return parseFloat(value);
 }
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

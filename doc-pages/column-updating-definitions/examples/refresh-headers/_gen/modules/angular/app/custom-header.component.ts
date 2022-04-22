@@ -1,9 +1,9 @@
-import { IHeaderAngularComp } from "@ag-grid-community/angular";
-import { IHeaderParams } from "@ag-grid-community/core";
-import { Component, ElementRef, ViewChild } from "@angular/core";
+import { IHeaderAngularComp } from '@ag-grid-community/angular';
+import { IHeaderParams } from '@ag-grid-community/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 
 @Component({
-  selector: "app-loading-overlay",
+  selector: 'app-loading-overlay',
   template: `
     <div style="display: flex">
       <span
@@ -21,19 +21,19 @@ import { Component, ElementRef, ViewChild } from "@angular/core";
 export class CustomHeader implements IHeaderAngularComp {
   public params!: IHeaderParams;
 
-  @ViewChild("menuButton", { read: ElementRef }) public menuButton!: ElementRef;
+  @ViewChild('menuButton', { read: ElementRef }) public menuButton!: ElementRef;
 
   agInit(params: IHeaderParams): void {
     this.params = params;
-    console.log("CustomHeader.init() -> " + this.params.column.getId());
+    console.log('CustomHeader.init() -> ' + this.params.column.getId());
   }
 
   refresh(params: IHeaderParams): boolean {
     this.params = params;
     console.log(
-      "CustomHeader.refresh() -> " +
+      'CustomHeader.refresh() -> ' +
         this.params.column.getId() +
-        " returning " +
+        ' returning ' +
         true
     );
     return true;

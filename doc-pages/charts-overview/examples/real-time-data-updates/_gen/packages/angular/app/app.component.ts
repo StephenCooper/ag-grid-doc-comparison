@@ -1,9 +1,9 @@
-import { Component } from "@angular/core";
-import { AgCartesianChartOptions } from "ag-charts-community";
-import { cloneDeep } from "lodash";
+import { Component } from '@angular/core';
+import { AgCartesianChartOptions } from 'ag-charts-community';
+import { cloneDeep } from 'lodash';
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<ag-charts-angular
     style="height: 100%"
     [options]="options"
@@ -18,50 +18,50 @@ export class AppComponent {
       data: getData(),
       theme: {
         palette: {
-          fills: ["#ec4d3d", "#4facf2"],
-          strokes: ["#ec4d3d", "#4facf2"],
+          fills: ['#ec4d3d', '#4facf2'],
+          strokes: ['#ec4d3d', '#4facf2'],
         },
         overrides: { area: { series: { fillOpacity: 0.5 } } },
       },
       title: {
-        text: "Simulated CPU Usage",
+        text: 'Simulated CPU Usage',
         fontSize: 18,
       },
       series: [
         {
-          type: "area",
-          xKey: "time",
-          yKey: "system",
+          type: 'area',
+          xKey: 'time',
+          yKey: 'system',
           stacked: true,
-          yName: "System",
+          yName: 'System',
         },
         {
-          type: "area",
-          xKey: "time",
-          yKey: "user",
+          type: 'area',
+          xKey: 'time',
+          yKey: 'user',
           stacked: true,
-          yName: "User",
+          yName: 'User',
         },
       ],
       axes: [
         {
-          type: "time",
-          position: "bottom",
+          type: 'time',
+          position: 'bottom',
           nice: false,
         },
         {
-          type: "number",
-          position: "left",
+          type: 'number',
+          position: 'left',
           title: {
             enabled: true,
-            text: "Load (%)",
+            text: 'Load (%)',
           },
           min: 0,
           max: 100,
         },
       ],
       legend: {
-        position: "bottom",
+        position: 'bottom',
       },
     };
   }

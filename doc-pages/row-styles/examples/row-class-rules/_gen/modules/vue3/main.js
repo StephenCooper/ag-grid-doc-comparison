@@ -1,9 +1,9 @@
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { AgGridVue } from "@ag-grid-community/vue3";
-import { createApp } from "vue";
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { AgGridVue } from '@ag-grid-community/vue3';
+import { createApp } from 'vue';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([ClientSideRowModelModule]);
@@ -29,13 +29,13 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
-        { headerName: "Employee", field: "employee" },
-        { headerName: "Number Sick Days", field: "sickDays", editable: true },
+        { headerName: 'Employee', field: 'employee' },
+        { headerName: 'Number Sick Days', field: 'sickDays', editable: true },
       ],
       gridApi: null,
       columnApi: null,
@@ -48,18 +48,18 @@ const VueExample = {
     this.rowData = getData();
     this.rowClassRules = {
       // row style function
-      "sick-days-warning": (params) => {
+      'sick-days-warning': (params) => {
         var numSickDays = params.data.sickDays;
         return numSickDays > 5 && numSickDays <= 7;
       },
       // row style expression
-      "sick-days-breach": "data.sickDays >= 8",
+      'sick-days-breach': 'data.sickDays >= 8',
     };
   },
   methods: {
     setDataValue() {
       this.gridApi.forEachNode(function (rowNode) {
-        rowNode.setDataValue("sickDays", randomInt());
+        rowNode.setDataValue('sickDays', randomInt());
       });
     },
     setData() {
@@ -91,4 +91,4 @@ window.randomInt = function randomInt() {
   return Math.floor(Math.random() * 10);
 };
 
-createApp(VueExample).mount("#app");
+createApp(VueExample).mount('#app');

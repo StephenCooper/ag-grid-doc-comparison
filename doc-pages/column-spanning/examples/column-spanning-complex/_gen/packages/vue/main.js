@@ -1,7 +1,7 @@
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import { AgGridVue } from "ag-grid-vue";
-import Vue from "vue";
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import { AgGridVue } from 'ag-grid-vue';
+import Vue from 'vue';
 
 const VueExample = {
   template: `
@@ -18,14 +18,14 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
         {
-          headerName: "Jan",
-          field: "jan",
+          headerName: 'Jan',
+          field: 'jan',
           colSpan: (params) => {
             if (isHeaderRow(params)) {
               return 6;
@@ -37,11 +37,11 @@ const VueExample = {
           },
           cellClassRules: cellClassRules,
         },
-        { headerName: "Feb", field: "feb" },
-        { headerName: "Mar", field: "mar" },
+        { headerName: 'Feb', field: 'feb' },
+        { headerName: 'Mar', field: 'mar' },
         {
-          headerName: "Apr",
-          field: "apr",
+          headerName: 'Apr',
+          field: 'apr',
           colSpan: (params) => {
             if (isQuarterRow(params)) {
               return 3;
@@ -51,8 +51,8 @@ const VueExample = {
           },
           cellClassRules: cellClassRules,
         },
-        { headerName: "May", field: "may" },
-        { headerName: "Jun", field: "jun" },
+        { headerName: 'May', field: 'may' },
+        { headerName: 'Jun', field: 'jun' },
       ],
       gridApi: null,
       columnApi: null,
@@ -82,21 +82,21 @@ const VueExample = {
 };
 
 window.isHeaderRow = function isHeaderRow(params) {
-  return params.data.section === "big-title";
+  return params.data.section === 'big-title';
 };
 
 window.isQuarterRow = function isQuarterRow(params) {
-  return params.data.section === "quarters";
+  return params.data.section === 'quarters';
 };
 
 var cellClassRules = {
-  "header-cell": 'data.section === "big-title"',
-  "quarters-cell": 'data.section === "quarters"',
+  'header-cell': 'data.section === "big-title"',
+  'quarters-cell': 'data.section === "quarters"',
 };
 
 new Vue({
-  el: "#app",
+  el: '#app',
   components: {
-    "my-component": VueExample,
+    'my-component': VueExample,
   },
 });

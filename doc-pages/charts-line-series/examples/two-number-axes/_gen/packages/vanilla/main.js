@@ -1,23 +1,23 @@
 const options = {
-  container: document.getElementById("myChart"),
+  container: document.getElementById('myChart'),
   autoSize: false,
   data: generateSpiralData(),
   width: 550,
   height: 550,
   series: [
     {
-      xKey: "x",
-      yKey: "y",
+      xKey: 'x',
+      yKey: 'y',
     },
   ],
   axes: [
     {
-      type: "number",
-      position: "left",
+      type: 'number',
+      position: 'left',
     },
     {
-      type: "number",
-      position: "bottom",
+      type: 'number',
+      position: 'bottom',
     },
   ],
   legend: {

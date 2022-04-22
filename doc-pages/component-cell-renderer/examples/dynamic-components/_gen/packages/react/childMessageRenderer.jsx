@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 
 export default class ChildMessageRenderer extends Component {
   constructor(props) {

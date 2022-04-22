@@ -8,10 +8,10 @@ import {
   IFilterComp,
   IFilterParams,
   IFilterType,
-} from "ag-grid-community";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
+} from 'ag-grid-community';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import 'ag-grid-enterprise';
 
 declare var LINUX_DISTROS: string[];
 declare var CITIES: string[];
@@ -48,10 +48,10 @@ function getMyFilter(): IFilterType {
       this.filterParams = params;
       this.filterValue = null;
 
-      this.eGui = document.createElement("div");
+      this.eGui = document.createElement('div');
       this.eGui.innerHTML = '<div>Greater Than: <input type="text"/></div>';
-      this.eInput = this.eGui.querySelector("input");
-      this.eInput.addEventListener("input", () => {
+      this.eInput = this.eGui.querySelector('input');
+      this.eInput.addEventListener('input', () => {
         this.getValueFromInput();
         params.filterChangedCallback();
       });
@@ -108,11 +108,11 @@ function getMyFilter(): IFilterType {
 const myFilter = getMyFilter();
 
 const columnDefs: ColDef[] = [
-  { field: "city", rowGroup: true, hide: true },
-  { field: "laptop", rowGroup: true, hide: true },
-  { field: "distro", sort: "asc", comparator: myComparator },
+  { field: 'city', rowGroup: true, hide: true },
+  { field: 'laptop', rowGroup: true, hide: true },
+  { field: 'distro', sort: 'asc', comparator: myComparator },
   {
-    field: "value",
+    field: 'value',
     enableCellChangeFlash: true,
     aggFunc: myAggFunc,
     filter: myFilter,
@@ -129,7 +129,7 @@ function onBtDuplicate() {
   // get the first child of the
   const selectedRows = api.getSelectedRows();
   if (!selectedRows || selectedRows.length === 0) {
-    console.log("No rows selected!");
+    console.log('No rows selected!');
     return;
   }
 
@@ -147,7 +147,7 @@ function onBtDuplicate() {
     newItems.push(newItem);
   });
 
-  timeOperation("Duplicate", function () {
+  timeOperation('Duplicate', function () {
     api.applyTransaction({ add: newItems });
   });
 }
@@ -158,7 +158,7 @@ function onBtUpdate() {
   // get the first child of the
   const selectedRows = api.getSelectedRows();
   if (!selectedRows || selectedRows.length === 0) {
-    console.log("No rows selected!");
+    console.log('No rows selected!');
     return;
   }
 
@@ -176,7 +176,7 @@ function onBtUpdate() {
     updatedItems.push(newItem);
   });
 
-  timeOperation("Update", function () {
+  timeOperation('Update', function () {
     api.applyTransaction({ update: updatedItems });
   });
 }
@@ -187,11 +187,11 @@ function onBtDelete() {
   // get the first child of the
   const selectedRows = api.getSelectedRows();
   if (!selectedRows || selectedRows.length === 0) {
-    console.log("No rows selected!");
+    console.log('No rows selected!');
     return;
   }
 
-  timeOperation("Delete", function () {
+  timeOperation('Delete', function () {
     api.applyTransaction({ remove: selectedRows });
   });
 }
@@ -203,8 +203,8 @@ function onBtClearSelection() {
 function onBtUpdateModel() {
   const api = gridOptions.api!;
 
-  timeOperation("Update Model", function () {
-    api.refreshClientSideRowModel("filter");
+  timeOperation('Update Model', function () {
+    api.refreshClientSideRowModel('filter');
   });
 }
 
@@ -218,32 +218,32 @@ const gridOptions: GridOptions = {
   },
   suppressModelUpdateAfterUpdateTransaction: true,
   getRowId: getRowId,
-  rowSelection: "multiple",
+  rowSelection: 'multiple',
   groupSelectsChildren: true,
   animateRows: true,
   suppressAggAtRootLevel: true,
   suppressRowClickSelection: true,
   autoGroupColumnDef: {
-    field: "name",
+    field: 'name',
     cellRendererParams: { checkbox: true },
   },
   onGridReady: function (params) {
     params.api.setFilterModel({
-      value: { value: "50" },
+      value: { value: '50' },
     });
 
-    timeOperation("Initialisation", function () {
+    timeOperation('Initialisation', function () {
       params.api.setRowData(getData());
     });
-
-    params.api.getDisplayedRowAtIndex(2)!.setExpanded(true);
-    params.api.getDisplayedRowAtIndex(4)!.setExpanded(true);
+  },
+  isGroupOpenByDefault: function (params) {
+    return ['Delhi', 'Seoul'].includes(params.key);
   },
 };
 
 // wait for the document to be loaded, otherwise
 // AG Grid will not find the div in the document.
-const eGridDiv = document.querySelector<HTMLElement>("#myGrid")!;
+const eGridDiv = document.querySelector<HTMLElement>('#myGrid')!;
 new Grid(eGridDiv, gridOptions);
 
 function timeOperation(name: string, operation: any) {
@@ -255,19 +255,19 @@ function timeOperation(name: string, operation: any) {
   const end = new Date().getTime();
   console.log(
     name +
-      " finished in " +
+      ' finished in ' +
       (end - start) +
-      "ms, aggCallCount = " +
+      'ms, aggCallCount = ' +
       aggCallCount +
-      ", compareCallCount = " +
+      ', compareCallCount = ' +
       compareCallCount +
-      ", filterCallCount = " +
+      ', filterCallCount = ' +
       filterCallCount
   );
 }
 
 function letter(i: number) {
-  return "abcdefghijklmnopqrstuvwxyz".substring(i, i + 1);
+  return 'abcdefghijklmnopqrstuvwxyz'.substring(i, i + 1);
 }
 
 function randomLetter() {
@@ -278,9 +278,9 @@ function getData() {
   const myRowData = [];
   for (let i = 0; i < 10000; i++) {
     const name =
-      "Mr " +
+      'Mr ' +
       randomLetter().toUpperCase() +
-      " " +
+      ' ' +
       randomLetter().toUpperCase() +
       randomLetter() +
       randomLetter() +
@@ -289,7 +289,7 @@ function getData() {
     const city = CITIES[i % CITIES.length];
     const distro =
       LINUX_DISTROS[i % LINUX_DISTROS.length] +
-      " v" +
+      ' v' +
       Math.floor(Math.random() * 100 + 1) / 10;
     const university = LAPTOPS[i % LAPTOPS.length];
     const value = Math.floor(Math.random() * 100) + 10; // between 10 and 110
@@ -319,7 +319,7 @@ function createDataItem(
   };
 }
 
-if (typeof window !== "undefined") {
+if (typeof window !== 'undefined') {
   // Attach external event handlers to window so they can be called from index.html
   (<any>window).onBtDuplicate = onBtDuplicate;
   (<any>window).onBtUpdate = onBtUpdate;

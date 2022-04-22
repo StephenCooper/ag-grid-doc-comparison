@@ -1,5 +1,5 @@
-import { AgChartsVue } from "ag-charts-vue";
-import Vue from "vue";
+import { AgChartsVue } from 'ag-charts-vue';
+import Vue from 'vue';
 
 const ChartExample = {
   template: `
@@ -7,7 +7,7 @@ const ChartExample = {
                 :options="options"></ag-charts-vue>
     `,
   components: {
-    "ag-charts-vue": AgChartsVue,
+    'ag-charts-vue': AgChartsVue,
   },
   data: function () {
     return {
@@ -31,32 +31,32 @@ const ChartExample = {
         },
       },
       title: {
-        text: "Regular Internet Users",
+        text: 'Regular Internet Users',
         fontSize: 18,
       },
       subtitle: {
-        text: "Source: Office for National Statistics",
+        text: 'Source: Office for National Statistics',
       },
       series: [
-        { type: "column", xKey: "year", yKey: "16-24" },
-        { type: "column", xKey: "year", yKey: "25-34" },
-        { type: "column", xKey: "year", yKey: "35-44" },
-        { type: "column", xKey: "year", yKey: "45-54" },
-        { type: "column", xKey: "year", yKey: "55-64" },
-        { type: "column", xKey: "year", yKey: "65-74" },
-        { type: "column", xKey: "year", yKey: "75+" },
+        { type: 'column', xKey: 'year', yKey: '16-24' },
+        { type: 'column', xKey: 'year', yKey: '25-34' },
+        { type: 'column', xKey: 'year', yKey: '35-44' },
+        { type: 'column', xKey: 'year', yKey: '45-54' },
+        { type: 'column', xKey: 'year', yKey: '55-64' },
+        { type: 'column', xKey: 'year', yKey: '65-74' },
+        { type: 'column', xKey: 'year', yKey: '75+' },
       ],
       axes: [
         {
-          type: "category",
-          position: "bottom",
+          type: 'category',
+          position: 'bottom',
         },
         {
-          type: "number",
-          position: "left",
+          type: 'number',
+          position: 'left',
           label: {
             formatter: (params) => {
-              return params.value / 1000 + "M";
+              return params.value / 1000 + 'M';
             },
           },
         },
@@ -68,8 +68,8 @@ const ChartExample = {
 };
 
 new Vue({
-  el: "#app",
+  el: '#app',
   components: {
-    "my-component": ChartExample,
+    'my-component': ChartExample,
   },
 });

@@ -1,11 +1,11 @@
-"use strict";
+'use strict';
 
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine-dark.css";
-import "ag-grid-enterprise";
-import { AgGridReact } from "ag-grid-react";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from 'ag-grid-react';
+import 'ag-grid-enterprise';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine-dark.css';
 
 class GridExample extends Component {
   constructor(props) {
@@ -14,114 +14,114 @@ class GridExample extends Component {
     this.state = {
       columnDefs: [
         // keys
-        { field: "productName", rowGroup: true, hide: true },
-        { field: "portfolioName", rowGroup: true, hide: true },
-        { field: "bookId", rowGroup: true, hide: true },
+        { field: 'productName', rowGroup: true, hide: true },
+        { field: 'portfolioName', rowGroup: true, hide: true },
+        { field: 'bookId', rowGroup: true, hide: true },
         // {field: 'productId'},
         // {field: 'portfolioId'},
         // {field: 'bookId'},
         // all the other columns (visible and not grouped)
         {
-          headerName: "Current",
-          field: "current",
+          headerName: 'Current',
+          field: 'current',
           width: 200,
-          type: "numericColumn",
+          type: 'numericColumn',
           valueFormatter: numberCellFormatter,
-          cellRenderer: "agAnimateShowChangeCellRenderer",
+          cellRenderer: 'agAnimateShowChangeCellRenderer',
         },
         {
-          headerName: "Previous",
-          field: "previous",
+          headerName: 'Previous',
+          field: 'previous',
           width: 200,
-          type: "numericColumn",
+          type: 'numericColumn',
           valueFormatter: numberCellFormatter,
-          cellRenderer: "agAnimateShowChangeCellRenderer",
+          cellRenderer: 'agAnimateShowChangeCellRenderer',
         },
         {
-          headerName: "Deal Type",
-          field: "dealType",
-          filter: "agSetColumnFilter",
+          headerName: 'Deal Type',
+          field: 'dealType',
+          filter: 'agSetColumnFilter',
           filterParams: {
-            values: ["Financial", "Physical"],
+            values: ['Financial', 'Physical'],
           },
         },
         {
-          headerName: "Bid",
-          field: "bidFlag",
+          headerName: 'Bid',
+          field: 'bidFlag',
           width: 100,
-          filter: "agSetColumnFilter",
+          filter: 'agSetColumnFilter',
           filterParams: {
-            values: ["Buy", "Sell"],
+            values: ['Buy', 'Sell'],
           },
         },
         {
-          headerName: "PL 1",
-          field: "pl1",
+          headerName: 'PL 1',
+          field: 'pl1',
           width: 200,
-          type: "numericColumn",
+          type: 'numericColumn',
           valueFormatter: numberCellFormatter,
-          cellRenderer: "agAnimateShowChangeCellRenderer",
+          cellRenderer: 'agAnimateShowChangeCellRenderer',
         },
         {
-          headerName: "PL 2",
-          field: "pl2",
+          headerName: 'PL 2',
+          field: 'pl2',
           width: 200,
-          type: "numericColumn",
+          type: 'numericColumn',
           valueFormatter: numberCellFormatter,
-          cellRenderer: "agAnimateShowChangeCellRenderer",
+          cellRenderer: 'agAnimateShowChangeCellRenderer',
         },
         {
-          headerName: "Gain-DX",
-          field: "gainDx",
+          headerName: 'Gain-DX',
+          field: 'gainDx',
           width: 200,
-          type: "numericColumn",
+          type: 'numericColumn',
           valueFormatter: numberCellFormatter,
-          cellRenderer: "agAnimateShowChangeCellRenderer",
+          cellRenderer: 'agAnimateShowChangeCellRenderer',
         },
         {
-          headerName: "SX / PX",
-          field: "sxPx",
+          headerName: 'SX / PX',
+          field: 'sxPx',
           width: 200,
-          type: "numericColumn",
+          type: 'numericColumn',
           valueFormatter: numberCellFormatter,
-          cellRenderer: "agAnimateShowChangeCellRenderer",
+          cellRenderer: 'agAnimateShowChangeCellRenderer',
         },
         {
-          headerName: "99 Out",
-          field: "_99Out",
+          headerName: '99 Out',
+          field: '_99Out',
           width: 200,
-          type: "numericColumn",
+          type: 'numericColumn',
           valueFormatter: numberCellFormatter,
-          cellRenderer: "agAnimateShowChangeCellRenderer",
+          cellRenderer: 'agAnimateShowChangeCellRenderer',
         },
         {
-          headerName: "Submitter ID",
-          field: "submitterID",
+          headerName: 'Submitter ID',
+          field: 'submitterID',
           width: 200,
-          type: "numericColumn",
+          type: 'numericColumn',
           valueFormatter: numberCellFormatter,
-          cellRenderer: "agAnimateShowChangeCellRenderer",
+          cellRenderer: 'agAnimateShowChangeCellRenderer',
         },
         {
-          headerName: "Submitted Deal ID",
-          field: "submitterDealID",
+          headerName: 'Submitted Deal ID',
+          field: 'submitterDealID',
           width: 200,
-          type: "numericColumn",
+          type: 'numericColumn',
           valueFormatter: numberCellFormatter,
-          cellRenderer: "agAnimateShowChangeCellRenderer",
+          cellRenderer: 'agAnimateShowChangeCellRenderer',
         },
       ],
       asyncTransactionWaitMillis: 500,
-      rowSelection: "multiple",
-      serverSideStoreType: "full",
-      rowModelType: "serverSide",
+      rowSelection: 'multiple',
+      serverSideStoreType: 'full',
+      rowModelType: 'serverSide',
       defaultColDef: {
         width: 250,
         resizable: true,
         sortable: true,
       },
       autoGroupColumnDef: {
-        field: "tradeId",
+        field: 'tradeId',
       },
     };
   }
@@ -158,7 +158,7 @@ class GridExample extends Component {
       }
       summary[status]++;
     });
-    console.log("onAsyncTransactionsFlushed: " + JSON.stringify(summary));
+    console.log('onAsyncTransactionsFlushed: ' + JSON.stringify(summary));
   };
 
   onBtStart = () => {
@@ -192,16 +192,16 @@ class GridExample extends Component {
     var transactionCreatedSinceInitialLoad =
       transactionVersion > dataLoadedVersion;
     if (!transactionCreatedSinceInitialLoad) {
-      console.log("cancelling transaction");
+      console.log('cancelling transaction');
     }
     return transactionCreatedSinceInitialLoad;
   };
 
   render() {
     return (
-      <div style={{ width: "100%", height: "100%" }}>
+      <div style={{ width: '100%', height: '100%' }}>
         <div className="example-wrapper">
-          <div style={{ marginBottom: "5px" }}>
+          <div style={{ marginBottom: '5px' }}>
             <button onClick={() => this.onBtApplyOneTransaction()}>
               One Transaction
             </button>
@@ -210,8 +210,8 @@ class GridExample extends Component {
           </div>
           <div
             style={{
-              height: "100%",
-              width: "100%",
+              height: '100%',
+              width: '100%',
             }}
             className="ag-theme-alpine-dark"
           >
@@ -243,22 +243,22 @@ var fakeServer = new FakeServer();
 function numberCellFormatter(params) {
   return Math.floor(params.value)
     .toString()
-    .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
+    .replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
 }
 function processUpdateFromFakeServer(gridApi, transactions) {
   var updatingJustOneTransaction = transactions.length == 4;
   if (updatingJustOneTransaction) {
-    console.log("Updating One Record");
+    console.log('Updating One Record');
   }
   transactions.forEach(function (tx) {
     gridApi.applyServerSideTransactionAsync(tx, function (res) {
       if (updatingJustOneTransaction) {
         console.log(
-          "Route [" + (tx.route || []).join(",") + "], status = " + res.status
+          'Route [' + (tx.route || []).join(',') + '], status = ' + res.status
         );
       }
     });
   });
 }
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

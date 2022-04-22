@@ -1,12 +1,12 @@
-import { ColDef, GridApi, GridReadyEvent } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { HttpClient } from "@angular/common/http";
-import { Component } from "@angular/core";
+import { ColDef, GridApi, GridReadyEvent } from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { HttpClient } from '@angular/common/http';
+import { Component } from '@angular/core';
 // Required feature modules are registered in app.module.ts
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<div class="test-container">
     <div class="test-header">
       <button (click)="onBtExcludeMedalColumns()">Exclude Medal Columns</button>
@@ -47,28 +47,28 @@ export class AppComponent {
     this.gridApi = params.api;
 
     this.http
-      .get<any[]>("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      .get<any[]>('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .subscribe((data) => (this.rowData = data));
   }
 }
 
 const columnDefsMedalsIncluded: ColDef[] = [
-  { field: "athlete" },
-  { field: "gold" },
-  { field: "silver" },
-  { field: "bronze" },
-  { field: "total" },
-  { field: "age" },
-  { field: "country" },
-  { field: "sport" },
-  { field: "year" },
-  { field: "date" },
+  { field: 'athlete' },
+  { field: 'gold' },
+  { field: 'silver' },
+  { field: 'bronze' },
+  { field: 'total' },
+  { field: 'age' },
+  { field: 'country' },
+  { field: 'sport' },
+  { field: 'year' },
+  { field: 'date' },
 ];
 const colDefsMedalsExcluded: ColDef[] = [
-  { field: "athlete" },
-  { field: "age" },
-  { field: "country" },
-  { field: "sport" },
-  { field: "year" },
-  { field: "date" },
+  { field: 'athlete' },
+  { field: 'age' },
+  { field: 'country' },
+  { field: 'sport' },
+  { field: 'year' },
+  { field: 'date' },
 ];

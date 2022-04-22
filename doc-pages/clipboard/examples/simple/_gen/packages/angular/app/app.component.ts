@@ -1,5 +1,5 @@
-import { HttpClient } from "@angular/common/http";
-import { Component } from "@angular/core";
+import { HttpClient } from '@angular/common/http';
+import { Component } from '@angular/core';
 import {
   CellValueChangedEvent,
   ColDef,
@@ -7,13 +7,13 @@ import {
   GridReadyEvent,
   PasteEndEvent,
   PasteStartEvent,
-} from "ag-grid-community";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
+} from 'ag-grid-community';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import 'ag-grid-enterprise';
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<div style="padding-bottom: 5px">
       <button (click)="onBtCopyRows()">Copy Selected Rows to Clipboard</button>
       <button (click)="onBtCopyRange()">
@@ -42,16 +42,16 @@ export class AppComponent {
   private gridApi!: GridApi;
 
   public columnDefs: ColDef[] = [
-    { field: "athlete", minWidth: 200 },
-    { field: "age" },
-    { field: "country", minWidth: 150 },
-    { field: "year" },
-    { field: "date", minWidth: 150 },
-    { field: "sport", minWidth: 150 },
-    { field: "gold" },
-    { field: "silver" },
-    { field: "bronze" },
-    { field: "total" },
+    { field: 'athlete', minWidth: 200 },
+    { field: 'age' },
+    { field: 'country', minWidth: 150 },
+    { field: 'year' },
+    { field: 'date', minWidth: 150 },
+    { field: 'sport', minWidth: 150 },
+    { field: 'gold' },
+    { field: 'silver' },
+    { field: 'bronze' },
+    { field: 'total' },
   ];
   public defaultColDef: ColDef = {
     editable: true,
@@ -59,21 +59,21 @@ export class AppComponent {
     minWidth: 100,
     resizable: true,
   };
-  public rowSelection = "multiple";
+  public rowSelection = 'multiple';
   public rowData!: any[];
 
   constructor(private http: HttpClient) {}
 
   onCellValueChanged(params: CellValueChangedEvent) {
-    console.log("Callback onCellValueChanged:", params);
+    console.log('Callback onCellValueChanged:', params);
   }
 
   onPasteStart(params: PasteStartEvent) {
-    console.log("Callback onPasteStart:", params);
+    console.log('Callback onPasteStart:', params);
   }
 
   onPasteEnd(params: PasteEndEvent) {
-    console.log("Callback onPasteEnd:", params);
+    console.log('Callback onPasteEnd:', params);
   }
 
   onBtCopyRows() {
@@ -96,7 +96,7 @@ export class AppComponent {
     this.gridApi = params.api;
 
     this.http
-      .get<any[]>("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      .get<any[]>('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .subscribe((data) => (this.rowData = data));
   }
 }

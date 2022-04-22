@@ -1,19 +1,19 @@
 const gridOptions = {
   columnDefs: [
     {
-      field: "dateModified",
+      field: 'dateModified',
       minWidth: 250,
       comparator: function (d1, d2) {
         return new Date(d1).getTime() < new Date(d2).getTime() ? -1 : 1;
       },
     },
     {
-      field: "size",
-      aggFunc: "sum",
+      field: 'size',
+      aggFunc: 'sum',
       valueFormatter: function (params) {
         return params.value
-          ? Math.round(params.value * 10) / 10 + " MB"
-          : "0 MB";
+          ? Math.round(params.value * 10) / 10 + ' MB'
+          : '0 MB';
       },
     },
   ],
@@ -24,7 +24,7 @@ const gridOptions = {
     resizable: true,
   },
   autoGroupColumnDef: {
-    headerName: "Files",
+    headerName: 'Files',
     minWidth: 330,
     cellRendererParams: {
       checkbox: true,
@@ -56,7 +56,7 @@ function getNextId() {
 function getFileCellRenderer() {
   class FileCellRenderer {
     init(params) {
-      var tempDiv = document.createElement("div");
+      var tempDiv = document.createElement('div');
       var value = params.value;
       var icon = getFileIcon(params.value);
       tempDiv.innerHTML = icon
@@ -65,7 +65,7 @@ function getFileCellRenderer() {
           '"></i>' +
           '<span class="filename"></span>' +
           value +
-          "</span>"
+          '</span>'
         : value;
       this.eGui = tempDiv.firstChild;
     }
@@ -86,8 +86,8 @@ function addNewGroup() {
   var newGroupData = [
     {
       id: getNextId(),
-      filePath: ["Music", "wav", "hit_" + new Date().getTime() + ".wav"],
-      dateModified: "Aug 23 2017 11:52:00 PM",
+      filePath: ['Music', 'wav', 'hit_' + new Date().getTime() + '.wav'],
+      dateModified: 'Aug 23 2017 11:52:00 PM',
       size: 58.9,
     },
   ];
@@ -97,7 +97,7 @@ function addNewGroup() {
 function removeSelected() {
   var selectedNode = gridOptions.api.getSelectedNodes()[0]; // single selection
   if (!selectedNode) {
-    console.warn("No nodes selected!");
+    console.warn('No nodes selected!');
     return;
   }
 
@@ -118,7 +118,7 @@ function getRowsToRemove(node) {
 function moveSelectedNodeToTarget(targetRowId) {
   var selectedNode = gridOptions.api.getSelectedNodes()[0]; // single selection
   if (!selectedNode) {
-    console.warn("No nodes selected!");
+    console.warn('No nodes selected!');
     return;
   }
 
@@ -127,7 +127,7 @@ function moveSelectedNodeToTarget(targetRowId) {
     selectedNode.key === targetNode.key ||
     isSelectionParentOfTarget(selectedNode, targetNode);
   if (invalidMove) {
-    console.warn("Invalid selection - must not be parent or same as target!");
+    console.warn('Invalid selection - must not be parent or same as target!');
     return;
   }
 
@@ -164,15 +164,15 @@ function getRowsToUpdate(node, parentPath) {
 }
 
 function getFileIcon(name) {
-  return endsWith(name, ".mp3") || endsWith(name, ".wav")
-    ? "far fa-file-audio"
-    : endsWith(name, ".xls")
-    ? "far fa-file-excel"
-    : endsWith(name, ".txt")
-    ? "far fa-file"
-    : endsWith(name, ".pdf")
-    ? "far fa-file-pdf"
-    : "far fa-folder";
+  return endsWith(name, '.mp3') || endsWith(name, '.wav')
+    ? 'far fa-file-audio'
+    : endsWith(name, '.xls')
+    ? 'far fa-file-excel'
+    : endsWith(name, '.txt')
+    ? 'far fa-file'
+    : endsWith(name, '.pdf')
+    ? 'far fa-file-pdf'
+    : 'far fa-folder';
 }
 
 function endsWith(str, match) {
@@ -186,9 +186,9 @@ function endsWith(str, match) {
 
 // wait for the document to be loaded, otherwise
 // AG Grid will not find the div in the document.
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener('DOMContentLoaded', function () {
   // lookup the container we want the Grid to use
-  var eGridDiv = document.querySelector("#myGrid");
+  var eGridDiv = document.querySelector('#myGrid');
 
   // create the grid passing in the div to use together with the columns & data we want to use
   new agGrid.Grid(eGridDiv, gridOptions);

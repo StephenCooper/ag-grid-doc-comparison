@@ -2,8 +2,8 @@ class NumericCellEditor {
   // gets called once before the renderer is used
   init(params) {
     // create the cell
-    this.eInput = document.createElement("input");
-    this.eInput.className = "simple-input-editor";
+    this.eInput = document.createElement('input');
+    this.eInput.className = 'simple-input-editor';
 
     if (this.isCharNumeric(params.charPress)) {
       this.eInput.value = params.charPress;
@@ -13,7 +13,7 @@ class NumericCellEditor {
       }
     }
 
-    this.eInput.addEventListener("keypress", (event) => {
+    this.eInput.addEventListener('keypress', (event) => {
       if (!this.isKeyPressedNumeric(event)) {
         this.eInput.focus();
         if (event.preventDefault) event.preventDefault();
@@ -24,7 +24,7 @@ class NumericCellEditor {
 
     // only start edit if key pressed is a number, not a letter
     var charPressIsNotANumber =
-      params.charPress && "1234567890".indexOf(params.charPress) < 0;
+      params.charPress && '1234567890'.indexOf(params.charPress) < 0;
     this.cancelBeforeStart = !!charPressIsNotANumber;
   }
 
@@ -34,7 +34,7 @@ class NumericCellEditor {
   }
 
   isKeyPressedNavigation(event) {
-    return event.key === "ArrowLeft" || event.key === "ArrowRight";
+    return event.key === 'ArrowLeft' || event.key === 'ArrowRight';
   }
 
   isCharNumeric(charStr) {
@@ -60,7 +60,7 @@ class NumericCellEditor {
   // - not very practical, but demonstrates the method.
   isCancelAfterEnd() {
     var value = this.getValue();
-    return value.indexOf("007") >= 0;
+    return value.indexOf('007') >= 0;
   }
 
   // returns the new value after editing

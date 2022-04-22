@@ -1,20 +1,20 @@
 var colorIndex = 0;
-var colors = ["#000000", "#000066", "#006600", "#660000"];
+var colors = ['#000000', '#000066', '#006600', '#660000'];
 
 const gridOptions = {
   columnDefs: [
-    { headerName: "A", field: "a" },
-    { headerName: "B", field: "b" },
-    { headerName: "C", field: "c" },
-    { headerName: "D", field: "d" },
-    { headerName: "E", field: "e" },
-    { headerName: "F", field: "f" },
+    { headerName: 'A', field: 'a' },
+    { headerName: 'B', field: 'b' },
+    { headerName: 'C', field: 'c' },
+    { headerName: 'D', field: 'd' },
+    { headerName: 'E', field: 'e' },
+    { headerName: 'F', field: 'f' },
   ],
   defaultColDef: {
     flex: 1,
   },
   rowData: createData(12),
-  getRowStyle: function () {
+  getRowStyle: function (params) {
     return {
       backgroundColor: colors[colorIndex],
     };
@@ -59,7 +59,7 @@ function redrawTopRows() {
 }
 
 // setup the grid after the page has finished loading
-document.addEventListener("DOMContentLoaded", function () {
-  var gridDiv = document.querySelector("#myGrid");
+document.addEventListener('DOMContentLoaded', function () {
+  var gridDiv = document.querySelector('#myGrid');
   new agGrid.Grid(gridDiv, gridOptions);
 });

@@ -1,11 +1,11 @@
-"use strict";
+'use strict';
 
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
-import { AgGridReact } from "ag-grid-react";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from 'ag-grid-react';
+import 'ag-grid-enterprise';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 
 class GridExample extends Component {
   constructor(props) {
@@ -13,26 +13,26 @@ class GridExample extends Component {
 
     this.state = {
       columnDefs: [
-        { field: "athlete", enableRowGroup: true, enablePivot: true },
-        { field: "age", enableValue: true },
+        { field: 'athlete', enableRowGroup: true, enablePivot: true },
+        { field: 'age', enableValue: true },
         {
-          field: "country",
+          field: 'country',
           enableRowGroup: true,
           enablePivot: true,
           rowGroup: true,
         },
-        { field: "year", enableRowGroup: true, enablePivot: true },
-        { field: "date", enableRowGroup: true, enablePivot: true },
+        { field: 'year', enableRowGroup: true, enablePivot: true },
+        { field: 'date', enableRowGroup: true, enablePivot: true },
         {
-          field: "sport",
+          field: 'sport',
           enableRowGroup: true,
           enablePivot: true,
           pivot: true,
         },
-        { field: "gold", enableValue: true, aggFunc: "sum" },
-        { field: "silver", enableValue: true, aggFunc: "sum" },
-        { field: "bronze", enableValue: true },
-        { field: "total", enableValue: true },
+        { field: 'gold', enableValue: true, aggFunc: 'sum' },
+        { field: 'silver', enableValue: true, aggFunc: 'sum' },
+        { field: 'bronze', enableValue: true },
+        { field: 'total', enableValue: true },
       ],
       defaultColDef: {
         flex: 1,
@@ -53,7 +53,7 @@ class GridExample extends Component {
 
     const updateData = (data) => params.api.setRowData(data);
 
-    fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+    fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .then((resp) => resp.json())
       .then((data) => updateData(data));
   };
@@ -66,7 +66,7 @@ class GridExample extends Component {
   saveState = () => {
     savedState = this.gridColumnApi.getColumnState();
     savedPivotMode = this.gridColumnApi.isPivotMode();
-    console.log("column state saved");
+    console.log('column state saved');
   };
 
   restoreState = () => {
@@ -77,9 +77,9 @@ class GridExample extends Component {
         state: savedState,
         applyOrder: true,
       });
-      console.log("column state restored");
+      console.log('column state restored');
     } else {
-      console.log("no previous column state to restore!");
+      console.log('no previous column state to restore!');
     }
   };
 
@@ -91,16 +91,16 @@ class GridExample extends Component {
   resetState = () => {
     this.gridColumnApi.resetColumnState();
     this.gridColumnApi.setPivotMode(false);
-    console.log("column state reset");
+    console.log('column state reset');
   };
 
   render() {
     return (
-      <div style={{ width: "100%", height: "100%" }}>
+      <div style={{ width: '100%', height: '100%' }}>
         <div
-          style={{ height: "100%", display: "flex", flexDirection: "column" }}
+          style={{ height: '100%', display: 'flex', flexDirection: 'column' }}
         >
-          <div style={{ marginBottom: "5px" }}>
+          <div style={{ marginBottom: '5px' }}>
             <button onClick={() => this.saveState()}>Save State</button>
             <button onClick={() => this.restoreState()}>Restore State</button>
             <button onClick={() => this.printState()}>Print State</button>
@@ -111,8 +111,8 @@ class GridExample extends Component {
           </div>
           <div
             style={{
-              height: "100%",
-              width: "100%",
+              height: '100%',
+              width: '100%',
             }}
             className="ag-theme-alpine"
           >
@@ -135,4 +135,4 @@ class GridExample extends Component {
 var savedState;
 var savedPivotMode;
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

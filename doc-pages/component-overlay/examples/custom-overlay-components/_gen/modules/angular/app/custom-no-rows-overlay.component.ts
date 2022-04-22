@@ -1,14 +1,14 @@
-import { INoRowsOverlayAngularComp } from "@ag-grid-community/angular";
-import { INoRowsOverlayParams } from "@ag-grid-community/core";
-import { Component } from "@angular/core";
+import { INoRowsOverlayAngularComp } from '@ag-grid-community/angular';
+import { INoRowsOverlayParams } from '@ag-grid-community/core';
+import { Component } from '@angular/core';
 
 @Component({
-  selector: "app-no-rows-overlay",
+  selector: 'app-no-rows-overlay',
   template: ` <div
     class="ag-overlay-loading-center"
     style="background-color: lightcoral;"
   >
-    <i class="far fa-frown"> {{ this.params.noRowsMessageFunc() }} </i>
+    <i class="far fa-frown"> {{ params.noRowsMessageFunc() }} </i>
   </div>`,
 })
 export class CustomNoRowsOverlay implements INoRowsOverlayAngularComp {

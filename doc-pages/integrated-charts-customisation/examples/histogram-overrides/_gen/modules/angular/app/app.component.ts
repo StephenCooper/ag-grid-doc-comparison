@@ -4,14 +4,14 @@ import {
   CreateRangeChartParams,
   FirstDataRenderedEvent,
   GridReadyEvent,
-} from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { Component } from "@angular/core";
+} from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { Component } from '@angular/core';
 // Required feature modules are registered in app.module.ts
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<ag-grid-angular
     style="width: 100%; height: 100%;"
     class="ag-theme-alpine"
@@ -28,29 +28,29 @@ import { Component } from "@angular/core";
 })
 export class AppComponent {
   public columnDefs: ColDef[] = [
-    { field: "country", width: 150, chartDataType: "category" },
-    { field: "gold", chartDataType: "series" },
-    { field: "silver", chartDataType: "series" },
-    { field: "bronze", chartDataType: "series" },
+    { field: 'country', width: 150, chartDataType: 'category' },
+    { field: 'gold', chartDataType: 'series' },
+    { field: 'silver', chartDataType: 'series' },
+    { field: 'bronze', chartDataType: 'series' },
     {
-      headerName: "A",
-      valueGetter: "Math.floor(Math.random()*1000)",
-      chartDataType: "series",
+      headerName: 'A',
+      valueGetter: 'Math.floor(Math.random()*1000)',
+      chartDataType: 'series',
     },
     {
-      headerName: "B",
-      valueGetter: "Math.floor(Math.random()*1000)",
-      chartDataType: "series",
+      headerName: 'B',
+      valueGetter: 'Math.floor(Math.random()*1000)',
+      chartDataType: 'series',
     },
     {
-      headerName: "C",
-      valueGetter: "Math.floor(Math.random()*1000)",
-      chartDataType: "series",
+      headerName: 'C',
+      valueGetter: 'Math.floor(Math.random()*1000)',
+      chartDataType: 'series',
     },
     {
-      headerName: "D",
-      valueGetter: "Math.floor(Math.random()*1000)",
-      chartDataType: "series",
+      headerName: 'D',
+      valueGetter: 'Math.floor(Math.random()*1000)',
+      chartDataType: 'series',
     },
   ];
   public defaultColDef: ColDef = {
@@ -77,26 +77,26 @@ export class AppComponent {
         strokeWidth: 4,
         shadow: {
           enabled: true,
-          color: "rgba(0, 0, 0, 0.3)",
+          color: 'rgba(0, 0, 0, 0.3)',
           xOffset: 10,
           yOffset: 10,
           blur: 8,
         },
         label: {
           enabled: true,
-          fontStyle: "italic",
-          fontWeight: "bold",
+          fontStyle: 'italic',
+          fontWeight: 'bold',
           fontSize: 15,
-          fontFamily: "Arial, sans-serif",
-          color: "green",
+          fontFamily: 'Arial, sans-serif',
+          color: 'green',
           formatter: function (params) {
-            return "<" + params.value + ">";
+            return '<' + params.value + '>';
           },
         },
         highlightStyle: {
           item: {
-            fill: "black",
-            stroke: "yellow",
+            fill: 'black',
+            stroke: 'yellow',
           },
         },
         tooltip: {
@@ -107,14 +107,14 @@ export class AppComponent {
             return {
               content:
                 binSize +
-                (binSize >= 2 ? " countries" : " country") +
-                " got between " +
+                (binSize >= 2 ? ' countries' : ' country') +
+                ' got between ' +
                 params.xValue[0] +
-                " and " +
+                ' and ' +
                 params.xValue[1] +
-                " " +
+                ' ' +
                 medalColour +
-                " medals",
+                ' medals',
             };
           },
         },
@@ -126,11 +126,11 @@ export class AppComponent {
     var cellRange = {
       rowStartIndex: 0,
       rowEndIndex: 20,
-      columns: ["bronze"],
+      columns: ['bronze'],
     };
     var createRangeChartParams: CreateRangeChartParams = {
       cellRange: cellRange,
-      chartType: "histogram",
+      chartType: 'histogram',
     };
     params.api.createRangeChart(createRangeChartParams);
   }

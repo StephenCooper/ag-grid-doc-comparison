@@ -1,27 +1,27 @@
-"use strict";
+'use strict';
 
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { AgGridReact } from "@ag-grid-community/react";
-import React, { useCallback, useMemo, useState } from "react";
-import { render } from "react-dom";
-import FullWidthCellRenderer from "./fullWidthCellRenderer.jsx";
+import React, { useCallback, useMemo, useRef, useState } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from '@ag-grid-community/react';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import FullWidthCellRenderer from './fullWidthCellRenderer.jsx';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([ClientSideRowModelModule]);
 
 const isFullWidth = (data) => {
   // return true when country is Peru, France or Italy
-  return ["Peru", "France", "Italy"].indexOf(data.name) >= 0;
+  return ['Peru', 'France', 'Italy'].indexOf(data.name) >= 0;
 };
 
 class CountryCellRenderer {
   init(params) {
     const flag = `<img border="0" width="15" height="10" src="https://www.ag-grid.com/example-assets/flags/${params.data.code}.png">`;
 
-    const eTemp = document.createElement("div");
+    const eTemp = document.createElement('div');
     eTemp.innerHTML = `<span style="cursor: default;">${flag} ${params.value}</span>`;
     this.eGui = eTemp.firstElementChild;
   }
@@ -36,13 +36,13 @@ class CountryCellRenderer {
 }
 
 const GridExample = () => {
-  const containerStyle = useMemo(() => ({ width: "100%", height: "100%" }), []);
-  const gridStyle = useMemo(() => ({ height: "100%", width: "100%" }), []);
+  const containerStyle = useMemo(() => ({ width: '100%', height: '100%' }), []);
+  const gridStyle = useMemo(() => ({ height: '100%', width: '100%' }), []);
   const [rowData, setRowData] = useState(getData());
   const [columnDefs, setColumnDefs] = useState([
-    { field: "name", cellRenderer: CountryCellRenderer },
-    { field: "continent" },
-    { field: "language" },
+    { field: 'name', cellRenderer: CountryCellRenderer },
+    { field: 'continent' },
+    { field: 'language' },
   ]);
   const defaultColDef = useMemo(() => {
     return {
@@ -81,4 +81,4 @@ const GridExample = () => {
   );
 };
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

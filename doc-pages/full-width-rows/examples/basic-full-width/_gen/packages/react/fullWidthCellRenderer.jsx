@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 
 export default class FullWidthCellRenderer extends Component {
   constructor(props) {
@@ -6,8 +6,8 @@ export default class FullWidthCellRenderer extends Component {
 
     this.state = {
       cssClass: props.node.rowPinned
-        ? "example-full-width-pinned-row"
-        : "example-full-width-row",
+        ? 'example-full-width-pinned-row'
+        : 'example-full-width-row',
       message: props.node.rowPinned
         ? `Pinned full width row at index ${props.rowIndex}`
         : `Normal full width row at index${props.rowIndex}`,
@@ -17,7 +17,7 @@ export default class FullWidthCellRenderer extends Component {
   render() {
     return (
       <div className={this.state.cssClass}>
-        <button onClick={() => alert("button clicked")}>Click</button>
+        <button onClick={() => alert('button clicked')}>Click</button>
         {this.state.message}
       </div>
     );

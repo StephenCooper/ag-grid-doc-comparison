@@ -3,15 +3,15 @@ import {
   GridApi,
   GridReadyEvent,
   RowNode,
-} from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { HttpClient } from "@angular/common/http";
-import { Component } from "@angular/core";
+} from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { HttpClient } from '@angular/common/http';
+import { Component } from '@angular/core';
 // Required feature modules are registered in app.module.ts
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<div class="test-container">
     <div class="test-header">
       <label>
@@ -77,18 +77,18 @@ export class AppComponent {
   private gridApi!: GridApi;
 
   public columnDefs: ColDef[] = [
-    { field: "athlete", minWidth: 180 },
-    { field: "age", filter: "agNumberColumnFilter", maxWidth: 80 },
-    { field: "country" },
-    { field: "year", maxWidth: 90 },
+    { field: 'athlete', minWidth: 180 },
+    { field: 'age', filter: 'agNumberColumnFilter', maxWidth: 80 },
+    { field: 'country' },
+    { field: 'year', maxWidth: 90 },
     {
-      field: "date",
-      filter: "agDateColumnFilter",
+      field: 'date',
+      filter: 'agDateColumnFilter',
       filterParams: dateFilterParams,
     },
-    { field: "gold", filter: "agNumberColumnFilter" },
-    { field: "silver", filter: "agNumberColumnFilter" },
-    { field: "bronze", filter: "agNumberColumnFilter" },
+    { field: 'gold', filter: 'agNumberColumnFilter' },
+    { field: 'silver', filter: 'agNumberColumnFilter' },
+    { field: 'bronze', filter: 'agNumberColumnFilter' },
   ];
   public defaultColDef: ColDef = {
     flex: 1,
@@ -108,28 +108,29 @@ export class AppComponent {
     this.gridApi = params.api;
 
     this.http
-      .get<any[]>("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      .get<any[]>('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .subscribe((data) => {
-        (document.querySelector("#everyone") as HTMLInputElement).checked =
-          true;
+        (document.querySelector(
+          '#everyone'
+        ) as HTMLInputElement).checked = true;
         this.rowData = data;
       });
   }
 
-  isExternalFilterPresent() {
+  isExternalFilterPresent(): boolean {
     // if ageType is not everyone, then we are filtering
-    return ageType !== "everyone";
+    return ageType !== 'everyone';
   }
 
-  doesExternalFilterPass(node: RowNode) {
+  doesExternalFilterPass(node: RowNode): boolean {
     switch (ageType) {
-      case "below25":
+      case 'below25':
         return node.data.age < 25;
-      case "between25and50":
+      case 'between25and50':
         return node.data.age >= 25 && node.data.age <= 50;
-      case "above50":
+      case 'above50':
         return node.data.age > 50;
-      case "dateAfter2008":
+      case 'dateAfter2008':
         return asDate(node.data.date) > new Date(2008, 1, 1);
       default:
         return true;
@@ -151,9 +152,9 @@ var dateFilterParams = {
     }
   },
 };
-var ageType = "everyone";
+var ageType = 'everyone';
 function asDate(dateAsString: string) {
-  var splitFields = dateAsString.split("/");
+  var splitFields = dateAsString.split('/');
   return new Date(
     Number.parseInt(splitFields[2]),
     Number.parseInt(splitFields[1]) - 1,

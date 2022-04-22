@@ -8,14 +8,14 @@ import {
   ISetFilterParams,
   SetFilterValuesFuncParams,
   SideBarDef,
-} from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { Component } from "@angular/core";
+} from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { Component } from '@angular/core';
 // Required feature modules are registered in app.module.ts
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<div id="container">
     <div id="header">
       <button (click)="useList1()">
@@ -42,17 +42,17 @@ export class AppComponent {
 
   public columnDefs: ColDef[] = [
     {
-      colId: "array",
-      headerName: "Values Array",
-      field: "animal",
-      filter: "agSetColumnFilter",
+      colId: 'array',
+      headerName: 'Values Array',
+      field: 'animal',
+      filter: 'agSetColumnFilter',
       filterParams: arrayFilterParams,
     },
     {
-      colId: "callback",
-      headerName: "Values Callback",
-      field: "animal",
-      filter: "agSetColumnFilter",
+      colId: 'callback',
+      headerName: 'Values Callback',
+      field: 'animal',
+      filter: 'agSetColumnFilter',
       filterParams: callbackFilterParams,
     },
   ];
@@ -61,33 +61,33 @@ export class AppComponent {
     filter: true,
     resizable: true,
   };
-  public sideBar: SideBarDef | string | boolean | null = "filters";
+  public sideBar: SideBarDef | string | string[] | boolean | null = 'filters';
   public rowData: any[] | null = getData();
 
   onFirstDataRendered(params: FirstDataRenderedEvent) {
-    (
-      params.api.getToolPanelInstance("filters") as any as IFiltersToolPanel
-    ).expandFilters();
+    ((params.api.getToolPanelInstance(
+      'filters'
+    ) as any) as IFiltersToolPanel).expandFilters();
   }
 
   useList1() {
-    console.log("Updating values to " + list1);
+    console.log('Updating values to ' + list1);
     valuesArray.length = 0;
     list1.forEach(function (value) {
       valuesArray.push(value);
     });
-    var filter = this.gridApi.getFilterInstance("array") as ISetFilter;
+    var filter = this.gridApi.getFilterInstance('array') as ISetFilter;
     filter.refreshFilterValues();
     valuesCallbackList = list1;
   }
 
   useList2() {
-    console.log("Updating values to " + list2);
+    console.log('Updating values to ' + list2);
     valuesArray.length = 0;
     list2.forEach(function (value) {
       valuesArray.push(value);
     });
-    var filter = this.gridApi.getFilterInstance("array") as ISetFilter;
+    var filter = this.gridApi.getFilterInstance('array') as ISetFilter;
     filter.refreshFilterValues();
     valuesCallbackList = list2;
   }
@@ -97,8 +97,8 @@ export class AppComponent {
   }
 }
 
-var list1 = ["Elephant", "Lion", "Monkey"];
-var list2 = ["Elephant", "Giraffe", "Tiger"];
+var list1 = ['Elephant', 'Lion', 'Monkey'];
+var list2 = ['Elephant', 'Giraffe', 'Tiger'];
 var valuesArray = list1.slice();
 var valuesCallbackList = list1;
 function valuesCallback(params: SetFilterValuesFuncParams) {

@@ -1,12 +1,12 @@
-import { ColDef, ColumnApi, GridReadyEvent } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { HttpClient } from "@angular/common/http";
-import { Component } from "@angular/core";
+import { ColDef, ColumnApi, GridReadyEvent } from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { HttpClient } from '@angular/common/http';
+import { Component } from '@angular/core';
 // Required feature modules are registered in app.module.ts
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<div class="example-wrapper">
     <div style="margin-bottom: 1rem;">
       <div>
@@ -35,16 +35,16 @@ export class AppComponent {
   private gridColumnApi!: ColumnApi;
 
   public columnDefs: ColDef[] = [
-    { field: "athlete" },
-    { field: "age", width: 90 },
-    { field: "country" },
-    { field: "year", width: 90 },
-    { field: "date" },
-    { field: "sport" },
-    { field: "gold" },
-    { field: "silver" },
-    { field: "bronze" },
-    { field: "total" },
+    { field: 'athlete' },
+    { field: 'age', width: 90 },
+    { field: 'country' },
+    { field: 'year', width: 90 },
+    { field: 'date' },
+    { field: 'sport' },
+    { field: 'gold' },
+    { field: 'silver' },
+    { field: 'bronze' },
+    { field: 'total' },
   ];
   public defaultColDef: ColDef = {
     sortable: true,
@@ -55,14 +55,14 @@ export class AppComponent {
 
   sortByAthleteAsc() {
     this.gridColumnApi.applyColumnState({
-      state: [{ colId: "athlete", sort: "asc" }],
+      state: [{ colId: 'athlete', sort: 'asc' }],
       defaultState: { sort: null },
     });
   }
 
   sortByAthleteDesc() {
     this.gridColumnApi.applyColumnState({
-      state: [{ colId: "athlete", sort: "desc" }],
+      state: [{ colId: 'athlete', sort: 'desc' }],
       defaultState: { sort: null },
     });
   }
@@ -70,8 +70,8 @@ export class AppComponent {
   sortByCountryThenSport() {
     this.gridColumnApi.applyColumnState({
       state: [
-        { colId: "country", sort: "asc", sortIndex: 0 },
-        { colId: "sport", sort: "asc", sortIndex: 1 },
+        { colId: 'country', sort: 'asc', sortIndex: 0 },
+        { colId: 'sport', sort: 'asc', sortIndex: 1 },
       ],
       defaultState: { sort: null },
     });
@@ -80,8 +80,8 @@ export class AppComponent {
   sortBySportThenCountry() {
     this.gridColumnApi.applyColumnState({
       state: [
-        { colId: "country", sort: "asc", sortIndex: 1 },
-        { colId: "sport", sort: "asc", sortIndex: 0 },
+        { colId: 'country', sort: 'asc', sortIndex: 1 },
+        { colId: 'sport', sort: 'asc', sortIndex: 0 },
       ],
       defaultState: { sort: null },
     });
@@ -103,7 +103,7 @@ export class AppComponent {
         return { colId: s.colId, sort: s.sort, sortIndex: s.sortIndex };
       });
     savedSort = sortState;
-    console.log("saved sort", sortState);
+    console.log('saved sort', sortState);
   }
 
   restoreFromSave() {
@@ -117,7 +117,7 @@ export class AppComponent {
     this.gridColumnApi = params.columnApi;
 
     this.http
-      .get<any[]>("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      .get<any[]>('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .subscribe((data) => (this.rowData = data));
   }
 }

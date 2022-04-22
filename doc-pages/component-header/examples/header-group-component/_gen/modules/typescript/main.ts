@@ -1,61 +1,61 @@
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
 import {
   ColGroupDef,
   Grid,
   GridOptions,
   ModuleRegistry,
-} from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { CustomHeaderGroup } from "./customHeaderGroup";
+} from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { CustomHeaderGroup } from './customHeaderGroup';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([ClientSideRowModelModule]);
 
 const columnDefs: ColGroupDef[] = [
   {
-    headerName: "Athlete Details",
+    headerName: 'Athlete Details',
     headerGroupComponent: CustomHeaderGroup,
     children: [
-      { field: "athlete", width: 150 },
-      { field: "age", width: 90, columnGroupShow: "open" },
+      { field: 'athlete', width: 150 },
+      { field: 'age', width: 90, columnGroupShow: 'open' },
       {
-        field: "country",
+        field: 'country',
         width: 120,
-        columnGroupShow: "open",
+        columnGroupShow: 'open',
       },
     ],
   },
   {
-    headerName: "Medal details",
+    headerName: 'Medal details',
     headerGroupComponent: CustomHeaderGroup,
     children: [
-      { field: "year", width: 90 },
-      { field: "date", width: 110 },
+      { field: 'year', width: 90 },
+      { field: 'date', width: 110 },
       {
-        field: "sport",
+        field: 'sport',
         width: 110,
-        columnGroupShow: "open",
+        columnGroupShow: 'open',
       },
       {
-        field: "gold",
+        field: 'gold',
         width: 100,
-        columnGroupShow: "open",
+        columnGroupShow: 'open',
       },
       {
-        field: "silver",
+        field: 'silver',
         width: 100,
-        columnGroupShow: "open",
+        columnGroupShow: 'open',
       },
       {
-        field: "bronze",
+        field: 'bronze',
         width: 100,
-        columnGroupShow: "open",
+        columnGroupShow: 'open',
       },
       {
-        field: "total",
+        field: 'total',
         width: 100,
-        columnGroupShow: "open",
+        columnGroupShow: 'open',
       },
     ],
   },
@@ -70,9 +70,9 @@ const gridOptions: GridOptions = {
   },
 };
 // setup the grid after the page has finished loading
-var gridDiv = document.querySelector<HTMLElement>("#myGrid")!;
+var gridDiv = document.querySelector<HTMLElement>('#myGrid')!;
 new Grid(gridDiv, gridOptions);
 
-fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
   .then((response) => response.json())
   .then((data) => gridOptions.api!.setRowData(data));

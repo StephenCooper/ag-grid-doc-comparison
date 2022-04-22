@@ -4,15 +4,15 @@ import {
   ICellRendererParams,
   IDatasource,
   IGetRowsParams,
-} from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { HttpClient } from "@angular/common/http";
-import { Component } from "@angular/core";
+} from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { HttpClient } from '@angular/common/http';
+import { Component } from '@angular/core';
 // Required feature modules are registered in app.module.ts
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<ag-grid-angular
     style="width: 100%; height: 100%;"
     class="ag-theme-alpine"
@@ -34,11 +34,11 @@ export class AppComponent {
   public columnDefs: ColDef[] = [
     // this row shows the row index, doesn't use any data from the row
     {
-      headerName: "ID",
+      headerName: 'ID',
       maxWidth: 100,
       // it is important to have node.id here, so that when the id changes (which happens
       // when the row is loaded) then the cell is refreshed.
-      valueGetter: "node.id",
+      valueGetter: 'node.id',
       cellRenderer: function (params: ICellRendererParams) {
         if (params.value !== undefined) {
           return params.value;
@@ -47,16 +47,16 @@ export class AppComponent {
         }
       },
     },
-    { field: "athlete", minWidth: 150 },
-    { field: "age" },
-    { field: "country", minWidth: 150 },
-    { field: "year" },
-    { field: "date", minWidth: 150 },
-    { field: "sport", minWidth: 150 },
-    { field: "gold" },
-    { field: "silver" },
-    { field: "bronze" },
-    { field: "total" },
+    { field: 'athlete', minWidth: 150 },
+    { field: 'age' },
+    { field: 'country', minWidth: 150 },
+    { field: 'year' },
+    { field: 'date', minWidth: 150 },
+    { field: 'sport', minWidth: 150 },
+    { field: 'gold' },
+    { field: 'silver' },
+    { field: 'bronze' },
+    { field: 'total' },
   ];
   public defaultColDef: ColDef = {
     flex: 1,
@@ -64,8 +64,8 @@ export class AppComponent {
     minWidth: 100,
   };
   public rowBuffer = 0;
-  public rowSelection = "multiple";
-  public rowModelType = "infinite";
+  public rowSelection = 'multiple';
+  public rowModelType = 'infinite';
   public cacheBlockSize = 100;
   public cacheOverflowSize = 2;
   public maxConcurrentDatasourceRequests = 1;
@@ -77,13 +77,13 @@ export class AppComponent {
 
   onGridReady(params: GridReadyEvent) {
     this.http
-      .get<any[]>("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      .get<any[]>('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .subscribe((data) => {
         const dataSource: IDatasource = {
           rowCount: undefined,
           getRows: function (params: IGetRowsParams) {
             console.log(
-              "asking for " + params.startRow + " to " + params.endRow
+              'asking for ' + params.startRow + ' to ' + params.endRow
             );
             // At this point in your code, you would call the server.
             // To make the demo look real, wait for 500ms before returning

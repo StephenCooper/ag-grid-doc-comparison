@@ -18,7 +18,7 @@ The following sections cover the alternative ways grid data can be charted using
 
 To minimise bundle sizes for applications that do not require charting, charts are contained in a separate [AG Grid Module](/modules/),
 and has been built from the ground up with zero dependencies on any third party libraries.
-
+ 
 The Charts module can be imported as follows:
 
 ```ts

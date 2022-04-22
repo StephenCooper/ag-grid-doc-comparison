@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component } from '@angular/core';
 import {
   AgChartThemeOverrides,
   ChartMenuOptions,
@@ -6,14 +6,14 @@ import {
   CreateRangeChartParams,
   FirstDataRenderedEvent,
   GridReadyEvent,
-} from "ag-grid-community";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
+} from 'ag-grid-community';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import 'ag-grid-enterprise';
 declare var moment: any;
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<div class="wrapper">
     <ag-grid-angular
       style="width: 100%; height: 100%;"
@@ -34,8 +34,8 @@ declare var moment: any;
 })
 export class AppComponent {
   public columnDefs: ColDef[] = [
-    { field: "timestamp", chartDataType: "time" },
-    { field: "cpuUsage" },
+    { field: 'timestamp', chartDataType: 'time' },
+    { field: 'cpuUsage' },
   ];
   public defaultColDef: ColDef = {
     flex: 1,
@@ -47,7 +47,7 @@ export class AppComponent {
     area: {
       title: {
         enabled: true,
-        text: "CPU Usage",
+        text: 'CPU Usage',
       },
       legend: {
         enabled: false,
@@ -65,21 +65,21 @@ export class AppComponent {
         time: {
           label: {
             rotation: 45,
-            format: "%H:%M",
+            format: '%H:%M',
           },
         },
         category: {
           label: {
             rotation: 0,
             formatter: function (params) {
-              return moment(new Date(params.value)).format("DD MMM");
+              return moment(new Date(params.value)).format('DD MMM');
             },
           },
         },
         number: {
           label: {
             formatter: function (params) {
-              return params.value + "%";
+              return params.value + '%';
             },
           },
         },
@@ -89,12 +89,12 @@ export class AppComponent {
 
   onFirstDataRendered(params: FirstDataRenderedEvent) {
     var createRangeChartParams: CreateRangeChartParams = {
-      chartContainer: document.querySelector("#myChart") as any,
+      chartContainer: document.querySelector('#myChart') as any,
       suppressChartRanges: true,
       cellRange: {
-        columns: ["timestamp", "cpuUsage"],
+        columns: ['timestamp', 'cpuUsage'],
       },
-      chartType: "area",
+      chartType: 'area',
     };
     params.api.createRangeChart(createRangeChartParams);
   }
@@ -102,7 +102,7 @@ export class AppComponent {
   onGridReady(params: GridReadyEvent) {}
 
   getChartToolbarItems(): ChartMenuOptions[] {
-    return ["chartData", "chartFormat"];
+    return ['chartData', 'chartFormat'];
   }
 }
 

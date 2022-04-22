@@ -1,11 +1,11 @@
-"use strict";
+'use strict';
 
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine-dark.css";
-import "ag-grid-enterprise";
-import { AgGridReact } from "ag-grid-react";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from 'ag-grid-react';
+import 'ag-grid-enterprise';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine-dark.css';
 
 class GridExample extends Component {
   constructor(props) {
@@ -13,35 +13,35 @@ class GridExample extends Component {
 
     this.state = {
       columnDefs: [
-        { field: "athlete", minWidth: 220, filter: "agTextColumnFilter" },
+        { field: 'athlete', minWidth: 220, filter: 'agTextColumnFilter' },
         {
-          field: "country",
+          field: 'country',
           minWidth: 200,
-          filter: "agSetColumnFilter",
+          filter: 'agSetColumnFilter',
           filterParams: {
             values: [
-              "United States",
-              "Ireland",
-              "United Kingdom",
-              "Russia",
-              "Australia",
-              "Canada",
-              "Norway",
+              'United States',
+              'Ireland',
+              'United Kingdom',
+              'Russia',
+              'Australia',
+              'Canada',
+              'Norway',
             ],
           },
         },
-        { field: "year", filter: "agNumberColumnFilter" },
-        { field: "sport", minWidth: 200 },
-        { field: "gold" },
-        { field: "silver" },
-        { field: "bronze" },
+        { field: 'year', filter: 'agNumberColumnFilter' },
+        { field: 'sport', minWidth: 200 },
+        { field: 'gold' },
+        { field: 'silver' },
+        { field: 'bronze' },
       ],
       defaultColDef: {
         flex: 1,
         minWidth: 100,
       },
-      rowModelType: "serverSide",
-      serverSideStoreType: "full",
+      rowModelType: 'serverSide',
+      serverSideStoreType: 'full',
     };
   }
 
@@ -58,18 +58,18 @@ class GridExample extends Component {
       params.api.setServerSideDatasource(datasource);
     };
 
-    fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+    fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .then((resp) => resp.json())
       .then((data) => updateData(data));
   };
 
   render() {
     return (
-      <div style={{ width: "100%", height: "100%" }}>
+      <div style={{ width: '100%', height: '100%' }}>
         <div
           style={{
-            height: "100%",
-            width: "100%",
+            height: '100%',
+            width: '100%',
           }}
           className="ag-theme-alpine-dark"
         >
@@ -91,9 +91,9 @@ function createServerSideDatasource(server) {
   return {
     getRows: function (params) {
       console.log(
-        "[Datasource] - rows requested by grid: startRow = " +
+        '[Datasource] - rows requested by grid: startRow = ' +
           params.request.startRow +
-          ", endRow = " +
+          ', endRow = ' +
           params.request.endRow
       );
       // get data for request from our fake server
@@ -121,4 +121,4 @@ function createFakeServer(allData) {
   };
 }
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

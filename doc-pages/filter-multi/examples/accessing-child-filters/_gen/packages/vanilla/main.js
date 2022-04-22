@@ -1,18 +1,18 @@
 const gridOptions = {
   columnDefs: [
     {
-      field: "athlete",
-      filter: "agMultiColumnFilter",
+      field: 'athlete',
+      filter: 'agMultiColumnFilter',
       filterParams: {
         filters: [
           {
-            filter: "agTextColumnFilter",
+            filter: 'agTextColumnFilter',
             filterParams: {
-              buttons: ["apply", "clear"],
+              buttons: ['apply', 'clear'],
             },
           },
           {
-            filter: "agSetColumnFilter",
+            filter: 'agSetColumnFilter',
           },
         ],
       },
@@ -22,30 +22,30 @@ const gridOptions = {
     flex: 1,
     minWidth: 200,
     resizable: true,
-    menuTabs: ["filterMenuTab"],
+    menuTabs: ['filterMenuTab'],
   },
 };
 
 function getTextModel() {
   var textFilter = gridOptions.api
-    .getFilterInstance("athlete")
+    .getFilterInstance('athlete')
     .getChildFilterInstance(0);
-  console.log("Current Text Filter model: ", textFilter.getModel());
+  console.log('Current Text Filter model: ', textFilter.getModel());
 }
 
 function getSetMiniFilter() {
   var setFilter = gridOptions.api
-    .getFilterInstance("athlete")
+    .getFilterInstance('athlete')
     .getChildFilterInstance(1);
-  console.log("Current Set Filter search text: ", setFilter.getMiniFilter());
+  console.log('Current Set Filter search text: ', setFilter.getMiniFilter());
 }
 
 // setup the grid after the page has finished loading
-document.addEventListener("DOMContentLoaded", function () {
-  var gridDiv = document.querySelector("#myGrid");
+document.addEventListener('DOMContentLoaded', function () {
+  var gridDiv = document.querySelector('#myGrid');
   new agGrid.Grid(gridDiv, gridOptions);
 
-  fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+  fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
     .then((response) => response.json())
     .then((data) => gridOptions.api.setRowData(data));
 });

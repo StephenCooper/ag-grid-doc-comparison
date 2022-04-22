@@ -1,43 +1,43 @@
-"use strict";
+'use strict';
 
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine-dark.css";
-import "ag-grid-enterprise";
-import { AgGridReact } from "ag-grid-react";
-import React, { useCallback, useMemo, useRef, useState } from "react";
-import { render } from "react-dom";
+import React, { useCallback, useMemo, useRef, useState } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from 'ag-grid-react';
+import 'ag-grid-enterprise';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine-dark.css';
 
-const products = ["Palm Oil", "Rubber", "Wool", "Amber", "Copper"];
+const products = ['Palm Oil', 'Rubber', 'Wool', 'Amber', 'Copper'];
 
 const all_products = [
-  "Palm Oil",
-  "Rubber",
-  "Wool",
-  "Amber",
-  "Copper",
-  "Lead",
-  "Zinc",
-  "Tin",
-  "Aluminium",
-  "Aluminium Alloy",
-  "Nickel",
-  "Cobalt",
-  "Molybdenum",
-  "Recycled Steel",
-  "Corn",
-  "Oats",
-  "Rough Rice",
-  "Soybeans",
-  "Rapeseed",
-  "Soybean Meal",
-  "Soybean Oil",
-  "Wheat",
-  "Milk",
-  "Coca",
-  "Coffee C",
-  "Cotton No.2",
-  "Sugar No.11",
-  "Sugar No.14",
+  'Palm Oil',
+  'Rubber',
+  'Wool',
+  'Amber',
+  'Copper',
+  'Lead',
+  'Zinc',
+  'Tin',
+  'Aluminium',
+  'Aluminium Alloy',
+  'Nickel',
+  'Cobalt',
+  'Molybdenum',
+  'Recycled Steel',
+  'Corn',
+  'Oats',
+  'Rough Rice',
+  'Soybeans',
+  'Rapeseed',
+  'Soybean Meal',
+  'Soybean Oil',
+  'Wheat',
+  'Milk',
+  'Coca',
+  'Coffee C',
+  'Cotton No.2',
+  'Sugar No.11',
+  'Sugar No.14',
 ];
 
 let newProductSequence = 0;
@@ -51,12 +51,12 @@ const getNextValue = () => {
 
 const GridExample = () => {
   const gridRef = useRef();
-  const containerStyle = useMemo(() => ({ width: "100%", height: "100%" }), []);
-  const gridStyle = useMemo(() => ({ height: "100%", width: "100%" }), []);
+  const containerStyle = useMemo(() => ({ width: '100%', height: '100%' }), []);
+  const gridStyle = useMemo(() => ({ height: '100%', width: '100%' }), []);
 
   const [columnDefs, setColumnDefs] = useState([
-    { field: "product" },
-    { field: "value" },
+    { field: 'product' },
+    { field: 'value' },
   ]);
   const defaultColDef = useMemo(() => {
     return {
@@ -69,7 +69,7 @@ const GridExample = () => {
   }, []);
 
   const onGridReady = useCallback((params) => {
-    fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+    fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .then((resp) => resp.json())
       .then((data) => {
         const dataSource = {
@@ -157,7 +157,7 @@ const GridExample = () => {
       const itemsToAdd = [];
       for (let i = 0; i < 5; i++) {
         itemsToAdd.push({
-          product: newProductName + " " + newProductSequence++,
+          product: newProductName + ' ' + newProductSequence++,
           value: getNextValue(),
         });
       }
@@ -173,8 +173,8 @@ const GridExample = () => {
   return (
     <div style={containerStyle}>
       <div className="example-wrapper">
-        <div style={{ marginBottom: "5px" }}>
-          <button onClick={onAdd}>Add at End</button>
+        <div style={{ marginBottom: '5px' }}>
+          <button onClick={() => onAdd(undefined)}>Add at End</button>
           <button onClick={() => onAdd(0)}>Add at Start</button>
           <button onClick={onUpdateSelected}>Update Selected</button>
           <button onClick={onUpdateRandom}>Update Random</button>
@@ -188,10 +188,10 @@ const GridExample = () => {
             columnDefs={columnDefs}
             defaultColDef={defaultColDef}
             getRowId={getRowId}
-            rowSelection={"multiple"}
-            serverSideStoreType={"full"}
+            rowSelection={'multiple'}
+            serverSideStoreType={'full'}
             enableCellChangeFlash={true}
-            rowModelType={"serverSide"}
+            rowModelType={'serverSide'}
             animateRows={true}
             onGridReady={onGridReady}
           ></AgGridReact>
@@ -201,4 +201,4 @@ const GridExample = () => {
   );
 };
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

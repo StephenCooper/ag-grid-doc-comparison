@@ -1,13 +1,13 @@
-"use strict";
+'use strict';
 
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { AgGridReact } from "@ag-grid-community/react";
-import { RowGroupingModule } from "@ag-grid-enterprise/row-grouping";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from '@ag-grid-community/react';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import { RowGroupingModule } from '@ag-grid-enterprise/row-grouping';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([ClientSideRowModelModule, RowGroupingModule]);
@@ -19,19 +19,19 @@ class GridExample extends Component {
     this.state = {
       columnDefs: [
         {
-          field: "dateModified",
+          field: 'dateModified',
           minWidth: 250,
           comparator: function (d1, d2) {
             return new Date(d1).getTime() < new Date(d2).getTime() ? -1 : 1;
           },
         },
         {
-          field: "size",
-          aggFunc: "sum",
+          field: 'size',
+          aggFunc: 'sum',
           valueFormatter: function (params) {
             return params.value
-              ? Math.round(params.value * 10) / 10 + " MB"
-              : "0 MB";
+              ? Math.round(params.value * 10) / 10 + ' MB'
+              : '0 MB';
           },
         },
       ],
@@ -42,7 +42,7 @@ class GridExample extends Component {
         resizable: true,
       },
       autoGroupColumnDef: {
-        headerName: "Files",
+        headerName: 'Files',
         minWidth: 330,
         cellRendererParams: {
           checkbox: true,
@@ -70,8 +70,8 @@ class GridExample extends Component {
     var newGroupData = [
       {
         id: getNextId(),
-        filePath: ["Music", "wav", "hit_" + new Date().getTime() + ".wav"],
-        dateModified: "Aug 23 2017 11:52:00 PM",
+        filePath: ['Music', 'wav', 'hit_' + new Date().getTime() + '.wav'],
+        dateModified: 'Aug 23 2017 11:52:00 PM',
         size: 58.9,
       },
     ];
@@ -81,7 +81,7 @@ class GridExample extends Component {
   removeSelected = () => {
     var selectedNode = this.gridApi.getSelectedNodes()[0]; // single selection
     if (!selectedNode) {
-      console.warn("No nodes selected!");
+      console.warn('No nodes selected!');
       return;
     }
     this.gridApi.applyTransaction({ remove: getRowsToRemove(selectedNode) });
@@ -90,7 +90,7 @@ class GridExample extends Component {
   moveSelectedNodeToTarget = (targetRowId) => {
     var selectedNode = this.gridApi.getSelectedNodes()[0]; // single selection
     if (!selectedNode) {
-      console.warn("No nodes selected!");
+      console.warn('No nodes selected!');
       return;
     }
     var targetNode = this.gridApi.getRowNode(targetRowId);
@@ -98,7 +98,7 @@ class GridExample extends Component {
       selectedNode.key === targetNode.key ||
       isSelectionParentOfTarget(selectedNode, targetNode);
     if (invalidMove) {
-      console.warn("Invalid selection - must not be parent or same as target!");
+      console.warn('Invalid selection - must not be parent or same as target!');
       return;
     }
     var rowsToUpdate = getRowsToUpdate(selectedNode, targetNode.data.filePath);
@@ -107,11 +107,11 @@ class GridExample extends Component {
 
   render() {
     return (
-      <div style={{ width: "100%", height: "100%" }}>
+      <div style={{ width: '100%', height: '100%' }}>
         <div className="example-wrapper">
-          <div style={{ marginBottom: "5px" }}>
+          <div style={{ marginBottom: '5px' }}>
             <button onClick={() => this.addNewGroup()}>Add New Group</button>
-            <button onClick={() => this.moveSelectedNodeToTarget(9)}>
+            <button onClick={() => this.moveSelectedNodeToTarget('9')}>
               Move Selected to 'stuff'
             </button>
             <button onClick={() => this.removeSelected()}>
@@ -120,8 +120,8 @@ class GridExample extends Component {
           </div>
           <div
             style={{
-              height: "100%",
-              width: "100%",
+              height: '100%',
+              width: '100%',
             }}
             className="ag-theme-alpine"
           >
@@ -155,7 +155,7 @@ function getNextId() {
 function getFileCellRenderer() {
   class FileCellRenderer {
     init(params) {
-      var tempDiv = document.createElement("div");
+      var tempDiv = document.createElement('div');
       var value = params.value;
       var icon = getFileIcon(params.value);
       tempDiv.innerHTML = icon
@@ -164,7 +164,7 @@ function getFileCellRenderer() {
           '"></i>' +
           '<span class="filename"></span>' +
           value +
-          "</span>"
+          '</span>'
         : value;
       this.eGui = tempDiv.firstChild;
     }
@@ -210,15 +210,15 @@ function getRowsToUpdate(node, parentPath) {
   return node.data ? res.concat([node.data]) : res;
 }
 function getFileIcon(name) {
-  return endsWith(name, ".mp3") || endsWith(name, ".wav")
-    ? "far fa-file-audio"
-    : endsWith(name, ".xls")
-    ? "far fa-file-excel"
-    : endsWith(name, ".txt")
-    ? "far fa-file"
-    : endsWith(name, ".pdf")
-    ? "far fa-file-pdf"
-    : "far fa-folder";
+  return endsWith(name, '.mp3') || endsWith(name, '.wav')
+    ? 'far fa-file-audio'
+    : endsWith(name, '.xls')
+    ? 'far fa-file-excel'
+    : endsWith(name, '.txt')
+    ? 'far fa-file'
+    : endsWith(name, '.pdf')
+    ? 'far fa-file-pdf'
+    : 'far fa-folder';
 }
 function endsWith(str, match) {
   var len;
@@ -229,4 +229,4 @@ function endsWith(str, match) {
   return str.substring(len - match.length, len) === match;
 }
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

@@ -1,20 +1,20 @@
-"use strict";
+'use strict';
 
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import { AgGridReact } from "ag-grid-react";
-import React, { useCallback, useMemo, useRef, useState } from "react";
-import { render } from "react-dom";
+import React, { useCallback, useMemo, useRef, useState } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from 'ag-grid-react';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 
 const getPinnedTopData = () => {
   return [
     {
-      firstName: "##",
-      lastName: "##",
-      gender: "##",
-      address: "##",
-      mood: "##",
-      country: "##",
+      firstName: '##',
+      lastName: '##',
+      gender: '##',
+      address: '##',
+      mood: '##',
+      country: '##',
     },
   ];
 };
@@ -22,29 +22,29 @@ const getPinnedTopData = () => {
 const getPinnedBottomData = () => {
   return [
     {
-      firstName: "##",
-      lastName: "##",
-      gender: "##",
-      address: "##",
-      mood: "##",
-      country: "##",
+      firstName: '##',
+      lastName: '##',
+      gender: '##',
+      address: '##',
+      mood: '##',
+      country: '##',
     },
   ];
 };
 
 const GridExample = () => {
   const gridRef = useRef();
-  const containerStyle = useMemo(() => ({ width: "100%", height: "100%" }), []);
-  const gridStyle = useMemo(() => ({ height: "100%", width: "100%" }), []);
+  const containerStyle = useMemo(() => ({ width: '100%', height: '100%' }), []);
+  const gridStyle = useMemo(() => ({ height: '100%', width: '100%' }), []);
   const [rowData, setRowData] = useState(getData());
   const [columnDefs, setColumnDefs] = useState([
-    { field: "firstName" },
-    { field: "lastName" },
-    { field: "gender" },
-    { field: "age" },
-    { field: "mood" },
-    { field: "country" },
-    { field: "address", minWidth: 550 },
+    { field: 'firstName' },
+    { field: 'lastName' },
+    { field: 'gender' },
+    { field: 'age' },
+    { field: 'mood' },
+    { field: 'country' },
+    { field: 'address', minWidth: 550 },
   ]);
   const defaultColDef = useMemo(() => {
     return {
@@ -66,10 +66,10 @@ const GridExample = () => {
   }, []);
 
   const onBtStartEditing = useCallback((key, char, pinned) => {
-    gridRef.current.api.setFocusedCell(0, "lastName", pinned);
+    gridRef.current.api.setFocusedCell(0, 'lastName', pinned);
     gridRef.current.api.startEditingCell({
       rowIndex: 0,
-      colKey: "lastName",
+      colKey: 'lastName',
       // set to 'top', 'bottom' or undefined
       rowPinned: pinned,
       key: key,
@@ -90,15 +90,15 @@ const GridExample = () => {
     if (cellDefs.length > 0) {
       var cellDef = cellDefs[0];
       console.log(
-        "editing cell is: row = " +
+        'editing cell is: row = ' +
           cellDef.rowIndex +
-          ", col = " +
+          ', col = ' +
           cellDef.column.getId() +
-          ", floating = " +
+          ', floating = ' +
           cellDef.rowPinned
       );
     } else {
-      console.log("no cells are editing");
+      console.log('no cells are editing');
     }
   }, []);
 
@@ -107,26 +107,28 @@ const GridExample = () => {
       <div className="example-wrapper">
         <div
           style={{
-            marginBottom: "5px",
-            display: "flex",
-            justifyContent: "space-between",
+            marginBottom: '5px',
+            display: 'flex',
+            justifyContent: 'space-between',
           }}
         >
           <div>
-            <button onClick={onBtStartEditing}>edit (0)</button>
-            <button onClick={() => onBtStartEditing("Delete")}>
+            <button onClick={() => onBtStartEditing(undefined)}>
+              edit (0)
+            </button>
+            <button onClick={() => onBtStartEditing('Delete')}>
               edit (0, Delete)
             </button>
-            <button onClick={() => onBtStartEditing(undefined, "T")}>
+            <button onClick={() => onBtStartEditing(undefined, 'T')}>
               edit (0, 'T')
             </button>
             <button
-              onClick={() => onBtStartEditing(undefined, undefined, "top")}
+              onClick={() => onBtStartEditing(undefined, undefined, 'top')}
             >
               edit (0, Top)
             </button>
             <button
-              onClick={() => onBtStartEditing(undefined, undefined, "bottom")}
+              onClick={() => onBtStartEditing(undefined, undefined, 'bottom')}
             >
               edit (0, Bottom)
             </button>
@@ -157,4 +159,4 @@ const GridExample = () => {
   );
 };
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

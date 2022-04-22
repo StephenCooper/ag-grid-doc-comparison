@@ -1,5 +1,5 @@
-import { AgChartsVue } from "ag-charts-vue";
-import Vue from "vue";
+import { AgChartsVue } from 'ag-charts-vue';
+import Vue from 'vue';
 
 const ChartExample = {
   template: `
@@ -7,7 +7,7 @@ const ChartExample = {
                 :options="options"></ag-charts-vue>
     `,
   components: {
-    "ag-charts-vue": AgChartsVue,
+    'ag-charts-vue': AgChartsVue,
   },
   data: function () {
     return {
@@ -17,7 +17,7 @@ const ChartExample = {
   created() {
     this.options = {
       title: {
-        text: "Internet Explorer Market Share",
+        text: 'Internet Explorer Market Share',
       },
       subtitle: {
         text: '2009-2019 (aka "good times")',
@@ -25,10 +25,10 @@ const ChartExample = {
       data: getData(),
       series: [
         {
-          type: "area",
-          xKey: "year",
-          yKey: "ie",
-          yName: "IE",
+          type: 'area',
+          xKey: 'year',
+          yKey: 'ie',
+          yName: 'IE',
         },
       ],
       legend: {
@@ -41,8 +41,8 @@ const ChartExample = {
 };
 
 new Vue({
-  el: "#app",
+  el: '#app',
   components: {
-    "my-component": ChartExample,
+    'my-component': ChartExample,
   },
 });

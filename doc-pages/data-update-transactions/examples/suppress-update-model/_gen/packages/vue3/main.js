@@ -1,8 +1,8 @@
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
-import { AgGridVue } from "ag-grid-vue3";
-import { createApp } from "vue";
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import 'ag-grid-enterprise';
+import { AgGridVue } from 'ag-grid-vue3';
+import { createApp } from 'vue';
 
 const VueExample = {
   template: `
@@ -29,21 +29,22 @@ const VueExample = {
                 :animateRows="true"
                 :suppressAggAtRootLevel="true"
                 :suppressRowClickSelection="true"
-                :autoGroupColumnDef="autoGroupColumnDef"></ag-grid-vue>
+                :autoGroupColumnDef="autoGroupColumnDef"
+                :isGroupOpenByDefault="isGroupOpenByDefault"></ag-grid-vue>
             </div>
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
-        { field: "city", rowGroup: true, hide: true },
-        { field: "laptop", rowGroup: true, hide: true },
-        { field: "distro", sort: "asc", comparator: myComparator },
+        { field: 'city', rowGroup: true, hide: true },
+        { field: 'laptop', rowGroup: true, hide: true },
+        { field: 'distro', sort: 'asc', comparator: myComparator },
         {
-          field: "value",
+          field: 'value',
           enableCellChangeFlash: true,
           aggFunc: myAggFunc,
           filter: myFilter,
@@ -59,13 +60,17 @@ const VueExample = {
       },
       rowSelection: null,
       autoGroupColumnDef: null,
+      isGroupOpenByDefault: null,
     };
   },
   created() {
-    this.rowSelection = "multiple";
+    this.rowSelection = 'multiple';
     this.autoGroupColumnDef = {
-      field: "name",
+      field: 'name',
       cellRendererParams: { checkbox: true },
+    };
+    this.isGroupOpenByDefault = (params) => {
+      return ['Delhi', 'Seoul'].includes(params.key);
     };
   },
   methods: {
@@ -74,7 +79,7 @@ const VueExample = {
       // get the first child of the
       const selectedRows = api.getSelectedRows();
       if (!selectedRows || selectedRows.length === 0) {
-        console.log("No rows selected!");
+        console.log('No rows selected!');
         return;
       }
       const newItems = [];
@@ -90,7 +95,7 @@ const VueExample = {
         );
         newItems.push(newItem);
       });
-      timeOperation("Duplicate", function () {
+      timeOperation('Duplicate', function () {
         api.applyTransaction({ add: newItems });
       });
     },
@@ -99,7 +104,7 @@ const VueExample = {
       // get the first child of the
       const selectedRows = api.getSelectedRows();
       if (!selectedRows || selectedRows.length === 0) {
-        console.log("No rows selected!");
+        console.log('No rows selected!');
         return;
       }
       const updatedItems = [];
@@ -115,7 +120,7 @@ const VueExample = {
         );
         updatedItems.push(newItem);
       });
-      timeOperation("Update", function () {
+      timeOperation('Update', function () {
         api.applyTransaction({ update: updatedItems });
       });
     },
@@ -124,10 +129,10 @@ const VueExample = {
       // get the first child of the
       const selectedRows = api.getSelectedRows();
       if (!selectedRows || selectedRows.length === 0) {
-        console.log("No rows selected!");
+        console.log('No rows selected!');
         return;
       }
-      timeOperation("Delete", function () {
+      timeOperation('Delete', function () {
         api.applyTransaction({ remove: selectedRows });
       });
     },
@@ -136,8 +141,8 @@ const VueExample = {
     },
     onBtUpdateModel() {
       const api = this.gridApi;
-      timeOperation("Update Model", function () {
-        api.refreshClientSideRowModel("filter");
+      timeOperation('Update Model', function () {
+        api.refreshClientSideRowModel('filter');
       });
     },
     onGridReady(params) {
@@ -145,13 +150,11 @@ const VueExample = {
       this.gridColumnApi = params.columnApi;
 
       params.api.setFilterModel({
-        value: { value: "50" },
+        value: { value: '50' },
       });
-      timeOperation("Initialisation", function () {
+      timeOperation('Initialisation', function () {
         params.api.setRowData(getData());
       });
-      params.api.getDisplayedRowAtIndex(2).setExpanded(true);
-      params.api.getDisplayedRowAtIndex(4).setExpanded(true);
     },
     getRowId(params) {
       return params.data.id;
@@ -178,10 +181,10 @@ window.getMyFilter = function getMyFilter() {
     init(params) {
       this.filterParams = params;
       this.filterValue = null;
-      this.eGui = document.createElement("div");
+      this.eGui = document.createElement('div');
       this.eGui.innerHTML = '<div>Greater Than: <input type="text"/></div>';
-      this.eInput = this.eGui.querySelector("input");
-      this.eInput.addEventListener("input", () => {
+      this.eInput = this.eGui.querySelector('input');
+      this.eInput.addEventListener('input', () => {
         this.getValueFromInput();
         params.filterChangedCallback();
       });
@@ -235,19 +238,19 @@ window.timeOperation = function timeOperation(name, operation) {
   const end = new Date().getTime();
   console.log(
     name +
-      " finished in " +
+      ' finished in ' +
       (end - start) +
-      "ms, aggCallCount = " +
+      'ms, aggCallCount = ' +
       aggCallCount +
-      ", compareCallCount = " +
+      ', compareCallCount = ' +
       compareCallCount +
-      ", filterCallCount = " +
+      ', filterCallCount = ' +
       filterCallCount
   );
 };
 
 window.letter = function letter(i) {
-  return "abcdefghijklmnopqrstuvwxyz".substring(i, i + 1);
+  return 'abcdefghijklmnopqrstuvwxyz'.substring(i, i + 1);
 };
 
 window.randomLetter = function randomLetter() {
@@ -258,9 +261,9 @@ window.getData = function getData() {
   const myRowData = [];
   for (let i = 0; i < 10000; i++) {
     const name =
-      "Mr " +
+      'Mr ' +
       randomLetter().toUpperCase() +
-      " " +
+      ' ' +
       randomLetter().toUpperCase() +
       randomLetter() +
       randomLetter() +
@@ -269,7 +272,7 @@ window.getData = function getData() {
     const city = CITIES[i % CITIES.length];
     const distro =
       LINUX_DISTROS[i % LINUX_DISTROS.length] +
-      " v" +
+      ' v' +
       Math.floor(Math.random() * 100 + 1) / 10;
     const university = LAPTOPS[i % LAPTOPS.length];
     const value = Math.floor(Math.random() * 100) + 10; // between 10 and 110
@@ -309,4 +312,4 @@ let idCounter = 0;
 
 const myFilter = getMyFilter();
 
-createApp(VueExample).mount("#app");
+createApp(VueExample).mount('#app');

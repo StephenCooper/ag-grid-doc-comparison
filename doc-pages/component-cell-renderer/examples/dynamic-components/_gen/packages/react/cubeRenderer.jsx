@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 
 export default class CubeRenderer extends Component {
   constructor(props) {

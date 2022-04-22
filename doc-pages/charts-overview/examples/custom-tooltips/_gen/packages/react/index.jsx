@@ -1,8 +1,10 @@
-"use strict";
+'use strict';
 
-import { AgChartsReact } from "ag-charts-react";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { cloneDeep } from 'lodash';
+import { render } from 'react-dom';
+import * as agCharts from 'ag-charts-community';
+import { AgChartsReact } from 'ag-charts-react';
 
 class ChartExample extends Component {
   constructor(props) {
@@ -25,94 +27,94 @@ class ChartExample extends Component {
           },
         },
         title: {
-          text: "WEEE Collected in UK (2019)",
+          text: 'WEEE Collected in UK (2019)',
           fontSize: 18,
         },
         subtitle: {
-          text: "Source: Environmental Agency",
+          text: 'Source: Environmental Agency',
         },
         tooltip: {
-          class: "my-tooltip",
+          class: 'my-tooltip',
         },
         series: [
           {
-            type: "column",
-            xKey: "quarter",
-            yKey: "largeHousehold",
-            yName: "Large household appliances",
+            type: 'column',
+            xKey: 'quarter',
+            yKey: 'largeHousehold',
+            yName: 'Large household appliances',
             stacked: true,
           },
           {
-            type: "column",
-            xKey: "quarter",
-            yKey: "smallHousehold",
-            yName: "Small household appliances",
+            type: 'column',
+            xKey: 'quarter',
+            yKey: 'smallHousehold',
+            yName: 'Small household appliances',
             stacked: true,
           },
           {
-            type: "column",
-            xKey: "quarter",
-            yKey: "itTelecomms",
-            yName: "IT and telecomms equipment",
+            type: 'column',
+            xKey: 'quarter',
+            yKey: 'itTelecomms',
+            yName: 'IT and telecomms equipment',
             stacked: true,
           },
           {
-            type: "column",
-            xKey: "quarter",
-            yKey: "consumer",
-            yName: "Consumer equipment",
+            type: 'column',
+            xKey: 'quarter',
+            yKey: 'consumer',
+            yName: 'Consumer equipment',
             stacked: true,
           },
           {
-            type: "column",
-            xKey: "quarter",
-            yKey: "tools",
-            yName: "Electrical and electronic tools",
+            type: 'column',
+            xKey: 'quarter',
+            yKey: 'tools',
+            yName: 'Electrical and electronic tools',
             stacked: true,
           },
           {
-            type: "column",
-            xKey: "quarter",
-            yKey: "displays",
-            yName: "Display equipment",
+            type: 'column',
+            xKey: 'quarter',
+            yKey: 'displays',
+            yName: 'Display equipment',
             stacked: true,
           },
           {
-            type: "column",
-            xKey: "quarter",
-            yKey: "cooling",
-            yName: "Cooling appliances containing refrigerants",
+            type: 'column',
+            xKey: 'quarter',
+            yKey: 'cooling',
+            yName: 'Cooling appliances containing refrigerants',
             stacked: true,
           },
           {
-            type: "column",
-            xKey: "quarter",
-            yKey: "gasLampsLed",
-            yName: "Gas discharge lamps and LED light sources",
+            type: 'column',
+            xKey: 'quarter',
+            yKey: 'gasLampsLed',
+            yName: 'Gas discharge lamps and LED light sources',
             stacked: true,
           },
         ],
         axes: [
           {
-            type: "category",
-            position: "bottom",
+            type: 'category',
+            position: 'bottom',
           },
           {
-            type: "number",
-            position: "left",
+            type: 'number',
+            position: 'left',
             title: {
               enabled: true,
-              text: "Waste collected (tonnes)",
+              text: 'Waste collected (tonnes)',
             },
             label: {
               formatter: function (params) {
-                return params.value / 1000 + "k";
+                return params.value / 1000 + 'k';
               },
             },
           },
         ],
         legend: {
-          position: "bottom",
+          position: 'bottom',
         },
       },
     };
@@ -127,7 +129,7 @@ class ChartExample extends Component {
 
 function tooltipRenderer(params) {
   var formatThousands = function (value) {
-    return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
   };
   var tooltipHtml = [
     '<div class="my-tooltip">',
@@ -135,14 +137,14 @@ function tooltipRenderer(params) {
       params.color +
       '">' +
       params.yName,
-    "(" +
+    '(' +
       params.datum[params.xKey] +
-      "):</span> " +
+      '):</span> ' +
       formatThousands(params.datum[params.yKey]) +
-      " tonnes",
-    "</div>",
+      ' tonnes',
+    '</div>',
   ];
-  return tooltipHtml.join("\n");
+  return tooltipHtml.join('\n');
 }
 
-render(<ChartExample />, document.querySelector("#root"));
+render(<ChartExample />, document.querySelector('#root'));

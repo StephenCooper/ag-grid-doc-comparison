@@ -1,8 +1,8 @@
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
-import { AgGridVue } from "ag-grid-vue";
-import Vue from "vue";
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import 'ag-grid-enterprise';
+import { AgGridVue } from 'ag-grid-vue';
+import Vue from 'vue';
 
 const VueExample = {
   template: `
@@ -26,16 +26,16 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
-        { field: "country", rowGroup: true, hide: true },
-        { field: "year", rowGroup: true, hide: true },
-        { field: "gold" },
-        { field: "silver" },
-        { field: "bronze" },
+        { field: 'country', rowGroup: true, hide: true },
+        { field: 'year', rowGroup: true, hide: true },
+        { field: 'gold' },
+        { field: 'silver' },
+        { field: 'bronze' },
       ],
       gridApi: null,
       columnApi: null,
@@ -66,7 +66,7 @@ const VueExample = {
     },
     expand2000() {
       this.gridApi.forEachNode((node) => {
-        if (node.key === "2000") {
+        if (node.key === '2000') {
           node.parent.setExpanded(true); // ensure parent 'country' group is also expanded
           node.setExpanded(true);
         }
@@ -80,8 +80,8 @@ const VueExample = {
 };
 
 new Vue({
-  el: "#app",
+  el: '#app',
   components: {
-    "my-component": VueExample,
+    'my-component': VueExample,
   },
 });

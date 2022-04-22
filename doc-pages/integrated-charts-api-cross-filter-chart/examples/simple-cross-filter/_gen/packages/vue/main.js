@@ -1,8 +1,8 @@
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine-dark.css";
-import "ag-grid-enterprise";
-import { AgGridVue } from "ag-grid-vue";
-import Vue from "vue";
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine-dark.css';
+import 'ag-grid-enterprise';
+import { AgGridVue } from 'ag-grid-vue';
+import Vue from 'vue';
 
 const VueExample = {
   template: `
@@ -24,22 +24,22 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
-        { field: "salesRep", chartDataType: "category" },
-        { field: "handset", chartDataType: "category" },
-        { field: "sale", chartDataType: "series" },
-        { field: "saleDate", chartDataType: "category" },
+        { field: 'salesRep', chartDataType: 'category' },
+        { field: 'handset', chartDataType: 'category' },
+        { field: 'sale', chartDataType: 'series' },
+        { field: 'saleDate', chartDataType: 'category' },
       ],
       gridApi: null,
       columnApi: null,
       defaultColDef: {
         flex: 1,
         sortable: true,
-        filter: "agSetColumnFilter",
+        filter: 'agSetColumnFilter',
         floatingFilter: true,
         resizable: true,
       },
@@ -49,21 +49,21 @@ const VueExample = {
   },
   created() {
     this.rowData = getData();
-    this.chartThemes = ["ag-default-dark"];
+    this.chartThemes = ['ag-default-dark'];
   },
   methods: {
     onFirstDataRendered(params) {
       params.api.createCrossFilterChart({
-        chartType: "pie",
+        chartType: 'pie',
         cellRange: {
-          columns: ["salesRep", "sale"],
+          columns: ['salesRep', 'sale'],
         },
-        aggFunc: "sum",
+        aggFunc: 'sum',
         chartThemeOverrides: {
           common: {
             title: {
               enabled: true,
-              text: "Sales by Representative ($)",
+              text: 'Sales by Representative ($)',
             },
           },
           pie: {
@@ -77,7 +77,7 @@ const VueExample = {
             },
           },
         },
-        chartContainer: document.querySelector("#pieChart"),
+        chartContainer: document.querySelector('#pieChart'),
       });
     },
     onGridReady(params) {
@@ -88,8 +88,8 @@ const VueExample = {
 };
 
 new Vue({
-  el: "#app",
+  el: '#app',
   components: {
-    "my-component": VueExample,
+    'my-component': VueExample,
   },
 });

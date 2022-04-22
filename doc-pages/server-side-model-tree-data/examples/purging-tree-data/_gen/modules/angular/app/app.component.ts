@@ -9,15 +9,15 @@ import {
   IsServerSideGroup,
   IsServerSideGroupOpenByDefaultParams,
   ServerSideStoreType,
-} from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine-dark.css";
-import { HttpClient } from "@angular/common/http";
-import { Component } from "@angular/core";
+} from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine-dark.css';
+import { HttpClient } from '@angular/common/http';
+import { Component } from '@angular/core';
 // Required feature modules are registered in app.module.ts
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<div class="example-wrapper">
     <div style="margin-bottom: 5px;">
       <button (click)="refreshCache([])">Refresh Everything</button>
@@ -48,10 +48,10 @@ export class AppComponent {
   private gridApi!: GridApi;
 
   public columnDefs: ColDef[] = [
-    { field: "employeeId", hide: true },
-    { field: "employeeName", hide: true },
-    { field: "employmentType" },
-    { field: "startDate" },
+    { field: 'employeeId', hide: true },
+    { field: 'employeeName', hide: true },
+    { field: 'employmentType' },
+    { field: 'startDate' },
   ];
   public defaultColDef: ColDef = {
     width: 235,
@@ -59,25 +59,27 @@ export class AppComponent {
     flex: 1,
   };
   public autoGroupColumnDef: ColDef = {
-    field: "employeeName",
+    field: 'employeeName',
   };
-  public rowModelType = "serverSide";
-  public serverSideStoreType: ServerSideStoreType = "partial";
+  public rowModelType = 'serverSide';
+  public serverSideStoreType: ServerSideStoreType = 'partial';
   public cacheBlockSize = 10;
   public isServerSideGroupOpenByDefault: (
     params: IsServerSideGroupOpenByDefaultParams
-  ) => boolean = function (params) {
+  ) => boolean = function (params: IsServerSideGroupOpenByDefaultParams) {
     var isKathrynPowers =
-      params.rowNode.level == 0 && params.data.employeeName == "Kathryn Powers";
+      params.rowNode.level == 0 && params.data.employeeName == 'Kathryn Powers';
     var isMabelWard =
-      params.rowNode.level == 1 && params.data.employeeName == "Mabel Ward";
+      params.rowNode.level == 1 && params.data.employeeName == 'Mabel Ward';
     return isKathrynPowers || isMabelWard;
   };
-  public isServerSideGroup: IsServerSideGroup = function (dataItem) {
+  public isServerSideGroup: IsServerSideGroup = function (dataItem: any) {
     // indicate if node is a group
     return dataItem.group;
   };
-  public getServerSideGroupKey: GetServerSideGroupKey = function (dataItem) {
+  public getServerSideGroupKey: GetServerSideGroupKey = function (
+    dataItem: any
+  ) {
     // specify which group key to use
     return dataItem.employeeName;
   };
@@ -93,7 +95,7 @@ export class AppComponent {
     this.gridApi = params.api;
 
     this.http
-      .get<any[]>("https://www.ag-grid.com/example-assets/tree-data.json")
+      .get<any[]>('https://www.ag-grid.com/example-assets/tree-data.json')
       .subscribe((data) => {
         var fakeServer = createFakeServer(data);
         var datasource = createServerSideDatasource(fakeServer);
@@ -110,7 +112,7 @@ function createFakeServer(fakeServerData: any[]) {
           return data.map(function (d) {
             return {
               group: !!d.underlings,
-              employeeId: d.employeeId + "",
+              employeeId: d.employeeId + '',
               employeeName: d.employeeName,
               employmentType: d.employmentType,
               startDate: d.startDate,
@@ -135,7 +137,7 @@ function createFakeServer(fakeServerData: any[]) {
 function createServerSideDatasource(fakeServer: any) {
   const dataSource: IServerSideDatasource = {
     getRows: function (params: IServerSideGetRowsParams) {
-      console.log("ServerSideDatasource.getRows: params = ", params);
+      console.log('ServerSideDatasource.getRows: params = ', params);
       var request = params.request;
       var allRows = fakeServer.getData(request);
       var doingInfinite = request.startRow != null && request.endRow != null;
@@ -145,7 +147,7 @@ function createServerSideDatasource(fakeServer: any) {
             rowCount: allRows.length,
           }
         : { rowData: allRows };
-      console.log("getRows: result = ", result);
+      console.log('getRows: result = ', result);
       setTimeout(function () {
         params.success(result);
       }, 500);

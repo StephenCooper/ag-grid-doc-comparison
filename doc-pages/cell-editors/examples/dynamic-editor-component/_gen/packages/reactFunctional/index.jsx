@@ -1,47 +1,47 @@
-"use strict";
+'use strict';
 
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
-import { AgGridReact } from "ag-grid-react";
-import React, { useCallback, useMemo, useState } from "react";
-import { render } from "react-dom";
-import MoodEditor from "./moodEditor.jsx";
-import NumericCellEditor from "./numericCellEditor.jsx";
+import React, { useCallback, useMemo, useRef, useState } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from 'ag-grid-react';
+import 'ag-grid-enterprise';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import MoodEditor from './moodEditor.jsx';
+import NumericCellEditor from './numericCellEditor.jsx';
 
 const cellEditorSelector = (params) => {
-  if (params.data.type === "age") {
+  if (params.data.type === 'age') {
     return {
       component: NumericCellEditor,
     };
   }
-  if (params.data.type === "gender") {
+  if (params.data.type === 'gender') {
     return {
-      component: "agRichSelectCellEditor",
+      component: 'agRichSelectCellEditor',
       params: {
-        values: ["Male", "Female"],
+        values: ['Male', 'Female'],
       },
       popup: true,
     };
   }
-  if (params.data.type === "mood") {
+  if (params.data.type === 'mood') {
     return {
       component: MoodEditor,
       popup: true,
-      popupPosition: "under",
+      popupPosition: 'under',
     };
   }
   return undefined;
 };
 
 const GridExample = () => {
-  const containerStyle = useMemo(() => ({ width: "100%", height: "100%" }), []);
-  const gridStyle = useMemo(() => ({ height: "100%", width: "100%" }), []);
+  const containerStyle = useMemo(() => ({ width: '100%', height: '100%' }), []);
+  const gridStyle = useMemo(() => ({ height: '100%', width: '100%' }), []);
   const [rowData, setRowData] = useState(getData());
   const [columnDefs, setColumnDefs] = useState([
-    { field: "type" },
+    { field: 'type' },
     {
-      field: "value",
+      field: 'value',
       editable: true,
       cellEditorSelector: cellEditorSelector,
     },
@@ -53,19 +53,19 @@ const GridExample = () => {
   }, []);
 
   const onRowEditingStarted = useCallback((event) => {
-    console.log("never called - not doing row editing");
+    console.log('never called - not doing row editing');
   }, []);
 
   const onRowEditingStopped = useCallback((event) => {
-    console.log("never called - not doing row editing");
+    console.log('never called - not doing row editing');
   }, []);
 
   const onCellEditingStarted = useCallback((event) => {
-    console.log("cellEditingStarted");
+    console.log('cellEditingStarted');
   }, []);
 
   const onCellEditingStopped = useCallback((event) => {
-    console.log("cellEditingStopped");
+    console.log('cellEditingStopped');
   }, []);
 
   return (
@@ -85,4 +85,4 @@ const GridExample = () => {
   );
 };
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

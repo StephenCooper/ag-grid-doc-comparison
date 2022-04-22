@@ -1,16 +1,16 @@
-"use strict";
+'use strict';
 
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { AgGridReact } from "@ag-grid-community/react";
-import { ColumnsToolPanelModule } from "@ag-grid-enterprise/column-tool-panel";
-import { MenuModule } from "@ag-grid-enterprise/menu";
-import { RowGroupingModule } from "@ag-grid-enterprise/row-grouping";
-import { SetFilterModule } from "@ag-grid-enterprise/set-filter";
-import React, { useCallback, useMemo, useRef, useState } from "react";
-import { render } from "react-dom";
+import React, { useCallback, useMemo, useRef, useState } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from '@ag-grid-community/react';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import { RowGroupingModule } from '@ag-grid-enterprise/row-grouping';
+import { SetFilterModule } from '@ag-grid-enterprise/set-filter';
+import { MenuModule } from '@ag-grid-enterprise/menu';
+import { ColumnsToolPanelModule } from '@ag-grid-enterprise/column-tool-panel';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([
@@ -23,19 +23,19 @@ ModuleRegistry.registerModules([
 
 const GridExample = () => {
   const gridRef = useRef();
-  const containerStyle = useMemo(() => ({ width: "100%", height: "100%" }), []);
-  const gridStyle = useMemo(() => ({ height: "100%", width: "100%" }), []);
+  const containerStyle = useMemo(() => ({ width: '100%', height: '100%' }), []);
+  const gridStyle = useMemo(() => ({ height: '100%', width: '100%' }), []);
   const [rowData, setRowData] = useState();
   const [columnDefs, setColumnDefs] = useState([
-    { field: "country", rowGroup: true, hide: true },
-    { field: "sport", rowGroup: true, hide: true },
-    { field: "age", minWidth: 120, aggFunc: "sum" },
-    { field: "year", maxWidth: 120 },
-    { field: "date", minWidth: 150 },
-    { field: "gold", aggFunc: "sum" },
-    { field: "silver", aggFunc: "sum" },
-    { field: "bronze", aggFunc: "sum" },
-    { field: "total", aggFunc: "sum" },
+    { field: 'country', rowGroup: true, hide: true },
+    { field: 'sport', rowGroup: true, hide: true },
+    { field: 'age', minWidth: 120, aggFunc: 'sum' },
+    { field: 'year', maxWidth: 120 },
+    { field: 'date', minWidth: 150 },
+    { field: 'gold', aggFunc: 'sum' },
+    { field: 'silver', aggFunc: 'sum' },
+    { field: 'bronze', aggFunc: 'sum' },
+    { field: 'total', aggFunc: 'sum' },
   ]);
   const defaultColDef = useMemo(() => {
     return {
@@ -47,10 +47,10 @@ const GridExample = () => {
   }, []);
   const autoGroupColumnDef = useMemo(() => {
     return {
-      headerName: "Athlete",
-      field: "athlete",
+      headerName: 'Athlete',
+      field: 'athlete',
       minWidth: 250,
-      cellRenderer: "agGroupCellRenderer",
+      cellRenderer: 'agGroupCellRenderer',
       cellRendererParams: {
         checkbox: true,
       },
@@ -58,7 +58,7 @@ const GridExample = () => {
   }, []);
 
   const onGridReady = useCallback((params) => {
-    fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+    fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .then((resp) => resp.json())
       .then((data) => setRowData(data));
   }, []);
@@ -66,8 +66,8 @@ const GridExample = () => {
   const filterSwimming = useCallback(() => {
     gridRef.current.api.setFilterModel({
       sport: {
-        type: "set",
-        values: ["Swimming"],
+        type: 'set',
+        values: ['Swimming'],
       },
     });
   }, []);
@@ -75,8 +75,8 @@ const GridExample = () => {
   const ages16And20 = useCallback(() => {
     gridRef.current.api.setFilterModel({
       age: {
-        type: "set",
-        values: ["16", "20"],
+        type: 'set',
+        values: ['16', '20'],
       },
     });
   }, []);
@@ -88,10 +88,10 @@ const GridExample = () => {
   return (
     <div style={containerStyle}>
       <div className="example-wrapper">
-        <div style={{ marginBottom: "5px" }}>
+        <div style={{ marginBottom: '5px' }}>
           <button onClick={filterSwimming}>Filter Only Swimming</button>
           <button onClick={ages16And20}>Filter Only ages 16 and 20</button>
-          <button onClick={clearFilter} style={{ marginLeft: "10px" }}>
+          <button onClick={clearFilter} style={{ marginLeft: '10px' }}>
             Clear Filter
           </button>
         </div>
@@ -103,7 +103,7 @@ const GridExample = () => {
             columnDefs={columnDefs}
             defaultColDef={defaultColDef}
             autoGroupColumnDef={autoGroupColumnDef}
-            rowSelection={"multiple"}
+            rowSelection={'multiple'}
             groupSelectsChildren={true}
             groupSelectsFiltered={true}
             suppressAggFuncInHeader={true}
@@ -116,4 +116,4 @@ const GridExample = () => {
   );
 };
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

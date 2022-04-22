@@ -1,41 +1,41 @@
-"use strict";
+'use strict';
 
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine-dark.css";
-import { AgGridReact } from "@ag-grid-community/react";
-import React, { useCallback, useMemo, useRef, useState } from "react";
-import { render } from "react-dom";
+import React, { useCallback, useMemo, useRef, useState } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from '@ag-grid-community/react';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine-dark.css';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([ClientSideRowModelModule]);
 
 const GridExample = () => {
   const gridRef = useRef();
-  const containerStyle = useMemo(() => ({ width: "100%", height: "100%" }), []);
-  const gridStyle = useMemo(() => ({ height: "100%", width: "100%" }), []);
+  const containerStyle = useMemo(() => ({ width: '100%', height: '100%' }), []);
+  const gridStyle = useMemo(() => ({ height: '100%', width: '100%' }), []);
   const [rowData, setRowData] = useState(getData());
   const [columnDefs, setColumnDefs] = useState([
     {
-      headerName: "String (editable)",
-      field: "simple",
+      headerName: 'String (editable)',
+      field: 'simple',
       editable: true,
     },
     {
-      headerName: "Bad Number (editable)",
-      field: "numberBad",
+      headerName: 'Bad Number (editable)',
+      field: 'numberBad',
       editable: true,
     },
     {
-      headerName: "Good Number (editable)",
-      field: "numberGood",
+      headerName: 'Good Number (editable)',
+      field: 'numberGood',
       editable: true,
       valueFormatter: `"£" + Math.floor(value).toString().replace(/(\\d)(?=(\\d{3})+(?!\\d))/g, "$1,")`,
-      valueParser: "Number(newValue)",
+      valueParser: 'Number(newValue)',
     },
     {
-      headerName: "Name (editable)",
+      headerName: 'Name (editable)',
       editable: true,
       valueGetter: 'data.firstName + " " + data.lastName',
       valueSetter:
@@ -51,9 +51,9 @@ const GridExample = () => {
                 return false;
             }`,
     },
-    { headerName: "A", field: "a", maxWidth: 120 },
-    { headerName: "B", field: "b", maxWidth: 120 },
-    { headerName: "A + B", valueGetter: "data.a + data.b", maxWidth: 120 },
+    { headerName: 'A', field: 'a', maxWidth: 120 },
+    { headerName: 'B', field: 'b', maxWidth: 120 },
+    { headerName: 'A + B', valueGetter: 'data.a + data.b', maxWidth: 120 },
   ]);
   const defaultColDef = useMemo(() => {
     return {
@@ -68,7 +68,7 @@ const GridExample = () => {
   }, []);
 
   const onCellValueChanged = useCallback((event) => {
-    console.log("data after changes is: ", event.data);
+    console.log('data after changes is: ', event.data);
   }, []);
 
   return (
@@ -88,4 +88,4 @@ const GridExample = () => {
   );
 };
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

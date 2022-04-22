@@ -1,16 +1,16 @@
 const gridOptions = {
   columnDefs: [
-    { field: "a", type: "valueColumn" },
-    { field: "b", type: "valueColumn" },
-    { field: "c", type: "valueColumn" },
-    { field: "d", type: "valueColumn" },
-    { field: "e", type: "valueColumn" },
-    { field: "f", type: "valueColumn" },
+    { field: 'a', type: 'valueColumn' },
+    { field: 'b', type: 'valueColumn' },
+    { field: 'c', type: 'valueColumn' },
+    { field: 'd', type: 'valueColumn' },
+    { field: 'e', type: 'valueColumn' },
+    { field: 'f', type: 'valueColumn' },
     {
-      headerName: "Total",
-      valueGetter: "data.a + data.b + data.c + data.d + data.e + data.f",
+      headerName: 'Total',
+      valueGetter: 'data.a + data.b + data.c + data.d + data.e + data.f',
       editable: false,
-      cellClass: "total-col",
+      cellClass: 'total-col',
     },
   ],
   defaultColDef: {
@@ -20,8 +20,8 @@ const gridOptions = {
   columnTypes: {
     valueColumn: {
       editable: true,
-      valueParser: "Number(newValue)",
-      filter: "agNumberColumnFilter",
+      valueParser: 'Number(newValue)',
+      filter: 'agNumberColumnFilter',
     },
   },
   rowData: getRowData(),
@@ -35,7 +35,7 @@ function getRowData() {
   var rowData = [];
   for (var i = 1; i <= 20; i++) {
     rowData.push({
-      group: i < 5 ? "A" : "B",
+      group: i < 5 ? 'A' : 'B',
       a: (i * 863) % 100,
       b: (i * 811) % 100,
       c: (i * 743) % 100,
@@ -48,7 +48,7 @@ function getRowData() {
 }
 
 // setup the grid after the page has finished loading
-document.addEventListener("DOMContentLoaded", function () {
-  var gridDiv = document.querySelector("#myGrid");
+document.addEventListener('DOMContentLoaded', function () {
+  var gridDiv = document.querySelector('#myGrid');
   new agGrid.Grid(gridDiv, gridOptions);
 });

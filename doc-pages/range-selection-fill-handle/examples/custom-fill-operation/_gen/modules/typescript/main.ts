@@ -1,8 +1,13 @@
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { Grid, GridOptions, ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { RangeSelectionModule } from "@ag-grid-enterprise/range-selection";
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import {
+  FillOperationParams,
+  Grid,
+  GridOptions,
+  ModuleRegistry,
+} from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { RangeSelectionModule } from '@ag-grid-enterprise/range-selection';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([
@@ -11,27 +16,27 @@ ModuleRegistry.registerModules([
 ]);
 
 var daysList = [
-  "Sunday",
-  "Monday",
-  "Tuesday",
-  "Wednesday",
-  "Thursday",
-  "Friday",
-  "Saturday",
+  'Sunday',
+  'Monday',
+  'Tuesday',
+  'Wednesday',
+  'Thursday',
+  'Friday',
+  'Saturday',
 ];
 
 const gridOptions: GridOptions = {
   columnDefs: [
-    { field: "athlete", minWidth: 150 },
-    { headerName: "Day of the Week", field: "dayOfTheWeek", minWidth: 180 },
-    { field: "age", maxWidth: 90 },
-    { field: "country", minWidth: 150 },
-    { field: "year", maxWidth: 90 },
-    { field: "date", minWidth: 150 },
-    { field: "sport", minWidth: 150 },
-    { field: "gold" },
-    { field: "silver" },
-    { field: "bronze" },
+    { field: 'athlete', minWidth: 150 },
+    { headerName: 'Day of the Week', field: 'dayOfTheWeek', minWidth: 180 },
+    { field: 'age', maxWidth: 90 },
+    { field: 'country', minWidth: 150 },
+    { field: 'year', maxWidth: 90 },
+    { field: 'date', minWidth: 150 },
+    { field: 'sport', minWidth: 150 },
+    { field: 'gold' },
+    { field: 'silver' },
+    { field: 'bronze' },
   ],
   defaultColDef: {
     flex: 1,
@@ -40,7 +45,7 @@ const gridOptions: GridOptions = {
   },
   enableRangeSelection: true,
   enableFillHandle: true,
-  fillOperation: function (params) {
+  fillOperation: function (params: FillOperationParams) {
     var hasNonDayValues = params.initialValues.some(function (val) {
       return daysList.indexOf(val) === -1;
     });
@@ -76,10 +81,10 @@ var getRandom = function (start: number, finish: number) {
 };
 
 // setup the grid after the page has finished loading
-var gridDiv = document.querySelector<HTMLElement>("#myGrid")!;
+var gridDiv = document.querySelector<HTMLElement>('#myGrid')!;
 new Grid(gridDiv, gridOptions);
 
-fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
   .then((response) => response.json())
   .then(function (data) {
     gridOptions.api!.setRowData(createRowData(data));

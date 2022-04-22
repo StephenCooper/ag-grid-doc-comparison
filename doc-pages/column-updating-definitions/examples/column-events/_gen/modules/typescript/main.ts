@@ -1,4 +1,4 @@
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
 import {
   ColDef,
   ColumnMovedEvent,
@@ -12,56 +12,56 @@ import {
   GridOptions,
   ModuleRegistry,
   SortChangedEvent,
-} from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { RowGroupingModule } from "@ag-grid-enterprise/row-grouping";
+} from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { RowGroupingModule } from '@ag-grid-enterprise/row-grouping';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([ClientSideRowModelModule, RowGroupingModule]);
 
 function getColumnDefs(): ColDef[] {
   return [
-    { field: "athlete" },
-    { field: "age" },
-    { field: "country" },
-    { field: "sport" },
-    { field: "gold" },
-    { field: "silver" },
-    { field: "bronze" },
+    { field: 'athlete' },
+    { field: 'age' },
+    { field: 'country' },
+    { field: 'sport' },
+    { field: 'gold' },
+    { field: 'silver' },
+    { field: 'bronze' },
   ];
 }
 
 function onSortChanged(e: SortChangedEvent) {
-  console.log("Event Sort Changed", e);
+  console.log('Event Sort Changed', e);
 }
 
 function onColumnResized(e: ColumnResizedEvent) {
-  console.log("Event Column Resized", e);
+  console.log('Event Column Resized', e);
 }
 
 function onColumnVisible(e: ColumnVisibleEvent) {
-  console.log("Event Column Visible", e);
+  console.log('Event Column Visible', e);
 }
 
 function onColumnPivotChanged(e: ColumnPivotChangedEvent) {
-  console.log("Event Pivot Changed", e);
+  console.log('Event Pivot Changed', e);
 }
 
 function onColumnRowGroupChanged(e: ColumnRowGroupChangedEvent) {
-  console.log("Event Row Group Changed", e);
+  console.log('Event Row Group Changed', e);
 }
 
 function onColumnValueChanged(e: ColumnValueChangedEvent) {
-  console.log("Event Value Changed", e);
+  console.log('Event Value Changed', e);
 }
 
 function onColumnMoved(e: ColumnMovedEvent) {
-  console.log("Event Column Moved", e);
+  console.log('Event Column Moved', e);
 }
 
 function onColumnPinned(e: ColumnPinnedEvent) {
-  console.log("Event Column Pinned", e);
+  console.log('Event Column Pinned', e);
 }
 
 const gridOptions: GridOptions = {
@@ -88,11 +88,11 @@ const gridOptions: GridOptions = {
 function onBtSortOn() {
   const columnDefs: ColDef[] = getColumnDefs();
   columnDefs.forEach(function (colDef) {
-    if (colDef.field === "age") {
-      colDef.sort = "desc";
+    if (colDef.field === 'age') {
+      colDef.sort = 'desc';
     }
-    if (colDef.field === "athlete") {
-      colDef.sort = "asc";
+    if (colDef.field === 'athlete') {
+      colDef.sort = 'asc';
     }
   });
   gridOptions.api!.setColumnDefs(columnDefs);
@@ -109,7 +109,7 @@ function onBtSortOff() {
 function onBtWidthNarrow() {
   const columnDefs: ColDef[] = getColumnDefs();
   columnDefs.forEach(function (colDef) {
-    if (colDef.field === "age" || colDef.field === "athlete") {
+    if (colDef.field === 'age' || colDef.field === 'athlete') {
       colDef.width = 100;
     }
   });
@@ -127,7 +127,7 @@ function onBtWidthNormal() {
 function onBtHide() {
   const columnDefs: ColDef[] = getColumnDefs();
   columnDefs.forEach(function (colDef) {
-    if (colDef.field === "age" || colDef.field === "athlete") {
+    if (colDef.field === 'age' || colDef.field === 'athlete') {
       colDef.hide = true;
     }
   });
@@ -147,7 +147,7 @@ function onBtPivotOn() {
 
   const columnDefs: ColDef[] = getColumnDefs();
   columnDefs.forEach(function (colDef) {
-    if (colDef.field === "country") {
+    if (colDef.field === 'country') {
       colDef.pivot = true;
     }
   });
@@ -167,7 +167,7 @@ function onBtPivotOff() {
 function onBtRowGroupOn() {
   const columnDefs: ColDef[] = getColumnDefs();
   columnDefs.forEach(function (colDef) {
-    if (colDef.field === "sport") {
+    if (colDef.field === 'sport') {
       colDef.rowGroup = true;
     }
   });
@@ -186,11 +186,11 @@ function onBtAggFuncOn() {
   const columnDefs: ColDef[] = getColumnDefs();
   columnDefs.forEach(function (colDef) {
     if (
-      colDef.field === "gold" ||
-      colDef.field === "silver" ||
-      colDef.field === "bronze"
+      colDef.field === 'gold' ||
+      colDef.field === 'silver' ||
+      colDef.field === 'bronze'
     ) {
-      colDef.aggFunc = "sum";
+      colDef.aggFunc = 'sum';
     }
   });
   gridOptions.api!.setColumnDefs(columnDefs);
@@ -207,11 +207,11 @@ function onBtAggFuncOff() {
 function onBtPinnedOn() {
   const columnDefs: ColDef[] = getColumnDefs();
   columnDefs.forEach(function (colDef) {
-    if (colDef.field === "athlete") {
-      colDef.pinned = "left";
+    if (colDef.field === 'athlete') {
+      colDef.pinned = 'left';
     }
-    if (colDef.field === "age") {
-      colDef.pinned = "right";
+    if (colDef.field === 'age') {
+      colDef.pinned = 'right';
     }
   });
   gridOptions.api!.setColumnDefs(columnDefs);
@@ -226,14 +226,14 @@ function onBtPinnedOff() {
 }
 
 // setup the grid after the page has finished loading
-var gridDiv = document.querySelector<HTMLElement>("#myGrid")!;
+var gridDiv = document.querySelector<HTMLElement>('#myGrid')!;
 new Grid(gridDiv, gridOptions);
 
-fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
   .then((response) => response.json())
   .then((data) => gridOptions.api!.setRowData(data));
 
-if (typeof window !== "undefined") {
+if (typeof window !== 'undefined') {
   // Attach external event handlers to window so they can be called from index.html
   (<any>window).onBtSortOn = onBtSortOn;
   (<any>window).onBtSortOff = onBtSortOff;

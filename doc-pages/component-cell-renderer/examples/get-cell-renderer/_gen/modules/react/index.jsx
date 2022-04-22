@@ -1,13 +1,13 @@
-"use strict";
+'use strict';
 
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { AgGridReact } from "@ag-grid-community/react";
-import React, { Component } from "react";
-import { render } from "react-dom";
-import MedalCellRenderer from "./medalCellRenderer.jsx";
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from '@ag-grid-community/react';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import MedalCellRenderer from './medalCellRenderer.jsx';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([ClientSideRowModelModule]);
@@ -18,13 +18,13 @@ class GridExample extends Component {
 
     this.state = {
       columnDefs: [
-        { field: "athlete", width: 150 },
-        { field: "country", width: 150 },
-        { field: "year", width: 100 },
-        { field: "gold", width: 100, cellRenderer: MedalCellRenderer },
-        { field: "silver", width: 100, cellRenderer: MedalCellRenderer },
-        { field: "bronze", width: 100, cellRenderer: MedalCellRenderer },
-        { field: "total", width: 100 },
+        { field: 'athlete', width: 150 },
+        { field: 'country', width: 150 },
+        { field: 'year', width: 100 },
+        { field: 'gold', width: 100, cellRenderer: MedalCellRenderer },
+        { field: 'silver', width: 100, cellRenderer: MedalCellRenderer },
+        { field: 'bronze', width: 100, cellRenderer: MedalCellRenderer },
+        { field: 'total', width: 100 },
       ],
       defaultColDef: {
         editable: true,
@@ -46,15 +46,15 @@ class GridExample extends Component {
       this.setState({ rowData: data });
     };
 
-    fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+    fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .then((resp) => resp.json())
       .then((data) => updateData(data));
   };
 
   onCallGold = () => {
-    console.log("=========> calling all gold");
+    console.log('=========> calling all gold');
     // pass in list of columns, here it's gold only
-    const params = { columns: ["gold"] };
+    const params = { columns: ['gold'] };
     const instances = this.gridApi.getCellRendererInstances(params);
     instances.forEach((instance) => {
       instance.medalUserFunction();
@@ -62,10 +62,10 @@ class GridExample extends Component {
   };
 
   onFirstRowGold = () => {
-    console.log("=========> calling gold row one");
+    console.log('=========> calling gold row one');
     // pass in one column and one row to identify one cell
     const firstRowNode = this.gridApi.getDisplayedRowAtIndex(0);
-    const params = { columns: ["gold"], rowNodes: [firstRowNode] };
+    const params = { columns: ['gold'], rowNodes: [firstRowNode] };
     const instances = this.gridApi.getCellRendererInstances(params);
     instances.forEach((instance) => {
       instance.medalUserFunction();
@@ -73,7 +73,7 @@ class GridExample extends Component {
   };
 
   onCallAllCells = () => {
-    console.log("=========> calling everything");
+    console.log('=========> calling everything');
     // no params, goes through all rows and columns where cell renderer exists
     const instances = this.gridApi.getCellRendererInstances();
     instances.forEach((instance) => {
@@ -83,9 +83,9 @@ class GridExample extends Component {
 
   render() {
     return (
-      <div style={{ width: "100%", height: "100%" }}>
+      <div style={{ width: '100%', height: '100%' }}>
         <div className="example-wrapper">
-          <div style={{ marginBottom: "5px" }}>
+          <div style={{ marginBottom: '5px' }}>
             <button onClick={() => this.onCallGold()}>Gold</button>
             <button onClick={() => this.onFirstRowGold()}>
               First Row Gold
@@ -95,8 +95,8 @@ class GridExample extends Component {
 
           <div
             style={{
-              height: "100%",
-              width: "100%",
+              height: '100%',
+              width: '100%',
             }}
             className="ag-theme-alpine"
           >
@@ -113,4 +113,4 @@ class GridExample extends Component {
   }
 }
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

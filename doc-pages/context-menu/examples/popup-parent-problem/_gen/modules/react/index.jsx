@@ -1,15 +1,15 @@
-"use strict";
+'use strict';
 
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { AgGridReact } from "@ag-grid-community/react";
-import { ClipboardModule } from "@ag-grid-enterprise/clipboard";
-import { ExcelExportModule } from "@ag-grid-enterprise/excel-export";
-import { MenuModule } from "@ag-grid-enterprise/menu";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from '@ag-grid-community/react';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import { MenuModule } from '@ag-grid-enterprise/menu';
+import { ExcelExportModule } from '@ag-grid-enterprise/excel-export';
+import { ClipboardModule } from '@ag-grid-enterprise/clipboard';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([
@@ -29,11 +29,11 @@ class GridExample extends Component {
         { a: 2, b: 2, c: 2, d: 2, e: 2 },
       ],
       columnDefs: [
-        { field: "a" },
-        { field: "b" },
-        { field: "c" },
-        { field: "d" },
-        { field: "e" },
+        { field: 'a' },
+        { field: 'b' },
+        { field: 'c' },
+        { field: 'd' },
+        { field: 'e' },
       ],
     };
   }
@@ -45,11 +45,11 @@ class GridExample extends Component {
 
   render() {
     return (
-      <div style={{ width: "100%", height: "100%" }}>
+      <div style={{ width: '100%', height: '100%' }}>
         <div
           style={{
-            height: "100px",
-            width: "100%",
+            height: '100px',
+            width: '100%',
           }}
           className="ag-theme-alpine"
         >
@@ -60,7 +60,7 @@ class GridExample extends Component {
           />
         </div>
 
-        <div style={{ padding: "10px" }}>
+        <div style={{ padding: '10px' }}>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc posuere
           lobortis est, sit amet molestie justo mattis et. Suspendisse congue
           condimentum tristique. Cras et purus vehicula, rhoncus ante sit amet,
@@ -72,7 +72,7 @@ class GridExample extends Component {
           scelerisque arcu. Mauris ac nunc purus. Aenean sit amet dapibus augue.
         </div>
 
-        <div style={{ padding: "10px" }}>
+        <div style={{ padding: '10px' }}>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc posuere
           lobortis est, sit amet molestie justo mattis et. Suspendisse congue
           condimentum tristique. Cras et purus vehicula, rhoncus ante sit amet,
@@ -88,4 +88,4 @@ class GridExample extends Component {
   }
 }
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

@@ -1,25 +1,25 @@
 const gridOptions = {
   columnDefs: [
     {
-      headerName: "Participant",
-      children: [{ field: "athlete" }, { field: "age" }],
+      headerName: 'Participant',
+      children: [{ field: 'athlete' }, { field: 'age' }],
     },
     {
-      headerName: "Details",
+      headerName: 'Details',
       children: [
-        { field: "country" },
-        { field: "year" },
-        { field: "date" },
-        { field: "sport" },
+        { field: 'country' },
+        { field: 'year' },
+        { field: 'date' },
+        { field: 'sport' },
       ],
     },
     {
-      headerName: "Medals",
+      headerName: 'Medals',
       children: [
-        { field: "gold" },
-        { field: "silver" },
-        { field: "bronze" },
-        { field: "total" },
+        { field: 'gold' },
+        { field: 'silver' },
+        { field: 'bronze' },
+        { field: 'total' },
       ],
     },
   ],
@@ -31,11 +31,11 @@ const gridOptions = {
 };
 
 // setup the grid after the page has finished loading
-document.addEventListener("DOMContentLoaded", function () {
-  var gridDiv = document.querySelector("#myGrid");
+document.addEventListener('DOMContentLoaded', function () {
+  var gridDiv = document.querySelector('#myGrid');
   new agGrid.Grid(gridDiv, gridOptions);
 
-  fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+  fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
     .then((response) => response.json())
     .then((data) => gridOptions.api.setRowData(data));
 });

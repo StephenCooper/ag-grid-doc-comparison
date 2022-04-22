@@ -1,11 +1,11 @@
-"use strict";
+'use strict';
 
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
-import { AgGridReact } from "ag-grid-react";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from 'ag-grid-react';
+import 'ag-grid-enterprise';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 
 class GridExample extends Component {
   constructor(props) {
@@ -20,24 +20,24 @@ class GridExample extends Component {
         flex: 1,
       },
       columnDefs: [
-        { field: "athlete", minWidth: 200 },
-        { field: "country", minWidth: 200 },
-        { field: "sport", minWidth: 150 },
-        { field: "gold", hide: true },
-        { field: "silver", hide: true },
-        { field: "bronze", hide: true },
-        { field: "total", hide: true },
+        { field: 'athlete', minWidth: 200 },
+        { field: 'country', minWidth: 200 },
+        { field: 'sport', minWidth: 150 },
+        { field: 'gold', hide: true },
+        { field: 'silver', hide: true },
+        { field: 'bronze', hide: true },
+        { field: 'total', hide: true },
       ],
       excelStyles: [
         {
-          id: "coverHeading",
+          id: 'coverHeading',
           font: {
             size: 26,
             bold: true,
           },
         },
         {
-          id: "coverText",
+          id: 'coverText',
           font: {
             size: 14,
           },
@@ -54,7 +54,7 @@ class GridExample extends Component {
     const updateData = (data) =>
       params.api.setRowData(data.filter((rec) => rec.country != null));
 
-    fetch("https://www.ag-grid.com/example-assets/small-olympic-winners.json")
+    fetch('https://www.ag-grid.com/example-assets/small-olympic-winners.json')
       .then((resp) => resp.json())
       .then((data) => updateData(data));
   };
@@ -62,7 +62,7 @@ class GridExample extends Component {
   onBtExport = () => {
     const spreadsheets = [];
     //set a filter condition ensuring no records are returned so only the header content is exported
-    const filterInstance = this.gridApi.getFilterInstance("athlete");
+    const filterInstance = this.gridApi.getFilterInstance('athlete');
     filterInstance.setModel({
       values: [],
     });
@@ -73,42 +73,42 @@ class GridExample extends Component {
         prependContent: [
           [
             {
-              styleId: "coverHeading",
+              styleId: 'coverHeading',
               mergeAcross: 3,
-              data: { value: "AG Grid", type: "String" },
+              data: { value: 'AG Grid', type: 'String' },
             },
           ],
           [
             {
-              styleId: "coverHeading",
+              styleId: 'coverHeading',
               mergeAcross: 3,
-              data: { value: "", type: "String" },
+              data: { value: '', type: 'String' },
             },
           ],
           [
             {
-              styleId: "coverText",
+              styleId: 'coverText',
               mergeAcross: 3,
               data: {
                 value:
-                  "Data shown lists Olympic medal winners for years 2000-2012",
-                type: "String",
+                  'Data shown lists Olympic medal winners for years 2000-2012',
+                type: 'String',
               },
             },
           ],
           [
             {
-              styleId: "coverText",
+              styleId: 'coverText',
               data: {
                 value:
-                  "This data includes a row for each participation record - athlete name, country, year, sport, count of gold, silver, bronze medals won during the sports event",
-                type: "String",
+                  'This data includes a row for each participation record - athlete name, country, year, sport, count of gold, silver, bronze medals won during the sports event',
+                type: 'String',
               },
             },
           ],
         ],
-        processHeaderCallback: () => "",
-        sheetName: "cover",
+        processHeaderCallback: () => '',
+        sheetName: 'cover',
       })
     );
     //remove filter condition set above so all the grid data can be exported on a separate sheet
@@ -117,19 +117,19 @@ class GridExample extends Component {
     spreadsheets.push(this.gridApi.getSheetDataForExcel());
     this.gridApi.exportMultipleSheetsAsExcel({
       data: spreadsheets,
-      fileName: "ag-grid.xlsx",
+      fileName: 'ag-grid.xlsx',
     });
   };
 
   render() {
     return (
-      <div style={{ width: "100%", height: "100%" }}>
+      <div style={{ width: '100%', height: '100%' }}>
         <div className="container">
           <div className="columns">
             <div>
               <button
                 onClick={() => this.onBtExport()}
-                style={{ fontWeight: "bold", marginBottom: "5px" }}
+                style={{ fontWeight: 'bold', marginBottom: '5px' }}
               >
                 Export to Excel
               </button>
@@ -138,8 +138,8 @@ class GridExample extends Component {
           <div className="grid-wrapper">
             <div
               style={{
-                height: "100%",
-                width: "100%",
+                height: '100%',
+                width: '100%',
               }}
               className="ag-theme-alpine"
             >
@@ -158,4 +158,4 @@ class GridExample extends Component {
   }
 }
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

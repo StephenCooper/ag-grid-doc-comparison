@@ -1,10 +1,10 @@
-import { ICellRendererComp, ICellRendererParams } from "ag-grid-community";
+import { ICellRendererComp, ICellRendererParams } from 'ag-grid-community';
 
 export class CountryCellRenderer implements ICellRendererComp {
   eGui!: HTMLImageElement;
 
   init(params: ICellRendererParams) {
-    this.eGui = document.createElement("img");
+    this.eGui = document.createElement('img');
     this.eGui.alt = params.data;
 
     const context: any = (params as any).context;

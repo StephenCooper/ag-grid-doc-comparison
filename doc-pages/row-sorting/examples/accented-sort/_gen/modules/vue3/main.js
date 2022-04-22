@@ -1,9 +1,9 @@
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { AgGridVue } from "@ag-grid-community/vue3";
-import { createApp } from "vue";
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { AgGridVue } from '@ag-grid-community/vue3';
+import { createApp } from 'vue';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([ClientSideRowModelModule]);
@@ -25,11 +25,11 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
-      columnDefs: [{ field: "accented", width: 150 }],
+      columnDefs: [{ field: 'accented', width: 150 }],
       gridApi: null,
       columnApi: null,
       defaultColDef: {
@@ -40,11 +40,11 @@ const VueExample = {
     };
   },
   created() {
-    this.sortingOrder = ["desc", "asc", null];
+    this.sortingOrder = ['desc', 'asc', null];
     this.rowData = [
-      { accented: "aáàä" },
-      { accented: "aàáä" },
-      { accented: "aäàá" },
+      { accented: 'aáàä' },
+      { accented: 'aàáä' },
+      { accented: 'aäàá' },
     ];
   },
   methods: {
@@ -55,4 +55,4 @@ const VueExample = {
   },
 };
 
-createApp(VueExample).mount("#app");
+createApp(VueExample).mount('#app');

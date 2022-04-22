@@ -1,12 +1,12 @@
-const KEY_BACKSPACE = "Backspace";
-const KEY_DELETE = "Delete";
-const KEY_F2 = "F2";
+const KEY_BACKSPACE = 'Backspace';
+const KEY_DELETE = 'Delete';
+const KEY_F2 = 'F2';
 
 class MySimpleEditor {
   init(params) {
-    this.gui = document.createElement("input");
-    this.gui.type = "text";
-    this.gui.classList.add("my-simple-editor");
+    this.gui = document.createElement('input');
+    this.gui.type = 'text';
+    this.gui.classList.add('my-simple-editor');
 
     this.params = params;
 
@@ -15,7 +15,7 @@ class MySimpleEditor {
     const isBackspaceOrDelete =
       params.eventKey === KEY_BACKSPACE || params.eventKey === KEY_DELETE;
     if (isBackspaceOrDelete) {
-      startValue = "";
+      startValue = '';
     } else if (params.charPress) {
       startValue = params.charPress;
     }

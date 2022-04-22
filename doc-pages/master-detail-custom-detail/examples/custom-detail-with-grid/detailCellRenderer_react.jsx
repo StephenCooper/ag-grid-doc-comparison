@@ -1,8 +1,8 @@
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
+import React, { Component } from 'react';
 import { AgGridReact } from "@ag-grid-community/react";
-import React, { Component } from "react";
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
 
+import { ModuleRegistry } from '@ag-grid-community/core';
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([ClientSideRowModelModule]);
 
@@ -12,18 +12,18 @@ export default class DetailCellRenderer extends Component {
 
     this.state = {
       colDefs: [
-        { field: "callId" },
-        { field: "direction" },
-        { field: "number" },
-        { field: "duration", valueFormatter: "x.toLocaleString() + 's'" },
-        { field: "switchCode" },
+        { field: 'callId' },
+        { field: 'direction' },
+        { field: 'number' },
+        { field: 'duration', valueFormatter: "x.toLocaleString() + 's'" },
+        { field: 'switchCode' }
       ],
       defaultColDef: {
         flex: 1,
-        minWidth: 120,
+        minWidth: 120
       },
       rowId: props.node.id,
-      masterGridApi: props.api,
+      masterGridApi: props.api
     };
   }
 
@@ -33,14 +33,8 @@ export default class DetailCellRenderer extends Component {
     return (
       <div className="full-width-panel">
         <div className="full-width-details">
-          <div className="full-width-detail">
-            <b>Name: </b>
-            {data.name}
-          </div>
-          <div className="full-width-detail">
-            <b>Account: </b>
-            {data.account}
-          </div>
+          <div className="full-width-detail"><b>Name: </b>{data.name}</div>
+          <div className="full-width-detail"><b>Account: </b>{data.account}</div>
         </div>
         <AgGridReact
           id="detailGrid"
@@ -54,11 +48,11 @@ export default class DetailCellRenderer extends Component {
     );
   }
 
-  onGridReady = (params) => {
+  onGridReady = params => {
     const gridInfo = {
       id: this.state.rowId,
       api: params.api,
-      columnApi: params.columnApi,
+      columnApi: params.columnApi
     };
 
     console.log("adding detail grid info with id: ", this.state.rowId);

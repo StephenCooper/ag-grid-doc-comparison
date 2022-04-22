@@ -1,14 +1,14 @@
-"use strict";
+'use strict';
 
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { AgGridReact } from "@ag-grid-community/react";
-import { GridChartsModule } from "@ag-grid-enterprise/charts";
-import { MenuModule } from "@ag-grid-enterprise/menu";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from '@ag-grid-community/react';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import { MenuModule } from '@ag-grid-enterprise/menu';
+import { GridChartsModule } from '@ag-grid-enterprise/charts';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([
@@ -23,29 +23,29 @@ class GridExample extends Component {
 
     this.state = {
       columnDefs: [
-        { field: "country", width: 150, chartDataType: "category" },
-        { field: "gold", chartDataType: "series" },
-        { field: "silver", chartDataType: "series" },
-        { field: "bronze", chartDataType: "series" },
+        { field: 'country', width: 150, chartDataType: 'category' },
+        { field: 'gold', chartDataType: 'series' },
+        { field: 'silver', chartDataType: 'series' },
+        { field: 'bronze', chartDataType: 'series' },
         {
-          headerName: "A",
-          valueGetter: "Math.floor(Math.random()*1000)",
-          chartDataType: "series",
+          headerName: 'A',
+          valueGetter: 'Math.floor(Math.random()*1000)',
+          chartDataType: 'series',
         },
         {
-          headerName: "B",
-          valueGetter: "Math.floor(Math.random()*1000)",
-          chartDataType: "series",
+          headerName: 'B',
+          valueGetter: 'Math.floor(Math.random()*1000)',
+          chartDataType: 'series',
         },
         {
-          headerName: "C",
-          valueGetter: "Math.floor(Math.random()*1000)",
-          chartDataType: "series",
+          headerName: 'C',
+          valueGetter: 'Math.floor(Math.random()*1000)',
+          chartDataType: 'series',
         },
         {
-          headerName: "D",
-          valueGetter: "Math.floor(Math.random()*1000)",
-          chartDataType: "series",
+          headerName: 'D',
+          valueGetter: 'Math.floor(Math.random()*1000)',
+          chartDataType: 'series',
         },
       ],
       defaultColDef: {
@@ -62,18 +62,18 @@ class GridExample extends Component {
         pie: {
           title: {
             enabled: true,
-            text: "Precious Metals Production",
-            fontWeight: "bold",
+            text: 'Precious Metals Production',
+            fontWeight: 'bold',
             fontSize: 20,
-            color: "rgb(100, 100, 100)",
+            color: 'rgb(100, 100, 100)',
           },
           subtitle: {
             enabled: true,
-            text: "by country",
-            fontStyle: "italic",
-            fontWeight: "bold",
+            text: 'by country',
+            fontStyle: 'italic',
+            fontWeight: 'bold',
             fontSize: 14,
-            color: "rgb(100, 100, 100)",
+            color: 'rgb(100, 100, 100)',
           },
           padding: {
             top: 25,
@@ -107,24 +107,24 @@ class GridExample extends Component {
       cellRange: {
         rowStartIndex: 0,
         rowEndIndex: 5,
-        columns: ["country", "gold"],
+        columns: ['country', 'gold'],
       },
-      chartType: "pie",
+      chartType: 'pie',
     };
     params.api.createRangeChart(createRangeChartParams);
   };
 
   getChartToolbarItems = () => {
-    return ["chartDownload", "chartData", "chartSettings"];
+    return ['chartDownload', 'chartData', 'chartSettings'];
   };
 
   render() {
     return (
-      <div style={{ width: "100%", height: "100%" }}>
+      <div style={{ width: '100%', height: '100%' }}>
         <div
           style={{
-            height: "100%",
-            width: "100%",
+            height: '100%',
+            width: '100%',
           }}
           className="ag-theme-alpine"
         >
@@ -146,4 +146,4 @@ class GridExample extends Component {
   }
 }
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

@@ -2,7 +2,15 @@
 title: "Column Filter"
 ---
 
-Column filters are filters that are applied to the data at the column level. Many column filters can be active at once (e.g. filters set on different columns) and the grid will display rows that pass every column's filter.
+[[only-javascript-or-angular-or-vue]]
+|Column filters are filters that are applied to the data at the column level. Many column filters can be active at once (e.g. filters set on different columns) and the grid will display rows that pass every column's filter.
+
+[[only-react]]
+|<video-section id="pebXUHUdlos" title="React Column Filters" header="true">
+|Column filters are filters that are applied to the data at the column level. Many column filters can be active at once (e.g. filters set on different columns) and the grid will display rows that pass every column's filter.
+|</video-section>
+
+
 
 Column filters are accessed in the grid UI either through the [Column Menu](/column-menu/) or the [Tool Panel](/tool-panel/).
 
@@ -117,11 +125,11 @@ Column filters are tied to a specific column. Quick filter and external filter a
 
 There are four filters that are provided by the grid. These are as follows:
 
-| Provided Filter        | Description                                                                                        |
-| ---------------------- | -------------------------------------------------------------------------------------------------- |
-| `agNumberColumnFilter` | A filter for number comparisons.                                                                   |
-| `agTextColumnFilter`   | A filter for string comparisons.                                                                   |
-| `agDateColumnFilter`   | A filter for date comparisons.                                                                     |
-| `agSetColumnFilter`    | A filter influenced by how filters work in Microsoft Excel. This is an AG Grid Enterprise feature. |
+| Provided Filter | Description |
+| --------------- | ----------- |
+| `agNumberColumnFilter` | A filter for number comparisons. |
+| `agTextColumnFilter` | A filter for string comparisons. |
+| `agDateColumnFilter` | A filter for date comparisons. |
+| `agSetColumnFilter` | A filter influenced by how filters work in Microsoft Excel. This is an AG Grid Enterprise feature. |
 
 See the [Provided Filters](/filter-provided/) section for more details on using them.

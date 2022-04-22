@@ -191,6 +191,7 @@ The example below is almost identical to the [Managed Dragging](#managed-draggin
 
 <grid-example title='Suppress Row Drag' name='suppress-row-drag' type='generated'></grid-example>
 
+
 ## Dragging & Row Grouping
 
 [Row Grouping](/grouping/) in the grid allows grouping rows by a particular column. Dragging rows while grouping is possible when doing unmanaged row dragging. The application is responsible for updating the data based on the drag events fired by the grid.
@@ -217,8 +218,8 @@ The example below shows [Tree Data](/tree-data/) and row dragging where the foll
 
 - The [auto-group column](/grouping/#auto-column-group) has row drag `true` for all rows.
 
-- The example registers for `onRowDragEnd` events and rearranges
-  the rows when the drag completes.
+-  The example registers for `onRowDragEnd` events and rearranges
+   the rows when the drag completes.
 
 - The application does NOT rearrange the rows as the drag is happening. Instead it waits for the `onRowDragEnd` event before updating the data.
 
@@ -289,16 +290,50 @@ The example below shows dragging with custom text. The following can be noted:
 Due to the complexity of some applications, it could be handy to render the Row Drag Component inside of a Custom Cell Renderer. This can be achieved, by using the `registerRowDragger` method in the [ICellRendererParams](/component-cell-renderer/#cell-renderer-component) as follows:
 
 [[only-javascript]]
-| `js | // your custom cell renderer init code | const rowDragger = document.createElement('div') | this.eGui.appendChild(rowDragger); | | // register it as a row dragger | params.registerRowDragger(rowDragger); | `
+| ```js
+| // your custom cell renderer init code
+| const rowDragger = document.createElement('div')
+| this.eGui.appendChild(rowDragger);
+|
+| // register it as a row dragger
+| params.registerRowDragger(rowDragger);
+| ```
 
 [[only-angular]]
-| `js | // your custom cell renderer code | @ViewChild('myref') myRef; | | agInit(params: ICellRendererParams): void { | this.cellRendererParams = params; | } | | ngAfterViewInit() { | this.cellRendererParams.registerRowDragger(this.myRef.nativeElement); | } | `
+| ```js
+| // your custom cell renderer code
+| @ViewChild('myref') myRef;
+|
+| agInit(params: ICellRendererParams): void {
+|     this.cellRendererParams = params;
+| }
+|
+| ngAfterViewInit() {
+|     this.cellRendererParams.registerRowDragger(this.myRef.nativeElement);
+| }
+| ```
 
 [[only-react]]
-| `js | // your custom cell renderer code | | // this will hold the reference to the element you want to | // to act as row dragger. | myRef = React.createRef(); | | componentDidMount() { | this.props.registerRowDragger(this.myRef.current); | } | `
+| ```js
+| // your custom cell renderer code
+|
+| // this will hold the reference to the element you want to
+| // to act as row dragger.
+| myRef = React.createRef();
+|
+| componentDidMount() {
+|     this.props.registerRowDragger(this.myRef.current);
+| }
+| ```
+
 
 [[only-vue]]
-| `js | // your custom cell renderer code | mounted() { | this.params.registerRowDragger(this.$refs.myRef); | } | `
+| ```js
+| // your custom cell renderer code
+| mounted() {
+|     this.params.registerRowDragger(this.$refs.myRef);
+| }
+| ```
 
 [[warning]]
 | When using `registerRowDragger` you should **not** set the property `rowDrag=true` in the Column Definition.
@@ -314,7 +349,7 @@ The example below shows a custom cell renderer, with using the `registerRowDragg
 
 It is possible to drag [Full Width Rows](../full-width-rows/) by registering a [Custom Row Dragger](#row-dragger-inside-custom-cell-renderers).
 
-Note the following:
+Note the following: 
 
 - Only the Full Width Rows are draggable.
 

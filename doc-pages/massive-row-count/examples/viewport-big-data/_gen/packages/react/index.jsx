@@ -1,11 +1,11 @@
-"use strict";
+'use strict';
 
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
-import { AgGridReact } from "ag-grid-react";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from 'ag-grid-react';
+import 'ag-grid-enterprise';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 
 class GridExample extends Component {
   constructor(props) {
@@ -14,25 +14,25 @@ class GridExample extends Component {
     this.state = {
       columnDefs: [
         {
-          headerName: "ID",
-          field: "id",
+          headerName: 'ID',
+          field: 'id',
         },
         {
-          headerName: "Expected Position",
+          headerName: 'Expected Position',
           valueGetter: '"translateY(" + node.rowIndex * 100 + "px)"',
         },
         {
-          field: "a",
+          field: 'a',
         },
         {
-          field: "b",
+          field: 'b',
         },
         {
-          field: "c",
+          field: 'c',
         },
       ],
       rowHeight: 100,
-      rowModelType: "viewport",
+      rowModelType: 'viewport',
       viewportDatasource: createViewportDatasource(),
     };
   }
@@ -44,11 +44,11 @@ class GridExample extends Component {
 
   render() {
     return (
-      <div style={{ width: "100%", height: "100%" }}>
+      <div style={{ width: '100%', height: '100%' }}>
         <div
           style={{
-            height: "100%",
-            width: "100%",
+            height: '100%',
+            width: '100%',
           }}
           className="ag-theme-alpine"
         >
@@ -78,9 +78,9 @@ function createViewportDatasource() {
       for (var rowIndex = firstRow; rowIndex <= lastRow; rowIndex++) {
         var item = {};
         item.id = rowIndex;
-        item.a = "A-" + rowIndex;
-        item.b = "B-" + rowIndex;
-        item.c = "C-" + rowIndex;
+        item.a = 'A-' + rowIndex;
+        item.b = 'B-' + rowIndex;
+        item.c = 'C-' + rowIndex;
         rowData[rowIndex] = item;
       }
       initParams.setRowData(rowData);
@@ -89,4 +89,4 @@ function createViewportDatasource() {
   };
 }
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

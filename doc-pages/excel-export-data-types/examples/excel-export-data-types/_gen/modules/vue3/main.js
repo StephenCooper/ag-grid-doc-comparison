@@ -1,12 +1,12 @@
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { CsvExportModule } from "@ag-grid-community/csv-export";
-import { AgGridVue } from "@ag-grid-community/vue3";
-import { ExcelExportModule } from "@ag-grid-enterprise/excel-export";
-import { MenuModule } from "@ag-grid-enterprise/menu";
-import { createApp } from "vue";
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { CsvExportModule } from '@ag-grid-community/csv-export';
+import { AgGridVue } from '@ag-grid-community/vue3';
+import { ExcelExportModule } from '@ag-grid-enterprise/excel-export';
+import { MenuModule } from '@ag-grid-enterprise/menu';
+import { createApp } from 'vue';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([
@@ -37,29 +37,29 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
-        { headerName: "provided", field: "rawValue" },
-        { headerName: "number", field: "rawValue", cellClass: "numberType" },
+        { headerName: 'provided', field: 'rawValue' },
+        { headerName: 'number', field: 'rawValue', cellClass: 'numberType' },
         {
-          headerName: "currency",
-          field: "rawValue",
-          cellClass: "currencyFormat",
+          headerName: 'currency',
+          field: 'rawValue',
+          cellClass: 'currencyFormat',
         },
-        { headerName: "boolean", field: "rawValue", cellClass: "booleanType" },
+        { headerName: 'boolean', field: 'rawValue', cellClass: 'booleanType' },
         {
-          headerName: "Negative",
-          field: "negativeValue",
-          cellClass: "negativeInBrackets",
+          headerName: 'Negative',
+          field: 'negativeValue',
+          cellClass: 'negativeInBrackets',
         },
-        { headerName: "string", field: "rawValue", cellClass: "stringType" },
+        { headerName: 'string', field: 'rawValue', cellClass: 'stringType' },
         {
-          headerName: "Date",
-          field: "dateValue",
-          cellClass: "dateType",
+          headerName: 'Date',
+          field: 'dateValue',
+          cellClass: 'dateType',
           minWidth: 220,
         },
       ],
@@ -80,39 +80,39 @@ const VueExample = {
       {
         rawValue: 1,
         negativeValue: -10,
-        dateValue: "2009-04-20T00:00:00.000",
+        dateValue: '2009-04-20T00:00:00.000',
       },
     ];
     this.excelStyles = [
       {
-        id: "numberType",
+        id: 'numberType',
         numberFormat: {
-          format: "0",
+          format: '0',
         },
       },
       {
-        id: "currencyFormat",
+        id: 'currencyFormat',
         numberFormat: {
-          format: "#,##0.00 €",
+          format: '#,##0.00 €',
         },
       },
       {
-        id: "negativeInBrackets",
+        id: 'negativeInBrackets',
         numberFormat: {
-          format: "$[blue] #,##0;$ [red](#,##0)",
+          format: '$[blue] #,##0;$ [red](#,##0)',
         },
       },
       {
-        id: "booleanType",
-        dataType: "Boolean",
+        id: 'booleanType',
+        dataType: 'Boolean',
       },
       {
-        id: "stringType",
-        dataType: "String",
+        id: 'stringType',
+        dataType: 'String',
       },
       {
-        id: "dateType",
-        dataType: "DateTime",
+        id: 'dateType',
+        dataType: 'DateTime',
       },
     ];
     this.popupParent = document.body;
@@ -128,4 +128,4 @@ const VueExample = {
   },
 };
 
-createApp(VueExample).mount("#app");
+createApp(VueExample).mount('#app');

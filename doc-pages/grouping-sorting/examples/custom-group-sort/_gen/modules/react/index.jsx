@@ -1,16 +1,16 @@
-"use strict";
+'use strict';
 
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { AgGridReact } from "@ag-grid-community/react";
-import { ColumnsToolPanelModule } from "@ag-grid-enterprise/column-tool-panel";
-import { MenuModule } from "@ag-grid-enterprise/menu";
-import { RowGroupingModule } from "@ag-grid-enterprise/row-grouping";
-import { SetFilterModule } from "@ag-grid-enterprise/set-filter";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from '@ag-grid-community/react';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import { RowGroupingModule } from '@ag-grid-enterprise/row-grouping';
+import { MenuModule } from '@ag-grid-enterprise/menu';
+import { ColumnsToolPanelModule } from '@ag-grid-enterprise/column-tool-panel';
+import { SetFilterModule } from '@ag-grid-enterprise/set-filter';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([
@@ -28,36 +28,36 @@ class GridExample extends Component {
     this.state = {
       columnDefs: [
         {
-          field: "year",
+          field: 'year',
           rowGroup: true,
           hide: true,
         },
         {
-          field: "month",
+          field: 'month',
           rowGroup: true,
           hide: true,
           comparator: function (a, b) {
             const months = [
-              "January",
-              "February",
-              "March",
-              "April",
-              "May",
-              "June",
-              "July",
-              "August",
-              "September",
-              "October",
-              "November",
-              "December",
+              'January',
+              'February',
+              'March',
+              'April',
+              'May',
+              'June',
+              'July',
+              'August',
+              'September',
+              'October',
+              'November',
+              'December',
             ];
             // sorts 'months' in chronological order
             return months.indexOf(a) - months.indexOf(b);
           },
         },
-        { field: "salesRep" },
-        { field: "handset" },
-        { field: "sale" },
+        { field: 'salesRep' },
+        { field: 'handset' },
+        { field: 'sale' },
       ],
       defaultColDef: {
         flex: 1,
@@ -67,7 +67,7 @@ class GridExample extends Component {
         resizable: true,
       },
       autoGroupColumnDef: {
-        sort: "asc",
+        sort: 'asc',
         minWidth: 300,
       },
       groupDefaultExpanded: 1,
@@ -82,11 +82,11 @@ class GridExample extends Component {
 
   render() {
     return (
-      <div style={{ width: "100%", height: "100%" }}>
+      <div style={{ width: '100%', height: '100%' }}>
         <div
           style={{
-            height: "100%",
-            width: "100%",
+            height: '100%',
+            width: '100%',
           }}
           className="ag-theme-alpine"
         >
@@ -104,4 +104,4 @@ class GridExample extends Component {
   }
 }
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

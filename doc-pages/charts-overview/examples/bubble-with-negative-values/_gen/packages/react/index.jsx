@@ -1,8 +1,10 @@
-"use strict";
+'use strict';
 
-import { AgChartsReact } from "ag-charts-react";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { cloneDeep } from 'lodash';
+import { render } from 'react-dom';
+import * as agCharts from 'ag-charts-community';
+import { AgChartsReact } from 'ag-charts-react';
 
 class ChartExample extends Component {
   constructor(props) {
@@ -13,24 +15,24 @@ class ChartExample extends Component {
         autoSize: true,
         data: getData(),
         title: {
-          text: "Most Populous Cities (2019)",
+          text: 'Most Populous Cities (2019)',
           fontSize: 18,
         },
         subtitle: {
-          text: "Source: Simple Maps",
+          text: 'Source: Simple Maps',
         },
         series: [
           {
-            type: "scatter",
-            title: "Most populous cities",
-            xKey: "lon",
-            xName: "Longitude",
-            yKey: "lat",
-            yName: "Latitude",
-            sizeKey: "population",
-            sizeName: "Population",
-            labelKey: "city",
-            labelName: "City",
+            type: 'scatter',
+            title: 'Most populous cities',
+            xKey: 'lon',
+            xName: 'Longitude',
+            yKey: 'lat',
+            yName: 'Latitude',
+            sizeKey: 'population',
+            sizeName: 'Population',
+            labelKey: 'city',
+            labelName: 'City',
             marker: {
               size: 5,
               maxSize: 100,
@@ -40,22 +42,22 @@ class ChartExample extends Component {
         ],
         axes: [
           {
-            position: "bottom",
-            type: "number",
+            position: 'bottom',
+            type: 'number',
             title: {
               enabled: true,
-              text: "Longitude",
+              text: 'Longitude',
             },
             min: -180,
             max: 180,
             nice: false,
           },
           {
-            position: "left",
-            type: "number",
+            position: 'left',
+            type: 'number',
             title: {
               enabled: true,
-              text: "Latitude",
+              text: 'Latitude',
             },
             min: -90,
             max: 90,
@@ -76,4 +78,4 @@ class ChartExample extends Component {
   }
 }
 
-render(<ChartExample />, document.querySelector("#root"));
+render(<ChartExample />, document.querySelector('#root'));

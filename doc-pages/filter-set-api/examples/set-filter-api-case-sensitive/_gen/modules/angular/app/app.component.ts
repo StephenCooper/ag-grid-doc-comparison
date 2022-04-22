@@ -7,14 +7,14 @@ import {
   IFiltersToolPanel,
   ISetFilter,
   SideBarDef,
-} from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { Component } from "@angular/core";
+} from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { Component } from '@angular/core';
 // Required feature modules are registered in app.module.ts
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<div class="example-wrapper">
     <div class="example-header">
       <div>
@@ -59,18 +59,18 @@ export class AppComponent {
 
   public columnDefs: ColDef[] = [
     {
-      headerName: "Case Insensitive (default)",
-      field: "colour",
-      filter: "agSetColumnFilter",
+      headerName: 'Case Insensitive (default)',
+      field: 'colour',
+      filter: 'agSetColumnFilter',
       filterParams: {
         caseSensitive: false,
         cellRenderer: colourCellRenderer,
       },
     },
     {
-      headerName: "Case Sensitive",
-      field: "colour",
-      filter: "agSetColumnFilter",
+      headerName: 'Case Sensitive',
+      field: 'colour',
+      filter: 'agSetColumnFilter',
       filterParams: {
         caseSensitive: true,
         cellRenderer: colourCellRenderer,
@@ -84,13 +84,13 @@ export class AppComponent {
     resizable: true,
     floatingFilter: true,
   };
-  public sideBar: SideBarDef | string | boolean | null = "filters";
+  public sideBar: SideBarDef | string | string[] | boolean | null = 'filters';
   public rowData: any[] | null = getData();
 
   onFirstDataRendered(params: FirstDataRenderedEvent) {
-    (
-      this.gridApi.getToolPanelInstance("filters") as any as IFiltersToolPanel
-    ).expandFilters();
+    ((this.gridApi.getToolPanelInstance(
+      'filters'
+    ) as any) as IFiltersToolPanel).expandFilters();
   }
 
   setModel(type: string) {
@@ -135,17 +135,17 @@ export class AppComponent {
 }
 
 var FIXED_STYLES =
-  "vertical-align: middle; border: 1px solid black; margin: 3px; display: inline-block; width: 10px; height: 10px";
+  'vertical-align: middle; border: 1px solid black; margin: 3px; display: inline-block; width: 10px; height: 10px';
 var FILTER_TYPES: Record<string, string> = {
-  insensitive: "colour",
-  sensitive: "colour_1",
+  insensitive: 'colour',
+  sensitive: 'colour_1',
 };
 function colourCellRenderer(params: ICellRendererParams) {
-  if (!params.value || params.value === "(Select All)") {
+  if (!params.value || params.value === '(Select All)') {
     return params.value;
   }
   return `<div style="background-color: ${params.value.toLowerCase()}; ${FIXED_STYLES}"></div>${
     params.value
   }`;
 }
-var MANGLED_COLOURS = ["ReD", "OrAnGe", "WhItE", "YeLlOw"];
+var MANGLED_COLOURS = ['ReD', 'OrAnGe', 'WhItE', 'YeLlOw'];

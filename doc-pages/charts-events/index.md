@@ -54,7 +54,7 @@ For example, to get all x values used by the bin, one could do the following:
 
 ```js
 for (var element of event.datum.data) {
-  console.log(element[event.xKey]);
+    console.log(element[event.xKey]);
 }
 ```
 

@@ -1,12 +1,12 @@
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { CsvExportModule } from "@ag-grid-community/csv-export";
-import { AgGridVue } from "@ag-grid-community/vue";
-import { ExcelExportModule } from "@ag-grid-enterprise/excel-export";
-import { MenuModule } from "@ag-grid-enterprise/menu";
-import Vue from "vue";
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { CsvExportModule } from '@ag-grid-community/csv-export';
+import { AgGridVue } from '@ag-grid-community/vue';
+import { ExcelExportModule } from '@ag-grid-enterprise/excel-export';
+import { MenuModule } from '@ag-grid-enterprise/menu';
+import Vue from 'vue';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([
@@ -37,21 +37,21 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
-        { field: "athlete" },
-        { field: "country" },
-        { field: "age" },
-        { field: "year" },
-        { field: "date" },
-        { field: "sport" },
-        { field: "gold" },
-        { field: "silver" },
-        { field: "bronze" },
-        { field: "total" },
+        { field: 'athlete' },
+        { field: 'country' },
+        { field: 'age' },
+        { field: 'year' },
+        { field: 'date' },
+        { field: 'sport' },
+        { field: 'gold' },
+        { field: 'silver' },
+        { field: 'bronze' },
+        { field: 'total' },
       ],
       gridApi: null,
       columnApi: null,
@@ -68,7 +68,7 @@ const VueExample = {
         [
           {
             data: {
-              type: "String",
+              type: 'String',
               value: logos.AgGrid, // see imageUtils
             },
             mergeAcross: 1,
@@ -77,14 +77,14 @@ const VueExample = {
       ],
       rowHeight: (params) => (params.rowIndex === 1 ? 82 : 20),
       addImageToCell: (rowIndex, col, value) => {
-        if (rowIndex !== 1 || col.getColId() !== "athlete") {
+        if (rowIndex !== 1 || col.getColId() !== 'athlete') {
           return;
         }
         return {
           image: {
-            id: "logo",
+            id: 'logo',
             base64: value,
-            imageType: "png",
+            imageType: 'png',
             width: 295,
             height: 100,
             position: {
@@ -103,7 +103,7 @@ const VueExample = {
       this.gridApi = params.api;
       this.gridColumnApi = params.columnApi;
 
-      fetch("https://www.ag-grid.com/example-assets/small-olympic-winners.json")
+      fetch('https://www.ag-grid.com/example-assets/small-olympic-winners.json')
         .then((response) => response.json())
         .then((data) => params.api.setRowData(data));
     },
@@ -111,8 +111,8 @@ const VueExample = {
 };
 
 new Vue({
-  el: "#app",
+  el: '#app',
   components: {
-    "my-component": VueExample,
+    'my-component': VueExample,
   },
 });

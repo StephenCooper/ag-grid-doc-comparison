@@ -1,18 +1,18 @@
 const gridOptions = {
   columnDefs: [
     {
-      headerName: "Case Insensitive (default)",
-      field: "colour",
-      filter: "agSetColumnFilter",
+      headerName: 'Case Insensitive (default)',
+      field: 'colour',
+      filter: 'agSetColumnFilter',
       filterParams: {
         caseSensitive: false,
         cellRenderer: colourCellRenderer,
       },
     },
     {
-      headerName: "Case Sensitive",
-      field: "colour",
-      filter: "agSetColumnFilter",
+      headerName: 'Case Sensitive',
+      field: 'colour',
+      filter: 'agSetColumnFilter',
       filterParams: {
         caseSensitive: true,
         cellRenderer: colourCellRenderer,
@@ -26,21 +26,21 @@ const gridOptions = {
     resizable: true,
     floatingFilter: true,
   },
-  sideBar: "filters",
+  sideBar: 'filters',
   onFirstDataRendered: onFirstDataRendered,
   rowData: getData(),
 };
 
 var FIXED_STYLES =
-  "vertical-align: middle; border: 1px solid black; margin: 3px; display: inline-block; width: 10px; height: 10px";
+  'vertical-align: middle; border: 1px solid black; margin: 3px; display: inline-block; width: 10px; height: 10px';
 
 var FILTER_TYPES = {
-  insensitive: "colour",
-  sensitive: "colour_1",
+  insensitive: 'colour',
+  sensitive: 'colour_1',
 };
 
 function colourCellRenderer(params) {
-  if (!params.value || params.value === "(Select All)") {
+  if (!params.value || params.value === '(Select All)') {
     return params.value;
   }
 
@@ -84,14 +84,14 @@ function reset(type) {
   gridOptions.api.onFilterChanged();
 }
 
-var MANGLED_COLOURS = ["ReD", "OrAnGe", "WhItE", "YeLlOw"];
+var MANGLED_COLOURS = ['ReD', 'OrAnGe', 'WhItE', 'YeLlOw'];
 
 function onFirstDataRendered(params) {
-  gridOptions.api.getToolPanelInstance("filters").expandFilters();
+  gridOptions.api.getToolPanelInstance('filters').expandFilters();
 }
 
 // setup the grid after the page has finished loading
-document.addEventListener("DOMContentLoaded", function () {
-  var gridDiv = document.querySelector("#myGrid");
+document.addEventListener('DOMContentLoaded', function () {
+  var gridDiv = document.querySelector('#myGrid');
   new agGrid.Grid(gridDiv, gridOptions);
 });

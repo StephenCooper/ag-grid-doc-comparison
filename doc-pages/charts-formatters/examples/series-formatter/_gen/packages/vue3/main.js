@@ -1,5 +1,5 @@
-import { AgChartsVue } from "ag-charts-vue3";
-import { createApp } from "vue";
+import { AgChartsVue } from 'ag-charts-vue3';
+import { createApp } from 'vue';
 
 const ChartExample = {
   template: `
@@ -7,7 +7,7 @@ const ChartExample = {
                 :options="options"></ag-charts-vue>
     `,
   components: {
-    "ag-charts-vue": AgChartsVue,
+    'ag-charts-vue': AgChartsVue,
   },
   data: function () {
     return {
@@ -17,39 +17,39 @@ const ChartExample = {
   created() {
     this.options = {
       title: {
-        text: "GDP by country in billions of USD (2018)",
+        text: 'GDP by country in billions of USD (2018)',
       },
       data: [
         {
-          country: "Spain",
+          country: 'Spain',
           gdp: 1419,
         },
         {
-          country: "UK",
+          country: 'UK',
           gdp: 2855,
         },
         {
-          country: "Germany",
+          country: 'Germany',
           gdp: 3948,
         },
         {
-          country: "France",
+          country: 'France',
           gdp: 2778,
         },
       ],
       series: [
         {
-          type: "column",
-          xKey: "country",
-          yKey: "gdp",
+          type: 'column',
+          xKey: 'country',
+          yKey: 'gdp',
           showInLegend: false,
           formatter: (params) => {
             return {
               fill:
-                params.datum[params.xKey] === "UK"
+                params.datum[params.xKey] === 'UK'
                   ? params.highlighted
-                    ? "lime"
-                    : "red"
+                    ? 'lime'
+                    : 'red'
                   : params.fill,
             };
           },
@@ -61,4 +61,4 @@ const ChartExample = {
   methods: {},
 };
 
-createApp(ChartExample).mount("#app");
+createApp(ChartExample).mount('#app');

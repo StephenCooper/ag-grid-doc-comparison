@@ -1,11 +1,11 @@
-import { ColDef, GridReadyEvent } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { Component } from "@angular/core";
+import { ColDef, GridReadyEvent } from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { Component } from '@angular/core';
 // Required feature modules are registered in app.module.ts
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<div style="display: flex; flex-direction: row; height: 100%;">
     <div style=" overflow: hidden; flex-grow: 1">
       <ag-grid-angular
@@ -22,19 +22,19 @@ import { Component } from "@angular/core";
 })
 export class AppComponent {
   public rowData: any[] | null = [
-    { make: "Toyota", model: "Celica", price: 35000 },
-    { make: "Ford", model: "Mondeo", price: 32000 },
-    { make: "Porsche", model: "Boxter", price: 72000 },
+    { make: 'Toyota', model: 'Celica', price: 35000 },
+    { make: 'Ford', model: 'Mondeo', price: 32000 },
+    { make: 'Porsche', model: 'Boxster', price: 72000 },
   ];
   public columnDefs: ColDef[] = [
-    { field: "make" },
-    { field: "model" },
-    { field: "price" },
+    { field: 'make' },
+    { field: 'model' },
+    { field: 'price' },
   ];
 
   onGridReady(params: GridReadyEvent) {
     params.api.sizeColumnsToFit();
-    window.addEventListener("resize", function () {
+    window.addEventListener('resize', function () {
       setTimeout(function () {
         params.api.sizeColumnsToFit();
       });

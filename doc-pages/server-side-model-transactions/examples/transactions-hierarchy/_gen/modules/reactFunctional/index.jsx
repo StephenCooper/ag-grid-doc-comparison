@@ -1,18 +1,18 @@
-"use strict";
+'use strict';
 
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine-dark.css";
-import { AgGridReact } from "@ag-grid-community/react";
-import { RowGroupingModule } from "@ag-grid-enterprise/row-grouping";
-import { ServerSideRowModelModule } from "@ag-grid-enterprise/server-side-row-model";
-import React, { useCallback, useMemo, useRef, useState } from "react";
-import { render } from "react-dom";
+import React, { useCallback, useMemo, useRef, useState } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from '@ag-grid-community/react';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine-dark.css';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import { ServerSideRowModelModule } from '@ag-grid-enterprise/server-side-row-model';
+import { RowGroupingModule } from '@ag-grid-enterprise/row-grouping';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([ServerSideRowModelModule, RowGroupingModule]);
 
-const productsNames = ["Palm Oil", "Rubber", "Wool", "Amber", "Copper"];
+const productsNames = ['Palm Oil', 'Rubber', 'Wool', 'Amber', 'Copper'];
 
 const products = [];
 
@@ -21,7 +21,7 @@ let idSequence = 0;
 const createOneTrade = () => {
   return {
     id: idSequence++,
-    tradeName: "TRD-" + Math.floor(Math.random() * 20000),
+    tradeName: 'TRD-' + Math.floor(Math.random() * 20000),
     value: Math.floor(Math.random() * 20000),
   };
 };
@@ -38,13 +38,13 @@ const setupData = () => {
 
 const GridExample = () => {
   const gridRef = useRef();
-  const containerStyle = useMemo(() => ({ width: "100%", height: "100%" }), []);
-  const gridStyle = useMemo(() => ({ height: "100%", width: "100%" }), []);
+  const containerStyle = useMemo(() => ({ width: '100%', height: '100%' }), []);
+  const gridStyle = useMemo(() => ({ height: '100%', width: '100%' }), []);
 
   const [columnDefs, setColumnDefs] = useState([
-    { field: "productName", rowGroup: true, hide: true },
-    { field: "tradeName" },
-    { field: "value" },
+    { field: 'productName', rowGroup: true, hide: true },
+    { field: 'tradeName' },
+    { field: 'value' },
   ]);
   const defaultColDef = useMemo(() => {
     return {
@@ -56,7 +56,7 @@ const GridExample = () => {
     return params.data.id;
   }, []);
   const getServerSideStoreParams = useCallback(function (params) {
-    const type = params.level == 0 ? "partial" : "full";
+    const type = params.level == 0 ? 'partial' : 'full';
     return {
       storeType: type,
     };
@@ -96,56 +96,56 @@ const GridExample = () => {
 
   const onBtNewPalmOil = useCallback(() => {
     const transaction = {
-      route: ["Palm Oil"],
+      route: ['Palm Oil'],
       add: [createOneTrade()],
     };
     const res = gridRef.current.api.applyServerSideTransaction(transaction);
-    console.log("New Palm Oil, result = " + (res && res.status));
+    console.log('New Palm Oil, result = ' + (res && res.status));
   }, []);
 
   const onBtNewRubber = useCallback(() => {
     const transaction = {
-      route: ["Rubber"],
+      route: ['Rubber'],
       add: [createOneTrade()],
     };
     const res = gridRef.current.api.applyServerSideTransaction(transaction);
-    console.log("New Rubber, result = " + (res && res.status));
+    console.log('New Rubber, result = ' + (res && res.status));
   }, []);
 
   const onBtNewWoolAmber = useCallback(() => {
     const transactions = [];
     transactions.push({
-      route: ["Wool"],
+      route: ['Wool'],
       add: [createOneTrade()],
     });
     transactions.push({
-      route: ["Amber"],
+      route: ['Amber'],
       add: [createOneTrade()],
     });
     const api = gridRef.current.api;
     transactions.forEach(function (tx) {
       const res = api.applyServerSideTransaction(tx);
-      console.log("New " + tx.route[0] + ", result = " + (res && res.status));
+      console.log('New ' + tx.route[0] + ', result = ' + (res && res.status));
     });
   }, []);
 
   const onBtNewProduct = useCallback(() => {
     const transaction = {
       route: [],
-      add: [{ id: idSequence++, productName: "Rice", trades: [] }],
+      add: [{ id: idSequence++, productName: 'Rice', trades: [] }],
     };
     const res = gridRef.current.api.applyServerSideTransaction(transaction);
-    console.log("New Product, result = " + (res && res.status));
+    console.log('New Product, result = ' + (res && res.status));
   }, [idSequence]);
 
   const onBtStoreState = useCallback(() => {
     const storeState = gridRef.current.api.getServerSideStoreState();
-    console.log("Store States:");
+    console.log('Store States:');
     storeState.forEach(function (state, index) {
       console.log(
         index +
-          " - " +
-          JSON.stringify(state).replace(/"/g, "").replace(/,/g, ", ")
+          ' - ' +
+          JSON.stringify(state).replace(/"/g, '').replace(/,/g, ', ')
       );
     });
   }, []);
@@ -153,7 +153,7 @@ const GridExample = () => {
   return (
     <div style={containerStyle}>
       <div className="example-wrapper">
-        <div style={{ marginBottom: "5px" }}>
+        <div style={{ marginBottom: '5px' }}>
           <button onClick={onBtNewPalmOil}>New Palm Oil</button>
           <button onClick={onBtNewRubber}>New Rubber</button>
           <button onClick={onBtNewWoolAmber}>New Wool &amp; Amber</button>
@@ -168,8 +168,8 @@ const GridExample = () => {
             columnDefs={columnDefs}
             defaultColDef={defaultColDef}
             getRowId={getRowId}
-            rowModelType={"serverSide"}
-            serverSideStoreType={"full"}
+            rowModelType={'serverSide'}
+            serverSideStoreType={'full'}
             animateRows={true}
             purgeClosedRowNodes={true}
             getServerSideStoreParams={getServerSideStoreParams}
@@ -181,4 +181,4 @@ const GridExample = () => {
   );
 };
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

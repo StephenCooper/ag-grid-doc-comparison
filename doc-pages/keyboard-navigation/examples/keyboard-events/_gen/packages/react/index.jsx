@@ -1,11 +1,11 @@
-"use strict";
+'use strict';
 
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
-import { AgGridReact } from "ag-grid-react";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from 'ag-grid-react';
+import 'ag-grid-enterprise';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 
 class GridExample extends Component {
   constructor(props) {
@@ -13,16 +13,16 @@ class GridExample extends Component {
 
     this.state = {
       columnDefs: [
-        { field: "athlete", minWidth: 170 },
-        { field: "age" },
-        { field: "country" },
-        { field: "year" },
-        { field: "date" },
-        { field: "sport" },
-        { field: "gold" },
-        { field: "silver" },
-        { field: "bronze" },
-        { field: "total" },
+        { field: 'athlete', minWidth: 170 },
+        { field: 'age' },
+        { field: 'country' },
+        { field: 'year' },
+        { field: 'date' },
+        { field: 'sport' },
+        { field: 'gold' },
+        { field: 'silver' },
+        { field: 'bronze' },
+        { field: 'total' },
       ],
       rowData: null,
       defaultColDef: {
@@ -42,27 +42,27 @@ class GridExample extends Component {
 
     const updateData = (data) => params.api.setRowData(data);
 
-    fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+    fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .then((resp) => resp.json())
       .then((data) => updateData(data));
   };
 
   onCellKeyDown = (e) => {
-    console.log("onCellKeyDown", e);
+    console.log('onCellKeyDown', e);
   };
 
   onCellKeyPress = (e) => {
-    console.log("onCellKeyPress", e);
+    console.log('onCellKeyPress', e);
     if (e.event) {
       var keyPressed = e.event.key;
-      console.log("Key Pressed = " + keyPressed);
-      if (keyPressed === "s") {
+      console.log('Key Pressed = ' + keyPressed);
+      if (keyPressed === 's') {
         var rowNode = e.node;
         var newSelection = !rowNode.isSelected();
         console.log(
-          "setting selection on node " +
+          'setting selection on node ' +
             rowNode.data.athlete +
-            " to " +
+            ' to ' +
             newSelection
         );
         rowNode.setSelected(newSelection);
@@ -72,11 +72,11 @@ class GridExample extends Component {
 
   render() {
     return (
-      <div style={{ width: "100%", height: "100%" }}>
+      <div style={{ width: '100%', height: '100%' }}>
         <div
           style={{
-            height: "100%",
-            width: "100%",
+            height: '100%',
+            width: '100%',
           }}
           className="ag-theme-alpine"
         >
@@ -94,4 +94,4 @@ class GridExample extends Component {
   }
 }
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

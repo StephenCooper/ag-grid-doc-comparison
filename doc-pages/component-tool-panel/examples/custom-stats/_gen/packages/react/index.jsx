@@ -1,12 +1,12 @@
-"use strict";
+'use strict';
 
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
-import { AgGridReact } from "ag-grid-react";
-import React, { Component } from "react";
-import { render } from "react-dom";
-import CustomStatsToolPanel from "./customStatsToolPanel.jsx";
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from 'ag-grid-react';
+import 'ag-grid-enterprise';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import CustomStatsToolPanel from './customStatsToolPanel.jsx';
 
 class GridExample extends Component {
   constructor(props) {
@@ -14,15 +14,15 @@ class GridExample extends Component {
 
     this.state = {
       columnDefs: [
-        { field: "athlete", width: 150, filter: "agTextColumnFilter" },
-        { field: "age", width: 90 },
-        { field: "country", width: 120 },
-        { field: "year", width: 90 },
-        { field: "date", width: 110 },
-        { field: "gold", width: 100, filter: false },
-        { field: "silver", width: 100, filter: false },
-        { field: "bronze", width: 100, filter: false },
-        { field: "total", width: 100, filter: false },
+        { field: 'athlete', width: 150, filter: 'agTextColumnFilter' },
+        { field: 'age', width: 90 },
+        { field: 'country', width: 120 },
+        { field: 'year', width: 90 },
+        { field: 'date', width: 110 },
+        { field: 'gold', width: 100, filter: false },
+        { field: 'silver', width: 100, filter: false },
+        { field: 'bronze', width: 100, filter: false },
+        { field: 'total', width: 100, filter: false },
       ],
       defaultColDef: {
         editable: true,
@@ -33,33 +33,33 @@ class GridExample extends Component {
         resizable: true,
       },
       icons: {
-        "custom-stats": '<span class="ag-icon ag-icon-custom-stats"></span>',
+        'custom-stats': '<span class="ag-icon ag-icon-custom-stats"></span>',
       },
       sideBar: {
         toolPanels: [
           {
-            id: "columns",
-            labelDefault: "Columns",
-            labelKey: "columns",
-            iconKey: "columns",
-            toolPanel: "agColumnsToolPanel",
+            id: 'columns',
+            labelDefault: 'Columns',
+            labelKey: 'columns',
+            iconKey: 'columns',
+            toolPanel: 'agColumnsToolPanel',
           },
           {
-            id: "filters",
-            labelDefault: "Filters",
-            labelKey: "filters",
-            iconKey: "filter",
-            toolPanel: "agFiltersToolPanel",
+            id: 'filters',
+            labelDefault: 'Filters',
+            labelKey: 'filters',
+            iconKey: 'filter',
+            toolPanel: 'agFiltersToolPanel',
           },
           {
-            id: "customStats",
-            labelDefault: "Custom Stats",
-            labelKey: "customStats",
-            iconKey: "custom-stats",
+            id: 'customStats',
+            labelDefault: 'Custom Stats',
+            labelKey: 'customStats',
+            iconKey: 'custom-stats',
             toolPanel: CustomStatsToolPanel,
           },
         ],
-        defaultToolPanel: "customStats",
+        defaultToolPanel: 'customStats',
       },
       rowData: null,
     };
@@ -73,19 +73,19 @@ class GridExample extends Component {
       this.setState({ rowData: data });
     };
 
-    fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+    fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .then((resp) => resp.json())
       .then((data) => updateData(data));
   };
 
   render() {
     return (
-      <div style={{ width: "100%", height: "100%" }}>
-        <div style={{ height: "100%", boxSizing: "border-box" }}>
+      <div style={{ width: '100%', height: '100%' }}>
+        <div style={{ height: '100%', boxSizing: 'border-box' }}>
           <div
             style={{
-              height: "100%",
-              width: "100%",
+              height: '100%',
+              width: '100%',
             }}
             className="ag-theme-alpine"
           >
@@ -104,4 +104,4 @@ class GridExample extends Component {
   }
 }
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

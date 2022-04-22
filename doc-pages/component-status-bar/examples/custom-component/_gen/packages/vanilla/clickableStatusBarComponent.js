@@ -2,18 +2,18 @@ class ClickableStatusBarComponent {
   init(params) {
     this.params = params;
 
-    this.eGui = document.createElement("div");
-    this.eGui.className = "ag-status-name-value";
+    this.eGui = document.createElement('div');
+    this.eGui.className = 'ag-status-name-value';
 
-    var label = document.createElement("span");
-    label.innerText = "Status Bar Component ";
+    var label = document.createElement('span');
+    label.innerText = 'Status Bar Component ';
     this.eGui.appendChild(label);
 
-    this.eButton = document.createElement("button");
+    this.eButton = document.createElement('button');
 
     this.buttonListener = this.onButtonClicked.bind(this);
-    this.eButton.addEventListener("click", this.buttonListener);
-    this.eButton.innerHTML = "Click Me";
+    this.eButton.addEventListener('click', this.buttonListener);
+    this.eButton.innerHTML = 'Click Me';
 
     this.eGui.appendChild(this.eButton);
   }
@@ -23,10 +23,10 @@ class ClickableStatusBarComponent {
   }
 
   destroy() {
-    this.eButton.removeEventListener("click", this.buttonListener);
+    this.eButton.removeEventListener('click', this.buttonListener);
   }
 
   onButtonClicked() {
-    alert("Selected Row Count: " + this.params.api.getSelectedRows().length);
+    alert('Selected Row Count: ' + this.params.api.getSelectedRows().length);
   }
 }

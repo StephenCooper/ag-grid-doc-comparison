@@ -3,11 +3,11 @@ import {
   ExcelExportParams,
   GridApi,
   GridReadyEvent,
-} from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { Component } from "@angular/core";
-import { CountryCellRenderer } from "./country-cell-renderer.component";
+} from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { Component } from '@angular/core';
+import { CountryCellRenderer } from './country-cell-renderer.component';
 // Required feature modules are registered in app.module.ts
 declare function createBase64FlagsFromResponse(
   response: any,
@@ -16,7 +16,7 @@ declare function createBase64FlagsFromResponse(
 ): any;
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<div class="container">
     <div>
       <button class="export" (click)="onBtExport()">Export to Excel</button>
@@ -40,8 +40,8 @@ export class AppComponent {
 
   public columnDefs: ColDef[] = [
     {
-      field: "country",
-      headerName: " ",
+      field: 'country',
+      headerName: ' ',
       minWidth: 70,
       width: 70,
       maxWidth: 70,
@@ -51,15 +51,15 @@ export class AppComponent {
         countryCodes: countryCodes,
       },
     },
-    { field: "athlete" },
-    { field: "age" },
-    { field: "year" },
-    { field: "date" },
-    { field: "sport" },
-    { field: "gold" },
-    { field: "silver" },
-    { field: "bronze" },
-    { field: "total" },
+    { field: 'athlete' },
+    { field: 'age' },
+    { field: 'year' },
+    { field: 'date' },
+    { field: 'sport' },
+    { field: 'gold' },
+    { field: 'silver' },
+    { field: 'bronze' },
+    { field: 'total' },
   ];
   public defaultColDef: ColDef = {
     width: 150,
@@ -67,7 +67,7 @@ export class AppComponent {
   };
   public defaultExcelExportParams: ExcelExportParams = {
     addImageToCell: function (rowIndex, col, value) {
-      if (col.getColId() !== "country") {
+      if (col.getColId() !== 'country') {
         return;
       }
       const countryCode = countryCodes[value];
@@ -75,7 +75,7 @@ export class AppComponent {
         image: {
           id: countryCode,
           base64: base64flags[countryCode],
-          imageType: "png",
+          imageType: 'png',
           width: 20,
           height: 11,
           position: {
@@ -99,7 +99,7 @@ export class AppComponent {
   onGridReady(params: GridReadyEvent) {
     this.gridApi = params.api;
 
-    fetch("https://www.ag-grid.com/example-assets/small-olympic-winners.json")
+    fetch('https://www.ag-grid.com/example-assets/small-olympic-winners.json')
       .then((data) =>
         createBase64FlagsFromResponse(data, countryCodes, base64flags)
       )

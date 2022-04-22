@@ -1,11 +1,11 @@
-"use strict";
+'use strict';
 
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
-import { AgGridReact } from "ag-grid-react";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from 'ag-grid-react';
+import 'ag-grid-enterprise';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 
 class GridExample extends Component {
   constructor(props) {
@@ -13,16 +13,16 @@ class GridExample extends Component {
 
     this.state = {
       columnDefs: [
-        { field: "athlete" },
-        { field: "country" },
-        { field: "age" },
-        { field: "year" },
-        { field: "date" },
-        { field: "sport" },
-        { field: "gold" },
-        { field: "silver" },
-        { field: "bronze" },
-        { field: "total" },
+        { field: 'athlete' },
+        { field: 'country' },
+        { field: 'age' },
+        { field: 'year' },
+        { field: 'date' },
+        { field: 'sport' },
+        { field: 'gold' },
+        { field: 'silver' },
+        { field: 'bronze' },
+        { field: 'total' },
       ],
       defaultColDef: {
         width: 150,
@@ -33,7 +33,7 @@ class GridExample extends Component {
           [
             {
               data: {
-                type: "String",
+                type: 'String',
                 value: logos.AgGrid, // see imageUtils
               },
               mergeAcross: 1,
@@ -42,14 +42,14 @@ class GridExample extends Component {
         ],
         rowHeight: (params) => (params.rowIndex === 1 ? 82 : 20),
         addImageToCell: (rowIndex, col, value) => {
-          if (rowIndex !== 1 || col.getColId() !== "athlete") {
+          if (rowIndex !== 1 || col.getColId() !== 'athlete') {
             return;
           }
           return {
             image: {
-              id: "logo",
+              id: 'logo',
               base64: value,
-              imageType: "png",
+              imageType: 'png',
               width: 295,
               height: 100,
               position: {
@@ -66,7 +66,7 @@ class GridExample extends Component {
     this.gridApi = params.api;
     this.gridColumnApi = params.columnApi;
 
-    fetch("https://www.ag-grid.com/example-assets/small-olympic-winners.json")
+    fetch('https://www.ag-grid.com/example-assets/small-olympic-winners.json')
       .then((response) => response.json())
       .then((data) => params.api.setRowData(data));
   };
@@ -77,7 +77,7 @@ class GridExample extends Component {
 
   render() {
     return (
-      <div style={{ width: "100%", height: "100%" }}>
+      <div style={{ width: '100%', height: '100%' }}>
         <div className="container">
           <div>
             <button className="export" onClick={() => this.onBtExport()}>
@@ -87,8 +87,8 @@ class GridExample extends Component {
           <div className="grid-wrapper">
             <div
               style={{
-                height: "100%",
-                width: "100%",
+                height: '100%',
+                width: '100%',
               }}
               className="ag-theme-alpine"
             >
@@ -106,4 +106,4 @@ class GridExample extends Component {
   }
 }
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

@@ -3,14 +3,14 @@ import {
   GridReadyEvent,
   RowGroupingDisplayType,
   ValueGetterParams,
-} from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { Component } from "@angular/core";
+} from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { Component } from '@angular/core';
 // Required feature modules are registered in app.module.ts
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<ag-grid-angular
     style="width: 100%; height: 100%;"
     class="ag-theme-alpine"
@@ -25,11 +25,11 @@ import { Component } from "@angular/core";
 })
 export class AppComponent {
   public columnDefs: ColDef[] = [
-    { field: "country", rowGroup: true, hide: true },
-    { field: "year", rowGroup: true, hide: true },
-    { field: "gold", aggFunc: "sum" },
-    { field: "silver", aggFunc: "sum" },
-    { field: "bronze", aggFunc: "sum" },
+    { field: 'country', rowGroup: true, hide: true },
+    { field: 'year', rowGroup: true, hide: true },
+    { field: 'gold', aggFunc: 'sum' },
+    { field: 'silver', aggFunc: 'sum' },
+    { field: 'bronze', aggFunc: 'sum' },
   ];
   public defaultColDef: ColDef = {
     flex: 1,
@@ -42,15 +42,15 @@ export class AppComponent {
     // supplies filter values to the column filters based on the colId
     filterValueGetter: (params: ValueGetterParams) => {
       const colId = params.column.getColId();
-      if (colId.includes("country")) {
+      if (colId.includes('country')) {
         return params.data.country;
       }
-      if (colId.includes("year")) {
+      if (colId.includes('year')) {
         return params.data.year;
       }
     },
   };
-  public groupDisplayType: RowGroupingDisplayType = "multipleColumns";
+  public groupDisplayType: RowGroupingDisplayType = 'multipleColumns';
   public rowData: any[] | null = getData();
 
   onGridReady(params: GridReadyEvent) {}

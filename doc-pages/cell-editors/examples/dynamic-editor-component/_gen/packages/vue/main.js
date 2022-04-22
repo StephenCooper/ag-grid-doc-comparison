@@ -1,10 +1,10 @@
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
-import { AgGridVue } from "ag-grid-vue";
-import Vue from "vue";
-import MoodEditor from "./moodEditorVue.js";
-import NumericCellEditor from "./numericCellEditorVue.js";
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import 'ag-grid-enterprise';
+import { AgGridVue } from 'ag-grid-vue';
+import Vue from 'vue';
+import MoodEditor from './moodEditorVue.js';
+import NumericCellEditor from './numericCellEditorVue.js';
 
 const VueExample = {
   template: `
@@ -25,7 +25,7 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
     MoodEditor,
     NumericCellEditor,
   },
@@ -33,31 +33,31 @@ const VueExample = {
     return {
       columnDefs: [
         {
-          field: "type",
+          field: 'type',
         },
         {
-          field: "value",
+          field: 'value',
           editable: true,
           cellEditorSelector: function (params) {
-            if (params.data.type === "age") {
+            if (params.data.type === 'age') {
               return {
-                component: "NumericCellEditor",
+                component: 'NumericCellEditor',
               };
             }
-            if (params.data.type === "gender") {
+            if (params.data.type === 'gender') {
               return {
-                component: "agRichSelectCellEditor",
+                component: 'agRichSelectCellEditor',
                 params: {
-                  values: ["Male", "Female"],
+                  values: ['Male', 'Female'],
                 },
                 popup: true,
               };
             }
-            if (params.data.type === "mood") {
+            if (params.data.type === 'mood') {
               return {
-                component: "MoodEditor",
+                component: 'MoodEditor',
                 popup: true,
-                popupPosition: "under",
+                popupPosition: 'under',
               };
             }
             return undefined;
@@ -77,16 +77,16 @@ const VueExample = {
   },
   methods: {
     onRowEditingStarted(event) {
-      console.log("never called - not doing row editing");
+      console.log('never called - not doing row editing');
     },
     onRowEditingStopped(event) {
-      console.log("never called - not doing row editing");
+      console.log('never called - not doing row editing');
     },
     onCellEditingStarted(event) {
-      console.log("cellEditingStarted");
+      console.log('cellEditingStarted');
     },
     onCellEditingStopped(event) {
-      console.log("cellEditingStopped");
+      console.log('cellEditingStopped');
     },
     onGridReady(params) {
       this.gridApi = params.api;
@@ -96,8 +96,8 @@ const VueExample = {
 };
 
 new Vue({
-  el: "#app",
+  el: '#app',
   components: {
-    "my-component": VueExample,
+    'my-component': VueExample,
   },
 });

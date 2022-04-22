@@ -1,4 +1,4 @@
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
 import {
   ColDef,
   Grid,
@@ -6,18 +6,18 @@ import {
   ModuleRegistry,
   NewValueParams,
   ValueSetterParams,
-} from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine-dark.css";
+} from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine-dark.css';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([ClientSideRowModelModule]);
 
 ///// left table
 var columnDefsLeft: ColDef[] = [
-  { headerName: "Function", field: "function", minWidth: 150 },
-  { headerName: "Value", field: "value" },
-  { headerName: "Times 10", valueGetter: 'getValue("value") * 10' },
+  { headerName: 'Function', field: 'function', minWidth: 150 },
+  { headerName: 'Value', field: 'value' },
+  { headerName: 'Times 10', valueGetter: 'getValue("value") * 10' },
 ];
 
 interface LeftData {
@@ -26,11 +26,11 @@ interface LeftData {
 }
 
 var rowDataLeft: LeftData[] = [
-  { function: "Number Squared", value: "=ctx.theNumber * ctx.theNumber" },
-  { function: "Number x 2", value: "=ctx.theNumber * 2" },
-  { function: "Today's Date", value: "=new Date().toLocaleDateString()" },
-  { function: "Sum A", value: '=ctx.sum("a")' },
-  { function: "Sum B", value: '=ctx.sum("b")' },
+  { function: 'Number Squared', value: '=ctx.theNumber * ctx.theNumber' },
+  { function: 'Number x 2', value: '=ctx.theNumber * 2' },
+  { function: "Today's Date", value: '=new Date().toLocaleDateString()' },
+  { function: 'Sum A', value: '=ctx.sum("a")' },
+  { function: 'Sum B', value: '=ctx.sum("b")' },
 ];
 
 var gridOptionsLeft: GridOptions = {
@@ -48,16 +48,16 @@ var gridOptionsLeft: GridOptions = {
 ///// Right table
 var columnDefsRight: ColDef[] = [
   {
-    headerName: "A",
-    field: "a",
+    headerName: 'A',
+    field: 'a',
     width: 150,
     editable: true,
     valueSetter: numberNewValueHandler,
     onCellValueChanged: cellValueChanged,
   },
   {
-    headerName: "B",
-    field: "b",
+    headerName: 'B',
+    field: 'b',
     width: 150,
     editable: true,
     newValueHandler: numberNewValueHandler,
@@ -116,12 +116,12 @@ function cellValueChanged(params: NewValueParams) {
 }
 
 // setup the grid after the page has finished loading
-var gridDivLeft = document.querySelector<HTMLElement>("#myGridLeft")!;
+var gridDivLeft = document.querySelector<HTMLElement>('#myGridLeft')!;
 new Grid(gridDivLeft, gridOptionsLeft);
-var gridDivRight = document.querySelector<HTMLElement>("#myGridRight")!;
+var gridDivRight = document.querySelector<HTMLElement>('#myGridRight')!;
 new Grid(gridDivRight, gridOptionsRight);
 
-if (typeof window !== "undefined") {
+if (typeof window !== 'undefined') {
   // Attach external event handlers to window so they can be called from index.html
   (<any>window).onNewNumber = onNewNumber;
 }

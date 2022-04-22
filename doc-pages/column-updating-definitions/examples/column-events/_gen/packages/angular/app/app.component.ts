@@ -1,5 +1,5 @@
-import { HttpClient } from "@angular/common/http";
-import { Component } from "@angular/core";
+import { HttpClient } from '@angular/common/http';
+import { Component } from '@angular/core';
 import {
   ColDef,
   ColumnApi,
@@ -13,13 +13,13 @@ import {
   GridApi,
   GridReadyEvent,
   SortChangedEvent,
-} from "ag-grid-community";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
+} from 'ag-grid-community';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import 'ag-grid-enterprise';
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<div class="test-container">
     <div class="test-header">
       <div class="test-button-row">
@@ -96,45 +96,45 @@ export class AppComponent {
   constructor(private http: HttpClient) {}
 
   onSortChanged(e: SortChangedEvent) {
-    console.log("Event Sort Changed", e);
+    console.log('Event Sort Changed', e);
   }
 
   onColumnResized(e: ColumnResizedEvent) {
-    console.log("Event Column Resized", e);
+    console.log('Event Column Resized', e);
   }
 
   onColumnVisible(e: ColumnVisibleEvent) {
-    console.log("Event Column Visible", e);
+    console.log('Event Column Visible', e);
   }
 
   onColumnPivotChanged(e: ColumnPivotChangedEvent) {
-    console.log("Event Pivot Changed", e);
+    console.log('Event Pivot Changed', e);
   }
 
   onColumnRowGroupChanged(e: ColumnRowGroupChangedEvent) {
-    console.log("Event Row Group Changed", e);
+    console.log('Event Row Group Changed', e);
   }
 
   onColumnValueChanged(e: ColumnValueChangedEvent) {
-    console.log("Event Value Changed", e);
+    console.log('Event Value Changed', e);
   }
 
   onColumnMoved(e: ColumnMovedEvent) {
-    console.log("Event Column Moved", e);
+    console.log('Event Column Moved', e);
   }
 
   onColumnPinned(e: ColumnPinnedEvent) {
-    console.log("Event Column Pinned", e);
+    console.log('Event Column Pinned', e);
   }
 
   onBtSortOn() {
     const columnDefs: ColDef[] = getColumnDefs();
     columnDefs.forEach(function (colDef) {
-      if (colDef.field === "age") {
-        colDef.sort = "desc";
+      if (colDef.field === 'age') {
+        colDef.sort = 'desc';
       }
-      if (colDef.field === "athlete") {
-        colDef.sort = "asc";
+      if (colDef.field === 'athlete') {
+        colDef.sort = 'asc';
       }
     });
     this.gridApi.setColumnDefs(columnDefs);
@@ -151,7 +151,7 @@ export class AppComponent {
   onBtWidthNarrow() {
     const columnDefs: ColDef[] = getColumnDefs();
     columnDefs.forEach(function (colDef) {
-      if (colDef.field === "age" || colDef.field === "athlete") {
+      if (colDef.field === 'age' || colDef.field === 'athlete') {
         colDef.width = 100;
       }
     });
@@ -169,7 +169,7 @@ export class AppComponent {
   onBtHide() {
     const columnDefs: ColDef[] = getColumnDefs();
     columnDefs.forEach(function (colDef) {
-      if (colDef.field === "age" || colDef.field === "athlete") {
+      if (colDef.field === 'age' || colDef.field === 'athlete') {
         colDef.hide = true;
       }
     });
@@ -188,7 +188,7 @@ export class AppComponent {
     this.gridColumnApi.setPivotMode(true);
     const columnDefs: ColDef[] = getColumnDefs();
     columnDefs.forEach(function (colDef) {
-      if (colDef.field === "country") {
+      if (colDef.field === 'country') {
         colDef.pivot = true;
       }
     });
@@ -207,7 +207,7 @@ export class AppComponent {
   onBtRowGroupOn() {
     const columnDefs: ColDef[] = getColumnDefs();
     columnDefs.forEach(function (colDef) {
-      if (colDef.field === "sport") {
+      if (colDef.field === 'sport') {
         colDef.rowGroup = true;
       }
     });
@@ -226,11 +226,11 @@ export class AppComponent {
     const columnDefs: ColDef[] = getColumnDefs();
     columnDefs.forEach(function (colDef) {
       if (
-        colDef.field === "gold" ||
-        colDef.field === "silver" ||
-        colDef.field === "bronze"
+        colDef.field === 'gold' ||
+        colDef.field === 'silver' ||
+        colDef.field === 'bronze'
       ) {
-        colDef.aggFunc = "sum";
+        colDef.aggFunc = 'sum';
       }
     });
     this.gridApi.setColumnDefs(columnDefs);
@@ -247,11 +247,11 @@ export class AppComponent {
   onBtPinnedOn() {
     const columnDefs: ColDef[] = getColumnDefs();
     columnDefs.forEach(function (colDef) {
-      if (colDef.field === "athlete") {
-        colDef.pinned = "left";
+      if (colDef.field === 'athlete') {
+        colDef.pinned = 'left';
       }
-      if (colDef.field === "age") {
-        colDef.pinned = "right";
+      if (colDef.field === 'age') {
+        colDef.pinned = 'right';
       }
     });
     this.gridApi.setColumnDefs(columnDefs);
@@ -270,19 +270,19 @@ export class AppComponent {
     this.gridColumnApi = params.columnApi;
 
     this.http
-      .get<any[]>("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      .get<any[]>('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .subscribe((data) => (this.rowData = data));
   }
 }
 
 function getColumnDefs(): ColDef[] {
   return [
-    { field: "athlete" },
-    { field: "age" },
-    { field: "country" },
-    { field: "sport" },
-    { field: "gold" },
-    { field: "silver" },
-    { field: "bronze" },
+    { field: 'athlete' },
+    { field: 'age' },
+    { field: 'country' },
+    { field: 'sport' },
+    { field: 'gold' },
+    { field: 'silver' },
+    { field: 'bronze' },
   ];
 }

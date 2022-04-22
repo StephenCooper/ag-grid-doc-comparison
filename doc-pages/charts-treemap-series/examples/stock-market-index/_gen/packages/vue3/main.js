@@ -1,5 +1,5 @@
-import { AgChartsVue } from "ag-charts-vue3";
-import { createApp } from "vue";
+import { AgChartsVue } from 'ag-charts-vue3';
+import { createApp } from 'vue';
 
 const ChartExample = {
   template: `
@@ -7,7 +7,7 @@ const ChartExample = {
                 :options="options"></ag-charts-vue>
     `,
   components: {
-    "ag-charts-vue": AgChartsVue,
+    'ag-charts-vue': AgChartsVue,
   },
   data: function () {
     return {
@@ -16,15 +16,15 @@ const ChartExample = {
   },
   created() {
     this.options = {
-      type: "hierarchy",
+      type: 'hierarchy',
 
       data,
       series: [
         {
-          type: "treemap",
-          labelKey: "name",
-          sizeKey: "size",
-          colorKey: "color",
+          type: 'treemap',
+          labelKey: 'name',
+          sizeKey: 'size',
+          colorKey: 'color',
           tooltip: {
             renderer: (params) => {
               return {
@@ -37,10 +37,11 @@ const ChartExample = {
         },
       ],
       title: {
-        text: "S&P 500 index stocks categorized by sectors and industries.",
+        text: 'S&P 500 index stocks categorized by sectors and industries.',
       },
       subtitle: {
-        text: "Area represents market cap. Color represents change from the day before.",
+        text:
+          'Area represents market cap. Color represents change from the day before.',
       },
     };
   },
@@ -48,4 +49,4 @@ const ChartExample = {
   methods: {},
 };
 
-createApp(ChartExample).mount("#app");
+createApp(ChartExample).mount('#app');

@@ -1,11 +1,11 @@
-"use strict";
+'use strict';
 
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
-import { AgGridReact } from "ag-grid-react";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from 'ag-grid-react';
+import 'ag-grid-enterprise';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 
 class GridExample extends Component {
   constructor(props) {
@@ -13,11 +13,11 @@ class GridExample extends Component {
 
     this.state = {
       columnDefs: [
-        { field: "country", rowGroup: true, hide: true },
-        { field: "year", rowGroup: true, hide: true },
-        { field: "athlete" },
-        { field: "sport" },
-        { field: "total" },
+        { field: 'country', rowGroup: true, hide: true },
+        { field: 'year', rowGroup: true, hide: true },
+        { field: 'athlete' },
+        { field: 'sport' },
+        { field: 'total' },
       ],
       defaultColDef: {
         flex: 1,
@@ -26,14 +26,14 @@ class GridExample extends Component {
         resizable: true,
       },
       autoGroupColumnDef: {
-        headerName: "My Group",
+        headerName: 'My Group',
         minWidth: 220,
         cellRendererParams: {
           suppressCount: true,
           checkbox: true,
         },
       },
-      groupDisplayType: "singleColumn",
+      groupDisplayType: 'singleColumn',
       rowData: null,
     };
   }
@@ -44,18 +44,18 @@ class GridExample extends Component {
 
     const updateData = (data) => params.api.setRowData(data);
 
-    fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+    fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .then((resp) => resp.json())
       .then((data) => updateData(data));
   };
 
   render() {
     return (
-      <div style={{ width: "100%", height: "100%" }}>
+      <div style={{ width: '100%', height: '100%' }}>
         <div
           style={{
-            height: "100%",
-            width: "100%",
+            height: '100%',
+            width: '100%',
           }}
           className="ag-theme-alpine"
         >
@@ -74,4 +74,4 @@ class GridExample extends Component {
   }
 }
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

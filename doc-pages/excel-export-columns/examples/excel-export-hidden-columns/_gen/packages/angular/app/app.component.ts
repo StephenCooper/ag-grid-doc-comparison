@@ -1,17 +1,17 @@
-import { HttpClient } from "@angular/common/http";
-import { Component } from "@angular/core";
+import { HttpClient } from '@angular/common/http';
+import { Component } from '@angular/core';
 import {
   ColDef,
   ColGroupDef,
   GridApi,
   GridReadyEvent,
-} from "ag-grid-community";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
+} from 'ag-grid-community';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import 'ag-grid-enterprise';
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<div class="container">
     <div class="columns">
       <label class="option" for="allColumns"
@@ -41,24 +41,24 @@ export class AppComponent {
 
   public columnDefs: (ColDef | ColGroupDef)[] = [
     {
-      headerName: "Top Level Column Group",
+      headerName: 'Top Level Column Group',
       children: [
         {
-          headerName: "Group A",
+          headerName: 'Group A',
           children: [
-            { field: "athlete", minWidth: 200 },
-            { field: "country", minWidth: 200 },
-            { headerName: "Group", valueGetter: "data.country.charAt(0)" },
+            { field: 'athlete', minWidth: 200 },
+            { field: 'country', minWidth: 200 },
+            { headerName: 'Group', valueGetter: 'data.country.charAt(0)' },
           ],
         },
         {
-          headerName: "Group B",
+          headerName: 'Group B',
           children: [
-            { field: "sport", minWidth: 150 },
-            { field: "gold", hide: true },
-            { field: "silver", hide: true },
-            { field: "bronze", hide: true },
-            { field: "total", hide: true },
+            { field: 'sport', minWidth: 150 },
+            { field: 'gold', hide: true },
+            { field: 'silver', hide: true },
+            { field: 'bronze', hide: true },
+            { field: 'total', hide: true },
           ],
         },
       ],
@@ -85,7 +85,7 @@ export class AppComponent {
 
     this.http
       .get<any[]>(
-        "https://www.ag-grid.com/example-assets/small-olympic-winners.json"
+        'https://www.ag-grid.com/example-assets/small-olympic-winners.json'
       )
       .subscribe((data) =>
         params.api!.setRowData(data.filter((rec: any) => rec.country != null))
@@ -94,10 +94,10 @@ export class AppComponent {
 }
 
 function getBoolean(id: string) {
-  return !!(document.querySelector("#" + id) as HTMLInputElement).checked;
+  return !!(document.querySelector('#' + id) as HTMLInputElement).checked;
 }
 function getParams() {
   return {
-    allColumns: getBoolean("allColumns"),
+    allColumns: getBoolean('allColumns'),
   };
 }

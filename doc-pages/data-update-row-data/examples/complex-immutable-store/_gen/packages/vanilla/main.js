@@ -5,42 +5,42 @@ const MIN_TRADE_COUNT = 1;
 const MAX_TRADE_COUNT = 10;
 
 const products = [
-  "Palm Oil",
-  "Rubber",
-  "Wool",
-  "Amber",
-  "Copper",
-  "Lead",
-  "Zinc",
-  "Tin",
-  "Aluminium",
-  "Aluminium Alloy",
-  "Nickel",
-  "Cobalt",
-  "Molybdenum",
-  "Recycled Steel",
-  "Corn",
-  "Oats",
-  "Rough Rice",
-  "Soybeans",
-  "Rapeseed",
-  "Soybean Meal",
-  "Soybean Oil",
-  "Wheat",
-  "Milk",
-  "Coca",
-  "Coffee C",
-  "Cotton No.2",
-  "Sugar No.11",
-  "Sugar No.14",
+  'Palm Oil',
+  'Rubber',
+  'Wool',
+  'Amber',
+  'Copper',
+  'Lead',
+  'Zinc',
+  'Tin',
+  'Aluminium',
+  'Aluminium Alloy',
+  'Nickel',
+  'Cobalt',
+  'Molybdenum',
+  'Recycled Steel',
+  'Corn',
+  'Oats',
+  'Rough Rice',
+  'Soybeans',
+  'Rapeseed',
+  'Soybean Meal',
+  'Soybean Oil',
+  'Wheat',
+  'Milk',
+  'Coca',
+  'Coffee C',
+  'Cotton No.2',
+  'Sugar No.11',
+  'Sugar No.14',
 ];
 
 const portfolios = [
-  "Aggressive",
-  "Defensive",
-  "Income",
-  "Speculative",
-  "Hybrid",
+  'Aggressive',
+  'Defensive',
+  'Income',
+  'Speculative',
+  'Hybrid',
 ];
 
 // as we create books, we remember what products they belong to, so we can
@@ -56,21 +56,21 @@ let nextBatchId = 101;
 const columnDefs = [
   // these are the row groups, so they are all hidden (they are showd in the group column)
   {
-    field: "product",
+    field: 'product',
     enableRowGroup: true,
     enablePivot: true,
     rowGroupIndex: 0,
     hide: true,
   },
   {
-    field: "portfolio",
+    field: 'portfolio',
     enableRowGroup: true,
     enablePivot: true,
     rowGroupIndex: 1,
     hide: true,
   },
   {
-    field: "book",
+    field: 'book',
     enableRowGroup: true,
     enablePivot: true,
     rowGroupIndex: 2,
@@ -79,122 +79,122 @@ const columnDefs = [
 
   // all the other columns (visible and not grouped)
   {
-    field: "batch",
+    field: 'batch',
     width: 100,
-    cellClass: "number",
-    aggFunc: "max",
+    cellClass: 'number',
+    aggFunc: 'max',
     enableValue: true,
-    cellRenderer: "agAnimateShowChangeCellRenderer",
+    cellRenderer: 'agAnimateShowChangeCellRenderer',
   },
   {
-    field: "current",
+    field: 'current',
     width: 200,
-    aggFunc: "sum",
+    aggFunc: 'sum',
     enableValue: true,
-    cellClass: "number",
+    cellClass: 'number',
     valueFormatter: numberCellFormatter,
-    cellRenderer: "agAnimateShowChangeCellRenderer",
+    cellRenderer: 'agAnimateShowChangeCellRenderer',
   },
   {
-    field: "previous",
+    field: 'previous',
     width: 200,
-    aggFunc: "sum",
+    aggFunc: 'sum',
     enableValue: true,
-    cellClass: "number",
+    cellClass: 'number',
     valueFormatter: numberCellFormatter,
-    cellRenderer: "agAnimateShowChangeCellRenderer",
+    cellRenderer: 'agAnimateShowChangeCellRenderer',
   },
   {
-    headerName: "Change",
+    headerName: 'Change',
     valueGetter: changeValueGetter,
     width: 200,
-    aggFunc: "sum",
+    aggFunc: 'sum',
     enableValue: true,
-    cellClass: "number",
+    cellClass: 'number',
     valueFormatter: numberCellFormatter,
-    cellRenderer: "agAnimateShowChangeCellRenderer",
+    cellRenderer: 'agAnimateShowChangeCellRenderer',
   },
   {
-    headerName: "PL 1",
-    field: "pl1",
+    headerName: 'PL 1',
+    field: 'pl1',
     width: 200,
-    aggFunc: "sum",
+    aggFunc: 'sum',
     enableValue: true,
-    cellClass: "number",
+    cellClass: 'number',
     valueFormatter: numberCellFormatter,
-    cellRenderer: "agAnimateShowChangeCellRenderer",
+    cellRenderer: 'agAnimateShowChangeCellRenderer',
   },
   {
-    headerName: "PL 2",
-    field: "pl2",
+    headerName: 'PL 2',
+    field: 'pl2',
     width: 200,
-    aggFunc: "sum",
+    aggFunc: 'sum',
     enableValue: true,
-    cellClass: "number",
+    cellClass: 'number',
     valueFormatter: numberCellFormatter,
-    cellRenderer: "agAnimateShowChangeCellRenderer",
+    cellRenderer: 'agAnimateShowChangeCellRenderer',
   },
   {
-    headerName: "Gain-DX",
-    field: "gainDx",
+    headerName: 'Gain-DX',
+    field: 'gainDx',
     width: 200,
-    aggFunc: "sum",
+    aggFunc: 'sum',
     enableValue: true,
-    cellClass: "number",
+    cellClass: 'number',
     valueFormatter: numberCellFormatter,
-    cellRenderer: "agAnimateShowChangeCellRenderer",
+    cellRenderer: 'agAnimateShowChangeCellRenderer',
   },
   {
-    headerName: "SX / PX",
-    field: "sxPx",
+    headerName: 'SX / PX',
+    field: 'sxPx',
     width: 200,
-    aggFunc: "sum",
+    aggFunc: 'sum',
     enableValue: true,
-    cellClass: "number",
+    cellClass: 'number',
     valueFormatter: numberCellFormatter,
-    cellRenderer: "agAnimateShowChangeCellRenderer",
+    cellRenderer: 'agAnimateShowChangeCellRenderer',
   },
   {
-    headerName: "99 Out",
-    field: "_99Out",
+    headerName: '99 Out',
+    field: '_99Out',
     width: 200,
-    aggFunc: "sum",
+    aggFunc: 'sum',
     enableValue: true,
-    cellClass: "number",
+    cellClass: 'number',
     valueFormatter: numberCellFormatter,
-    cellRenderer: "agAnimateShowChangeCellRenderer",
+    cellRenderer: 'agAnimateShowChangeCellRenderer',
   },
   {
-    headerName: "Submitter ID",
-    field: "submitterID",
+    headerName: 'Submitter ID',
+    field: 'submitterID',
     width: 200,
-    aggFunc: "sum",
+    aggFunc: 'sum',
     enableValue: true,
-    cellClass: "number",
+    cellClass: 'number',
     valueFormatter: numberCellFormatter,
-    cellRenderer: "agAnimateShowChangeCellRenderer",
+    cellRenderer: 'agAnimateShowChangeCellRenderer',
   },
   {
-    headerName: "Submitted Deal ID",
-    field: "submitterDealID",
+    headerName: 'Submitted Deal ID',
+    field: 'submitterDealID',
     width: 200,
-    aggFunc: "sum",
+    aggFunc: 'sum',
     enableValue: true,
-    cellClass: "number",
+    cellClass: 'number',
     valueFormatter: numberCellFormatter,
-    cellRenderer: "agAnimateShowChangeCellRenderer",
+    cellRenderer: 'agAnimateShowChangeCellRenderer',
   },
 
   // some string values, that do not get aggregated
-  { field: "dealType", enableRowGroup: true, enablePivot: true },
+  { field: 'dealType', enableRowGroup: true, enablePivot: true },
   {
-    headerName: "Bid",
-    field: "bidFlag",
+    headerName: 'Bid',
+    field: 'bidFlag',
     enableRowGroup: true,
     enablePivot: true,
     width: 100,
   },
-  { field: "comment", editable: true },
+  { field: 'comment', editable: true },
 ];
 
 // simple value getter, however we can see how many times it gets called. this
@@ -248,8 +248,8 @@ function createTradeRecord(product, portfolio, book, batch) {
     trade: createTradeId(),
     submitterID: randomBetween(10, 1000),
     submitterDealID: randomBetween(10, 1000),
-    dealType: Math.random() < 0.2 ? "Physical" : "Financial",
-    bidFlag: Math.random() < 0.5 ? "Buy" : "Sell",
+    dealType: Math.random() < 0.2 ? 'Physical' : 'Financial',
+    bidFlag: Math.random() < 0.5 ? 'Buy' : 'Sell',
     current: current,
     previous: previous,
     pl1: randomBetween(100, 1000),
@@ -265,12 +265,12 @@ function createTradeRecord(product, portfolio, book, batch) {
 function numberCellFormatter(params) {
   return Math.floor(params.value)
     .toString()
-    .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
+    .replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
 }
 
 function createBookName() {
   nextBookId++;
-  return "GL-" + nextBookId;
+  return 'GL-' + nextBookId;
 }
 
 function createTradeId() {
@@ -287,12 +287,12 @@ const gridOptions = {
   },
   autoGroupColumnDef: {
     width: 250,
-    field: "trade",
+    field: 'trade',
     cellRendererParams: {
       checkbox: true,
     },
   },
-  rowSelection: "multiple",
+  rowSelection: 'multiple',
   groupSelectsChildren: true,
   rowData: globalRowData,
   animateRows: true,
@@ -343,7 +343,7 @@ function addSomeItems() {
   const batch = nextBatchId++;
   for (let j = 0; j < addCount; j++) {
     const portfolio = portfolios[Math.floor(Math.random() * portfolios.length)];
-    const books = productToPortfolioToBooks["Palm Oil"][portfolio];
+    const books = productToPortfolioToBooks['Palm Oil'][portfolio];
     const book = books[Math.floor(Math.random() * books.length)];
     const product = products[Math.floor(Math.random() * products.length)];
     const trade = createTradeRecord(product, portfolio, book, batch);
@@ -387,7 +387,7 @@ function updateImmutableObject(original, newValues) {
 }
 
 // after page is loaded, create the grid.
-document.addEventListener("DOMContentLoaded", function () {
-  const eGridDiv = document.querySelector("#myGrid");
+document.addEventListener('DOMContentLoaded', function () {
+  const eGridDiv = document.querySelector('#myGrid');
   new agGrid.Grid(eGridDiv, gridOptions);
 });

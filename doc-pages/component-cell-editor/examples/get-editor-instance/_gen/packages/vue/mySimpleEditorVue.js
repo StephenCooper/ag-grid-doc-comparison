@@ -1,7 +1,7 @@
-import { nextTick } from "vue";
+import { nextTick } from 'vue';
 
-const KEY_BACKSPACE = "Backspace";
-const KEY_DELETE = "Delete";
+const KEY_BACKSPACE = 'Backspace';
+const KEY_DELETE = 'Delete';
 
 export default {
   template: `<input v-model="value" :ref="'input'"/>`,
@@ -12,7 +12,7 @@ export default {
   },
   methods: {
     getValue() {
-      return this.happy ? "Happy" : "Sad";
+      return this.happy ? 'Happy' : 'Sad';
     },
 
     myCustomFunction() {
@@ -29,7 +29,7 @@ export default {
         this.params.eventKey === KEY_BACKSPACE ||
         this.params.eventKey === KEY_DELETE;
       if (isBackspaceOrDelete) {
-        startValue = "";
+        startValue = '';
       } else if (this.params.charPress) {
         startValue = this.params.charPress;
       }
@@ -38,7 +38,7 @@ export default {
         return startValue;
       }
 
-      return "";
+      return '';
     },
   },
   created() {

@@ -1,13 +1,13 @@
-import { ICellEditorAngularComp } from "@ag-grid-community/angular";
+import { ICellEditorAngularComp } from '@ag-grid-community/angular';
 import {
   AfterViewInit,
   Component,
   ViewChild,
   ViewContainerRef,
-} from "@angular/core";
+} from '@angular/core';
 
 @Component({
-  selector: "editor-cell",
+  selector: 'editor-cell',
   template: `
     <div #container class="mood" tabindex="0" (keydown)="onKeyDown($event)">
       <img
@@ -53,7 +53,7 @@ import {
 export class MoodEditor implements ICellEditorAngularComp, AfterViewInit {
   private params: any;
 
-  @ViewChild("container", { read: ViewContainerRef })
+  @ViewChild('container', { read: ViewContainerRef })
   public container!: ViewContainerRef;
   public happy = false;
 
@@ -66,11 +66,11 @@ export class MoodEditor implements ICellEditorAngularComp, AfterViewInit {
 
   agInit(params: any): void {
     this.params = params;
-    this.setHappy(params.value === "Happy");
+    this.setHappy(params.value === 'Happy');
   }
 
   getValue(): any {
-    return this.happy ? "Happy" : "Sad";
+    return this.happy ? 'Happy' : 'Sad';
   }
 
   isPopup(): boolean {
@@ -93,8 +93,8 @@ export class MoodEditor implements ICellEditorAngularComp, AfterViewInit {
   onKeyDown(event: any): void {
     const key = event.key;
     if (
-      key === "ArrowLeft" || // left
-      key == "ArrowRight"
+      key === 'ArrowLeft' || // left
+      key == 'ArrowRight'
     ) {
       // right
       this.toggleMood();

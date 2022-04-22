@@ -1,9 +1,9 @@
-import { Component } from "@angular/core";
-import { AgChartOptions } from "ag-charts-community";
+import { Component } from '@angular/core';
+import { AgChartOptions } from 'ag-charts-community';
 declare var data: any;
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<ag-charts-angular
     style="height: 100%"
     [options]="options"
@@ -14,15 +14,15 @@ export class AppComponent {
 
   constructor() {
     this.options = {
-      type: "hierarchy",
+      type: 'hierarchy',
 
       data,
       series: [
         {
-          type: "treemap",
-          labelKey: "name",
-          sizeKey: "size",
-          colorKey: "color",
+          type: 'treemap',
+          labelKey: 'name',
+          sizeKey: 'size',
+          colorKey: 'color',
           tooltip: {
             renderer: (params) => {
               return {
@@ -35,10 +35,11 @@ export class AppComponent {
         },
       ],
       title: {
-        text: "S&P 500 index stocks categorized by sectors and industries.",
+        text: 'S&P 500 index stocks categorized by sectors and industries.',
       },
       subtitle: {
-        text: "Area represents market cap. Color represents change from the day before.",
+        text:
+          'Area represents market cap. Color represents change from the day before.',
       },
     };
   }

@@ -1,20 +1,20 @@
-import { ICellEditorAngularComp } from "@ag-grid-community/angular";
-import { ICellEditorParams } from "@ag-grid-community/core";
+import { ICellEditorAngularComp } from '@ag-grid-community/angular';
+import { ICellEditorParams } from '@ag-grid-community/core';
 import {
   AfterViewInit,
   Component,
   ViewChild,
   ViewContainerRef,
-} from "@angular/core";
+} from '@angular/core';
 
-const KEY_BACKSPACE = "Backspace";
-const KEY_DELETE = "Delete";
-const KEY_F2 = "F2";
-const KEY_ENTER = "Enter";
-const KEY_TAB = "Tab";
+const KEY_BACKSPACE = 'Backspace';
+const KEY_DELETE = 'Delete';
+const KEY_F2 = 'F2';
+const KEY_ENTER = 'Enter';
+const KEY_TAB = 'Tab';
 
 @Component({
-  selector: "numeric-cell",
+  selector: 'numeric-cell',
   template: `<input
     #input
     (keydown)="onKeyDown($event)"
@@ -28,7 +28,7 @@ export class NumericEditor implements ICellEditorAngularComp, AfterViewInit {
   public highlightAllOnFocus = true;
   private cancelBeforeStart = false;
 
-  @ViewChild("input", { read: ViewContainerRef })
+  @ViewChild('input', { read: ViewContainerRef })
   public input!: ViewContainerRef;
 
   agInit(params: ICellEditorParams): void {
@@ -37,17 +37,17 @@ export class NumericEditor implements ICellEditorAngularComp, AfterViewInit {
 
     // only start edit if key pressed is a number, not a letter
     this.cancelBeforeStart = !!(
-      params.charPress && "1234567890".indexOf(params.charPress) < 0
+      params.charPress && '1234567890'.indexOf(params.charPress) < 0
     );
   }
 
-  setInitialState(params: any) {
+  setInitialState(params: ICellEditorParams) {
     let startValue;
     let highlightAllOnFocus = true;
 
-    if (params.key === KEY_BACKSPACE || params.key === KEY_DELETE) {
+    if (params.eventKey === KEY_BACKSPACE || params.eventKey === KEY_DELETE) {
       // if backspace or delete pressed, we clear the cell
-      startValue = "";
+      startValue = '';
     } else if (params.charPress) {
       // if a letter was pressed, we start with the letter
       startValue = params.charPress;
@@ -55,7 +55,7 @@ export class NumericEditor implements ICellEditorAngularComp, AfterViewInit {
     } else {
       // otherwise we start with the current value
       startValue = params.value;
-      if (params.key === KEY_F2) {
+      if (params.eventKey === KEY_F2) {
         highlightAllOnFocus = false;
       }
     }
@@ -131,7 +131,7 @@ export class NumericEditor implements ICellEditorAngularComp, AfterViewInit {
   }
 
   private isLeftOrRight(event: any) {
-    return ["ArrowLeft", "ArrowRight"].indexOf(event.key) > -1;
+    return ['ArrowLeft', 'ArrowRight'].indexOf(event.key) > -1;
   }
 
   private finishedEditingPressed(event: any) {

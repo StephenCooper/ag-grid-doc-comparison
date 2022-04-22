@@ -2,14 +2,13 @@
 title: "8 Performance Hacks for JavaScript"
 frameworks: ["javascript"]
 ---
-
 Niall Crosby | 8th September 2017
 
 ## Make It Faster
 
 [AG Grid](https://www.ag-grid.com/) is a JavaScript data grid for displaying large amounts of data in the browser in a style similar to Excel spreadsheets. AG Grid is fast with large volumes of data. This blog presents performance patterns, or performance 'hacks', that we used to put our grid on steroids.
 
-We describe how to squeeze performance out of the browser which can be applied to anyone wanting to tune their own applications. It will be of particular interest to users of AG Grid to improve understanding of how to work with the grid. We also think that it will be of interest to anyone creating a grid. We relish the idea of healthy competition so we are happy to contribute to the wider community knowledge.
+We describe how to squeeze performance out of the browser which can be applied to anyone wanting to tune their own applications. It will be of particular interest to users of AG Grid to  improve understanding of how to work with the grid. We also think that it will be of interest to anyone creating a grid.  We relish the idea of healthy competition so we are happy to contribute to the wider community knowledge.
 
 ## Hack 1 - Row Virtualisation
 
@@ -37,16 +36,16 @@ Adding event listeners to the DOM results in a small performance hit. A grid wou
 
 ### Solution - Event Propagation
 
-6 of these 8 events propagate (the exceptions are _mouseenter_ and _mouseleave_). So instead of adding listeners to each cell, we add each listener once to the container that contains the cells. That way the listeners are added once when the grid initialises and not to each individual cell.
+6 of these 8 events propagate (the exceptions are _mouseenter_ and _mouseleave_). So instead of adding listeners to each cell, we add  each listener once to the container that contains the cells. That way the listeners are added once when the grid initialises and not to each individual cell.
 
 The challenge is then working out which cell caused the event.
 
 ```js
 // parentContainer will contain all the cells
-var parentContainer = document.createElement("div");
+var parentContainer = document.createElement('div');
 
 // cells are regular DOM div objects
-var eCell = document.createElement("div");
+var eCell = document.createElement('div');
 // attach our own properties to the DOM object.
 // once we are not using DOM properties, there is no performance hit.
 eCell.__col = colId;
@@ -55,23 +54,23 @@ eCell.__row = rowId;
 parentContainer.appendChild(eCell);
 
 // listen for clicks on the parent container only
-parentContainer.addEventListener("click", myEventListener);
+parentContainer.addEventListener('click', myEventListener);
 
 function myEventListener(event) {
-  // go through all elements of the event, starting from the element that caused the event
-  // and continue up to the parent container. we should find the cell element along the way.
-  var domElement = event.target;
-  var col, row;
-  while (domElement != parentContainer) {
-    // see if the dom element has col and row info
-    if (domElement.__col && domElement.__row) {
-      // if yes, we have found the cell, and know which row and col it is
-      col = domElement.__col;
-      row = domElement.__row;
-      break;
+    // go through all elements of the event, starting from the element that caused the event
+    // and continue up to the parent container. we should find the cell element along the way.
+    var domElement = event.target;
+    var col, row;
+    while (domElement!=parentContainer) {
+        // see if the dom element has col and row info
+        if (domElement.__col && domElement.__row) {
+            // if yes, we have found the cell, and know which row and col it is
+            col = domElement.__col;
+            row = domElement.__row;
+            break;
+        }
+        domElement = domElement.parentElement;
     }
-    domElement = domElement.parentElement;
-  }
 }
 ```
 
@@ -85,7 +84,7 @@ You might have noticed that we are attaching arbitrary attributes (`__col` and `
 
 ## Hack 4 - Throw Away DOM
 
-Good programming sense tells you to de-construct everything you construct. This means any DOM item you add to the browser you should remove in your clean down code. In the context of your framework, it means removing components from their parents when the component is disposed.
+Good programming sense tells you to de-construct everything you construct. This means any DOM item you add to the browser you should remove in your clean down code. In the context of your framework,  it means removing components from their parents when the component is disposed.
 
 This hack goes as follows: if you are removing an item from the DOM (e.g. a grid cell) but you know the parent of that item is also going to be removed (e.g. a grid row) then there is no need to remove the child items individually.
 
@@ -103,15 +102,15 @@ So AG Grid leverages the speed of `.innerHTML` by creating the HTML in one big s
 // build up the row's HTML in a string
 var htmlParts = [];
 htmlParts.push('<div class="ag-row">');
-cells.forEach(function (cell) {
-  htmlParts.push('<div class="ag-cell">');
-  htmlParts.push(cell.getValue());
-  htmlParts.push("</div>");
+cells.forEach( function(cell) {
+    htmlParts.push('<div class="ag-cell">');
+    htmlParts.push(cell.getValue());
+    htmlParts.push('</div>');
 });
-htmlParts.push("</div>");
+htmlParts.push('</div>');
 
 // append the string into the DOM, one DOM hit for the entire row
-var rowHtml = htmlParts.join("");
+var rowHtml = htmlParts.join('');
 eContainer.insertAdjacentHTML(rowHtml);
 ```
 
@@ -149,12 +148,12 @@ The grid then uses animation frames (or timeouts if the browser does not support
 - Cells are drawn in stages, as quickly as the browser will allow while giving visual feedback to the user.
 - Removing of old rows is left till last, as that has no visual impact.
 - If a new scroll event comes in, then this gets priority again over older tasks of lower priority,
-  keeping all pinned areas in sync as a priority.
+    keeping all pinned areas in sync as a priority.
 - Tasks that are old are cancelled i.e. the user has scrolled past by the the time the row is to be rendered.
 
 Having this many tasks should result in a lot of animation frames. To avoid this, the grid does not put each individual task into an animation frame. This would be overkill as then the create, destroy and schedule of animations frames would add their own overhead. Instead the grid requests one animation frame and executes as many tasks as it can within 60ms. We picked this timeframe following tests for the best user experience. If the grid does not exhaust the task queue, it requests another animation frame and tries again, and keeps trying until the task queue is emptied.
 
-Fast browsers such as Chrome can get everything done in one animation frame and produces zero flicker. Slower browsers can take 10+ animation frames to process the task queue for a standard scroll. The user experiences smooth scrolling with iterative feedback as the grid is rendered in stages, which is better than blocking the UI and painting everything in one go.
+Fast browsers such as Chrome can get everything done in one animation frame and produces zero flicker. Slower browsers can take 10+ animation frames to process the task queue  for a standard scroll. The user experiences smooth scrolling with iterative feedback as the grid is rendered in stages, which is better than blocking the UI and painting everything in one go.
 
 As we move through these improvements, you will notice we are using animation frames to add _mouseenter_ and _mouseleave_. This is different to the other events where we use event propagation to listen for all other events at the parent level. _mouseenter_ and _mouseleave_ do not propagate, so instead we add these in an animation frame after the rows are rendered. This has minimal impact to the user. They are not waiting for these events to be added before they see the row on the
 screen.
@@ -167,7 +166,7 @@ By default, the DOM created by the grid will have the rows appear in the order t
 
 Screen readers and other tools for accessibility require the row order to be the same in the DOM as on the screen. Having the row order consistent with the screen causes a performance hit, as it stops the grid from adding rows in bulk.
 
-So there is a trade-off. By default, the grid does not order the rows. If the user wants the row order, they can use the property `ensureDomOrder=true`. The grid works a bit slower but is compatible with screen readers.
+So there is a trade-off. By default, the grid does not order the rows. If the user wants the row order,  they can use the property `ensureDomOrder=true`. The grid works a bit slower but is compatible with screen readers.
 
 ## Summary
 

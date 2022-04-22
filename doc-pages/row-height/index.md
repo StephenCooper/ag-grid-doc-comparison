@@ -24,7 +24,7 @@ Changing the property will set a new row height for all rows, including pinned r
 
 ## getRowHeight Callback
 
-<api-documentation source='grid-properties/properties.json' section='styling' names='["getRowHeight"]' ></api-documentation>
+<api-documentation source='grid-options/properties.json' section='styling' names='["getRowHeight"]' ></api-documentation>
 
 To change the row height so that each row can have a different height,
 implement the `getRowHeight(params)` callback. For example, to set the height
@@ -39,6 +39,7 @@ const gridOptions = {
 The example below shows dynamic row height, specifying a different row height for each row. It uses the `getRowHeight(params)` callback to achieve this.
 
 <grid-example title='Row Height Simple' name='row-height-simple' type='generated'></grid-example>
+
 
 ## Changing Row Height
 
@@ -76,6 +77,7 @@ callback.
 <api-documentation source='row-object/resources/methods.json' section='rowNodeMethods' names='["setRowHeight"]' config='{"overrideBottomMargin":"0rem"}' ></api-documentation>
 <api-documentation source='grid-api/api.json' section='rendering' names='["onRowHeightChanged"]' ></api-documentation>
 
+
 ### Example Changing Row Height
 
 The example below changes the row height in the different ways described above.
@@ -89,6 +91,7 @@ height is an AG Grid Community feature, we just demonstrate it against groups an
 rows below.
 
 <grid-example title='Changing Row Height' name='row-height-change' type='generated' options=' { "enterprise": true, "exampleHeight": 590, "modules": ["clientside", "rowgrouping", "menu", "columnpanel"] }'></grid-example>
+
 
 ## Text Wrapping
 
@@ -125,7 +128,6 @@ height of the largest column is used.
 The example below shows auto height. Column A has Auto Height enabled by setting both `wrapText=true` and `autoHeight=true`. Column B only has `wrapText=true` set so it's contents are clipped if content doesn't fit.
 
 <!-- this example uses a timeout to set data - the runner doesn't currently support this sort of thing -->
-
 <grid-example title='Auto Row Height' name='auto-row-height' type='generated' options=' { "enterprise": true, "modules": ["clientside", "rowgrouping", "menu", "columnpanel"] }'></grid-example>
 
 ### Lazy Height Calculation
@@ -140,7 +142,7 @@ This means the row heights and row positions are changing as the grid is scrolli
 
 - The vertical scroll range (how much you can scroll over) will change dynamically to fit the rows. If scrolling by dragging the scroll thumb with the mouse, the scroll thumb will not follow the mouse. It will either lag behind or jump ahead, depending on whether the row height calculations are increasing or decreasing the vertical scroll range.
 
-- If scrolling up and showing rows for the first time (e.g. the user jumps to the bottom scroll position and then starts slowly scrolling up), then the row positions will jump as the rows coming into view at the top will get resized and the new height will impact the position of all rows beneath it. For example if the row gets resized to be 10 pixels taller, rows below it will get pushed down by 10 rows. If scrolling down this isn't observed as rows below are not in view.
+-  If scrolling up and showing rows for the first time (e.g. the user jumps to the bottom scroll position and then starts slowly scrolling up), then the row positions will jump as the rows coming into view at the top will get resized and the new height will impact the position of all rows beneath it. For example if the row gets resized to be 10 pixels taller, rows below it will get pushed down by 10 rows. If scrolling down this isn't observed as rows below are not in view.
 
 The above are results of Lazy Height Calculation. It is not possible to avoid these effects.
 
@@ -151,6 +153,7 @@ Columns with Auto Height will always be rendered. The grid needs to have all Aut
 ### Auto Height Performance Consideration
 
 Because auto-height adds size listeners to cells and stops Column Virtualisation, consideration should be given for when and how to use it. Only apply auto-height to columns where it makes sense. For example, if you have many columns that do not require a variable height, then do not set them to auto-height.
+
 
 ## Height for Pinned Rows
 

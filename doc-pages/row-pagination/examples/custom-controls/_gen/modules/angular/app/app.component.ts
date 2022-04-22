@@ -3,15 +3,15 @@ import {
   GridApi,
   GridReadyEvent,
   ValueFormatterParams,
-} from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { HttpClient } from "@angular/common/http";
-import { Component } from "@angular/core";
+} from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { HttpClient } from '@angular/common/http';
+import { Component } from '@angular/core';
 // Required feature modules are registered in app.module.ts
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<div class="example-wrapper">
     <div class="example-header">
       <div>
@@ -56,42 +56,42 @@ export class AppComponent {
   public columnDefs: ColDef[] = [
     // this row just shows the row index, doesn't use any data from the row
     {
-      headerName: "#",
+      headerName: '#',
       width: 50,
       valueFormatter: function (params: ValueFormatterParams) {
         return `${parseInt(params.node!.id!) + 1}`;
       },
     },
-    { headerName: "Athlete", field: "athlete", width: 150 },
-    { headerName: "Age", field: "age", width: 90 },
-    { headerName: "Country", field: "country", width: 120 },
-    { headerName: "Year", field: "year", width: 90 },
-    { headerName: "Date", field: "date", width: 110 },
-    { headerName: "Sport", field: "sport", width: 110 },
-    { headerName: "Gold", field: "gold", width: 100 },
-    { headerName: "Silver", field: "silver", width: 100 },
-    { headerName: "Bronze", field: "bronze", width: 100 },
-    { headerName: "Total", field: "total", width: 100 },
+    { headerName: 'Athlete', field: 'athlete', width: 150 },
+    { headerName: 'Age', field: 'age', width: 90 },
+    { headerName: 'Country', field: 'country', width: 120 },
+    { headerName: 'Year', field: 'year', width: 90 },
+    { headerName: 'Date', field: 'date', width: 110 },
+    { headerName: 'Sport', field: 'sport', width: 110 },
+    { headerName: 'Gold', field: 'gold', width: 100 },
+    { headerName: 'Silver', field: 'silver', width: 100 },
+    { headerName: 'Bronze', field: 'bronze', width: 100 },
+    { headerName: 'Total', field: 'total', width: 100 },
   ];
   public defaultColDef: ColDef = {
     resizable: true,
     filter: true,
   };
-  public rowSelection = "multiple";
+  public rowSelection = 'multiple';
   public paginationPageSize = 500;
   public rowData!: any[];
 
   constructor(private http: HttpClient) {}
 
   onPaginationChanged() {
-    console.log("onPaginationPageLoaded");
+    console.log('onPaginationPageLoaded');
     // Workaround for bug in events order
     if (this.gridApi!) {
-      setText("#lbLastPageFound", this.gridApi.paginationIsLastPageFound());
-      setText("#lbPageSize", this.gridApi.paginationGetPageSize());
+      setText('#lbLastPageFound', this.gridApi.paginationIsLastPageFound());
+      setText('#lbPageSize', this.gridApi.paginationGetPageSize());
       // we +1 to current page, as pages are zero based
-      setText("#lbCurrentPage", this.gridApi.paginationGetCurrentPage() + 1);
-      setText("#lbTotalPages", this.gridApi.paginationGetTotalPages());
+      setText('#lbCurrentPage', this.gridApi.paginationGetCurrentPage() + 1);
+      setText('#lbTotalPages', this.gridApi.paginationGetTotalPages());
       setLastButtonDisabled(!this.gridApi.paginationIsLastPageFound());
     }
   }
@@ -126,7 +126,7 @@ export class AppComponent {
     this.gridApi = params.api;
 
     this.http
-      .get<any[]>("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      .get<any[]>('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .subscribe((data) => (this.rowData = data));
   }
 }
@@ -135,5 +135,5 @@ function setText(selector: string, text: any) {
   (document.querySelector(selector) as any).innerHTML = text;
 }
 function setLastButtonDisabled(disabled: boolean) {
-  (document.querySelector("#btLast") as any).disabled = disabled;
+  (document.querySelector('#btLast') as any).disabled = disabled;
 }

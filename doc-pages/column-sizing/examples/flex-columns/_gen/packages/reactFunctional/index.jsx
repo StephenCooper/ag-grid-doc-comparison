@@ -1,10 +1,10 @@
-"use strict";
+'use strict';
 
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import { AgGridReact } from "ag-grid-react";
-import React, { useCallback, useMemo, useState } from "react";
-import { render } from "react-dom";
+import React, { useCallback, useMemo, useRef, useState } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from 'ag-grid-react';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 
 var colSpan = function (params) {
   return params.data === 2 ? 3 : 1;
@@ -12,36 +12,36 @@ var colSpan = function (params) {
 
 const fillAllCellsWithWidthMeasurement = () => {
   Array.prototype.slice
-    .call(document.querySelectorAll(".ag-cell"))
+    .call(document.querySelectorAll('.ag-cell'))
     .forEach(function (cell) {
       var width = cell.offsetWidth;
       var isFullWidthRow = cell.parentElement.childNodes.length === 1;
-      cell.textContent = (isFullWidthRow ? "Total width: " : "") + width + "px";
+      cell.textContent = (isFullWidthRow ? 'Total width: ' : '') + width + 'px';
     });
 };
 
 const GridExample = () => {
-  const containerStyle = useMemo(() => ({ width: "100%", height: "100%" }), []);
-  const gridStyle = useMemo(() => ({ height: "100%", width: "100%" }), []);
+  const containerStyle = useMemo(() => ({ width: '100%', height: '100%' }), []);
+  const gridStyle = useMemo(() => ({ height: '100%', width: '100%' }), []);
   const [rowData, setRowData] = useState([1, 2]);
   const [columnDefs, setColumnDefs] = useState([
     {
-      headerName: "A",
-      field: "author",
+      headerName: 'A',
+      field: 'author',
       width: 300,
       colSpan: colSpan,
     },
     {
-      headerName: "Flexed Columns",
+      headerName: 'Flexed Columns',
       children: [
         {
-          headerName: "B",
+          headerName: 'B',
           minWidth: 200,
           maxWidth: 350,
           flex: 2,
         },
         {
-          headerName: "C",
+          headerName: 'C',
           flex: 1,
         },
       ],
@@ -71,4 +71,4 @@ const GridExample = () => {
   );
 };
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

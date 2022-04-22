@@ -1,4 +1,4 @@
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
 import {
   CheckboxSelectionCallbackParams,
   ColDef,
@@ -6,10 +6,10 @@ import {
   GridOptions,
   HeaderCheckboxSelectionCallbackParams,
   ModuleRegistry,
-} from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { RowGroupingModule } from "@ag-grid-enterprise/row-grouping";
+} from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { RowGroupingModule } from '@ag-grid-enterprise/row-grouping';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([ClientSideRowModelModule, RowGroupingModule]);
@@ -26,26 +26,26 @@ var headerCheckboxSelection = function (
 };
 const columnDefs: ColDef[] = [
   {
-    field: "athlete",
+    field: 'athlete',
     minWidth: 170,
     checkboxSelection: checkboxSelection,
     headerCheckboxSelection: headerCheckboxSelection,
   },
-  { field: "age" },
-  { field: "country" },
-  { field: "year" },
-  { field: "date" },
-  { field: "sport" },
-  { field: "gold" },
-  { field: "silver" },
-  { field: "bronze" },
-  { field: "total" },
+  { field: 'age' },
+  { field: 'country' },
+  { field: 'year' },
+  { field: 'date' },
+  { field: 'sport' },
+  { field: 'gold' },
+  { field: 'silver' },
+  { field: 'bronze' },
+  { field: 'total' },
 ];
 
 var autoGroupColumnDef: ColDef = {
-  headerName: "Group",
+  headerName: 'Group',
   minWidth: 170,
-  field: "athlete",
+  field: 'athlete',
   valueGetter: function (params) {
     if (params.node!.group) {
       return params.node!.key;
@@ -54,7 +54,7 @@ var autoGroupColumnDef: ColDef = {
     }
   },
   headerCheckboxSelection: true,
-  cellRenderer: "agGroupCellRenderer",
+  cellRenderer: 'agGroupCellRenderer',
   cellRendererParams: {
     checkbox: true,
   },
@@ -75,9 +75,9 @@ const gridOptions: GridOptions = {
   suppressRowClickSelection: true,
   groupSelectsChildren: true,
   // debug: true,
-  rowSelection: "multiple",
-  rowGroupPanelShow: "always",
-  pivotPanelShow: "always",
+  rowSelection: 'multiple',
+  rowGroupPanelShow: 'always',
+  pivotPanelShow: 'always',
   enableRangeSelection: true,
   columnDefs: columnDefs,
   pagination: true,
@@ -85,9 +85,9 @@ const gridOptions: GridOptions = {
 };
 
 // setup the grid after the page has finished loading
-var gridDiv = document.querySelector<HTMLElement>("#myGrid")!;
+var gridDiv = document.querySelector<HTMLElement>('#myGrid')!;
 new Grid(gridDiv, gridOptions);
 
-fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
   .then((response) => response.json())
   .then((data) => gridOptions.api!.setRowData(data));

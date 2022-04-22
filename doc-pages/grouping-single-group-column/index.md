@@ -38,7 +38,7 @@ The example below demonstrates the default row grouping behaviour. Note the foll
 
 <grid-example title='Enabling Single Group Column' name='enabling-single-group-column' type='generated' options='{ "enterprise": true, "exampleHeight": 540, "modules": ["clientside", "rowgrouping"] }'></grid-example>
 
-## Group Column Configuration
+## Group Column Configuration  
 
 The Single Group Column display type adds a single Auto Group Column to the grid. To change the default configuration
 of this group column, use the `autoGroupColumnDef` grid option as shown below:
@@ -56,7 +56,7 @@ const gridOptions = {
 }
 </snippet>
 
-Note how in the snippet above that the `autoGroupColumnDef` can be used to override any [Column Property](/column-definitions/).
+Note how in the snippet above that the `autoGroupColumnDef` can be used to override any [Column Property](/column-definitions/). 
 
 The Auto Group Column uses the [Group Cell Renderer](/group-cell-renderer/) to render group cells, and are configured via the `cellRendererParams` property.
 
@@ -64,7 +64,7 @@ The following example demonstrates some of the available `autoGroupColumnDef` co
 
 - The group column name is changed by setting `headerName = 'My Group'`.
 
-- The min width of the group column is changed via `minWidth = 220`.
+- The min width of the group column is changed via `minWidth = 220`.  
 
 - The count of each row group is removed by setting `cellRendererParams.suppressCount = true`.
 

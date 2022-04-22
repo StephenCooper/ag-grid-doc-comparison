@@ -23,7 +23,7 @@ export default {
   },
   beforeMount() {},
   mounted() {
-    this.params.column.addEventListener("sortChanged", this.onSortChanged);
+    this.params.column.addEventListener('sortChanged', this.onSortChanged);
     this.onSortChanged();
   },
   methods: {
@@ -32,13 +32,13 @@ export default {
     },
 
     onSortChanged() {
-      this.ascSort = this.descSort = this.noSort = "inactive";
+      this.ascSort = this.descSort = this.noSort = 'inactive';
       if (this.params.column.isSortAscending()) {
-        this.ascSort = "active";
+        this.ascSort = 'active';
       } else if (this.params.column.isSortDescending()) {
-        this.descSort = "active";
+        this.descSort = 'active';
       } else {
-        this.noSort = "active";
+        this.noSort = 'active';
       }
     },
 

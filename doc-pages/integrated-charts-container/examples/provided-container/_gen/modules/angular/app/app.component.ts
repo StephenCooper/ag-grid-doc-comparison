@@ -1,12 +1,12 @@
-import { ChartRef, ColDef, GridReadyEvent } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { HttpClient } from "@angular/common/http";
-import { Component } from "@angular/core";
+import { ChartRef, ColDef, GridReadyEvent } from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { HttpClient } from '@angular/common/http';
+import { Component } from '@angular/core';
 // Required feature modules are registered in app.module.ts
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<div id="container">
     <ag-grid-angular
       style="width: 100%; height: 300px;"
@@ -24,11 +24,11 @@ import { Component } from "@angular/core";
 })
 export class AppComponent {
   public columnDefs: ColDef[] = [
-    { field: "athlete", width: 150, chartDataType: "category" },
-    { field: "gold", chartDataType: "series" },
-    { field: "silver", chartDataType: "series" },
-    { field: "bronze", chartDataType: "series" },
-    { field: "total", chartDataType: "series" },
+    { field: 'athlete', width: 150, chartDataType: 'category' },
+    { field: 'gold', chartDataType: 'series' },
+    { field: 'silver', chartDataType: 'series' },
+    { field: 'bronze', chartDataType: 'series' },
+    { field: 'total', chartDataType: 'series' },
   ];
   public defaultColDef: ColDef = {
     editable: true,
@@ -46,7 +46,7 @@ export class AppComponent {
   onGridReady(params: GridReadyEvent) {
     this.http
       .get<any[]>(
-        "https://www.ag-grid.com/example-assets/wide-spread-of-sports.json"
+        'https://www.ag-grid.com/example-assets/wide-spread-of-sports.json'
       )
       .subscribe((data) => {
         this.rowData = data;
@@ -55,17 +55,17 @@ export class AppComponent {
 
   createChartContainer(chartRef: ChartRef) {
     var eChart = chartRef.chartElement;
-    var eTemp = document.createElement("div");
+    var eTemp = document.createElement('div');
     eTemp.innerHTML = chartPanelTemplate;
     var eChartWrapper = eTemp.firstChild as any;
-    var eParent = document.querySelector("#container") as HTMLElement;
+    var eParent = document.querySelector('#container') as HTMLElement;
     eParent.appendChild(eChartWrapper);
-    eChartWrapper.querySelector(".chart-wrapper-body").appendChild(eChart);
-    eChartWrapper.querySelector(".chart-wrapper-title").innerText =
-      "Chart Created At " + new Date();
+    eChartWrapper.querySelector('.chart-wrapper-body').appendChild(eChart);
+    eChartWrapper.querySelector('.chart-wrapper-title').innerText =
+      'Chart Created At ' + new Date();
     eChartWrapper
-      .querySelector(".chart-wrapper-close")
-      .addEventListener("click", function () {
+      .querySelector('.chart-wrapper-close')
+      .addEventListener('click', function () {
         chartRef.destroyChart();
         eParent.removeChild(eChartWrapper);
       });
@@ -77,6 +77,6 @@ var chartPanelTemplate =
   '<div class="chart-wrapper-top">' +
   '<span class="chart-wrapper-title"></span>' +
   '<button class="chart-wrapper-close">Destroy Chart</button>' +
-  "</div>" +
+  '</div>' +
   '<div class="chart-wrapper-body"></div>' +
-  "</div>";
+  '</div>';

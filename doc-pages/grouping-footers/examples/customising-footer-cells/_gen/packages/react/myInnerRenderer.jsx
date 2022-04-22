@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 
 export default class MyInnerRenderer extends Component {
   constructor(props) {
@@ -13,10 +13,10 @@ export default class MyInnerRenderer extends Component {
     if (footer) {
       if (isRootLevel) {
         return (
-          <span style={{ color: "navy", fontWeight: "bold" }}>Grand Total</span>
+          <span style={{ color: 'navy', fontWeight: 'bold' }}>Grand Total</span>
         );
       } else {
-        return <span style={{ color: "navy" }}>Sub Total ${value}</span>;
+        return <span style={{ color: 'navy' }}>Sub Total {value}</span>;
       }
     } else {
       return <span>{value}</span>;

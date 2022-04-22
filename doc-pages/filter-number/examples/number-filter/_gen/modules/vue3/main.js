@@ -1,9 +1,9 @@
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { AgGridVue } from "@ag-grid-community/vue3";
-import { createApp } from "vue";
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { AgGridVue } from '@ag-grid-community/vue3';
+import { createApp } from 'vue';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([ClientSideRowModelModule]);
@@ -22,22 +22,22 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
         {
-          field: "sale",
-          headerName: "Sale ($)",
-          filter: "agNumberColumnFilter",
+          field: 'sale',
+          headerName: 'Sale ($)',
+          filter: 'agNumberColumnFilter',
           floatingFilter: true,
           valueFormatter: numberValueFormatter,
         },
         {
-          field: "sale",
-          headerName: "Sale",
-          filter: "agNumberColumnFilter",
+          field: 'sale',
+          headerName: 'Sale',
+          filter: 'agNumberColumnFilter',
           floatingFilter: true,
           filterParams: saleFilterParams,
           valueFormatter: saleValueFormatter,
@@ -68,20 +68,20 @@ var numberValueFormatter = function (params) {
 };
 
 var saleFilterParams = {
-  allowedCharPattern: "\\d\\-\\,\\$",
+  allowedCharPattern: '\\d\\-\\,\\$',
   numberParser: function (text) {
     return text == null
       ? null
-      : parseFloat(text.replace(",", ".").replace("$", ""));
+      : parseFloat(text.replace(',', '.').replace('$', ''));
   },
 };
 
 var saleValueFormatter = function (params) {
-  var formatted = params.value.toFixed(2).replace(".", ",");
-  if (formatted.indexOf("-") === 0) {
-    return "-$" + formatted.slice(1);
+  var formatted = params.value.toFixed(2).replace('.', ',');
+  if (formatted.indexOf('-') === 0) {
+    return '-$' + formatted.slice(1);
   }
-  return "$" + formatted;
+  return '$' + formatted;
 };
 
-createApp(VueExample).mount("#app");
+createApp(VueExample).mount('#app');

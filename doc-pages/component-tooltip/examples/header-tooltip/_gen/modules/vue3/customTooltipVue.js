@@ -21,7 +21,7 @@ export default {
   },
   beforeMount() {
     const params = this.params;
-    this.athlete = params.value.value ? params.value.value : "- Missing -";
+    this.athlete = params.value.value ? params.value.value : '- Missing -';
     this.isHeader = params.rowIndex === undefined;
     this.isGroupedHeader = !!params.colDef.children;
   },

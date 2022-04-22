@@ -3,15 +3,15 @@ import {
   GridReadyEvent,
   ICellRendererComp,
   ICellRendererParams,
-} from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { HttpClient } from "@angular/common/http";
-import { Component } from "@angular/core";
+} from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { HttpClient } from '@angular/common/http';
+import { Component } from '@angular/core';
 // Required feature modules are registered in app.module.ts
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<ag-grid-angular
     style="width: 100%; height: 100%;"
     class="ag-theme-alpine"
@@ -24,16 +24,16 @@ import { Component } from "@angular/core";
 })
 export class AppComponent {
   public columnDefs: ColDef[] = [
-    { field: "athlete", minWidth: 180 },
-    { field: "age" },
-    { field: "country", minWidth: 160 },
-    { field: "year" },
-    { field: "date", minWidth: 160 },
-    { field: "sport", minWidth: 180 },
-    { field: "gold" },
-    { field: "silver" },
-    { field: "bronze" },
-    { field: "total" },
+    { field: 'athlete', minWidth: 180 },
+    { field: 'age' },
+    { field: 'country', minWidth: 160 },
+    { field: 'year' },
+    { field: 'date', minWidth: 160 },
+    { field: 'sport', minWidth: 180 },
+    { field: 'gold' },
+    { field: 'silver' },
+    { field: 'bronze' },
+    { field: 'total' },
   ];
   public defaultColDef: ColDef = {
     flex: 1,
@@ -49,7 +49,7 @@ export class AppComponent {
 
   onGridReady(params: GridReadyEvent) {
     this.http
-      .get<any[]>("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      .get<any[]>('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .subscribe((data) => (this.rowData = data));
   }
 }
@@ -63,7 +63,7 @@ function getRenderer() {
     createGui() {
       const template =
         '<span><button id="theButton" style="height: 39px">#</button><span id="theValue" style="padding-left: 4px;"></span></span>';
-      const tempDiv = document.createElement("div");
+      const tempDiv = document.createElement('div');
       tempDiv.innerHTML = template;
       this.eGui = tempDiv.firstElementChild;
     }
@@ -73,14 +73,14 @@ function getRenderer() {
       // keep params, we use it in onButtonClicked
       this.params = params;
       // attach the value to the value span
-      const eValue = this.eGui.querySelector("#theValue");
+      const eValue = this.eGui.querySelector('#theValue');
       eValue.innerHTML = params.value;
       // setup the button, first get reference to it
-      this.eButton = this.eGui.querySelector("#theButton");
+      this.eButton = this.eGui.querySelector('#theButton');
       // bind the listener so 'this' is preserved, also keep reference to it for removal
       this.buttonClickListener = this.onButtonClicked.bind(this);
       // add the listener
-      this.eButton.addEventListener("click", this.buttonClickListener);
+      this.eButton.addEventListener('click', this.buttonClickListener);
     }
     onButtonClicked() {
       // start editing this cell. see the docs on the params that this method takes
@@ -99,7 +99,7 @@ function getRenderer() {
     }
     destroy() {
       // be good, clean up the listener
-      this.eButton.removeEventListener("click", this.buttonClickListener);
+      this.eButton.removeEventListener('click', this.buttonClickListener);
     }
   }
   return CellRenderer;

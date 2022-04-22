@@ -1,8 +1,8 @@
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
-import { AgGridVue } from "ag-grid-vue3";
-import { createApp } from "vue";
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import 'ag-grid-enterprise';
+import { AgGridVue } from 'ag-grid-vue3';
+import { createApp } from 'vue';
 
 const VueExample = {
   template: `
@@ -27,14 +27,14 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
-        { field: "dateModified", cellClassRules: cellClassRules },
+        { field: 'dateModified', cellClassRules: cellClassRules },
         {
-          field: "size",
+          field: 'size',
           valueFormatter: valueFormatter,
           cellClassRules: cellClassRules,
         },
@@ -63,14 +63,14 @@ const VueExample = {
     };
     this.autoGroupColumnDef = {
       rowDrag: true,
-      headerName: "Files",
+      headerName: 'Files',
       minWidth: 300,
       cellRendererParams: {
         suppressCount: true,
         innerRenderer: FileCellRenderer,
       },
       cellClassRules: {
-        "hover-over": (params) => {
+        'hover-over': (params) => {
           return params.node === potentialParent;
         },
       },
@@ -101,7 +101,7 @@ const VueExample = {
       // check we are not moving a folder into a child folder
       var invalidMode = isSelectionParentOfTarget(event.node, potentialParent);
       if (invalidMode) {
-        console.log("invalid move");
+        console.log('invalid move');
       }
       if (needToChangeParent && !invalidMode) {
         var updatedRows = [];
@@ -168,7 +168,7 @@ window.setPotentialParentForNode = function setPotentialParentForNode(
   var newPotentialParent;
   if (overNode) {
     newPotentialParent =
-      overNode.data.type === "folder"
+      overNode.data.type === 'folder'
         ? // if over a folder, we take the immediate row
           overNode
         : // if over a file, we take the parent row (which will be a folder)
@@ -207,15 +207,15 @@ window.refreshRows = function refreshRows(api, rowsToRefresh) {
 };
 
 var valueFormatter = function (params) {
-  return params.value ? params.value + " MB" : "";
+  return params.value ? params.value + ' MB' : '';
 };
 
 var cellClassRules = {
-  "hover-over": function (params) {
+  'hover-over': function (params) {
     return params.node === potentialParent;
   },
 };
 
 var potentialParent = null;
 
-createApp(VueExample).mount("#app");
+createApp(VueExample).mount('#app');

@@ -1,11 +1,11 @@
-"use strict";
+'use strict';
 
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
-import { AgGridReact } from "ag-grid-react";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from 'ag-grid-react';
+import 'ag-grid-enterprise';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 
 class GridExample extends Component {
   constructor(props) {
@@ -14,25 +14,25 @@ class GridExample extends Component {
     this.state = {
       columnDefs: [
         {
-          field: "athlete",
+          field: 'athlete',
           enableRowGroup: true,
           enablePivot: true,
           minWidth: 200,
         },
-        { field: "age", enableValue: true },
-        { field: "country", enableRowGroup: true, enablePivot: true },
-        { field: "year", enableRowGroup: true, enablePivot: true },
-        { field: "date", enableRowGroup: true, enablePivot: true },
+        { field: 'age', enableValue: true },
+        { field: 'country', enableRowGroup: true, enablePivot: true },
+        { field: 'year', enableRowGroup: true, enablePivot: true },
+        { field: 'date', enableRowGroup: true, enablePivot: true },
         {
-          field: "sport",
+          field: 'sport',
           enableRowGroup: true,
           enablePivot: true,
           minWidth: 200,
         },
-        { field: "gold", enableValue: true, aggFunc: "sum" },
-        { field: "silver", enableValue: true },
-        { field: "bronze", enableValue: true },
-        { field: "total", enableValue: true },
+        { field: 'gold', enableValue: true, aggFunc: 'sum' },
+        { field: 'silver', enableValue: true },
+        { field: 'bronze', enableValue: true },
+        { field: 'total', enableValue: true },
       ],
       defaultColDef: {
         flex: 1,
@@ -53,7 +53,7 @@ class GridExample extends Component {
 
     const updateData = (data) => params.api.setRowData(data);
 
-    fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+    fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .then((resp) => resp.json())
       .then((data) => updateData(data));
   };
@@ -68,7 +68,7 @@ class GridExample extends Component {
 
   addPivotColumn = () => {
     this.gridColumnApi.applyColumnState({
-      state: [{ colId: "country", pivot: true }],
+      state: [{ colId: 'country', pivot: true }],
       defaultState: { pivot: false },
     });
   };
@@ -76,8 +76,8 @@ class GridExample extends Component {
   addPivotColumns = () => {
     this.gridColumnApi.applyColumnState({
       state: [
-        { colId: "year", pivot: true },
-        { colId: "country", pivot: true },
+        { colId: 'year', pivot: true },
+        { colId: 'country', pivot: true },
       ],
       defaultState: { pivot: false },
     });
@@ -85,7 +85,7 @@ class GridExample extends Component {
 
   removePivotColumn = () => {
     this.gridColumnApi.applyColumnState({
-      state: [{ colId: "country", pivot: false }],
+      state: [{ colId: 'country', pivot: false }],
     });
   };
 
@@ -101,8 +101,8 @@ class GridExample extends Component {
 
   render() {
     return (
-      <div style={{ width: "100%", height: "100%" }}>
-        <div style={{ marginBottom: "5px" }}>
+      <div style={{ width: '100%', height: '100%' }}>
+        <div style={{ marginBottom: '5px' }}>
           <div>
             <button onClick={() => this.turnOnPivotMode()}>
               Pivot Mode On
@@ -112,7 +112,7 @@ class GridExample extends Component {
             </button>
             <button
               onClick={() => this.addPivotColumn()}
-              style={{ marginLeft: "15px" }}
+              style={{ marginLeft: '15px' }}
             >
               Pivot Country
             </button>
@@ -123,23 +123,23 @@ class GridExample extends Component {
               Un-Pivot Country
             </button>
           </div>
-          <div style={{ marginTop: "5px" }}>
+          <div style={{ marginTop: '5px' }}>
             <button onClick={() => this.emptyPivotColumns()}>
               Remove All Pivots
             </button>
             <button
               onClick={() => this.exportToCsv()}
-              style={{ marginLeft: "15px" }}
+              style={{ marginLeft: '15px' }}
             >
               CSV Export
             </button>
           </div>
         </div>
-        <div style={{ height: "calc(100% - 60px)" }}>
+        <div style={{ height: 'calc(100% - 60px)' }}>
           <div
             style={{
-              height: "100%",
-              width: "100%",
+              height: '100%',
+              width: '100%',
             }}
             className="ag-theme-alpine"
           >
@@ -158,4 +158,4 @@ class GridExample extends Component {
   }
 }
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

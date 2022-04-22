@@ -1,10 +1,10 @@
 const gridOptions = {
   columnDefs: [
     // group cell renderer needed for expand / collapse icons
-    { field: "name", cellRenderer: "agGroupCellRenderer" },
-    { field: "account" },
-    { field: "calls" },
-    { field: "minutes", valueFormatter: "x.toLocaleString() + 'm'" },
+    { field: 'name', cellRenderer: 'agGroupCellRenderer' },
+    { field: 'account' },
+    { field: 'calls' },
+    { field: 'minutes', valueFormatter: "x.toLocaleString() + 'm'" },
   ],
   defaultColDef: {
     flex: 1,
@@ -13,11 +13,11 @@ const gridOptions = {
   detailCellRendererParams: {
     detailGridOptions: {
       columnDefs: [
-        { field: "callId" },
-        { field: "direction" },
-        { field: "number" },
-        { field: "duration", valueFormatter: "x.toLocaleString() + 's'" },
-        { field: "switchCode" },
+        { field: 'callId' },
+        { field: 'direction' },
+        { field: 'number' },
+        { field: 'duration', valueFormatter: "x.toLocaleString() + 's'" },
+        { field: 'switchCode' },
       ],
       defaultColDef: {
         flex: 1,
@@ -32,9 +32,9 @@ const gridOptions = {
         '<div style="height: 100%; background-color: #EDF6FF; padding: 20px; box-sizing: border-box;">' +
         '  <div style="height: 10%; padding: 2px; font-weight: bold;">###### Name: ' +
         personName +
-        "</div>" +
+        '</div>' +
         '  <div ref="eDetailGrid" style="height: 90%;"></div>' +
-        "</div>"
+        '</div>'
       );
     },
   },
@@ -49,11 +49,11 @@ function onFirstDataRendered(params) {
 }
 
 // setup the grid after the page has finished loading
-document.addEventListener("DOMContentLoaded", function () {
-  var gridDiv = document.querySelector("#myGrid");
+document.addEventListener('DOMContentLoaded', function () {
+  var gridDiv = document.querySelector('#myGrid');
   new agGrid.Grid(gridDiv, gridOptions);
 
-  fetch("https://www.ag-grid.com/example-assets/master-detail-data.json")
+  fetch('https://www.ag-grid.com/example-assets/master-detail-data.json')
     .then((response) => response.json())
     .then(function (data) {
       gridOptions.api.setRowData(data);

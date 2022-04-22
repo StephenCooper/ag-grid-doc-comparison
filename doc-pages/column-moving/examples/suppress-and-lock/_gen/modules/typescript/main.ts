@@ -1,47 +1,34 @@
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import {
-  ColDef,
-  Grid,
-  GridOptions,
-  ModuleRegistry,
-} from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import { Grid, GridOptions, ModuleRegistry } from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([ClientSideRowModelModule]);
 
-const columnDefs: ColDef[] = [
-  {
-    field: "athlete",
-    suppressMovable: true,
-    width: 150,
-    cellClass: "suppress-movable-col",
-  },
-  { field: "age", lockPosition: true, cellClass: "locked-col" },
-  { field: "country", width: 150 },
-  { field: "year" },
-  { field: "date" },
-  { field: "sport" },
-  { field: "gold" },
-  { field: "silver" },
-  { field: "bronze" },
-  { field: "total" },
-];
-
 const gridOptions: GridOptions = {
-  columnDefs: columnDefs,
+  columnDefs: [
+    {
+      field: 'athlete',
+      suppressMovable: true,
+      cellClass: 'suppress-movable-col',
+    },
+    { field: 'age', lockPosition: 'left', cellClass: 'locked-col' },
+    { field: 'country' },
+    { field: 'year' },
+    { field: 'total', lockPosition: 'right', cellClass: 'locked-col' },
+  ],
   defaultColDef: {
-    width: 150,
+    flex: 1,
     lockPinned: true, // Dont allow pinning for this example
   },
   suppressDragLeaveHidesColumns: true,
 };
 
 // setup the grid after the page has finished loading
-const gridDiv = document.querySelector<HTMLElement>("#myGrid")!;
+const gridDiv = document.querySelector<HTMLElement>('#myGrid')!;
 new Grid(gridDiv, gridOptions);
 
-fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
   .then((response) => response.json())
   .then((data) => gridOptions.api!.setRowData(data));

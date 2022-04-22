@@ -1,8 +1,8 @@
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
-import { AgGridVue } from "ag-grid-vue3";
-import { createApp } from "vue";
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import 'ag-grid-enterprise';
+import { AgGridVue } from 'ag-grid-vue3';
+import { createApp } from 'vue';
 
 const VueExample = {
   template: `
@@ -27,28 +27,28 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
         {
-          field: "make",
-          cellEditor: "agSelectCellEditor",
+          field: 'make',
+          cellEditor: 'agSelectCellEditor',
           cellEditorParams: {
-            values: ["Porsche", "Toyota", "Ford", "AAA", "BBB", "CCC"],
+            values: ['Porsche', 'Toyota', 'Ford', 'AAA', 'BBB', 'CCC'],
           },
         },
-        { field: "model" },
-        { field: "field4", headerName: "Read Only", editable: false },
-        { field: "price", cellEditor: NumericCellEditor },
+        { field: 'model' },
+        { field: 'field4', headerName: 'Read Only', editable: false },
+        { field: 'price', cellEditor: NumericCellEditor },
         {
-          headerName: "Suppress Navigable",
-          field: "field5",
+          headerName: 'Suppress Navigable',
+          field: 'field5',
           suppressNavigable: true,
           minWidth: 200,
         },
-        { headerName: "Read Only", field: "field6", editable: false },
+        { headerName: 'Read Only', field: 'field6', editable: false },
       ],
       gridApi: null,
       columnApi: null,
@@ -61,37 +61,37 @@ const VueExample = {
     };
   },
   created() {
-    this.editType = "fullRow";
+    this.editType = 'fullRow';
     this.rowData = getRowData();
   },
   methods: {
     onCellValueChanged(event) {
       console.log(
-        "onCellValueChanged: " + event.colDef.field + " = " + event.newValue
+        'onCellValueChanged: ' + event.colDef.field + ' = ' + event.newValue
       );
     },
     onRowValueChanged(event) {
       var data = event.data;
       console.log(
-        "onRowValueChanged: (" +
+        'onRowValueChanged: (' +
           data.make +
-          ", " +
+          ', ' +
           data.model +
-          ", " +
+          ', ' +
           data.price +
-          ", " +
+          ', ' +
           data.field5 +
-          ")"
+          ')'
       );
     },
     onBtStopEditing() {
       this.gridApi.stopEditing();
     },
     onBtStartEditing() {
-      this.gridApi.setFocusedCell(2, "make");
+      this.gridApi.setFocusedCell(1, 'make');
       this.gridApi.startEditingCell({
-        rowIndex: 2,
-        colKey: "make",
+        rowIndex: 1,
+        colKey: 'make',
       });
     },
     onGridReady(params) {
@@ -105,31 +105,31 @@ window.getRowData = function getRowData() {
   var rowData = [];
   for (var i = 0; i < 10; i++) {
     rowData.push({
-      make: "Toyota",
-      model: "Celica",
+      make: 'Toyota',
+      model: 'Celica',
       price: 35000 + i * 1000,
-      field4: "Sample XX",
-      field5: "Sample 22",
-      field6: "Sample 23",
+      field4: 'Sample XX',
+      field5: 'Sample 22',
+      field6: 'Sample 23',
     });
     rowData.push({
-      make: "Ford",
-      model: "Mondeo",
+      make: 'Ford',
+      model: 'Mondeo',
       price: 32000 + i * 1000,
-      field4: "Sample YY",
-      field5: "Sample 24",
-      field6: "Sample 25",
+      field4: 'Sample YY',
+      field5: 'Sample 24',
+      field6: 'Sample 25',
     });
     rowData.push({
-      make: "Porsche",
-      model: "Boxter",
+      make: 'Porsche',
+      model: 'Boxster',
       price: 72000 + i * 1000,
-      field4: "Sample ZZ",
-      field5: "Sample 26",
-      field6: "Sample 27",
+      field4: 'Sample ZZ',
+      field5: 'Sample 26',
+      field6: 'Sample 27',
     });
   }
   return rowData;
 };
 
-createApp(VueExample).mount("#app");
+createApp(VueExample).mount('#app');

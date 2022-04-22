@@ -1,8 +1,8 @@
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine-dark.css";
-import "ag-grid-enterprise";
-import { AgGridVue } from "ag-grid-vue3";
-import { createApp } from "vue";
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine-dark.css';
+import 'ag-grid-enterprise';
+import { AgGridVue } from 'ag-grid-vue3';
+import { createApp } from 'vue';
 
 const VueExample = {
   template: `
@@ -23,19 +23,19 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
-        { field: "id", maxWidth: 80 },
-        { field: "athlete", minWidth: 220 },
-        { field: "country", minWidth: 200 },
-        { field: "year" },
-        { field: "sport", minWidth: 200 },
-        { field: "gold" },
-        { field: "silver" },
-        { field: "bronze" },
+        { field: 'id', maxWidth: 80 },
+        { field: 'athlete', minWidth: 220 },
+        { field: 'country', minWidth: 200 },
+        { field: 'year' },
+        { field: 'sport', minWidth: 200 },
+        { field: 'gold' },
+        { field: 'silver' },
+        { field: 'bronze' },
       ],
       gridApi: null,
       columnApi: null,
@@ -53,8 +53,8 @@ const VueExample = {
   },
   created() {
     this.rowBuffer = 0;
-    this.rowModelType = "serverSide";
-    this.serverSideStoreType = "partial";
+    this.rowModelType = 'serverSide';
+    this.serverSideStoreType = 'partial';
     this.cacheBlockSize = 50;
     this.maxBlocksInCache = 2;
   },
@@ -77,7 +77,7 @@ const VueExample = {
         params.api.setServerSideDatasource(datasource);
       };
 
-      fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
         .then((resp) => resp.json())
         .then((data) => updateData(data));
     },
@@ -89,7 +89,7 @@ window.createServerSideDatasource = function createServerSideDatasource(
 ) {
   return {
     getRows: function (params) {
-      console.log("[Datasource] - rows requested by grid: ", params.request);
+      console.log('[Datasource] - rows requested by grid: ', params.request);
       // get data for request from our fake server
       var response = server.getData(params.request);
       // simulating real server call with a 500ms delay
@@ -131,4 +131,4 @@ window.getLastRowIndex = function getLastRowIndex(request, results) {
   return currentLastRow < (request.endRow || 0) ? currentLastRow : undefined;
 };
 
-createApp(VueExample).mount("#app");
+createApp(VueExample).mount('#app');

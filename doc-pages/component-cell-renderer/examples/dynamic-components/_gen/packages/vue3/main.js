@@ -1,12 +1,12 @@
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import { AgGridVue } from "ag-grid-vue3";
-import { createApp } from "vue";
-import ChildMessageRenderer from "./childMessageRendererVue.js";
-import CubeRenderer from "./cubeRendererVue.js";
-import CurrencyRenderer from "./currencyRendererVue.js";
-import ParamsRenderer from "./paramsRendererVue.js";
-import SquareRenderer from "./squareRendererVue.js";
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import { AgGridVue } from 'ag-grid-vue3';
+import { createApp } from 'vue';
+import ChildMessageRenderer from './childMessageRendererVue.js';
+import CubeRenderer from './cubeRendererVue.js';
+import CurrencyRenderer from './currencyRendererVue.js';
+import ParamsRenderer from './paramsRendererVue.js';
+import SquareRenderer from './squareRendererVue.js';
 
 const VueExample = {
   template: `
@@ -28,7 +28,7 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
     squareRenderer: SquareRenderer,
     cubeRenderer: CubeRenderer,
     paramsRenderer: ParamsRenderer,
@@ -41,44 +41,44 @@ const VueExample = {
       columnApi: null,
       columnDefs: [
         {
-          headerName: "Row",
-          field: "row",
+          headerName: 'Row',
+          field: 'row',
           width: 150,
         },
         {
-          headerName: "Square",
-          field: "value",
-          cellRenderer: "squareRenderer",
+          headerName: 'Square',
+          field: 'value',
+          cellRenderer: 'squareRenderer',
           editable: true,
-          colId: "square",
+          colId: 'square',
           width: 150,
         },
         {
-          headerName: "Cube",
-          field: "value",
-          cellRenderer: "cubeRenderer",
-          colId: "cube",
+          headerName: 'Cube',
+          field: 'value',
+          cellRenderer: 'cubeRenderer',
+          colId: 'cube',
           width: 150,
         },
         {
-          headerName: "Row Params",
-          field: "row",
-          cellRenderer: "paramsRenderer",
-          colId: "params",
+          headerName: 'Row Params',
+          field: 'row',
+          cellRenderer: 'paramsRenderer',
+          colId: 'params',
           width: 150,
         },
         {
-          headerName: "Currency (Pipe)",
-          field: "currency",
-          cellRenderer: "currencyRenderer",
-          colId: "currency",
+          headerName: 'Currency (Pipe)',
+          field: 'currency',
+          cellRenderer: 'currencyRenderer',
+          colId: 'currency',
           width: 120,
         },
         {
-          headerName: "Child/Parent",
-          field: "value",
-          cellRenderer: "childMessageRenderer",
-          colId: "params",
+          headerName: 'Child/Parent',
+          field: 'value',
+          cellRenderer: 'childMessageRenderer',
+          colId: 'params',
           editable: false,
           minWidth: 150,
         },
@@ -104,7 +104,7 @@ const VueExample = {
       const rowData = [];
       for (let i = 0; i < 15; i++) {
         rowData.push({
-          row: "Row " + i,
+          row: 'Row ' + i,
           value: i,
           currency: i + Number(Math.random().toFixed(2)),
         });
@@ -115,20 +115,20 @@ const VueExample = {
       this.gridApi.forEachNode((rowNode) => {
         if (rowNode.data.value % 2 === 0) {
           rowNode.setDataValue(
-            "currency",
+            'currency',
             rowNode.data.value + Number(Math.random().toFixed(2))
           );
         }
       });
-      this.gridApi.refreshCells({ columns: ["currency"] });
+      this.gridApi.refreshCells({ columns: ['currency'] });
     },
     onGridReady(params) {
       this.gridApi = params.api;
     },
     methodFromParent(cell) {
-      alert("Parent Component Method from " + cell + "!");
+      alert('Parent Component Method from ' + cell + '!');
     },
   },
 };
 
-createApp(VueExample).mount("#app");
+createApp(VueExample).mount('#app');

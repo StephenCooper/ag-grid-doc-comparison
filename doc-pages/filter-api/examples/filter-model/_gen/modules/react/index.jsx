@@ -1,16 +1,16 @@
-"use strict";
+'use strict';
 
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { AgGridReact } from "@ag-grid-community/react";
-import { ColumnsToolPanelModule } from "@ag-grid-enterprise/column-tool-panel";
-import { FiltersToolPanelModule } from "@ag-grid-enterprise/filter-tool-panel";
-import { MenuModule } from "@ag-grid-enterprise/menu";
-import { SetFilterModule } from "@ag-grid-enterprise/set-filter";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from '@ag-grid-community/react';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import { MenuModule } from '@ag-grid-enterprise/menu';
+import { FiltersToolPanelModule } from '@ag-grid-enterprise/filter-tool-panel';
+import { ColumnsToolPanelModule } from '@ag-grid-enterprise/column-tool-panel';
+import { SetFilterModule } from '@ag-grid-enterprise/set-filter';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([
@@ -27,20 +27,20 @@ class GridExample extends Component {
 
     this.state = {
       columnDefs: [
-        { field: "athlete", filter: "agTextColumnFilter" },
-        { field: "age", filter: "agNumberColumnFilter", maxWidth: 100 },
-        { field: "country" },
-        { field: "year", maxWidth: 100 },
+        { field: 'athlete', filter: 'agTextColumnFilter' },
+        { field: 'age', filter: 'agNumberColumnFilter', maxWidth: 100 },
+        { field: 'country' },
+        { field: 'year', maxWidth: 100 },
         {
-          field: "date",
-          filter: "agDateColumnFilter",
+          field: 'date',
+          filter: 'agDateColumnFilter',
           filterParams: filterParams,
         },
-        { field: "sport" },
-        { field: "gold", filter: "agNumberColumnFilter" },
-        { field: "silver", filter: "agNumberColumnFilter" },
-        { field: "bronze", filter: "agNumberColumnFilter" },
-        { field: "total", filter: "agNumberColumnFilter" },
+        { field: 'sport' },
+        { field: 'gold', filter: 'agNumberColumnFilter' },
+        { field: 'silver', filter: 'agNumberColumnFilter' },
+        { field: 'bronze', filter: 'agNumberColumnFilter' },
+        { field: 'total', filter: 'agNumberColumnFilter' },
       ],
       defaultColDef: {
         flex: 1,
@@ -48,7 +48,7 @@ class GridExample extends Component {
         filter: true,
         sortable: true,
       },
-      sideBar: "filters",
+      sideBar: 'filters',
       rowData: null,
     };
   }
@@ -59,11 +59,11 @@ class GridExample extends Component {
 
     const updateData = (data) => params.api.setRowData(data);
 
-    fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+    fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .then((resp) => resp.json())
       .then((data) => updateData(data));
 
-    params.api.getToolPanelInstance("filters").expandFilters();
+    params.api.getToolPanelInstance('filters').expandFilters();
   };
 
   clearFilters = () => {
@@ -73,8 +73,8 @@ class GridExample extends Component {
   saveFilterModel = () => {
     savedFilterModel = this.gridApi.getFilterModel();
     var keys = Object.keys(savedFilterModel);
-    var savedFilters = keys.length > 0 ? keys.join(", ") : "(none)";
-    document.querySelector("#savedFilters").innerHTML = savedFilters;
+    var savedFilters = keys.length > 0 ? keys.join(', ') : '(none)';
+    document.querySelector('#savedFilters').innerHTML = savedFilters;
   };
 
   restoreFilterModel = () => {
@@ -84,23 +84,23 @@ class GridExample extends Component {
   restoreFromHardCoded = () => {
     var hardcodedFilter = {
       country: {
-        type: "set",
-        values: ["Ireland", "United States"],
+        type: 'set',
+        values: ['Ireland', 'United States'],
       },
-      age: { type: "lessThan", filter: "30" },
-      athlete: { type: "startsWith", filter: "Mich" },
-      date: { type: "lessThan", dateFrom: "2010-01-01" },
+      age: { type: 'lessThan', filter: '30' },
+      athlete: { type: 'startsWith', filter: 'Mich' },
+      date: { type: 'lessThan', dateFrom: '2010-01-01' },
     };
     this.gridApi.setFilterModel(hardcodedFilter);
   };
 
   destroyFilter = () => {
-    this.gridApi.destroyFilter("athlete");
+    this.gridApi.destroyFilter('athlete');
   };
 
   render() {
     return (
-      <div style={{ width: "100%", height: "100%" }}>
+      <div style={{ width: '100%', height: '100%' }}>
         <div className="example-wrapper">
           <div>
             <div className="button-group">
@@ -130,8 +130,8 @@ class GridExample extends Component {
 
           <div
             style={{
-              height: "100%",
-              width: "100%",
+              height: '100%',
+              width: '100%',
             }}
             className="ag-theme-alpine"
           >
@@ -153,7 +153,7 @@ var filterParams = {
   comparator: function (filterLocalDateAtMidnight, cellValue) {
     var dateAsString = cellValue;
     if (dateAsString == null) return -1;
-    var dateParts = dateAsString.split("/");
+    var dateParts = dateAsString.split('/');
     var cellDate = new Date(
       Number(dateParts[2]),
       Number(dateParts[1]) - 1,
@@ -173,4 +173,4 @@ var filterParams = {
 };
 var savedFilterModel = null;
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

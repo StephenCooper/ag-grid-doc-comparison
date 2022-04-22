@@ -1,10 +1,10 @@
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { AgGridVue } from "@ag-grid-community/vue3";
-import { RowGroupingModule } from "@ag-grid-enterprise/row-grouping";
-import { createApp } from "vue";
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { AgGridVue } from '@ag-grid-community/vue3';
+import { RowGroupingModule } from '@ag-grid-enterprise/row-grouping';
+import { createApp } from 'vue';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([ClientSideRowModelModule, RowGroupingModule]);
@@ -42,51 +42,51 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
         {
-          headerName: "Core",
+          headerName: 'Core',
           children: [
-            { headerName: "ID", field: "id" },
-            { headerName: "Make", field: "make" },
-            { headerName: "Price", field: "price", filter: "number" },
+            { headerName: 'ID', field: 'id' },
+            { headerName: 'Make', field: 'make' },
+            { headerName: 'Price', field: 'price', filter: 'number' },
           ],
         },
         {
-          headerName: "Extra",
+          headerName: 'Extra',
           children: [
             {
-              headerName: "Val 1",
-              field: "val1",
-              filter: "number",
-              pinned: "left",
+              headerName: 'Val 1',
+              field: 'val1',
+              filter: 'number',
+              pinned: 'left',
             },
             {
-              headerName: "Val 2",
-              field: "val2",
-              filter: "number",
-              pinned: "left",
+              headerName: 'Val 2',
+              field: 'val2',
+              filter: 'number',
+              pinned: 'left',
             },
-            { headerName: "Val 3", field: "val3", filter: "number" },
-            { headerName: "Val 4", field: "val4", filter: "number" },
-            { headerName: "Val 5", field: "val5", filter: "number" },
-            { headerName: "Val 6", field: "val6", filter: "number" },
-            { headerName: "Val 7", field: "val7", filter: "number" },
-            { headerName: "Val 8", field: "val8", filter: "number" },
+            { headerName: 'Val 3', field: 'val3', filter: 'number' },
+            { headerName: 'Val 4', field: 'val4', filter: 'number' },
+            { headerName: 'Val 5', field: 'val5', filter: 'number' },
+            { headerName: 'Val 6', field: 'val6', filter: 'number' },
+            { headerName: 'Val 7', field: 'val7', filter: 'number' },
+            { headerName: 'Val 8', field: 'val8', filter: 'number' },
             {
-              headerName: "Val 9",
-              field: "val9",
-              filter: "number",
-              pinned: "right",
+              headerName: 'Val 9',
+              field: 'val9',
+              filter: 'number',
+              pinned: 'right',
             },
             {
-              headerName: "Val 10",
-              field: "val10",
-              filter: "number",
-              pinned: "right",
+              headerName: 'Val 10',
+              field: 'val10',
+              filter: 'number',
+              pinned: 'right',
             },
           ],
         },
@@ -114,9 +114,9 @@ const VueExample = {
     this.rowData = createRowData();
     this.paginationPageSize = 10;
     this.statusBar = {
-      statusPanels: [{ statusPanel: "agAggregationComponent" }],
+      statusPanels: [{ statusPanel: 'agAggregationComponent' }],
     };
-    this.domLayout = "autoHeight";
+    this.domLayout = 'autoHeight';
   },
   methods: {
     onGridReady(params) {
@@ -131,17 +131,17 @@ const VueExample = {
       let cssClass;
       let message;
       if (params.node.rowPinned) {
-        cssClass = "example-full-width-floating-row";
-        message = "Floating full width row at index " + params.rowIndex;
+        cssClass = 'example-full-width-floating-row';
+        message = 'Floating full width row at index ' + params.rowIndex;
       } else {
-        cssClass = "example-full-width-row";
-        message = "Normal full width row at index" + params.rowIndex;
+        cssClass = 'example-full-width-row';
+        message = 'Normal full width row at index' + params.rowIndex;
       }
-      const eDiv = document.createElement("div");
+      const eDiv = document.createElement('div');
       eDiv.innerHTML = `<div class="${cssClass}"><button>Click</button> ${message}</div>`;
-      const eButton = eDiv.querySelector("button");
-      eButton.addEventListener("click", function () {
-        alert("button clicked");
+      const eButton = eDiv.querySelector('button');
+      eButton.addEventListener('click', function () {
+        alert('button clicked');
       });
       return eDiv;
     },
@@ -150,7 +150,7 @@ const VueExample = {
 
 window.createRow = function createRow(index) {
   return {
-    id: "D" + (1000 + index),
+    id: 'D' + (1000 + index),
     make: makes[Math.floor(Math.random() * makes.length)],
     price: Math.floor(Math.random() * 100000),
     // every third row is full width
@@ -176,6 +176,6 @@ window.createRowData = function createRowData() {
   return rowData;
 };
 
-const makes = ["Toyota", "Ford", "BMW", "Phantom", "Porsche"];
+const makes = ['Toyota', 'Ford', 'BMW', 'Phantom', 'Porsche'];
 
-createApp(VueExample).mount("#app");
+createApp(VueExample).mount('#app');

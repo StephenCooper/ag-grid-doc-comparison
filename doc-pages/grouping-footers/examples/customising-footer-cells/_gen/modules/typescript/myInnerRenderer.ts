@@ -1,7 +1,7 @@
 import {
   ICellRendererComp,
   ICellRendererParams,
-} from "@ag-grid-community/core";
+} from '@ag-grid-community/core';
 
 export class MyInnerRenderer implements ICellRendererComp {
   eGui!: HTMLDivElement;
@@ -9,7 +9,7 @@ export class MyInnerRenderer implements ICellRendererComp {
   // gets called once before the renderer is used
   init(params: ICellRendererParams) {
     // create the cell
-    this.eGui = document.createElement("div");
+    this.eGui = document.createElement('div');
 
     let template: string;
 

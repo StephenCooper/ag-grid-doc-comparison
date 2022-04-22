@@ -1,10 +1,10 @@
-"use strict";
+'use strict';
 
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import { AgGridReact } from "ag-grid-react";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from 'ag-grid-react';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 
 class GridExample extends Component {
   constructor(props) {
@@ -12,16 +12,16 @@ class GridExample extends Component {
 
     this.state = {
       columnDefs: [
-        { field: "athlete", minWidth: 160 },
-        { field: "age" },
-        { field: "country", minWidth: 140 },
-        { field: "year" },
-        { field: "date", minWidth: 140 },
-        { field: "sport", minWidth: 160 },
-        { field: "gold" },
-        { field: "silver" },
-        { field: "bronze" },
-        { field: "total" },
+        { field: 'athlete', minWidth: 160 },
+        { field: 'age' },
+        { field: 'country', minWidth: 140 },
+        { field: 'year' },
+        { field: 'date', minWidth: 140 },
+        { field: 'sport', minWidth: 160 },
+        { field: 'gold' },
+        { field: 'silver' },
+        { field: 'bronze' },
+        { field: 'total' },
       ],
       defaultColDef: {
         flex: 1,
@@ -43,7 +43,7 @@ class GridExample extends Component {
       params.api.setRowData(rowImmutableStore);
     };
 
-    fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+    fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .then((resp) => resp.json())
       .then((data) => updateData(data));
   };
@@ -54,7 +54,7 @@ class GridExample extends Component {
     const newValue = event.newValue;
     const newItem = { ...data };
     newItem[field] = event.newValue;
-    console.log("onCellEditRequest, updating " + field + " to " + newValue);
+    console.log('onCellEditRequest, updating ' + field + ' to ' + newValue);
     rowImmutableStore = rowImmutableStore.map((oldItem) =>
       oldItem.id == newItem.id ? newItem : oldItem
     );
@@ -63,11 +63,11 @@ class GridExample extends Component {
 
   render() {
     return (
-      <div style={{ width: "100%", height: "100%" }}>
+      <div style={{ width: '100%', height: '100%' }}>
         <div
           style={{
-            height: "100%",
-            width: "100%",
+            height: '100%',
+            width: '100%',
           }}
           className="ag-theme-alpine"
         >
@@ -88,4 +88,4 @@ class GridExample extends Component {
 
 let rowImmutableStore;
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

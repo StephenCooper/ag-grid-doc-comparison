@@ -40,3 +40,4 @@ The example below demonstrates how the loading overlay is shown automatically wh
 
 [[note]]
 | It is also possible to provide your own custom Overlay Components - please see [Overlay Component](/component-overlay/) for more information
+

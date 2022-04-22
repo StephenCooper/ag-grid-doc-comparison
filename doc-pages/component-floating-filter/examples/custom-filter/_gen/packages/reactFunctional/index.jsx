@@ -1,10 +1,10 @@
-"use strict";
+'use strict';
 
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import { AgGridReact } from "ag-grid-react";
-import React, { useCallback, useMemo, useState } from "react";
-import { render } from "react-dom";
+import React, { useCallback, useMemo, useRef, useState } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from 'ag-grid-react';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 
 const isNumeric = (n) => !isNaN(parseFloat(n)) && isFinite(parseFloat(n));
 
@@ -26,20 +26,20 @@ class NumberFilter {
 
   // not called by AG Grid, just for us to help setup
   setupGui() {
-    this.gui = document.createElement("div");
+    this.gui = document.createElement('div');
     this.gui.innerHTML =
       '<div style="padding: 4px;">' +
       '<div style="font-weight: bold;">Greater than: </div>' +
       '<div><input style="margin: 4px 0px 4px 0px;" type="number" id="filterText" placeholder="Number of medals..."/></div>' +
-      "</div>";
+      '</div>';
 
     this.onFilterChanged = () => {
       this.extractFilterText();
       this.params.filterChangedCallback();
     };
 
-    this.eFilterText = this.gui.querySelector("#filterText");
-    this.eFilterText.addEventListener("input", this.onFilterChanged);
+    this.eFilterText = this.gui.querySelector('#filterText');
+    this.eFilterText.addEventListener('input', this.onFilterChanged);
   }
 
   extractFilterText() {
@@ -78,7 +78,7 @@ class NumberFilter {
     return (
       this.filterText !== null &&
       this.filterText !== undefined &&
-      this.filterText !== "" &&
+      this.filterText !== '' &&
       isNumeric(this.filterText)
     );
   }
@@ -93,40 +93,40 @@ class NumberFilter {
   }
 
   destroy() {
-    this.eFilterText.removeEventListener("input", this.onFilterChanged);
+    this.eFilterText.removeEventListener('input', this.onFilterChanged);
   }
 
   getModelAsString() {
-    return this.isFilterActive() ? ">" + this.filterText : "";
+    return this.isFilterActive() ? '>' + this.filterText : '';
   }
 }
 
 const GridExample = () => {
-  const containerStyle = useMemo(() => ({ width: "100%", height: "100%" }), []);
-  const gridStyle = useMemo(() => ({ height: "100%", width: "100%" }), []);
+  const containerStyle = useMemo(() => ({ width: '100%', height: '100%' }), []);
+  const gridStyle = useMemo(() => ({ height: '100%', width: '100%' }), []);
   const [rowData, setRowData] = useState();
   const [columnDefs, setColumnDefs] = useState([
-    { field: "athlete", width: 150, filter: false },
+    { field: 'athlete', width: 150, filter: false },
     {
-      field: "gold",
+      field: 'gold',
       width: 100,
       filter: NumberFilter,
       suppressMenu: true,
     },
     {
-      field: "silver",
+      field: 'silver',
       width: 100,
       filter: NumberFilter,
       suppressMenu: true,
     },
     {
-      field: "bronze",
+      field: 'bronze',
       width: 100,
       filter: NumberFilter,
       suppressMenu: true,
     },
     {
-      field: "total",
+      field: 'total',
       width: 100,
       filter: NumberFilter,
       suppressMenu: true,
@@ -145,7 +145,7 @@ const GridExample = () => {
   }, []);
 
   const onGridReady = useCallback((params) => {
-    fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+    fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .then((resp) => resp.json())
       .then((data) => {
         setRowData(data);
@@ -166,4 +166,4 @@ const GridExample = () => {
   );
 };
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

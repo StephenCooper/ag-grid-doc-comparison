@@ -1,8 +1,8 @@
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
-import { AgGridVue } from "ag-grid-vue";
-import Vue from "vue";
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import 'ag-grid-enterprise';
+import { AgGridVue } from 'ag-grid-vue';
+import Vue from 'vue';
 
 const VueExample = {
   template: `
@@ -23,14 +23,14 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
-        { field: "assignee", rowGroup: true, hide: true },
-        { field: "priority", rowGroup: true, hide: true },
-        { field: "task" },
+        { field: 'assignee', rowGroup: true, hide: true },
+        { field: 'priority', rowGroup: true, hide: true },
+        { field: 'task' },
       ],
       gridApi: null,
       columnApi: null,
@@ -50,7 +50,7 @@ const VueExample = {
     this.autoGroupColumnDef = {
       minWidth: 200,
     };
-    this.groupDisplayType = "multipleColumns";
+    this.groupDisplayType = 'multipleColumns';
     this.groupDefaultExpanded = -1;
     this.rowData = getData();
   },
@@ -63,8 +63,8 @@ const VueExample = {
 };
 
 new Vue({
-  el: "#app",
+  el: '#app',
   components: {
-    "my-component": VueExample,
+    'my-component': VueExample,
   },
 });

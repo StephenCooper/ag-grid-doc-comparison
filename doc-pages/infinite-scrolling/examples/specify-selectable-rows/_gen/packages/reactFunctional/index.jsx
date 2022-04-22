@@ -1,22 +1,22 @@
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import { AgGridReact } from "ag-grid-react";
-import React, { useCallback, useMemo, useState } from "react";
-import { render } from "react-dom";
-("use strict");
+'use strict';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import React, { useCallback, useMemo, useState } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from 'ag-grid-react';
 
 const GridExample = () => {
-  const containerStyle = useMemo(() => ({ width: "100%", height: "100%" }), []);
-  const gridStyle = useMemo(() => ({ height: "100%", width: "100%" }), []);
+  const containerStyle = useMemo(() => ({ width: '100%', height: '100%' }), []);
+  const gridStyle = useMemo(() => ({ height: '100%', width: '100%' }), []);
 
   const [columnDefs, setColumnDefs] = useState([
     // this row shows the row index, doesn't use any data from the row
     {
-      headerName: "ID",
+      headerName: 'ID',
       maxWidth: 100,
       // it is important to have node.id here, so that when the id changes (which happens
       // when the row is loaded) then the cell is refreshed.
-      valueGetter: "node.id",
+      valueGetter: 'node.id',
       cellRenderer: (props) => {
         if (props.value !== undefined) {
           return props.value;
@@ -27,16 +27,16 @@ const GridExample = () => {
         }
       },
     },
-    { field: "athlete", minWidth: 200 },
-    { field: "age" },
-    { field: "country", minWidth: 200, checkboxSelection: true },
-    { field: "year" },
-    { field: "date", minWidth: 150 },
-    { field: "sport", minWidth: 150 },
-    { field: "gold" },
-    { field: "silver" },
-    { field: "bronze" },
-    { field: "total" },
+    { field: 'athlete', minWidth: 200 },
+    { field: 'age' },
+    { field: 'country', minWidth: 200, checkboxSelection: true },
+    { field: 'year' },
+    { field: 'date', minWidth: 150 },
+    { field: 'sport', minWidth: 150 },
+    { field: 'gold' },
+    { field: 'silver' },
+    { field: 'bronze' },
+    { field: 'total' },
   ]);
   const defaultColDef = useMemo(() => {
     return {
@@ -46,11 +46,11 @@ const GridExample = () => {
     };
   }, []);
   const isRowSelectable = useCallback(function (rowNode) {
-    return rowNode.data ? rowNode.data.country === "United States" : false;
+    return rowNode.data ? rowNode.data.country === 'United States' : false;
   }, []);
 
   const onGridReady = useCallback((params) => {
-    fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+    fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .then((resp) => resp.json())
       .then((data) => {
         const dataSource = {
@@ -83,9 +83,9 @@ const GridExample = () => {
           columnDefs={columnDefs}
           defaultColDef={defaultColDef}
           rowBuffer={0}
-          rowSelection={"multiple"}
+          rowSelection={'multiple'}
           isRowSelectable={isRowSelectable}
-          rowModelType={"infinite"}
+          rowModelType={'infinite'}
           cacheBlockSize={100}
           cacheOverflowSize={2}
           maxConcurrentDatasourceRequests={2}
@@ -98,4 +98,4 @@ const GridExample = () => {
   );
 };
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

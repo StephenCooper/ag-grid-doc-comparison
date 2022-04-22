@@ -1,40 +1,40 @@
 var PRODUCT_NAMES = [
-  "Palm Oil",
-  "Rubber",
-  "Wool",
-  "Amber",
-  "Copper",
-  "Lead",
-  "Zinc",
-  "Tin",
-  "Aluminium",
-  "Aluminium Alloy",
-  "Nickel",
-  "Cobalt",
-  "Molybdenum",
-  "Recycled Steel",
-  "Corn",
-  "Oats",
-  "Rough Rice",
-  "Soybeans",
-  "Rapeseed",
-  "Soybean Meal",
-  "Soybean Oil",
-  "Wheat",
-  "Milk",
-  "Coca",
-  "Coffee C",
-  "Cotton No.2",
-  "Sugar No.11",
-  "Sugar No.14",
+  'Palm Oil',
+  'Rubber',
+  'Wool',
+  'Amber',
+  'Copper',
+  'Lead',
+  'Zinc',
+  'Tin',
+  'Aluminium',
+  'Aluminium Alloy',
+  'Nickel',
+  'Cobalt',
+  'Molybdenum',
+  'Recycled Steel',
+  'Corn',
+  'Oats',
+  'Rough Rice',
+  'Soybeans',
+  'Rapeseed',
+  'Soybean Meal',
+  'Soybean Oil',
+  'Wheat',
+  'Milk',
+  'Coca',
+  'Coffee C',
+  'Cotton No.2',
+  'Sugar No.11',
+  'Sugar No.14',
 ];
 
 var PORTFOLIO_NAMES = [
-  "Aggressive",
-  "Defensive",
-  "Income",
-  "Speculative",
-  "Hybrid",
+  'Aggressive',
+  'Defensive',
+  'Income',
+  'Speculative',
+  'Hybrid',
 ];
 
 class FakeServer {
@@ -53,7 +53,7 @@ class FakeServer {
   createData() {
     for (var i = 0; i < PRODUCT_NAMES.length; i++) {
       var productName = PRODUCT_NAMES[i];
-      var productId = "PRD_" + i;
+      var productId = 'PRD_' + i;
       var product = {
         productName: productName,
         productId: productId,
@@ -65,7 +65,7 @@ class FakeServer {
 
       for (var j = 0; j < PORTFOLIO_NAMES.length; j++) {
         var portfolioName = PORTFOLIO_NAMES[j];
-        var portfolioId = "PFO_" + i + "_" + j;
+        var portfolioId = 'PFO_' + i + '_' + j;
         var portfolio = {
           portfolioId: portfolioId,
           portfolioName: portfolioName,
@@ -79,7 +79,7 @@ class FakeServer {
         product.childrenMap[portfolioId] = portfolio;
 
         for (var k = 0; k < 5; k++) {
-          var bookId = "LB-" + i + "-" + j + "-" + k;
+          var bookId = 'LB-' + i + '-' + j + '-' + k;
           var book = {
             portfolioId: portfolioId,
             portfolioName: portfolioName,
@@ -166,11 +166,11 @@ class FakeServer {
       productId: productId,
       bookId: bookId,
       parent: book,
-      tradeId: "TRD_" + this.tradeIdSequence++,
+      tradeId: 'TRD_' + this.tradeIdSequence++,
       submitterID: this.randomBetween(10, 1000),
       submitterDealID: this.randomBetween(10, 1000),
-      dealType: Math.random() < 0.2 ? "Physical" : "Financial",
-      bidFlag: Math.random() < 0.5 ? "Buy" : "Sell",
+      dealType: Math.random() < 0.2 ? 'Physical' : 'Financial',
+      bidFlag: Math.random() < 0.5 ? 'Buy' : 'Sell',
       current: current,
       previous: previous,
       pl1: this.randomBetween(100, 1000),
@@ -233,7 +233,7 @@ class FakeServer {
     var timeToServer = 300;
     var timeToClient = 300;
     setTimeout(function () {
-      console.log("getFromServer");
+      console.log('getFromServer');
       getDataFromServer();
       setTimeout(returnResultToClient, timeToClient);
     }, timeToServer);
@@ -322,8 +322,9 @@ class FakeServer {
     this.touchVersion();
 
     // pick book at random
-    var product =
-      this.products[Math.floor(Math.random() * this.products.length)];
+    var product = this.products[
+      Math.floor(Math.random() * this.products.length)
+    ];
     var portfolio =
       product.children[Math.floor(Math.random() * product.children.length)];
     var book1 =

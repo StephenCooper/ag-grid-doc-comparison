@@ -1,11 +1,11 @@
-import { ColDef, GridApi, GridReadyEvent } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { Component } from "@angular/core";
+import { ColDef, GridApi, GridReadyEvent } from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { Component } from '@angular/core';
 // Required feature modules are registered in app.module.ts
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `
     <div style="display: flex; flex-direction: column; height: 100%;">
       <div style="display: flex;">
@@ -50,13 +50,13 @@ export class AppComponent {
   };
   public popupParent: HTMLElement = document.body;
   public columnDefs: ColDef[] = [
-    { field: "athlete" },
-    { field: "country" },
-    { field: "sport" },
-    { field: "gold", hide: true },
-    { field: "silver", hide: true },
-    { field: "bronze", hide: true },
-    { field: "total" },
+    { field: 'athlete' },
+    { field: 'country' },
+    { field: 'sport' },
+    { field: 'gold', hide: true },
+    { field: 'silver', hide: true },
+    { field: 'bronze', hide: true },
+    { field: 'total' },
   ];
   public rowData: any[] | null = getData();
 
@@ -65,8 +65,9 @@ export class AppComponent {
   }
 
   onBtnUpdate() {
-    (document.querySelector("#csvResult") as any).value =
-      this.gridApi.getDataAsCsv(getParams());
+    (document.querySelector(
+      '#csvResult'
+    ) as any).value = this.gridApi.getDataAsCsv(getParams());
   }
 
   onGridReady(params: GridReadyEvent) {
@@ -75,11 +76,11 @@ export class AppComponent {
 }
 
 function getBoolean(id: string) {
-  var field: any = document.querySelector("#" + id);
+  var field: any = document.querySelector('#' + id);
   return !!field.checked;
 }
 function getParams() {
   return {
-    allColumns: getBoolean("allColumns"),
+    allColumns: getBoolean('allColumns'),
   };
 }

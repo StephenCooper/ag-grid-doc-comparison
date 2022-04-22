@@ -1,6 +1,6 @@
-import { AgChartsVue } from "ag-charts-vue3";
-import { cloneDeep } from "lodash";
-import { createApp } from "vue";
+import { AgChartsVue } from 'ag-charts-vue3';
+import { cloneDeep } from 'lodash';
+import { createApp } from 'vue';
 
 const ChartExample = {
   template: `
@@ -16,7 +16,7 @@ const ChartExample = {
             </div>
     `,
   components: {
-    "ag-charts-vue": AgChartsVue,
+    'ag-charts-vue': AgChartsVue,
   },
   data: function () {
     return {
@@ -27,24 +27,24 @@ const ChartExample = {
     this.options = {
       data: [
         {
-          month: "Jun",
+          month: 'Jun',
           value1: 50,
           hats_made: 40,
         },
         {
-          month: "Jul",
+          month: 'Jul',
           value1: 70,
           hats_made: 50,
         },
         {
-          month: "Aug",
+          month: 'Aug',
           value1: 60,
           hats_made: 30,
         },
       ],
       series: [
-        { type: "column", xKey: "month", stacked: true, yKey: "value1" },
-        { type: "column", xKey: "month", stacked: true, yKey: "hats_made" },
+        { type: 'column', xKey: 'month', stacked: true, yKey: 'value1' },
+        { type: 'column', xKey: 'month', stacked: true, yKey: 'hats_made' },
       ],
     };
   },
@@ -53,8 +53,8 @@ const ChartExample = {
     setYNames() {
       const options = cloneDeep(this.options);
 
-      options.series[0].yName = "Sweaters Made";
-      options.series[1].yName = "Hats Made";
+      options.series[0].yName = 'Sweaters Made';
+      options.series[1].yName = 'Hats Made';
 
       this.options = options;
     },
@@ -68,4 +68,4 @@ const ChartExample = {
   },
 };
 
-createApp(ChartExample).mount("#app");
+createApp(ChartExample).mount('#app');

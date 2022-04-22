@@ -1,12 +1,12 @@
-import { ColDef, GridReadyEvent } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { Component } from "@angular/core";
-import { ColourCellRenderer } from "./colour-cell-renderer.component";
+import { ColDef, GridReadyEvent } from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { Component } from '@angular/core';
+import { ColourCellRenderer } from './colour-cell-renderer.component';
 // Required feature modules are registered in app.module.ts
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<ag-grid-angular
     style="width: 100%; height: 100%;"
     class="ag-theme-alpine"
@@ -19,25 +19,25 @@ import { ColourCellRenderer } from "./colour-cell-renderer.component";
 export class AppComponent {
   public columnDefs: ColDef[] = [
     {
-      headerName: "Text Editor",
-      field: "color1",
+      headerName: 'Text Editor',
+      field: 'color1',
       cellRenderer: ColourCellRenderer,
-      cellEditor: "agTextCellEditor",
+      cellEditor: 'agTextCellEditor',
     },
     {
-      headerName: "Select Editor",
-      field: "color2",
+      headerName: 'Select Editor',
+      field: 'color2',
       cellRenderer: ColourCellRenderer,
-      cellEditor: "agSelectCellEditor",
+      cellEditor: 'agSelectCellEditor',
       cellEditorParams: {
         values: colors,
       },
     },
     {
-      headerName: "Rich Select Editor",
-      field: "color3",
+      headerName: 'Rich Select Editor',
+      field: 'color3',
       cellRenderer: ColourCellRenderer,
-      cellEditor: "agRichSelectCellEditor",
+      cellEditor: 'agRichSelectCellEditor',
       cellEditorPopup: true,
       cellEditorParams: {
         values: colors,
@@ -45,10 +45,10 @@ export class AppComponent {
       },
     },
     {
-      headerName: "Large Text Editor",
-      field: "description",
+      headerName: 'Large Text Editor',
+      field: 'description',
       cellEditorPopup: true,
-      cellEditor: "agLargeTextCellEditor",
+      cellEditor: 'agLargeTextCellEditor',
       flex: 2,
     },
   ];
@@ -62,11 +62,11 @@ export class AppComponent {
   onGridReady(params: GridReadyEvent) {}
 }
 
-const colors = ["Red", "Green", "Blue"];
+const colors = ['Red', 'Green', 'Blue'];
 const data = Array.from(Array(20).keys()).map((val: any, index: number) => ({
   color1: colors[index % 3],
   color2: colors[index % 3],
   color3: colors[index % 3],
   description:
-    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
 }));

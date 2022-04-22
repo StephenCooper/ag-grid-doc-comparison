@@ -1,8 +1,10 @@
-"use strict";
+'use strict';
 
-import { AgChartsReact } from "ag-charts-react";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { cloneDeep } from 'lodash';
+import { render } from 'react-dom';
+import * as agCharts from 'ag-charts-community';
+import { AgChartsReact } from 'ag-charts-react';
 
 class ChartExample extends Component {
   constructor(props) {
@@ -11,30 +13,30 @@ class ChartExample extends Component {
     this.state = {
       options: {
         data: [
-          { os: "Android", share: 56.9, satisfaction: 10 },
-          { os: "iOS", share: 22.5, satisfaction: 15 },
-          { os: "BlackBerry", share: 6.8, satisfaction: 5 },
-          { os: "Symbian", share: 8.5, satisfaction: 1 },
-          { os: "Bada", share: 2.6, satisfaction: 2 },
-          { os: "Windows", share: 1.9, satisfaction: 12 },
+          { os: 'Android', share: 56.9, satisfaction: 10 },
+          { os: 'iOS', share: 22.5, satisfaction: 15 },
+          { os: 'BlackBerry', share: 6.8, satisfaction: 5 },
+          { os: 'Symbian', share: 8.5, satisfaction: 1 },
+          { os: 'Bada', share: 2.6, satisfaction: 2 },
+          { os: 'Windows', share: 1.9, satisfaction: 12 },
         ],
         series: [
           {
-            type: "pie",
+            type: 'pie',
             title: {
-              text: "Market Share",
+              text: 'Market Share',
             },
-            labelKey: "os",
-            angleKey: "share",
+            labelKey: 'os',
+            angleKey: 'share',
             innerRadiusOffset: -40,
           },
           {
-            type: "pie",
+            type: 'pie',
             title: {
-              text: "Satisfaction",
+              text: 'Satisfaction',
             },
-            labelKey: "os",
-            angleKey: "satisfaction",
+            labelKey: 'os',
+            angleKey: 'satisfaction',
             outerRadiusOffset: -100,
             innerRadiusOffset: -140,
           },
@@ -50,4 +52,4 @@ class ChartExample extends Component {
   }
 }
 
-render(<ChartExample />, document.querySelector("#root"));
+render(<ChartExample />, document.querySelector('#root'));

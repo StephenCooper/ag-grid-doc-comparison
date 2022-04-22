@@ -1,8 +1,8 @@
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
-import { AgGridVue } from "ag-grid-vue3";
-import { createApp } from "vue";
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import 'ag-grid-enterprise';
+import { AgGridVue } from 'ag-grid-vue3';
+import { createApp } from 'vue';
 
 const VueExample = {
   template: `
@@ -18,24 +18,24 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
-        { headerName: "Row #", field: "rowNumber", width: 120 },
+        { headerName: 'Row #', field: 'rowNumber', width: 120 },
         {
-          field: "autoA",
+          field: 'autoA',
           width: 300,
           wrapText: true,
           autoHeight: true,
-          headerName: "A) Auto Height",
+          headerName: 'A) Auto Height',
         },
         {
           width: 300,
-          field: "autoB",
+          field: 'autoB',
           wrapText: true,
-          headerName: "B) Normal Height",
+          headerName: 'B) Normal Height',
         },
       ],
       gridApi: null,
@@ -51,11 +51,11 @@ const VueExample = {
     this.sideBar = {
       toolPanels: [
         {
-          id: "columns",
-          labelDefault: "Columns",
-          labelKey: "columns",
-          iconKey: "columns",
-          toolPanel: "agColumnsToolPanel",
+          id: 'columns',
+          labelDefault: 'Columns',
+          labelKey: 'columns',
+          iconKey: 'columns',
+          toolPanel: 'agColumnsToolPanel',
           toolPanelParams: {
             suppressRowGroups: true,
             suppressValues: true,
@@ -68,7 +68,7 @@ const VueExample = {
           },
         },
       ],
-      defaultToolPanel: "columns",
+      defaultToolPanel: 'columns',
     };
   },
   methods: {
@@ -85,4 +85,4 @@ const VueExample = {
   },
 };
 
-createApp(VueExample).mount("#app");
+createApp(VueExample).mount('#app');

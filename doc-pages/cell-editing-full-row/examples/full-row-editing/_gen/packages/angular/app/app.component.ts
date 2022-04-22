@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component } from '@angular/core';
 import {
   CellValueChangedEvent,
   ColDef,
@@ -6,14 +6,14 @@ import {
   GridReadyEvent,
   ICellEditorComp,
   RowValueChangedEvent,
-} from "ag-grid-community";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
+} from 'ag-grid-community';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import 'ag-grid-enterprise';
 declare var NumericCellEditor: ICellEditorComp;
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<div class="example-wrapper">
     <div style="margin-bottom: 5px;">
       <button style="font-size: 12px" (click)="onBtStartEditing()">
@@ -41,48 +41,48 @@ export class AppComponent {
 
   public columnDefs: ColDef[] = [
     {
-      field: "make",
-      cellEditor: "agSelectCellEditor",
+      field: 'make',
+      cellEditor: 'agSelectCellEditor',
       cellEditorParams: {
-        values: ["Porsche", "Toyota", "Ford", "AAA", "BBB", "CCC"],
+        values: ['Porsche', 'Toyota', 'Ford', 'AAA', 'BBB', 'CCC'],
       },
     },
-    { field: "model" },
-    { field: "field4", headerName: "Read Only", editable: false },
-    { field: "price", cellEditor: NumericCellEditor },
+    { field: 'model' },
+    { field: 'field4', headerName: 'Read Only', editable: false },
+    { field: 'price', cellEditor: NumericCellEditor },
     {
-      headerName: "Suppress Navigable",
-      field: "field5",
+      headerName: 'Suppress Navigable',
+      field: 'field5',
       suppressNavigable: true,
       minWidth: 200,
     },
-    { headerName: "Read Only", field: "field6", editable: false },
+    { headerName: 'Read Only', field: 'field6', editable: false },
   ];
   public defaultColDef: ColDef = {
     flex: 1,
     editable: true,
   };
-  public editType = "fullRow";
+  public editType = 'fullRow';
   public rowData: any[] | null = getRowData();
 
   onCellValueChanged(event: CellValueChangedEvent) {
     console.log(
-      "onCellValueChanged: " + event.colDef.field + " = " + event.newValue
+      'onCellValueChanged: ' + event.colDef.field + ' = ' + event.newValue
     );
   }
 
   onRowValueChanged(event: RowValueChangedEvent) {
     var data = event.data;
     console.log(
-      "onRowValueChanged: (" +
+      'onRowValueChanged: (' +
         data.make +
-        ", " +
+        ', ' +
         data.model +
-        ", " +
+        ', ' +
         data.price +
-        ", " +
+        ', ' +
         data.field5 +
-        ")"
+        ')'
     );
   }
 
@@ -91,10 +91,10 @@ export class AppComponent {
   }
 
   onBtStartEditing() {
-    this.gridApi.setFocusedCell(2, "make");
+    this.gridApi.setFocusedCell(1, 'make');
     this.gridApi.startEditingCell({
-      rowIndex: 2,
-      colKey: "make",
+      rowIndex: 1,
+      colKey: 'make',
     });
   }
 
@@ -107,28 +107,28 @@ function getRowData() {
   var rowData = [];
   for (var i = 0; i < 10; i++) {
     rowData.push({
-      make: "Toyota",
-      model: "Celica",
+      make: 'Toyota',
+      model: 'Celica',
       price: 35000 + i * 1000,
-      field4: "Sample XX",
-      field5: "Sample 22",
-      field6: "Sample 23",
+      field4: 'Sample XX',
+      field5: 'Sample 22',
+      field6: 'Sample 23',
     });
     rowData.push({
-      make: "Ford",
-      model: "Mondeo",
+      make: 'Ford',
+      model: 'Mondeo',
       price: 32000 + i * 1000,
-      field4: "Sample YY",
-      field5: "Sample 24",
-      field6: "Sample 25",
+      field4: 'Sample YY',
+      field5: 'Sample 24',
+      field6: 'Sample 25',
     });
     rowData.push({
-      make: "Porsche",
-      model: "Boxter",
+      make: 'Porsche',
+      model: 'Boxster',
       price: 72000 + i * 1000,
-      field4: "Sample ZZ",
-      field5: "Sample 26",
-      field6: "Sample 27",
+      field4: 'Sample ZZ',
+      field5: 'Sample 26',
+      field6: 'Sample 27',
     });
   }
   return rowData;

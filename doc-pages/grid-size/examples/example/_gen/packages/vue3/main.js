@@ -1,7 +1,7 @@
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import { AgGridVue } from "ag-grid-vue3";
-import { createApp } from "vue";
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import { AgGridVue } from 'ag-grid-vue3';
+import { createApp } from 'vue';
 
 const VueExample = {
   template: `
@@ -18,21 +18,21 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
-        { field: "athlete", minWidth: 150 },
-        { field: "age", minWidth: 70, maxWidth: 90 },
-        { field: "country", minWidth: 130 },
-        { field: "year", minWidth: 70, maxWidth: 90 },
-        { field: "date", minWidth: 120 },
-        { field: "sport", minWidth: 120 },
-        { field: "gold", minWidth: 80 },
-        { field: "silver", minWidth: 80 },
-        { field: "bronze", minWidth: 80 },
-        { field: "total", minWidth: 80 },
+        { field: 'athlete', minWidth: 150 },
+        { field: 'age', minWidth: 70, maxWidth: 90 },
+        { field: 'country', minWidth: 130 },
+        { field: 'year', minWidth: 70, maxWidth: 90 },
+        { field: 'date', minWidth: 120 },
+        { field: 'sport', minWidth: 120 },
+        { field: 'gold', minWidth: 80 },
+        { field: 'silver', minWidth: 80 },
+        { field: 'bronze', minWidth: 80 },
+        { field: 'total', minWidth: 80 },
       ],
       gridApi: null,
       columnApi: null,
@@ -53,11 +53,11 @@ const VueExample = {
 
       const updateData = (data) => params.api.setRowData(data);
 
-      fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
         .then((resp) => resp.json())
         .then((data) => updateData(data));
     },
   },
 };
 
-createApp(VueExample).mount("#app");
+createApp(VueExample).mount('#app');

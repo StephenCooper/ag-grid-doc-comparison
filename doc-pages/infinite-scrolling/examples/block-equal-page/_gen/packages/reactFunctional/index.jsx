@@ -1,10 +1,10 @@
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
-import { AgGridReact } from "ag-grid-react";
-import React, { useCallback, useMemo, useState } from "react";
-import { render } from "react-dom";
-("use strict");
+'use strict';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import React, { useCallback, useMemo, useState } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from 'ag-grid-react';
+import 'ag-grid-enterprise';
 
 const filterParams = { values: countries() };
 
@@ -28,7 +28,7 @@ const sortData = (sortModel, data) => {
       if (valueA == valueB) {
         continue;
       }
-      const sortDirection = sortColModel.sort === "asc" ? 1 : -1;
+      const sortDirection = sortColModel.sort === 'asc' ? 1 : -1;
       if (valueA > valueB) {
         return sortDirection;
       } else {
@@ -55,11 +55,11 @@ const filterData = (filterModel, data) => {
       // EQUALS = 1;
       // LESS_THAN = 2;
       // GREATER_THAN = 3;
-      if (filterModel.age.type == "equals") {
+      if (filterModel.age.type == 'equals') {
         if (age !== allowedAge) {
           continue;
         }
-      } else if (filterModel.age.type == "lessThan") {
+      } else if (filterModel.age.type == 'lessThan') {
         if (age >= allowedAge) {
           continue;
         }
@@ -86,15 +86,15 @@ const filterData = (filterModel, data) => {
 };
 
 const GridExample = () => {
-  const containerStyle = useMemo(() => ({ width: "100%", height: "100%" }), []);
-  const gridStyle = useMemo(() => ({ height: "100%", width: "100%" }), []);
+  const containerStyle = useMemo(() => ({ width: '100%', height: '100%' }), []);
+  const gridStyle = useMemo(() => ({ height: '100%', width: '100%' }), []);
 
   const [columnDefs, setColumnDefs] = useState([
     // this row just shows the row index, doesn't use any data from the row
     {
-      headerName: "ID",
+      headerName: 'ID',
       maxWidth: 100,
-      valueGetter: "node.id",
+      valueGetter: 'node.id',
       cellRenderer: (props) => {
         if (props.value !== undefined) {
           return props.value;
@@ -109,30 +109,30 @@ const GridExample = () => {
       sortable: false,
       suppressMenu: true,
     },
-    { headerName: "Athlete", field: "athlete", width: 150, suppressMenu: true },
+    { headerName: 'Athlete', field: 'athlete', width: 150, suppressMenu: true },
     {
-      field: "age",
-      filter: "agNumberColumnFilter",
+      field: 'age',
+      filter: 'agNumberColumnFilter',
       filterParams: {
-        filterOptions: ["equals", "lessThan", "greaterThan"],
+        filterOptions: ['equals', 'lessThan', 'greaterThan'],
       },
     },
     {
-      field: "country",
-      filter: "agSetColumnFilter",
+      field: 'country',
+      filter: 'agSetColumnFilter',
       filterParams: filterParams,
     },
     {
-      field: "year",
-      filter: "agSetColumnFilter",
-      filterParams: { values: ["2000", "2004", "2008", "2012"] },
+      field: 'year',
+      filter: 'agSetColumnFilter',
+      filterParams: { values: ['2000', '2004', '2008', '2012'] },
     },
-    { field: "date" },
-    { field: "sport", suppressMenu: true },
-    { field: "gold", suppressMenu: true },
-    { field: "silver", suppressMenu: true },
-    { field: "bronze", suppressMenu: true },
-    { field: "total", suppressMenu: true },
+    { field: 'date' },
+    { field: 'sport', suppressMenu: true },
+    { field: 'gold', suppressMenu: true },
+    { field: 'silver', suppressMenu: true },
+    { field: 'bronze', suppressMenu: true },
+    { field: 'total', suppressMenu: true },
   ]);
   const defaultColDef = useMemo(() => {
     return {
@@ -148,18 +148,18 @@ const GridExample = () => {
   }, []);
 
   const onGridReady = useCallback((params) => {
-    fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+    fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .then((resp) => resp.json())
       .then((data) => {
         // give each row an id
         data.forEach(function (x, index) {
-          x.id = "R" + (index + 1);
+          x.id = 'R' + (index + 1);
         });
         const dataSource = {
           rowCount: undefined,
           getRows: function (params) {
             console.log(
-              "asking for " + params.startRow + " to " + params.endRow
+              'asking for ' + params.startRow + ' to ' + params.endRow
             );
             // At this point in your code, you would call the server
             // To make the demo look real, wait for 500ms before returning
@@ -194,8 +194,8 @@ const GridExample = () => {
         <AgGridReact
           columnDefs={columnDefs}
           defaultColDef={defaultColDef}
-          rowSelection={"multiple"}
-          rowModelType={"infinite"}
+          rowSelection={'multiple'}
+          rowModelType={'infinite'}
           cacheOverflowSize={2}
           maxConcurrentDatasourceRequests={2}
           infiniteInitialRowCount={1}
@@ -209,4 +209,4 @@ const GridExample = () => {
   );
 };
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

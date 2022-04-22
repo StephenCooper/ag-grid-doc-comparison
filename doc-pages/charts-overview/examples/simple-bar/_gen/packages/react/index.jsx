@@ -1,8 +1,10 @@
-"use strict";
+'use strict';
 
-import { AgChartsReact } from "ag-charts-react";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { cloneDeep } from 'lodash';
+import { render } from 'react-dom';
+import * as agCharts from 'ag-charts-community';
+import { AgChartsReact } from 'ag-charts-react';
 
 class ChartExample extends Component {
   constructor(props) {
@@ -22,30 +24,30 @@ class ChartExample extends Component {
           },
         },
         title: {
-          text: "Gross Weekly Earnings by Occupation (Q4 2019)",
+          text: 'Gross Weekly Earnings by Occupation (Q4 2019)',
           fontSize: 18,
         },
         subtitle: {
-          text: "Source: Office for National Statistics",
+          text: 'Source: Office for National Statistics',
         },
         series: [
           {
-            type: "bar",
-            xKey: "type",
-            yKey: "earnings",
+            type: 'bar',
+            xKey: 'type',
+            yKey: 'earnings',
           },
         ],
         axes: [
           {
-            type: "category",
-            position: "left",
+            type: 'category',
+            position: 'left',
           },
           {
-            type: "number",
-            position: "bottom",
+            type: 'number',
+            position: 'bottom',
             title: {
               enabled: true,
-              text: "£/week",
+              text: '£/week',
             },
           },
         ],
@@ -63,4 +65,4 @@ class ChartExample extends Component {
   }
 }
 
-render(<ChartExample />, document.querySelector("#root"));
+render(<ChartExample />, document.querySelector('#root'));

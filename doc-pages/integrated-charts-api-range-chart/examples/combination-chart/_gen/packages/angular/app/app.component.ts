@@ -1,17 +1,17 @@
-import { Component } from "@angular/core";
+import { Component } from '@angular/core';
 import {
   AgChartThemeOverrides,
   ColDef,
   FirstDataRenderedEvent,
   GridReadyEvent,
   ValueParserParams,
-} from "ag-grid-community";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
+} from 'ag-grid-community';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import 'ag-grid-enterprise';
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<div class="wrapper">
     <ag-grid-angular
       style="width: 100%; height: 100%;"
@@ -32,12 +32,12 @@ import "ag-grid-enterprise";
 })
 export class AppComponent {
   public columnDefs: ColDef[] = [
-    { field: "day", maxWidth: 90 },
-    { field: "month", chartDataType: "category" },
-    { field: "rain", chartDataType: "series", valueParser: numberParser },
-    { field: "pressure", chartDataType: "series", valueParser: numberParser },
-    { field: "temp", chartDataType: "series", valueParser: numberParser },
-    { field: "wind", chartDataType: "series", valueParser: numberParser },
+    { field: 'day', maxWidth: 90 },
+    { field: 'month', chartDataType: 'category' },
+    { field: 'rain', chartDataType: 'series', valueParser: numberParser },
+    { field: 'pressure', chartDataType: 'series', valueParser: numberParser },
+    { field: 'temp', chartDataType: 'series', valueParser: numberParser },
+    { field: 'wind', chartDataType: 'series', valueParser: numberParser },
   ];
   public defaultColDef: ColDef = {
     flex: 1,
@@ -48,7 +48,7 @@ export class AppComponent {
     resizable: true,
   };
   public rowData: any[] | null = getData();
-  public chartThemes: string[] = ["ag-pastel", "ag-vivid"];
+  public chartThemes: string[] = ['ag-pastel', 'ag-vivid'];
   public popupParent: HTMLElement = document.body;
   public chartThemeOverrides: AgChartThemeOverrides = {
     common: {
@@ -56,7 +56,7 @@ export class AppComponent {
         right: 40,
       },
       legend: {
-        position: "bottom",
+        position: 'bottom',
       },
     },
     column: {
@@ -75,18 +75,18 @@ export class AppComponent {
 
   onFirstDataRendered(params: FirstDataRenderedEvent) {
     params.api!.createRangeChart({
-      chartType: "customCombo",
+      chartType: 'customCombo',
       cellRange: {
-        columns: ["month", "rain", "pressure", "temp"],
+        columns: ['month', 'rain', 'pressure', 'temp'],
       },
       seriesChartTypes: [
-        { colId: "rain", chartType: "groupedColumn", secondaryAxis: false },
-        { colId: "pressure", chartType: "line", secondaryAxis: true },
-        { colId: "temp", chartType: "line", secondaryAxis: true },
+        { colId: 'rain', chartType: 'groupedColumn', secondaryAxis: false },
+        { colId: 'pressure', chartType: 'line', secondaryAxis: true },
+        { colId: 'temp', chartType: 'line', secondaryAxis: true },
       ],
-      aggFunc: "sum",
+      aggFunc: 'sum',
       suppressChartRanges: true,
-      chartContainer: document.querySelector("#myChart") as any,
+      chartContainer: document.querySelector('#myChart') as any,
     });
   }
 
@@ -95,7 +95,7 @@ export class AppComponent {
 
 function numberParser(params: ValueParserParams) {
   const value = params.newValue;
-  if (value === null || value === undefined || value === "") {
+  if (value === null || value === undefined || value === '') {
     return null;
   }
   return parseFloat(value);

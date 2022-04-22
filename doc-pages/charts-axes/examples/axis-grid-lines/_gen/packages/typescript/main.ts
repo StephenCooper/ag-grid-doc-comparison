@@ -1,36 +1,36 @@
-import * as agCharts from "ag-charts-community";
-import { AgCartesianChartOptions } from "ag-charts-community";
+import * as agCharts from 'ag-charts-community';
+import { AgCartesianChartOptions } from 'ag-charts-community';
 
 const options: AgCartesianChartOptions = {
-  container: document.getElementById("myChart"),
+  container: document.getElementById('myChart'),
   title: {
     text: "Most Common Girls' First Names In English",
   },
   subtitle: {
-    text: "over the past 100 years",
+    text: 'over the past 100 years',
   },
   data: [
-    { name: "Mary", count: 234000 },
-    { name: "Patricia", count: 211000 },
-    { name: "Jennifer", count: 178000 },
-    { name: "Elizabeth", count: 153000 },
-    { name: "Linda", count: 123000 },
+    { name: 'Mary', count: 234000 },
+    { name: 'Patricia', count: 211000 },
+    { name: 'Jennifer', count: 178000 },
+    { name: 'Elizabeth', count: 153000 },
+    { name: 'Linda', count: 123000 },
   ],
   series: [
     {
-      type: "line",
-      xKey: "name",
-      yKey: "count",
+      type: 'line',
+      xKey: 'name',
+      yKey: 'count',
     },
   ],
   axes: [
     {
-      type: "category",
-      position: "bottom",
+      type: 'category',
+      position: 'bottom',
     },
     {
-      type: "number",
-      position: "left",
+      type: 'number',
+      position: 'left',
     },
   ],
   legend: {
@@ -43,11 +43,11 @@ var chart = agCharts.AgChart.create(options);
 function useGridStyle1() {
   var gridStyle = [
     {
-      stroke: "gray",
+      stroke: 'gray',
       lineDash: [10, 5],
     },
     {
-      stroke: "lightgray",
+      stroke: 'lightgray',
       lineDash: [5, 5],
     },
   ];
@@ -59,13 +59,13 @@ function useGridStyle1() {
 function useGridStyle2() {
   var xGridStyle = [
     {
-      stroke: "red",
+      stroke: 'red',
       lineDash: [3, 3],
     },
   ];
   var yGridStyle = [
     {
-      stroke: "green",
+      stroke: 'green',
       lineDash: [8, 3, 3, 3],
     },
   ];
@@ -77,7 +77,7 @@ function useGridStyle2() {
 function useDefaultGridStyle() {
   var gridStyle = [
     {
-      stroke: "rgba(219, 219, 219, 1)",
+      stroke: 'rgba(219, 219, 219, 1)',
       lineDash: [4, 2],
     },
   ];
@@ -86,7 +86,7 @@ function useDefaultGridStyle() {
   agCharts.AgChart.update(chart, options);
 }
 
-if (typeof window !== "undefined") {
+if (typeof window !== 'undefined') {
   // Attach external event handlers to window so they can be called from index.html
   (<any>window).useGridStyle1 = useGridStyle1;
   (<any>window).useGridStyle2 = useGridStyle2;

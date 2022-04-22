@@ -3,8 +3,8 @@ const base64flags = {};
 
 const columnDefs = [
   {
-    field: "country",
-    headerName: " ",
+    field: 'country',
+    headerName: ' ',
     minWidth: 70,
     width: 70,
     maxWidth: 70,
@@ -14,15 +14,15 @@ const columnDefs = [
       countryCodes: countryCodes,
     },
   },
-  { field: "athlete" },
-  { field: "age" },
-  { field: "year" },
-  { field: "date" },
-  { field: "sport" },
-  { field: "gold" },
-  { field: "silver" },
-  { field: "bronze" },
-  { field: "total" },
+  { field: 'athlete' },
+  { field: 'age' },
+  { field: 'year' },
+  { field: 'date' },
+  { field: 'sport' },
+  { field: 'gold' },
+  { field: 'silver' },
+  { field: 'bronze' },
+  { field: 'total' },
 ];
 
 const gridOptions = {
@@ -33,7 +33,7 @@ const gridOptions = {
   },
   defaultExcelExportParams: {
     addImageToCell: function (rowIndex, col, value) {
-      if (col.getColId() !== "country") {
+      if (col.getColId() !== 'country') {
         return;
       }
 
@@ -42,7 +42,7 @@ const gridOptions = {
         image: {
           id: countryCode,
           base64: base64flags[countryCode],
-          imageType: "png",
+          imageType: 'png',
           width: 20,
           height: 11,
           position: {
@@ -58,7 +58,7 @@ const gridOptions = {
     countryCodes: countryCodes,
   },
   onGridReady: (params) => {
-    fetch("https://www.ag-grid.com/example-assets/small-olympic-winners.json")
+    fetch('https://www.ag-grid.com/example-assets/small-olympic-winners.json')
       .then((data) =>
         createBase64FlagsFromResponse(data, countryCodes, base64flags)
       )
@@ -71,7 +71,7 @@ function onBtExport() {
 }
 
 // setup the grid after the page has finished loading
-document.addEventListener("DOMContentLoaded", function () {
-  const gridDiv = document.querySelector("#myGrid");
+document.addEventListener('DOMContentLoaded', function () {
+  const gridDiv = document.querySelector('#myGrid');
   new agGrid.Grid(gridDiv, gridOptions);
 });

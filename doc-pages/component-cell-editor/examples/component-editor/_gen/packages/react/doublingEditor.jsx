@@ -1,4 +1,4 @@
-import React, { Component, createRef } from "react";
+import React, { Component, createRef } from 'react';
 
 export default class DoublingEditor extends Component {
   constructor(props) {
@@ -42,7 +42,7 @@ export default class DoublingEditor extends Component {
         ref={this.inputRef}
         value={this.state.value}
         onChange={(event) => this.setState({ value: event.target.value })}
-        style={{ width: "100%" }}
+        style={{ width: '100%' }}
       />
     );
   }

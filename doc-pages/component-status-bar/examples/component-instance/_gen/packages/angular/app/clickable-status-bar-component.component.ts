@@ -1,9 +1,9 @@
-import { Component } from "@angular/core";
-import { IStatusPanelAngularComp } from "ag-grid-angular";
-import { IStatusPanelParams } from "ag-grid-community";
+import { Component } from '@angular/core';
+import { IStatusPanelAngularComp } from 'ag-grid-angular';
+import { IStatusPanelParams } from 'ag-grid-community';
 
 @Component({
-  selector: "status-component",
+  selector: 'status-component',
   template: `
     <div class="container" *ngIf="visible">
       <div>
@@ -24,7 +24,7 @@ export class ClickableStatusBarComponent implements IStatusPanelAngularComp {
   }
 
   onClick(): void {
-    alert("Selected Row Count: " + this.params.api.getSelectedRows().length);
+    alert('Selected Row Count: ' + this.params.api.getSelectedRows().length);
   }
 
   setVisible(visible: boolean) {

@@ -1,10 +1,10 @@
-"use strict";
+'use strict';
 
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import { AgGridReact } from "ag-grid-react";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from 'ag-grid-react';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 
 class GridExample extends Component {
   constructor(props) {
@@ -13,10 +13,10 @@ class GridExample extends Component {
     this.state = {
       columnDefs: [
         { valueGetter: "'Drag'", dndSource: true },
-        { field: "id" },
-        { field: "color" },
-        { field: "value1" },
-        { field: "value2" },
+        { field: 'id' },
+        { field: 'color' },
+        { field: 'value1' },
+        { field: 'value2' },
       ],
       defaultColDef: {
         width: 80,
@@ -25,9 +25,9 @@ class GridExample extends Component {
         resizable: true,
       },
       rowClassRules: {
-        "red-row": 'data.color == "Red"',
-        "green-row": 'data.color == "Green"',
-        "blue-row": 'data.color == "Blue"',
+        'red-row': 'data.color == "Red"',
+        'green-row': 'data.color == "Green"',
+        'blue-row': 'data.color == "Blue"',
       },
       rowData: getData(),
     };
@@ -41,30 +41,30 @@ class GridExample extends Component {
   onDragOver = (event) => {
     var dragSupported = event.dataTransfer.length;
     if (dragSupported) {
-      event.dataTransfer.dropEffect = "move";
+      event.dataTransfer.dropEffect = 'move';
     }
     event.preventDefault();
   };
 
   onDrop = (event) => {
-    var jsonData = event.dataTransfer.getData("application/json");
-    var eJsonRow = document.createElement("div");
-    eJsonRow.classList.add("json-row");
+    var jsonData = event.dataTransfer.getData('application/json');
+    var eJsonRow = document.createElement('div');
+    eJsonRow.classList.add('json-row');
     eJsonRow.innerText = jsonData;
-    var eJsonDisplay = document.querySelector("#eJsonDisplay");
+    var eJsonDisplay = document.querySelector('#eJsonDisplay');
     eJsonDisplay.appendChild(eJsonRow);
     event.preventDefault();
   };
 
   render() {
     return (
-      <div style={{ width: "100%", height: "100%" }}>
+      <div style={{ width: '100%', height: '100%' }}>
         <div className="outer">
           <div className="grid-col">
             <div
               style={{
-                height: "100%",
-                width: "100%",
+                height: '100%',
+                width: '100%',
               }}
               className="ag-theme-alpine"
             >
@@ -96,4 +96,4 @@ class GridExample extends Component {
   }
 }
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

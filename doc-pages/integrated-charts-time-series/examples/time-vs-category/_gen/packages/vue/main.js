@@ -1,8 +1,8 @@
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
-import { AgGridVue } from "ag-grid-vue";
-import Vue from "vue";
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import 'ag-grid-enterprise';
+import { AgGridVue } from 'ag-grid-vue';
+import Vue from 'vue';
 
 const VueExample = {
   template: `
@@ -29,7 +29,7 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
@@ -52,7 +52,7 @@ const VueExample = {
       line: {
         title: {
           enabled: true,
-          text: "Average Daily Temperatures",
+          text: 'Average Daily Temperatures',
         },
         legend: {
           enabled: false,
@@ -70,21 +70,21 @@ const VueExample = {
           time: {
             label: {
               rotation: 0,
-              format: "%d %b",
+              format: '%d %b',
             },
           },
           category: {
             label: {
               rotation: 0,
               formatter: (params) => {
-                return moment(new Date(params.value)).format("DD MMM");
+                return moment(new Date(params.value)).format('DD MMM');
               },
             },
           },
           number: {
             label: {
               formatter: function (params) {
-                return params.value + "°C";
+                return params.value + '°C';
               },
             },
           },
@@ -98,22 +98,22 @@ const VueExample = {
         currentChartRef.destroyChart();
       }
       var createRangeChartParams = {
-        chartContainer: document.querySelector("#myChart"),
+        chartContainer: document.querySelector('#myChart'),
         suppressChartRanges: true,
         cellRange: {
-          columns: ["date", "avgTemp"],
+          columns: ['date', 'avgTemp'],
         },
-        chartType: "line",
+        chartType: 'line',
       };
       currentChartRef = params.api.createRangeChart(createRangeChartParams);
     },
     toggleAxis() {
-      var axisBtn = document.querySelector("#axisBtn");
+      var axisBtn = document.querySelector('#axisBtn');
       axisBtn.textContent = axisBtn.value;
-      axisBtn.value = axisBtn.value === "time" ? "category" : "time";
+      axisBtn.value = axisBtn.value === 'time' ? 'category' : 'time';
       const columnDefs = getColumnDefs();
       columnDefs.forEach(function (colDef) {
-        if (colDef.field === "date") {
+        if (colDef.field === 'date') {
           colDef.chartDataType = axisBtn.value;
         }
       });
@@ -124,15 +124,15 @@ const VueExample = {
       this.gridColumnApi = params.columnApi;
     },
     getChartToolbarItems() {
-      return ["chartData", "chartFormat"];
+      return ['chartData', 'chartFormat'];
     },
   },
 };
 
 window.getColumnDefs = function getColumnDefs() {
   return [
-    { field: "date", valueFormatter: dateFormatter },
-    { field: "avgTemp" },
+    { field: 'date', valueFormatter: dateFormatter },
+    { field: 'avgTemp' },
   ];
 };
 
@@ -158,8 +158,8 @@ window.getRowData = function getRowData() {
 var currentChartRef;
 
 new Vue({
-  el: "#app",
+  el: '#app',
   components: {
-    "my-component": VueExample,
+    'my-component': VueExample,
   },
 });

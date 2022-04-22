@@ -1,13 +1,13 @@
-"use strict";
+'use strict';
 
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { AgGridReact } from "@ag-grid-community/react";
-import { RowGroupingModule } from "@ag-grid-enterprise/row-grouping";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from '@ag-grid-community/react';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import { RowGroupingModule } from '@ag-grid-enterprise/row-grouping';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([ClientSideRowModelModule, RowGroupingModule]);
@@ -18,23 +18,23 @@ class GridExample extends Component {
 
     this.state = {
       columnDefs: [
-        { field: "group", rowGroup: true, hide: true },
-        { field: "id", pinned: "left", width: 70 },
-        { field: "model", width: 180 },
-        { field: "color", width: 100 },
+        { field: 'group', rowGroup: true, hide: true },
+        { field: 'id', pinned: 'left', width: 70 },
+        { field: 'model', width: 180 },
+        { field: 'color', width: 100 },
         {
-          field: "price",
+          field: 'price',
           valueFormatter: "'$' + value.toLocaleString()",
           width: 100,
         },
-        { field: "year", width: 100 },
-        { field: "country", width: 120 },
+        { field: 'year', width: 100 },
+        { field: 'country', width: 120 },
       ],
       defaultColDef: {
         sortable: true,
       },
       rowData: getData(),
-      groupDisplayType: "groupRows",
+      groupDisplayType: 'groupRows',
     };
   }
 
@@ -58,7 +58,7 @@ class GridExample extends Component {
 
   render() {
     return (
-      <div style={{ width: "100%", height: "100%" }}>
+      <div style={{ width: '100%', height: '100%' }}>
         <button onClick={() => this.onBtPrint()}>Print</button>
 
         <h3>Latin Text</h3>
@@ -74,8 +74,8 @@ class GridExample extends Component {
         <div
           id="myGrid"
           style={{
-            height: "200px",
-            width: "700px",
+            height: '200px',
+            width: '700px',
           }}
           className="ag-theme-alpine"
         >
@@ -105,15 +105,15 @@ class GridExample extends Component {
 }
 
 function setPrinterFriendly(api) {
-  const eGridDiv = document.querySelector("#myGrid");
-  eGridDiv.style.height = "";
-  api.setDomLayout("print");
+  const eGridDiv = document.querySelector('#myGrid');
+  eGridDiv.style.height = '';
+  api.setDomLayout('print');
 }
 function setNormal(api) {
-  const eGridDiv = document.querySelector("#myGrid");
-  eGridDiv.style.width = "700px";
-  eGridDiv.style.height = "200px";
+  const eGridDiv = document.querySelector('#myGrid');
+  eGridDiv.style.width = '700px';
+  eGridDiv.style.height = '200px';
   api.setDomLayout();
 }
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

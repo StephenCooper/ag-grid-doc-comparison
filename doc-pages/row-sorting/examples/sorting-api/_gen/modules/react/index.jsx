@@ -1,12 +1,12 @@
-"use strict";
+'use strict';
 
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { AgGridReact } from "@ag-grid-community/react";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from '@ag-grid-community/react';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([ClientSideRowModelModule]);
@@ -17,16 +17,16 @@ class GridExample extends Component {
 
     this.state = {
       columnDefs: [
-        { field: "athlete" },
-        { field: "age", width: 90 },
-        { field: "country" },
-        { field: "year", width: 90 },
-        { field: "date" },
-        { field: "sport" },
-        { field: "gold" },
-        { field: "silver" },
-        { field: "bronze" },
-        { field: "total" },
+        { field: 'athlete' },
+        { field: 'age', width: 90 },
+        { field: 'country' },
+        { field: 'year', width: 90 },
+        { field: 'date' },
+        { field: 'sport' },
+        { field: 'gold' },
+        { field: 'silver' },
+        { field: 'bronze' },
+        { field: 'total' },
       ],
       defaultColDef: {
         sortable: true,
@@ -41,21 +41,21 @@ class GridExample extends Component {
 
     const updateData = (data) => params.api.setRowData(data);
 
-    fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+    fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .then((resp) => resp.json())
       .then((data) => updateData(data));
   };
 
   sortByAthleteAsc = () => {
     this.gridColumnApi.applyColumnState({
-      state: [{ colId: "athlete", sort: "asc" }],
+      state: [{ colId: 'athlete', sort: 'asc' }],
       defaultState: { sort: null },
     });
   };
 
   sortByAthleteDesc = () => {
     this.gridColumnApi.applyColumnState({
-      state: [{ colId: "athlete", sort: "desc" }],
+      state: [{ colId: 'athlete', sort: 'desc' }],
       defaultState: { sort: null },
     });
   };
@@ -63,8 +63,8 @@ class GridExample extends Component {
   sortByCountryThenSport = () => {
     this.gridColumnApi.applyColumnState({
       state: [
-        { colId: "country", sort: "asc", sortIndex: 0 },
-        { colId: "sport", sort: "asc", sortIndex: 1 },
+        { colId: 'country', sort: 'asc', sortIndex: 0 },
+        { colId: 'sport', sort: 'asc', sortIndex: 1 },
       ],
       defaultState: { sort: null },
     });
@@ -73,8 +73,8 @@ class GridExample extends Component {
   sortBySportThenCountry = () => {
     this.gridColumnApi.applyColumnState({
       state: [
-        { colId: "country", sort: "asc", sortIndex: 1 },
-        { colId: "sport", sort: "asc", sortIndex: 0 },
+        { colId: 'country', sort: 'asc', sortIndex: 1 },
+        { colId: 'sport', sort: 'asc', sortIndex: 0 },
       ],
       defaultState: { sort: null },
     });
@@ -96,7 +96,7 @@ class GridExample extends Component {
         return { colId: s.colId, sort: s.sort, sortIndex: s.sortIndex };
       });
     savedSort = sortState;
-    console.log("saved sort", sortState);
+    console.log('saved sort', sortState);
   };
 
   restoreFromSave = () => {
@@ -108,9 +108,9 @@ class GridExample extends Component {
 
   render() {
     return (
-      <div style={{ width: "100%", height: "100%" }}>
+      <div style={{ width: '100%', height: '100%' }}>
         <div className="example-wrapper">
-          <div style={{ marginBottom: "1rem" }}>
+          <div style={{ marginBottom: '1rem' }}>
             <div>
               <button onClick={() => this.sortByAthleteAsc()}>
                 Athlete Ascending
@@ -125,7 +125,7 @@ class GridExample extends Component {
                 Sport, then Country
               </button>
             </div>
-            <div style={{ marginTop: "0.25rem" }}>
+            <div style={{ marginTop: '0.25rem' }}>
               <button onClick={() => this.clearSort()}>Clear Sort</button>
               <button onClick={() => this.saveSort()}>Save Sort</button>
               <button onClick={() => this.restoreFromSave()}>
@@ -135,8 +135,8 @@ class GridExample extends Component {
           </div>
           <div
             style={{
-              height: "100%",
-              width: "100%",
+              height: '100%',
+              width: '100%',
             }}
             className="ag-theme-alpine"
           >
@@ -155,4 +155,4 @@ class GridExample extends Component {
 
 var savedSort;
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

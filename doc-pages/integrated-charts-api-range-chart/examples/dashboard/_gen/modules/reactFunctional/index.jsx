@@ -1,15 +1,15 @@
-"use strict";
+'use strict';
 
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { AgGridReact } from "@ag-grid-community/react";
-import { GridChartsModule } from "@ag-grid-enterprise/charts";
-import { MenuModule } from "@ag-grid-enterprise/menu";
-import { RowGroupingModule } from "@ag-grid-enterprise/row-grouping";
-import React, { useCallback, useMemo, useState } from "react";
-import { render } from "react-dom";
+import React, { useCallback, useMemo, useRef, useState } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from '@ag-grid-community/react';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import { MenuModule } from '@ag-grid-enterprise/menu';
+import { GridChartsModule } from '@ag-grid-enterprise/charts';
+import { RowGroupingModule } from '@ag-grid-enterprise/row-grouping';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([
@@ -28,51 +28,51 @@ const numberValueParser = (params) => {
 };
 
 const GridExample = () => {
-  const containerStyle = useMemo(() => ({ width: "100%", height: "100%" }), []);
-  const gridStyle = useMemo(() => ({ height: "30%", width: "100%" }), []);
+  const containerStyle = useMemo(() => ({ width: '100%', height: '100%' }), []);
+  const gridStyle = useMemo(() => ({ height: '30%', width: '100%' }), []);
   const [rowData, setRowData] = useState(getData());
   const [columnDefs, setColumnDefs] = useState([
-    { field: "country", width: 150, chartDataType: "category" },
-    { field: "group", chartDataType: "category" },
+    { field: 'country', width: 150, chartDataType: 'category' },
+    { field: 'group', chartDataType: 'category' },
     {
-      field: "gold",
-      chartDataType: "series",
+      field: 'gold',
+      chartDataType: 'series',
       editable: true,
       valueParser: numberValueParser,
     },
     {
-      field: "silver",
-      chartDataType: "series",
+      field: 'silver',
+      chartDataType: 'series',
       editable: true,
       valueParser: numberValueParser,
     },
     {
-      field: "bronze",
-      chartDataType: "series",
+      field: 'bronze',
+      chartDataType: 'series',
       editable: true,
       valueParser: numberValueParser,
     },
     {
-      field: "a",
-      chartDataType: "series",
+      field: 'a',
+      chartDataType: 'series',
       editable: true,
       valueParser: numberValueParser,
     },
     {
-      field: "b",
-      chartDataType: "series",
+      field: 'b',
+      chartDataType: 'series',
       editable: true,
       valueParser: numberValueParser,
     },
     {
-      field: "c",
-      chartDataType: "series",
+      field: 'c',
+      chartDataType: 'series',
       editable: true,
       valueParser: numberValueParser,
     },
     {
-      field: "d",
-      chartDataType: "series",
+      field: 'd',
+      chartDataType: 'series',
       editable: true,
       valueParser: numberValueParser,
     },
@@ -92,25 +92,25 @@ const GridExample = () => {
   }, []);
 
   const onFirstDataRendered = useCallback((event) => {
-    var eContainer1 = document.querySelector("#chart1");
+    var eContainer1 = document.querySelector('#chart1');
     var params1 = {
       cellRange: {
         rowStartIndex: 0,
         rowEndIndex: 4,
-        columns: ["country", "gold", "silver"],
+        columns: ['country', 'gold', 'silver'],
       },
-      chartType: "groupedBar",
+      chartType: 'groupedBar',
       chartContainer: eContainer1,
     };
     event.api.createRangeChart(params1);
-    var eContainer2 = document.querySelector("#chart2");
+    var eContainer2 = document.querySelector('#chart2');
     var params2 = {
       cellRange: {
-        columns: ["group", "gold"],
+        columns: ['group', 'gold'],
       },
-      chartType: "pie",
+      chartType: 'pie',
       chartContainer: eContainer2,
-      aggFunc: "sum",
+      aggFunc: 'sum',
       chartThemeOverrides: {
         common: {
           padding: {
@@ -121,20 +121,20 @@ const GridExample = () => {
           },
           legend: {
             enabled: true,
-            position: "bottom",
+            position: 'bottom',
           },
         },
       },
     };
     event.api.createRangeChart(params2);
-    var eContainer3 = document.querySelector("#chart3");
+    var eContainer3 = document.querySelector('#chart3');
     var params3 = {
       cellRange: {
-        columns: ["group", "silver"],
+        columns: ['group', 'silver'],
       },
-      chartType: "pie",
+      chartType: 'pie',
       chartContainer: eContainer3,
-      aggFunc: "sum",
+      aggFunc: 'sum',
       chartThemeOverrides: {
         common: {
           padding: {
@@ -145,7 +145,7 @@ const GridExample = () => {
           },
           legend: {
             enabled: true,
-            position: "bottom",
+            position: 'bottom',
           },
         },
       },
@@ -161,11 +161,11 @@ const GridExample = () => {
     <div style={containerStyle}>
       <div
         style={{
-          display: "flex",
-          flexDirection: "column",
-          height: "100%",
-          width: "100%",
-          overflow: "hidden",
+          display: 'flex',
+          flexDirection: 'column',
+          height: '100%',
+          width: '100%',
+          overflow: 'hidden',
         }}
       >
         <div style={gridStyle} className="ag-theme-alpine">
@@ -182,23 +182,23 @@ const GridExample = () => {
         </div>
         <div
           id="chart1"
-          style={{ flex: "1 1 auto", overflow: "hidden", height: "30%" }}
+          style={{ flex: '1 1 auto', overflow: 'hidden', height: '30%' }}
         ></div>
         <div
           style={{
-            display: "flex",
-            flex: "1 1 auto",
-            overflow: "hidden",
-            height: "30%",
+            display: 'flex',
+            flex: '1 1 auto',
+            overflow: 'hidden',
+            height: '30%',
           }}
         >
           <div
             id="chart2"
-            style={{ flex: "1 1 auto", overflow: "hidden", width: "50%" }}
+            style={{ flex: '1 1 auto', overflow: 'hidden', width: '50%' }}
           ></div>
           <div
             id="chart3"
-            style={{ flex: "1 1 auto", overflow: "hidden", width: "50%" }}
+            style={{ flex: '1 1 auto', overflow: 'hidden', width: '50%' }}
           ></div>
         </div>
       </div>
@@ -206,4 +206,4 @@ const GridExample = () => {
   );
 };
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

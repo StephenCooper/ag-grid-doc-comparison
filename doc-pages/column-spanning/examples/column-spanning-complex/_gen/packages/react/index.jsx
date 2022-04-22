@@ -1,10 +1,10 @@
-"use strict";
+'use strict';
 
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import { AgGridReact } from "ag-grid-react";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from 'ag-grid-react';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 
 class GridExample extends Component {
   constructor(props) {
@@ -13,8 +13,8 @@ class GridExample extends Component {
     this.state = {
       columnDefs: [
         {
-          headerName: "Jan",
-          field: "jan",
+          headerName: 'Jan',
+          field: 'jan',
           colSpan: function (params) {
             if (isHeaderRow(params)) {
               return 6;
@@ -26,11 +26,11 @@ class GridExample extends Component {
           },
           cellClassRules: cellClassRules,
         },
-        { headerName: "Feb", field: "feb" },
-        { headerName: "Mar", field: "mar" },
+        { headerName: 'Feb', field: 'feb' },
+        { headerName: 'Mar', field: 'mar' },
         {
-          headerName: "Apr",
-          field: "apr",
+          headerName: 'Apr',
+          field: 'apr',
           colSpan: function (params) {
             if (isQuarterRow(params)) {
               return 3;
@@ -40,8 +40,8 @@ class GridExample extends Component {
           },
           cellClassRules: cellClassRules,
         },
-        { headerName: "May", field: "may" },
-        { headerName: "Jun", field: "jun" },
+        { headerName: 'May', field: 'may' },
+        { headerName: 'Jun', field: 'jun' },
       ],
       getRowHeight: function (params) {
         if (isHeaderRow(params)) {
@@ -64,11 +64,11 @@ class GridExample extends Component {
 
   render() {
     return (
-      <div style={{ width: "100%", height: "100%" }}>
+      <div style={{ width: '100%', height: '100%' }}>
         <div
           style={{
-            height: "100%",
-            width: "100%",
+            height: '100%',
+            width: '100%',
           }}
           className="ag-theme-alpine"
         >
@@ -86,14 +86,14 @@ class GridExample extends Component {
 }
 
 var cellClassRules = {
-  "header-cell": 'data.section === "big-title"',
-  "quarters-cell": 'data.section === "quarters"',
+  'header-cell': 'data.section === "big-title"',
+  'quarters-cell': 'data.section === "quarters"',
 };
 function isHeaderRow(params) {
-  return params.data.section === "big-title";
+  return params.data.section === 'big-title';
 }
 function isQuarterRow(params) {
-  return params.data.section === "quarters";
+  return params.data.section === 'quarters';
 }
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

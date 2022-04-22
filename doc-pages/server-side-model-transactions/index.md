@@ -51,6 +51,7 @@ The signature of the grid API `applyServerSideTransaction(params)` is as follows
 
 <api-documentation source='grid-api/api.json' section='serverSideRowModel' names='["applyServerSideTransaction"]'></api-documentation>
 
+
 ## Matching Rows
 
 In order for the grid to find rows to update and remove, it needs a way to identify these rows.
@@ -59,7 +60,7 @@ If the grid callback `getRowId` is provided, the grid will match on row ID.
 
 If the grid callback `getRowId` is not provided, the grid will match on object reference.
 
-<api-documentation source='grid-properties/properties.json' section='rowModels' names='["getRowId"]' ></api-documentation>
+<api-documentation source='grid-options/properties.json' section='rowModels' names='["getRowId"]' ></api-documentation>
 
 ## Targeting Stores
 

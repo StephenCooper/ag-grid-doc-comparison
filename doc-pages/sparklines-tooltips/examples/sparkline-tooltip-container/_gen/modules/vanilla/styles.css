@@ -1,7 +1,7 @@
 .sparkline-tooltip {
   border: 1px solid rgb(185, 219, 255);
   border-radius: 4px;
-  font: 14px Menlo, Monaco, "Courier New", monospace;
+  font: 14px Menlo, Monaco, 'Courier New', monospace;
   box-shadow: rgb(0 0 0 / 10%) 0px 2px 4px 2px;
   line-height: 20px;
   overflow: hidden;

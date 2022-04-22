@@ -1,14 +1,14 @@
-"use strict";
+'use strict';
 
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { AgGridReact } from "@ag-grid-community/react";
-import { ExcelExportModule } from "@ag-grid-enterprise/excel-export";
-import { MenuModule } from "@ag-grid-enterprise/menu";
-import React, { useCallback, useMemo, useRef, useState } from "react";
-import { render } from "react-dom";
+import React, { useCallback, useMemo, useRef, useState } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from '@ag-grid-community/react';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import { ExcelExportModule } from '@ag-grid-enterprise/excel-export';
+import { MenuModule } from '@ag-grid-enterprise/menu';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([
@@ -18,49 +18,49 @@ ModuleRegistry.registerModules([
 ]);
 
 const getValues = (type) => {
-  const value = document.querySelector("#" + type + "Value").value;
+  const value = document.querySelector('#' + type + 'Value').value;
   if (value == null) {
     return;
   }
   const obj = {
     value: value,
   };
-  obj.position = document.querySelector("#" + type + "Position").value;
-  const fontName = document.querySelector("#" + type + "FontName").value;
-  const fontSize = document.querySelector("#" + type + "FontSize").value;
-  const fontWeight = document.querySelector("#" + type + "FontWeight").value;
-  const underline = document.querySelector("#" + type + "Underline").checked;
+  obj.position = document.querySelector('#' + type + 'Position').value;
+  const fontName = document.querySelector('#' + type + 'FontName').value;
+  const fontSize = document.querySelector('#' + type + 'FontSize').value;
+  const fontWeight = document.querySelector('#' + type + 'FontWeight').value;
+  const underline = document.querySelector('#' + type + 'Underline').checked;
   if (
-    fontName !== "Calibri" ||
-    fontSize != "11" ||
-    fontWeight !== "Regular" ||
+    fontName !== 'Calibri' ||
+    fontSize != '11' ||
+    fontWeight !== 'Regular' ||
     underline
   ) {
     obj.font = {};
-    if (fontName !== "Calibri") {
+    if (fontName !== 'Calibri') {
       obj.font.fontName = fontName;
     }
-    if (fontSize != "11") {
+    if (fontSize != '11') {
       obj.font.size = Number.parseInt(fontSize);
     }
-    if (fontWeight !== "Regular") {
-      if (fontWeight.indexOf("Bold") !== -1) {
+    if (fontWeight !== 'Regular') {
+      if (fontWeight.indexOf('Bold') !== -1) {
         obj.font.bold = true;
       }
-      if (fontWeight.indexOf("Italic") !== -1) {
+      if (fontWeight.indexOf('Italic') !== -1) {
         obj.font.italic = true;
       }
     }
     if (underline) {
-      obj.font.underline = "Single";
+      obj.font.underline = 'Single';
     }
   }
   return obj;
 };
 
 const getParams = () => {
-  const header = getValues("header");
-  const footer = getValues("footer");
+  const header = getValues('header');
+  const footer = getValues('footer');
   if (!header && !footer) {
     return undefined;
   }
@@ -80,17 +80,17 @@ const getParams = () => {
 
 const GridExample = () => {
   const gridRef = useRef();
-  const containerStyle = useMemo(() => ({ width: "100%", height: "100%" }), []);
-  const gridStyle = useMemo(() => ({ height: "100%", width: "100%" }), []);
+  const containerStyle = useMemo(() => ({ width: '100%', height: '100%' }), []);
+  const gridStyle = useMemo(() => ({ height: '100%', width: '100%' }), []);
   const [rowData, setRowData] = useState();
   const [columnDefs, setColumnDefs] = useState([
-    { field: "athlete", minWidth: 200 },
-    { field: "country", minWidth: 200 },
-    { field: "sport", minWidth: 150 },
-    { field: "gold" },
-    { field: "silver" },
-    { field: "bronze" },
-    { field: "total" },
+    { field: 'athlete', minWidth: 200 },
+    { field: 'country', minWidth: 200 },
+    { field: 'sport', minWidth: 150 },
+    { field: 'gold' },
+    { field: 'silver' },
+    { field: 'bronze' },
+    { field: 'total' },
   ]);
   const defaultColDef = useMemo(() => {
     return {
@@ -106,7 +106,7 @@ const GridExample = () => {
   }, []);
 
   const onGridReady = useCallback((params) => {
-    fetch("https://www.ag-grid.com/example-assets/small-olympic-winners.json")
+    fetch('https://www.ag-grid.com/example-assets/small-olympic-winners.json')
       .then((resp) => resp.json())
       .then((data) => setRowData(data.filter((rec) => rec.country != null)));
   }, []);
@@ -149,12 +149,12 @@ const GridExample = () => {
                 <option>Italic</option>
                 <option>Bold Italic</option>
               </select>
-              <label className="option underline" for="headerUnderline">
+              <label className="option underline" htmlFor="headerUnderline">
                 <input type="checkbox" id="headerUnderline" />
-                <button style={{ textDecoration: "underline" }}>U</button>
+                <button style={{ textDecoration: 'underline' }}>U</button>
               </label>
             </label>
-            <label className="option" for="headerValue">
+            <label className="option" htmlFor="headerValue">
               Value
               <input id="headerValue" />
             </label>
@@ -189,12 +189,12 @@ const GridExample = () => {
                 <option>Italic</option>
                 <option>Bold Italic</option>
               </select>
-              <label className="option underline" for="footerUnderline">
+              <label className="option underline" htmlFor="footerUnderline">
                 <input type="checkbox" id="footerUnderline" />
-                <button style={{ textDecoration: "underline" }}>U</button>
+                <button style={{ textDecoration: 'underline' }}>U</button>
               </label>
             </label>
-            <label className="option" for="footerValue">
+            <label className="option" htmlFor="footerValue">
               Value
               <input id="footerValue" />
             </label>
@@ -203,7 +203,7 @@ const GridExample = () => {
         <div>
           <button
             onClick={onBtExport}
-            style={{ margin: "5px 0px", fontWeight: "bold" }}
+            style={{ margin: '5px 0px', fontWeight: 'bold' }}
           >
             Export to Excel
           </button>
@@ -225,4 +225,4 @@ const GridExample = () => {
   );
 };
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

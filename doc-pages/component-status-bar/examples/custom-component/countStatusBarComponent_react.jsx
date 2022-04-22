@@ -1,26 +1,26 @@
-import React, { Component } from "react";
+import React, {Component} from "react";
 
 export default class CountStatusBarComponent extends Component {
-  constructor(props) {
-    super(props);
+    constructor(props) {
+        super(props);
 
-    this.state = {
-      count: 10,
-    };
+        this.state = {
+            count: 10
+        };
 
-    setTimeout(() => {
-      this.setState({
-        count: this.props.api.getModel().rowsToDisplay.length,
-      });
-    });
-  }
+        setTimeout(() => {
+            this.setState({
+                count: this.props.api.getModel().rowsToDisplay.length
+            });
+        });
+    }
 
-  render() {
-    return (
-      <div className="ag-status-name-value">
-        <span className="component">Row Count Component&nbsp;</span>
-        <span className="ag-status-name-value-value">{this.state.count}</span>
-      </div>
-    );
-  }
-}
+    render() {
+        return (
+            <div className="ag-status-name-value">
+                <span className="component">Row Count Component&nbsp;</span>
+                <span className="ag-status-name-value-value">{this.state.count}</span>
+            </div>
+        );
+    }
+};

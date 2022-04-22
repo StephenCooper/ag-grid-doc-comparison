@@ -1,4 +1,4 @@
-import { ICellEditorComp, ICellEditorParams } from "@ag-grid-community/core";
+import { ICellEditorComp, ICellEditorParams } from '@ag-grid-community/core';
 
 export class NumericCellEditor implements ICellEditorComp {
   eInput!: HTMLInputElement;
@@ -7,8 +7,8 @@ export class NumericCellEditor implements ICellEditorComp {
   // gets called once before the renderer is used
   init(params: ICellEditorParams) {
     // create the cell
-    this.eInput = document.createElement("input");
-    this.eInput.className = "simple-input-editor";
+    this.eInput = document.createElement('input');
+    this.eInput.className = 'simple-input-editor';
 
     if (this.isCharNumeric(params.charPress)) {
       this.eInput.value = params.charPress!;
@@ -18,7 +18,7 @@ export class NumericCellEditor implements ICellEditorComp {
       }
     }
 
-    this.eInput.addEventListener("keypress", (event) => {
+    this.eInput.addEventListener('keypress', (event) => {
       if (!this.isKeyPressedNumeric(event)) {
         this.eInput.focus();
         if (event.preventDefault) event.preventDefault();
@@ -29,7 +29,7 @@ export class NumericCellEditor implements ICellEditorComp {
 
     // only start edit if key pressed is a number, not a letter
     var charPressIsNotANumber =
-      params.charPress && "1234567890".indexOf(params.charPress) < 0;
+      params.charPress && '1234567890'.indexOf(params.charPress) < 0;
     this.cancelBeforeStart = !!charPressIsNotANumber;
   }
 
@@ -39,7 +39,7 @@ export class NumericCellEditor implements ICellEditorComp {
   }
 
   isKeyPressedNavigation(event: any) {
-    return event.key === "ArrowLeft" || event.key === "ArrowRight";
+    return event.key === 'ArrowLeft' || event.key === 'ArrowRight';
   }
 
   isCharNumeric(charStr: string | null) {
@@ -65,7 +65,7 @@ export class NumericCellEditor implements ICellEditorComp {
   // - not very practical, but demonstrates the method.
   isCancelAfterEnd() {
     var value = this.getValue();
-    return value.indexOf("007") >= 0;
+    return value.indexOf('007') >= 0;
   }
 
   // returns the new value after editing

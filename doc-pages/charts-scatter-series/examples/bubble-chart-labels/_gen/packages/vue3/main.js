@@ -1,6 +1,6 @@
-import { AgChartsVue } from "ag-charts-vue3";
-import { cloneDeep } from "lodash";
-import { createApp } from "vue";
+import { AgChartsVue } from 'ag-charts-vue3';
+import { cloneDeep } from 'lodash';
+import { createApp } from 'vue';
 
 const ChartExample = {
   template: `
@@ -17,7 +17,7 @@ const ChartExample = {
             </div>
     `,
   components: {
-    "ag-charts-vue": AgChartsVue,
+    'ag-charts-vue': AgChartsVue,
   },
   data: function () {
     return {
@@ -28,50 +28,50 @@ const ChartExample = {
     this.options = {
       autoSize: true,
       title: {
-        text: "Weight vs Height (by gender)",
+        text: 'Weight vs Height (by gender)',
       },
       subtitle: {
-        text: "with name labels",
+        text: 'with name labels',
       },
       series: [
         {
-          type: "scatter",
-          title: "Male",
+          type: 'scatter',
+          title: 'Male',
           data: maleHeightWeight,
-          xKey: "height",
-          xName: "Height",
-          yKey: "weight",
-          yName: "Weight",
-          sizeKey: "age",
-          sizeName: "Age",
-          labelKey: "name",
+          xKey: 'height',
+          xName: 'Height',
+          yKey: 'weight',
+          yName: 'Weight',
+          sizeKey: 'age',
+          sizeName: 'Age',
+          labelKey: 'name',
           marker: {
-            shape: "square",
+            shape: 'square',
             size: 6,
             maxSize: 30,
-            fill: "rgba(227,111,106,0.71)",
-            stroke: "#9f4e4a",
+            fill: 'rgba(227,111,106,0.71)',
+            stroke: '#9f4e4a',
           },
           label: {
             enabled: true,
           },
         },
         {
-          type: "scatter",
-          title: "Female",
+          type: 'scatter',
+          title: 'Female',
           data: femaleHeightWeight,
-          xKey: "height",
-          xName: "Height",
-          yKey: "weight",
-          yName: "Weight",
-          sizeKey: "age",
-          sizeName: "Age",
-          labelKey: "name",
+          xKey: 'height',
+          xName: 'Height',
+          yKey: 'weight',
+          yName: 'Weight',
+          sizeKey: 'age',
+          sizeName: 'Age',
+          labelKey: 'name',
           marker: {
             size: 6,
             maxSize: 30,
-            fill: "rgba(123,145,222,0.71)",
-            stroke: "#56659b",
+            fill: 'rgba(123,145,222,0.71)',
+            stroke: '#56659b',
           },
           label: {
             enabled: true,
@@ -80,27 +80,27 @@ const ChartExample = {
       ],
       axes: [
         {
-          type: "number",
-          position: "bottom",
+          type: 'number',
+          position: 'bottom',
           title: {
-            text: "Height",
+            text: 'Height',
           },
           label: {
             rotation: 45,
             formatter: (params) => {
-              return params.value + "cm";
+              return params.value + 'cm';
             },
           },
         },
         {
-          type: "number",
-          position: "left",
+          type: 'number',
+          position: 'left',
           title: {
-            text: "Weight",
+            text: 'Weight',
           },
           label: {
             formatter: function (params) {
-              return params.value + "kg";
+              return params.value + 'kg';
             },
           },
         },
@@ -116,11 +116,11 @@ const ChartExample = {
       options.series[0].label.fontSize = value;
       options.series[1].label.fontSize = value;
 
-      document.getElementById("fontSizeSliderValue").innerHTML = String(value);
+      document.getElementById('fontSizeSliderValue').innerHTML = String(value);
 
       this.options = options;
     },
   },
 };
 
-createApp(ChartExample).mount("#app");
+createApp(ChartExample).mount('#app');

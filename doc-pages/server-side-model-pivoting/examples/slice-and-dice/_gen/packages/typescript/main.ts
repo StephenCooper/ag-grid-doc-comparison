@@ -7,10 +7,10 @@ import {
   IFilterComp,
   IFilterParams,
   IServerSideDatasource,
-} from "ag-grid-community";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine-dark.css";
-import "ag-grid-enterprise";
+} from 'ag-grid-community';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine-dark.css';
+import 'ag-grid-enterprise';
 declare function createFakeServer(data: any): any;
 declare function createServerSideDatasource(
   server: any,
@@ -26,7 +26,7 @@ class CustomAgeFilter implements IFilterComp {
   params!: IFilterParams;
 
   init(params: IFilterParams) {
-    this.eGui = document.createElement("div");
+    this.eGui = document.createElement('div');
     this.eGui.innerHTML = `<div>  
           <label>    
               <input type="radio" name="ageFilterValue" ref="btAll" checked/> All  
@@ -46,13 +46,13 @@ class CustomAgeFilter implements IFilterComp {
 
     this.eGui
       .querySelector('[ref="btAll"]')
-      .addEventListener("change", this.onSelection.bind(this, null));
+      .addEventListener('change', this.onSelection.bind(this, null));
     this.eGui
       .querySelector('[ref="bt20"]')
-      .addEventListener("change", this.onSelection.bind(this, 20));
+      .addEventListener('change', this.onSelection.bind(this, 20));
     this.eGui
       .querySelector('[ref="bt22"]')
-      .addEventListener("change", this.onSelection.bind(this, 22));
+      .addEventListener('change', this.onSelection.bind(this, 22));
   }
 
   onSelection(value: number | null) {
@@ -93,7 +93,7 @@ class CustomAgeFilter implements IFilterComp {
       // return something that your server side can work with.
       return {
         filter: this.filterValue,
-        type: "equals",
+        type: 'equals',
       };
     }
   }
@@ -113,36 +113,36 @@ class CustomAgeFilter implements IFilterComp {
 }
 
 const columnDefs: ColDef[] = [
-  { field: "athlete", enableRowGroup: true, enablePivot: true, filter: false },
+  { field: 'athlete', enableRowGroup: true, enablePivot: true, filter: false },
   {
-    field: "age",
+    field: 'age',
     enableRowGroup: true,
     filter: CustomAgeFilter,
   },
   {
-    field: "country",
+    field: 'country',
     enableRowGroup: true,
     enablePivot: true,
     rowGroup: true,
     hide: true,
-    filter: "agSetColumnFilter",
+    filter: 'agSetColumnFilter',
     filterParams: { values: countries },
   },
   {
-    field: "year",
+    field: 'year',
     enableRowGroup: true,
     enablePivot: true,
     rowGroup: true,
     hide: true,
-    filter: "agSetColumnFilter",
+    filter: 'agSetColumnFilter',
     filterParams: {
-      values: ["2000", "2002", "2004", "2006", "2008", "2010", "2012"],
+      values: ['2000', '2002', '2004', '2006', '2008', '2010', '2012'],
     },
   },
-  { field: "sport", enableRowGroup: true, enablePivot: true, filter: false },
-  { field: "gold", aggFunc: "sum", filter: false, enableValue: true },
-  { field: "silver", aggFunc: "sum", filter: false, enableValue: true },
-  { field: "bronze", aggFunc: "sum", filter: false, enableValue: true },
+  { field: 'sport', enableRowGroup: true, enablePivot: true, filter: false },
+  { field: 'gold', aggFunc: 'sum', filter: false, enableValue: true },
+  { field: 'silver', aggFunc: 'sum', filter: false, enableValue: true },
+  { field: 'bronze', aggFunc: 'sum', filter: false, enableValue: true },
 ];
 
 const gridOptions: GridOptions = {
@@ -152,7 +152,7 @@ const gridOptions: GridOptions = {
     // restrict what aggregation functions the columns can have,
     // include a custom function 'random' that just returns a
     // random number
-    allowedAggFuncs: ["sum", "min", "max", "random"],
+    allowedAggFuncs: ['sum', 'min', 'max', 'random'],
     sortable: true,
     resizable: true,
     filter: true,
@@ -161,10 +161,10 @@ const gridOptions: GridOptions = {
     width: 180,
   },
   columnDefs: columnDefs,
-  rowModelType: "serverSide",
-  serverSideStoreType: "partial",
-  rowGroupPanelShow: "always",
-  pivotPanelShow: "always",
+  rowModelType: 'serverSide',
+  serverSideStoreType: 'partial',
+  rowGroupPanelShow: 'always',
+  pivotPanelShow: 'always',
   animateRows: true,
   debug: true,
   enableRangeSelection: true,
@@ -183,12 +183,12 @@ function onFirstDataRendered(params: FirstDataRenderedEvent) {
 }
 
 // setup the grid after the page has finished loading
-const gridDiv = document.querySelector<HTMLElement>("#myGrid")!;
+const gridDiv = document.querySelector<HTMLElement>('#myGrid')!;
 new Grid(gridDiv, gridOptions);
 
 // do http request to get our sample data - not using any framework to keep the example self contained.
 // you will probably use a framework like JQuery, Angular or something else to do your HTTP calls.
-fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
   .then((response) => response.json())
   .then(function (data) {
     const fakeServer = createFakeServer(data);

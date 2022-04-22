@@ -1,8 +1,8 @@
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
-import { AgGridVue } from "ag-grid-vue";
-import Vue from "vue";
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import 'ag-grid-enterprise';
+import { AgGridVue } from 'ag-grid-vue';
+import Vue from 'vue';
 
 const VueExample = {
   template: `
@@ -32,21 +32,21 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
-        { field: "athlete" },
-        { field: "age" },
-        { field: "country" },
-        { field: "sport" },
-        { field: "year" },
-        { field: "date" },
-        { field: "gold" },
-        { field: "silver" },
-        { field: "bronze" },
-        { field: "total" },
+        { field: 'athlete' },
+        { field: 'age' },
+        { field: 'country' },
+        { field: 'sport' },
+        { field: 'year' },
+        { field: 'date' },
+        { field: 'gold' },
+        { field: 'silver' },
+        { field: 'bronze' },
+        { field: 'total' },
       ],
       gridApi: null,
       columnApi: null,
@@ -65,9 +65,9 @@ const VueExample = {
     };
   },
   created() {
-    this.sideBar = { toolPanels: ["columns"] };
-    this.rowGroupPanelShow = "always";
-    this.pivotPanelShow = "always";
+    this.sideBar = { toolPanels: ['columns'] };
+    this.rowGroupPanelShow = 'always';
+    this.pivotPanelShow = 'always';
   },
   methods: {
     onBtSaveSortState() {
@@ -78,17 +78,17 @@ const VueExample = {
         sortIndex: state.sortIndex,
       }));
       window.sortState = sortState;
-      console.log("sort state saved", sortState);
+      console.log('sort state saved', sortState);
     },
     onBtRestoreSortState() {
       if (!window.sortState) {
-        console.log("no sort state to restore, you must save sort state first");
+        console.log('no sort state to restore, you must save sort state first');
         return;
       }
       this.gridColumnApi.applyColumnState({
         state: window.sortState,
       });
-      console.log("sort state restored");
+      console.log('sort state restored');
     },
     onBtSaveOrderAndVisibilityState() {
       const allState = this.gridColumnApi.getColumnState();
@@ -97,12 +97,12 @@ const VueExample = {
         hide: state.hide,
       }));
       window.orderAndVisibilityState = orderAndVisibilityState;
-      console.log("order and visibility state saved", orderAndVisibilityState);
+      console.log('order and visibility state saved', orderAndVisibilityState);
     },
     onBtRestoreOrderAndVisibilityState() {
       if (!window.orderAndVisibilityState) {
         console.log(
-          "no order and visibility state to restore by, you must save order and visibility state first"
+          'no order and visibility state to restore by, you must save order and visibility state first'
         );
         return;
       }
@@ -110,7 +110,7 @@ const VueExample = {
         state: window.orderAndVisibilityState,
         applyOrder: true,
       });
-      console.log("column state restored");
+      console.log('column state restored');
     },
     onGridReady(params) {
       this.gridApi = params.api;
@@ -118,7 +118,7 @@ const VueExample = {
 
       const updateData = (data) => params.api.setRowData(data);
 
-      fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
         .then((resp) => resp.json())
         .then((data) => updateData(data));
     },
@@ -126,8 +126,8 @@ const VueExample = {
 };
 
 new Vue({
-  el: "#app",
+  el: '#app',
   components: {
-    "my-component": VueExample,
+    'my-component': VueExample,
   },
 });

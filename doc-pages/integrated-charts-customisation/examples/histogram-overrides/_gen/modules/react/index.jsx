@@ -1,14 +1,14 @@
-"use strict";
+'use strict';
 
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { AgGridReact } from "@ag-grid-community/react";
-import { GridChartsModule } from "@ag-grid-enterprise/charts";
-import { MenuModule } from "@ag-grid-enterprise/menu";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from '@ag-grid-community/react';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import { MenuModule } from '@ag-grid-enterprise/menu';
+import { GridChartsModule } from '@ag-grid-enterprise/charts';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([
@@ -23,29 +23,29 @@ class GridExample extends Component {
 
     this.state = {
       columnDefs: [
-        { field: "country", width: 150, chartDataType: "category" },
-        { field: "gold", chartDataType: "series" },
-        { field: "silver", chartDataType: "series" },
-        { field: "bronze", chartDataType: "series" },
+        { field: 'country', width: 150, chartDataType: 'category' },
+        { field: 'gold', chartDataType: 'series' },
+        { field: 'silver', chartDataType: 'series' },
+        { field: 'bronze', chartDataType: 'series' },
         {
-          headerName: "A",
-          valueGetter: "Math.floor(Math.random()*1000)",
-          chartDataType: "series",
+          headerName: 'A',
+          valueGetter: 'Math.floor(Math.random()*1000)',
+          chartDataType: 'series',
         },
         {
-          headerName: "B",
-          valueGetter: "Math.floor(Math.random()*1000)",
-          chartDataType: "series",
+          headerName: 'B',
+          valueGetter: 'Math.floor(Math.random()*1000)',
+          chartDataType: 'series',
         },
         {
-          headerName: "C",
-          valueGetter: "Math.floor(Math.random()*1000)",
-          chartDataType: "series",
+          headerName: 'C',
+          valueGetter: 'Math.floor(Math.random()*1000)',
+          chartDataType: 'series',
         },
         {
-          headerName: "D",
-          valueGetter: "Math.floor(Math.random()*1000)",
-          chartDataType: "series",
+          headerName: 'D',
+          valueGetter: 'Math.floor(Math.random()*1000)',
+          chartDataType: 'series',
         },
       ],
       defaultColDef: {
@@ -72,26 +72,26 @@ class GridExample extends Component {
             strokeWidth: 4,
             shadow: {
               enabled: true,
-              color: "rgba(0, 0, 0, 0.3)",
+              color: 'rgba(0, 0, 0, 0.3)',
               xOffset: 10,
               yOffset: 10,
               blur: 8,
             },
             label: {
               enabled: true,
-              fontStyle: "italic",
-              fontWeight: "bold",
+              fontStyle: 'italic',
+              fontWeight: 'bold',
               fontSize: 15,
-              fontFamily: "Arial, sans-serif",
-              color: "green",
+              fontFamily: 'Arial, sans-serif',
+              color: 'green',
               formatter: function (params) {
-                return "<" + params.value + ">";
+                return '<' + params.value + '>';
               },
             },
             highlightStyle: {
               item: {
-                fill: "black",
-                stroke: "yellow",
+                fill: 'black',
+                stroke: 'yellow',
               },
             },
             tooltip: {
@@ -102,14 +102,14 @@ class GridExample extends Component {
                 return {
                   content:
                     binSize +
-                    (binSize >= 2 ? " countries" : " country") +
-                    " got between " +
+                    (binSize >= 2 ? ' countries' : ' country') +
+                    ' got between ' +
                     params.xValue[0] +
-                    " and " +
+                    ' and ' +
                     params.xValue[1] +
-                    " " +
+                    ' ' +
                     medalColour +
-                    " medals",
+                    ' medals',
                 };
               },
             },
@@ -128,22 +128,22 @@ class GridExample extends Component {
     var cellRange = {
       rowStartIndex: 0,
       rowEndIndex: 20,
-      columns: ["bronze"],
+      columns: ['bronze'],
     };
     var createRangeChartParams = {
       cellRange: cellRange,
-      chartType: "histogram",
+      chartType: 'histogram',
     };
     params.api.createRangeChart(createRangeChartParams);
   };
 
   render() {
     return (
-      <div style={{ width: "100%", height: "100%" }}>
+      <div style={{ width: '100%', height: '100%' }}>
         <div
           style={{
-            height: "100%",
-            width: "100%",
+            height: '100%',
+            width: '100%',
           }}
           className="ag-theme-alpine"
         >
@@ -164,4 +164,4 @@ class GridExample extends Component {
   }
 }
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

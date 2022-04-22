@@ -1,4 +1,4 @@
-import React, { Component, createRef, Fragment } from "react";
+import React, { Component, createRef, Fragment } from 'react';
 
 export default class NumberFloatingFilterComponent extends Component {
   constructor(props) {
@@ -48,10 +48,10 @@ export default class NumberFloatingFilterComponent extends Component {
   render() {
     return (
       <Fragment>
-        &gt;{" "}
+        &gt;{' '}
         <input
           ref={this.inputRef}
-          style={{ width: "30px" }}
+          style={{ width: '30px' }}
           type="number"
           min="0"
           onInput={this.onInputBoxChanged}

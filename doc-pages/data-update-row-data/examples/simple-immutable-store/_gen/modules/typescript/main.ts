@@ -1,13 +1,14 @@
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
 import {
   ColumnApi,
+  GetRowIdParams,
   Grid,
   GridOptions,
   ModuleRegistry,
-} from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { RowGroupingModule } from "@ag-grid-enterprise/row-grouping";
+} from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { RowGroupingModule } from '@ag-grid-enterprise/row-grouping';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([ClientSideRowModelModule, RowGroupingModule]);
@@ -98,7 +99,7 @@ function filter(list: any[], callback: any) {
 
 function createItem() {
   const item = {
-    group: ["A", "B", "C"][Math.floor(Math.random() * 3)],
+    group: ['A', 'B', 'C'][Math.floor(Math.random() * 3)],
     symbol: createUniqueRandomSymbol(),
     price: Math.floor(Math.random() * 100),
   };
@@ -113,36 +114,36 @@ function setGroupingEnabled(enabled: boolean, columnApi: ColumnApi) {
   if (enabled) {
     columnApi.applyColumnState({
       state: [
-        { colId: "group", rowGroup: true, hide: true },
-        { colId: "symbol", hide: true },
+        { colId: 'group', rowGroup: true, hide: true },
+        { colId: 'symbol', hide: true },
       ],
     });
   } else {
     columnApi.applyColumnState({
       state: [
-        { colId: "group", rowGroup: false, hide: false },
-        { colId: "symbol", hide: false },
+        { colId: 'group', rowGroup: false, hide: false },
+        { colId: 'symbol', hide: false },
       ],
     });
   }
 
-  setItemVisible("groupingOn", !enabled);
-  setItemVisible("groupingOff", enabled);
+  setItemVisible('groupingOn', !enabled);
+  setItemVisible('groupingOff', enabled);
 }
 
 function setItemVisible(id: string, visible: boolean) {
-  const element = document.querySelector("#" + id)! as any;
-  element.style.display = visible ? "inline" : "none";
+  const element = document.querySelector('#' + id)! as any;
+  element.style.display = visible ? 'inline' : 'none';
 }
 
 // creates a unique symbol, eg 'ADG' or 'ZJD'
 function createUniqueRandomSymbol() {
   let symbol: any;
-  const possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  const possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 
   let isUnique = false;
   while (!isUnique) {
-    symbol = "";
+    symbol = '';
     // create symbol
     for (let i = 0; i < 3; i++) {
       symbol += possible.charAt(Math.floor(Math.random() * possible.length));
@@ -166,9 +167,9 @@ function reverseItems() {
 
 const gridOptions: GridOptions = {
   columnDefs: [
-    { headerName: "Symbol", field: "symbol" },
-    { headerName: "Price", field: "price" },
-    { headerName: "Group", field: "group" },
+    { headerName: 'Symbol', field: 'symbol' },
+    { headerName: 'Price', field: 'price' },
+    { headerName: 'Group', field: 'group' },
   ],
   defaultColDef: {
     width: 250,
@@ -176,18 +177,18 @@ const gridOptions: GridOptions = {
     resizable: true,
   },
   animateRows: true,
-  rowSelection: "multiple",
+  rowSelection: 'multiple',
   autoGroupColumnDef: {
-    headerName: "Symbol",
-    cellRenderer: "agGroupCellRenderer",
-    field: "symbol",
+    headerName: 'Symbol',
+    cellRenderer: 'agGroupCellRenderer',
+    field: 'symbol',
   },
   statusBar: {
-    statusPanels: [{ statusPanel: "agAggregationComponent", align: "right" }],
+    statusPanels: [{ statusPanel: 'agAggregationComponent', align: 'right' }],
   },
   groupDefaultExpanded: 1,
   rowData: immutableStore,
-  getRowId: function (params) {
+  getRowId: function (params: GetRowIdParams) {
     return params.data.symbol;
   },
   onGridReady: function (params) {
@@ -199,10 +200,10 @@ const gridOptions: GridOptions = {
 };
 
 // after page is loaded, create the grid.
-const eGridDiv = document.querySelector<HTMLElement>("#myGrid")!;
+const eGridDiv = document.querySelector<HTMLElement>('#myGrid')!;
 new Grid(eGridDiv, gridOptions);
 
-if (typeof window !== "undefined") {
+if (typeof window !== 'undefined') {
   // Attach external event handlers to window so they can be called from index.html
   (<any>window).addFiveItems = addFiveItems;
   (<any>window).removeSelected = removeSelected;

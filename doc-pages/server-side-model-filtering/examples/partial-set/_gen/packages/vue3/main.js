@@ -1,8 +1,8 @@
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine-dark.css";
-import "ag-grid-enterprise";
-import { AgGridVue } from "ag-grid-vue3";
-import { createApp } from "vue";
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine-dark.css';
+import 'ag-grid-enterprise';
+import { AgGridVue } from 'ag-grid-vue3';
+import { createApp } from 'vue';
 
 const VueExample = {
   template: `
@@ -23,24 +23,24 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
         {
-          field: "country",
-          filter: "agSetColumnFilter",
+          field: 'country',
+          filter: 'agSetColumnFilter',
           filterParams: { values: getCountryValuesAsync },
-          menuTabs: ["filterMenuTab"],
+          menuTabs: ['filterMenuTab'],
         },
         {
-          field: "sport",
-          filter: "agSetColumnFilter",
+          field: 'sport',
+          filter: 'agSetColumnFilter',
           filterParams: { values: getSportValuesAsync },
-          menuTabs: ["filterMenuTab"],
+          menuTabs: ['filterMenuTab'],
         },
-        { field: "athlete", menuTabs: undefined },
+        { field: 'athlete', menuTabs: undefined },
       ],
       gridApi: null,
       columnApi: null,
@@ -57,19 +57,19 @@ const VueExample = {
     };
   },
   created() {
-    this.rowModelType = "serverSide";
-    this.serverSideStoreType = "partial";
+    this.rowModelType = 'serverSide';
+    this.serverSideStoreType = 'partial';
     this.cacheBlockSize = 100;
     this.maxBlocksInCache = 10;
   },
   methods: {
     onFilterChanged() {
-      var countryFilterModel = this.gridApi.getFilterModel()["country"];
+      var countryFilterModel = this.gridApi.getFilterModel()['country'];
       var selected = countryFilterModel && countryFilterModel.values;
       if (!areEqual(selectedCountries, selected)) {
         selectedCountries = selected;
-        console.log("Refreshing sports filter");
-        var sportFilter = this.gridApi.getFilterInstance("sport");
+        console.log('Refreshing sports filter');
+        var sportFilter = this.gridApi.getFilterInstance('sport');
         sportFilter.refreshFilterValues();
       }
     },
@@ -86,7 +86,7 @@ const VueExample = {
         params.api.setServerSideDatasource(datasource);
       };
 
-      fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
         .then((resp) => resp.json())
         .then((data) => updateData(data));
     },
@@ -127,7 +127,7 @@ window.getSportValuesAsync = function getSportValuesAsync(params) {
 window.getServerSideDatasource = function getServerSideDatasource(server) {
   return {
     getRows: function (params) {
-      console.log("[Datasource] - rows requested by grid: ", params.request);
+      console.log('[Datasource] - rows requested by grid: ', params.request);
       // get data for request from our fake server
       var response = server.getData(params.request);
       // simulating real server call with a 500ms delay
@@ -150,4 +150,4 @@ var fakeServer;
 
 var selectedCountries = null;
 
-createApp(VueExample).mount("#app");
+createApp(VueExample).mount('#app');

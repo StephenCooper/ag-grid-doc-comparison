@@ -1,14 +1,14 @@
-import * as agCharts from "ag-charts-community";
 import {
   AgCartesianSeriesTooltipRendererParams,
   AgChartOptions,
-} from "ag-charts-community";
+} from "ag-charts-community"
+import * as agCharts from "ag-charts-community"
 
 function renderer(params: AgCartesianSeriesTooltipRendererParams) {
   return {
     title: params.xValue,
     content: params.yValue.toFixed(0),
-  };
+  }
 }
 
 const options: AgChartOptions = {
@@ -48,6 +48,6 @@ const options: AgChartOptions = {
       stacked: true,
     },
   ],
-};
+}
 
-var chart = agCharts.AgChart.create(options);
+var chart = agCharts.AgChart.create(options)

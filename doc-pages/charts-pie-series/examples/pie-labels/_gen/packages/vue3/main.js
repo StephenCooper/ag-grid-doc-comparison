@@ -1,5 +1,5 @@
-import { AgChartsVue } from "ag-charts-vue3";
-import { createApp } from "vue";
+import { AgChartsVue } from 'ag-charts-vue3';
+import { createApp } from 'vue';
 
 const ChartExample = {
   template: `
@@ -7,7 +7,7 @@ const ChartExample = {
                 :options="options"></ag-charts-vue>
     `,
   components: {
-    "ag-charts-vue": AgChartsVue,
+    'ag-charts-vue': AgChartsVue,
   },
   data: function () {
     return {
@@ -17,18 +17,18 @@ const ChartExample = {
   created() {
     this.options = {
       data: [
-        { label: "Android", value: 56.9 },
-        { label: "iOS", value: 22.5 },
-        { label: "BlackBerry", value: 6.8 },
-        { label: "Symbian", value: 8.5 },
-        { label: "Bada", value: 2.6 },
-        { label: "Windows", value: 1.9 },
+        { label: 'Android', value: 56.9 },
+        { label: 'iOS', value: 22.5 },
+        { label: 'BlackBerry', value: 6.8 },
+        { label: 'Symbian', value: 8.5 },
+        { label: 'Bada', value: 2.6 },
+        { label: 'Windows', value: 1.9 },
       ],
       series: [
         {
-          type: "pie",
-          angleKey: "value",
-          labelKey: "label",
+          type: 'pie',
+          angleKey: 'value',
+          labelKey: 'label',
         },
       ],
     };
@@ -37,4 +37,4 @@ const ChartExample = {
   methods: {},
 };
 
-createApp(ChartExample).mount("#app");
+createApp(ChartExample).mount('#app');

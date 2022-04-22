@@ -1,12 +1,12 @@
 const columnDefs = [
   {
-    headerName: "Name",
+    headerName: 'Name',
     valueGetter: function (params) {
-      return params.data.firstName + " " + params.data.lastName;
+      return params.data.firstName + ' ' + params.data.lastName;
     },
     valueSetter: function (params) {
       var fullName = params.newValue;
-      var nameSplit = fullName.split(" ");
+      var nameSplit = fullName.split(' ');
       var newFirstName = nameSplit[0];
       var newLastName = nameSplit[1];
       var data = params.data;
@@ -24,11 +24,11 @@ const columnDefs = [
     },
   },
   {
-    headerName: "A",
-    field: "a",
+    headerName: 'A',
+    field: 'a',
   },
   {
-    headerName: "B",
+    headerName: 'B',
     valueGetter: function (params) {
       return params.data.b;
     },
@@ -42,7 +42,7 @@ const columnDefs = [
     },
   },
   {
-    headerName: "C.X",
+    headerName: 'C.X',
     valueGetter: function (params) {
       if (params.data.c) {
         return params.data.c.x;
@@ -59,7 +59,7 @@ const columnDefs = [
     },
   },
   {
-    headerName: "C.Y",
+    headerName: 'C.Y',
     valueGetter: function (params) {
       if (params.data.c) {
         return params.data.c.y;
@@ -89,11 +89,11 @@ const gridOptions = {
 };
 
 function onCellValueChanged(event) {
-  console.log("Data after change is", event.data);
+  console.log('Data after change is', event.data);
 }
 
 // setup the grid after the page has finished loading
-document.addEventListener("DOMContentLoaded", function () {
-  var gridDiv = document.querySelector("#myGrid");
+document.addEventListener('DOMContentLoaded', function () {
+  var gridDiv = document.querySelector('#myGrid');
   new agGrid.Grid(gridDiv, gridOptions);
 });

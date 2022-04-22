@@ -1,9 +1,9 @@
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
-import { AgGridVue } from "ag-grid-vue";
-import Vue from "vue";
-import DetailCellRenderer from "./detailCellRendererVue.js";
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import 'ag-grid-enterprise';
+import { AgGridVue } from 'ag-grid-vue';
+import Vue from 'vue';
+import DetailCellRenderer from './detailCellRendererVue.js';
 
 const VueExample = {
   template: `
@@ -25,16 +25,16 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
     DetailCellRenderer,
   },
   data: function () {
     return {
       columnDefs: [
-        { field: "name", cellRenderer: "agGroupCellRenderer" },
-        { field: "account" },
-        { field: "calls" },
-        { field: "minutes", valueFormatter: "x.toLocaleString() + 'm'" },
+        { field: 'name', cellRenderer: 'agGroupCellRenderer' },
+        { field: 'account' },
+        { field: 'calls' },
+        { field: 'minutes', valueFormatter: "x.toLocaleString() + 'm'" },
       ],
       gridApi: null,
       columnApi: null,
@@ -48,7 +48,7 @@ const VueExample = {
     };
   },
   created() {
-    this.detailCellRenderer = "DetailCellRenderer";
+    this.detailCellRenderer = 'DetailCellRenderer';
     this.detailRowHeight = 70;
     this.groupDefaultExpanded = 1;
   },
@@ -91,7 +91,7 @@ const VueExample = {
         params.api.setRowData(allRowData);
       };
 
-      fetch("https://www.ag-grid.com/example-assets/master-detail-data.json")
+      fetch('https://www.ag-grid.com/example-assets/master-detail-data.json')
         .then((resp) => resp.json())
         .then((data) => updateData(data));
     },
@@ -101,8 +101,8 @@ const VueExample = {
 let allRowData;
 
 new Vue({
-  el: "#app",
+  el: '#app',
   components: {
-    "my-component": VueExample,
+    'my-component': VueExample,
   },
 });

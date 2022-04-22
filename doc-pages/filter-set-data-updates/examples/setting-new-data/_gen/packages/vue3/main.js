@@ -1,8 +1,8 @@
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
-import { AgGridVue } from "ag-grid-vue3";
-import { createApp } from "vue";
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import 'ag-grid-enterprise';
+import { AgGridVue } from 'ag-grid-vue3';
+import { createApp } from 'vue';
 
 const VueExample = {
   template: `
@@ -26,15 +26,15 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
         {
-          headerName: "Set Filter Column",
-          field: "col1",
-          filter: "agSetColumnFilter",
+          headerName: 'Set Filter Column',
+          field: 'col1',
+          filter: 'agSetColumnFilter',
           flex: 1,
           editable: true,
         },
@@ -47,21 +47,21 @@ const VueExample = {
     };
   },
   created() {
-    this.sideBar = "filters";
+    this.sideBar = 'filters';
     this.rowData = getRowData();
   },
   methods: {
     onFirstDataRendered(params) {
-      params.api.getToolPanelInstance("filters").expandFilters();
+      params.api.getToolPanelInstance('filters').expandFilters();
     },
     setNewData() {
       var newData = [
-        { col1: "A" },
-        { col1: "A" },
-        { col1: "B" },
-        { col1: "C" },
-        { col1: "D" },
-        { col1: "E" },
+        { col1: 'A' },
+        { col1: 'A' },
+        { col1: 'B' },
+        { col1: 'C' },
+        { col1: 'D' },
+        { col1: 'E' },
       ];
       this.gridApi.setRowData(newData);
     },
@@ -77,7 +77,7 @@ const VueExample = {
 };
 
 window.getRowData = function getRowData() {
-  return [{ col1: "A" }, { col1: "A" }, { col1: "B" }, { col1: "C" }];
+  return [{ col1: 'A' }, { col1: 'A' }, { col1: 'B' }, { col1: 'C' }];
 };
 
-createApp(VueExample).mount("#app");
+createApp(VueExample).mount('#app');

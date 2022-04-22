@@ -1,17 +1,17 @@
-"use strict";
+'use strict';
 
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { AgGridReact } from "@ag-grid-community/react";
-import { ClipboardModule } from "@ag-grid-enterprise/clipboard";
-import { FiltersToolPanelModule } from "@ag-grid-enterprise/filter-tool-panel";
-import { MenuModule } from "@ag-grid-enterprise/menu";
-import { MultiFilterModule } from "@ag-grid-enterprise/multi-filter";
-import { SetFilterModule } from "@ag-grid-enterprise/set-filter";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from '@ag-grid-community/react';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import { MultiFilterModule } from '@ag-grid-enterprise/multi-filter';
+import { SetFilterModule } from '@ag-grid-enterprise/set-filter';
+import { MenuModule } from '@ag-grid-enterprise/menu';
+import { ClipboardModule } from '@ag-grid-enterprise/clipboard';
+import { FiltersToolPanelModule } from '@ag-grid-enterprise/filter-tool-panel';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([
@@ -30,56 +30,56 @@ class GridExample extends Component {
     this.state = {
       columnDefs: [
         {
-          field: "athlete",
-          filter: "agMultiColumnFilter",
+          field: 'athlete',
+          filter: 'agMultiColumnFilter',
           filterParams: {
             filters: [
               {
-                filter: "agTextColumnFilter",
-                display: "subMenu",
+                filter: 'agTextColumnFilter',
+                display: 'subMenu',
               },
               {
-                filter: "agSetColumnFilter",
+                filter: 'agSetColumnFilter',
               },
             ],
           },
         },
         {
-          field: "country",
-          filter: "agMultiColumnFilter",
+          field: 'country',
+          filter: 'agMultiColumnFilter',
           filterParams: {
             filters: [
               {
-                filter: "agTextColumnFilter",
-                display: "accordion",
-                title: "Expand Me for Text Filters",
+                filter: 'agTextColumnFilter',
+                display: 'accordion',
+                title: 'Expand Me for Text Filters',
               },
               {
-                filter: "agSetColumnFilter",
-                display: "accordion",
+                filter: 'agSetColumnFilter',
+                display: 'accordion',
               },
             ],
           },
         },
         {
-          field: "sport",
-          filter: "agMultiColumnFilter",
+          field: 'sport',
+          filter: 'agMultiColumnFilter',
         },
       ],
       defaultColDef: {
         flex: 1,
         minWidth: 200,
         resizable: true,
-        menuTabs: ["filterMenuTab"],
+        menuTabs: ['filterMenuTab'],
       },
       sideBar: {
         toolPanels: [
           {
-            id: "filters",
-            labelDefault: "Filters",
-            labelKey: "filters",
-            iconKey: "filter",
-            toolPanel: "agFiltersToolPanel",
+            id: 'filters',
+            labelDefault: 'Filters',
+            labelKey: 'filters',
+            iconKey: 'filter',
+            toolPanel: 'agFiltersToolPanel',
           },
         ],
       },
@@ -93,18 +93,18 @@ class GridExample extends Component {
 
     const updateData = (data) => params.api.setRowData(data);
 
-    fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+    fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .then((resp) => resp.json())
       .then((data) => updateData(data));
   };
 
   render() {
     return (
-      <div style={{ width: "100%", height: "100%" }}>
+      <div style={{ width: '100%', height: '100%' }}>
         <div
           style={{
-            height: "100%",
-            width: "100%",
+            height: '100%',
+            width: '100%',
           }}
           className="ag-theme-alpine"
         >
@@ -121,4 +121,4 @@ class GridExample extends Component {
   }
 }
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

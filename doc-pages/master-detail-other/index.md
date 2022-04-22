@@ -56,3 +56,4 @@ When using Master / Detail and [auto-height](/grid-size/#auto-height), then all 
 ### Range Selection
 
 When [Range Selection](/range-selection/) is enabled on the Master Grid, the Detail Grid will not participate in the Range Selection of the Master Grid.
+

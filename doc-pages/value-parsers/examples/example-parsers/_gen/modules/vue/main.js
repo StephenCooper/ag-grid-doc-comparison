@@ -1,9 +1,9 @@
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine-dark.css";
-import { AgGridVue } from "@ag-grid-community/vue";
-import Vue from "vue";
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine-dark.css';
+import { AgGridVue } from '@ag-grid-community/vue';
+import Vue from 'vue';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([ClientSideRowModelModule]);
@@ -23,16 +23,16 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
-        { headerName: "Name", field: "simple" },
-        { headerName: "Bad Number", field: "numberBad" },
+        { headerName: 'Name', field: 'simple' },
+        { headerName: 'Bad Number', field: 'numberBad' },
         {
-          headerName: "Good Number",
-          field: "numberGood",
+          headerName: 'Good Number',
+          field: 'numberGood',
           valueParser: numberParser,
         },
       ],
@@ -51,7 +51,7 @@ const VueExample = {
   },
   methods: {
     onCellValueChanged(event) {
-      console.log("data after changes is: ", event.data);
+      console.log('data after changes is: ', event.data);
     },
     onGridReady(params) {
       this.gridApi = params.api;
@@ -67,8 +67,8 @@ window.numberParser = function numberParser(params) {
 };
 
 new Vue({
-  el: "#app",
+  el: '#app',
   components: {
-    "my-component": VueExample,
+    'my-component': VueExample,
   },
 });

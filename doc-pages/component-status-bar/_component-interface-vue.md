@@ -5,3 +5,4 @@
 |
 |When a custom status bar component is instantiated then the following will be made available on `this.params`:
 |
+

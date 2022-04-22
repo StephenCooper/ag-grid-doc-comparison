@@ -1,11 +1,11 @@
-import { ColDef, GridApi, GridReadyEvent } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { Component } from "@angular/core";
+import { ColDef, GridApi, GridReadyEvent } from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { Component } from '@angular/core';
 // Required feature modules are registered in app.module.ts
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<button (click)="onBtPrinterFriendly()">
       Printer Friendly Layout
     </button>
@@ -43,12 +43,12 @@ export class AppComponent {
   private gridApi!: GridApi;
 
   public columnDefs: ColDef[] = [
-    { headerName: "ID", valueGetter: "node.rowIndex + 1", width: 70 },
-    { field: "model", width: 150 },
-    { field: "color" },
-    { field: "price", valueFormatter: '"$" + value.toLocaleString()' },
-    { field: "year" },
-    { field: "country" },
+    { headerName: 'ID', valueGetter: 'node.rowIndex + 1', width: 70 },
+    { field: 'model', width: 150 },
+    { field: 'color' },
+    { field: 'price', valueFormatter: '"$" + value.toLocaleString()' },
+    { field: 'year' },
+    { field: 'country' },
   ];
   public rowData: any[] | null = getData();
   public defaultColDef: ColDef = {
@@ -56,16 +56,16 @@ export class AppComponent {
   };
 
   onBtPrinterFriendly() {
-    var eGridDiv = document.querySelector<HTMLElement>("#myGrid")! as any;
-    eGridDiv.style.width = "";
-    eGridDiv.style.height = "";
-    this.gridApi.setDomLayout("print");
+    var eGridDiv = document.querySelector<HTMLElement>('#myGrid')! as any;
+    eGridDiv.style.width = '';
+    eGridDiv.style.height = '';
+    this.gridApi.setDomLayout('print');
   }
 
   onBtNormal() {
-    var eGridDiv = document.querySelector<HTMLElement>("#myGrid")! as any;
-    eGridDiv.style.width = "400px";
-    eGridDiv.style.height = "200px";
+    var eGridDiv = document.querySelector<HTMLElement>('#myGrid')! as any;
+    eGridDiv.style.width = '400px';
+    eGridDiv.style.height = '200px';
     // Same as setting to 'normal' as it is the default
     this.gridApi.setDomLayout();
   }

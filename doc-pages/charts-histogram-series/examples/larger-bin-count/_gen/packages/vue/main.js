@@ -1,5 +1,5 @@
-import { AgChartsVue } from "ag-charts-vue";
-import Vue from "vue";
+import { AgChartsVue } from 'ag-charts-vue';
+import Vue from 'vue';
 
 const ChartExample = {
   template: `
@@ -7,7 +7,7 @@ const ChartExample = {
                 :options="options"></ag-charts-vue>
     `,
   components: {
-    "ag-charts-vue": AgChartsVue,
+    'ag-charts-vue': AgChartsVue,
   },
   data: function () {
     return {
@@ -17,17 +17,17 @@ const ChartExample = {
   created() {
     this.options = {
       title: {
-        text: "Race demographics",
+        text: 'Race demographics',
       },
       subtitle: {
-        text: "Number of participants by age",
+        text: 'Number of participants by age',
       },
       data: getData(),
       series: [
         {
-          type: "histogram",
-          xKey: "age",
-          xName: "Participant Age",
+          type: 'histogram',
+          xKey: 'age',
+          xName: 'Participant Age',
           binCount: 20,
         },
       ],
@@ -36,14 +36,14 @@ const ChartExample = {
       },
       axes: [
         {
-          type: "number",
-          position: "bottom",
-          title: { text: "Age (years)" },
+          type: 'number',
+          position: 'bottom',
+          title: { text: 'Age (years)' },
         },
         {
-          type: "number",
-          position: "left",
-          title: { text: "Number of participants" },
+          type: 'number',
+          position: 'left',
+          title: { text: 'Number of participants' },
         },
       ],
     };
@@ -53,8 +53,8 @@ const ChartExample = {
 };
 
 new Vue({
-  el: "#app",
+  el: '#app',
   components: {
-    "my-component": ChartExample,
+    'my-component': ChartExample,
   },
 });

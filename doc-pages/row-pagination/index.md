@@ -12,6 +12,7 @@ To enable pagination set the grid property `pagination=true`.
 
 Pagination in AG Grid is supported in [all the different row models](/row-models/). The [Client-Side Row Model](/client-side-model/) (the default row model) is used for the examples on this page.
 
+
 To see the specifics of pagination on the other row models check the relevant documentation for [Infinite Row Model](/infinite-scrolling/#pagination), [Viewport Row Model](/viewport/#example-viewport-with-pagination) and [Server-Side Row Model](/server-side-model-pagination/).
 
 ## Features While Using Pagination
@@ -25,6 +26,7 @@ The numbers within the Paging Toolbar can be formatted by replacing the thousand
 ## Example: Auto Page Size
 
 If you set `paginationAutoPageSize=true` the grid will automatically show as many rows in each page as it can fit. This is demonstrated below. Note if you resize the display area of the grid, the page size automatically changes. To view this, open the example up in a new tab and resize your browser.
+
 
 <grid-example title='Auto Page Size' name='auto-page-size' type='generated' options='{ "enterprise": true, "modules": ["clientside", "rowgrouping" ] }'></grid-example>
 
@@ -47,7 +49,7 @@ In this example the default pagination settings are changed. Note the following:
 
 ## Example: Custom Pagination Controls
 
-If you set `suppressPaginationPanel=true`, the grid will not show the standard navigation controls for pagination. This is useful is you want to provide your own navigation controls.
+If you set `suppressPaginationPanel=true`, the grid will not show the standard navigation controls for pagination. This is useful if you want to provide your own navigation controls.
 
 In the example below you can see how this works. Note that we are listening to `onPaginationChanged` to update the information about the current pagination status. We also call methods on the pagination API to change the pagination state.
 
@@ -64,6 +66,7 @@ Both [Row Grouping](/grouping/) and [Master Detail](/master-detail/) have rows t
 ### Mode 1: Paginate Only Top Level Rows
 
 The first mode is the default. The rows are split according to the top level rows. For example if row grouping with a page size of 10, then each page will contain 10 top level groups. When expanding a group with this mode, all children for that group, along with the 10 original groups for that page, will get display in one page. This will result in a page size greater than the initial page size of 10 rows.
+
 
 This mode is typically best suited for Row Grouping as children are always displayed alongside the parent group. It is also typically best for Master Detail, as detail rows (that typically contain detail tables) will always appear below their master rows.
 
@@ -100,7 +103,7 @@ This is because both of these features remove top level rows (group rows and mas
 
 ## Pagination Properties
 
-<api-documentation source='grid-properties/properties.json' section='pagination'></api-documentation>
+<api-documentation source='grid-options/properties.json' section='pagination'></api-documentation>
 
 The following methods compose the pagination API are all available from `gridOptions.api`
 
@@ -108,10 +111,13 @@ The following methods compose the pagination API are all available from `gridOpt
 
 <api-documentation source='grid-api/api.json' section='pagination'></api-documentation>
 
+
 ## Pagination Callbacks
 
-<api-documentation source='grid-properties/properties.json' section='pagination' names='["paginationNumberFormatter"]'></api-documentation>
+<api-documentation source='grid-options/properties.json' section='pagination' names='["paginationNumberFormatter"]'></api-documentation>
 
 ## Pagination Events
 
 <api-documentation source='grid-events/events.json' section='pagination' names='["paginationChanged"]'></api-documentation>
+
+

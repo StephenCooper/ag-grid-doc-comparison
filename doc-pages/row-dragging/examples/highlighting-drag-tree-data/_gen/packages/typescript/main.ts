@@ -1,5 +1,6 @@
 import {
   CellClassParams,
+  GetRowIdParams,
   Grid,
   GridApi,
   GridOptions,
@@ -9,18 +10,18 @@ import {
   RowDragMoveEvent,
   RowNode,
   ValueFormatterParams,
-} from "ag-grid-community";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
+} from 'ag-grid-community';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import 'ag-grid-enterprise';
 declare var FileCellRenderer: any;
 
 var valueFormatter = function (params: ValueFormatterParams) {
-  return params.value ? params.value + " MB" : "";
+  return params.value ? params.value + ' MB' : '';
 };
 
 var cellClassRules = {
-  "hover-over": function (params: CellClassParams) {
+  'hover-over': function (params: CellClassParams) {
     return params.node === potentialParent;
   },
 };
@@ -28,11 +29,11 @@ var cellClassRules = {
 const gridOptions: GridOptions = {
   columnDefs: [
     {
-      field: "dateModified",
+      field: 'dateModified',
       cellClassRules: cellClassRules,
     },
     {
-      field: "size",
+      field: 'size',
       valueFormatter: valueFormatter,
       cellClassRules: cellClassRules,
     },
@@ -45,22 +46,22 @@ const gridOptions: GridOptions = {
   treeData: true,
   animateRows: true,
   groupDefaultExpanded: -1,
-  getDataPath: function (data) {
+  getDataPath: function (data: any) {
     return data.filePath;
   },
-  getRowId: function (params) {
+  getRowId: function (params: GetRowIdParams) {
     return params.data.id;
   },
   autoGroupColumnDef: {
     rowDrag: true,
-    headerName: "Files",
+    headerName: 'Files',
     minWidth: 300,
     cellRendererParams: {
       suppressCount: true,
       innerRenderer: FileCellRenderer,
     },
     cellClassRules: {
-      "hover-over": function (params) {
+      'hover-over': function (params) {
         return params.node === potentialParent;
       },
     },
@@ -96,7 +97,7 @@ function onRowDragEnd(event: RowDragEndEvent) {
   // check we are not moving a folder into a child folder
   var invalidMode = isSelectionParentOfTarget(event.node, potentialParent);
   if (invalidMode) {
-    console.log("invalid move");
+    console.log('invalid move');
   }
 
   if (needToChangeParent && !invalidMode) {
@@ -166,7 +167,7 @@ function setPotentialParentForNode(
   var newPotentialParent;
   if (overNode) {
     newPotentialParent =
-      overNode.data.type === "folder"
+      overNode.data.type === 'folder'
         ? // if over a folder, we take the immediate row
           overNode
         : // if over a file, we take the parent row (which will be a folder)
@@ -211,7 +212,7 @@ function refreshRows(api: GridApi, rowsToRefresh: RowNode[]) {
 // wait for the document to be loaded, otherwise
 // AG Grid will not find the div in the document.
 // lookup the container we want the Grid to use
-var eGridDiv = document.querySelector<HTMLElement>("#myGrid")!;
+var eGridDiv = document.querySelector<HTMLElement>('#myGrid')!;
 
 // create the grid passing in the div to use together with the columns & data we want to use
 new Grid(eGridDiv, gridOptions);

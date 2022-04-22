@@ -1,12 +1,12 @@
-import { HttpClient } from "@angular/common/http";
-import { Component } from "@angular/core";
-import { ColDef, GridReadyEvent } from "ag-grid-community";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
+import { HttpClient } from '@angular/common/http';
+import { Component } from '@angular/core';
+import { ColDef, GridReadyEvent } from 'ag-grid-community';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import 'ag-grid-enterprise';
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<ag-grid-angular
     style="width: 100%; height: 100%;"
     class="ag-theme-alpine"
@@ -20,24 +20,24 @@ import "ag-grid-enterprise";
 })
 export class AppComponent {
   public columnDefs: ColDef[] = [
-    { field: "country", width: 120, rowGroup: true },
-    { field: "year", width: 90, rowGroup: true },
-    { field: "sport", width: 110 },
-    { field: "athlete", width: 200 },
-    { field: "gold", width: 100 },
-    { field: "silver", width: 100 },
-    { field: "bronze", width: 100 },
-    { field: "total", width: 100 },
-    { field: "age", width: 90 },
-    { field: "date", width: 110 },
+    { field: 'country', width: 120, rowGroup: true },
+    { field: 'year', width: 90, rowGroup: true },
+    { field: 'sport', width: 110 },
+    { field: 'athlete', width: 200 },
+    { field: 'gold', width: 100 },
+    { field: 'silver', width: 100 },
+    { field: 'bronze', width: 100 },
+    { field: 'total', width: 100 },
+    { field: 'age', width: 90 },
+    { field: 'date', width: 110 },
   ];
   public autoGroupColumnDef: ColDef = {
-    headerTooltip: "Group",
+    headerTooltip: 'Group',
     minWidth: 190,
     tooltipValueGetter: (params) => {
       const count = params.node && params.node.allChildrenCount;
       if (count != null) {
-        return params.value + " (" + count + ")";
+        return params.value + ' (' + count + ')';
       }
       return params.value;
     },
@@ -56,7 +56,7 @@ export class AppComponent {
 
   onGridReady(params: GridReadyEvent) {
     this.http
-      .get<any[]>("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      .get<any[]>('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .subscribe((data) => {
         this.rowData = data;
       });

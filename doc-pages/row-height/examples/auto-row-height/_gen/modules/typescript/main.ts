@@ -1,10 +1,10 @@
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { Grid, GridOptions, ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { ColumnsToolPanelModule } from "@ag-grid-enterprise/column-tool-panel";
-import { MenuModule } from "@ag-grid-enterprise/menu";
-import { RowGroupingModule } from "@ag-grid-enterprise/row-grouping";
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import { Grid, GridOptions, ModuleRegistry } from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { ColumnsToolPanelModule } from '@ag-grid-enterprise/column-tool-panel';
+import { MenuModule } from '@ag-grid-enterprise/menu';
+import { RowGroupingModule } from '@ag-grid-enterprise/row-grouping';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([
@@ -17,22 +17,22 @@ ModuleRegistry.registerModules([
 const gridOptions: GridOptions = {
   columnDefs: [
     {
-      headerName: "Row #",
-      field: "rowNumber",
+      headerName: 'Row #',
+      field: 'rowNumber',
       width: 120,
     },
     {
-      field: "autoA",
+      field: 'autoA',
       width: 300,
       wrapText: true,
       autoHeight: true,
-      headerName: "A) Auto Height",
+      headerName: 'A) Auto Height',
     },
     {
       width: 300,
-      field: "autoB",
+      field: 'autoB',
       wrapText: true,
-      headerName: "B) Normal Height",
+      headerName: 'B) Normal Height',
     },
   ],
   defaultColDef: {
@@ -49,11 +49,11 @@ const gridOptions: GridOptions = {
   sideBar: {
     toolPanels: [
       {
-        id: "columns",
-        labelDefault: "Columns",
-        labelKey: "columns",
-        iconKey: "columns",
-        toolPanel: "agColumnsToolPanel",
+        id: 'columns',
+        labelDefault: 'Columns',
+        labelKey: 'columns',
+        iconKey: 'columns',
+        toolPanel: 'agColumnsToolPanel',
         toolPanelParams: {
           suppressRowGroups: true,
           suppressValues: true,
@@ -66,10 +66,10 @@ const gridOptions: GridOptions = {
         },
       },
     ],
-    defaultToolPanel: "columns",
+    defaultToolPanel: 'columns',
   },
 };
 
 // setup the grid after the page has finished loading
-var gridDiv = document.querySelector<HTMLElement>("#myGrid")!;
+var gridDiv = document.querySelector<HTMLElement>('#myGrid')!;
 new Grid(gridDiv, gridOptions);

@@ -1,9 +1,9 @@
-import { Component } from "@angular/core";
-import { ICellRendererAngularComp } from "ag-grid-angular";
-import { ICellRendererParams } from "ag-grid-community";
+import { Component } from '@angular/core';
+import { ICellRendererAngularComp } from 'ag-grid-angular';
+import { ICellRendererParams } from 'ag-grid-community';
 
 @Component({
-  selector: "mood-cell",
+  selector: 'mood-cell',
   template: `<img width="20px" [src]="imgForMood" />`,
 })
 export class MoodRenderer implements ICellRendererAngularComp {
@@ -25,7 +25,7 @@ export class MoodRenderer implements ICellRendererAngularComp {
   private setMood(params: ICellRendererParams) {
     this.mood = params.value;
     this.imgForMood =
-      "https://www.ag-grid.com/example-assets/smileys/" +
-      (this.mood === "Happy" ? "happy.png" : "sad.png");
+      'https://www.ag-grid.com/example-assets/smileys/' +
+      (this.mood === 'Happy' ? 'happy.png' : 'sad.png');
   }
 }

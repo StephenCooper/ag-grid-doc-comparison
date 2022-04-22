@@ -1,9 +1,9 @@
-import React from "react";
+import React from 'react';
 
 export default (props) => {
   const isHeader = props.rowIndex === undefined;
   const isGroupedHeader = isHeader && !!props.colDef.children;
-  const valueToDisplay = props.value.value ? props.value.value : "- Missing -";
+  const valueToDisplay = props.value.value ? props.value.value : '- Missing -';
 
   return isHeader ? (
     <div className="custom-tooltip">

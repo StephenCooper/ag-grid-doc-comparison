@@ -1,14 +1,14 @@
-"use strict";
+'use strict';
 
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine-dark.css";
-import { AgGridReact } from "@ag-grid-community/react";
-import { MenuModule } from "@ag-grid-enterprise/menu";
-import { ServerSideRowModelModule } from "@ag-grid-enterprise/server-side-row-model";
-import { SetFilterModule } from "@ag-grid-enterprise/set-filter";
-import React, { useCallback, useMemo, useState } from "react";
-import { render } from "react-dom";
+import React, { useCallback, useMemo, useRef, useState } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from '@ag-grid-community/react';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine-dark.css';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import { ServerSideRowModelModule } from '@ag-grid-enterprise/server-side-row-model';
+import { SetFilterModule } from '@ag-grid-enterprise/set-filter';
+import { MenuModule } from '@ag-grid-enterprise/menu';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([
@@ -21,9 +21,9 @@ const createServerSideDatasource = (server) => {
   return {
     getRows: function (params) {
       console.log(
-        "[Datasource] - rows requested by grid: startRow = " +
+        '[Datasource] - rows requested by grid: startRow = ' +
           params.request.startRow +
-          ", endRow = " +
+          ', endRow = ' +
           params.request.endRow
       );
       // get data for request from our fake server
@@ -53,32 +53,32 @@ const createFakeServer = (allData) => {
 };
 
 const GridExample = () => {
-  const containerStyle = useMemo(() => ({ width: "100%", height: "100%" }), []);
-  const gridStyle = useMemo(() => ({ height: "100%", width: "100%" }), []);
+  const containerStyle = useMemo(() => ({ width: '100%', height: '100%' }), []);
+  const gridStyle = useMemo(() => ({ height: '100%', width: '100%' }), []);
 
   const [columnDefs, setColumnDefs] = useState([
-    { field: "athlete", minWidth: 220, filter: "agTextColumnFilter" },
+    { field: 'athlete', minWidth: 220, filter: 'agTextColumnFilter' },
     {
-      field: "country",
+      field: 'country',
       minWidth: 200,
-      filter: "agSetColumnFilter",
+      filter: 'agSetColumnFilter',
       filterParams: {
         values: [
-          "United States",
-          "Ireland",
-          "United Kingdom",
-          "Russia",
-          "Australia",
-          "Canada",
-          "Norway",
+          'United States',
+          'Ireland',
+          'United Kingdom',
+          'Russia',
+          'Australia',
+          'Canada',
+          'Norway',
         ],
       },
     },
-    { field: "year", filter: "agNumberColumnFilter" },
-    { field: "sport", minWidth: 200 },
-    { field: "gold" },
-    { field: "silver" },
-    { field: "bronze" },
+    { field: 'year', filter: 'agNumberColumnFilter' },
+    { field: 'sport', minWidth: 200 },
+    { field: 'gold' },
+    { field: 'silver' },
+    { field: 'bronze' },
   ]);
   const defaultColDef = useMemo(() => {
     return {
@@ -88,7 +88,7 @@ const GridExample = () => {
   }, []);
 
   const onGridReady = useCallback((params) => {
-    fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+    fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .then((resp) => resp.json())
       .then((data) => {
         // setup the fake server with entire dataset
@@ -107,8 +107,8 @@ const GridExample = () => {
           columnDefs={columnDefs}
           defaultColDef={defaultColDef}
           animateRows={true}
-          rowModelType={"serverSide"}
-          serverSideStoreType={"full"}
+          rowModelType={'serverSide'}
+          serverSideStoreType={'full'}
           onGridReady={onGridReady}
         ></AgGridReact>
       </div>
@@ -116,4 +116,4 @@ const GridExample = () => {
   );
 };
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

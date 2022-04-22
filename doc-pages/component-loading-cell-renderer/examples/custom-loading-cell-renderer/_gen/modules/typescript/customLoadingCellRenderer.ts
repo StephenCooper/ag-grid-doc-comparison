@@ -1,13 +1,13 @@
 import {
   ILoadingCellRendererComp,
   ILoadingCellRendererParams,
-} from "@ag-grid-community/core";
+} from '@ag-grid-community/core';
 
 export class CustomLoadingCellRenderer implements ILoadingCellRendererComp {
   eGui!: HTMLElement;
 
   init(params: ILoadingCellRendererParams & { loadingMessage: string }) {
-    this.eGui = document.createElement("div");
+    this.eGui = document.createElement('div');
     this.eGui.innerHTML = `
             <div class="ag-custom-loading-cell" style="padding-left: 10px; line-height: 25px;">  
                 <i class="fas fa-spinner fa-pulse"></i> 

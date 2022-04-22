@@ -1,26 +1,28 @@
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
 import {
   ColDef,
   Grid,
   GridOptions,
   ModuleRegistry,
-} from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { CustomPinnedRowRenderer } from "./customPinnedRowRenderer";
+  RowClassParams,
+  RowStyle,
+} from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { CustomPinnedRowRenderer } from './customPinnedRowRenderer';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([ClientSideRowModelModule]);
 
 const columnDefs: ColDef[] = [
   {
-    field: "athlete",
+    field: 'athlete',
     cellRendererSelector: function (params) {
       if (params.node.rowPinned) {
         return {
           component: CustomPinnedRowRenderer,
           params: {
-            style: { color: "blue" },
+            style: { color: 'blue' },
           },
         };
       } else {
@@ -30,13 +32,13 @@ const columnDefs: ColDef[] = [
     },
   },
   {
-    field: "age",
+    field: 'age',
     cellRendererSelector: function (params) {
       if (params.node.rowPinned) {
         return {
           component: CustomPinnedRowRenderer,
           params: {
-            style: { "font-style": "italic" },
+            style: { 'font-style': 'italic' },
           },
         };
       } else {
@@ -45,10 +47,10 @@ const columnDefs: ColDef[] = [
       }
     },
   },
-  { field: "country" },
-  { field: "year" },
-  { field: "date" },
-  { field: "sport" },
+  { field: 'country' },
+  { field: 'year' },
+  { field: 'date' },
+  { field: 'sport' },
 ];
 
 const gridOptions: GridOptions = {
@@ -60,29 +62,29 @@ const gridOptions: GridOptions = {
   },
   columnDefs: columnDefs,
   rowData: null,
-  getRowStyle: function (params) {
+  getRowStyle: function (params: RowClassParams): RowStyle | undefined {
     if (params.node.rowPinned) {
-      return { "font-weight": "bold" };
+      return { 'font-weight': 'bold' };
     }
   },
   // no rows to pin to start with
-  pinnedTopRowData: createData(1, "Top"),
-  pinnedBottomRowData: createData(1, "Bottom"),
+  pinnedTopRowData: createData(1, 'Top'),
+  pinnedBottomRowData: createData(1, 'Bottom'),
 };
 
 function onPinnedRowTopCount() {
-  var headerRowsToFloat = (document.getElementById("top-row-count") as any)
+  var headerRowsToFloat = (document.getElementById('top-row-count') as any)
     .value;
   var count = Number(headerRowsToFloat);
-  var rows = createData(count, "Top");
+  var rows = createData(count, 'Top');
   gridOptions.api!.setPinnedTopRowData(rows);
 }
 
 function onPinnedRowBottomCount() {
-  var footerRowsToFloat = (document.getElementById("bottom-row-count") as any)
+  var footerRowsToFloat = (document.getElementById('bottom-row-count') as any)
     .value;
   var count = Number(footerRowsToFloat);
-  var rows = createData(count, "Bottom");
+  var rows = createData(count, 'Bottom');
   gridOptions.api!.setPinnedBottomRowData(rows);
 }
 
@@ -90,26 +92,26 @@ function createData(count: number, prefix: string) {
   var result = [];
   for (var i = 0; i < count; i++) {
     result.push({
-      athlete: prefix + " Athlete " + i,
-      age: prefix + " Age " + i,
-      country: prefix + " Country " + i,
-      year: prefix + " Year " + i,
-      date: prefix + " Date " + i,
-      sport: prefix + " Sport " + i,
+      athlete: prefix + ' Athlete ' + i,
+      age: prefix + ' Age ' + i,
+      country: prefix + ' Country ' + i,
+      year: prefix + ' Year ' + i,
+      date: prefix + ' Date ' + i,
+      sport: prefix + ' Sport ' + i,
     });
   }
   return result;
 }
 
 // setup the grid after the page has finished loading
-var gridDiv = document.querySelector<HTMLElement>("#myGrid")!;
+var gridDiv = document.querySelector<HTMLElement>('#myGrid')!;
 new Grid(gridDiv, gridOptions);
 
-fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
   .then((response) => response.json())
   .then((data) => gridOptions.api!.setRowData(data));
 
-if (typeof window !== "undefined") {
+if (typeof window !== 'undefined') {
   // Attach external event handlers to window so they can be called from index.html
   (<any>window).onPinnedRowTopCount = onPinnedRowTopCount;
   (<any>window).onPinnedRowBottomCount = onPinnedRowBottomCount;

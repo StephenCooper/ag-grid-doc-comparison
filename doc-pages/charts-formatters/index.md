@@ -2,10 +2,9 @@
 title: "Formatters"
 ---
 
-This section explores customization of individual series items and markers based on data they represent.
+Formatters allow individual series items and markers to be customised based on the data they represent.
 
 When it comes to formatters, all series can be divided into two categories:
-
 - _series with markers_, such as `line`, `scatter` and `area`, where each data point is represented by a marker that can be of any shape
 - _series without markers_, such as `bar` and `pie`, where each data point is represented by a series item with a fixed shape, for example a rectangle or a pie sector
 
@@ -15,25 +14,25 @@ If we take a stacked area series where we want the markers of the second sub-ser
 
 ```js
 function formatter({ yKey, size }) {
-  return { size: yKey === "electric" ? 12 : size };
+    return { size: yKey === 'electric' ? 12 : size };
 }
 
 series: [
-  {
-    type: "area",
-    xKey: "quarter",
-    yKey: "petrol",
-    stacked: true,
-    marker: { formatter },
-  },
-  {
-    type: "area",
-    xKey: "quarter",
-    yKey: "electric",
-    stacked: true,
-    marker: { formatter },
-  },
-];
+    {
+        type: 'area',
+        xKey: 'quarter',
+        yKey: 'petrol',
+        stacked: true,
+        marker: { formatter },
+    },
+    {
+        type: 'area',
+        xKey: 'quarter',
+        yKey: 'electric',
+        stacked: true,
+        marker: { formatter },
+    },
+]
 ```
 
 <chart-example title='Marker Formatter' name='marker-formatter' type='generated'></chart-example>

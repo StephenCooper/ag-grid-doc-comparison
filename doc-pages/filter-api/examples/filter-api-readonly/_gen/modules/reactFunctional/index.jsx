@@ -1,16 +1,16 @@
-"use strict";
+'use strict';
 
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { AgGridReact } from "@ag-grid-community/react";
-import { ColumnsToolPanelModule } from "@ag-grid-enterprise/column-tool-panel";
-import { MenuModule } from "@ag-grid-enterprise/menu";
-import { MultiFilterModule } from "@ag-grid-enterprise/multi-filter";
-import { SetFilterModule } from "@ag-grid-enterprise/set-filter";
-import React, { useCallback, useMemo, useRef, useState } from "react";
-import { render } from "react-dom";
+import React, { useCallback, useMemo, useRef, useState } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from '@ag-grid-community/react';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import { SetFilterModule } from '@ag-grid-enterprise/set-filter';
+import { MenuModule } from '@ag-grid-enterprise/menu';
+import { ColumnsToolPanelModule } from '@ag-grid-enterprise/column-tool-panel';
+import { MultiFilterModule } from '@ag-grid-enterprise/multi-filter';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([
@@ -25,31 +25,31 @@ var defaultFilterParams = { readOnly: true };
 
 const GridExample = () => {
   const gridRef = useRef();
-  const containerStyle = useMemo(() => ({ width: "100%", height: "100%" }), []);
-  const gridStyle = useMemo(() => ({ height: "100%", width: "100%" }), []);
+  const containerStyle = useMemo(() => ({ width: '100%', height: '100%' }), []);
+  const gridStyle = useMemo(() => ({ height: '100%', width: '100%' }), []);
   const [rowData, setRowData] = useState();
   const [columnDefs, setColumnDefs] = useState([
-    { field: "athlete", filter: true, filterParams: defaultFilterParams },
+    { field: 'athlete', filter: true, filterParams: defaultFilterParams },
     {
-      field: "age",
-      filter: "agNumberColumnFilter",
+      field: 'age',
+      filter: 'agNumberColumnFilter',
       filterParams: defaultFilterParams,
     },
     {
-      field: "country",
-      filter: "agSetColumnFilter",
+      field: 'country',
+      filter: 'agSetColumnFilter',
       filterParams: defaultFilterParams,
     },
     {
-      field: "year",
+      field: 'year',
       maxWidth: 120,
-      filter: "agNumberColumnFilter",
+      filter: 'agNumberColumnFilter',
       filterParams: defaultFilterParams,
     },
     {
-      field: "date",
+      field: 'date',
       minWidth: 215,
-      filter: "agDateColumnFilter",
+      filter: 'agDateColumnFilter',
       filterParams: {
         readOnly: true,
         comparator: dateComparator,
@@ -57,21 +57,21 @@ const GridExample = () => {
       suppressMenu: true,
     },
     {
-      field: "sport",
+      field: 'sport',
       suppressMenu: true,
-      filter: "agMultiColumnFilter",
+      filter: 'agMultiColumnFilter',
       filterParams: {
         filters: [
-          { filter: "agTextColumnFilter", filterParams: { readOnly: true } },
-          { filter: "agSetColumnFilter", filterParams: { readOnly: true } },
+          { filter: 'agTextColumnFilter', filterParams: { readOnly: true } },
+          { filter: 'agSetColumnFilter', filterParams: { readOnly: true } },
         ],
         readOnly: true,
       },
     },
-    { field: "gold", filterParams: defaultFilterParams },
-    { field: "silver", filterParams: defaultFilterParams },
-    { field: "bronze", filterParams: defaultFilterParams },
-    { field: "total", filter: false },
+    { field: 'gold', filterParams: defaultFilterParams },
+    { field: 'silver', filterParams: defaultFilterParams },
+    { field: 'bronze', filterParams: defaultFilterParams },
+    { field: 'total', filter: false },
   ]);
   const defaultColDef = useMemo(() => {
     return {
@@ -84,59 +84,63 @@ const GridExample = () => {
   }, []);
 
   const onGridReady = useCallback((params) => {
-    fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+    fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .then((resp) => resp.json())
       .then((data) => setRowData(data));
   }, []);
 
   const irelandAndUk = useCallback(() => {
-    var countryFilterComponent =
-      gridRef.current.api.getFilterInstance("country");
-    countryFilterComponent.setModel({ values: ["Ireland", "Great Britain"] });
+    var countryFilterComponent = gridRef.current.api.getFilterInstance(
+      'country'
+    );
+    countryFilterComponent.setModel({ values: ['Ireland', 'Great Britain'] });
     gridRef.current.api.onFilterChanged();
   }, []);
 
   const clearCountryFilter = useCallback(() => {
-    var countryFilterComponent =
-      gridRef.current.api.getFilterInstance("country");
+    var countryFilterComponent = gridRef.current.api.getFilterInstance(
+      'country'
+    );
     countryFilterComponent.setModel(null);
     gridRef.current.api.onFilterChanged();
   }, []);
 
   const destroyCountryFilter = useCallback(() => {
-    gridRef.current.api.destroyFilter("country");
+    gridRef.current.api.destroyFilter('country');
   }, []);
 
   const endingStan = useCallback(() => {
-    var countryFilterComponent =
-      gridRef.current.api.getFilterInstance("country");
+    var countryFilterComponent = gridRef.current.api.getFilterInstance(
+      'country'
+    );
     var countriesEndingWithStan = countryFilterComponent
       .getValues()
       .filter(function (value) {
-        return value.indexOf("stan") === value.length - 4;
+        return value.indexOf('stan') === value.length - 4;
       });
     countryFilterComponent.setModel({ values: countriesEndingWithStan });
     gridRef.current.api.onFilterChanged();
   }, []);
 
   const printCountryModel = useCallback(() => {
-    var countryFilterComponent =
-      gridRef.current.api.getFilterInstance("country");
+    var countryFilterComponent = gridRef.current.api.getFilterInstance(
+      'country'
+    );
     var model = countryFilterComponent.getModel();
     if (model) {
-      console.log("Country model is: " + JSON.stringify(model));
+      console.log('Country model is: ' + JSON.stringify(model));
     } else {
-      console.log("Country model filter is not active");
+      console.log('Country model filter is not active');
     }
   }, []);
 
   const sportStartsWithS = useCallback(() => {
-    var sportsFilterComponent = gridRef.current.api.getFilterInstance("sport");
+    var sportsFilterComponent = gridRef.current.api.getFilterInstance('sport');
     sportsFilterComponent.setModel({
       filterModels: [
         {
-          type: "startsWith",
-          filter: "s",
+          type: 'startsWith',
+          filter: 's',
         },
       ],
     });
@@ -144,12 +148,12 @@ const GridExample = () => {
   }, []);
 
   const sportEndsWithG = useCallback(() => {
-    var sportsFilterComponent = gridRef.current.api.getFilterInstance("sport");
+    var sportsFilterComponent = gridRef.current.api.getFilterInstance('sport');
     sportsFilterComponent.setModel({
       filterModels: [
         {
-          type: "endsWith",
-          filter: "g",
+          type: 'endsWith',
+          filter: 'g',
         },
       ],
     });
@@ -157,18 +161,18 @@ const GridExample = () => {
   }, []);
 
   const sportsCombined = useCallback(() => {
-    var sportsFilterComponent = gridRef.current.api.getFilterInstance("sport");
+    var sportsFilterComponent = gridRef.current.api.getFilterInstance('sport');
     sportsFilterComponent.setModel({
       filterModels: [
         {
           condition2: {
-            type: "endsWith",
-            filter: "g",
+            type: 'endsWith',
+            filter: 'g',
           },
-          operator: "AND",
+          operator: 'AND',
           condition1: {
-            type: "startsWith",
-            filter: "s",
+            type: 'startsWith',
+            filter: 's',
           },
         },
       ],
@@ -177,9 +181,9 @@ const GridExample = () => {
   }, []);
 
   const ageBelow25 = useCallback(() => {
-    var ageFilterComponent = gridRef.current.api.getFilterInstance("age");
+    var ageFilterComponent = gridRef.current.api.getFilterInstance('age');
     ageFilterComponent.setModel({
-      type: "lessThan",
+      type: 'lessThan',
       filter: 25,
       filterTo: null,
     });
@@ -187,9 +191,9 @@ const GridExample = () => {
   }, []);
 
   const ageAbove30 = useCallback(() => {
-    var ageFilterComponent = gridRef.current.api.getFilterInstance("age");
+    var ageFilterComponent = gridRef.current.api.getFilterInstance('age');
     ageFilterComponent.setModel({
-      type: "greaterThan",
+      type: 'greaterThan',
       filter: 30,
       filterTo: null,
     });
@@ -197,16 +201,16 @@ const GridExample = () => {
   }, []);
 
   const ageBelow25OrAbove30 = useCallback(() => {
-    var ageFilterComponent = gridRef.current.api.getFilterInstance("age");
+    var ageFilterComponent = gridRef.current.api.getFilterInstance('age');
     ageFilterComponent.setModel({
       condition1: {
-        type: "greaterThan",
+        type: 'greaterThan',
         filter: 30,
         filterTo: null,
       },
-      operator: "OR",
+      operator: 'OR',
       condition2: {
-        type: "lessThan",
+        type: 'lessThan',
         filter: 25,
         filterTo: null,
       },
@@ -215,9 +219,9 @@ const GridExample = () => {
   }, []);
 
   const ageBetween25And30 = useCallback(() => {
-    var ageFilterComponent = gridRef.current.api.getFilterInstance("age");
+    var ageFilterComponent = gridRef.current.api.getFilterInstance('age');
     ageFilterComponent.setModel({
-      type: "inRange",
+      type: 'inRange',
       filter: 25,
       filterTo: 30,
     });
@@ -225,43 +229,43 @@ const GridExample = () => {
   }, []);
 
   const clearAgeFilter = useCallback(() => {
-    var ageFilterComponent = gridRef.current.api.getFilterInstance("age");
+    var ageFilterComponent = gridRef.current.api.getFilterInstance('age');
     ageFilterComponent.setModel(null);
     gridRef.current.api.onFilterChanged();
   }, []);
 
   const after2010 = useCallback(() => {
-    var dateFilterComponent = gridRef.current.api.getFilterInstance("date");
+    var dateFilterComponent = gridRef.current.api.getFilterInstance('date');
     dateFilterComponent.setModel({
-      type: "greaterThan",
-      dateFrom: "2010-01-01",
+      type: 'greaterThan',
+      dateFrom: '2010-01-01',
       dateTo: null,
     });
     gridRef.current.api.onFilterChanged();
   }, []);
 
   const before2012 = useCallback(() => {
-    var dateFilterComponent = gridRef.current.api.getFilterInstance("date");
+    var dateFilterComponent = gridRef.current.api.getFilterInstance('date');
     dateFilterComponent.setModel({
-      type: "lessThan",
-      dateFrom: "2012-01-01",
+      type: 'lessThan',
+      dateFrom: '2012-01-01',
       dateTo: null,
     });
     gridRef.current.api.onFilterChanged();
   }, []);
 
   const dateCombined = useCallback(() => {
-    var dateFilterComponent = gridRef.current.api.getFilterInstance("date");
+    var dateFilterComponent = gridRef.current.api.getFilterInstance('date');
     dateFilterComponent.setModel({
       condition1: {
-        type: "lessThan",
-        dateFrom: "2012-01-01",
+        type: 'lessThan',
+        dateFrom: '2012-01-01',
         dateTo: null,
       },
-      operator: "OR",
+      operator: 'OR',
       condition2: {
-        type: "greaterThan",
-        dateFrom: "2010-01-01",
+        type: 'greaterThan',
+        dateFrom: '2010-01-01',
         dateTo: null,
       },
     });
@@ -269,13 +273,13 @@ const GridExample = () => {
   }, []);
 
   const clearDateFilter = useCallback(() => {
-    var dateFilterComponent = gridRef.current.api.getFilterInstance("date");
+    var dateFilterComponent = gridRef.current.api.getFilterInstance('date');
     dateFilterComponent.setModel(null);
     gridRef.current.api.onFilterChanged();
   }, []);
 
   const clearSportFilter = useCallback(() => {
-    var dateFilterComponent = gridRef.current.api.getFilterInstance("sport");
+    var dateFilterComponent = gridRef.current.api.getFilterInstance('sport');
     dateFilterComponent.setModel(null);
     gridRef.current.api.onFilterChanged();
   }, []);
@@ -330,4 +334,4 @@ const GridExample = () => {
   );
 };
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

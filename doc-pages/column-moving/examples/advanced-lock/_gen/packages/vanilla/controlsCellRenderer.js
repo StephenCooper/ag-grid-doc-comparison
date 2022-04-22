@@ -3,18 +3,18 @@
 // display purposes.
 class ControlsCellRenderer {
   init() {
-    this.eGui = document.createElement("div");
+    this.eGui = document.createElement('div');
 
-    let button = document.createElement("button");
-    button.innerText = "A";
+    let button = document.createElement('button');
+    button.innerText = 'A';
     this.eGui.appendChild(button);
 
-    button = document.createElement("button");
-    button.innerText = "B";
+    button = document.createElement('button');
+    button.innerText = 'B';
     this.eGui.appendChild(button);
 
-    button = document.createElement("button");
-    button.innerText = "C";
+    button = document.createElement('button');
+    button.innerText = 'C';
     this.eGui.appendChild(button);
   }
 

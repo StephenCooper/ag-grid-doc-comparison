@@ -1,11 +1,11 @@
-"use strict";
+'use strict';
 
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
-import { AgGridReact } from "ag-grid-react";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from 'ag-grid-react';
+import 'ag-grid-enterprise';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 
 class GridExample extends Component {
   constructor(props) {
@@ -13,15 +13,15 @@ class GridExample extends Component {
 
     this.state = {
       columnDefs: [
-        { field: "country", rowGroup: true, hide: true },
-        { field: "sport", rowGroup: true, hide: true },
-        { field: "age", minWidth: 120, aggFunc: "sum" },
-        { field: "year", maxWidth: 120 },
-        { field: "date", minWidth: 150 },
-        { field: "gold", aggFunc: "sum" },
-        { field: "silver", aggFunc: "sum" },
-        { field: "bronze", aggFunc: "sum" },
-        { field: "total", aggFunc: "sum" },
+        { field: 'country', rowGroup: true, hide: true },
+        { field: 'sport', rowGroup: true, hide: true },
+        { field: 'age', minWidth: 120, aggFunc: 'sum' },
+        { field: 'year', maxWidth: 120 },
+        { field: 'date', minWidth: 150 },
+        { field: 'gold', aggFunc: 'sum' },
+        { field: 'silver', aggFunc: 'sum' },
+        { field: 'bronze', aggFunc: 'sum' },
+        { field: 'total', aggFunc: 'sum' },
       ],
       defaultColDef: {
         flex: 1,
@@ -30,15 +30,15 @@ class GridExample extends Component {
         resizable: true,
       },
       autoGroupColumnDef: {
-        headerName: "Athlete",
-        field: "athlete",
+        headerName: 'Athlete',
+        field: 'athlete',
         minWidth: 250,
-        cellRenderer: "agGroupCellRenderer",
+        cellRenderer: 'agGroupCellRenderer',
         cellRendererParams: {
           checkbox: true,
         },
       },
-      rowSelection: "multiple",
+      rowSelection: 'multiple',
       rowData: null,
     };
   }
@@ -49,7 +49,7 @@ class GridExample extends Component {
 
     const updateData = (data) => params.api.setRowData(data);
 
-    fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+    fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .then((resp) => resp.json())
       .then((data) => updateData(data));
   };
@@ -57,8 +57,8 @@ class GridExample extends Component {
   filterSwimming = () => {
     this.gridApi.setFilterModel({
       sport: {
-        type: "set",
-        values: ["Swimming"],
+        type: 'set',
+        values: ['Swimming'],
       },
     });
   };
@@ -66,8 +66,8 @@ class GridExample extends Component {
   ages16And20 = () => {
     this.gridApi.setFilterModel({
       age: {
-        type: "set",
-        values: ["16", "20"],
+        type: 'set',
+        values: ['16', '20'],
       },
     });
   };
@@ -78,9 +78,9 @@ class GridExample extends Component {
 
   render() {
     return (
-      <div style={{ width: "100%", height: "100%" }}>
+      <div style={{ width: '100%', height: '100%' }}>
         <div className="example-wrapper">
-          <div style={{ marginBottom: "5px" }}>
+          <div style={{ marginBottom: '5px' }}>
             <button onClick={() => this.filterSwimming()}>
               Filter Only Swimming
             </button>
@@ -89,15 +89,15 @@ class GridExample extends Component {
             </button>
             <button
               onClick={() => this.clearFilter()}
-              style={{ marginLeft: "10px" }}
+              style={{ marginLeft: '10px' }}
             >
               Clear Filter
             </button>
           </div>
           <div
             style={{
-              height: "100%",
-              width: "100%",
+              height: '100%',
+              width: '100%',
             }}
             className="ag-theme-alpine"
           >
@@ -120,4 +120,4 @@ class GridExample extends Component {
   }
 }
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

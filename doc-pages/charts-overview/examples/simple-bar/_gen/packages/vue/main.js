@@ -1,5 +1,5 @@
-import { AgChartsVue } from "ag-charts-vue";
-import Vue from "vue";
+import { AgChartsVue } from 'ag-charts-vue';
+import Vue from 'vue';
 
 const ChartExample = {
   template: `
@@ -7,7 +7,7 @@ const ChartExample = {
                 :options="options"></ag-charts-vue>
     `,
   components: {
-    "ag-charts-vue": AgChartsVue,
+    'ag-charts-vue': AgChartsVue,
   },
   data: function () {
     return {
@@ -28,30 +28,30 @@ const ChartExample = {
         },
       },
       title: {
-        text: "Gross Weekly Earnings by Occupation (Q4 2019)",
+        text: 'Gross Weekly Earnings by Occupation (Q4 2019)',
         fontSize: 18,
       },
       subtitle: {
-        text: "Source: Office for National Statistics",
+        text: 'Source: Office for National Statistics',
       },
       series: [
         {
-          type: "bar",
-          xKey: "type",
-          yKey: "earnings",
+          type: 'bar',
+          xKey: 'type',
+          yKey: 'earnings',
         },
       ],
       axes: [
         {
-          type: "category",
-          position: "left",
+          type: 'category',
+          position: 'left',
         },
         {
-          type: "number",
-          position: "bottom",
+          type: 'number',
+          position: 'bottom',
           title: {
             enabled: true,
-            text: "£/week",
+            text: '£/week',
           },
         },
       ],
@@ -65,8 +65,8 @@ const ChartExample = {
 };
 
 new Vue({
-  el: "#app",
+  el: '#app',
   components: {
-    "my-component": ChartExample,
+    'my-component': ChartExample,
   },
 });

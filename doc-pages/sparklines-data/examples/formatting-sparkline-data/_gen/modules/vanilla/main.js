@@ -1,13 +1,13 @@
 const gridOptions = {
   columnDefs: [
-    { field: "symbol", maxWidth: 110 },
-    { field: "name", minWidth: 250 },
+    { field: 'symbol', maxWidth: 110 },
+    { field: 'name', minWidth: 250 },
     {
-      headerName: "Rate of Change",
-      cellRenderer: "agSparklineCellRenderer",
+      headerName: 'Rate of Change',
+      cellRenderer: 'agSparklineCellRenderer',
       cellRendererParams: {
         sparklineOptions: {
-          type: "area",
+          type: 'area',
         },
       },
       valueGetter: function (params) {
@@ -18,7 +18,7 @@ const gridOptions = {
         return formattedData;
       },
     },
-    { field: "volume", type: "numericColumn", maxWidth: 140 },
+    { field: 'volume', type: 'numericColumn', maxWidth: 140 },
   ],
   defaultColDef: {
     flex: 1,
@@ -30,7 +30,7 @@ const gridOptions = {
 };
 
 // setup the grid after the page has finished loading
-document.addEventListener("DOMContentLoaded", function () {
-  var gridDiv = document.querySelector("#myGrid");
+document.addEventListener('DOMContentLoaded', function () {
+  var gridDiv = document.querySelector('#myGrid');
   new agGrid.Grid(gridDiv, gridOptions);
 });

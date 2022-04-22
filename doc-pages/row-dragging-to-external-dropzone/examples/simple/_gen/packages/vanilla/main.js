@@ -1,10 +1,10 @@
 var rowIdSequence = 100;
 
 const columnDefs = [
-  { field: "id", rowDrag: true },
-  { field: "color" },
-  { field: "value1" },
-  { field: "value2" },
+  { field: 'id', rowDrag: true },
+  { field: 'color' },
+  { field: 'value1' },
+  { field: 'value2' },
 ];
 
 const gridOptions = {
@@ -15,9 +15,9 @@ const gridOptions = {
     flex: 1,
   },
   rowClassRules: {
-    "red-row": 'data.color == "Red"',
-    "green-row": 'data.color == "Green"',
-    "blue-row": 'data.color == "Blue"',
+    'red-row': 'data.color == "Red"',
+    'green-row': 'data.color == "Green"',
+    'blue-row': 'data.color == "Blue"',
   },
   rowData: createRowData(),
   rowDragManaged: true,
@@ -30,9 +30,9 @@ const gridOptions = {
 };
 
 function addCheckboxListener(params) {
-  var checkbox = document.querySelector("input[type=checkbox]");
+  var checkbox = document.querySelector('input[type=checkbox]');
 
-  checkbox.addEventListener("change", function () {
+  checkbox.addEventListener('change', function () {
     params.api.setSuppressMoveWhenRowDragging(checkbox.checked);
   });
 }
@@ -40,15 +40,15 @@ function addCheckboxListener(params) {
 function createRowData() {
   var data = [];
   [
-    "Red",
-    "Green",
-    "Blue",
-    "Red",
-    "Green",
-    "Blue",
-    "Red",
-    "Green",
-    "Blue",
+    'Red',
+    'Green',
+    'Blue',
+    'Red',
+    'Green',
+    'Blue',
+    'Red',
+    'Green',
+    'Blue',
   ].forEach(function (color) {
     var newDataItem = {
       id: rowIdSequence++,
@@ -62,26 +62,26 @@ function createRowData() {
 }
 
 function createTile(data) {
-  var el = document.createElement("div");
+  var el = document.createElement('div');
 
-  el.classList.add("tile");
+  el.classList.add('tile');
   el.classList.add(data.color.toLowerCase());
   el.innerHTML =
     '<div class="id">' +
     data.id +
-    "</div>" +
+    '</div>' +
     '<div class="value">' +
     data.value1 +
-    "</div>" +
+    '</div>' +
     '<div class="value">' +
     data.value2 +
-    "</div>";
+    '</div>';
 
   return el;
 }
 
 function addDropZones(params) {
-  var tileContainer = document.querySelector(".tile-container");
+  var tileContainer = document.querySelector('.tile-container');
   var dropZone = {
     getContainer: function () {
       return tileContainer;
@@ -96,8 +96,8 @@ function addDropZones(params) {
 }
 
 // setup the grid after the page has finished loading
-document.addEventListener("DOMContentLoaded", function () {
-  var gridDiv = document.querySelector("#myGrid");
+document.addEventListener('DOMContentLoaded', function () {
+  var gridDiv = document.querySelector('#myGrid');
 
   new agGrid.Grid(gridDiv, gridOptions);
 });

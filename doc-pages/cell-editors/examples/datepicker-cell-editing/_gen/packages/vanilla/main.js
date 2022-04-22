@@ -2,14 +2,14 @@ class DatePicker {
   // gets called once before the renderer is used
   init(params) {
     // create the cell
-    this.eInput = document.createElement("input");
+    this.eInput = document.createElement('input');
     this.eInput.value = params.value;
-    this.eInput.classList.add("ag-input");
-    this.eInput.style.height = "100%";
+    this.eInput.classList.add('ag-input');
+    this.eInput.style.height = '100%';
 
     // https://jqueryui.com/datepicker/
     $(this.eInput).datepicker({
-      dateFormat: "dd/mm/yy",
+      dateFormat: 'dd/mm/yy',
       onSelect: () => {
         this.eInput.focus();
       },
@@ -46,21 +46,21 @@ class DatePicker {
 }
 
 const columnDefs = [
-  { field: "athlete" },
+  { field: 'athlete' },
   {
-    field: "date",
+    field: 'date',
     editable: true,
     cellEditor: DatePicker,
     cellEditorPopup: true,
   },
-  { field: "age", maxWidth: 110 },
-  { field: "country" },
-  { field: "year", maxWidth: 120 },
-  { field: "sport" },
-  { field: "gold" },
-  { field: "silver" },
-  { field: "bronze" },
-  { field: "total" },
+  { field: 'age', maxWidth: 110 },
+  { field: 'country' },
+  { field: 'year', maxWidth: 120 },
+  { field: 'sport' },
+  { field: 'gold' },
+  { field: 'silver' },
+  { field: 'bronze' },
+  { field: 'total' },
 ];
 
 const gridOptions = {
@@ -72,11 +72,11 @@ const gridOptions = {
 };
 
 // setup the grid after the page has finished loading
-document.addEventListener("DOMContentLoaded", () => {
-  const gridDiv = document.querySelector("#myGrid");
+document.addEventListener('DOMContentLoaded', () => {
+  const gridDiv = document.querySelector('#myGrid');
   new agGrid.Grid(gridDiv, gridOptions);
 
-  fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+  fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
     .then((response) => response.json())
     .then((data) => gridOptions.api.setRowData(data));
 });

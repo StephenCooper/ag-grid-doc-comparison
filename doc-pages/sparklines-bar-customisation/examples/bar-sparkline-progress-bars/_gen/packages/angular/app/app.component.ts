@@ -1,17 +1,17 @@
-import { Component } from "@angular/core";
+import { Component } from '@angular/core';
 import {
   BarFormat,
   BarFormatterParams,
   ColDef,
   GridReadyEvent,
   LabelFormatterParams,
-} from "ag-grid-community";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
+} from 'ag-grid-community';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import 'ag-grid-enterprise';
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<ag-grid-angular
     style="width: 100%; height: 100%;"
     class="ag-theme-alpine"
@@ -24,19 +24,19 @@ import "ag-grid-enterprise";
 })
 export class AppComponent {
   public columnDefs: ColDef[] = [
-    { field: "symbol", maxWidth: 120 },
-    { field: "name", minWidth: 250 },
+    { field: 'symbol', maxWidth: 120 },
+    { field: 'name', minWidth: 250 },
     {
-      field: "change",
-      cellRenderer: "agSparklineCellRenderer",
+      field: 'change',
+      cellRenderer: 'agSparklineCellRenderer',
       cellRendererParams: {
         sparklineOptions: {
-          type: "bar",
+          type: 'bar',
           label: {
             enabled: true,
-            color: "white",
+            color: 'white',
             fontSize: 10,
-            fontWeight: "bold",
+            fontWeight: 'bold',
             formatter: function (params: LabelFormatterParams) {
               return `${params.value}%`;
             },
@@ -58,8 +58,8 @@ export class AppComponent {
       },
     },
     {
-      field: "volume",
-      type: "numericColumn",
+      field: 'volume',
+      type: 'numericColumn',
       maxWidth: 140,
     },
   ];
@@ -77,6 +77,6 @@ export class AppComponent {
 function formatter(params: BarFormatterParams): BarFormat {
   const { yValue } = params;
   return {
-    fill: yValue <= 20 ? "#4fa2d9" : yValue < 60 ? "#277cb5" : "#195176",
+    fill: yValue <= 20 ? '#4fa2d9' : yValue < 60 ? '#277cb5' : '#195176',
   };
 }

@@ -1,26 +1,26 @@
 class YearFloatingFilter {
   init(params) {
     this.parentFilterInstance = params.parentFilterInstance;
-    this.eGui = document.createElement("div");
+    this.eGui = document.createElement('div');
     this.eGui.innerHTML =
       '<div class="year-filter">' +
-      "<label>" +
+      '<label>' +
       '  <input type="radio" name="yearFloatingFilter" checked="checked" id="rbFloatingYearAll" /> All' +
-      "</label>" +
-      "<label>" +
+      '</label>' +
+      '<label>' +
       '  <input type="radio" name="yearFloatingFilter" id="rbFloatingYearAfter2004" /> After 2004' +
-      "</label>" +
-      "</div>";
+      '</label>' +
+      '</div>';
 
-    this.rbAllYears = this.eGui.querySelector("#rbFloatingYearAll");
-    this.rbAfter2004 = this.eGui.querySelector("#rbFloatingYearAfter2004");
+    this.rbAllYears = this.eGui.querySelector('#rbFloatingYearAll');
+    this.rbAfter2004 = this.eGui.querySelector('#rbFloatingYearAfter2004');
 
     this.rbAllYears.addEventListener(
-      "change",
+      'change',
       this.onSelectionChanged.bind(this)
     );
     this.rbAfter2004.addEventListener(
-      "change",
+      'change',
       this.onSelectionChanged.bind(this)
     );
   }

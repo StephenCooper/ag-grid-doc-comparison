@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component } from '@angular/core';
 import {
   AgChartThemeOverrides,
   ChartMenuOptions,
@@ -8,14 +8,14 @@ import {
   GridApi,
   GridReadyEvent,
   ValueFormatterParams,
-} from "ag-grid-community";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
+} from 'ag-grid-community';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import 'ag-grid-enterprise';
 declare var moment: any;
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<label>Switch Axis to: </label>
     <button id="axisBtn" (click)="toggleAxis()" value="time">Category</button>
     <div class="wrapper">
@@ -50,7 +50,7 @@ export class AppComponent {
     line: {
       title: {
         enabled: true,
-        text: "Average Daily Temperatures",
+        text: 'Average Daily Temperatures',
       },
       legend: {
         enabled: false,
@@ -68,21 +68,21 @@ export class AppComponent {
         time: {
           label: {
             rotation: 0,
-            format: "%d %b",
+            format: '%d %b',
           },
         },
         category: {
           label: {
             rotation: 0,
             formatter: function (params) {
-              return moment(new Date(params.value)).format("DD MMM");
+              return moment(new Date(params.value)).format('DD MMM');
             },
           },
         },
         number: {
           label: {
             formatter: function (params) {
-              return params.value + "°C";
+              return params.value + '°C';
             },
           },
         },
@@ -95,23 +95,23 @@ export class AppComponent {
       currentChartRef.destroyChart();
     }
     var createRangeChartParams: CreateRangeChartParams = {
-      chartContainer: document.querySelector("#myChart") as any,
+      chartContainer: document.querySelector('#myChart') as any,
       suppressChartRanges: true,
       cellRange: {
-        columns: ["date", "avgTemp"],
+        columns: ['date', 'avgTemp'],
       },
-      chartType: "line",
+      chartType: 'line',
     };
     currentChartRef = params.api.createRangeChart(createRangeChartParams);
   }
 
   toggleAxis() {
-    var axisBtn = document.querySelector("#axisBtn") as any;
+    var axisBtn = document.querySelector('#axisBtn') as any;
     axisBtn.textContent = axisBtn.value;
-    axisBtn.value = axisBtn.value === "time" ? "category" : "time";
+    axisBtn.value = axisBtn.value === 'time' ? 'category' : 'time';
     const columnDefs: ColDef[] = getColumnDefs();
     columnDefs.forEach(function (colDef) {
-      if (colDef.field === "date") {
+      if (colDef.field === 'date') {
         colDef.chartDataType = axisBtn.value;
       }
     });
@@ -123,14 +123,14 @@ export class AppComponent {
   }
 
   getChartToolbarItems(): ChartMenuOptions[] {
-    return ["chartData", "chartFormat"];
+    return ['chartData', 'chartFormat'];
   }
 }
 
 function getColumnDefs() {
   return [
-    { field: "date", valueFormatter: dateFormatter },
-    { field: "avgTemp" },
+    { field: 'date', valueFormatter: dateFormatter },
+    { field: 'avgTemp' },
   ];
 }
 var currentChartRef: any;

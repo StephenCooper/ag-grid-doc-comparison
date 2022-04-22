@@ -1,7 +1,7 @@
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import { AgGridVue } from "ag-grid-vue3";
-import { createApp } from "vue";
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import { AgGridVue } from 'ag-grid-vue3';
+import { createApp } from 'vue';
 
 const VueExample = {
   template: `
@@ -9,7 +9,7 @@ const VueExample = {
             <div class="example-wrapper">
                 <div style="margin-bottom: 5px; display: flex; justify-content: space-between;">
                     <div>
-                        <button v-on:click="onBtStartEditing()">edit (0)</button>
+                        <button v-on:click="onBtStartEditing(undefined)">edit (0)</button>
                         <button v-on:click="onBtStartEditing('Delete')">edit (0, Delete)</button>
                         <button v-on:click="onBtStartEditing(undefined, 'T')">edit (0, 'T')</button>
                         <button v-on:click="onBtStartEditing(undefined, undefined, 'top')">edit (0, Top)</button>
@@ -40,18 +40,18 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
-        { field: "firstName" },
-        { field: "lastName" },
-        { field: "gender" },
-        { field: "age" },
-        { field: "mood" },
-        { field: "country" },
-        { field: "address", minWidth: 550 },
+        { field: 'firstName' },
+        { field: 'lastName' },
+        { field: 'gender' },
+        { field: 'age' },
+        { field: 'mood' },
+        { field: 'country' },
+        { field: 'address', minWidth: 550 },
       ],
       gridApi: null,
       columnApi: null,
@@ -76,10 +76,10 @@ const VueExample = {
       this.gridApi.stopEditing();
     },
     onBtStartEditing(key, char, pinned) {
-      this.gridApi.setFocusedCell(0, "lastName", pinned);
+      this.gridApi.setFocusedCell(0, 'lastName', pinned);
       this.gridApi.startEditingCell({
         rowIndex: 0,
-        colKey: "lastName",
+        colKey: 'lastName',
         // set to 'top', 'bottom' or undefined
         rowPinned: pinned,
         key: key,
@@ -97,15 +97,15 @@ const VueExample = {
       if (cellDefs.length > 0) {
         var cellDef = cellDefs[0];
         console.log(
-          "editing cell is: row = " +
+          'editing cell is: row = ' +
             cellDef.rowIndex +
-            ", col = " +
+            ', col = ' +
             cellDef.column.getId() +
-            ", floating = " +
+            ', floating = ' +
             cellDef.rowPinned
         );
       } else {
-        console.log("no cells are editing");
+        console.log('no cells are editing');
       }
     },
     onGridReady(params) {
@@ -118,12 +118,12 @@ const VueExample = {
 window.getPinnedTopData = function getPinnedTopData() {
   return [
     {
-      firstName: "##",
-      lastName: "##",
-      gender: "##",
-      address: "##",
-      mood: "##",
-      country: "##",
+      firstName: '##',
+      lastName: '##',
+      gender: '##',
+      address: '##',
+      mood: '##',
+      country: '##',
     },
   ];
 };
@@ -131,14 +131,14 @@ window.getPinnedTopData = function getPinnedTopData() {
 window.getPinnedBottomData = function getPinnedBottomData() {
   return [
     {
-      firstName: "##",
-      lastName: "##",
-      gender: "##",
-      address: "##",
-      mood: "##",
-      country: "##",
+      firstName: '##',
+      lastName: '##',
+      gender: '##',
+      address: '##',
+      mood: '##',
+      country: '##',
     },
   ];
 };
 
-createApp(VueExample).mount("#app");
+createApp(VueExample).mount('#app');

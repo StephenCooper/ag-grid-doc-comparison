@@ -1,14 +1,14 @@
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import { AgGridReact } from "ag-grid-react";
-import React, { Component } from "react";
-import { render } from "react-dom";
-import ChildMessageRenderer from "./childMessageRenderer.jsx";
-import CubeRenderer from "./cubeRenderer.jsx";
-import CurrencyRenderer from "./currencyRenderer.jsx";
-import ParamsRenderer from "./paramsRenderer.jsx";
-import SquareRenderer from "./squareRenderer.jsx";
-("use strict");
+'use strict';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import React, { Component, createRef } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from 'ag-grid-react';
+import ChildMessageRenderer from './childMessageRenderer.jsx';
+import CubeRenderer from './cubeRenderer.jsx';
+import CurrencyRenderer from './currencyRenderer.jsx';
+import ParamsRenderer from './paramsRenderer.jsx';
+import SquareRenderer from './squareRenderer.jsx';
 
 class GridExample extends Component {
   constructor(props) {
@@ -17,44 +17,44 @@ class GridExample extends Component {
     this.state = {
       columnDefs: [
         {
-          headerName: "Row",
-          field: "row",
+          headerName: 'Row',
+          field: 'row',
           width: 150,
         },
         {
-          headerName: "Square",
-          field: "value",
+          headerName: 'Square',
+          field: 'value',
           cellRenderer: SquareRenderer,
           editable: true,
-          colId: "square",
+          colId: 'square',
           width: 150,
         },
         {
-          headerName: "Cube",
-          field: "value",
+          headerName: 'Cube',
+          field: 'value',
           cellRenderer: CubeRenderer,
-          colId: "cube",
+          colId: 'cube',
           width: 150,
         },
         {
-          headerName: "Row Params",
-          field: "row",
+          headerName: 'Row Params',
+          field: 'row',
           cellRenderer: ParamsRenderer,
-          colId: "params",
+          colId: 'params',
           width: 150,
         },
         {
-          headerName: "Currency (Pipe)",
-          field: "currency",
+          headerName: 'Currency (Pipe)',
+          field: 'currency',
           cellRenderer: CurrencyRenderer,
-          colId: "currency",
+          colId: 'currency',
           width: 120,
         },
         {
-          headerName: "Child/Parent",
-          field: "value",
+          headerName: 'Child/Parent',
+          field: 'value',
           cellRenderer: ChildMessageRenderer,
-          colId: "params",
+          colId: 'params',
           editable: false,
           minWidth: 150,
         },
@@ -70,34 +70,32 @@ class GridExample extends Component {
         resizable: true,
       },
     };
+
+    this.gridRef = createRef();
   }
 
-  onGridReady = (params) => {
-    this.gridApi = params.api;
-    this.gridColumnApi = params.columnApi;
-  };
-
   refreshEvenRowsCurrencyData = () => {
-    this.gridApi.forEachNode((rowNode) => {
+    this.gridRef.current.api.forEachNode((rowNode) => {
       if (rowNode.data.value % 2 === 0) {
         rowNode.setDataValue(
-          "currency",
+          'currency',
           rowNode.data.value + Number(Math.random().toFixed(2))
         );
       }
     });
-    this.gridApi.refreshCells({ columns: ["currency"] });
+
+    this.gridRef.current.api.refreshCells({ columns: ['currency'] });
   };
 
   methodFromParent = (cell) => {
-    alert("Parent Component Method from " + cell + "!");
+    alert('Parent Component Method from ' + cell + '!');
   };
 
   createRowData = () => {
     const rowData = [];
     for (let i = 0; i < 15; i++) {
       rowData.push({
-        row: "Row " + i,
+        row: 'Row ' + i,
         value: i,
         currency: i + Number(Math.random().toFixed(2)),
       });
@@ -107,11 +105,11 @@ class GridExample extends Component {
 
   render() {
     return (
-      <div style={{ width: "100%", height: "100%" }}>
+      <div style={{ width: '100%', height: '100%' }}>
         <div className="example-wrapper">
           <button
             onClick={() => this.refreshEvenRowsCurrencyData()}
-            style={{ marginBottom: "10px" }}
+            style={{ marginBottom: '10px' }}
             className="btn btn-primary"
           >
             Refresh Even Row Currency Data
@@ -119,12 +117,13 @@ class GridExample extends Component {
           <div
             id="myGrid"
             style={{
-              height: "100%",
-              width: "100%",
+              height: '100%',
+              width: '100%',
             }}
             className="ag-theme-alpine"
           >
             <AgGridReact
+              ref={this.gridRef}
               columnDefs={this.state.columnDefs}
               rowData={this.state.rowData}
               context={this.state.context}
@@ -138,4 +137,4 @@ class GridExample extends Component {
   }
 }
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

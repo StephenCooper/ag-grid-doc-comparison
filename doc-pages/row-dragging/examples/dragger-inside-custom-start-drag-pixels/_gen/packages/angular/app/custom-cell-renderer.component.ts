@@ -1,9 +1,9 @@
-import { Component, ElementRef, HostBinding, ViewChild } from "@angular/core";
-import { ICellRendererAngularComp } from "ag-grid-angular";
-import { ICellRendererParams } from "ag-grid-community";
+import { Component, ElementRef, HostBinding, ViewChild } from '@angular/core';
+import { ICellRendererAngularComp } from 'ag-grid-angular';
+import { ICellRendererParams } from 'ag-grid-community';
 
 @Component({
-  selector: "custom-cell",
+  selector: 'custom-cell',
   /* html */
   template: `<div class="athlete-info">
       <span>{{ athlete }}</span>
@@ -18,8 +18,8 @@ export class CustomCellRenderer implements ICellRendererAngularComp {
   public year!: string;
   private cellRendererParams!: ICellRendererParams;
 
-  @ViewChild("myref") myRef!: ElementRef;
-  @HostBinding("class") class = "my-custom-cell-renderer";
+  @ViewChild('myref') myRef!: ElementRef;
+  @HostBinding('class') class = 'my-custom-cell-renderer';
 
   agInit(params: ICellRendererParams): void {
     this.cellRendererParams = params;

@@ -1,9 +1,9 @@
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { InfiniteRowModelModule } from "@ag-grid-community/infinite-row-model";
-import { AgGridVue } from "@ag-grid-community/vue3";
-import { createApp } from "vue";
+import { ModuleRegistry } from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { InfiniteRowModelModule } from '@ag-grid-community/infinite-row-model';
+import { AgGridVue } from '@ag-grid-community/vue3';
+import { createApp } from 'vue';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([InfiniteRowModelModule]);
@@ -47,15 +47,15 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
         {
-          headerName: "Item ID",
-          field: "id",
-          valueGetter: "node.id",
+          headerName: 'Item ID',
+          field: 'id',
+          valueGetter: 'node.id',
           cellRenderer: (params) => {
             if (params.value !== undefined) {
               return params.value;
@@ -64,9 +64,9 @@ const VueExample = {
             }
           },
         },
-        { field: "make" },
-        { field: "model" },
-        { field: "price", valueFormatter: valueFormatter },
+        { field: 'make' },
+        { field: 'model' },
+        { field: 'price', valueFormatter: valueFormatter },
       ],
       gridApi: null,
       columnApi: null,
@@ -87,7 +87,7 @@ const VueExample = {
     this.datasource = {
       rowCount: undefined,
       getRows: (params) => {
-        console.log("asking for " + params.startRow + " to " + params.endRow);
+        console.log('asking for ' + params.startRow + ' to ' + params.endRow);
         // At this point in your code, you would call the server.
         // To make the demo look real, wait for 500ms before returning
         setTimeout(function () {
@@ -113,8 +113,8 @@ const VueExample = {
         }, 500);
       },
     };
-    this.rowSelection = "multiple";
-    this.rowModelType = "infinite";
+    this.rowSelection = 'multiple';
+    this.rowModelType = 'infinite';
     this.maxBlocksInCache = 2;
     this.infiniteInitialRowCount = 500;
     this.maxConcurrentDatasourceRequests = 2;
@@ -122,9 +122,9 @@ const VueExample = {
       return params.data.id.toString();
     };
     this.getRowStyle = (params) => {
-      if (params.data && params.data.make === "Honda") {
+      if (params.data && params.data.make === 'Honda') {
         return {
-          fontWeight: "bold",
+          fontWeight: 'bold',
         };
       } else {
         return undefined;
@@ -164,10 +164,10 @@ const VueExample = {
     },
     rowsAndMaxFound() {
       console.log(
-        "getInfiniteRowCount() => " + this.gridApi.getInfiniteRowCount()
+        'getInfiniteRowCount() => ' + this.gridApi.getInfiniteRowCount()
       );
       console.log(
-        "isLastRowIndexKnown() => " + this.gridApi.isLastRowIndexKnown()
+        'isLastRowIndexKnown() => ' + this.gridApi.isLastRowIndexKnown()
       );
     },
     // function just gives new prices to the row data, it does not update the grid
@@ -182,7 +182,7 @@ const VueExample = {
       });
     },
     printCacheState() {
-      console.log("*** Cache State ***");
+      console.log('*** Cache State ***');
       console.log(this.gridApi.getCacheBlockState());
     },
     jumpTo500() {
@@ -207,15 +207,15 @@ const VueExample = {
 };
 
 window.createRowData = function createRowData(id) {
-  const makes = ["Toyota", "Ford", "Porsche", "Chevy", "Honda", "Nissan"];
+  const makes = ['Toyota', 'Ford', 'Porsche', 'Chevy', 'Honda', 'Nissan'];
   const models = [
-    "Cruze",
-    "Celica",
-    "Mondeo",
-    "Boxter",
-    "Genesis",
-    "Accord",
-    "Taurus",
+    'Cruze',
+    'Celica',
+    'Mondeo',
+    'Boxster',
+    'Genesis',
+    'Accord',
+    'Taurus',
   ];
   return {
     id: id,
@@ -236,8 +236,8 @@ window.insertItemsAt2 = function insertItemsAt2(count) {
 };
 
 const valueFormatter = function (params) {
-  if (typeof params.value === "number") {
-    return "£" + params.value.toLocaleString();
+  if (typeof params.value === 'number') {
+    return '£' + params.value.toLocaleString();
   } else {
     return params.value;
   }
@@ -248,4 +248,4 @@ var sequenceId = 0;
 
 var allOfTheData = [];
 
-createApp(VueExample).mount("#app");
+createApp(VueExample).mount('#app');

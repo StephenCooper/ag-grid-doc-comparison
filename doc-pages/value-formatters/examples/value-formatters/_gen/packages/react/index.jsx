@@ -1,10 +1,10 @@
-"use strict";
+'use strict';
 
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine-dark.css";
-import { AgGridReact } from "ag-grid-react";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from 'ag-grid-react';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine-dark.css';
 
 class GridExample extends Component {
   constructor(props) {
@@ -12,16 +12,16 @@ class GridExample extends Component {
 
     this.state = {
       columnDefs: [
-        { headerName: "A", field: "a" },
-        { headerName: "B", field: "b" },
-        { headerName: "£A", field: "a", valueFormatter: currencyFormatter },
-        { headerName: "£B", field: "b", valueFormatter: currencyFormatter },
-        { headerName: "(A)", field: "a", valueFormatter: bracketsFormatter },
-        { headerName: "(B)", field: "b", valueFormatter: bracketsFormatter },
+        { headerName: 'A', field: 'a' },
+        { headerName: 'B', field: 'b' },
+        { headerName: '£A', field: 'a', valueFormatter: currencyFormatter },
+        { headerName: '£B', field: 'b', valueFormatter: currencyFormatter },
+        { headerName: '(A)', field: 'a', valueFormatter: bracketsFormatter },
+        { headerName: '(B)', field: 'b', valueFormatter: bracketsFormatter },
       ],
       defaultColDef: {
         flex: 1,
-        cellClass: "number-cell",
+        cellClass: 'number-cell',
         resizable: true,
       },
       rowData: createRowData(),
@@ -35,11 +35,11 @@ class GridExample extends Component {
 
   render() {
     return (
-      <div style={{ width: "100%", height: "100%" }}>
+      <div style={{ width: '100%', height: '100%' }}>
         <div
           style={{
-            height: "100%",
-            width: "100%",
+            height: '100%',
+            width: '100%',
           }}
           className="ag-theme-alpine-dark"
         >
@@ -56,17 +56,17 @@ class GridExample extends Component {
 }
 
 function bracketsFormatter(params) {
-  return "(" + params.value + ")";
+  return '(' + params.value + ')';
 }
 function currencyFormatter(params) {
-  return "£" + formatNumber(params.value);
+  return '£' + formatNumber(params.value);
 }
 function formatNumber(number) {
   // this puts commas into the number eg 1000 goes to 1,000,
   // i pulled this from stack overflow, i have no idea how it works
   return Math.floor(number)
     .toString()
-    .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
+    .replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
 }
 function createRowData() {
   var rowData = [];
@@ -79,4 +79,4 @@ function createRowData() {
   return rowData;
 }
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

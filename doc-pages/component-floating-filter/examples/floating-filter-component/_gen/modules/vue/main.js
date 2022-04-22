@@ -1,10 +1,10 @@
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { AgGridVue } from "@ag-grid-community/vue";
-import Vue from "vue";
-import SliderFloatingFilter from "./sliderFloatingFilterVue.js";
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { AgGridVue } from '@ag-grid-community/vue';
+import Vue from 'vue';
+import SliderFloatingFilter from './sliderFloatingFilterVue.js';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([ClientSideRowModelModule]);
@@ -25,29 +25,29 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
     SliderFloatingFilter,
   },
   data: function () {
     return {
       columnDefs: [
-        { field: "country", filter: false },
-        { field: "language", filter: false },
-        { field: "name", filter: false },
+        { field: 'country', filter: false },
+        { field: 'language', filter: false },
+        { field: 'name', filter: false },
         {
-          field: "gold",
-          floatingFilterComponent: "SliderFloatingFilter",
+          field: 'gold',
+          floatingFilterComponent: 'SliderFloatingFilter',
           floatingFilterComponentParams: {
             maxValue: 7,
             suppressFilterButton: true,
           },
-          filter: "agNumberColumnFilter",
+          filter: 'agNumberColumnFilter',
           suppressMenu: false,
         },
         {
-          field: "silver",
-          filter: "agNumberColumnFilter",
-          floatingFilterComponent: "SliderFloatingFilter",
+          field: 'silver',
+          filter: 'agNumberColumnFilter',
+          floatingFilterComponent: 'SliderFloatingFilter',
           floatingFilterComponentParams: {
             maxValue: 5,
             suppressFilterButton: true,
@@ -55,9 +55,9 @@ const VueExample = {
           suppressMenu: false,
         },
         {
-          field: "bronze",
-          filter: "agNumberColumnFilter",
-          floatingFilterComponent: "SliderFloatingFilter",
+          field: 'bronze',
+          filter: 'agNumberColumnFilter',
+          floatingFilterComponent: 'SliderFloatingFilter',
           floatingFilterComponentParams: {
             maxValue: 10,
             suppressFilterButton: true,
@@ -93,8 +93,8 @@ const VueExample = {
 };
 
 new Vue({
-  el: "#app",
+  el: '#app',
   components: {
-    "my-component": VueExample,
+    'my-component': VueExample,
   },
 });

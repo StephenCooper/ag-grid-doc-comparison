@@ -1,13 +1,13 @@
-"use strict";
+'use strict';
 
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
-import { AgGridReact } from "ag-grid-react";
-import React, { Component } from "react";
-import { render } from "react-dom";
-import MoodEditor from "./moodEditor.jsx";
-import NumericCellEditor from "./numericCellEditor.jsx";
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from 'ag-grid-react';
+import 'ag-grid-enterprise';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import MoodEditor from './moodEditor.jsx';
+import NumericCellEditor from './numericCellEditor.jsx';
 
 class GridExample extends Component {
   constructor(props) {
@@ -15,9 +15,9 @@ class GridExample extends Component {
 
     this.state = {
       columnDefs: [
-        { field: "type" },
+        { field: 'type' },
         {
-          field: "value",
+          field: 'value',
           editable: true,
           cellEditorSelector: cellEditorSelector,
         },
@@ -35,28 +35,28 @@ class GridExample extends Component {
   };
 
   onRowEditingStarted = (event) => {
-    console.log("never called - not doing row editing");
+    console.log('never called - not doing row editing');
   };
 
   onRowEditingStopped = (event) => {
-    console.log("never called - not doing row editing");
+    console.log('never called - not doing row editing');
   };
 
   onCellEditingStarted = (event) => {
-    console.log("cellEditingStarted");
+    console.log('cellEditingStarted');
   };
 
   onCellEditingStopped = (event) => {
-    console.log("cellEditingStopped");
+    console.log('cellEditingStopped');
   };
 
   render() {
     return (
-      <div style={{ width: "100%", height: "100%" }}>
+      <div style={{ width: '100%', height: '100%' }}>
         <div
           style={{
-            height: "100%",
-            width: "100%",
+            height: '100%',
+            width: '100%',
           }}
           className="ag-theme-alpine"
         >
@@ -77,28 +77,28 @@ class GridExample extends Component {
 }
 
 function cellEditorSelector(params) {
-  if (params.data.type === "age") {
+  if (params.data.type === 'age') {
     return {
       component: NumericCellEditor,
     };
   }
-  if (params.data.type === "gender") {
+  if (params.data.type === 'gender') {
     return {
-      component: "agRichSelectCellEditor",
+      component: 'agRichSelectCellEditor',
       params: {
-        values: ["Male", "Female"],
+        values: ['Male', 'Female'],
       },
       popup: true,
     };
   }
-  if (params.data.type === "mood") {
+  if (params.data.type === 'mood') {
     return {
       component: MoodEditor,
       popup: true,
-      popupPosition: "under",
+      popupPosition: 'under',
     };
   }
   return undefined;
 }
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

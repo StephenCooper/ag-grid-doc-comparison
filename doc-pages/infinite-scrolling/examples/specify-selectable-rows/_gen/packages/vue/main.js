@@ -1,7 +1,7 @@
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import { AgGridVue } from "ag-grid-vue";
-import Vue from "vue";
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import { AgGridVue } from 'ag-grid-vue';
+import Vue from 'vue';
 
 const VueExample = {
   template: `
@@ -25,15 +25,15 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
         {
-          headerName: "ID",
+          headerName: 'ID',
           maxWidth: 100,
-          valueGetter: "node.id",
+          valueGetter: 'node.id',
           cellRenderer: (params) => {
             if (params.value !== undefined) {
               return params.value;
@@ -42,16 +42,16 @@ const VueExample = {
             }
           },
         },
-        { field: "athlete", minWidth: 200 },
-        { field: "age" },
-        { field: "country", minWidth: 200, checkboxSelection: true },
-        { field: "year" },
-        { field: "date", minWidth: 150 },
-        { field: "sport", minWidth: 150 },
-        { field: "gold" },
-        { field: "silver" },
-        { field: "bronze" },
-        { field: "total" },
+        { field: 'athlete', minWidth: 200 },
+        { field: 'age' },
+        { field: 'country', minWidth: 200, checkboxSelection: true },
+        { field: 'year' },
+        { field: 'date', minWidth: 150 },
+        { field: 'sport', minWidth: 150 },
+        { field: 'gold' },
+        { field: 'silver' },
+        { field: 'bronze' },
+        { field: 'total' },
       ],
       gridApi: null,
       columnApi: null,
@@ -73,11 +73,11 @@ const VueExample = {
   },
   created() {
     this.rowBuffer = 0;
-    this.rowSelection = "multiple";
+    this.rowSelection = 'multiple';
     this.isRowSelectable = (rowNode) => {
-      return rowNode.data ? rowNode.data.country === "United States" : false;
+      return rowNode.data ? rowNode.data.country === 'United States' : false;
     };
-    this.rowModelType = "infinite";
+    this.rowModelType = 'infinite';
     this.cacheBlockSize = 100;
     this.cacheOverflowSize = 2;
     this.maxConcurrentDatasourceRequests = 2;
@@ -112,7 +112,7 @@ const VueExample = {
         params.api.setDatasource(dataSource);
       };
 
-      fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
         .then((resp) => resp.json())
         .then((data) => updateData(data));
     },
@@ -120,8 +120,8 @@ const VueExample = {
 };
 
 new Vue({
-  el: "#app",
+  el: '#app',
   components: {
-    "my-component": VueExample,
+    'my-component': VueExample,
   },
 });

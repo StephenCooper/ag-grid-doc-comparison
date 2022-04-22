@@ -1,36 +1,36 @@
-const products = ["Palm Oil", "Rubber", "Wool", "Amber", "Copper"];
+const products = ['Palm Oil', 'Rubber', 'Wool', 'Amber', 'Copper'];
 const all_products = [
-  "Palm Oil",
-  "Rubber",
-  "Wool",
-  "Amber",
-  "Copper",
-  "Lead",
-  "Zinc",
-  "Tin",
-  "Aluminium",
-  "Aluminium Alloy",
-  "Nickel",
-  "Cobalt",
-  "Molybdenum",
-  "Recycled Steel",
-  "Corn",
-  "Oats",
-  "Rough Rice",
-  "Soybeans",
-  "Rapeseed",
-  "Soybean Meal",
-  "Soybean Oil",
-  "Wheat",
-  "Milk",
-  "Coca",
-  "Coffee C",
-  "Cotton No.2",
-  "Sugar No.11",
-  "Sugar No.14",
+  'Palm Oil',
+  'Rubber',
+  'Wool',
+  'Amber',
+  'Copper',
+  'Lead',
+  'Zinc',
+  'Tin',
+  'Aluminium',
+  'Aluminium Alloy',
+  'Nickel',
+  'Cobalt',
+  'Molybdenum',
+  'Recycled Steel',
+  'Corn',
+  'Oats',
+  'Rough Rice',
+  'Soybeans',
+  'Rapeseed',
+  'Soybean Meal',
+  'Soybean Oil',
+  'Wheat',
+  'Milk',
+  'Coca',
+  'Coffee C',
+  'Cotton No.2',
+  'Sugar No.11',
+  'Sugar No.14',
 ];
 
-const columnDefs = [{ field: "product" }, { field: "value" }];
+const columnDefs = [{ field: 'product' }, { field: 'value' }];
 
 const gridOptions = {
   defaultColDef: {
@@ -40,12 +40,12 @@ const gridOptions = {
   getRowId: function (params) {
     return params.data.product;
   },
-  rowSelection: "multiple",
-  serverSideStoreType: "full",
+  rowSelection: 'multiple',
+  serverSideStoreType: 'full',
   enableCellChangeFlash: true,
   columnDefs: columnDefs,
   // use the enterprise row model
-  rowModelType: "serverSide",
+  rowModelType: 'serverSide',
   // cacheBlockSize: 100,
   animateRows: true,
 };
@@ -128,7 +128,7 @@ function onAdd(index) {
   const itemsToAdd = [];
   for (let i = 0; i < 5; i++) {
     itemsToAdd.push({
-      product: newProductName + " " + newProductSequence++,
+      product: newProductName + ' ' + newProductSequence++,
       value: getNextValue(),
     });
   }
@@ -145,11 +145,11 @@ function getNextValue() {
 }
 
 // setup the grid after the page has finished loading
-document.addEventListener("DOMContentLoaded", function () {
-  const gridDiv = document.querySelector("#myGrid");
+document.addEventListener('DOMContentLoaded', function () {
+  const gridDiv = document.querySelector('#myGrid');
   new agGrid.Grid(gridDiv, gridOptions);
 
-  fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+  fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
     .then((response) => response.json())
     .then(function (data) {
       const dataSource = {

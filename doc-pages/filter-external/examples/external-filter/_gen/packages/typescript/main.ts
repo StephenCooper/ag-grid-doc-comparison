@@ -1,7 +1,7 @@
-import { ColDef, Grid, GridOptions, RowNode } from "ag-grid-community";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
+import { ColDef, Grid, GridOptions, RowNode } from 'ag-grid-community';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import 'ag-grid-enterprise';
 
 var dateFilterParams = {
   comparator: function (filterLocalDateAtMidnight: Date, cellValue: string) {
@@ -22,18 +22,18 @@ var dateFilterParams = {
 };
 
 const columnDefs: ColDef[] = [
-  { field: "athlete", minWidth: 180 },
-  { field: "age", filter: "agNumberColumnFilter", maxWidth: 80 },
-  { field: "country" },
-  { field: "year", maxWidth: 90 },
+  { field: 'athlete', minWidth: 180 },
+  { field: 'age', filter: 'agNumberColumnFilter', maxWidth: 80 },
+  { field: 'country' },
+  { field: 'year', maxWidth: 90 },
   {
-    field: "date",
-    filter: "agDateColumnFilter",
+    field: 'date',
+    filter: 'agDateColumnFilter',
     filterParams: dateFilterParams,
   },
-  { field: "gold", filter: "agNumberColumnFilter" },
-  { field: "silver", filter: "agNumberColumnFilter" },
-  { field: "bronze", filter: "agNumberColumnFilter" },
+  { field: 'gold', filter: 'agNumberColumnFilter' },
+  { field: 'silver', filter: 'agNumberColumnFilter' },
+  { field: 'bronze', filter: 'agNumberColumnFilter' },
 ];
 
 const gridOptions: GridOptions = {
@@ -48,22 +48,22 @@ const gridOptions: GridOptions = {
   doesExternalFilterPass: doesExternalFilterPass,
 };
 
-var ageType = "everyone";
+var ageType = 'everyone';
 
-function isExternalFilterPresent() {
+function isExternalFilterPresent(): boolean {
   // if ageType is not everyone, then we are filtering
-  return ageType !== "everyone";
+  return ageType !== 'everyone';
 }
 
-function doesExternalFilterPass(node: RowNode) {
+function doesExternalFilterPass(node: RowNode): boolean {
   switch (ageType) {
-    case "below25":
+    case 'below25':
       return node.data.age < 25;
-    case "between25and50":
+    case 'between25and50':
       return node.data.age >= 25 && node.data.age <= 50;
-    case "above50":
+    case 'above50':
       return node.data.age > 50;
-    case "dateAfter2008":
+    case 'dateAfter2008':
       return asDate(node.data.date) > new Date(2008, 1, 1);
     default:
       return true;
@@ -71,7 +71,7 @@ function doesExternalFilterPass(node: RowNode) {
 }
 
 function asDate(dateAsString: string) {
-  var splitFields = dateAsString.split("/");
+  var splitFields = dateAsString.split('/');
   return new Date(
     Number.parseInt(splitFields[2]),
     Number.parseInt(splitFields[1]) - 1,
@@ -85,17 +85,17 @@ function externalFilterChanged(newValue: string) {
 }
 
 // setup the grid after the page has finished loading
-var gridDiv = document.querySelector<HTMLElement>("#myGrid")!;
+var gridDiv = document.querySelector<HTMLElement>('#myGrid')!;
 new Grid(gridDiv, gridOptions);
 
-fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
   .then((response) => response.json())
   .then(function (data) {
-    (document.querySelector("#everyone") as HTMLInputElement).checked = true;
+    (document.querySelector('#everyone') as HTMLInputElement).checked = true;
     gridOptions.api!.setRowData(data);
   });
 
-if (typeof window !== "undefined") {
+if (typeof window !== 'undefined') {
   // Attach external event handlers to window so they can be called from index.html
   (<any>window).externalFilterChanged = externalFilterChanged;
 }

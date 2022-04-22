@@ -1,6 +1,6 @@
-import { AgChartsVue } from "ag-charts-vue";
-import { cloneDeep } from "lodash";
-import Vue from "vue";
+import { AgChartsVue } from 'ag-charts-vue';
+import { cloneDeep } from 'lodash';
+import Vue from 'vue';
 
 const ChartExample = {
   template: `
@@ -15,7 +15,7 @@ const ChartExample = {
             </div>
     `,
   components: {
-    "ag-charts-vue": AgChartsVue,
+    'ag-charts-vue': AgChartsVue,
   },
   data: function () {
     return {
@@ -26,37 +26,37 @@ const ChartExample = {
     this.options = {
       data: getData(),
       title: {
-        text: "World Population Over Time",
+        text: 'World Population Over Time',
       },
       subtitle: {
-        text: "log scale",
+        text: 'log scale',
       },
       series: [
         {
-          type: "line",
-          xKey: "year",
-          yKey: "population",
+          type: 'line',
+          xKey: 'year',
+          yKey: 'population',
         },
       ],
       axes: [
         {
-          type: "log",
-          position: "left",
+          type: 'log',
+          position: 'left',
           title: {
             enabled: true,
-            text: "Population",
+            text: 'Population',
           },
           label: {
-            format: ",.0f",
+            format: ',.0f',
             fontSize: 10,
           },
         },
         {
-          type: "number",
-          position: "bottom",
+          type: 'number',
+          position: 'bottom',
           title: {
             enabled: true,
-            text: "Year",
+            text: 'Year',
           },
           label: {
             fontSize: 10,
@@ -74,17 +74,17 @@ const ChartExample = {
       const options = cloneDeep(this.options);
 
       options.subtitle = {
-        text: "linear scale",
+        text: 'linear scale',
       };
       options.axes[0] = {
-        type: "number",
-        position: "left",
+        type: 'number',
+        position: 'left',
         title: {
           enabled: true,
-          text: "Population",
+          text: 'Population',
         },
         label: {
-          format: ",.0f",
+          format: ',.0f',
           fontSize: 10,
         },
       };
@@ -95,17 +95,17 @@ const ChartExample = {
       const options = cloneDeep(this.options);
 
       options.subtitle = {
-        text: "log scale",
+        text: 'log scale',
       };
       options.axes[0] = {
-        type: "log",
-        position: "left",
+        type: 'log',
+        position: 'left',
         title: {
           enabled: true,
-          text: "Population",
+          text: 'Population',
         },
         label: {
-          format: ",.0f",
+          format: ',.0f',
           fontSize: 10,
         },
       };
@@ -116,8 +116,8 @@ const ChartExample = {
 };
 
 new Vue({
-  el: "#app",
+  el: '#app',
   components: {
-    "my-component": ChartExample,
+    'my-component': ChartExample,
   },
 });

@@ -1,16 +1,16 @@
 const gridOptions = {
   columnDefs: [
-    { field: "athlete", minWidth: 180 },
-    { field: "age" },
-    { field: "country", minWidth: 150 },
-    { headerName: "Group", valueGetter: "data.country.charAt(0)" },
-    { field: "year" },
-    { field: "date", minWidth: 150 },
-    { field: "sport", minWidth: 180 },
-    { field: "gold" },
-    { field: "silver" },
-    { field: "bronze" },
-    { field: "total" },
+    { field: 'athlete', minWidth: 180 },
+    { field: 'age' },
+    { field: 'country', minWidth: 150 },
+    { headerName: 'Group', valueGetter: 'data.country.charAt(0)' },
+    { field: 'year' },
+    { field: 'date', minWidth: 150 },
+    { field: 'sport', minWidth: 180 },
+    { field: 'gold' },
+    { field: 'silver' },
+    { field: 'bronze' },
+    { field: 'total' },
   ],
   defaultColDef: {
     flex: 1,
@@ -25,24 +25,24 @@ const gridOptions = {
 function getDisplayedRowAtIndex() {
   var rowNode = gridOptions.api.getDisplayedRowAtIndex(0);
   console.log(
-    "getDisplayedRowAtIndex(0) => " +
+    'getDisplayedRowAtIndex(0) => ' +
       rowNode.data.athlete +
-      " " +
+      ' ' +
       rowNode.data.year
   );
 }
 
 function getDisplayedRowCount() {
   var count = gridOptions.api.getDisplayedRowCount();
-  console.log("getDisplayedRowCount() => " + count);
+  console.log('getDisplayedRowCount() => ' + count);
 }
 
 function printAllDisplayedRows() {
   var count = gridOptions.api.getDisplayedRowCount();
-  console.log("## printAllDisplayedRows");
+  console.log('## printAllDisplayedRows');
   for (var i = 0; i < count; i++) {
     var rowNode = gridOptions.api.getDisplayedRowAtIndex(i);
-    console.log("row " + i + " is " + rowNode.data.athlete);
+    console.log('row ' + i + ' is ' + rowNode.data.athlete);
   }
 }
 
@@ -58,19 +58,19 @@ function printPageDisplayedRows() {
     endPageIndex = lastGridIndex;
   }
 
-  console.log("## printPageDisplayedRows");
+  console.log('## printPageDisplayedRows');
   for (var i = startPageIndex; i <= endPageIndex; i++) {
     var rowNode = gridOptions.api.getDisplayedRowAtIndex(i);
-    console.log("row " + i + " is " + rowNode.data.athlete);
+    console.log('row ' + i + ' is ' + rowNode.data.athlete);
   }
 }
 
 // setup the grid after the page has finished loading
-document.addEventListener("DOMContentLoaded", function () {
-  var gridDiv = document.querySelector("#myGrid");
+document.addEventListener('DOMContentLoaded', function () {
+  var gridDiv = document.querySelector('#myGrid');
   new agGrid.Grid(gridDiv, gridOptions);
 
-  fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+  fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
     .then((response) => response.json())
     .then(function (data) {
       gridOptions.api.setRowData(data.slice(0, 100));

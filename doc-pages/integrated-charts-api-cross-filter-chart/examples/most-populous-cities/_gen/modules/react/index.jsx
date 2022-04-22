@@ -1,18 +1,18 @@
-"use strict";
+'use strict';
 
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine-dark.css";
-import { AgGridReact } from "@ag-grid-community/react";
-import { GridChartsModule } from "@ag-grid-enterprise/charts";
-import { ColumnsToolPanelModule } from "@ag-grid-enterprise/column-tool-panel";
-import { FiltersToolPanelModule } from "@ag-grid-enterprise/filter-tool-panel";
-import { MenuModule } from "@ag-grid-enterprise/menu";
-import { MultiFilterModule } from "@ag-grid-enterprise/multi-filter";
-import { SetFilterModule } from "@ag-grid-enterprise/set-filter";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from '@ag-grid-community/react';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine-dark.css';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import { MenuModule } from '@ag-grid-enterprise/menu';
+import { GridChartsModule } from '@ag-grid-enterprise/charts';
+import { SetFilterModule } from '@ag-grid-enterprise/set-filter';
+import { MultiFilterModule } from '@ag-grid-enterprise/multi-filter';
+import { FiltersToolPanelModule } from '@ag-grid-enterprise/filter-tool-panel';
+import { ColumnsToolPanelModule } from '@ag-grid-enterprise/column-tool-panel';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([
@@ -31,22 +31,22 @@ class GridExample extends Component {
 
     this.state = {
       columnDefs: [
-        { field: "city", chartDataType: "category" },
-        { field: "country", chartDataType: "category" },
-        { field: "longitude", chartDataType: "series" },
-        { field: "latitude", chartDataType: "series" },
-        { field: "population", chartDataType: "series" },
+        { field: 'city', chartDataType: 'category' },
+        { field: 'country', chartDataType: 'category' },
+        { field: 'longitude', chartDataType: 'series' },
+        { field: 'latitude', chartDataType: 'series' },
+        { field: 'population', chartDataType: 'series' },
       ],
       defaultColDef: {
         flex: 1,
         editable: true,
         sortable: true,
-        filter: "agMultiColumnFilter",
+        filter: 'agMultiColumnFilter',
         floatingFilter: true,
         resizable: true,
       },
       rowData: getData(),
-      chartThemes: ["ag-default-dark"],
+      chartThemes: ['ag-default-dark'],
     };
   }
 
@@ -62,14 +62,14 @@ class GridExample extends Component {
 
   render() {
     return (
-      <div style={{ width: "100%", height: "100%" }}>
+      <div style={{ width: '100%', height: '100%' }}>
         <div id="wrapper">
           <div id="barChart" className="ag-theme-alpine-dark"></div>
           <div id="bubbleChart" className="ag-theme-alpine-dark"></div>
           <div
             style={{
-              height: "100%",
-              width: "100%",
+              height: '100%',
+              width: '100%',
             }}
             className="ag-theme-alpine-dark"
           >
@@ -91,16 +91,16 @@ class GridExample extends Component {
 
 function createColumnChart(gridApi) {
   gridApi.createCrossFilterChart({
-    chartType: "column",
+    chartType: 'column',
     cellRange: {
-      columns: ["country", "population"],
+      columns: ['country', 'population'],
     },
-    aggFunc: "count",
+    aggFunc: 'count',
     chartThemeOverrides: {
       common: {
         title: {
           enabled: true,
-          text: "Number of Most Populous Cities by Country",
+          text: 'Number of Most Populous Cities by Country',
         },
         legend: {
           enabled: false,
@@ -116,28 +116,28 @@ function createColumnChart(gridApi) {
         },
       },
     },
-    chartContainer: document.querySelector("#barChart"),
+    chartContainer: document.querySelector('#barChart'),
   });
 }
 function createBubbleChart(gridApi) {
   gridApi.createCrossFilterChart({
-    chartType: "bubble",
+    chartType: 'bubble',
     cellRange: {
-      columns: ["longitude", "latitude", "population"],
+      columns: ['longitude', 'latitude', 'population'],
     },
     chartThemeOverrides: {
       common: {
         title: {
           enabled: true,
-          text: "Latitude vs Longitude of Most Populous Cities",
+          text: 'Latitude vs Longitude of Most Populous Cities',
         },
         legend: {
           enabled: false,
         },
       },
     },
-    chartContainer: document.querySelector("#bubbleChart"),
+    chartContainer: document.querySelector('#bubbleChart'),
   });
 }
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

@@ -18,15 +18,15 @@ class NumericCellEditor {
     this.focusAfterAttached = params.cellStartedEdit;
 
     // create the cell
-    this.eInput = document.createElement("input");
-    this.eInput.style.width = "100%";
-    this.eInput.style.height = "100%";
+    this.eInput = document.createElement('input');
+    this.eInput.style.width = '100%';
+    this.eInput.style.height = '100%';
     this.eInput.value =
       params.charPress && isCharNumeric(params.charPress)
         ? params.charPress
         : params.value;
 
-    this.eInput.addEventListener("keypress", (event) => {
+    this.eInput.addEventListener('keypress', (event) => {
       if (!isKeyPressedNumeric(event)) {
         this.eInput.focus();
         if (event.preventDefault) event.preventDefault();
@@ -69,12 +69,12 @@ class NumericCellEditor {
     var eInput = this.getGui();
     eInput.focus();
     eInput.select();
-    console.log("NumericCellEditor.focusIn()");
+    console.log('NumericCellEditor.focusIn()');
   }
 
   // when we tab out of the editor, this gets called
   focusOut() {
     // but we don't care, we just want to print it for demo purposes
-    console.log("NumericCellEditor.focusOut()");
+    console.log('NumericCellEditor.focusOut()');
   }
 }

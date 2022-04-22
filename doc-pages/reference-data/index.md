@@ -88,6 +88,7 @@ The following example demonstrates how `Value Handlers` can be combined to work 
 
 - **'Price' Columns:** additionally demonstrate the use of `valueGetters` and `valueSetters`.
 
+
 <grid-example title='Value Handlers' name='ref-data-value-handler' type='generated' options='{ "enterprise": true, "modules": ["clientside", "richselect", "setfilter", "menu", "columnpanel"] }'></grid-example>
 
 ## Using the 'refData' Property
@@ -131,3 +132,4 @@ The following example demonstrates how the `refData` property simplifies working
 - **'Price' Columns:** additionally demonstrate the use of `valueGetters` and `valueSetters`.
 
 <grid-example title='Ref Data Property' name='ref-data-property' type='generated' options='{ "enterprise": true, "modules": ["clientside", "richselect", "setfilter", "menu", "columnpanel"] }'></grid-example>
+

@@ -1,13 +1,13 @@
-"use strict";
+'use strict';
 
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine-dark.css";
-import { AgGridReact } from "@ag-grid-community/react";
-import { RowGroupingModule } from "@ag-grid-enterprise/row-grouping";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from '@ag-grid-community/react';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine-dark.css';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import { RowGroupingModule } from '@ag-grid-enterprise/row-grouping';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([ClientSideRowModelModule, RowGroupingModule]);
@@ -18,23 +18,23 @@ class GridExample extends Component {
 
     this.state = {
       columnDefs: [
-        { headerName: "Student ID", field: "student" },
-        { headerName: "Year Group", field: "yearGroup", rowGroup: true },
-        { headerName: "Age", field: "age" },
-        { headerName: "Course", field: "course", pivot: true },
+        { headerName: 'Student ID', field: 'student' },
+        { headerName: 'Year Group', field: 'yearGroup', rowGroup: true },
+        { headerName: 'Age', field: 'age' },
+        { headerName: 'Course', field: 'course', pivot: true },
         {
-          headerName: "Age Range",
+          headerName: 'Age Range',
           valueGetter: ageRangeValueGetter,
           pivot: true,
         },
-        { headerName: "Points", field: "points", aggFunc: "sum" },
+        { headerName: 'Points', field: 'points', aggFunc: 'sum' },
       ],
       defaultColDef: {
         flex: 1,
         minWidth: 150,
         sortable: true,
         resizable: true,
-        cellRenderer: "agAnimateShowChangeCellRenderer",
+        cellRenderer: 'agAnimateShowChangeCellRenderer',
       },
       rowData: getRowData(),
       groupDefaultExpanded: 1,
@@ -48,17 +48,17 @@ class GridExample extends Component {
     this.gridApi = params.api;
     this.gridColumnApi = params.columnApi;
 
-    document.getElementById("pivot-mode").checked = true;
+    document.getElementById('pivot-mode').checked = true;
   };
 
   pivotMode = () => {
-    var pivotModeOn = document.getElementById("pivot-mode").checked;
+    var pivotModeOn = document.getElementById('pivot-mode').checked;
     this.gridColumnApi.setPivotMode(pivotModeOn);
     this.gridColumnApi.applyColumnState({
       state: [
-        { colId: "yearGroup", rowGroup: pivotModeOn },
-        { colId: "course", pivot: pivotModeOn },
-        { colId: "ageRange", pivot: pivotModeOn },
+        { colId: 'yearGroup', rowGroup: pivotModeOn },
+        { colId: 'course', pivot: pivotModeOn },
+        { colId: 'ageRange', pivot: pivotModeOn },
       ],
     });
   };
@@ -68,10 +68,10 @@ class GridExample extends Component {
     if (!rowNodeToUpdate) return;
     var randomValue = createNewRandomScore(rowNodeToUpdate.data);
     console.log(
-      "updating points to " + randomValue + " on ",
+      'updating points to ' + randomValue + ' on ',
       rowNodeToUpdate.data
     );
-    rowNodeToUpdate.setDataValue("points", randomValue);
+    rowNodeToUpdate.setDataValue('points', randomValue);
   };
 
   updateUsingTransaction = () => {
@@ -79,49 +79,49 @@ class GridExample extends Component {
     if (!itemToUpdate) {
       return;
     }
-    console.log("updating - before", itemToUpdate);
+    console.log('updating - before', itemToUpdate);
     itemToUpdate.points = createNewRandomScore(itemToUpdate);
     var transaction = {
       update: [itemToUpdate],
     };
-    console.log("updating - after", itemToUpdate);
+    console.log('updating - after', itemToUpdate);
     this.gridApi.applyTransaction(transaction);
   };
 
   addNewGroupUsingTransaction = () => {
     var item1 = createRow();
     var item2 = createRow();
-    item1.yearGroup = "Year 5";
-    item2.yearGroup = "Year 5";
+    item1.yearGroup = 'Year 5';
+    item2.yearGroup = 'Year 5';
     var transaction = {
       add: [item1, item2],
     };
-    console.log("add - ", item1);
-    console.log("add - ", item2);
+    console.log('add - ', item1);
+    console.log('add - ', item2);
     this.gridApi.applyTransaction(transaction);
   };
 
   addNewCourse = () => {
     var item1 = createRow();
-    item1.course = "Physics";
+    item1.course = 'Physics';
     var transaction = {
       add: [item1],
     };
-    console.log("add - ", item1);
+    console.log('add - ', item1);
     this.gridApi.applyTransaction(transaction);
   };
 
   removePhysics = () => {
     var allPhysics = [];
     this.gridApi.forEachLeafNode(function (rowNode) {
-      if (rowNode.data.course === "Physics") {
+      if (rowNode.data.course === 'Physics') {
         allPhysics.push(rowNode.data);
       }
     });
     var transaction = {
       remove: allPhysics,
     };
-    console.log("removing " + allPhysics.length + " physics items.");
+    console.log('removing ' + allPhysics.length + ' physics items.');
     this.gridApi.applyTransaction(transaction);
   };
 
@@ -130,17 +130,17 @@ class GridExample extends Component {
     if (!item) {
       return;
     }
-    item.course = item.course === "History" ? "Science" : "History";
+    item.course = item.course === 'History' ? 'Science' : 'History';
     var transaction = {
       update: [item],
     };
-    console.log("moving " + item);
+    console.log('moving ' + item);
     this.gridApi.applyTransaction(transaction);
   };
 
   render() {
     return (
-      <div style={{ width: "100%", height: "100%" }}>
+      <div style={{ width: '100%', height: '100%' }}>
         <div className="example-wrapper">
           <div className="example-header">
             <div>
@@ -154,7 +154,7 @@ class GridExample extends Component {
               </label>
             </div>
 
-            <div style={{ marginTop: "6px" }}>
+            <div style={{ marginTop: '6px' }}>
               <button onClick={() => this.updateOneRecord()}>
                 Set One Value
               </button>
@@ -175,8 +175,8 @@ class GridExample extends Component {
           </div>
           <div
             style={{
-              height: "100%",
-              width: "100%",
+              height: '100%',
+              width: '100%',
             }}
             className="ag-theme-alpine-dark"
           >
@@ -198,16 +198,16 @@ class GridExample extends Component {
 }
 
 function ageRangeValueGetter(params) {
-  var age = params.getValue("age");
+  var age = params.getValue('age');
   if (age === undefined) {
     return null;
   }
   if (age < 20) {
-    return "< 20";
+    return '< 20';
   } else if (age > 30) {
-    return "> 30";
+    return '> 30';
   } else {
-    return "20 to 30";
+    return '20 to 30';
   }
 }
 // pretty basic, but deterministic (so same numbers each time we run), random number generator
@@ -231,8 +231,8 @@ function createRow() {
   return {
     student: studentId++,
     points: (randomNumber % 60) + 40,
-    course: ["Science", "History"][randomNumber % 3 === 0 ? 0 : 1],
-    yearGroup: "Year " + ((randomNumber % 4) + 1),
+    course: ['Science', 'History'][randomNumber % 3 === 0 ? 0 : 1],
+    yearGroup: 'Year ' + ((randomNumber % 4) + 1),
     age: (randomNumber % 25) + 15, // 15 to 40
   };
 }
@@ -263,4 +263,4 @@ function pickExistingRowItemAtRandom(gridApi) {
   return rowNode ? rowNode.data : null;
 }
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

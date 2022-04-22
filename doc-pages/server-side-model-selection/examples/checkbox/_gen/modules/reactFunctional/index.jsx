@@ -1,13 +1,13 @@
-"use strict";
+'use strict';
 
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine-dark.css";
-import { AgGridReact } from "@ag-grid-community/react";
-import { RowGroupingModule } from "@ag-grid-enterprise/row-grouping";
-import { ServerSideRowModelModule } from "@ag-grid-enterprise/server-side-row-model";
-import React, { useCallback, useMemo, useState } from "react";
-import { render } from "react-dom";
+import React, { useCallback, useMemo, useRef, useState } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from '@ag-grid-community/react';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine-dark.css';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import { ServerSideRowModelModule } from '@ag-grid-enterprise/server-side-row-model';
+import { RowGroupingModule } from '@ag-grid-enterprise/row-grouping';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([ServerSideRowModelModule, RowGroupingModule]);
@@ -15,7 +15,7 @@ ModuleRegistry.registerModules([ServerSideRowModelModule, RowGroupingModule]);
 const getServerSideDatasource = (server) => {
   return {
     getRows: function (params) {
-      console.log("[Datasource] - rows requested by grid: ", params.request);
+      console.log('[Datasource] - rows requested by grid: ', params.request);
       var response = server.getData(params.request);
       // adding delay to simulate real server call
       setTimeout(function () {
@@ -35,16 +35,16 @@ const getServerSideDatasource = (server) => {
 };
 
 const GridExample = () => {
-  const containerStyle = useMemo(() => ({ width: "100%", height: "100%" }), []);
-  const gridStyle = useMemo(() => ({ height: "100%", width: "100%" }), []);
+  const containerStyle = useMemo(() => ({ width: '100%', height: '100%' }), []);
+  const gridStyle = useMemo(() => ({ height: '100%', width: '100%' }), []);
 
   const [columnDefs, setColumnDefs] = useState([
-    { field: "year", rowGroup: true, hide: true },
-    { field: "athlete", hide: true },
-    { field: "sport", checkboxSelection: true },
-    { field: "gold", aggFunc: "sum" },
-    { field: "silver", aggFunc: "sum" },
-    { field: "bronze", aggFunc: "sum" },
+    { field: 'year', rowGroup: true, hide: true },
+    { field: 'athlete', hide: true },
+    { field: 'sport', checkboxSelection: true },
+    { field: 'gold', aggFunc: 'sum' },
+    { field: 'silver', aggFunc: 'sum' },
+    { field: 'bronze', aggFunc: 'sum' },
   ]);
   const defaultColDef = useMemo(() => {
     return {
@@ -57,11 +57,11 @@ const GridExample = () => {
   const getRowId = useCallback(function (params) {
     var data = params.data;
     // use year for group level ids, or the id we assigned for leaf level
-    return data.id || data.year;
+    return data.id != null ? 'id-' + data.id : 'year-' + data.year;
   }, []);
   const autoGroupColumnDef = useMemo(() => {
     return {
-      field: "athlete",
+      field: 'athlete',
       flex: 1,
       minWidth: 240,
       // headerCheckboxSelection: true, // not supported for Enterprise Model
@@ -75,7 +75,7 @@ const GridExample = () => {
   }, []);
 
   const onGridReady = useCallback((params) => {
-    fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+    fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .then((resp) => resp.json())
       .then((data) => {
         // assign a unique ID to each data item
@@ -99,9 +99,9 @@ const GridExample = () => {
           defaultColDef={defaultColDef}
           getRowId={getRowId}
           autoGroupColumnDef={autoGroupColumnDef}
-          rowModelType={"serverSide"}
-          serverSideStoreType={"partial"}
-          rowSelection={"multiple"}
+          rowModelType={'serverSide'}
+          serverSideStoreType={'partial'}
+          rowSelection={'multiple'}
           isRowSelectable={isRowSelectable}
           suppressRowClickSelection={true}
           animateRows={true}
@@ -113,4 +113,4 @@ const GridExample = () => {
   );
 };
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

@@ -1,12 +1,12 @@
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { AgGridVue } from "@ag-grid-community/vue3";
-import { ExcelExportModule } from "@ag-grid-enterprise/excel-export";
-import { MenuModule } from "@ag-grid-enterprise/menu";
-import { RowGroupingModule } from "@ag-grid-enterprise/row-grouping";
-import { createApp } from "vue";
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { AgGridVue } from '@ag-grid-community/vue3';
+import { ExcelExportModule } from '@ag-grid-enterprise/excel-export';
+import { MenuModule } from '@ag-grid-enterprise/menu';
+import { RowGroupingModule } from '@ag-grid-enterprise/row-grouping';
+import { createApp } from 'vue';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([
@@ -39,22 +39,22 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
-        { field: "country", minWidth: 120, rowGroup: true },
-        { field: "year", rowGroup: true },
-        { headerName: "Name", field: "athlete", minWidth: 150 },
+        { field: 'country', minWidth: 120, rowGroup: true },
+        { field: 'year', rowGroup: true },
+        { headerName: 'Name', field: 'athlete', minWidth: 150 },
         {
-          headerName: "Name Length",
+          headerName: 'Name Length',
           valueGetter: "data ? data.athlete.length : ''",
         },
-        { field: "sport", minWidth: 120, rowGroup: true },
-        { field: "silver" },
-        { field: "bronze" },
-        { field: "total" },
+        { field: 'sport', minWidth: 120, rowGroup: true },
+        { field: 'silver' },
+        { field: 'bronze' },
+        { field: 'total' },
       ],
       gridApi: null,
       columnApi: null,
@@ -78,26 +78,26 @@ const VueExample = {
     };
     this.excelStyles = [
       {
-        id: "indent-1",
+        id: 'indent-1',
         alignment: {
           indent: 1,
         },
         // note, dataType: 'string' required to ensure that numeric values aren't right-aligned
-        dataType: "String",
+        dataType: 'String',
       },
       {
-        id: "indent-2",
+        id: 'indent-2',
         alignment: {
           indent: 2,
         },
-        dataType: "String",
+        dataType: 'String',
       },
       {
-        id: "indent-3",
+        id: 'indent-3',
         alignment: {
           indent: 3,
         },
-        dataType: "String",
+        dataType: 'String',
       },
     ];
   },
@@ -119,7 +119,7 @@ const VueExample = {
         params.api.onGroupExpandedOrCollapsed();
       };
 
-      fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
         .then((resp) => resp.json())
         .then((data) => updateData(data));
     },
@@ -137,7 +137,7 @@ window.getIndentClass = function getIndentClass(params) {
     indent++;
     node = node.parent;
   }
-  return "indent-" + indent;
+  return 'indent-' + indent;
 };
 
-createApp(VueExample).mount("#app");
+createApp(VueExample).mount('#app');

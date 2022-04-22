@@ -1,25 +1,25 @@
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
 import {
   ColDef,
   Grid,
   GridOptions,
   ModuleRegistry,
-} from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { MedalCellRenderer } from "./medalCellRenderer";
-import { TotalValueRenderer } from "./totalValueRenderer";
+} from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { MedalCellRenderer } from './medalCellRenderer';
+import { TotalValueRenderer } from './totalValueRenderer';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([ClientSideRowModelModule]);
 
 const columnDefs: ColDef[] = [
-  { field: "athlete" },
-  { field: "year" },
-  { field: "gold", cellRenderer: MedalCellRenderer },
-  { field: "silver", cellRenderer: MedalCellRenderer },
-  { field: "bronze", cellRenderer: MedalCellRenderer },
-  { field: "total", minWidth: 175, cellRenderer: TotalValueRenderer },
+  { field: 'athlete' },
+  { field: 'year' },
+  { field: 'gold', cellRenderer: MedalCellRenderer },
+  { field: 'silver', cellRenderer: MedalCellRenderer },
+  { field: 'bronze', cellRenderer: MedalCellRenderer },
+  { field: 'total', minWidth: 175, cellRenderer: TotalValueRenderer },
 ];
 
 const gridOptions: GridOptions = {
@@ -35,10 +35,10 @@ const gridOptions: GridOptions = {
 };
 
 // setup the grid after the page has finished loading
-const gridDiv = document.querySelector<HTMLElement>("#myGrid")!;
+const gridDiv = document.querySelector<HTMLElement>('#myGrid')!;
 new Grid(gridDiv, gridOptions);
 
-fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
   .then((response) => response.json())
   .then((data) => {
     gridOptions.api!.setRowData(data);

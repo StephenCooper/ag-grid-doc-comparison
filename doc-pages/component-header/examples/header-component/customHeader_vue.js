@@ -1,5 +1,5 @@
 export default {
-  template: `
+    template: `
       <div>
       <div v-if="params.enableMenu" ref="menuButton" class="customHeaderMenuButton" @click="onMenuClicked($event)">
         <i class="fa" :class="params.menuIcon"></i>
@@ -14,36 +14,37 @@ export default {
       </div>
       </div>
     `,
-  data: function () {
-    return {
-      ascSort: null,
-      descSort: null,
-      noSort: null,
-    };
-  },
-  beforeMount() {},
-  mounted() {
-    this.params.column.addEventListener("sortChanged", this.onSortChanged);
-    this.onSortChanged();
-  },
-  methods: {
-    onMenuClicked() {
-      this.params.showColumnMenu(this.$refs.menuButton);
+    data: function () {
+        return {
+            ascSort: null,
+            descSort: null,
+            noSort: null
+        };
     },
+    beforeMount() {
+    },
+    mounted() {
+        this.params.column.addEventListener('sortChanged', this.onSortChanged);
+        this.onSortChanged();
+    },
+    methods: {
+        onMenuClicked() {
+            this.params.showColumnMenu(this.$refs.menuButton);
+        },
 
-    onSortChanged() {
-      this.ascSort = this.descSort = this.noSort = "inactive";
-      if (this.params.column.isSortAscending()) {
-        this.ascSort = "active";
-      } else if (this.params.column.isSortDescending()) {
-        this.descSort = "active";
-      } else {
-        this.noSort = "active";
-      }
-    },
+        onSortChanged() {
+            this.ascSort = this.descSort = this.noSort = 'inactive';
+            if (this.params.column.isSortAscending()) {
+                this.ascSort = 'active';
+            } else if (this.params.column.isSortDescending()) {
+                this.descSort = 'active';
+            } else {
+                this.noSort = 'active';
+            }
+        },
 
-    onSortRequested(order, event) {
-      this.params.setSort(order, event.shiftKey);
-    },
-  },
+        onSortRequested(order, event) {
+            this.params.setSort(order, event.shiftKey);
+        }
+    }
 };

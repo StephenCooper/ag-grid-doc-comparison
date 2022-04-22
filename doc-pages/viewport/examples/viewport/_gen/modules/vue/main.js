@@ -1,17 +1,17 @@
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { AgGridVue } from "@ag-grid-community/vue";
-import { ViewportRowModelModule } from "@ag-grid-enterprise/viewport-row-model";
-import Vue from "vue";
+import { ModuleRegistry } from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { AgGridVue } from '@ag-grid-community/vue';
+import { ViewportRowModelModule } from '@ag-grid-enterprise/viewport-row-model';
+import Vue from 'vue';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([ViewportRowModelModule]);
 
 class RowIndexRenderer {
   init(params) {
-    this.eGui = document.createElement("div");
-    this.eGui.innerHTML = "" + params.rowIndex;
+    this.eGui = document.createElement('div');
+    this.eGui.innerHTML = '' + params.rowIndex;
   }
   refresh(params) {
     return false;
@@ -37,36 +37,36 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
-        { headerName: "#", maxWidth: 80, cellRenderer: RowIndexRenderer },
-        { field: "code", maxWidth: 90 },
-        { field: "name", minWidth: 220 },
+        { headerName: '#', maxWidth: 80, cellRenderer: RowIndexRenderer },
+        { field: 'code', maxWidth: 90 },
+        { field: 'name', minWidth: 220 },
         {
-          field: "bid",
-          cellClass: "cell-number",
+          field: 'bid',
+          cellClass: 'cell-number',
           valueFormatter: numberFormatter,
-          cellRenderer: "agAnimateShowChangeCellRenderer",
+          cellRenderer: 'agAnimateShowChangeCellRenderer',
         },
         {
-          field: "mid",
-          cellClass: "cell-number",
+          field: 'mid',
+          cellClass: 'cell-number',
           valueFormatter: numberFormatter,
-          cellRenderer: "agAnimateShowChangeCellRenderer",
+          cellRenderer: 'agAnimateShowChangeCellRenderer',
         },
         {
-          field: "ask",
-          cellClass: "cell-number",
+          field: 'ask',
+          cellClass: 'cell-number',
           valueFormatter: numberFormatter,
-          cellRenderer: "agAnimateShowChangeCellRenderer",
+          cellRenderer: 'agAnimateShowChangeCellRenderer',
         },
         {
-          field: "volume",
-          cellClass: "cell-number",
-          cellRenderer: "agAnimateSlideCellRenderer",
+          field: 'volume',
+          cellClass: 'cell-number',
+          cellRenderer: 'agAnimateSlideCellRenderer',
         },
       ],
       gridApi: null,
@@ -82,8 +82,8 @@ const VueExample = {
     };
   },
   created() {
-    this.rowSelection = "multiple";
-    this.rowModelType = "viewport";
+    this.rowSelection = 'multiple';
+    this.rowModelType = 'viewport';
     this.getRowId = (params) => {
       // the code is unique, so perfect for the id
       return params.data.code;
@@ -107,7 +107,7 @@ const VueExample = {
         }, 100);
       };
 
-      fetch("https://www.ag-grid.com/example-assets/stocks.json")
+      fetch('https://www.ag-grid.com/example-assets/stocks.json')
         .then((resp) => resp.json())
         .then((data) => updateData(data));
     },
@@ -115,7 +115,7 @@ const VueExample = {
 };
 
 window.numberFormatter = function numberFormatter(params) {
-  if (typeof params.value === "number") {
+  if (typeof params.value === 'number') {
     return params.value.toFixed(2);
   } else {
     return params.value;
@@ -123,8 +123,8 @@ window.numberFormatter = function numberFormatter(params) {
 };
 
 new Vue({
-  el: "#app",
+  el: '#app',
   components: {
-    "my-component": VueExample,
+    'my-component': VueExample,
   },
 });

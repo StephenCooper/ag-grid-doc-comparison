@@ -1,14 +1,14 @@
 const columnDefs = [
-  { field: "athlete", pinned: "left" },
-  { field: "age", pinned: "left" },
+  { field: 'athlete', pinned: 'left' },
+  { field: 'age', pinned: 'left' },
   {
-    field: "country",
+    field: 'country',
     colSpan: function (params) {
       const country = params.data.country;
-      if (country === "Russia") {
+      if (country === 'Russia') {
         // have all Russia age columns width 2
         return 2;
-      } else if (country === "United States") {
+      } else if (country === 'United States') {
         // have all United States column width 4
         return 4;
       } else {
@@ -17,13 +17,13 @@ const columnDefs = [
       }
     },
   },
-  { field: "year" },
-  { field: "date" },
-  { field: "sport" },
-  { field: "gold" },
-  { field: "silver" },
-  { field: "bronze" },
-  { field: "total" },
+  { field: 'year' },
+  { field: 'date' },
+  { field: 'sport' },
+  { field: 'gold' },
+  { field: 'silver' },
+  { field: 'bronze' },
+  { field: 'total' },
 ];
 
 const gridOptions = {
@@ -35,11 +35,11 @@ const gridOptions = {
 };
 
 // setup the grid after the page has finished loading
-document.addEventListener("DOMContentLoaded", () => {
-  const gridDiv = document.querySelector("#myGrid");
+document.addEventListener('DOMContentLoaded', () => {
+  const gridDiv = document.querySelector('#myGrid');
   new agGrid.Grid(gridDiv, gridOptions);
 
-  fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+  fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
     .then((response) => response.json())
     .then((data) => gridOptions.api.setRowData(data));
 });

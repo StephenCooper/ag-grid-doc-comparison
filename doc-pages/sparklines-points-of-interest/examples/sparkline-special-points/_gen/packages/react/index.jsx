@@ -1,11 +1,11 @@
-"use strict";
+'use strict';
 
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
-import { AgGridReact } from "ag-grid-react";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from 'ag-grid-react';
+import 'ag-grid-enterprise';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 
 class GridExample extends Component {
   constructor(props) {
@@ -15,14 +15,14 @@ class GridExample extends Component {
       rowHeight: 70,
       columnDefs: [
         {
-          field: "sparkline",
-          headerName: "Line Sparkline",
+          field: 'sparkline',
+          headerName: 'Line Sparkline',
           minWidth: 100,
-          cellRenderer: "agSparklineCellRenderer",
+          cellRenderer: 'agSparklineCellRenderer',
           cellRendererParams: {
             sparklineOptions: {
               line: {
-                stroke: "rgb(124, 255, 178)",
+                stroke: 'rgb(124, 255, 178)',
                 strokeWidth: 3,
               },
               padding: {
@@ -30,20 +30,20 @@ class GridExample extends Component {
                 bottom: 10,
               },
               marker: {
-                shape: "diamond",
+                shape: 'diamond',
                 formatter: lineMarkerFormatter,
               },
             },
           },
         },
         {
-          field: "sparkline",
-          headerName: "Column Sparkline",
+          field: 'sparkline',
+          headerName: 'Column Sparkline',
           minWidth: 100,
-          cellRenderer: "agSparklineCellRenderer",
+          cellRenderer: 'agSparklineCellRenderer',
           cellRendererParams: {
             sparklineOptions: {
-              type: "column",
+              type: 'column',
               padding: {
                 top: 10,
                 bottom: 10,
@@ -53,16 +53,16 @@ class GridExample extends Component {
           },
         },
         {
-          field: "sparkline",
-          headerName: "Area Sparkline",
+          field: 'sparkline',
+          headerName: 'Area Sparkline',
           minWidth: 100,
-          cellRenderer: "agSparklineCellRenderer",
+          cellRenderer: 'agSparklineCellRenderer',
           cellRendererParams: {
             sparklineOptions: {
-              type: "area",
-              fill: "rgba(84, 112, 198, 0.3)",
+              type: 'area',
+              fill: 'rgba(84, 112, 198, 0.3)',
               line: {
-                stroke: "rgb(84, 112, 198)",
+                stroke: 'rgb(84, 112, 198)',
               },
               padding: {
                 top: 10,
@@ -91,11 +91,11 @@ class GridExample extends Component {
 
   render() {
     return (
-      <div style={{ width: "100%", height: "100%" }}>
+      <div style={{ width: '100%', height: '100%' }}>
         <div
           style={{
-            height: "100%",
-            width: "100%",
+            height: '100%',
+            width: '100%',
           }}
           className="ag-theme-alpine"
         >
@@ -113,12 +113,12 @@ class GridExample extends Component {
 }
 
 const colors = {
-  firstLast: "rgb(253, 221, 96)",
-  min: "rgb(239, 108, 0)",
-  max: "rgb(59, 162, 114)",
-  negative: "rgb(255, 110, 118)",
-  positive: "rgba(0,128,0, 0.3)",
-  highlighted: "rgb(88, 217, 249)",
+  firstLast: 'rgb(253, 221, 96)',
+  min: 'rgb(239, 108, 0)',
+  max: 'rgb(59, 162, 114)',
+  negative: 'rgb(255, 110, 118)',
+  positive: 'rgba(0,128,0, 0.3)',
+  highlighted: 'rgb(88, 217, 249)',
 };
 function lineMarkerFormatter(params) {
   const { min, max, first, last, highlighted } = params;
@@ -167,4 +167,4 @@ function areaMarkerFormatter(params) {
   };
 }
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

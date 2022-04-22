@@ -1,83 +1,74 @@
-import { IFilterAngularComp } from "@ag-grid-community/angular";
-import { IDoesFilterPassParams, IFilterParams } from "@ag-grid-community/core";
 import { Component } from "@angular/core";
 
+import { IFilterAngularComp } from "@ag-grid-community/angular";
+import { IDoesFilterPassParams, IFilterParams, RowNode } from "@ag-grid-community/core";
+
 @Component({
-  selector: "number-component",
-  template: `
-    <div style="padding: 4px">
+    selector: 'number-component',
+    template: `
+      <div style="padding: 4px">
       <div style="font-weight: bold;">Greater than:</div>
       <div>
-        <input
-          style="margin: 4px 0 4px 0;"
-          type="number"
-          [(ngModel)]="filterText"
-          (input)="onInputBoxChanged($event)"
-          placeholder="Number of medals..."
-        />
+        <input style="margin: 4px 0 4px 0;" type="number" [(ngModel)]="filterText" (input)="onInputBoxChanged($event)" placeholder="Number of medals..."/>
       </div>
-    </div>
-  `,
+      </div>
+    `
 })
 export class NumberFilterComponent implements IFilterAngularComp {
-  params!: IFilterParams;
-  filterText: number | null | string = null;
+    params!: IFilterParams;
+    filterText: number | null | string = null;
 
-  agInit(params: IFilterParams): void {
-    this.params = params;
-  }
-
-  doesFilterPass(params: IDoesFilterPassParams) {
-    if (!this.isFilterActive()) {
-      return true;
+    agInit(params: IFilterParams): void {
+        this.params = params;
     }
 
-    var { api, colDef, column, columnApi, context, valueGetter } = this.params;
-    var { node } = params;
+    doesFilterPass(params: IDoesFilterPassParams) {
+        if (!this.isFilterActive()) { return true; }
 
-    var value = valueGetter({
-      api,
-      colDef,
-      column,
-      columnApi,
-      context,
-      data: node.data,
-      getValue: (field) => node.data[field],
-      node,
-    });
+        var { api, colDef, column, columnApi, context, valueGetter } = this.params;
+        var { node } = params;
 
-    if (!value) return false;
-    return Number(value) > Number(this.filterText);
-  }
+        var value = valueGetter({
+            api,
+            colDef,
+            column,
+            columnApi,
+            context,
+            data: node.data,
+            getValue: (field) => node.data[field],
+            node,
+        });
 
-  isFilterActive() {
-    return (
-      this.filterText !== null &&
-      this.filterText !== undefined &&
-      this.filterText !== "" &&
-      this.isNumeric(this.filterText)
-    );
-  }
+        if (!value) return false;
+        return Number(value) > Number(this.filterText);
+    }
 
-  isNumeric(n: any) {
-    return !isNaN(parseFloat(n)) && isFinite(n);
-  }
+    isFilterActive() {
+        return this.filterText !== null &&
+            this.filterText !== undefined &&
+            this.filterText !== '' &&
+            this.isNumeric(this.filterText);
+    }
 
-  getModel() {
-    return this.isFilterActive() ? Number(this.filterText) : null;
-  }
+    isNumeric(n: any) {
+        return !isNaN(parseFloat(n)) && isFinite(n);
+    }
 
-  setModel(model: any) {
-    this.filterText = model;
-    this.params.filterChangedCallback();
-  }
+    getModel() {
+        return this.isFilterActive() ? Number(this.filterText) : null;
+    }
 
-  myMethodForTakingValueFromFloatingFilter(value: any) {
-    this.filterText = value;
-    this.params.filterChangedCallback();
-  }
+    setModel(model: any) {
+        this.filterText = model;
+        this.params.filterChangedCallback();
+    }
 
-  onInputBoxChanged() {
-    this.params.filterChangedCallback();
-  }
+    myMethodForTakingValueFromFloatingFilter(value: any) {
+        this.filterText = value;
+        this.params.filterChangedCallback();
+    }
+
+    onInputBoxChanged() {
+        this.params.filterChangedCallback();
+    }
 }

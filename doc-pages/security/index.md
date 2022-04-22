@@ -56,19 +56,13 @@ The `font-src` policy also requires the `data:` rule. This is for the same reaso
 In summary, the minimal rule to load the grid is:
 
 ```html
-<meta
-  http-equiv="Content-Security-Policy"
-  content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src data:"
-/>
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src data:">
 ```
 
 However if you are using expressions / code parsing, the rule is:
 
 ```html
-<meta
-  http-equiv="Content-Security-Policy"
-  content="default-src 'self'; script-src 'self' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src data:"
-/>
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src data:">
 ```
 
 ## Security Vulnerability Testing
@@ -81,7 +75,7 @@ AG Grid is tested for a wide variety of security vulnerabilities using the [Sona
 
 The SonarQube security test results for `ag-grid-community` and `ag-grid-enterprise` are shown below:
 
-| Ag-Grid Package    | Result                                                                                                                                                     |
-| ------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| ag-grid-community  | [![Quality gate](https://sonarcloud.io/api/project_badges/quality_gate?project=ag-grid-community)](https://sonarcloud.io/dashboard?id=ag-grid-community)   |
+| Ag-Grid Package | Result |
+| --------------- | ------ |
+| ag-grid-community | [![Quality gate](https://sonarcloud.io/api/project_badges/quality_gate?project=ag-grid-community)](https://sonarcloud.io/dashboard?id=ag-grid-community) |
 | ag-grid-enterprise | [![Quality gate](https://sonarcloud.io/api/project_badges/quality_gate?project=ag-grid-enterprise)](https://sonarcloud.io/dashboard?id=ag-grid-enterprise) |

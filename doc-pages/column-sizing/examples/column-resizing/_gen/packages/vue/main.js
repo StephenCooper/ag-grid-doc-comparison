@@ -1,7 +1,7 @@
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import { AgGridVue } from "ag-grid-vue";
-import Vue from "vue";
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import { AgGridVue } from 'ag-grid-vue';
+import Vue from 'vue';
 
 const VueExample = {
   template: `
@@ -26,27 +26,27 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
-        { field: "athlete", width: 150, suppressSizeToFit: true },
+        { field: 'athlete', width: 150, suppressSizeToFit: true },
         {
-          field: "age",
-          headerName: "Age of Athlete",
+          field: 'age',
+          headerName: 'Age of Athlete',
           width: 90,
           minWidth: 50,
           maxWidth: 150,
         },
-        { field: "country", width: 120 },
-        { field: "year", width: 90 },
-        { field: "date", width: 110 },
-        { field: "sport", width: 110 },
-        { field: "gold", width: 100 },
-        { field: "silver", width: 100 },
-        { field: "bronze", width: 100 },
-        { field: "total", width: 100 },
+        { field: 'country', width: 120 },
+        { field: 'year', width: 90 },
+        { field: 'date', width: 110 },
+        { field: 'sport', width: 110 },
+        { field: 'gold', width: 100 },
+        { field: 'silver', width: 100 },
+        { field: 'bronze', width: 100 },
+        { field: 'total', width: 100 },
       ],
       gridApi: null,
       columnApi: null,
@@ -74,7 +74,7 @@ const VueExample = {
 
       const updateData = (data) => params.api.setRowData(data);
 
-      fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
         .then((resp) => resp.json())
         .then((data) => updateData(data));
     },
@@ -82,8 +82,8 @@ const VueExample = {
 };
 
 new Vue({
-  el: "#app",
+  el: '#app',
   components: {
-    "my-component": VueExample,
+    'my-component': VueExample,
   },
 });

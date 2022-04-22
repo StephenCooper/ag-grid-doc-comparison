@@ -1,18 +1,18 @@
-import { HttpClient } from "@angular/common/http";
-import { Component } from "@angular/core";
+import { HttpClient } from '@angular/common/http';
+import { Component } from '@angular/core';
 import {
   ColDef,
   ColGroupDef,
   ColumnApi,
   GridApi,
   GridReadyEvent,
-} from "ag-grid-community";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
+} from 'ag-grid-community';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import 'ag-grid-enterprise';
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<div class="example-wrapper">
     <div class="button-bar example-header">
       <table>
@@ -31,13 +31,15 @@ import "ag-grid-enterprise";
             <td>
               <button (click)="setGroupHeaderHeight(40)">40px</button>
               <button (click)="setGroupHeaderHeight(60)">60px</button>
-              <button (click)="setGroupHeaderHeight()">undefined</button>
+              <button (click)="setGroupHeaderHeight(undefined)">
+                undefined
+              </button>
             </td>
             <td>headerHeight (<span id="headerHeight">undefined</span>)</td>
             <td>
               <button (click)="setHeaderHeight(70)">70px</button>
               <button (click)="setHeaderHeight(80)">80px</button>
-              <button (click)="setHeaderHeight()">undefined</button>
+              <button (click)="setHeaderHeight(undefined)">undefined</button>
             </td>
           </tr>
           <tr id="requiresPivot" class="hidden">
@@ -49,7 +51,9 @@ import "ag-grid-enterprise";
             <td>
               <button (click)="setPivotGroupHeaderHeight(50)">50px</button>
               <button (click)="setPivotGroupHeaderHeight(70)">70px</button>
-              <button (click)="setPivotGroupHeaderHeight()">undefined</button>
+              <button (click)="setPivotGroupHeaderHeight(undefined)">
+                undefined
+              </button>
             </td>
             <td>
               pivotHeaderHeight (<span id="pivotHeaderHeight">undefined</span>)
@@ -57,7 +61,9 @@ import "ag-grid-enterprise";
             <td>
               <button (click)="setPivotHeaderHeight(60)">60px</button>
               <button (click)="setPivotHeaderHeight(80)">80px</button>
-              <button (click)="setPivotHeaderHeight()">undefined</button>
+              <button (click)="setPivotHeaderHeight(undefined)">
+                undefined
+              </button>
             </td>
           </tr>
           <tr id="requiresNotPivot">
@@ -69,7 +75,9 @@ import "ag-grid-enterprise";
             <td>
               <button (click)="setFloatingFiltersHeight(35)">35px</button>
               <button (click)="setFloatingFiltersHeight(55)">55px</button>
-              <button (click)="setFloatingFiltersHeight()">undefined</button>
+              <button (click)="setFloatingFiltersHeight(undefined)">
+                undefined
+              </button>
             </td>
           </tr>
         </tbody>
@@ -91,60 +99,60 @@ export class AppComponent {
 
   public columnDefs: (ColDef | ColGroupDef)[] = [
     {
-      headerName: "Athlete Details",
+      headerName: 'Athlete Details',
       children: [
         {
-          field: "athlete",
+          field: 'athlete',
           width: 150,
           suppressSizeToFit: true,
           enableRowGroup: true,
           rowGroupIndex: 0,
         },
         {
-          field: "age",
+          field: 'age',
           width: 90,
           minWidth: 75,
           maxWidth: 100,
           enableRowGroup: true,
         },
         {
-          field: "country",
+          field: 'country',
           enableRowGroup: true,
         },
         {
-          field: "year",
+          field: 'year',
           width: 90,
           enableRowGroup: true,
           pivotIndex: 0,
         },
-        { field: "sport", width: 110, enableRowGroup: true },
+        { field: 'sport', width: 110, enableRowGroup: true },
         {
-          field: "gold",
+          field: 'gold',
           enableValue: true,
           suppressMenu: true,
-          filter: "agNumberColumnFilter",
-          aggFunc: "sum",
+          filter: 'agNumberColumnFilter',
+          aggFunc: 'sum',
         },
         {
-          field: "silver",
+          field: 'silver',
           enableValue: true,
           suppressMenu: true,
-          filter: "agNumberColumnFilter",
-          aggFunc: "sum",
+          filter: 'agNumberColumnFilter',
+          aggFunc: 'sum',
         },
         {
-          field: "bronze",
+          field: 'bronze',
           enableValue: true,
           suppressMenu: true,
-          filter: "agNumberColumnFilter",
-          aggFunc: "sum",
+          filter: 'agNumberColumnFilter',
+          aggFunc: 'sum',
         },
         {
-          field: "total",
+          field: 'total',
           enableValue: true,
           suppressMenu: true,
-          filter: "agNumberColumnFilter",
-          aggFunc: "sum",
+          filter: 'agNumberColumnFilter',
+          aggFunc: 'sum',
         },
       ],
     },
@@ -160,42 +168,42 @@ export class AppComponent {
   constructor(private http: HttpClient) {}
 
   setPivotOn() {
-    document.querySelector("#requiresPivot")!.className = "";
-    document.querySelector("#requiresNotPivot")!.className = "hidden";
+    document.querySelector('#requiresPivot')!.className = '';
+    document.querySelector('#requiresNotPivot')!.className = 'hidden';
     this.gridColumnApi.setPivotMode(true);
-    setIdText("pivot", "on");
+    setIdText('pivot', 'on');
   }
 
   setPivotOff() {
-    document.querySelector("#requiresPivot")!.className = "hidden";
-    document.querySelector("#requiresNotPivot")!.className = "";
+    document.querySelector('#requiresPivot')!.className = 'hidden';
+    document.querySelector('#requiresNotPivot')!.className = '';
     this.gridColumnApi.setPivotMode(false);
-    setIdText("pivot", "off");
+    setIdText('pivot', 'off');
   }
 
   setHeaderHeight(value?: number) {
     this.gridApi.setHeaderHeight(value);
-    setIdText("headerHeight", value);
+    setIdText('headerHeight', value);
   }
 
   setGroupHeaderHeight(value?: number) {
     this.gridApi.setGroupHeaderHeight(value);
-    setIdText("groupHeaderHeight", value);
+    setIdText('groupHeaderHeight', value);
   }
 
   setFloatingFiltersHeight(value?: number) {
     this.gridApi.setFloatingFiltersHeight(value);
-    setIdText("floatingFiltersHeight", value);
+    setIdText('floatingFiltersHeight', value);
   }
 
   setPivotGroupHeaderHeight(value?: number) {
     this.gridApi.setPivotGroupHeaderHeight(value);
-    setIdText("pivotGroupHeaderHeight", value);
+    setIdText('pivotGroupHeaderHeight', value);
   }
 
   setPivotHeaderHeight(value?: number) {
     this.gridApi.setPivotHeaderHeight(value);
-    setIdText("pivotHeaderHeight", value);
+    setIdText('pivotHeaderHeight', value);
   }
 
   onGridReady(params: GridReadyEvent) {
@@ -203,12 +211,12 @@ export class AppComponent {
     this.gridColumnApi = params.columnApi;
 
     this.http
-      .get<any[]>("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      .get<any[]>('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .subscribe((data) => (this.rowData = data));
   }
 }
 
 function setIdText(id: string, value: string | number | undefined) {
   document.getElementById(id)!.innerHTML =
-    value == undefined ? "undefined" : value + "";
+    value == undefined ? 'undefined' : value + '';
 }

@@ -1,11 +1,11 @@
-import { HttpClient } from "@angular/common/http";
-import { Component } from "@angular/core";
-import { ColDef, ColumnApi, GridApi, GridReadyEvent } from "ag-grid-community";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
+import { HttpClient } from '@angular/common/http';
+import { Component } from '@angular/core';
+import { ColDef, ColumnApi, GridApi, GridReadyEvent } from 'ag-grid-community';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<div class="example-wrapper">
     <div class="example-header">
       <div style="padding: 4px;">
@@ -50,22 +50,22 @@ export class AppComponent {
 
   public columnDefs: ColDef[] = [
     {
-      headerName: "#",
-      colId: "rowNum",
-      valueGetter: "node.id",
+      headerName: '#',
+      colId: 'rowNum',
+      valueGetter: 'node.id',
       width: 80,
-      pinned: "left",
+      pinned: 'left',
     },
-    { field: "athlete", width: 150, pinned: "left" },
-    { field: "age", width: 90, pinned: "left" },
-    { field: "country", width: 150 },
-    { field: "year", width: 90 },
-    { field: "date", width: 110 },
-    { field: "sport", width: 150 },
-    { field: "gold", width: 100 },
-    { field: "silver", width: 100 },
-    { field: "bronze", width: 100 },
-    { field: "total", width: 100, pinned: "right" },
+    { field: 'athlete', width: 150, pinned: 'left' },
+    { field: 'age', width: 90, pinned: 'left' },
+    { field: 'country', width: 150 },
+    { field: 'year', width: 90 },
+    { field: 'date', width: 110 },
+    { field: 'sport', width: 150 },
+    { field: 'gold', width: 100 },
+    { field: 'silver', width: 100 },
+    { field: 'bronze', width: 100 },
+    { field: 'total', width: 100, pinned: 'right' },
   ];
   public defaultColDef: ColDef = {
     resizable: true,
@@ -81,10 +81,10 @@ export class AppComponent {
   resetPinned() {
     this.gridColumnApi.applyColumnState({
       state: [
-        { colId: "rowNum", pinned: "left" },
-        { colId: "athlete", pinned: "left" },
-        { colId: "age", pinned: "left" },
-        { colId: "total", pinned: "right" },
+        { colId: 'rowNum', pinned: 'left' },
+        { colId: 'athlete', pinned: 'left' },
+        { colId: 'age', pinned: 'left' },
+        { colId: 'total', pinned: 'right' },
       ],
       defaultState: { pinned: null },
     });
@@ -92,18 +92,18 @@ export class AppComponent {
 
   pinCountry() {
     this.gridColumnApi.applyColumnState({
-      state: [{ colId: "country", pinned: "left" }],
+      state: [{ colId: 'country', pinned: 'left' }],
       defaultState: { pinned: null },
     });
   }
 
   jumpToCol() {
-    const value = (document.getElementById("col") as HTMLInputElement).value;
-    if (typeof value !== "string" || value === "") {
+    const value = (document.getElementById('col') as HTMLInputElement).value;
+    if (typeof value !== 'string' || value === '') {
       return;
     }
     const index = Number(value);
-    if (typeof index !== "number" || isNaN(index)) {
+    if (typeof index !== 'number' || isNaN(index)) {
       return;
     }
     // it's actually a column the api needs, so look the column up
@@ -117,9 +117,9 @@ export class AppComponent {
   }
 
   jumpToRow() {
-    var value = (document.getElementById("row") as HTMLInputElement).value;
+    var value = (document.getElementById('row') as HTMLInputElement).value;
     const index = Number(value);
-    if (typeof index === "number" && !isNaN(index)) {
+    if (typeof index === 'number' && !isNaN(index)) {
       this.gridApi.ensureIndexVisible(index);
     }
   }
@@ -129,7 +129,7 @@ export class AppComponent {
     this.gridColumnApi = params.columnApi;
 
     this.http
-      .get<any[]>("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      .get<any[]>('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .subscribe((data) => (this.rowData = data));
   }
 }

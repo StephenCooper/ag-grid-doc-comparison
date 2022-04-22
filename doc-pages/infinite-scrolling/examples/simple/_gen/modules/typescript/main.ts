@@ -5,10 +5,10 @@ import {
   IDatasource,
   IGetRowsParams,
   ModuleRegistry,
-} from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { InfiniteRowModelModule } from "@ag-grid-community/infinite-row-model";
+} from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { InfiniteRowModelModule } from '@ag-grid-community/infinite-row-model';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([InfiniteRowModelModule]);
@@ -17,11 +17,11 @@ const gridOptions: GridOptions = {
   columnDefs: [
     // this row shows the row index, doesn't use any data from the row
     {
-      headerName: "ID",
+      headerName: 'ID',
       maxWidth: 100,
       // it is important to have node.id here, so that when the id changes (which happens
       // when the row is loaded) then the cell is refreshed.
-      valueGetter: "node.id",
+      valueGetter: 'node.id',
       cellRenderer: function (params: ICellRendererParams) {
         if (params.value !== undefined) {
           return params.value;
@@ -30,16 +30,16 @@ const gridOptions: GridOptions = {
         }
       },
     },
-    { field: "athlete", minWidth: 150 },
-    { field: "age" },
-    { field: "country", minWidth: 150 },
-    { field: "year" },
-    { field: "date", minWidth: 150 },
-    { field: "sport", minWidth: 150 },
-    { field: "gold" },
-    { field: "silver" },
-    { field: "bronze" },
-    { field: "total" },
+    { field: 'athlete', minWidth: 150 },
+    { field: 'age' },
+    { field: 'country', minWidth: 150 },
+    { field: 'year' },
+    { field: 'date', minWidth: 150 },
+    { field: 'sport', minWidth: 150 },
+    { field: 'gold' },
+    { field: 'silver' },
+    { field: 'bronze' },
+    { field: 'total' },
   ],
   defaultColDef: {
     flex: 1,
@@ -47,9 +47,9 @@ const gridOptions: GridOptions = {
     minWidth: 100,
   },
   rowBuffer: 0,
-  rowSelection: "multiple",
+  rowSelection: 'multiple',
   // tell grid we want virtual row model type
-  rowModelType: "infinite",
+  rowModelType: 'infinite',
   // how big each page in our page cache will be, default is 100
   cacheBlockSize: 100,
   // how many extra blank rows to display to the user at the end of the dataset,
@@ -71,17 +71,17 @@ const gridOptions: GridOptions = {
 };
 
 // setup the grid after the page has finished loading
-const gridDiv = document.querySelector<HTMLElement>("#myGrid")!;
+const gridDiv = document.querySelector<HTMLElement>('#myGrid')!;
 new Grid(gridDiv, gridOptions);
 
-fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
   .then((response) => response.json())
   .then(function (data) {
     const dataSource: IDatasource = {
       rowCount: undefined, // behave as infinite scroll
 
       getRows: function (params: IGetRowsParams) {
-        console.log("asking for " + params.startRow + " to " + params.endRow);
+        console.log('asking for ' + params.startRow + ' to ' + params.endRow);
 
         // At this point in your code, you would call the server.
         // To make the demo look real, wait for 500ms before returning

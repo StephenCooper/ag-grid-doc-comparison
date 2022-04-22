@@ -1,5 +1,5 @@
-import { AgChartsVue } from "ag-charts-vue";
-import Vue from "vue";
+import { AgChartsVue } from 'ag-charts-vue';
+import Vue from 'vue';
 
 const ChartExample = {
   template: `
@@ -7,7 +7,7 @@ const ChartExample = {
                 :options="options"></ag-charts-vue>
     `,
   components: {
-    "ag-charts-vue": AgChartsVue,
+    'ag-charts-vue': AgChartsVue,
   },
   data: function () {
     return {
@@ -19,24 +19,24 @@ const ChartExample = {
       autoSize: true,
       data: getData(),
       title: {
-        text: "Most Populous Cities (2019)",
+        text: 'Most Populous Cities (2019)',
         fontSize: 18,
       },
       subtitle: {
-        text: "Source: Simple Maps",
+        text: 'Source: Simple Maps',
       },
       series: [
         {
-          type: "scatter",
-          title: "Most populous cities",
-          xKey: "lon",
-          xName: "Longitude",
-          yKey: "lat",
-          yName: "Latitude",
-          sizeKey: "population",
-          sizeName: "Population",
-          labelKey: "city",
-          labelName: "City",
+          type: 'scatter',
+          title: 'Most populous cities',
+          xKey: 'lon',
+          xName: 'Longitude',
+          yKey: 'lat',
+          yName: 'Latitude',
+          sizeKey: 'population',
+          sizeName: 'Population',
+          labelKey: 'city',
+          labelName: 'City',
           marker: {
             size: 5,
             maxSize: 100,
@@ -46,22 +46,22 @@ const ChartExample = {
       ],
       axes: [
         {
-          position: "bottom",
-          type: "number",
+          position: 'bottom',
+          type: 'number',
           title: {
             enabled: true,
-            text: "Longitude",
+            text: 'Longitude',
           },
           min: -180,
           max: 180,
           nice: false,
         },
         {
-          position: "left",
-          type: "number",
+          position: 'left',
+          type: 'number',
           title: {
             enabled: true,
-            text: "Latitude",
+            text: 'Latitude',
           },
           min: -90,
           max: 90,
@@ -78,8 +78,8 @@ const ChartExample = {
 };
 
 new Vue({
-  el: "#app",
+  el: '#app',
   components: {
-    "my-component": ChartExample,
+    'my-component': ChartExample,
   },
 });

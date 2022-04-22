@@ -1,21 +1,21 @@
-import { Component } from "@angular/core";
+import { Component } from '@angular/core';
 import {
   ColDef,
   GridReadyEvent,
   ICellRendererComp,
   ICellRendererParams,
   KeyCreatorParams,
-} from "ag-grid-community";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
-import { GenderRenderer } from "./gender-renderer.component";
-import { MoodEditor } from "./mood-editor.component";
-import { MoodRenderer } from "./mood-renderer.component";
-import { NumericEditor } from "./numeric-editor.component";
+} from 'ag-grid-community';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import 'ag-grid-enterprise';
+import { GenderRenderer } from './gender-renderer.component';
+import { MoodEditor } from './mood-editor.component';
+import { MoodRenderer } from './mood-renderer.component';
+import { NumericEditor } from './numeric-editor.component';
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<ag-grid-angular
     style="width: 100%; height: 100%;"
     class="ag-theme-alpine"
@@ -28,33 +28,33 @@ import { NumericEditor } from "./numeric-editor.component";
 export class AppComponent {
   public columnDefs: ColDef[] = [
     {
-      field: "first_name",
-      headerName: "First Name",
+      field: 'first_name',
+      headerName: 'First Name',
       width: 120,
       editable: true,
     },
-    { field: "last_name", headerName: "Last Name", width: 120, editable: true },
+    { field: 'last_name', headerName: 'Last Name', width: 120, editable: true },
     {
-      field: "gender",
+      field: 'gender',
       width: 100,
       editable: true,
       cellRenderer: GenderRenderer,
-      cellEditor: "agRichSelectCellEditor",
+      cellEditor: 'agRichSelectCellEditor',
       cellEditorPopup: true,
       cellEditorParams: {
         cellRenderer: GenderRenderer,
-        values: ["Male", "Female"],
+        values: ['Male', 'Female'],
       },
     },
     {
-      field: "age",
+      field: 'age',
       width: 80,
       editable: true,
       cellEditor: NumericEditor,
       cellEditorPopup: true,
     },
     {
-      field: "mood",
+      field: 'mood',
       width: 100,
       cellRenderer: MoodRenderer,
       cellEditor: MoodEditor,
@@ -62,9 +62,9 @@ export class AppComponent {
       editable: true,
     },
     {
-      field: "country",
+      field: 'country',
       width: 110,
-      cellEditor: "agRichSelectCellEditor",
+      cellEditor: 'agRichSelectCellEditor',
       cellEditorPopup: true,
       cellRenderer: CountryCellRenderer,
       keyCreator: function (params: KeyCreatorParams) {
@@ -73,22 +73,22 @@ export class AppComponent {
       cellEditorParams: {
         cellRenderer: CountryCellRenderer,
         values: [
-          { name: "Ireland", code: "IE" },
-          { name: "UK", code: "UK" },
-          { name: "France", code: "FR" },
+          { name: 'Ireland', code: 'IE' },
+          { name: 'UK', code: 'UK' },
+          { name: 'France', code: 'FR' },
         ],
       },
       editable: true,
     },
     {
-      field: "address",
+      field: 'address',
       editable: true,
-      cellEditor: "agLargeTextCellEditor",
+      cellEditor: 'agLargeTextCellEditor',
       cellEditorPopup: true,
       cellEditorParams: {
-        maxLength: "300",
-        cols: "50",
-        rows: "6",
+        maxLength: '300',
+        cols: '50',
+        rows: '6',
       },
     },
   ];
@@ -109,7 +109,7 @@ class CountryCellRenderer implements ICellRendererComp {
   eGui!: HTMLElement;
 
   init(params: ICellRendererParams) {
-    this.eGui = document.createElement("div");
+    this.eGui = document.createElement('div');
     this.eGui.innerHTML = `${params.value.name}`;
   }
 

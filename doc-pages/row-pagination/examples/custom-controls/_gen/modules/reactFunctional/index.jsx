@@ -1,13 +1,13 @@
-"use strict";
+'use strict';
 
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { AgGridReact } from "@ag-grid-community/react";
-import { RowGroupingModule } from "@ag-grid-enterprise/row-grouping";
-import React, { useCallback, useMemo, useRef, useState } from "react";
-import { render } from "react-dom";
+import React, { useCallback, useMemo, useRef, useState } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from '@ag-grid-community/react';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import { RowGroupingModule } from '@ag-grid-enterprise/row-grouping';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([ClientSideRowModelModule, RowGroupingModule]);
@@ -17,33 +17,33 @@ const setText = (selector, text) => {
 };
 
 const setLastButtonDisabled = (disabled) => {
-  document.querySelector("#btLast").disabled = disabled;
+  document.querySelector('#btLast').disabled = disabled;
 };
 
 const GridExample = () => {
   const gridRef = useRef();
-  const containerStyle = useMemo(() => ({ width: "100%", height: "100%" }), []);
-  const gridStyle = useMemo(() => ({ height: "100%", width: "100%" }), []);
+  const containerStyle = useMemo(() => ({ width: '100%', height: '100%' }), []);
+  const gridStyle = useMemo(() => ({ height: '100%', width: '100%' }), []);
   const [rowData, setRowData] = useState();
   const [columnDefs, setColumnDefs] = useState([
     // this row just shows the row index, doesn't use any data from the row
     {
-      headerName: "#",
+      headerName: '#',
       width: 50,
       valueFormatter: function (params) {
         return `${parseInt(params.node.id) + 1}`;
       },
     },
-    { headerName: "Athlete", field: "athlete", width: 150 },
-    { headerName: "Age", field: "age", width: 90 },
-    { headerName: "Country", field: "country", width: 120 },
-    { headerName: "Year", field: "year", width: 90 },
-    { headerName: "Date", field: "date", width: 110 },
-    { headerName: "Sport", field: "sport", width: 110 },
-    { headerName: "Gold", field: "gold", width: 100 },
-    { headerName: "Silver", field: "silver", width: 100 },
-    { headerName: "Bronze", field: "bronze", width: 100 },
-    { headerName: "Total", field: "total", width: 100 },
+    { headerName: 'Athlete', field: 'athlete', width: 150 },
+    { headerName: 'Age', field: 'age', width: 90 },
+    { headerName: 'Country', field: 'country', width: 120 },
+    { headerName: 'Year', field: 'year', width: 90 },
+    { headerName: 'Date', field: 'date', width: 110 },
+    { headerName: 'Sport', field: 'sport', width: 110 },
+    { headerName: 'Gold', field: 'gold', width: 100 },
+    { headerName: 'Silver', field: 'silver', width: 100 },
+    { headerName: 'Bronze', field: 'bronze', width: 100 },
+    { headerName: 'Total', field: 'total', width: 100 },
   ]);
   const defaultColDef = useMemo(() => {
     return {
@@ -53,26 +53,26 @@ const GridExample = () => {
   }, []);
 
   const onGridReady = useCallback((params) => {
-    fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+    fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .then((resp) => resp.json())
       .then((data) => setRowData(data));
   }, []);
 
   const onPaginationChanged = useCallback(() => {
-    console.log("onPaginationPageLoaded");
+    console.log('onPaginationPageLoaded');
     // Workaround for bug in events order
     if (gridRef.current.api) {
       setText(
-        "#lbLastPageFound",
+        '#lbLastPageFound',
         gridRef.current.api.paginationIsLastPageFound()
       );
-      setText("#lbPageSize", gridRef.current.api.paginationGetPageSize());
+      setText('#lbPageSize', gridRef.current.api.paginationGetPageSize());
       // we +1 to current page, as pages are zero based
       setText(
-        "#lbCurrentPage",
+        '#lbCurrentPage',
         gridRef.current.api.paginationGetCurrentPage() + 1
       );
-      setText("#lbTotalPages", gridRef.current.api.paginationGetTotalPages());
+      setText('#lbTotalPages', gridRef.current.api.paginationGetTotalPages());
       setLastButtonDisabled(!gridRef.current.api.paginationIsLastPageFound());
     }
   }, []);
@@ -118,7 +118,7 @@ const GridExample = () => {
             <button onClick={onBtPageFifty}>To Page 50</button>
           </div>
 
-          <div style={{ marginTop: "6px" }}>
+          <div style={{ marginTop: '6px' }}>
             <span className="label">Last Page Found:</span>
             <span className="value" id="lbLastPageFound">
               -
@@ -144,7 +144,7 @@ const GridExample = () => {
             rowData={rowData}
             columnDefs={columnDefs}
             defaultColDef={defaultColDef}
-            rowSelection={"multiple"}
+            rowSelection={'multiple'}
             paginationPageSize={500}
             pagination={true}
             suppressPaginationPanel={true}
@@ -158,4 +158,4 @@ const GridExample = () => {
   );
 };
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

@@ -1,11 +1,11 @@
-"use strict";
+'use strict';
 
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
-import { AgGridReact } from "ag-grid-react";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from 'ag-grid-react';
+import 'ag-grid-enterprise';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 
 class GridExample extends Component {
   constructor(props) {
@@ -13,29 +13,29 @@ class GridExample extends Component {
 
     this.state = {
       columnDefs: [
-        { field: "country", width: 150, chartDataType: "category" },
-        { field: "gold", chartDataType: "series" },
-        { field: "silver", chartDataType: "series" },
-        { field: "bronze", chartDataType: "series" },
+        { field: 'country', width: 150, chartDataType: 'category' },
+        { field: 'gold', chartDataType: 'series' },
+        { field: 'silver', chartDataType: 'series' },
+        { field: 'bronze', chartDataType: 'series' },
         {
-          headerName: "A",
-          valueGetter: "Math.floor(Math.random()*1000)",
-          chartDataType: "series",
+          headerName: 'A',
+          valueGetter: 'Math.floor(Math.random()*1000)',
+          chartDataType: 'series',
         },
         {
-          headerName: "B",
-          valueGetter: "Math.floor(Math.random()*1000)",
-          chartDataType: "series",
+          headerName: 'B',
+          valueGetter: 'Math.floor(Math.random()*1000)',
+          chartDataType: 'series',
         },
         {
-          headerName: "C",
-          valueGetter: "Math.floor(Math.random()*1000)",
-          chartDataType: "series",
+          headerName: 'C',
+          valueGetter: 'Math.floor(Math.random()*1000)',
+          chartDataType: 'series',
         },
         {
-          headerName: "D",
-          valueGetter: "Math.floor(Math.random()*1000)",
-          chartDataType: "series",
+          headerName: 'D',
+          valueGetter: 'Math.floor(Math.random()*1000)',
+          chartDataType: 'series',
         },
       ],
       defaultColDef: {
@@ -56,40 +56,40 @@ class GridExample extends Component {
             strokeWidth: 2,
             shadow: {
               enabled: true,
-              color: "rgba(0, 0, 0, 0.3)",
+              color: 'rgba(0, 0, 0, 0.3)',
               xOffset: 10,
               yOffset: 5,
               blur: 8,
             },
             label: {
               enabled: true,
-              fontStyle: "italic",
-              fontWeight: "bold",
+              fontStyle: 'italic',
+              fontWeight: 'bold',
               fontSize: 15,
-              fontFamily: "Arial, sans-serif",
-              color: "green",
+              fontFamily: 'Arial, sans-serif',
+              color: 'green',
               formatter: function (params) {
-                return "<" + params.value + ">";
+                return '<' + params.value + '>';
               },
             },
             highlightStyle: {
               item: {
-                fill: "red",
-                stroke: "yellow",
+                fill: 'red',
+                stroke: 'yellow',
               },
             },
             tooltip: {
               renderer: function (params) {
                 return {
                   content:
-                    "<b>" +
+                    '<b>' +
                     params.xName.toUpperCase() +
-                    ":</b> " +
+                    ':</b> ' +
                     params.xValue +
-                    "<br/>" +
-                    "<b>" +
+                    '<br/>' +
+                    '<b>' +
                     params.yName.toUpperCase() +
-                    ":</b> " +
+                    ':</b> ' +
                     params.yValue,
                 };
               },
@@ -109,22 +109,22 @@ class GridExample extends Component {
     var cellRange = {
       rowStartIndex: 0,
       rowEndIndex: 4,
-      columns: ["country", "gold", "silver", "bronze"],
+      columns: ['country', 'gold', 'silver', 'bronze'],
     };
     var createRangeChartParams = {
       cellRange: cellRange,
-      chartType: "groupedBar",
+      chartType: 'groupedBar',
     };
     params.api.createRangeChart(createRangeChartParams);
   };
 
   render() {
     return (
-      <div style={{ width: "100%", height: "100%" }}>
+      <div style={{ width: '100%', height: '100%' }}>
         <div
           style={{
-            height: "100%",
-            width: "100%",
+            height: '100%',
+            width: '100%',
           }}
           className="ag-theme-alpine"
         >
@@ -145,4 +145,4 @@ class GridExample extends Component {
   }
 }
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

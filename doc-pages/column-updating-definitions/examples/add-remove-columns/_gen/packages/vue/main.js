@@ -1,28 +1,28 @@
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import { AgGridVue } from "ag-grid-vue";
-import Vue from "vue";
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import { AgGridVue } from 'ag-grid-vue';
+import Vue from 'vue';
 
 const colDefsMedalsIncluded = [
-  { field: "athlete" },
-  { field: "age" },
-  { field: "country" },
-  { field: "sport" },
-  { field: "year" },
-  { field: "date" },
-  { field: "gold" },
-  { field: "silver" },
-  { field: "bronze" },
-  { field: "total" },
+  { field: 'athlete' },
+  { field: 'age' },
+  { field: 'country' },
+  { field: 'sport' },
+  { field: 'year' },
+  { field: 'date' },
+  { field: 'gold' },
+  { field: 'silver' },
+  { field: 'bronze' },
+  { field: 'total' },
 ];
 
 const colDefsMedalsExcluded = [
-  { field: "athlete" },
-  { field: "age" },
-  { field: "country" },
-  { field: "sport" },
-  { field: "year" },
-  { field: "date" },
+  { field: 'athlete' },
+  { field: 'age' },
+  { field: 'country' },
+  { field: 'sport' },
+  { field: 'year' },
+  { field: 'date' },
 ];
 
 const VueExample = {
@@ -45,7 +45,7 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
@@ -77,7 +77,7 @@ const VueExample = {
         this.rowData = data;
       };
 
-      fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
         .then((resp) => resp.json())
         .then((data) => updateData(data));
     },
@@ -85,8 +85,8 @@ const VueExample = {
 };
 
 new Vue({
-  el: "#app",
+  el: '#app',
   components: {
-    "my-component": VueExample,
+    'my-component': VueExample,
   },
 });

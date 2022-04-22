@@ -1,14 +1,14 @@
-"use strict";
+'use strict';
 
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { AgGridReact } from "@ag-grid-community/react";
-import { GridChartsModule } from "@ag-grid-enterprise/charts";
-import { MenuModule } from "@ag-grid-enterprise/menu";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from '@ag-grid-community/react';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import { MenuModule } from '@ag-grid-enterprise/menu';
+import { GridChartsModule } from '@ag-grid-enterprise/charts';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([
@@ -23,29 +23,29 @@ class GridExample extends Component {
 
     this.state = {
       columnDefs: [
-        { field: "country", width: 150, chartDataType: "category" },
-        { field: "gold", chartDataType: "series", sort: "desc" },
-        { field: "silver", chartDataType: "series", sort: "desc" },
-        { field: "bronze", chartDataType: "series" },
+        { field: 'country', width: 150, chartDataType: 'category' },
+        { field: 'gold', chartDataType: 'series', sort: 'desc' },
+        { field: 'silver', chartDataType: 'series', sort: 'desc' },
+        { field: 'bronze', chartDataType: 'series' },
         {
-          headerName: "A",
-          valueGetter: "Math.floor(Math.random()*1000)",
-          chartDataType: "series",
+          headerName: 'A',
+          valueGetter: 'Math.floor(Math.random()*1000)',
+          chartDataType: 'series',
         },
         {
-          headerName: "B",
-          valueGetter: "Math.floor(Math.random()*1000)",
-          chartDataType: "series",
+          headerName: 'B',
+          valueGetter: 'Math.floor(Math.random()*1000)',
+          chartDataType: 'series',
         },
         {
-          headerName: "C",
-          valueGetter: "Math.floor(Math.random()*1000)",
-          chartDataType: "series",
+          headerName: 'C',
+          valueGetter: 'Math.floor(Math.random()*1000)',
+          chartDataType: 'series',
         },
         {
-          headerName: "D",
-          valueGetter: "Math.floor(Math.random()*1000)",
-          chartDataType: "series",
+          headerName: 'D',
+          valueGetter: 'Math.floor(Math.random()*1000)',
+          chartDataType: 'series',
         },
       ],
       defaultColDef: {
@@ -71,15 +71,15 @@ class GridExample extends Component {
       cellRange: {
         rowStartIndex: 0,
         rowEndIndex: 4,
-        columns: ["country", "gold", "silver"],
+        columns: ['country', 'gold', 'silver'],
       },
-      chartType: "groupedColumn",
-      chartThemeName: "ag-vivid",
+      chartType: 'groupedColumn',
+      chartThemeName: 'ag-vivid',
       chartThemeOverrides: {
         common: {
           title: {
             enabled: true,
-            text: "Top 5 Medal Winners",
+            text: 'Top 5 Medal Winners',
           },
         },
       },
@@ -90,15 +90,15 @@ class GridExample extends Component {
   onChart2 = () => {
     var params = {
       cellRange: {
-        columns: ["country", "bronze"],
+        columns: ['country', 'bronze'],
       },
-      chartType: "groupedBar",
-      chartThemeName: "ag-pastel",
+      chartType: 'groupedBar',
+      chartThemeName: 'ag-pastel',
       chartThemeOverrides: {
         common: {
           title: {
             enabled: true,
-            text: "Bronze Medal by Country",
+            text: 'Bronze Medal by Country',
           },
           legend: {
             enabled: false,
@@ -112,7 +112,7 @@ class GridExample extends Component {
 
   render() {
     return (
-      <div style={{ width: "100%", height: "100%" }}>
+      <div style={{ width: '100%', height: '100%' }}>
         <div className="outer-div">
           <div className="button-bar">
             <button onClick={() => this.onChart1()}>Top 5 Medal Winners</button>
@@ -123,8 +123,8 @@ class GridExample extends Component {
           <div className="grid-wrapper">
             <div
               style={{
-                height: "100%",
-                width: "100%",
+                height: '100%',
+                width: '100%',
               }}
               className="ag-theme-alpine"
             >
@@ -145,4 +145,4 @@ class GridExample extends Component {
   }
 }
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

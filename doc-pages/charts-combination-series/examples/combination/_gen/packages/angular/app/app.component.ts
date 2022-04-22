@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component } from '@angular/core';
 import {
   AgBarSeriesOptions,
   AgCartesianAxisOptions,
@@ -6,11 +6,11 @@ import {
   AgCartesianSeriesOptions,
   AgCartesianSeriesTooltipRendererParams,
   AgLineSeriesOptions,
-} from "ag-charts-community";
-import { cloneDeep } from "lodash";
+} from 'ag-charts-community';
+import { cloneDeep } from 'lodash';
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<div class="wrapper">
     <div id="toolPanel">
       <button (click)="areaColumn()">Area &amp; Column</button>
@@ -33,19 +33,19 @@ export class AppComponent {
       data: getData(),
       theme: {
         palette: {
-          fills: ["#7cecb3", "#7cb5ec", "#ecb37c", "#ec7cb5", "#7c7dec"],
-          strokes: ["#7cecb3", "#7cb5ec", "#ecb37c", "#ec7cb5", "#7c7dec"],
+          fills: ['#7cecb3', '#7cb5ec', '#ecb37c', '#ec7cb5', '#7c7dec'],
+          strokes: ['#7cecb3', '#7cb5ec', '#ecb37c', '#ec7cb5', '#7c7dec'],
         },
       },
       title: {
-        text: "Fruit & Vegetable Consumption",
+        text: 'Fruit & Vegetable Consumption',
         fontSize: 15,
       },
       series: COLUMN_AND_LINE,
       axes: [
         {
-          type: "category",
-          position: "bottom",
+          type: 'category',
+          position: 'bottom',
           gridStyle: [
             {
               strokeWidth: 0,
@@ -54,27 +54,27 @@ export class AppComponent {
         },
         {
           // primary y axis
-          type: "number",
-          position: "left",
-          keys: ["women", "men", "children", "adults"],
+          type: 'number',
+          position: 'left',
+          keys: ['women', 'men', 'children', 'adults'],
           title: {
             enabled: true,
-            text: "Adults Who Eat 5 A Day (%)",
+            text: 'Adults Who Eat 5 A Day (%)',
           },
         },
         {
           // secondary y axis
-          type: "number",
-          position: "right",
-          keys: ["portions"],
+          type: 'number',
+          position: 'right',
+          keys: ['portions'],
           title: {
             enabled: true,
-            text: "Portions Consumed (Per Day)",
+            text: 'Portions Consumed (Per Day)',
           },
         },
       ] as AgCartesianAxisOptions[],
       legend: {
-        position: "bottom",
+        position: 'bottom',
         item: {
           marker: {
             strokeWidth: 0,
@@ -89,7 +89,7 @@ export class AppComponent {
   columnLine = () => {
     const options = cloneDeep(this.options);
 
-    console.log("Column & Line", COLUMN_AND_LINE);
+    console.log('Column & Line', COLUMN_AND_LINE);
     options.series = COLUMN_AND_LINE;
 
     this.options = options;
@@ -98,7 +98,7 @@ export class AppComponent {
   areaColumn = () => {
     const options = cloneDeep(this.options);
 
-    console.log("Column & Area", AREA_AND_COLUMN);
+    console.log('Column & Area', AREA_AND_COLUMN);
     options.series = AREA_AND_COLUMN;
 
     this.options = options;
@@ -112,10 +112,10 @@ function tooltipRenderer(params: AgCartesianSeriesTooltipRendererParams) {
   };
 }
 const WOMEN: AgBarSeriesOptions = {
-  type: "column",
-  xKey: "year",
-  yKey: "women",
-  yName: "Women",
+  type: 'column',
+  xKey: 'year',
+  yKey: 'women',
+  yName: 'Women',
   grouped: true,
   strokeWidth: 0,
   tooltip: {
@@ -123,10 +123,10 @@ const WOMEN: AgBarSeriesOptions = {
   },
 };
 const MEN: AgBarSeriesOptions = {
-  type: "column",
-  xKey: "year",
-  yKey: "men",
-  yName: "Men",
+  type: 'column',
+  xKey: 'year',
+  yKey: 'men',
+  yName: 'Men',
   grouped: true,
   strokeWidth: 0,
   tooltip: {
@@ -134,10 +134,10 @@ const MEN: AgBarSeriesOptions = {
   },
 };
 const PORTIONS: AgLineSeriesOptions = {
-  type: "line",
-  xKey: "year",
-  yKey: "portions",
-  yName: "Portions",
+  type: 'line',
+  xKey: 'year',
+  yKey: 'portions',
+  yName: 'Portions',
   strokeWidth: 3,
   marker: {
     enabled: false,
@@ -147,12 +147,12 @@ const PORTIONS: AgLineSeriesOptions = {
   },
 };
 const COLUMN_AND_LINE: AgCartesianSeriesOptions[] = [
-  { ...WOMEN, type: "column" },
-  { ...MEN, type: "column" },
-  { ...PORTIONS, type: "line" },
+  { ...WOMEN, type: 'column' },
+  { ...MEN, type: 'column' },
+  { ...PORTIONS, type: 'line' },
 ];
 const AREA_AND_COLUMN: AgCartesianSeriesOptions[] = [
-  { ...PORTIONS, type: "area" },
-  { ...WOMEN, type: "column" },
-  { ...MEN, type: "column" },
+  { ...PORTIONS, type: 'area' },
+  { ...WOMEN, type: 'column' },
+  { ...MEN, type: 'column' },
 ];

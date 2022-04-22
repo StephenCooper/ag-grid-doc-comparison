@@ -1,8 +1,8 @@
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine-dark.css";
-import "ag-grid-enterprise";
-import { AgGridVue } from "ag-grid-vue3";
-import { createApp } from "vue";
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine-dark.css';
+import 'ag-grid-enterprise';
+import { AgGridVue } from 'ag-grid-vue3';
+import { createApp } from 'vue';
 
 const VueExample = {
   template: `
@@ -22,14 +22,14 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
-        { field: "country", rowGroup: true },
-        { field: "year", pivot: true },
-        { field: "total", aggFunc: "sum" },
+        { field: 'country', rowGroup: true },
+        { field: 'year', pivot: true },
+        { field: 'total', aggFunc: 'sum' },
       ],
       gridApi: null,
       columnApi: null,
@@ -48,8 +48,8 @@ const VueExample = {
       flex: 5,
       minWidth: 200,
     };
-    this.rowModelType = "serverSide";
-    this.serverSideStoreType = "partial";
+    this.rowModelType = 'serverSide';
+    this.serverSideStoreType = 'partial';
   },
   methods: {
     onGridReady(params) {
@@ -65,7 +65,7 @@ const VueExample = {
         params.api.setServerSideDatasource(datasource);
       };
 
-      fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
         .then((resp) => resp.json())
         .then((data) => updateData(data));
     },
@@ -75,7 +75,7 @@ const VueExample = {
 window.getServerSideDatasource = function getServerSideDatasource(server) {
   return {
     getRows: function (params) {
-      console.log("[Datasource] - rows requested by grid: ", params.request);
+      console.log('[Datasource] - rows requested by grid: ', params.request);
       // get data for request from our fake server
       var response = server.getData(params.request);
       // add pivot colDefs in the grid based on the resulting data
@@ -104,11 +104,11 @@ window.addPivotColDefs = function addPivotColDefs(response, columnApi) {
   }
   // create colDefs
   var pivotColDefs = response.pivotFields.map(function (field) {
-    var headerName = field.split("_")[0];
+    var headerName = field.split('_')[0];
     return { headerName: headerName, field: field };
   });
   // supply secondary columns to the grid
   columnApi.setSecondaryColumns(pivotColDefs);
 };
 
-createApp(VueExample).mount("#app");
+createApp(VueExample).mount('#app');

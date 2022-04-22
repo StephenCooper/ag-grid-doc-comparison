@@ -1,17 +1,17 @@
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
 import {
   FirstDataRenderedEvent,
   Grid,
   GridOptions,
   IFiltersToolPanel,
   ModuleRegistry,
-} from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { ColumnsToolPanelModule } from "@ag-grid-enterprise/column-tool-panel";
-import { FiltersToolPanelModule } from "@ag-grid-enterprise/filter-tool-panel";
-import { MenuModule } from "@ag-grid-enterprise/menu";
-import { SetFilterModule } from "@ag-grid-enterprise/set-filter";
+} from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { ColumnsToolPanelModule } from '@ag-grid-enterprise/column-tool-panel';
+import { FiltersToolPanelModule } from '@ag-grid-enterprise/filter-tool-panel';
+import { MenuModule } from '@ag-grid-enterprise/menu';
+import { SetFilterModule } from '@ag-grid-enterprise/set-filter';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([
@@ -25,30 +25,30 @@ ModuleRegistry.registerModules([
 const gridOptions: GridOptions = {
   columnDefs: [
     {
-      headerName: "Set Filter Column",
-      field: "col1",
-      filter: "agSetColumnFilter",
+      headerName: 'Set Filter Column',
+      field: 'col1',
+      filter: 'agSetColumnFilter',
       flex: 1,
       editable: true,
     },
   ],
-  sideBar: "filters",
+  sideBar: 'filters',
   rowData: getRowData(),
   onFirstDataRendered: onFirstDataRendered,
 };
 
 function getRowData() {
-  return [{ col1: "A" }, { col1: "A" }, { col1: "B" }, { col1: "C" }];
+  return [{ col1: 'A' }, { col1: 'A' }, { col1: 'B' }, { col1: 'C' }];
 }
 
 function setNewData() {
   var newData = [
-    { col1: "A" },
-    { col1: "A" },
-    { col1: "B" },
-    { col1: "C" },
-    { col1: "D" },
-    { col1: "E" },
+    { col1: 'A' },
+    { col1: 'A' },
+    { col1: 'B' },
+    { col1: 'C' },
+    { col1: 'D' },
+    { col1: 'E' },
   ];
   gridOptions.api!.setRowData(newData);
 }
@@ -59,16 +59,16 @@ function reset() {
 }
 
 function onFirstDataRendered(params: FirstDataRenderedEvent) {
-  (
-    params.api.getToolPanelInstance("filters") as any as IFiltersToolPanel
-  ).expandFilters();
+  ((params.api.getToolPanelInstance(
+    'filters'
+  ) as any) as IFiltersToolPanel).expandFilters();
 }
 
 // setup the grid after the page has finished loading
-var gridDiv = document.querySelector<HTMLElement>("#myGrid")!;
+var gridDiv = document.querySelector<HTMLElement>('#myGrid')!;
 new Grid(gridDiv, gridOptions);
 
-if (typeof window !== "undefined") {
+if (typeof window !== 'undefined') {
   // Attach external event handlers to window so they can be called from index.html
   (<any>window).setNewData = setNewData;
   (<any>window).reset = reset;

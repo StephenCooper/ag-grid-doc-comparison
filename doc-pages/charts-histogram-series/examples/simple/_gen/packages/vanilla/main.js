@@ -1,14 +1,14 @@
 const options = {
-  container: document.getElementById("myChart"),
+  container: document.getElementById('myChart'),
   title: {
-    text: "Race demographics",
+    text: 'Race demographics',
   },
   data: getData(),
   series: [
     {
-      type: "histogram",
-      xKey: "age",
-      xName: "Participant Age",
+      type: 'histogram',
+      xKey: 'age',
+      xName: 'Participant Age',
     },
   ],
   legend: {
@@ -16,14 +16,14 @@ const options = {
   },
   axes: [
     {
-      type: "number",
-      position: "bottom",
-      title: { text: "Age band (years)" },
+      type: 'number',
+      position: 'bottom',
+      title: { text: 'Age band (years)' },
     },
     {
-      type: "number",
-      position: "left",
-      title: { text: "Number of participants" },
+      type: 'number',
+      position: 'left',
+      title: { text: 'Number of participants' },
     },
   ],
 };

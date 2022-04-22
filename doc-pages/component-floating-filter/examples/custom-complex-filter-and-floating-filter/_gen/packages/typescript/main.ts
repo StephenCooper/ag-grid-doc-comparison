@@ -1,41 +1,41 @@
-import { ColDef, Grid, GridOptions } from "ag-grid-community";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import { CustomNumberFilter } from "./custom-number-filter";
+import { ColDef, Grid, GridOptions } from 'ag-grid-community';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import { CustomNumberFilter } from './custom-number-filter';
 import {
   CustomFloatingParams,
   NumberFloatingFilter,
-} from "./number-floating-filter";
+} from './number-floating-filter';
 
 const columnDefs: ColDef[] = [
   {
-    field: "athlete",
+    field: 'athlete',
     minWidth: 150,
-    filter: "agTextColumnFilter",
+    filter: 'agTextColumnFilter',
     filterParams: {
       debounceMs: 2000,
     },
   },
   {
-    field: "age",
-    filter: "agNumberColumnFilter",
+    field: 'age',
+    filter: 'agNumberColumnFilter',
     filterParams: {
       debounceMs: 0,
     },
   },
-  { field: "country" },
-  { field: "year" },
+  { field: 'country' },
+  { field: 'year' },
   {
-    field: "date",
+    field: 'date',
     minWidth: 180,
-    filter: "agDateColumnFilter",
+    filter: 'agDateColumnFilter',
     filterParams: {
       comparator: function (
         filterLocalDateAtMidnight: Date,
         cellValue: string
       ) {
         var dateAsString = cellValue;
-        var dateParts = dateAsString.split("/");
+        var dateParts = dateAsString.split('/');
         var cellDate = new Date(
           Number(dateParts[2]),
           Number(dateParts[1]) - 1,
@@ -59,9 +59,9 @@ const columnDefs: ColDef[] = [
       suppressFilterButton: true,
     },
   },
-  { field: "sport" },
+  { field: 'sport' },
   {
-    field: "gold",
+    field: 'gold',
     floatingFilterComponent: NumberFloatingFilter,
     floatingFilterComponentParams: {
       maxValue: 7,
@@ -70,7 +70,7 @@ const columnDefs: ColDef[] = [
     filter: CustomNumberFilter,
   },
   {
-    field: "silver",
+    field: 'silver',
     floatingFilterComponent: NumberFloatingFilter,
     floatingFilterComponentParams: {
       maxValue: 3,
@@ -79,7 +79,7 @@ const columnDefs: ColDef[] = [
     filter: CustomNumberFilter,
   },
   {
-    field: "bronze",
+    field: 'bronze',
     floatingFilterComponent: NumberFloatingFilter,
     floatingFilterComponentParams: {
       maxValue: 2,
@@ -88,7 +88,7 @@ const columnDefs: ColDef[] = [
     filter: CustomNumberFilter,
   },
   {
-    field: "total",
+    field: 'total',
     floatingFilterComponent: NumberFloatingFilter,
     floatingFilterComponentParams: {
       maxValue: 5,
@@ -113,9 +113,9 @@ const gridOptions: GridOptions = {
 };
 
 // setup the grid after the page has finished loading
-var gridDiv = document.querySelector<HTMLElement>("#myGrid")!;
+var gridDiv = document.querySelector<HTMLElement>('#myGrid')!;
 new Grid(gridDiv, gridOptions);
 
-fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
   .then((response) => response.json())
   .then((data) => gridOptions.api!.setRowData(data));

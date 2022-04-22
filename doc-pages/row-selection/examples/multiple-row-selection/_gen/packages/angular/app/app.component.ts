@@ -1,11 +1,11 @@
-import { HttpClient } from "@angular/common/http";
-import { Component } from "@angular/core";
-import { ColDef, GridApi, GridReadyEvent } from "ag-grid-community";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
+import { HttpClient } from '@angular/common/http';
+import { Component } from '@angular/core';
+import { ColDef, GridApi, GridReadyEvent } from 'ag-grid-community';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<div class="example-wrapper">
     <div class="example-header">
       Selection:
@@ -27,53 +27,54 @@ export class AppComponent {
   private gridApi!: GridApi;
 
   public columnDefs: ColDef[] = [
-    { field: "athlete", minWidth: 150 },
-    { field: "age", maxWidth: 90 },
-    { field: "country", minWidth: 150 },
-    { field: "year", maxWidth: 90 },
-    { field: "date", minWidth: 150 },
-    { field: "sport", minWidth: 150 },
-    { field: "gold" },
-    { field: "silver" },
-    { field: "bronze" },
-    { field: "total" },
+    { field: 'athlete', minWidth: 150 },
+    { field: 'age', maxWidth: 90 },
+    { field: 'country', minWidth: 150 },
+    { field: 'year', maxWidth: 90 },
+    { field: 'date', minWidth: 150 },
+    { field: 'sport', minWidth: 150 },
+    { field: 'gold' },
+    { field: 'silver' },
+    { field: 'bronze' },
+    { field: 'total' },
   ];
   public defaultColDef: ColDef = {
     flex: 1,
     minWidth: 100,
   };
-  public rowSelection = "multiple";
+  public rowSelection = 'multiple';
   public rowData!: any[];
 
   constructor(private http: HttpClient) {}
 
   onSelectionChanged() {
     var selectedRows = this.gridApi.getSelectedRows();
-    var selectedRowsString = "";
+    var selectedRowsString = '';
     var maxToShow = 5;
     selectedRows.forEach(function (selectedRow, index) {
       if (index >= maxToShow) {
         return;
       }
       if (index > 0) {
-        selectedRowsString += ", ";
+        selectedRowsString += ', ';
       }
       selectedRowsString += selectedRow.athlete;
     });
     if (selectedRows.length > maxToShow) {
       var othersCount = selectedRows.length - maxToShow;
       selectedRowsString +=
-        " and " + othersCount + " other" + (othersCount !== 1 ? "s" : "");
+        ' and ' + othersCount + ' other' + (othersCount !== 1 ? 's' : '');
     }
-    (document.querySelector("#selectedRows") as any).innerHTML =
-      selectedRowsString;
+    (document.querySelector(
+      '#selectedRows'
+    ) as any).innerHTML = selectedRowsString;
   }
 
   onGridReady(params: GridReadyEvent) {
     this.gridApi = params.api;
 
     this.http
-      .get<any[]>("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      .get<any[]>('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .subscribe((data) => (this.rowData = data));
   }
 }

@@ -1,9 +1,9 @@
-import { IFloatingFilterAngularComp } from "@ag-grid-community/angular";
-import { IFloatingFilterParams } from "@ag-grid-community/core";
-import { Component } from "@angular/core";
+import { IFloatingFilterAngularComp } from '@ag-grid-community/angular';
+import { IFloatingFilterParams } from '@ag-grid-community/core';
+import { Component } from '@angular/core';
 
 @Component({
-  selector: "number-component",
+  selector: 'number-component',
   template: `&gt;
     <input
       style="width: 30px"
@@ -14,8 +14,7 @@ import { Component } from "@angular/core";
     />`,
 })
 export class NumberFloatingFilterComponent
-  implements IFloatingFilterAngularComp
-{
+  implements IFloatingFilterAngularComp {
   params!: IFloatingFilterParams;
   currentValue: number | null | string = null;
 

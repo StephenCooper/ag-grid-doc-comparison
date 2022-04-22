@@ -1,10 +1,10 @@
-"use strict";
+'use strict';
 
-import * as agCharts from "ag-charts-community";
-import { AgChartsReact } from "ag-charts-react";
-import { cloneDeep } from "lodash";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { cloneDeep } from 'lodash';
+import { render } from 'react-dom';
+import * as agCharts from 'ag-charts-community';
+import { AgChartsReact } from 'ag-charts-react';
 
 class ChartExample extends Component {
   constructor(props) {
@@ -16,31 +16,31 @@ class ChartExample extends Component {
         data: getData(),
         series: [
           {
-            xKey: "time",
-            yKey: "voltage",
+            xKey: 'time',
+            yKey: 'voltage',
           },
         ],
         axes: [
           {
-            type: "time",
-            position: "bottom",
+            type: 'time',
+            position: 'bottom',
             tick: {
               count: agCharts.time.second.every(5),
             },
             label: {
-              format: "%H:%M:%S",
+              format: '%H:%M:%S',
             },
           },
           {
-            type: "number",
-            position: "left",
+            type: 'number',
+            position: 'left',
             label: {
-              format: "#{.2f}V",
+              format: '#{.2f}V',
             },
           },
         ],
         title: {
-          text: "Core Voltage",
+          text: 'Core Voltage',
         },
         legend: {
           enabled: false,
@@ -82,7 +82,7 @@ class ChartExample extends Component {
   }
 }
 
-var lastTime = new Date("07 Jan 2020 13:25:00 GMT").getTime();
+var lastTime = new Date('07 Jan 2020 13:25:00 GMT').getTime();
 var data = [];
 function getData() {
   data.shift();
@@ -96,4 +96,4 @@ function getData() {
 }
 var updating = false;
 
-render(<ChartExample />, document.querySelector("#root"));
+render(<ChartExample />, document.querySelector('#root'));

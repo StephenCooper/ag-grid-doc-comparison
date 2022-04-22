@@ -6,12 +6,12 @@ var bottomRowData = [];
 
 const gridOptions = {
   columnDefs: [
-    { field: "a", suppressCellFlash: true },
-    { field: "b" },
-    { field: "c" },
-    { field: "d" },
-    { field: "e" },
-    { field: "f" },
+    { field: 'a', suppressCellFlash: true },
+    { field: 'b' },
+    { field: 'c' },
+    { field: 'd' },
+    { field: 'e' },
+    { field: 'f' },
   ],
   defaultColDef: {
     flex: 1,
@@ -48,11 +48,11 @@ function createData(count) {
 }
 
 function isForceRefreshSelected() {
-  return document.querySelector("#forceRefresh").checked;
+  return document.querySelector('#forceRefresh').checked;
 }
 
 function isSuppressFlashSelected() {
-  return document.querySelector("#suppressFlash").checked;
+  return document.querySelector('#suppressFlash').checked;
 }
 
 function scrambleAndRefreshAll() {
@@ -68,7 +68,7 @@ function scrambleAndRefreshLeftToRight() {
   scramble();
 
   var api = gridOptions.api;
-  ["a", "b", "c", "d", "e", "f"].forEach(function (col, index) {
+  ['a', 'b', 'c', 'd', 'e', 'f'].forEach(function (col, index) {
     var millis = index * 100;
     var params = {
       force: isForceRefreshSelected(),
@@ -92,13 +92,13 @@ function scrambleAndRefreshTopToBottom() {
     refreshRow(rowNode, api);
   }
 
-  for (i = 0; i < gridOptions.api.getDisplayedRowCount(); i++) {
-    rowNode = gridOptions.api.getDisplayedRowAtIndex(i);
+  for (i = 0; i < api.getDisplayedRowCount(); i++) {
+    rowNode = api.getDisplayedRowAtIndex(i);
     refreshRow(rowNode, api);
   }
 
-  for (i = 0; i < gridOptions.api.getPinnedBottomRowCount(); i++) {
-    rowNode = gridOptions.api.getPinnedBottomRow(i);
+  for (i = 0; i < api.getPinnedBottomRowCount(); i++) {
+    rowNode = api.getPinnedBottomRow(i);
     refreshRow(rowNode, api);
   }
 
@@ -127,7 +127,7 @@ function scramble() {
 }
 
 function scrambleItem(item) {
-  ["a", "b", "c", "d", "e", "f"].forEach(function (colId) {
+  ['a', 'b', 'c', 'd', 'e', 'f'].forEach(function (colId) {
     // skip 50% of the cells so updates are random
     if (Math.random() > 0.5) {
       return;
@@ -137,7 +137,7 @@ function scrambleItem(item) {
 }
 
 // setup the grid after the page has finished loading
-document.addEventListener("DOMContentLoaded", function () {
-  var gridDiv = document.querySelector("#myGrid");
+document.addEventListener('DOMContentLoaded', function () {
+  var gridDiv = document.querySelector('#myGrid');
   new agGrid.Grid(gridDiv, gridOptions);
 });

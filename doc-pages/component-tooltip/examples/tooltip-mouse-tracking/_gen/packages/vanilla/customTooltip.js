@@ -1,10 +1,10 @@
 class CustomTooltip {
   init(params) {
-    const type = params.type || "primary";
+    const type = params.type || 'primary';
     const data = params.api.getDisplayedRowAtIndex(params.rowIndex).data;
-    const eGui = (this.eGui = document.createElement("div"));
+    const eGui = (this.eGui = document.createElement('div'));
 
-    eGui.classList.add("custom-tooltip");
+    eGui.classList.add('custom-tooltip');
     this.eGui.innerHTML = `
             <div class="panel panel-${type}">
                 <div class="panel-heading">

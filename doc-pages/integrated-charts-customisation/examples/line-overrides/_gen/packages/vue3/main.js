@@ -1,8 +1,8 @@
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
-import { AgGridVue } from "ag-grid-vue3";
-import { createApp } from "vue";
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import 'ag-grid-enterprise';
+import { AgGridVue } from 'ag-grid-vue3';
+import { createApp } from 'vue';
 
 const VueExample = {
   template: `
@@ -23,34 +23,34 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
-        { field: "country", width: 150, chartDataType: "category" },
-        { field: "gold", chartDataType: "series" },
-        { field: "silver", chartDataType: "series" },
-        { field: "bronze", chartDataType: "series" },
+        { field: 'country', width: 150, chartDataType: 'category' },
+        { field: 'gold', chartDataType: 'series' },
+        { field: 'silver', chartDataType: 'series' },
+        { field: 'bronze', chartDataType: 'series' },
         {
-          headerName: "A",
-          valueGetter: "Math.floor(Math.random()*1000)",
-          chartDataType: "series",
+          headerName: 'A',
+          valueGetter: 'Math.floor(Math.random()*1000)',
+          chartDataType: 'series',
         },
         {
-          headerName: "B",
-          valueGetter: "Math.floor(Math.random()*1000)",
-          chartDataType: "series",
+          headerName: 'B',
+          valueGetter: 'Math.floor(Math.random()*1000)',
+          chartDataType: 'series',
         },
         {
-          headerName: "C",
-          valueGetter: "Math.floor(Math.random()*1000)",
-          chartDataType: "series",
+          headerName: 'C',
+          valueGetter: 'Math.floor(Math.random()*1000)',
+          chartDataType: 'series',
         },
         {
-          headerName: "D",
-          valueGetter: "Math.floor(Math.random()*1000)",
-          chartDataType: "series",
+          headerName: 'D',
+          valueGetter: 'Math.floor(Math.random()*1000)',
+          chartDataType: 'series',
         },
       ],
       gridApi: null,
@@ -78,13 +78,13 @@ const VueExample = {
           strokeWidth: 5,
           highlightStyle: {
             item: {
-              fill: "red",
-              stroke: "yellow",
+              fill: 'red',
+              stroke: 'yellow',
             },
           },
           marker: {
             enabled: true,
-            shape: "diamond",
+            shape: 'diamond',
             size: 12,
             strokeWidth: 4,
             fillOpacity: 0.2,
@@ -94,14 +94,14 @@ const VueExample = {
             renderer: (params) => {
               return {
                 content:
-                  "<b>" +
+                  '<b>' +
                   params.xName.toUpperCase() +
-                  ":</b> " +
+                  ':</b> ' +
                   params.xValue +
-                  "<br/>" +
-                  "<b>" +
+                  '<br/>' +
+                  '<b>' +
                   params.yName.toUpperCase() +
-                  ":</b> " +
+                  ':</b> ' +
                   params.yValue,
               };
             },
@@ -115,11 +115,11 @@ const VueExample = {
       var cellRange = {
         rowStartIndex: 0,
         rowEndIndex: 4,
-        columns: ["country", "gold", "silver", "bronze"],
+        columns: ['country', 'gold', 'silver', 'bronze'],
       };
       var createRangeChartParams = {
         cellRange: cellRange,
-        chartType: "line",
+        chartType: 'line',
       };
       params.api.createRangeChart(createRangeChartParams);
     },
@@ -130,4 +130,4 @@ const VueExample = {
   },
 };
 
-createApp(VueExample).mount("#app");
+createApp(VueExample).mount('#app');

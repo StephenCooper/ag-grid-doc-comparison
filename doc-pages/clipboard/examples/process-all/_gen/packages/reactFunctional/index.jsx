@@ -1,28 +1,28 @@
-"use strict";
+'use strict';
 
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
-import { AgGridReact } from "ag-grid-react";
-import React, { useCallback, useMemo, useState } from "react";
-import { render } from "react-dom";
+import React, { useCallback, useMemo, useRef, useState } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from 'ag-grid-react';
+import 'ag-grid-enterprise';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 
 const GridExample = () => {
-  const containerStyle = useMemo(() => ({ width: "100%", height: "100%" }), []);
-  const gridStyle = useMemo(() => ({ height: "100%", width: "100%" }), []);
+  const containerStyle = useMemo(() => ({ width: '100%', height: '100%' }), []);
+  const gridStyle = useMemo(() => ({ height: '100%', width: '100%' }), []);
   const [rowData, setRowData] = useState(getData());
   const [columnDefs, setColumnDefs] = useState([
-    { field: "a" },
-    { field: "b" },
-    { field: "c" },
-    { field: "d" },
-    { field: "e" },
-    { field: "f" },
-    { field: "g" },
-    { field: "h" },
-    { field: "i" },
-    { field: "j" },
-    { field: "k" },
+    { field: 'a' },
+    { field: 'b' },
+    { field: 'c' },
+    { field: 'd' },
+    { field: 'e' },
+    { field: 'f' },
+    { field: 'g' },
+    { field: 'h' },
+    { field: 'i' },
+    { field: 'j' },
+    { field: 'k' },
   ]);
   const defaultColDef = useMemo(() => {
     return {
@@ -31,12 +31,12 @@ const GridExample = () => {
       resizable: true,
       flex: 1,
       cellClassRules: {
-        "cell-green": 'value.startsWith("Green")',
-        "cell-blue": 'value.startsWith("Blue")',
-        "cell-red": 'value.startsWith("Red")',
-        "cell-yellow": 'value.startsWith("Yellow")',
-        "cell-orange": 'value.startsWith("Orange")',
-        "cell-grey": 'value.startsWith("Grey")',
+        'cell-green': 'value.startsWith("Green")',
+        'cell-blue': 'value.startsWith("Blue")',
+        'cell-red': 'value.startsWith("Red")',
+        'cell-yellow': 'value.startsWith("Yellow")',
+        'cell-orange': 'value.startsWith("Orange")',
+        'cell-grey': 'value.startsWith("Grey")',
       },
     };
   }, []);
@@ -50,9 +50,9 @@ const GridExample = () => {
       for (var j = 0; j < row.length; j++) {
         var value = row[j];
         if (value) {
-          if (value.startsWith("Red")) {
+          if (value.startsWith('Red')) {
             containsRed = true;
-          } else if (value.startsWith("Yellow")) {
+          } else if (value.startsWith('Yellow')) {
             containsYellow = true;
           }
         }
@@ -61,8 +61,8 @@ const GridExample = () => {
     if (containsRed) {
       // replace the paste request with another
       return [
-        ["Orange", "Orange"],
-        ["Grey", "Grey"],
+        ['Orange', 'Orange'],
+        ['Grey', 'Grey'],
       ];
     }
     if (containsYellow) {
@@ -87,4 +87,4 @@ const GridExample = () => {
   );
 };
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

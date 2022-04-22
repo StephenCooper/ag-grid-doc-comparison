@@ -11,6 +11,6 @@ export default {
     };
   },
   beforeMount() {
-    this.athlete = this.params.value.value || "- Missing -";
+    this.athlete = this.params.value.value || '- Missing -';
   },
 };

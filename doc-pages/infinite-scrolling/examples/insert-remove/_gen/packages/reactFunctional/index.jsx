@@ -1,13 +1,13 @@
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import { AgGridReact } from "ag-grid-react";
-import React, { useCallback, useMemo, useRef, useState } from "react";
-import { render } from "react-dom";
-("use strict");
+'use strict';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import React, { useCallback, useMemo, useRef, useState } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from 'ag-grid-react';
 
 const valueFormatter = function (params) {
-  if (typeof params.value === "number") {
-    return "£" + params.value.toLocaleString();
+  if (typeof params.value === 'number') {
+    return '£' + params.value.toLocaleString();
   } else {
     return params.value;
   }
@@ -18,15 +18,15 @@ let sequenceId = 0;
 let allOfTheData = [];
 
 const createRowData = (id) => {
-  const makes = ["Toyota", "Ford", "Porsche", "Chevy", "Honda", "Nissan"];
+  const makes = ['Toyota', 'Ford', 'Porsche', 'Chevy', 'Honda', 'Nissan'];
   const models = [
-    "Cruze",
-    "Celica",
-    "Mondeo",
-    "Boxter",
-    "Genesis",
-    "Accord",
-    "Taurus",
+    'Cruze',
+    'Celica',
+    'Mondeo',
+    'Boxster',
+    'Genesis',
+    'Accord',
+    'Taurus',
   ];
   return {
     id: id,
@@ -47,15 +47,15 @@ const insertItemsAt2 = (count) => {
 };
 
 const GridExample = () => {
-  const gridRef = useRef();
-  const containerStyle = useMemo(() => ({ width: "100%", height: "100%" }), []);
-  const gridStyle = useMemo(() => ({ height: "100%", width: "100%" }), []);
+  const gridRef = useRef(null);
+  const containerStyle = useMemo(() => ({ width: '100%', height: '100%' }), []);
+  const gridStyle = useMemo(() => ({ height: '100%', width: '100%' }), []);
 
   const [columnDefs, setColumnDefs] = useState([
     {
-      headerName: "Item ID",
-      field: "id",
-      valueGetter: "node.id",
+      headerName: 'Item ID',
+      field: 'id',
+      valueGetter: 'node.id',
       cellRenderer: (props) => {
         if (props.value !== undefined) {
           return props.value;
@@ -66,10 +66,10 @@ const GridExample = () => {
         }
       },
     },
-    { field: "make" },
-    { field: "model" },
+    { field: 'make' },
+    { field: 'model' },
     {
-      field: "price",
+      field: 'price',
       valueFormatter: valueFormatter,
     },
   ]);
@@ -77,7 +77,7 @@ const GridExample = () => {
     return {
       rowCount: undefined,
       getRows: function (params) {
-        console.log("asking for " + params.startRow + " to " + params.endRow);
+        console.log('asking for ' + params.startRow + ' to ' + params.endRow);
         // At this point in your code, you would call the server.
         // To make the demo look real, wait for 500ms before returning
         setTimeout(function () {
@@ -113,9 +113,9 @@ const GridExample = () => {
     return params.data.id.toString();
   }, []);
   const getRowStyle = useCallback(function (params) {
-    if (params.data && params.data.make === "Honda") {
+    if (params.data && params.data.make === 'Honda') {
       return {
-        fontWeight: "bold",
+        fontWeight: 'bold',
       };
     } else {
       return undefined;
@@ -170,10 +170,10 @@ const GridExample = () => {
 
   const rowsAndMaxFound = useCallback(() => {
     console.log(
-      "getInfiniteRowCount() => " + gridRef.current.api.getInfiniteRowCount()
+      'getInfiniteRowCount() => ' + gridRef.current.api.getInfiniteRowCount()
     );
     console.log(
-      "isLastRowIndexKnown() => " + gridRef.current.api.isLastRowIndexKnown()
+      'isLastRowIndexKnown() => ' + gridRef.current.api.isLastRowIndexKnown()
     );
   }, []);
 
@@ -191,7 +191,7 @@ const GridExample = () => {
   }, [allOfTheData]);
 
   const printCacheState = useCallback(() => {
-    console.log("*** Cache State ***");
+    console.log('*** Cache State ***');
     console.log(gridRef.current.api.getCacheBlockState());
   }, []);
 
@@ -206,8 +206,8 @@ const GridExample = () => {
 
   return (
     <div style={containerStyle}>
-      <div style={{ display: "flex", flexDirection: "column", height: "100%" }}>
-        <div style={{ marginBottom: "10px" }}>
+      <div style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
+        <div style={{ marginBottom: '10px' }}>
           <button onClick={() => insertItemsAt2AndRefresh(5)}>
             Insert Rows
           </button>
@@ -217,21 +217,21 @@ const GridExample = () => {
           <button onClick={jumpTo500}>Jump to 500</button>
           <button onClick={printCacheState}>Print Cache State</button>
         </div>
-        <div style={{ marginBottom: "10px" }}>
+        <div style={{ marginBottom: '10px' }}>
           <button onClick={setPricesHigh}>Set Prices High</button>
           <button onClick={setPricesLow}>Set Prices Low</button>
           <button onClick={refreshCache}>Refresh Cache</button>
           <button onClick={purgeCache}>Purge Cache</button>
         </div>
-        <div style={{ flexGrow: "1" }}>
+        <div style={{ flexGrow: '1' }}>
           <div style={gridStyle} className="ag-theme-alpine">
             <AgGridReact
               ref={gridRef}
               columnDefs={columnDefs}
               datasource={datasource}
               defaultColDef={defaultColDef}
-              rowSelection={"multiple"}
-              rowModelType={"infinite"}
+              rowSelection={'multiple'}
+              rowModelType={'infinite'}
               maxBlocksInCache={2}
               infiniteInitialRowCount={500}
               maxConcurrentDatasourceRequests={2}
@@ -246,4 +246,4 @@ const GridExample = () => {
   );
 };
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

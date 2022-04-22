@@ -2,7 +2,7 @@
 function getData() {
   return [
     {
-      year: "2000",
+      year: '2000',
       stillWine: 8880946.349,
       sparklingWine: 533187,
       wineOver15: 283625,
@@ -13,7 +13,7 @@ function getData() {
       cider: 6006000,
     },
     {
-      year: "2001",
+      year: '2001',
       stillWine: 9538893.772,
       sparklingWine: 510478,
       wineOver15: 284198,
@@ -24,7 +24,7 @@ function getData() {
       cider: 5911000,
     },
     {
-      year: "2002",
+      year: '2002',
       stillWine: 10325729.02,
       sparklingWine: 571022,
       wineOver15: 320255,
@@ -35,7 +35,7 @@ function getData() {
       cider: 5939000,
     },
     {
-      year: "2003",
+      year: '2003',
       stillWine: 10661812.01,
       sparklingWine: 632942,
       wineOver15: 293087,
@@ -46,7 +46,7 @@ function getData() {
       cider: 5876000,
     },
     {
-      year: "2004",
+      year: '2004',
       stillWine: 11762464.97,
       sparklingWine: 667980,
       wineOver15: 294419,
@@ -57,7 +57,7 @@ function getData() {
       cider: 6139000,
     },
     {
-      year: "2005",
+      year: '2005',
       stillWine: 12139448.22,
       sparklingWine: 712725,
       wineOver15: 302389,
@@ -68,7 +68,7 @@ function getData() {
       cider: 6440000,
     },
     {
-      year: "2006",
+      year: '2006',
       stillWine: 11663073.5,
       sparklingWine: 706419,
       wineOver15: 297984,
@@ -79,7 +79,7 @@ function getData() {
       cider: 7523000,
     },
     {
-      year: "2007",
+      year: '2007',
       stillWine: 12578475.02,
       sparklingWine: 829693,
       wineOver15: 301944,
@@ -90,7 +90,7 @@ function getData() {
       cider: 8047000,
     },
     {
-      year: "2008",
+      year: '2008',
       stillWine: 12426433.65,
       sparklingWine: 748145,
       wineOver15: 319985,
@@ -101,7 +101,7 @@ function getData() {
       cider: 8414000,
     },
     {
-      year: "2009",
+      year: '2009',
       stillWine: 11738731.88,
       sparklingWine: 721709,
       wineOver15: 216249,
@@ -112,7 +112,7 @@ function getData() {
       cider: 9404000,
     },
     {
-      year: "2010",
+      year: '2010',
       stillWine: 11896446.68,
       sparklingWine: 794491,
       wineOver15: 216078,
@@ -123,7 +123,7 @@ function getData() {
       cider: 9309000,
     },
     {
-      year: "2011",
+      year: '2011',
       stillWine: 11843704,
       sparklingWine: 799538,
       wineOver15: 216517,
@@ -134,7 +134,7 @@ function getData() {
       cider: 9280000,
     },
     {
-      year: "2012",
+      year: '2012',
       stillWine: 11705404.94,
       sparklingWine: 872345,
       wineOver15: 223867,
@@ -145,7 +145,7 @@ function getData() {
       cider: 8737000,
     },
     {
-      year: "2013",
+      year: '2013',
       stillWine: 11585698.74,
       sparklingWine: 925118,
       wineOver15: 227717,
@@ -156,7 +156,7 @@ function getData() {
       cider: 8640000,
     },
     {
-      year: "2014",
+      year: '2014',
       stillWine: 11243598.86,
       sparklingWine: 1117124,
       wineOver15: 201323,
@@ -167,7 +167,7 @@ function getData() {
       cider: 7937000,
     },
     {
-      year: "2015",
+      year: '2015',
       stillWine: 11209743.85,
       sparklingWine: 1375241,
       wineOver15: 196290,
@@ -178,7 +178,7 @@ function getData() {
       cider: 7758000,
     },
     {
-      year: "2016",
+      year: '2016',
       stillWine: 11181926.5,
       sparklingWine: 1547326,
       wineOver15: 205651,
@@ -189,7 +189,7 @@ function getData() {
       cider: 7214000,
     },
     {
-      year: "2017",
+      year: '2017',
       stillWine: 11322702.64,
       sparklingWine: 1628199,
       wineOver15: 204102,
@@ -200,7 +200,7 @@ function getData() {
       cider: 7410000,
     },
     {
-      year: "2018",
+      year: '2018',
       stillWine: 11110241.76,
       sparklingWine: 1606374,
       wineOver15: 185047,
@@ -211,7 +211,7 @@ function getData() {
       cider: 6804000,
     },
     {
-      year: "2019",
+      year: '2019',
       stillWine: 10868915.29,
       sparklingWine: 1523396,
       wineOver15: 194125,

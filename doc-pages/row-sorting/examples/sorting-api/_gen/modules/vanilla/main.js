@@ -1,14 +1,14 @@
 const columnDefs = [
-  { field: "athlete" },
-  { field: "age", width: 90 },
-  { field: "country" },
-  { field: "year", width: 90 },
-  { field: "date" },
-  { field: "sport" },
-  { field: "gold" },
-  { field: "silver" },
-  { field: "bronze" },
-  { field: "total" },
+  { field: 'athlete' },
+  { field: 'age', width: 90 },
+  { field: 'country' },
+  { field: 'year', width: 90 },
+  { field: 'date' },
+  { field: 'sport' },
+  { field: 'gold' },
+  { field: 'silver' },
+  { field: 'bronze' },
+  { field: 'total' },
 ];
 
 const gridOptions = {
@@ -20,14 +20,14 @@ const gridOptions = {
 
 function sortByAthleteAsc() {
   gridOptions.columnApi.applyColumnState({
-    state: [{ colId: "athlete", sort: "asc" }],
+    state: [{ colId: 'athlete', sort: 'asc' }],
     defaultState: { sort: null },
   });
 }
 
 function sortByAthleteDesc() {
   gridOptions.columnApi.applyColumnState({
-    state: [{ colId: "athlete", sort: "desc" }],
+    state: [{ colId: 'athlete', sort: 'desc' }],
     defaultState: { sort: null },
   });
 }
@@ -35,8 +35,8 @@ function sortByAthleteDesc() {
 function sortByCountryThenSport() {
   gridOptions.columnApi.applyColumnState({
     state: [
-      { colId: "country", sort: "asc", sortIndex: 0 },
-      { colId: "sport", sort: "asc", sortIndex: 1 },
+      { colId: 'country', sort: 'asc', sortIndex: 0 },
+      { colId: 'sport', sort: 'asc', sortIndex: 1 },
     ],
     defaultState: { sort: null },
   });
@@ -45,8 +45,8 @@ function sortByCountryThenSport() {
 function sortBySportThenCountry() {
   gridOptions.columnApi.applyColumnState({
     state: [
-      { colId: "country", sort: "asc", sortIndex: 1 },
-      { colId: "sport", sort: "asc", sortIndex: 0 },
+      { colId: 'country', sort: 'asc', sortIndex: 1 },
+      { colId: 'sport', sort: 'asc', sortIndex: 0 },
     ],
     defaultState: { sort: null },
   });
@@ -70,7 +70,7 @@ function saveSort() {
       return { colId: s.colId, sort: s.sort, sortIndex: s.sortIndex };
     });
   savedSort = sortState;
-  console.log("saved sort", sortState);
+  console.log('saved sort', sortState);
 }
 
 function restoreFromSave() {
@@ -81,11 +81,11 @@ function restoreFromSave() {
 }
 
 // setup the grid after the page has finished loading
-document.addEventListener("DOMContentLoaded", function () {
-  var gridDiv = document.querySelector("#myGrid");
+document.addEventListener('DOMContentLoaded', function () {
+  var gridDiv = document.querySelector('#myGrid');
   new agGrid.Grid(gridDiv, gridOptions);
 
-  fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+  fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
     .then((response) => response.json())
     .then((data) => gridOptions.api.setRowData(data));
 });

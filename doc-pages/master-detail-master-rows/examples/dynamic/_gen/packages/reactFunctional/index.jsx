@@ -1,26 +1,26 @@
-"use strict";
+'use strict';
 
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
-import { AgGridReact } from "ag-grid-react";
-import React, { useCallback, useMemo, useRef, useState } from "react";
-import { render } from "react-dom";
+import React, { useCallback, useMemo, useRef, useState } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from 'ag-grid-react';
+import 'ag-grid-enterprise';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 
 const GridExample = () => {
   const gridRef = useRef();
-  const containerStyle = useMemo(() => ({ width: "100%", height: "100%" }), []);
-  const gridStyle = useMemo(() => ({ height: "100%", width: "100%" }), []);
+  const containerStyle = useMemo(() => ({ width: '100%', height: '100%' }), []);
+  const gridStyle = useMemo(() => ({ height: '100%', width: '100%' }), []);
   const [rowData, setRowData] = useState();
   const isRowMaster = useCallback(function (dataItem) {
     return dataItem ? dataItem.callRecords.length > 0 : false;
   }, []);
   const [columnDefs, setColumnDefs] = useState([
     // group cell renderer needed for expand / collapse icons
-    { field: "name", cellRenderer: "agGroupCellRenderer" },
-    { field: "account" },
-    { field: "calls" },
-    { field: "minutes", valueFormatter: "x.toLocaleString() + 'm'" },
+    { field: 'name', cellRenderer: 'agGroupCellRenderer' },
+    { field: 'account' },
+    { field: 'calls' },
+    { field: 'minutes', valueFormatter: "x.toLocaleString() + 'm'" },
   ]);
   const defaultColDef = useMemo(() => {
     return {
@@ -31,11 +31,11 @@ const GridExample = () => {
     return {
       detailGridOptions: {
         columnDefs: [
-          { field: "callId" },
-          { field: "direction" },
-          { field: "number", minWidth: 150 },
-          { field: "duration", valueFormatter: "x.toLocaleString() + 's'" },
-          { field: "switchCode", minWidth: 150 },
+          { field: 'callId' },
+          { field: 'direction' },
+          { field: 'number', minWidth: 150 },
+          { field: 'duration', valueFormatter: "x.toLocaleString() + 's'" },
+          { field: 'switchCode', minWidth: 150 },
         ],
         defaultColDef: {
           flex: 1,
@@ -49,7 +49,7 @@ const GridExample = () => {
 
   const onGridReady = useCallback((params) => {
     fetch(
-      "https://www.ag-grid.com/example-assets/master-detail-dynamic-data.json"
+      'https://www.ag-grid.com/example-assets/master-detail-dynamic-data.json'
     )
       .then((resp) => resp.json())
       .then((data) => {
@@ -83,4 +83,4 @@ const GridExample = () => {
   );
 };
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

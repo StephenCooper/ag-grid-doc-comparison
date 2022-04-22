@@ -1,10 +1,10 @@
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine-dark.css";
-import { AgGridVue } from "@ag-grid-community/vue3";
-import { RowGroupingModule } from "@ag-grid-enterprise/row-grouping";
-import { ServerSideRowModelModule } from "@ag-grid-enterprise/server-side-row-model";
-import { createApp } from "vue";
+import { ModuleRegistry } from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine-dark.css';
+import { AgGridVue } from '@ag-grid-community/vue3';
+import { RowGroupingModule } from '@ag-grid-enterprise/row-grouping';
+import { ServerSideRowModelModule } from '@ag-grid-enterprise/server-side-row-model';
+import { createApp } from 'vue';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([ServerSideRowModelModule, RowGroupingModule]);
@@ -30,17 +30,17 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
-        { field: "country", enableRowGroup: true, rowGroup: true },
-        { field: "sport", enableRowGroup: true, rowGroup: true },
-        { field: "year", minWidth: 100 },
-        { field: "gold", aggFunc: "sum" },
-        { field: "silver", aggFunc: "sum" },
-        { field: "bronze", aggFunc: "sum" },
+        { field: 'country', enableRowGroup: true, rowGroup: true },
+        { field: 'sport', enableRowGroup: true, rowGroup: true },
+        { field: 'year', minWidth: 100 },
+        { field: 'gold', aggFunc: 'sum' },
+        { field: 'silver', aggFunc: 'sum' },
+        { field: 'bronze', aggFunc: 'sum' },
       ],
       gridApi: null,
       columnApi: null,
@@ -59,21 +59,21 @@ const VueExample = {
     };
   },
   created() {
-    this.rowGroupPanelShow = "always";
+    this.rowGroupPanelShow = 'always';
     this.autoGroupColumnDef = {
       flex: 1,
       minWidth: 280,
     };
     this.cacheBlockSize = 4;
-    this.rowModelType = "serverSide";
-    this.serverSideStoreType = "partial";
+    this.rowModelType = 'serverSide';
+    this.serverSideStoreType = 'partial';
     this.getServerSideStoreParams = (params) => {
       var noGroupingActive = params.rowGroupColumns.length == 0;
       var res;
       if (noGroupingActive) {
         res = {
           // infinite scrolling
-          storeType: "partial",
+          storeType: 'partial',
           // 100 rows per block
           cacheBlockSize: 100,
           // purge blocks that are not needed
@@ -82,16 +82,16 @@ const VueExample = {
       } else {
         var topLevelRows = params.level == 0;
         res = {
-          storeType: topLevelRows ? "full" : "partial",
+          storeType: topLevelRows ? 'full' : 'partial',
           cacheBlockSize: params.level == 1 ? 5 : 2,
           maxBlocksInCache: -1, // never purge blocks
         };
       }
-      console.log("############## NEW STORE ##############");
+      console.log('############## NEW STORE ##############');
       console.log(
-        "getServerSideStoreParams, level = " +
+        'getServerSideStoreParams, level = ' +
           params.level +
-          ", result = " +
+          ', result = ' +
           JSON.stringify(res)
       );
       return res;
@@ -111,7 +111,7 @@ const VueExample = {
         params.api.setServerSideDatasource(datasource);
       };
 
-      fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
         .then((resp) => resp.json())
         .then((data) => updateData(data));
     },
@@ -121,7 +121,7 @@ const VueExample = {
 window.getServerSideDatasource = function getServerSideDatasource(server) {
   return {
     getRows: function (params) {
-      console.log("[Datasource] - rows requested by grid: ", params.request);
+      console.log('[Datasource] - rows requested by grid: ', params.request);
       var response = server.getData(params.request);
       // adding delay to simulate real server call
       setTimeout(function () {
@@ -140,4 +140,4 @@ window.getServerSideDatasource = function getServerSideDatasource(server) {
   };
 };
 
-createApp(VueExample).mount("#app");
+createApp(VueExample).mount('#app');

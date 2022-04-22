@@ -1,5 +1,5 @@
-import { AgChartsVue } from "ag-charts-vue3";
-import { createApp } from "vue";
+import { AgChartsVue } from 'ag-charts-vue3';
+import { createApp } from 'vue';
 
 const ChartExample = {
   template: `
@@ -7,7 +7,7 @@ const ChartExample = {
                 :options="options"></ag-charts-vue>
     `,
   components: {
-    "ag-charts-vue": AgChartsVue,
+    'ag-charts-vue': AgChartsVue,
   },
   data: function () {
     return {
@@ -17,42 +17,42 @@ const ChartExample = {
   created() {
     this.options = {
       title: {
-        text: "Browser Wars",
+        text: 'Browser Wars',
       },
       subtitle: {
-        text: "2009-2019",
+        text: '2009-2019',
       },
       data: getData(),
       series: [
         {
-          type: "area",
-          xKey: "year",
-          yKey: "ie",
-          yName: "IE",
+          type: 'area',
+          xKey: 'year',
+          yKey: 'ie',
+          yName: 'IE',
           normalizedTo: 100,
           stacked: true,
         },
         {
-          type: "area",
-          xKey: "year",
-          yKey: "firefox",
-          yName: "Firefox",
+          type: 'area',
+          xKey: 'year',
+          yKey: 'firefox',
+          yName: 'Firefox',
           normalizedTo: 100,
           stacked: true,
         },
         {
-          type: "area",
-          xKey: "year",
-          yKey: "safari",
-          yName: "Safari",
+          type: 'area',
+          xKey: 'year',
+          yKey: 'safari',
+          yName: 'Safari',
           normalizedTo: 100,
           stacked: true,
         },
         {
-          type: "area",
-          xKey: "year",
-          yKey: "chrome",
-          yName: "Chrome",
+          type: 'area',
+          xKey: 'year',
+          yKey: 'chrome',
+          yName: 'Chrome',
           normalizedTo: 100,
           stacked: true,
         },
@@ -63,4 +63,4 @@ const ChartExample = {
   methods: {},
 };
 
-createApp(ChartExample).mount("#app");
+createApp(ChartExample).mount('#app');

@@ -1,8 +1,8 @@
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
-import { AgGridVue } from "ag-grid-vue3";
-import { createApp } from "vue";
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import 'ag-grid-enterprise';
+import { AgGridVue } from 'ag-grid-vue3';
+import { createApp } from 'vue';
 
 const VueExample = {
   template: `
@@ -20,21 +20,21 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
-        { field: "country", width: 120, rowGroup: true },
-        { field: "year", width: 90, rowGroup: true },
-        { field: "sport", width: 110 },
-        { field: "athlete", width: 200 },
-        { field: "gold", width: 100 },
-        { field: "silver", width: 100 },
-        { field: "bronze", width: 100 },
-        { field: "total", width: 100 },
-        { field: "age", width: 90 },
-        { field: "date", width: 110 },
+        { field: 'country', width: 120, rowGroup: true },
+        { field: 'year', width: 90, rowGroup: true },
+        { field: 'sport', width: 110 },
+        { field: 'athlete', width: 200 },
+        { field: 'gold', width: 100 },
+        { field: 'silver', width: 100 },
+        { field: 'bronze', width: 100 },
+        { field: 'total', width: 100 },
+        { field: 'age', width: 90 },
+        { field: 'date', width: 110 },
       ],
       gridApi: null,
       columnApi: null,
@@ -52,12 +52,12 @@ const VueExample = {
   },
   created() {
     this.autoGroupColumnDef = {
-      headerTooltip: "Group",
+      headerTooltip: 'Group',
       minWidth: 190,
       tooltipValueGetter: (params) => {
         const count = params.node && params.node.allChildrenCount;
         if (count != null) {
-          return params.value + " (" + count + ")";
+          return params.value + ' (' + count + ')';
         }
         return params.value;
       },
@@ -72,11 +72,11 @@ const VueExample = {
         this.rowData = data;
       };
 
-      fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
         .then((resp) => resp.json())
         .then((data) => updateData(data));
     },
   },
 };
 
-createApp(VueExample).mount("#app");
+createApp(VueExample).mount('#app');

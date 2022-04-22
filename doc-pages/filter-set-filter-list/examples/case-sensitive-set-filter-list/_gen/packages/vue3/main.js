@@ -1,8 +1,8 @@
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
-import { AgGridVue } from "ag-grid-vue3";
-import { createApp } from "vue";
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import 'ag-grid-enterprise';
+import { AgGridVue } from 'ag-grid-vue3';
+import { createApp } from 'vue';
 
 const VueExample = {
   template: `
@@ -22,24 +22,24 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
         {
-          headerName: "Case Insensitive (default)",
-          field: "colour",
-          filter: "agSetColumnFilter",
+          headerName: 'Case Insensitive (default)',
+          field: 'colour',
+          filter: 'agSetColumnFilter',
           filterParams: {
             caseSensitive: false,
             cellRenderer: colourCellRenderer,
           },
         },
         {
-          headerName: "Case Sensitive",
-          field: "colour",
-          filter: "agSetColumnFilter",
+          headerName: 'Case Sensitive',
+          field: 'colour',
+          filter: 'agSetColumnFilter',
           filterParams: {
             caseSensitive: true,
             cellRenderer: colourCellRenderer,
@@ -60,12 +60,12 @@ const VueExample = {
     };
   },
   created() {
-    this.sideBar = "filters";
+    this.sideBar = 'filters';
     this.rowData = getData();
   },
   methods: {
     onFirstDataRendered(params) {
-      params.api.getToolPanelInstance("filters").expandFilters();
+      params.api.getToolPanelInstance('filters').expandFilters();
     },
     onGridReady(params) {
       this.gridApi = params.api;
@@ -75,7 +75,7 @@ const VueExample = {
 };
 
 window.colourCellRenderer = function colourCellRenderer(params) {
-  if (!params.value || params.value === "(Select All)") {
+  if (!params.value || params.value === '(Select All)') {
     return params.value;
   }
   return `<div style="background-color: ${params.value.toLowerCase()}; ${FIXED_STYLES}"></div>${
@@ -84,6 +84,6 @@ window.colourCellRenderer = function colourCellRenderer(params) {
 };
 
 const FIXED_STYLES =
-  "vertical-align: middle; border: 1px solid black; margin: 3px; display: inline-block; width: 10px; height: 10px";
+  'vertical-align: middle; border: 1px solid black; margin: 3px; display: inline-block; width: 10px; height: 10px';
 
-createApp(VueExample).mount("#app");
+createApp(VueExample).mount('#app');

@@ -1,21 +1,21 @@
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import { AgGridReact } from "ag-grid-react";
-import React, { Component } from "react";
-import { render } from "react-dom";
-import DaysFrostRenderer from "./daysFrostRenderer.jsx";
-("use strict");
+'use strict';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from 'ag-grid-react';
+import DaysFrostRenderer from './daysFrostRenderer.jsx';
 
 /*
  * It's unlikely you'll use functions that create and manipulate DOM elements like this in an React application, but it
  * demonstrates what is at least possible, and may be preferable in certain use cases
  */
 const createImageSpan = (imageMultiplier, image) => {
-  const resultElement = document.createElement("span");
+  const resultElement = document.createElement('span');
   for (let i = 0; i < imageMultiplier; i++) {
-    const imageElement = document.createElement("img");
+    const imageElement = document.createElement('img');
     imageElement.src =
-      "https://www.ag-grid.com/example-assets/weather/" + image;
+      'https://www.ag-grid.com/example-assets/weather/' + image;
     resultElement.appendChild(imageElement);
   }
   return resultElement;
@@ -24,14 +24,14 @@ const createImageSpan = (imageMultiplier, image) => {
 // This is a plain JS (not React) component
 class DeltaIndicator {
   init(params) {
-    const element = document.createElement("span");
-    const imageElement = document.createElement("img");
+    const element = document.createElement('span');
+    const imageElement = document.createElement('img');
     if (params.value > 15) {
       imageElement.src =
-        "https://www.ag-grid.com/example-assets/weather/fire-plus.png";
+        'https://www.ag-grid.com/example-assets/weather/fire-plus.png';
     } else {
       imageElement.src =
-        "https://www.ag-grid.com/example-assets/weather/fire-minus.png";
+        'https://www.ag-grid.com/example-assets/weather/fire-minus.png';
     }
     element.appendChild(imageElement);
     element.appendChild(document.createTextNode(params.value));
@@ -70,43 +70,43 @@ class GridExample extends Component {
     this.state = {
       columnDefs: [
         {
-          headerName: "Month",
-          field: "Month",
+          headerName: 'Month',
+          field: 'Month',
           width: 75,
-          cellStyle: { color: "darkred" },
+          cellStyle: { color: 'darkred' },
         },
         {
-          headerName: "Max Temp (\u02DAC)",
-          field: "Max temp (C)",
+          headerName: 'Max Temp (\u02DAC)',
+          field: 'Max temp (C)',
           width: 120,
           cellRenderer: DeltaIndicator,
         },
         {
-          headerName: "Min Temp (\u02DAC)",
-          field: "Min temp (C)",
+          headerName: 'Min Temp (\u02DAC)',
+          field: 'Min temp (C)',
           width: 120,
           cellRenderer: DeltaIndicator,
         },
         {
-          headerName: "Days of Air Frost",
-          field: "Days of air frost (days)",
+          headerName: 'Days of Air Frost',
+          field: 'Days of air frost (days)',
           width: 233,
           cellRenderer: DaysFrostRenderer,
-          cellRendererParams: { rendererImage: "frost.png" },
+          cellRendererParams: { rendererImage: 'frost.png' },
         },
         {
-          headerName: "Days Sunshine",
-          field: "Sunshine (hours)",
+          headerName: 'Days Sunshine',
+          field: 'Sunshine (hours)',
           width: 190,
           cellRenderer: DaysSunshineRenderer,
-          cellRendererParams: { rendererImage: "sun.png" },
+          cellRendererParams: { rendererImage: 'sun.png' },
         },
         {
-          headerName: "Rainfall (10mm)",
-          field: "Rainfall (mm)",
+          headerName: 'Rainfall (10mm)',
+          field: 'Rainfall (mm)',
           width: 180,
           cellRenderer: RainPerTenMmRenderer,
-          cellRendererParams: { rendererImage: "rain.png" },
+          cellRendererParams: { rendererImage: 'rain.png' },
         },
       ],
       rowData: null,
@@ -126,7 +126,7 @@ class GridExample extends Component {
 
     const updateData = (data) => params.api.setRowData(data);
 
-    fetch("https://www.ag-grid.com/example-assets/weather-se-england.json")
+    fetch('https://www.ag-grid.com/example-assets/weather-se-england.json')
       .then((resp) => resp.json())
       .then((data) => updateData(data));
   };
@@ -141,17 +141,17 @@ class GridExample extends Component {
     // iterate over the rows and make each "days of air frost"
     this.gridApi.forEachNode((rowNode) => {
       rowNode.setDataValue(
-        "Days of air frost (days)",
-        rowNode.data["Days of air frost (days)"] + extraDaysFrost
+        'Days of air frost (days)',
+        rowNode.data['Days of air frost (days)'] + extraDaysFrost
       );
     });
   }
 
   render() {
     return (
-      <div style={{ width: "100%", height: "100%" }}>
+      <div style={{ width: '100%', height: '100%' }}>
         <div className="example-wrapper">
-          <div style={{ marginBottom: "5px" }}>
+          <div style={{ marginBottom: '5px' }}>
             <input
               type="button"
               defaultValue="Frostier Year"
@@ -163,8 +163,8 @@ class GridExample extends Component {
 
           <div
             style={{
-              height: "100%",
-              width: "100%",
+              height: '100%',
+              width: '100%',
             }}
             className="ag-theme-alpine"
           >
@@ -181,4 +181,4 @@ class GridExample extends Component {
   }
 }
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

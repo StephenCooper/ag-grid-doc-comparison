@@ -3,11 +3,11 @@ import {
   GridOptions,
   IServerSideDatasource,
   ModuleRegistry,
-} from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine-dark.css";
-import { MenuModule } from "@ag-grid-enterprise/menu";
-import { ServerSideRowModelModule } from "@ag-grid-enterprise/server-side-row-model";
+} from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine-dark.css';
+import { MenuModule } from '@ag-grid-enterprise/menu';
+import { ServerSideRowModelModule } from '@ag-grid-enterprise/server-side-row-model';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([ServerSideRowModelModule, MenuModule]);
@@ -15,36 +15,36 @@ declare var FakeServer: any;
 const gridOptions: GridOptions = {
   columnDefs: [
     {
-      field: "athlete",
-      filter: "agTextColumnFilter",
+      field: 'athlete',
+      filter: 'agTextColumnFilter',
       minWidth: 220,
     },
     {
-      field: "year",
-      filter: "agNumberColumnFilter",
+      field: 'year',
+      filter: 'agNumberColumnFilter',
       filterParams: {
-        buttons: ["reset"],
+        buttons: ['reset'],
         debounceMs: 1000,
         suppressAndOrCondition: true,
       },
     },
-    { field: "gold", type: "number" },
-    { field: "silver", type: "number" },
-    { field: "bronze", type: "number" },
+    { field: 'gold', type: 'number' },
+    { field: 'silver', type: 'number' },
+    { field: 'bronze', type: 'number' },
   ],
   defaultColDef: {
     flex: 1,
     minWidth: 100,
     sortable: true,
     resizable: true,
-    menuTabs: ["filterMenuTab"],
+    menuTabs: ['filterMenuTab'],
   },
   columnTypes: {
-    number: { filter: "agNumberColumnFilter" },
+    number: { filter: 'agNumberColumnFilter' },
   },
   // use the server-side row model
-  rowModelType: "serverSide",
-  serverSideStoreType: "partial",
+  rowModelType: 'serverSide',
+  serverSideStoreType: 'partial',
 
   animateRows: true,
   // debug: true
@@ -53,7 +53,7 @@ const gridOptions: GridOptions = {
 function getServerSideDatasource(server: any): IServerSideDatasource {
   return {
     getRows: function (params) {
-      console.log("[Datasource] - rows requested by grid: ", params.request);
+      console.log('[Datasource] - rows requested by grid: ', params.request);
 
       // get data for request from our fake server
       var response = server.getData(params.request);
@@ -75,10 +75,10 @@ function getServerSideDatasource(server: any): IServerSideDatasource {
 }
 
 // setup the grid after the page has finished loading
-var gridDiv = document.querySelector<HTMLElement>("#myGrid")!;
+var gridDiv = document.querySelector<HTMLElement>('#myGrid')!;
 new Grid(gridDiv, gridOptions);
 
-fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
   .then((response) => response.json())
   .then(function (data) {
     // setup the fake server with entire dataset

@@ -1,10 +1,10 @@
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine-dark.css";
-import { AgGridVue } from "@ag-grid-community/vue3";
-import { RowGroupingModule } from "@ag-grid-enterprise/row-grouping";
-import { createApp } from "vue";
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine-dark.css';
+import { AgGridVue } from '@ag-grid-community/vue3';
+import { RowGroupingModule } from '@ag-grid-enterprise/row-grouping';
+import { createApp } from 'vue';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([ClientSideRowModelModule, RowGroupingModule]);
@@ -46,21 +46,21 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
-        { headerName: "Student ID", field: "student" },
-        { headerName: "Year Group", field: "yearGroup", rowGroup: true },
-        { headerName: "Age", field: "age" },
-        { headerName: "Course", field: "course", pivot: true },
+        { headerName: 'Student ID', field: 'student' },
+        { headerName: 'Year Group', field: 'yearGroup', rowGroup: true },
+        { headerName: 'Age', field: 'age' },
+        { headerName: 'Course', field: 'course', pivot: true },
         {
-          headerName: "Age Range",
+          headerName: 'Age Range',
           valueGetter: ageRangeValueGetter,
           pivot: true,
         },
-        { headerName: "Points", field: "points", aggFunc: "sum" },
+        { headerName: 'Points', field: 'points', aggFunc: 'sum' },
       ],
       gridApi: null,
       columnApi: null,
@@ -69,7 +69,7 @@ const VueExample = {
         minWidth: 150,
         sortable: true,
         resizable: true,
-        cellRenderer: "agAnimateShowChangeCellRenderer",
+        cellRenderer: 'agAnimateShowChangeCellRenderer',
       },
       rowData: null,
       groupDefaultExpanded: null,
@@ -85,13 +85,13 @@ const VueExample = {
   },
   methods: {
     pivotMode() {
-      var pivotModeOn = document.getElementById("pivot-mode").checked;
+      var pivotModeOn = document.getElementById('pivot-mode').checked;
       this.gridColumnApi.setPivotMode(pivotModeOn);
       this.gridColumnApi.applyColumnState({
         state: [
-          { colId: "yearGroup", rowGroup: pivotModeOn },
-          { colId: "course", pivot: pivotModeOn },
-          { colId: "ageRange", pivot: pivotModeOn },
+          { colId: 'yearGroup', rowGroup: pivotModeOn },
+          { colId: 'course', pivot: pivotModeOn },
+          { colId: 'ageRange', pivot: pivotModeOn },
         ],
       });
     },
@@ -100,56 +100,56 @@ const VueExample = {
       if (!rowNodeToUpdate) return;
       var randomValue = createNewRandomScore(rowNodeToUpdate.data);
       console.log(
-        "updating points to " + randomValue + " on ",
+        'updating points to ' + randomValue + ' on ',
         rowNodeToUpdate.data
       );
-      rowNodeToUpdate.setDataValue("points", randomValue);
+      rowNodeToUpdate.setDataValue('points', randomValue);
     },
     updateUsingTransaction() {
       var itemToUpdate = pickExistingRowItemAtRandom(this.gridApi);
       if (!itemToUpdate) {
         return;
       }
-      console.log("updating - before", itemToUpdate);
+      console.log('updating - before', itemToUpdate);
       itemToUpdate.points = createNewRandomScore(itemToUpdate);
       var transaction = {
         update: [itemToUpdate],
       };
-      console.log("updating - after", itemToUpdate);
+      console.log('updating - after', itemToUpdate);
       this.gridApi.applyTransaction(transaction);
     },
     addNewGroupUsingTransaction() {
       var item1 = createRow();
       var item2 = createRow();
-      item1.yearGroup = "Year 5";
-      item2.yearGroup = "Year 5";
+      item1.yearGroup = 'Year 5';
+      item2.yearGroup = 'Year 5';
       var transaction = {
         add: [item1, item2],
       };
-      console.log("add - ", item1);
-      console.log("add - ", item2);
+      console.log('add - ', item1);
+      console.log('add - ', item2);
       this.gridApi.applyTransaction(transaction);
     },
     addNewCourse() {
       var item1 = createRow();
-      item1.course = "Physics";
+      item1.course = 'Physics';
       var transaction = {
         add: [item1],
       };
-      console.log("add - ", item1);
+      console.log('add - ', item1);
       this.gridApi.applyTransaction(transaction);
     },
     removePhysics() {
       var allPhysics = [];
       this.gridApi.forEachLeafNode(function (rowNode) {
-        if (rowNode.data.course === "Physics") {
+        if (rowNode.data.course === 'Physics') {
           allPhysics.push(rowNode.data);
         }
       });
       var transaction = {
         remove: allPhysics,
       };
-      console.log("removing " + allPhysics.length + " physics items.");
+      console.log('removing ' + allPhysics.length + ' physics items.');
       this.gridApi.applyTransaction(transaction);
     },
     moveCourse() {
@@ -157,33 +157,33 @@ const VueExample = {
       if (!item) {
         return;
       }
-      item.course = item.course === "History" ? "Science" : "History";
+      item.course = item.course === 'History' ? 'Science' : 'History';
       var transaction = {
         update: [item],
       };
-      console.log("moving " + item);
+      console.log('moving ' + item);
       this.gridApi.applyTransaction(transaction);
     },
     onGridReady(params) {
       this.gridApi = params.api;
       this.gridColumnApi = params.columnApi;
 
-      document.getElementById("pivot-mode").checked = true;
+      document.getElementById('pivot-mode').checked = true;
     },
   },
 };
 
 window.ageRangeValueGetter = function ageRangeValueGetter(params) {
-  var age = params.getValue("age");
+  var age = params.getValue('age');
   if (age === undefined) {
     return null;
   }
   if (age < 20) {
-    return "< 20";
+    return '< 20';
   } else if (age > 30) {
-    return "> 30";
+    return '> 30';
   } else {
-    return "20 to 30";
+    return '20 to 30';
   }
 };
 
@@ -207,8 +207,8 @@ window.createRow = function createRow() {
   return {
     student: studentId++,
     points: (randomNumber % 60) + 40,
-    course: ["Science", "History"][randomNumber % 3 === 0 ? 0 : 1],
-    yearGroup: "Year " + ((randomNumber % 4) + 1),
+    course: ['Science', 'History'][randomNumber % 3 === 0 ? 0 : 1],
+    yearGroup: 'Year ' + ((randomNumber % 4) + 1),
     age: (randomNumber % 25) + 15, // 15 to 40
   };
 };
@@ -252,4 +252,4 @@ var seed;
 
 var studentId;
 
-createApp(VueExample).mount("#app");
+createApp(VueExample).mount('#app');

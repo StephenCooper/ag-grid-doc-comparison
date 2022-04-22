@@ -1,7 +1,7 @@
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import { AgGridVue } from "ag-grid-vue3";
-import { createApp } from "vue";
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import { AgGridVue } from 'ag-grid-vue3';
+import { createApp } from 'vue';
 
 const VueExample = {
   template: `
@@ -17,21 +17,21 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
-        { field: "athlete", sort: "desc" },
-        { field: "age", width: 90 },
-        { field: "country" },
-        { field: "year", width: 90, unSortIcon: true },
-        { field: "date", comparator: dateComparator },
-        { field: "sport" },
-        { field: "gold" },
-        { field: "silver" },
-        { field: "bronze" },
-        { field: "total" },
+        { field: 'athlete', sort: 'desc' },
+        { field: 'age', width: 90 },
+        { field: 'country' },
+        { field: 'year', width: 90, unSortIcon: true },
+        { field: 'date', comparator: dateComparator },
+        { field: 'sport' },
+        { field: 'gold' },
+        { field: 'silver' },
+        { field: 'bronze' },
+        { field: 'total' },
       ],
       gridApi: null,
       columnApi: null,
@@ -50,7 +50,7 @@ const VueExample = {
 
       const updateData = (data) => params.api.setRowData(data);
 
-      fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
         .then((resp) => resp.json())
         .then((data) => updateData(data));
     },
@@ -72,15 +72,14 @@ window.dateComparator = function dateComparator(date1, date2) {
   return date1Number - date2Number;
 };
 
-window.monthToComparableNumber = // eg 29/08/2004 gets converted to 20040829
-  function monthToComparableNumber(date) {
-    if (date === undefined || date === null || date.length !== 10) {
-      return null;
-    }
-    const yearNumber = Number.parseInt(date.substring(6, 10));
-    const monthNumber = Number.parseInt(date.substring(3, 5));
-    const dayNumber = Number.parseInt(date.substring(0, 2));
-    return yearNumber * 10000 + monthNumber * 100 + dayNumber;
-  };
+window.monthToComparableNumber = function monthToComparableNumber(date) { // eg 29/08/2004 gets converted to 20040829
+  if (date === undefined || date === null || date.length !== 10) {
+    return null;
+  }
+  const yearNumber = Number.parseInt(date.substring(6, 10));
+  const monthNumber = Number.parseInt(date.substring(3, 5));
+  const dayNumber = Number.parseInt(date.substring(0, 2));
+  return yearNumber * 10000 + monthNumber * 100 + dayNumber;
+};
 
-createApp(VueExample).mount("#app");
+createApp(VueExample).mount('#app');

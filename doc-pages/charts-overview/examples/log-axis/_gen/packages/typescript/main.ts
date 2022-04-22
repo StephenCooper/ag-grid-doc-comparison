@@ -1,41 +1,41 @@
-import * as agCharts from "ag-charts-community";
-import { AgCartesianChartOptions } from "ag-charts-community";
+import * as agCharts from 'ag-charts-community';
+import { AgCartesianChartOptions } from 'ag-charts-community';
 
 const options: AgCartesianChartOptions = {
-  container: document.getElementById("myChart"),
+  container: document.getElementById('myChart'),
   data: getData(),
   title: {
-    text: "World Population Over Time",
+    text: 'World Population Over Time',
   },
   subtitle: {
-    text: "log scale",
+    text: 'log scale',
   },
   series: [
     {
-      type: "line",
-      xKey: "year",
-      yKey: "population",
+      type: 'line',
+      xKey: 'year',
+      yKey: 'population',
     },
   ],
   axes: [
     {
-      type: "log",
-      position: "left",
+      type: 'log',
+      position: 'left',
       title: {
         enabled: true,
-        text: "Population",
+        text: 'Population',
       },
       label: {
-        format: ",.0f",
+        format: ',.0f',
         fontSize: 10,
       },
     },
     {
-      type: "number",
-      position: "bottom",
+      type: 'number',
+      position: 'bottom',
       title: {
         enabled: true,
-        text: "Year",
+        text: 'Year',
       },
       label: {
         fontSize: 10,
@@ -51,17 +51,17 @@ var chart = agCharts.AgChart.create(options);
 
 function useNumberAxis() {
   options.subtitle = {
-    text: "linear scale",
+    text: 'linear scale',
   };
   options.axes![0] = {
-    type: "number",
-    position: "left",
+    type: 'number',
+    position: 'left',
     title: {
       enabled: true,
-      text: "Population",
+      text: 'Population',
     },
     label: {
-      format: ",.0f",
+      format: ',.0f',
       fontSize: 10,
     },
   };
@@ -70,24 +70,24 @@ function useNumberAxis() {
 
 function useLogAxis() {
   options.subtitle = {
-    text: "log scale",
+    text: 'log scale',
   };
   options.axes![0] = {
-    type: "log",
-    position: "left",
+    type: 'log',
+    position: 'left',
     title: {
       enabled: true,
-      text: "Population",
+      text: 'Population',
     },
     label: {
-      format: ",.0f",
+      format: ',.0f',
       fontSize: 10,
     },
   };
   agCharts.AgChart.update(chart, options);
 }
 
-if (typeof window !== "undefined") {
+if (typeof window !== 'undefined') {
   // Attach external event handlers to window so they can be called from index.html
   (<any>window).useNumberAxis = useNumberAxis;
   (<any>window).useLogAxis = useLogAxis;

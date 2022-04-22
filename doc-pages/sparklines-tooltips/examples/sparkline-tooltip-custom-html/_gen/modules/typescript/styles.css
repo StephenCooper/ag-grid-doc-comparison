@@ -23,7 +23,7 @@
 }
 
 .my-custom-tooltip-arrow::after {
-  content: "";
+  content: '';
   position: absolute;
   top: 40%;
   left: -7px;

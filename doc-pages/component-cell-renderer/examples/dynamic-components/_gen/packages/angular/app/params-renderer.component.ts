@@ -1,9 +1,9 @@
-import { Component } from "@angular/core";
-import { ICellRendererAngularComp } from "ag-grid-angular";
-import { ICellRendererParams } from "ag-grid-community";
+import { Component } from '@angular/core';
+import { ICellRendererAngularComp } from 'ag-grid-angular';
+import { ICellRendererParams } from 'ag-grid-community';
 
 @Component({
-  selector: "params-cell",
+  selector: 'params-cell',
   template: `Field: {{ params.colDef.field }}, Value: {{ params.value }}`,
 })
 export class ParamsRenderer implements ICellRendererAngularComp {

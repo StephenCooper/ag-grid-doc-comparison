@@ -1,8 +1,10 @@
-"use strict";
+'use strict';
 
-import { AgChartsReact } from "ag-charts-react";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { cloneDeep } from 'lodash';
+import { render } from 'react-dom';
+import * as agCharts from 'ag-charts-community';
+import { AgChartsReact } from 'ag-charts-react';
 
 class ChartExample extends Component {
   constructor(props) {
@@ -30,54 +32,54 @@ class ChartExample extends Component {
           },
         },
         title: {
-          text: "UK Housing Stock (2016)",
+          text: 'UK Housing Stock (2016)',
           fontSize: 18,
         },
         subtitle: {
-          text: "Source: Ministry of Housing, Communities & Local Government",
+          text: 'Source: Ministry of Housing, Communities & Local Government',
         },
         series: [
           {
-            type: "bar",
-            xKey: "type",
-            yKey: "ownerOccupied",
-            yName: "Owner occupied",
+            type: 'bar',
+            xKey: 'type',
+            yKey: 'ownerOccupied',
+            yName: 'Owner occupied',
             stacked: true,
           },
           {
-            type: "bar",
-            xKey: "type",
-            yKey: "privateRented",
-            yName: "Private rented",
+            type: 'bar',
+            xKey: 'type',
+            yKey: 'privateRented',
+            yName: 'Private rented',
             stacked: true,
           },
           {
-            type: "bar",
-            xKey: "type",
-            yKey: "localAuthority",
-            yName: "Local authority",
+            type: 'bar',
+            xKey: 'type',
+            yKey: 'localAuthority',
+            yName: 'Local authority',
             stacked: true,
           },
           {
-            type: "bar",
-            xKey: "type",
-            yKey: "housingAssociation",
-            yName: "Housing association",
+            type: 'bar',
+            xKey: 'type',
+            yKey: 'housingAssociation',
+            yName: 'Housing association',
             stacked: true,
           },
         ],
         axes: [
           {
-            type: "category",
-            position: "left",
+            type: 'category',
+            position: 'left',
           },
           {
-            type: "number",
-            position: "top",
+            type: 'number',
+            position: 'top',
           },
         ],
         legend: {
-          position: "bottom",
+          position: 'bottom',
         },
       },
     };
@@ -99,4 +101,4 @@ function getTotal(datum) {
   );
 }
 
-render(<ChartExample />, document.querySelector("#root"));
+render(<ChartExample />, document.querySelector('#root'));

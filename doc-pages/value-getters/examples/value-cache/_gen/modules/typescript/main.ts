@@ -1,15 +1,16 @@
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
 import {
   ColDef,
+  GetRowIdParams,
   Grid,
   GridOptions,
   ModuleRegistry,
   ValueFormatterParams,
   ValueGetterParams,
-} from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine-dark.css";
-import { RowGroupingModule } from "@ag-grid-enterprise/row-grouping";
+} from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine-dark.css';
+import { RowGroupingModule } from '@ag-grid-enterprise/row-grouping';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([ClientSideRowModelModule, RowGroupingModule]);
@@ -17,22 +18,22 @@ ModuleRegistry.registerModules([ClientSideRowModelModule, RowGroupingModule]);
 var callCount = 1;
 
 const columnDefs: ColDef[] = [
-  { field: "q1", type: "quarterFigure" },
-  { field: "q2", type: "quarterFigure" },
-  { field: "q3", type: "quarterFigure" },
-  { field: "q4", type: "quarterFigure" },
-  { field: "year", rowGroup: true, hide: true },
+  { field: 'q1', type: 'quarterFigure' },
+  { field: 'q2', type: 'quarterFigure' },
+  { field: 'q3', type: 'quarterFigure' },
+  { field: 'q4', type: 'quarterFigure' },
+  { field: 'year', rowGroup: true, hide: true },
   {
-    headerName: "Total",
-    colId: "total",
-    cellClass: ["number-cell", "total-col"],
-    aggFunc: "sum",
+    headerName: 'Total',
+    colId: 'total',
+    cellClass: ['number-cell', 'total-col'],
+    aggFunc: 'sum',
     valueFormatter: formatNumber,
     valueGetter: function (params: ValueGetterParams) {
-      var q1 = params.getValue("q1");
-      var q2 = params.getValue("q2");
-      var q3 = params.getValue("q3");
-      var q4 = params.getValue("q4");
+      var q1 = params.getValue('q1');
+      var q2 = params.getValue('q2');
+      var q3 = params.getValue('q3');
+      var q4 = params.getValue('q4');
       var result = q1 + q2 + q3 + q4;
       console.log(
         `Total Value Getter (${callCount}, ${params.column.getId()}): ${[
@@ -40,7 +41,7 @@ const columnDefs: ColDef[] = [
           q2,
           q3,
           q4,
-        ].join(", ")} =  ${result}`
+        ].join(', ')} =  ${result}`
       );
       callCount++;
       return result;
@@ -61,8 +62,8 @@ const gridOptions: GridOptions = {
   // valueCache = true / false;
   columnTypes: {
     quarterFigure: {
-      cellClass: "number-cell",
-      aggFunc: "sum",
+      cellClass: 'number-cell',
+      aggFunc: 'sum',
       valueFormatter: formatNumber,
       valueParser: function numberParser(params) {
         return Number(params.newValue);
@@ -74,11 +75,11 @@ const gridOptions: GridOptions = {
   enableCellChangeFlash: true,
   enableRangeSelection: true,
   groupDefaultExpanded: 1,
-  getRowId: function (params) {
+  getRowId: function (params: GetRowIdParams) {
     return params.data.id;
   },
   onCellValueChanged: function () {
-    console.log("onCellValueChanged");
+    console.log('onCellValueChanged');
   },
 };
 
@@ -88,7 +89,7 @@ function formatNumber(params: ValueFormatterParams) {
   // i pulled this from stack overflow, i have no idea how it works
   return Math.floor(number)
     .toString()
-    .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
+    .replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
 }
 
 function onValueCache(valueCacheOn: boolean) {
@@ -98,25 +99,25 @@ function onValueCache(valueCacheOn: boolean) {
 
 function destroyOldGridIfExists() {
   if (gridOptions.api!) {
-    console.log("==========> destroying old grid");
+    console.log('==========> destroying old grid');
     gridOptions.api!.destroy();
   }
 }
 
 function createGrid(valueCacheOn: boolean) {
-  console.log("==========> creating grid");
+  console.log('==========> creating grid');
   callCount = 1;
   gridOptions.valueCache = valueCacheOn;
 
   // then similar to all the other examples, create the grid
-  var gridDiv = document.querySelector<HTMLElement>("#myGrid")!;
+  var gridDiv = document.querySelector<HTMLElement>('#myGrid')!;
   new Grid(gridDiv, gridOptions);
 }
 
 // setup the grid after the page has finished loading
 onValueCache(false);
 
-if (typeof window !== "undefined") {
+if (typeof window !== 'undefined') {
   // Attach external event handlers to window so they can be called from index.html
   (<any>window).onValueCache = onValueCache;
 }

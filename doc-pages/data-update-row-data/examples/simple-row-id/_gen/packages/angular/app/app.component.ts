@@ -1,15 +1,16 @@
-import { Component } from "@angular/core";
+import { Component } from '@angular/core';
 import {
   ColDef,
   GetRowIdFunc,
+  GetRowIdParams,
   GridApi,
   GridReadyEvent,
-} from "ag-grid-community";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
+} from 'ag-grid-community';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<div
     style="height: 100%; width: 100%; display: flex; flex-direction: column;"
   >
@@ -35,13 +36,13 @@ export class AppComponent {
   private gridApi!: GridApi;
 
   public columnDefs: ColDef[] = [
-    { field: "make" },
-    { field: "model" },
-    { field: "price" },
+    { field: 'make' },
+    { field: 'model' },
+    { field: 'price' },
   ];
   public rowData: any[] | null = rowDataA;
-  public rowSelection = "single";
-  public getRowId: GetRowIdFunc = (params) => params.data.id;
+  public rowSelection = 'single';
+  public getRowId: GetRowIdFunc = (params: GetRowIdParams) => params.data.id;
 
   onRowDataA() {
     this.gridApi.setRowData(rowDataA);
@@ -58,14 +59,14 @@ export class AppComponent {
 
 // specify the data
 var rowDataA = [
-  { id: "1", make: "Toyota", model: "Celica", price: 35000 },
-  { id: "4", make: "BMW", model: "M50", price: 60000 },
-  { id: "5", make: "Aston Martin", model: "DBX", price: 190000 },
+  { id: '1', make: 'Toyota', model: 'Celica', price: 35000 },
+  { id: '4', make: 'BMW', model: 'M50', price: 60000 },
+  { id: '5', make: 'Aston Martin', model: 'DBX', price: 190000 },
 ];
 var rowDataB = [
-  { id: "1", make: "Toyota", model: "Celica", price: 35000 },
-  { id: "2", make: "Ford", model: "Mondeo", price: 32000 },
-  { id: "3", make: "Porsche", model: "Boxter", price: 72000 },
-  { id: "4", make: "BMW", model: "M50", price: 60000 },
-  { id: "5", make: "Aston Martin", model: "DBX", price: 190000 },
+  { id: '1', make: 'Toyota', model: 'Celica', price: 35000 },
+  { id: '2', make: 'Ford', model: 'Mondeo', price: 32000 },
+  { id: '3', make: 'Porsche', model: 'Boxster', price: 72000 },
+  { id: '4', make: 'BMW', model: 'M50', price: 60000 },
+  { id: '5', make: 'Aston Martin', model: 'DBX', price: 190000 },
 ];

@@ -1,16 +1,16 @@
-"use strict";
+'use strict';
 
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import { AgGridReact } from "ag-grid-react";
-import React, { useCallback, useMemo, useState } from "react";
-import { render } from "react-dom";
+import React, { useCallback, useMemo, useRef, useState } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from 'ag-grid-react';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 
 var rowIdSequence = 100;
 
 const addCheckboxListener = (params) => {
-  var checkbox = document.querySelector("input[type=checkbox]");
-  checkbox.addEventListener("change", function () {
+  var checkbox = document.querySelector('input[type=checkbox]');
+  checkbox.addEventListener('change', function () {
     params.api.setSuppressMoveWhenRowDragging(checkbox.checked);
   });
 };
@@ -18,15 +18,15 @@ const addCheckboxListener = (params) => {
 const createRowData = () => {
   var data = [];
   [
-    "Red",
-    "Green",
-    "Blue",
-    "Red",
-    "Green",
-    "Blue",
-    "Red",
-    "Green",
-    "Blue",
+    'Red',
+    'Green',
+    'Blue',
+    'Red',
+    'Green',
+    'Blue',
+    'Red',
+    'Green',
+    'Blue',
   ].forEach(function (color) {
     var newDataItem = {
       id: rowIdSequence++,
@@ -40,24 +40,24 @@ const createRowData = () => {
 };
 
 const createTile = (data) => {
-  var el = document.createElement("div");
-  el.classList.add("tile");
+  var el = document.createElement('div');
+  el.classList.add('tile');
   el.classList.add(data.color.toLowerCase());
   el.innerHTML =
     '<div class="id">' +
     data.id +
-    "</div>" +
+    '</div>' +
     '<div class="value">' +
     data.value1 +
-    "</div>" +
+    '</div>' +
     '<div class="value">' +
     data.value2 +
-    "</div>";
+    '</div>';
   return el;
 };
 
 const addDropZones = (params) => {
-  var tileContainer = document.querySelector(".tile-container");
+  var tileContainer = document.querySelector('.tile-container');
   var dropZone = {
     getContainer: function () {
       return tileContainer;
@@ -71,14 +71,14 @@ const addDropZones = (params) => {
 };
 
 const GridExample = () => {
-  const containerStyle = useMemo(() => ({ width: "100%", height: "100%" }), []);
-  const gridStyle = useMemo(() => ({ height: "100%", width: "100%" }), []);
+  const containerStyle = useMemo(() => ({ width: '100%', height: '100%' }), []);
+  const gridStyle = useMemo(() => ({ height: '100%', width: '100%' }), []);
   const [rowData, setRowData] = useState(createRowData());
   const [columnDefs, setColumnDefs] = useState([
-    { field: "id", rowDrag: true },
-    { field: "color" },
-    { field: "value1" },
-    { field: "value2" },
+    { field: 'id', rowDrag: true },
+    { field: 'color' },
+    { field: 'value1' },
+    { field: 'value2' },
   ]);
   const defaultColDef = useMemo(() => {
     return {
@@ -90,9 +90,9 @@ const GridExample = () => {
   }, []);
   const rowClassRules = useMemo(() => {
     return {
-      "red-row": 'data.color == "Red"',
-      "green-row": 'data.color == "Green"',
-      "blue-row": 'data.color == "Blue"',
+      'red-row': 'data.color == "Red"',
+      'green-row': 'data.color == "Green"',
+      'blue-row': 'data.color == "Blue"',
     };
   }, []);
 
@@ -135,4 +135,4 @@ const GridExample = () => {
   );
 };
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

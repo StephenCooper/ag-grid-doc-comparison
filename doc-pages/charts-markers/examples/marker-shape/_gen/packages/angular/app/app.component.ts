@@ -1,8 +1,8 @@
-import { Component } from "@angular/core";
-import { AgChartOptions } from "ag-charts-community";
+import { Component } from '@angular/core';
+import { AgChartOptions } from 'ag-charts-community';
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<ag-charts-angular
     style="height: 100%"
     [options]="options"
@@ -14,40 +14,40 @@ export class AppComponent {
   constructor() {
     this.options = {
       title: {
-        text: "Fuel Spending (2019)",
+        text: 'Fuel Spending (2019)',
       },
       data: getData(),
       series: [
         {
-          xKey: "quarter",
-          yKey: "petrol",
-          title: "Petrol",
+          xKey: 'quarter',
+          yKey: 'petrol',
+          title: 'Petrol',
           marker: {
-            shape: "square",
+            shape: 'square',
             size: 10,
           },
         },
         {
-          xKey: "quarter",
-          yKey: "diesel",
-          title: "Diesel",
-          stroke: "black",
+          xKey: 'quarter',
+          yKey: 'diesel',
+          title: 'Diesel',
+          stroke: 'black',
           marker: {
             size: 15,
-            fill: "gray",
-            stroke: "black",
+            fill: 'gray',
+            stroke: 'black',
           },
         },
         {
-          xKey: "quarter",
-          yKey: "electric",
-          title: "Electric",
-          stroke: "#8bc24a",
+          xKey: 'quarter',
+          yKey: 'electric',
+          title: 'Electric',
+          stroke: '#8bc24a',
           marker: {
-            shape: "cross",
+            shape: 'cross',
             size: 20,
-            fill: "#8bc24a",
-            stroke: "#658d36",
+            fill: '#8bc24a',
+            stroke: '#658d36',
           },
         },
       ],

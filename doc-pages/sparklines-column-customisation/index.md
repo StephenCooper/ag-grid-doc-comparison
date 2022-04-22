@@ -69,7 +69,6 @@ sparklineOptions: {
 </div>
 
 The given `fill` string can be in one of the following formats:
-
 - `#rgb` - Short Hex Code
 - `#rrggbb` - Hex Code
 - `rgb(r, g, b)` - RGB
@@ -106,7 +105,7 @@ Here is the result of the configuration shown in the above snippet.
 </div>
 
 [[note]]
-| If `strokeWidth` is set to a value greater than `1`, it is recommended to set the axis line `stroke` to the same value in order to preserve the alignment of the columns with the x-axis line.
+| If `strokeWidth` is set to a value greater than `1`, it is recommended to set the axis line `strokeWidth` to the same value in order to preserve the alignment of the columns with the x-axis line.
 
 ## Column Padding Options
 
@@ -307,6 +306,7 @@ More advanced customisations are discussed separately in the following sections:
 ### SparklineLabelOptions
 
 <api-documentation source='sparklines-column-customisation/resources/column-sparkline-api.json' section='SparklineLabelOptions'></api-documentation>
+
 
 ## Next Up
 

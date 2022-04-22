@@ -1,18 +1,18 @@
 const gridOptions = {
   columnDefs: [
-    { field: "symbol", maxWidth: 120 },
-    { field: "name", minWidth: 250 },
+    { field: 'symbol', maxWidth: 120 },
+    { field: 'name', minWidth: 250 },
     {
-      field: "change",
-      cellRenderer: "agSparklineCellRenderer",
+      field: 'change',
+      cellRenderer: 'agSparklineCellRenderer',
       cellRendererParams: {
         sparklineOptions: {
-          type: "bar",
+          type: 'bar',
           label: {
             enabled: true,
-            color: "white",
+            color: 'white',
             fontSize: 10,
-            fontWeight: "bold",
+            fontWeight: 'bold',
             formatter: function (params) {
               return `${params.value}%`;
             },
@@ -34,8 +34,8 @@ const gridOptions = {
       },
     },
     {
-      field: "volume",
-      type: "numericColumn",
+      field: 'volume',
+      type: 'numericColumn',
       maxWidth: 140,
     },
   ],
@@ -51,12 +51,12 @@ const gridOptions = {
 function formatter(params) {
   const { yValue } = params;
   return {
-    fill: yValue <= 20 ? "#4fa2d9" : yValue < 60 ? "#277cb5" : "#195176",
+    fill: yValue <= 20 ? '#4fa2d9' : yValue < 60 ? '#277cb5' : '#195176',
   };
 }
 
 // setup the grid after the page has finished loading
-document.addEventListener("DOMContentLoaded", function () {
-  var gridDiv = document.querySelector("#myGrid");
+document.addEventListener('DOMContentLoaded', function () {
+  var gridDiv = document.querySelector('#myGrid');
   new agGrid.Grid(gridDiv, gridOptions);
 });

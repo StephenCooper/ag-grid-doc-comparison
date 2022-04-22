@@ -36,7 +36,7 @@ This example shows a custom Detail Cell Renderer that uses a form rather than a 
 It is possible to provide a Customer Detail Grid that does a similar job to the default Detail Cell Renderer. This example demonstrates displaying a custom grid as the detail.
 
 <grid-example title='Custom Detail Cell Renderer with Grid' name='custom-detail-with-grid' type='mixed' options='{ "enterprise": true, "exampleHeight": 545, "modules": ["clientside", "masterdetail", "menu", "columnpanel"] }'></grid-example>
-
+ 
 ## Register Detail Grid
 
 In order for the Detail Grid's API to be available via the Master Grid as explained in [Accessing Detail Grids](/master-detail-grids/#accessing-detail-grids), a Grid Info object needs to be registered with the Master Grid.
@@ -52,9 +52,9 @@ const detailId = params.node.id;
 
 // Create Grid Info object
 const detailGridInfo = {
-  id: detailId,
-  api: params.api,
-  columnApi: params.columnApi,
+    id: detailId,
+    api: params.api,
+    columnApi: params.columnApi
 };
 
 this.masterGridApi.addDetailGridInfo(detailId, detailGridInfo);
@@ -79,3 +79,4 @@ The creation time is printed to each Detail Cell Renderer so it can be noted whe
 In this simple example, it would be possible for the components to just update themselves and not rely on the grid destroying and re-creating the components. However the example is contrived to demonstrate returning `true` vs `false` from the refresh method.
 
 <grid-example title='Custom Detail with Refresh' name='custom-detail-with-refresh' type='generated' options='{ "enterprise": true, "exampleHeight": 545, "modules": ["clientside", "masterdetail", "menu", "columnpanel"] }'></grid-example>
+

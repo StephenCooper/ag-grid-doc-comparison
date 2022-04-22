@@ -3,16 +3,16 @@ import {
   ColGroupDef,
   ColumnApi,
   GridReadyEvent,
-} from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { HttpClient } from "@angular/common/http";
-import { Component } from "@angular/core";
+} from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { HttpClient } from '@angular/common/http';
+import { Component } from '@angular/core';
 // Required feature modules are registered in app.module.ts
 declare var window: any;
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<div class="test-container">
     <div class="test-header">
       <div class="example-section">
@@ -37,22 +37,22 @@ export class AppComponent {
 
   public columnDefs: (ColDef | ColGroupDef)[] = [
     {
-      headerName: "Athlete",
+      headerName: 'Athlete',
       children: [
-        { field: "athlete" },
-        { field: "country", columnGroupShow: "open" },
-        { field: "sport", columnGroupShow: "open" },
-        { field: "year", columnGroupShow: "open" },
-        { field: "date", columnGroupShow: "open" },
+        { field: 'athlete' },
+        { field: 'country', columnGroupShow: 'open' },
+        { field: 'sport', columnGroupShow: 'open' },
+        { field: 'year', columnGroupShow: 'open' },
+        { field: 'date', columnGroupShow: 'open' },
       ],
     },
     {
-      headerName: "Medals",
+      headerName: 'Medals',
       children: [
-        { field: "total", columnGroupShow: "closed" },
-        { field: "gold", columnGroupShow: "open" },
-        { field: "silver", columnGroupShow: "open" },
-        { field: "bronze", columnGroupShow: "open" },
+        { field: 'total', columnGroupShow: 'closed' },
+        { field: 'gold', columnGroupShow: 'open' },
+        { field: 'silver', columnGroupShow: 'open' },
+        { field: 'bronze', columnGroupShow: 'open' },
       ],
     },
   ];
@@ -66,29 +66,29 @@ export class AppComponent {
 
   saveState() {
     window.groupState = this.gridColumnApi.getColumnGroupState();
-    console.log("group state saved", window.groupState);
-    console.log("column state saved");
+    console.log('group state saved', window.groupState);
+    console.log('column state saved');
   }
 
   restoreState() {
     if (!window.groupState) {
-      console.log("no columns state to restore by, you must save state first");
+      console.log('no columns state to restore by, you must save state first');
       return;
     }
     this.gridColumnApi.setColumnGroupState(window.groupState);
-    console.log("column state restored");
+    console.log('column state restored');
   }
 
   resetState() {
     this.gridColumnApi.resetColumnGroupState();
-    console.log("column state reset");
+    console.log('column state reset');
   }
 
   onGridReady(params: GridReadyEvent) {
     this.gridColumnApi = params.columnApi;
 
     this.http
-      .get<any[]>("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      .get<any[]>('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .subscribe((data) => (this.rowData = data));
   }
 }

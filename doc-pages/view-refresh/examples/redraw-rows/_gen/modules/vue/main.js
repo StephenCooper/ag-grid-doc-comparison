@@ -1,9 +1,9 @@
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine-dark.css";
-import { AgGridVue } from "@ag-grid-community/vue";
-import Vue from "vue";
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine-dark.css';
+import { AgGridVue } from '@ag-grid-community/vue';
+import Vue from 'vue';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([ClientSideRowModelModule]);
@@ -29,17 +29,17 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
-        { headerName: "A", field: "a" },
-        { headerName: "B", field: "b" },
-        { headerName: "C", field: "c" },
-        { headerName: "D", field: "d" },
-        { headerName: "E", field: "e" },
-        { headerName: "F", field: "f" },
+        { headerName: 'A', field: 'a' },
+        { headerName: 'B', field: 'b' },
+        { headerName: 'C', field: 'c' },
+        { headerName: 'D', field: 'd' },
+        { headerName: 'E', field: 'e' },
+        { headerName: 'F', field: 'f' },
       ],
       gridApi: null,
       columnApi: null,
@@ -52,7 +52,7 @@ const VueExample = {
   },
   created() {
     this.rowData = createData(12);
-    this.getRowStyle = function () {
+    this.getRowStyle = (params) => {
       return {
         backgroundColor: colors[colorIndex],
       };
@@ -103,11 +103,11 @@ window.progressColor = function progressColor() {
 
 var colorIndex = 0;
 
-var colors = ["#000000", "#000066", "#006600", "#660000"];
+var colors = ['#000000', '#000066', '#006600', '#660000'];
 
 new Vue({
-  el: "#app",
+  el: '#app',
   components: {
-    "my-component": VueExample,
+    'my-component': VueExample,
   },
 });

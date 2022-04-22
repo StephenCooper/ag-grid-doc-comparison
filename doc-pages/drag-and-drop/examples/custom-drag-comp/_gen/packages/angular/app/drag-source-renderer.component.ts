@@ -1,9 +1,9 @@
-import { Component } from "@angular/core";
-import { ICellRendererAngularComp } from "ag-grid-angular";
-import { ICellRendererParams } from "ag-grid-community";
+import { Component } from '@angular/core';
+import { ICellRendererAngularComp } from 'ag-grid-angular';
+import { ICellRendererParams } from 'ag-grid-community';
 
 @Component({
-  selector: "child-cell",
+  selector: 'child-cell',
   template: ` <div draggable="true" (dragstart)="onDragStart($event)">
     Drag Me!
   </div>`,
@@ -18,8 +18,8 @@ export class DragSourceRenderer implements ICellRendererAngularComp {
   onDragStart(dragEvent: DragEvent) {
     var userAgent = window.navigator.userAgent;
     dragEvent.dataTransfer!.setData(
-      "text/plain",
-      "Dragged item with ID: " + this.params.node.data.id
+      'text/plain',
+      'Dragged item with ID: ' + this.params.node.data.id
     );
   }
 

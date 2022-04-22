@@ -1,8 +1,8 @@
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
-import { AgGridVue } from "ag-grid-vue3";
-import { createApp } from "vue";
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import 'ag-grid-enterprise';
+import { AgGridVue } from 'ag-grid-vue3';
+import { createApp } from 'vue';
 
 const VueExample = {
   template: `
@@ -25,19 +25,19 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
-        { field: "athlete", minWidth: 200 },
-        { field: "age" },
-        { field: "country", minWidth: 200 },
-        { field: "year" },
-        { field: "date", minWidth: 150 },
-        { field: "sport", minWidth: 150 },
-        { field: "gold" },
-        { field: "silver" },
+        { field: 'athlete', minWidth: 200 },
+        { field: 'age' },
+        { field: 'country', minWidth: 200 },
+        { field: 'year' },
+        { field: 'date', minWidth: 150 },
+        { field: 'sport', minWidth: 150 },
+        { field: 'gold' },
+        { field: 'silver' },
       ],
       gridApi: null,
       columnApi: null,
@@ -61,12 +61,12 @@ const VueExample = {
         }
       });
       var spreadsheets = [];
-      var sportFilterInstance = this.gridApi.getFilterInstance("sport");
+      var sportFilterInstance = this.gridApi.getFilterInstance('sport');
       for (var sport in sports) {
         sportFilterInstance.setModel({ values: [sport] });
         this.gridApi.onFilterChanged();
         if (sportFilterInstance.getModel() == null) {
-          throw new Error("Example error: Filter not applied");
+          throw new Error('Example error: Filter not applied');
         }
         const sheet = this.gridApi.getSheetDataForExcel({
           sheetName: sport,
@@ -79,7 +79,7 @@ const VueExample = {
       this.gridApi.onFilterChanged();
       this.gridApi.exportMultipleSheetsAsExcel({
         data: spreadsheets,
-        fileName: "ag-grid.xlsx",
+        fileName: 'ag-grid.xlsx',
       });
       spreadsheets = [];
     },
@@ -89,11 +89,11 @@ const VueExample = {
 
       const updateData = (data) => params.api.setRowData(data);
 
-      fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
         .then((resp) => resp.json())
         .then((data) => updateData(data));
     },
   },
 };
 
-createApp(VueExample).mount("#app");
+createApp(VueExample).mount('#app');

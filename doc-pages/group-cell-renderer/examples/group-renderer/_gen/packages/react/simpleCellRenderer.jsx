@@ -1,11 +1,11 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 
 export default class SimpleCellRenderer extends Component {
   render() {
     return (
       <span
         style={{
-          backgroundColor: this.props.node.group ? "coral" : "lightgreen",
+          backgroundColor: this.props.node.group ? 'coral' : 'lightgreen',
           padding: 2,
         }}
       >

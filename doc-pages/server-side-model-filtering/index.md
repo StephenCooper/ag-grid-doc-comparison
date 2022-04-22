@@ -26,6 +26,7 @@ Filtering is enabled in the grid via the `filter` column definition attribute. S
 
 For more details on filtering configurations see the section on [Column Filtering](/filtering/).
 
+
 ## Full Store Filtering
 
 When using the Full Store, filtering of rows is performed by the grid. There is nothing special to be done by the server.
@@ -34,14 +35,15 @@ The example below demonstrates the Full Store filtering inside the grid. Note th
 
 - The grid is using the Full Store by setting the grid property `serverSideStoreType = full`.
 - Columns are set up with the following filters:
-  - Athlete column has Text Filter.
-  - County column has Set Filter.
-  - Year column has Number Filter.
+    - Athlete column has Text Filter.
+    - County column has Set Filter.
+    - Year column has Number Filter.
 - Rows are loaded once. All filtering is then subsequently done by the grid.
 
 <grid-example title='Full Store Filtering' name='full' type='generated' options='{ "enterprise": true, "modules": ["serverside","setfilter", "menu"] }'></grid-example>
 
 Note that the Set Filter is provided values to work. This is a requirement when using the Set Filter with the SSRM.
+
 
 ## Partial Store Filtering
 
@@ -99,6 +101,7 @@ Entries in the `filterModel` have a different format to the Simple Filters. This
 as part of the request to the server when using the Partial Store.
 The following shows an example of a Set Filter where two items are selected:
 
+
 ```js
 // IServerSideGetRowsRequest
 {
@@ -116,7 +119,8 @@ The following shows an example of a Set Filter where two items are selected:
 ### Set Filter Values
 
 When using the Set Filter with the SSRM it is necessary to supply the values as the grid does not
-have all rows loaded. This can be done either synchronously or asynchronously using the `values` filter param as shown below:
+have all rows loaded.  This can be done either synchronously or asynchronously using the `values` filter param as shown below:
+
 
 <snippet spaceBetweenProperties="true">
 const gridOptions = {
@@ -153,7 +157,7 @@ The example below demonstrates server-side filtering using the Set Filter and th
 - The **Country** and **Sport** columns have Set Filters defined using `filter: 'agSetColumnFilter'`.
 - Set Filter values are fetched asynchronously and supplied via the `params.success(values)` callback.
 - The filter for the **Sport** column only shows the values which are available for the selected countries.
-  When the filter for the **Country** column is changed, the values for the **Sport** filter are updated.
+When the filter for the **Country** column is changed, the values for the **Sport** filter are updated.
 - The server uses the metadata contained in the `filterModel` to filter the rows.
 - Open the browser's dev console to view the `filterModel` supplied in the request to the datasource.
 
@@ -162,3 +166,5 @@ The example below demonstrates server-side filtering using the Set Filter and th
 ## Next Up
 
 Continue to the next section to learn about [Row Grouping](/server-side-model-grouping/).
+
+

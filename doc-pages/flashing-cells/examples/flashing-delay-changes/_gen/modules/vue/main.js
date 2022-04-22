@@ -1,9 +1,9 @@
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { AgGridVue } from "@ag-grid-community/vue";
-import Vue from "vue";
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { AgGridVue } from '@ag-grid-community/vue';
+import Vue from 'vue';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([ClientSideRowModelModule]);
@@ -32,23 +32,23 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
-        { field: "a" },
-        { field: "b" },
-        { field: "c" },
-        { field: "d" },
-        { field: "e" },
-        { field: "f" },
+        { field: 'a' },
+        { field: 'b' },
+        { field: 'c' },
+        { field: 'd' },
+        { field: 'e' },
+        { field: 'f' },
       ],
       gridApi: null,
       columnApi: null,
       defaultColDef: {
         flex: 1,
-        cellClass: "align-right",
+        cellClass: 'align-right',
         enableCellChangeFlash: true,
         resizable: true,
         valueFormatter: function (params) {
@@ -72,7 +72,7 @@ const VueExample = {
       for (var i = 0; i < 20; i++) {
         var row = Math.floor(Math.random() * rowCount);
         var rowNode = this.gridApi.getDisplayedRowAtIndex(row);
-        var col = ["a", "b", "c", "d", "e", "f"][i % 6];
+        var col = ['a', 'b', 'c', 'd', 'e', 'f'][i % 6];
         rowNode.setDataValue(col, Math.floor(Math.random() * 10000));
       }
     },
@@ -99,7 +99,7 @@ window.formatNumber = function formatNumber(number) {
   // i pulled this from stack overflow, i have no idea how it works
   return Math.floor(number)
     .toString()
-    .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
+    .replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
 };
 
 window.createRowData = function createRowData() {
@@ -118,8 +118,8 @@ window.createRowData = function createRowData() {
 };
 
 new Vue({
-  el: "#app",
+  el: '#app',
   components: {
-    "my-component": VueExample,
+    'my-component': VueExample,
   },
 });

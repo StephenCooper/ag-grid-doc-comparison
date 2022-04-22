@@ -1,67 +1,67 @@
-import { ColDef, Grid, GridOptions } from "ag-grid-community";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
+import { ColDef, Grid, GridOptions } from 'ag-grid-community';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import 'ag-grid-enterprise';
 
 const columnDefs: ColDef[] = [
   {
-    field: "athlete",
+    field: 'athlete',
     minWidth: 200,
     enableRowGroup: true,
     enablePivot: true,
   },
   {
-    field: "age",
+    field: 'age',
     enableValue: true,
   },
   {
-    field: "country",
+    field: 'country',
     minWidth: 200,
     enableRowGroup: true,
     enablePivot: true,
     rowGroupIndex: 1,
   },
   {
-    field: "year",
+    field: 'year',
     enableRowGroup: true,
     enablePivot: true,
     pivotIndex: 1,
   },
   {
-    field: "date",
+    field: 'date',
     minWidth: 180,
     enableRowGroup: true,
     enablePivot: true,
   },
   {
-    field: "sport",
+    field: 'sport',
     minWidth: 200,
     enableRowGroup: true,
     enablePivot: true,
     rowGroupIndex: 2,
   },
   {
-    field: "gold",
+    field: 'gold',
     hide: true,
     enableValue: true,
   },
   {
-    field: "silver",
+    field: 'silver',
     hide: true,
     enableValue: true,
-    aggFunc: "sum",
+    aggFunc: 'sum',
   },
   {
-    field: "bronze",
+    field: 'bronze',
     hide: true,
     enableValue: true,
-    aggFunc: "sum",
+    aggFunc: 'sum',
   },
   {
-    headerName: "Total",
-    field: "totalAgg",
+    headerName: 'Total',
+    field: 'totalAgg',
     valueGetter:
-      "node.group ? data.totalAgg : data.gold + data.silver + data.bronze",
+      'node.group ? data.totalAgg : data.gold + data.silver + data.bronze',
   },
 ];
 
@@ -77,30 +77,30 @@ const gridOptions: GridOptions = {
     minWidth: 250,
   },
   pivotMode: true,
-  sideBar: "columns",
-  rowGroupPanelShow: "always",
-  pivotPanelShow: "always",
+  sideBar: 'columns',
+  rowGroupPanelShow: 'always',
+  pivotPanelShow: 'always',
   functionsReadOnly: true,
   onGridReady: function () {
-    (document.getElementById("read-only") as HTMLInputElement).checked = true;
+    (document.getElementById('read-only') as HTMLInputElement).checked = true;
   },
 };
 
 function setReadOnly() {
   gridOptions.api!.setFunctionsReadOnly(
-    (document.getElementById("read-only") as HTMLInputElement).checked
+    (document.getElementById('read-only') as HTMLInputElement).checked
   );
 }
 
 // setup the grid after the page has finished loading
-var gridDiv = document.querySelector<HTMLElement>("#myGrid")!;
+var gridDiv = document.querySelector<HTMLElement>('#myGrid')!;
 new Grid(gridDiv, gridOptions);
 
-fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
   .then((response) => response.json())
   .then((data) => gridOptions.api!.setRowData(data));
 
-if (typeof window !== "undefined") {
+if (typeof window !== 'undefined') {
   // Attach external event handlers to window so they can be called from index.html
   (<any>window).setReadOnly = setReadOnly;
 }

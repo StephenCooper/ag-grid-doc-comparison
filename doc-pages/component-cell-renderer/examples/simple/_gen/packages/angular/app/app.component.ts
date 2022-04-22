@@ -1,13 +1,13 @@
-import { HttpClient } from "@angular/common/http";
-import { Component } from "@angular/core";
-import { ColDef, GridReadyEvent } from "ag-grid-community";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import { MedalCellRenderer } from "./medal-cell-renderer.component";
-import { TotalValueRenderer } from "./total-value-renderer.component";
+import { HttpClient } from '@angular/common/http';
+import { Component } from '@angular/core';
+import { ColDef, GridReadyEvent } from 'ag-grid-community';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import { MedalCellRenderer } from './medal-cell-renderer.component';
+import { TotalValueRenderer } from './total-value-renderer.component';
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<ag-grid-angular
     style="width: 100%; height: 100%;"
     class="ag-theme-alpine"
@@ -19,12 +19,12 @@ import { TotalValueRenderer } from "./total-value-renderer.component";
 })
 export class AppComponent {
   public columnDefs: ColDef[] = [
-    { field: "athlete" },
-    { field: "year" },
-    { field: "gold", cellRenderer: MedalCellRenderer },
-    { field: "silver", cellRenderer: MedalCellRenderer },
-    { field: "bronze", cellRenderer: MedalCellRenderer },
-    { field: "total", minWidth: 175, cellRenderer: TotalValueRenderer },
+    { field: 'athlete' },
+    { field: 'year' },
+    { field: 'gold', cellRenderer: MedalCellRenderer },
+    { field: 'silver', cellRenderer: MedalCellRenderer },
+    { field: 'bronze', cellRenderer: MedalCellRenderer },
+    { field: 'total', minWidth: 175, cellRenderer: TotalValueRenderer },
   ];
   public defaultColDef: ColDef = {
     editable: true,
@@ -40,7 +40,7 @@ export class AppComponent {
 
   onGridReady(params: GridReadyEvent) {
     this.http
-      .get<any[]>("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      .get<any[]>('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .subscribe((data) => {
         this.rowData = data;
       });

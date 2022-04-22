@@ -7,7 +7,7 @@ By default the grid renders values into the cells as strings. If you want someth
 <api-documentation source='column-properties/properties.json' section='styling' names='["cellRenderer"]'></api-documentation>
 
 The cell editor for a column is set via `colDef.cellRenderer` and can be any of the following types:
-
+ 
 [[only-javascript]]
 |1. `undefined`: Grid renders the value as a string.
 |1. `String`: The name of a cell renderer component.
@@ -94,7 +94,6 @@ md-include:selector-common.md
 md-include:selector-vue.md
 
 Here is a full example.
-
 - The column 'Value' holds data of different types as shown in the column 'Type' (numbers/genders/moods).
 - `colDef.cellRendererSelector` is a function that selects the renderer based on the row data.
 - The column 'Rendered Value' show the data rendered applying the component and params specified by `colDef.cellRendererSelector`
@@ -131,3 +130,4 @@ The grid comes with some provided cell renderers out of the box. These cell rend
 - [Group Cell Renderer](/group-cell-renderer/): For showing group details with expand & collapse functionality when using any of the [Row Grouping](/grouping/), [Master Detail](/master-detail/) or [Tree Data](/tree-data/).
 
 - [Show Change Cell Renderers](/change-cell-renderers/): For animating changes when data is changing.
+

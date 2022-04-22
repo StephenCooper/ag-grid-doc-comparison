@@ -12,7 +12,7 @@ export default {
   },
   methods: {
     onInputBoxChanged() {
-      if (this.currentValue === "") {
+      if (this.currentValue === '') {
         // Remove the filter
         this.params.parentFilterInstance((instance) => {
           instance.onFloatingFilterChanged(null, null);
@@ -21,14 +21,14 @@ export default {
       }
 
       this.params.parentFilterInstance((instance) => {
-        instance.onFloatingFilterChanged("greaterThan", this.currentValue);
+        instance.onFloatingFilterChanged('greaterThan', this.currentValue);
       });
     },
 
     onParentModelChanged(parentModel) {
       // When the filter is empty we will receive a null value here
       if (!parentModel) {
-        this.currentValue = "";
+        this.currentValue = '';
       } else {
         this.currentValue = parentModel.filter;
       }

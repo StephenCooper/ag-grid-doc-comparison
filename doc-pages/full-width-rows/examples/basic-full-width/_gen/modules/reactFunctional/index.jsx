@@ -1,13 +1,13 @@
-"use strict";
+'use strict';
 
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { AgGridReact } from "@ag-grid-community/react";
-import React, { useCallback, useMemo, useState } from "react";
-import { render } from "react-dom";
-import FullWidthCellRenderer from "./fullWidthCellRenderer.jsx";
+import React, { useCallback, useMemo, useRef, useState } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from '@ag-grid-community/react';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import FullWidthCellRenderer from './fullWidthCellRenderer.jsx';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([ClientSideRowModelModule]);
@@ -20,11 +20,11 @@ const getColumnDefs = () => {
       field: letter,
       width: 150,
     };
-    if (letter === "A") {
-      colDef.pinned = "left";
+    if (letter === 'A') {
+      colDef.pinned = 'left';
     }
-    if (letter === "Z") {
-      colDef.pinned = "right";
+    if (letter === 'Z') {
+      colDef.pinned = 'right';
     }
     columnDefs.push(colDef);
   });
@@ -32,7 +32,7 @@ const getColumnDefs = () => {
 };
 
 const alphabet = () => {
-  return "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
+  return 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
 };
 
 const createData = (count, prefix) => {
@@ -46,7 +46,7 @@ const createData = (count, prefix) => {
     item.fullWidth = i % 3 === 2;
     // put in a column for each letter of the alphabet
     alphabet().forEach(function (letter) {
-      item[letter] = prefix + " (" + letter + "," + i + ")";
+      item[letter] = prefix + ' (' + letter + ',' + i + ')';
     });
     rowData.push(item);
   }
@@ -54,14 +54,14 @@ const createData = (count, prefix) => {
 };
 
 const GridExample = () => {
-  const containerStyle = useMemo(() => ({ width: "100%", height: "100%" }), []);
-  const gridStyle = useMemo(() => ({ height: "100%", width: "100%" }), []);
-  const [rowData, setRowData] = useState(createData(100, "body"));
+  const containerStyle = useMemo(() => ({ width: '100%', height: '100%' }), []);
+  const gridStyle = useMemo(() => ({ height: '100%', width: '100%' }), []);
+  const [rowData, setRowData] = useState(createData(100, 'body'));
   const pinnedTopRowData = useMemo(() => {
-    return createData(3, "pinned");
+    return createData(3, 'pinned');
   }, []);
   const pinnedBottomRowData = useMemo(() => {
-    return createData(3, "pinned");
+    return createData(3, 'pinned');
   }, []);
   const [columnDefs, setColumnDefs] = useState(getColumnDefs());
   const isFullWidthRow = useCallback(function (params) {
@@ -100,4 +100,4 @@ const GridExample = () => {
   );
 };
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

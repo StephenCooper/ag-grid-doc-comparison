@@ -1,37 +1,37 @@
-"use strict";
+'use strict';
 
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { AgGridReact } from "@ag-grid-community/react";
-import { RowGroupingModule } from "@ag-grid-enterprise/row-grouping";
-import React, { useCallback, useMemo, useRef, useState } from "react";
-import { render } from "react-dom";
+import React, { useCallback, useMemo, useRef, useState } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from '@ag-grid-community/react';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import { RowGroupingModule } from '@ag-grid-enterprise/row-grouping';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([ClientSideRowModelModule, RowGroupingModule]);
 
 const poundFormatter = (params) => {
   return (
-    "£" +
+    '£' +
     Math.floor(params.value)
       .toString()
-      .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")
+      .replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
   );
 };
 
 const GridExample = () => {
   const gridRef = useRef();
-  const containerStyle = useMemo(() => ({ width: "100%", height: "100%" }), []);
-  const gridStyle = useMemo(() => ({ height: "100%", width: "100%" }), []);
+  const containerStyle = useMemo(() => ({ width: '100%', height: '100%' }), []);
+  const gridStyle = useMemo(() => ({ height: '100%', width: '100%' }), []);
   const [rowData, setRowData] = useState(getData());
   const [columnDefs, setColumnDefs] = useState([
-    { field: "category", rowGroupIndex: 1, hide: true },
-    { field: "price", aggFunc: "sum", valueFormatter: poundFormatter },
-    { field: "zombies" },
-    { field: "style" },
-    { field: "clothes" },
+    { field: 'category', rowGroupIndex: 1, hide: true },
+    { field: 'price', aggFunc: 'sum', valueFormatter: poundFormatter },
+    { field: 'zombies' },
+    { field: 'style' },
+    { field: 'clothes' },
   ]);
   const defaultColDef = useMemo(() => {
     return {
@@ -42,11 +42,11 @@ const GridExample = () => {
   }, []);
   const autoGroupColumnDef = useMemo(() => {
     return {
-      headerName: "Group",
+      headerName: 'Group',
       minWidth: 250,
-      field: "model",
+      field: 'model',
       rowGroupIndex: 1,
-      cellRenderer: "agGroupCellRenderer",
+      cellRenderer: 'agGroupCellRenderer',
       cellRendererParams: {
         checkbox: true,
       },
@@ -56,12 +56,12 @@ const GridExample = () => {
     var rowNode = params.node;
     if (rowNode.group) {
       switch (rowNode.key) {
-        case "In Workshop":
-          return "category-in-workshop";
-        case "Sold":
-          return "category-sold";
-        case "For Sale":
-          return "category-for-sale";
+        case 'In Workshop':
+          return 'category-in-workshop';
+        case 'Sold':
+          return 'category-sold';
+        case 'For Sale':
+          return 'category-for-sale';
         default:
           return undefined;
       }
@@ -76,7 +76,7 @@ const GridExample = () => {
     gridRef.current.api.forEachNode(function (node) {
       rowData.push(node.data);
     });
-    console.log("Row Data:");
+    console.log('Row Data:');
     console.log(rowData);
   }, []);
 
@@ -104,14 +104,14 @@ const GridExample = () => {
   return (
     <div style={containerStyle}>
       <div className="example-wrapper">
-        <div style={{ marginBottom: "5px" }}>
+        <div style={{ marginBottom: '5px' }}>
           <div>
-            <button className="bt-action" onClick={() => onAddRow("For Sale")}>
+            <button className="bt-action" onClick={() => onAddRow('For Sale')}>
               Add For Sale
             </button>
             <button
               className="bt-action"
-              onClick={() => onAddRow("In Workshop")}
+              onClick={() => onAddRow('In Workshop')}
             >
               Add In Workshop
             </button>
@@ -122,20 +122,20 @@ const GridExample = () => {
               Get Row Data
             </button>
           </div>
-          <div style={{ marginTop: "5px" }}>
+          <div style={{ marginTop: '5px' }}>
             <button
               className="bt-action"
-              onClick={() => onMoveToGroup("For Sale")}
+              onClick={() => onMoveToGroup('For Sale')}
             >
               Move to For Sale
             </button>
             <button
               className="bt-action"
-              onClick={() => onMoveToGroup("In Workshop")}
+              onClick={() => onMoveToGroup('In Workshop')}
             >
               Move to In Workshop
             </button>
-            <button className="bt-action" onClick={() => onMoveToGroup("Sold")}>
+            <button className="bt-action" onClick={() => onMoveToGroup('Sold')}>
               Move to Sold
             </button>
           </div>
@@ -150,7 +150,7 @@ const GridExample = () => {
             autoGroupColumnDef={autoGroupColumnDef}
             groupDefaultExpanded={1}
             suppressRowClickSelection={true}
-            rowSelection={"multiple"}
+            rowSelection={'multiple'}
             animateRows={true}
             groupSelectsChildren={true}
             suppressAggFuncInHeader={true}
@@ -162,4 +162,4 @@ const GridExample = () => {
   );
 };
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

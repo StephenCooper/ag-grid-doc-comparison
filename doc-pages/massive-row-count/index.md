@@ -14,7 +14,7 @@ This technique, unique to AG Grid, we call Stretching and is explained below.
 ## The Problem
 
 Each browser has a limit to the maximum height of a div. This limit is not published so can differ
-between different browsers as well as different browser versions. At the time of writing, on
+between different browsers as well as different browser versions. At the time of writing, on 
 Chrome v89 the maximum height was 32,000,000 pixels.
 
 The grid works out the maximum height of a div by testing the DOM as the grid initialises. To see what

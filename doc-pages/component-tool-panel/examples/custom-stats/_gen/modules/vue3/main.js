@@ -1,13 +1,13 @@
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { AgGridVue } from "@ag-grid-community/vue3";
-import { ColumnsToolPanelModule } from "@ag-grid-enterprise/column-tool-panel";
-import { FiltersToolPanelModule } from "@ag-grid-enterprise/filter-tool-panel";
-import { SetFilterModule } from "@ag-grid-enterprise/set-filter";
-import { createApp } from "vue";
-import CustomStatsToolPanel from "./customStatsToolPanelVue.js";
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { AgGridVue } from '@ag-grid-community/vue3';
+import { ColumnsToolPanelModule } from '@ag-grid-enterprise/column-tool-panel';
+import { FiltersToolPanelModule } from '@ag-grid-enterprise/filter-tool-panel';
+import { SetFilterModule } from '@ag-grid-enterprise/set-filter';
+import { createApp } from 'vue';
+import CustomStatsToolPanel from './customStatsToolPanelVue.js';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([
@@ -35,21 +35,21 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
     CustomStatsToolPanel,
   },
   data: function () {
     return {
       columnDefs: [
-        { field: "athlete", width: 150, filter: "agTextColumnFilter" },
-        { field: "age", width: 90 },
-        { field: "country", width: 120 },
-        { field: "year", width: 90 },
-        { field: "date", width: 110 },
-        { field: "gold", width: 100, filter: false },
-        { field: "silver", width: 100, filter: false },
-        { field: "bronze", width: 100, filter: false },
-        { field: "total", width: 100, filter: false },
+        { field: 'athlete', width: 150, filter: 'agTextColumnFilter' },
+        { field: 'age', width: 90 },
+        { field: 'country', width: 120 },
+        { field: 'year', width: 90 },
+        { field: 'date', width: 110 },
+        { field: 'gold', width: 100, filter: false },
+        { field: 'silver', width: 100, filter: false },
+        { field: 'bronze', width: 100, filter: false },
+        { field: 'total', width: 100, filter: false },
       ],
       gridApi: null,
       columnApi: null,
@@ -68,33 +68,33 @@ const VueExample = {
   },
   created() {
     this.icons = {
-      "custom-stats": '<span class="ag-icon ag-icon-custom-stats"></span>',
+      'custom-stats': '<span class="ag-icon ag-icon-custom-stats"></span>',
     };
     this.sideBar = {
       toolPanels: [
         {
-          id: "columns",
-          labelDefault: "Columns",
-          labelKey: "columns",
-          iconKey: "columns",
-          toolPanel: "agColumnsToolPanel",
+          id: 'columns',
+          labelDefault: 'Columns',
+          labelKey: 'columns',
+          iconKey: 'columns',
+          toolPanel: 'agColumnsToolPanel',
         },
         {
-          id: "filters",
-          labelDefault: "Filters",
-          labelKey: "filters",
-          iconKey: "filter",
-          toolPanel: "agFiltersToolPanel",
+          id: 'filters',
+          labelDefault: 'Filters',
+          labelKey: 'filters',
+          iconKey: 'filter',
+          toolPanel: 'agFiltersToolPanel',
         },
         {
-          id: "customStats",
-          labelDefault: "Custom Stats",
-          labelKey: "customStats",
-          iconKey: "custom-stats",
-          toolPanel: "CustomStatsToolPanel",
+          id: 'customStats',
+          labelDefault: 'Custom Stats',
+          labelKey: 'customStats',
+          iconKey: 'custom-stats',
+          toolPanel: 'CustomStatsToolPanel',
         },
       ],
-      defaultToolPanel: "customStats",
+      defaultToolPanel: 'customStats',
     };
   },
   methods: {
@@ -106,11 +106,11 @@ const VueExample = {
         this.rowData = data;
       };
 
-      fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
         .then((resp) => resp.json())
         .then((data) => updateData(data));
     },
   },
 };
 
-createApp(VueExample).mount("#app");
+createApp(VueExample).mount('#app');

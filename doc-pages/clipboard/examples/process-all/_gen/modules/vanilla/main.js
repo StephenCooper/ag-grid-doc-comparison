@@ -1,15 +1,15 @@
 const columnDefs = [
-  { field: "a" },
-  { field: "b" },
-  { field: "c" },
-  { field: "d" },
-  { field: "e" },
-  { field: "f" },
-  { field: "g" },
-  { field: "h" },
-  { field: "i" },
-  { field: "j" },
-  { field: "k" },
+  { field: 'a' },
+  { field: 'b' },
+  { field: 'c' },
+  { field: 'd' },
+  { field: 'e' },
+  { field: 'f' },
+  { field: 'g' },
+  { field: 'h' },
+  { field: 'i' },
+  { field: 'j' },
+  { field: 'k' },
 ];
 
 const gridOptions = {
@@ -24,12 +24,12 @@ const gridOptions = {
     flex: 1,
 
     cellClassRules: {
-      "cell-green": 'value.startsWith("Green")',
-      "cell-blue": 'value.startsWith("Blue")',
-      "cell-red": 'value.startsWith("Red")',
-      "cell-yellow": 'value.startsWith("Yellow")',
-      "cell-orange": 'value.startsWith("Orange")',
-      "cell-grey": 'value.startsWith("Grey")',
+      'cell-green': 'value.startsWith("Green")',
+      'cell-blue': 'value.startsWith("Blue")',
+      'cell-red': 'value.startsWith("Red")',
+      'cell-yellow': 'value.startsWith("Yellow")',
+      'cell-orange': 'value.startsWith("Orange")',
+      'cell-grey': 'value.startsWith("Grey")',
     },
   },
 
@@ -46,9 +46,9 @@ function processDataFromClipboard(params) {
     for (var j = 0; j < row.length; j++) {
       var value = row[j];
       if (value) {
-        if (value.startsWith("Red")) {
+        if (value.startsWith('Red')) {
           containsRed = true;
-        } else if (value.startsWith("Yellow")) {
+        } else if (value.startsWith('Yellow')) {
           containsYellow = true;
         }
       }
@@ -58,8 +58,8 @@ function processDataFromClipboard(params) {
   if (containsRed) {
     // replace the paste request with another
     return [
-      ["Orange", "Orange"],
-      ["Grey", "Grey"],
+      ['Orange', 'Orange'],
+      ['Grey', 'Grey'],
     ];
   }
 
@@ -72,7 +72,7 @@ function processDataFromClipboard(params) {
 }
 
 // setup the grid after the page has finished loading
-document.addEventListener("DOMContentLoaded", function () {
-  var gridDiv = document.querySelector("#myGrid");
+document.addEventListener('DOMContentLoaded', function () {
+  var gridDiv = document.querySelector('#myGrid');
   new agGrid.Grid(gridDiv, gridOptions);
 });

@@ -1,8 +1,10 @@
-"use strict";
+'use strict';
 
-import { AgChartsReact } from "ag-charts-react";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { cloneDeep } from 'lodash';
+import { render } from 'react-dom';
+import * as agCharts from 'ag-charts-community';
+import { AgChartsReact } from 'ag-charts-react';
 
 class ChartExample extends Component {
   constructor(props) {
@@ -14,14 +16,14 @@ class ChartExample extends Component {
           text: "Apple's revenue by product category",
         },
         subtitle: {
-          text: "in billion U.S. dollars",
+          text: 'in billion U.S. dollars',
         },
         data: getData(),
         series: [
           {
-            type: "column",
-            xKey: "quarter",
-            yKey: "iphone",
+            type: 'column',
+            xKey: 'quarter',
+            yKey: 'iphone',
           },
         ],
       },
@@ -35,4 +37,4 @@ class ChartExample extends Component {
   }
 }
 
-render(<ChartExample />, document.querySelector("#root"));
+render(<ChartExample />, document.querySelector('#root'));

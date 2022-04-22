@@ -1,9 +1,9 @@
-import { Component } from "@angular/core";
-import { AgChartOptions } from "ag-charts-community";
-import { cloneDeep } from "lodash";
+import { Component } from '@angular/core';
+import { AgChartOptions } from 'ag-charts-community';
+import { cloneDeep } from 'lodash';
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<div class="wrapper">
     <div class="toolPanel">
       <div class="slider">
@@ -14,6 +14,7 @@ import { cloneDeep } from "lodash";
           id="xPaddingLabel"
           min="0"
           max="50"
+          value="32"
           (input)="updateLegendItemPaddingX($event)"
           (change)="updateLegendItemPaddingX($event)"
         />
@@ -28,6 +29,7 @@ import { cloneDeep } from "lodash";
           id="yPaddingLabel"
           min="0"
           max="30"
+          value="8"
           (input)="updateLegendItemPaddingY($event)"
           (change)="updateLegendItemPaddingY($event)"
         />
@@ -44,6 +46,7 @@ import { cloneDeep } from "lodash";
           id="markerPaddingLabel"
           min="0"
           max="30"
+          value="8"
           (input)="updateLegendItemSpacing($event)"
           (change)="updateLegendItemSpacing($event)"
         />
@@ -61,34 +64,34 @@ export class AppComponent {
   constructor() {
     this.options = {
       data: [
-        { label: "USA", value: 56.9 },
-        { label: "UK", value: 22.5 },
-        { label: "China", value: 6.8 },
-        { label: "Russia", value: 8.5 },
-        { label: "India", value: 2.6 },
-        { label: "Germany", value: 18.2 },
-        { label: "France", value: 12.5 },
-        { label: "Canada", value: 3.9 },
-        { label: "Spain", value: 7.9 },
-        { label: "South Africa", value: 21.9 },
-        { label: "Portugal", value: 7.4 },
-        { label: "Netherlands", value: 4.7 },
-        { label: "Finland", value: 3.9 },
-        { label: "Sweden", value: 3.3 },
-        { label: "Norway", value: 3.2 },
-        { label: "Greece", value: 1.9 },
-        { label: "Italy", value: 2.5 },
+        { label: 'USA', value: 56.9 },
+        { label: 'UK', value: 22.5 },
+        { label: 'China', value: 6.8 },
+        { label: 'Russia', value: 8.5 },
+        { label: 'India', value: 2.6 },
+        { label: 'Germany', value: 18.2 },
+        { label: 'France', value: 12.5 },
+        { label: 'Canada', value: 3.9 },
+        { label: 'Spain', value: 7.9 },
+        { label: 'South Africa', value: 21.9 },
+        { label: 'Portugal', value: 7.4 },
+        { label: 'Netherlands', value: 4.7 },
+        { label: 'Finland', value: 3.9 },
+        { label: 'Sweden', value: 3.3 },
+        { label: 'Norway', value: 3.2 },
+        { label: 'Greece', value: 1.9 },
+        { label: 'Italy', value: 2.5 },
       ],
       series: [
         {
-          type: "pie",
-          angleKey: "value",
-          labelKey: "label",
+          type: 'pie',
+          angleKey: 'value',
+          labelKey: 'label',
           strokeWidth: 3,
         },
       ],
       legend: {
-        position: "bottom",
+        position: 'bottom',
         item: {
           paddingX: 32,
           paddingY: 8,
@@ -108,7 +111,7 @@ export class AppComponent {
     var value = +event.target.value;
     options.legend!.item!.paddingX = value;
 
-    document.getElementById("xPaddingValue")!.innerHTML = String(value);
+    document.getElementById('xPaddingValue')!.innerHTML = String(value);
 
     this.options = options;
   };
@@ -119,7 +122,7 @@ export class AppComponent {
     var value = event.target.value;
     options.legend!.item!.paddingY = +event.target.value;
 
-    document.getElementById("yPaddingValue")!.innerHTML = String(value);
+    document.getElementById('yPaddingValue')!.innerHTML = String(value);
 
     this.options = options;
   };
@@ -130,7 +133,7 @@ export class AppComponent {
     var value = +event.target.value;
     options.legend!.item!.marker!.padding = value;
 
-    document.getElementById("markerPaddingValue")!.innerHTML = String(value);
+    document.getElementById('markerPaddingValue')!.innerHTML = String(value);
 
     this.options = options;
   };

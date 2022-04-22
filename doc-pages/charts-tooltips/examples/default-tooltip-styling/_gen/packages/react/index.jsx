@@ -1,8 +1,10 @@
-"use strict";
+'use strict';
 
-import { AgChartsReact } from "ag-charts-react";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { cloneDeep } from 'lodash';
+import { render } from 'react-dom';
+import * as agCharts from 'ag-charts-community';
+import { AgChartsReact } from 'ag-charts-react';
 
 class ChartExample extends Component {
   constructor(props) {
@@ -12,28 +14,28 @@ class ChartExample extends Component {
       options: {
         data: [
           {
-            month: "Jun",
+            month: 'Jun',
             sweaters: 50,
           },
           {
-            month: "Jul",
+            month: 'Jul',
             sweaters: 70,
           },
           {
-            month: "Aug",
+            month: 'Aug',
             sweaters: 60,
           },
         ],
         series: [
           {
-            type: "column",
-            xKey: "month",
-            yKey: "sweaters",
-            yName: "Sweaters Made",
+            type: 'column',
+            xKey: 'month',
+            yKey: 'sweaters',
+            yName: 'Sweaters Made',
           },
         ],
         tooltip: {
-          class: "my-tooltip",
+          class: 'my-tooltip',
         },
       },
     };
@@ -46,4 +48,4 @@ class ChartExample extends Component {
   }
 }
 
-render(<ChartExample />, document.querySelector("#root"));
+render(<ChartExample />, document.querySelector('#root'));

@@ -1,13 +1,13 @@
-import { Component, ViewChild, ViewContainerRef } from "@angular/core";
-import { IFilterAngularComp } from "ag-grid-angular";
+import { Component, ViewChild, ViewContainerRef } from '@angular/core';
+import { IFilterAngularComp } from 'ag-grid-angular';
 import {
   IAfterGuiAttachedParams,
   IDoesFilterPassParams,
   IFilterParams,
-} from "ag-grid-community";
+} from 'ag-grid-community';
 
 @Component({
-  selector: "filter-cell",
+  selector: 'filter-cell',
   template: `
     <div class="container">
       Partial Match Filter:
@@ -37,9 +37,9 @@ import {
 })
 export class PartialMatchFilter implements IFilterAngularComp {
   private params!: IFilterParams;
-  public text = "";
+  public text = '';
 
-  @ViewChild("input", { read: ViewContainerRef })
+  @ViewChild('input', { read: ViewContainerRef })
   public input!: ViewContainerRef;
 
   agInit(params: IFilterParams): void {
@@ -47,12 +47,18 @@ export class PartialMatchFilter implements IFilterAngularComp {
   }
 
   isFilterActive(): boolean {
-    return this.text != null && this.text !== "";
+    return this.text != null && this.text !== '';
   }
 
   doesFilterPass(params: IDoesFilterPassParams): boolean {
-    const { api, colDef, column, columnApi, context, valueGetter } =
-      this.params;
+    const {
+      api,
+      colDef,
+      column,
+      columnApi,
+      context,
+      valueGetter,
+    } = this.params;
     const { node } = params;
     const value = valueGetter({
       api,
@@ -69,7 +75,7 @@ export class PartialMatchFilter implements IFilterAngularComp {
 
     return this.text
       .toLowerCase()
-      .split(" ")
+      .split(' ')
       .every((filterWord) => value.indexOf(filterWord) >= 0);
   }
 
@@ -82,7 +88,7 @@ export class PartialMatchFilter implements IFilterAngularComp {
   }
 
   setModel(model: any): void {
-    this.text = model ? model.value : "";
+    this.text = model ? model.value : '';
   }
 
   afterGuiAttached(params: IAfterGuiAttachedParams): void {

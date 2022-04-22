@@ -1,5 +1,5 @@
-import { AgChartsVue } from "ag-charts-vue3";
-import { createApp } from "vue";
+import { AgChartsVue } from 'ag-charts-vue3';
+import { createApp } from 'vue';
 
 const ChartExample = {
   template: `
@@ -7,7 +7,7 @@ const ChartExample = {
                 :options="options"></ag-charts-vue>
     `,
   components: {
-    "ag-charts-vue": AgChartsVue,
+    'ag-charts-vue': AgChartsVue,
   },
   data: function () {
     return {
@@ -20,8 +20,8 @@ const ChartExample = {
       data: getData(),
       theme: {
         palette: {
-          fills: ["#00c851", "#ffbb33", "#ff4444"],
-          strokes: ["#006428", "#996500", "#a10000"],
+          fills: ['#00c851', '#ffbb33', '#ff4444'],
+          strokes: ['#006428', '#996500', '#a10000'],
         },
         overrides: {
           bar: {
@@ -38,51 +38,51 @@ const ChartExample = {
         },
       },
       title: {
-        text: "Internet Users by Geographical Location (2019)",
+        text: 'Internet Users by Geographical Location (2019)',
         fontSize: 18,
       },
       subtitle: {
-        text: "Source: Office for National Statistics",
+        text: 'Source: Office for National Statistics',
       },
       series: [
         {
-          type: "bar",
-          xKey: "area",
-          yKey: "usedInLast3Months",
-          yName: "Used in last 3 months",
+          type: 'bar',
+          xKey: 'area',
+          yKey: 'usedInLast3Months',
+          yName: 'Used in last 3 months',
           normalizedTo: 1,
           stacked: true,
         },
         {
-          type: "bar",
-          xKey: "area",
-          yKey: "usedOver3MonthsAgo",
-          yName: "Used over 3 months ago",
+          type: 'bar',
+          xKey: 'area',
+          yKey: 'usedOver3MonthsAgo',
+          yName: 'Used over 3 months ago',
           normalizedTo: 1,
           stacked: true,
         },
         {
-          type: "bar",
-          xKey: "area",
-          yKey: "neverUsed",
-          yName: "Never used",
+          type: 'bar',
+          xKey: 'area',
+          yKey: 'neverUsed',
+          yName: 'Never used',
           normalizedTo: 1,
           stacked: true,
         },
       ],
       axes: [
         {
-          type: "category",
-          position: "left",
+          type: 'category',
+          position: 'left',
           label: {
             rotation: -30,
           },
         },
         {
-          type: "number",
-          position: "bottom",
+          type: 'number',
+          position: 'bottom',
           label: {
-            format: ".0%",
+            format: '.0%',
           },
         },
       ],
@@ -92,4 +92,4 @@ const ChartExample = {
   methods: {},
 };
 
-createApp(ChartExample).mount("#app");
+createApp(ChartExample).mount('#app');

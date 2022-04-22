@@ -1,7 +1,7 @@
-import * as agCharts from "ag-charts-community";
-import { AgChartsVue } from "ag-charts-vue";
-import { cloneDeep } from "lodash";
-import Vue from "vue";
+import * as agCharts from 'ag-charts-community';
+import { AgChartsVue } from 'ag-charts-vue';
+import { cloneDeep } from 'lodash';
+import Vue from 'vue';
 
 const ChartExample = {
   template: `
@@ -14,7 +14,7 @@ const ChartExample = {
             </div>
     `,
   components: {
-    "ag-charts-vue": AgChartsVue,
+    'ag-charts-vue': AgChartsVue,
   },
   data: function () {
     return {
@@ -27,31 +27,31 @@ const ChartExample = {
       data: getData(),
       series: [
         {
-          xKey: "time",
-          yKey: "voltage",
+          xKey: 'time',
+          yKey: 'voltage',
         },
       ],
       axes: [
         {
-          type: "time",
-          position: "bottom",
+          type: 'time',
+          position: 'bottom',
           tick: {
             count: agCharts.time.second.every(5),
           },
           label: {
-            format: "%H:%M:%S",
+            format: '%H:%M:%S',
           },
         },
         {
-          type: "number",
-          position: "left",
+          type: 'number',
+          position: 'left',
           label: {
-            format: "#{.2f}V",
+            format: '#{.2f}V',
           },
         },
       ],
       title: {
-        text: "Core Voltage",
+        text: 'Core Voltage',
       },
       legend: {
         enabled: false,
@@ -80,7 +80,7 @@ const ChartExample = {
   },
 };
 
-var lastTime = new Date("07 Jan 2020 13:25:00 GMT").getTime();
+var lastTime = new Date('07 Jan 2020 13:25:00 GMT').getTime();
 
 var data = [];
 
@@ -98,8 +98,8 @@ window.getData = function getData() {
 var updating = false;
 
 new Vue({
-  el: "#app",
+  el: '#app',
   components: {
-    "my-component": ChartExample,
+    'my-component': ChartExample,
   },
 });

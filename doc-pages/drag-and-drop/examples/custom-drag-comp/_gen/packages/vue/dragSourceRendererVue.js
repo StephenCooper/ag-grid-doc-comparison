@@ -9,8 +9,8 @@ export default {
     onDragStart(event) {
       var userAgent = window.navigator.userAgent;
       event.dataTransfer.setData(
-        "text/plain",
-        "Dragged item with ID: " + this.params.node.data.id
+        'text/plain',
+        'Dragged item with ID: ' + this.params.node.data.id
       );
     },
   },

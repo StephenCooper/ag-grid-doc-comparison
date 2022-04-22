@@ -1,15 +1,15 @@
-"use strict";
+'use strict';
 
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine-dark.css";
-import { AgGridReact } from "@ag-grid-community/react";
-import { ColumnsToolPanelModule } from "@ag-grid-enterprise/column-tool-panel";
-import { MenuModule } from "@ag-grid-enterprise/menu";
-import { RowGroupingModule } from "@ag-grid-enterprise/row-grouping";
-import { ServerSideRowModelModule } from "@ag-grid-enterprise/server-side-row-model";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from '@ag-grid-community/react';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine-dark.css';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import { ServerSideRowModelModule } from '@ag-grid-enterprise/server-side-row-model';
+import { RowGroupingModule } from '@ag-grid-enterprise/row-grouping';
+import { MenuModule } from '@ag-grid-enterprise/menu';
+import { ColumnsToolPanelModule } from '@ag-grid-enterprise/column-tool-panel';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([
@@ -25,18 +25,18 @@ class GridExample extends Component {
 
     this.state = {
       columnDefs: [
-        { field: "employeeId", hide: true },
-        { field: "employeeName", hide: true },
-        { field: "jobTitle" },
-        { field: "employmentType" },
+        { field: 'employeeId', hide: true },
+        { field: 'employeeName', hide: true },
+        { field: 'jobTitle' },
+        { field: 'employmentType' },
       ],
       defaultColDef: {
         width: 240,
-        filter: "agTextColumnFilter",
+        filter: 'agTextColumnFilter',
         flex: 1,
       },
       autoGroupColumnDef: {
-        field: "employeeName",
+        field: 'employeeName',
         cellRendererParams: {
           innerRenderer: function (params) {
             // display employeeName rather than group key (employeeId)
@@ -44,8 +44,8 @@ class GridExample extends Component {
           },
         },
       },
-      rowModelType: "serverSide",
-      serverSideStoreType: "partial",
+      rowModelType: 'serverSide',
+      serverSideStoreType: 'partial',
       isServerSideGroupOpenByDefault: function (params) {
         // open first two levels by default
         return params.rowNode.level < 2;
@@ -71,18 +71,18 @@ class GridExample extends Component {
       params.api.setServerSideDatasource(datasource);
     };
 
-    fetch("https://www.ag-grid.com/example-assets/small-tree-data.json")
+    fetch('https://www.ag-grid.com/example-assets/small-tree-data.json')
       .then((resp) => resp.json())
       .then((data) => updateData(data));
   };
 
   render() {
     return (
-      <div style={{ width: "100%", height: "100%" }}>
+      <div style={{ width: '100%', height: '100%' }}>
         <div
           style={{
-            height: "100%",
-            width: "100%",
+            height: '100%',
+            width: '100%',
           }}
           className="ag-theme-alpine-dark"
         >
@@ -141,7 +141,7 @@ function createFakeServer(fakeServerData) {
 function createServerSideDatasource(fakeServer) {
   const dataSource = {
     getRows: function (params) {
-      console.log("ServerSideDatasource.getRows: params = ", params);
+      console.log('ServerSideDatasource.getRows: params = ', params);
       var allRows = fakeServer.getData(params.request);
       var request = params.request;
       var doingInfinite = request.startRow != null && request.endRow != null;
@@ -151,7 +151,7 @@ function createServerSideDatasource(fakeServer) {
             rowCount: allRows.length,
           }
         : { rowData: allRows };
-      console.log("getRows: result = ", result);
+      console.log('getRows: result = ', result);
       setTimeout(function () {
         params.success(result);
       }, 200);
@@ -160,4 +160,4 @@ function createServerSideDatasource(fakeServer) {
   return dataSource;
 }
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

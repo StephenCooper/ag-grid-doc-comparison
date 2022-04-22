@@ -12,7 +12,7 @@ export default {
     `,
   data: function () {
     return {
-      year: "All",
+      year: 'All',
     };
   },
   methods: {
@@ -25,7 +25,7 @@ export default {
     },
 
     isFilterActive() {
-      return this.year === "2010";
+      return this.year === '2010';
     },
 
     // this example isn't using getModel() and setModel(),

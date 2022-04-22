@@ -1,37 +1,37 @@
-"use strict";
+'use strict';
 
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import { AgGridReact } from "ag-grid-react";
-import React, { useCallback, useMemo, useState } from "react";
-import { render } from "react-dom";
+import React, { useCallback, useMemo, useRef, useState } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from 'ag-grid-react';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 
 const GridExample = () => {
-  const containerStyle = useMemo(() => ({ width: "100%", height: "100%" }), []);
-  const gridStyle = useMemo(() => ({ height: "100%", width: "100%" }), []);
+  const containerStyle = useMemo(() => ({ width: '100%', height: '100%' }), []);
+  const gridStyle = useMemo(() => ({ height: '100%', width: '100%' }), []);
   const [rowData, setRowData] = useState();
   const [columnDefs, setColumnDefs] = useState([
     {
-      headerName: "Athlete",
+      headerName: 'Athlete',
       children: [
-        { field: "athlete", width: 150 },
-        { field: "age", lockVisible: true, cellClass: "locked-visible" },
-        { field: "country", width: 150 },
-        { field: "year" },
-        { field: "date" },
-        { field: "sport" },
+        { field: 'athlete', width: 150 },
+        { field: 'age', lockVisible: true, cellClass: 'locked-visible' },
+        { field: 'country', width: 150 },
+        { field: 'year' },
+        { field: 'date' },
+        { field: 'sport' },
       ],
     },
     {
-      headerName: "Medals",
+      headerName: 'Medals',
       children: [
-        { field: "gold", lockVisible: true, cellClass: "locked-visible" },
-        { field: "silver", lockVisible: true, cellClass: "locked-visible" },
-        { field: "bronze", lockVisible: true, cellClass: "locked-visible" },
+        { field: 'gold', lockVisible: true, cellClass: 'locked-visible' },
+        { field: 'silver', lockVisible: true, cellClass: 'locked-visible' },
+        { field: 'bronze', lockVisible: true, cellClass: 'locked-visible' },
         {
-          field: "total",
+          field: 'total',
           lockVisible: true,
-          cellClass: "locked-visible",
+          cellClass: 'locked-visible',
           hide: true,
         },
       ],
@@ -41,11 +41,11 @@ const GridExample = () => {
     return {
       toolPanels: [
         {
-          id: "columns",
-          labelDefault: "Columns",
-          labelKey: "columns",
-          iconKey: "columns",
-          toolPanel: "agColumnsToolPanel",
+          id: 'columns',
+          labelDefault: 'Columns',
+          labelKey: 'columns',
+          iconKey: 'columns',
+          toolPanel: 'agColumnsToolPanel',
           toolPanelParams: {
             suppressRowGroups: true,
             suppressValues: true,
@@ -63,7 +63,7 @@ const GridExample = () => {
   }, []);
 
   const onGridReady = useCallback((params) => {
-    fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+    fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .then((resp) => resp.json())
       .then((data) => setRowData(data));
   }, []);
@@ -90,4 +90,4 @@ const GridExample = () => {
   );
 };
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

@@ -12,7 +12,7 @@ The example below shows the filters tool panel. The following can be noted:
 - Clicking on a column in the filter tool panel will show the filter below the column name. Clicking a second time will hide the filter again.
 - Columns with filters active will have the filter icon appear beside the filter name in the tool panel.
 
-<grid-example title='Filter Tool Panel' name='simple' type='mixed' options='{ "enterprise": true, "modules": ["clientside", "menu", "setfilter", "filterpanel"]}'></grid-example>
+<grid-example title='Filter Tool Panel' name='simple' type='mixed' options='{ "enterprise": true, "modules": ["clientside", "menu", "setfilter", "filterpanel"]}'></grid-example> 
 
 ## Suppress Options
 
@@ -70,6 +70,7 @@ The code snippet below shows how to expand and collapse filter groups using the 
 |filtersToolPanel.collapseFilters(['competitionGroupId']);
 </snippet>
 
+
 Notice in the snippet above that it's possible to target individual filter groups by supplying `groupId`s.
 
 The example below demonstrates these methods in action. Note the following:
@@ -112,6 +113,7 @@ The code snippet below shows how to expand and collapse filters using the Filter
 |// collapses the 'year' filter in the Filters Tool Panel
 |filtersToolPanel.expandFilters(['year']);
 </snippet>
+
 
 Notice in the snippet above that it's possible to target individual filters by supplying `colId`s.
 
@@ -175,6 +177,7 @@ Notice from the snippet above that it's possible to define groups in the tool pa
 
 The example below shows two custom layouts for the Filters Tool Panel. Note the following:
 
+
 - When the grid is initialised the filter layout in the Filters Tool Panel matches what is supplied to the grid in `gridOptions.columnDefs`.
 - Clicking **Custom Sort Layout** invokes `setFilterLayout(colDefs)` with a list of column definitions arranged in ascending order.
 - Clicking **Custom Group Layout** invokes `setFilterLayout(colDefs)` with a list of column definitions containing groups that don't appear in the grid.
@@ -185,3 +188,4 @@ The example below shows two custom layouts for the Filters Tool Panel. Note the 
 ## Next Up
 
 Now that we covered the provided Tool Panels, learn how to create [Custom Tool Panel Components](/component-tool-panel/).
+

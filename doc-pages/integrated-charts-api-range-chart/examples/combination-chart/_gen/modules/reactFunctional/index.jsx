@@ -1,15 +1,15 @@
-"use strict";
+'use strict';
 
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { AgGridReact } from "@ag-grid-community/react";
-import { GridChartsModule } from "@ag-grid-enterprise/charts";
-import { MenuModule } from "@ag-grid-enterprise/menu";
-import { RowGroupingModule } from "@ag-grid-enterprise/row-grouping";
-import React, { useCallback, useMemo, useRef, useState } from "react";
-import { render } from "react-dom";
+import React, { useCallback, useMemo, useRef, useState } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from '@ag-grid-community/react';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import { MenuModule } from '@ag-grid-enterprise/menu';
+import { GridChartsModule } from '@ag-grid-enterprise/charts';
+import { RowGroupingModule } from '@ag-grid-enterprise/row-grouping';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([
@@ -21,7 +21,7 @@ ModuleRegistry.registerModules([
 
 const numberParser = (params) => {
   const value = params.newValue;
-  if (value === null || value === undefined || value === "") {
+  if (value === null || value === undefined || value === '') {
     return null;
   }
   return parseFloat(value);
@@ -29,16 +29,16 @@ const numberParser = (params) => {
 
 const GridExample = () => {
   const gridRef = useRef();
-  const containerStyle = useMemo(() => ({ width: "100%", height: "100%" }), []);
-  const gridStyle = useMemo(() => ({ height: "100%", width: "100%" }), []);
+  const containerStyle = useMemo(() => ({ width: '100%', height: '100%' }), []);
+  const gridStyle = useMemo(() => ({ height: '100%', width: '100%' }), []);
   const [rowData, setRowData] = useState(getData());
   const [columnDefs, setColumnDefs] = useState([
-    { field: "day", maxWidth: 90 },
-    { field: "month", chartDataType: "category" },
-    { field: "rain", chartDataType: "series", valueParser: numberParser },
-    { field: "pressure", chartDataType: "series", valueParser: numberParser },
-    { field: "temp", chartDataType: "series", valueParser: numberParser },
-    { field: "wind", chartDataType: "series", valueParser: numberParser },
+    { field: 'day', maxWidth: 90 },
+    { field: 'month', chartDataType: 'category' },
+    { field: 'rain', chartDataType: 'series', valueParser: numberParser },
+    { field: 'pressure', chartDataType: 'series', valueParser: numberParser },
+    { field: 'temp', chartDataType: 'series', valueParser: numberParser },
+    { field: 'wind', chartDataType: 'series', valueParser: numberParser },
   ]);
   const defaultColDef = useMemo(() => {
     return {
@@ -51,7 +51,7 @@ const GridExample = () => {
     };
   }, []);
   const chartThemes = useMemo(() => {
-    return ["ag-pastel", "ag-vivid"];
+    return ['ag-pastel', 'ag-vivid'];
   }, []);
   const popupParent = useMemo(() => {
     return document.body;
@@ -63,7 +63,7 @@ const GridExample = () => {
           right: 40,
         },
         legend: {
-          position: "bottom",
+          position: 'bottom',
         },
       },
       column: {
@@ -83,18 +83,18 @@ const GridExample = () => {
 
   const onFirstDataRendered = useCallback((params) => {
     gridRef.current.api.createRangeChart({
-      chartType: "customCombo",
+      chartType: 'customCombo',
       cellRange: {
-        columns: ["month", "rain", "pressure", "temp"],
+        columns: ['month', 'rain', 'pressure', 'temp'],
       },
       seriesChartTypes: [
-        { colId: "rain", chartType: "groupedColumn", secondaryAxis: false },
-        { colId: "pressure", chartType: "line", secondaryAxis: true },
-        { colId: "temp", chartType: "line", secondaryAxis: true },
+        { colId: 'rain', chartType: 'groupedColumn', secondaryAxis: false },
+        { colId: 'pressure', chartType: 'line', secondaryAxis: true },
+        { colId: 'temp', chartType: 'line', secondaryAxis: true },
       ],
-      aggFunc: "sum",
+      aggFunc: 'sum',
       suppressChartRanges: true,
-      chartContainer: document.querySelector("#myChart"),
+      chartContainer: document.querySelector('#myChart'),
     });
   }, []);
 
@@ -121,4 +121,4 @@ const GridExample = () => {
   );
 };
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

@@ -1,8 +1,8 @@
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine-dark.css";
-import "ag-grid-enterprise";
-import { AgGridVue } from "ag-grid-vue3";
-import { createApp } from "vue";
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine-dark.css';
+import 'ag-grid-enterprise';
+import { AgGridVue } from 'ag-grid-vue3';
+import { createApp } from 'vue';
 
 const VueExample = {
   template: `
@@ -30,17 +30,17 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
-        { field: "country", enableRowGroup: true, rowGroup: true },
-        { field: "sport", enableRowGroup: true, rowGroup: true },
-        { field: "year", minWidth: 100 },
-        { field: "gold", aggFunc: "sum" },
-        { field: "silver", aggFunc: "sum" },
-        { field: "bronze", aggFunc: "sum" },
+        { field: 'country', enableRowGroup: true, rowGroup: true },
+        { field: 'sport', enableRowGroup: true, rowGroup: true },
+        { field: 'year', minWidth: 100 },
+        { field: 'gold', aggFunc: 'sum' },
+        { field: 'silver', aggFunc: 'sum' },
+        { field: 'bronze', aggFunc: 'sum' },
       ],
       gridApi: null,
       columnApi: null,
@@ -59,21 +59,21 @@ const VueExample = {
     };
   },
   created() {
-    this.rowGroupPanelShow = "always";
-    this.serverSideStoreType = "full";
+    this.rowGroupPanelShow = 'always';
+    this.serverSideStoreType = 'full';
     this.autoGroupColumnDef = {
       flex: 1,
       minWidth: 280,
     };
     this.cacheBlockSize = 4;
-    this.rowModelType = "serverSide";
+    this.rowModelType = 'serverSide';
     this.getServerSideStoreParams = (params) => {
       var noGroupingActive = params.rowGroupColumns.length == 0;
       var res;
       if (noGroupingActive) {
         res = {
           // infinite scrolling
-          storeType: "partial",
+          storeType: 'partial',
           // 100 rows per block
           cacheBlockSize: 100,
           // purge blocks that are not needed
@@ -82,16 +82,16 @@ const VueExample = {
       } else {
         var topLevelRows = params.level == 0;
         res = {
-          storeType: topLevelRows ? "full" : "partial",
+          storeType: topLevelRows ? 'full' : 'partial',
           cacheBlockSize: params.level == 1 ? 5 : 2,
           maxBlocksInCache: -1, // never purge blocks
         };
       }
-      console.log("############## NEW STORE ##############");
+      console.log('############## NEW STORE ##############');
       console.log(
-        "getServerSideStoreParams, level = " +
+        'getServerSideStoreParams, level = ' +
           params.level +
-          ", result = " +
+          ', result = ' +
           JSON.stringify(res)
       );
       return res;
@@ -100,12 +100,12 @@ const VueExample = {
   methods: {
     onBtStoreState() {
       var storeState = this.gridApi.getServerSideStoreState();
-      console.log("Store States:");
+      console.log('Store States:');
       storeState.forEach(function (state, index) {
         console.log(
           index +
-            " - " +
-            JSON.stringify(state).replace(/"/g, "").replace(/,/g, ", ")
+            ' - ' +
+            JSON.stringify(state).replace(/"/g, '').replace(/,/g, ', ')
         );
       });
     },
@@ -122,7 +122,7 @@ const VueExample = {
         params.api.setServerSideDatasource(datasource);
       };
 
-      fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
         .then((resp) => resp.json())
         .then((data) => updateData(data));
     },
@@ -132,7 +132,7 @@ const VueExample = {
 window.getServerSideDatasource = function getServerSideDatasource(server) {
   return {
     getRows: function (params) {
-      console.log("[Datasource] - rows requested by grid: ", params.request);
+      console.log('[Datasource] - rows requested by grid: ', params.request);
       var response = server.getData(params.request);
       // adding delay to simulate real server call
       setTimeout(function () {
@@ -155,4 +155,4 @@ window.getServerSideDatasource = function getServerSideDatasource(server) {
   };
 };
 
-createApp(VueExample).mount("#app");
+createApp(VueExample).mount('#app');

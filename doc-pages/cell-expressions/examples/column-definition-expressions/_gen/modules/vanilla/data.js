@@ -2,41 +2,41 @@ function getData() {
   const rowData = [];
 
   const words = [
-    "One",
-    "Apple",
-    "Moon",
-    "Sugar",
-    "Grid",
-    "Banana",
-    "Sunshine",
-    "Stars",
-    "Black",
-    "White",
-    "Salt",
-    "Beach",
+    'One',
+    'Apple',
+    'Moon',
+    'Sugar',
+    'Grid',
+    'Banana',
+    'Sunshine',
+    'Stars',
+    'Black',
+    'White',
+    'Salt',
+    'Beach',
   ];
   const firstNames = [
-    "Niall",
-    "John",
-    "Rob",
-    "Alberto",
-    "Bas",
-    "Dimple",
-    "Sean",
+    'Niall',
+    'John',
+    'Rob',
+    'Alberto',
+    'Bas',
+    'Dimple',
+    'Sean',
   ];
   const lastNames = [
-    "Pink",
-    "Black",
-    "White",
-    "Brown",
-    "Smith",
-    "Smooth",
-    "Anderson",
+    'Pink',
+    'Black',
+    'White',
+    'Brown',
+    'Smith',
+    'Smooth',
+    'Anderson',
   ];
 
   for (let i = 0; i < 100; i++) {
     const randomWords =
-      words[i % words.length] + " " + words[(i * 17) % words.length];
+      words[i % words.length] + ' ' + words[(i * 17) % words.length];
     rowData.push({
       simple: randomWords,
       numberBad: Math.floor(((i + 2) * 173456) % 10000),

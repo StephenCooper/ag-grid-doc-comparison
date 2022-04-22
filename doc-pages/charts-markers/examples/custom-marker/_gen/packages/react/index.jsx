@@ -1,9 +1,10 @@
-"use strict";
+'use strict';
 
-import * as agCharts from "ag-charts-community";
-import { AgChartsReact } from "ag-charts-react";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { cloneDeep } from 'lodash';
+import { render } from 'react-dom';
+import * as agCharts from 'ag-charts-community';
+import { AgChartsReact } from 'ag-charts-react';
 
 class ChartExample extends Component {
   constructor(props) {
@@ -12,14 +13,14 @@ class ChartExample extends Component {
     this.state = {
       options: {
         title: {
-          text: "Fuel Spending (2019)",
+          text: 'Fuel Spending (2019)',
         },
         data: getData(),
         series: [
           {
-            xKey: "quarter",
-            yKey: "electric",
-            title: "Electric",
+            xKey: 'quarter',
+            yKey: 'electric',
+            title: 'Electric',
             marker: {
               shape: heartFactory(),
               size: 16,
@@ -27,7 +28,7 @@ class ChartExample extends Component {
           },
         ],
         legend: {
-          position: "bottom",
+          position: 'bottom',
         },
       },
     };
@@ -59,4 +60,4 @@ function heartFactory() {
   return Heart;
 }
 
-render(<ChartExample />, document.querySelector("#root"));
+render(<ChartExample />, document.querySelector('#root'));

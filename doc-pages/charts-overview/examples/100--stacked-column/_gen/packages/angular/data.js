@@ -2,7 +2,7 @@
 function getData() {
   return [
     {
-      type: "Nursery",
+      type: 'Nursery',
       white: 24801,
       mixed: 4052,
       asian: 7317,
@@ -11,7 +11,7 @@ function getData() {
       other: 1338,
     },
     {
-      type: "Primary",
+      type: 'Primary',
       white: 3475379,
       mixed: 298866,
       asian: 527391,
@@ -20,7 +20,7 @@ function getData() {
       other: 95064,
     },
     {
-      type: "Secondary",
+      type: 'Secondary',
       white: 2436365,
       mixed: 182721,
       asian: 377168,
@@ -29,7 +29,7 @@ function getData() {
       other: 62662,
     },
     {
-      type: "Special",
+      type: 'Special',
       white: 91696,
       mixed: 7426,
       asian: 12328,
@@ -38,7 +38,7 @@ function getData() {
       other: 2109,
     },
     {
-      type: "Referral units",
+      type: 'Referral units',
       white: 12347,
       mixed: 1448,
       asian: 605,

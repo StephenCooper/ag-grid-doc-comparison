@@ -27,9 +27,9 @@ The example below shows the Multi Filter in action. Note the following:
 - The **Athlete** has a Multi Filter with default behaviour.
 - The **Country**, **Gold** and **Date** columns have Multi Filters with the child filters configured explicitly, using the [Text](/filter-text/), [Number](/filter-number/) and [Date](/filter-date/) Simple Filters respectively.
 - Different `filterParams` can be supplied to each child filter:<br />
-  - The Text Filter in the Country column has a different default option (`'startsWith'`)
-  - The Date Filter in the Date column has a custom comparator to compare dates correctly
-  - The Set Filter in the Date column has a custom comparator, so the values are displayed in ascending order
+    - The Text Filter in the Country column has a different default option (`'startsWith'`)
+    - The Date Filter in the Date column has a custom comparator to compare dates correctly
+    - The Set Filter in the Date column has a custom comparator, so the values are displayed in ascending order
 
 <grid-example title='Multi Filter' name='multi-filter' type='generated' options='{ "enterprise": true, "exampleHeight": 602, "modules": ["clientside", "multifilter", "setfilter", "menu", "clipboard", "filterpanel"] }'></grid-example>
 
@@ -97,6 +97,7 @@ The model for the Multi Filter wraps the models for all the child filters inside
 
 <interface-documentation interfaceName='IMultiFilterModel' config='{"overrideBottomMargin":"1rem"}' ></interface-documentation>
 
+
 The `filterType` will always be set to `'multi'`. The models array is the same length as the number of child filters, containing the models for the child filters in the same order as the filters were specified in the `filterParams`. Each array entry will either be set to `null` if the corresponding child filter is not active, or to the current model for the child filter if it is active.
 
 For example, if the Multi Filter has the default Text Filter and Set Filter, and the Set Filter is active, the Multi Filter model might look something like this:
@@ -121,7 +122,7 @@ The example below allows you to see the Multi Filter Model in use. You can print
 
 ## Accessing Child Filters
 
-The Multi Filter acts as a wrapper around a list of child filters inside it. The order of the filters is the same order as they are specified in the `filters` array in the `filterParams`. If you want to interact with the individual child filters, you can retrieve a particular child filter instance from the Multi Filter by calling `getChildFilterInstance(index)`, where `index` is the same as the index in the `filters` array. You can then call any API methods that are available on that particular child filter instance.
+The Multi Filter acts as a wrapper around a list of child filters inside it. The order of the filters is the same order as they are specified in the `filters` array in the `filterParams`. If you want to interact with the individual child filters, you can retrieve a particular child filter instance from the Multi Filter by calling `getChildFilterInstance(index)`,  where `index` is the same as the index in the `filters` array. You can then call any API methods that are available on that particular child filter instance.
 
 The example below shows how you can access child filter instances and call methods on them:
 

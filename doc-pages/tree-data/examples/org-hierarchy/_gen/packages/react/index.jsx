@@ -1,11 +1,11 @@
-"use strict";
+'use strict';
 
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
-import { AgGridReact } from "ag-grid-react";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from 'ag-grid-react';
+import 'ag-grid-enterprise';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 
 class GridExample extends Component {
   constructor(props) {
@@ -14,14 +14,14 @@ class GridExample extends Component {
     this.state = {
       columnDefs: [
         // we're using the auto group column by default!
-        { field: "jobTitle" },
-        { field: "employmentType" },
+        { field: 'jobTitle' },
+        { field: 'employmentType' },
       ],
       defaultColDef: {
         flex: 1,
       },
       autoGroupColumnDef: {
-        headerName: "Organisation Hierarchy",
+        headerName: 'Organisation Hierarchy',
         minWidth: 300,
         cellRendererParams: {
           suppressCount: true,
@@ -42,15 +42,15 @@ class GridExample extends Component {
 
   onFilterTextBoxChanged = () => {
     this.gridApi.setQuickFilter(
-      document.getElementById("filter-text-box").value
+      document.getElementById('filter-text-box').value
     );
   };
 
   render() {
     return (
-      <div style={{ width: "100%", height: "100%" }}>
+      <div style={{ width: '100%', height: '100%' }}>
         <div className="example-wrapper">
-          <div style={{ marginBottom: "5px" }}>
+          <div style={{ marginBottom: '5px' }}>
             <input
               type="text"
               id="filter-text-box"
@@ -60,8 +60,8 @@ class GridExample extends Component {
           </div>
           <div
             style={{
-              height: "100%",
-              width: "100%",
+              height: '100%',
+              width: '100%',
             }}
             className="ag-theme-alpine"
           >
@@ -83,4 +83,4 @@ class GridExample extends Component {
   }
 }
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

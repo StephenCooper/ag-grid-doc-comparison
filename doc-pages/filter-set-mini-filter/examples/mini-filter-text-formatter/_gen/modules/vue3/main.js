@@ -1,12 +1,12 @@
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { AgGridVue } from "@ag-grid-community/vue3";
-import { ColumnsToolPanelModule } from "@ag-grid-enterprise/column-tool-panel";
-import { MenuModule } from "@ag-grid-enterprise/menu";
-import { SetFilterModule } from "@ag-grid-enterprise/set-filter";
-import { createApp } from "vue";
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { AgGridVue } from '@ag-grid-community/vue3';
+import { ColumnsToolPanelModule } from '@ag-grid-enterprise/column-tool-panel';
+import { MenuModule } from '@ag-grid-enterprise/menu';
+import { SetFilterModule } from '@ag-grid-enterprise/set-filter';
+import { createApp } from 'vue';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([
@@ -30,19 +30,19 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
         {
-          field: "athlete",
-          filter: "agSetColumnFilter",
+          field: 'athlete',
+          filter: 'agSetColumnFilter',
           filterParams: filterParams,
         },
-        { field: "gold", filter: "agNumberColumnFilter" },
-        { field: "silver", filter: "agNumberColumnFilter" },
-        { field: "bronze", filter: "agNumberColumnFilter" },
+        { field: 'gold', filter: 'agNumberColumnFilter' },
+        { field: 'silver', filter: 'agNumberColumnFilter' },
+        { field: 'bronze', filter: 'agNumberColumnFilter' },
       ],
       gridApi: null,
       columnApi: null,
@@ -63,7 +63,7 @@ const VueExample = {
 
       const updateData = (data) => params.api.setRowData(data);
 
-      fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
         .then((resp) => resp.json())
         .then((data) => updateData(data));
     },
@@ -72,21 +72,21 @@ const VueExample = {
 
 window.replaceAccents = function replaceAccents(value) {
   return value
-    .replace(new RegExp("[àáâãäå]", "g"), "a")
-    .replace(new RegExp("æ", "g"), "ae")
-    .replace(new RegExp("ç", "g"), "c")
-    .replace(new RegExp("[èéêë]", "g"), "e")
-    .replace(new RegExp("[ìíîï]", "g"), "i")
-    .replace(new RegExp("ñ", "g"), "n")
-    .replace(new RegExp("[òóôõøö]", "g"), "o")
-    .replace(new RegExp("œ", "g"), "oe")
-    .replace(new RegExp("[ùúûü]", "g"), "u")
-    .replace(new RegExp("[ýÿ]", "g"), "y")
-    .replace(new RegExp("\\W", "g"), "");
+    .replace(new RegExp('[àáâãäå]', 'g'), 'a')
+    .replace(new RegExp('æ', 'g'), 'ae')
+    .replace(new RegExp('ç', 'g'), 'c')
+    .replace(new RegExp('[èéêë]', 'g'), 'e')
+    .replace(new RegExp('[ìíîï]', 'g'), 'i')
+    .replace(new RegExp('ñ', 'g'), 'n')
+    .replace(new RegExp('[òóôõøö]', 'g'), 'o')
+    .replace(new RegExp('œ', 'g'), 'oe')
+    .replace(new RegExp('[ùúûü]', 'g'), 'u')
+    .replace(new RegExp('[ýÿ]', 'g'), 'y')
+    .replace(new RegExp('\\W', 'g'), '');
 };
 
 const filterParams = {
   textFormatter: replaceAccents,
 };
 
-createApp(VueExample).mount("#app");
+createApp(VueExample).mount('#app');

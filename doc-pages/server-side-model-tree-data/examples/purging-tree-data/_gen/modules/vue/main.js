@@ -1,12 +1,12 @@
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine-dark.css";
-import { AgGridVue } from "@ag-grid-community/vue";
-import { ColumnsToolPanelModule } from "@ag-grid-enterprise/column-tool-panel";
-import { MenuModule } from "@ag-grid-enterprise/menu";
-import { RowGroupingModule } from "@ag-grid-enterprise/row-grouping";
-import { ServerSideRowModelModule } from "@ag-grid-enterprise/server-side-row-model";
-import Vue from "vue";
+import { ModuleRegistry } from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine-dark.css';
+import { AgGridVue } from '@ag-grid-community/vue';
+import { ColumnsToolPanelModule } from '@ag-grid-enterprise/column-tool-panel';
+import { MenuModule } from '@ag-grid-enterprise/menu';
+import { RowGroupingModule } from '@ag-grid-enterprise/row-grouping';
+import { ServerSideRowModelModule } from '@ag-grid-enterprise/server-side-row-model';
+import Vue from 'vue';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([
@@ -44,15 +44,15 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
-        { field: "employeeId", hide: true },
-        { field: "employeeName", hide: true },
-        { field: "employmentType" },
-        { field: "startDate" },
+        { field: 'employeeId', hide: true },
+        { field: 'employeeName', hide: true },
+        { field: 'employmentType' },
+        { field: 'startDate' },
       ],
       gridApi: null,
       columnApi: null,
@@ -72,17 +72,17 @@ const VueExample = {
   },
   created() {
     this.autoGroupColumnDef = {
-      field: "employeeName",
+      field: 'employeeName',
     };
-    this.rowModelType = "serverSide";
-    this.serverSideStoreType = "partial";
+    this.rowModelType = 'serverSide';
+    this.serverSideStoreType = 'partial';
     this.cacheBlockSize = 10;
     this.isServerSideGroupOpenByDefault = (params) => {
       var isKathrynPowers =
         params.rowNode.level == 0 &&
-        params.data.employeeName == "Kathryn Powers";
+        params.data.employeeName == 'Kathryn Powers';
       var isMabelWard =
-        params.rowNode.level == 1 && params.data.employeeName == "Mabel Ward";
+        params.rowNode.level == 1 && params.data.employeeName == 'Mabel Ward';
       return isKathrynPowers || isMabelWard;
     };
     this.isServerSideGroup = (dataItem) => {
@@ -108,7 +108,7 @@ const VueExample = {
         params.api.setServerSideDatasource(datasource);
       };
 
-      fetch("https://www.ag-grid.com/example-assets/tree-data.json")
+      fetch('https://www.ag-grid.com/example-assets/tree-data.json')
         .then((resp) => resp.json())
         .then((data) => updateData(data));
     },
@@ -123,7 +123,7 @@ window.createFakeServer = function createFakeServer(fakeServerData) {
           return data.map(function (d) {
             return {
               group: !!d.underlings,
-              employeeId: d.employeeId + "",
+              employeeId: d.employeeId + '',
               employeeName: d.employeeName,
               employmentType: d.employmentType,
               startDate: d.startDate,
@@ -151,7 +151,7 @@ window.createServerSideDatasource = function createServerSideDatasource(
 ) {
   const dataSource = {
     getRows: function (params) {
-      console.log("ServerSideDatasource.getRows: params = ", params);
+      console.log('ServerSideDatasource.getRows: params = ', params);
       var request = params.request;
       var allRows = fakeServer.getData(request);
       var doingInfinite = request.startRow != null && request.endRow != null;
@@ -161,7 +161,7 @@ window.createServerSideDatasource = function createServerSideDatasource(
             rowCount: allRows.length,
           }
         : { rowData: allRows };
-      console.log("getRows: result = ", result);
+      console.log('getRows: result = ', result);
       setTimeout(function () {
         params.success(result);
       }, 500);
@@ -171,8 +171,8 @@ window.createServerSideDatasource = function createServerSideDatasource(
 };
 
 new Vue({
-  el: "#app",
+  el: '#app',
   components: {
-    "my-component": VueExample,
+    'my-component': VueExample,
   },
 });

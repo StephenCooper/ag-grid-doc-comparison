@@ -1,16 +1,16 @@
-"use strict";
+'use strict';
 
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine-dark.css";
-import { AgGridReact } from "ag-grid-react";
-import React, { useMemo, useState } from "react";
-import { render } from "react-dom";
+import React, { useCallback, useMemo, useRef, useState } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from 'ag-grid-react';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine-dark.css';
 
 const getRowData = () => {
   var rowData = [];
   for (var i = 1; i <= 20; i++) {
     rowData.push({
-      group: i < 5 ? "A" : "B",
+      group: i < 5 ? 'A' : 'B',
       a: (i * 863) % 100,
       b: (i * 811) % 100,
       c: (i * 743) % 100,
@@ -23,21 +23,21 @@ const getRowData = () => {
 };
 
 const GridExample = () => {
-  const containerStyle = useMemo(() => ({ width: "100%", height: "100%" }), []);
-  const gridStyle = useMemo(() => ({ height: "100%", width: "100%" }), []);
+  const containerStyle = useMemo(() => ({ width: '100%', height: '100%' }), []);
+  const gridStyle = useMemo(() => ({ height: '100%', width: '100%' }), []);
   const [rowData, setRowData] = useState(getRowData());
   const [columnDefs, setColumnDefs] = useState([
-    { field: "a", type: "valueColumn" },
-    { field: "b", type: "valueColumn" },
-    { field: "c", type: "valueColumn" },
-    { field: "d", type: "valueColumn" },
-    { field: "e", type: "valueColumn" },
-    { field: "f", type: "valueColumn" },
+    { field: 'a', type: 'valueColumn' },
+    { field: 'b', type: 'valueColumn' },
+    { field: 'c', type: 'valueColumn' },
+    { field: 'd', type: 'valueColumn' },
+    { field: 'e', type: 'valueColumn' },
+    { field: 'f', type: 'valueColumn' },
     {
-      headerName: "Total",
-      valueGetter: "data.a + data.b + data.c + data.d + data.e + data.f",
+      headerName: 'Total',
+      valueGetter: 'data.a + data.b + data.c + data.d + data.e + data.f',
       editable: false,
-      cellClass: "total-col",
+      cellClass: 'total-col',
     },
   ]);
   const defaultColDef = useMemo(() => {
@@ -50,8 +50,8 @@ const GridExample = () => {
     return {
       valueColumn: {
         editable: true,
-        valueParser: "Number(newValue)",
-        filter: "agNumberColumnFilter",
+        valueParser: 'Number(newValue)',
+        filter: 'agNumberColumnFilter',
       },
     };
   }, []);
@@ -74,4 +74,4 @@ const GridExample = () => {
   );
 };
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

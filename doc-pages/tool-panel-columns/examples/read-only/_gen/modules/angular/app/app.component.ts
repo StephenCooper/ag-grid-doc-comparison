@@ -3,15 +3,15 @@ import {
   GridApi,
   GridReadyEvent,
   SideBarDef,
-} from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { HttpClient } from "@angular/common/http";
-import { Component } from "@angular/core";
+} from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { HttpClient } from '@angular/common/http';
+import { Component } from '@angular/core';
 // Required feature modules are registered in app.module.ts
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<div class="test-container">
     <div class="test-header">
       <label
@@ -40,63 +40,63 @@ export class AppComponent {
 
   public columnDefs: ColDef[] = [
     {
-      field: "athlete",
+      field: 'athlete',
       minWidth: 200,
       enableRowGroup: true,
       enablePivot: true,
     },
     {
-      field: "age",
+      field: 'age',
       enableValue: true,
     },
     {
-      field: "country",
+      field: 'country',
       minWidth: 200,
       enableRowGroup: true,
       enablePivot: true,
       rowGroupIndex: 1,
     },
     {
-      field: "year",
+      field: 'year',
       enableRowGroup: true,
       enablePivot: true,
       pivotIndex: 1,
     },
     {
-      field: "date",
+      field: 'date',
       minWidth: 180,
       enableRowGroup: true,
       enablePivot: true,
     },
     {
-      field: "sport",
+      field: 'sport',
       minWidth: 200,
       enableRowGroup: true,
       enablePivot: true,
       rowGroupIndex: 2,
     },
     {
-      field: "gold",
+      field: 'gold',
       hide: true,
       enableValue: true,
     },
     {
-      field: "silver",
+      field: 'silver',
       hide: true,
       enableValue: true,
-      aggFunc: "sum",
+      aggFunc: 'sum',
     },
     {
-      field: "bronze",
+      field: 'bronze',
       hide: true,
       enableValue: true,
-      aggFunc: "sum",
+      aggFunc: 'sum',
     },
     {
-      headerName: "Total",
-      field: "totalAgg",
+      headerName: 'Total',
+      field: 'totalAgg',
       valueGetter:
-        "node.group ? data.totalAgg : data.gold + data.silver + data.bronze",
+        'node.group ? data.totalAgg : data.gold + data.silver + data.bronze',
     },
   ];
   public defaultColDef: ColDef = {
@@ -108,26 +108,26 @@ export class AppComponent {
   public autoGroupColumnDef: ColDef = {
     minWidth: 250,
   };
-  public sideBar: SideBarDef | string | boolean | null = "columns";
-  public rowGroupPanelShow = "always";
-  public pivotPanelShow = "always";
+  public sideBar: SideBarDef | string | string[] | boolean | null = 'columns';
+  public rowGroupPanelShow = 'always';
+  public pivotPanelShow = 'always';
   public rowData!: any[];
 
   constructor(private http: HttpClient) {}
 
   setReadOnly() {
     this.gridApi.setFunctionsReadOnly(
-      (document.getElementById("read-only") as HTMLInputElement).checked
+      (document.getElementById('read-only') as HTMLInputElement).checked
     );
   }
 
   onGridReady(params: GridReadyEvent) {
     this.gridApi = params.api;
 
-    (document.getElementById("read-only") as HTMLInputElement).checked = true;
+    (document.getElementById('read-only') as HTMLInputElement).checked = true;
 
     this.http
-      .get<any[]>("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      .get<any[]>('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .subscribe((data) => (this.rowData = data));
   }
 }

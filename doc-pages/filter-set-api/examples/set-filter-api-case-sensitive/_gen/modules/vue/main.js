@@ -1,12 +1,12 @@
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { AgGridVue } from "@ag-grid-community/vue";
-import { FiltersToolPanelModule } from "@ag-grid-enterprise/filter-tool-panel";
-import { MenuModule } from "@ag-grid-enterprise/menu";
-import { SetFilterModule } from "@ag-grid-enterprise/set-filter";
-import Vue from "vue";
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { AgGridVue } from '@ag-grid-community/vue';
+import { FiltersToolPanelModule } from '@ag-grid-enterprise/filter-tool-panel';
+import { MenuModule } from '@ag-grid-enterprise/menu';
+import { SetFilterModule } from '@ag-grid-enterprise/set-filter';
+import Vue from 'vue';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([
@@ -52,24 +52,24 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
         {
-          headerName: "Case Insensitive (default)",
-          field: "colour",
-          filter: "agSetColumnFilter",
+          headerName: 'Case Insensitive (default)',
+          field: 'colour',
+          filter: 'agSetColumnFilter',
           filterParams: {
             caseSensitive: false,
             cellRenderer: colourCellRenderer,
           },
         },
         {
-          headerName: "Case Sensitive",
-          field: "colour",
-          filter: "agSetColumnFilter",
+          headerName: 'Case Sensitive',
+          field: 'colour',
+          filter: 'agSetColumnFilter',
           filterParams: {
             caseSensitive: true,
             cellRenderer: colourCellRenderer,
@@ -90,12 +90,12 @@ const VueExample = {
     };
   },
   created() {
-    this.sideBar = "filters";
+    this.sideBar = 'filters';
     this.rowData = getData();
   },
   methods: {
     onFirstDataRendered(params) {
-      this.gridApi.getToolPanelInstance("filters").expandFilters();
+      this.gridApi.getToolPanelInstance('filters').expandFilters();
     },
     setModel(type) {
       const instance = this.gridApi.getFilterInstance(FILTER_TYPES[type]);
@@ -130,7 +130,7 @@ const VueExample = {
 };
 
 window.colourCellRenderer = function colourCellRenderer(params) {
-  if (!params.value || params.value === "(Select All)") {
+  if (!params.value || params.value === '(Select All)') {
     return params.value;
   }
   return `<div style="background-color: ${params.value.toLowerCase()}; ${FIXED_STYLES}"></div>${
@@ -139,18 +139,18 @@ window.colourCellRenderer = function colourCellRenderer(params) {
 };
 
 var FIXED_STYLES =
-  "vertical-align: middle; border: 1px solid black; margin: 3px; display: inline-block; width: 10px; height: 10px";
+  'vertical-align: middle; border: 1px solid black; margin: 3px; display: inline-block; width: 10px; height: 10px';
 
 var FILTER_TYPES = {
-  insensitive: "colour",
-  sensitive: "colour_1",
+  insensitive: 'colour',
+  sensitive: 'colour_1',
 };
 
-var MANGLED_COLOURS = ["ReD", "OrAnGe", "WhItE", "YeLlOw"];
+var MANGLED_COLOURS = ['ReD', 'OrAnGe', 'WhItE', 'YeLlOw'];
 
 new Vue({
-  el: "#app",
+  el: '#app',
   components: {
-    "my-component": VueExample,
+    'my-component': VueExample,
   },
 });

@@ -1,5 +1,5 @@
-import { AgChartsVue } from "ag-charts-vue";
-import Vue from "vue";
+import { AgChartsVue } from 'ag-charts-vue';
+import Vue from 'vue';
 
 const ChartExample = {
   template: `
@@ -7,7 +7,7 @@ const ChartExample = {
                 :options="options"></ag-charts-vue>
     `,
   components: {
-    "ag-charts-vue": AgChartsVue,
+    'ag-charts-vue': AgChartsVue,
   },
   data: function () {
     return {
@@ -36,54 +36,54 @@ const ChartExample = {
         },
       },
       title: {
-        text: "UK Housing Stock (2016)",
+        text: 'UK Housing Stock (2016)',
         fontSize: 18,
       },
       subtitle: {
-        text: "Source: Ministry of Housing, Communities & Local Government",
+        text: 'Source: Ministry of Housing, Communities & Local Government',
       },
       series: [
         {
-          type: "bar",
-          xKey: "type",
-          yKey: "ownerOccupied",
-          yName: "Owner occupied",
+          type: 'bar',
+          xKey: 'type',
+          yKey: 'ownerOccupied',
+          yName: 'Owner occupied',
           stacked: true,
         },
         {
-          type: "bar",
-          xKey: "type",
-          yKey: "privateRented",
-          yName: "Private rented",
+          type: 'bar',
+          xKey: 'type',
+          yKey: 'privateRented',
+          yName: 'Private rented',
           stacked: true,
         },
         {
-          type: "bar",
-          xKey: "type",
-          yKey: "localAuthority",
-          yName: "Local authority",
+          type: 'bar',
+          xKey: 'type',
+          yKey: 'localAuthority',
+          yName: 'Local authority',
           stacked: true,
         },
         {
-          type: "bar",
-          xKey: "type",
-          yKey: "housingAssociation",
-          yName: "Housing association",
+          type: 'bar',
+          xKey: 'type',
+          yKey: 'housingAssociation',
+          yName: 'Housing association',
           stacked: true,
         },
       ],
       axes: [
         {
-          type: "category",
-          position: "left",
+          type: 'category',
+          position: 'left',
         },
         {
-          type: "number",
-          position: "top",
+          type: 'number',
+          position: 'top',
         },
       ],
       legend: {
-        position: "bottom",
+        position: 'bottom',
       },
     };
   },
@@ -101,8 +101,8 @@ window.getTotal = function getTotal(datum) {
 };
 
 new Vue({
-  el: "#app",
+  el: '#app',
   components: {
-    "my-component": ChartExample,
+    'my-component': ChartExample,
   },
 });

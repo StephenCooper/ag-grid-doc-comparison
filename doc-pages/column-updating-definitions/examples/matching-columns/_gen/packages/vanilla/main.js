@@ -1,5 +1,5 @@
 const athleteColumn = {
-  headerName: "Athlete",
+  headerName: 'Athlete',
   valueGetter: function (params) {
     return params.data.athlete;
   },
@@ -9,26 +9,26 @@ function getColDefsMedalsIncluded() {
   return [
     athleteColumn,
     {
-      colId: "myAgeCol",
-      headerName: "Age",
+      colId: 'myAgeCol',
+      headerName: 'Age',
       valueGetter: function (params) {
         return params.data.age;
       },
     },
     {
-      headerName: "Country",
-      headerClass: "country-header",
+      headerName: 'Country',
+      headerClass: 'country-header',
       valueGetter: function (params) {
         return params.data.country;
       },
     },
-    { field: "sport" },
-    { field: "year" },
-    { field: "date" },
-    { field: "gold" },
-    { field: "silver" },
-    { field: "bronze" },
-    { field: "total" },
+    { field: 'sport' },
+    { field: 'year' },
+    { field: 'date' },
+    { field: 'gold' },
+    { field: 'silver' },
+    { field: 'bronze' },
+    { field: 'total' },
   ];
 }
 
@@ -36,22 +36,22 @@ function getColDefsMedalsExcluded() {
   return [
     athleteColumn,
     {
-      colId: "myAgeCol",
-      headerName: "Age",
+      colId: 'myAgeCol',
+      headerName: 'Age',
       valueGetter: function (params) {
         return params.data.age;
       },
     },
     {
-      headerName: "Country",
-      headerClass: "country-header",
+      headerName: 'Country',
+      headerClass: 'country-header',
       valueGetter: function (params) {
         return params.data.country;
       },
     },
-    { field: "sport" },
-    { field: "year" },
-    { field: "date" },
+    { field: 'sport' },
+    { field: 'year' },
+    { field: 'date' },
   ];
 }
 
@@ -73,11 +73,11 @@ function onBtIncludeMedalColumns() {
 }
 
 // setup the grid after the page has finished loading
-document.addEventListener("DOMContentLoaded", function () {
-  const gridDiv = document.querySelector("#myGrid");
+document.addEventListener('DOMContentLoaded', function () {
+  const gridDiv = document.querySelector('#myGrid');
   new agGrid.Grid(gridDiv, gridOptions);
 
-  fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+  fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
     .then((response) => response.json())
     .then((data) => gridOptions.api.setRowData(data));
 });

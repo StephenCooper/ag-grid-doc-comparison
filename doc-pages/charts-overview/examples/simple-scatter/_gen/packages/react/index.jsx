@@ -1,8 +1,10 @@
-"use strict";
+'use strict';
 
-import { AgChartsReact } from "ag-charts-react";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { cloneDeep } from 'lodash';
+import { render } from 'react-dom';
+import * as agCharts from 'ag-charts-community';
+import { AgChartsReact } from 'ag-charts-react';
 
 class ChartExample extends Component {
   constructor(props) {
@@ -13,40 +15,40 @@ class ChartExample extends Component {
         autoSize: true,
         data: getData(),
         title: {
-          text: "Height vs Weight for Major League Baseball Players",
+          text: 'Height vs Weight for Major League Baseball Players',
           fontSize: 18,
         },
         subtitle: {
-          text: "Source: Statistics Online Computational Resource",
+          text: 'Source: Statistics Online Computational Resource',
         },
         series: [
           {
-            type: "scatter",
-            xKey: "weight",
-            yKey: "height",
+            type: 'scatter',
+            xKey: 'weight',
+            yKey: 'height',
             fillOpacity: 0.5,
             strokeOpacity: 0,
             marker: {
               size: 12,
-              fill: "#002D72",
+              fill: '#002D72',
             },
           },
         ],
         axes: [
           {
-            position: "bottom",
-            type: "number",
+            position: 'bottom',
+            type: 'number',
             title: {
               enabled: true,
-              text: "Weight (pounds)",
+              text: 'Weight (pounds)',
             },
           },
           {
-            position: "left",
-            type: "number",
+            position: 'left',
+            type: 'number',
             title: {
               enabled: true,
-              text: "Height (inches)",
+              text: 'Height (inches)',
             },
           },
         ],
@@ -64,4 +66,4 @@ class ChartExample extends Component {
   }
 }
 
-render(<ChartExample />, document.querySelector("#root"));
+render(<ChartExample />, document.querySelector('#root'));

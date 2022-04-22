@@ -1,11 +1,11 @@
-"use strict";
+'use strict';
 
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine-dark.css";
-import "ag-grid-enterprise";
-import { AgGridReact } from "ag-grid-react";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from 'ag-grid-react';
+import 'ag-grid-enterprise';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine-dark.css';
 
 class GridExample extends Component {
   constructor(props) {
@@ -13,10 +13,10 @@ class GridExample extends Component {
 
     this.state = {
       columnDefs: [
-        { field: "employeeId", hide: true },
-        { field: "employeeName", hide: true },
-        { field: "employmentType" },
-        { field: "startDate" },
+        { field: 'employeeId', hide: true },
+        { field: 'employeeName', hide: true },
+        { field: 'employmentType' },
+        { field: 'startDate' },
       ],
       defaultColDef: {
         width: 235,
@@ -24,17 +24,17 @@ class GridExample extends Component {
         flex: 1,
       },
       autoGroupColumnDef: {
-        field: "employeeName",
+        field: 'employeeName',
       },
-      rowModelType: "serverSide",
-      serverSideStoreType: "partial",
+      rowModelType: 'serverSide',
+      serverSideStoreType: 'partial',
       cacheBlockSize: 10,
       isServerSideGroupOpenByDefault: function (params) {
         var isKathrynPowers =
           params.rowNode.level == 0 &&
-          params.data.employeeName == "Kathryn Powers";
+          params.data.employeeName == 'Kathryn Powers';
         var isMabelWard =
-          params.rowNode.level == 1 && params.data.employeeName == "Mabel Ward";
+          params.rowNode.level == 1 && params.data.employeeName == 'Mabel Ward';
         return isKathrynPowers || isMabelWard;
       },
       isServerSideGroup: function (dataItem) {
@@ -58,7 +58,7 @@ class GridExample extends Component {
       params.api.setServerSideDatasource(datasource);
     };
 
-    fetch("https://www.ag-grid.com/example-assets/tree-data.json")
+    fetch('https://www.ag-grid.com/example-assets/tree-data.json')
       .then((resp) => resp.json())
       .then((data) => updateData(data));
   };
@@ -69,15 +69,15 @@ class GridExample extends Component {
 
   render() {
     return (
-      <div style={{ width: "100%", height: "100%" }}>
+      <div style={{ width: '100%', height: '100%' }}>
         <div className="example-wrapper">
-          <div style={{ marginBottom: "5px" }}>
+          <div style={{ marginBottom: '5px' }}>
             <button onClick={() => this.refreshCache([])}>
               Refresh Everything
             </button>
             <button
               onClick={() =>
-                this.refreshCache(["Kathryn Powers", "Mabel Ward"])
+                this.refreshCache(['Kathryn Powers', 'Mabel Ward'])
               }
             >
               Refresh ['Kathryn Powers','Mabel Ward']
@@ -85,8 +85,8 @@ class GridExample extends Component {
           </div>
           <div
             style={{
-              height: "100%",
-              width: "100%",
+              height: '100%',
+              width: '100%',
             }}
             className="ag-theme-alpine-dark"
           >
@@ -121,7 +121,7 @@ function createFakeServer(fakeServerData) {
           return data.map(function (d) {
             return {
               group: !!d.underlings,
-              employeeId: d.employeeId + "",
+              employeeId: d.employeeId + '',
               employeeName: d.employeeName,
               employmentType: d.employmentType,
               startDate: d.startDate,
@@ -146,7 +146,7 @@ function createFakeServer(fakeServerData) {
 function createServerSideDatasource(fakeServer) {
   const dataSource = {
     getRows: function (params) {
-      console.log("ServerSideDatasource.getRows: params = ", params);
+      console.log('ServerSideDatasource.getRows: params = ', params);
       var request = params.request;
       var allRows = fakeServer.getData(request);
       var doingInfinite = request.startRow != null && request.endRow != null;
@@ -156,7 +156,7 @@ function createServerSideDatasource(fakeServer) {
             rowCount: allRows.length,
           }
         : { rowData: allRows };
-      console.log("getRows: result = ", result);
+      console.log('getRows: result = ', result);
       setTimeout(function () {
         params.success(result);
       }, 500);
@@ -165,4 +165,4 @@ function createServerSideDatasource(fakeServer) {
   return dataSource;
 }
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

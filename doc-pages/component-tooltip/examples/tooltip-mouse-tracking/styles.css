@@ -1,12 +1,12 @@
 .custom-tooltip {
-  overflow: visible;
+    overflow: visible;
 }
 
 .custom-tooltip p {
-  margin: 5px;
-  white-space: nowrap;
+    margin: 5px;
+    white-space: nowrap;
 }
 
 .custom-tooltip p:first-of-type {
-  font-weight: bold;
+    font-weight: bold;
 }

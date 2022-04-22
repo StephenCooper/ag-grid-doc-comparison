@@ -1,10 +1,10 @@
-"use strict";
+'use strict';
 
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import { AgGridReact } from "ag-grid-react";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from 'ag-grid-react';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 
 class GridExample extends Component {
   constructor(props) {
@@ -13,22 +13,22 @@ class GridExample extends Component {
     this.state = {
       columnDefs: [
         {
-          headerName: "A",
-          field: "author",
+          headerName: 'A',
+          field: 'author',
           width: 300,
           colSpan: colSpan,
         },
         {
-          headerName: "Flexed Columns",
+          headerName: 'Flexed Columns',
           children: [
             {
-              headerName: "B",
+              headerName: 'B',
               minWidth: 200,
               maxWidth: 350,
               flex: 2,
             },
             {
-              headerName: "C",
+              headerName: 'C',
               flex: 1,
             },
           ],
@@ -50,11 +50,11 @@ class GridExample extends Component {
 
   render() {
     return (
-      <div style={{ width: "100%", height: "100%" }}>
+      <div style={{ width: '100%', height: '100%' }}>
         <div
           style={{
-            height: "100%",
-            width: "100%",
+            height: '100%',
+            width: '100%',
           }}
           className="ag-theme-alpine"
         >
@@ -75,12 +75,12 @@ var colSpan = function (params) {
 };
 function fillAllCellsWithWidthMeasurement() {
   Array.prototype.slice
-    .call(document.querySelectorAll(".ag-cell"))
+    .call(document.querySelectorAll('.ag-cell'))
     .forEach(function (cell) {
       var width = cell.offsetWidth;
       var isFullWidthRow = cell.parentElement.childNodes.length === 1;
-      cell.textContent = (isFullWidthRow ? "Total width: " : "") + width + "px";
+      cell.textContent = (isFullWidthRow ? 'Total width: ' : '') + width + 'px';
     });
 }
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

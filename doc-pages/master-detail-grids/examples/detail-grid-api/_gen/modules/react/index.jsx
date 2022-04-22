@@ -1,15 +1,15 @@
-"use strict";
+'use strict';
 
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { AgGridReact } from "@ag-grid-community/react";
-import { ColumnsToolPanelModule } from "@ag-grid-enterprise/column-tool-panel";
-import { MasterDetailModule } from "@ag-grid-enterprise/master-detail";
-import { MenuModule } from "@ag-grid-enterprise/menu";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from '@ag-grid-community/react';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import { MasterDetailModule } from '@ag-grid-enterprise/master-detail';
+import { MenuModule } from '@ag-grid-enterprise/menu';
+import { ColumnsToolPanelModule } from '@ag-grid-enterprise/column-tool-panel';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([
@@ -26,20 +26,20 @@ class GridExample extends Component {
     this.state = {
       columnDefs: [
         // group cell renderer needed for expand / collapse icons
-        { field: "name", cellRenderer: "agGroupCellRenderer" },
-        { field: "account" },
-        { field: "calls" },
-        { field: "minutes", valueFormatter: "x.toLocaleString() + 'm'" },
+        { field: 'name', cellRenderer: 'agGroupCellRenderer' },
+        { field: 'account' },
+        { field: 'calls' },
+        { field: 'minutes', valueFormatter: "x.toLocaleString() + 'm'" },
       ],
       detailRowHeight: 200,
       detailCellRendererParams: {
         detailGridOptions: {
           columnDefs: [
-            { field: "callId" },
-            { field: "direction" },
-            { field: "number", minWidth: 150 },
-            { field: "duration", valueFormatter: "x.toLocaleString() + 's'" },
-            { field: "switchCode", minWidth: 150 },
+            { field: 'callId' },
+            { field: 'direction' },
+            { field: 'number', minWidth: 150 },
+            { field: 'duration', valueFormatter: "x.toLocaleString() + 's'" },
+            { field: 'switchCode', minWidth: 150 },
           ],
           defaultColDef: {
             flex: 1,
@@ -72,7 +72,7 @@ class GridExample extends Component {
       this.setState({ rowData: data });
     };
 
-    fetch("https://www.ag-grid.com/example-assets/master-detail-data.json")
+    fetch('https://www.ag-grid.com/example-assets/master-detail-data.json')
       .then((resp) => resp.json())
       .then((data) => updateData(data));
   };
@@ -88,7 +88,7 @@ class GridExample extends Component {
 
   flashMilaSmithOnly = () => {
     // flash Mila Smith - we know her account is 177001 and we use the account for the row ID
-    var detailGrid = this.gridApi.getDetailGridInfo("detail_177001");
+    var detailGrid = this.gridApi.getDetailGridInfo('detail_177001');
     if (detailGrid) {
       detailGrid.api.flashCells();
     }
@@ -102,11 +102,11 @@ class GridExample extends Component {
 
   render() {
     return (
-      <div style={{ width: "100%", height: "100%" }}>
+      <div style={{ width: '100%', height: '100%' }}>
         <div
-          style={{ display: "flex", flexDirection: "column", height: "100%" }}
+          style={{ display: 'flex', flexDirection: 'column', height: '100%' }}
         >
-          <div style={{ paddingBottom: "4px" }}>
+          <div style={{ paddingBottom: '4px' }}>
             <button onClick={() => this.flashMilaSmithOnly()}>
               Flash Mila Smith
             </button>
@@ -114,8 +114,8 @@ class GridExample extends Component {
           </div>
           <div
             style={{
-              height: "100%",
-              width: "100%",
+              height: '100%',
+              width: '100%',
             }}
             className="ag-theme-alpine"
           >
@@ -137,4 +137,4 @@ class GridExample extends Component {
   }
 }
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

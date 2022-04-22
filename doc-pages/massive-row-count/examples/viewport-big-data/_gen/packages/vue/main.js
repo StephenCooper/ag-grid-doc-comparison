@@ -1,8 +1,8 @@
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
-import { AgGridVue } from "ag-grid-vue";
-import Vue from "vue";
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import 'ag-grid-enterprise';
+import { AgGridVue } from 'ag-grid-vue';
+import Vue from 'vue';
 
 const VueExample = {
   template: `
@@ -19,19 +19,19 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
-        { headerName: "ID", field: "id" },
+        { headerName: 'ID', field: 'id' },
         {
-          headerName: "Expected Position",
+          headerName: 'Expected Position',
           valueGetter: "'translateY(' + node.rowIndex * 100 + 'px)'",
         },
-        { field: "a" },
-        { field: "b" },
-        { field: "c" },
+        { field: 'a' },
+        { field: 'b' },
+        { field: 'c' },
       ],
       gridApi: null,
       columnApi: null,
@@ -43,7 +43,7 @@ const VueExample = {
   },
   created() {
     this.rowHeight = 100;
-    this.rowModelType = "viewport";
+    this.rowModelType = 'viewport';
     this.viewportDatasource = createViewportDatasource();
   },
   methods: {
@@ -67,9 +67,9 @@ window.createViewportDatasource = function createViewportDatasource() {
       for (var rowIndex = firstRow; rowIndex <= lastRow; rowIndex++) {
         var item = {};
         item.id = rowIndex;
-        item.a = "A-" + rowIndex;
-        item.b = "B-" + rowIndex;
-        item.c = "C-" + rowIndex;
+        item.a = 'A-' + rowIndex;
+        item.b = 'B-' + rowIndex;
+        item.c = 'C-' + rowIndex;
         rowData[rowIndex] = item;
       }
       initParams.setRowData(rowData);
@@ -79,8 +79,8 @@ window.createViewportDatasource = function createViewportDatasource() {
 };
 
 new Vue({
-  el: "#app",
+  el: '#app',
   components: {
-    "my-component": VueExample,
+    'my-component': VueExample,
   },
 });

@@ -1,10 +1,10 @@
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { AgGridVue } from "@ag-grid-community/vue";
-import Vue from "vue";
-import DragSourceRenderer from "./dragSourceRendererVue.js";
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { AgGridVue } from '@ag-grid-community/vue';
+import Vue from 'vue';
+import DragSourceRenderer from './dragSourceRendererVue.js';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([ClientSideRowModelModule]);
@@ -37,17 +37,17 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
     DragSourceRenderer,
   },
   data: function () {
     return {
       columnDefs: [
-        { cellRenderer: "DragSourceRenderer", minWidth: 100 },
-        { field: "id" },
-        { field: "color" },
-        { field: "value1" },
-        { field: "value2" },
+        { cellRenderer: 'DragSourceRenderer', minWidth: 100 },
+        { field: 'id' },
+        { field: 'color' },
+        { field: 'value1' },
+        { field: 'value2' },
       ],
       gridApi: null,
       columnApi: null,
@@ -63,9 +63,9 @@ const VueExample = {
   },
   created() {
     this.rowClassRules = {
-      "red-row": 'data.color == "Red"',
-      "green-row": 'data.color == "Green"',
-      "blue-row": 'data.color == "Blue"',
+      'red-row': 'data.color == "Red"',
+      'green-row': 'data.color == "Green"',
+      'blue-row': 'data.color == "Blue"',
     };
     this.rowData = getData();
   },
@@ -74,17 +74,17 @@ const VueExample = {
       var types = event.dataTransfer.types;
       var dragSupported = types.length;
       if (dragSupported) {
-        event.dataTransfer.dropEffect = "move";
+        event.dataTransfer.dropEffect = 'move';
       }
       event.preventDefault();
     },
     onDrop(event) {
       event.preventDefault();
-      var textData = event.dataTransfer.getData("text/plain");
-      var eJsonRow = document.createElement("div");
-      eJsonRow.classList.add("json-row");
+      var textData = event.dataTransfer.getData('text/plain');
+      var eJsonRow = document.createElement('div');
+      eJsonRow.classList.add('json-row');
       eJsonRow.innerText = textData;
-      var eJsonDisplay = document.querySelector("#eJsonDisplay");
+      var eJsonDisplay = document.querySelector('#eJsonDisplay');
       eJsonDisplay.appendChild(eJsonRow);
     },
     onGridReady(params) {
@@ -95,8 +95,8 @@ const VueExample = {
 };
 
 new Vue({
-  el: "#app",
+  el: '#app',
   components: {
-    "my-component": VueExample,
+    'my-component': VueExample,
   },
 });

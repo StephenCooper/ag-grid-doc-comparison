@@ -1,11 +1,11 @@
-"use strict";
+'use strict';
 
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
-import { AgGridReact } from "ag-grid-react";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from 'ag-grid-react';
+import 'ag-grid-enterprise';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 
 class GridExample extends Component {
   constructor(props) {
@@ -14,17 +14,17 @@ class GridExample extends Component {
     this.state = {
       columnDefs: [
         {
-          colId: "array",
-          headerName: "Values Array",
-          field: "animal",
-          filter: "agSetColumnFilter",
+          colId: 'array',
+          headerName: 'Values Array',
+          field: 'animal',
+          filter: 'agSetColumnFilter',
           filterParams: arrayFilterParams,
         },
         {
-          colId: "callback",
-          headerName: "Values Callback",
-          field: "animal",
-          filter: "agSetColumnFilter",
+          colId: 'callback',
+          headerName: 'Values Callback',
+          field: 'animal',
+          filter: 'agSetColumnFilter',
           filterParams: callbackFilterParams,
         },
       ],
@@ -33,7 +33,7 @@ class GridExample extends Component {
         filter: true,
         resizable: true,
       },
-      sideBar: "filters",
+      sideBar: 'filters',
       rowData: getData(),
     };
   }
@@ -44,34 +44,34 @@ class GridExample extends Component {
   };
 
   onFirstDataRendered = (params) => {
-    params.api.getToolPanelInstance("filters").expandFilters();
+    params.api.getToolPanelInstance('filters').expandFilters();
   };
 
   useList1 = () => {
-    console.log("Updating values to " + list1);
+    console.log('Updating values to ' + list1);
     valuesArray.length = 0;
     list1.forEach(function (value) {
       valuesArray.push(value);
     });
-    var filter = this.gridApi.getFilterInstance("array");
+    var filter = this.gridApi.getFilterInstance('array');
     filter.refreshFilterValues();
     valuesCallbackList = list1;
   };
 
   useList2 = () => {
-    console.log("Updating values to " + list2);
+    console.log('Updating values to ' + list2);
     valuesArray.length = 0;
     list2.forEach(function (value) {
       valuesArray.push(value);
     });
-    var filter = this.gridApi.getFilterInstance("array");
+    var filter = this.gridApi.getFilterInstance('array');
     filter.refreshFilterValues();
     valuesCallbackList = list2;
   };
 
   render() {
     return (
-      <div style={{ width: "100%", height: "100%" }}>
+      <div style={{ width: '100%', height: '100%' }}>
         <div id="container">
           <div id="header">
             <button onClick={() => this.useList1()}>
@@ -83,8 +83,8 @@ class GridExample extends Component {
           </div>
           <div
             style={{
-              height: "100%",
-              width: "100%",
+              height: '100%',
+              width: '100%',
             }}
             className="ag-theme-alpine"
           >
@@ -103,8 +103,8 @@ class GridExample extends Component {
   }
 }
 
-var list1 = ["Elephant", "Lion", "Monkey"];
-var list2 = ["Elephant", "Giraffe", "Tiger"];
+var list1 = ['Elephant', 'Lion', 'Monkey'];
+var list2 = ['Elephant', 'Giraffe', 'Tiger'];
 var valuesArray = list1.slice();
 var valuesCallbackList = list1;
 function valuesCallback(params) {
@@ -120,4 +120,4 @@ var callbackFilterParams = {
   refreshValuesOnOpen: true,
 };
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

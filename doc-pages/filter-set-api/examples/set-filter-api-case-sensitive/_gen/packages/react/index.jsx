@@ -1,21 +1,21 @@
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
-import { AgGridReact } from "ag-grid-react";
-import React, { Component } from "react";
-import { render } from "react-dom";
-("use strict");
+'use strict';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from 'ag-grid-react';
+import 'ag-grid-enterprise';
 
 const colourCellRenderer = (props) => {
-  if (!props.value || props.value === "(Select All)") {
+  if (!props.value || props.value === '(Select All)') {
     return props.value;
   }
 
   const styles = {
-    verticalAlign: "middle",
-    border: "1px solid black",
+    verticalAlign: 'middle',
+    border: '1px solid black',
     margin: 3,
-    display: "inline-block",
+    display: 'inline-block',
     width: 10,
     height: 10,
     backgroundColor: props.value.toLowerCase(),
@@ -29,11 +29,11 @@ const colourCellRenderer = (props) => {
 };
 
 const FILTER_TYPES = {
-  insensitive: "colour",
-  sensitive: "colour_1",
+  insensitive: 'colour',
+  sensitive: 'colour_1',
 };
 
-const MANGLED_COLOURS = ["ReD", "OrAnGe", "WhItE", "YeLlOw"];
+const MANGLED_COLOURS = ['ReD', 'OrAnGe', 'WhItE', 'YeLlOw'];
 
 class GridExample extends Component {
   constructor(props) {
@@ -42,18 +42,18 @@ class GridExample extends Component {
     this.state = {
       columnDefs: [
         {
-          headerName: "Case Insensitive (default)",
-          field: "colour",
-          filter: "agSetColumnFilter",
+          headerName: 'Case Insensitive (default)',
+          field: 'colour',
+          filter: 'agSetColumnFilter',
           filterParams: {
             caseSensitive: false,
             cellRenderer: colourCellRenderer,
           },
         },
         {
-          headerName: "Case Sensitive",
-          field: "colour",
-          filter: "agSetColumnFilter",
+          headerName: 'Case Sensitive',
+          field: 'colour',
+          filter: 'agSetColumnFilter',
           filterParams: {
             caseSensitive: true,
             cellRenderer: colourCellRenderer,
@@ -67,7 +67,7 @@ class GridExample extends Component {
         resizable: true,
         floatingFilter: true,
       },
-      sideBar: "filters",
+      sideBar: 'filters',
       rowData: getData(),
     };
   }
@@ -78,7 +78,7 @@ class GridExample extends Component {
   };
 
   onFirstDataRendered = (params) => {
-    this.gridApi.getToolPanelInstance("filters").expandFilters();
+    this.gridApi.getToolPanelInstance('filters').expandFilters();
   };
 
   setModel = (type) => {
@@ -113,46 +113,46 @@ class GridExample extends Component {
 
   render() {
     return (
-      <div style={{ width: "100%", height: "100%" }}>
+      <div style={{ width: '100%', height: '100%' }}>
         <div className="example-wrapper">
           <div className="example-header">
             <div>
               Case Insensitive:
-              <button onClick={() => this.setModel("insensitive")}>
+              <button onClick={() => this.setModel('insensitive')}>
                 API: setModel() - mismatching case
               </button>
-              <button onClick={() => this.getModel("insensitive")}>
+              <button onClick={() => this.getModel('insensitive')}>
                 API: getModel()
               </button>
-              <button onClick={() => this.setFilterValues("insensitive")}>
+              <button onClick={() => this.setFilterValues('insensitive')}>
                 API: setFilterValues() - mismatching case
               </button>
-              <button onClick={() => this.getValues("insensitive")}>
+              <button onClick={() => this.getValues('insensitive')}>
                 API: getValues()
               </button>
-              <button onClick={() => this.reset("insensitive")}>Reset</button>
+              <button onClick={() => this.reset('insensitive')}>Reset</button>
             </div>
-            <div style={{ paddingTop: "10px" }}>
+            <div style={{ paddingTop: '10px' }}>
               Case Sensitive:
-              <button onClick={() => this.setModel("sensitive")}>
+              <button onClick={() => this.setModel('sensitive')}>
                 API: setModel() - mismatching case
               </button>
-              <button onClick={() => this.getModel("sensitive")}>
+              <button onClick={() => this.getModel('sensitive')}>
                 API: getModel()
               </button>
-              <button onClick={() => this.setFilterValues("sensitive")}>
+              <button onClick={() => this.setFilterValues('sensitive')}>
                 API: setFilterValues() - mismatching case
               </button>
-              <button onClick={() => this.getValues("sensitive")}>
+              <button onClick={() => this.getValues('sensitive')}>
                 API: getValues()
               </button>
-              <button onClick={() => this.reset("sensitive")}>Reset</button>
+              <button onClick={() => this.reset('sensitive')}>Reset</button>
             </div>
           </div>
           <div
             style={{
-              height: "100%",
-              width: "100%",
+              height: '100%',
+              width: '100%',
             }}
             className="ag-theme-alpine"
           >
@@ -171,4 +171,4 @@ class GridExample extends Component {
   }
 }
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

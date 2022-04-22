@@ -1,32 +1,32 @@
-import * as agCharts from "ag-charts-community";
-import { AgChartOptions } from "ag-charts-community";
+import * as agCharts from 'ag-charts-community';
+import { AgChartOptions } from 'ag-charts-community';
 
 const options: AgChartOptions = {
-  container: document.getElementById("myChart"),
+  container: document.getElementById('myChart'),
   data: [
     {
-      month: "Jun",
+      month: 'Jun',
       sweaters: 50,
     },
     {
-      month: "Jul",
+      month: 'Jul',
       sweaters: 70,
     },
     {
-      month: "Aug",
+      month: 'Aug',
       sweaters: 60,
     },
   ],
   series: [
     {
-      type: "column",
-      xKey: "month",
-      yKey: "sweaters",
-      yName: "Sweaters Made",
+      type: 'column',
+      xKey: 'month',
+      yKey: 'sweaters',
+      yName: 'Sweaters Made',
     },
   ],
   tooltip: {
-    class: "my-tooltip",
+    class: 'my-tooltip',
   },
 };
 

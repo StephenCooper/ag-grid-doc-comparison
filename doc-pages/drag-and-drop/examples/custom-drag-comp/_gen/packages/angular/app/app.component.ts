@@ -1,11 +1,11 @@
-import { Component } from "@angular/core";
-import { ColDef, GridReadyEvent, RowClassRules } from "ag-grid-community";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import { DragSourceRenderer } from "./drag-source-renderer.component";
+import { Component } from '@angular/core';
+import { ColDef, GridReadyEvent, RowClassRules } from 'ag-grid-community';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import { DragSourceRenderer } from './drag-source-renderer.component';
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<div class="outer">
     <div class="grid-col">
       <ag-grid-angular
@@ -33,9 +33,9 @@ import { DragSourceRenderer } from "./drag-source-renderer.component";
 })
 export class AppComponent {
   public rowClassRules: RowClassRules = {
-    "red-row": 'data.color == "Red"',
-    "green-row": 'data.color == "Green"',
-    "blue-row": 'data.color == "Blue"',
+    'red-row': 'data.color == "Red"',
+    'green-row': 'data.color == "Green"',
+    'blue-row': 'data.color == "Blue"',
   };
   public defaultColDef: ColDef = {
     width: 80,
@@ -46,28 +46,28 @@ export class AppComponent {
   public rowData: any[] | null = getData();
   public columnDefs: ColDef[] = [
     { cellRenderer: DragSourceRenderer, minWidth: 100 },
-    { field: "id" },
-    { field: "color" },
-    { field: "value1" },
-    { field: "value2" },
+    { field: 'id' },
+    { field: 'color' },
+    { field: 'value1' },
+    { field: 'value2' },
   ];
 
   onDragOver(event: any) {
     var types = event.dataTransfer.types;
     var dragSupported = types.length;
     if (dragSupported) {
-      event.dataTransfer.dropEffect = "move";
+      event.dataTransfer.dropEffect = 'move';
     }
     event.preventDefault();
   }
 
   onDrop(event: any) {
     event.preventDefault();
-    var textData = event.dataTransfer.getData("text/plain");
-    var eJsonRow = document.createElement("div");
-    eJsonRow.classList.add("json-row");
+    var textData = event.dataTransfer.getData('text/plain');
+    var eJsonRow = document.createElement('div');
+    eJsonRow.classList.add('json-row');
     eJsonRow.innerText = textData;
-    var eJsonDisplay = document.querySelector("#eJsonDisplay")!;
+    var eJsonDisplay = document.querySelector('#eJsonDisplay')!;
     eJsonDisplay.appendChild(eJsonRow);
   }
 

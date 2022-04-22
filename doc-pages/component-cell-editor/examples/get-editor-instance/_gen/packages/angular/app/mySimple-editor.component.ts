@@ -3,22 +3,22 @@ import {
   Component,
   ViewChild,
   ViewContainerRef,
-} from "@angular/core";
-import { ICellEditorAngularComp } from "ag-grid-angular";
-import { ICellEditorParams } from "ag-grid-community";
+} from '@angular/core';
+import { ICellEditorAngularComp } from 'ag-grid-angular';
+import { ICellEditorParams } from 'ag-grid-community';
 
-const KEY_BACKSPACE = "Backspace";
-const KEY_DELETE = "Delete";
+const KEY_BACKSPACE = 'Backspace';
+const KEY_DELETE = 'Delete';
 
 @Component({
-  selector: "editor-cell",
+  selector: 'editor-cell',
   template: `<input class="my-simple-editor" [value]="value" #input /> `,
 })
 export class MySimpleEditor implements ICellEditorAngularComp, AfterViewInit {
   private params!: ICellEditorParams;
   public value: any;
 
-  @ViewChild("input", { read: ViewContainerRef })
+  @ViewChild('input', { read: ViewContainerRef })
   public input!: ViewContainerRef;
 
   agInit(params: ICellEditorParams): void {
@@ -37,7 +37,7 @@ export class MySimpleEditor implements ICellEditorAngularComp, AfterViewInit {
     const isBackspaceOrDelete =
       params.eventKey === KEY_BACKSPACE || params.eventKey === KEY_DELETE;
     if (isBackspaceOrDelete) {
-      startValue = "";
+      startValue = '';
     } else if (params.charPress) {
       startValue = params.charPress;
     }
@@ -46,7 +46,7 @@ export class MySimpleEditor implements ICellEditorAngularComp, AfterViewInit {
       return startValue;
     }
 
-    return "";
+    return '';
   }
 
   myCustomFunction() {

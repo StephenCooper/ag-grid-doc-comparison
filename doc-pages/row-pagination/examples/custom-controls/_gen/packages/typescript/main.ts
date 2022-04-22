@@ -3,30 +3,30 @@ import {
   Grid,
   GridOptions,
   ValueFormatterParams,
-} from "ag-grid-community";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
+} from 'ag-grid-community';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import 'ag-grid-enterprise';
 
 const columnDefs: ColDef[] = [
   // this row just shows the row index, doesn't use any data from the row
   {
-    headerName: "#",
+    headerName: '#',
     width: 50,
     valueFormatter: function (params: ValueFormatterParams) {
       return `${parseInt(params.node!.id!) + 1}`;
     },
   },
-  { headerName: "Athlete", field: "athlete", width: 150 },
-  { headerName: "Age", field: "age", width: 90 },
-  { headerName: "Country", field: "country", width: 120 },
-  { headerName: "Year", field: "year", width: 90 },
-  { headerName: "Date", field: "date", width: 110 },
-  { headerName: "Sport", field: "sport", width: 110 },
-  { headerName: "Gold", field: "gold", width: 100 },
-  { headerName: "Silver", field: "silver", width: 100 },
-  { headerName: "Bronze", field: "bronze", width: 100 },
-  { headerName: "Total", field: "total", width: 100 },
+  { headerName: 'Athlete', field: 'athlete', width: 150 },
+  { headerName: 'Age', field: 'age', width: 90 },
+  { headerName: 'Country', field: 'country', width: 120 },
+  { headerName: 'Year', field: 'year', width: 90 },
+  { headerName: 'Date', field: 'date', width: 110 },
+  { headerName: 'Sport', field: 'sport', width: 110 },
+  { headerName: 'Gold', field: 'gold', width: 100 },
+  { headerName: 'Silver', field: 'silver', width: 100 },
+  { headerName: 'Bronze', field: 'bronze', width: 100 },
+  { headerName: 'Total', field: 'total', width: 100 },
 ];
 
 const gridOptions: GridOptions = {
@@ -35,7 +35,7 @@ const gridOptions: GridOptions = {
     filter: true,
   },
   // debug: true,
-  rowSelection: "multiple",
+  rowSelection: 'multiple',
   paginationPageSize: 500,
   columnDefs: columnDefs,
   pagination: true,
@@ -49,22 +49,22 @@ function setText(selector: string, text: any) {
 }
 
 function onPaginationChanged() {
-  console.log("onPaginationPageLoaded");
+  console.log('onPaginationPageLoaded');
 
   // Workaround for bug in events order
   if (gridOptions.api!) {
-    setText("#lbLastPageFound", gridOptions.api!.paginationIsLastPageFound());
-    setText("#lbPageSize", gridOptions.api!.paginationGetPageSize());
+    setText('#lbLastPageFound', gridOptions.api!.paginationIsLastPageFound());
+    setText('#lbPageSize', gridOptions.api!.paginationGetPageSize());
     // we +1 to current page, as pages are zero based
-    setText("#lbCurrentPage", gridOptions.api!.paginationGetCurrentPage() + 1);
-    setText("#lbTotalPages", gridOptions.api!.paginationGetTotalPages());
+    setText('#lbCurrentPage', gridOptions.api!.paginationGetCurrentPage() + 1);
+    setText('#lbTotalPages', gridOptions.api!.paginationGetTotalPages());
 
     setLastButtonDisabled(!gridOptions.api!.paginationIsLastPageFound());
   }
 }
 
 function setLastButtonDisabled(disabled: boolean) {
-  (document.querySelector("#btLast") as any).disabled = disabled;
+  (document.querySelector('#btLast') as any).disabled = disabled;
 }
 
 function onBtFirst() {
@@ -94,14 +94,14 @@ function onBtPageFifty() {
 }
 
 // setup the grid after the page has finished loading
-var gridDiv = document.querySelector<HTMLElement>("#myGrid")!;
+var gridDiv = document.querySelector<HTMLElement>('#myGrid')!;
 new Grid(gridDiv, gridOptions);
 
-fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
   .then((response) => response.json())
   .then((data) => gridOptions.api!.setRowData(data));
 
-if (typeof window !== "undefined") {
+if (typeof window !== 'undefined') {
   // Attach external event handlers to window so they can be called from index.html
   (<any>window).onBtFirst = onBtFirst;
   (<any>window).onBtLast = onBtLast;

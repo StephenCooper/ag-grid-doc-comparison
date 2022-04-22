@@ -1,17 +1,17 @@
-import { Component } from "@angular/core";
+import { Component } from '@angular/core';
 import {
   AgChartThemeOverrides,
   ColDef,
   FirstDataRenderedEvent,
   GridApi,
   GridReadyEvent,
-} from "ag-grid-community";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine-dark.css";
-import "ag-grid-enterprise";
+} from 'ag-grid-community';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine-dark.css';
+import 'ag-grid-enterprise';
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<div id="wrapper">
     <div id="top">
       <div id="columnChart" class="ag-theme-alpine-dark"></div>
@@ -34,34 +34,34 @@ import "ag-grid-enterprise";
 })
 export class AppComponent {
   public columnDefs: ColDef[] = [
-    { field: "salesRep", chartDataType: "category" },
-    { field: "handset", chartDataType: "category" },
+    { field: 'salesRep', chartDataType: 'category' },
+    { field: 'handset', chartDataType: 'category' },
     {
-      headerName: "Sale Price",
-      field: "sale",
+      headerName: 'Sale Price',
+      field: 'sale',
       maxWidth: 160,
-      aggFunc: "sum",
-      filter: "agNumberColumnFilter",
-      chartDataType: "series",
+      aggFunc: 'sum',
+      filter: 'agNumberColumnFilter',
+      chartDataType: 'series',
     },
-    { field: "saleDate", chartDataType: "category" },
+    { field: 'saleDate', chartDataType: 'category' },
     {
-      field: "quarter",
+      field: 'quarter',
       maxWidth: 160,
-      filter: "agSetColumnFilter",
-      chartDataType: "category",
+      filter: 'agSetColumnFilter',
+      chartDataType: 'category',
     },
   ];
   public defaultColDef: ColDef = {
     flex: 1,
     editable: true,
     sortable: true,
-    filter: "agMultiColumnFilter",
+    filter: 'agMultiColumnFilter',
     floatingFilter: true,
     resizable: true,
   };
   public rowData: any[] | null = getData();
-  public chartThemes: string[] = ["ag-default-dark"];
+  public chartThemes: string[] = ['ag-default-dark'];
   public chartThemeOverrides: AgChartThemeOverrides = {
     common: {
       padding: {
@@ -93,16 +93,16 @@ export class AppComponent {
 
 function createQuarterlySalesChart(gridApi: GridApi) {
   gridApi.createCrossFilterChart({
-    chartType: "column",
+    chartType: 'column',
     cellRange: {
-      columns: ["quarter", "sale"],
+      columns: ['quarter', 'sale'],
     },
-    aggFunc: "sum",
+    aggFunc: 'sum',
     chartThemeOverrides: {
       common: {
         title: {
           enabled: true,
-          text: "Quarterly Sales ($)",
+          text: 'Quarterly Sales ($)',
         },
         legend: {
           enabled: false,
@@ -116,28 +116,28 @@ function createQuarterlySalesChart(gridApi: GridApi) {
           number: {
             label: {
               formatter: function (params: any) {
-                return params.value / 1000 + "k";
+                return params.value / 1000 + 'k';
               },
             },
           },
         },
       },
     },
-    chartContainer: document.querySelector("#columnChart") as any,
+    chartContainer: document.querySelector('#columnChart') as any,
   });
 }
 function createSalesByRefChart(gridApi: GridApi) {
   gridApi.createCrossFilterChart({
-    chartType: "pie",
+    chartType: 'pie',
     cellRange: {
-      columns: ["salesRep", "sale"],
+      columns: ['salesRep', 'sale'],
     },
-    aggFunc: "sum",
+    aggFunc: 'sum',
     chartThemeOverrides: {
       common: {
         title: {
           enabled: true,
-          text: "Sales by Representative ($)",
+          text: 'Sales by Representative ($)',
         },
       },
       pie: {
@@ -151,27 +151,27 @@ function createSalesByRefChart(gridApi: GridApi) {
         },
       },
     },
-    chartContainer: document.querySelector("#pieChart") as any,
+    chartContainer: document.querySelector('#pieChart') as any,
   });
 }
 function createHandsetSalesChart(gridApi: GridApi) {
   gridApi.createCrossFilterChart({
-    chartType: "bar",
+    chartType: 'bar',
     cellRange: {
-      columns: ["handset", "sale"],
+      columns: ['handset', 'sale'],
     },
-    aggFunc: "count",
+    aggFunc: 'count',
     chartThemeOverrides: {
       common: {
         title: {
           enabled: true,
-          text: "Handsets Sold (Units)",
+          text: 'Handsets Sold (Units)',
         },
         legend: {
           enabled: false,
         },
       },
     },
-    chartContainer: document.querySelector("#barChart") as any,
+    chartContainer: document.querySelector('#barChart') as any,
   });
 }

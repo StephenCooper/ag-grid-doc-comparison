@@ -1,8 +1,10 @@
-"use strict";
+'use strict';
 
-import { AgChartsReact } from "ag-charts-react";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { cloneDeep } from 'lodash';
+import { render } from 'react-dom';
+import * as agCharts from 'ag-charts-community';
+import { AgChartsReact } from 'ag-charts-react';
 
 class ChartExample extends Component {
   constructor(props) {
@@ -10,15 +12,15 @@ class ChartExample extends Component {
 
     this.state = {
       options: {
-        type: "hierarchy",
+        type: 'hierarchy',
 
         data,
         series: [
           {
-            type: "treemap",
-            labelKey: "name",
-            sizeKey: "size",
-            colorKey: "color",
+            type: 'treemap',
+            labelKey: 'name',
+            sizeKey: 'size',
+            colorKey: 'color',
             tooltip: {
               renderer: (params) => {
                 return {
@@ -31,10 +33,11 @@ class ChartExample extends Component {
           },
         ],
         title: {
-          text: "S&P 500 index stocks categorized by sectors and industries.",
+          text: 'S&P 500 index stocks categorized by sectors and industries.',
         },
         subtitle: {
-          text: "Area represents market cap. Color represents change from the day before.",
+          text:
+            'Area represents market cap. Color represents change from the day before.',
         },
       },
     };
@@ -47,4 +50,4 @@ class ChartExample extends Component {
   }
 }
 
-render(<ChartExample />, document.querySelector("#root"));
+render(<ChartExample />, document.querySelector('#root'));

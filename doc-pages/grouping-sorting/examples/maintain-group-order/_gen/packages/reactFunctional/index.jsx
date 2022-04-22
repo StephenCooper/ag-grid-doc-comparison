@@ -1,20 +1,20 @@
-"use strict";
+'use strict';
 
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
-import { AgGridReact } from "ag-grid-react";
-import React, { useMemo, useState } from "react";
-import { render } from "react-dom";
+import React, { useCallback, useMemo, useRef, useState } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from 'ag-grid-react';
+import 'ag-grid-enterprise';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 
 const GridExample = () => {
-  const containerStyle = useMemo(() => ({ width: "100%", height: "100%" }), []);
-  const gridStyle = useMemo(() => ({ height: "100%", width: "100%" }), []);
+  const containerStyle = useMemo(() => ({ width: '100%', height: '100%' }), []);
+  const gridStyle = useMemo(() => ({ height: '100%', width: '100%' }), []);
   const [rowData, setRowData] = useState(getData());
   const [columnDefs, setColumnDefs] = useState([
-    { field: "assignee", rowGroup: true, hide: true },
-    { field: "priority", rowGroup: true, hide: true },
-    { field: "task" },
+    { field: 'assignee', rowGroup: true, hide: true },
+    { field: 'priority', rowGroup: true, hide: true },
+    { field: 'task' },
   ]);
   const defaultColDef = useMemo(() => {
     return {
@@ -38,7 +38,7 @@ const GridExample = () => {
           columnDefs={columnDefs}
           defaultColDef={defaultColDef}
           autoGroupColumnDef={autoGroupColumnDef}
-          groupDisplayType={"multipleColumns"}
+          groupDisplayType={'multipleColumns'}
           groupMaintainOrder={true}
           groupDefaultExpanded={-1}
           animateRows={true}
@@ -48,4 +48,4 @@ const GridExample = () => {
   );
 };
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

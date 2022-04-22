@@ -1,13 +1,13 @@
-"use strict";
+'use strict';
 
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { AgGridReact } from "@ag-grid-community/react";
-import React, { Component } from "react";
-import { render } from "react-dom";
-import FullWidthCellRenderer from "./fullWidthCellRenderer.jsx";
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from '@ag-grid-community/react';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import FullWidthCellRenderer from './fullWidthCellRenderer.jsx';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([ClientSideRowModelModule]);
@@ -16,7 +16,7 @@ class CountryCellRenderer {
   init(params) {
     const flag = `<img border="0" width="15" height="10" src="https://www.ag-grid.com/example-assets/flags/${params.data.code}.png">`;
 
-    const eTemp = document.createElement("div");
+    const eTemp = document.createElement('div');
     eTemp.innerHTML = `<span style="cursor: default;">${flag} ${params.value}</span>`;
     this.eGui = eTemp.firstElementChild;
   }
@@ -36,9 +36,9 @@ class GridExample extends Component {
 
     this.state = {
       columnDefs: [
-        { field: "name", cellRenderer: CountryCellRenderer },
-        { field: "continent" },
-        { field: "language" },
+        { field: 'name', cellRenderer: CountryCellRenderer },
+        { field: 'continent' },
+        { field: 'language' },
       ],
       defaultColDef: {
         flex: 1,
@@ -67,11 +67,11 @@ class GridExample extends Component {
 
   render() {
     return (
-      <div style={{ width: "100%", height: "100%" }}>
+      <div style={{ width: '100%', height: '100%' }}>
         <div
           style={{
-            height: "100%",
-            width: "100%",
+            height: '100%',
+            width: '100%',
           }}
           className="ag-theme-alpine"
         >
@@ -92,7 +92,7 @@ class GridExample extends Component {
 
 function isFullWidth(data) {
   // return true when country is Peru, France or Italy
-  return ["Peru", "France", "Italy"].indexOf(data.name) >= 0;
+  return ['Peru', 'France', 'Italy'].indexOf(data.name) >= 0;
 }
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

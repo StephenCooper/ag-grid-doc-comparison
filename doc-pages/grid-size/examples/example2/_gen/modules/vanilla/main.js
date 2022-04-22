@@ -3,16 +3,16 @@ var currentRowHeight;
 
 const gridOptions = {
   columnDefs: [
-    { field: "athlete", minWidth: 150 },
-    { field: "age", minWidth: 70, maxWidth: 90 },
-    { field: "country", minWidth: 130 },
-    { field: "year", minWidth: 70, maxWidth: 90 },
-    { field: "date", minWidth: 120 },
-    { field: "sport", minWidth: 120 },
-    { field: "gold", minWidth: 80 },
-    { field: "silver", minWidth: 80 },
-    { field: "bronze", minWidth: 80 },
-    { field: "total", minWidth: 80 },
+    { field: 'athlete', minWidth: 150 },
+    { field: 'age', minWidth: 70, maxWidth: 90 },
+    { field: 'country', minWidth: 130 },
+    { field: 'year', minWidth: 70, maxWidth: 90 },
+    { field: 'date', minWidth: 120 },
+    { field: 'sport', minWidth: 120 },
+    { field: 'gold', minWidth: 80 },
+    { field: 'silver', minWidth: 80 },
+    { field: 'bronze', minWidth: 80 },
+    { field: 'total', minWidth: 80 },
   ],
 
   defaultColDef: {
@@ -27,7 +27,7 @@ const gridOptions = {
   },
   onFirstDataRendered: onFirstDataRendered,
   onGridSizeChanged: onGridSizeChanged,
-  getRowHeight: function () {
+  getRowHeight: function (params) {
     return currentRowHeight;
   },
 };
@@ -42,7 +42,7 @@ function onGridSizeChanged(params) {
 
 const updateRowHeight = (params) => {
   // get the height of the grid body - this excludes the height of the headers
-  const bodyViewport = document.querySelector(".ag-body-viewport");
+  const bodyViewport = document.querySelector('.ag-body-viewport');
   if (!bodyViewport) {
     return;
   }
@@ -66,7 +66,7 @@ const updateRowHeight = (params) => {
 };
 
 // setup the grid after the page has finished loading
-document.addEventListener("DOMContentLoaded", function () {
-  var gridDiv = document.querySelector("#myGrid");
+document.addEventListener('DOMContentLoaded', function () {
+  var gridDiv = document.querySelector('#myGrid');
   new agGrid.Grid(gridDiv, gridOptions);
 });

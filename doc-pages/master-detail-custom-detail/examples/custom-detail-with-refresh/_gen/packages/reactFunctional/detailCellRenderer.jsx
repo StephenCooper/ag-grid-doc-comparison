@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
 const DetailCellRenderer = ({ data }) => {
   const [callCount, setCallCount] = useState(data.calls);

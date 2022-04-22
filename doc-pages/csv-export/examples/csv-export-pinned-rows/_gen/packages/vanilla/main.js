@@ -9,31 +9,31 @@ const gridOptions = {
   suppressExcelExport: true,
   popupParent: document.body,
 
-  columnDefs: [{ field: "make" }, { field: "model" }, { field: "price" }],
+  columnDefs: [{ field: 'make' }, { field: 'model' }, { field: 'price' }],
 
-  pinnedTopRowData: [{ make: "Top Make", model: "Top Model", price: 0 }],
+  pinnedTopRowData: [{ make: 'Top Make', model: 'Top Model', price: 0 }],
 
   pinnedBottomRowData: [
-    { make: "Bottom Make", model: "Bottom Model", price: 10101010 },
+    { make: 'Bottom Make', model: 'Bottom Model', price: 10101010 },
   ],
 
   rowData: [
-    { make: "Toyota", model: "Celica", price: 35000 },
-    { make: "Ford", model: "Mondeo", price: 32000 },
-    { make: "Porsche", model: "Boxter", price: 72000 },
+    { make: 'Toyota', model: 'Celica', price: 35000 },
+    { make: 'Ford', model: 'Mondeo', price: 32000 },
+    { make: 'Porsche', model: 'Boxster', price: 72000 },
   ],
 };
 
 function getBoolean(id) {
-  var field = document.querySelector("#" + id);
+  var field = document.querySelector('#' + id);
 
   return !!field.checked;
 }
 
 function getParams() {
   return {
-    skipPinnedTop: getBoolean("skipPinnedTop"),
-    skipPinnedBottom: getBoolean("skipPinnedBottom"),
+    skipPinnedTop: getBoolean('skipPinnedTop'),
+    skipPinnedBottom: getBoolean('skipPinnedBottom'),
   };
 }
 
@@ -42,13 +42,13 @@ function onBtnExport() {
 }
 
 function onBtnUpdate() {
-  document.querySelector("#csvResult").value = gridOptions.api.getDataAsCsv(
+  document.querySelector('#csvResult').value = gridOptions.api.getDataAsCsv(
     getParams()
   );
 }
 
 // setup the grid after the page has finished loading
-document.addEventListener("DOMContentLoaded", function () {
-  var gridDiv = document.querySelector("#myGrid");
+document.addEventListener('DOMContentLoaded', function () {
+  var gridDiv = document.querySelector('#myGrid');
   new agGrid.Grid(gridDiv, gridOptions);
 });

@@ -1,17 +1,17 @@
-import { ICellEditorComp, ICellEditorParams } from "@ag-grid-community/core";
+import { ICellEditorComp, ICellEditorParams } from '@ag-grid-community/core';
 
-const KEY_BACKSPACE = "Backspace";
-const KEY_F2 = "F2";
-const KEY_DELETE = "Delete";
+const KEY_BACKSPACE = 'Backspace';
+const KEY_F2 = 'F2';
+const KEY_DELETE = 'Delete';
 
 export class MySimpleEditor implements ICellEditorComp {
   gui!: HTMLInputElement;
   params!: ICellEditorParams;
 
   init(params: ICellEditorParams) {
-    this.gui = document.createElement("input");
-    this.gui.type = "text";
-    this.gui.classList.add("my-simple-editor");
+    this.gui = document.createElement('input');
+    this.gui.type = 'text';
+    this.gui.classList.add('my-simple-editor');
 
     this.params = params;
 
@@ -20,7 +20,7 @@ export class MySimpleEditor implements ICellEditorComp {
     const isBackspaceOrDelete =
       params.eventKey === KEY_BACKSPACE || params.eventKey === KEY_DELETE;
     if (isBackspaceOrDelete) {
-      startValue = "";
+      startValue = '';
     } else if (params.charPress) {
       startValue = params.charPress;
     }

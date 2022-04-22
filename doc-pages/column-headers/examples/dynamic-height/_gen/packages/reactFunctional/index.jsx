@@ -1,78 +1,78 @@
-"use strict";
+'use strict';
 
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
-import { AgGridReact } from "ag-grid-react";
-import React, { useCallback, useMemo, useRef, useState } from "react";
-import { render } from "react-dom";
+import React, { useCallback, useMemo, useRef, useState } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from 'ag-grid-react';
+import 'ag-grid-enterprise';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 
 const setIdText = (id, value) => {
   document.getElementById(id).innerHTML =
-    value == undefined ? "undefined" : value + "";
+    value == undefined ? 'undefined' : value + '';
 };
 
 const GridExample = () => {
   const gridRef = useRef();
-  const containerStyle = useMemo(() => ({ width: "100%", height: "100%" }), []);
-  const gridStyle = useMemo(() => ({ height: "100%", width: "100%" }), []);
+  const containerStyle = useMemo(() => ({ width: '100%', height: '100%' }), []);
+  const gridStyle = useMemo(() => ({ height: '100%', width: '100%' }), []);
   const [rowData, setRowData] = useState();
   const [columnDefs, setColumnDefs] = useState([
     {
-      headerName: "Athlete Details",
+      headerName: 'Athlete Details',
       children: [
         {
-          field: "athlete",
+          field: 'athlete',
           width: 150,
           suppressSizeToFit: true,
           enableRowGroup: true,
           rowGroupIndex: 0,
         },
         {
-          field: "age",
+          field: 'age',
           width: 90,
           minWidth: 75,
           maxWidth: 100,
           enableRowGroup: true,
         },
         {
-          field: "country",
+          field: 'country',
           enableRowGroup: true,
         },
         {
-          field: "year",
+          field: 'year',
           width: 90,
           enableRowGroup: true,
           pivotIndex: 0,
         },
-        { field: "sport", width: 110, enableRowGroup: true },
+        { field: 'sport', width: 110, enableRowGroup: true },
         {
-          field: "gold",
+          field: 'gold',
           enableValue: true,
           suppressMenu: true,
-          filter: "agNumberColumnFilter",
-          aggFunc: "sum",
+          filter: 'agNumberColumnFilter',
+          aggFunc: 'sum',
         },
         {
-          field: "silver",
+          field: 'silver',
           enableValue: true,
           suppressMenu: true,
-          filter: "agNumberColumnFilter",
-          aggFunc: "sum",
+          filter: 'agNumberColumnFilter',
+          aggFunc: 'sum',
         },
         {
-          field: "bronze",
+          field: 'bronze',
           enableValue: true,
           suppressMenu: true,
-          filter: "agNumberColumnFilter",
-          aggFunc: "sum",
+          filter: 'agNumberColumnFilter',
+          aggFunc: 'sum',
         },
         {
-          field: "total",
+          field: 'total',
           enableValue: true,
           suppressMenu: true,
-          filter: "agNumberColumnFilter",
-          aggFunc: "sum",
+          filter: 'agNumberColumnFilter',
+          aggFunc: 'sum',
         },
       ],
     },
@@ -87,48 +87,48 @@ const GridExample = () => {
   }, []);
 
   const onGridReady = useCallback((params) => {
-    fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+    fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .then((resp) => resp.json())
       .then((data) => setRowData(data));
   }, []);
 
   const setPivotOn = useCallback(() => {
-    document.querySelector("#requiresPivot").className = "";
-    document.querySelector("#requiresNotPivot").className = "hidden";
+    document.querySelector('#requiresPivot').className = '';
+    document.querySelector('#requiresNotPivot').className = 'hidden';
     gridRef.current.columnApi.setPivotMode(true);
-    setIdText("pivot", "on");
+    setIdText('pivot', 'on');
   }, []);
 
   const setPivotOff = useCallback(() => {
-    document.querySelector("#requiresPivot").className = "hidden";
-    document.querySelector("#requiresNotPivot").className = "";
+    document.querySelector('#requiresPivot').className = 'hidden';
+    document.querySelector('#requiresNotPivot').className = '';
     gridRef.current.columnApi.setPivotMode(false);
-    setIdText("pivot", "off");
+    setIdText('pivot', 'off');
   }, []);
 
   const setHeaderHeight = useCallback((value) => {
     gridRef.current.api.setHeaderHeight(value);
-    setIdText("headerHeight", value);
+    setIdText('headerHeight', value);
   }, []);
 
   const setGroupHeaderHeight = useCallback((value) => {
     gridRef.current.api.setGroupHeaderHeight(value);
-    setIdText("groupHeaderHeight", value);
+    setIdText('groupHeaderHeight', value);
   }, []);
 
   const setFloatingFiltersHeight = useCallback((value) => {
     gridRef.current.api.setFloatingFiltersHeight(value);
-    setIdText("floatingFiltersHeight", value);
+    setIdText('floatingFiltersHeight', value);
   }, []);
 
   const setPivotGroupHeaderHeight = useCallback((value) => {
     gridRef.current.api.setPivotGroupHeaderHeight(value);
-    setIdText("pivotGroupHeaderHeight", value);
+    setIdText('pivotGroupHeaderHeight', value);
   }, []);
 
   const setPivotHeaderHeight = useCallback((value) => {
     gridRef.current.api.setPivotHeaderHeight(value);
-    setIdText("pivotHeaderHeight", value);
+    setIdText('pivotHeaderHeight', value);
   }, []);
 
   return (
@@ -154,7 +154,9 @@ const GridExample = () => {
                 <td>
                   <button onClick={() => setGroupHeaderHeight(40)}>40px</button>
                   <button onClick={() => setGroupHeaderHeight(60)}>60px</button>
-                  <button onClick={setGroupHeaderHeight}>undefined</button>
+                  <button onClick={() => setGroupHeaderHeight(undefined)}>
+                    undefined
+                  </button>
                 </td>
                 <td>
                   headerHeight (<span id="headerHeight">undefined</span>)
@@ -162,12 +164,14 @@ const GridExample = () => {
                 <td>
                   <button onClick={() => setHeaderHeight(70)}>70px</button>
                   <button onClick={() => setHeaderHeight(80)}>80px</button>
-                  <button onClick={setHeaderHeight}>undefined</button>
+                  <button onClick={() => setHeaderHeight(undefined)}>
+                    undefined
+                  </button>
                 </td>
               </tr>
               <tr id="requiresPivot" className="hidden">
                 <td>
-                  {" "}
+                  {' '}
                   pivotGroupHeaderHeight (
                   <span id="pivotGroupHeaderHeight">undefined</span>)
                 </td>
@@ -178,7 +182,9 @@ const GridExample = () => {
                   <button onClick={() => setPivotGroupHeaderHeight(70)}>
                     70px
                   </button>
-                  <button onClick={setPivotGroupHeaderHeight}>undefined</button>
+                  <button onClick={() => setPivotGroupHeaderHeight(undefined)}>
+                    undefined
+                  </button>
                 </td>
                 <td>
                   pivotHeaderHeight (
@@ -187,7 +193,9 @@ const GridExample = () => {
                 <td>
                   <button onClick={() => setPivotHeaderHeight(60)}>60px</button>
                   <button onClick={() => setPivotHeaderHeight(80)}>80px</button>
-                  <button onClick={setPivotHeaderHeight}>undefined</button>
+                  <button onClick={() => setPivotHeaderHeight(undefined)}>
+                    undefined
+                  </button>
                 </td>
               </tr>
               <tr id="requiresNotPivot">
@@ -202,7 +210,9 @@ const GridExample = () => {
                   <button onClick={() => setFloatingFiltersHeight(55)}>
                     55px
                   </button>
-                  <button onClick={setFloatingFiltersHeight}>undefined</button>
+                  <button onClick={() => setFloatingFiltersHeight(undefined)}>
+                    undefined
+                  </button>
                 </td>
               </tr>
             </tbody>
@@ -223,4 +233,4 @@ const GridExample = () => {
   );
 };
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

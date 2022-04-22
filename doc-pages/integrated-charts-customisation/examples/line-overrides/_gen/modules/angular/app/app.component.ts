@@ -4,14 +4,14 @@ import {
   CreateRangeChartParams,
   FirstDataRenderedEvent,
   GridReadyEvent,
-} from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { Component } from "@angular/core";
+} from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { Component } from '@angular/core';
 // Required feature modules are registered in app.module.ts
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<ag-grid-angular
     style="width: 100%; height: 100%;"
     class="ag-theme-alpine"
@@ -28,29 +28,29 @@ import { Component } from "@angular/core";
 })
 export class AppComponent {
   public columnDefs: ColDef[] = [
-    { field: "country", width: 150, chartDataType: "category" },
-    { field: "gold", chartDataType: "series" },
-    { field: "silver", chartDataType: "series" },
-    { field: "bronze", chartDataType: "series" },
+    { field: 'country', width: 150, chartDataType: 'category' },
+    { field: 'gold', chartDataType: 'series' },
+    { field: 'silver', chartDataType: 'series' },
+    { field: 'bronze', chartDataType: 'series' },
     {
-      headerName: "A",
-      valueGetter: "Math.floor(Math.random()*1000)",
-      chartDataType: "series",
+      headerName: 'A',
+      valueGetter: 'Math.floor(Math.random()*1000)',
+      chartDataType: 'series',
     },
     {
-      headerName: "B",
-      valueGetter: "Math.floor(Math.random()*1000)",
-      chartDataType: "series",
+      headerName: 'B',
+      valueGetter: 'Math.floor(Math.random()*1000)',
+      chartDataType: 'series',
     },
     {
-      headerName: "C",
-      valueGetter: "Math.floor(Math.random()*1000)",
-      chartDataType: "series",
+      headerName: 'C',
+      valueGetter: 'Math.floor(Math.random()*1000)',
+      chartDataType: 'series',
     },
     {
-      headerName: "D",
-      valueGetter: "Math.floor(Math.random()*1000)",
-      chartDataType: "series",
+      headerName: 'D',
+      valueGetter: 'Math.floor(Math.random()*1000)',
+      chartDataType: 'series',
     },
   ];
   public defaultColDef: ColDef = {
@@ -70,13 +70,13 @@ export class AppComponent {
         strokeWidth: 5,
         highlightStyle: {
           item: {
-            fill: "red",
-            stroke: "yellow",
+            fill: 'red',
+            stroke: 'yellow',
           },
         },
         marker: {
           enabled: true,
-          shape: "diamond",
+          shape: 'diamond',
           size: 12,
           strokeWidth: 4,
           fillOpacity: 0.2,
@@ -86,14 +86,14 @@ export class AppComponent {
           renderer: function (params) {
             return {
               content:
-                "<b>" +
+                '<b>' +
                 params.xName!.toUpperCase() +
-                ":</b> " +
+                ':</b> ' +
                 params.xValue +
-                "<br/>" +
-                "<b>" +
+                '<br/>' +
+                '<b>' +
                 params.yName!.toUpperCase() +
-                ":</b> " +
+                ':</b> ' +
                 params.yValue,
             };
           },
@@ -106,11 +106,11 @@ export class AppComponent {
     var cellRange = {
       rowStartIndex: 0,
       rowEndIndex: 4,
-      columns: ["country", "gold", "silver", "bronze"],
+      columns: ['country', 'gold', 'silver', 'bronze'],
     };
     var createRangeChartParams: CreateRangeChartParams = {
       cellRange: cellRange,
-      chartType: "line",
+      chartType: 'line',
     };
     params.api.createRangeChart(createRangeChartParams);
   }

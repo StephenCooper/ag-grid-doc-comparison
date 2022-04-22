@@ -2,24 +2,25 @@ import {
   ColDef,
   GetDataPath,
   GetRowIdFunc,
+  GetRowIdParams,
   GridApi,
   GridReadyEvent,
   ICellRendererComp,
   ICellRendererParams,
   RowNode,
-} from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { Component } from "@angular/core";
+} from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { Component } from '@angular/core';
 // Required feature modules are registered in app.module.ts
 declare var window: any;
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<div class="example-wrapper">
     <div style="margin-bottom: 5px;">
       <button (click)="addNewGroup()">Add New Group</button>
-      <button (click)="moveSelectedNodeToTarget(9)">
+      <button (click)="moveSelectedNodeToTarget('9')">
         Move Selected to 'stuff'
       </button>
       <button (click)="removeSelected()">Remove Selected</button>
@@ -45,19 +46,19 @@ export class AppComponent {
 
   public columnDefs: ColDef[] = [
     {
-      field: "dateModified",
+      field: 'dateModified',
       minWidth: 250,
       comparator: function (d1, d2) {
         return new Date(d1).getTime() < new Date(d2).getTime() ? -1 : 1;
       },
     },
     {
-      field: "size",
-      aggFunc: "sum",
+      field: 'size',
+      aggFunc: 'sum',
       valueFormatter: function (params) {
         return params.value
-          ? Math.round(params.value * 10) / 10 + " MB"
-          : "0 MB";
+          ? Math.round(params.value * 10) / 10 + ' MB'
+          : '0 MB';
       },
     },
   ];
@@ -68,7 +69,7 @@ export class AppComponent {
     resizable: true,
   };
   public autoGroupColumnDef: ColDef = {
-    headerName: "Files",
+    headerName: 'Files',
     minWidth: 330,
     cellRendererParams: {
       checkbox: true,
@@ -78,10 +79,10 @@ export class AppComponent {
   };
   public rowData: any[] | null = getData();
   public groupDefaultExpanded = -1;
-  public getDataPath: GetDataPath = function (data) {
+  public getDataPath: GetDataPath = function (data: any) {
     return data.filePath;
   };
-  public getRowId: GetRowIdFunc = function (params) {
+  public getRowId: GetRowIdFunc = function (params: GetRowIdParams) {
     return params.data.id;
   };
 
@@ -89,8 +90,8 @@ export class AppComponent {
     var newGroupData = [
       {
         id: getNextId(),
-        filePath: ["Music", "wav", "hit_" + new Date().getTime() + ".wav"],
-        dateModified: "Aug 23 2017 11:52:00 PM",
+        filePath: ['Music', 'wav', 'hit_' + new Date().getTime() + '.wav'],
+        dateModified: 'Aug 23 2017 11:52:00 PM',
         size: 58.9,
       },
     ];
@@ -100,7 +101,7 @@ export class AppComponent {
   removeSelected() {
     var selectedNode = this.gridApi.getSelectedNodes()[0]; // single selection
     if (!selectedNode) {
-      console.warn("No nodes selected!");
+      console.warn('No nodes selected!');
       return;
     }
     this.gridApi.applyTransaction({ remove: getRowsToRemove(selectedNode) });
@@ -109,7 +110,7 @@ export class AppComponent {
   moveSelectedNodeToTarget(targetRowId: string) {
     var selectedNode = this.gridApi.getSelectedNodes()[0]; // single selection
     if (!selectedNode) {
-      console.warn("No nodes selected!");
+      console.warn('No nodes selected!');
       return;
     }
     var targetNode = this.gridApi.getRowNode(targetRowId)!;
@@ -117,7 +118,7 @@ export class AppComponent {
       selectedNode.key === targetNode.key ||
       isSelectionParentOfTarget(selectedNode, targetNode);
     if (invalidMove) {
-      console.warn("Invalid selection - must not be parent or same as target!");
+      console.warn('Invalid selection - must not be parent or same as target!');
       return;
     }
     var rowsToUpdate = getRowsToUpdate(selectedNode, targetNode.data.filePath);
@@ -141,7 +142,7 @@ function getFileCellRenderer() {
   class FileCellRenderer implements ICellRendererComp {
     eGui: any;
     init(params: ICellRendererParams) {
-      var tempDiv = document.createElement("div");
+      var tempDiv = document.createElement('div');
       var value = params.value;
       var icon = getFileIcon(params.value);
       tempDiv.innerHTML = icon
@@ -150,7 +151,7 @@ function getFileCellRenderer() {
           '"></i>' +
           '<span class="filename"></span>' +
           value +
-          "</span>"
+          '</span>'
         : value;
       this.eGui = tempDiv.firstChild;
     }
@@ -196,15 +197,15 @@ function getRowsToUpdate(node: RowNode, parentPath: string[]) {
   return node.data ? res.concat([node.data]) : res;
 }
 function getFileIcon(name: string) {
-  return endsWith(name, ".mp3") || endsWith(name, ".wav")
-    ? "far fa-file-audio"
-    : endsWith(name, ".xls")
-    ? "far fa-file-excel"
-    : endsWith(name, ".txt")
-    ? "far fa-file"
-    : endsWith(name, ".pdf")
-    ? "far fa-file-pdf"
-    : "far fa-folder";
+  return endsWith(name, '.mp3') || endsWith(name, '.wav')
+    ? 'far fa-file-audio'
+    : endsWith(name, '.xls')
+    ? 'far fa-file-excel'
+    : endsWith(name, '.txt')
+    ? 'far fa-file'
+    : endsWith(name, '.pdf')
+    ? 'far fa-file-pdf'
+    : 'far fa-folder';
 }
 function endsWith(str: string | null, match: string | null) {
   var len;

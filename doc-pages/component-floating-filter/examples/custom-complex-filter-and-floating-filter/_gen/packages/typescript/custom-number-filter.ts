@@ -2,7 +2,7 @@ import {
   IDoesFilterPassParams,
   IFilterComp,
   IFilterParams,
-} from "ag-grid-community";
+} from 'ag-grid-community';
 
 export class CustomNumberFilter implements IFilterComp {
   filterText!: string | null;
@@ -19,20 +19,20 @@ export class CustomNumberFilter implements IFilterComp {
 
   // not called by AG Grid, just for us to help setup
   setupGui() {
-    this.gui = document.createElement("div");
+    this.gui = document.createElement('div');
     this.gui.innerHTML =
       '<div style="padding: 4px;">' +
       '<div style="font-weight: bold;">Greater than: </div>' +
       '<div><input style="margin: 4px 0px 4px 0px;" type="number" id="filterText" placeholder="Number of medals..."/></div>' +
-      "</div>";
+      '</div>';
 
     this.onFilterChanged = () => {
       this.extractFilterText();
       this.params.filterChangedCallback();
     };
 
-    this.eFilterText = this.gui.querySelector("#filterText");
-    this.eFilterText.addEventListener("input", this.onFilterChanged);
+    this.eFilterText = this.gui.querySelector('#filterText');
+    this.eFilterText.addEventListener('input', this.onFilterChanged);
   }
 
   extractFilterText() {
@@ -72,7 +72,7 @@ export class CustomNumberFilter implements IFilterComp {
     return (
       this.filterText !== null &&
       this.filterText !== undefined &&
-      this.filterText !== "" &&
+      this.filterText !== '' &&
       this.isNumeric(this.filterText)
     );
   }
@@ -96,6 +96,6 @@ export class CustomNumberFilter implements IFilterComp {
   }
 
   destroy() {
-    this.eFilterText.removeEventListener("input", this.onFilterChanged);
+    this.eFilterText.removeEventListener('input', this.onFilterChanged);
   }
 }

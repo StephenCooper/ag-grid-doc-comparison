@@ -3,38 +3,38 @@ import {
   Grid,
   GridOptions,
   IFiltersToolPanel,
-} from "ag-grid-community";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
+} from 'ag-grid-community';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import 'ag-grid-enterprise';
 
 const gridOptions: GridOptions = {
   columnDefs: [
     {
-      headerName: "Set Filter Column",
-      field: "col1",
-      filter: "agSetColumnFilter",
+      headerName: 'Set Filter Column',
+      field: 'col1',
+      filter: 'agSetColumnFilter',
       flex: 1,
       editable: true,
     },
   ],
-  sideBar: "filters",
+  sideBar: 'filters',
   rowData: getRowData(),
   onFirstDataRendered: onFirstDataRendered,
 };
 
 function getRowData() {
-  return [{ col1: "A" }, { col1: "A" }, { col1: "B" }, { col1: "C" }];
+  return [{ col1: 'A' }, { col1: 'A' }, { col1: 'B' }, { col1: 'C' }];
 }
 
 function setNewData() {
   var newData = [
-    { col1: "A" },
-    { col1: "A" },
-    { col1: "B" },
-    { col1: "C" },
-    { col1: "D" },
-    { col1: "E" },
+    { col1: 'A' },
+    { col1: 'A' },
+    { col1: 'B' },
+    { col1: 'C' },
+    { col1: 'D' },
+    { col1: 'E' },
   ];
   gridOptions.api!.setRowData(newData);
 }
@@ -45,16 +45,16 @@ function reset() {
 }
 
 function onFirstDataRendered(params: FirstDataRenderedEvent) {
-  (
-    params.api.getToolPanelInstance("filters") as any as IFiltersToolPanel
-  ).expandFilters();
+  ((params.api.getToolPanelInstance(
+    'filters'
+  ) as any) as IFiltersToolPanel).expandFilters();
 }
 
 // setup the grid after the page has finished loading
-var gridDiv = document.querySelector<HTMLElement>("#myGrid")!;
+var gridDiv = document.querySelector<HTMLElement>('#myGrid')!;
 new Grid(gridDiv, gridOptions);
 
-if (typeof window !== "undefined") {
+if (typeof window !== 'undefined') {
   // Attach external event handlers to window so they can be called from index.html
   (<any>window).setNewData = setNewData;
   (<any>window).reset = reset;

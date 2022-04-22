@@ -4,100 +4,100 @@ import {
   Grid,
   GridOptions,
   ICellRendererParams,
-} from "ag-grid-community";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
+} from 'ag-grid-community';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import 'ag-grid-enterprise';
 
 var monthValueGetter =
   '(ctx.month < ctx.months.indexOf(colDef.field)) ? data[colDef.field + "_bud"] : data[colDef.field + "_act"]';
 var monthCellClassRules = {
-  "cell-act": "ctx.month < ctx.months.indexOf(colDef.field)",
-  "cell-bud": "ctx.month >= ctx.months.indexOf(colDef.field)",
-  "cell-negative": "x < 0",
+  'cell-act': 'ctx.month < ctx.months.indexOf(colDef.field)',
+  'cell-bud': 'ctx.month >= ctx.months.indexOf(colDef.field)',
+  'cell-negative': 'x < 0',
 };
 var yearToDateValueGetter =
   'var total = 0; ctx.months.forEach( function(monthName, monthIndex) { if (monthIndex<=ctx.month) { total += data[monthName + "_act"]; } }); return total; ';
 var accountingCellRenderer = function (params: ICellRendererParams) {
   if (params.value == null) {
-    return "";
+    return '';
   } else if (params.value >= 0) {
     return params.value.toLocaleString();
   } else {
-    return "(" + Math.abs(params.value).toLocaleString() + ")";
+    return '(' + Math.abs(params.value).toLocaleString() + ')';
   }
 };
 
 const columnDefs: (ColDef | ColGroupDef)[] = [
   {
-    field: "country",
+    field: 'country',
     rowGroup: true,
     hide: true,
   },
   {
-    headerName: "Monthly Data",
+    headerName: 'Monthly Data',
     children: [
       {
-        field: "jan",
+        field: 'jan',
         cellRenderer: accountingCellRenderer,
-        cellClass: "cell-figure",
+        cellClass: 'cell-figure',
         valueGetter: monthValueGetter,
         cellClassRules: monthCellClassRules,
-        aggFunc: "sum",
+        aggFunc: 'sum',
       },
 
       {
-        field: "feb",
+        field: 'feb',
         cellRenderer: accountingCellRenderer,
-        cellClass: "cell-figure",
+        cellClass: 'cell-figure',
         valueGetter: monthValueGetter,
         cellClassRules: monthCellClassRules,
-        aggFunc: "sum",
+        aggFunc: 'sum',
       },
 
       {
-        field: "mar",
+        field: 'mar',
         cellRenderer: accountingCellRenderer,
-        cellClass: "cell-figure",
+        cellClass: 'cell-figure',
         valueGetter: monthValueGetter,
         cellClassRules: monthCellClassRules,
-        aggFunc: "sum",
+        aggFunc: 'sum',
       },
 
       {
-        field: "apr",
+        field: 'apr',
         cellRenderer: accountingCellRenderer,
-        cellClass: "cell-figure",
+        cellClass: 'cell-figure',
         valueGetter: monthValueGetter,
         cellClassRules: monthCellClassRules,
-        aggFunc: "sum",
+        aggFunc: 'sum',
       },
 
       {
-        field: "may",
+        field: 'may',
         cellRenderer: accountingCellRenderer,
-        cellClass: "cell-figure",
+        cellClass: 'cell-figure',
         valueGetter: monthValueGetter,
         cellClassRules: monthCellClassRules,
-        aggFunc: "sum",
+        aggFunc: 'sum',
       },
 
       {
-        field: "jun",
+        field: 'jun',
         cellRenderer: accountingCellRenderer,
-        cellClass: "cell-figure",
+        cellClass: 'cell-figure',
         valueGetter: monthValueGetter,
         cellClassRules: monthCellClassRules,
-        aggFunc: "sum",
+        aggFunc: 'sum',
       },
 
       {
-        headerName: "YTD",
-        cellClass: "cell-figure",
+        headerName: 'YTD',
+        cellClass: 'cell-figure',
         cellRenderer: accountingCellRenderer,
         valueGetter: yearToDateValueGetter,
-        cellStyle: { "font-weight": "bold" },
-        aggFunc: "sum",
+        cellStyle: { 'font-weight': 'bold' },
+        aggFunc: 'sum',
       },
     ],
   },
@@ -112,51 +112,51 @@ const gridOptions: GridOptions = {
     resizable: true,
   },
   autoGroupColumnDef: {
-    headerName: "Location",
-    field: "city",
+    headerName: 'Location',
+    field: 'city',
     minWidth: 260,
-    cellRenderer: "agGroupCellRenderer",
+    cellRenderer: 'agGroupCellRenderer',
     cellRendererParams: {
       checkbox: true,
     },
   },
   animateRows: true,
-  rowSelection: "multiple",
+  rowSelection: 'multiple',
   groupSelectsChildren: true,
   enableRangeSelection: true,
   context: {
     month: 0,
     months: [
-      "jan",
-      "feb",
-      "mar",
-      "apr",
-      "may",
-      "jun",
-      "jul",
-      "aug",
-      "sep",
-      "oct",
-      "nov",
-      "dec",
+      'jan',
+      'feb',
+      'mar',
+      'apr',
+      'may',
+      'jun',
+      'jul',
+      'aug',
+      'sep',
+      'oct',
+      'nov',
+      'dec',
     ],
   },
 };
 
 var monthNames = [
-  "Budget Only",
-  "Year to Jan",
-  "Year to Feb",
-  "Year to Mar",
-  "Year to Apr",
-  "Year to May",
-  "Year to Jun",
-  "Year to Jul",
-  "Year to Aug",
-  "Year to Sep",
-  "Year to Oct",
-  "Year to Nov",
-  "Full Year",
+  'Budget Only',
+  'Year to Jan',
+  'Year to Feb',
+  'Year to Mar',
+  'Year to Apr',
+  'Year to May',
+  'Year to Jun',
+  'Year to Jul',
+  'Year to Aug',
+  'Year to Sep',
+  'Year to Oct',
+  'Year to Nov',
+  'Full Year',
 ];
 
 function onChangeMonth(i: number) {
@@ -170,8 +170,8 @@ function onChangeMonth(i: number) {
   }
 
   gridOptions.context.month = newMonth;
-  document.querySelector("#monthName")!.innerHTML = monthNames[newMonth + 1];
-  gridOptions.api!.refreshClientSideRowModel("aggregate");
+  document.querySelector('#monthName')!.innerHTML = monthNames[newMonth + 1];
+  gridOptions.api!.refreshClientSideRowModel('aggregate');
   gridOptions.api!.refreshCells();
 }
 
@@ -180,16 +180,16 @@ function onQuickFilterChanged(value: any) {
 }
 
 // setup the grid after the page has finished loading
-var gridDiv = document.querySelector<HTMLElement>("#myGrid")!;
+var gridDiv = document.querySelector<HTMLElement>('#myGrid')!;
 new Grid(gridDiv, gridOptions);
 
-fetch("https://www.ag-grid.com/example-assets/monthly-sales.json")
+fetch('https://www.ag-grid.com/example-assets/monthly-sales.json')
   .then((response) => response.json())
   .then(function (data) {
     gridOptions.api!.setRowData(data);
   });
 
-if (typeof window !== "undefined") {
+if (typeof window !== 'undefined') {
   // Attach external event handlers to window so they can be called from index.html
   (<any>window).onChangeMonth = onChangeMonth;
   (<any>window).onQuickFilterChanged = onQuickFilterChanged;

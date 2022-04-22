@@ -1,11 +1,11 @@
-"use strict";
+'use strict';
 
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine-dark.css";
-import "ag-grid-enterprise";
-import { AgGridReact } from "ag-grid-react";
-import React, { useCallback, useMemo, useRef, useState } from "react";
-import { render } from "react-dom";
+import React, { useCallback, useMemo, useRef, useState } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from 'ag-grid-react';
+import 'ag-grid-enterprise';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine-dark.css';
 
 var idSequence = 0;
 
@@ -18,7 +18,7 @@ const getMockServerResponse = (request) => {
   var rowGroupColIds = request.rowGroupCols.map(function (x) {
     return x.id;
   });
-  var parentId = groupKeys.length > 0 ? groupKeys.join("") : "";
+  var parentId = groupKeys.length > 0 ? groupKeys.join('') : '';
   var rows = group(allData, rowGroupColIds, groupKeys, parentId);
   var rowsThisBlock = rows.slice(request.startRow, request.endRow);
   rowsThisBlock.sort();
@@ -39,7 +39,7 @@ const group = (data, rowGroupColIds, groupKeys, parentId) => {
       var res = {};
       // Note: the server provides group id's using a simple heuristic based on group keys:
       // i.e. group node ids will be in the following format: 'Russia', 'Russia-2002'
-      res["id"] = getGroupId(parentId, key);
+      res['id'] = getGroupId(parentId, key);
       res[groupColId] = key;
       return res;
     });
@@ -65,21 +65,21 @@ const updateServerRows = (rowsToUpdate) => {
 };
 
 const getGroupId = (parentId, key) => {
-  return parentId ? parentId + "-" + key : key;
+  return parentId ? parentId + '-' + key : key;
 };
 
 const GridExample = () => {
   const gridRef = useRef();
-  const containerStyle = useMemo(() => ({ width: "100%", height: "100%" }), []);
-  const gridStyle = useMemo(() => ({ height: "100%", width: "100%" }), []);
+  const containerStyle = useMemo(() => ({ width: '100%', height: '100%' }), []);
+  const gridStyle = useMemo(() => ({ height: '100%', width: '100%' }), []);
 
   const [columnDefs, setColumnDefs] = useState([
-    { field: "id", hide: true },
-    { field: "athlete" },
-    { field: "country", rowGroup: true, hide: true },
-    { field: "gold" },
-    { field: "silver" },
-    { field: "bronze" },
+    { field: 'id', hide: true },
+    { field: 'athlete' },
+    { field: 'country', rowGroup: true, hide: true },
+    { field: 'gold' },
+    { field: 'silver' },
+    { field: 'bronze' },
   ]);
   const defaultColDef = useMemo(() => {
     return {
@@ -89,7 +89,7 @@ const GridExample = () => {
   }, []);
 
   const onGridReady = useCallback((params) => {
-    fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+    fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .then((resp) => resp.json())
       .then((data) => {
         allData = data;
@@ -156,7 +156,7 @@ const GridExample = () => {
   return (
     <div style={containerStyle}>
       <div className="example-wrapper">
-        <div style={{ marginBottom: "5px" }}>
+        <div style={{ marginBottom: '5px' }}>
           <button onClick={updateSelectedRows}>Update Selected Rows</button>
           <button onClick={refreshStore}>Refresh Store</button>
         </div>
@@ -166,9 +166,9 @@ const GridExample = () => {
             ref={gridRef}
             columnDefs={columnDefs}
             defaultColDef={defaultColDef}
-            rowSelection={"multiple"}
-            rowModelType={"serverSide"}
-            serverSideStoreType={"partial"}
+            rowSelection={'multiple'}
+            rowModelType={'serverSide'}
+            serverSideStoreType={'partial'}
             cacheBlockSize={75}
             animateRows={true}
             getRowId={getRowId}
@@ -181,4 +181,4 @@ const GridExample = () => {
   );
 };
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

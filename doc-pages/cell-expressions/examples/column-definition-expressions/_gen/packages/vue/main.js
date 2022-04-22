@@ -1,7 +1,7 @@
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine-dark.css";
-import { AgGridVue } from "ag-grid-vue";
-import Vue from "vue";
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine-dark.css';
+import { AgGridVue } from 'ag-grid-vue';
+import Vue from 'vue';
 
 const VueExample = {
   template: `
@@ -20,7 +20,7 @@ const VueExample = {
       </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
@@ -29,24 +29,24 @@ const VueExample = {
       columnApi: null,
       columnDefs: [
         {
-          headerName: "String (editable)",
-          field: "simple",
+          headerName: 'String (editable)',
+          field: 'simple',
           editable: true,
         },
         {
-          headerName: "Bad Number (editable)",
-          field: "numberBad",
+          headerName: 'Bad Number (editable)',
+          field: 'numberBad',
           editable: true,
         },
         {
-          headerName: "Good Number (editable)",
-          field: "numberGood",
+          headerName: 'Good Number (editable)',
+          field: 'numberGood',
           editable: true,
           valueFormatter: `"£" + Math.floor(value).toString().replace(/(\\d)(?=(\\d{3})+(?!\\d))/g, "$1,")`,
-          valueParser: "Number(newValue)",
+          valueParser: 'Number(newValue)',
         },
         {
-          headerName: "Name (editable)",
+          headerName: 'Name (editable)',
           editable: true,
           valueGetter: 'data.firstName + " " + data.lastName',
           valueSetter:
@@ -62,9 +62,9 @@ const VueExample = {
                             return false;
                         }`,
         },
-        { headerName: "A", field: "a", maxWidth: 120 },
-        { headerName: "B", field: "b", maxWidth: 120 },
-        { headerName: "A + B", valueGetter: "data.a + data.b", maxWidth: 120 },
+        { headerName: 'A', field: 'a', maxWidth: 120 },
+        { headerName: 'B', field: 'b', maxWidth: 120 },
+        { headerName: 'A + B', valueGetter: 'data.a + data.b', maxWidth: 120 },
       ],
       defaultColDef: {
         flex: 1,
@@ -80,7 +80,7 @@ const VueExample = {
   },
   methods: {
     onCellValueChanged(event) {
-      console.log("data after changes is: ", event.data);
+      console.log('data after changes is: ', event.data);
     },
     onGridReady(params) {
       params.api.sizeColumnsToFit();
@@ -88,40 +88,40 @@ const VueExample = {
     createRowData() {
       const rowData = [];
       const words = [
-        "One",
-        "Apple",
-        "Moon",
-        "Sugar",
-        "Grid",
-        "Banana",
-        "Sunshine",
-        "Stars",
-        "Black",
-        "White",
-        "Salt",
-        "Beach",
+        'One',
+        'Apple',
+        'Moon',
+        'Sugar',
+        'Grid',
+        'Banana',
+        'Sunshine',
+        'Stars',
+        'Black',
+        'White',
+        'Salt',
+        'Beach',
       ];
       const firstNames = [
-        "Niall",
-        "John",
-        "Rob",
-        "Alberto",
-        "Bas",
-        "Dimple",
-        "Sean",
+        'Niall',
+        'John',
+        'Rob',
+        'Alberto',
+        'Bas',
+        'Dimple',
+        'Sean',
       ];
       const lastNames = [
-        "Pink",
-        "Black",
-        "White",
-        "Brown",
-        "Smith",
-        "Smooth",
-        "Anderson",
+        'Pink',
+        'Black',
+        'White',
+        'Brown',
+        'Smith',
+        'Smooth',
+        'Anderson',
       ];
       for (let i = 0; i < 100; i++) {
         const randomWords =
-          words[i % words.length] + " " + words[(i * 17) % words.length];
+          words[i % words.length] + ' ' + words[(i * 17) % words.length];
         rowData.push({
           simple: randomWords,
           numberBad: Math.floor(((i + 2) * 173456) % 10000),
@@ -138,8 +138,8 @@ const VueExample = {
 };
 
 new Vue({
-  el: "#app",
+  el: '#app',
   components: {
-    "my-component": VueExample,
+    'my-component': VueExample,
   },
 });

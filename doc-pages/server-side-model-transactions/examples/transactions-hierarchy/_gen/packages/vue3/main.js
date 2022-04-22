@@ -1,8 +1,8 @@
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine-dark.css";
-import "ag-grid-enterprise";
-import { AgGridVue } from "ag-grid-vue3";
-import { createApp } from "vue";
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine-dark.css';
+import 'ag-grid-enterprise';
+import { AgGridVue } from 'ag-grid-vue3';
+import { createApp } from 'vue';
 
 const VueExample = {
   template: `
@@ -33,14 +33,14 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
-        { field: "productName", rowGroup: true, hide: true },
-        { field: "tradeName" },
-        { field: "value" },
+        { field: 'productName', rowGroup: true, hide: true },
+        { field: 'tradeName' },
+        { field: 'value' },
       ],
       gridApi: null,
       columnApi: null,
@@ -58,10 +58,10 @@ const VueExample = {
     this.getRowId = (params) => {
       return params.data.id;
     };
-    this.rowModelType = "serverSide";
-    this.serverSideStoreType = "full";
+    this.rowModelType = 'serverSide';
+    this.serverSideStoreType = 'full';
     this.getServerSideStoreParams = (params) => {
-      const type = params.level == 0 ? "partial" : "full";
+      const type = params.level == 0 ? 'partial' : 'full';
       return {
         storeType: type,
       };
@@ -70,52 +70,52 @@ const VueExample = {
   methods: {
     onBtNewPalmOil() {
       const transaction = {
-        route: ["Palm Oil"],
+        route: ['Palm Oil'],
         add: [createOneTrade()],
       };
       const res = this.gridApi.applyServerSideTransaction(transaction);
-      console.log("New Palm Oil, result = " + (res && res.status));
+      console.log('New Palm Oil, result = ' + (res && res.status));
     },
     onBtNewRubber() {
       const transaction = {
-        route: ["Rubber"],
+        route: ['Rubber'],
         add: [createOneTrade()],
       };
       const res = this.gridApi.applyServerSideTransaction(transaction);
-      console.log("New Rubber, result = " + (res && res.status));
+      console.log('New Rubber, result = ' + (res && res.status));
     },
     onBtNewWoolAmber() {
       const transactions = [];
       transactions.push({
-        route: ["Wool"],
+        route: ['Wool'],
         add: [createOneTrade()],
       });
       transactions.push({
-        route: ["Amber"],
+        route: ['Amber'],
         add: [createOneTrade()],
       });
       const api = this.gridApi;
       transactions.forEach(function (tx) {
         const res = api.applyServerSideTransaction(tx);
-        console.log("New " + tx.route[0] + ", result = " + (res && res.status));
+        console.log('New ' + tx.route[0] + ', result = ' + (res && res.status));
       });
     },
     onBtNewProduct() {
       const transaction = {
         route: [],
-        add: [{ id: idSequence++, productName: "Rice", trades: [] }],
+        add: [{ id: idSequence++, productName: 'Rice', trades: [] }],
       };
       const res = this.gridApi.applyServerSideTransaction(transaction);
-      console.log("New Product, result = " + (res && res.status));
+      console.log('New Product, result = ' + (res && res.status));
     },
     onBtStoreState() {
       const storeState = this.gridApi.getServerSideStoreState();
-      console.log("Store States:");
+      console.log('Store States:');
       storeState.forEach(function (state, index) {
         console.log(
           index +
-            " - " +
-            JSON.stringify(state).replace(/"/g, "").replace(/,/g, ", ")
+            ' - ' +
+            JSON.stringify(state).replace(/"/g, '').replace(/,/g, ', ')
         );
       });
     },
@@ -159,7 +159,7 @@ const VueExample = {
 window.createOneTrade = function createOneTrade() {
   return {
     id: idSequence++,
-    tradeName: "TRD-" + Math.floor(Math.random() * 20000),
+    tradeName: 'TRD-' + Math.floor(Math.random() * 20000),
     value: Math.floor(Math.random() * 20000),
   };
 };
@@ -174,10 +174,10 @@ window.setupData = function setupData() {
   });
 };
 
-const productsNames = ["Palm Oil", "Rubber", "Wool", "Amber", "Copper"];
+const productsNames = ['Palm Oil', 'Rubber', 'Wool', 'Amber', 'Copper'];
 
 const products = [];
 
 let idSequence = 0;
 
-createApp(VueExample).mount("#app");
+createApp(VueExample).mount('#app');

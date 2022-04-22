@@ -18,20 +18,20 @@ class NumberFilter {
 
   // not called by AG Grid, just for us to help setup
   setupGui() {
-    this.gui = document.createElement("div");
+    this.gui = document.createElement('div');
     this.gui.innerHTML =
       '<div style="padding: 4px;">' +
       '<div style="font-weight: bold;">Greater than: </div>' +
       '<div><input style="margin: 4px 0px 4px 0px;" type="number" id="filterText" placeholder="Number of medals..."/></div>' +
-      "</div>";
+      '</div>';
 
     this.onFilterChanged = () => {
       this.extractFilterText();
       this.params.filterChangedCallback();
     };
 
-    this.eFilterText = this.gui.querySelector("#filterText");
-    this.eFilterText.addEventListener("input", this.onFilterChanged);
+    this.eFilterText = this.gui.querySelector('#filterText');
+    this.eFilterText.addEventListener('input', this.onFilterChanged);
   }
 
   extractFilterText() {
@@ -70,7 +70,7 @@ class NumberFilter {
     return (
       this.filterText !== null &&
       this.filterText !== undefined &&
-      this.filterText !== "" &&
+      this.filterText !== '' &&
       isNumeric(this.filterText)
     );
   }
@@ -85,36 +85,36 @@ class NumberFilter {
   }
 
   destroy() {
-    this.eFilterText.removeEventListener("input", this.onFilterChanged);
+    this.eFilterText.removeEventListener('input', this.onFilterChanged);
   }
 
   getModelAsString() {
-    return this.isFilterActive() ? ">" + this.filterText : "";
+    return this.isFilterActive() ? '>' + this.filterText : '';
   }
 }
 
 const columnDefs = [
-  { field: "athlete", width: 150, filter: false },
+  { field: 'athlete', width: 150, filter: false },
   {
-    field: "gold",
+    field: 'gold',
     width: 100,
     filter: NumberFilter,
     suppressMenu: true,
   },
   {
-    field: "silver",
+    field: 'silver',
     width: 100,
     filter: NumberFilter,
     suppressMenu: true,
   },
   {
-    field: "bronze",
+    field: 'bronze',
     width: 100,
     filter: NumberFilter,
     suppressMenu: true,
   },
   {
-    field: "total",
+    field: 'total',
     width: 100,
     filter: NumberFilter,
     suppressMenu: true,
@@ -136,11 +136,11 @@ const gridOptions = {
 };
 
 // setup the grid after the page has finished loading
-document.addEventListener("DOMContentLoaded", () => {
-  const gridDiv = document.querySelector("#myGrid");
+document.addEventListener('DOMContentLoaded', () => {
+  const gridDiv = document.querySelector('#myGrid');
   new agGrid.Grid(gridDiv, gridOptions);
 
-  fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+  fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
     .then((response) => response.json())
     .then((data) => {
       gridOptions.api.setRowData(data);

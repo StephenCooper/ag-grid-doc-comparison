@@ -1,9 +1,9 @@
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { AgGridVue } from "@ag-grid-community/vue";
-import Vue from "vue";
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { AgGridVue } from '@ag-grid-community/vue';
+import Vue from 'vue';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([ClientSideRowModelModule]);
@@ -22,15 +22,15 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
-        { headerName: "Row ID", valueGetter: "node.id" },
-        { field: "make" },
-        { field: "model" },
-        { field: "price" },
+        { headerName: 'Row ID', valueGetter: 'node.id' },
+        { field: 'make' },
+        { field: 'model' },
+        { field: 'price' },
       ],
       gridApi: null,
       columnApi: null,
@@ -41,11 +41,11 @@ const VueExample = {
   },
   created() {
     this.rowData = [
-      { id: "c1", make: "Toyota", model: "Celica", price: 35000 },
-      { id: "c2", make: "Ford", model: "Mondeo", price: 32000 },
-      { id: "c8", make: "Porsche", model: "Boxter", price: 72000 },
-      { id: "c4", make: "BMW", model: "M50", price: 60000 },
-      { id: "c14", make: "Aston Martin", model: "DBX", price: 190000 },
+      { id: 'c1', make: 'Toyota', model: 'Celica', price: 35000 },
+      { id: 'c2', make: 'Ford', model: 'Mondeo', price: 32000 },
+      { id: 'c8', make: 'Porsche', model: 'Boxster', price: 72000 },
+      { id: 'c4', make: 'BMW', model: 'M50', price: 60000 },
+      { id: 'c14', make: 'Aston Martin', model: 'DBX', price: 190000 },
     ];
     this.getRowId = (params) => params.data.id;
   },
@@ -58,8 +58,8 @@ const VueExample = {
 };
 
 new Vue({
-  el: "#app",
+  el: '#app',
   components: {
-    "my-component": VueExample,
+    'my-component': VueExample,
   },
 });

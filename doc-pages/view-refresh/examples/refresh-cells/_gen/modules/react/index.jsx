@@ -1,12 +1,12 @@
-"use strict";
+'use strict';
 
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine-dark.css";
-import { AgGridReact } from "@ag-grid-community/react";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from '@ag-grid-community/react';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine-dark.css';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([ClientSideRowModelModule]);
@@ -17,12 +17,12 @@ class GridExample extends Component {
 
     this.state = {
       columnDefs: [
-        { field: "a", suppressCellFlash: true },
-        { field: "b" },
-        { field: "c" },
-        { field: "d" },
-        { field: "e" },
-        { field: "f" },
+        { field: 'a', suppressCellFlash: true },
+        { field: 'b' },
+        { field: 'c' },
+        { field: 'd' },
+        { field: 'e' },
+        { field: 'f' },
       ],
       defaultColDef: {
         flex: 1,
@@ -59,7 +59,7 @@ class GridExample extends Component {
   scrambleAndRefreshLeftToRight = () => {
     scramble();
     var api = this.gridApi;
-    ["a", "b", "c", "d", "e", "f"].forEach(function (col, index) {
+    ['a', 'b', 'c', 'd', 'e', 'f'].forEach(function (col, index) {
       var millis = index * 100;
       var params = {
         force: isForceRefreshSelected(),
@@ -80,12 +80,12 @@ class GridExample extends Component {
       rowNode = api.getPinnedTopRow(i);
       refreshRow(rowNode, api);
     }
-    for (i = 0; i < this.gridApi.getDisplayedRowCount(); i++) {
-      rowNode = this.gridApi.getDisplayedRowAtIndex(i);
+    for (i = 0; i < api.getDisplayedRowCount(); i++) {
+      rowNode = api.getDisplayedRowAtIndex(i);
       refreshRow(rowNode, api);
     }
-    for (i = 0; i < this.gridApi.getPinnedBottomRowCount(); i++) {
-      rowNode = this.gridApi.getPinnedBottomRow(i);
+    for (i = 0; i < api.getPinnedBottomRowCount(); i++) {
+      rowNode = api.getPinnedBottomRow(i);
       refreshRow(rowNode, api);
     }
     function refreshRow(rowNode, api) {
@@ -102,7 +102,7 @@ class GridExample extends Component {
 
   render() {
     return (
-      <div style={{ width: "100%", height: "100%" }}>
+      <div style={{ width: '100%', height: '100%' }}>
         <div className="example-wrapper">
           <div className="example-header">
             <div>
@@ -129,8 +129,8 @@ class GridExample extends Component {
           </div>
           <div
             style={{
-              height: "100%",
-              width: "100%",
+              height: '100%',
+              width: '100%',
             }}
             className="ag-theme-alpine-dark"
           >
@@ -170,10 +170,10 @@ function createData(count) {
   return result;
 }
 function isForceRefreshSelected() {
-  return document.querySelector("#forceRefresh").checked;
+  return document.querySelector('#forceRefresh').checked;
 }
 function isSuppressFlashSelected() {
-  return document.querySelector("#suppressFlash").checked;
+  return document.querySelector('#suppressFlash').checked;
 }
 function callRefreshAfterMillis(params, millis, gridApi) {
   setTimeout(function () {
@@ -186,7 +186,7 @@ function scramble() {
   bottomRowData.forEach(scrambleItem);
 }
 function scrambleItem(item) {
-  ["a", "b", "c", "d", "e", "f"].forEach(function (colId) {
+  ['a', 'b', 'c', 'd', 'e', 'f'].forEach(function (colId) {
     // skip 50% of the cells so updates are random
     if (Math.random() > 0.5) {
       return;
@@ -195,4 +195,4 @@ function scrambleItem(item) {
   });
 }
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

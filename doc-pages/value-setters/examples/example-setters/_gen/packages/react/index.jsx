@@ -1,10 +1,10 @@
-"use strict";
+'use strict';
 
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine-dark.css";
-import { AgGridReact } from "ag-grid-react";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from 'ag-grid-react';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine-dark.css';
 
 class GridExample extends Component {
   constructor(props) {
@@ -13,13 +13,13 @@ class GridExample extends Component {
     this.state = {
       columnDefs: [
         {
-          headerName: "Name",
+          headerName: 'Name',
           valueGetter: function (params) {
-            return params.data.firstName + " " + params.data.lastName;
+            return params.data.firstName + ' ' + params.data.lastName;
           },
           valueSetter: function (params) {
             var fullName = params.newValue;
-            var nameSplit = fullName.split(" ");
+            var nameSplit = fullName.split(' ');
             var newFirstName = nameSplit[0];
             var newLastName = nameSplit[1];
             var data = params.data;
@@ -39,11 +39,11 @@ class GridExample extends Component {
           },
         },
         {
-          headerName: "A",
-          field: "a",
+          headerName: 'A',
+          field: 'a',
         },
         {
-          headerName: "B",
+          headerName: 'B',
           valueGetter: function (params) {
             return params.data.b;
           },
@@ -57,7 +57,7 @@ class GridExample extends Component {
           },
         },
         {
-          headerName: "C.X",
+          headerName: 'C.X',
           valueGetter: function (params) {
             if (params.data.c) {
               return params.data.c.x;
@@ -74,7 +74,7 @@ class GridExample extends Component {
           },
         },
         {
-          headerName: "C.Y",
+          headerName: 'C.Y',
           valueGetter: function (params) {
             if (params.data.c) {
               return params.data.c.y;
@@ -106,16 +106,16 @@ class GridExample extends Component {
   };
 
   onCellValueChanged = (event) => {
-    console.log("Data after change is", event.data);
+    console.log('Data after change is', event.data);
   };
 
   render() {
     return (
-      <div style={{ width: "100%", height: "100%" }}>
+      <div style={{ width: '100%', height: '100%' }}>
         <div
           style={{
-            height: "100%",
-            width: "100%",
+            height: '100%',
+            width: '100%',
           }}
           className="ag-theme-alpine-dark"
         >
@@ -132,4 +132,4 @@ class GridExample extends Component {
   }
 }
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

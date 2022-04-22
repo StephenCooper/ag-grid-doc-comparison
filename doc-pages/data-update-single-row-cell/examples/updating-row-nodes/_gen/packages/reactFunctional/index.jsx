@@ -1,28 +1,28 @@
-"use strict";
+'use strict';
 
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import { AgGridReact } from "ag-grid-react";
-import React, { useCallback, useMemo, useRef, useState } from "react";
-import { render } from "react-dom";
+import React, { useCallback, useMemo, useRef, useState } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from 'ag-grid-react';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 
 const GridExample = () => {
   const gridRef = useRef();
-  const containerStyle = useMemo(() => ({ width: "100%", height: "100%" }), []);
-  const gridStyle = useMemo(() => ({ height: "100%", width: "100%" }), []);
+  const containerStyle = useMemo(() => ({ width: '100%', height: '100%' }), []);
+  const gridStyle = useMemo(() => ({ height: '100%', width: '100%' }), []);
   const [rowData, setRowData] = useState([
-    { id: "aa", make: "Toyota", model: "Celica", price: 35000 },
-    { id: "bb", make: "Ford", model: "Mondeo", price: 32000 },
-    { id: "cc", make: "Porsche", model: "Boxter", price: 72000 },
-    { id: "dd", make: "BMW", model: "5 Series", price: 59000 },
-    { id: "ee", make: "Dodge", model: "Challanger", price: 35000 },
-    { id: "ff", make: "Mazda", model: "MX5", price: 28000 },
-    { id: "gg", make: "Horse", model: "Outside", price: 99000 },
+    { id: 'aa', make: 'Toyota', model: 'Celica', price: 35000 },
+    { id: 'bb', make: 'Ford', model: 'Mondeo', price: 32000 },
+    { id: 'cc', make: 'Porsche', model: 'Boxster', price: 72000 },
+    { id: 'dd', make: 'BMW', model: '5 Series', price: 59000 },
+    { id: 'ee', make: 'Dodge', model: 'Challanger', price: 35000 },
+    { id: 'ff', make: 'Mazda', model: 'MX5', price: 28000 },
+    { id: 'gg', make: 'Horse', model: 'Outside', price: 99000 },
   ]);
   const [columnDefs, setColumnDefs] = useState([
-    { field: "make" },
-    { field: "model" },
-    { field: "price", filter: "agNumberColumnFilter" },
+    { field: 'make' },
+    { field: 'model' },
+    { field: 'price', filter: 'agNumberColumnFilter' },
   ]);
   const defaultColDef = useMemo(() => {
     return {
@@ -37,26 +37,26 @@ const GridExample = () => {
   }, []);
 
   const updateSort = useCallback(() => {
-    gridRef.current.api.refreshClientSideRowModel("sort");
+    gridRef.current.api.refreshClientSideRowModel('sort');
   }, []);
 
   const updateFilter = useCallback(() => {
-    gridRef.current.api.refreshClientSideRowModel("filter");
+    gridRef.current.api.refreshClientSideRowModel('filter');
   }, []);
 
   const setPriceOnToyota = useCallback(() => {
-    var rowNode = gridRef.current.api.getRowNode("aa");
+    var rowNode = gridRef.current.api.getRowNode('aa');
     var newPrice = Math.floor(Math.random() * 100000);
-    rowNode.setDataValue("price", newPrice);
+    rowNode.setDataValue('price', newPrice);
   }, []);
 
   const setDataOnFord = useCallback(() => {
-    var rowNode = gridRef.current.api.getRowNode("bb");
+    var rowNode = gridRef.current.api.getRowNode('bb');
     var newPrice = Math.floor(Math.random() * 100000);
-    var newModel = "T-" + Math.floor(Math.random() * 1000);
+    var newModel = 'T-' + Math.floor(Math.random() * 1000);
     var newData = {
-      id: "bb",
-      make: "Ford",
+      id: 'bb',
+      make: 'Ford',
       model: newModel,
       price: newPrice,
     };
@@ -66,10 +66,10 @@ const GridExample = () => {
   return (
     <div style={containerStyle}>
       <div className="example-wrapper">
-        <div style={{ marginBottom: "1rem" }}>
+        <div style={{ marginBottom: '1rem' }}>
           <button onClick={setPriceOnToyota}>Set Price on Toyota</button>
           <button onClick={setDataOnFord}>Set Data on Ford</button>
-          <button onClick={updateSort} style={{ marginLeft: "15px" }}>
+          <button onClick={updateSort} style={{ marginLeft: '15px' }}>
             Sort
           </button>
           <button onClick={updateFilter}>Filter</button>
@@ -90,4 +90,4 @@ const GridExample = () => {
   );
 };
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

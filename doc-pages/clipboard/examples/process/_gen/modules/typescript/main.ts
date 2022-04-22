@@ -1,4 +1,4 @@
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
 import {
   Grid,
   GridOptions,
@@ -6,12 +6,12 @@ import {
   ProcessCellForExportParams,
   ProcessGroupHeaderForExportParams,
   ProcessHeaderForExportParams,
-} from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { ClipboardModule } from "@ag-grid-enterprise/clipboard";
-import { MenuModule } from "@ag-grid-enterprise/menu";
-import { RangeSelectionModule } from "@ag-grid-enterprise/range-selection";
+} from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { ClipboardModule } from '@ag-grid-enterprise/clipboard';
+import { MenuModule } from '@ag-grid-enterprise/menu';
+import { RangeSelectionModule } from '@ag-grid-enterprise/range-selection';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([
@@ -24,23 +24,23 @@ ModuleRegistry.registerModules([
 const gridOptions: GridOptions = {
   columnDefs: [
     {
-      headerName: "Participants",
+      headerName: 'Participants',
       children: [
-        { field: "athlete", headerName: "Athlete Name", minWidth: 200 },
-        { field: "age" },
-        { field: "country", minWidth: 150 },
+        { field: 'athlete', headerName: 'Athlete Name', minWidth: 200 },
+        { field: 'age' },
+        { field: 'country', minWidth: 150 },
       ],
     },
     {
-      headerName: "Olympic Games",
+      headerName: 'Olympic Games',
       children: [
-        { field: "year" },
-        { field: "date", minWidth: 150 },
-        { field: "sport", minWidth: 150 },
-        { field: "gold" },
-        { field: "silver", suppressPaste: true },
-        { field: "bronze" },
-        { field: "total" },
+        { field: 'year' },
+        { field: 'date', minWidth: 150 },
+        { field: 'sport', minWidth: 150 },
+        { field: 'gold' },
+        { field: 'silver', suppressPaste: true },
+        { field: 'bronze' },
+        { field: 'total' },
       ],
     },
   ],
@@ -53,7 +53,7 @@ const gridOptions: GridOptions = {
   },
 
   enableRangeSelection: true,
-  rowSelection: "multiple",
+  rowSelection: 'multiple',
 
   processCellForClipboard: processCellForClipboard,
   processHeaderForClipboard: processHeaderForClipboard,
@@ -62,41 +62,41 @@ const gridOptions: GridOptions = {
 };
 
 function processCellForClipboard(params: ProcessCellForExportParams) {
-  return "C-" + params.value;
+  return 'C-' + params.value;
 }
 
 function processHeaderForClipboard(params: ProcessHeaderForExportParams) {
   const colDef = params.column.getColDef();
-  let headerName = colDef.headerName || colDef.field || "";
+  let headerName = colDef.headerName || colDef.field || '';
 
-  if (colDef.headerName !== "") {
+  if (colDef.headerName !== '') {
     headerName = headerName.charAt(0).toUpperCase() + headerName.slice(1);
   }
 
-  return "H-" + headerName;
+  return 'H-' + headerName;
 }
 
 function processGroupHeaderForClipboard(
   params: ProcessGroupHeaderForExportParams
 ) {
   const colGroupDef = params.columnGroup.getColGroupDef() || ({} as any);
-  const headerName = colGroupDef.headerName || "";
+  const headerName = colGroupDef.headerName || '';
 
-  if (headerName === "") {
-    return "";
+  if (headerName === '') {
+    return '';
   }
 
-  return "GH-" + headerName;
+  return 'GH-' + headerName;
 }
 
 function processCellFromClipboard(params: ProcessCellForExportParams) {
-  return "Z-" + params.value;
+  return 'Z-' + params.value;
 }
 
 // setup the grid after the page has finished loading
-const gridDiv = document.querySelector<HTMLElement>("#myGrid")!;
+const gridDiv = document.querySelector<HTMLElement>('#myGrid')!;
 new Grid(gridDiv, gridOptions);
 
-fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
   .then((response) => response.json())
   .then((data) => gridOptions.api!.setRowData(data));

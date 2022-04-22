@@ -1,12 +1,12 @@
-"use strict";
+'use strict';
 
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { AgGridReact } from "@ag-grid-community/react";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from '@ag-grid-community/react';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([ClientSideRowModelModule]);
@@ -17,15 +17,15 @@ class GridExample extends Component {
 
     this.state = {
       columnDefs: [
-        { field: "athlete", colId: "athlete" },
-        { field: "age", colId: "age" },
-        { field: "country", colId: "country" },
-        { field: "year", colId: "year" },
-        { field: "date", colId: "date" },
-        { field: "total", colId: "total" },
-        { field: "gold", colId: "gold" },
-        { field: "silver", colId: "silver" },
-        { field: "bronze", colId: "bronze" },
+        { field: 'athlete', colId: 'athlete' },
+        { field: 'age', colId: 'age' },
+        { field: 'country', colId: 'country' },
+        { field: 'year', colId: 'year' },
+        { field: 'date', colId: 'date' },
+        { field: 'total', colId: 'total' },
+        { field: 'gold', colId: 'gold' },
+        { field: 'silver', colId: 'silver' },
+        { field: 'bronze', colId: 'bronze' },
       ],
       defaultColDef: {
         initialWidth: 150,
@@ -43,41 +43,41 @@ class GridExample extends Component {
 
     const updateData = (data) => params.api.setRowData(data);
 
-    fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+    fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .then((resp) => resp.json())
       .then((data) => updateData(data));
   };
 
   onBtNoGroups = () => {
     const columnDefs = [
-      { field: "athlete", colId: "athlete" },
-      { field: "age", colId: "age" },
-      { field: "country", colId: "country" },
-      { field: "year", colId: "year" },
-      { field: "date", colId: "date" },
-      { field: "total", colId: "total" },
-      { field: "gold", colId: "gold" },
-      { field: "silver", colId: "silver" },
-      { field: "bronze", colId: "bronze" },
+      { field: 'athlete', colId: 'athlete' },
+      { field: 'age', colId: 'age' },
+      { field: 'country', colId: 'country' },
+      { field: 'year', colId: 'year' },
+      { field: 'date', colId: 'date' },
+      { field: 'total', colId: 'total' },
+      { field: 'gold', colId: 'gold' },
+      { field: 'silver', colId: 'silver' },
+      { field: 'bronze', colId: 'bronze' },
     ];
     this.gridApi.setColumnDefs(columnDefs);
   };
 
   onMedalsInGroupOnly = () => {
     const columnDefs = [
-      { field: "athlete", colId: "athlete" },
-      { field: "age", colId: "age" },
-      { field: "country", colId: "country" },
-      { field: "year", colId: "year" },
-      { field: "date", colId: "date" },
+      { field: 'athlete', colId: 'athlete' },
+      { field: 'age', colId: 'age' },
+      { field: 'country', colId: 'country' },
+      { field: 'year', colId: 'year' },
+      { field: 'date', colId: 'date' },
       {
-        headerName: "Medals",
-        headerClass: "medals-group",
+        headerName: 'Medals',
+        headerClass: 'medals-group',
         children: [
-          { field: "total", colId: "total" },
-          { field: "gold", colId: "gold" },
-          { field: "silver", colId: "silver" },
-          { field: "bronze", colId: "bronze" },
+          { field: 'total', colId: 'total' },
+          { field: 'gold', colId: 'gold' },
+          { field: 'silver', colId: 'silver' },
+          { field: 'bronze', colId: 'bronze' },
         ],
       },
     ];
@@ -87,20 +87,20 @@ class GridExample extends Component {
   onParticipantInGroupOnly = () => {
     const columnDefs = [
       {
-        headerName: "Participant",
-        headerClass: "participant-group",
+        headerName: 'Participant',
+        headerClass: 'participant-group',
         children: [
-          { field: "athlete", colId: "athlete" },
-          { field: "age", colId: "age" },
-          { field: "country", colId: "country" },
-          { field: "year", colId: "year" },
-          { field: "date", colId: "date" },
+          { field: 'athlete', colId: 'athlete' },
+          { field: 'age', colId: 'age' },
+          { field: 'country', colId: 'country' },
+          { field: 'year', colId: 'year' },
+          { field: 'date', colId: 'date' },
         ],
       },
-      { field: "total", colId: "total" },
-      { field: "gold", colId: "gold" },
-      { field: "silver", colId: "silver" },
-      { field: "bronze", colId: "bronze" },
+      { field: 'total', colId: 'total' },
+      { field: 'gold', colId: 'gold' },
+      { field: 'silver', colId: 'silver' },
+      { field: 'bronze', colId: 'bronze' },
     ];
     this.gridApi.setColumnDefs(columnDefs);
   };
@@ -108,24 +108,24 @@ class GridExample extends Component {
   onParticipantAndMedalsInGroups = () => {
     const columnDefs = [
       {
-        headerName: "Participant",
-        headerClass: "participant-group",
+        headerName: 'Participant',
+        headerClass: 'participant-group',
         children: [
-          { field: "athlete", colId: "athlete" },
-          { field: "age", colId: "age" },
-          { field: "country", colId: "country" },
-          { field: "year", colId: "year" },
-          { field: "date", colId: "date" },
+          { field: 'athlete', colId: 'athlete' },
+          { field: 'age', colId: 'age' },
+          { field: 'country', colId: 'country' },
+          { field: 'year', colId: 'year' },
+          { field: 'date', colId: 'date' },
         ],
       },
       {
-        headerName: "Medals",
-        headerClass: "medals-group",
+        headerName: 'Medals',
+        headerClass: 'medals-group',
         children: [
-          { field: "total", colId: "total" },
-          { field: "gold", colId: "gold" },
-          { field: "silver", colId: "silver" },
-          { field: "bronze", colId: "bronze" },
+          { field: 'total', colId: 'total' },
+          { field: 'gold', colId: 'gold' },
+          { field: 'silver', colId: 'silver' },
+          { field: 'bronze', colId: 'bronze' },
         ],
       },
     ];
@@ -134,7 +134,7 @@ class GridExample extends Component {
 
   render() {
     return (
-      <div style={{ width: "100%", height: "100%" }}>
+      <div style={{ width: '100%', height: '100%' }}>
         <div className="test-container">
           <div className="test-header">
             <label>
@@ -162,8 +162,8 @@ class GridExample extends Component {
           </div>
           <div
             style={{
-              height: "100%",
-              width: "100%",
+              height: '100%',
+              width: '100%',
             }}
             className="ag-theme-alpine"
           >
@@ -181,4 +181,4 @@ class GridExample extends Component {
   }
 }
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

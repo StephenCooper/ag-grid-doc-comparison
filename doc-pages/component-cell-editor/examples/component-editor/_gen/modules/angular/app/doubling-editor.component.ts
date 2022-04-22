@@ -1,14 +1,14 @@
-import { ICellEditorAngularComp } from "@ag-grid-community/angular";
-import { ICellEditorParams } from "@ag-grid-community/core";
+import { ICellEditorAngularComp } from '@ag-grid-community/angular';
+import { ICellEditorParams } from '@ag-grid-community/core';
 import {
   AfterViewInit,
   Component,
   ViewChild,
   ViewContainerRef,
-} from "@angular/core";
+} from '@angular/core';
 
 @Component({
-  selector: "editor-cell",
+  selector: 'editor-cell',
   template: `<input
     type="number"
     [(ngModel)]="value"
@@ -20,7 +20,7 @@ export class DoublingEditor implements ICellEditorAngularComp, AfterViewInit {
   private params!: ICellEditorParams;
   public value!: number;
 
-  @ViewChild("input", { read: ViewContainerRef })
+  @ViewChild('input', { read: ViewContainerRef })
   public input!: ViewContainerRef;
 
   ngAfterViewInit() {

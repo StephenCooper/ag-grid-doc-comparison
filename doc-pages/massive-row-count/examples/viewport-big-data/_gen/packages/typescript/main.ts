@@ -4,29 +4,29 @@ import {
   GridOptions,
   IViewportDatasource,
   IViewportDatasourceParams,
-} from "ag-grid-community";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
+} from 'ag-grid-community';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import 'ag-grid-enterprise';
 
 const columnDefs: ColDef[] = [
   {
-    headerName: "ID",
-    field: "id",
+    headerName: 'ID',
+    field: 'id',
   },
   {
-    headerName: "Expected Position",
+    headerName: 'Expected Position',
     valueGetter: '"translateY(" + node.rowIndex * 100 + "px)"',
   },
 
   {
-    field: "a",
+    field: 'a',
   },
   {
-    field: "b",
+    field: 'b',
   },
   {
-    field: "c",
+    field: 'c',
   },
 ];
 
@@ -34,12 +34,12 @@ const gridOptions: GridOptions = {
   // debug: true,
   rowHeight: 100,
   columnDefs: columnDefs,
-  rowModelType: "viewport",
+  rowModelType: 'viewport',
   viewportDatasource: createViewportDatasource(),
 };
 
 // setup the grid after the page has finished loading
-var gridDiv = document.querySelector<HTMLElement>("#myGrid")!;
+var gridDiv = document.querySelector<HTMLElement>('#myGrid')!;
 new Grid(gridDiv, gridOptions);
 
 function createViewportDatasource(): IViewportDatasource {
@@ -56,9 +56,9 @@ function createViewportDatasource(): IViewportDatasource {
       for (var rowIndex = firstRow; rowIndex <= lastRow; rowIndex++) {
         var item: any = {};
         item.id = rowIndex;
-        item.a = "A-" + rowIndex;
-        item.b = "B-" + rowIndex;
-        item.c = "C-" + rowIndex;
+        item.a = 'A-' + rowIndex;
+        item.b = 'B-' + rowIndex;
+        item.c = 'C-' + rowIndex;
         rowData[rowIndex] = item;
       }
 

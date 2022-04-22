@@ -1,7 +1,7 @@
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import { AgGridVue } from "ag-grid-vue";
-import Vue from "vue";
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import { AgGridVue } from 'ag-grid-vue';
+import Vue from 'vue';
 
 const VueExample = {
   template: `
@@ -40,22 +40,22 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
-        { headerName: "#", colId: "rowNum", valueGetter: "node.id" },
-        { field: "athlete", minWidth: 170 },
-        { field: "age" },
-        { field: "country" },
-        { field: "year" },
-        { field: "date" },
-        { field: "sport" },
-        { field: "gold" },
-        { field: "silver" },
-        { field: "bronze" },
-        { field: "total" },
+        { headerName: '#', colId: 'rowNum', valueGetter: 'node.id' },
+        { field: 'athlete', minWidth: 170 },
+        { field: 'age' },
+        { field: 'country' },
+        { field: 'year' },
+        { field: 'date' },
+        { field: 'sport' },
+        { field: 'gold' },
+        { field: 'silver' },
+        { field: 'bronze' },
+        { field: 'total' },
       ],
       gridApi: null,
       columnApi: null,
@@ -74,13 +74,13 @@ const VueExample = {
   methods: {
     onFirstDataRendered(params) {
       // obtain reference to input element
-      var myInput = document.getElementById("my-input");
+      var myInput = document.getElementById('my-input');
       // intercept key strokes within input element
       myInput.addEventListener(
-        "keydown",
+        'keydown',
         function (event) {
           // ignore non Tab key strokes
-          if (event.key !== "Tab") return;
+          if (event.key !== 'Tab') return;
           // prevents tabbing into the url section
           event.preventDefault();
           // scrolls to the first row
@@ -100,7 +100,7 @@ const VueExample = {
 
       const updateData = (data) => params.api.setRowData(data);
 
-      fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
         .then((resp) => resp.json())
         .then((data) => updateData(data));
     },
@@ -108,8 +108,8 @@ const VueExample = {
 };
 
 new Vue({
-  el: "#app",
+  el: '#app',
   components: {
-    "my-component": VueExample,
+    'my-component': VueExample,
   },
 });

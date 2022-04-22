@@ -1,11 +1,11 @@
-"use strict";
+'use strict';
 
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
-import { AgGridReact } from "ag-grid-react";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from 'ag-grid-react';
+import 'ag-grid-enterprise';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 
 class GridExample extends Component {
   constructor(props) {
@@ -14,63 +14,63 @@ class GridExample extends Component {
     this.state = {
       columnDefs: [
         {
-          field: "athlete",
+          field: 'athlete',
           minWidth: 200,
           enableRowGroup: true,
           enablePivot: true,
         },
         {
-          field: "age",
+          field: 'age',
           enableValue: true,
         },
         {
-          field: "country",
+          field: 'country',
           minWidth: 200,
           enableRowGroup: true,
           enablePivot: true,
           rowGroupIndex: 1,
         },
         {
-          field: "year",
+          field: 'year',
           enableRowGroup: true,
           enablePivot: true,
           pivotIndex: 1,
         },
         {
-          field: "date",
+          field: 'date',
           minWidth: 180,
           enableRowGroup: true,
           enablePivot: true,
         },
         {
-          field: "sport",
+          field: 'sport',
           minWidth: 200,
           enableRowGroup: true,
           enablePivot: true,
           rowGroupIndex: 2,
         },
         {
-          field: "gold",
+          field: 'gold',
           hide: true,
           enableValue: true,
         },
         {
-          field: "silver",
+          field: 'silver',
           hide: true,
           enableValue: true,
-          aggFunc: "sum",
+          aggFunc: 'sum',
         },
         {
-          field: "bronze",
+          field: 'bronze',
           hide: true,
           enableValue: true,
-          aggFunc: "sum",
+          aggFunc: 'sum',
         },
         {
-          headerName: "Total",
-          field: "totalAgg",
+          headerName: 'Total',
+          field: 'totalAgg',
           valueGetter:
-            "node.group ? data.totalAgg : data.gold + data.silver + data.bronze",
+            'node.group ? data.totalAgg : data.gold + data.silver + data.bronze',
         },
       ],
       defaultColDef: {
@@ -82,9 +82,9 @@ class GridExample extends Component {
       autoGroupColumnDef: {
         minWidth: 250,
       },
-      sideBar: "columns",
-      rowGroupPanelShow: "always",
-      pivotPanelShow: "always",
+      sideBar: 'columns',
+      rowGroupPanelShow: 'always',
+      pivotPanelShow: 'always',
       rowData: null,
     };
   }
@@ -95,22 +95,22 @@ class GridExample extends Component {
 
     const updateData = (data) => params.api.setRowData(data);
 
-    fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+    fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .then((resp) => resp.json())
       .then((data) => updateData(data));
 
-    document.getElementById("read-only").checked = true;
+    document.getElementById('read-only').checked = true;
   };
 
   setReadOnly = () => {
     this.gridApi.setFunctionsReadOnly(
-      document.getElementById("read-only").checked
+      document.getElementById('read-only').checked
     );
   };
 
   render() {
     return (
-      <div style={{ width: "100%", height: "100%" }}>
+      <div style={{ width: '100%', height: '100%' }}>
         <div className="test-container">
           <div className="test-header">
             <label>
@@ -118,14 +118,14 @@ class GridExample extends Component {
                 type="checkbox"
                 id="read-only"
                 onChange={() => this.setReadOnly()}
-              />{" "}
+              />{' '}
               Functions Read Only
             </label>
           </div>
           <div
             style={{
-              height: "100%",
-              width: "100%",
+              height: '100%',
+              width: '100%',
             }}
             className="ag-theme-alpine"
           >
@@ -148,4 +148,4 @@ class GridExample extends Component {
   }
 }
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

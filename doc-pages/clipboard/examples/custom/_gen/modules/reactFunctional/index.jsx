@@ -1,15 +1,15 @@
-"use strict";
+'use strict';
 
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { AgGridReact } from "@ag-grid-community/react";
-import { ClipboardModule } from "@ag-grid-enterprise/clipboard";
-import { MenuModule } from "@ag-grid-enterprise/menu";
-import { RangeSelectionModule } from "@ag-grid-enterprise/range-selection";
-import React, { useCallback, useMemo, useRef, useState } from "react";
-import { render } from "react-dom";
+import React, { useCallback, useMemo, useRef, useState } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from '@ag-grid-community/react';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import { MenuModule } from '@ag-grid-enterprise/menu';
+import { RangeSelectionModule } from '@ag-grid-enterprise/range-selection';
+import { ClipboardModule } from '@ag-grid-enterprise/clipboard';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([
@@ -21,20 +21,20 @@ ModuleRegistry.registerModules([
 
 const GridExample = () => {
   const gridRef = useRef();
-  const containerStyle = useMemo(() => ({ width: "100%", height: "100%" }), []);
-  const gridStyle = useMemo(() => ({ height: "93%", width: "100%" }), []);
+  const containerStyle = useMemo(() => ({ width: '100%', height: '100%' }), []);
+  const gridStyle = useMemo(() => ({ height: '93%', width: '100%' }), []);
   const [rowData, setRowData] = useState();
   const [columnDefs, setColumnDefs] = useState([
-    { field: "athlete", minWidth: 200 },
-    { field: "age" },
-    { field: "country", minWidth: 150 },
-    { field: "year" },
-    { field: "date", minWidth: 150 },
-    { field: "sport", minWidth: 150 },
-    { field: "gold" },
-    { field: "silver" },
-    { field: "bronze" },
-    { field: "total" },
+    { field: 'athlete', minWidth: 200 },
+    { field: 'age' },
+    { field: 'country', minWidth: 150 },
+    { field: 'year' },
+    { field: 'date', minWidth: 150 },
+    { field: 'sport', minWidth: 150 },
+    { field: 'gold' },
+    { field: 'silver' },
+    { field: 'bronze' },
+    { field: 'total' },
   ]);
   const defaultColDef = useMemo(() => {
     return {
@@ -46,7 +46,7 @@ const GridExample = () => {
   }, []);
 
   const onGridReady = useCallback((params) => {
-    fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+    fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .then((resp) => resp.json())
       .then((data) => setRowData(data));
   }, []);
@@ -60,13 +60,13 @@ const GridExample = () => {
   }, []);
 
   const sendToClipboard = useCallback((params) => {
-    console.log("send to clipboard called with data:");
+    console.log('send to clipboard called with data:');
     console.log(params.data);
   }, []);
 
   return (
     <div style={containerStyle}>
-      <div style={{ paddingBottom: "5px" }}>
+      <div style={{ paddingBottom: '5px' }}>
         <button onClick={onBtCopyRows}>Copy Selected Rows to Clipboard</button>
         <button onClick={onBtCopyRange}>
           Copy Selected Range to Clipboard
@@ -80,7 +80,7 @@ const GridExample = () => {
           columnDefs={columnDefs}
           defaultColDef={defaultColDef}
           enableRangeSelection={true}
-          rowSelection={"multiple"}
+          rowSelection={'multiple'}
           sendToClipboard={sendToClipboard}
           onGridReady={onGridReady}
         ></AgGridReact>
@@ -89,4 +89,4 @@ const GridExample = () => {
   );
 };
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

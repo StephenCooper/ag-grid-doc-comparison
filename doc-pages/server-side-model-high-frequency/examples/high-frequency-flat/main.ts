@@ -1,111 +1,106 @@
-import {
-  ColDef,
-  Grid,
-  GridOptions,
-  IServerSideDatasource,
-} from "@ag-grid-community/core";
+import { Grid, ColDef, GridOptions, IServerSideDatasource, GetRowIdParams } from '@ag-grid-community/core'
 
-const columnDefs: ColDef[] = [{ field: "product" }, { field: "value" }];
+const columnDefs: ColDef[] = [{ field: 'product' }, { field: 'value' }]
 
 const gridOptions: GridOptions = {
   defaultColDef: {
     width: 250,
     resizable: true,
   },
-  rowSelection: "multiple",
-  serverSideStoreType: "full",
+  rowSelection: 'multiple',
+  serverSideStoreType: 'full',
   columnDefs: columnDefs,
   // use the enterprise row model
-  rowModelType: "serverSide",
+  rowModelType: 'serverSide',
   animateRows: true,
   asyncTransactionWaitMillis: 4000,
   onGridReady: function (params) {
-    setupData();
+    setupData()
 
     var dataSource: IServerSideDatasource = {
       getRows: function (params2) {
-        var rowData = allServerSideData.slice();
+        var rowData = allServerSideData.slice()
         setTimeout(function () {
-          params2.success({ rowData: rowData });
-        }, 200);
+          params2.success({ rowData: rowData })
+        }, 200)
       },
-    };
+    }
 
-    params.api.setServerSideDatasource(dataSource);
+    params.api.setServerSideDatasource(dataSource)
   },
-  getRowId: function (params) {
-    return params.data.product;
+  getRowId: function (params: GetRowIdParams) {
+    return params.data.product
   },
-};
+}
 
-var products = ["Palm Oil", "Rubber", "Wool", "Amber", "Copper"];
+var products = ['Palm Oil', 'Rubber', 'Wool', 'Amber', 'Copper']
 
-var newProductSequence = 0;
+var newProductSequence = 0
 
 var all_products = [
-  "Palm Oil",
-  "Rubber",
-  "Wool",
-  "Amber",
-  "Copper",
-  "Lead",
-  "Zinc",
-  "Tin",
-  "Aluminium",
-  "Aluminium Alloy",
-  "Nickel",
-  "Cobalt",
-  "Molybdenum",
-  "Recycled Steel",
-  "Corn",
-  "Oats",
-  "Rough Rice",
-  "Soybeans",
-  "Rapeseed",
-  "Soybean Meal",
-  "Soybean Oil",
-  "Wheat",
-  "Milk",
-  "Coca",
-  "Coffee C",
-  "Cotton No.2",
-  "Sugar No.11",
-  "Sugar No.14",
-];
+  'Palm Oil',
+  'Rubber',
+  'Wool',
+  'Amber',
+  'Copper',
+  'Lead',
+  'Zinc',
+  'Tin',
+  'Aluminium',
+  'Aluminium Alloy',
+  'Nickel',
+  'Cobalt',
+  'Molybdenum',
+  'Recycled Steel',
+  'Corn',
+  'Oats',
+  'Rough Rice',
+  'Soybeans',
+  'Rapeseed',
+  'Soybean Meal',
+  'Soybean Oil',
+  'Wheat',
+  'Milk',
+  'Coca',
+  'Coffee C',
+  'Cotton No.2',
+  'Sugar No.11',
+  'Sugar No.14',
+]
 
-var allServerSideData: any[] = [];
+var allServerSideData: any[] = []
 
 function setupData() {
   products.forEach(function (product, index) {
     allServerSideData.push({
       product: product,
       value: Math.floor(Math.random() * 10000),
-    });
-  });
+    })
+  })
 }
 
 function onBtAdd() {
   var newProductName =
-    all_products[Math.floor(all_products.length * Math.random())];
+    all_products[Math.floor(all_products.length * Math.random())]
   var newItem = {
-    product: newProductName + " " + newProductSequence++,
+    product: newProductName + ' ' + newProductSequence++,
     value: Math.floor(Math.random() * 10000),
-  };
-  allServerSideData.push(newItem);
+  }
+  allServerSideData.push(newItem)
   var tx = {
     add: [newItem],
-  };
+  }
   gridOptions.api!.applyServerSideTransactionAsync(tx, function (res) {
-    console.log('Transaction "' + newProductName + '": status = ' + res.status);
-  });
+    console.log('Transaction "' + newProductName + '": status = ' + res.status)
+  })
 }
 
 function onBtFlush() {
-  gridOptions.api!.flushServerSideAsyncTransactions();
+  gridOptions.api!.flushServerSideAsyncTransactions()
 }
 
 // setup the grid after the page has finished loading
-document.addEventListener("DOMContentLoaded", function () {
-  var gridDiv = document.querySelector<HTMLElement>("#myGrid")!;
-  new Grid(gridDiv, gridOptions);
-});
+document.addEventListener('DOMContentLoaded', function () {
+  var gridDiv = document.querySelector<HTMLElement>('#myGrid')!
+  new Grid(gridDiv, gridOptions)
+})

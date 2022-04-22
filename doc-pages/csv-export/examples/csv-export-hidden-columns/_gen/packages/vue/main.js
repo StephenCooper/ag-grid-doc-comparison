@@ -1,8 +1,8 @@
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
-import { AgGridVue } from "ag-grid-vue";
-import Vue from "vue";
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import 'ag-grid-enterprise';
+import { AgGridVue } from 'ag-grid-vue';
+import Vue from 'vue';
 
 const VueExample = {
   template: `
@@ -36,18 +36,18 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
-        { field: "athlete" },
-        { field: "country" },
-        { field: "sport" },
-        { field: "gold", hide: true },
-        { field: "silver", hide: true },
-        { field: "bronze", hide: true },
-        { field: "total" },
+        { field: 'athlete' },
+        { field: 'country' },
+        { field: 'sport' },
+        { field: 'gold', hide: true },
+        { field: 'silver', hide: true },
+        { field: 'bronze', hide: true },
+        { field: 'total' },
       ],
       gridApi: null,
       columnApi: null,
@@ -70,7 +70,7 @@ const VueExample = {
       this.gridApi.exportDataAsCsv(getParams());
     },
     onBtnUpdate() {
-      document.querySelector("#csvResult").value = this.gridApi.getDataAsCsv(
+      document.querySelector('#csvResult').value = this.gridApi.getDataAsCsv(
         getParams()
       );
     },
@@ -82,19 +82,19 @@ const VueExample = {
 };
 
 window.getBoolean = function getBoolean(id) {
-  var field = document.querySelector("#" + id);
+  var field = document.querySelector('#' + id);
   return !!field.checked;
 };
 
 window.getParams = function getParams() {
   return {
-    allColumns: getBoolean("allColumns"),
+    allColumns: getBoolean('allColumns'),
   };
 };
 
 new Vue({
-  el: "#app",
+  el: '#app',
   components: {
-    "my-component": VueExample,
+    'my-component': VueExample,
   },
 });

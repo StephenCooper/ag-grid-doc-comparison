@@ -6,15 +6,15 @@ import {
   IFiltersToolPanel,
   SideBarDef,
   ValueFormatterParams,
-} from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { HttpClient } from "@angular/common/http";
-import { Component } from "@angular/core";
+} from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { HttpClient } from '@angular/common/http';
+import { Component } from '@angular/core';
 // Required feature modules are registered in app.module.ts
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<div style="display: flex; flex-direction: column; height: 100%;">
     <div style="padding-bottom: 5px;">
       <button (click)="printFilterModel()">Print Filter Model</button>
@@ -36,19 +36,19 @@ export class AppComponent {
 
   public columnDefs: ColDef[] = [
     {
-      headerName: "No Value Formatter",
-      field: "country",
+      headerName: 'No Value Formatter',
+      field: 'country',
       valueFormatter: countryValueFormatter,
-      filter: "agSetColumnFilter",
+      filter: 'agSetColumnFilter',
       filterParams: {
         // no value formatter!
       },
     },
     {
-      headerName: "With Value Formatter",
-      field: "country",
+      headerName: 'With Value Formatter',
+      field: 'country',
       valueFormatter: countryValueFormatter,
-      filter: "agSetColumnFilter",
+      filter: 'agSetColumnFilter',
       filterParams: {
         valueFormatter: countryValueFormatter,
       },
@@ -60,15 +60,15 @@ export class AppComponent {
     resizable: true,
     floatingFilter: true,
   };
-  public sideBar: SideBarDef | string | boolean | null = "filters";
+  public sideBar: SideBarDef | string | string[] | boolean | null = 'filters';
   public rowData!: any[];
 
   constructor(private http: HttpClient) {}
 
   onFirstDataRendered(params: FirstDataRenderedEvent) {
-    (
-      params.api.getToolPanelInstance("filters") as any as IFiltersToolPanel
-    ).expandFilters();
+    ((params.api.getToolPanelInstance(
+      'filters'
+    ) as any) as IFiltersToolPanel).expandFilters();
   }
 
   printFilterModel() {
@@ -80,7 +80,7 @@ export class AppComponent {
     this.gridApi = params.api;
 
     this.http
-      .get<any[]>("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      .get<any[]>('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .subscribe((data) => {
         // only return data that has corresponding country codes
         var dataWithFlags = data.filter(function (d: any) {
@@ -93,26 +93,26 @@ export class AppComponent {
 
 function countryValueFormatter(params: ValueFormatterParams) {
   var value = params.value;
-  return value + " (" + COUNTRY_CODES[value].toUpperCase() + ")";
+  return value + ' (' + COUNTRY_CODES[value].toUpperCase() + ')';
 }
 var COUNTRY_CODES: Record<string, string> = {
-  Ireland: "ie",
-  Luxembourg: "lu",
-  Belgium: "be",
-  Spain: "es",
-  France: "fr",
-  Germany: "de",
-  Sweden: "se",
-  Italy: "it",
-  Greece: "gr",
-  Iceland: "is",
-  Portugal: "pt",
-  Malta: "mt",
-  Norway: "no",
-  Brazil: "br",
-  Argentina: "ar",
-  Colombia: "co",
-  Peru: "pe",
-  Venezuela: "ve",
-  Uruguay: "uy",
+  Ireland: 'ie',
+  Luxembourg: 'lu',
+  Belgium: 'be',
+  Spain: 'es',
+  France: 'fr',
+  Germany: 'de',
+  Sweden: 'se',
+  Italy: 'it',
+  Greece: 'gr',
+  Iceland: 'is',
+  Portugal: 'pt',
+  Malta: 'mt',
+  Norway: 'no',
+  Brazil: 'br',
+  Argentina: 'ar',
+  Colombia: 'co',
+  Peru: 'pe',
+  Venezuela: 've',
+  Uruguay: 'uy',
 };

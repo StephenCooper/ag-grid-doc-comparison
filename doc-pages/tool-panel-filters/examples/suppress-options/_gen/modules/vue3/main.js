@@ -1,12 +1,12 @@
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { AgGridVue } from "@ag-grid-community/vue3";
-import { FiltersToolPanelModule } from "@ag-grid-enterprise/filter-tool-panel";
-import { MenuModule } from "@ag-grid-enterprise/menu";
-import { SetFilterModule } from "@ag-grid-enterprise/set-filter";
-import { createApp } from "vue";
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { AgGridVue } from '@ag-grid-community/vue3';
+import { FiltersToolPanelModule } from '@ag-grid-enterprise/filter-tool-panel';
+import { MenuModule } from '@ag-grid-enterprise/menu';
+import { SetFilterModule } from '@ag-grid-enterprise/set-filter';
+import { createApp } from 'vue';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([
@@ -31,45 +31,45 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
         {
-          groupId: "athleteGroupId",
-          headerName: "Athlete",
+          groupId: 'athleteGroupId',
+          headerName: 'Athlete',
           children: [
             {
-              headerName: "Name",
-              field: "athlete",
+              headerName: 'Name',
+              field: 'athlete',
               minWidth: 200,
-              filter: "agTextColumnFilter",
+              filter: 'agTextColumnFilter',
             },
-            { field: "age" },
+            { field: 'age' },
             {
-              groupId: "competitionGroupId",
-              headerName: "Competition",
+              groupId: 'competitionGroupId',
+              headerName: 'Competition',
               children: [
-                { field: "year" },
+                { field: 'year' },
                 {
-                  field: "date",
+                  field: 'date',
                   minWidth: 180,
                   suppressFiltersToolPanel: true,
                 },
               ],
             },
-            { field: "country", minWidth: 200 },
+            { field: 'country', minWidth: 200 },
           ],
         },
-        { colId: "sport", field: "sport", minWidth: 200 },
+        { colId: 'sport', field: 'sport', minWidth: 200 },
         {
-          headerName: "Medals",
+          headerName: 'Medals',
           children: [
-            { field: "gold" },
-            { field: "silver" },
-            { field: "bronze" },
-            { field: "total" },
+            { field: 'gold' },
+            { field: 'silver' },
+            { field: 'bronze' },
+            { field: 'total' },
           ],
         },
       ],
@@ -90,18 +90,18 @@ const VueExample = {
     this.sideBar = {
       toolPanels: [
         {
-          id: "filters",
-          labelDefault: "Filters",
-          labelKey: "filters",
-          iconKey: "filter",
-          toolPanel: "agFiltersToolPanel",
+          id: 'filters',
+          labelDefault: 'Filters',
+          labelKey: 'filters',
+          iconKey: 'filter',
+          toolPanel: 'agFiltersToolPanel',
           toolPanelParams: {
             suppressExpandAll: true,
             suppressFilterSearch: true,
           },
         },
       ],
-      defaultToolPanel: "filters",
+      defaultToolPanel: 'filters',
     };
   },
   methods: {
@@ -111,11 +111,11 @@ const VueExample = {
 
       const updateData = (data) => params.api.setRowData(data);
 
-      fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
         .then((resp) => resp.json())
         .then((data) => updateData(data));
     },
   },
 };
 
-createApp(VueExample).mount("#app");
+createApp(VueExample).mount('#app');

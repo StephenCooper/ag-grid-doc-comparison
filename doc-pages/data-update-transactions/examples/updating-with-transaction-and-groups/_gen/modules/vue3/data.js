@@ -10,32 +10,32 @@ function getData() {
 
 // make the data three 10 times bigger
 var names = [
-  "Elly",
-  "Shane",
-  "Niall",
-  "Rob",
-  "John",
-  "Sean",
-  "Dicky",
-  "Willy",
-  "Shaggy",
-  "Spud",
-  "Sugar",
-  "Spice",
+  'Elly',
+  'Shane',
+  'Niall',
+  'Rob',
+  'John',
+  'Sean',
+  'Dicky',
+  'Willy',
+  'Shaggy',
+  'Spud',
+  'Sugar',
+  'Spice',
 ];
 var models = [
-  "Mondeo",
-  "Celica",
-  "Boxter",
-  "Minty",
-  "Snacky",
-  "FastCar",
-  "Biscuit",
-  "Whoooper",
-  "Scoooper",
-  "Jet Blaster",
+  'Mondeo',
+  'Celica',
+  'Boxster',
+  'Minty',
+  'Snacky',
+  'FastCar',
+  'Biscuit',
+  'Whoooper',
+  'Scoooper',
+  'Jet Blaster',
 ];
-var categories = ["Sold", "For Sale", "In Workshop"];
+var categories = ['Sold', 'For Sale', 'In Workshop'];
 
 function createNewRowData(category) {
   var newData = {
@@ -44,8 +44,8 @@ function createNewRowData(category) {
     model: models[Math.floor(Math.random() * models.length)],
     price: Math.floor(Math.random() * 800000) + 20000,
     zombies: names[Math.floor(Math.random() * names.length)],
-    style: "Smooth",
-    clothes: "Jeans",
+    style: 'Smooth',
+    clothes: 'Jeans',
   };
   return newData;
 }

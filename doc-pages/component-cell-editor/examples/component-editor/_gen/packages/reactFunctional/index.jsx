@@ -1,6 +1,6 @@
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import { AgGridReact } from "ag-grid-react";
+'use strict';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 import React, {
   forwardRef,
   memo,
@@ -9,15 +9,15 @@ import React, {
   useMemo,
   useRef,
   useState,
-} from "react";
-import ReactDOM, { render } from "react-dom";
-("use strict");
+} from 'react';
+import ReactDOM, { render } from 'react-dom';
+import { AgGridReact } from 'ag-grid-react';
 
-const KEY_BACKSPACE = "Backspace";
-const KEY_DELETE = "Delete";
-const KEY_F2 = "F2";
-const KEY_ENTER = "Enter";
-const KEY_TAB = "Tab";
+const KEY_BACKSPACE = 'Backspace';
+const KEY_DELETE = 'Delete';
+const KEY_F2 = 'F2';
+const KEY_ENTER = 'Enter';
+const KEY_TAB = 'Tab';
 
 const DoublingEditor = memo(
   forwardRef((props, ref) => {
@@ -59,7 +59,7 @@ const DoublingEditor = memo(
         ref={refInput}
         value={value}
         onChange={(event) => setValue(event.target.value)}
-        style={{ width: "100%" }}
+        style={{ width: '100%' }}
       />
     );
   })
@@ -67,8 +67,8 @@ const DoublingEditor = memo(
 
 const MoodRenderer = memo((props) => {
   const imageForMood = (mood) =>
-    "https://www.ag-grid.com/example-assets/smileys/" +
-    (mood === "Happy" ? "happy.png" : "sad.png");
+    'https://www.ag-grid.com/example-assets/smileys/' +
+    (mood === 'Happy' ? 'happy.png' : 'sad.png');
 
   const mood = useMemo(() => imageForMood(props.value), [props.value]);
 
@@ -77,7 +77,7 @@ const MoodRenderer = memo((props) => {
 
 const MoodEditor = memo(
   forwardRef((props, ref) => {
-    const isHappy = (value) => value === "Happy";
+    const isHappy = (value) => value === 'Happy';
 
     const [ready, setReady] = useState(false);
     const [interimValue, setInterimValue] = useState(isHappy(props.value));
@@ -86,7 +86,7 @@ const MoodEditor = memo(
 
     const checkAndToggleMoodIfLeftRight = (event) => {
       if (ready) {
-        if (["ArrowLeft", "ArrowRight"].indexOf(event.key) > -1) {
+        if (['ArrowLeft', 'ArrowRight'].indexOf(event.key) > -1) {
           // left and right
           setInterimValue(!interimValue);
           event.stopPropagation();
@@ -103,10 +103,10 @@ const MoodEditor = memo(
     }, []);
 
     useEffect(() => {
-      window.addEventListener("keydown", checkAndToggleMoodIfLeftRight);
+      window.addEventListener('keydown', checkAndToggleMoodIfLeftRight);
 
       return () => {
-        window.removeEventListener("keydown", checkAndToggleMoodIfLeftRight);
+        window.removeEventListener('keydown', checkAndToggleMoodIfLeftRight);
       };
     }, [checkAndToggleMoodIfLeftRight, ready]);
 
@@ -119,31 +119,31 @@ const MoodEditor = memo(
     useImperativeHandle(ref, () => {
       return {
         getValue() {
-          return happy ? "Happy" : "Sad";
+          return happy ? 'Happy' : 'Sad';
         },
       };
     });
 
     const mood = {
       borderRadius: 15,
-      border: "1px solid grey",
-      background: "#e6e6e6",
+      border: '1px solid grey',
+      background: '#e6e6e6',
       padding: 15,
-      textAlign: "center",
-      display: "inline-block",
+      textAlign: 'center',
+      display: 'inline-block',
     };
 
     const unselected = {
       paddingLeft: 10,
       paddingRight: 10,
-      border: "1px solid transparent",
+      border: '1px solid transparent',
       padding: 4,
     };
 
     const selected = {
       paddingLeft: 10,
       paddingRight: 10,
-      border: "1px solid lightgreen",
+      border: '1px solid lightgreen',
       padding: 4,
     };
 
@@ -183,7 +183,7 @@ const NumericEditor = memo(
 
       if (props.key === KEY_BACKSPACE || props.key === KEY_DELETE) {
         // if backspace or delete pressed, we clear the cell
-        startValue = "";
+        startValue = '';
       } else if (props.charPress) {
         // if a letter was pressed, we start with the letter
         startValue = props.charPress;
@@ -232,10 +232,10 @@ const NumericEditor = memo(
 
     /* Utility Methods */
     const cancelBeforeStart =
-      props.charPress && "1234567890".indexOf(props.charPress) < 0;
+      props.charPress && '1234567890'.indexOf(props.charPress) < 0;
 
     const isLeftOrRight = (event) => {
-      return ["ArrowLeft", "ArrowLeft"].indexOf(event.key) > -1;
+      return ['ArrowLeft', 'ArrowLeft'].indexOf(event.key) > -1;
     };
 
     const isCharNumeric = (charStr) => {
@@ -301,7 +301,7 @@ const NumericEditor = memo(
         value={value}
         onChange={(event) => setValue(event.target.value)}
         onKeyDown={(event) => onKeyDown(event)}
-        style={{ width: "100%" }}
+        style={{ width: '100%' }}
       />
     );
   })
@@ -309,33 +309,33 @@ const NumericEditor = memo(
 
 const GridExample = () => {
   const [rowData] = useState([
-    { name: "Bob", mood: "Happy", number: 10 },
-    { name: "Harry", mood: "Sad", number: 3 },
-    { name: "Sally", mood: "Happy", number: 20 },
-    { name: "Mary", mood: "Sad", number: 5 },
-    { name: "John", mood: "Happy", number: 15 },
-    { name: "Jack", mood: "Happy", number: 25 },
-    { name: "Sue", mood: "Sad", number: 43 },
-    { name: "Sean", mood: "Sad", number: 1335 },
-    { name: "Niall", mood: "Happy", number: 2 },
-    { name: "Alberto", mood: "Happy", number: 123 },
-    { name: "Fred", mood: "Sad", number: 532 },
-    { name: "Jenny", mood: "Happy", number: 34 },
-    { name: "Larry", mood: "Happy", number: 13 },
+    { name: 'Bob', mood: 'Happy', number: 10 },
+    { name: 'Harry', mood: 'Sad', number: 3 },
+    { name: 'Sally', mood: 'Happy', number: 20 },
+    { name: 'Mary', mood: 'Sad', number: 5 },
+    { name: 'John', mood: 'Happy', number: 15 },
+    { name: 'Jack', mood: 'Happy', number: 25 },
+    { name: 'Sue', mood: 'Sad', number: 43 },
+    { name: 'Sean', mood: 'Sad', number: 1335 },
+    { name: 'Niall', mood: 'Happy', number: 2 },
+    { name: 'Alberto', mood: 'Happy', number: 123 },
+    { name: 'Fred', mood: 'Sad', number: 532 },
+    { name: 'Jenny', mood: 'Happy', number: 34 },
+    { name: 'Larry', mood: 'Happy', number: 13 },
   ]);
 
   const columnDefs = useMemo(
     () => [
       {
-        headerName: "Doubling",
-        field: "number",
+        headerName: 'Doubling',
+        field: 'number',
         cellEditor: DoublingEditor,
         cellEditorPopup: true,
         editable: true,
         width: 300,
       },
       {
-        field: "mood",
+        field: 'mood',
         cellRenderer: MoodRenderer,
         cellEditor: MoodEditor,
         cellEditorPopup: true,
@@ -343,8 +343,8 @@ const GridExample = () => {
         width: 300,
       },
       {
-        headerName: "Numeric",
-        field: "number",
+        headerName: 'Numeric',
+        field: 'number',
         cellEditor: NumericEditor,
         cellEditorPopup: true,
         editable: true,
@@ -355,11 +355,11 @@ const GridExample = () => {
   );
 
   return (
-    <div style={{ width: "100%", height: "100%" }}>
+    <div style={{ width: '100%', height: '100%' }}>
       <div
         style={{
-          height: "100%",
-          width: "100%",
+          height: '100%',
+          width: '100%',
         }}
         className="ag-theme-alpine test-grid"
       >
@@ -380,4 +380,4 @@ const GridExample = () => {
   );
 };
 
-render(<GridExample />, document.querySelector("#root"));
+render(<GridExample />, document.querySelector('#root'));

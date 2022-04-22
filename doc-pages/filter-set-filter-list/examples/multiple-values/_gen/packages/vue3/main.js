@@ -1,8 +1,8 @@
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
-import { AgGridVue } from "ag-grid-vue3";
-import { createApp } from "vue";
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import 'ag-grid-enterprise';
+import { AgGridVue } from 'ag-grid-vue3';
+import { createApp } from 'vue';
 
 const VueExample = {
   template: `
@@ -19,25 +19,25 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
         {
-          headerName: "Animals (array)",
-          field: "animalsArray",
-          filter: "agSetColumnFilter",
+          headerName: 'Animals (array)',
+          field: 'animalsArray',
+          filter: 'agSetColumnFilter',
         },
         {
-          headerName: "Animals (string)",
-          filter: "agSetColumnFilter",
+          headerName: 'Animals (string)',
+          filter: 'agSetColumnFilter',
           valueGetter: valueGetter,
         },
         {
-          headerName: "Animals (objects)",
-          field: "animalsObjects",
-          filter: "agSetColumnFilter",
+          headerName: 'Animals (objects)',
+          field: 'animalsObjects',
+          filter: 'agSetColumnFilter',
           valueFormatter: valueFormatter,
           keyCreator: keyCreator,
         },
@@ -53,7 +53,7 @@ const VueExample = {
   },
   created() {
     this.rowData = getData();
-    this.sideBar = "filters";
+    this.sideBar = 'filters';
   },
   methods: {
     onGridReady(params) {
@@ -64,7 +64,7 @@ const VueExample = {
 };
 
 var valueGetter = function (params) {
-  return params.data["animalsString"].split("|");
+  return params.data['animalsString'].split('|');
 };
 
 var valueFormatter = function (params) {
@@ -72,7 +72,7 @@ var valueFormatter = function (params) {
     .map(function (animal) {
       return animal.name;
     })
-    .join(", ");
+    .join(', ');
 };
 
 var keyCreator = function (params) {
@@ -81,4 +81,4 @@ var keyCreator = function (params) {
   });
 };
 
-createApp(VueExample).mount("#app");
+createApp(VueExample).mount('#app');

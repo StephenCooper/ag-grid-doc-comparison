@@ -1,25 +1,26 @@
 import {
+  GetRowIdParams,
   Grid,
   GridOptions,
   IServerSideDatasource,
   ModuleRegistry,
-} from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine-dark.css";
-import { RowGroupingModule } from "@ag-grid-enterprise/row-grouping";
-import { ServerSideRowModelModule } from "@ag-grid-enterprise/server-side-row-model";
+} from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine-dark.css';
+import { RowGroupingModule } from '@ag-grid-enterprise/row-grouping';
+import { ServerSideRowModelModule } from '@ag-grid-enterprise/server-side-row-model';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([ServerSideRowModelModule, RowGroupingModule]);
 declare var FakeServer: any;
 const gridOptions: GridOptions = {
   columnDefs: [
-    { field: "country", rowGroup: true, hide: true },
-    { field: "year", rowGroup: true, hide: true },
-    { field: "version" },
-    { field: "gold", aggFunc: "sum" },
-    { field: "silver", aggFunc: "sum" },
-    { field: "bronze", aggFunc: "sum" },
+    { field: 'country', rowGroup: true, hide: true },
+    { field: 'year', rowGroup: true, hide: true },
+    { field: 'version' },
+    { field: 'gold', aggFunc: 'sum' },
+    { field: 'silver', aggFunc: 'sum' },
+    { field: 'bronze', aggFunc: 'sum' },
   ],
   defaultColDef: {
     flex: 1,
@@ -30,9 +31,9 @@ const gridOptions: GridOptions = {
   autoGroupColumnDef: {
     flex: 1,
     minWidth: 280,
-    field: "athlete",
+    field: 'athlete',
   },
-  getRowId: function (params) {
+  getRowId: function (params: GetRowIdParams) {
     var data = params.data;
     var parts = [];
     if (data.country != null) {
@@ -44,11 +45,11 @@ const gridOptions: GridOptions = {
     if (data.id != null) {
       parts.push(data.id);
     }
-    return parts.join("-");
+    return parts.join('-');
   },
   // use the server-side row model
-  rowModelType: "serverSide",
-  serverSideStoreType: "full",
+  rowModelType: 'serverSide',
+  serverSideStoreType: 'full',
 
   enableCellChangeFlash: true,
   suppressAggFuncInHeader: true,
@@ -62,14 +63,14 @@ var versionCounter = 1;
 function refreshCache(route?: string[]) {
   versionCounter++;
   var purge =
-    (document.querySelector("#purge") as HTMLInputElement).checked === true;
+    (document.querySelector('#purge') as HTMLInputElement).checked === true;
   gridOptions.api!.refreshServerSideStore({ route: route, purge: purge });
 }
 
 function getServerSideDatasource(server: any): IServerSideDatasource {
   return {
     getRows: function (params) {
-      console.log("[Datasource] - rows requested by grid: ", params.request);
+      console.log('[Datasource] - rows requested by grid: ', params.request);
 
       var response = server.getData(params.request);
 
@@ -77,7 +78,7 @@ function getServerSideDatasource(server: any): IServerSideDatasource {
         var res: any = {};
         Object.assign(res, item);
         res.version =
-          versionCounter + " - " + versionCounter + " - " + versionCounter;
+          versionCounter + ' - ' + versionCounter + ' - ' + versionCounter;
 
         // for unique-id purposes in the client, we also want to attached
         // the parent group keys
@@ -108,10 +109,10 @@ function getServerSideDatasource(server: any): IServerSideDatasource {
 }
 
 // setup the grid after the page has finished loading
-var gridDiv = document.querySelector<HTMLElement>("#myGrid")!;
+var gridDiv = document.querySelector<HTMLElement>('#myGrid')!;
 new Grid(gridDiv, gridOptions);
 
-fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
   .then((response) => response.json())
   .then(function (data) {
     // give each data item an ID
@@ -129,7 +130,7 @@ fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
     gridOptions.api!.setServerSideDatasource(datasource);
   });
 
-if (typeof window !== "undefined") {
+if (typeof window !== 'undefined') {
   // Attach external event handlers to window so they can be called from index.html
   (<any>window).refreshCache = refreshCache;
 }

@@ -4,11 +4,11 @@ import React, {
   useImperativeHandle,
   useRef,
   useState,
-} from "react";
-import ReactDOM from "react-dom";
+} from 'react';
+import ReactDOM from 'react-dom';
 
 export default forwardRef((props, ref) => {
-  const isHappy = (value) => value === "Happy";
+  const isHappy = (value) => value === 'Happy';
 
   const [ready, setReady] = useState(false);
   const [interimValue, setInterimValue] = useState(isHappy(props.value));
@@ -17,11 +17,11 @@ export default forwardRef((props, ref) => {
 
   const checkAndToggleMoodIfLeftRight = (event) => {
     if (ready) {
-      if (["ArrowLeft", "ArrowRight"].indexOf(event.key) > -1) {
+      if (['ArrowLeft', 'ArrowRight'].indexOf(event.key) > -1) {
         // left and right
         setInterimValue(!interimValue);
         event.stopPropagation();
-      } else if (event.key === "Enter") {
+      } else if (event.key === 'Enter') {
         setHappy(interimValue);
         event.stopPropagation();
       }
@@ -34,10 +34,10 @@ export default forwardRef((props, ref) => {
   }, []);
 
   useEffect(() => {
-    window.addEventListener("keydown", checkAndToggleMoodIfLeftRight);
+    window.addEventListener('keydown', checkAndToggleMoodIfLeftRight);
 
     return () => {
-      window.removeEventListener("keydown", checkAndToggleMoodIfLeftRight);
+      window.removeEventListener('keydown', checkAndToggleMoodIfLeftRight);
     };
   }, [checkAndToggleMoodIfLeftRight, ready]);
 
@@ -50,31 +50,31 @@ export default forwardRef((props, ref) => {
   useImperativeHandle(ref, () => {
     return {
       getValue() {
-        return happy ? "Happy" : "Sad";
+        return happy ? 'Happy' : 'Sad';
       },
     };
   });
 
   const mood = {
     borderRadius: 15,
-    border: "1px solid grey",
-    background: "#e6e6e6",
+    border: '1px solid grey',
+    background: '#e6e6e6',
     padding: 15,
-    textAlign: "center",
-    display: "inline-block",
+    textAlign: 'center',
+    display: 'inline-block',
   };
 
   const unselected = {
     paddingLeft: 10,
     paddingRight: 10,
-    border: "1px solid transparent",
+    border: '1px solid transparent',
     padding: 4,
   };
 
   const selected = {
     paddingLeft: 10,
     paddingRight: 10,
-    border: "1px solid lightgreen",
+    border: '1px solid lightgreen',
     padding: 4,
   };
 

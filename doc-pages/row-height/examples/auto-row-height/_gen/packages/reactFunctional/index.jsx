@@ -1,34 +1,34 @@
-"use strict";
+'use strict';
 
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
-import { AgGridReact } from "ag-grid-react";
-import React, { useCallback, useMemo, useState } from "react";
-import { render } from "react-dom";
+import React, { useCallback, useMemo, useRef, useState } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from 'ag-grid-react';
+import 'ag-grid-enterprise';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 
 const GridExample = () => {
-  const containerStyle = useMemo(() => ({ width: "100%", height: "100%" }), []);
-  const gridStyle = useMemo(() => ({ height: "100%", width: "100%" }), []);
+  const containerStyle = useMemo(() => ({ width: '100%', height: '100%' }), []);
+  const gridStyle = useMemo(() => ({ height: '100%', width: '100%' }), []);
   const [rowData, setRowData] = useState();
   const [columnDefs, setColumnDefs] = useState([
     {
-      headerName: "Row #",
-      field: "rowNumber",
+      headerName: 'Row #',
+      field: 'rowNumber',
       width: 120,
     },
     {
-      field: "autoA",
+      field: 'autoA',
       width: 300,
       wrapText: true,
       autoHeight: true,
-      headerName: "A) Auto Height",
+      headerName: 'A) Auto Height',
     },
     {
       width: 300,
-      field: "autoB",
+      field: 'autoB',
       wrapText: true,
-      headerName: "B) Normal Height",
+      headerName: 'B) Normal Height',
     },
   ]);
   const defaultColDef = useMemo(() => {
@@ -41,11 +41,11 @@ const GridExample = () => {
     return {
       toolPanels: [
         {
-          id: "columns",
-          labelDefault: "Columns",
-          labelKey: "columns",
-          iconKey: "columns",
-          toolPanel: "agColumnsToolPanel",
+          id: 'columns',
+          labelDefault: 'Columns',
+          labelKey: 'columns',
+          iconKey: 'columns',
+          toolPanel: 'agColumnsToolPanel',
           toolPanelParams: {
             suppressRowGroups: true,
             suppressValues: true,
@@ -58,7 +58,7 @@ const GridExample = () => {
           },
         },
       ],
-      defaultToolPanel: "columns",
+      defaultToolPanel: 'columns',
     };
   }, []);
 
@@ -85,4 +85,4 @@ const GridExample = () => {
   );
 };
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

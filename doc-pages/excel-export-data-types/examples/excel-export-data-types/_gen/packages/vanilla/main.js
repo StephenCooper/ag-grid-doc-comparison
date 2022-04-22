@@ -1,19 +1,19 @@
 const gridOptions = {
   columnDefs: [
-    { headerName: "provided", field: "rawValue" },
-    { headerName: "number", field: "rawValue", cellClass: "numberType" },
-    { headerName: "currency", field: "rawValue", cellClass: "currencyFormat" },
-    { headerName: "boolean", field: "rawValue", cellClass: "booleanType" },
+    { headerName: 'provided', field: 'rawValue' },
+    { headerName: 'number', field: 'rawValue', cellClass: 'numberType' },
+    { headerName: 'currency', field: 'rawValue', cellClass: 'currencyFormat' },
+    { headerName: 'boolean', field: 'rawValue', cellClass: 'booleanType' },
     {
-      headerName: "Negative",
-      field: "negativeValue",
-      cellClass: "negativeInBrackets",
+      headerName: 'Negative',
+      field: 'negativeValue',
+      cellClass: 'negativeInBrackets',
     },
-    { headerName: "string", field: "rawValue", cellClass: "stringType" },
+    { headerName: 'string', field: 'rawValue', cellClass: 'stringType' },
     {
-      headerName: "Date",
-      field: "dateValue",
-      cellClass: "dateType",
+      headerName: 'Date',
+      field: 'dateValue',
+      cellClass: 'dateType',
       minWidth: 220,
     },
   ],
@@ -26,39 +26,39 @@ const gridOptions = {
     {
       rawValue: 1,
       negativeValue: -10,
-      dateValue: "2009-04-20T00:00:00.000",
+      dateValue: '2009-04-20T00:00:00.000',
     },
   ],
   excelStyles: [
     {
-      id: "numberType",
+      id: 'numberType',
       numberFormat: {
-        format: "0",
+        format: '0',
       },
     },
     {
-      id: "currencyFormat",
+      id: 'currencyFormat',
       numberFormat: {
-        format: "#,##0.00 €",
+        format: '#,##0.00 €',
       },
     },
     {
-      id: "negativeInBrackets",
+      id: 'negativeInBrackets',
       numberFormat: {
-        format: "$[blue] #,##0;$ [red](#,##0)",
+        format: '$[blue] #,##0;$ [red](#,##0)',
       },
     },
     {
-      id: "booleanType",
-      dataType: "Boolean",
+      id: 'booleanType',
+      dataType: 'Boolean',
     },
     {
-      id: "stringType",
-      dataType: "String",
+      id: 'stringType',
+      dataType: 'String',
     },
     {
-      id: "dateType",
-      dataType: "DateTime",
+      id: 'dateType',
+      dataType: 'DateTime',
     },
   ],
   popupParent: document.body,
@@ -69,7 +69,7 @@ function onBtExport() {
 }
 
 // setup the grid after the page has finished loading
-document.addEventListener("DOMContentLoaded", () => {
-  const gridDiv = document.querySelector("#myGrid");
+document.addEventListener('DOMContentLoaded', () => {
+  const gridDiv = document.querySelector('#myGrid');
   new agGrid.Grid(gridDiv, gridOptions);
 });

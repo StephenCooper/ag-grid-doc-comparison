@@ -1,9 +1,10 @@
-"use strict";
+'use strict';
 
-import { AgChartsReact } from "ag-charts-react";
-import { cloneDeep } from "lodash";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { cloneDeep } from 'lodash';
+import { render } from 'react-dom';
+import * as agCharts from 'ag-charts-community';
+import { AgChartsReact } from 'ag-charts-react';
 
 class ChartExample extends Component {
   constructor(props) {
@@ -12,27 +13,27 @@ class ChartExample extends Component {
     this.state = {
       options: {
         data: [
-          { os: "A", share: 10 },
-          { os: "B", share: 100 },
-          { os: "C", share: 1000 },
+          { os: 'A', share: 10 },
+          { os: 'B', share: 100 },
+          { os: 'C', share: 1000 },
         ],
         series: [
           {
-            type: "line",
-            xKey: "os",
-            yKey: "share",
+            type: 'line',
+            xKey: 'os',
+            yKey: 'share',
           },
         ],
         axes: [
           {
-            type: "category",
-            position: "bottom",
+            type: 'category',
+            position: 'bottom',
           },
           {
-            type: "number",
-            position: "left",
+            type: 'number',
+            position: 'left',
             label: {
-              format: ".0f",
+              format: '.0f',
             },
             tick: {
               count: 10,
@@ -53,15 +54,15 @@ class ChartExample extends Component {
 
     options.axes = [
       {
-        type: "category",
-        position: "bottom",
+        type: 'category',
+        position: 'bottom',
       },
       {
-        type: "number",
-        position: "left",
+        type: 'number',
+        position: 'left',
         min: 1,
         label: {
-          format: ".0f",
+          format: '.0f',
         },
         tick: {
           count: 10,
@@ -77,15 +78,15 @@ class ChartExample extends Component {
 
     options.axes = [
       {
-        type: "category",
-        position: "bottom",
+        type: 'category',
+        position: 'bottom',
       },
       {
-        type: "log",
-        position: "left",
+        type: 'log',
+        position: 'left',
         min: 10,
         label: {
-          format: ".0f",
+          format: '.0f',
         },
         tick: {
           count: 10,
@@ -101,15 +102,15 @@ class ChartExample extends Component {
 
     options.axes = [
       {
-        type: "category",
-        position: "bottom",
+        type: 'category',
+        position: 'bottom',
       },
       {
-        type: "log",
-        position: "left",
+        type: 'log',
+        position: 'left',
         min: 10,
         label: {
-          format: ".0f",
+          format: '.0f',
         },
         tick: {
           count: 10,
@@ -126,15 +127,15 @@ class ChartExample extends Component {
 
     options.axes = [
       {
-        type: "category",
-        position: "bottom",
+        type: 'category',
+        position: 'bottom',
       },
       {
-        type: "log",
-        position: "left",
+        type: 'log',
+        position: 'left',
         min: 10,
         label: {
-          format: ".0f",
+          format: '.0f',
         },
         tick: {
           count: 2, // a hint that we want a smaller tick count
@@ -167,4 +168,4 @@ class ChartExample extends Component {
   }
 }
 
-render(<ChartExample />, document.querySelector("#root"));
+render(<ChartExample />, document.querySelector('#root'));

@@ -1,10 +1,10 @@
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
-import { AgGridReact } from "ag-grid-react";
-import React, { Component } from "react";
-import { render } from "react-dom";
-("use strict");
+'use strict';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from 'ag-grid-react';
+import 'ag-grid-enterprise';
 
 let allRowData;
 
@@ -15,10 +15,10 @@ class GridExample extends Component {
     this.state = {
       columnDefs: [
         // group cell renderer needed for expand / collapse icons
-        { field: "name", cellRenderer: "agGroupCellRenderer" },
-        { field: "account" },
-        { field: "calls" },
-        { field: "minutes", valueFormatter: "x.toLocaleString() + 'm'" },
+        { field: 'name', cellRenderer: 'agGroupCellRenderer' },
+        { field: 'account' },
+        { field: 'calls' },
+        { field: 'minutes', valueFormatter: "x.toLocaleString() + 'm'" },
       ],
       defaultColDef: {
         flex: 1,
@@ -27,7 +27,7 @@ class GridExample extends Component {
         return params.data.account;
       },
       detailCellRendererParams: {
-        refreshStrategy: "rows",
+        refreshStrategy: 'rows',
         template: (props) => (
           <div class="ag-details-row ag-details-row-fixed-height">
             <div style="padding: 4px; font-weight: bold;">
@@ -40,17 +40,17 @@ class GridExample extends Component {
           </div>
         ),
         detailGridOptions: {
-          rowSelection: "multiple",
+          rowSelection: 'multiple',
           enableCellChangeFlash: true,
           getRowId: function (params) {
             return params.data.callId;
           },
           columnDefs: [
-            { field: "callId", checkboxSelection: true },
-            { field: "direction" },
-            { field: "number", minWidth: 150 },
-            { field: "duration", valueFormatter: "x.toLocaleString() + 's'" },
-            { field: "switchCode", minWidth: 150 },
+            { field: 'callId', checkboxSelection: true },
+            { field: 'direction' },
+            { field: 'number', minWidth: 150 },
+            { field: 'duration', valueFormatter: "x.toLocaleString() + 's'" },
+            { field: 'switchCode', minWidth: 150 },
           ],
           defaultColDef: {
             flex: 1,
@@ -75,7 +75,7 @@ class GridExample extends Component {
       this.setState({ rowData: data });
     };
 
-    fetch("https://www.ag-grid.com/example-assets/master-detail-data.json")
+    fetch('https://www.ag-grid.com/example-assets/master-detail-data.json')
       .then((resp) => resp.json())
       .then((data) => updateData(data));
   };
@@ -112,11 +112,11 @@ class GridExample extends Component {
 
   render() {
     return (
-      <div style={{ width: "100%", height: "100%" }}>
+      <div style={{ width: '100%', height: '100%' }}>
         <div
           style={{
-            height: "100%",
-            width: "100%",
+            height: '100%',
+            width: '100%',
           }}
           className="ag-theme-alpine"
         >
@@ -137,4 +137,4 @@ class GridExample extends Component {
   }
 }
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

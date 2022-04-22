@@ -2,11 +2,11 @@ export default {
   template: `<div v-html="value"></div>`,
   data() {
     return {
-      value: "",
+      value: '',
     };
   },
   beforeMount() {
-    if (!this.params.value || this.params.value === "(Select All)") {
+    if (!this.params.value || this.params.value === '(Select All)') {
       this.value = this.params.value;
     } else {
       const url = `https://flags.fmcdn.net/data/flags/mini/${

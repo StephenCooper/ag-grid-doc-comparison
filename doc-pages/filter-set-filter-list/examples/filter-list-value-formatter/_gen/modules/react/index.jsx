@@ -1,16 +1,16 @@
-"use strict";
+'use strict';
 
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { AgGridReact } from "@ag-grid-community/react";
-import { ColumnsToolPanelModule } from "@ag-grid-enterprise/column-tool-panel";
-import { FiltersToolPanelModule } from "@ag-grid-enterprise/filter-tool-panel";
-import { MenuModule } from "@ag-grid-enterprise/menu";
-import { SetFilterModule } from "@ag-grid-enterprise/set-filter";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from '@ag-grid-community/react';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import { SetFilterModule } from '@ag-grid-enterprise/set-filter';
+import { MenuModule } from '@ag-grid-enterprise/menu';
+import { ColumnsToolPanelModule } from '@ag-grid-enterprise/column-tool-panel';
+import { FiltersToolPanelModule } from '@ag-grid-enterprise/filter-tool-panel';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([
@@ -28,19 +28,19 @@ class GridExample extends Component {
     this.state = {
       columnDefs: [
         {
-          headerName: "No Value Formatter",
-          field: "country",
+          headerName: 'No Value Formatter',
+          field: 'country',
           valueFormatter: countryValueFormatter,
-          filter: "agSetColumnFilter",
+          filter: 'agSetColumnFilter',
           filterParams: {
             // no value formatter!
           },
         },
         {
-          headerName: "With Value Formatter",
-          field: "country",
+          headerName: 'With Value Formatter',
+          field: 'country',
           valueFormatter: countryValueFormatter,
-          filter: "agSetColumnFilter",
+          filter: 'agSetColumnFilter',
           filterParams: {
             valueFormatter: countryValueFormatter,
           },
@@ -52,7 +52,7 @@ class GridExample extends Component {
         resizable: true,
         floatingFilter: true,
       },
-      sideBar: "filters",
+      sideBar: 'filters',
       rowData: null,
     };
   }
@@ -69,13 +69,13 @@ class GridExample extends Component {
       params.api.setRowData(dataWithFlags);
     };
 
-    fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+    fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .then((resp) => resp.json())
       .then((data) => updateData(data));
   };
 
   onFirstDataRendered = (params) => {
-    params.api.getToolPanelInstance("filters").expandFilters();
+    params.api.getToolPanelInstance('filters').expandFilters();
   };
 
   printFilterModel = () => {
@@ -85,19 +85,19 @@ class GridExample extends Component {
 
   render() {
     return (
-      <div style={{ width: "100%", height: "100%" }}>
+      <div style={{ width: '100%', height: '100%' }}>
         <div
-          style={{ display: "flex", flexDirection: "column", height: "100%" }}
+          style={{ display: 'flex', flexDirection: 'column', height: '100%' }}
         >
-          <div style={{ paddingBottom: "5px" }}>
+          <div style={{ paddingBottom: '5px' }}>
             <button onClick={() => this.printFilterModel()}>
               Print Filter Model
             </button>
           </div>
           <div
             style={{
-              height: "100%",
-              width: "100%",
+              height: '100%',
+              width: '100%',
             }}
             className="ag-theme-alpine"
           >
@@ -118,28 +118,28 @@ class GridExample extends Component {
 
 function countryValueFormatter(params) {
   var value = params.value;
-  return value + " (" + COUNTRY_CODES[value].toUpperCase() + ")";
+  return value + ' (' + COUNTRY_CODES[value].toUpperCase() + ')';
 }
 var COUNTRY_CODES = {
-  Ireland: "ie",
-  Luxembourg: "lu",
-  Belgium: "be",
-  Spain: "es",
-  France: "fr",
-  Germany: "de",
-  Sweden: "se",
-  Italy: "it",
-  Greece: "gr",
-  Iceland: "is",
-  Portugal: "pt",
-  Malta: "mt",
-  Norway: "no",
-  Brazil: "br",
-  Argentina: "ar",
-  Colombia: "co",
-  Peru: "pe",
-  Venezuela: "ve",
-  Uruguay: "uy",
+  Ireland: 'ie',
+  Luxembourg: 'lu',
+  Belgium: 'be',
+  Spain: 'es',
+  France: 'fr',
+  Germany: 'de',
+  Sweden: 'se',
+  Italy: 'it',
+  Greece: 'gr',
+  Iceland: 'is',
+  Portugal: 'pt',
+  Malta: 'mt',
+  Norway: 'no',
+  Brazil: 'br',
+  Argentina: 'ar',
+  Colombia: 'co',
+  Peru: 'pe',
+  Venezuela: 've',
+  Uruguay: 'uy',
 };
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

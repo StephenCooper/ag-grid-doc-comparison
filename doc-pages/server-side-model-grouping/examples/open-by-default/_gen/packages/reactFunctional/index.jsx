@@ -1,16 +1,16 @@
-"use strict";
+'use strict';
 
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine-dark.css";
-import "ag-grid-enterprise";
-import { AgGridReact } from "ag-grid-react";
-import React, { useCallback, useMemo, useRef, useState } from "react";
-import { render } from "react-dom";
+import React, { useCallback, useMemo, useRef, useState } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from 'ag-grid-react';
+import 'ag-grid-enterprise';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine-dark.css';
 
 const getServerSideDatasource = (server) => {
   return {
     getRows: function (params) {
-      console.log("[Datasource] - rows requested by grid: ", params.request);
+      console.log('[Datasource] - rows requested by grid: ', params.request);
       var response = server.getData(params.request);
       // adding delay to simulate real server call
       setTimeout(function () {
@@ -31,16 +31,16 @@ const getServerSideDatasource = (server) => {
 
 const GridExample = () => {
   const gridRef = useRef();
-  const containerStyle = useMemo(() => ({ width: "100%", height: "100%" }), []);
-  const gridStyle = useMemo(() => ({ height: "100%", width: "100%" }), []);
+  const containerStyle = useMemo(() => ({ width: '100%', height: '100%' }), []);
+  const gridStyle = useMemo(() => ({ height: '100%', width: '100%' }), []);
 
   const [columnDefs, setColumnDefs] = useState([
-    { field: "country", enableRowGroup: true, rowGroup: true, hide: true },
-    { field: "sport", enableRowGroup: true, rowGroup: true, hide: true },
-    { field: "year", minWidth: 100 },
-    { field: "gold", aggFunc: "sum" },
-    { field: "silver", aggFunc: "sum" },
-    { field: "bronze", aggFunc: "sum" },
+    { field: 'country', enableRowGroup: true, rowGroup: true, hide: true },
+    { field: 'sport', enableRowGroup: true, rowGroup: true, hide: true },
+    { field: 'year', minWidth: 100 },
+    { field: 'gold', aggFunc: 'sum' },
+    { field: 'silver', aggFunc: 'sum' },
+    { field: 'bronze', aggFunc: 'sum' },
   ]);
   const defaultColDef = useMemo(() => {
     return {
@@ -58,13 +58,13 @@ const GridExample = () => {
   }, []);
   const getServerSideStoreParams = useCallback(function (params) {
     var res = {
-      storeType: params.level == 0 ? "partial" : "full",
+      storeType: params.level == 0 ? 'partial' : 'full',
     };
     return res;
   }, []);
 
   const onGridReady = useCallback((params) => {
-    fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+    fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .then((resp) => resp.json())
       .then((data) => {
         // setup the fake server with entire dataset
@@ -80,8 +80,8 @@ const GridExample = () => {
     var selectedNodes = gridRef.current.api.getSelectedNodes();
     selectedNodes.forEach(function (rowNode, index) {
       var route = rowNode.getRoute();
-      var routeString = route ? route.join(",") : undefined;
-      console.log("#" + index + ", route = [" + routeString + "]");
+      var routeString = route ? route.join(',') : undefined;
+      console.log('#' + index + ', route = [' + routeString + ']');
     });
   }, []);
 
@@ -94,11 +94,11 @@ const GridExample = () => {
     if (!route) {
       return false;
     }
-    var routeAsString = route.join(",");
+    var routeAsString = route.join(',');
     var routesToOpenByDefault = [
-      "Zimbabwe",
-      "Zimbabwe,Swimming",
-      "United States,Swimming",
+      'Zimbabwe',
+      'Zimbabwe,Swimming',
+      'United States,Swimming',
     ];
     return routesToOpenByDefault.indexOf(routeAsString) >= 0;
   }, []);
@@ -106,7 +106,7 @@ const GridExample = () => {
   return (
     <div style={containerStyle}>
       <div className="example-wrapper">
-        <div style={{ marginBottom: "5px" }}>
+        <div style={{ marginBottom: '5px' }}>
           <button onClick={onBtRouteOfSelected}>Route of Selected</button>
         </div>
 
@@ -117,8 +117,8 @@ const GridExample = () => {
             defaultColDef={defaultColDef}
             autoGroupColumnDef={autoGroupColumnDef}
             getServerSideStoreParams={getServerSideStoreParams}
-            rowModelType={"serverSide"}
-            rowSelection={"multiple"}
+            rowModelType={'serverSide'}
+            rowSelection={'multiple'}
             suppressAggFuncInHeader={true}
             animateRows={true}
             getRowId={getRowId}
@@ -131,4 +131,4 @@ const GridExample = () => {
   );
 };
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

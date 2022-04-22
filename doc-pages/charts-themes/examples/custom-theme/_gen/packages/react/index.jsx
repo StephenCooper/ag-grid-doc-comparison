@@ -1,9 +1,10 @@
-"use strict";
+'use strict';
 
-import { AgChartsReact } from "ag-charts-react";
-import { cloneDeep } from "lodash";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { cloneDeep } from 'lodash';
+import { render } from 'react-dom';
+import * as agCharts from 'ag-charts-community';
+import { AgChartsReact } from 'ag-charts-react';
 
 class ChartExample extends Component {
   constructor(props) {
@@ -20,20 +21,20 @@ class ChartExample extends Component {
         },
         title: {
           enabled: true,
-          text: "Custom Chart Theme Example",
+          text: 'Custom Chart Theme Example',
         },
         data: [
           {
-            label: "Android",
+            label: 'Android',
             v1: 5.67,
             v2: 8.63,
             v3: 8.14,
             v4: 6.45,
             v5: 1.37,
           },
-          { label: "iOS", v1: 7.01, v2: 8.04, v3: 1.338, v4: 6.78, v5: 5.45 },
+          { label: 'iOS', v1: 7.01, v2: 8.04, v3: 1.338, v4: 6.78, v5: 5.45 },
           {
-            label: "BlackBerry",
+            label: 'BlackBerry',
             v1: 7.54,
             v2: 1.98,
             v3: 9.88,
@@ -41,50 +42,50 @@ class ChartExample extends Component {
             v5: 4.44,
           },
           {
-            label: "Symbian",
+            label: 'Symbian',
             v1: 9.27,
             v2: 4.21,
             v3: 2.53,
             v4: 6.31,
             v5: 4.44,
           },
-          { label: "Windows", v1: 2.8, v2: 1.908, v3: 7.48, v4: 5.29, v5: 8.8 },
+          { label: 'Windows', v1: 2.8, v2: 1.908, v3: 7.48, v4: 5.29, v5: 8.8 },
         ],
         series: [
           {
-            type: "column",
-            xKey: "label",
-            yKey: "v1",
+            type: 'column',
+            xKey: 'label',
+            yKey: 'v1',
             stacked: true,
-            yName: "Reliability",
+            yName: 'Reliability',
           },
           {
-            type: "column",
-            xKey: "label",
-            yKey: "v2",
+            type: 'column',
+            xKey: 'label',
+            yKey: 'v2',
             stacked: true,
-            yName: "Ease of use",
+            yName: 'Ease of use',
           },
           {
-            type: "column",
-            xKey: "label",
-            yKey: "v3",
+            type: 'column',
+            xKey: 'label',
+            yKey: 'v3',
             stacked: true,
-            yName: "Performance",
+            yName: 'Performance',
           },
           {
-            type: "column",
-            xKey: "label",
-            yKey: "v4",
+            type: 'column',
+            xKey: 'label',
+            yKey: 'v4',
             stacked: true,
-            yName: "Price",
+            yName: 'Price',
           },
           {
-            type: "column",
-            xKey: "label",
-            yKey: "v5",
+            type: 'column',
+            xKey: 'label',
+            yKey: 'v5',
             stacked: true,
-            yName: "Market share",
+            yName: 'Market share',
           },
         ],
       },
@@ -111,10 +112,10 @@ class ChartExample extends Component {
 }
 
 var myTheme = {
-  baseTheme: "ag-default-dark",
+  baseTheme: 'ag-default-dark',
   palette: {
-    fills: ["#5C2983", "#0076C5", "#21B372", "#FDDE02", "#F76700", "#D30018"],
-    strokes: ["black"],
+    fills: ['#5C2983', '#0076C5', '#21B372', '#FDDE02', '#F76700', '#D30018'],
+    strokes: ['black'],
   },
   overrides: {
     cartesian: {
@@ -125,7 +126,7 @@ var myTheme = {
         column: {
           label: {
             enabled: true,
-            color: "black",
+            color: 'black',
           },
         },
       },
@@ -133,4 +134,4 @@ var myTheme = {
   },
 };
 
-render(<ChartExample />, document.querySelector("#root"));
+render(<ChartExample />, document.querySelector('#root'));

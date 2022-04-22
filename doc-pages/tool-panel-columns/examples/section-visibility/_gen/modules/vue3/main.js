@@ -1,11 +1,11 @@
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { AgGridVue } from "@ag-grid-community/vue3";
-import { ColumnsToolPanelModule } from "@ag-grid-enterprise/column-tool-panel";
-import { MenuModule } from "@ag-grid-enterprise/menu";
-import { createApp } from "vue";
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { AgGridVue } from '@ag-grid-community/vue3';
+import { ColumnsToolPanelModule } from '@ag-grid-enterprise/column-tool-panel';
+import { MenuModule } from '@ag-grid-enterprise/menu';
+import { createApp } from 'vue';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([
@@ -40,21 +40,21 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
-        { headerName: "Name", field: "athlete", minWidth: 200 },
-        { field: "age", enableRowGroup: true },
-        { field: "country", minWidth: 200 },
-        { field: "year" },
-        { field: "date", suppressColumnsToolPanel: true, minWidth: 180 },
-        { field: "sport", minWidth: 200 },
-        { field: "gold", aggFunc: "sum" },
-        { field: "silver", aggFunc: "sum" },
-        { field: "bronze", aggFunc: "sum" },
-        { field: "total", aggFunc: "sum" },
+        { headerName: 'Name', field: 'athlete', minWidth: 200 },
+        { field: 'age', enableRowGroup: true },
+        { field: 'country', minWidth: 200 },
+        { field: 'year' },
+        { field: 'date', suppressColumnsToolPanel: true, minWidth: 180 },
+        { field: 'sport', minWidth: 200 },
+        { field: 'gold', aggFunc: 'sum' },
+        { field: 'silver', aggFunc: 'sum' },
+        { field: 'bronze', aggFunc: 'sum' },
+        { field: 'total', aggFunc: 'sum' },
       ],
       gridApi: null,
       columnApi: null,
@@ -72,11 +72,11 @@ const VueExample = {
     this.sideBar = {
       toolPanels: [
         {
-          id: "columns",
-          labelDefault: "Columns",
-          labelKey: "columns",
-          iconKey: "columns",
-          toolPanel: "agColumnsToolPanel",
+          id: 'columns',
+          labelDefault: 'Columns',
+          labelKey: 'columns',
+          iconKey: 'columns',
+          toolPanel: 'agColumnsToolPanel',
           toolPanelParams: {
             suppressRowGroups: true,
             suppressValues: true,
@@ -88,24 +88,24 @@ const VueExample = {
           },
         },
       ],
-      defaultToolPanel: "columns",
+      defaultToolPanel: 'columns',
     };
   },
   methods: {
     showPivotModeSection() {
-      var columnToolPanel = this.gridApi.getToolPanelInstance("columns");
+      var columnToolPanel = this.gridApi.getToolPanelInstance('columns');
       columnToolPanel.setPivotModeSectionVisible(true);
     },
     showRowGroupsSection() {
-      var columnToolPanel = this.gridApi.getToolPanelInstance("columns");
+      var columnToolPanel = this.gridApi.getToolPanelInstance('columns');
       columnToolPanel.setRowGroupsSectionVisible(true);
     },
     showValuesSection() {
-      var columnToolPanel = this.gridApi.getToolPanelInstance("columns");
+      var columnToolPanel = this.gridApi.getToolPanelInstance('columns');
       columnToolPanel.setValuesSectionVisible(true);
     },
     showPivotSection() {
-      var columnToolPanel = this.gridApi.getToolPanelInstance("columns");
+      var columnToolPanel = this.gridApi.getToolPanelInstance('columns');
       columnToolPanel.setPivotSectionVisible(true);
     },
     onGridReady(params) {
@@ -114,11 +114,11 @@ const VueExample = {
 
       const updateData = (data) => params.api.setRowData(data);
 
-      fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
         .then((resp) => resp.json())
         .then((data) => updateData(data));
     },
   },
 };
 
-createApp(VueExample).mount("#app");
+createApp(VueExample).mount('#app');

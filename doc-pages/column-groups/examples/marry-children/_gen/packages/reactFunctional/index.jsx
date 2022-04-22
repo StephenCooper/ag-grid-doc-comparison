@@ -1,34 +1,34 @@
-"use strict";
+'use strict';
 
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import { AgGridReact } from "ag-grid-react";
-import React, { useCallback, useMemo, useState } from "react";
-import { render } from "react-dom";
+import React, { useCallback, useMemo, useRef, useState } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from 'ag-grid-react';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 
 const GridExample = () => {
-  const containerStyle = useMemo(() => ({ width: "100%", height: "100%" }), []);
-  const gridStyle = useMemo(() => ({ height: "100%", width: "100%" }), []);
+  const containerStyle = useMemo(() => ({ width: '100%', height: '100%' }), []);
+  const gridStyle = useMemo(() => ({ height: '100%', width: '100%' }), []);
   const [rowData, setRowData] = useState();
   const [columnDefs, setColumnDefs] = useState([
     {
-      headerName: "Athlete Details",
+      headerName: 'Athlete Details',
       marryChildren: true,
       children: [
-        { field: "athlete", colId: "athlete" },
-        { field: "country", colId: "country" },
+        { field: 'athlete', colId: 'athlete' },
+        { field: 'country', colId: 'country' },
       ],
     },
-    { field: "age", colId: "age" },
+    { field: 'age', colId: 'age' },
     {
-      headerName: "Sports Results",
+      headerName: 'Sports Results',
       marryChildren: true,
       children: [
-        { field: "sport", colId: "sport" },
-        { field: "total", colId: "total" },
-        { field: "gold", colId: "gold" },
-        { field: "silver", colId: "silver" },
-        { field: "bronze", colId: "bronze" },
+        { field: 'sport', colId: 'sport' },
+        { field: 'total', colId: 'total' },
+        { field: 'gold', colId: 'gold' },
+        { field: 'silver', colId: 'silver' },
+        { field: 'bronze', colId: 'bronze' },
       ],
     },
   ]);
@@ -40,7 +40,7 @@ const GridExample = () => {
   }, []);
 
   const onGridReady = useCallback((params) => {
-    fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+    fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .then((resp) => resp.json())
       .then((data) => setRowData(data));
   }, []);
@@ -59,4 +59,4 @@ const GridExample = () => {
   );
 };
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

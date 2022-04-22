@@ -1,15 +1,15 @@
 const valueFormatter = function (params) {
-  if (typeof params.value === "number") {
-    return "£" + params.value.toLocaleString();
+  if (typeof params.value === 'number') {
+    return '£' + params.value.toLocaleString();
   } else {
     return params.value;
   }
 };
 const columnDefs = [
   {
-    headerName: "Item ID",
-    field: "id",
-    valueGetter: "node.id",
+    headerName: 'Item ID',
+    field: 'id',
+    valueGetter: 'node.id',
     cellRenderer: function (params) {
       if (params.value !== undefined) {
         return params.value;
@@ -18,10 +18,10 @@ const columnDefs = [
       }
     },
   },
-  { field: "make" },
-  { field: "model" },
+  { field: 'make' },
+  { field: 'model' },
   {
-    field: "price",
+    field: 'price',
     valueFormatter: valueFormatter,
   },
 ];
@@ -29,7 +29,7 @@ const columnDefs = [
 const datasource = {
   rowCount: undefined, // behave as infinite scroll
   getRows: function (params) {
-    console.log("asking for " + params.startRow + " to " + params.endRow);
+    console.log('asking for ' + params.startRow + ' to ' + params.endRow);
     // At this point in your code, you would call the server.
     // To make the demo look real, wait for 500ms before returning
     setTimeout(function () {
@@ -57,9 +57,9 @@ const gridOptions = {
   defaultColDef: {
     resizable: true,
   },
-  rowSelection: "multiple",
+  rowSelection: 'multiple',
   columnDefs: columnDefs,
-  rowModelType: "infinite",
+  rowModelType: 'infinite',
   datasource: datasource,
 
   maxBlocksInCache: 2,
@@ -83,9 +83,9 @@ const gridOptions = {
   },
 
   getRowStyle: function (params) {
-    if (params.data && params.data.make === "Honda") {
+    if (params.data && params.data.make === 'Honda') {
       return {
-        fontWeight: "bold",
+        fontWeight: 'bold',
       };
     } else {
       return undefined;
@@ -98,15 +98,15 @@ var sequenceId = 0;
 var allOfTheData = [];
 
 function createRowData(id) {
-  const makes = ["Toyota", "Ford", "Porsche", "Chevy", "Honda", "Nissan"];
+  const makes = ['Toyota', 'Ford', 'Porsche', 'Chevy', 'Honda', 'Nissan'];
   const models = [
-    "Cruze",
-    "Celica",
-    "Mondeo",
-    "Boxter",
-    "Genesis",
-    "Accord",
-    "Taurus",
+    'Cruze',
+    'Celica',
+    'Mondeo',
+    'Boxster',
+    'Genesis',
+    'Accord',
+    'Taurus',
   ];
   return {
     id: id,
@@ -165,10 +165,10 @@ function setRowCountTo200() {
 
 function rowsAndMaxFound() {
   console.log(
-    "getInfiniteRowCount() => " + gridOptions.api.getInfiniteRowCount()
+    'getInfiniteRowCount() => ' + gridOptions.api.getInfiniteRowCount()
   );
   console.log(
-    "isLastRowIndexKnown() => " + gridOptions.api.isLastRowIndexKnown()
+    'isLastRowIndexKnown() => ' + gridOptions.api.isLastRowIndexKnown()
   );
 }
 
@@ -186,7 +186,7 @@ function setPricesLow() {
 }
 
 function printCacheState() {
-  console.log("*** Cache State ***");
+  console.log('*** Cache State ***');
   console.log(gridOptions.api.getCacheBlockState());
 }
 
@@ -200,7 +200,7 @@ function jumpTo500() {
 }
 
 // setup the grid after the page has finished loading
-document.addEventListener("DOMContentLoaded", function () {
-  const gridDiv = document.querySelector("#myGrid");
+document.addEventListener('DOMContentLoaded', function () {
+  const gridDiv = document.querySelector('#myGrid');
   new agGrid.Grid(gridDiv, gridOptions);
 });

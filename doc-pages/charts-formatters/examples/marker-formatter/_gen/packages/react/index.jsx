@@ -1,8 +1,10 @@
-"use strict";
+'use strict';
 
-import { AgChartsReact } from "ag-charts-react";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { cloneDeep } from 'lodash';
+import { render } from 'react-dom';
+import * as agCharts from 'ag-charts-community';
+import { AgChartsReact } from 'ag-charts-react';
 
 class ChartExample extends Component {
   constructor(props) {
@@ -11,44 +13,44 @@ class ChartExample extends Component {
     this.state = {
       options: {
         title: {
-          text: "Fuel Spending (2019)",
+          text: 'Fuel Spending (2019)',
         },
         data: [
           {
-            quarter: "Q1",
+            quarter: 'Q1',
             petrol: 200,
             electric: 50,
           },
           {
-            quarter: "Q2",
+            quarter: 'Q2',
             petrol: 300,
             electric: 60,
           },
           {
-            quarter: "Q3",
+            quarter: 'Q3',
             petrol: 350,
             electric: 70,
           },
           {
-            quarter: "Q4",
+            quarter: 'Q4',
             petrol: 400,
             electric: 50,
           },
         ],
         series: [
           {
-            type: "area",
-            xKey: "quarter",
-            yKey: "petrol",
-            yName: "Petrol",
+            type: 'area',
+            xKey: 'quarter',
+            yKey: 'petrol',
+            yName: 'Petrol',
             stacked: true,
             marker: { formatter },
           },
           {
-            type: "area",
-            xKey: "quarter",
-            yKey: "electric",
-            yName: "Electric",
+            type: 'area',
+            xKey: 'quarter',
+            yKey: 'electric',
+            yName: 'Electric',
             stacked: true,
             marker: { formatter },
           },
@@ -65,7 +67,7 @@ class ChartExample extends Component {
 }
 
 function formatter({ yKey, size }) {
-  return { size: yKey === "electric" ? 12 : size };
+  return { size: yKey === 'electric' ? 12 : size };
 }
 
-render(<ChartExample />, document.querySelector("#root"));
+render(<ChartExample />, document.querySelector('#root'));

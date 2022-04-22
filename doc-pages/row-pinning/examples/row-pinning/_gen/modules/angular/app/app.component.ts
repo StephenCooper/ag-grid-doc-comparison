@@ -4,16 +4,16 @@ import {
   GridReadyEvent,
   RowClassParams,
   RowStyle,
-} from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { HttpClient } from "@angular/common/http";
-import { Component } from "@angular/core";
-import { CustomPinnedRowRenderer } from "./custom-pinned-row-renderer.component";
+} from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { HttpClient } from '@angular/common/http';
+import { Component } from '@angular/core';
+import { CustomPinnedRowRenderer } from './custom-pinned-row-renderer.component';
 // Required feature modules are registered in app.module.ts
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<div class="example-wrapper">
     <div class="example-header">
       <span> Rows to Pin on Top: </span>
@@ -59,13 +59,13 @@ export class AppComponent {
 
   public columnDefs: ColDef[] = [
     {
-      field: "athlete",
+      field: 'athlete',
       cellRendererSelector: function (params) {
         if (params.node.rowPinned) {
           return {
             component: CustomPinnedRowRenderer,
             params: {
-              style: { color: "blue" },
+              style: { color: 'blue' },
             },
           };
         } else {
@@ -75,13 +75,13 @@ export class AppComponent {
       },
     },
     {
-      field: "age",
+      field: 'age',
       cellRendererSelector: function (params) {
         if (params.node.rowPinned) {
           return {
             component: CustomPinnedRowRenderer,
             params: {
-              style: { "font-style": "italic" },
+              style: { 'font-style': 'italic' },
             },
           };
         } else {
@@ -90,10 +90,10 @@ export class AppComponent {
         }
       },
     },
-    { field: "country" },
-    { field: "year" },
-    { field: "date" },
-    { field: "sport" },
+    { field: 'country' },
+    { field: 'year' },
+    { field: 'date' },
+    { field: 'sport' },
   ];
   public defaultColDef: ColDef = {
     width: 200,
@@ -101,31 +101,34 @@ export class AppComponent {
     filter: true,
     resizable: true,
   };
-  public getRowStyle: (params: RowClassParams) => RowStyle | undefined =
-    function (params) {
-      if (params.node.rowPinned) {
-        return { "font-weight": "bold" };
-      }
-    };
-  public pinnedTopRowData: any[] = createData(1, "Top");
-  public pinnedBottomRowData: any[] = createData(1, "Bottom");
+  public getRowStyle: (
+    params: RowClassParams
+  ) => RowStyle | undefined = function (
+    params: RowClassParams
+  ): RowStyle | undefined {
+    if (params.node.rowPinned) {
+      return { 'font-weight': 'bold' };
+    }
+  };
+  public pinnedTopRowData: any[] = createData(1, 'Top');
+  public pinnedBottomRowData: any[] = createData(1, 'Bottom');
   public rowData!: any[];
 
   constructor(private http: HttpClient) {}
 
   onPinnedRowTopCount() {
-    var headerRowsToFloat = (document.getElementById("top-row-count") as any)
+    var headerRowsToFloat = (document.getElementById('top-row-count') as any)
       .value;
     var count = Number(headerRowsToFloat);
-    var rows = createData(count, "Top");
+    var rows = createData(count, 'Top');
     this.gridApi.setPinnedTopRowData(rows);
   }
 
   onPinnedRowBottomCount() {
-    var footerRowsToFloat = (document.getElementById("bottom-row-count") as any)
+    var footerRowsToFloat = (document.getElementById('bottom-row-count') as any)
       .value;
     var count = Number(footerRowsToFloat);
-    var rows = createData(count, "Bottom");
+    var rows = createData(count, 'Bottom');
     this.gridApi.setPinnedBottomRowData(rows);
   }
 
@@ -133,7 +136,7 @@ export class AppComponent {
     this.gridApi = params.api;
 
     this.http
-      .get<any[]>("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      .get<any[]>('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .subscribe((data) => (this.rowData = data));
   }
 }
@@ -142,12 +145,12 @@ function createData(count: number, prefix: string) {
   var result = [];
   for (var i = 0; i < count; i++) {
     result.push({
-      athlete: prefix + " Athlete " + i,
-      age: prefix + " Age " + i,
-      country: prefix + " Country " + i,
-      year: prefix + " Year " + i,
-      date: prefix + " Date " + i,
-      sport: prefix + " Sport " + i,
+      athlete: prefix + ' Athlete ' + i,
+      age: prefix + ' Age ' + i,
+      country: prefix + ' Country ' + i,
+      year: prefix + ' Year ' + i,
+      date: prefix + ' Date ' + i,
+      sport: prefix + ' Sport ' + i,
     });
   }
   return result;

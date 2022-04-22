@@ -1,16 +1,16 @@
-"use strict";
+'use strict';
 
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { AgGridReact } from "@ag-grid-community/react";
-import { ColumnsToolPanelModule } from "@ag-grid-enterprise/column-tool-panel";
-import { FiltersToolPanelModule } from "@ag-grid-enterprise/filter-tool-panel";
-import { MenuModule } from "@ag-grid-enterprise/menu";
-import { SetFilterModule } from "@ag-grid-enterprise/set-filter";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from '@ag-grid-community/react';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import { MenuModule } from '@ag-grid-enterprise/menu';
+import { ColumnsToolPanelModule } from '@ag-grid-enterprise/column-tool-panel';
+import { FiltersToolPanelModule } from '@ag-grid-enterprise/filter-tool-panel';
+import { SetFilterModule } from '@ag-grid-enterprise/set-filter';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([
@@ -28,7 +28,7 @@ class GridExample extends Component {
     this.state = {
       columnDefs: [
         {
-          headerName: " ",
+          headerName: ' ',
           headerCheckboxSelection: true,
           checkboxSelection: true,
           floatingFilter: false,
@@ -44,50 +44,50 @@ class GridExample extends Component {
           suppressColumnsToolPanel: true,
         },
         {
-          headerName: "Participant",
+          headerName: 'Participant',
           children: [
-            { field: "athlete", minWidth: 170 },
-            { field: "country", minWidth: 150 },
+            { field: 'athlete', minWidth: 170 },
+            { field: 'country', minWidth: 150 },
           ],
         },
-        { field: "sport" },
+        { field: 'sport' },
         {
-          headerName: "Medals",
+          headerName: 'Medals',
           children: [
             {
-              field: "total",
-              columnGroupShow: "closed",
-              filter: "agNumberColumnFilter",
+              field: 'total',
+              columnGroupShow: 'closed',
+              filter: 'agNumberColumnFilter',
               width: 120,
               flex: 0,
             },
             {
-              field: "gold",
-              columnGroupShow: "open",
-              filter: "agNumberColumnFilter",
+              field: 'gold',
+              columnGroupShow: 'open',
+              filter: 'agNumberColumnFilter',
               width: 100,
               flex: 0,
             },
             {
-              field: "silver",
-              columnGroupShow: "open",
-              filter: "agNumberColumnFilter",
+              field: 'silver',
+              columnGroupShow: 'open',
+              filter: 'agNumberColumnFilter',
               width: 100,
               flex: 0,
             },
             {
-              field: "bronze",
-              columnGroupShow: "open",
-              filter: "agNumberColumnFilter",
+              field: 'bronze',
+              columnGroupShow: 'open',
+              filter: 'agNumberColumnFilter',
               width: 100,
               flex: 0,
             },
           ],
         },
-        { field: "year", filter: "agNumberColumnFilter" },
+        { field: 'year', filter: 'agNumberColumnFilter' },
       ],
       rowData: null,
-      rowSelection: "multiple",
+      rowSelection: 'multiple',
       defaultColDef: {
         editable: true,
         sortable: true,
@@ -98,8 +98,8 @@ class GridExample extends Component {
         flex: 1,
       },
       sideBar: {
-        toolPanels: ["columns", "filters"],
-        defaultToolPanel: "",
+        toolPanels: ['columns', 'filters'],
+        defaultToolPanel: '',
       },
     };
   }
@@ -110,18 +110,18 @@ class GridExample extends Component {
 
     const updateData = (data) => params.api.setRowData(data);
 
-    fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+    fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .then((resp) => resp.json())
       .then((data) => updateData(data));
   };
 
   render() {
     return (
-      <div style={{ width: "100%", height: "100%" }}>
+      <div style={{ width: '100%', height: '100%' }}>
         <div
           style={{
-            height: "100%",
-            width: "100%",
+            height: '100%',
+            width: '100%',
           }}
           className="ag-theme-alpine"
         >
@@ -140,4 +140,4 @@ class GridExample extends Component {
   }
 }
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

@@ -5,6 +5,7 @@ enterprise: true
 
 Excel Export allows including images in the Excel export file. For example, you can add your company logo to the top or bottom of the exported Excel spreadsheet, or export any images you're displaying inside grid cells.
 
+
 ## Exporting Images
 
 You can export an image for any grid cell using the addImageToCell callback in the [export parameters](../excel-export-api/#excelexportparams) shown below:
@@ -44,7 +45,6 @@ It's important to note that images can only be exported as `base64` strings, and
 The example below includes a [Custom Cell Renderer](../component-cell-renderer/) and uses the `addImageToCell` callback to convert the cell value into a `base64` image.
 
 Note the following:
-
 - The image gets a margin within the cell because of the `offsetX` and `offsetY` properties in the `ExcelImage`.
 
 <grid-example title='Excel Export - Cells with Images' name='excel-export-cells-with-images' type='generated' options='{ "enterprise": true, "modules": ["clientside", "excel", "menu"] }'></grid-example>
@@ -54,7 +54,6 @@ Note the following:
 This example has a [Custom Cell Renderer](../component-cell-renderer/) showing an image together with text, and uses the `addImageToCell` to convert the cell value into a `base64` image.
 
 Note the following:
-
 - The image gets a margin within the cell because of the `offsetX` and `offsetY` properties in the `ExcelImage`.
 - This example returns the image and a value. The value is rendered within the same cell as the image.
 - [Excel Styles](../excel-export-styles/) are used to indent the text and vertically align it with the image.
@@ -65,8 +64,7 @@ Note the following:
 
 This example uses the [prepend content](../excel-export-extra-content/#example-excel-export-prepend-append) to add a custom logo to the export.
 
-Note the following:
-
+Note the following: 
 - The first row has a larger height as set in the `rowHeight` callback.
 - The custom content added using `prependContent` spans across two columns.
 

@@ -69,7 +69,7 @@ const gridOptions = {
 };
 </snippet>
 
-The following example demonstrates how to use other data types for your export.
+The following example demonstrates how to use other data types for your export. 
 
 Note that:
 
@@ -83,7 +83,7 @@ Note that:
 
 ## Dates
 
-When exporting dates to Excel format, you should use an Excel Style with `dataType="DateTime"`. The DateTime format only accepts dates in ISO Format, so all date values need to be provided in the `yyyy-mm-ddThh:mm:ss` format.
+When exporting dates to Excel format, you should use an Excel Style with `dataType="DateTime"`. The DateTime format only accepts dates in ISO Format, so all date values need to be provided in the `yyyy-mm-ddThh:mm:ss` format. 
 
 If your date values are not in ISO format, please use the `processCellCallback` method to convert them. As demonstrated in example above, by default Excel displays these date values as numbers. To format these numbers like regular dates in Excel, please enter a numberFormat value containing the desired date value format in the Excel Style as shown below:
 
@@ -113,6 +113,7 @@ const gridOptions = {
     ]
 };
 </snippet>
+
 
 Note the following:
 

@@ -1,5 +1,6 @@
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
 import {
+  GetRowIdParams,
   Grid,
   GridApi,
   GridOptions,
@@ -7,10 +8,10 @@ import {
   ModuleRegistry,
   RowNode,
   ValueGetterParams,
-} from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine-dark.css";
-import { RowGroupingModule } from "@ag-grid-enterprise/row-grouping";
+} from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine-dark.css';
+import { RowGroupingModule } from '@ag-grid-enterprise/row-grouping';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([ClientSideRowModelModule, RowGroupingModule]);
@@ -25,48 +26,48 @@ interface Student {
 
 const gridOptions: GridOptions = {
   columnDefs: [
-    { headerName: "Student ID", field: "student" },
-    { headerName: "Year Group", field: "yearGroup", rowGroup: true },
-    { headerName: "Age", field: "age" },
-    { headerName: "Course", field: "course", pivot: true },
+    { headerName: 'Student ID', field: 'student' },
+    { headerName: 'Year Group', field: 'yearGroup', rowGroup: true },
+    { headerName: 'Age', field: 'age' },
+    { headerName: 'Course', field: 'course', pivot: true },
     {
-      headerName: "Age Range",
+      headerName: 'Age Range',
       valueGetter: ageRangeValueGetter,
       pivot: true,
     },
-    { headerName: "Points", field: "points", aggFunc: "sum" },
+    { headerName: 'Points', field: 'points', aggFunc: 'sum' },
   ],
   defaultColDef: {
     flex: 1,
     minWidth: 150,
     sortable: true,
     resizable: true,
-    cellRenderer: "agAnimateShowChangeCellRenderer",
+    cellRenderer: 'agAnimateShowChangeCellRenderer',
   },
   rowData: getRowData(),
   pivotMode: true,
   groupDefaultExpanded: 1,
   // enableCellChangeFlash: true,
   animateRows: true,
-  getRowId: function (params) {
+  getRowId: function (params: GetRowIdParams) {
     return params.data.student;
   },
   onGridReady: function (params: GridReadyEvent) {
-    (document.getElementById("pivot-mode") as HTMLInputElement).checked = true;
+    (document.getElementById('pivot-mode') as HTMLInputElement).checked = true;
   },
 };
 
 function ageRangeValueGetter(params: ValueGetterParams) {
-  var age = params.getValue("age");
+  var age = params.getValue('age');
   if (age === undefined) {
     return null;
   }
   if (age < 20) {
-    return "< 20";
+    return '< 20';
   } else if (age > 30) {
-    return "> 30";
+    return '> 30';
   } else {
-    return "20 to 30";
+    return '20 to 30';
   }
 }
 
@@ -93,23 +94,23 @@ function createRow() {
   return {
     student: studentId++,
     points: (randomNumber % 60) + 40,
-    course: ["Science", "History"][randomNumber % 3 === 0 ? 0 : 1],
-    yearGroup: "Year " + ((randomNumber % 4) + 1), // 'Year 1' to 'Year 4'
+    course: ['Science', 'History'][randomNumber % 3 === 0 ? 0 : 1],
+    yearGroup: 'Year ' + ((randomNumber % 4) + 1), // 'Year 1' to 'Year 4'
     age: (randomNumber % 25) + 15, // 15 to 40
   };
 }
 
 function pivotMode() {
-  var pivotModeOn = (document.getElementById("pivot-mode") as HTMLInputElement)
+  var pivotModeOn = (document.getElementById('pivot-mode') as HTMLInputElement)
     .checked;
 
   gridOptions.columnApi!.setPivotMode(pivotModeOn);
 
   gridOptions.columnApi!.applyColumnState({
     state: [
-      { colId: "yearGroup", rowGroup: pivotModeOn },
-      { colId: "course", pivot: pivotModeOn },
-      { colId: "ageRange", pivot: pivotModeOn },
+      { colId: 'yearGroup', rowGroup: pivotModeOn },
+      { colId: 'course', pivot: pivotModeOn },
+      { colId: 'ageRange', pivot: pivotModeOn },
     ],
   });
 }
@@ -120,10 +121,10 @@ function updateOneRecord() {
 
   var randomValue = createNewRandomScore(rowNodeToUpdate.data);
   console.log(
-    "updating points to " + randomValue + " on ",
+    'updating points to ' + randomValue + ' on ',
     rowNodeToUpdate.data
   );
-  rowNodeToUpdate.setDataValue("points", randomValue);
+  rowNodeToUpdate.setDataValue('points', randomValue);
 }
 
 function createNewRandomScore(data: Student) {
@@ -164,49 +165,49 @@ function updateUsingTransaction() {
     return;
   }
 
-  console.log("updating - before", itemToUpdate);
+  console.log('updating - before', itemToUpdate);
   itemToUpdate.points = createNewRandomScore(itemToUpdate);
   var transaction = {
     update: [itemToUpdate],
   };
-  console.log("updating - after", itemToUpdate);
+  console.log('updating - after', itemToUpdate);
   gridOptions.api!.applyTransaction(transaction);
 }
 
 function addNewGroupUsingTransaction() {
   var item1 = createRow();
   var item2 = createRow();
-  item1.yearGroup = "Year 5";
-  item2.yearGroup = "Year 5";
+  item1.yearGroup = 'Year 5';
+  item2.yearGroup = 'Year 5';
   var transaction = {
     add: [item1, item2],
   };
-  console.log("add - ", item1);
-  console.log("add - ", item2);
+  console.log('add - ', item1);
+  console.log('add - ', item2);
   gridOptions.api!.applyTransaction(transaction);
 }
 
 function addNewCourse() {
   var item1 = createRow();
-  item1.course = "Physics";
+  item1.course = 'Physics';
   var transaction = {
     add: [item1],
   };
-  console.log("add - ", item1);
+  console.log('add - ', item1);
   gridOptions.api!.applyTransaction(transaction);
 }
 
 function removePhysics() {
   var allPhysics: any = [];
   gridOptions.api!.forEachLeafNode(function (rowNode) {
-    if (rowNode.data.course === "Physics") {
+    if (rowNode.data.course === 'Physics') {
       allPhysics.push(rowNode.data);
     }
   });
   var transaction = {
     remove: allPhysics,
   };
-  console.log("removing " + allPhysics.length + " physics items.");
+  console.log('removing ' + allPhysics.length + ' physics items.');
   gridOptions.api!.applyTransaction(transaction);
 }
 
@@ -215,19 +216,19 @@ function moveCourse() {
   if (!item) {
     return;
   }
-  item.course = item.course === "History" ? "Science" : "History";
+  item.course = item.course === 'History' ? 'Science' : 'History';
   var transaction = {
     update: [item],
   };
-  console.log("moving " + item);
+  console.log('moving ' + item);
   gridOptions.api!.applyTransaction(transaction);
 }
 
 // setup the grid after the page has finished loading
-var gridDiv = document.querySelector<HTMLElement>("#myGrid")!;
+var gridDiv = document.querySelector<HTMLElement>('#myGrid')!;
 new Grid(gridDiv, gridOptions);
 
-if (typeof window !== "undefined") {
+if (typeof window !== 'undefined') {
   // Attach external event handlers to window so they can be called from index.html
   (<any>window).pivotMode = pivotMode;
   (<any>window).updateOneRecord = updateOneRecord;

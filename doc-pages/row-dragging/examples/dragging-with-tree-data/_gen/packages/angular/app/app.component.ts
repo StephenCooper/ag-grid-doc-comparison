@@ -1,21 +1,22 @@
-import { Component } from "@angular/core";
+import { Component } from '@angular/core';
 import {
   ColDef,
   GetDataPath,
   GetRowIdFunc,
+  GetRowIdParams,
   GridApi,
   GridReadyEvent,
   RowDragEndEvent,
   RowNode,
   ValueFormatterParams,
-} from "ag-grid-community";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
+} from 'ag-grid-community';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import 'ag-grid-enterprise';
 declare var FileCellRenderer: any;
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<ag-grid-angular
     style="width: 100%; height: 100%;"
     class="ag-theme-alpine"
@@ -36,9 +37,9 @@ export class AppComponent {
   private gridApi!: GridApi;
 
   public columnDefs: ColDef[] = [
-    { field: "dateModified" },
+    { field: 'dateModified' },
     {
-      field: "size",
+      field: 'size',
       valueFormatter: valueFormatter,
     },
   ];
@@ -48,15 +49,15 @@ export class AppComponent {
   };
   public rowData: any[] | null = getData();
   public groupDefaultExpanded = -1;
-  public getDataPath: GetDataPath = function (data) {
+  public getDataPath: GetDataPath = function (data: any) {
     return data.filePath;
   };
-  public getRowId: GetRowIdFunc = function (params) {
+  public getRowId: GetRowIdFunc = function (params: GetRowIdParams) {
     return params.data.id;
   };
   public autoGroupColumnDef: ColDef = {
     rowDrag: true,
-    headerName: "Files",
+    headerName: 'Files',
     minWidth: 300,
     cellRendererParams: {
       suppressCount: true,
@@ -72,7 +73,7 @@ export class AppComponent {
     }
     // folder to drop into is where we are going to move the file/folder to
     var folderToDropInto =
-      overNode.data.type === "folder"
+      overNode.data.type === 'folder'
         ? // if over a folder, we take the immediate row
           overNode
         : // if over a file, we take the parent row (which will be a folder)
@@ -88,7 +89,7 @@ export class AppComponent {
     // check we are not moving a folder into a child folder
     var invalidMode = isSelectionParentOfTarget(event.node, folderToDropInto);
     if (invalidMode) {
-      console.log("invalid move");
+      console.log('invalid move');
     }
     if (needToChangeParent && !invalidMode) {
       var updatedRows: any[] = [];
@@ -106,7 +107,7 @@ export class AppComponent {
 }
 
 var valueFormatter = function (params: ValueFormatterParams) {
-  return params.value ? params.value + " MB" : "";
+  return params.value ? params.value + ' MB' : '';
 };
 // this updates the filePath locations in our data, we update the data
 // before we send it to AG Grid

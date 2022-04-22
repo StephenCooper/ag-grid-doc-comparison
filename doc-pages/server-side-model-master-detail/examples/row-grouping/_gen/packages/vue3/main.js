@@ -1,8 +1,8 @@
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine-dark.css";
-import "ag-grid-enterprise";
-import { AgGridVue } from "ag-grid-vue3";
-import { createApp } from "vue";
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine-dark.css';
+import 'ag-grid-enterprise';
+import { AgGridVue } from 'ag-grid-vue3';
+import { createApp } from 'vue';
 
 const VueExample = {
   template: `
@@ -23,16 +23,16 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
-        { field: "country", rowGroup: true, hide: true },
-        { field: "accountId", hide: true },
-        { field: "name" },
-        { field: "calls" },
-        { field: "totalDuration" },
+        { field: 'country', rowGroup: true, hide: true },
+        { field: 'accountId', hide: true },
+        { field: 'name' },
+        { field: 'calls' },
+        { field: 'totalDuration' },
       ],
       gridApi: null,
       columnApi: null,
@@ -47,18 +47,18 @@ const VueExample = {
   },
   created() {
     this.autoGroupColumnDef = {
-      field: "accountId",
+      field: 'accountId',
     };
-    this.rowModelType = "serverSide";
-    this.serverSideStoreType = "partial";
+    this.rowModelType = 'serverSide';
+    this.serverSideStoreType = 'partial';
     this.detailCellRendererParams = {
       detailGridOptions: {
         columnDefs: [
-          { field: "callId" },
-          { field: "direction" },
-          { field: "duration", valueFormatter: "x.toLocaleString() + 's'" },
-          { field: "switchCode" },
-          { field: "number" },
+          { field: 'callId' },
+          { field: 'direction' },
+          { field: 'duration', valueFormatter: "x.toLocaleString() + 's'" },
+          { field: 'switchCode' },
+          { field: 'number' },
         ],
         defaultColDef: {
           flex: 1,
@@ -77,7 +77,7 @@ const VueExample = {
 
       setTimeout(function () {
         // expand some master row
-        var someRow = params.api.getRowNode("1");
+        var someRow = params.api.getRowNode('1');
         if (someRow) {
           someRow.setExpanded(true);
         }
@@ -92,7 +92,7 @@ const VueExample = {
         params.api.setServerSideDatasource(datasource);
       };
 
-      fetch("https://www.ag-grid.com/example-assets/call-data.json")
+      fetch('https://www.ag-grid.com/example-assets/call-data.json')
         .then((resp) => resp.json())
         .then((data) => updateData(data));
     },
@@ -102,7 +102,7 @@ const VueExample = {
 window.getServerSideDatasource = function getServerSideDatasource(server) {
   return {
     getRows: function (params) {
-      console.log("[Datasource] - rows requested by grid: ", params.request);
+      console.log('[Datasource] - rows requested by grid: ', params.request);
       var response = server.getData(params.request);
       // adding delay to simulate real server call
       setTimeout(function () {
@@ -121,4 +121,4 @@ window.getServerSideDatasource = function getServerSideDatasource(server) {
   };
 };
 
-createApp(VueExample).mount("#app");
+createApp(VueExample).mount('#app');

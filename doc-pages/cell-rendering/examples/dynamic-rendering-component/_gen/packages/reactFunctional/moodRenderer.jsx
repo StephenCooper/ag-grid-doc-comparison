@@ -1,9 +1,14 @@
-import React, { forwardRef, useImperativeHandle, useState } from "react";
+import React, {
+  Component,
+  forwardRef,
+  useImperativeHandle,
+  useState,
+} from 'react';
 
 export default forwardRef((props, ref) => {
   const imageForMood = (mood) =>
-    "https://www.ag-grid.com/example-assets/smileys/" +
-    (mood === "Happy" ? "happy.png" : "sad.png");
+    'https://www.ag-grid.com/example-assets/smileys/' +
+    (mood === 'Happy' ? 'happy.png' : 'sad.png');
 
   const [mood, setMood] = useState(imageForMood(props.value));
 

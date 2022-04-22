@@ -1,7 +1,7 @@
 import {
   ICellRendererComp,
   ICellRendererParams,
-} from "@ag-grid-community/core";
+} from '@ag-grid-community/core';
 export interface ImageCellRendererParams extends ICellRendererParams {
   rendererImage: string;
 }
@@ -13,7 +13,7 @@ export class DaysFrostRenderer implements ICellRendererComp {
    * Demonstrating Component Cell Renderer
    */
   constructor() {
-    this.eGui = document.createElement("span");
+    this.eGui = document.createElement('span');
   }
 
   init(params: ImageCellRendererParams) {
@@ -25,9 +25,9 @@ export class DaysFrostRenderer implements ICellRendererComp {
   updateImages() {
     const daysFrost = this.value;
     for (let i = 0; i < daysFrost; i++) {
-      const imageElement = document.createElement("img");
+      const imageElement = document.createElement('img');
       imageElement.src =
-        "https://www.ag-grid.com/example-assets/weather/" + this.rendererImage;
+        'https://www.ag-grid.com/example-assets/weather/' + this.rendererImage;
       this.eGui.appendChild(imageElement);
     }
   }
@@ -39,7 +39,7 @@ export class DaysFrostRenderer implements ICellRendererComp {
   refresh(params: ImageCellRendererParams) {
     this.value = params.value;
 
-    this.eGui.innerHTML = "";
+    this.eGui.innerHTML = '';
     this.updateImages();
 
     return true;

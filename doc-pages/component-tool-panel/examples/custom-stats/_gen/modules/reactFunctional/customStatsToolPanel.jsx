@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from 'react';
 
-const totalStyle = { paddingBottom: "15px" };
+const totalStyle = { paddingBottom: '15px' };
 
 export default (props) => {
   const [numMedals, setNumMedals] = useState(0);
@@ -30,18 +30,18 @@ export default (props) => {
   };
 
   useEffect(() => {
-    props.api.addEventListener("modelUpdated", updateTotals);
+    props.api.addEventListener('modelUpdated', updateTotals);
 
-    return () => props.api.removeEventListener("modelUpdated", updateTotals);
+    return () => props.api.removeEventListener('modelUpdated', updateTotals);
   }, []);
 
   return (
-    <div style={{ textAlign: "center" }}>
+    <div style={{ textAlign: 'center' }}>
       <span>
         <h2>
           <i className="fa fa-calculator"></i> Custom Stats
         </h2>
-        <dl style={{ fontSize: "large", padding: "30px 40px 10px 30px" }}>
+        <dl style={{ fontSize: 'large', padding: '30px 40px 10px 30px' }}>
           <dt style={totalStyle}>
             Total Medals: <b>{numMedals}</b>
           </dt>

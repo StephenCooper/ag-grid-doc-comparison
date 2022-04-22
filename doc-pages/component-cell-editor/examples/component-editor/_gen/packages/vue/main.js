@@ -1,11 +1,11 @@
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import { AgGridVue } from "ag-grid-vue";
-import Vue from "vue";
-import DoublingEditor from "./doublingEditorVue.js";
-import MoodEditor from "./moodEditorVue.js";
-import MoodRenderer from "./moodRendererVue.js";
-import NumericEditor from "./numericEditorVue.js";
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import { AgGridVue } from 'ag-grid-vue';
+import Vue from 'vue';
+import DoublingEditor from './doublingEditorVue.js';
+import MoodEditor from './moodEditorVue.js';
+import MoodRenderer from './moodRendererVue.js';
+import NumericEditor from './numericEditorVue.js';
 
 const VueExample = {
   template: `
@@ -24,7 +24,7 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
     doublingEditor: DoublingEditor,
     moodRenderer: MoodRenderer,
     moodEditor: MoodEditor,
@@ -34,23 +34,23 @@ const VueExample = {
     return {
       columnDefs: [
         {
-          headerName: "Doubling",
-          field: "number",
-          cellEditor: "doublingEditor",
+          headerName: 'Doubling',
+          field: 'number',
+          cellEditor: 'doublingEditor',
           editable: true,
           width: 300,
         },
         {
-          field: "mood",
-          cellRenderer: "moodRenderer",
-          cellEditor: "moodEditor",
+          field: 'mood',
+          cellRenderer: 'moodRenderer',
+          cellEditor: 'moodEditor',
           editable: true,
           width: 300,
         },
         {
-          headerName: "Numeric",
-          field: "number",
-          cellEditor: "numericEditor",
+          headerName: 'Numeric',
+          field: 'number',
+          cellEditor: 'numericEditor',
           editable: true,
           width: 280,
         },
@@ -71,68 +71,68 @@ const VueExample = {
   beforeMount() {
     this.rowData = [
       {
-        name: "Bob",
-        mood: "Happy",
+        name: 'Bob',
+        mood: 'Happy',
         number: 10,
       },
       {
-        name: "Harry",
-        mood: "Sad",
+        name: 'Harry',
+        mood: 'Sad',
         number: 3,
       },
       {
-        name: "Sally",
-        mood: "Happy",
+        name: 'Sally',
+        mood: 'Happy',
         number: 20,
       },
       {
-        name: "Mary",
-        mood: "Sad",
+        name: 'Mary',
+        mood: 'Sad',
         number: 5,
       },
       {
-        name: "John",
-        mood: "Happy",
+        name: 'John',
+        mood: 'Happy',
         number: 15,
       },
       {
-        name: "Jack",
-        mood: "Happy",
+        name: 'Jack',
+        mood: 'Happy',
         number: 25,
       },
       {
-        name: "Sue",
-        mood: "Sad",
+        name: 'Sue',
+        mood: 'Sad',
         number: 43,
       },
       {
-        name: "Sean",
-        mood: "Sad",
+        name: 'Sean',
+        mood: 'Sad',
         number: 1335,
       },
       {
-        name: "Niall",
-        mood: "Happy",
+        name: 'Niall',
+        mood: 'Happy',
         number: 2,
       },
       {
-        name: "Alberto",
-        mood: "Happy",
+        name: 'Alberto',
+        mood: 'Happy',
         number: 123,
       },
       {
-        name: "Fred",
-        mood: "Sad",
+        name: 'Fred',
+        mood: 'Sad',
         number: 532,
       },
       {
-        name: "Jenny",
-        mood: "Happy",
+        name: 'Jenny',
+        mood: 'Happy',
         number: 34,
       },
       {
-        name: "Larry",
-        mood: "Happy",
+        name: 'Larry',
+        mood: 'Happy',
         number: 13,
       },
     ];
@@ -146,8 +146,8 @@ const VueExample = {
 };
 
 new Vue({
-  el: "#app",
+  el: '#app',
   components: {
-    "my-component": VueExample,
+    'my-component': VueExample,
   },
 });

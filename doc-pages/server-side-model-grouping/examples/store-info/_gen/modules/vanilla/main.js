@@ -1,11 +1,11 @@
 const gridOptions = {
   columnDefs: [
-    { field: "country", enableRowGroup: true, rowGroup: true },
-    { field: "sport", enableRowGroup: true, rowGroup: true },
-    { field: "year", minWidth: 100 },
-    { field: "gold", aggFunc: "sum" },
-    { field: "silver", aggFunc: "sum" },
-    { field: "bronze", aggFunc: "sum" },
+    { field: 'country', enableRowGroup: true, rowGroup: true },
+    { field: 'sport', enableRowGroup: true, rowGroup: true },
+    { field: 'year', minWidth: 100 },
+    { field: 'gold', aggFunc: 'sum' },
+    { field: 'silver', aggFunc: 'sum' },
+    { field: 'bronze', aggFunc: 'sum' },
   ],
   defaultColDef: {
     flex: 1,
@@ -13,8 +13,8 @@ const gridOptions = {
     resizable: true,
     sortable: true,
   },
-  rowGroupPanelShow: "always",
-  serverSideStoreType: "full",
+  rowGroupPanelShow: 'always',
+  serverSideStoreType: 'full',
   autoGroupColumnDef: {
     flex: 1,
     minWidth: 280,
@@ -24,7 +24,7 @@ const gridOptions = {
   cacheBlockSize: 4,
 
   // use the server-side row model
-  rowModelType: "serverSide",
+  rowModelType: 'serverSide',
 
   getServerSideStoreParams: function (params) {
     var noGroupingActive = params.rowGroupColumns.length == 0;
@@ -32,7 +32,7 @@ const gridOptions = {
     if (noGroupingActive) {
       res = {
         // infinite scrolling
-        storeType: "partial",
+        storeType: 'partial',
         // 100 rows per block
         cacheBlockSize: 100,
         // purge blocks that are not needed
@@ -41,17 +41,17 @@ const gridOptions = {
     } else {
       var topLevelRows = params.level == 0;
       res = {
-        storeType: topLevelRows ? "full" : "partial",
+        storeType: topLevelRows ? 'full' : 'partial',
         cacheBlockSize: params.level == 1 ? 5 : 2,
         maxBlocksInCache: -1, // never purge blocks
       };
     }
 
-    console.log("############## NEW STORE ##############");
+    console.log('############## NEW STORE ##############');
     console.log(
-      "getServerSideStoreParams, level = " +
+      'getServerSideStoreParams, level = ' +
         params.level +
-        ", result = " +
+        ', result = ' +
         JSON.stringify(res)
     );
 
@@ -65,12 +65,12 @@ const gridOptions = {
 
 function onBtStoreState() {
   var storeState = gridOptions.api.getServerSideStoreState();
-  console.log("Store States:");
+  console.log('Store States:');
   storeState.forEach(function (state, index) {
     console.log(
       index +
-        " - " +
-        JSON.stringify(state).replace(/"/g, "").replace(/,/g, ", ")
+        ' - ' +
+        JSON.stringify(state).replace(/"/g, '').replace(/,/g, ', ')
     );
   });
 }
@@ -78,7 +78,7 @@ function onBtStoreState() {
 function getServerSideDatasource(server) {
   return {
     getRows: function (params) {
-      console.log("[Datasource] - rows requested by grid: ", params.request);
+      console.log('[Datasource] - rows requested by grid: ', params.request);
 
       var response = server.getData(params.request);
 
@@ -104,11 +104,11 @@ function getServerSideDatasource(server) {
 }
 
 // setup the grid after the page has finished loading
-document.addEventListener("DOMContentLoaded", function () {
-  var gridDiv = document.querySelector("#myGrid");
+document.addEventListener('DOMContentLoaded', function () {
+  var gridDiv = document.querySelector('#myGrid');
   new agGrid.Grid(gridDiv, gridOptions);
 
-  fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+  fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
     .then((response) => response.json())
     .then(function (data) {
       // setup the fake server with entire dataset

@@ -1,12 +1,12 @@
-import { HttpClient } from "@angular/common/http";
-import { Component } from "@angular/core";
-import { ColDef, ExcelStyle, GridApi, GridReadyEvent } from "ag-grid-community";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
+import { HttpClient } from '@angular/common/http';
+import { Component } from '@angular/core';
+import { ColDef, ExcelStyle, GridApi, GridReadyEvent } from 'ag-grid-community';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import 'ag-grid-enterprise';
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<div class="container">
     <div class="columns">
       <div>
@@ -42,24 +42,24 @@ export class AppComponent {
     flex: 1,
   };
   public columnDefs: ColDef[] = [
-    { field: "athlete", minWidth: 200 },
-    { field: "country", minWidth: 200 },
-    { field: "sport", minWidth: 150 },
-    { field: "gold", hide: true },
-    { field: "silver", hide: true },
-    { field: "bronze", hide: true },
-    { field: "total", hide: true },
+    { field: 'athlete', minWidth: 200 },
+    { field: 'country', minWidth: 200 },
+    { field: 'sport', minWidth: 150 },
+    { field: 'gold', hide: true },
+    { field: 'silver', hide: true },
+    { field: 'bronze', hide: true },
+    { field: 'total', hide: true },
   ];
   public excelStyles: ExcelStyle[] = [
     {
-      id: "coverHeading",
+      id: 'coverHeading',
       font: {
         size: 26,
         bold: true,
       },
     },
     {
-      id: "coverText",
+      id: 'coverText',
       font: {
         size: 14,
       },
@@ -72,7 +72,7 @@ export class AppComponent {
   onBtExport() {
     const spreadsheets = [];
     //set a filter condition ensuring no records are returned so only the header content is exported
-    const filterInstance = this.gridApi.getFilterInstance("athlete")!;
+    const filterInstance = this.gridApi.getFilterInstance('athlete')!;
     filterInstance.setModel({
       values: [],
     });
@@ -83,42 +83,42 @@ export class AppComponent {
         prependContent: [
           [
             {
-              styleId: "coverHeading",
+              styleId: 'coverHeading',
               mergeAcross: 3,
-              data: { value: "AG Grid", type: "String" },
+              data: { value: 'AG Grid', type: 'String' },
             },
           ],
           [
             {
-              styleId: "coverHeading",
+              styleId: 'coverHeading',
               mergeAcross: 3,
-              data: { value: "", type: "String" },
+              data: { value: '', type: 'String' },
             },
           ],
           [
             {
-              styleId: "coverText",
+              styleId: 'coverText',
               mergeAcross: 3,
               data: {
                 value:
-                  "Data shown lists Olympic medal winners for years 2000-2012",
-                type: "String",
+                  'Data shown lists Olympic medal winners for years 2000-2012',
+                type: 'String',
               },
             },
           ],
           [
             {
-              styleId: "coverText",
+              styleId: 'coverText',
               data: {
                 value:
-                  "This data includes a row for each participation record - athlete name, country, year, sport, count of gold, silver, bronze medals won during the sports event",
-                type: "String",
+                  'This data includes a row for each participation record - athlete name, country, year, sport, count of gold, silver, bronze medals won during the sports event',
+                type: 'String',
               },
             },
           ],
         ],
-        processHeaderCallback: () => "",
-        sheetName: "cover",
+        processHeaderCallback: () => '',
+        sheetName: 'cover',
       })!
     );
     //remove filter condition set above so all the grid data can be exported on a separate sheet
@@ -127,7 +127,7 @@ export class AppComponent {
     spreadsheets.push(this.gridApi.getSheetDataForExcel()!);
     this.gridApi.exportMultipleSheetsAsExcel({
       data: spreadsheets,
-      fileName: "ag-grid.xlsx",
+      fileName: 'ag-grid.xlsx',
     });
   }
 
@@ -136,7 +136,7 @@ export class AppComponent {
 
     this.http
       .get<any[]>(
-        "https://www.ag-grid.com/example-assets/small-olympic-winners.json"
+        'https://www.ag-grid.com/example-assets/small-olympic-winners.json'
       )
       .subscribe((data) =>
         params.api!.setRowData(data.filter((rec: any) => rec.country != null))

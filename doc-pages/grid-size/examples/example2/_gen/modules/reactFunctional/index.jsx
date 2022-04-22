@@ -1,12 +1,12 @@
-"use strict";
+'use strict';
 
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { AgGridReact } from "@ag-grid-community/react";
-import React, { useCallback, useMemo, useState } from "react";
-import { render } from "react-dom";
+import React, { useCallback, useMemo, useRef, useState } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from '@ag-grid-community/react';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([ClientSideRowModelModule]);
@@ -17,7 +17,7 @@ var currentRowHeight;
 
 const updateRowHeight = (params) => {
   // get the height of the grid body - this excludes the height of the headers
-  const bodyViewport = document.querySelector(".ag-body-viewport");
+  const bodyViewport = document.querySelector('.ag-body-viewport');
   if (!bodyViewport) {
     return;
   }
@@ -39,27 +39,27 @@ const updateRowHeight = (params) => {
 };
 
 const GridExample = () => {
-  const containerStyle = useMemo(() => ({ width: "100%", height: "100%" }), []);
-  const gridStyle = useMemo(() => ({ height: "100%", width: "100%" }), []);
+  const containerStyle = useMemo(() => ({ width: '100%', height: '100%' }), []);
+  const gridStyle = useMemo(() => ({ height: '100%', width: '100%' }), []);
   const [rowData, setRowData] = useState(getData());
   const [columnDefs, setColumnDefs] = useState([
-    { field: "athlete", minWidth: 150 },
-    { field: "age", minWidth: 70, maxWidth: 90 },
-    { field: "country", minWidth: 130 },
-    { field: "year", minWidth: 70, maxWidth: 90 },
-    { field: "date", minWidth: 120 },
-    { field: "sport", minWidth: 120 },
-    { field: "gold", minWidth: 80 },
-    { field: "silver", minWidth: 80 },
-    { field: "bronze", minWidth: 80 },
-    { field: "total", minWidth: 80 },
+    { field: 'athlete', minWidth: 150 },
+    { field: 'age', minWidth: 70, maxWidth: 90 },
+    { field: 'country', minWidth: 130 },
+    { field: 'year', minWidth: 70, maxWidth: 90 },
+    { field: 'date', minWidth: 120 },
+    { field: 'sport', minWidth: 120 },
+    { field: 'gold', minWidth: 80 },
+    { field: 'silver', minWidth: 80 },
+    { field: 'bronze', minWidth: 80 },
+    { field: 'total', minWidth: 80 },
   ]);
   const defaultColDef = useMemo(() => {
     return {
       resizable: true,
     };
   }, []);
-  const getRowHeight = useCallback(function () {
+  const getRowHeight = useCallback(function (params) {
     return currentRowHeight;
   }, []);
 
@@ -100,4 +100,4 @@ const GridExample = () => {
   );
 };
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

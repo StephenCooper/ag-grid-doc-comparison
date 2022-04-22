@@ -1,10 +1,10 @@
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine-dark.css";
-import { AgGridVue } from "@ag-grid-community/vue3";
-import { RowGroupingModule } from "@ag-grid-enterprise/row-grouping";
-import { ServerSideRowModelModule } from "@ag-grid-enterprise/server-side-row-model";
-import { createApp } from "vue";
+import { ModuleRegistry } from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine-dark.css';
+import { AgGridVue } from '@ag-grid-community/vue3';
+import { RowGroupingModule } from '@ag-grid-enterprise/row-grouping';
+import { ServerSideRowModelModule } from '@ag-grid-enterprise/server-side-row-model';
+import { createApp } from 'vue';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([ServerSideRowModelModule, RowGroupingModule]);
@@ -16,7 +16,7 @@ const VueExample = {
                 <div style="margin-bottom: 5px;">
                     <button v-on:click="refreshCache(undefined)">Refresh Top Level</button>
                     <button v-on:click="refreshCache(['Canada'])">Refresh [Canada]</button>
-                    <button v-on:click="refreshCache(['Canada',2002])">Refresh [Canada,2002]</button>
+                    <button v-on:click="refreshCache(['Canada','2002'])">Refresh [Canada,2002]</button>
                     <label><input type="checkbox" id="purge"> Purge</label>
                 </div>
                 <ag-grid-vue
@@ -38,17 +38,17 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
-        { field: "country", rowGroup: true, hide: true },
-        { field: "year", rowGroup: true, hide: true },
-        { field: "version" },
-        { field: "gold", aggFunc: "sum" },
-        { field: "silver", aggFunc: "sum" },
-        { field: "bronze", aggFunc: "sum" },
+        { field: 'country', rowGroup: true, hide: true },
+        { field: 'year', rowGroup: true, hide: true },
+        { field: 'version' },
+        { field: 'gold', aggFunc: 'sum' },
+        { field: 'silver', aggFunc: 'sum' },
+        { field: 'bronze', aggFunc: 'sum' },
       ],
       gridApi: null,
       columnApi: null,
@@ -68,7 +68,7 @@ const VueExample = {
     this.autoGroupColumnDef = {
       flex: 1,
       minWidth: 280,
-      field: "athlete",
+      field: 'athlete',
     };
     this.getRowId = (params) => {
       var data = params.data;
@@ -82,15 +82,15 @@ const VueExample = {
       if (data.id != null) {
         parts.push(data.id);
       }
-      return parts.join("-");
+      return parts.join('-');
     };
-    this.rowModelType = "serverSide";
-    this.serverSideStoreType = "full";
+    this.rowModelType = 'serverSide';
+    this.serverSideStoreType = 'full';
   },
   methods: {
     refreshCache(route) {
       versionCounter++;
-      var purge = document.querySelector("#purge").checked === true;
+      var purge = document.querySelector('#purge').checked === true;
       this.gridApi.refreshServerSideStore({ route: route, purge: purge });
     },
     onGridReady(params) {
@@ -110,7 +110,7 @@ const VueExample = {
         params.api.setServerSideDatasource(datasource);
       };
 
-      fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
         .then((resp) => resp.json())
         .then((data) => updateData(data));
     },
@@ -120,13 +120,13 @@ const VueExample = {
 window.getServerSideDatasource = function getServerSideDatasource(server) {
   return {
     getRows: function (params) {
-      console.log("[Datasource] - rows requested by grid: ", params.request);
+      console.log('[Datasource] - rows requested by grid: ', params.request);
       var response = server.getData(params.request);
       response.rows = response.rows.map(function (item) {
         var res = {};
         Object.assign(res, item);
         res.version =
-          versionCounter + " - " + versionCounter + " - " + versionCounter;
+          versionCounter + ' - ' + versionCounter + ' - ' + versionCounter;
         // for unique-id purposes in the client, we also want to attached
         // the parent group keys
         params.request.groupKeys.forEach(function (groupKey, index) {
@@ -155,4 +155,4 @@ window.getServerSideDatasource = function getServerSideDatasource(server) {
 
 var versionCounter = 1;
 
-createApp(VueExample).mount("#app");
+createApp(VueExample).mount('#app');

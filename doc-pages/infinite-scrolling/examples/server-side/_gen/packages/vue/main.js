@@ -1,8 +1,8 @@
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
-import { AgGridVue } from "ag-grid-vue";
-import Vue from "vue";
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import 'ag-grid-enterprise';
+import { AgGridVue } from 'ag-grid-vue';
+import Vue from 'vue';
 
 const VueExample = {
   template: `
@@ -25,15 +25,15 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
         {
-          headerName: "ID",
+          headerName: 'ID',
           maxWidth: 100,
-          valueGetter: "node.id",
+          valueGetter: 'node.id',
           cellRenderer: (params) => {
             if (params.value !== undefined) {
               return params.value;
@@ -44,31 +44,31 @@ const VueExample = {
           sortable: false,
           suppressMenu: true,
         },
-        { field: "athlete", suppressMenu: true },
+        { field: 'athlete', suppressMenu: true },
         {
-          field: "age",
-          filter: "agNumberColumnFilter",
+          field: 'age',
+          filter: 'agNumberColumnFilter',
           filterParams: {
-            filterOptions: ["equals", "lessThan", "greaterThan"],
+            filterOptions: ['equals', 'lessThan', 'greaterThan'],
             suppressAndOrCondition: true,
           },
         },
         {
-          field: "country",
-          filter: "agSetColumnFilter",
+          field: 'country',
+          filter: 'agSetColumnFilter',
           filterParams: filterParams,
         },
         {
-          field: "year",
-          filter: "agSetColumnFilter",
-          filterParams: { values: ["2000", "2004", "2008", "2012"] },
+          field: 'year',
+          filter: 'agSetColumnFilter',
+          filterParams: { values: ['2000', '2004', '2008', '2012'] },
         },
-        { field: "date" },
-        { field: "sport", suppressMenu: true },
-        { field: "gold", suppressMenu: true },
-        { field: "silver", suppressMenu: true },
-        { field: "bronze", suppressMenu: true },
-        { field: "total", suppressMenu: true },
+        { field: 'date' },
+        { field: 'sport', suppressMenu: true },
+        { field: 'gold', suppressMenu: true },
+        { field: 'silver', suppressMenu: true },
+        { field: 'bronze', suppressMenu: true },
+        { field: 'total', suppressMenu: true },
       ],
       gridApi: null,
       columnApi: null,
@@ -90,8 +90,8 @@ const VueExample = {
     };
   },
   created() {
-    this.rowSelection = "multiple";
-    this.rowModelType = "infinite";
+    this.rowSelection = 'multiple';
+    this.rowModelType = 'infinite';
     this.cacheBlockSize = 100;
     this.cacheOverflowSize = 2;
     this.maxConcurrentDatasourceRequests = 2;
@@ -109,13 +109,13 @@ const VueExample = {
       const updateData = (data) => {
         // give each row an id
         data.forEach(function (d, index) {
-          d.id = "R" + (index + 1);
+          d.id = 'R' + (index + 1);
         });
         const dataSource = {
           rowCount: undefined,
           getRows: function (params) {
             console.log(
-              "asking for " + params.startRow + " to " + params.endRow
+              'asking for ' + params.startRow + ' to ' + params.endRow
             );
             // At this point in your code, you would call the server.
             // To make the demo look real, wait for 500ms before returning
@@ -143,7 +143,7 @@ const VueExample = {
         params.api.setDatasource(dataSource);
       };
 
-      fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
         .then((resp) => resp.json())
         .then((data) => updateData(data));
     },
@@ -174,7 +174,7 @@ window.sortData = function sortData(sortModel, data) {
       if (valueA == valueB) {
         continue;
       }
-      const sortDirection = sortColModel.sort === "asc" ? 1 : -1;
+      const sortDirection = sortColModel.sort === 'asc' ? 1 : -1;
       if (valueA > valueB) {
         return sortDirection;
       } else {
@@ -201,11 +201,11 @@ window.filterData = function filterData(filterModel, data) {
       // EQUALS = 1;
       // LESS_THAN = 2;
       // GREATER_THAN = 3;
-      if (filterModel.age.type == "equals") {
+      if (filterModel.age.type == 'equals') {
         if (age !== allowedAge) {
           continue;
         }
-      } else if (filterModel.age.type == "lessThan") {
+      } else if (filterModel.age.type == 'lessThan') {
         if (age >= allowedAge) {
           continue;
         }
@@ -234,8 +234,8 @@ window.filterData = function filterData(filterModel, data) {
 const filterParams = { values: getCountries() };
 
 new Vue({
-  el: "#app",
+  el: '#app',
   components: {
-    "my-component": VueExample,
+    'my-component': VueExample,
   },
 });

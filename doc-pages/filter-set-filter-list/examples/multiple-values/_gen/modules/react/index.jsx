@@ -1,16 +1,16 @@
-"use strict";
+'use strict';
 
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { AgGridReact } from "@ag-grid-community/react";
-import { ColumnsToolPanelModule } from "@ag-grid-enterprise/column-tool-panel";
-import { FiltersToolPanelModule } from "@ag-grid-enterprise/filter-tool-panel";
-import { MenuModule } from "@ag-grid-enterprise/menu";
-import { SetFilterModule } from "@ag-grid-enterprise/set-filter";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from '@ag-grid-community/react';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import { SetFilterModule } from '@ag-grid-enterprise/set-filter';
+import { MenuModule } from '@ag-grid-enterprise/menu';
+import { ColumnsToolPanelModule } from '@ag-grid-enterprise/column-tool-panel';
+import { FiltersToolPanelModule } from '@ag-grid-enterprise/filter-tool-panel';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([
@@ -28,19 +28,19 @@ class GridExample extends Component {
     this.state = {
       columnDefs: [
         {
-          headerName: "Animals (array)",
-          field: "animalsArray",
-          filter: "agSetColumnFilter",
+          headerName: 'Animals (array)',
+          field: 'animalsArray',
+          filter: 'agSetColumnFilter',
         },
         {
-          headerName: "Animals (string)",
-          filter: "agSetColumnFilter",
+          headerName: 'Animals (string)',
+          filter: 'agSetColumnFilter',
           valueGetter: valueGetter,
         },
         {
-          headerName: "Animals (objects)",
-          field: "animalsObjects",
-          filter: "agSetColumnFilter",
+          headerName: 'Animals (objects)',
+          field: 'animalsObjects',
+          filter: 'agSetColumnFilter',
           valueFormatter: valueFormatter,
           keyCreator: keyCreator,
         },
@@ -49,7 +49,7 @@ class GridExample extends Component {
         flex: 1,
       },
       rowData: getData(),
-      sideBar: "filters",
+      sideBar: 'filters',
     };
   }
 
@@ -60,11 +60,11 @@ class GridExample extends Component {
 
   render() {
     return (
-      <div style={{ width: "100%", height: "100%" }}>
+      <div style={{ width: '100%', height: '100%' }}>
         <div
           style={{
-            height: "100%",
-            width: "100%",
+            height: '100%',
+            width: '100%',
           }}
           className="ag-theme-alpine"
         >
@@ -82,14 +82,14 @@ class GridExample extends Component {
 }
 
 var valueGetter = function (params) {
-  return params.data["animalsString"].split("|");
+  return params.data['animalsString'].split('|');
 };
 var valueFormatter = function (params) {
   return params.value
     .map(function (animal) {
       return animal.name;
     })
-    .join(", ");
+    .join(', ');
 };
 var keyCreator = function (params) {
   return params.value.map(function (animal) {
@@ -97,4 +97,4 @@ var keyCreator = function (params) {
   });
 };
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

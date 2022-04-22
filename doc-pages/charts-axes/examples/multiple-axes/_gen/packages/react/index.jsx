@@ -1,8 +1,10 @@
-"use strict";
+'use strict';
 
-import { AgChartsReact } from "ag-charts-react";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { cloneDeep } from 'lodash';
+import { render } from 'react-dom';
+import * as agCharts from 'ag-charts-community';
+import { AgChartsReact } from 'ag-charts-react';
 
 class ChartExample extends Component {
   constructor(props) {
@@ -14,39 +16,39 @@ class ChartExample extends Component {
         data: getData(),
         theme: {
           palette: {
-            fills: ["#c16068", "#a2bf8a", "#80a0c3"],
-            strokes: ["#c16068", "#a2bf8a", "#80a0c3"],
+            fills: ['#c16068', '#a2bf8a', '#80a0c3'],
+            strokes: ['#c16068', '#a2bf8a', '#80a0c3'],
           },
         },
         title: {
-          text: "Cattle Holdings and Beef Exports (UK)",
+          text: 'Cattle Holdings and Beef Exports (UK)',
           fontSize: 18,
         },
         subtitle: {
-          text: "Source: Department for Environment, Food & Rural Affairs",
+          text: 'Source: Department for Environment, Food & Rural Affairs',
         },
         series: [
           {
-            type: "column",
-            xKey: "year",
-            yKey: "male",
-            yName: "Male cattle",
+            type: 'column',
+            xKey: 'year',
+            yKey: 'male',
+            yName: 'Male cattle',
             grouped: true,
             strokeWidth: 0,
           },
           {
-            type: "column",
-            xKey: "year",
-            yKey: "female",
-            yName: "Female cattle",
+            type: 'column',
+            xKey: 'year',
+            yKey: 'female',
+            yName: 'Female cattle',
             grouped: true,
             strokeWidth: 0,
           },
           {
-            type: "line",
-            xKey: "year",
-            yKey: "exportedTonnes",
-            yName: "Beef exports",
+            type: 'line',
+            xKey: 'year',
+            yKey: 'exportedTonnes',
+            yName: 'Beef exports',
             strokeWidth: 5,
             marker: {
               enabled: false,
@@ -55,43 +57,43 @@ class ChartExample extends Component {
         ],
         axes: [
           {
-            type: "category",
-            position: "bottom",
+            type: 'category',
+            position: 'bottom',
           },
           {
-            type: "number",
-            position: "left",
-            keys: ["male", "female"],
+            type: 'number',
+            position: 'left',
+            keys: ['male', 'female'],
             title: {
               enabled: true,
-              text: "Number of cattle",
+              text: 'Number of cattle',
             },
             label: {
               formatter: function (params) {
-                return params.value / 1000 + "M";
+                return params.value / 1000 + 'M';
               },
             },
           },
           {
-            type: "number",
-            position: "right",
-            keys: ["exportedTonnes"],
+            type: 'number',
+            position: 'right',
+            keys: ['exportedTonnes'],
             title: {
               enabled: true,
-              text: "Exports (tonnes)",
+              text: 'Exports (tonnes)',
             },
             label: {
               formatter: function (params) {
-                return params.value / 1000 + "k";
+                return params.value / 1000 + 'k';
               },
             },
           },
         ],
         legend: {
-          position: "bottom",
+          position: 'bottom',
           item: {
             marker: {
-              shape: "square",
+              shape: 'square',
               strokeWidth: 0,
             },
           },
@@ -107,4 +109,4 @@ class ChartExample extends Component {
   }
 }
 
-render(<ChartExample />, document.querySelector("#root"));
+render(<ChartExample />, document.querySelector('#root'));

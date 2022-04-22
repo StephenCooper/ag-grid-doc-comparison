@@ -1,4 +1,4 @@
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
 import {
   Grid,
   GridOptions,
@@ -6,13 +6,13 @@ import {
   IServerSideDatasource,
   IServerSideGetRowsRequest,
   ModuleRegistry,
-} from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine-dark.css";
-import { ColumnsToolPanelModule } from "@ag-grid-enterprise/column-tool-panel";
-import { MasterDetailModule } from "@ag-grid-enterprise/master-detail";
-import { MenuModule } from "@ag-grid-enterprise/menu";
-import { ServerSideRowModelModule } from "@ag-grid-enterprise/server-side-row-model";
+} from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine-dark.css';
+import { ColumnsToolPanelModule } from '@ag-grid-enterprise/column-tool-panel';
+import { MasterDetailModule } from '@ag-grid-enterprise/master-detail';
+import { MenuModule } from '@ag-grid-enterprise/menu';
+import { ServerSideRowModelModule } from '@ag-grid-enterprise/server-side-row-model';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([
@@ -26,11 +26,11 @@ ModuleRegistry.registerModules([
 const gridOptions: GridOptions = {
   columnDefs: [
     // group cell renderer needed for expand / collapse icons
-    { field: "accountId", cellRenderer: "agGroupCellRenderer" },
-    { field: "name" },
-    { field: "country" },
-    { field: "calls" },
-    { field: "totalDuration" },
+    { field: 'accountId', cellRenderer: 'agGroupCellRenderer' },
+    { field: 'name' },
+    { field: 'country' },
+    { field: 'calls' },
+    { field: 'totalDuration' },
   ],
   defaultColDef: {
     flex: 1,
@@ -39,8 +39,8 @@ const gridOptions: GridOptions = {
   animateRows: true,
 
   // use the server-side row model
-  rowModelType: "serverSide",
-  serverSideStoreType: "partial",
+  rowModelType: 'serverSide',
+  serverSideStoreType: 'partial',
 
   // enable master detail
   masterDetail: true,
@@ -48,11 +48,11 @@ const gridOptions: GridOptions = {
   detailCellRendererParams: {
     detailGridOptions: {
       columnDefs: [
-        { field: "callId" },
-        { field: "direction" },
-        { field: "duration", valueFormatter: "x.toLocaleString() + 's'" },
-        { field: "switchCode", minWidth: 150 },
-        { field: "number", minWidth: 180 },
+        { field: 'callId' },
+        { field: 'direction' },
+        { field: 'duration', valueFormatter: "x.toLocaleString() + 's'" },
+        { field: 'switchCode', minWidth: 150 },
+        { field: 'number', minWidth: 180 },
       ],
       defaultColDef: {
         flex: 1,
@@ -66,7 +66,7 @@ const gridOptions: GridOptions = {
   onGridReady: function (params) {
     setTimeout(function () {
       // expand some master row
-      var someRow = params.api.getRowNode("1");
+      var someRow = params.api.getRowNode('1');
       if (someRow) {
         someRow.setExpanded(true);
       }
@@ -100,7 +100,7 @@ function getFakeServer(allData: any) {
   return {
     getResponse: function (request: IServerSideGetRowsRequest) {
       console.log(
-        "asking for rows: " + request.startRow + " to " + request.endRow
+        'asking for rows: ' + request.startRow + ' to ' + request.endRow
       );
 
       // take a slice of the total rows
@@ -119,10 +119,10 @@ function getFakeServer(allData: any) {
 }
 
 // setup the grid after the page has finished loading
-var gridDiv = document.querySelector<HTMLElement>("#myGrid")!;
+var gridDiv = document.querySelector<HTMLElement>('#myGrid')!;
 new Grid(gridDiv, gridOptions);
 
-fetch("https://www.ag-grid.com/example-assets/call-data.json")
+fetch('https://www.ag-grid.com/example-assets/call-data.json')
   .then((response) => response.json())
   .then(function (data) {
     var server = getFakeServer(data);

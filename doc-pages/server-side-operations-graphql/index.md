@@ -5,6 +5,7 @@ enterprise: true
 
 Learn how to perform server-side operations using GraphQL with a complete reference implementation that uses the MySQL database.
 
+
 In this guide we will develop an Olympic Medals application that demonstrates how to integrate a GraphQL endpoint with AG Grid's [Server-Side Row Model](/server-side-model/). Specifically it will show how data can be lazy-loaded as required, even when performing group, filter, sort operations when working with large datasets.
 
 The following screenshot shows what the finished application looks like:
@@ -16,9 +17,11 @@ The following screenshot shows what the finished application looks like:
 
 The source code can be found here: [https://github.com/ag-grid/ag-grid-server-side-graphql-example](https://github.com/ag-grid/ag-grid-server-side-graphql-example).
 
+
 ## Overview
 
 In recent years GraphQL has become a popular alternative to REST when fetching data for clients. Familiarity with GraphQL is assumed, however this [Introduction to GraphQL](https://graphql.org/learn/) should provide all the necessary background information to follow this guide.
+
 
 One of the main benefits of GraphQL is the ability to expose a single endpoint and schema which maps to numerous data sources. However in our Olympic Medals application we will keep things simple by using just a single [MySQL](https://www.mysql.com/) datasource.
 
@@ -38,6 +41,7 @@ git clone https://github.com/ag-grid/ag-grid-server-side-graphql-example.git
 
 Navigate into the project directory:
 
+
 ```bash
 cd ag-grid-server-side-graphql-example
 ```
@@ -52,7 +56,9 @@ yarn install
 
 Download and install the database as per the [MySQL Download](https://www.mysql.com/downloads/) documentation.
 
+
 Create a database with the name `'sample_data'`. Then run the following script to create the table `olympic_winners` and populate it with data via the MySQL command line:
+
 
 ```bash
 mysql -u root -p -D sample_data < ./data/olympic_winners.sql
@@ -64,11 +70,13 @@ That's it! We are now ready to run and explore the application.
 
 To run the application execute the following from the command line:
 
+
 ```bash
 yarn start
 ```
 
 Then point your browser to [http://localhost:4000/](http://localhost:4000/)
+
 
 ## Defining the GraphQL schema
 
@@ -121,16 +129,15 @@ The corresponding `rows` resolver function is implemented as follows:
 ```js
 // server/schema.js
 
-import { fetchRows } from "./olympicService";
+import { fetchRows } from './olympicService';
 
 const resolvers = {
   Query: {
     rows: (obj, args) =>
       new Promise((resolve, reject) => {
-        const resultCallback = (err, results) =>
-          err ? reject(err) : resolve(results);
-        fetchRows(args, resultCallback);
-      }).then((rows) => rows),
+        const resultCallback = (err, results) => err ? reject(err) : resolve(results);
+         fetchRows(args, resultCallback);
+      }).then(rows => rows)
   },
 };
 ```
@@ -154,19 +161,20 @@ export default schema;
 
 Hosting our GraphQL endpoint is done with the help of the `express-graphql` npm package. It is supplied with the schema we defined above.
 
+
 ```js
 // server/server.js
 
-import express from "express";
-import graphqlHTTP from "express-graphql";
-import schema from "./schema";
+import express from 'express';
+import graphqlHTTP from 'express-graphql';
+import schema from './schema';
 
 const app = express();
 
-app.use("/graphql", graphqlHTTP({ schema: schema, graphiql: true }));
+app.use('/graphql', graphqlHTTP({ schema: schema, graphiql: true }));
 
 app.listen(4000, () => {
-  console.log("Started on localhost:4000");
+  console.log('Started on localhost:4000');
 });
 ```
 
@@ -186,16 +194,16 @@ To retrieve data from our GraphQL endpoint we will use the [Apollo client](https
 class ServerSideDatasource {
   constructor(gridOptions) {
     this.gridOptions = gridOptions;
-    this.client = new ApolloClient({ uri: "http://localhost:4000/graphql/" });
+    this.client = new ApolloClient({ uri: 'http://localhost:4000/graphql/' });
   }
 
   getRows(params) {
     const columns = this.gridOptions.columnDefs;
 
     // query GraphQL endpoint
-    this.client
-      .query(query(params.request, columns))
-      .then((response) => {
+    this.client.query(query(params.request, columns))
+      .then(response => {
+
         const rows = response.data.rows;
 
         // determine last row to size scrollbar and last block size correctly
@@ -207,15 +215,16 @@ class ServerSideDatasource {
         // pass results to grid
         params.successCallback(rows, lastRow);
       })
-      .catch((err) => {
+      .catch(err => {
         console.error(err);
-        params.failCallback();
+        params.failCallback()
       });
   }
 }
 ```
 
 The `IServerSideGetRowsRequest` supplied in the `params` is simply mapped to our GraphQL queries input params as shown below:
+
 
 ```js
 // client/serverSideDatasource.js
@@ -240,28 +249,28 @@ const query = (request, columns) => {
       end: request.endRow,
       sortModel: mapSortModel(request),
       groups: mapGroups(request),
-      groupKeys: mapGroupKeys(request),
+      groupKeys: mapGroupKeys(request)
     },
-  };
+  }
 };
 
-const getFields = (columnDefs) => {
-  return columnDefs.map((colDef) => colDef.field).join();
+const getFields = columnDefs => {
+  return columnDefs.map(colDef => colDef.field).join();
 };
 
-const mapGroups = (request) => {
-  return request.rowGroupCols.map((grp) => {
-    return { colId: grp.field };
+const mapGroups = request => {
+  return request.rowGroupCols.map(grp => {
+    return { colId: grp.field }
   });
 };
 
-const mapGroupKeys = (request) => {
-  return request.groupKeys.map((key) => key.toString());
+const mapGroupKeys = request => {
+  return request.groupKeys.map(key => key.toString());
 };
 
-const mapSortModel = (request) => {
-  return request.sortModel.map((srt) => {
-    return { colId: srt.colId, sort: srt.sort };
+const mapSortModel = request => {
+  return request.sortModel.map(srt => {
+    return { colId: srt.colId, sort: srt.sort }
   });
 };
 ```
@@ -280,6 +289,7 @@ gridOptions.api.setServerSideDatasource(datasource);
 ## Conclusion
 
 In this guide we presented a reference implementation for integrating the Server-Side Row Model with GraphQL server hosted in Node and connected to a MySQL database. This included all necessary configuration and install instructions.
+
 
 A high level overview was given to illustrate the problem this approach solves before providing details of how to achieve the following server-side operations:
 

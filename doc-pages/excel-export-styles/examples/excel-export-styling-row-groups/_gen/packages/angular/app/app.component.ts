@@ -1,5 +1,5 @@
-import { HttpClient } from "@angular/common/http";
-import { Component } from "@angular/core";
+import { HttpClient } from '@angular/common/http';
+import { Component } from '@angular/core';
 import {
   CellClassParams,
   ColDef,
@@ -7,13 +7,13 @@ import {
   GridApi,
   GridReadyEvent,
   ProcessRowGroupForExportParams,
-} from "ag-grid-community";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
+} from 'ag-grid-community';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import 'ag-grid-enterprise';
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: ` <div class="page-wrapper">
     <div>
       <button
@@ -42,17 +42,17 @@ export class AppComponent {
   private gridApi!: GridApi;
 
   public columnDefs: ColDef[] = [
-    { field: "country", minWidth: 120, rowGroup: true },
-    { field: "year", rowGroup: true },
-    { headerName: "Name", field: "athlete", minWidth: 150 },
+    { field: 'country', minWidth: 120, rowGroup: true },
+    { field: 'year', rowGroup: true },
+    { headerName: 'Name', field: 'athlete', minWidth: 150 },
     {
-      headerName: "Name Length",
+      headerName: 'Name Length',
       valueGetter: 'data ? data.athlete.length : ""',
     },
-    { field: "sport", minWidth: 120, rowGroup: true },
-    { field: "silver" },
-    { field: "bronze" },
-    { field: "total" },
+    { field: 'sport', minWidth: 120, rowGroup: true },
+    { field: 'silver' },
+    { field: 'bronze' },
+    { field: 'total' },
   ];
   public defaultColDef: ColDef = {
     sortable: true,
@@ -68,26 +68,26 @@ export class AppComponent {
   };
   public excelStyles: ExcelStyle[] = [
     {
-      id: "indent-1",
+      id: 'indent-1',
       alignment: {
         indent: 1,
       },
       // note, dataType: 'string' required to ensure that numeric values aren't right-aligned
-      dataType: "String",
+      dataType: 'String',
     },
     {
-      id: "indent-2",
+      id: 'indent-2',
       alignment: {
         indent: 2,
       },
-      dataType: "String",
+      dataType: 'String',
     },
     {
-      id: "indent-3",
+      id: 'indent-3',
       alignment: {
         indent: 3,
       },
-      dataType: "String",
+      dataType: 'String',
     },
   ];
   public rowData!: any[];
@@ -104,7 +104,7 @@ export class AppComponent {
     this.gridApi = params.api;
 
     this.http
-      .get<any[]>("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      .get<any[]>('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .subscribe((data) => {
         this.rowData = data;
         params.api!.forEachNode(function (node) {
@@ -125,5 +125,5 @@ function getIndentClass(params: CellClassParams) {
     indent++;
     node = node.parent;
   }
-  return "indent-" + indent;
+  return 'indent-' + indent;
 }

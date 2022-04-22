@@ -1,10 +1,10 @@
-"use strict";
+'use strict';
 
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import { AgGridReact } from "ag-grid-react";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from 'ag-grid-react';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 
 class GridExample extends Component {
   constructor(props) {
@@ -12,11 +12,11 @@ class GridExample extends Component {
 
     this.state = {
       rowData: [
-        { make: "Toyota", model: "Celica", price: 35000 },
-        { make: "Ford", model: "Mondeo", price: 32000 },
-        { make: "Porsche", model: "Boxter", price: 72000 },
+        { make: 'Toyota', model: 'Celica', price: 35000 },
+        { make: 'Ford', model: 'Mondeo', price: 32000 },
+        { make: 'Porsche', model: 'Boxster', price: 72000 },
       ],
-      columnDefs: [{ field: "make" }, { field: "model" }, { field: "price" }],
+      columnDefs: [{ field: 'make' }, { field: 'model' }, { field: 'price' }],
     };
   }
 
@@ -25,7 +25,7 @@ class GridExample extends Component {
     this.gridColumnApi = params.columnApi;
 
     params.api.sizeColumnsToFit();
-    window.addEventListener("resize", function () {
+    window.addEventListener('resize', function () {
       setTimeout(function () {
         params.api.sizeColumnsToFit();
       });
@@ -36,13 +36,13 @@ class GridExample extends Component {
 
   render() {
     return (
-      <div style={{ width: "100%", height: "100%" }}>
-        <div style={{ display: "flex", flexDirection: "row", height: "100%" }}>
-          <div style={{ overflow: "hidden", flexGrow: "1" }}>
+      <div style={{ width: '100%', height: '100%' }}>
+        <div style={{ display: 'flex', flexDirection: 'row', height: '100%' }}>
+          <div style={{ overflow: 'hidden', flexGrow: '1' }}>
             <div
               style={{
-                height: "100%",
-                width: "100%",
+                height: '100%',
+                width: '100%',
               }}
               className="ag-theme-alpine"
             >
@@ -54,7 +54,7 @@ class GridExample extends Component {
             </div>
           </div>
 
-          <div style={{ backgroundColor: "#ccc", padding: "2rem" }}>
+          <div style={{ backgroundColor: '#ccc', padding: '2rem' }}>
             right side column
           </div>
         </div>
@@ -63,4 +63,4 @@ class GridExample extends Component {
   }
 }
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

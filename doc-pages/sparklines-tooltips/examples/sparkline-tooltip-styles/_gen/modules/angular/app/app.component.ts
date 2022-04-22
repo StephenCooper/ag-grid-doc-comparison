@@ -3,14 +3,14 @@ import {
   GridReadyEvent,
   LineSparklineOptions,
   TooltipRendererParams,
-} from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { Component } from "@angular/core";
+} from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { Component } from '@angular/core';
 // Required feature modules are registered in app.module.ts
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<ag-grid-angular
     style="width: 100%; height: 100%;"
     class="ag-theme-alpine"
@@ -23,30 +23,30 @@ import { Component } from "@angular/core";
 })
 export class AppComponent {
   public columnDefs: ColDef[] = [
-    { field: "symbol", maxWidth: 120 },
-    { field: "name", minWidth: 250 },
+    { field: 'symbol', maxWidth: 120 },
+    { field: 'name', minWidth: 250 },
     {
-      field: "change",
-      cellRenderer: "agSparklineCellRenderer",
+      field: 'change',
+      cellRenderer: 'agSparklineCellRenderer',
       cellRendererParams: {
         sparklineOptions: {
           tooltip: {
             renderer: tooltipRenderer,
           },
           line: {
-            stroke: "rgb(103,103,255)",
+            stroke: 'rgb(103,103,255)',
             strokeWidth: 1,
           },
           highlightStyle: {
-            fill: "white",
+            fill: 'white',
             strokeWidth: 0,
           },
         } as LineSparklineOptions,
       },
     },
     {
-      field: "volume",
-      type: "numericColumn",
+      field: 'volume',
+      type: 'numericColumn',
       maxWidth: 140,
     },
   ];
@@ -65,8 +65,8 @@ function tooltipRenderer(params: TooltipRendererParams) {
   return {
     title: params.context.data.symbol,
     // sets styles for tooltip
-    color: "white",
-    backgroundColor: "rgb(78,78,255)",
+    color: 'white',
+    backgroundColor: 'rgb(78,78,255)',
     opacity: 0.7,
   };
 }

@@ -3,15 +3,15 @@ import {
   FirstDataRenderedEvent,
   GridReadyEvent,
   IDetailCellRendererParams,
-} from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { HttpClient } from "@angular/common/http";
-import { Component } from "@angular/core";
+} from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { HttpClient } from '@angular/common/http';
+import { Component } from '@angular/core';
 // Required feature modules are registered in app.module.ts
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<ag-grid-angular
     style="width: 100%; height: 100%;"
     class="ag-theme-alpine"
@@ -27,27 +27,27 @@ import { Component } from "@angular/core";
 export class AppComponent {
   public columnDefs: ColDef[] = [
     // group cell renderer needed for expand / collapse icons
-    { field: "name", cellRenderer: "agGroupCellRenderer" },
-    { field: "account" },
-    { field: "calls" },
-    { field: "minutes", valueFormatter: "x.toLocaleString() + 'm'" },
+    { field: 'name', cellRenderer: 'agGroupCellRenderer' },
+    { field: 'account' },
+    { field: 'calls' },
+    { field: 'minutes', valueFormatter: "x.toLocaleString() + 'm'" },
   ];
   public defaultColDef: ColDef = {
     flex: 1,
   };
   public detailCellRendererParams: any = {
     detailGridOptions: {
-      rowSelection: "multiple",
+      rowSelection: 'multiple',
       suppressRowClickSelection: true,
       enableRangeSelection: true,
       pagination: true,
       paginationAutoPageSize: true,
       columnDefs: [
-        { field: "callId", checkboxSelection: true },
-        { field: "direction" },
-        { field: "number", minWidth: 150 },
-        { field: "duration", valueFormatter: "x.toLocaleString() + 's'" },
-        { field: "switchCode", minWidth: 150 },
+        { field: 'callId', checkboxSelection: true },
+        { field: 'direction' },
+        { field: 'number', minWidth: 150 },
+        { field: 'duration', valueFormatter: "x.toLocaleString() + 's'" },
+        { field: 'switchCode', minWidth: 150 },
       ],
       defaultColDef: {
         sortable: true,
@@ -72,7 +72,7 @@ export class AppComponent {
   onGridReady(params: GridReadyEvent) {
     this.http
       .get<any[]>(
-        "https://www.ag-grid.com/example-assets/master-detail-data.json"
+        'https://www.ag-grid.com/example-assets/master-detail-data.json'
       )
       .subscribe((data) => {
         this.rowData = data;

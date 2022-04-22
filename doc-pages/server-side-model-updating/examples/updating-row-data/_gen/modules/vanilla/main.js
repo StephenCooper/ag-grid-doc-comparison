@@ -1,10 +1,10 @@
 const columnDefs = [
-  { field: "id", hide: true },
-  { field: "athlete" },
-  { field: "country", rowGroup: true, hide: true },
-  { field: "gold" },
-  { field: "silver" },
-  { field: "bronze" },
+  { field: 'id', hide: true },
+  { field: 'athlete' },
+  { field: 'country', rowGroup: true, hide: true },
+  { field: 'gold' },
+  { field: 'silver' },
+  { field: 'bronze' },
 ];
 
 const gridOptions = {
@@ -13,10 +13,10 @@ const gridOptions = {
     resizable: true,
   },
   columnDefs: columnDefs,
-  rowSelection: "multiple",
+  rowSelection: 'multiple',
   // use the enterprise row model
-  rowModelType: "serverSide",
-  serverSideStoreType: "partial",
+  rowModelType: 'serverSide',
+  serverSideStoreType: 'partial',
   cacheBlockSize: 75,
   animateRows: true,
   isRowSelectable: isRowSelectable,
@@ -70,11 +70,11 @@ var idSequence = 0;
 var allData = [];
 
 // setup the grid after the page has finished loading
-document.addEventListener("DOMContentLoaded", function () {
-  var gridDiv = document.querySelector("#myGrid");
+document.addEventListener('DOMContentLoaded', function () {
+  var gridDiv = document.querySelector('#myGrid');
   new agGrid.Grid(gridDiv, gridOptions);
 
-  fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+  fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
     .then((response) => response.json())
     .then(function (data) {
       allData = data;
@@ -111,7 +111,7 @@ function getMockServerResponse(request) {
   var rowGroupColIds = request.rowGroupCols.map(function (x) {
     return x.id;
   });
-  var parentId = groupKeys.length > 0 ? groupKeys.join("") : "";
+  var parentId = groupKeys.length > 0 ? groupKeys.join('') : '';
 
   var rows = group(allData, rowGroupColIds, groupKeys, parentId);
 
@@ -139,7 +139,7 @@ function group(data, rowGroupColIds, groupKeys, parentId) {
 
       // Note: the server provides group id's using a simple heuristic based on group keys:
       // i.e. group node ids will be in the following format: 'Russia', 'Russia-2002'
-      res["id"] = getGroupId(parentId, key);
+      res['id'] = getGroupId(parentId, key);
 
       res[groupColId] = key;
       return res;
@@ -167,5 +167,5 @@ function updateServerRows(rowsToUpdate) {
 }
 
 function getGroupId(parentId, key) {
-  return parentId ? parentId + "-" + key : key;
+  return parentId ? parentId + '-' + key : key;
 }

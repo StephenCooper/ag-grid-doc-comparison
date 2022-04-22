@@ -1,24 +1,24 @@
 export default {
-  template: `
+    template: `
       <span>{{ formattedValue }}</span>
     `,
-  data: function () {
-    return {};
-  },
-  computed: {
-    formattedValue: function () {
-      return this.formatValueToCurrency("EUR", this.params.value);
+    data: function () {
+        return {};
     },
-  },
-  methods: {
-    formatValueToCurrency(currency, value) {
-      return `${currency}${value.toFixed(2)}`;
+    computed: {
+        formattedValue: function () {
+            return this.formatValueToCurrency('EUR', this.params.value)
+        }
     },
-    refresh(params) {
-      if (params.value !== this.params.value) {
-        this.params = params;
-      }
-      return true;
-    },
-  },
+    methods: {
+        formatValueToCurrency(currency, value) {
+            return `${currency}${value.toFixed(2)}`
+        },
+        refresh(params) {
+            if (params.value !== this.params.value) {
+                this.params = params;
+            }
+            return true;
+        }
+    }
 };

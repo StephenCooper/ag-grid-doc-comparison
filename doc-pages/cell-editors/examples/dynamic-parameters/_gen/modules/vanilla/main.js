@@ -10,36 +10,36 @@ const cellCellEditorParams = (params) => {
 
 const gridOptions = {
   columnDefs: [
-    { field: "name" },
+    { field: 'name' },
     {
-      field: "gender",
+      field: 'gender',
       cellRenderer: GenderCellRenderer,
-      cellEditor: "agRichSelectCellEditor",
+      cellEditor: 'agRichSelectCellEditor',
       cellEditorPopup: true,
       cellEditorParams: {
-        values: ["Male", "Female"],
+        values: ['Male', 'Female'],
         cellRenderer: GenderCellRenderer,
         cellEditorPopup: true,
       },
     },
     {
-      field: "country",
-      cellEditor: "agRichSelectCellEditor",
+      field: 'country',
+      cellEditor: 'agRichSelectCellEditor',
       cellEditorPopup: true,
       cellEditorParams: {
         cellHeight: 50,
-        values: ["Ireland", "USA"],
+        values: ['Ireland', 'USA'],
       },
     },
     {
-      field: "city",
-      cellEditor: "agRichSelectCellEditor",
+      field: 'city',
+      cellEditor: 'agRichSelectCellEditor',
       cellEditorPopup: true,
       cellEditorParams: cellCellEditorParams,
     },
     {
-      field: "address",
-      cellEditor: "agLargeTextCellEditor",
+      field: 'address',
+      cellEditor: 'agLargeTextCellEditor',
       cellEditorPopup: true,
       minWidth: 550,
     },
@@ -56,8 +56,8 @@ const gridOptions = {
 
 function countyToCityMap(match) {
   const map = {
-    Ireland: ["Dublin", "Cork", "Galway"],
-    USA: ["New York", "Los Angeles", "Chicago", "Houston"],
+    Ireland: ['Dublin', 'Cork', 'Galway'],
+    USA: ['New York', 'Los Angeles', 'Chicago', 'Houston'],
   };
 
   return map[match];
@@ -66,20 +66,20 @@ function countyToCityMap(match) {
 function onCellValueChanged(params) {
   const colId = params.column.getId();
 
-  if (colId === "country") {
+  if (colId === 'country') {
     const selectedCountry = params.data.country;
     const selectedCity = params.data.city;
     const allowedCities = countyToCityMap(selectedCountry);
     const cityMismatch = allowedCities.indexOf(selectedCity) < 0;
 
     if (cityMismatch) {
-      params.node.setDataValue("city", null);
+      params.node.setDataValue('city', null);
     }
   }
 }
 
 // setup the grid after the page has finished loading
-document.addEventListener("DOMContentLoaded", () => {
-  const gridDiv = document.querySelector("#myGrid");
+document.addEventListener('DOMContentLoaded', () => {
+  const gridDiv = document.querySelector('#myGrid');
   new agGrid.Grid(gridDiv, gridOptions);
 });

@@ -1,11 +1,11 @@
-"use strict";
+'use strict';
 
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
-import { AgGridReact } from "ag-grid-react";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from 'ag-grid-react';
+import 'ag-grid-enterprise';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 
 class GridExample extends Component {
   constructor(props) {
@@ -13,11 +13,11 @@ class GridExample extends Component {
 
     this.state = {
       columnDefs: [
-        { field: "country", rowGroup: true, hide: true },
-        { field: "year", rowGroup: true, hide: true },
-        { field: "gold" },
-        { field: "silver" },
-        { field: "bronze" },
+        { field: 'country', rowGroup: true, hide: true },
+        { field: 'year', rowGroup: true, hide: true },
+        { field: 'gold' },
+        { field: 'silver' },
+        { field: 'bronze' },
       ],
       defaultColDef: {
         flex: 1,
@@ -51,7 +51,7 @@ class GridExample extends Component {
 
   expand2000 = () => {
     this.gridApi.forEachNode((node) => {
-      if (node.key === "2000") {
+      if (node.key === '2000') {
         node.parent.setExpanded(true); // ensure parent 'country' group is also expanded
         node.setExpanded(true);
       }
@@ -60,9 +60,9 @@ class GridExample extends Component {
 
   render() {
     return (
-      <div style={{ width: "100%", height: "100%" }}>
+      <div style={{ width: '100%', height: '100%' }}>
         <div className="example-wrapper">
-          <div style={{ marginBottom: "5px" }}>
+          <div style={{ marginBottom: '5px' }}>
             <button onClick={() => this.expandAll()}>Expand All</button>
             <button onClick={() => this.collapseAll()}>Collapse All</button>
             <button onClick={() => this.expandCountries()}>
@@ -74,8 +74,8 @@ class GridExample extends Component {
           </div>
           <div
             style={{
-              height: "100%",
-              width: "100%",
+              height: '100%',
+              width: '100%',
             }}
             className="ag-theme-alpine"
           >
@@ -92,4 +92,4 @@ class GridExample extends Component {
   }
 }
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

@@ -1,17 +1,12 @@
-import {
-  Grid,
-  GridOptions,
-  LineSparklineOptions,
-  TooltipRendererParams,
-} from "@ag-grid-community/core";
+import { Grid, GridOptions, LineSparklineOptions, TooltipRendererParams } from '@ag-grid-community/core'
 
 const gridOptions: GridOptions = {
   columnDefs: [
-    { field: "symbol", maxWidth: 120 },
-    { field: "name", minWidth: 250 },
+    { field: 'symbol', maxWidth: 120 },
+    { field: 'name', minWidth: 250 },
     {
-      field: "change",
-      cellRenderer: "agSparklineCellRenderer",
+      field: 'change',
+      cellRenderer: 'agSparklineCellRenderer',
       cellRendererParams: {
         sparklineOptions: {
           tooltip: {
@@ -21,8 +16,8 @@ const gridOptions: GridOptions = {
       },
     },
     {
-      field: "volume",
-      type: "numericColumn",
+      field: 'volume',
+      type: 'numericColumn',
       maxWidth: 140,
     },
   ],
@@ -33,17 +28,17 @@ const gridOptions: GridOptions = {
   },
   rowData: getData(),
   rowHeight: 50,
-};
+}
 
 function tooltipRenderer(params: TooltipRendererParams) {
   return {
     title: new Date(params.xValue).toLocaleDateString(),
     content: params.yValue.toFixed(1),
-  };
+  }
 }
 
 // setup the grid after the page has finished loading
-document.addEventListener("DOMContentLoaded", function () {
-  var gridDiv = document.querySelector<HTMLElement>("#myGrid")!;
+document.addEventListener('DOMContentLoaded', function () {
+  var gridDiv = document.querySelector<HTMLElement>('#myGrid')!;
   new Grid(gridDiv, gridOptions);
-});
+})

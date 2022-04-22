@@ -1,16 +1,16 @@
-"use strict";
+'use strict';
 
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { AgGridReact } from "@ag-grid-community/react";
-import { ColumnsToolPanelModule } from "@ag-grid-enterprise/column-tool-panel";
-import { MenuModule } from "@ag-grid-enterprise/menu";
-import { RichSelectModule } from "@ag-grid-enterprise/rich-select";
-import React, { Component } from "react";
-import { render } from "react-dom";
-import GenderCellRenderer from "./genderCellRenderer.jsx";
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from '@ag-grid-community/react';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import GenderCellRenderer from './genderCellRenderer.jsx';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import { RichSelectModule } from '@ag-grid-enterprise/rich-select';
+import { MenuModule } from '@ag-grid-enterprise/menu';
+import { ColumnsToolPanelModule } from '@ag-grid-enterprise/column-tool-panel';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([
@@ -26,36 +26,36 @@ class GridExample extends Component {
 
     this.state = {
       columnDefs: [
-        { field: "name" },
+        { field: 'name' },
         {
-          field: "gender",
+          field: 'gender',
           cellRenderer: GenderCellRenderer,
-          cellEditor: "agRichSelectCellEditor",
+          cellEditor: 'agRichSelectCellEditor',
           cellEditorPopup: true,
           cellEditorParams: {
-            values: ["Male", "Female"],
+            values: ['Male', 'Female'],
             cellRenderer: GenderCellRenderer,
             cellEditorPopup: true,
           },
         },
         {
-          field: "country",
-          cellEditor: "agRichSelectCellEditor",
+          field: 'country',
+          cellEditor: 'agRichSelectCellEditor',
           cellEditorPopup: true,
           cellEditorParams: {
             cellHeight: 50,
-            values: ["Ireland", "USA"],
+            values: ['Ireland', 'USA'],
           },
         },
         {
-          field: "city",
-          cellEditor: "agRichSelectCellEditor",
+          field: 'city',
+          cellEditor: 'agRichSelectCellEditor',
           cellEditorPopup: true,
           cellEditorParams: cellCellEditorParams,
         },
         {
-          field: "address",
-          cellEditor: "agLargeTextCellEditor",
+          field: 'address',
+          cellEditor: 'agLargeTextCellEditor',
           cellEditorPopup: true,
           minWidth: 550,
         },
@@ -77,24 +77,24 @@ class GridExample extends Component {
 
   onCellValueChanged = (params) => {
     const colId = params.column.getId();
-    if (colId === "country") {
+    if (colId === 'country') {
       const selectedCountry = params.data.country;
       const selectedCity = params.data.city;
       const allowedCities = countyToCityMap(selectedCountry);
       const cityMismatch = allowedCities.indexOf(selectedCity) < 0;
       if (cityMismatch) {
-        params.node.setDataValue("city", null);
+        params.node.setDataValue('city', null);
       }
     }
   };
 
   render() {
     return (
-      <div style={{ width: "100%", height: "100%" }}>
+      <div style={{ width: '100%', height: '100%' }}>
         <div
           style={{
-            height: "100%",
-            width: "100%",
+            height: '100%',
+            width: '100%',
           }}
           className="ag-theme-alpine"
         >
@@ -121,10 +121,10 @@ const cellCellEditorParams = (params) => {
 };
 function countyToCityMap(match) {
   const map = {
-    Ireland: ["Dublin", "Cork", "Galway"],
-    USA: ["New York", "Los Angeles", "Chicago", "Houston"],
+    Ireland: ['Dublin', 'Cork', 'Galway'],
+    USA: ['New York', 'Los Angeles', 'Chicago', 'Houston'],
   };
   return map[match];
 }
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

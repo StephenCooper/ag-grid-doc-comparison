@@ -1,8 +1,8 @@
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
-import { AgGridVue } from "ag-grid-vue3";
-import { createApp } from "vue";
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import 'ag-grid-enterprise';
+import { AgGridVue } from 'ag-grid-vue3';
+import { createApp } from 'vue';
 
 const VueExample = {
   template: `
@@ -29,15 +29,15 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
-        { field: "name", cellRenderer: "agGroupCellRenderer" },
-        { field: "account" },
-        { field: "calls" },
-        { field: "minutes", valueFormatter: "x.toLocaleString() + 'm'" },
+        { field: 'name', cellRenderer: 'agGroupCellRenderer' },
+        { field: 'account' },
+        { field: 'calls' },
+        { field: 'minutes', valueFormatter: "x.toLocaleString() + 'm'" },
       ],
       gridApi: null,
       columnApi: null,
@@ -60,11 +60,11 @@ const VueExample = {
     this.detailCellRendererParams = {
       detailGridOptions: {
         columnDefs: [
-          { field: "callId" },
-          { field: "direction" },
-          { field: "number", minWidth: 150 },
-          { field: "duration", valueFormatter: "x.toLocaleString() + 's'" },
-          { field: "switchCode", minWidth: 150 },
+          { field: 'callId' },
+          { field: 'direction' },
+          { field: 'number', minWidth: 150 },
+          { field: 'duration', valueFormatter: "x.toLocaleString() + 's'" },
+          { field: 'switchCode', minWidth: 150 },
         ],
         defaultColDef: {
           flex: 1,
@@ -83,30 +83,30 @@ const VueExample = {
       }, 0);
     },
     onBtClearMilaCalls() {
-      var milaSmithRowNode = this.gridApi.getRowNode("177001");
+      var milaSmithRowNode = this.gridApi.getRowNode('177001');
       var milaSmithData = milaSmithRowNode.data;
       milaSmithData.callRecords = [];
       this.gridApi.applyTransaction({ update: [milaSmithData] });
     },
     onBtSetMilaCalls() {
-      var milaSmithRowNode = this.gridApi.getRowNode("177001");
+      var milaSmithRowNode = this.gridApi.getRowNode('177001');
       var milaSmithData = milaSmithRowNode.data;
       milaSmithData.callRecords = [
         {
-          name: "susan",
+          name: 'susan',
           callId: 579,
           duration: 23,
-          switchCode: "SW5",
-          direction: "Out",
-          number: "(02) 47485405",
+          switchCode: 'SW5',
+          direction: 'Out',
+          number: '(02) 47485405',
         },
         {
-          name: "susan",
+          name: 'susan',
           callId: 580,
           duration: 52,
-          switchCode: "SW3",
-          direction: "In",
-          number: "(02) 32367069",
+          switchCode: 'SW3',
+          direction: 'In',
+          number: '(02) 32367069',
         },
       ];
       this.gridApi.applyTransaction({ update: [milaSmithData] });
@@ -120,7 +120,7 @@ const VueExample = {
       };
 
       fetch(
-        "https://www.ag-grid.com/example-assets/master-detail-dynamic-data.json"
+        'https://www.ag-grid.com/example-assets/master-detail-dynamic-data.json'
       )
         .then((resp) => resp.json())
         .then((data) => updateData(data));
@@ -128,4 +128,4 @@ const VueExample = {
   },
 };
 
-createApp(VueExample).mount("#app");
+createApp(VueExample).mount('#app');

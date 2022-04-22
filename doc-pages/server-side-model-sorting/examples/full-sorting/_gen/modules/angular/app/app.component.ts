@@ -4,15 +4,15 @@ import {
   IServerSideDatasource,
   IServerSideGetRowsParams,
   ServerSideStoreType,
-} from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine-dark.css";
-import { HttpClient } from "@angular/common/http";
-import { Component } from "@angular/core";
+} from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine-dark.css';
+import { HttpClient } from '@angular/common/http';
+import { Component } from '@angular/core';
 // Required feature modules are registered in app.module.ts
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<ag-grid-angular
     style="width: 100%; height: 100%;"
     class="ag-theme-alpine-dark"
@@ -27,28 +27,28 @@ import { Component } from "@angular/core";
 })
 export class AppComponent {
   public columnDefs: ColDef[] = [
-    { field: "athlete", minWidth: 220 },
-    { field: "country", minWidth: 200 },
-    { field: "year" },
-    { field: "sport", minWidth: 200 },
-    { field: "gold" },
-    { field: "silver" },
-    { field: "bronze" },
+    { field: 'athlete', minWidth: 220 },
+    { field: 'country', minWidth: 200 },
+    { field: 'year' },
+    { field: 'sport', minWidth: 200 },
+    { field: 'gold' },
+    { field: 'silver' },
+    { field: 'bronze' },
   ];
   public defaultColDef: ColDef = {
     flex: 1,
     minWidth: 100,
     sortable: true,
   };
-  public rowModelType = "serverSide";
-  public serverSideStoreType: ServerSideStoreType = "full";
+  public rowModelType = 'serverSide';
+  public serverSideStoreType: ServerSideStoreType = 'full';
   public rowData!: any[];
 
   constructor(private http: HttpClient) {}
 
   onGridReady(params: GridReadyEvent) {
     this.http
-      .get<any[]>("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      .get<any[]>('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .subscribe((data) => {
         // setup the fake server with entire dataset
         var fakeServer = createFakeServer(data);
@@ -64,9 +64,9 @@ function createServerSideDatasource(server: any): IServerSideDatasource {
   return {
     getRows: function (params: IServerSideGetRowsParams) {
       console.log(
-        "[Datasource] - rows requested by grid: startRow = " +
+        '[Datasource] - rows requested by grid: startRow = ' +
           params.request.startRow +
-          ", endRow = " +
+          ', endRow = ' +
           params.request.endRow
       );
       // get data for request from our fake server

@@ -3,16 +3,16 @@ var callCount = 0;
 
 const gridOptions = {
   columnDefs: [
-    { field: "topGroup", rowGroup: true, hide: true },
-    { field: "group", rowGroup: true, hide: true },
-    { headerName: "ID", field: "id", cellClass: "number-cell", maxWidth: 70 },
-    { field: "a", type: "valueColumn" },
-    { field: "b", type: "valueColumn" },
-    { field: "c", type: "valueColumn" },
-    { field: "d", type: "valueColumn" },
+    { field: 'topGroup', rowGroup: true, hide: true },
+    { field: 'group', rowGroup: true, hide: true },
+    { headerName: 'ID', field: 'id', cellClass: 'number-cell', maxWidth: 70 },
+    { field: 'a', type: 'valueColumn' },
+    { field: 'b', type: 'valueColumn' },
+    { field: 'c', type: 'valueColumn' },
+    { field: 'd', type: 'valueColumn' },
     {
-      headerName: "Total",
-      type: "totalColumn",
+      headerName: 'Total',
+      type: 'totalColumn',
       minWidth: 120,
       // we use getValue() instead of data.a so that it gets the aggregated values at the group level
       valueGetter:
@@ -30,15 +30,15 @@ const gridOptions = {
   columnTypes: {
     valueColumn: {
       editable: true,
-      aggFunc: "sum",
-      cellClass: "number-cell",
-      cellRenderer: "agAnimateShowChangeCellRenderer",
-      filter: "agNumberColumnFilter",
+      aggFunc: 'sum',
+      cellClass: 'number-cell',
+      cellRenderer: 'agAnimateShowChangeCellRenderer',
+      filter: 'agNumberColumnFilter',
       valueParser: numberValueParser,
     },
     totalColumn: {
-      cellRenderer: "agAnimateShowChangeCellRenderer",
-      cellClass: "number-cell",
+      cellRenderer: 'agAnimateShowChangeCellRenderer',
+      cellClass: 'number-cell',
     },
   },
   // set this to true, so only the column in question gets updated
@@ -49,14 +49,14 @@ const gridOptions = {
       var result = 0;
       if (values) {
         values.forEach(function (value) {
-          if (typeof value === "number") {
+          if (typeof value === 'number') {
             result += value;
           }
         });
       }
       callCount++;
       console.log(
-        callCount + " aggregation: sum([" + values.join(",") + "]) = " + result
+        callCount + ' aggregation: sum([' + values.join(',') + ']) = ' + result
       );
       return result;
     },
@@ -92,19 +92,19 @@ function createRowItem(i, j, k) {
     b: (j * k * 811) % 100,
     c: (j * k * 743) % 100,
     d: (j * k * 677) % 100,
-    topGroup: "Bottom",
-    group: "Group B" + j,
+    topGroup: 'Bottom',
+    group: 'Group B' + j,
   };
   if (i === 1) {
-    rowDataItem.topGroup = "Top";
-    rowDataItem.group = "Group A" + j;
+    rowDataItem.topGroup = 'Top';
+    rowDataItem.group = 'Group A' + j;
   }
   return rowDataItem;
 }
 
 // converts strings to numbers
 function numberValueParser(params) {
-  console.log("=> updating to " + params.newValue);
+  console.log('=> updating to ' + params.newValue);
   return Number(params.newValue);
 }
 
@@ -117,14 +117,14 @@ function updateOneRecord() {
   var randomColumnId = pickRandomColumn();
 
   console.log(
-    "updating " + randomColumnId + " to " + randomValue + " on ",
+    'updating ' + randomColumnId + ' to ' + randomValue + ' on ',
     rowNodeToUpdate.data
   );
   rowNodeToUpdate.setDataValue(randomColumnId, randomValue);
 }
 
 function pickRandomColumn() {
-  var letters = ["a", "b", "c", "d"];
+  var letters = ['a', 'b', 'c', 'd'];
   var randomIndex = Math.floor(Math.random() * letters.length);
   return letters[randomIndex];
 }
@@ -158,7 +158,7 @@ function updateUsingTransaction() {
     return;
   }
 
-  console.log("updating - before", itemToUpdate);
+  console.log('updating - before', itemToUpdate);
 
   itemToUpdate[pickRandomColumn()] = createRandomNumber();
   itemToUpdate[pickRandomColumn()] = createRandomNumber();
@@ -167,7 +167,7 @@ function updateUsingTransaction() {
     update: [itemToUpdate],
   };
 
-  console.log("updating - after", itemToUpdate);
+  console.log('updating - after', itemToUpdate);
 
   gridOptions.api.applyTransaction(transaction);
 }
@@ -182,7 +182,7 @@ function removeUsingTransaction() {
     remove: [itemToRemove],
   };
 
-  console.log("removing", itemToRemove);
+  console.log('removing', itemToRemove);
 
   gridOptions.api.applyTransaction(transaction);
 }
@@ -197,7 +197,7 @@ function addUsingTransaction() {
     add: [newItem],
   };
 
-  console.log("adding", newItem);
+  console.log('adding', newItem);
 
   gridOptions.api.applyTransaction(transaction);
 }
@@ -208,19 +208,19 @@ function changeGroupUsingTransaction() {
     return;
   }
 
-  itemToUpdate.topGroup = itemToUpdate.topGroup === "Top" ? "Bottom" : "Top";
+  itemToUpdate.topGroup = itemToUpdate.topGroup === 'Top' ? 'Bottom' : 'Top';
 
   var transaction = {
     update: [itemToUpdate],
   };
 
-  console.log("updating", itemToUpdate);
+  console.log('updating', itemToUpdate);
 
   gridOptions.api.applyTransaction(transaction);
 }
 
 // setup the grid after the page has finished loading
-document.addEventListener("DOMContentLoaded", function () {
-  var gridDiv = document.querySelector("#myGrid");
+document.addEventListener('DOMContentLoaded', function () {
+  var gridDiv = document.querySelector('#myGrid');
   new agGrid.Grid(gridDiv, gridOptions);
 });

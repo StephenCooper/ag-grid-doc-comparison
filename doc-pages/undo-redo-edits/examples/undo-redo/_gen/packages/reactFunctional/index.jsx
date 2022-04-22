@@ -1,11 +1,11 @@
-"use strict";
+'use strict';
 
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
-import { AgGridReact } from "ag-grid-react";
-import React, { useCallback, useMemo, useRef, useState } from "react";
-import { render } from "react-dom";
+import React, { useCallback, useMemo, useRef, useState } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from 'ag-grid-react';
+import 'ag-grid-enterprise';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 
 const disable = (id, disabled) => {
   document.querySelector(id).disabled = disabled;
@@ -18,32 +18,32 @@ const setValue = (id, value) => {
 const getRows = () => {
   return Array.apply(null, Array(100)).map(function (_, i) {
     return {
-      a: "a-" + i,
-      b: "b-" + i,
-      c: "c-" + i,
-      d: "d-" + i,
-      e: "e-" + i,
-      f: "f-" + i,
-      g: "g-" + i,
-      h: "h-" + i,
+      a: 'a-' + i,
+      b: 'b-' + i,
+      c: 'c-' + i,
+      d: 'd-' + i,
+      e: 'e-' + i,
+      f: 'f-' + i,
+      g: 'g-' + i,
+      h: 'h-' + i,
     };
   });
 };
 
 const GridExample = () => {
   const gridRef = useRef();
-  const containerStyle = useMemo(() => ({ width: "100%", height: "100%" }), []);
-  const gridStyle = useMemo(() => ({ height: "100%", width: "100%" }), []);
+  const containerStyle = useMemo(() => ({ width: '100%', height: '100%' }), []);
+  const gridStyle = useMemo(() => ({ height: '100%', width: '100%' }), []);
   const [rowData, setRowData] = useState(getRows());
   const [columnDefs, setColumnDefs] = useState([
-    { field: "a" },
-    { field: "b" },
-    { field: "c" },
-    { field: "d" },
-    { field: "e" },
-    { field: "f" },
-    { field: "g" },
-    { field: "h" },
+    { field: 'a' },
+    { field: 'b' },
+    { field: 'c' },
+    { field: 'd' },
+    { field: 'e' },
+    { field: 'f' },
+    { field: 'g' },
+    { field: 'h' },
   ]);
   const defaultColDef = useMemo(() => {
     return {
@@ -53,21 +53,21 @@ const GridExample = () => {
   }, []);
 
   const onFirstDataRendered = useCallback(() => {
-    setValue("#undoInput", 0);
-    disable("#undoInput", true);
-    disable("#undoBtn", true);
-    setValue("#redoInput", 0);
-    disable("#redoInput", true);
-    disable("#redoBtn", true);
+    setValue('#undoInput', 0);
+    disable('#undoInput', true);
+    disable('#undoBtn', true);
+    setValue('#redoInput', 0);
+    disable('#redoInput', true);
+    disable('#redoBtn', true);
   }, []);
 
   const onCellValueChanged = useCallback((params) => {
     var undoSize = gridRef.current.api.getCurrentUndoSize();
-    setValue("#undoInput", undoSize);
-    disable("#undoBtn", undoSize < 1);
+    setValue('#undoInput', undoSize);
+    disable('#undoBtn', undoSize < 1);
     var redoSize = gridRef.current.api.getCurrentRedoSize();
-    setValue("#redoInput", redoSize);
-    disable("#redoBtn", redoSize < 1);
+    setValue('#redoInput', redoSize);
+    disable('#redoBtn', redoSize < 1);
   }, []);
 
   const undo = useCallback(() => {
@@ -116,4 +116,4 @@ const GridExample = () => {
   );
 };
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

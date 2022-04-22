@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 
 export default class DetailCellRenderer extends Component {
   constructor(props) {
@@ -11,8 +11,8 @@ export default class DetailCellRenderer extends Component {
 
   render() {
     return (
-      <h1 class="custom-detail" style={{ padding: "20px" }}>
-        {this.state.pinned ? this.state.pinned : "center"}
+      <h1 className="custom-detail" style={{ padding: '20px' }}>
+        {this.state.pinned ? this.state.pinned : 'center'}
       </h1>
     );
   }

@@ -1,9 +1,9 @@
-import { Component } from "@angular/core";
-import { ICellRendererAngularComp } from "ag-grid-angular";
-import { ICellRendererParams } from "ag-grid-community";
+import { Component } from '@angular/core';
+import { ICellRendererAngularComp } from 'ag-grid-angular';
+import { ICellRendererParams } from 'ag-grid-community';
 
 @Component({
-  selector: "medal-component",
+  selector: 'medal-component',
   template: `<span>{{ this.displayValue }}</span>`,
 })
 export class MedalCellRenderer implements ICellRendererAngularComp {
@@ -11,8 +11,8 @@ export class MedalCellRenderer implements ICellRendererAngularComp {
 
   agInit(params: ICellRendererParams): void {
     this.displayValue = new Array(parseInt(params.value, 10))
-      .fill("#")
-      .join("");
+      .fill('#')
+      .join('');
   }
 
   refresh(params: ICellRendererParams) {

@@ -1,4 +1,4 @@
-import { ICellEditorComp, ICellEditorParams } from "@ag-grid-community/core";
+import { ICellEditorComp, ICellEditorParams } from '@ag-grid-community/core';
 
 export class NumericEditor implements ICellEditorComp {
   eInput!: HTMLInputElement;
@@ -7,7 +7,7 @@ export class NumericEditor implements ICellEditorComp {
   // gets called once before the renderer is used
   init(params: ICellEditorParams) {
     // create the cell
-    this.eInput = document.createElement("input");
+    this.eInput = document.createElement('input');
 
     if (this.isCharNumeric(params.charPress)) {
       this.eInput.value = params.charPress!;
@@ -17,7 +17,7 @@ export class NumericEditor implements ICellEditorComp {
       }
     }
 
-    this.eInput.addEventListener("keypress", (event) => {
+    this.eInput.addEventListener('keypress', (event) => {
       if (!this.isKeyPressedNumeric(event)) {
         this.eInput.focus();
         if (event.preventDefault) event.preventDefault();
@@ -28,12 +28,12 @@ export class NumericEditor implements ICellEditorComp {
 
     // only start edit if key pressed is a number, not a letter
     const charPressIsNotANumber =
-      params.charPress && "1234567890".indexOf(params.charPress) < 0;
+      params.charPress && '1234567890'.indexOf(params.charPress) < 0;
     this.cancelBeforeStart = !!charPressIsNotANumber;
   }
 
   isKeyPressedNavigation(event: any) {
-    return event.key === "ArrowLeft" || event.key === "ArrowRight";
+    return event.key === 'ArrowLeft' || event.key === 'ArrowRight';
   }
 
   // gets called once when grid ready to insert the element
@@ -55,7 +55,7 @@ export class NumericEditor implements ICellEditorComp {
   // - not very practical, but demonstrates the method.
   isCancelAfterEnd() {
     const value = this.getValue();
-    return value.indexOf("007") >= 0;
+    return value.indexOf('007') >= 0;
   }
 
   // returns the new value after editing

@@ -3,16 +3,16 @@ import {
   Component,
   ViewChild,
   ViewContainerRef,
-} from "@angular/core";
-import { ICellEditorAngularComp } from "ag-grid-angular";
+} from '@angular/core';
+import { ICellEditorAngularComp } from 'ag-grid-angular';
 
-const KEY_BACKSPACE = "Backspace";
-const KEY_DELETE = "Delete";
-const KEY_ENTER = "Enter";
-const KEY_TAB = "Tab";
+const KEY_BACKSPACE = 'Backspace';
+const KEY_DELETE = 'Delete';
+const KEY_ENTER = 'Enter';
+const KEY_TAB = 'Tab';
 
 @Component({
-  selector: "numeric-cell",
+  selector: 'numeric-cell',
   template: `<input
     #input
     class="simple-input-editor"
@@ -21,13 +21,12 @@ const KEY_TAB = "Tab";
   />`,
 })
 export class NumericCellEditor
-  implements ICellEditorAngularComp, AfterViewInit
-{
+  implements ICellEditorAngularComp, AfterViewInit {
   private params: any;
   public value!: number;
   private cancelBeforeStart = false;
 
-  @ViewChild("input", { read: ViewContainerRef })
+  @ViewChild('input', { read: ViewContainerRef })
   public input!: ViewContainerRef;
 
   agInit(params: any): void {
@@ -36,7 +35,7 @@ export class NumericCellEditor
 
     // only start edit if key pressed is a number, not a letter
     this.cancelBeforeStart =
-      params.charPress && "1234567890".indexOf(params.charPress) < 0;
+      params.charPress && '1234567890'.indexOf(params.charPress) < 0;
   }
 
   setInitialState(params: any) {
@@ -44,7 +43,7 @@ export class NumericCellEditor
 
     if (params.key === KEY_BACKSPACE || params.key === KEY_DELETE) {
       // if backspace or delete pressed, we clear the cell
-      startValue = "";
+      startValue = '';
     } else if (params.charPress) {
       // if a letter was pressed, we start with the letter
       startValue = params.charPress;
@@ -71,7 +70,7 @@ export class NumericCellEditor
   }
 
   onKeyDown(event: any): void {
-    if (event.key === "Escape") {
+    if (event.key === 'Escape') {
       return;
     }
     if (this.isLeftOrRight(event) || this.deleteOrBackspace(event)) {
@@ -108,7 +107,7 @@ export class NumericCellEditor
   }
 
   private isLeftOrRight(event: any) {
-    return ["ArrowLeft", "ArrowRight"].indexOf(event.key) > -1;
+    return ['ArrowLeft', 'ArrowRight'].indexOf(event.key) > -1;
   }
 
   private finishedEditingPressed(event: any) {

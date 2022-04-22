@@ -1,8 +1,8 @@
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import { AgGridReact } from "@ag-grid-community/react";
-import React, { Component } from "react";
+import React, { Component } from 'react';
+import { AgGridReact } from '@ag-grid-community/react';
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
 
+import { ModuleRegistry } from '@ag-grid-community/core';
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([ClientSideRowModelModule]);
 
@@ -12,11 +12,11 @@ export default class DetailCellRenderer extends Component {
 
     this.state = {
       colDefs: [
-        { field: "callId" },
-        { field: "direction" },
-        { field: "number" },
-        { field: "duration", valueFormatter: "x.toLocaleString() + 's'" },
-        { field: "switchCode" },
+        { field: 'callId' },
+        { field: 'direction' },
+        { field: 'number' },
+        { field: 'duration', valueFormatter: "x.toLocaleString() + 's'" },
+        { field: 'switchCode' },
       ],
       defaultColDef: {
         flex: 1,
@@ -61,13 +61,13 @@ export default class DetailCellRenderer extends Component {
       columnApi: params.columnApi,
     };
 
-    console.log("adding detail grid info with id: ", this.state.rowId);
+    console.log('adding detail grid info with id: ', this.state.rowId);
 
     this.state.masterGridApi.addDetailGridInfo(this.state.rowId, gridInfo);
   };
 
   componentWillUnmount = () => {
-    console.log("removing detail grid info with id: ", this.state.rowId);
+    console.log('removing detail grid info with id: ', this.state.rowId);
 
     // the detail grid is automatically destroyed as it is a React component
     this.state.masterGridApi.removeDetailGridInfo(this.state.rowId);

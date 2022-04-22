@@ -1,8 +1,10 @@
-"use strict";
+'use strict';
 
-import { AgChartsReact } from "ag-charts-react";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { cloneDeep } from 'lodash';
+import { render } from 'react-dom';
+import * as agCharts from 'ag-charts-community';
+import { AgChartsReact } from 'ag-charts-react';
 
 class ChartExample extends Component {
   constructor(props) {
@@ -12,18 +14,18 @@ class ChartExample extends Component {
       options: {
         autoSize: true,
         title: {
-          text: "Religions of London Population (2016)",
+          text: 'Religions of London Population (2016)',
           fontSize: 18,
         },
         subtitle: {
-          text: "Source: Office for National Statistics",
+          text: 'Source: Office for National Statistics',
         },
         series: [
           {
             data: getData(),
-            type: "pie",
-            labelKey: "religion",
-            angleKey: "population",
+            type: 'pie',
+            labelKey: 'religion',
+            angleKey: 'population',
             label: {
               minAngle: 0,
             },
@@ -31,24 +33,24 @@ class ChartExample extends Component {
               strokeWidth: 2,
             },
             fills: [
-              "#febe76",
-              "#ff7979",
-              "#badc58",
-              "#f9ca23",
-              "#f0932b",
-              "#eb4c4b",
-              "#6ab04c",
-              "#7ed6df",
+              '#febe76',
+              '#ff7979',
+              '#badc58',
+              '#f9ca23',
+              '#f0932b',
+              '#eb4c4b',
+              '#6ab04c',
+              '#7ed6df',
             ],
             strokes: [
-              "#b28553",
-              "#b35555",
-              "#829a3e",
-              "#ae8d19",
-              "#a8671e",
-              "#a43535",
-              "#4a7b35",
-              "#58969c",
+              '#b28553',
+              '#b35555',
+              '#829a3e',
+              '#ae8d19',
+              '#a8671e',
+              '#a43535',
+              '#4a7b35',
+              '#58969c',
             ],
           },
         ],
@@ -66,4 +68,4 @@ class ChartExample extends Component {
   }
 }
 
-render(<ChartExample />, document.querySelector("#root"));
+render(<ChartExample />, document.querySelector('#root'));

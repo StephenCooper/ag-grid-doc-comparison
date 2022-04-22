@@ -1,12 +1,12 @@
-import { ColDef, GridReadyEvent } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { HttpClient } from "@angular/common/http";
-import { Component } from "@angular/core";
+import { ColDef, GridReadyEvent } from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { HttpClient } from '@angular/common/http';
+import { Component } from '@angular/core';
 // Required feature modules are registered in app.module.ts
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<div class="wrapper">
     <div class="legend-bar">
       <span class="legend-box locked-col"></span> Position Locked Column
@@ -28,23 +28,17 @@ import { Component } from "@angular/core";
 export class AppComponent {
   public columnDefs: ColDef[] = [
     {
-      field: "athlete",
+      field: 'athlete',
       suppressMovable: true,
-      width: 150,
-      cellClass: "suppress-movable-col",
+      cellClass: 'suppress-movable-col',
     },
-    { field: "age", lockPosition: true, cellClass: "locked-col" },
-    { field: "country", width: 150 },
-    { field: "year" },
-    { field: "date" },
-    { field: "sport" },
-    { field: "gold" },
-    { field: "silver" },
-    { field: "bronze" },
-    { field: "total" },
+    { field: 'age', lockPosition: 'left', cellClass: 'locked-col' },
+    { field: 'country' },
+    { field: 'year' },
+    { field: 'total', lockPosition: 'right', cellClass: 'locked-col' },
   ];
   public defaultColDef: ColDef = {
-    width: 150,
+    flex: 1,
     lockPinned: true, // Dont allow pinning for this example
   };
   public rowData!: any[];
@@ -53,7 +47,7 @@ export class AppComponent {
 
   onGridReady(params: GridReadyEvent) {
     this.http
-      .get<any[]>("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      .get<any[]>('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .subscribe((data) => (this.rowData = data));
   }
 }

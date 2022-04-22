@@ -20,10 +20,9 @@ export default {
     };
   },
   beforeMount() {
-    const data = this.params.api.getDisplayedRowAtIndex(
-      this.params.rowIndex
-    ).data;
-    this.type = this.params.type || "primary";
+    const data = this.params.api.getDisplayedRowAtIndex(this.params.rowIndex)
+      .data;
+    this.type = this.params.type || 'primary';
     this.athlete = data.athlete;
     this.country = data.country;
     this.total = data.total;

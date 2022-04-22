@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 
 export default class GroupRowInnerRenderer extends Component {
   constructor(props) {
@@ -23,8 +23,8 @@ export default class GroupRowInnerRenderer extends Component {
       this.refreshUi();
     };
 
-    props.api.addEventListener("cellValueChanged", this.dataChangedListener);
-    props.api.addEventListener("filterChanged", this.dataChangedListener);
+    props.api.addEventListener('cellValueChanged', this.dataChangedListener);
+    props.api.addEventListener('filterChanged', this.dataChangedListener);
   }
 
   refreshUi() {
@@ -42,7 +42,7 @@ export default class GroupRowInnerRenderer extends Component {
   }
 
   render() {
-    let img = "";
+    let img = '';
     const {
       countryName,
       goldCount,
@@ -65,7 +65,7 @@ export default class GroupRowInnerRenderer extends Component {
     }
 
     return (
-      <div style={{ display: "inline-block" }}>
+      <div style={{ display: 'inline-block' }}>
         {img}
         <span className="groupTitle">{countryName}</span>
         <span
@@ -95,11 +95,11 @@ export default class GroupRowInnerRenderer extends Component {
 
   componentWillUnmount() {
     this.props.api.removeEventListener(
-      "cellValueChanged",
+      'cellValueChanged',
       this.dataChangedListener
     );
     this.props.api.removeEventListener(
-      "filterChanged",
+      'filterChanged',
       this.dataChangedListener
     );
   }

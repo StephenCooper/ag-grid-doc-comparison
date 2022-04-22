@@ -1,5 +1,5 @@
-import { AgChartsVue } from "ag-charts-vue3";
-import { createApp } from "vue";
+import { AgChartsVue } from 'ag-charts-vue3';
+import { createApp } from 'vue';
 
 const ChartExample = {
   template: `
@@ -7,7 +7,7 @@ const ChartExample = {
                 :options="options"></ag-charts-vue>
     `,
   components: {
-    "ag-charts-vue": AgChartsVue,
+    'ag-charts-vue': AgChartsVue,
   },
   data: function () {
     return {
@@ -19,35 +19,35 @@ const ChartExample = {
       autoSize: true,
       data: getData(),
       title: {
-        text: "Engine size distribution (USA 1987)",
+        text: 'Engine size distribution (USA 1987)',
         fontSize: 18,
       },
       subtitle: {
-        text: "Source: UCI",
+        text: 'Source: UCI',
       },
       series: [
         {
-          type: "histogram",
-          xKey: "engine-size",
-          xName: "Engine Size",
+          type: 'histogram',
+          xKey: 'engine-size',
+          xName: 'Engine Size',
           fillOpacity: 0.5,
         },
       ],
       axes: [
         {
-          position: "bottom",
-          type: "number",
+          position: 'bottom',
+          type: 'number',
           title: {
             enabled: true,
-            text: "Engine Size (Cubic inches)",
+            text: 'Engine Size (Cubic inches)',
           },
         },
         {
-          position: "left",
-          type: "number",
+          position: 'left',
+          type: 'number',
           title: {
             enabled: true,
-            text: "Frequency",
+            text: 'Frequency',
           },
         },
       ],
@@ -60,4 +60,4 @@ const ChartExample = {
   methods: {},
 };
 
-createApp(ChartExample).mount("#app");
+createApp(ChartExample).mount('#app');

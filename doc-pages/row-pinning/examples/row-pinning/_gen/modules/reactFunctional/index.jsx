@@ -1,13 +1,13 @@
-"use strict";
+'use strict';
 
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { AgGridReact } from "@ag-grid-community/react";
-import React, { useCallback, useMemo, useRef, useState } from "react";
-import { render } from "react-dom";
-import CustomPinnedRowRenderer from "./customPinnedRowRenderer.jsx";
+import React, { useCallback, useMemo, useRef, useState } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from '@ag-grid-community/react';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import CustomPinnedRowRenderer from './customPinnedRowRenderer.jsx';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([ClientSideRowModelModule]);
@@ -16,12 +16,12 @@ const createData = (count, prefix) => {
   var result = [];
   for (var i = 0; i < count; i++) {
     result.push({
-      athlete: prefix + " Athlete " + i,
-      age: prefix + " Age " + i,
-      country: prefix + " Country " + i,
-      year: prefix + " Year " + i,
-      date: prefix + " Date " + i,
-      sport: prefix + " Sport " + i,
+      athlete: prefix + ' Athlete ' + i,
+      age: prefix + ' Age ' + i,
+      country: prefix + ' Country ' + i,
+      year: prefix + ' Year ' + i,
+      date: prefix + ' Date ' + i,
+      sport: prefix + ' Sport ' + i,
     });
   }
   return result;
@@ -29,18 +29,18 @@ const createData = (count, prefix) => {
 
 const GridExample = () => {
   const gridRef = useRef();
-  const containerStyle = useMemo(() => ({ width: "100%", height: "100%" }), []);
-  const gridStyle = useMemo(() => ({ height: "100%", width: "100%" }), []);
+  const containerStyle = useMemo(() => ({ width: '100%', height: '100%' }), []);
+  const gridStyle = useMemo(() => ({ height: '100%', width: '100%' }), []);
   const [rowData, setRowData] = useState();
   const [columnDefs, setColumnDefs] = useState([
     {
-      field: "athlete",
+      field: 'athlete',
       cellRendererSelector: function (params) {
         if (params.node.rowPinned) {
           return {
             component: CustomPinnedRowRenderer,
             params: {
-              style: { color: "blue" },
+              style: { color: 'blue' },
             },
           };
         } else {
@@ -50,13 +50,13 @@ const GridExample = () => {
       },
     },
     {
-      field: "age",
+      field: 'age',
       cellRendererSelector: function (params) {
         if (params.node.rowPinned) {
           return {
             component: CustomPinnedRowRenderer,
             params: {
-              style: { "font-style": "italic" },
+              style: { 'font-style': 'italic' },
             },
           };
         } else {
@@ -65,10 +65,10 @@ const GridExample = () => {
         }
       },
     },
-    { field: "country" },
-    { field: "year" },
-    { field: "date" },
-    { field: "sport" },
+    { field: 'country' },
+    { field: 'year' },
+    { field: 'date' },
+    { field: 'sport' },
   ]);
   const defaultColDef = useMemo(() => {
     return {
@@ -80,33 +80,33 @@ const GridExample = () => {
   }, []);
   const getRowStyle = useCallback(function (params) {
     if (params.node.rowPinned) {
-      return { "font-weight": "bold" };
+      return { 'font-weight': 'bold' };
     }
   }, []);
   const pinnedTopRowData = useMemo(() => {
-    return createData(1, "Top");
+    return createData(1, 'Top');
   }, []);
   const pinnedBottomRowData = useMemo(() => {
-    return createData(1, "Bottom");
+    return createData(1, 'Bottom');
   }, []);
 
   const onGridReady = useCallback((params) => {
-    fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+    fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .then((resp) => resp.json())
       .then((data) => setRowData(data));
   }, []);
 
   const onPinnedRowTopCount = useCallback(() => {
-    var headerRowsToFloat = document.getElementById("top-row-count").value;
+    var headerRowsToFloat = document.getElementById('top-row-count').value;
     var count = Number(headerRowsToFloat);
-    var rows = createData(count, "Top");
+    var rows = createData(count, 'Top');
     gridRef.current.api.setPinnedTopRowData(rows);
   }, []);
 
   const onPinnedRowBottomCount = useCallback(() => {
-    var footerRowsToFloat = document.getElementById("bottom-row-count").value;
+    var footerRowsToFloat = document.getElementById('bottom-row-count').value;
     var count = Number(footerRowsToFloat);
-    var rows = createData(count, "Bottom");
+    var rows = createData(count, 'Bottom');
     gridRef.current.api.setPinnedBottomRowData(rows);
   }, []);
 
@@ -118,7 +118,7 @@ const GridExample = () => {
           <select
             onChange={onPinnedRowTopCount}
             id="top-row-count"
-            style={{ marginLeft: "10px", marginRight: "20px" }}
+            style={{ marginLeft: '10px', marginRight: '20px' }}
           >
             <option value="0">0</option>
             <option value="1" selected={true}>
@@ -132,7 +132,7 @@ const GridExample = () => {
           <select
             onChange={onPinnedRowBottomCount}
             id="bottom-row-count"
-            style={{ marginLeft: "10px" }}
+            style={{ marginLeft: '10px' }}
           >
             <option value="0">0</option>
             <option value="1" selected={true}>
@@ -161,4 +161,4 @@ const GridExample = () => {
   );
 };
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

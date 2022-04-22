@@ -1,27 +1,27 @@
 var defaultFilterParams = { readOnly: true };
 
 const columnDefs = [
-  { field: "athlete", filter: true, filterParams: defaultFilterParams },
+  { field: 'athlete', filter: true, filterParams: defaultFilterParams },
   {
-    field: "age",
-    filter: "agNumberColumnFilter",
+    field: 'age',
+    filter: 'agNumberColumnFilter',
     filterParams: defaultFilterParams,
   },
   {
-    field: "country",
-    filter: "agSetColumnFilter",
+    field: 'country',
+    filter: 'agSetColumnFilter',
     filterParams: defaultFilterParams,
   },
   {
-    field: "year",
+    field: 'year',
     maxWidth: 120,
-    filter: "agNumberColumnFilter",
+    filter: 'agNumberColumnFilter',
     filterParams: defaultFilterParams,
   },
   {
-    field: "date",
+    field: 'date',
     minWidth: 215,
-    filter: "agDateColumnFilter",
+    filter: 'agDateColumnFilter',
     filterParams: {
       readOnly: true,
       comparator: dateComparator,
@@ -29,21 +29,21 @@ const columnDefs = [
     suppressMenu: true,
   },
   {
-    field: "sport",
+    field: 'sport',
     suppressMenu: true,
-    filter: "agMultiColumnFilter",
+    filter: 'agMultiColumnFilter',
     filterParams: {
       filters: [
-        { filter: "agTextColumnFilter", filterParams: { readOnly: true } },
-        { filter: "agSetColumnFilter", filterParams: { readOnly: true } },
+        { filter: 'agTextColumnFilter', filterParams: { readOnly: true } },
+        { filter: 'agSetColumnFilter', filterParams: { readOnly: true } },
       ],
       readOnly: true,
     },
   },
-  { field: "gold", filterParams: defaultFilterParams },
-  { field: "silver", filterParams: defaultFilterParams },
-  { field: "bronze", filterParams: defaultFilterParams },
-  { field: "total", filter: false },
+  { field: 'gold', filterParams: defaultFilterParams },
+  { field: 'silver', filterParams: defaultFilterParams },
+  { field: 'bronze', filterParams: defaultFilterParams },
+  { field: 'total', filter: false },
 ];
 
 const gridOptions = {
@@ -58,27 +58,27 @@ const gridOptions = {
 };
 
 function irelandAndUk() {
-  var countryFilterComponent = gridOptions.api.getFilterInstance("country");
-  countryFilterComponent.setModel({ values: ["Ireland", "Great Britain"] });
+  var countryFilterComponent = gridOptions.api.getFilterInstance('country');
+  countryFilterComponent.setModel({ values: ['Ireland', 'Great Britain'] });
   gridOptions.api.onFilterChanged();
 }
 
 function clearCountryFilter() {
-  var countryFilterComponent = gridOptions.api.getFilterInstance("country");
+  var countryFilterComponent = gridOptions.api.getFilterInstance('country');
   countryFilterComponent.setModel(null);
   gridOptions.api.onFilterChanged();
 }
 
 function destroyCountryFilter() {
-  gridOptions.api.destroyFilter("country");
+  gridOptions.api.destroyFilter('country');
 }
 
 function endingStan() {
-  var countryFilterComponent = gridOptions.api.getFilterInstance("country");
+  var countryFilterComponent = gridOptions.api.getFilterInstance('country');
   var countriesEndingWithStan = countryFilterComponent
     .getValues()
     .filter(function (value) {
-      return value.indexOf("stan") === value.length - 4;
+      return value.indexOf('stan') === value.length - 4;
     });
 
   countryFilterComponent.setModel({ values: countriesEndingWithStan });
@@ -86,23 +86,23 @@ function endingStan() {
 }
 
 function printCountryModel() {
-  var countryFilterComponent = gridOptions.api.getFilterInstance("country");
+  var countryFilterComponent = gridOptions.api.getFilterInstance('country');
   var model = countryFilterComponent.getModel();
 
   if (model) {
-    console.log("Country model is: " + JSON.stringify(model));
+    console.log('Country model is: ' + JSON.stringify(model));
   } else {
-    console.log("Country model filter is not active");
+    console.log('Country model filter is not active');
   }
 }
 
 function sportStartsWithS() {
-  var sportsFilterComponent = gridOptions.api.getFilterInstance("sport");
+  var sportsFilterComponent = gridOptions.api.getFilterInstance('sport');
   sportsFilterComponent.setModel({
     filterModels: [
       {
-        type: "startsWith",
-        filter: "s",
+        type: 'startsWith',
+        filter: 's',
       },
     ],
   });
@@ -111,12 +111,12 @@ function sportStartsWithS() {
 }
 
 function sportEndsWithG() {
-  var sportsFilterComponent = gridOptions.api.getFilterInstance("sport");
+  var sportsFilterComponent = gridOptions.api.getFilterInstance('sport');
   sportsFilterComponent.setModel({
     filterModels: [
       {
-        type: "endsWith",
-        filter: "g",
+        type: 'endsWith',
+        filter: 'g',
       },
     ],
   });
@@ -125,18 +125,18 @@ function sportEndsWithG() {
 }
 
 function sportsCombined() {
-  var sportsFilterComponent = gridOptions.api.getFilterInstance("sport");
+  var sportsFilterComponent = gridOptions.api.getFilterInstance('sport');
   sportsFilterComponent.setModel({
     filterModels: [
       {
         condition2: {
-          type: "endsWith",
-          filter: "g",
+          type: 'endsWith',
+          filter: 'g',
         },
-        operator: "AND",
+        operator: 'AND',
         condition1: {
-          type: "startsWith",
-          filter: "s",
+          type: 'startsWith',
+          filter: 's',
         },
       },
     ],
@@ -146,9 +146,9 @@ function sportsCombined() {
 }
 
 function ageBelow25() {
-  var ageFilterComponent = gridOptions.api.getFilterInstance("age");
+  var ageFilterComponent = gridOptions.api.getFilterInstance('age');
   ageFilterComponent.setModel({
-    type: "lessThan",
+    type: 'lessThan',
     filter: 25,
     filterTo: null,
   });
@@ -157,9 +157,9 @@ function ageBelow25() {
 }
 
 function ageAbove30() {
-  var ageFilterComponent = gridOptions.api.getFilterInstance("age");
+  var ageFilterComponent = gridOptions.api.getFilterInstance('age');
   ageFilterComponent.setModel({
-    type: "greaterThan",
+    type: 'greaterThan',
     filter: 30,
     filterTo: null,
   });
@@ -168,16 +168,16 @@ function ageAbove30() {
 }
 
 function ageBelow25OrAbove30() {
-  var ageFilterComponent = gridOptions.api.getFilterInstance("age");
+  var ageFilterComponent = gridOptions.api.getFilterInstance('age');
   ageFilterComponent.setModel({
     condition1: {
-      type: "greaterThan",
+      type: 'greaterThan',
       filter: 30,
       filterTo: null,
     },
-    operator: "OR",
+    operator: 'OR',
     condition2: {
-      type: "lessThan",
+      type: 'lessThan',
       filter: 25,
       filterTo: null,
     },
@@ -187,9 +187,9 @@ function ageBelow25OrAbove30() {
 }
 
 function ageBetween25And30() {
-  var ageFilterComponent = gridOptions.api.getFilterInstance("age");
+  var ageFilterComponent = gridOptions.api.getFilterInstance('age');
   ageFilterComponent.setModel({
-    type: "inRange",
+    type: 'inRange',
     filter: 25,
     filterTo: 30,
   });
@@ -198,16 +198,16 @@ function ageBetween25And30() {
 }
 
 function clearAgeFilter() {
-  var ageFilterComponent = gridOptions.api.getFilterInstance("age");
+  var ageFilterComponent = gridOptions.api.getFilterInstance('age');
   ageFilterComponent.setModel(null);
   gridOptions.api.onFilterChanged();
 }
 
 function after2010() {
-  var dateFilterComponent = gridOptions.api.getFilterInstance("date");
+  var dateFilterComponent = gridOptions.api.getFilterInstance('date');
   dateFilterComponent.setModel({
-    type: "greaterThan",
-    dateFrom: "2010-01-01",
+    type: 'greaterThan',
+    dateFrom: '2010-01-01',
     dateTo: null,
   });
 
@@ -215,10 +215,10 @@ function after2010() {
 }
 
 function before2012() {
-  var dateFilterComponent = gridOptions.api.getFilterInstance("date");
+  var dateFilterComponent = gridOptions.api.getFilterInstance('date');
   dateFilterComponent.setModel({
-    type: "lessThan",
-    dateFrom: "2012-01-01",
+    type: 'lessThan',
+    dateFrom: '2012-01-01',
     dateTo: null,
   });
 
@@ -226,17 +226,17 @@ function before2012() {
 }
 
 function dateCombined() {
-  var dateFilterComponent = gridOptions.api.getFilterInstance("date");
+  var dateFilterComponent = gridOptions.api.getFilterInstance('date');
   dateFilterComponent.setModel({
     condition1: {
-      type: "lessThan",
-      dateFrom: "2012-01-01",
+      type: 'lessThan',
+      dateFrom: '2012-01-01',
       dateTo: null,
     },
-    operator: "OR",
+    operator: 'OR',
     condition2: {
-      type: "greaterThan",
-      dateFrom: "2010-01-01",
+      type: 'greaterThan',
+      dateFrom: '2010-01-01',
       dateTo: null,
     },
   });
@@ -245,23 +245,23 @@ function dateCombined() {
 }
 
 function clearDateFilter() {
-  var dateFilterComponent = gridOptions.api.getFilterInstance("date");
+  var dateFilterComponent = gridOptions.api.getFilterInstance('date');
   dateFilterComponent.setModel(null);
   gridOptions.api.onFilterChanged();
 }
 
 function clearSportFilter() {
-  var dateFilterComponent = gridOptions.api.getFilterInstance("sport");
+  var dateFilterComponent = gridOptions.api.getFilterInstance('sport');
   dateFilterComponent.setModel(null);
   gridOptions.api.onFilterChanged();
 }
 
 // setup the grid after the page has finished loading
-document.addEventListener("DOMContentLoaded", function () {
-  var gridDiv = document.querySelector("#myGrid");
+document.addEventListener('DOMContentLoaded', function () {
+  var gridDiv = document.querySelector('#myGrid');
   new agGrid.Grid(gridDiv, gridOptions);
 
-  fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+  fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
     .then((response) => response.json())
     .then((data) => gridOptions.api.setRowData(data));
 });

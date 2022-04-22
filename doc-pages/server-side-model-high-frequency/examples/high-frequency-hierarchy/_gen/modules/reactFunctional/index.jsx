@@ -1,13 +1,13 @@
-"use strict";
+'use strict';
 
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine-dark.css";
-import { AgGridReact } from "@ag-grid-community/react";
-import { RowGroupingModule } from "@ag-grid-enterprise/row-grouping";
-import { ServerSideRowModelModule } from "@ag-grid-enterprise/server-side-row-model";
-import React, { useCallback, useMemo, useState } from "react";
-import { render } from "react-dom";
+import React, { useCallback, useMemo, useRef, useState } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from '@ag-grid-community/react';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine-dark.css';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import { ServerSideRowModelModule } from '@ag-grid-enterprise/server-side-row-model';
+import { RowGroupingModule } from '@ag-grid-enterprise/row-grouping';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([ServerSideRowModelModule, RowGroupingModule]);
@@ -17,19 +17,19 @@ var fakeServer = new FakeServer();
 const numberCellFormatter = (params) => {
   return Math.floor(params.value)
     .toString()
-    .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
+    .replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
 };
 
 const processUpdateFromFakeServer = (gridApi, transactions) => {
   var updatingJustOneTransaction = transactions.length == 4;
   if (updatingJustOneTransaction) {
-    console.log("Updating One Record");
+    console.log('Updating One Record');
   }
   transactions.forEach(function (tx) {
     gridApi.applyServerSideTransactionAsync(tx, function (res) {
       if (updatingJustOneTransaction) {
         console.log(
-          "Route [" + (tx.route || []).join(",") + "], status = " + res.status
+          'Route [' + (tx.route || []).join(',') + '], status = ' + res.status
         );
       }
     });
@@ -37,106 +37,106 @@ const processUpdateFromFakeServer = (gridApi, transactions) => {
 };
 
 const GridExample = () => {
-  const containerStyle = useMemo(() => ({ width: "100%", height: "100%" }), []);
-  const gridStyle = useMemo(() => ({ height: "100%", width: "100%" }), []);
+  const containerStyle = useMemo(() => ({ width: '100%', height: '100%' }), []);
+  const gridStyle = useMemo(() => ({ height: '100%', width: '100%' }), []);
 
   const [columnDefs, setColumnDefs] = useState([
     // keys
-    { field: "productName", rowGroup: true, hide: true },
-    { field: "portfolioName", rowGroup: true, hide: true },
-    { field: "bookId", rowGroup: true, hide: true },
+    { field: 'productName', rowGroup: true, hide: true },
+    { field: 'portfolioName', rowGroup: true, hide: true },
+    { field: 'bookId', rowGroup: true, hide: true },
     // {field: 'productId'},
     // {field: 'portfolioId'},
     // {field: 'bookId'},
     // all the other columns (visible and not grouped)
     {
-      headerName: "Current",
-      field: "current",
+      headerName: 'Current',
+      field: 'current',
       width: 200,
-      type: "numericColumn",
+      type: 'numericColumn',
       valueFormatter: numberCellFormatter,
-      cellRenderer: "agAnimateShowChangeCellRenderer",
+      cellRenderer: 'agAnimateShowChangeCellRenderer',
     },
     {
-      headerName: "Previous",
-      field: "previous",
+      headerName: 'Previous',
+      field: 'previous',
       width: 200,
-      type: "numericColumn",
+      type: 'numericColumn',
       valueFormatter: numberCellFormatter,
-      cellRenderer: "agAnimateShowChangeCellRenderer",
+      cellRenderer: 'agAnimateShowChangeCellRenderer',
     },
     {
-      headerName: "Deal Type",
-      field: "dealType",
-      filter: "agSetColumnFilter",
+      headerName: 'Deal Type',
+      field: 'dealType',
+      filter: 'agSetColumnFilter',
       filterParams: {
-        values: ["Financial", "Physical"],
+        values: ['Financial', 'Physical'],
       },
     },
     {
-      headerName: "Bid",
-      field: "bidFlag",
+      headerName: 'Bid',
+      field: 'bidFlag',
       width: 100,
-      filter: "agSetColumnFilter",
+      filter: 'agSetColumnFilter',
       filterParams: {
-        values: ["Buy", "Sell"],
+        values: ['Buy', 'Sell'],
       },
     },
     {
-      headerName: "PL 1",
-      field: "pl1",
+      headerName: 'PL 1',
+      field: 'pl1',
       width: 200,
-      type: "numericColumn",
+      type: 'numericColumn',
       valueFormatter: numberCellFormatter,
-      cellRenderer: "agAnimateShowChangeCellRenderer",
+      cellRenderer: 'agAnimateShowChangeCellRenderer',
     },
     {
-      headerName: "PL 2",
-      field: "pl2",
+      headerName: 'PL 2',
+      field: 'pl2',
       width: 200,
-      type: "numericColumn",
+      type: 'numericColumn',
       valueFormatter: numberCellFormatter,
-      cellRenderer: "agAnimateShowChangeCellRenderer",
+      cellRenderer: 'agAnimateShowChangeCellRenderer',
     },
     {
-      headerName: "Gain-DX",
-      field: "gainDx",
+      headerName: 'Gain-DX',
+      field: 'gainDx',
       width: 200,
-      type: "numericColumn",
+      type: 'numericColumn',
       valueFormatter: numberCellFormatter,
-      cellRenderer: "agAnimateShowChangeCellRenderer",
+      cellRenderer: 'agAnimateShowChangeCellRenderer',
     },
     {
-      headerName: "SX / PX",
-      field: "sxPx",
+      headerName: 'SX / PX',
+      field: 'sxPx',
       width: 200,
-      type: "numericColumn",
+      type: 'numericColumn',
       valueFormatter: numberCellFormatter,
-      cellRenderer: "agAnimateShowChangeCellRenderer",
+      cellRenderer: 'agAnimateShowChangeCellRenderer',
     },
     {
-      headerName: "99 Out",
-      field: "_99Out",
+      headerName: '99 Out',
+      field: '_99Out',
       width: 200,
-      type: "numericColumn",
+      type: 'numericColumn',
       valueFormatter: numberCellFormatter,
-      cellRenderer: "agAnimateShowChangeCellRenderer",
+      cellRenderer: 'agAnimateShowChangeCellRenderer',
     },
     {
-      headerName: "Submitter ID",
-      field: "submitterID",
+      headerName: 'Submitter ID',
+      field: 'submitterID',
       width: 200,
-      type: "numericColumn",
+      type: 'numericColumn',
       valueFormatter: numberCellFormatter,
-      cellRenderer: "agAnimateShowChangeCellRenderer",
+      cellRenderer: 'agAnimateShowChangeCellRenderer',
     },
     {
-      headerName: "Submitted Deal ID",
-      field: "submitterDealID",
+      headerName: 'Submitted Deal ID',
+      field: 'submitterDealID',
       width: 200,
-      type: "numericColumn",
+      type: 'numericColumn',
       valueFormatter: numberCellFormatter,
-      cellRenderer: "agAnimateShowChangeCellRenderer",
+      cellRenderer: 'agAnimateShowChangeCellRenderer',
     },
   ]);
   const defaultColDef = useMemo(() => {
@@ -148,7 +148,7 @@ const GridExample = () => {
   }, []);
   const autoGroupColumnDef = useMemo(() => {
     return {
-      field: "tradeId",
+      field: 'tradeId',
     };
   }, []);
 
@@ -181,7 +181,7 @@ const GridExample = () => {
       }
       summary[status]++;
     });
-    console.log("onAsyncTransactionsFlushed: " + JSON.stringify(summary));
+    console.log('onAsyncTransactionsFlushed: ' + JSON.stringify(summary));
   }, []);
 
   const onBtStart = useCallback(() => {
@@ -215,7 +215,7 @@ const GridExample = () => {
     var transactionCreatedSinceInitialLoad =
       transactionVersion > dataLoadedVersion;
     if (!transactionCreatedSinceInitialLoad) {
-      console.log("cancelling transaction");
+      console.log('cancelling transaction');
     }
     return transactionCreatedSinceInitialLoad;
   }, []);
@@ -223,7 +223,7 @@ const GridExample = () => {
   return (
     <div style={containerStyle}>
       <div className="example-wrapper">
-        <div style={{ marginBottom: "5px" }}>
+        <div style={{ marginBottom: '5px' }}>
           <button onClick={onBtApplyOneTransaction}>One Transaction</button>
           <button onClick={onBtStart}>Start Feed</button>
           <button onClick={onBtStop}>Stop Feed</button>
@@ -234,9 +234,9 @@ const GridExample = () => {
             columnDefs={columnDefs}
             asyncTransactionWaitMillis={500}
             purgeClosedRowNodes={true}
-            rowSelection={"multiple"}
-            serverSideStoreType={"full"}
-            rowModelType={"serverSide"}
+            rowSelection={'multiple'}
+            serverSideStoreType={'full'}
+            rowModelType={'serverSide'}
             animateRows={true}
             defaultColDef={defaultColDef}
             autoGroupColumnDef={autoGroupColumnDef}
@@ -251,4 +251,4 @@ const GridExample = () => {
   );
 };
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

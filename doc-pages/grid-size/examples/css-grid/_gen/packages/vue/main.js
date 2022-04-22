@@ -1,7 +1,7 @@
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import { AgGridVue } from "ag-grid-vue";
-import Vue from "vue";
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import { AgGridVue } from 'ag-grid-vue';
+import Vue from 'vue';
 
 const VueExample = {
   template: `
@@ -22,11 +22,11 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
-      columnDefs: [{ field: "make" }, { field: "model" }, { field: "price" }],
+      columnDefs: [{ field: 'make' }, { field: 'model' }, { field: 'price' }],
       gridApi: null,
       columnApi: null,
 
@@ -35,9 +35,9 @@ const VueExample = {
   },
   created() {
     this.rowData = [
-      { make: "Toyota", model: "Celica", price: 35000 },
-      { make: "Ford", model: "Mondeo", price: 32000 },
-      { make: "Porsche", model: "Boxter", price: 72000 },
+      { make: 'Toyota', model: 'Celica', price: 35000 },
+      { make: 'Ford', model: 'Mondeo', price: 32000 },
+      { make: 'Porsche', model: 'Boxster', price: 72000 },
     ];
   },
   methods: {
@@ -46,7 +46,7 @@ const VueExample = {
       this.gridColumnApi = params.columnApi;
 
       params.api.sizeColumnsToFit();
-      window.addEventListener("resize", function () {
+      window.addEventListener('resize', function () {
         setTimeout(function () {
           params.api.sizeColumnsToFit();
         });
@@ -58,8 +58,8 @@ const VueExample = {
 };
 
 new Vue({
-  el: "#app",
+  el: '#app',
   components: {
-    "my-component": VueExample,
+    'my-component': VueExample,
   },
 });

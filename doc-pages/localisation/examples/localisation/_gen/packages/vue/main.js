@@ -1,12 +1,12 @@
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
-import { AgGridVue } from "ag-grid-vue";
-import Vue from "vue";
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import 'ag-grid-enterprise';
+import { AgGridVue } from 'ag-grid-vue';
+import Vue from 'vue';
 
 class NodeIdRenderer {
   init(params) {
-    this.eGui = document.createElement("div");
+    this.eGui = document.createElement('div');
     this.eGui.innerHTML = params.node.id + 1;
   }
 
@@ -41,43 +41,43 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
         {
-          headerName: "#",
+          headerName: '#',
           cellRenderer: NodeIdRenderer,
           checkboxSelection: true,
           headerCheckboxSelection: true,
         },
         {
-          field: "athlete",
-          filterParams: { buttons: ["clear", "reset", "apply"] },
+          field: 'athlete',
+          filterParams: { buttons: ['clear', 'reset', 'apply'] },
         },
         {
-          field: "age",
-          filterParams: { buttons: ["apply", "cancel"] },
+          field: 'age',
+          filterParams: { buttons: ['apply', 'cancel'] },
           enablePivot: true,
         },
-        { field: "country", enableRowGroup: true },
-        { field: "year", filter: "agNumberColumnFilter" },
-        { field: "date" },
+        { field: 'country', enableRowGroup: true },
+        { field: 'year', filter: 'agNumberColumnFilter' },
+        { field: 'date' },
         {
-          field: "sport",
-          filter: "agMultiColumnFilter",
+          field: 'sport',
+          filter: 'agMultiColumnFilter',
           filterParams: {
             filters: [
-              { filter: "agTextColumnFilter", display: "accordion" },
-              { filter: "agSetColumnFilter", display: "accordion" },
+              { filter: 'agTextColumnFilter', display: 'accordion' },
+              { filter: 'agSetColumnFilter', display: 'accordion' },
             ],
           },
         },
-        { field: "gold", enableValue: true },
-        { field: "silver", enableValue: true },
-        { field: "bronze", enableValue: true },
-        { field: "total", enableValue: true },
+        { field: 'gold', enableValue: true },
+        { field: 'silver', enableValue: true },
+        { field: 'bronze', enableValue: true },
+        { field: 'total', enableValue: true },
       ],
       gridApi: null,
       columnApi: null,
@@ -100,11 +100,11 @@ const VueExample = {
     this.localeText = AG_GRID_LOCALE_ZZZ;
     this.statusBar = {
       statusPanels: [
-        { statusPanel: "agTotalAndFilteredRowCountComponent", align: "left" },
-        { statusPanel: "agAggregationComponent" },
+        { statusPanel: 'agTotalAndFilteredRowCountComponent', align: 'left' },
+        { statusPanel: 'agAggregationComponent' },
       ],
     };
-    this.rowGroupPanelShow = "always";
+    this.rowGroupPanelShow = 'always';
     this.paginationPageSize = 500;
   },
   methods: {
@@ -114,7 +114,7 @@ const VueExample = {
 
       const updateData = (data) => params.api.setRowData(data);
 
-      fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
         .then((resp) => resp.json())
         .then((data) => updateData(data));
     },
@@ -122,8 +122,8 @@ const VueExample = {
 };
 
 new Vue({
-  el: "#app",
+  el: '#app',
   components: {
-    "my-component": VueExample,
+    'my-component': VueExample,
   },
 });

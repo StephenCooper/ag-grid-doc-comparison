@@ -1,12 +1,12 @@
-"use strict";
+'use strict';
 
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine-dark.css";
-import { AgGridReact } from "@ag-grid-community/react";
-import { ServerSideRowModelModule } from "@ag-grid-enterprise/server-side-row-model";
-import React, { useCallback, useMemo, useRef, useState } from "react";
-import { render } from "react-dom";
+import React, { useCallback, useMemo, useRef, useState } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from '@ag-grid-community/react';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine-dark.css';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import { ServerSideRowModelModule } from '@ag-grid-enterprise/server-side-row-model';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([ServerSideRowModelModule]);
@@ -14,7 +14,7 @@ ModuleRegistry.registerModules([ServerSideRowModelModule]);
 const getServerSideDatasource = (server) => {
   return {
     getRows: function (params) {
-      console.log("[Datasource] - rows requested by grid: ", params.request);
+      console.log('[Datasource] - rows requested by grid: ', params.request);
       var response = server.getData(params.request);
       // adding delay to simulate real server call
       setTimeout(function () {
@@ -39,22 +39,22 @@ const getServerSideDatasource = (server) => {
 
 const GridExample = () => {
   const gridRef = useRef();
-  const containerStyle = useMemo(() => ({ width: "100%", height: "100%" }), []);
-  const gridStyle = useMemo(() => ({ height: "100%", width: "100%" }), []);
+  const containerStyle = useMemo(() => ({ width: '100%', height: '100%' }), []);
+  const gridStyle = useMemo(() => ({ height: '100%', width: '100%' }), []);
 
   const [columnDefs, setColumnDefs] = useState([
     {
-      field: "year",
+      field: 'year',
       enableRowGroup: true,
       rowGroup: true,
       hide: true,
       minWidth: 100,
     },
-    { field: "country", enableRowGroup: true, rowGroup: true, hide: true },
-    { field: "sport", enableRowGroup: true, rowGroup: true, hide: true },
-    { field: "gold", aggFunc: "sum" },
-    { field: "silver", aggFunc: "sum" },
-    { field: "bronze", aggFunc: "sum" },
+    { field: 'country', enableRowGroup: true, rowGroup: true, hide: true },
+    { field: 'sport', enableRowGroup: true, rowGroup: true, hide: true },
+    { field: 'gold', aggFunc: 'sum' },
+    { field: 'silver', aggFunc: 'sum' },
+    { field: 'bronze', aggFunc: 'sum' },
   ]);
   const defaultColDef = useMemo(() => {
     return {
@@ -72,7 +72,7 @@ const GridExample = () => {
   }, []);
 
   const onGridReady = useCallback((params) => {
-    fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+    fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .then((resp) => resp.json())
       .then((data) => {
         // setup the fake server with entire dataset
@@ -103,7 +103,7 @@ const GridExample = () => {
   return (
     <div style={containerStyle}>
       <div className="example-wrapper">
-        <div style={{ marginBottom: "5px" }}>
+        <div style={{ marginBottom: '5px' }}>
           <button onClick={onBtExpandAll}>Expand All</button>
           &nbsp;&nbsp;&nbsp;
           <button onClick={onBtCollapseAll}>Collapse All</button>
@@ -118,8 +118,8 @@ const GridExample = () => {
             defaultColDef={defaultColDef}
             autoGroupColumnDef={autoGroupColumnDef}
             maxConcurrentDatasourceRequests={1}
-            rowModelType={"serverSide"}
-            serverSideStoreType={"full"}
+            rowModelType={'serverSide'}
+            serverSideStoreType={'full'}
             suppressAggFuncInHeader={true}
             animateRows={true}
             onGridReady={onGridReady}
@@ -130,4 +130,4 @@ const GridExample = () => {
   );
 };
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

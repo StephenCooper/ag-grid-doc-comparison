@@ -1,11 +1,11 @@
-"use strict";
+'use strict';
 
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
-import { AgGridReact } from "ag-grid-react";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from 'ag-grid-react';
+import 'ag-grid-enterprise';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 
 class GridExample extends Component {
   constructor(props) {
@@ -14,10 +14,10 @@ class GridExample extends Component {
     this.state = {
       columnDefs: [
         // group cell renderer needed for expand / collapse icons
-        { field: "name", cellRenderer: "agGroupCellRenderer" },
-        { field: "account" },
-        { field: "calls" },
-        { field: "minutes", valueFormatter: "x.toLocaleString() + 'm'" },
+        { field: 'name', cellRenderer: 'agGroupCellRenderer' },
+        { field: 'account' },
+        { field: 'calls' },
+        { field: 'minutes', valueFormatter: "x.toLocaleString() + 'm'" },
       ],
       defaultColDef: {
         flex: 1,
@@ -30,11 +30,11 @@ class GridExample extends Component {
       detailCellRendererParams: {
         detailGridOptions: {
           columnDefs: [
-            { field: "callId" },
-            { field: "direction" },
-            { field: "number", minWidth: 150 },
-            { field: "duration", valueFormatter: "x.toLocaleString() + 's'" },
-            { field: "switchCode", minWidth: 150 },
+            { field: 'callId' },
+            { field: 'direction' },
+            { field: 'number', minWidth: 150 },
+            { field: 'duration', valueFormatter: "x.toLocaleString() + 's'" },
+            { field: 'switchCode', minWidth: 150 },
           ],
           defaultColDef: {
             flex: 1,
@@ -56,7 +56,7 @@ class GridExample extends Component {
       this.setState({ rowData: data });
     };
 
-    fetch("https://www.ag-grid.com/example-assets/master-detail-data.json")
+    fetch('https://www.ag-grid.com/example-assets/master-detail-data.json')
       .then((resp) => resp.json())
       .then((data) => updateData(data));
   };
@@ -75,7 +75,7 @@ class GridExample extends Component {
     }
     this.gridApi.forEachDetailGridInfo(function (node) {
       const sheet = node.api.getSheetDataForExcel({
-        sheetName: node.id.replace("detail_", ""),
+        sheetName: node.id.replace('detail_', ''),
       });
       if (sheet) {
         spreadsheets.push(sheet);
@@ -83,18 +83,18 @@ class GridExample extends Component {
     });
     this.gridApi.exportMultipleSheetsAsExcel({
       data: spreadsheets,
-      fileName: "ag-grid.xlsx",
+      fileName: 'ag-grid.xlsx',
     });
   };
 
   render() {
     return (
-      <div style={{ width: "100%", height: "100%" }}>
+      <div style={{ width: '100%', height: '100%' }}>
         <div className="container">
           <div>
             <button
               onClick={() => this.onBtExport()}
-              style={{ marginBottom: "5px", fontWeight: "bold" }}
+              style={{ marginBottom: '5px', fontWeight: 'bold' }}
             >
               Export to Excel
             </button>
@@ -102,8 +102,8 @@ class GridExample extends Component {
           <div className="grid-wrapper">
             <div
               style={{
-                height: "100%",
-                width: "100%",
+                height: '100%',
+                width: '100%',
               }}
               className="ag-theme-alpine"
             >
@@ -127,4 +127,4 @@ class GridExample extends Component {
   }
 }
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

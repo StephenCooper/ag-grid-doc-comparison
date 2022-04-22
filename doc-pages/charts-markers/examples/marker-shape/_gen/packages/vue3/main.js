@@ -1,5 +1,5 @@
-import { AgChartsVue } from "ag-charts-vue3";
-import { createApp } from "vue";
+import { AgChartsVue } from 'ag-charts-vue3';
+import { createApp } from 'vue';
 
 const ChartExample = {
   template: `
@@ -7,7 +7,7 @@ const ChartExample = {
                 :options="options"></ag-charts-vue>
     `,
   components: {
-    "ag-charts-vue": AgChartsVue,
+    'ag-charts-vue': AgChartsVue,
   },
   data: function () {
     return {
@@ -17,40 +17,40 @@ const ChartExample = {
   created() {
     this.options = {
       title: {
-        text: "Fuel Spending (2019)",
+        text: 'Fuel Spending (2019)',
       },
       data: getData(),
       series: [
         {
-          xKey: "quarter",
-          yKey: "petrol",
-          title: "Petrol",
+          xKey: 'quarter',
+          yKey: 'petrol',
+          title: 'Petrol',
           marker: {
-            shape: "square",
+            shape: 'square',
             size: 10,
           },
         },
         {
-          xKey: "quarter",
-          yKey: "diesel",
-          title: "Diesel",
-          stroke: "black",
+          xKey: 'quarter',
+          yKey: 'diesel',
+          title: 'Diesel',
+          stroke: 'black',
           marker: {
             size: 15,
-            fill: "gray",
-            stroke: "black",
+            fill: 'gray',
+            stroke: 'black',
           },
         },
         {
-          xKey: "quarter",
-          yKey: "electric",
-          title: "Electric",
-          stroke: "#8bc24a",
+          xKey: 'quarter',
+          yKey: 'electric',
+          title: 'Electric',
+          stroke: '#8bc24a',
           marker: {
-            shape: "cross",
+            shape: 'cross',
             size: 20,
-            fill: "#8bc24a",
-            stroke: "#658d36",
+            fill: '#8bc24a',
+            stroke: '#658d36',
           },
         },
       ],
@@ -60,4 +60,4 @@ const ChartExample = {
   methods: {},
 };
 
-createApp(ChartExample).mount("#app");
+createApp(ChartExample).mount('#app');

@@ -1,5 +1,5 @@
-import { AgChartsVue } from "ag-charts-vue";
-import Vue from "vue";
+import { AgChartsVue } from 'ag-charts-vue';
+import Vue from 'vue';
 
 const ChartExample = {
   template: `
@@ -7,7 +7,7 @@ const ChartExample = {
                 :options="options"></ag-charts-vue>
     `,
   components: {
-    "ag-charts-vue": AgChartsVue,
+    'ag-charts-vue': AgChartsVue,
   },
   data: function () {
     return {
@@ -16,27 +16,27 @@ const ChartExample = {
   },
   created() {
     this.options = {
-      type: "hierarchy",
+      type: 'hierarchy',
 
       data,
       series: [
         {
-          type: "treemap",
-          labelKey: "orgHierarchy",
+          type: 'treemap',
+          labelKey: 'orgHierarchy',
           colorParents: true,
           gradient: false,
           nodePadding: 5,
           sizeKey: undefined,
           colorKey: undefined,
           colorDomain: [0, 2, 4],
-          colorRange: ["#d73027", "#fee08b", "#1a9850"],
+          colorRange: ['#d73027', '#fee08b', '#1a9850'],
         },
       ],
       title: {
-        text: "Organizational Chart",
+        text: 'Organizational Chart',
       },
       subtitle: {
-        text: "of a top secret startup",
+        text: 'of a top secret startup',
       },
     };
   },
@@ -45,8 +45,8 @@ const ChartExample = {
 };
 
 new Vue({
-  el: "#app",
+  el: '#app',
   components: {
-    "my-component": ChartExample,
+    'my-component': ChartExample,
   },
 });

@@ -1,11 +1,11 @@
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { AgGridVue } from "@ag-grid-community/vue3";
-import { GridChartsModule } from "@ag-grid-enterprise/charts";
-import { MenuModule } from "@ag-grid-enterprise/menu";
-import { createApp } from "vue";
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { AgGridVue } from '@ag-grid-community/vue3';
+import { GridChartsModule } from '@ag-grid-enterprise/charts';
+import { MenuModule } from '@ag-grid-enterprise/menu';
+import { createApp } from 'vue';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([
@@ -34,14 +34,14 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
-        { field: "Month", width: 150, chartDataType: "category" },
-        { field: "Sunshine (hours)", chartDataType: "series" },
-        { field: "Rainfall (mm)", chartDataType: "series" },
+        { field: 'Month', width: 150, chartDataType: 'category' },
+        { field: 'Sunshine (hours)', chartDataType: 'series' },
+        { field: 'Rainfall (mm)', chartDataType: 'series' },
       ],
       gridApi: null,
       columnApi: null,
@@ -62,17 +62,17 @@ const VueExample = {
   },
   methods: {
     onChartCreated(event) {
-      console.log("Created chart with ID " + event.chartId);
+      console.log('Created chart with ID ' + event.chartId);
       const chartRef = this.gridApi.getChartRef(event.chartId);
       chart = chartRef.chart;
       updateTitle(this.gridApi, chart);
     },
     onChartRangeSelectionChanged(event) {
-      console.log("Changed range selection of chart with ID " + event.chartId);
+      console.log('Changed range selection of chart with ID ' + event.chartId);
       updateTitle(this.gridApi, chart);
     },
     onChartDestroyed(event) {
-      console.log("Destroyed chart with ID " + event.chartId);
+      console.log('Destroyed chart with ID ' + event.chartId);
       chart = null;
     },
     onGridReady(params) {
@@ -83,7 +83,7 @@ const VueExample = {
         this.rowData = data;
       };
 
-      fetch("https://www.ag-grid.com/example-assets/weather-se-england.json")
+      fetch('https://www.ag-grid.com/example-assets/weather-se-england.json')
         .then((resp) => resp.json())
         .then((data) => updateData(data));
     },
@@ -96,16 +96,16 @@ window.updateTitle = function updateTitle(api, chart) {
   var columnCount = cellRange.columns.length;
   var rowCount = cellRange.endRow.rowIndex - cellRange.startRow.rowIndex + 1;
   chart.title.enabled = true;
-  chart.title.text = "Monthly Weather";
+  chart.title.text = 'Monthly Weather';
   chart.subtitle.enabled = true;
   chart.subtitle.text =
-    "Using series data from " +
+    'Using series data from ' +
     columnCount +
-    " column(s) and " +
+    ' column(s) and ' +
     rowCount +
-    " row(s)";
+    ' row(s)';
 };
 
 var chart = null;
 
-createApp(VueExample).mount("#app");
+createApp(VueExample).mount('#app');

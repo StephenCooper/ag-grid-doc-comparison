@@ -1,23 +1,18 @@
-import {
-  CellClassParams,
-  Grid,
-  GridOptions,
-  ProcessRowGroupForExportParams,
-} from "@ag-grid-community/core";
+import { Grid, CellClassParams, GridOptions, ProcessRowGroupForExportParams } from '@ag-grid-community/core'
 
 const gridOptions: GridOptions = {
   columnDefs: [
-    { field: "country", minWidth: 120, rowGroup: true },
-    { field: "year", rowGroup: true },
-    { headerName: "Name", field: "athlete", minWidth: 150 },
+    { field: 'country', minWidth: 120, rowGroup: true },
+    { field: 'year', rowGroup: true },
+    { headerName: 'Name', field: 'athlete', minWidth: 150 },
     {
-      headerName: "Name Length",
+      headerName: 'Name Length',
       valueGetter: 'data ? data.athlete.length : ""',
     },
-    { field: "sport", minWidth: 120, rowGroup: true },
-    { field: "silver" },
-    { field: "bronze" },
-    { field: "total" },
+    { field: 'sport', minWidth: 120, rowGroup: true },
+    { field: 'silver' },
+    { field: 'bronze' },
+    { field: 'total' },
   ],
 
   defaultColDef: {
@@ -36,63 +31,63 @@ const gridOptions: GridOptions = {
 
   excelStyles: [
     {
-      id: "indent-1",
+      id: 'indent-1',
       alignment: {
         indent: 1,
       },
       // note, dataType: 'string' required to ensure that numeric values aren't right-aligned
-      dataType: "String",
+      dataType: 'String',
     },
     {
-      id: "indent-2",
+      id: 'indent-2',
       alignment: {
         indent: 2,
       },
-      dataType: "String",
+      dataType: 'String',
     },
     {
-      id: "indent-3",
+      id: 'indent-3',
       alignment: {
         indent: 3,
       },
-      dataType: "String",
+      dataType: 'String',
     },
   ],
-};
+}
 
 function rowGroupCallback(params: ProcessRowGroupForExportParams) {
   return params.node.key!;
 }
 
 function getIndentClass(params: CellClassParams) {
-  var indent = 0;
-  var node = params.node;
+  var indent = 0
+  var node = params.node
 
   while (node && node.parent) {
-    indent++;
-    node = node.parent;
+    indent++
+    node = node.parent
   }
-  return "indent-" + indent;
+  return 'indent-' + indent
 }
 
 function onBtnExportDataAsExcel() {
   gridOptions.api!.exportDataAsExcel({
     processRowGroupCallback: rowGroupCallback,
-  });
+  })
 }
 
 // setup the grid after the page has finished loading
-document.addEventListener("DOMContentLoaded", function () {
-  var gridDiv = document.querySelector<HTMLElement>("#myGrid")!;
-  new Grid(gridDiv, gridOptions);
+document.addEventListener('DOMContentLoaded', function () {
+  var gridDiv = document.querySelector<HTMLElement>('#myGrid')!
+  new Grid(gridDiv, gridOptions)
 
-  fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
-    .then((response) => response.json())
+  fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
+    .then(response => response.json())
     .then(function (data) {
-      gridOptions.api!.setRowData(data);
+      gridOptions.api!.setRowData(data)
       gridOptions.api!.forEachNode(function (node) {
-        node.expanded = true;
-      });
-      gridOptions.api!.onGroupExpandedOrCollapsed();
-    });
-});
+        node.expanded = true
+      })
+      gridOptions.api!.onGroupExpandedOrCollapsed()
+    })
+})

@@ -1,25 +1,25 @@
-import { ColDef, Grid, GridOptions } from "ag-grid-community";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
+import { ColDef, Grid, GridOptions } from 'ag-grid-community';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 
 const columnDefs: ColDef[] = [
   {
-    headerName: "#",
-    colId: "rowNum",
-    valueGetter: "node.id",
+    headerName: '#',
+    colId: 'rowNum',
+    valueGetter: 'node.id',
     width: 80,
-    pinned: "left",
+    pinned: 'left',
   },
-  { field: "athlete", width: 150, pinned: "left" },
-  { field: "age", width: 90, pinned: "left" },
-  { field: "country", width: 150 },
-  { field: "year", width: 90 },
-  { field: "date", width: 110 },
-  { field: "sport", width: 150 },
-  { field: "gold", width: 100 },
-  { field: "silver", width: 100 },
-  { field: "bronze", width: 100 },
-  { field: "total", width: 100, pinned: "right" },
+  { field: 'athlete', width: 150, pinned: 'left' },
+  { field: 'age', width: 90, pinned: 'left' },
+  { field: 'country', width: 150 },
+  { field: 'year', width: 90 },
+  { field: 'date', width: 110 },
+  { field: 'sport', width: 150 },
+  { field: 'gold', width: 100 },
+  { field: 'silver', width: 100 },
+  { field: 'bronze', width: 100 },
+  { field: 'total', width: 100, pinned: 'right' },
 ];
 
 const gridOptions: GridOptions = {
@@ -38,10 +38,10 @@ function clearPinned() {
 function resetPinned() {
   gridOptions.columnApi!.applyColumnState({
     state: [
-      { colId: "rowNum", pinned: "left" },
-      { colId: "athlete", pinned: "left" },
-      { colId: "age", pinned: "left" },
-      { colId: "total", pinned: "right" },
+      { colId: 'rowNum', pinned: 'left' },
+      { colId: 'athlete', pinned: 'left' },
+      { colId: 'age', pinned: 'left' },
+      { colId: 'total', pinned: 'right' },
     ],
     defaultState: { pinned: null },
   });
@@ -49,19 +49,19 @@ function resetPinned() {
 
 function pinCountry() {
   gridOptions.columnApi!.applyColumnState({
-    state: [{ colId: "country", pinned: "left" }],
+    state: [{ colId: 'country', pinned: 'left' }],
     defaultState: { pinned: null },
   });
 }
 
 function jumpToCol() {
-  const value = (document.getElementById("col") as HTMLInputElement).value;
-  if (typeof value !== "string" || value === "") {
+  const value = (document.getElementById('col') as HTMLInputElement).value;
+  if (typeof value !== 'string' || value === '') {
     return;
   }
 
   const index = Number(value);
-  if (typeof index !== "number" || isNaN(index)) {
+  if (typeof index !== 'number' || isNaN(index)) {
     return;
   }
 
@@ -76,22 +76,22 @@ function jumpToCol() {
 }
 
 function jumpToRow() {
-  var value = (document.getElementById("row") as HTMLInputElement).value;
+  var value = (document.getElementById('row') as HTMLInputElement).value;
   const index = Number(value);
-  if (typeof index === "number" && !isNaN(index)) {
+  if (typeof index === 'number' && !isNaN(index)) {
     gridOptions.api!.ensureIndexVisible(index);
   }
 }
 
 // setup the grid after the page has finished loading
-const gridDiv = document.querySelector<HTMLElement>("#myGrid")!;
+const gridDiv = document.querySelector<HTMLElement>('#myGrid')!;
 new Grid(gridDiv, gridOptions);
 
-fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
   .then((response) => response.json())
   .then((data) => gridOptions.api!.setRowData(data));
 
-if (typeof window !== "undefined") {
+if (typeof window !== 'undefined') {
   // Attach external event handlers to window so they can be called from index.html
   (<any>window).clearPinned = clearPinned;
   (<any>window).resetPinned = resetPinned;

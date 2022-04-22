@@ -1,10 +1,10 @@
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { AgGridVue } from "@ag-grid-community/vue3";
-import { createApp } from "vue";
-import FullWidthCellRenderer from "./fullWidthCellRendererVue.js";
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { AgGridVue } from '@ag-grid-community/vue3';
+import { createApp } from 'vue';
+import FullWidthCellRenderer from './fullWidthCellRendererVue.js';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([ClientSideRowModelModule]);
@@ -28,15 +28,15 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
     FullWidthCellRenderer,
   },
   data: function () {
     return {
       columnDefs: [
-        { field: "name", cellRenderer: countryCellRenderer },
-        { field: "continent" },
-        { field: "language" },
+        { field: 'name', cellRenderer: countryCellRenderer },
+        { field: 'continent' },
+        { field: 'language' },
       ],
       gridApi: null,
       columnApi: null,
@@ -63,7 +63,7 @@ const VueExample = {
     this.isFullWidthRow = (params) => {
       return isFullWidth(params.rowNode.data);
     };
-    this.fullWidthCellRenderer = "FullWidthCellRenderer";
+    this.fullWidthCellRenderer = 'FullWidthCellRenderer';
   },
   methods: {
     onGridReady(params) {
@@ -82,13 +82,13 @@ window.countryCellRenderer = function countryCellRenderer(params) {
     params.data.code +
     '.png">';
   return (
-    '<span style="cursor: default;">' + flag + " " + params.value + "</span>"
+    '<span style="cursor: default;">' + flag + ' ' + params.value + '</span>'
   );
 };
 
 window.isFullWidth = function isFullWidth(data) {
   // return true when country is Peru, France or Italy
-  return ["Peru", "France", "Italy"].indexOf(data.name) >= 0;
+  return ['Peru', 'France', 'Italy'].indexOf(data.name) >= 0;
 };
 
-createApp(VueExample).mount("#app");
+createApp(VueExample).mount('#app');

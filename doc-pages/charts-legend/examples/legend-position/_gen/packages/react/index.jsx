@@ -1,9 +1,10 @@
-"use strict";
+'use strict';
 
-import { AgChartsReact } from "ag-charts-react";
-import { cloneDeep } from "lodash";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { cloneDeep } from 'lodash';
+import { render } from 'react-dom';
+import * as agCharts from 'ag-charts-community';
+import { AgChartsReact } from 'ag-charts-react';
 
 class ChartExample extends Component {
   constructor(props) {
@@ -12,23 +13,23 @@ class ChartExample extends Component {
     this.state = {
       options: {
         data: [
-          { label: "Android", value: 56.9 },
-          { label: "iOS", value: 22.5 },
-          { label: "BlackBerry", value: 6.8 },
-          { label: "Symbian", value: 8.5 },
-          { label: "Bada", value: 2.6 },
-          { label: "Windows", value: 1.9 },
+          { label: 'Android', value: 56.9 },
+          { label: 'iOS', value: 22.5 },
+          { label: 'BlackBerry', value: 6.8 },
+          { label: 'Symbian', value: 8.5 },
+          { label: 'Bada', value: 2.6 },
+          { label: 'Windows', value: 1.9 },
         ],
         series: [
           {
-            type: "pie",
-            angleKey: "value",
-            labelKey: "label",
+            type: 'pie',
+            angleKey: 'value',
+            labelKey: 'label',
             strokeWidth: 3,
           },
         ],
         legend: {
-          position: "right",
+          position: 'right',
         },
       },
     };
@@ -69,28 +70,28 @@ class ChartExample extends Component {
             <span className="spacer"></span>
             <button
               className="button--code"
-              onClick={() => this.updateLegendPosition("right")}
+              onClick={() => this.updateLegendPosition('right')}
             >
               'right'
             </button>
             <span className="spacer"></span>
             <button
               className="button--code"
-              onClick={() => this.updateLegendPosition("bottom")}
+              onClick={() => this.updateLegendPosition('bottom')}
             >
               'bottom'
             </button>
             <span className="spacer"></span>
             <button
               className="button--code"
-              onClick={() => this.updateLegendPosition("left")}
+              onClick={() => this.updateLegendPosition('left')}
             >
               'left'
             </button>
             <span className="spacer"></span>
             <button
               className="button--code"
-              onClick={() => this.updateLegendPosition("top")}
+              onClick={() => this.updateLegendPosition('top')}
             >
               'top'
             </button>
@@ -102,4 +103,4 @@ class ChartExample extends Component {
   }
 }
 
-render(<ChartExample />, document.querySelector("#root"));
+render(<ChartExample />, document.querySelector('#root'));

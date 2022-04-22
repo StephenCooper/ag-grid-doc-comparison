@@ -4,37 +4,37 @@ import {
   GridOptions,
   ICellEditorComp,
   RowValueChangedEvent,
-} from "ag-grid-community";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
+} from 'ag-grid-community';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import 'ag-grid-enterprise';
 declare var NumericCellEditor: ICellEditorComp;
 
 const gridOptions: GridOptions = {
   columnDefs: [
     {
-      field: "make",
-      cellEditor: "agSelectCellEditor",
+      field: 'make',
+      cellEditor: 'agSelectCellEditor',
       cellEditorParams: {
-        values: ["Porsche", "Toyota", "Ford", "AAA", "BBB", "CCC"],
+        values: ['Porsche', 'Toyota', 'Ford', 'AAA', 'BBB', 'CCC'],
       },
     },
-    { field: "model" },
-    { field: "field4", headerName: "Read Only", editable: false },
-    { field: "price", cellEditor: NumericCellEditor },
+    { field: 'model' },
+    { field: 'field4', headerName: 'Read Only', editable: false },
+    { field: 'price', cellEditor: NumericCellEditor },
     {
-      headerName: "Suppress Navigable",
-      field: "field5",
+      headerName: 'Suppress Navigable',
+      field: 'field5',
       suppressNavigable: true,
       minWidth: 200,
     },
-    { headerName: "Read Only", field: "field6", editable: false },
+    { headerName: 'Read Only', field: 'field6', editable: false },
   ],
   defaultColDef: {
     flex: 1,
     editable: true,
   },
-  editType: "fullRow",
+  editType: 'fullRow',
   rowData: getRowData(),
 
   onCellValueChanged: onCellValueChanged,
@@ -43,22 +43,22 @@ const gridOptions: GridOptions = {
 
 function onCellValueChanged(event: CellValueChangedEvent) {
   console.log(
-    "onCellValueChanged: " + event.colDef.field + " = " + event.newValue
+    'onCellValueChanged: ' + event.colDef.field + ' = ' + event.newValue
   );
 }
 
 function onRowValueChanged(event: RowValueChangedEvent) {
   var data = event.data;
   console.log(
-    "onRowValueChanged: (" +
+    'onRowValueChanged: (' +
       data.make +
-      ", " +
+      ', ' +
       data.model +
-      ", " +
+      ', ' +
       data.price +
-      ", " +
+      ', ' +
       data.field5 +
-      ")"
+      ')'
   );
 }
 
@@ -66,28 +66,28 @@ function getRowData() {
   var rowData = [];
   for (var i = 0; i < 10; i++) {
     rowData.push({
-      make: "Toyota",
-      model: "Celica",
+      make: 'Toyota',
+      model: 'Celica',
       price: 35000 + i * 1000,
-      field4: "Sample XX",
-      field5: "Sample 22",
-      field6: "Sample 23",
+      field4: 'Sample XX',
+      field5: 'Sample 22',
+      field6: 'Sample 23',
     });
     rowData.push({
-      make: "Ford",
-      model: "Mondeo",
+      make: 'Ford',
+      model: 'Mondeo',
       price: 32000 + i * 1000,
-      field4: "Sample YY",
-      field5: "Sample 24",
-      field6: "Sample 25",
+      field4: 'Sample YY',
+      field5: 'Sample 24',
+      field6: 'Sample 25',
     });
     rowData.push({
-      make: "Porsche",
-      model: "Boxter",
+      make: 'Porsche',
+      model: 'Boxster',
       price: 72000 + i * 1000,
-      field4: "Sample ZZ",
-      field5: "Sample 26",
-      field6: "Sample 27",
+      field4: 'Sample ZZ',
+      field5: 'Sample 26',
+      field6: 'Sample 27',
     });
   }
   return rowData;
@@ -98,19 +98,19 @@ function onBtStopEditing() {
 }
 
 function onBtStartEditing() {
-  gridOptions.api!.setFocusedCell(2, "make");
+  gridOptions.api!.setFocusedCell(1, 'make');
   gridOptions.api!.startEditingCell({
-    rowIndex: 2,
-    colKey: "make",
+    rowIndex: 1,
+    colKey: 'make',
   });
 }
 
 // wait for the document to be loaded, otherwise
 // AG Grid will not find the div in the document.
-var eGridDiv = document.querySelector<HTMLElement>("#myGrid")!;
+var eGridDiv = document.querySelector<HTMLElement>('#myGrid')!;
 new Grid(eGridDiv, gridOptions);
 
-if (typeof window !== "undefined") {
+if (typeof window !== 'undefined') {
   // Attach external event handlers to window so they can be called from index.html
   (<any>window).onBtStopEditing = onBtStopEditing;
   (<any>window).onBtStartEditing = onBtStartEditing;

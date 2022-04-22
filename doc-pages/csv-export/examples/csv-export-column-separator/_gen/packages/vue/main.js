@@ -1,8 +1,8 @@
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
-import { AgGridVue } from "ag-grid-vue";
-import Vue from "vue";
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import 'ag-grid-enterprise';
+import { AgGridVue } from 'ag-grid-vue';
+import Vue from 'vue';
 
 const VueExample = {
   template: `
@@ -41,11 +41,11 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
-      columnDefs: [{ field: "make" }, { field: "model" }, { field: "price" }],
+      columnDefs: [{ field: 'make' }, { field: 'model' }, { field: 'price' }],
       gridApi: null,
       columnApi: null,
       defaultColDef: {
@@ -61,9 +61,9 @@ const VueExample = {
   created() {
     this.popupParent = document.body;
     this.rowData = [
-      { make: "Toyota", model: "Celica", price: 35000 },
-      { make: "Ford", model: "Mondeo", price: 32000 },
-      { make: "Porsche", model: "Boxter", price: 72000 },
+      { make: 'Toyota', model: 'Celica', price: 35000 },
+      { make: 'Ford', model: 'Mondeo', price: 32000 },
+      { make: 'Porsche', model: 'Boxster', price: 72000 },
     ];
   },
   methods: {
@@ -71,13 +71,13 @@ const VueExample = {
       var params = getParams();
       if (params.columnSeparator) {
         alert(
-          "NOTE: you are downloading a file with non-standard separators - it may not render correctly in Excel."
+          'NOTE: you are downloading a file with non-standard separators - it may not render correctly in Excel.'
         );
       }
       this.gridApi.exportDataAsCsv(params);
     },
     onBtnUpdate() {
-      document.querySelector("#csvResult").value = this.gridApi.getDataAsCsv(
+      document.querySelector('#csvResult').value = this.gridApi.getDataAsCsv(
         getParams()
       );
     },
@@ -91,10 +91,10 @@ const VueExample = {
 window.getValue = function getValue(inputSelector) {
   var text = document.querySelector(inputSelector).value;
   switch (text) {
-    case "none":
+    case 'none':
       return;
-    case "tab":
-      return "\t";
+    case 'tab':
+      return '\t';
     default:
       return text;
   }
@@ -102,13 +102,13 @@ window.getValue = function getValue(inputSelector) {
 
 window.getParams = function getParams() {
   return {
-    columnSeparator: getValue("#columnSeparator"),
+    columnSeparator: getValue('#columnSeparator'),
   };
 };
 
 new Vue({
-  el: "#app",
+  el: '#app',
   components: {
-    "my-component": VueExample,
+    'my-component': VueExample,
   },
 });

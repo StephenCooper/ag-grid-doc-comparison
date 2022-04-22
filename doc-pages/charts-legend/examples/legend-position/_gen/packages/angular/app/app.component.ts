@@ -1,9 +1,9 @@
-import { Component } from "@angular/core";
-import { AgChartLegendPosition, AgChartOptions } from "ag-charts-community";
-import { cloneDeep } from "lodash";
+import { Component } from '@angular/core';
+import { AgChartLegendPosition, AgChartOptions } from 'ag-charts-community';
+import { cloneDeep } from 'lodash';
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<div class="wrapper">
     <div class="toolPanel">
       <button (click)="setLegendEnabled(true)">Show Legend</button>
@@ -42,23 +42,23 @@ export class AppComponent {
   constructor() {
     this.options = {
       data: [
-        { label: "Android", value: 56.9 },
-        { label: "iOS", value: 22.5 },
-        { label: "BlackBerry", value: 6.8 },
-        { label: "Symbian", value: 8.5 },
-        { label: "Bada", value: 2.6 },
-        { label: "Windows", value: 1.9 },
+        { label: 'Android', value: 56.9 },
+        { label: 'iOS', value: 22.5 },
+        { label: 'BlackBerry', value: 6.8 },
+        { label: 'Symbian', value: 8.5 },
+        { label: 'Bada', value: 2.6 },
+        { label: 'Windows', value: 1.9 },
       ],
       series: [
         {
-          type: "pie",
-          angleKey: "value",
-          labelKey: "label",
+          type: 'pie',
+          angleKey: 'value',
+          labelKey: 'label',
           strokeWidth: 3,
         },
       ],
       legend: {
-        position: "right",
+        position: 'right',
       },
     };
   }

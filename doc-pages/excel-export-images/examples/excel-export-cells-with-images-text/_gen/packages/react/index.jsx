@@ -1,12 +1,12 @@
-"use strict";
+'use strict';
 
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
-import { AgGridReact } from "ag-grid-react";
-import React, { Component } from "react";
-import { render } from "react-dom";
-import CountryCellRenderer from "./countryCellRenderer.jsx";
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from 'ag-grid-react';
+import 'ag-grid-enterprise';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import CountryCellRenderer from './countryCellRenderer.jsx';
 
 class GridExample extends Component {
   constructor(props) {
@@ -14,20 +14,20 @@ class GridExample extends Component {
 
     this.state = {
       columnDefs: [
-        { field: "athlete", width: 200 },
+        { field: 'athlete', width: 200 },
         {
-          field: "country",
-          cellClass: "countryCell",
+          field: 'country',
+          cellClass: 'countryCell',
           cellRenderer: CountryCellRenderer,
         },
-        { field: "age" },
-        { field: "year" },
-        { field: "date" },
-        { field: "sport" },
-        { field: "gold" },
-        { field: "silver" },
-        { field: "bronze" },
-        { field: "total" },
+        { field: 'age' },
+        { field: 'year' },
+        { field: 'date' },
+        { field: 'sport' },
+        { field: 'gold' },
+        { field: 'silver' },
+        { field: 'bronze' },
+        { field: 'total' },
       ],
       defaultColDef: {
         width: 150,
@@ -35,16 +35,16 @@ class GridExample extends Component {
       },
       excelStyles: [
         {
-          id: "countryCell",
+          id: 'countryCell',
           alignment: {
-            vertical: "Center",
+            vertical: 'Center',
             indent: 4,
           },
         },
       ],
       defaultExcelExportParams: {
         addImageToCell: function (rowIndex, col, value) {
-          if (col.getColId() !== "country") {
+          if (col.getColId() !== 'country') {
             return;
           }
           const countryCode = countryCodes[value];
@@ -52,7 +52,7 @@ class GridExample extends Component {
             image: {
               id: countryCode,
               base64: base64flags[countryCode],
-              imageType: "png",
+              imageType: 'png',
               width: 20,
               height: 11,
               position: {
@@ -75,7 +75,7 @@ class GridExample extends Component {
     this.gridApi = params.api;
     this.gridColumnApi = params.columnApi;
 
-    fetch("https://www.ag-grid.com/example-assets/small-olympic-winners.json")
+    fetch('https://www.ag-grid.com/example-assets/small-olympic-winners.json')
       .then((data) =>
         createBase64FlagsFromResponse(data, countryCodes, base64flags)
       )
@@ -88,7 +88,7 @@ class GridExample extends Component {
 
   render() {
     return (
-      <div style={{ width: "100%", height: "100%" }}>
+      <div style={{ width: '100%', height: '100%' }}>
         <div className="container">
           <div>
             <button className="export" onClick={() => this.onBtExport()}>
@@ -98,8 +98,8 @@ class GridExample extends Component {
           <div className="grid-wrapper">
             <div
               style={{
-                height: "100%",
-                width: "100%",
+                height: '100%',
+                width: '100%',
               }}
               className="ag-theme-alpine"
             >
@@ -122,4 +122,4 @@ class GridExample extends Component {
 const countryCodes = {};
 const base64flags = {};
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

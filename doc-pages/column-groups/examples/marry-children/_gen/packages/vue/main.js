@@ -1,7 +1,7 @@
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import { AgGridVue } from "ag-grid-vue";
-import Vue from "vue";
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import { AgGridVue } from 'ag-grid-vue';
+import Vue from 'vue';
 
 const VueExample = {
   template: `
@@ -17,29 +17,29 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
         {
-          headerName: "Athlete Details",
+          headerName: 'Athlete Details',
           marryChildren: true,
           children: [
-            { field: "athlete", colId: "athlete" },
-            { field: "country", colId: "country" },
+            { field: 'athlete', colId: 'athlete' },
+            { field: 'country', colId: 'country' },
           ],
         },
-        { field: "age", colId: "age" },
+        { field: 'age', colId: 'age' },
         {
-          headerName: "Sports Results",
+          headerName: 'Sports Results',
           marryChildren: true,
           children: [
-            { field: "sport", colId: "sport" },
-            { field: "total", colId: "total" },
-            { field: "gold", colId: "gold" },
-            { field: "silver", colId: "silver" },
-            { field: "bronze", colId: "bronze" },
+            { field: 'sport', colId: 'sport' },
+            { field: 'total', colId: 'total' },
+            { field: 'gold', colId: 'gold' },
+            { field: 'silver', colId: 'silver' },
+            { field: 'bronze', colId: 'bronze' },
           ],
         },
       ],
@@ -60,7 +60,7 @@ const VueExample = {
 
       const updateData = (data) => params.api.setRowData(data);
 
-      fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
         .then((resp) => resp.json())
         .then((data) => updateData(data));
     },
@@ -68,8 +68,8 @@ const VueExample = {
 };
 
 new Vue({
-  el: "#app",
+  el: '#app',
   components: {
-    "my-component": VueExample,
+    'my-component': VueExample,
   },
 });

@@ -1,10 +1,10 @@
-"use strict";
+'use strict';
 
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import { AgGridReact } from "ag-grid-react";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from 'ag-grid-react';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 
 class GridExample extends Component {
   constructor(props) {
@@ -18,30 +18,30 @@ class GridExample extends Component {
       },
       columnDefs: [
         {
-          headerName: "Group A",
-          groupId: "groupA",
+          headerName: 'Group A',
+          groupId: 'groupA',
           children: [
-            { field: "athlete" },
-            { field: "age" },
-            { field: "country", columnGroupShow: "open" },
+            { field: 'athlete' },
+            { field: 'age' },
+            { field: 'country', columnGroupShow: 'open' },
           ],
         },
         {
-          headerName: "Group B",
+          headerName: 'Group B',
           children: [
-            { field: "sport" },
-            { field: "year" },
-            { field: "date", columnGroupShow: "open" },
+            { field: 'sport' },
+            { field: 'year' },
+            { field: 'date', columnGroupShow: 'open' },
           ],
         },
         {
-          headerName: "Group C",
-          groupId: "groupC",
+          headerName: 'Group C',
+          groupId: 'groupC',
           children: [
-            { field: "total" },
-            { field: "gold", columnGroupShow: "open" },
-            { field: "silver", columnGroupShow: "open" },
-            { field: "bronze", columnGroupShow: "open" },
+            { field: 'total' },
+            { field: 'gold', columnGroupShow: 'open' },
+            { field: 'silver', columnGroupShow: 'open' },
+            { field: 'bronze', columnGroupShow: 'open' },
           ],
         },
       ],
@@ -57,7 +57,7 @@ class GridExample extends Component {
       this.setState({ rowData: data });
     };
 
-    fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+    fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .then((resp) => resp.json())
       .then((data) => updateData(data));
   };
@@ -72,7 +72,7 @@ class GridExample extends Component {
 
   render() {
     return (
-      <div style={{ width: "100%", height: "100%" }}>
+      <div style={{ width: '100%', height: '100%' }}>
         <div className="test-container">
           <div className="test-header">
             <button onClick={() => this.onBtSetA()}>First Column Set</button>
@@ -80,8 +80,8 @@ class GridExample extends Component {
           </div>
           <div
             style={{
-              height: "100%",
-              width: "100%",
+              height: '100%',
+              width: '100%',
             }}
             className="ag-theme-alpine"
           >
@@ -101,30 +101,30 @@ class GridExample extends Component {
 function createColSetA() {
   return [
     {
-      headerName: "Group A",
-      groupId: "groupA",
+      headerName: 'Group A',
+      groupId: 'groupA',
       children: [
-        { field: "athlete" },
-        { field: "age" },
-        { field: "country", columnGroupShow: "open" },
+        { field: 'athlete' },
+        { field: 'age' },
+        { field: 'country', columnGroupShow: 'open' },
       ],
     },
     {
-      headerName: "Group B",
+      headerName: 'Group B',
       children: [
-        { field: "sport" },
-        { field: "year" },
-        { field: "date", columnGroupShow: "open" },
+        { field: 'sport' },
+        { field: 'year' },
+        { field: 'date', columnGroupShow: 'open' },
       ],
     },
     {
-      headerName: "Group C",
-      groupId: "groupC",
+      headerName: 'Group C',
+      groupId: 'groupC',
       children: [
-        { field: "total" },
-        { field: "gold", columnGroupShow: "open" },
-        { field: "silver", columnGroupShow: "open" },
-        { field: "bronze", columnGroupShow: "open" },
+        { field: 'total' },
+        { field: 'gold', columnGroupShow: 'open' },
+        { field: 'silver', columnGroupShow: 'open' },
+        { field: 'bronze', columnGroupShow: 'open' },
       ],
     },
   ];
@@ -132,35 +132,35 @@ function createColSetA() {
 function createColSetB() {
   return [
     {
-      headerName: "GROUP A",
-      groupId: "groupA",
+      headerName: 'GROUP A',
+      groupId: 'groupA',
       children: [
-        { field: "athlete" },
-        { field: "age" },
-        { field: "country", columnGroupShow: "open" },
+        { field: 'athlete' },
+        { field: 'age' },
+        { field: 'country', columnGroupShow: 'open' },
       ],
     },
     {
-      headerName: "Group B",
+      headerName: 'Group B',
       children: [
-        { field: "sport" },
-        { field: "year" },
-        { field: "date", columnGroupShow: "open" },
+        { field: 'sport' },
+        { field: 'year' },
+        { field: 'date', columnGroupShow: 'open' },
       ],
     },
     {
-      headerName: "Group C",
-      groupId: "groupC",
+      headerName: 'Group C',
+      groupId: 'groupC',
       children: [
-        { field: "total" },
-        { field: "gold", columnGroupShow: "open" },
-        { field: "silver", columnGroupShow: "open" },
-        { field: "bronze", columnGroupShow: "open" },
-        { field: "extraA" },
-        { field: "extraB", columnGroupShow: "open" },
+        { field: 'total' },
+        { field: 'gold', columnGroupShow: 'open' },
+        { field: 'silver', columnGroupShow: 'open' },
+        { field: 'bronze', columnGroupShow: 'open' },
+        { field: 'extraA' },
+        { field: 'extraB', columnGroupShow: 'open' },
       ],
     },
   ];
 }
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

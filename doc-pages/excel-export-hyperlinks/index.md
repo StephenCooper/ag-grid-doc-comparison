@@ -9,6 +9,7 @@ This section describes how to insert hyperlinks in the cells of the exported Exc
 
 You can insert `hyperlinks` in the cells of the exported Excel file by outputting an Excel **HYPERLINK formula** with a URL value you provide. The code below inserts hyperlinks in the Excel export file for all values in the URL column.
 
+
 <snippet>
 const gridOptions = {
     columnDefs: [
@@ -36,6 +37,7 @@ const gridOptions = {
     ]
 }
 </snippet>
+
 
 Note the following:
 

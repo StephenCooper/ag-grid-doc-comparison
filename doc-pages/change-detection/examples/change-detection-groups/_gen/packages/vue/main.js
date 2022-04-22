@@ -1,8 +1,8 @@
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine-dark.css";
-import "ag-grid-enterprise";
-import { AgGridVue } from "ag-grid-vue";
-import Vue from "vue";
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine-dark.css';
+import 'ag-grid-enterprise';
+import { AgGridVue } from 'ag-grid-vue';
+import Vue from 'vue';
 
 const VueExample = {
   template: `
@@ -23,19 +23,19 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
-        { field: "group", rowGroup: true, editable: true },
-        { field: "a", type: "valueColumn" },
-        { field: "b", type: "valueColumn" },
-        { field: "c", type: "valueColumn" },
-        { field: "d", type: "valueColumn" },
+        { field: 'group', rowGroup: true, editable: true },
+        { field: 'a', type: 'valueColumn' },
+        { field: 'b', type: 'valueColumn' },
+        { field: 'c', type: 'valueColumn' },
+        { field: 'd', type: 'valueColumn' },
         {
-          headerName: "Total",
-          type: "totalColumn",
+          headerName: 'Total',
+          type: 'totalColumn',
           valueGetter:
             "getValue('a') + getValue('b') + getValue('c') + getValue('d')",
         },
@@ -59,15 +59,15 @@ const VueExample = {
     this.columnTypes = {
       valueColumn: {
         editable: true,
-        aggFunc: "sum",
-        valueParser: "Number(newValue)",
-        cellClass: "number-cell",
-        cellRenderer: "agAnimateShowChangeCellRenderer",
-        filter: "agNumberColumnFilter",
+        aggFunc: 'sum',
+        valueParser: 'Number(newValue)',
+        cellClass: 'number-cell',
+        cellRenderer: 'agAnimateShowChangeCellRenderer',
+        filter: 'agNumberColumnFilter',
       },
       totalColumn: {
-        cellRenderer: "agAnimateShowChangeCellRenderer",
-        cellClass: "number-cell",
+        cellRenderer: 'agAnimateShowChangeCellRenderer',
+        cellClass: 'number-cell',
       },
     };
     this.rowData = getRowData();
@@ -85,7 +85,7 @@ window.getRowData = function getRowData() {
   var rowData = [];
   for (var i = 1; i <= 16; i++) {
     rowData.push({
-      group: i < 8 ? "A" : "B",
+      group: i < 8 ? 'A' : 'B',
       a: (i * 863) % 100,
       b: (i * 811) % 100,
       c: (i * 743) % 100,
@@ -96,8 +96,8 @@ window.getRowData = function getRowData() {
 };
 
 new Vue({
-  el: "#app",
+  el: '#app',
   components: {
-    "my-component": VueExample,
+    'my-component': VueExample,
   },
 });

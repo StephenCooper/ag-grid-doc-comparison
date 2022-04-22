@@ -1,12 +1,12 @@
-import { ColDef, GridApi, GridReadyEvent } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { HttpClient } from "@angular/common/http";
-import { Component } from "@angular/core";
+import { ColDef, GridApi, GridReadyEvent } from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { HttpClient } from '@angular/common/http';
+import { Component } from '@angular/core';
 // Required feature modules are registered in app.module.ts
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<div class="test-container">
     <div class="test-header">
       <button (click)="setHeaderNames()">Set Header Names</button>
@@ -41,7 +41,7 @@ export class AppComponent {
   setHeaderNames() {
     const columnDefs: ColDef[] = getColumnDefs();
     columnDefs.forEach(function (colDef, index) {
-      colDef.headerName = "C" + index;
+      colDef.headerName = 'C' + index;
     });
     this.gridApi.setColumnDefs(columnDefs);
   }
@@ -58,7 +58,7 @@ export class AppComponent {
     const columnDefs: ColDef[] = getColumnDefs();
     columnDefs.forEach(function (colDef, index) {
       colDef.valueFormatter = function (params) {
-        return "[ " + params.value + " ]";
+        return '[ ' + params.value + ' ]';
       };
     });
     this.gridApi.setColumnDefs(columnDefs);
@@ -76,7 +76,7 @@ export class AppComponent {
     this.gridApi = params.api;
 
     this.http
-      .get<any[]>("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      .get<any[]>('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .subscribe((data) => {
         this.rowData = data;
       });
@@ -85,15 +85,15 @@ export class AppComponent {
 
 function getColumnDefs() {
   return [
-    { field: "athlete" },
-    { field: "age" },
-    { field: "country" },
-    { field: "sport" },
-    { field: "year" },
-    { field: "date" },
-    { field: "gold" },
-    { field: "silver" },
-    { field: "bronze" },
-    { field: "total" },
+    { field: 'athlete' },
+    { field: 'age' },
+    { field: 'country' },
+    { field: 'sport' },
+    { field: 'year' },
+    { field: 'date' },
+    { field: 'gold' },
+    { field: 'silver' },
+    { field: 'bronze' },
+    { field: 'total' },
   ];
 }

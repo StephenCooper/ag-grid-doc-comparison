@@ -3,7 +3,7 @@ title: "User Created Charts"
 enterprise: true
 ---
 
-User created charts are designed to provide an out-of-the box charting experience, similar to that found in spreadsheet
+User created charts are designed to provide an out-of-the box charting experience, similar to that found in spreadsheet 
 applications such as Excel, but fully integrated inside your applications.
 
 Users can select a range of cells in the grid and create a chart from the context menu, as shown below:
@@ -41,6 +41,8 @@ const gridOptions = {
 </snippet>
 
 ## User Created Charts
+
+
 
 The animation above highlights a number of charting features. For more details on each feature follow the links provided below:
 

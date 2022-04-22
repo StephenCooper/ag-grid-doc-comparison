@@ -1,16 +1,16 @@
-"use strict";
+'use strict';
 
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { AgGridReact } from "@ag-grid-community/react";
-import { ColumnsToolPanelModule } from "@ag-grid-enterprise/column-tool-panel";
-import { MenuModule } from "@ag-grid-enterprise/menu";
-import { RowGroupingModule } from "@ag-grid-enterprise/row-grouping";
-import { SetFilterModule } from "@ag-grid-enterprise/set-filter";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from '@ag-grid-community/react';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import { RowGroupingModule } from '@ag-grid-enterprise/row-grouping';
+import { MenuModule } from '@ag-grid-enterprise/menu';
+import { ColumnsToolPanelModule } from '@ag-grid-enterprise/column-tool-panel';
+import { SetFilterModule } from '@ag-grid-enterprise/set-filter';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([
@@ -28,32 +28,32 @@ class GridExample extends Component {
     this.state = {
       columnDefs: [
         {
-          headerName: "Country",
-          colId: "countryGroup",
-          showRowGroup: "country",
+          headerName: 'Country',
+          colId: 'countryGroup',
+          showRowGroup: 'country',
           minWidth: 200,
-          cellRenderer: "agGroupCellRenderer",
+          cellRenderer: 'agGroupCellRenderer',
           filterValueGetter: function (params) {
             return params.data ? params.data.country : null;
           },
         },
-        { field: "country", rowGroup: true, hide: true },
+        { field: 'country', rowGroup: true, hide: true },
         {
-          headerName: "Year / Athlete",
-          colId: "yearAthleteGroup",
+          headerName: 'Year / Athlete',
+          colId: 'yearAthleteGroup',
           minWidth: 220,
-          showRowGroup: "year",
-          cellRenderer: "agGroupCellRenderer",
-          valueGetter: "data ? data.athlete : null",
+          showRowGroup: 'year',
+          cellRenderer: 'agGroupCellRenderer',
+          valueGetter: 'data ? data.athlete : null',
         },
-        { field: "year", rowGroup: true, hide: true },
-        { field: "sport", minWidth: 200 },
-        { field: "gold" },
-        { field: "silver" },
-        { field: "bronze" },
-        { field: "total" },
-        { field: "age" },
-        { field: "date", minWidth: 140 },
+        { field: 'year', rowGroup: true, hide: true },
+        { field: 'sport', minWidth: 200 },
+        { field: 'gold' },
+        { field: 'silver' },
+        { field: 'bronze' },
+        { field: 'total' },
+        { field: 'age' },
+        { field: 'date', minWidth: 140 },
       ],
       defaultColDef: {
         flex: 1,
@@ -62,7 +62,7 @@ class GridExample extends Component {
         sortable: true,
         resizable: true,
       },
-      groupDisplayType: "custom",
+      groupDisplayType: 'custom',
       rowData: null,
     };
   }
@@ -73,18 +73,18 @@ class GridExample extends Component {
 
     const updateData = (data) => params.api.setRowData(data);
 
-    fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+    fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .then((resp) => resp.json())
       .then((data) => updateData(data));
   };
 
   render() {
     return (
-      <div style={{ width: "100%", height: "100%" }}>
+      <div style={{ width: '100%', height: '100%' }}>
         <div
           style={{
-            height: "100%",
-            width: "100%",
+            height: '100%',
+            width: '100%',
           }}
           className="ag-theme-alpine"
         >
@@ -103,4 +103,4 @@ class GridExample extends Component {
   }
 }
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

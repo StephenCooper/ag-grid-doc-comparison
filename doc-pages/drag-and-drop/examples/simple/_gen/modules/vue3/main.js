@@ -1,9 +1,9 @@
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { AgGridVue } from "@ag-grid-community/vue3";
-import { createApp } from "vue";
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { AgGridVue } from '@ag-grid-community/vue3';
+import { createApp } from 'vue';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([ClientSideRowModelModule]);
@@ -36,16 +36,16 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
         { valueGetter: "'Drag'", dndSource: true },
-        { field: "id" },
-        { field: "color" },
-        { field: "value1" },
-        { field: "value2" },
+        { field: 'id' },
+        { field: 'color' },
+        { field: 'value1' },
+        { field: 'value2' },
       ],
       gridApi: null,
       columnApi: null,
@@ -61,9 +61,9 @@ const VueExample = {
   },
   created() {
     this.rowClassRules = {
-      "red-row": 'data.color == "Red"',
-      "green-row": 'data.color == "Green"',
-      "blue-row": 'data.color == "Blue"',
+      'red-row': 'data.color == "Red"',
+      'green-row': 'data.color == "Green"',
+      'blue-row': 'data.color == "Blue"',
     };
     this.rowData = getData();
   },
@@ -71,16 +71,16 @@ const VueExample = {
     onDragOver(event) {
       var dragSupported = event.dataTransfer.length;
       if (dragSupported) {
-        event.dataTransfer.dropEffect = "move";
+        event.dataTransfer.dropEffect = 'move';
       }
       event.preventDefault();
     },
     onDrop(event) {
-      var jsonData = event.dataTransfer.getData("application/json");
-      var eJsonRow = document.createElement("div");
-      eJsonRow.classList.add("json-row");
+      var jsonData = event.dataTransfer.getData('application/json');
+      var eJsonRow = document.createElement('div');
+      eJsonRow.classList.add('json-row');
       eJsonRow.innerText = jsonData;
-      var eJsonDisplay = document.querySelector("#eJsonDisplay");
+      var eJsonDisplay = document.querySelector('#eJsonDisplay');
       eJsonDisplay.appendChild(eJsonRow);
       event.preventDefault();
     },
@@ -91,4 +91,4 @@ const VueExample = {
   },
 };
 
-createApp(VueExample).mount("#app");
+createApp(VueExample).mount('#app');

@@ -1,82 +1,82 @@
+import { Component } from '@angular/core';
 import { ICellRendererAngularComp } from "@ag-grid-community/angular";
-import { ICellRendererParams } from "@ag-grid-community/core";
-import { Component } from "@angular/core";
+import { ICellRendererParams } from '@ag-grid-community/core';
 
 @Component({
-  selector: "app-loading-cell-renderer",
-  template: `<span class="calls-cell-renderer">
-    <button (click)="onAdd()">+</button>
-    <button (click)="onRemove()">-</button>
-    <span>{{ value }}</span>
-  </span>`,
+    selector: 'app-loading-cell-renderer',
+    template: `<span class="calls-cell-renderer">
+                    <button (click)="onAdd()">+</button>
+                    <button (click)="onRemove()">-</button>
+                    <span>{{value}}</span>
+                </span>`
 })
 export class CallsCellRenderer implements ICellRendererAngularComp {
-  private params!: ICellRendererParams;
-  public value!: number;
 
-  agInit(params: ICellRendererParams): void {
-    this.params = params;
-    this.value = params.value;
-  }
+    private params!: ICellRendererParams;
+    public value!: number;
 
-  onAdd(): void {
-    var oldData = this.params.node.data;
-
-    var oldCallRecords = oldData.callRecords;
-
-    var newCallRecords = oldCallRecords.slice(0); // make a copy
-    newCallRecords.push({
-      name: ["Bob", "Paul", "David", "John"][Math.floor(Math.random() * 4)],
-      callId: Math.floor(Math.random() * 1000),
-      duration: Math.floor(Math.random() * 100) + 1,
-      switchCode: "SW5",
-      direction: "Out",
-      number: "(02) " + Math.floor(Math.random() * 1000000),
-    }); // add one item
-
-    var minutes = 0;
-    newCallRecords.forEach((r: any) => (minutes += r.duration));
-
-    var newData = {
-      name: oldData.name,
-      account: oldData.account,
-      calls: newCallRecords.length,
-      minutes: minutes,
-      callRecords: newCallRecords,
-    };
-
-    this.params.api.applyTransaction({ update: [newData] });
-
-    this.params.node.setExpanded(true);
-  }
-
-  onRemove(): void {
-    var oldData = this.params.node.data;
-
-    var oldCallRecords = oldData.callRecords;
-
-    if (oldCallRecords.length == 0) {
-      return;
+    agInit(params: ICellRendererParams): void {
+        this.params = params;
+        this.value = params.value;
     }
 
-    var newCallRecords = oldCallRecords.slice(0); // make a copy
-    newCallRecords.pop(); // remove one item
+    onAdd(): void {
+        var oldData = this.params.node.data;
 
-    var minutes = 0;
-    newCallRecords.forEach((r: any) => (minutes += r.duration));
+        var oldCallRecords = oldData.callRecords;
 
-    var newData = {
-      name: oldData.name,
-      account: oldData.account,
-      calls: newCallRecords.length,
-      minutes: minutes,
-      callRecords: newCallRecords,
-    };
+        var newCallRecords = oldCallRecords.slice(0); // make a copy
+        newCallRecords.push({
+            name: ["Bob", "Paul", "David", "John"][Math.floor(Math.random() * 4)],
+            callId: Math.floor(Math.random() * 1000),
+            duration: Math.floor(Math.random() * 100) + 1,
+            switchCode: "SW5",
+            direction: "Out",
+            number: "(02) " + Math.floor(Math.random() * 1000000)
+        }); // add one item
 
-    this.params.api.applyTransaction({ update: [newData] });
-  }
+        var minutes = 0;
+        newCallRecords.forEach((r: any) => minutes += r.duration);
 
-  refresh(params: ICellRendererParams): boolean {
-    return false;
-  }
+        var newData = {
+            name: oldData.name,
+            account: oldData.account,
+            calls: newCallRecords.length,
+            minutes: minutes,
+            callRecords: newCallRecords
+        };
+
+        this.params.api.applyTransaction({ update: [newData] });
+
+        this.params.node.setExpanded(true);
+    }
+
+    onRemove(): void {
+
+        var oldData = this.params.node.data;
+
+        var oldCallRecords = oldData.callRecords;
+
+        if (oldCallRecords.length == 0) { return; }
+
+        var newCallRecords = oldCallRecords.slice(0); // make a copy
+        newCallRecords.pop(); // remove one item
+
+        var minutes = 0;
+        newCallRecords.forEach((r: any) => minutes += r.duration);
+
+        var newData = {
+            name: oldData.name,
+            account: oldData.account,
+            calls: newCallRecords.length,
+            minutes: minutes,
+            callRecords: newCallRecords
+        };
+
+        this.params.api.applyTransaction({ update: [newData] });
+    }
+
+    refresh(params: ICellRendererParams): boolean {
+        return false;
+    }
 }

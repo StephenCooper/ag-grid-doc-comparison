@@ -1,11 +1,11 @@
-"use strict";
+'use strict';
 
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine-dark.css";
-import "ag-grid-enterprise";
-import { AgGridReact } from "ag-grid-react";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from 'ag-grid-react';
+import 'ag-grid-enterprise';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine-dark.css';
 
 class GridExample extends Component {
   constructor(props) {
@@ -13,22 +13,22 @@ class GridExample extends Component {
 
     this.state = {
       columnDefs: [
-        { field: "athlete", width: 150 },
-        { field: "age" },
-        { field: "country", width: 150 },
-        { field: "year" },
-        { field: "sport" },
-        { field: "gold" },
-        { field: "silver" },
-        { field: "bronze" },
+        { field: 'athlete', width: 150 },
+        { field: 'age' },
+        { field: 'country', width: 150 },
+        { field: 'year' },
+        { field: 'sport' },
+        { field: 'gold' },
+        { field: 'silver' },
+        { field: 'bronze' },
       ],
       defaultColDef: {
         width: 100,
         resizable: true,
       },
-      rowSelection: "single",
-      rowModelType: "serverSide",
-      serverSideStoreType: "partial",
+      rowSelection: 'single',
+      rowModelType: 'serverSide',
+      serverSideStoreType: 'partial',
     };
   }
 
@@ -46,7 +46,7 @@ class GridExample extends Component {
       params.api.setServerSideDatasource(datasource);
     };
 
-    fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+    fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .then((resp) => resp.json())
       .then((data) => updateData(data));
   };
@@ -73,8 +73,8 @@ class GridExample extends Component {
     var selectedRow = selectedRows[0];
     // insert new row in the source data, at the top of the page
     window.rowDataServerSide.splice(selectedRow.rowIndex, 0, {
-      athlete: "New Item" + newItemCount,
-      id: "" + Math.random(),
+      athlete: 'New Item' + newItemCount,
+      id: '' + Math.random(),
     });
     newItemCount++;
     this.gridApi.refreshServerSideStore();
@@ -86,9 +86,9 @@ class GridExample extends Component {
 
   render() {
     return (
-      <div style={{ width: "100%", height: "100%" }}>
+      <div style={{ width: '100%', height: '100%' }}>
         <div className="example-wrapper">
-          <div style={{ marginBottom: "5px" }}>
+          <div style={{ marginBottom: '5px' }}>
             <button onClick={() => this.onBtAdd()}>
               Add Before Selected Row
             </button>
@@ -98,8 +98,8 @@ class GridExample extends Component {
           </div>
           <div
             style={{
-              height: "100%",
-              width: "100%",
+              height: '100%',
+              width: '100%',
             }}
             className="ag-theme-alpine-dark"
           >
@@ -141,4 +141,4 @@ function createMyDataSource(data) {
   return dataSource;
 }
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

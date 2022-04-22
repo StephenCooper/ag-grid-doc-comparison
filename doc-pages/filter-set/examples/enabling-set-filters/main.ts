@@ -1,15 +1,15 @@
-import { Grid, GridOptions } from "@ag-grid-community/core";
+import { Grid, GridOptions } from '@ag-grid-community/core'
 
 const gridOptions: GridOptions = {
   columnDefs: [
     // set filters
-    { field: "athlete", filter: true },
-    { field: "country", filter: "agSetColumnFilter" },
+    { field: 'athlete', filter: true },
+    { field: 'country', filter: 'agSetColumnFilter' },
 
     // number filters
-    { field: "gold", filter: "agNumberColumnFilter" },
-    { field: "silver", filter: "agNumberColumnFilter" },
-    { field: "bronze", filter: "agNumberColumnFilter" },
+    { field: 'gold', filter: 'agNumberColumnFilter' },
+    { field: 'silver', filter: 'agNumberColumnFilter' },
+    { field: 'bronze', filter: 'agNumberColumnFilter' },
   ],
 
   defaultColDef: {
@@ -18,14 +18,14 @@ const gridOptions: GridOptions = {
     resizable: true,
     floatingFilter: true,
   },
-};
+}
 
 // setup the grid after the page has finished loading
-document.addEventListener("DOMContentLoaded", function () {
-  var gridDiv = document.querySelector<HTMLElement>("#myGrid")!;
-  new Grid(gridDiv, gridOptions);
+document.addEventListener('DOMContentLoaded', function () {
+  var gridDiv = document.querySelector<HTMLElement>('#myGrid')!
+  new Grid(gridDiv, gridOptions)
 
-  fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
-    .then((response) => response.json())
-    .then((data) => gridOptions.api!.setRowData(data));
-});
+  fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
+    .then(response => response.json())
+    .then(data => gridOptions.api!.setRowData(data))
+})

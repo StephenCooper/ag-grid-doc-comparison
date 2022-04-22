@@ -1,13 +1,13 @@
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { AgGridVue } from "@ag-grid-community/vue3";
-import { ColumnsToolPanelModule } from "@ag-grid-enterprise/column-tool-panel";
-import { FiltersToolPanelModule } from "@ag-grid-enterprise/filter-tool-panel";
-import { MenuModule } from "@ag-grid-enterprise/menu";
-import { RowGroupingModule } from "@ag-grid-enterprise/row-grouping";
-import { createApp } from "vue";
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { AgGridVue } from '@ag-grid-community/vue3';
+import { ColumnsToolPanelModule } from '@ag-grid-enterprise/column-tool-panel';
+import { FiltersToolPanelModule } from '@ag-grid-enterprise/filter-tool-panel';
+import { MenuModule } from '@ag-grid-enterprise/menu';
+import { RowGroupingModule } from '@ag-grid-enterprise/row-grouping';
+import { createApp } from 'vue';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([
@@ -29,32 +29,31 @@ const VueExample = {
                 @grid-ready="onGridReady"
                 :defaultColDef="defaultColDef"
                 :autoGroupColumnDef="autoGroupColumnDef"
-                :sideBar="true"
                 :pivotMode="true"
                 :suppressAggFuncInHeader="true"
-                :postProcessSecondaryColDef="postProcessSecondaryColDef"
-                :postProcessSecondaryColGroupDef="postProcessSecondaryColGroupDef"
+                :processSecondaryColDef="processSecondaryColDef"
+                :processSecondaryColGroupDef="processSecondaryColGroupDef"
                 :rowData="rowData"></ag-grid-vue>
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
-        { field: "country", rowGroup: true, enableRowGroup: true },
+        { field: 'country', rowGroup: true, enableRowGroup: true },
         {
-          field: "year",
+          field: 'year',
           pivot: true,
           enablePivot: true,
           pivotComparator: MyYearPivotComparator,
         },
-        { field: "date" },
-        { field: "sport" },
-        { field: "gold", aggFunc: "sum" },
-        { field: "silver", aggFunc: "sum" },
-        { field: "bronze", aggFunc: "sum" },
+        { field: 'date' },
+        { field: 'sport' },
+        { field: 'gold', aggFunc: 'sum' },
+        { field: 'silver', aggFunc: 'sum' },
+        { field: 'bronze', aggFunc: 'sum' },
       ],
       gridApi: null,
       columnApi: null,
@@ -65,8 +64,8 @@ const VueExample = {
         resizable: true,
       },
       autoGroupColumnDef: null,
-      postProcessSecondaryColDef: null,
-      postProcessSecondaryColGroupDef: null,
+      processSecondaryColDef: null,
+      processSecondaryColGroupDef: null,
       rowData: null,
     };
   },
@@ -74,26 +73,45 @@ const VueExample = {
     this.autoGroupColumnDef = {
       minWidth: 250,
     };
-    this.postProcessSecondaryColDef = (params) => {
-      const colDef = params.colDef;
-      // make all the columns upper case
-      colDef.headerName = colDef.headerName.toUpperCase();
-      // the pivot keys are the keys use for the pivot
-      // don't change these, but you can use them for your information
-      // console.log('Pivot Keys:');
-      // console.log(colDef.pivotKeys);
-      // // the value column is the value we are aggregating on
-      // console.log('Pivot Value Keys:');
-      // console.log(colDef.pivotValueColumn);
+    this.processSecondaryColDef = (colDef) => {
+      if (
+        _optionalChain([
+          colDef,
+          'access',
+          (_) => _.pivotValueColumn,
+          'optionalAccess',
+          (_2) => _2.getId,
+          'call',
+          (_3) => _3(),
+        ]) === 'gold'
+      ) {
+        colDef.headerName = _optionalChain([
+          colDef,
+          'access',
+          (_4) => _4.headerName,
+          'optionalAccess',
+          (_5) => _5.toUpperCase,
+          'call',
+          (_6) => _6(),
+        ]);
+      }
     };
-    this.postProcessSecondaryColGroupDef = (params) => {
-      const colGroupDef = params.colGroupDef;
-      // for fun, add a css class for 2002
-      if (colGroupDef.pivotKeys[0] === "2002") {
-        colGroupDef.headerClass = "color-background";
+    this.processSecondaryColGroupDef = (colGroupDef) => {
+      // for fun, add a css class for 2010
+      if (
+        _optionalChain([
+          colGroupDef,
+          'access',
+          (_7) => _7.pivotKeys,
+          'optionalAccess',
+          (_8) => _8.length,
+        ]) &&
+        colGroupDef.pivotKeys[0] === '2010'
+      ) {
+        colGroupDef.headerClass = 'color-background';
       }
       // put 'year' in front of each group
-      colGroupDef.headerName = "Year " + colGroupDef.headerName;
+      colGroupDef.headerName = 'Year ' + colGroupDef.headerName;
     };
   },
   methods: {
@@ -103,16 +121,38 @@ const VueExample = {
 
       const updateData = (data) => params.api.setRowData(data);
 
-      fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
         .then((resp) => resp.json())
         .then((data) => updateData(data));
     },
   },
 };
 
+window._optionalChain = function _optionalChain(ops) {
+  let lastAccessLHS = undefined;
+  let value = ops[0];
+  let i = 1;
+  while (i < ops.length) {
+    const op = ops[i];
+    const fn = ops[i + 1];
+    i += 2;
+    if ((op === 'optionalAccess' || op === 'optionalCall') && value == null) {
+      return undefined;
+    }
+    if (op === 'access' || op === 'optionalAccess') {
+      lastAccessLHS = value;
+      value = fn(value);
+    } else if (op === 'call' || op === 'optionalCall') {
+      value = fn((...args) => value.call(lastAccessLHS, ...args));
+      lastAccessLHS = undefined;
+    }
+  }
+  return value;
+};
+
 window.MyYearPivotComparator = function MyYearPivotComparator(a, b) {
-  var requiredOrder = ["2012", "2010", "2008", "2006", "2004", "2002", "2000"];
+  var requiredOrder = ['2012', '2010', '2008', '2006', '2004', '2002', '2000'];
   return requiredOrder.indexOf(a) - requiredOrder.indexOf(b);
 };
 
-createApp(VueExample).mount("#app");
+createApp(VueExample).mount('#app');

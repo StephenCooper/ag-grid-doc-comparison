@@ -1,18 +1,18 @@
-import { ColDef, Grid, GridOptions } from "@ag-grid-community/core";
+import { Grid, ColDef, GridOptions } from '@ag-grid-community/core'
 
 function getColumnDefs(): ColDef[] {
   return [
-    { field: "athlete", width: 150, sort: "asc" },
-    { field: "age" },
-    { field: "country", pinned: "left" },
-    { field: "sport" },
-    { field: "year" },
-    { field: "date" },
-    { field: "gold" },
-    { field: "silver" },
-    { field: "bronze" },
-    { field: "total" },
-  ];
+    { field: 'athlete', width: 150, sort: 'asc' },
+    { field: 'age' },
+    { field: 'country', pinned: 'left' },
+    { field: 'sport' },
+    { field: 'year' },
+    { field: 'date' },
+    { field: 'gold' },
+    { field: 'silver' },
+    { field: 'bronze' },
+    { field: 'total' },
+  ]
 }
 
 const gridOptions: GridOptions = {
@@ -25,22 +25,22 @@ const gridOptions: GridOptions = {
     sort: null, // important - clears sort if not specified in col def
   },
   columnDefs: getColumnDefs(),
-};
+}
 
 function onBtWithState() {
-  gridOptions.api!.setColumnDefs(getColumnDefs());
+  gridOptions.api!.setColumnDefs(getColumnDefs())
 }
 
 function onBtRemove() {
-  gridOptions.api!.setColumnDefs([]);
+  gridOptions.api!.setColumnDefs([])
 }
 
 // setup the grid after the page has finished loading
-document.addEventListener("DOMContentLoaded", () => {
-  const gridDiv = document.querySelector<HTMLElement>("#myGrid")!;
-  new Grid(gridDiv, gridOptions);
+document.addEventListener('DOMContentLoaded', () => {
+  const gridDiv = document.querySelector<HTMLElement>('#myGrid')!
+  new Grid(gridDiv, gridOptions)
 
-  fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
-    .then((response) => response.json())
-    .then((data) => gridOptions.api!.setRowData(data));
-});
+  fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
+    .then(response => response.json())
+    .then(data => gridOptions.api!.setRowData(data))
+})

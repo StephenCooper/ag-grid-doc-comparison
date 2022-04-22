@@ -13,6 +13,7 @@ The grid has the following API's to assist with refreshing:
 <api-documentation source='grid-api/api.json' section='serverSideRowModel' names='["refreshServerSideStore"]' config='{"overrideBottomMargin":"0rem"}' ></api-documentation>
 <api-documentation source='grid-api/api.json' section='infiniteScrolling' names='["getCacheBlockState"]'  ></api-documentation>
 
+
 The following example demonstrates the refresh API. The following can be noted:
 
 - Button **Refresh Top Level** refreshes the top level store. Note the Version column has changed its value.
@@ -44,6 +45,7 @@ refreshing which are as follows:
   be only 1 block exists in the cache after purging. This means only one block request is sent to the server.<br/><br/>
   Refreshing however will refresh all existing blocks. Thus if 5 blocks exist in the cache, all blocks
   will get refreshed resulting in 5 requests sent to the server.
+
 
 ## Maintaining Open Groups
 
@@ -80,6 +82,7 @@ replace rows. This also means when grid property `enableCellChangeFlash = true` 
 changes. If `getRowId()` is not implemented, rows are replaced and cells are re-created from scratch, no flashing
 is possible.
 
+
 <grid-example title='Keep Group State' name='keep-group-state' type='generated' options='{ "enterprise": true, "exampleHeight": 615, "extras": ["alasql"], "modules": ["serverside", "rowgrouping"] }'></grid-example>
 
 [[note]]
@@ -92,6 +95,8 @@ is possible.
 |If you are using the Partial Store and need to restore groups to their previously open state, then this logic can
 |be implemented in your application using the [Open by Default](/server-side-model-grouping/#open-by-default) API.
 
+
 ## Next Up
 
 Continue to the next section to learn how to perform [Pivoting](/server-side-model-pivoting/).
+

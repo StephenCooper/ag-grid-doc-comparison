@@ -1,11 +1,11 @@
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { AgGridVue } from "@ag-grid-community/vue3";
-import { ColumnsToolPanelModule } from "@ag-grid-enterprise/column-tool-panel";
-import { MenuModule } from "@ag-grid-enterprise/menu";
-import { createApp } from "vue";
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { AgGridVue } from '@ag-grid-community/vue3';
+import { ColumnsToolPanelModule } from '@ag-grid-enterprise/column-tool-panel';
+import { MenuModule } from '@ag-grid-enterprise/menu';
+import { createApp } from 'vue';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([
@@ -28,18 +28,18 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
         {
-          groupId: "athleteGroupId",
-          headerName: "Athlete",
+          groupId: 'athleteGroupId',
+          headerName: 'Athlete',
           children: [
             {
-              headerName: "Name",
-              field: "athlete",
+              headerName: 'Name',
+              field: 'athlete',
               minWidth: 200,
               columnsMenuParams: {
                 suppressColumnFilter: true,
@@ -48,19 +48,19 @@ const VueExample = {
               },
             },
             {
-              field: "age",
+              field: 'age',
               minWidth: 200,
               columnsMenuParams: { contractColumnSelection: true },
             },
           ],
         },
         {
-          groupId: "medalsGroupId",
-          headerName: "Medals",
+          groupId: 'medalsGroupId',
+          headerName: 'Medals',
           children: [
-            { field: "gold" },
-            { field: "silver" },
-            { field: "bronze" },
+            { field: 'gold' },
+            { field: 'silver' },
+            { field: 'bronze' },
           ],
         },
       ],
@@ -69,7 +69,7 @@ const VueExample = {
       defaultColDef: {
         flex: 1,
         resizable: true,
-        menuTabs: ["columnsMenuTab"],
+        menuTabs: ['columnsMenuTab'],
         columnsMenuParams: {
           // suppresses updating the layout of columns as they are rearranged in the grid
           suppressSyncLayoutWithGrid: true,
@@ -86,11 +86,11 @@ const VueExample = {
 
       const updateData = (data) => params.api.setRowData(data);
 
-      fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
         .then((resp) => resp.json())
         .then((data) => updateData(data));
     },
   },
 };
 
-createApp(VueExample).mount("#app");
+createApp(VueExample).mount('#app');

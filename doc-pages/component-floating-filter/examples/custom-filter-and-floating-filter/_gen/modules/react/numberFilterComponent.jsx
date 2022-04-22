@@ -1,4 +1,4 @@
-import React, { Component, createRef } from "react";
+import React, { Component, createRef } from 'react';
 
 export default class NumberFilterComponent extends Component {
   constructor(props) {
@@ -38,7 +38,7 @@ export default class NumberFilterComponent extends Component {
     return (
       this.state.filterText !== null &&
       this.state.filterText !== undefined &&
-      this.state.filterText !== "" &&
+      this.state.filterText !== '' &&
       this.isNumeric(this.state.filterText)
     );
   }
@@ -71,12 +71,12 @@ export default class NumberFilterComponent extends Component {
 
   render() {
     return (
-      <div style={{ padding: "4px" }}>
-        <div style={{ fontWeight: "bold" }}>Greater than:</div>
+      <div style={{ padding: '4px' }}>
+        <div style={{ fontWeight: 'bold' }}>Greater than:</div>
         <div>
           <input
             ref={this.inputRef}
-            style={{ margin: "4px 0 4px 0" }}
+            style={{ margin: '4px 0 4px 0' }}
             type="number"
             onInput={this.onInputBoxChanged}
             placeholder="Number of medals..."

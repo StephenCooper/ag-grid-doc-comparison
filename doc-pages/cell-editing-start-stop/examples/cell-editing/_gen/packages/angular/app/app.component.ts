@@ -1,16 +1,16 @@
-import { Component } from "@angular/core";
-import { ColDef, GridApi, GridReadyEvent } from "ag-grid-community";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
+import { Component } from '@angular/core';
+import { ColDef, GridApi, GridReadyEvent } from 'ag-grid-community';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<div class="example-wrapper">
     <div
       style="margin-bottom: 5px; display: flex; justify-content: space-between;"
     >
       <div>
-        <button (click)="onBtStartEditing()">edit (0)</button>
+        <button (click)="onBtStartEditing(undefined)">edit (0)</button>
         <button (click)="onBtStartEditing('Delete')">edit (0, Delete)</button>
         <button (click)="onBtStartEditing(undefined, 'T')">
           edit (0, 'T')
@@ -49,13 +49,13 @@ export class AppComponent {
   private gridApi!: GridApi;
 
   public columnDefs: ColDef[] = [
-    { field: "firstName" },
-    { field: "lastName" },
-    { field: "gender" },
-    { field: "age" },
-    { field: "mood" },
-    { field: "country" },
-    { field: "address", minWidth: 550 },
+    { field: 'firstName' },
+    { field: 'lastName' },
+    { field: 'gender' },
+    { field: 'age' },
+    { field: 'mood' },
+    { field: 'country' },
+    { field: 'address', minWidth: 550 },
   ];
   public defaultColDef: ColDef = {
     flex: 1,
@@ -71,15 +71,11 @@ export class AppComponent {
     this.gridApi.stopEditing();
   }
 
-  onBtStartEditing(
-    key: string | undefined,
-    char: string | undefined,
-    pinned: string
-  ) {
-    this.gridApi.setFocusedCell(0, "lastName", pinned);
+  onBtStartEditing(key?: string, char?: string, pinned?: string) {
+    this.gridApi.setFocusedCell(0, 'lastName', pinned);
     this.gridApi.startEditingCell({
       rowIndex: 0,
-      colKey: "lastName",
+      colKey: 'lastName',
       // set to 'top', 'bottom' or undefined
       rowPinned: pinned,
       key: key,
@@ -100,15 +96,15 @@ export class AppComponent {
     if (cellDefs.length > 0) {
       var cellDef = cellDefs[0];
       console.log(
-        "editing cell is: row = " +
+        'editing cell is: row = ' +
           cellDef.rowIndex +
-          ", col = " +
+          ', col = ' +
           cellDef.column.getId() +
-          ", floating = " +
+          ', floating = ' +
           cellDef.rowPinned
       );
     } else {
-      console.log("no cells are editing");
+      console.log('no cells are editing');
     }
   }
 
@@ -120,24 +116,24 @@ export class AppComponent {
 function getPinnedTopData() {
   return [
     {
-      firstName: "##",
-      lastName: "##",
-      gender: "##",
-      address: "##",
-      mood: "##",
-      country: "##",
+      firstName: '##',
+      lastName: '##',
+      gender: '##',
+      address: '##',
+      mood: '##',
+      country: '##',
     },
   ];
 }
 function getPinnedBottomData() {
   return [
     {
-      firstName: "##",
-      lastName: "##",
-      gender: "##",
-      address: "##",
-      mood: "##",
-      country: "##",
+      firstName: '##',
+      lastName: '##',
+      gender: '##',
+      address: '##',
+      mood: '##',
+      country: '##',
     },
   ];
 }

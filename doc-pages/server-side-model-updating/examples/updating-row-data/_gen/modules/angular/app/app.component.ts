@@ -8,16 +8,16 @@ import {
   IServerSideGetRowsRequest,
   RowNode,
   ServerSideStoreType,
-} from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine-dark.css";
-import { HttpClient } from "@angular/common/http";
-import { Component } from "@angular/core";
+} from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine-dark.css';
+import { HttpClient } from '@angular/common/http';
+import { Component } from '@angular/core';
 // Required feature modules are registered in app.module.ts
 declare var _: any;
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<div class="example-wrapper">
     <div style="margin-bottom: 5px;">
       <button (click)="updateSelectedRows()">Update Selected Rows</button>
@@ -44,20 +44,20 @@ export class AppComponent {
   private gridApi!: GridApi;
 
   public columnDefs: ColDef[] = [
-    { field: "id", hide: true },
-    { field: "athlete" },
-    { field: "country", rowGroup: true, hide: true },
-    { field: "gold" },
-    { field: "silver" },
-    { field: "bronze" },
+    { field: 'id', hide: true },
+    { field: 'athlete' },
+    { field: 'country', rowGroup: true, hide: true },
+    { field: 'gold' },
+    { field: 'silver' },
+    { field: 'bronze' },
   ];
   public defaultColDef: ColDef = {
     width: 250,
     resizable: true,
   };
-  public rowSelection = "multiple";
-  public rowModelType = "serverSide";
-  public serverSideStoreType: ServerSideStoreType = "partial";
+  public rowSelection = 'multiple';
+  public rowModelType = 'serverSide';
+  public serverSideStoreType: ServerSideStoreType = 'partial';
   public cacheBlockSize = 75;
   public rowData!: any[];
 
@@ -95,7 +95,7 @@ export class AppComponent {
     this.gridApi = params.api;
 
     this.http
-      .get<any[]>("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      .get<any[]>('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .subscribe((data) => {
         allData = data;
         // add id to data
@@ -138,7 +138,7 @@ function getMockServerResponse(request: IServerSideGetRowsRequest) {
   var rowGroupColIds = request.rowGroupCols.map(function (x) {
     return x.id;
   });
-  var parentId = groupKeys.length > 0 ? groupKeys.join("") : "";
+  var parentId = groupKeys.length > 0 ? groupKeys.join('') : '';
   var rows = group(allData, rowGroupColIds, groupKeys, parentId);
   var rowsThisBlock = rows.slice(request.startRow, request.endRow);
   rowsThisBlock.sort();
@@ -163,7 +163,7 @@ function group(
       var res: Record<string, any> = {};
       // Note: the server provides group id's using a simple heuristic based on group keys:
       // i.e. group node ids will be in the following format: 'Russia', 'Russia-2002'
-      res["id"] = getGroupId(parentId, key);
+      res['id'] = getGroupId(parentId, key);
       res[groupColId!] = key;
       return res;
     });
@@ -187,5 +187,5 @@ function updateServerRows(rowsToUpdate: any[]) {
   }
 }
 function getGroupId(parentId: string, key: string) {
-  return parentId ? parentId + "-" + key : key;
+  return parentId ? parentId + '-' + key : key;
 }

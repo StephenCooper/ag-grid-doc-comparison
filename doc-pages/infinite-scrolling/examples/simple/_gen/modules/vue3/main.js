@@ -1,9 +1,9 @@
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { InfiniteRowModelModule } from "@ag-grid-community/infinite-row-model";
-import { AgGridVue } from "@ag-grid-community/vue3";
-import { createApp } from "vue";
+import { ModuleRegistry } from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { InfiniteRowModelModule } from '@ag-grid-community/infinite-row-model';
+import { AgGridVue } from '@ag-grid-community/vue3';
+import { createApp } from 'vue';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([InfiniteRowModelModule]);
@@ -29,15 +29,15 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
         {
-          headerName: "ID",
+          headerName: 'ID',
           maxWidth: 100,
-          valueGetter: "node.id",
+          valueGetter: 'node.id',
           cellRenderer: (params) => {
             if (params.value !== undefined) {
               return params.value;
@@ -46,16 +46,16 @@ const VueExample = {
             }
           },
         },
-        { field: "athlete", minWidth: 150 },
-        { field: "age" },
-        { field: "country", minWidth: 150 },
-        { field: "year" },
-        { field: "date", minWidth: 150 },
-        { field: "sport", minWidth: 150 },
-        { field: "gold" },
-        { field: "silver" },
-        { field: "bronze" },
-        { field: "total" },
+        { field: 'athlete', minWidth: 150 },
+        { field: 'age' },
+        { field: 'country', minWidth: 150 },
+        { field: 'year' },
+        { field: 'date', minWidth: 150 },
+        { field: 'sport', minWidth: 150 },
+        { field: 'gold' },
+        { field: 'silver' },
+        { field: 'bronze' },
+        { field: 'total' },
       ],
       gridApi: null,
       columnApi: null,
@@ -76,8 +76,8 @@ const VueExample = {
   },
   created() {
     this.rowBuffer = 0;
-    this.rowSelection = "multiple";
-    this.rowModelType = "infinite";
+    this.rowSelection = 'multiple';
+    this.rowModelType = 'infinite';
     this.cacheBlockSize = 100;
     this.cacheOverflowSize = 2;
     this.maxConcurrentDatasourceRequests = 1;
@@ -94,7 +94,7 @@ const VueExample = {
           rowCount: undefined,
           getRows: function (params) {
             console.log(
-              "asking for " + params.startRow + " to " + params.endRow
+              'asking for ' + params.startRow + ' to ' + params.endRow
             );
             // At this point in your code, you would call the server.
             // To make the demo look real, wait for 500ms before returning
@@ -114,11 +114,11 @@ const VueExample = {
         params.api.setDatasource(dataSource);
       };
 
-      fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
         .then((resp) => resp.json())
         .then((data) => updateData(data));
     },
   },
 };
 
-createApp(VueExample).mount("#app");
+createApp(VueExample).mount('#app');

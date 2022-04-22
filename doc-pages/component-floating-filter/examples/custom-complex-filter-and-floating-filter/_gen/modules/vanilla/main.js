@@ -1,29 +1,29 @@
 const columnDefs = [
   {
-    field: "athlete",
+    field: 'athlete',
     minWidth: 150,
-    filter: "agTextColumnFilter",
+    filter: 'agTextColumnFilter',
     filterParams: {
       debounceMs: 2000,
     },
   },
   {
-    field: "age",
-    filter: "agNumberColumnFilter",
+    field: 'age',
+    filter: 'agNumberColumnFilter',
     filterParams: {
       debounceMs: 0,
     },
   },
-  { field: "country" },
-  { field: "year" },
+  { field: 'country' },
+  { field: 'year' },
   {
-    field: "date",
+    field: 'date',
     minWidth: 180,
-    filter: "agDateColumnFilter",
+    filter: 'agDateColumnFilter',
     filterParams: {
       comparator: function (filterLocalDateAtMidnight, cellValue) {
         var dateAsString = cellValue;
-        var dateParts = dateAsString.split("/");
+        var dateParts = dateAsString.split('/');
         var cellDate = new Date(
           Number(dateParts[2]),
           Number(dateParts[1]) - 1,
@@ -47,9 +47,9 @@ const columnDefs = [
       suppressFilterButton: true,
     },
   },
-  { field: "sport" },
+  { field: 'sport' },
   {
-    field: "gold",
+    field: 'gold',
     floatingFilterComponent: NumberFloatingFilter,
     floatingFilterComponentParams: {
       maxValue: 7,
@@ -58,7 +58,7 @@ const columnDefs = [
     filter: CustomNumberFilter,
   },
   {
-    field: "silver",
+    field: 'silver',
     floatingFilterComponent: NumberFloatingFilter,
     floatingFilterComponentParams: {
       maxValue: 3,
@@ -67,7 +67,7 @@ const columnDefs = [
     filter: CustomNumberFilter,
   },
   {
-    field: "bronze",
+    field: 'bronze',
     floatingFilterComponent: NumberFloatingFilter,
     floatingFilterComponentParams: {
       maxValue: 2,
@@ -76,7 +76,7 @@ const columnDefs = [
     filter: CustomNumberFilter,
   },
   {
-    field: "total",
+    field: 'total',
     floatingFilterComponent: NumberFloatingFilter,
     floatingFilterComponentParams: {
       maxValue: 5,
@@ -101,11 +101,11 @@ const gridOptions = {
 };
 
 // setup the grid after the page has finished loading
-document.addEventListener("DOMContentLoaded", function () {
-  var gridDiv = document.querySelector("#myGrid");
+document.addEventListener('DOMContentLoaded', function () {
+  var gridDiv = document.querySelector('#myGrid');
   new agGrid.Grid(gridDiv, gridOptions);
 
-  fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+  fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
     .then((response) => response.json())
     .then((data) => gridOptions.api.setRowData(data));
 });

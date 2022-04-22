@@ -1,6 +1,6 @@
 class CountryCellRenderer {
   init(params) {
-    this.eGui = document.createElement("div");
+    this.eGui = document.createElement('div');
     this.eGui.innerHTML = `${params.value.name}`;
   }
 
@@ -14,29 +14,29 @@ class CountryCellRenderer {
 }
 
 const columnDefs = [
-  { field: "first_name", headerName: "First Name", width: 120, editable: true },
-  { field: "last_name", headerName: "Last Name", width: 120, editable: true },
+  { field: 'first_name', headerName: 'First Name', width: 120, editable: true },
+  { field: 'last_name', headerName: 'Last Name', width: 120, editable: true },
   {
-    field: "gender",
+    field: 'gender',
     width: 100,
     editable: true,
     cellRenderer: GenderRenderer,
-    cellEditor: "agRichSelectCellEditor",
+    cellEditor: 'agRichSelectCellEditor',
     cellEditorPopup: true,
     cellEditorParams: {
       cellRenderer: GenderRenderer,
-      values: ["Male", "Female"],
+      values: ['Male', 'Female'],
     },
   },
   {
-    field: "age",
+    field: 'age',
     width: 80,
     editable: true,
     cellEditor: NumericEditor,
     cellEditorPopup: true,
   },
   {
-    field: "mood",
+    field: 'mood',
     width: 100,
     cellRenderer: MoodRenderer,
     cellEditor: MoodEditor,
@@ -44,9 +44,9 @@ const columnDefs = [
     editable: true,
   },
   {
-    field: "country",
+    field: 'country',
     width: 110,
-    cellEditor: "agRichSelectCellEditor",
+    cellEditor: 'agRichSelectCellEditor',
     cellEditorPopup: true,
     cellRenderer: CountryCellRenderer,
     keyCreator: function (params) {
@@ -55,22 +55,22 @@ const columnDefs = [
     cellEditorParams: {
       cellRenderer: CountryCellRenderer,
       values: [
-        { name: "Ireland", code: "IE" },
-        { name: "UK", code: "UK" },
-        { name: "France", code: "FR" },
+        { name: 'Ireland', code: 'IE' },
+        { name: 'UK', code: 'UK' },
+        { name: 'France', code: 'FR' },
       ],
     },
     editable: true,
   },
   {
-    field: "address",
+    field: 'address',
     editable: true,
-    cellEditor: "agLargeTextCellEditor",
+    cellEditor: 'agLargeTextCellEditor',
     cellEditorPopup: true,
     cellEditorParams: {
-      maxLength: "300", // override the editor defaults
-      cols: "50",
-      rows: "6",
+      maxLength: '300', // override the editor defaults
+      cols: '50',
+      rows: '6',
     },
   },
 ];
@@ -87,21 +87,21 @@ const gridOptions = {
     resizable: true,
   },
   onRowEditingStarted: (event) => {
-    console.log("never called - not doing row editing");
+    console.log('never called - not doing row editing');
   },
   onRowEditingStopped: (event) => {
-    console.log("never called - not doing row editing");
+    console.log('never called - not doing row editing');
   },
   onCellEditingStarted: (event) => {
-    console.log("cellEditingStarted");
+    console.log('cellEditingStarted');
   },
   onCellEditingStopped: (event) => {
-    console.log("cellEditingStopped");
+    console.log('cellEditingStopped');
   },
 };
 
 // setup the grid after the page has finished loading
-document.addEventListener("DOMContentLoaded", () => {
-  const gridDiv = document.querySelector("#myGrid");
+document.addEventListener('DOMContentLoaded', () => {
+  const gridDiv = document.querySelector('#myGrid');
   new agGrid.Grid(gridDiv, gridOptions);
 });

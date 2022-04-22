@@ -7,14 +7,14 @@ import {
   GetChartImageDataUrlParams,
   GridApi,
   GridReadyEvent,
-} from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { Component } from "@angular/core";
+} from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { Component } from '@angular/core';
 // Required feature modules are registered in app.module.ts
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<div class="wrapper">
     <div id="buttons">
       <button (click)="downloadChartImage('image/png')">
@@ -47,10 +47,10 @@ export class AppComponent {
   private gridApi!: GridApi;
 
   public columnDefs: ColDef[] = [
-    { field: "country", chartDataType: "category" },
-    { field: "sugar", chartDataType: "series" },
-    { field: "fat", chartDataType: "series" },
-    { field: "weight", chartDataType: "series" },
+    { field: 'country', chartDataType: 'category' },
+    { field: 'sugar', chartDataType: 'series' },
+    { field: 'fat', chartDataType: 'series' },
+    { field: 'weight', chartDataType: 'series' },
   ];
   public defaultColDef: ColDef = {
     editable: true,
@@ -77,10 +77,10 @@ export class AppComponent {
   onFirstDataRendered(params: FirstDataRenderedEvent) {
     const createRangeChartParams: CreateRangeChartParams = {
       cellRange: {
-        columns: ["country", "sugar", "fat", "weight"],
+        columns: ['country', 'sugar', 'fat', 'weight'],
       },
-      chartType: "groupedColumn",
-      chartContainer: document.querySelector("#myChart") as any,
+      chartType: 'groupedColumn',
+      chartContainer: document.querySelector('#myChart') as any,
     };
     params.api.createRangeChart(createRangeChartParams);
   }
@@ -96,10 +96,10 @@ export class AppComponent {
     const params: GetChartImageDataUrlParams = { fileFormat, chartId };
     const imageDataURL = this.gridApi.getChartImageDataURL(params);
     if (imageDataURL) {
-      const a = document.createElement("a");
+      const a = document.createElement('a');
       a.href = imageDataURL;
-      a.download = "image";
-      a.style.display = "none";
+      a.download = 'image';
+      a.style.display = 'none';
       document.body.appendChild(a);
       a.click();
       document.body.removeChild(a);
@@ -115,7 +115,7 @@ export class AppComponent {
     if (imageDataURL) {
       const image = new Image();
       image.src = imageDataURL;
-      const w = window.open("")!;
+      const w = window.open('')!;
       w.document.write(image.outerHTML);
       w.document.close();
     }

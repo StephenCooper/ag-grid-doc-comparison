@@ -1,5 +1,5 @@
-import { AgChartsVue } from "ag-charts-vue";
-import Vue from "vue";
+import { AgChartsVue } from 'ag-charts-vue';
+import Vue from 'vue';
 
 const ChartExample = {
   template: `
@@ -7,7 +7,7 @@ const ChartExample = {
                 :options="options"></ag-charts-vue>
     `,
   components: {
-    "ag-charts-vue": AgChartsVue,
+    'ag-charts-vue': AgChartsVue,
   },
   data: function () {
     return {
@@ -17,19 +17,19 @@ const ChartExample = {
   created() {
     this.options = {
       data: [
-        { os: "Android", share: 56.9, satisfaction: 10 },
-        { os: "iOS", share: 22.5, satisfaction: 12 },
-        { os: "BlackBerry", share: 6.8, satisfaction: 9 },
-        { os: "Symbian", share: 8.5, satisfaction: 8 },
-        { os: "Bada", share: 2.6, satisfaction: 7 },
-        { os: "Windows", share: 1.9, satisfaction: 6 },
+        { os: 'Android', share: 56.9, satisfaction: 10 },
+        { os: 'iOS', share: 22.5, satisfaction: 12 },
+        { os: 'BlackBerry', share: 6.8, satisfaction: 9 },
+        { os: 'Symbian', share: 8.5, satisfaction: 8 },
+        { os: 'Bada', share: 2.6, satisfaction: 7 },
+        { os: 'Windows', share: 1.9, satisfaction: 6 },
       ],
       series: [
         {
-          type: "pie",
-          labelKey: "os",
-          angleKey: "share",
-          radiusKey: "satisfaction",
+          type: 'pie',
+          labelKey: 'os',
+          angleKey: 'share',
+          radiusKey: 'satisfaction',
         },
       ],
     };
@@ -39,8 +39,8 @@ const ChartExample = {
 };
 
 new Vue({
-  el: "#app",
+  el: '#app',
   components: {
-    "my-component": ChartExample,
+    'my-component': ChartExample,
   },
 });

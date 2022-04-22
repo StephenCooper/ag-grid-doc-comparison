@@ -1,23 +1,24 @@
 import {
   ColDef,
   GetRowIdFunc,
+  GetRowIdParams,
   GridApi,
   GridReadyEvent,
   IServerSideDatasource,
   IServerSideGetRowsParams,
   ServerSideStoreType,
-} from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine-dark.css";
-import { HttpClient } from "@angular/common/http";
-import { Component } from "@angular/core";
+} from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine-dark.css';
+import { HttpClient } from '@angular/common/http';
+import { Component } from '@angular/core';
 // Required feature modules are registered in app.module.ts
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<div class="example-wrapper">
     <div style="margin-bottom: 5px;">
-      <button (click)="onAdd()">Add at End</button>
+      <button (click)="onAdd(undefined)">Add at End</button>
       <button (click)="onAdd(0)">Add at Start</button>
       <button (click)="onUpdateSelected()">Update Selected</button>
       <button (click)="onUpdateRandom()">Update Random</button>
@@ -38,22 +39,22 @@ import { Component } from "@angular/core";
       [rowData]="rowData"
       (gridReady)="onGridReady($event)"
     ></ag-grid-angular>
-  </div> `,
+  </div>`,
 })
 export class AppComponent {
   private gridApi!: GridApi;
 
-  public columnDefs: ColDef[] = [{ field: "product" }, { field: "value" }];
+  public columnDefs: ColDef[] = [{ field: 'product' }, { field: 'value' }];
   public defaultColDef: ColDef = {
     width: 250,
     resizable: true,
   };
-  public getRowId: GetRowIdFunc = function (params) {
+  public getRowId: GetRowIdFunc = function (params: GetRowIdParams) {
     return params.data.product;
   };
-  public rowSelection = "multiple";
-  public serverSideStoreType: ServerSideStoreType = "full";
-  public rowModelType = "serverSide";
+  public rowSelection = 'multiple';
+  public serverSideStoreType: ServerSideStoreType = 'full';
+  public rowModelType = 'serverSide';
   public rowData!: any[];
 
   constructor(private http: HttpClient) {}
@@ -116,13 +117,13 @@ export class AppComponent {
     this.gridApi.applyServerSideTransaction(tx);
   }
 
-  onAdd(index: number) {
+  onAdd(index: number | undefined) {
     const newProductName =
       all_products[Math.floor(all_products.length * Math.random())];
     const itemsToAdd = [];
     for (let i = 0; i < 5; i++) {
       itemsToAdd.push({
-        product: newProductName + " " + newProductSequence++,
+        product: newProductName + ' ' + newProductSequence++,
         value: getNextValue(),
       });
     }
@@ -137,7 +138,7 @@ export class AppComponent {
     this.gridApi = params.api;
 
     this.http
-      .get<any[]>("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      .get<any[]>('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .subscribe((data) => {
         const dataSource: IServerSideDatasource = {
           getRows: function (params: IServerSideGetRowsParams) {
@@ -160,36 +161,36 @@ export class AppComponent {
   }
 }
 
-const products = ["Palm Oil", "Rubber", "Wool", "Amber", "Copper"];
+const products = ['Palm Oil', 'Rubber', 'Wool', 'Amber', 'Copper'];
 const all_products = [
-  "Palm Oil",
-  "Rubber",
-  "Wool",
-  "Amber",
-  "Copper",
-  "Lead",
-  "Zinc",
-  "Tin",
-  "Aluminium",
-  "Aluminium Alloy",
-  "Nickel",
-  "Cobalt",
-  "Molybdenum",
-  "Recycled Steel",
-  "Corn",
-  "Oats",
-  "Rough Rice",
-  "Soybeans",
-  "Rapeseed",
-  "Soybean Meal",
-  "Soybean Oil",
-  "Wheat",
-  "Milk",
-  "Coca",
-  "Coffee C",
-  "Cotton No.2",
-  "Sugar No.11",
-  "Sugar No.14",
+  'Palm Oil',
+  'Rubber',
+  'Wool',
+  'Amber',
+  'Copper',
+  'Lead',
+  'Zinc',
+  'Tin',
+  'Aluminium',
+  'Aluminium Alloy',
+  'Nickel',
+  'Cobalt',
+  'Molybdenum',
+  'Recycled Steel',
+  'Corn',
+  'Oats',
+  'Rough Rice',
+  'Soybeans',
+  'Rapeseed',
+  'Soybean Meal',
+  'Soybean Oil',
+  'Wheat',
+  'Milk',
+  'Coca',
+  'Coffee C',
+  'Cotton No.2',
+  'Sugar No.11',
+  'Sugar No.14',
 ];
 let newProductSequence = 0;
 let valueCounter = 0;

@@ -1,21 +1,21 @@
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
-import { AgGridReact } from "ag-grid-react";
-import React, { useCallback, useMemo, useRef, useState } from "react";
-import { render } from "react-dom";
-("use strict");
+'use strict';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import React, { useCallback, useMemo, useRef, useState } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from 'ag-grid-react';
+import 'ag-grid-enterprise';
 
 const colourCellRenderer = (props) => {
-  if (!props.value || props.value === "(Select All)") {
+  if (!props.value || props.value === '(Select All)') {
     return props.value;
   }
 
   const styles = {
-    verticalAlign: "middle",
-    border: "1px solid black",
+    verticalAlign: 'middle',
+    border: '1px solid black',
     margin: 3,
-    display: "inline-block",
+    display: 'inline-block',
     width: 10,
     height: 10,
     backgroundColor: props.value.toLowerCase(),
@@ -29,31 +29,31 @@ const colourCellRenderer = (props) => {
 };
 
 const FILTER_TYPES = {
-  insensitive: "colour",
-  sensitive: "colour_1",
+  insensitive: 'colour',
+  sensitive: 'colour_1',
 };
 
-const MANGLED_COLOURS = ["ReD", "OrAnGe", "WhItE", "YeLlOw"];
+const MANGLED_COLOURS = ['ReD', 'OrAnGe', 'WhItE', 'YeLlOw'];
 
 const GridExample = () => {
-  const gridRef = useRef();
-  const containerStyle = useMemo(() => ({ width: "100%", height: "100%" }), []);
-  const gridStyle = useMemo(() => ({ height: "100%", width: "100%" }), []);
+  const gridRef = useRef(null);
+  const containerStyle = useMemo(() => ({ width: '100%', height: '100%' }), []);
+  const gridStyle = useMemo(() => ({ height: '100%', width: '100%' }), []);
   const [rowData, setRowData] = useState(getData());
   const [columnDefs, setColumnDefs] = useState([
     {
-      headerName: "Case Insensitive (default)",
-      field: "colour",
-      filter: "agSetColumnFilter",
+      headerName: 'Case Insensitive (default)',
+      field: 'colour',
+      filter: 'agSetColumnFilter',
       filterParams: {
         caseSensitive: false,
         cellRenderer: colourCellRenderer,
       },
     },
     {
-      headerName: "Case Sensitive",
-      field: "colour",
-      filter: "agSetColumnFilter",
+      headerName: 'Case Sensitive',
+      field: 'colour',
+      filter: 'agSetColumnFilter',
       filterParams: {
         caseSensitive: true,
         cellRenderer: colourCellRenderer,
@@ -71,7 +71,7 @@ const GridExample = () => {
   }, []);
 
   const onFirstDataRendered = useCallback((params) => {
-    gridRef.current.api.getToolPanelInstance("filters").expandFilters();
+    gridRef.current.api.getToolPanelInstance('filters').expandFilters();
   }, []);
 
   const setModel = useCallback((type) => {
@@ -120,35 +120,35 @@ const GridExample = () => {
         <div className="example-header">
           <div>
             Case Insensitive:
-            <button onClick={() => setModel("insensitive")}>
+            <button onClick={() => setModel('insensitive')}>
               API: setModel() - mismatching case
             </button>
-            <button onClick={() => getModel("insensitive")}>
+            <button onClick={() => getModel('insensitive')}>
               API: getModel()
             </button>
-            <button onClick={() => setFilterValues("insensitive")}>
+            <button onClick={() => setFilterValues('insensitive')}>
               API: setFilterValues() - mismatching case
             </button>
-            <button onClick={() => getValues("insensitive")}>
+            <button onClick={() => getValues('insensitive')}>
               API: getValues()
             </button>
-            <button onClick={() => reset("insensitive")}>Reset</button>
+            <button onClick={() => reset('insensitive')}>Reset</button>
           </div>
-          <div style={{ paddingTop: "10px" }}>
+          <div style={{ paddingTop: '10px' }}>
             Case Sensitive:
-            <button onClick={() => setModel("sensitive")}>
+            <button onClick={() => setModel('sensitive')}>
               API: setModel() - mismatching case
             </button>
-            <button onClick={() => getModel("sensitive")}>
+            <button onClick={() => getModel('sensitive')}>
               API: getModel()
             </button>
-            <button onClick={() => setFilterValues("sensitive")}>
+            <button onClick={() => setFilterValues('sensitive')}>
               API: setFilterValues() - mismatching case
             </button>
-            <button onClick={() => getValues("sensitive")}>
+            <button onClick={() => getValues('sensitive')}>
               API: getValues()
             </button>
-            <button onClick={() => reset("sensitive")}>Reset</button>
+            <button onClick={() => reset('sensitive')}>Reset</button>
           </div>
         </div>
 
@@ -158,7 +158,7 @@ const GridExample = () => {
             rowData={rowData}
             columnDefs={columnDefs}
             defaultColDef={defaultColDef}
-            sideBar={"filters"}
+            sideBar={'filters'}
             onFirstDataRendered={onFirstDataRendered}
           ></AgGridReact>
         </div>
@@ -167,4 +167,4 @@ const GridExample = () => {
   );
 };
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

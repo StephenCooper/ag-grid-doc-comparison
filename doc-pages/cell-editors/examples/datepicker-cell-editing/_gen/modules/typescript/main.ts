@@ -1,4 +1,4 @@
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
 import {
   ColDef,
   Grid,
@@ -6,11 +6,11 @@ import {
   ICellEditorComp,
   ICellEditorParams,
   ModuleRegistry,
-} from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { ColumnsToolPanelModule } from "@ag-grid-enterprise/column-tool-panel";
-import { MenuModule } from "@ag-grid-enterprise/menu";
+} from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { ColumnsToolPanelModule } from '@ag-grid-enterprise/column-tool-panel';
+import { MenuModule } from '@ag-grid-enterprise/menu';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([
@@ -25,14 +25,14 @@ class DatePicker implements ICellEditorComp {
   // gets called once before the renderer is used
   init(params: ICellEditorParams) {
     // create the cell
-    this.eInput = document.createElement("input");
+    this.eInput = document.createElement('input');
     this.eInput.value = params.value;
-    this.eInput.classList.add("ag-input");
-    this.eInput.style.height = "100%";
+    this.eInput.classList.add('ag-input');
+    this.eInput.style.height = '100%';
 
     // https://jqueryui.com/datepicker/
     $(this.eInput).datepicker({
-      dateFormat: "dd/mm/yy",
+      dateFormat: 'dd/mm/yy',
       onSelect: () => {
         this.eInput.focus();
       },
@@ -69,21 +69,21 @@ class DatePicker implements ICellEditorComp {
 }
 
 const columnDefs: ColDef[] = [
-  { field: "athlete" },
+  { field: 'athlete' },
   {
-    field: "date",
+    field: 'date',
     editable: true,
     cellEditor: DatePicker,
     cellEditorPopup: true,
   },
-  { field: "age", maxWidth: 110 },
-  { field: "country" },
-  { field: "year", maxWidth: 120 },
-  { field: "sport" },
-  { field: "gold" },
-  { field: "silver" },
-  { field: "bronze" },
-  { field: "total" },
+  { field: 'age', maxWidth: 110 },
+  { field: 'country' },
+  { field: 'year', maxWidth: 120 },
+  { field: 'sport' },
+  { field: 'gold' },
+  { field: 'silver' },
+  { field: 'bronze' },
+  { field: 'total' },
 ];
 
 const gridOptions: GridOptions = {
@@ -95,9 +95,9 @@ const gridOptions: GridOptions = {
 };
 
 // setup the grid after the page has finished loading
-const gridDiv = document.querySelector<HTMLElement>("#myGrid")!;
+const gridDiv = document.querySelector<HTMLElement>('#myGrid')!;
 new Grid(gridDiv, gridOptions);
 
-fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
   .then((response) => response.json())
   .then((data) => gridOptions.api!.setRowData(data));

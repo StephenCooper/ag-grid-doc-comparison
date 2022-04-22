@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef } from 'react';
 
 const CustomCellRenderer = (props) => {
   const myRef = useRef(null);
@@ -9,7 +9,7 @@ const CustomCellRenderer = (props) => {
 
   return (
     <div className="my-custom-cell-renderer">
-      <div class="athlete-info">
+      <div className="athlete-info">
         <span>{props.data.athlete}</span>
         <span>{props.data.country}</span>
       </div>

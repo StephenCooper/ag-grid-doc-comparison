@@ -1,5 +1,5 @@
-import { AgChartsVue } from "ag-charts-vue";
-import Vue from "vue";
+import { AgChartsVue } from 'ag-charts-vue';
+import Vue from 'vue';
 
 const ChartExample = {
   template: `
@@ -7,7 +7,7 @@ const ChartExample = {
                 :options="options"></ag-charts-vue>
     `,
   components: {
-    "ag-charts-vue": AgChartsVue,
+    'ag-charts-vue': AgChartsVue,
   },
   data: function () {
     return {
@@ -33,89 +33,89 @@ const ChartExample = {
         },
       },
       title: {
-        text: "UK Energy Sources (2018)",
+        text: 'UK Energy Sources (2018)',
         fontSize: 18,
       },
       subtitle: {
-        text: "Source: Department for Business, Energy & Industrial Strategy",
+        text: 'Source: Department for Business, Energy & Industrial Strategy',
       },
       series: [
         {
-          type: "area",
-          xKey: "month",
-          yKey: "coal",
-          yName: "Coal",
+          type: 'area',
+          xKey: 'month',
+          yKey: 'coal',
+          yName: 'Coal',
           normalizedTo: 100,
           stacked: true,
         },
         {
-          type: "area",
-          xKey: "month",
-          yKey: "petroleum",
-          yName: "Petroleum",
+          type: 'area',
+          xKey: 'month',
+          yKey: 'petroleum',
+          yName: 'Petroleum',
           normalizedTo: 100,
           stacked: true,
         },
         {
-          type: "area",
-          xKey: "month",
-          yKey: "naturalGas",
-          yName: "Natural gas",
+          type: 'area',
+          xKey: 'month',
+          yKey: 'naturalGas',
+          yName: 'Natural gas',
           normalizedTo: 100,
           stacked: true,
         },
         {
-          type: "area",
-          xKey: "month",
-          yKey: "bioenergyWaste",
-          yName: "Bioenergy & waste",
+          type: 'area',
+          xKey: 'month',
+          yKey: 'bioenergyWaste',
+          yName: 'Bioenergy & waste',
           normalizedTo: 100,
           stacked: true,
         },
         {
-          type: "area",
-          xKey: "month",
-          yKey: "nuclear",
-          yName: "Nuclear",
+          type: 'area',
+          xKey: 'month',
+          yKey: 'nuclear',
+          yName: 'Nuclear',
           normalizedTo: 100,
           stacked: true,
         },
         {
-          type: "area",
-          xKey: "month",
-          yKey: "windSolarHydro",
-          yName: "Wind, solar & hydro",
+          type: 'area',
+          xKey: 'month',
+          yKey: 'windSolarHydro',
+          yName: 'Wind, solar & hydro',
           normalizedTo: 100,
           stacked: true,
         },
         {
-          type: "area",
-          xKey: "month",
-          yKey: "imported",
-          yName: "Imported",
+          type: 'area',
+          xKey: 'month',
+          yKey: 'imported',
+          yName: 'Imported',
           normalizedTo: 100,
           stacked: true,
         },
       ],
       axes: [
         {
-          type: "category",
-          position: "bottom",
+          type: 'category',
+          position: 'bottom',
         },
         {
-          type: "number",
-          position: "left",
+          type: 'number',
+          position: 'left',
           label: {
-            format: "#{.0f}%",
+            format: '#{.0f}%',
           },
           title: {
             enabled: true,
-            text: "Normalized Percentage Energy",
+            text: 'Normalized Percentage Energy',
           },
         },
       ],
       legend: {
-        position: "top",
+        position: 'top',
       },
     };
   },
@@ -124,8 +124,8 @@ const ChartExample = {
 };
 
 new Vue({
-  el: "#app",
+  el: '#app',
   components: {
-    "my-component": ChartExample,
+    'my-component': ChartExample,
   },
 });

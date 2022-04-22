@@ -1,12 +1,12 @@
-"use strict";
+'use strict';
 
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
-import { AgGridReact } from "ag-grid-react";
-import React, { useCallback, useMemo, useState } from "react";
-import { render } from "react-dom";
-import GenderCellRenderer from "./genderCellRenderer.jsx";
+import React, { useCallback, useMemo, useRef, useState } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from 'ag-grid-react';
+import 'ag-grid-enterprise';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import GenderCellRenderer from './genderCellRenderer.jsx';
 
 const cellCellEditorParams = (params) => {
   const selectedCountry = params.data.country;
@@ -19,47 +19,47 @@ const cellCellEditorParams = (params) => {
 
 const countyToCityMap = (match) => {
   const map = {
-    Ireland: ["Dublin", "Cork", "Galway"],
-    USA: ["New York", "Los Angeles", "Chicago", "Houston"],
+    Ireland: ['Dublin', 'Cork', 'Galway'],
+    USA: ['New York', 'Los Angeles', 'Chicago', 'Houston'],
   };
   return map[match];
 };
 
 const GridExample = () => {
-  const containerStyle = useMemo(() => ({ width: "100%", height: "100%" }), []);
-  const gridStyle = useMemo(() => ({ height: "100%", width: "100%" }), []);
+  const containerStyle = useMemo(() => ({ width: '100%', height: '100%' }), []);
+  const gridStyle = useMemo(() => ({ height: '100%', width: '100%' }), []);
   const [rowData, setRowData] = useState(getData());
   const [columnDefs, setColumnDefs] = useState([
-    { field: "name" },
+    { field: 'name' },
     {
-      field: "gender",
+      field: 'gender',
       cellRenderer: GenderCellRenderer,
-      cellEditor: "agRichSelectCellEditor",
+      cellEditor: 'agRichSelectCellEditor',
       cellEditorPopup: true,
       cellEditorParams: {
-        values: ["Male", "Female"],
+        values: ['Male', 'Female'],
         cellRenderer: GenderCellRenderer,
         cellEditorPopup: true,
       },
     },
     {
-      field: "country",
-      cellEditor: "agRichSelectCellEditor",
+      field: 'country',
+      cellEditor: 'agRichSelectCellEditor',
       cellEditorPopup: true,
       cellEditorParams: {
         cellHeight: 50,
-        values: ["Ireland", "USA"],
+        values: ['Ireland', 'USA'],
       },
     },
     {
-      field: "city",
-      cellEditor: "agRichSelectCellEditor",
+      field: 'city',
+      cellEditor: 'agRichSelectCellEditor',
       cellEditorPopup: true,
       cellEditorParams: cellCellEditorParams,
     },
     {
-      field: "address",
-      cellEditor: "agLargeTextCellEditor",
+      field: 'address',
+      cellEditor: 'agLargeTextCellEditor',
       cellEditorPopup: true,
       minWidth: 550,
     },
@@ -75,13 +75,13 @@ const GridExample = () => {
 
   const onCellValueChanged = useCallback((params) => {
     const colId = params.column.getId();
-    if (colId === "country") {
+    if (colId === 'country') {
       const selectedCountry = params.data.country;
       const selectedCity = params.data.city;
       const allowedCities = countyToCityMap(selectedCountry);
       const cityMismatch = allowedCities.indexOf(selectedCity) < 0;
       if (cityMismatch) {
-        params.node.setDataValue("city", null);
+        params.node.setDataValue('city', null);
       }
     }
   }, []);
@@ -100,4 +100,4 @@ const GridExample = () => {
   );
 };
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

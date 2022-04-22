@@ -1,11 +1,11 @@
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { AgGridVue } from "@ag-grid-community/vue3";
-import { GridChartsModule } from "@ag-grid-enterprise/charts";
-import { MenuModule } from "@ag-grid-enterprise/menu";
-import { createApp } from "vue";
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { AgGridVue } from '@ag-grid-community/vue3';
+import { GridChartsModule } from '@ag-grid-enterprise/charts';
+import { MenuModule } from '@ag-grid-enterprise/menu';
+import { createApp } from 'vue';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([
@@ -37,13 +37,13 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
-        { field: "timestamp", chartDataType: "time" },
-        { field: "cpuUsage" },
+        { field: 'timestamp', chartDataType: 'time' },
+        { field: 'cpuUsage' },
       ],
       gridApi: null,
       columnApi: null,
@@ -63,7 +63,7 @@ const VueExample = {
       area: {
         title: {
           enabled: true,
-          text: "CPU Usage",
+          text: 'CPU Usage',
         },
         legend: {
           enabled: false,
@@ -81,21 +81,21 @@ const VueExample = {
           time: {
             label: {
               rotation: 45,
-              format: "%H:%M",
+              format: '%H:%M',
             },
           },
           category: {
             label: {
               rotation: 0,
               formatter: (params) => {
-                return moment(new Date(params.value)).format("DD MMM");
+                return moment(new Date(params.value)).format('DD MMM');
               },
             },
           },
           number: {
             label: {
               formatter: function (params) {
-                return params.value + "%";
+                return params.value + '%';
               },
             },
           },
@@ -106,12 +106,12 @@ const VueExample = {
   methods: {
     onFirstDataRendered(params) {
       var createRangeChartParams = {
-        chartContainer: document.querySelector("#myChart"),
+        chartContainer: document.querySelector('#myChart'),
         suppressChartRanges: true,
         cellRange: {
-          columns: ["timestamp", "cpuUsage"],
+          columns: ['timestamp', 'cpuUsage'],
         },
-        chartType: "area",
+        chartType: 'area',
       };
       params.api.createRangeChart(createRangeChartParams);
     },
@@ -120,7 +120,7 @@ const VueExample = {
       this.gridColumnApi = params.columnApi;
     },
     getChartToolbarItems() {
-      return ["chartData", "chartFormat"];
+      return ['chartData', 'chartFormat'];
     },
   },
 };
@@ -238,4 +238,4 @@ window.getRowData = function getRowData() {
   ];
 };
 
-createApp(VueExample).mount("#app");
+createApp(VueExample).mount('#app');

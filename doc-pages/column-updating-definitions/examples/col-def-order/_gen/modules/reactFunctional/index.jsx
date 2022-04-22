@@ -1,50 +1,50 @@
-"use strict";
+'use strict';
 
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { AgGridReact } from "@ag-grid-community/react";
-import React, { useCallback, useMemo, useRef, useState } from "react";
-import { render } from "react-dom";
+import React, { useCallback, useMemo, useRef, useState } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from '@ag-grid-community/react';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([ClientSideRowModelModule]);
 
 const getColumnDefsA = () => {
   return [
-    { field: "athlete", headerName: "A Athlete" },
-    { field: "age", headerName: "A Age" },
-    { field: "country", headerName: "A Country" },
-    { field: "sport", headerName: "A Sport" },
-    { field: "year", headerName: "A Year" },
-    { field: "date", headerName: "A Date" },
-    { field: "gold", headerName: "A Gold" },
-    { field: "silver", headerName: "A Silver" },
-    { field: "bronze", headerName: "A Bronze" },
-    { field: "total", headerName: "A Total" },
+    { field: 'athlete', headerName: 'A Athlete' },
+    { field: 'age', headerName: 'A Age' },
+    { field: 'country', headerName: 'A Country' },
+    { field: 'sport', headerName: 'A Sport' },
+    { field: 'year', headerName: 'A Year' },
+    { field: 'date', headerName: 'A Date' },
+    { field: 'gold', headerName: 'A Gold' },
+    { field: 'silver', headerName: 'A Silver' },
+    { field: 'bronze', headerName: 'A Bronze' },
+    { field: 'total', headerName: 'A Total' },
   ];
 };
 
 const getColumnDefsB = () => {
   return [
-    { field: "gold", headerName: "B Gold" },
-    { field: "silver", headerName: "B Silver" },
-    { field: "bronze", headerName: "B Bronze" },
-    { field: "total", headerName: "B Total" },
-    { field: "athlete", headerName: "B Athlete" },
-    { field: "age", headerName: "B Age" },
-    { field: "country", headerName: "B Country" },
-    { field: "sport", headerName: "B Sport" },
-    { field: "year", headerName: "B Year" },
-    { field: "date", headerName: "B Date" },
+    { field: 'gold', headerName: 'B Gold' },
+    { field: 'silver', headerName: 'B Silver' },
+    { field: 'bronze', headerName: 'B Bronze' },
+    { field: 'total', headerName: 'B Total' },
+    { field: 'athlete', headerName: 'B Athlete' },
+    { field: 'age', headerName: 'B Age' },
+    { field: 'country', headerName: 'B Country' },
+    { field: 'sport', headerName: 'B Sport' },
+    { field: 'year', headerName: 'B Year' },
+    { field: 'date', headerName: 'B Date' },
   ];
 };
 
 const GridExample = () => {
   const gridRef = useRef();
-  const containerStyle = useMemo(() => ({ width: "100%", height: "100%" }), []);
-  const gridStyle = useMemo(() => ({ height: "100%", width: "100%" }), []);
+  const containerStyle = useMemo(() => ({ width: '100%', height: '100%' }), []);
+  const gridStyle = useMemo(() => ({ height: '100%', width: '100%' }), []);
   const [rowData, setRowData] = useState();
   const defaultColDef = useMemo(() => {
     return {
@@ -57,7 +57,7 @@ const GridExample = () => {
   const [columnDefs, setColumnDefs] = useState(getColumnDefsA());
 
   const onGridReady = useCallback((params) => {
-    fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+    fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .then((resp) => resp.json())
       .then((data) => setRowData(data));
   }, []);
@@ -98,4 +98,4 @@ const GridExample = () => {
   );
 };
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

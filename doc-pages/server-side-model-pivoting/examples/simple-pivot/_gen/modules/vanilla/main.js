@@ -1,8 +1,8 @@
 const gridOptions = {
   columnDefs: [
-    { field: "country", rowGroup: true },
-    { field: "year", pivot: true }, // pivot on 'year'
-    { field: "total", aggFunc: "sum" },
+    { field: 'country', rowGroup: true },
+    { field: 'year', pivot: true }, // pivot on 'year'
+    { field: 'total', aggFunc: 'sum' },
   ],
   defaultColDef: {
     flex: 4,
@@ -15,8 +15,8 @@ const gridOptions = {
   },
 
   // use the server-side row model
-  rowModelType: "serverSide",
-  serverSideStoreType: "partial",
+  rowModelType: 'serverSide',
+  serverSideStoreType: 'partial',
 
   // enable pivoting
   pivotMode: true,
@@ -26,11 +26,11 @@ const gridOptions = {
 };
 
 // setup the grid after the page has finished loading
-document.addEventListener("DOMContentLoaded", function () {
-  var gridDiv = document.querySelector("#myGrid");
+document.addEventListener('DOMContentLoaded', function () {
+  var gridDiv = document.querySelector('#myGrid');
   new agGrid.Grid(gridDiv, gridOptions);
 
-  fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+  fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
     .then((response) => response.json())
     .then(function (data) {
       // setup the fake server with entire dataset
@@ -47,7 +47,7 @@ document.addEventListener("DOMContentLoaded", function () {
 function getServerSideDatasource(server) {
   return {
     getRows: function (params) {
-      console.log("[Datasource] - rows requested by grid: ", params.request);
+      console.log('[Datasource] - rows requested by grid: ', params.request);
 
       // get data for request from our fake server
       var response = server.getData(params.request);
@@ -80,7 +80,7 @@ function addPivotColDefs(response, columnApi) {
 
   // create colDefs
   var pivotColDefs = response.pivotFields.map(function (field) {
-    var headerName = field.split("_")[0];
+    var headerName = field.split('_')[0];
     return { headerName: headerName, field: field };
   });
 

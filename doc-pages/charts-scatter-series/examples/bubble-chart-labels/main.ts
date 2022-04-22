@@ -1,56 +1,56 @@
-import * as agCharts from "ag-charts-community";
-import { AgCartesianChartOptions } from "ag-charts-community";
+import { AgCartesianChartOptions } from 'ag-charts-community';
+import * as agCharts from 'ag-charts-community';
 declare var maleHeightWeight: any[];
 declare var femaleHeightWeight: any[];
 
 const options: AgCartesianChartOptions = {
-  container: document.getElementById("myChart"),
+  container: document.getElementById('myChart'),
   autoSize: true,
   title: {
-    text: "Weight vs Height (by gender)",
+    text: 'Weight vs Height (by gender)',
   },
   subtitle: {
-    text: "with name labels",
+    text: 'with name labels',
   },
   series: [
     {
-      type: "scatter",
-      title: "Male",
+      type: 'scatter',
+      title: 'Male',
       data: maleHeightWeight,
-      xKey: "height",
-      xName: "Height",
-      yKey: "weight",
-      yName: "Weight",
-      sizeKey: "age",
-      sizeName: "Age",
-      labelKey: "name",
+      xKey: 'height',
+      xName: 'Height',
+      yKey: 'weight',
+      yName: 'Weight',
+      sizeKey: 'age',
+      sizeName: 'Age',
+      labelKey: 'name',
       marker: {
-        shape: "square",
+        shape: 'square',
         size: 6,
         maxSize: 30,
-        fill: "rgba(227,111,106,0.71)",
-        stroke: "#9f4e4a",
+        fill: 'rgba(227,111,106,0.71)',
+        stroke: '#9f4e4a',
       },
       label: {
         enabled: true,
       },
     },
     {
-      type: "scatter",
-      title: "Female",
+      type: 'scatter',
+      title: 'Female',
       data: femaleHeightWeight,
-      xKey: "height",
-      xName: "Height",
-      yKey: "weight",
-      yName: "Weight",
-      sizeKey: "age",
-      sizeName: "Age",
-      labelKey: "name",
+      xKey: 'height',
+      xName: 'Height',
+      yKey: 'weight',
+      yName: 'Weight',
+      sizeKey: 'age',
+      sizeName: 'Age',
+      labelKey: 'name',
       marker: {
         size: 6,
         maxSize: 30,
-        fill: "rgba(123,145,222,0.71)",
-        stroke: "#56659b",
+        fill: 'rgba(123,145,222,0.71)',
+        stroke: '#56659b',
       },
       label: {
         enabled: true,
@@ -59,41 +59,41 @@ const options: AgCartesianChartOptions = {
   ],
   axes: [
     {
-      type: "number",
-      position: "bottom",
+      type: 'number',
+      position: 'bottom',
       title: {
-        text: "Height",
+        text: 'Height',
       },
       label: {
         rotation: 45,
         formatter: function (params) {
-          return params.value + "cm";
+          return params.value + 'cm'
         },
       },
     },
     {
-      type: "number",
-      position: "left",
+      type: 'number',
+      position: 'left',
       title: {
-        text: "Weight",
+        text: 'Weight',
       },
       label: {
         formatter: function (params) {
-          return params.value + "kg";
+          return params.value + 'kg'
         },
       },
     },
   ],
-};
+}
 
-var chart = agCharts.AgChart.create(options);
+var chart = agCharts.AgChart.create(options)
 
 function updateFontSize(event: any) {
-  var value = +event.target.value;
+  var value = +event.target.value
 
-  options.series![0].label!.fontSize = value;
-  options.series![1].label!.fontSize = value;
-  agCharts.AgChart.update(chart, options);
+  options.series![0].label!.fontSize = value
+  options.series![1].label!.fontSize = value
+  agCharts.AgChart.update(chart, options)
 
-  document.getElementById("fontSizeSliderValue")!.innerHTML = String(value);
+  document.getElementById('fontSizeSliderValue')!.innerHTML = String(value)
 }

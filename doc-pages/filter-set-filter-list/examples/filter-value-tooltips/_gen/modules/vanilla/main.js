@@ -1,29 +1,29 @@
 const gridOptions = {
   columnDefs: [
     {
-      field: "colA",
-      tooltipField: "colA",
-      filter: "agSetColumnFilter",
+      field: 'colA',
+      tooltipField: 'colA',
+      filter: 'agSetColumnFilter',
     },
     {
-      field: "colB",
-      tooltipField: "colB",
-      filter: "agSetColumnFilter",
+      field: 'colB',
+      tooltipField: 'colB',
+      filter: 'agSetColumnFilter',
       filterParams: {
         showTooltips: true,
       },
     },
     {
-      field: "colC",
-      tooltipField: "colC",
+      field: 'colC',
+      tooltipField: 'colC',
       tooltipComponent: CustomTooltip,
-      filter: "agSetColumnFilter",
+      filter: 'agSetColumnFilter',
       filterParams: {
         showTooltips: true,
       },
     },
   ],
-  sideBar: "filters",
+  sideBar: 'filters',
   defaultColDef: {
     flex: 1,
     resizable: true,
@@ -33,7 +33,7 @@ const gridOptions = {
 };
 
 // setup the grid after the page has finished loading
-document.addEventListener("DOMContentLoaded", function () {
-  var gridDiv = document.querySelector("#myGrid");
+document.addEventListener('DOMContentLoaded', function () {
+  var gridDiv = document.querySelector('#myGrid');
   new agGrid.Grid(gridDiv, gridOptions);
 });

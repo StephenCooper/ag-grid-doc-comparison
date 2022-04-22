@@ -1,11 +1,11 @@
-import { Component } from "@angular/core";
-import { ColDef, GridApi, GridReadyEvent } from "ag-grid-community";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
+import { Component } from '@angular/core';
+import { ColDef, GridApi, GridReadyEvent } from 'ag-grid-community';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import 'ag-grid-enterprise';
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `
     <div style="display: flex; flex-direction: column; height: 100%;">
       <div style="display: flex;">
@@ -65,29 +65,30 @@ export class AppComponent {
   };
   public popupParent: HTMLElement = document.body;
   public columnDefs: ColDef[] = [
-    { field: "make" },
-    { field: "model" },
-    { field: "price" },
+    { field: 'make' },
+    { field: 'model' },
+    { field: 'price' },
   ];
   public rowData: any[] | null = [
-    { make: "Toyota", model: "Celica", price: 35000 },
-    { make: "Ford", model: "Mondeo", price: 32000 },
-    { make: "Porsche", model: "Boxter", price: 72000 },
+    { make: 'Toyota', model: 'Celica', price: 35000 },
+    { make: 'Ford', model: 'Mondeo', price: 32000 },
+    { make: 'Porsche', model: 'Boxster', price: 72000 },
   ];
 
   onBtnExport() {
     var params = getParams();
     if (params.suppressQuotes || params.columnSeparator) {
       alert(
-        "NOTE: you are downloading a file with non-standard quotes or separators - it may not render correctly in Excel."
+        'NOTE: you are downloading a file with non-standard quotes or separators - it may not render correctly in Excel.'
       );
     }
     this.gridApi.exportDataAsCsv(params);
   }
 
   onBtnUpdate() {
-    (document.querySelector("#csvResult") as any).value =
-      this.gridApi.getDataAsCsv(getParams());
+    (document.querySelector(
+      '#csvResult'
+    ) as any).value = this.gridApi.getDataAsCsv(getParams());
   }
 
   onGridReady(params: GridReadyEvent) {
@@ -98,21 +99,21 @@ export class AppComponent {
 function getValue(inputSelector: string) {
   var text = (document.querySelector(inputSelector) as HTMLInputElement).value;
   switch (text) {
-    case "string":
+    case 'string':
       return (
         'Here is a comma, and a some "quotes". You can see them using the\n' +
-        "api.getDataAsCsv() button but they will not be visible when the downloaded\n" +
-        "CSV file is opened in Excel because string content passed to\n" +
-        "prependContent and appendContent is not escaped."
+        'api.getDataAsCsv() button but they will not be visible when the downloaded\n' +
+        'CSV file is opened in Excel because string content passed to\n' +
+        'prependContent and appendContent is not escaped.'
       );
-    case "array":
+    case 'array':
       return [
         [],
         [
           {
             data: {
               value: 'Here is a comma, and a some "quotes".',
-              type: "String",
+              type: 'String',
             },
           },
         ],
@@ -120,23 +121,23 @@ function getValue(inputSelector: string) {
           {
             data: {
               value:
-                "They are visible when the downloaded CSV file is opened in Excel because custom content is properly escaped (provided that suppressQuotes is not set to true)",
-              type: "String",
+                'They are visible when the downloaded CSV file is opened in Excel because custom content is properly escaped (provided that suppressQuotes is not set to true)',
+              type: 'String',
             },
           },
         ],
         [
-          { data: { value: "this cell:", type: "String" }, mergeAcross: 1 },
+          { data: { value: 'this cell:', type: 'String' }, mergeAcross: 1 },
           {
             data: {
-              value: "is empty because the first cell has mergeAcross=1",
-              type: "String",
+              value: 'is empty because the first cell has mergeAcross=1',
+              type: 'String',
             },
           },
         ],
         [],
       ];
-    case "none":
+    case 'none':
       return;
     default:
       return text;
@@ -144,8 +145,8 @@ function getValue(inputSelector: string) {
 }
 function getParams() {
   return {
-    prependContent: getValue("#prependContent"),
-    appendContent: getValue("#appendContent"),
+    prependContent: getValue('#prependContent'),
+    appendContent: getValue('#appendContent'),
     suppressQuotes: undefined,
     columnSeparator: undefined,
   };

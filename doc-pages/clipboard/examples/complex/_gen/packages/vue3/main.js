@@ -1,8 +1,8 @@
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
-import { AgGridVue } from "ag-grid-vue3";
-import { createApp } from "vue";
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import 'ag-grid-enterprise';
+import { AgGridVue } from 'ag-grid-vue3';
+import { createApp } from 'vue';
 
 const VueExample = {
   template: `
@@ -20,29 +20,29 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
         {
-          headerName: "Participants",
+          headerName: 'Participants',
           children: [
-            { field: "athlete", minWidth: 200 },
-            { field: "age" },
-            { field: "country", minWidth: 150 },
+            { field: 'athlete', minWidth: 200 },
+            { field: 'age' },
+            { field: 'country', minWidth: 150 },
           ],
         },
         {
-          headerName: "Olympic Games",
+          headerName: 'Olympic Games',
           children: [
-            { field: "year" },
-            { field: "date", minWidth: 150 },
-            { field: "sport", minWidth: 150 },
-            { field: "gold" },
-            { field: "silver", suppressPaste: true },
-            { field: "bronze" },
-            { field: "total" },
+            { field: 'year' },
+            { field: 'date', minWidth: 150 },
+            { field: 'sport', minWidth: 150 },
+            { field: 'gold' },
+            { field: 'silver', suppressPaste: true },
+            { field: 'bronze' },
+            { field: 'total' },
           ],
         },
       ],
@@ -59,7 +59,7 @@ const VueExample = {
     };
   },
   created() {
-    this.clipboardDelimiter = ",";
+    this.clipboardDelimiter = ',';
   },
   methods: {
     onGridReady(params) {
@@ -68,11 +68,11 @@ const VueExample = {
 
       const updateData = (data) => params.api.setRowData(data);
 
-      fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
         .then((resp) => resp.json())
         .then((data) => updateData(data));
     },
   },
 };
 
-createApp(VueExample).mount("#app");
+createApp(VueExample).mount('#app');

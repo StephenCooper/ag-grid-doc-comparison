@@ -1,22 +1,22 @@
 var numRows = 500;
 
 var names = [
-  "Aden Moreno",
-  "Alton Watson",
-  "Caleb Scott",
-  "Cathy Wilkins",
-  "Charlie Dodd",
-  "Jermaine Price",
-  "Reis Vasquez",
+  'Aden Moreno',
+  'Alton Watson',
+  'Caleb Scott',
+  'Cathy Wilkins',
+  'Charlie Dodd',
+  'Jermaine Price',
+  'Reis Vasquez',
 ];
 
 var phones = [
-  { handset: "Huawei P40", price: 599 },
-  { handset: "Google Pixel 5", price: 589 },
-  { handset: "Apple iPhone 12", price: 849 },
-  { handset: "Samsung Galaxy S10", price: 499 },
-  { handset: "Motorola Edge", price: 549 },
-  { handset: "Sony Xperia", price: 279 },
+  { handset: 'Huawei P40', price: 599 },
+  { handset: 'Google Pixel 5', price: 589 },
+  { handset: 'Apple iPhone 12', price: 849 },
+  { handset: 'Samsung Galaxy S10', price: 499 },
+  { handset: 'Motorola Edge', price: 549 },
+  { handset: 'Sony Xperia', price: 279 },
 ];
 
 function getData() {

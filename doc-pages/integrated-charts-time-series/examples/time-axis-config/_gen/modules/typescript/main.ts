@@ -1,4 +1,4 @@
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
 import {
   ChartMenuOptions,
   CreateRangeChartParams,
@@ -6,11 +6,11 @@ import {
   Grid,
   GridOptions,
   ModuleRegistry,
-} from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { GridChartsModule } from "@ag-grid-enterprise/charts";
-import { MenuModule } from "@ag-grid-enterprise/menu";
+} from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { GridChartsModule } from '@ag-grid-enterprise/charts';
+import { MenuModule } from '@ag-grid-enterprise/menu';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([
@@ -22,8 +22,8 @@ declare var moment: any;
 
 const gridOptions: GridOptions = {
   columnDefs: [
-    { field: "timestamp", chartDataType: "time" },
-    { field: "cpuUsage" },
+    { field: 'timestamp', chartDataType: 'time' },
+    { field: 'cpuUsage' },
   ],
   defaultColDef: {
     flex: 1,
@@ -37,7 +37,7 @@ const gridOptions: GridOptions = {
     area: {
       title: {
         enabled: true,
-        text: "CPU Usage",
+        text: 'CPU Usage',
       },
       legend: {
         enabled: false,
@@ -55,21 +55,21 @@ const gridOptions: GridOptions = {
         time: {
           label: {
             rotation: 45,
-            format: "%H:%M",
+            format: '%H:%M',
           },
         },
         category: {
           label: {
             rotation: 0,
             formatter: function (params) {
-              return moment(new Date(params.value)).format("DD MMM");
+              return moment(new Date(params.value)).format('DD MMM');
             },
           },
         },
         number: {
           label: {
             formatter: function (params) {
-              return params.value + "%";
+              return params.value + '%';
             },
           },
         },
@@ -82,23 +82,23 @@ const gridOptions: GridOptions = {
 
 function onFirstDataRendered(params: FirstDataRenderedEvent) {
   var createRangeChartParams: CreateRangeChartParams = {
-    chartContainer: document.querySelector("#myChart") as any,
+    chartContainer: document.querySelector('#myChart') as any,
     suppressChartRanges: true,
     cellRange: {
-      columns: ["timestamp", "cpuUsage"],
+      columns: ['timestamp', 'cpuUsage'],
     },
-    chartType: "area",
+    chartType: 'area',
   };
 
   params.api.createRangeChart(createRangeChartParams);
 }
 
 function getChartToolbarItems(): ChartMenuOptions[] {
-  return ["chartData", "chartFormat"];
+  return ['chartData', 'chartFormat'];
 }
 
 // setup the grid after the page has finished loading
-var gridDiv = document.querySelector<HTMLElement>("#myGrid")!;
+var gridDiv = document.querySelector<HTMLElement>('#myGrid')!;
 new Grid(gridDiv, gridOptions);
 
 function getRowData() {

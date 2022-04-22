@@ -22,7 +22,7 @@ export default {
   data: function () {
     return {
       callsCount: 0,
-      now: "",
+      now: '',
     };
   },
   mounted() {

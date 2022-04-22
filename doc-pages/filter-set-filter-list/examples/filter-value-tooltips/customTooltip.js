@@ -1,17 +1,18 @@
 class CustomTooltip {
-  init(params) {
-    var eGui = (this.eGui = document.createElement("div"));
 
-    eGui.classList.add("custom-tooltip");
+    init(params) {
+        var eGui = (this.eGui = document.createElement('div'));
 
-    if (params.location === "setFilterValue") {
-      eGui.innerHTML = "<strong>Full value:</strong> " + params.value;
-    } else {
-      eGui.innerHTML = params.value;
-    }
-  }
+        eGui.classList.add('custom-tooltip');
 
-  getGui() {
-    return this.eGui;
-  }
+        if (params.location === 'setFilterValue') {
+            eGui.innerHTML = '<strong>Full value:</strong> ' + params.value;
+        } else {
+            eGui.innerHTML = params.value;
+        }
+    };
+
+    getGui() {
+        return this.eGui;
+    };
 }

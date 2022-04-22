@@ -1,16 +1,16 @@
-"use strict";
+'use strict';
 
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
-import { AgGridReact } from "ag-grid-react";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from 'ag-grid-react';
+import 'ag-grid-enterprise';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 
 class RowIndexRenderer {
   init(params) {
-    this.eGui = document.createElement("div");
-    this.eGui.innerHTML = "" + params.rowIndex;
+    this.eGui = document.createElement('div');
+    this.eGui.innerHTML = '' + params.rowIndex;
   }
   refresh(params) {
     return false;
@@ -28,34 +28,34 @@ class GridExample extends Component {
       columnDefs: [
         // this col shows the row index, doesn't use any data from the row
         {
-          headerName: "#",
+          headerName: '#',
           maxWidth: 80,
           cellRenderer: RowIndexRenderer,
         },
-        { field: "code", maxWidth: 90 },
-        { field: "name", minWidth: 220 },
+        { field: 'code', maxWidth: 90 },
+        { field: 'name', minWidth: 220 },
         {
-          field: "bid",
-          cellClass: "cell-number",
+          field: 'bid',
+          cellClass: 'cell-number',
           valueFormatter: numberFormatter,
-          cellRenderer: "agAnimateShowChangeCellRenderer",
+          cellRenderer: 'agAnimateShowChangeCellRenderer',
         },
         {
-          field: "mid",
-          cellClass: "cell-number",
+          field: 'mid',
+          cellClass: 'cell-number',
           valueFormatter: numberFormatter,
-          cellRenderer: "agAnimateShowChangeCellRenderer",
+          cellRenderer: 'agAnimateShowChangeCellRenderer',
         },
         {
-          field: "ask",
-          cellClass: "cell-number",
+          field: 'ask',
+          cellClass: 'cell-number',
           valueFormatter: numberFormatter,
-          cellRenderer: "agAnimateShowChangeCellRenderer",
+          cellRenderer: 'agAnimateShowChangeCellRenderer',
         },
         {
-          field: "volume",
-          cellClass: "cell-number",
-          cellRenderer: "agAnimateSlideCellRenderer",
+          field: 'volume',
+          cellClass: 'cell-number',
+          cellRenderer: 'agAnimateSlideCellRenderer',
         },
       ],
       defaultColDef: {
@@ -63,8 +63,8 @@ class GridExample extends Component {
         minWidth: 140,
         resizable: true,
       },
-      rowSelection: "multiple",
-      rowModelType: "viewport",
+      rowSelection: 'multiple',
+      rowModelType: 'viewport',
       getRowId: function (params) {
         // the code is unique, so perfect for the id
         return params.data.code;
@@ -89,18 +89,18 @@ class GridExample extends Component {
       }, 100);
     };
 
-    fetch("https://www.ag-grid.com/example-assets/stocks.json")
+    fetch('https://www.ag-grid.com/example-assets/stocks.json')
       .then((resp) => resp.json())
       .then((data) => updateData(data));
   };
 
   render() {
     return (
-      <div style={{ width: "100%", height: "100%" }}>
+      <div style={{ width: '100%', height: '100%' }}>
         <div
           style={{
-            height: "100%",
-            width: "100%",
+            height: '100%',
+            width: '100%',
           }}
           className="ag-theme-alpine"
         >
@@ -119,11 +119,11 @@ class GridExample extends Component {
 }
 
 function numberFormatter(params) {
-  if (typeof params.value === "number") {
+  if (typeof params.value === 'number') {
     return params.value.toFixed(2);
   } else {
     return params.value;
   }
 }
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

@@ -7,9 +7,11 @@ Learn how to perform server-side operations using Apache Spark with a complete r
 
 In recent years analysts and data scientists are requesting browser based applications for big data analytics. This data is often widely dispersed in different systems and large file storage volumes.
 
+
 This guide will show how to combine Apache Spark's powerful server side transformations with AG Grid's [Server-Side Row Model](/server-side-model/) to create interactive reports for big data analytics.
 
 We will develop an Olympic Medals application that demonstrates how data can be lazy-loaded as required, even when performing group, filter, sort and pivot operations.
+
 
 <image-caption src="server-side-operations-spark/resources/spark-enterprise-app.png" alt="Spark" constrained="true"></image-caption>
 
@@ -18,16 +20,20 @@ We will develop an Olympic Medals application that demonstrates how data can be 
 
 The source code can be found here: [https://github.com/ag-grid/ag-grid-server-side-apache-spark-example](https://github.com/ag-grid/ag-grid-server-side-apache-spark-example)
 
+
 ## Overview
 
 Apache Spark has quickly become a popular choice for iterative data processing and reporting in a big data context. This is largely due to its ability to cache distributed datasets in memory for faster execution times.
+
 
 ### DataFrames
 
 The Apache Spark SQL library contains a distributed collection called a [DataFrame](https://spark.apache.org/docs/latest/sql-programming-guide.html#datasets-and-dataframes) which represents data as a table with rows and named columns. Its distributed nature means large datasets can span many computers to increase storage and parallel execution.
 
+
 In our example we will create a DataFrame from a single CSV file and cache it in memory for successive
-transformations. In real-world applications data will typically be sourced from many input systems and files.
+    transformations. In real-world applications data will typically be sourced from many input systems and files.
+
 
 ### Transformations
 
@@ -40,6 +46,7 @@ The following diagram illustrates the pipeline of transformations we will be per
 Each of these individual transformations will be described in detail throughout this guide.
 
 Before proceeding with this guide be sure to review the [Row Model Overview](/server-side-operations-oracle/#overview) as it provides some context for choosing the Server-Side Row Model for big data applications.
+
 
 ## Prerequisites
 
@@ -58,17 +65,20 @@ This example was tested using the following versions:
 
 Clone the example project using:
 
+
 ```bash
 git clone https://github.com/ag-grid/ag-grid-server-side-apache-spark-example.git
 ```
 
 Navigate into the project directory:
 
+
 ```bash
 cd ag-grid-server-side-apache-spark-example
 ```
 
 Install project dependencies and build project using:
+
 
 ```bash
 mvn clean install
@@ -81,6 +91,7 @@ To confirm all went well you should see the following maven output:
 ## Spark Configuration
 
 The example application is configured to run in local mode as shown below:
+
 
 ```java
 // src/main/java/com/ag/grid/enterprise/spark/demo/service/OlympicMedalsService.java
@@ -175,6 +186,7 @@ We will discuss this in detail throughout this guide, however for more details s
 
 Our service shall contain a single endpoint `/getRows` which accepts the request defined above:
 
+
 ```java
 // src/main/java/com/ag/grid/enterprise/spark/demo/controller/OlympicMedalsController.java
 
@@ -196,11 +208,14 @@ public class OlympicMedalsController {
 
 The `OlympicMedalsController` makes use of the [Spring Controller](https://docs.spring.io/spring/docs/current/spring-framework-reference/web.html#mvc-controller) to handle HTTP and JSON Serialisation.
 
+
 ## Data Access
 
 The `OlympicMedalDao` contains most of the application code. It interacts directly with Spark and uses the APIs to perform the various data transformations.
 
+
 Upon initialisation it creates a Spark session using the configuration discussed above. It then reads in the data from `result.csv` to create a DataFrame which is cached for subsequent transformations.
+
 
 ```java
 // src/main/java/com/ag/grid/enterprise/spark/demo/dao/OlympicMedalDao.java
@@ -231,9 +246,12 @@ public void init() {
 
 A view containing the medals data is created using `dataFrame.createOrReplaceTempView("medals")`. This is lazily evaluated but the backing dataset has been previously cached using `dataFrame.cache()`.
 
+
 As a DataFrame is a structured collection we have supplied the `inferSchema=true` option to allow Spark to infer the schema using the first few rows contained in `result.csv`.
 
+
 The rest of this class will be discussed in the remaining sections.
+
 
 ## Filtering
 
@@ -266,6 +284,7 @@ Map<String, ColumnFilter> filterModel;
 ```
 
 As these filters differ in structure it is necessary to perform some specialised deserialisation using the Type Annotations provided by the [Jackson Annotations](https://github.com/FasterXML/jackson-annotations) project.
+
 
 When the `filterModel` property is deserialized, we will need to select the appropriate concrete `ColumnFilter` as shown below:
 
@@ -328,6 +347,7 @@ The result of a `groupBy()` transformation is a `RelationalGroupedDataset` colle
 
 Spark SQL provides a convenient pivot function to create pivot tables, however as it currently only supports pivots on a single column our example will only allow pivoting on the sport column. This is enabled on the `ColDef.enablePivot=true` in the client code.
 
+
 ```java
 // src/main/java/com/ag/grid/enterprise/spark/demo/service/OlympicMedalsService.java
 
@@ -345,7 +365,9 @@ private RelationalGroupedDataset pivot(RelationalGroupedDataset groupedDf) {
 
 The result of a `pivot()` transformation is also a `RelationalGroupedDataset`.
 
+
 From the DataFrame we will use the inferred schema to determine the generated secondary columns:
+
 
 ```java
 private List<String> getSecondaryColumns(Dataset<Row> df) {
@@ -363,53 +385,55 @@ List<String> secondaryColumnFields;
 
 Our client code will then use these secondary column fields to generate the corresponding `ColDefs` like so:
 
+
 ```js
 // src/main/resources/static/main.js
 
 let createSecondaryColumns = function (fields, valueCols) {
-  let secondaryCols = [];
+    let secondaryCols = [];
 
-  function addColDef(colId, parts, res) {
-    if (parts.length === 0) return [];
+    function addColDef(colId, parts, res) {
+        if (parts.length === 0) return [];
 
-    let first = parts.shift();
-    let existing = res.find((r) => r.groupId === first);
+        let first = parts.shift();
+        let existing = res.find(r => r.groupId === first);
 
-    if (existing) {
-      existing["children"] = addColDef(colId, parts, existing.children);
-    } else {
-      let colDef = {};
-      let isGroup = parts.length > 0;
+        if (existing) {
+            existing['children'] = addColDef(colId, parts, existing.children);
+        } else {
+            let colDef = {};
+            let isGroup = parts.length > 0;
 
-      if (isGroup) {
-        colDef["groupId"] = first;
-        colDef["headerName"] = first;
-      } else {
-        let valueCol = valueCols.find((r) => r.field === first);
+            if (isGroup) {
+                colDef['groupId'] = first;
+                colDef['headerName'] = first;
+            } else {
+                let valueCol = valueCols.find(r => r.field === first);
 
-        colDef["colId"] = colId;
-        colDef["headerName"] = valueCol.displayName;
-        colDef["field"] = colId;
-        colDef["type"] = "measure";
-      }
+                colDef['colId'] = colId;
+                colDef['headerName'] =  valueCol.displayName;
+                colDef['field'] = colId;
+                colDef['type'] = 'measure';
+            }
 
-      let children = addColDef(colId, parts, []);
-      children.length > 0 ? (colDef["children"] = children) : null;
+            let children = addColDef(colId, parts, []);
+            children.length > 0 ? colDef['children'] = children : null;
 
-      res.push(colDef);
+            res.push(colDef);
+        }
+
+        return res;
     }
 
-    return res;
-  }
+    fields.sort();
+    fields.forEach(field => addColDef(field, field.split('_'), secondaryCols));
 
-  fields.sort();
-  fields.forEach((field) => addColDef(field, field.split("_"), secondaryCols));
-
-  return secondaryCols;
+    return secondaryCols;
 };
 ```
 
 In order for the grid to show these newly created columns an explicit API call is required:
+
 
 ```js
 gridOptions.columnApi.setSecondaryColumns(secondaryColDefs);
@@ -418,6 +442,7 @@ gridOptions.columnApi.setSecondaryColumns(secondaryColDefs);
 ## Aggregation
 
 Aggregations are performed using `RelationalGroupedDataset.agg()` as shown below:
+
 
 ```java
 // src/main/java/com/ag/grid/enterprise/spark/demo/dao/OlympicMedalDao.java
@@ -437,9 +462,11 @@ private Dataset<Row> agg(RelationalGroupedDataset groupedDf) {
 
 Note that our example only requires the `sum()` aggregation function.
 
+
 ## Sorting
 
 The `ServerSideGetRowsRequest` contains the following attribute to determine which columns to sort by:
+
 
 ```java
 private List<SortModel> sortModel;
@@ -458,6 +485,7 @@ public class SortModel implements Serializable {
 ```
 
 The `Dataset.orderBy()` function accepts an array of Spark `Column` objects that specify the sort order as shown below:
+
 
 ```java
 // src/main/java/com/ag/grid/enterprise/spark/demo/service/OlympicMedalsService.java
@@ -485,15 +513,19 @@ private Dataset<Row> orderBy(Dataset<Row> df) {
 
 The `ServerSideGetRowsRequest` contains the following attributes to determine the range to return:
 
+
 ```java
 private int startRow, endRow;
 ```
 
 The `OlympicMedalsService` uses this information when limiting the results.
 
+
 As Spark SQL doesn't provide `LIMIT OFFSET` capabilities like most SQL databases, we will need to do a bit of work in order to efficiently limit the results whilst ensuring we don't exceed local memory.
 
+
 The strategy used in the code below is to convert the supplied Data Frame into a Resilient Distributed Dataset (RDD) in order to introduce a row index using `zipWithIndex()`. The row index can then be used to filter the rows according to the requested range.
+
 
 ```java
 // src/main/java/com/ag/grid/enterprise/spark/demo/service/OlympicMedalsService.java

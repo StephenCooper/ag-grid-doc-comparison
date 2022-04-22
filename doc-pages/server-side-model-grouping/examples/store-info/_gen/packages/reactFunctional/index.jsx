@@ -1,16 +1,16 @@
-"use strict";
+'use strict';
 
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine-dark.css";
-import "ag-grid-enterprise";
-import { AgGridReact } from "ag-grid-react";
-import React, { useCallback, useMemo, useRef, useState } from "react";
-import { render } from "react-dom";
+import React, { useCallback, useMemo, useRef, useState } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from 'ag-grid-react';
+import 'ag-grid-enterprise';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine-dark.css';
 
 const getServerSideDatasource = (server) => {
   return {
     getRows: function (params) {
-      console.log("[Datasource] - rows requested by grid: ", params.request);
+      console.log('[Datasource] - rows requested by grid: ', params.request);
       var response = server.getData(params.request);
       // adding delay to simulate real server call
       setTimeout(function () {
@@ -35,16 +35,16 @@ const getServerSideDatasource = (server) => {
 
 const GridExample = () => {
   const gridRef = useRef();
-  const containerStyle = useMemo(() => ({ width: "100%", height: "100%" }), []);
-  const gridStyle = useMemo(() => ({ height: "100%", width: "100%" }), []);
+  const containerStyle = useMemo(() => ({ width: '100%', height: '100%' }), []);
+  const gridStyle = useMemo(() => ({ height: '100%', width: '100%' }), []);
 
   const [columnDefs, setColumnDefs] = useState([
-    { field: "country", enableRowGroup: true, rowGroup: true },
-    { field: "sport", enableRowGroup: true, rowGroup: true },
-    { field: "year", minWidth: 100 },
-    { field: "gold", aggFunc: "sum" },
-    { field: "silver", aggFunc: "sum" },
-    { field: "bronze", aggFunc: "sum" },
+    { field: 'country', enableRowGroup: true, rowGroup: true },
+    { field: 'sport', enableRowGroup: true, rowGroup: true },
+    { field: 'year', minWidth: 100 },
+    { field: 'gold', aggFunc: 'sum' },
+    { field: 'silver', aggFunc: 'sum' },
+    { field: 'bronze', aggFunc: 'sum' },
   ]);
   const defaultColDef = useMemo(() => {
     return {
@@ -66,7 +66,7 @@ const GridExample = () => {
     if (noGroupingActive) {
       res = {
         // infinite scrolling
-        storeType: "partial",
+        storeType: 'partial',
         // 100 rows per block
         cacheBlockSize: 100,
         // purge blocks that are not needed
@@ -75,23 +75,23 @@ const GridExample = () => {
     } else {
       var topLevelRows = params.level == 0;
       res = {
-        storeType: topLevelRows ? "full" : "partial",
+        storeType: topLevelRows ? 'full' : 'partial',
         cacheBlockSize: params.level == 1 ? 5 : 2,
         maxBlocksInCache: -1, // never purge blocks
       };
     }
-    console.log("############## NEW STORE ##############");
+    console.log('############## NEW STORE ##############');
     console.log(
-      "getServerSideStoreParams, level = " +
+      'getServerSideStoreParams, level = ' +
         params.level +
-        ", result = " +
+        ', result = ' +
         JSON.stringify(res)
     );
     return res;
   }, []);
 
   const onGridReady = useCallback((params) => {
-    fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+    fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .then((resp) => resp.json())
       .then((data) => {
         // setup the fake server with entire dataset
@@ -105,12 +105,12 @@ const GridExample = () => {
 
   const onBtStoreState = useCallback(() => {
     var storeState = gridRef.current.api.getServerSideStoreState();
-    console.log("Store States:");
+    console.log('Store States:');
     storeState.forEach(function (state, index) {
       console.log(
         index +
-          " - " +
-          JSON.stringify(state).replace(/"/g, "").replace(/,/g, ", ")
+          ' - ' +
+          JSON.stringify(state).replace(/"/g, '').replace(/,/g, ', ')
       );
     });
   }, []);
@@ -118,7 +118,7 @@ const GridExample = () => {
   return (
     <div style={containerStyle}>
       <div className="example-wrapper">
-        <div style={{ marginBottom: "5px" }}>
+        <div style={{ marginBottom: '5px' }}>
           <button onClick={onBtStoreState}>Store State</button>
         </div>
 
@@ -127,11 +127,11 @@ const GridExample = () => {
             ref={gridRef}
             columnDefs={columnDefs}
             defaultColDef={defaultColDef}
-            rowGroupPanelShow={"always"}
-            serverSideStoreType={"full"}
+            rowGroupPanelShow={'always'}
+            serverSideStoreType={'full'}
             autoGroupColumnDef={autoGroupColumnDef}
             cacheBlockSize={4}
-            rowModelType={"serverSide"}
+            rowModelType={'serverSide'}
             getServerSideStoreParams={getServerSideStoreParams}
             suppressAggFuncInHeader={true}
             animateRows={true}
@@ -143,4 +143,4 @@ const GridExample = () => {
   );
 };
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

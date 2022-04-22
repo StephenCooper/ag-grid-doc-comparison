@@ -1,10 +1,10 @@
-import { Component } from "@angular/core";
-import { ColDef, GridReadyEvent, RowClassRules } from "ag-grid-community";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
+import { Component } from '@angular/core';
+import { ColDef, GridReadyEvent, RowClassRules } from 'ag-grid-community';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<div class="outer">
     <div class="grid-col">
       <ag-grid-angular
@@ -33,10 +33,10 @@ import "ag-grid-community/dist/styles/ag-theme-alpine.css";
 export class AppComponent {
   public columnDefs: ColDef[] = [
     { valueGetter: "'Drag'", dndSource: true },
-    { field: "id" },
-    { field: "color" },
-    { field: "value1" },
-    { field: "value2" },
+    { field: 'id' },
+    { field: 'color' },
+    { field: 'value1' },
+    { field: 'value2' },
   ];
   public defaultColDef: ColDef = {
     width: 80,
@@ -45,26 +45,26 @@ export class AppComponent {
     resizable: true,
   };
   public rowClassRules: RowClassRules = {
-    "red-row": 'data.color == "Red"',
-    "green-row": 'data.color == "Green"',
-    "blue-row": 'data.color == "Blue"',
+    'red-row': 'data.color == "Red"',
+    'green-row': 'data.color == "Green"',
+    'blue-row': 'data.color == "Blue"',
   };
   public rowData: any[] | null = getData();
 
   onDragOver(event: any) {
     var dragSupported = event.dataTransfer.length;
     if (dragSupported) {
-      event.dataTransfer.dropEffect = "move";
+      event.dataTransfer.dropEffect = 'move';
     }
     event.preventDefault();
   }
 
   onDrop(event: any) {
-    var jsonData = event.dataTransfer.getData("application/json");
-    var eJsonRow = document.createElement("div");
-    eJsonRow.classList.add("json-row");
+    var jsonData = event.dataTransfer.getData('application/json');
+    var eJsonRow = document.createElement('div');
+    eJsonRow.classList.add('json-row');
     eJsonRow.innerText = jsonData;
-    var eJsonDisplay = document.querySelector("#eJsonDisplay")!;
+    var eJsonDisplay = document.querySelector('#eJsonDisplay')!;
     eJsonDisplay.appendChild(eJsonRow);
     event.preventDefault();
   }

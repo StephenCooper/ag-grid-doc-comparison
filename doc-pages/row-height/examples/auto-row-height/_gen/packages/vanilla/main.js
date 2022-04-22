@@ -1,22 +1,22 @@
 const gridOptions = {
   columnDefs: [
     {
-      headerName: "Row #",
-      field: "rowNumber",
+      headerName: 'Row #',
+      field: 'rowNumber',
       width: 120,
     },
     {
-      field: "autoA",
+      field: 'autoA',
       width: 300,
       wrapText: true,
       autoHeight: true,
-      headerName: "A) Auto Height",
+      headerName: 'A) Auto Height',
     },
     {
       width: 300,
-      field: "autoB",
+      field: 'autoB',
       wrapText: true,
-      headerName: "B) Normal Height",
+      headerName: 'B) Normal Height',
     },
   ],
   defaultColDef: {
@@ -33,11 +33,11 @@ const gridOptions = {
   sideBar: {
     toolPanels: [
       {
-        id: "columns",
-        labelDefault: "Columns",
-        labelKey: "columns",
-        iconKey: "columns",
-        toolPanel: "agColumnsToolPanel",
+        id: 'columns',
+        labelDefault: 'Columns',
+        labelKey: 'columns',
+        iconKey: 'columns',
+        toolPanel: 'agColumnsToolPanel',
         toolPanelParams: {
           suppressRowGroups: true,
           suppressValues: true,
@@ -50,12 +50,12 @@ const gridOptions = {
         },
       },
     ],
-    defaultToolPanel: "columns",
+    defaultToolPanel: 'columns',
   },
 };
 
 // setup the grid after the page has finished loading
-document.addEventListener("DOMContentLoaded", function () {
-  var gridDiv = document.querySelector("#myGrid");
+document.addEventListener('DOMContentLoaded', function () {
+  var gridDiv = document.querySelector('#myGrid');
   new agGrid.Grid(gridDiv, gridOptions);
 });

@@ -1,13 +1,13 @@
-import { Component, ElementRef, ViewChild } from "@angular/core";
-import { IHeaderAngularComp } from "ag-grid-angular";
-import { IHeaderParams } from "ag-grid-community";
+import { Component, ElementRef, ViewChild } from '@angular/core';
+import { IHeaderAngularComp } from 'ag-grid-angular';
+import { IHeaderParams } from 'ag-grid-community';
 
 export interface ICustomHeaderParams {
   menuIcon: string;
 }
 
 @Component({
-  selector: "app-custom-header",
+  selector: 'app-custom-header',
   template: `
     <div>
       <div
@@ -73,17 +73,17 @@ export interface ICustomHeaderParams {
 export class CustomHeader implements IHeaderAngularComp {
   public params!: IHeaderParams & ICustomHeaderParams;
 
-  public ascSort = "inactive";
-  public descSort = "inactive";
-  public noSort = "inactive";
+  public ascSort = 'inactive';
+  public descSort = 'inactive';
+  public noSort = 'inactive';
 
-  @ViewChild("menuButton", { read: ElementRef }) public menuButton!: ElementRef;
+  @ViewChild('menuButton', { read: ElementRef }) public menuButton!: ElementRef;
 
   agInit(params: IHeaderParams & ICustomHeaderParams): void {
     this.params = params;
 
     params.column.addEventListener(
-      "sortChanged",
+      'sortChanged',
       this.onSortChanged.bind(this)
     );
 
@@ -95,17 +95,17 @@ export class CustomHeader implements IHeaderAngularComp {
   }
 
   onSortChanged() {
-    this.ascSort = this.descSort = this.noSort = "inactive";
+    this.ascSort = this.descSort = this.noSort = 'inactive';
     if (this.params.column.isSortAscending()) {
-      this.ascSort = "active";
+      this.ascSort = 'active';
     } else if (this.params.column.isSortDescending()) {
-      this.descSort = "active";
+      this.descSort = 'active';
     } else {
-      this.noSort = "active";
+      this.noSort = 'active';
     }
   }
 
-  onSortRequested(order: "asc" | "desc" | null, event: any) {
+  onSortRequested(order: 'asc' | 'desc' | null, event: any) {
     this.params.setSort(order, event.shiftKey);
   }
 

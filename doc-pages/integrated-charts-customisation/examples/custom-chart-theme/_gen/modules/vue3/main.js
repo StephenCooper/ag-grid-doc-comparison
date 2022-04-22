@@ -1,11 +1,11 @@
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { AgGridVue } from "@ag-grid-community/vue3";
-import { GridChartsModule } from "@ag-grid-enterprise/charts";
-import { MenuModule } from "@ag-grid-enterprise/menu";
-import { createApp } from "vue";
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { AgGridVue } from '@ag-grid-community/vue3';
+import { GridChartsModule } from '@ag-grid-enterprise/charts';
+import { MenuModule } from '@ag-grid-enterprise/menu';
+import { createApp } from 'vue';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([
@@ -34,34 +34,34 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
-        { field: "country", width: 150, chartDataType: "category" },
-        { field: "gold", chartDataType: "series" },
-        { field: "silver", chartDataType: "series" },
-        { field: "bronze", chartDataType: "series" },
+        { field: 'country', width: 150, chartDataType: 'category' },
+        { field: 'gold', chartDataType: 'series' },
+        { field: 'silver', chartDataType: 'series' },
+        { field: 'bronze', chartDataType: 'series' },
         {
-          headerName: "A",
-          valueGetter: "Math.floor(Math.random()*1000)",
-          chartDataType: "series",
+          headerName: 'A',
+          valueGetter: 'Math.floor(Math.random()*1000)',
+          chartDataType: 'series',
         },
         {
-          headerName: "B",
-          valueGetter: "Math.floor(Math.random()*1000)",
-          chartDataType: "series",
+          headerName: 'B',
+          valueGetter: 'Math.floor(Math.random()*1000)',
+          chartDataType: 'series',
         },
         {
-          headerName: "C",
-          valueGetter: "Math.floor(Math.random()*1000)",
-          chartDataType: "series",
+          headerName: 'C',
+          valueGetter: 'Math.floor(Math.random()*1000)',
+          chartDataType: 'series',
         },
         {
-          headerName: "D",
-          valueGetter: "Math.floor(Math.random()*1000)",
-          chartDataType: "series",
+          headerName: 'D',
+          valueGetter: 'Math.floor(Math.random()*1000)',
+          chartDataType: 'series',
         },
       ],
       gridApi: null,
@@ -86,8 +86,8 @@ const VueExample = {
     this.customChartThemes = {
       myCustomTheme: {
         palette: {
-          fills: ["#e1ba00", "silver", "peru"],
-          strokes: ["black", "#ff0000"],
+          fills: ['#e1ba00', 'silver', 'peru'],
+          strokes: ['black', '#ff0000'],
         },
         overrides: {
           common: {
@@ -98,30 +98,30 @@ const VueExample = {
               left: 2,
             },
             background: {
-              fill: "#e5e5e5",
+              fill: '#e5e5e5',
             },
             title: {
               enabled: true,
-              fontStyle: "italic",
-              fontWeight: "600",
+              fontStyle: 'italic',
+              fontWeight: '600',
               fontSize: 18,
-              fontFamily: "Impact, sans-serif",
-              color: "#414182",
+              fontFamily: 'Impact, sans-serif',
+              color: '#414182',
             },
             legend: {
               enabled: true,
-              position: "left",
+              position: 'left',
               spacing: 20,
               item: {
                 label: {
-                  fontStyle: "italic",
-                  fontWeight: "bold",
+                  fontStyle: 'italic',
+                  fontWeight: 'bold',
                   fontSize: 18,
-                  fontFamily: "Palatino, serif",
-                  color: "#555",
+                  fontFamily: 'Palatino, serif',
+                  color: '#555',
                 },
                 marker: {
-                  shape: "diamond",
+                  shape: 'diamond',
                   size: 10,
                   padding: 10,
                   strokeWidth: 2,
@@ -152,18 +152,18 @@ const VueExample = {
         },
       },
     };
-    this.chartThemes = ["myCustomTheme", "ag-pastel", "ag-vivid"];
+    this.chartThemes = ['myCustomTheme', 'ag-pastel', 'ag-vivid'];
   },
   methods: {
     onFirstDataRendered(params) {
       var cellRange = {
         rowStartIndex: 0,
         rowEndIndex: 4,
-        columns: ["country", "gold", "silver", "bronze"],
+        columns: ['country', 'gold', 'silver', 'bronze'],
       };
       var createRangeChartParams = {
         cellRange: cellRange,
-        chartType: "groupedBar",
+        chartType: 'groupedBar',
       };
       params.api.createRangeChart(createRangeChartParams);
     },
@@ -174,4 +174,4 @@ const VueExample = {
   },
 };
 
-createApp(VueExample).mount("#app");
+createApp(VueExample).mount('#app');

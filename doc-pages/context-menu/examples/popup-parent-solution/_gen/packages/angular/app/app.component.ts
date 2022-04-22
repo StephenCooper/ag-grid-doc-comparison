@@ -1,11 +1,11 @@
-import { Component } from "@angular/core";
-import { ColDef, GridReadyEvent } from "ag-grid-community";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
+import { Component } from '@angular/core';
+import { ColDef, GridReadyEvent } from 'ag-grid-community';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import 'ag-grid-enterprise';
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<ag-grid-angular
       style="width: 100%; height: 100px;"
       class="ag-theme-alpine"
@@ -45,13 +45,13 @@ export class AppComponent {
     { a: 2, b: 2, c: 2, d: 2, e: 2 },
   ];
   public columnDefs: ColDef[] = [
-    { field: "a" },
-    { field: "b" },
-    { field: "c" },
-    { field: "d" },
-    { field: "e" },
+    { field: 'a' },
+    { field: 'b' },
+    { field: 'c' },
+    { field: 'd' },
+    { field: 'e' },
   ];
-  public popupParent: HTMLElement = document.querySelector("body")!;
+  public popupParent: HTMLElement = document.querySelector('body')!;
 
   onGridReady(params: GridReadyEvent) {}
 }

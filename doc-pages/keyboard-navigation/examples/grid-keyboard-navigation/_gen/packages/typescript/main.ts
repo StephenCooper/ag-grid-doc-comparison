@@ -1,11 +1,11 @@
-import { ColDef, ColGroupDef, Grid, GridOptions } from "ag-grid-community";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
+import { ColDef, ColGroupDef, Grid, GridOptions } from 'ag-grid-community';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import 'ag-grid-enterprise';
 
 const columnDefs: (ColDef | ColGroupDef)[] = [
   {
-    headerName: " ",
+    headerName: ' ',
     headerCheckboxSelection: true,
     checkboxSelection: true,
     floatingFilter: false,
@@ -21,53 +21,53 @@ const columnDefs: (ColDef | ColGroupDef)[] = [
     suppressColumnsToolPanel: true,
   },
   {
-    headerName: "Participant",
+    headerName: 'Participant',
     children: [
-      { field: "athlete", minWidth: 170 },
-      { field: "country", minWidth: 150 },
+      { field: 'athlete', minWidth: 170 },
+      { field: 'country', minWidth: 150 },
     ],
   },
-  { field: "sport" },
+  { field: 'sport' },
   {
-    headerName: "Medals",
+    headerName: 'Medals',
     children: [
       {
-        field: "total",
-        columnGroupShow: "closed",
-        filter: "agNumberColumnFilter",
+        field: 'total',
+        columnGroupShow: 'closed',
+        filter: 'agNumberColumnFilter',
         width: 120,
         flex: 0,
       },
       {
-        field: "gold",
-        columnGroupShow: "open",
-        filter: "agNumberColumnFilter",
+        field: 'gold',
+        columnGroupShow: 'open',
+        filter: 'agNumberColumnFilter',
         width: 100,
         flex: 0,
       },
       {
-        field: "silver",
-        columnGroupShow: "open",
-        filter: "agNumberColumnFilter",
+        field: 'silver',
+        columnGroupShow: 'open',
+        filter: 'agNumberColumnFilter',
         width: 100,
         flex: 0,
       },
       {
-        field: "bronze",
-        columnGroupShow: "open",
-        filter: "agNumberColumnFilter",
+        field: 'bronze',
+        columnGroupShow: 'open',
+        filter: 'agNumberColumnFilter',
         width: 100,
         flex: 0,
       },
     ],
   },
-  { field: "year", filter: "agNumberColumnFilter" },
+  { field: 'year', filter: 'agNumberColumnFilter' },
 ];
 
 const gridOptions: GridOptions = {
   rowData: null,
   columnDefs: columnDefs,
-  rowSelection: "multiple",
+  rowSelection: 'multiple',
   suppressRowClickSelection: true,
   defaultColDef: {
     editable: true,
@@ -79,15 +79,15 @@ const gridOptions: GridOptions = {
     flex: 1,
   },
   sideBar: {
-    toolPanels: ["columns", "filters"],
-    defaultToolPanel: "",
+    toolPanels: ['columns', 'filters'],
+    defaultToolPanel: '',
   },
 };
 
 // setup the grid after the page has finished loading
-var gridDiv = document.querySelector<HTMLElement>("#myGrid")!;
+var gridDiv = document.querySelector<HTMLElement>('#myGrid')!;
 new Grid(gridDiv, gridOptions);
 
-fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
   .then((response) => response.json())
   .then((data) => gridOptions.api!.setRowData(data));

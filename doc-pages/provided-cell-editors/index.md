@@ -18,19 +18,18 @@ Simple text editors that use the standard HTML `input`. This editor is the defau
 Specified with `agTextCellEditor`.
 
 Takes the following parameters:
-
 - `useFormatter`: If `true`, the editor will use the provided `colDef.cellFormatter` to format the value displayed in the editor.
 
 ```js
 columnDefs: [
-  {
-    cellEditor: "agTextCellEditor",
-    cellEditorParams: {
-      useFormatter: true,
-    },
-    // ...other props
-  },
-];
+    {
+        cellEditor: 'agTextCellEditor',
+        cellEditorParams: {
+            useFormatter: true
+        }
+        // ...other props
+    }
+]
 ```
 
 ## Large Text Cell Editor
@@ -40,24 +39,23 @@ Simple editor that uses the standard HTML `textarea`. Best used in conjunction w
 Specified with `agLargeTextCellEditor`.
 
 Takes the following parameters:
-
 - `maxLength`: Max number of characters to allow. Default is 200.
 - `rows`: Number of character rows to display. Default is 10.
 - `cols`: Number of character columns to display. Default is 60.
 
 ```js
 columnDefs: [
-  {
-    cellEditor: "agTextCellEditor",
-    cellEditorPopup: true,
-    cellEditorParams: {
-      maxLength: 100,
-      rows: 10,
-      cols: 50,
-    },
-    // ...other props
-  },
-];
+    {
+        cellEditor: 'agTextCellEditor',
+        cellEditorPopup: true,
+        cellEditorParams: {
+            maxLength: 100,
+            rows: 10,
+            cols: 50
+        }
+        // ...other props
+    }
+]
 ```
 
 ## Select Cell Editor
@@ -67,19 +65,18 @@ Simple editor that uses HTML `select`.
 Specified with `agSelectCellEditor`.
 
 Takes the following parameter:
-
 - `values`: List of values to display.
 
 ```js
 columnDefs: [
-  {
-    cellEditor: "agSelectCellEditor",
-    cellEditorParams: {
-      values: ["English", "Spanish", "French", "Portuguese", "(other)"],
-    },
-    // ...other props
-  },
-];
+    {
+        cellEditor: 'agSelectCellEditor',
+        cellEditorParams: {
+            values: ['English', 'Spanish', 'French', 'Portuguese', '(other)'],
+        }
+        // ...other props
+    }
+]
 ```
 
 Note there is no need to specify `cellEditorPopup=true` for Select Cell Editor as the browsers Select widget will appear on top of the grid.
@@ -103,10 +100,9 @@ Note there is no need to specify `cellEditorPopup=true` for Select Cell Editor a
 
 ## Rich Select Cell Editor
 
-An alternative to using the browser's `select` popup for dropdowns inside the grid. Available in AG Grid Enterprise only.
+An alternative to using the browser's `select` popup for dropdowns inside the grid. Available in AG Grid Enterprise only. 
 
 Benefits over browser's `select` are as follows:
-
 - Uses DOM row visualisation so very large lists can be displayed.
 - Integrates with the grid perfectly, avoiding glitches seen with the standard select.
 - Uses HTML to render the values: you can provide cell renderers to customise what each value looks like.
@@ -118,27 +114,26 @@ Specified with `agRichSelectCellEditor`.
 |Should always set `cellEditorPopup=true`. Otherwise the editor will be clipped to the cell contents.
 
 Takes the following parameters:
-
 - `values`: List of values to be selected from.
 - `cellHeight`: The row height, in pixels, of each value.
 - `formatValue`: A callback function that allows you to change the displayed value for simple data.
 - `cellRenderer`: The cell renderer to use to render each value. Cell renderers are useful for rendering rich HTML values, or when processing complex data. See [Cell Rendering Components](/component-cell-renderer/)
-  for creating custom cell renderers.
+    for creating custom cell renderers.
 - `searchDebounceDelay`: The value in `ms` for the fuzzy search debounce delay. Default is 300.
 
 ```js
 columnDefs: [
-  {
-    cellEditor: "agRichSelectCellEditor",
-    cellEditorPopup: true,
-    cellEditorParams: {
-      values: ["English", "Spanish", "French", "Portuguese", "(other)"],
-      cellHeight: 20,
-      formatValue: (value) => value.toUpperCase(),
-      cellRenderer: MyCellRenderer,
-      searchDebounceDelay: 500,
-    },
-    // ...other props
-  },
-];
+    {
+        cellEditor: 'agRichSelectCellEditor',
+        cellEditorPopup: true,
+        cellEditorParams: {
+            values: ['English', 'Spanish', 'French', 'Portuguese', '(other)'],
+            cellHeight: 20,
+            formatValue: value => value.toUpperCase(),
+            cellRenderer: MyCellRenderer,
+            searchDebounceDelay: 500
+        }
+        // ...other props
+    }
+]
 ```

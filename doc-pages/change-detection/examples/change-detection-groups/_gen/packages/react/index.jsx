@@ -1,11 +1,11 @@
-"use strict";
+'use strict';
 
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine-dark.css";
-import "ag-grid-enterprise";
-import { AgGridReact } from "ag-grid-react";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from 'ag-grid-react';
+import 'ag-grid-enterprise';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine-dark.css';
 
 class GridExample extends Component {
   constructor(props) {
@@ -13,14 +13,14 @@ class GridExample extends Component {
 
     this.state = {
       columnDefs: [
-        { field: "group", rowGroup: true, editable: true },
-        { field: "a", type: "valueColumn" },
-        { field: "b", type: "valueColumn" },
-        { field: "c", type: "valueColumn" },
-        { field: "d", type: "valueColumn" },
+        { field: 'group', rowGroup: true, editable: true },
+        { field: 'a', type: 'valueColumn' },
+        { field: 'b', type: 'valueColumn' },
+        { field: 'c', type: 'valueColumn' },
+        { field: 'd', type: 'valueColumn' },
         {
-          headerName: "Total",
-          type: "totalColumn",
+          headerName: 'Total',
+          type: 'totalColumn',
           // we use getValue() instead of data.a so that it gets the aggregated values at the group level
           valueGetter:
             'getValue("a") + getValue("b") + getValue("c") + getValue("d")',
@@ -36,15 +36,15 @@ class GridExample extends Component {
       columnTypes: {
         valueColumn: {
           editable: true,
-          aggFunc: "sum",
-          valueParser: "Number(newValue)",
-          cellClass: "number-cell",
-          cellRenderer: "agAnimateShowChangeCellRenderer",
-          filter: "agNumberColumnFilter",
+          aggFunc: 'sum',
+          valueParser: 'Number(newValue)',
+          cellClass: 'number-cell',
+          cellRenderer: 'agAnimateShowChangeCellRenderer',
+          filter: 'agNumberColumnFilter',
         },
         totalColumn: {
-          cellRenderer: "agAnimateShowChangeCellRenderer",
-          cellClass: "number-cell",
+          cellRenderer: 'agAnimateShowChangeCellRenderer',
+          cellClass: 'number-cell',
         },
       },
       rowData: getRowData(),
@@ -59,11 +59,11 @@ class GridExample extends Component {
 
   render() {
     return (
-      <div style={{ width: "100%", height: "100%" }}>
+      <div style={{ width: '100%', height: '100%' }}>
         <div
           style={{
-            height: "100%",
-            width: "100%",
+            height: '100%',
+            width: '100%',
           }}
           className="ag-theme-alpine-dark"
         >
@@ -88,7 +88,7 @@ function getRowData() {
   var rowData = [];
   for (var i = 1; i <= 16; i++) {
     rowData.push({
-      group: i < 8 ? "A" : "B",
+      group: i < 8 ? 'A' : 'B',
       a: (i * 863) % 100,
       b: (i * 811) % 100,
       c: (i * 743) % 100,
@@ -98,4 +98,4 @@ function getRowData() {
   return rowData;
 }
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

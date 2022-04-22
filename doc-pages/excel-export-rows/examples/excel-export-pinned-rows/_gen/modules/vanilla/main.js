@@ -1,24 +1,24 @@
 const columnDefs = [
   {
-    headerName: "Top Level Column Group",
+    headerName: 'Top Level Column Group',
     children: [
       {
-        headerName: "Group A",
+        headerName: 'Group A',
         children: [
-          { field: "athlete", minWidth: 200 },
-          { field: "country", minWidth: 200 },
-          { headerName: "Group", valueGetter: "data.country.charAt(0)" },
+          { field: 'athlete', minWidth: 200 },
+          { field: 'country', minWidth: 200 },
+          { headerName: 'Group', valueGetter: 'data.country.charAt(0)' },
         ],
       },
       {
-        headerName: "Group B",
+        headerName: 'Group B',
         children: [
-          { field: "date", minWidth: 150 },
-          { field: "sport", minWidth: 150 },
-          { field: "gold" },
-          { field: "silver" },
-          { field: "bronze" },
-          { field: "total" },
+          { field: 'date', minWidth: 150 },
+          { field: 'sport', minWidth: 150 },
+          { field: 'gold' },
+          { field: 'silver' },
+          { field: 'bronze' },
+          { field: 'total' },
         ],
       },
     ],
@@ -39,12 +39,12 @@ const gridOptions = {
 
   pinnedTopRowData: [
     {
-      athlete: "Floating <Top> Athlete",
-      country: "Floating <Top> Country",
-      date: "01/08/2020",
-      sport: "Track & Field",
+      athlete: 'Floating <Top> Athlete',
+      country: 'Floating <Top> Country',
+      date: '01/08/2020',
+      sport: 'Track & Field',
       gold: 22,
-      silver: "003",
+      silver: '003',
       bronze: 44,
       total: 55,
     },
@@ -52,12 +52,12 @@ const gridOptions = {
 
   pinnedBottomRowData: [
     {
-      athlete: "Floating <Bottom> Athlete",
-      country: "Floating <Bottom> Country",
-      date: "01/08/2030",
-      sport: "Track & Field",
+      athlete: 'Floating <Bottom> Athlete',
+      country: 'Floating <Bottom> Country',
+      date: '01/08/2030',
+      sport: 'Track & Field',
       gold: 222,
-      silver: "005",
+      silver: '005',
       bronze: 244,
       total: 255,
     },
@@ -65,13 +65,13 @@ const gridOptions = {
 };
 
 function getBoolean(id) {
-  return !!document.querySelector("#" + id).checked;
+  return !!document.querySelector('#' + id).checked;
 }
 
 function getParams() {
   return {
-    skipPinnedTop: getBoolean("skipPinnedTop"),
-    skipPinnedBottom: getBoolean("skipPinnedBottom"),
+    skipPinnedTop: getBoolean('skipPinnedTop'),
+    skipPinnedBottom: getBoolean('skipPinnedBottom'),
   };
 }
 
@@ -80,10 +80,10 @@ function onBtExport() {
 }
 
 // setup the grid after the page has finished loading
-document.addEventListener("DOMContentLoaded", () => {
-  const gridDiv = document.querySelector("#myGrid");
+document.addEventListener('DOMContentLoaded', () => {
+  const gridDiv = document.querySelector('#myGrid');
   new agGrid.Grid(gridDiv, gridOptions);
-  fetch("https://www.ag-grid.com/example-assets/small-olympic-winners.json")
+  fetch('https://www.ag-grid.com/example-assets/small-olympic-winners.json')
     .then((response) => response.json())
     .then((data) =>
       gridOptions.api.setRowData(data.filter((rec) => rec.country != null))

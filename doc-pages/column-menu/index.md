@@ -27,7 +27,7 @@ The main menu panel, by default, will show a set of items. You can adjust which 
 
 The result of `getMainMenuItems()` should be a list with each item either a) a string or b) a MenuItem description. Use 'string' to pick from built in menu items (listed below) and use MenuItem descriptions for your own menu items.
 
-<api-documentation source='grid-properties/properties.json' section='accessories' names='["getMainMenuItems"]'  ></api-documentation>
+<api-documentation source='grid-options/properties.json' section='accessories' names='["getMainMenuItems"]'  ></api-documentation>
 
 ## Built In Menu Items
 
@@ -52,14 +52,15 @@ If you do not provide a `getMainMenuItems()` callback, then the rules alone deci
 You can add menu item separators as follows:
 
 ```js
-menuItems.push("separator");
+menuItems.push('separator')
 ```
 
 ## Repositioning the Popup
 
 If not happy with the position of the popup, you can override it's position using `postProcessPopup(params)` callback. This gives you the popup HTML element so you can change it's position should you wish to.
 
-<api-documentation source='grid-properties/properties.json' section='accessories' names='["postProcessPopup"]'  ></api-documentation>
+<api-documentation source='grid-options/properties.json' section='accessories' names='["postProcessPopup"]'  ></api-documentation>
+
 
 ## Overriding Column Menu Width
 
@@ -67,7 +68,7 @@ You can override the menu width by overriding the corresponding CSS:
 
 ```css
 .ag-set-filter-list {
-  width: 500px !important;
+    width: 500px !important;
 }
 ```
 

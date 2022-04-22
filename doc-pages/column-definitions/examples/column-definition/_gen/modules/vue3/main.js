@@ -1,9 +1,9 @@
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { AgGridVue } from "@ag-grid-community/vue3";
-import { createApp } from "vue";
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { AgGridVue } from '@ag-grid-community/vue3';
+import { createApp } from 'vue';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([ClientSideRowModelModule]);
@@ -26,32 +26,32 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
-        { field: "athlete" },
-        { field: "sport" },
-        { field: "age", type: "numberColumn" },
-        { field: "year", type: "numberColumn" },
+        { field: 'athlete' },
+        { field: 'sport' },
+        { field: 'age', type: 'numberColumn' },
+        { field: 'year', type: 'numberColumn' },
         {
-          field: "date",
-          type: ["dateColumn", "nonEditableColumn"],
+          field: 'date',
+          type: ['dateColumn', 'nonEditableColumn'],
           width: 220,
         },
         {
-          headerName: "Medals",
-          groupId: "medalsGroup",
+          headerName: 'Medals',
+          groupId: 'medalsGroup',
           children: [
-            { headerName: "Gold", field: "gold", type: "medalColumn" },
-            { headerName: "Silver", field: "silver", type: "medalColumn" },
-            { headerName: "Bronze", field: "bronze", type: "medalColumn" },
+            { headerName: 'Gold', field: 'gold', type: 'medalColumn' },
+            { headerName: 'Silver', field: 'silver', type: 'medalColumn' },
+            { headerName: 'Bronze', field: 'bronze', type: 'medalColumn' },
             {
-              headerName: "Total",
-              field: "total",
-              type: "medalColumn",
-              columnGroupShow: "closed",
+              headerName: 'Total',
+              field: 'total',
+              type: 'medalColumn',
+              columnGroupShow: 'closed',
             },
           ],
         },
@@ -64,7 +64,7 @@ const VueExample = {
         // make every column editable
         editable: true,
         // make every column use 'text' filter by default
-        filter: "agTextColumnFilter",
+        filter: 'agTextColumnFilter',
         // enable floating filters by default
         floatingFilter: true,
         // make columns resizable
@@ -80,19 +80,19 @@ const VueExample = {
       marryChildren: true,
     };
     this.columnTypes = {
-      numberColumn: { width: 130, filter: "agNumberColumnFilter" },
-      medalColumn: { width: 100, columnGroupShow: "open", filter: false },
+      numberColumn: { width: 130, filter: 'agNumberColumnFilter' },
+      medalColumn: { width: 100, columnGroupShow: 'open', filter: false },
       nonEditableColumn: { editable: false },
       dateColumn: {
         // specify we want to use the date filter
-        filter: "agDateColumnFilter",
+        filter: 'agDateColumnFilter',
         // add extra parameters for the date filter
         filterParams: {
           // provide comparator function
           comparator: (filterLocalDateAtMidnight, cellValue) => {
             // In the example application, dates are stored as dd/mm/yyyy
             // We create a Date object for comparison against the filter date
-            const dateParts = cellValue.split("/");
+            const dateParts = cellValue.split('/');
             const day = Number(dateParts[0]);
             const month = Number(dateParts[1]) - 1;
             const year = Number(dateParts[2]);
@@ -117,11 +117,11 @@ const VueExample = {
 
       const updateData = (data) => params.api.setRowData(data);
 
-      fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
         .then((resp) => resp.json())
         .then((data) => updateData(data));
     },
   },
 };
 
-createApp(VueExample).mount("#app");
+createApp(VueExample).mount('#app');

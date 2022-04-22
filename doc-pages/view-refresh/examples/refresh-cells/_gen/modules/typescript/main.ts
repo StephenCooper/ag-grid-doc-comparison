@@ -1,4 +1,4 @@
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
 import {
   Grid,
   GridApi,
@@ -6,9 +6,9 @@ import {
   ModuleRegistry,
   RefreshCellsParams,
   RowNode,
-} from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine-dark.css";
+} from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine-dark.css';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([ClientSideRowModelModule]);
@@ -21,12 +21,12 @@ var bottomRowData: any[] = [];
 
 const gridOptions: GridOptions = {
   columnDefs: [
-    { field: "a", suppressCellFlash: true },
-    { field: "b" },
-    { field: "c" },
-    { field: "d" },
-    { field: "e" },
-    { field: "f" },
+    { field: 'a', suppressCellFlash: true },
+    { field: 'b' },
+    { field: 'c' },
+    { field: 'd' },
+    { field: 'e' },
+    { field: 'f' },
   ],
   defaultColDef: {
     flex: 1,
@@ -63,11 +63,11 @@ function createData(count: number): any[] {
 }
 
 function isForceRefreshSelected() {
-  return (document.querySelector("#forceRefresh") as HTMLInputElement).checked;
+  return (document.querySelector('#forceRefresh') as HTMLInputElement).checked;
 }
 
 function isSuppressFlashSelected() {
-  return (document.querySelector("#suppressFlash") as HTMLInputElement).checked;
+  return (document.querySelector('#suppressFlash') as HTMLInputElement).checked;
 }
 
 function scrambleAndRefreshAll() {
@@ -83,7 +83,7 @@ function scrambleAndRefreshLeftToRight() {
   scramble();
 
   var api = gridOptions.api!;
-  ["a", "b", "c", "d", "e", "f"].forEach(function (col, index) {
+  ['a', 'b', 'c', 'd', 'e', 'f'].forEach(function (col, index) {
     var millis = index * 100;
     var params = {
       force: isForceRefreshSelected(),
@@ -107,13 +107,13 @@ function scrambleAndRefreshTopToBottom() {
     refreshRow(rowNode, api);
   }
 
-  for (i = 0; i < gridOptions.api!.getDisplayedRowCount(); i++) {
-    rowNode = gridOptions.api!.getDisplayedRowAtIndex(i)!;
+  for (i = 0; i < api.getDisplayedRowCount(); i++) {
+    rowNode = api.getDisplayedRowAtIndex(i)!;
     refreshRow(rowNode, api);
   }
 
-  for (i = 0; i < gridOptions.api!.getPinnedBottomRowCount(); i++) {
-    rowNode = gridOptions.api!.getPinnedBottomRow(i)!;
+  for (i = 0; i < api.getPinnedBottomRowCount(); i++) {
+    rowNode = api.getPinnedBottomRow(i)!;
     refreshRow(rowNode, api);
   }
 
@@ -146,7 +146,7 @@ function scramble() {
 }
 
 function scrambleItem(item: any) {
-  ["a", "b", "c", "d", "e", "f"].forEach(function (colId) {
+  ['a', 'b', 'c', 'd', 'e', 'f'].forEach(function (colId) {
     // skip 50% of the cells so updates are random
     if (Math.random() > 0.5) {
       return;
@@ -156,10 +156,10 @@ function scrambleItem(item: any) {
 }
 
 // setup the grid after the page has finished loading
-var gridDiv = document.querySelector<HTMLElement>("#myGrid")!;
+var gridDiv = document.querySelector<HTMLElement>('#myGrid')!;
 new Grid(gridDiv, gridOptions);
 
-if (typeof window !== "undefined") {
+if (typeof window !== 'undefined') {
   // Attach external event handlers to window so they can be called from index.html
   (<any>window).scrambleAndRefreshAll = scrambleAndRefreshAll;
   (<any>window).scrambleAndRefreshLeftToRight = scrambleAndRefreshLeftToRight;

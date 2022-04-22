@@ -1,11 +1,11 @@
-"use strict";
+'use strict';
 
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
-import { AgGridReact } from "ag-grid-react";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from 'ag-grid-react';
+import 'ag-grid-enterprise';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 
 class GridExample extends Component {
   constructor(props) {
@@ -13,10 +13,10 @@ class GridExample extends Component {
 
     this.state = {
       columnDefs: [
-        { field: "country", chartDataType: "category" },
-        { field: "sugar", chartDataType: "series" },
-        { field: "fat", chartDataType: "series" },
-        { field: "weight", chartDataType: "series" },
+        { field: 'country', chartDataType: 'category' },
+        { field: 'sugar', chartDataType: 'series' },
+        { field: 'fat', chartDataType: 'series' },
+        { field: 'weight', chartDataType: 'series' },
       ],
       defaultColDef: {
         editable: true,
@@ -41,7 +41,7 @@ class GridExample extends Component {
     if (chartModels.length > 0) {
       chartModel = chartModels[0];
     }
-    alert("Chart saved!");
+    alert('Chart saved!');
   };
 
   clearChart = () => {
@@ -62,14 +62,14 @@ class GridExample extends Component {
       currentChartRef.destroyChart();
     }
     var eChart = chartRef.chartElement;
-    var eParent = document.querySelector("#myChart");
+    var eParent = document.querySelector('#myChart');
     eParent.appendChild(eChart);
     currentChartRef = chartRef;
   };
 
   render() {
     return (
-      <div style={{ width: "100%", height: "100%" }}>
+      <div style={{ width: '100%', height: '100%' }}>
         <div className="wrapper">
           <div id="buttons">
             <button onClick={() => this.saveChart()}>Save chart</button>
@@ -78,8 +78,8 @@ class GridExample extends Component {
           </div>
           <div
             style={{
-              height: "100%",
-              width: "100%",
+              height: '100%',
+              width: '100%',
             }}
             className="ag-theme-alpine"
           >
@@ -104,4 +104,4 @@ class GridExample extends Component {
 var chartModel;
 var currentChartRef;
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

@@ -1,15 +1,15 @@
 const gridOptions = {
   columnDefs: [
-    { field: "athlete", minWidth: 150 },
-    { field: "age", minWidth: 70, maxWidth: 90 },
-    { field: "country", minWidth: 130 },
-    { field: "year", minWidth: 70, maxWidth: 90 },
-    { field: "date", minWidth: 120 },
-    { field: "sport", minWidth: 120 },
-    { field: "gold", minWidth: 80 },
-    { field: "silver", minWidth: 80 },
-    { field: "bronze", minWidth: 80 },
-    { field: "total", minWidth: 80 },
+    { field: 'athlete', minWidth: 150 },
+    { field: 'age', minWidth: 70, maxWidth: 90 },
+    { field: 'country', minWidth: 130 },
+    { field: 'year', minWidth: 70, maxWidth: 90 },
+    { field: 'date', minWidth: 120 },
+    { field: 'sport', minWidth: 120 },
+    { field: 'gold', minWidth: 80 },
+    { field: 'silver', minWidth: 80 },
+    { field: 'bronze', minWidth: 80 },
+    { field: 'total', minWidth: 80 },
   ],
 
   defaultColDef: {
@@ -26,7 +26,7 @@ function onFirstDataRendered(params) {
 
 function onGridSizeChanged(params) {
   // get the current grids width
-  var gridWidth = document.getElementById("grid-wrapper").offsetWidth;
+  var gridWidth = document.getElementById('grid-wrapper').offsetWidth;
 
   // keep track of which columns to hide/show
   var columnsToShow = [];
@@ -57,11 +57,11 @@ function onGridSizeChanged(params) {
 }
 
 // setup the grid after the page has finished loading
-document.addEventListener("DOMContentLoaded", function () {
-  var gridDiv = document.querySelector("#myGrid");
+document.addEventListener('DOMContentLoaded', function () {
+  var gridDiv = document.querySelector('#myGrid');
   new agGrid.Grid(gridDiv, gridOptions);
 
-  fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+  fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
     .then((response) => response.json())
     .then((data) => gridOptions.api.setRowData(data));
 });

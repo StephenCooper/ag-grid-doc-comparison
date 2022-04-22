@@ -6,19 +6,19 @@ enterprise: true
 This section compares the different ways grouped rows can be displayed in the grid.
 
 Row Grouping performs a _GROUP BY_ operation to the 'flat' list of rows provided to the grid, where the rows are grouped
-by one or more columns. The Display Types listed below are only concerned with how the results of Row Grouping are
-displayed in the grid.
+by one or more columns. The Display Types listed below are only concerned with how the results of Row Grouping are 
+displayed in the grid. 
 
 [[note]]
 | If the rows supplied to the grid do not need to be grouped by the grid, consider using [Tree Data](../tree-data/) instead.
 
-## Single Group Column
+## Single Group Column 
 
-A single group column is added to the grid which displays all row groups.
+A single group column is added to the grid which displays all row groups. 
 
 <image-caption src="grouping-display-types/resources/single-group-column.png" alt="Single Group Column" maxWidth="70%" constrained="true" centered="true"></image-caption>
 
-As illustrated above, there is a single group column containing the `country` and `year` row groups in a single group hierarchy.
+As illustrated above, there is a single group column containing the `country` and `year` row groups in a single group hierarchy. 
 
 See the [Single Group Column](../grouping-single-group-column/) section for more details.
 
@@ -44,7 +44,7 @@ See the [Group Rows](../grouping-group-rows/) section for more details.
 
 ## Custom Group Columns
 
-In some rare cases it may be desirable to supply your own custom groups rather than using the provided display types above.
+In some rare cases it may be desirable to supply your own custom groups rather than using the provided display types above. 
 
 See the [Custom Group Columns](../grouping-custom-group-columns/) section for more details.
 

@@ -1,4 +1,4 @@
-var animals = ["Monkey", "Lion", "Elephant", "Tiger", "Giraffe", "Antelope"];
+var animals = ['Monkey', 'Lion', 'Elephant', 'Tiger', 'Giraffe', 'Antelope'];
 
 function getData() {
   var rows = [];

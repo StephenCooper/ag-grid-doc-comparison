@@ -4,9 +4,17 @@ import { NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
 import { RxJsComponentByFullSet } from "./rxjs-component-example/rxjs-by-bulk.component";
 
+
 @NgModule({
-  imports: [BrowserModule, HttpClientModule, AgGridModule.withComponents([])],
-  declarations: [RxJsComponentByFullSet],
-  bootstrap: [RxJsComponentByFullSet],
+    imports: [
+        BrowserModule,
+        HttpClientModule,
+        AgGridModule.withComponents([])
+    ],
+    declarations: [
+        RxJsComponentByFullSet
+    ],
+    bootstrap: [RxJsComponentByFullSet]
 })
-export class AppModule {}
+export class AppModule {
+}

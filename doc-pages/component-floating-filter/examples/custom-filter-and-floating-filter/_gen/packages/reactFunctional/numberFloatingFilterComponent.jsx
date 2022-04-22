@@ -3,7 +3,8 @@ import React, {
   Fragment,
   useImperativeHandle,
   useRef,
-} from "react";
+  useState,
+} from 'react';
 
 export default forwardRef((props, ref) => {
   const inputRef = useRef(null);
@@ -24,7 +25,7 @@ export default forwardRef((props, ref) => {
 
   const onInputBoxChanged = (input) => {
     const value = input.target.value;
-    if (value === "") {
+    if (value === '') {
       // Remove the filter
       props.parentFilterInstance((instance) => {
         instance.myMethodForTakingValueFromFloatingFilter(null);
@@ -39,10 +40,10 @@ export default forwardRef((props, ref) => {
 
   return (
     <Fragment>
-      &gt;{" "}
+      &gt;{' '}
       <input
         ref={inputRef}
-        style={{ width: "30px" }}
+        style={{ width: '30px' }}
         type="number"
         min="0"
         onInput={onInputBoxChanged}

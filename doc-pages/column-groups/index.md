@@ -79,6 +79,7 @@ If you grab the group resize bar, it resizes each child in the group evenly dist
 
 The grid doesn't colour the groups for you. However you can use the column definition `headerClass` for this purpose. The `headerClass` attribute is available on both columns and column groups.
 
+
 <snippet suppressFrameworkContext="true">
 const gridOptions = {
     columnDefs: [
@@ -94,7 +95,7 @@ The labels in the grouping headers are positioned with `display: flex`. To make 
 
 ```css
 .ag-theme-alpine .ag-header-group-cell-label {
-  flex-direction: row-reverse;
+    flex-direction: row-reverse;
 }
 ```
 

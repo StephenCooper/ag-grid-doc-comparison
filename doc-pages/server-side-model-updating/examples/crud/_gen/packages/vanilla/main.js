@@ -1,12 +1,12 @@
 const columnDefs = [
-  { field: "athlete", width: 150 },
-  { field: "age" },
-  { field: "country", width: 150 },
-  { field: "year" },
-  { field: "sport" },
-  { field: "gold" },
-  { field: "silver" },
-  { field: "bronze" },
+  { field: 'athlete', width: 150 },
+  { field: 'age' },
+  { field: 'country', width: 150 },
+  { field: 'year' },
+  { field: 'sport' },
+  { field: 'gold' },
+  { field: 'silver' },
+  { field: 'bronze' },
 ];
 
 const gridOptions = {
@@ -14,10 +14,10 @@ const gridOptions = {
     width: 100,
     resizable: true,
   },
-  rowSelection: "single",
+  rowSelection: 'single',
   columnDefs: columnDefs,
-  rowModelType: "serverSide",
-  serverSideStoreType: "partial",
+  rowModelType: 'serverSide',
+  serverSideStoreType: 'partial',
   getRowId: getRowId,
 };
 
@@ -26,11 +26,11 @@ function getRowId(params) {
 }
 
 // setup the grid after the page has finished loading
-document.addEventListener("DOMContentLoaded", function () {
-  var gridDiv = document.querySelector("#myGrid");
+document.addEventListener('DOMContentLoaded', function () {
+  var gridDiv = document.querySelector('#myGrid');
   new agGrid.Grid(gridDiv, gridOptions);
 
-  fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+  fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
     .then((response) => response.json())
     .then(function (data) {
       // add id to data
@@ -72,8 +72,8 @@ function onBtAdd() {
 
   // insert new row in the source data, at the top of the page
   window.rowDataServerSide.splice(selectedRow.rowIndex, 0, {
-    athlete: "New Item" + newItemCount,
-    id: "" + Math.random(),
+    athlete: 'New Item' + newItemCount,
+    id: '' + Math.random(),
   });
   newItemCount++;
 

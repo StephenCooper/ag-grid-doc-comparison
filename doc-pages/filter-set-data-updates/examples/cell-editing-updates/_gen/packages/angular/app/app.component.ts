@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component } from '@angular/core';
 import {
   ColDef,
   FirstDataRenderedEvent,
@@ -6,13 +6,13 @@ import {
   GridReadyEvent,
   IFiltersToolPanel,
   SideBarDef,
-} from "ag-grid-community";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
+} from 'ag-grid-community';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import 'ag-grid-enterprise';
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<div class="example-wrapper">
     <div style="margin-bottom: 5px;">
       <button (click)="reset()">Reset</button>
@@ -34,19 +34,19 @@ export class AppComponent {
   public rowData: any[] | null = getRowData();
   public columnDefs: ColDef[] = [
     {
-      headerName: "Set Filter Column",
-      field: "col1",
-      filter: "agSetColumnFilter",
+      headerName: 'Set Filter Column',
+      field: 'col1',
+      filter: 'agSetColumnFilter',
       flex: 1,
       editable: true,
     },
   ];
-  public sideBar: SideBarDef | string | boolean | null = "filters";
+  public sideBar: SideBarDef | string | string[] | boolean | null = 'filters';
 
   onFirstDataRendered(params: FirstDataRenderedEvent) {
-    (
-      params.api.getToolPanelInstance("filters") as any as IFiltersToolPanel
-    ).expandFilters();
+    ((params.api.getToolPanelInstance(
+      'filters'
+    ) as any) as IFiltersToolPanel).expandFilters();
   }
 
   reset() {
@@ -61,11 +61,11 @@ export class AppComponent {
 
 function getRowData() {
   return [
-    { col1: "A" },
-    { col1: "A" },
-    { col1: "B" },
-    { col1: "B" },
-    { col1: "C" },
-    { col1: "C" },
+    { col1: 'A' },
+    { col1: 'A' },
+    { col1: 'B' },
+    { col1: 'B' },
+    { col1: 'C' },
+    { col1: 'C' },
   ];
 }

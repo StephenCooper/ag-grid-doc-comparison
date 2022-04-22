@@ -1,14 +1,14 @@
-"use strict";
+'use strict';
 
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { AgGridReact } from "@ag-grid-community/react";
-import { GridChartsModule } from "@ag-grid-enterprise/charts";
-import { MenuModule } from "@ag-grid-enterprise/menu";
-import React, { useCallback, useMemo, useState } from "react";
-import { render } from "react-dom";
+import React, { useCallback, useMemo, useRef, useState } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from '@ag-grid-community/react';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import { MenuModule } from '@ag-grid-enterprise/menu';
+import { GridChartsModule } from '@ag-grid-enterprise/charts';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([
@@ -18,13 +18,13 @@ ModuleRegistry.registerModules([
 ]);
 
 const GridExample = () => {
-  const containerStyle = useMemo(() => ({ width: "100%", height: "100%" }), []);
-  const gridStyle = useMemo(() => ({ height: "100%", width: "100%" }), []);
+  const containerStyle = useMemo(() => ({ width: '100%', height: '100%' }), []);
+  const gridStyle = useMemo(() => ({ height: '100%', width: '100%' }), []);
   const [rowData, setRowData] = useState();
   const [columnDefs, setColumnDefs] = useState([
-    { field: "Month", width: 150, chartDataType: "category" },
-    { field: "Sunshine (hours)", chartDataType: "series" },
-    { field: "Rainfall (mm)", chartDataType: "series" },
+    { field: 'Month', width: 150, chartDataType: 'category' },
+    { field: 'Sunshine (hours)', chartDataType: 'series' },
+    { field: 'Rainfall (mm)', chartDataType: 'series' },
   ]);
   const defaultColDef = useMemo(() => {
     return {
@@ -41,7 +41,7 @@ const GridExample = () => {
   }, []);
 
   const onGridReady = useCallback((params) => {
-    fetch("https://www.ag-grid.com/example-assets/weather-se-england.json")
+    fetch('https://www.ag-grid.com/example-assets/weather-se-england.json')
       .then((resp) => resp.json())
       .then((data) => {
         setRowData(data);
@@ -49,22 +49,22 @@ const GridExample = () => {
   }, []);
 
   const onChartCreated = useCallback((event) => {
-    console.log("Created chart with ID " + event.chartId, event);
+    console.log('Created chart with ID ' + event.chartId, event);
   }, []);
 
   const onChartRangeSelectionChanged = useCallback((event) => {
     console.log(
-      "Changed range selection of chart with ID " + event.chartId,
+      'Changed range selection of chart with ID ' + event.chartId,
       event
     );
   }, []);
 
   const onChartOptionsChanged = useCallback((event) => {
-    console.log("Changed options of chart with ID " + event.chartId, event);
+    console.log('Changed options of chart with ID ' + event.chartId, event);
   }, []);
 
   const onChartDestroyed = useCallback((event) => {
-    console.log("Destroyed chart with ID " + event.chartId, event);
+    console.log('Destroyed chart with ID ' + event.chartId, event);
   }, []);
 
   return (
@@ -88,4 +88,4 @@ const GridExample = () => {
   );
 };
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

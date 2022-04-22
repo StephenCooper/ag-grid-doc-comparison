@@ -1,8 +1,8 @@
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
-import { AgGridVue } from "ag-grid-vue3";
-import { createApp } from "vue";
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import 'ag-grid-enterprise';
+import { AgGridVue } from 'ag-grid-vue3';
+import { createApp } from 'vue';
 
 const VueExample = {
   template: `
@@ -67,7 +67,7 @@ const VueExample = {
       </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: () => ({
     columnDefs: [],
@@ -88,37 +88,37 @@ const VueExample = {
   },
   methods: {
     onSortChanged(e) {
-      console.log("Event Sort Changed", e);
+      console.log('Event Sort Changed', e);
     },
     onColumnResized(e) {
-      console.log("Event Column Resized", e);
+      console.log('Event Column Resized', e);
     },
     onColumnVisible(e) {
-      console.log("Event Column Visible", e);
+      console.log('Event Column Visible', e);
     },
     onColumnPivotChanged(e) {
-      console.log("Event Pivot Changed", e);
+      console.log('Event Pivot Changed', e);
     },
     onColumnRowGroupChanged(e) {
-      console.log("Event Row Group Changed", e);
+      console.log('Event Row Group Changed', e);
     },
     onColumnValueChanged(e) {
-      console.log("Event Value Changed", e);
+      console.log('Event Value Changed', e);
     },
     onColumnMoved(e) {
-      console.log("Event Column Moved", e);
+      console.log('Event Column Moved', e);
     },
     onColumnPinned(e) {
-      console.log("Event Column Pinned", e);
+      console.log('Event Column Pinned', e);
     },
     onBtSortOn() {
       const columnDefs = this.getColumnDefs();
       columnDefs.forEach((colDef) => {
-        if (colDef.field === "age") {
-          colDef.sort = "desc";
+        if (colDef.field === 'age') {
+          colDef.sort = 'desc';
         }
-        if (colDef.field === "athlete") {
-          colDef.sort = "asc";
+        if (colDef.field === 'athlete') {
+          colDef.sort = 'asc';
         }
       });
       this.gridApi.setColumnDefs(columnDefs);
@@ -133,7 +133,7 @@ const VueExample = {
     onBtWidthNarrow() {
       const columnDefs = this.getColumnDefs();
       columnDefs.forEach((colDef) => {
-        if (colDef.field === "age" || colDef.field === "athlete") {
+        if (colDef.field === 'age' || colDef.field === 'athlete') {
           colDef.width = 100;
         }
       });
@@ -149,7 +149,7 @@ const VueExample = {
     onBtHide() {
       const columnDefs = this.getColumnDefs();
       columnDefs.forEach((colDef) => {
-        if (colDef.field === "age" || colDef.field === "athlete") {
+        if (colDef.field === 'age' || colDef.field === 'athlete') {
           colDef.hide = true;
         }
       });
@@ -166,7 +166,7 @@ const VueExample = {
       this.gridColumnApi.setPivotMode(true);
       const columnDefs = this.getColumnDefs();
       columnDefs.forEach((colDef) => {
-        if (colDef.field === "country") {
+        if (colDef.field === 'country') {
           colDef.pivot = true;
         }
       });
@@ -183,7 +183,7 @@ const VueExample = {
     onBtRowGroupOn() {
       const columnDefs = this.getColumnDefs();
       columnDefs.forEach((colDef) => {
-        if (colDef.field === "sport") {
+        if (colDef.field === 'sport') {
           colDef.rowGroup = true;
         }
       });
@@ -200,11 +200,11 @@ const VueExample = {
       const columnDefs = this.getColumnDefs();
       columnDefs.forEach((colDef) => {
         if (
-          colDef.field === "gold" ||
-          colDef.field === "silver" ||
-          colDef.field === "bronze"
+          colDef.field === 'gold' ||
+          colDef.field === 'silver' ||
+          colDef.field === 'bronze'
         ) {
-          colDef.aggFunc = "sum";
+          colDef.aggFunc = 'sum';
         }
       });
       this.gridApi.setColumnDefs(columnDefs);
@@ -219,11 +219,11 @@ const VueExample = {
     onBtPinnedOn() {
       const columnDefs = this.getColumnDefs();
       columnDefs.forEach((colDef) => {
-        if (colDef.field === "athlete") {
-          colDef.pinned = "left";
+        if (colDef.field === 'athlete') {
+          colDef.pinned = 'left';
         }
-        if (colDef.field === "age") {
-          colDef.pinned = "right";
+        if (colDef.field === 'age') {
+          colDef.pinned = 'right';
         }
       });
       this.gridApi.setColumnDefs(columnDefs);
@@ -243,19 +243,19 @@ const VueExample = {
         this.rowData = data;
       };
 
-      fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
         .then((resp) => resp.json())
         .then((data) => updateData(data));
     },
     getColumnDefs() {
       return [
-        { field: "athlete" },
-        { field: "age" },
-        { field: "country" },
-        { field: "sport" },
-        { field: "gold" },
-        { field: "silver" },
-        { field: "bronze" },
+        { field: 'athlete' },
+        { field: 'age' },
+        { field: 'country' },
+        { field: 'sport' },
+        { field: 'gold' },
+        { field: 'silver' },
+        { field: 'bronze' },
       ];
     },
   },
@@ -263,14 +263,14 @@ const VueExample = {
 
 window.getColumnDefs = function getColumnDefs() {
   return [
-    { field: "athlete" },
-    { field: "age" },
-    { field: "country" },
-    { field: "sport" },
-    { field: "gold" },
-    { field: "silver" },
-    { field: "bronze" },
+    { field: 'athlete' },
+    { field: 'age' },
+    { field: 'country' },
+    { field: 'sport' },
+    { field: 'gold' },
+    { field: 'silver' },
+    { field: 'bronze' },
   ];
 };
 
-createApp(VueExample).mount("#app");
+createApp(VueExample).mount('#app');

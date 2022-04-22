@@ -1,8 +1,8 @@
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
-import { AgGridVue } from "ag-grid-vue";
-import Vue from "vue";
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import 'ag-grid-enterprise';
+import { AgGridVue } from 'ag-grid-vue';
+import Vue from 'vue';
 
 const VueExample = {
   template: `
@@ -19,20 +19,20 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
         {
-          headerName: "Age (No Comparator)",
-          field: "age",
-          filter: "agSetColumnFilter",
+          headerName: 'Age (No Comparator)',
+          field: 'age',
+          filter: 'agSetColumnFilter',
         },
         {
-          headerName: "Age (With Comparator)",
-          field: "age",
-          filter: "agSetColumnFilter",
+          headerName: 'Age (With Comparator)',
+          field: 'age',
+          filter: 'agSetColumnFilter',
           filterParams: filterParams,
         },
       ],
@@ -49,14 +49,14 @@ const VueExample = {
   },
   created() {
     this.rowData = getRowData();
-    this.sideBar = "filters";
+    this.sideBar = 'filters';
   },
   methods: {
     onGridReady(params) {
       this.gridApi = params.api;
       this.gridColumnApi = params.columnApi;
 
-      params.api.getToolPanelInstance("filters").expandFilters();
+      params.api.getToolPanelInstance('filters').expandFilters();
     },
   },
 };
@@ -79,8 +79,8 @@ var filterParams = {
 };
 
 new Vue({
-  el: "#app",
+  el: '#app',
   components: {
-    "my-component": VueExample,
+    'my-component': VueExample,
   },
 });

@@ -1,4 +1,4 @@
-import { ICellRendererComp, ICellRendererParams } from "ag-grid-community";
+import { ICellRendererComp, ICellRendererParams } from 'ag-grid-community';
 
 export class TotalValueRenderer implements ICellRendererComp {
   eGui!: HTMLDivElement;
@@ -10,7 +10,7 @@ export class TotalValueRenderer implements ICellRendererComp {
   // gets called once before the renderer is used
   init(params: ICellRendererParams) {
     // create the cell
-    this.eGui = document.createElement("div");
+    this.eGui = document.createElement('div');
     this.eGui.innerHTML = `
           <span>
               <span class="my-value"></span>
@@ -19,8 +19,8 @@ export class TotalValueRenderer implements ICellRendererComp {
        `;
 
     // get references to the elements we want
-    this.eButton = this.eGui.querySelector(".btn-simple");
-    this.eValue = this.eGui.querySelector(".my-value");
+    this.eButton = this.eGui.querySelector('.btn-simple');
+    this.eValue = this.eGui.querySelector('.my-value');
 
     // set value into cell
     this.cellValue = this.getValueToDisplay(params);
@@ -28,7 +28,7 @@ export class TotalValueRenderer implements ICellRendererComp {
 
     // add event listener to button
     this.eventListener = () => alert(`${this.cellValue} medals won!`);
-    this.eButton.addEventListener("click", this.eventListener);
+    this.eButton.addEventListener('click', this.eventListener);
   }
 
   getGui() {
@@ -50,7 +50,7 @@ export class TotalValueRenderer implements ICellRendererComp {
     // do cleanup, remove event listener from button
     if (this.eButton) {
       // check that the button element exists as destroy() can be called before getGui()
-      this.eButton.removeEventListener("click", this.eventListener);
+      this.eButton.removeEventListener('click', this.eventListener);
     }
   }
 

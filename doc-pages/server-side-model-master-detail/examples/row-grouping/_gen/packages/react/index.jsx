@@ -1,11 +1,11 @@
-"use strict";
+'use strict';
 
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine-dark.css";
-import "ag-grid-enterprise";
-import { AgGridReact } from "ag-grid-react";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from 'ag-grid-react';
+import 'ag-grid-enterprise';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine-dark.css';
 
 class GridExample extends Component {
   constructor(props) {
@@ -13,28 +13,28 @@ class GridExample extends Component {
 
     this.state = {
       columnDefs: [
-        { field: "country", rowGroup: true, hide: true },
-        { field: "accountId", hide: true },
-        { field: "name" },
-        { field: "calls" },
-        { field: "totalDuration" },
+        { field: 'country', rowGroup: true, hide: true },
+        { field: 'accountId', hide: true },
+        { field: 'name' },
+        { field: 'calls' },
+        { field: 'totalDuration' },
       ],
       defaultColDef: {
         flex: 1,
       },
       autoGroupColumnDef: {
-        field: "accountId",
+        field: 'accountId',
       },
-      rowModelType: "serverSide",
-      serverSideStoreType: "partial",
+      rowModelType: 'serverSide',
+      serverSideStoreType: 'partial',
       detailCellRendererParams: {
         detailGridOptions: {
           columnDefs: [
-            { field: "callId" },
-            { field: "direction" },
-            { field: "duration", valueFormatter: "x.toLocaleString() + 's'" },
-            { field: "switchCode" },
-            { field: "number" },
+            { field: 'callId' },
+            { field: 'direction' },
+            { field: 'duration', valueFormatter: "x.toLocaleString() + 's'" },
+            { field: 'switchCode' },
+            { field: 'number' },
           ],
           defaultColDef: {
             flex: 1,
@@ -61,13 +61,13 @@ class GridExample extends Component {
       params.api.setServerSideDatasource(datasource);
     };
 
-    fetch("https://www.ag-grid.com/example-assets/call-data.json")
+    fetch('https://www.ag-grid.com/example-assets/call-data.json')
       .then((resp) => resp.json())
       .then((data) => updateData(data));
 
     setTimeout(function () {
       // expand some master row
-      var someRow = params.api.getRowNode("1");
+      var someRow = params.api.getRowNode('1');
       if (someRow) {
         someRow.setExpanded(true);
       }
@@ -76,11 +76,11 @@ class GridExample extends Component {
 
   render() {
     return (
-      <div style={{ width: "100%", height: "100%" }}>
+      <div style={{ width: '100%', height: '100%' }}>
         <div
           style={{
-            height: "100%",
-            width: "100%",
+            height: '100%',
+            width: '100%',
           }}
           className="ag-theme-alpine-dark"
         >
@@ -104,7 +104,7 @@ class GridExample extends Component {
 function getServerSideDatasource(server) {
   return {
     getRows: function (params) {
-      console.log("[Datasource] - rows requested by grid: ", params.request);
+      console.log('[Datasource] - rows requested by grid: ', params.request);
       var response = server.getData(params.request);
       // adding delay to simulate real server call
       setTimeout(function () {
@@ -123,4 +123,4 @@ function getServerSideDatasource(server) {
   };
 }
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

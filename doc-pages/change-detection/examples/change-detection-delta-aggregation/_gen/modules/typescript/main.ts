@@ -1,16 +1,17 @@
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
 import {
+  GetRowIdParams,
   Grid,
   GridApi,
   GridOptions,
   ModuleRegistry,
   RowNode,
   ValueParserParams,
-} from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine-dark.css";
-import { RowGroupingModule } from "@ag-grid-enterprise/row-grouping";
-import { SetFilterModule } from "@ag-grid-enterprise/set-filter";
+} from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine-dark.css';
+import { RowGroupingModule } from '@ag-grid-enterprise/row-grouping';
+import { SetFilterModule } from '@ag-grid-enterprise/set-filter';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([
@@ -24,16 +25,16 @@ var callCount = 0;
 
 const gridOptions: GridOptions = {
   columnDefs: [
-    { field: "topGroup", rowGroup: true, hide: true },
-    { field: "group", rowGroup: true, hide: true },
-    { headerName: "ID", field: "id", cellClass: "number-cell", maxWidth: 70 },
-    { field: "a", type: "valueColumn" },
-    { field: "b", type: "valueColumn" },
-    { field: "c", type: "valueColumn" },
-    { field: "d", type: "valueColumn" },
+    { field: 'topGroup', rowGroup: true, hide: true },
+    { field: 'group', rowGroup: true, hide: true },
+    { headerName: 'ID', field: 'id', cellClass: 'number-cell', maxWidth: 70 },
+    { field: 'a', type: 'valueColumn' },
+    { field: 'b', type: 'valueColumn' },
+    { field: 'c', type: 'valueColumn' },
+    { field: 'd', type: 'valueColumn' },
     {
-      headerName: "Total",
-      type: "totalColumn",
+      headerName: 'Total',
+      type: 'totalColumn',
       minWidth: 120,
       // we use getValue() instead of data.a so that it gets the aggregated values at the group level
       valueGetter:
@@ -51,15 +52,15 @@ const gridOptions: GridOptions = {
   columnTypes: {
     valueColumn: {
       editable: true,
-      aggFunc: "sum",
-      cellClass: "number-cell",
-      cellRenderer: "agAnimateShowChangeCellRenderer",
-      filter: "agNumberColumnFilter",
+      aggFunc: 'sum',
+      cellClass: 'number-cell',
+      cellRenderer: 'agAnimateShowChangeCellRenderer',
+      filter: 'agNumberColumnFilter',
       valueParser: numberValueParser,
     },
     totalColumn: {
-      cellRenderer: "agAnimateShowChangeCellRenderer",
-      cellClass: "number-cell",
+      cellRenderer: 'agAnimateShowChangeCellRenderer',
+      cellClass: 'number-cell',
     },
   },
   // set this to true, so only the column in question gets updated
@@ -70,14 +71,14 @@ const gridOptions: GridOptions = {
       var result = 0;
       if (values) {
         values.forEach(function (value) {
-          if (typeof value === "number") {
+          if (typeof value === 'number') {
             result += value;
           }
         });
       }
       callCount++;
       console.log(
-        callCount + " aggregation: sum([" + values.join(",") + "]) = " + result
+        callCount + ' aggregation: sum([' + values.join(',') + ']) = ' + result
       );
       return result;
     },
@@ -85,7 +86,7 @@ const gridOptions: GridOptions = {
   groupDefaultExpanded: 1,
   suppressAggFuncInHeader: true,
   animateRows: true,
-  getRowId: function (params) {
+  getRowId: function (params: GetRowIdParams) {
     return params.data.id;
   },
   onGridReady: function (params) {
@@ -113,19 +114,19 @@ function createRowItem(i: number, j: number, k: number) {
     b: (j * k * 811) % 100,
     c: (j * k * 743) % 100,
     d: (j * k * 677) % 100,
-    topGroup: "Bottom",
-    group: "Group B" + j,
+    topGroup: 'Bottom',
+    group: 'Group B' + j,
   };
   if (i === 1) {
-    rowDataItem.topGroup = "Top";
-    rowDataItem.group = "Group A" + j;
+    rowDataItem.topGroup = 'Top';
+    rowDataItem.group = 'Group A' + j;
   }
   return rowDataItem;
 }
 
 // converts strings to numbers
 function numberValueParser(params: ValueParserParams) {
-  console.log("=> updating to " + params.newValue);
+  console.log('=> updating to ' + params.newValue);
   return Number(params.newValue);
 }
 
@@ -138,14 +139,14 @@ function updateOneRecord() {
   var randomColumnId = pickRandomColumn();
 
   console.log(
-    "updating " + randomColumnId + " to " + randomValue + " on ",
+    'updating ' + randomColumnId + ' to ' + randomValue + ' on ',
     rowNodeToUpdate.data
   );
   rowNodeToUpdate.setDataValue(randomColumnId, randomValue);
 }
 
 function pickRandomColumn() {
-  var letters = ["a", "b", "c", "d"];
+  var letters = ['a', 'b', 'c', 'd'];
   var randomIndex = Math.floor(Math.random() * letters.length);
   return letters[randomIndex];
 }
@@ -179,7 +180,7 @@ function updateUsingTransaction() {
     return;
   }
 
-  console.log("updating - before", itemToUpdate);
+  console.log('updating - before', itemToUpdate);
 
   itemToUpdate[pickRandomColumn()] = createRandomNumber();
   itemToUpdate[pickRandomColumn()] = createRandomNumber();
@@ -188,7 +189,7 @@ function updateUsingTransaction() {
     update: [itemToUpdate],
   };
 
-  console.log("updating - after", itemToUpdate);
+  console.log('updating - after', itemToUpdate);
 
   gridOptions.api!.applyTransaction(transaction);
 }
@@ -203,7 +204,7 @@ function removeUsingTransaction() {
     remove: [itemToRemove],
   };
 
-  console.log("removing", itemToRemove);
+  console.log('removing', itemToRemove);
 
   gridOptions.api!.applyTransaction(transaction);
 }
@@ -218,7 +219,7 @@ function addUsingTransaction() {
     add: [newItem],
   };
 
-  console.log("adding", newItem);
+  console.log('adding', newItem);
 
   gridOptions.api!.applyTransaction(transaction);
 }
@@ -229,22 +230,22 @@ function changeGroupUsingTransaction() {
     return;
   }
 
-  itemToUpdate.topGroup = itemToUpdate.topGroup === "Top" ? "Bottom" : "Top";
+  itemToUpdate.topGroup = itemToUpdate.topGroup === 'Top' ? 'Bottom' : 'Top';
 
   var transaction = {
     update: [itemToUpdate],
   };
 
-  console.log("updating", itemToUpdate);
+  console.log('updating', itemToUpdate);
 
   gridOptions.api!.applyTransaction(transaction);
 }
 
 // setup the grid after the page has finished loading
-var gridDiv = document.querySelector<HTMLElement>("#myGrid")!;
+var gridDiv = document.querySelector<HTMLElement>('#myGrid')!;
 new Grid(gridDiv, gridOptions);
 
-if (typeof window !== "undefined") {
+if (typeof window !== 'undefined') {
   // Attach external event handlers to window so they can be called from index.html
   (<any>window).updateOneRecord = updateOneRecord;
   (<any>window).updateUsingTransaction = updateUsingTransaction;

@@ -1,9 +1,9 @@
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import { AgGridReact } from "ag-grid-react";
-import React, { Component } from "react";
-import { render } from "react-dom";
-("use strict");
+'use strict';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from 'ag-grid-react';
 
 class GridExample extends Component {
   constructor(props) {
@@ -12,9 +12,9 @@ class GridExample extends Component {
     this.state = {
       columnDefs: [
         {
-          headerName: "Item ID",
-          field: "id",
-          valueGetter: "node.id",
+          headerName: 'Item ID',
+          field: 'id',
+          valueGetter: 'node.id',
           cellRenderer: (props) => {
             if (props.value !== undefined) {
               return props.value;
@@ -25,17 +25,17 @@ class GridExample extends Component {
             }
           },
         },
-        { field: "make" },
-        { field: "model" },
+        { field: 'make' },
+        { field: 'model' },
         {
-          field: "price",
+          field: 'price',
           valueFormatter: valueFormatter,
         },
       ],
       datasource: {
         rowCount: undefined,
         getRows: function (params) {
-          console.log("asking for " + params.startRow + " to " + params.endRow);
+          console.log('asking for ' + params.startRow + ' to ' + params.endRow);
           // At this point in your code, you would call the server.
           // To make the demo look real, wait for 500ms before returning
           setTimeout(function () {
@@ -64,8 +64,8 @@ class GridExample extends Component {
       defaultColDef: {
         resizable: true,
       },
-      rowSelection: "multiple",
-      rowModelType: "infinite",
+      rowSelection: 'multiple',
+      rowModelType: 'infinite',
       maxBlocksInCache: 2,
       infiniteInitialRowCount: 500,
       maxConcurrentDatasourceRequests: 2,
@@ -73,9 +73,9 @@ class GridExample extends Component {
         return params.data.id.toString();
       },
       getRowStyle: function (params) {
-        if (params.data && params.data.make === "Honda") {
+        if (params.data && params.data.make === 'Honda') {
           return {
-            fontWeight: "bold",
+            fontWeight: 'bold',
           };
         } else {
           return undefined;
@@ -132,10 +132,10 @@ class GridExample extends Component {
 
   rowsAndMaxFound = () => {
     console.log(
-      "getInfiniteRowCount() => " + this.gridApi.getInfiniteRowCount()
+      'getInfiniteRowCount() => ' + this.gridApi.getInfiniteRowCount()
     );
     console.log(
-      "isLastRowIndexKnown() => " + this.gridApi.isLastRowIndexKnown()
+      'isLastRowIndexKnown() => ' + this.gridApi.isLastRowIndexKnown()
     );
   };
 
@@ -153,7 +153,7 @@ class GridExample extends Component {
   };
 
   printCacheState = () => {
-    console.log("*** Cache State ***");
+    console.log('*** Cache State ***');
     console.log(this.gridApi.getCacheBlockState());
   };
 
@@ -168,11 +168,11 @@ class GridExample extends Component {
 
   render() {
     return (
-      <div style={{ width: "100%", height: "100%" }}>
+      <div style={{ width: '100%', height: '100%' }}>
         <div
-          style={{ display: "flex", flexDirection: "column", height: "100%" }}
+          style={{ display: 'flex', flexDirection: 'column', height: '100%' }}
         >
-          <div style={{ marginBottom: "10px" }}>
+          <div style={{ marginBottom: '10px' }}>
             <button onClick={() => this.insertItemsAt2AndRefresh(5)}>
               Insert Rows
             </button>
@@ -186,7 +186,7 @@ class GridExample extends Component {
               Print Cache State
             </button>
           </div>
-          <div style={{ marginBottom: "10px" }}>
+          <div style={{ marginBottom: '10px' }}>
             <button onClick={() => this.setPricesHigh()}>
               Set Prices High
             </button>
@@ -194,11 +194,11 @@ class GridExample extends Component {
             <button onClick={() => this.refreshCache()}>Refresh Cache</button>
             <button onClick={() => this.purgeCache()}>Purge Cache</button>
           </div>
-          <div style={{ flexGrow: "1" }}>
+          <div style={{ flexGrow: '1' }}>
             <div
               style={{
-                height: "100%",
-                width: "100%",
+                height: '100%',
+                width: '100%',
               }}
               className="ag-theme-alpine"
             >
@@ -226,8 +226,8 @@ class GridExample extends Component {
 }
 
 const valueFormatter = function (params) {
-  if (typeof params.value === "number") {
-    return "£" + params.value.toLocaleString();
+  if (typeof params.value === 'number') {
+    return '£' + params.value.toLocaleString();
   } else {
     return params.value;
   }
@@ -237,15 +237,15 @@ var sequenceId = 0;
 var allOfTheData = [];
 
 function createRowData(id) {
-  const makes = ["Toyota", "Ford", "Porsche", "Chevy", "Honda", "Nissan"];
+  const makes = ['Toyota', 'Ford', 'Porsche', 'Chevy', 'Honda', 'Nissan'];
   const models = [
-    "Cruze",
-    "Celica",
-    "Mondeo",
-    "Boxter",
-    "Genesis",
-    "Accord",
-    "Taurus",
+    'Cruze',
+    'Celica',
+    'Mondeo',
+    'Boxster',
+    'Genesis',
+    'Accord',
+    'Taurus',
   ];
   return {
     id: id,
@@ -265,4 +265,4 @@ function insertItemsAt2(count) {
   return newDataItems;
 }
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

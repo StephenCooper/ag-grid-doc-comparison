@@ -1,11 +1,11 @@
-import { HttpClient } from "@angular/common/http";
-import { Component } from "@angular/core";
-import { ColDef, GridApi, GridReadyEvent } from "ag-grid-community";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
+import { HttpClient } from '@angular/common/http';
+import { Component } from '@angular/core';
+import { ColDef, GridApi, GridReadyEvent } from 'ag-grid-community';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<div class="example-wrapper">
     <div style="margin-bottom: 5px;">
       <button (click)="getDisplayedRowAtIndex()">Get Displayed Row 0</button>
@@ -34,17 +34,17 @@ export class AppComponent {
   private gridApi!: GridApi;
 
   public columnDefs: ColDef[] = [
-    { field: "athlete", minWidth: 180 },
-    { field: "age" },
-    { field: "country", minWidth: 150 },
-    { headerName: "Group", valueGetter: "data.country.charAt(0)" },
-    { field: "year" },
-    { field: "date", minWidth: 150 },
-    { field: "sport", minWidth: 180 },
-    { field: "gold" },
-    { field: "silver" },
-    { field: "bronze" },
-    { field: "total" },
+    { field: 'athlete', minWidth: 180 },
+    { field: 'age' },
+    { field: 'country', minWidth: 150 },
+    { headerName: 'Group', valueGetter: 'data.country.charAt(0)' },
+    { field: 'year' },
+    { field: 'date', minWidth: 150 },
+    { field: 'sport', minWidth: 180 },
+    { field: 'gold' },
+    { field: 'silver' },
+    { field: 'bronze' },
+    { field: 'total' },
   ];
   public defaultColDef: ColDef = {
     flex: 1,
@@ -59,24 +59,24 @@ export class AppComponent {
   getDisplayedRowAtIndex() {
     var rowNode = this.gridApi.getDisplayedRowAtIndex(0)!;
     console.log(
-      "getDisplayedRowAtIndex(0) => " +
+      'getDisplayedRowAtIndex(0) => ' +
         rowNode.data.athlete +
-        " " +
+        ' ' +
         rowNode.data.year
     );
   }
 
   getDisplayedRowCount() {
     var count = this.gridApi.getDisplayedRowCount();
-    console.log("getDisplayedRowCount() => " + count);
+    console.log('getDisplayedRowCount() => ' + count);
   }
 
   printAllDisplayedRows() {
     var count = this.gridApi.getDisplayedRowCount();
-    console.log("## printAllDisplayedRows");
+    console.log('## printAllDisplayedRows');
     for (var i = 0; i < count; i++) {
       var rowNode = this.gridApi.getDisplayedRowAtIndex(i)!;
-      console.log("row " + i + " is " + rowNode.data.athlete);
+      console.log('row ' + i + ' is ' + rowNode.data.athlete);
     }
   }
 
@@ -90,10 +90,10 @@ export class AppComponent {
     if (endPageIndex > lastGridIndex) {
       endPageIndex = lastGridIndex;
     }
-    console.log("## printPageDisplayedRows");
+    console.log('## printPageDisplayedRows');
     for (var i = startPageIndex; i <= endPageIndex; i++) {
       var rowNode = this.gridApi.getDisplayedRowAtIndex(i)!;
-      console.log("row " + i + " is " + rowNode.data.athlete);
+      console.log('row ' + i + ' is ' + rowNode.data.athlete);
     }
   }
 
@@ -101,7 +101,7 @@ export class AppComponent {
     this.gridApi = params.api;
 
     this.http
-      .get<any[]>("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      .get<any[]>('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .subscribe((data) => {
         params.api!.setRowData(data.slice(0, 100));
       });

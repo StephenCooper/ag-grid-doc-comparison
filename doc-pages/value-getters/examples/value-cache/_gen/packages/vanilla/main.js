@@ -1,22 +1,22 @@
 var callCount = 1;
 
 const columnDefs = [
-  { field: "q1", type: "quarterFigure" },
-  { field: "q2", type: "quarterFigure" },
-  { field: "q3", type: "quarterFigure" },
-  { field: "q4", type: "quarterFigure" },
-  { field: "year", rowGroup: true, hide: true },
+  { field: 'q1', type: 'quarterFigure' },
+  { field: 'q2', type: 'quarterFigure' },
+  { field: 'q3', type: 'quarterFigure' },
+  { field: 'q4', type: 'quarterFigure' },
+  { field: 'year', rowGroup: true, hide: true },
   {
-    headerName: "Total",
-    colId: "total",
-    cellClass: ["number-cell", "total-col"],
-    aggFunc: "sum",
+    headerName: 'Total',
+    colId: 'total',
+    cellClass: ['number-cell', 'total-col'],
+    aggFunc: 'sum',
     valueFormatter: formatNumber,
     valueGetter: function (params) {
-      var q1 = params.getValue("q1");
-      var q2 = params.getValue("q2");
-      var q3 = params.getValue("q3");
-      var q4 = params.getValue("q4");
+      var q1 = params.getValue('q1');
+      var q2 = params.getValue('q2');
+      var q3 = params.getValue('q3');
+      var q4 = params.getValue('q4');
       var result = q1 + q2 + q3 + q4;
       console.log(
         `Total Value Getter (${callCount}, ${params.column.getId()}): ${[
@@ -24,7 +24,7 @@ const columnDefs = [
           q2,
           q3,
           q4,
-        ].join(", ")} =  ${result}`
+        ].join(', ')} =  ${result}`
       );
       callCount++;
       return result;
@@ -45,8 +45,8 @@ const gridOptions = {
   // valueCache = true / false;
   columnTypes: {
     quarterFigure: {
-      cellClass: "number-cell",
-      aggFunc: "sum",
+      cellClass: 'number-cell',
+      aggFunc: 'sum',
       valueFormatter: formatNumber,
       valueParser: function numberParser(params) {
         return Number(params.newValue);
@@ -62,7 +62,7 @@ const gridOptions = {
     return params.data.id;
   },
   onCellValueChanged: function () {
-    console.log("onCellValueChanged");
+    console.log('onCellValueChanged');
   },
 };
 
@@ -72,7 +72,7 @@ function formatNumber(params) {
   // i pulled this from stack overflow, i have no idea how it works
   return Math.floor(number)
     .toString()
-    .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
+    .replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
 }
 
 function onValueCache(valueCacheOn) {
@@ -82,22 +82,22 @@ function onValueCache(valueCacheOn) {
 
 function destroyOldGridIfExists() {
   if (gridOptions.api) {
-    console.log("==========> destroying old grid");
+    console.log('==========> destroying old grid');
     gridOptions.api.destroy();
   }
 }
 
 function createGrid(valueCacheOn) {
-  console.log("==========> creating grid");
+  console.log('==========> creating grid');
   callCount = 1;
   gridOptions.valueCache = valueCacheOn;
 
   // then similar to all the other examples, create the grid
-  var gridDiv = document.querySelector("#myGrid");
+  var gridDiv = document.querySelector('#myGrid');
   new agGrid.Grid(gridDiv, gridOptions);
 }
 
 // setup the grid after the page has finished loading
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener('DOMContentLoaded', function () {
   onValueCache(false);
 });

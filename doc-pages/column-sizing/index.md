@@ -41,6 +41,7 @@ Call the Grid Api `api.sizeColumnsToFit()` to make the currently visible columns
 
 <api-documentation source='grid-api/api.json' section='columns' names='["sizeColumnsToFit"]' ></api-documentation>
 
+
 If you don't want a particular column to be included in the auto resize, then set the column definition `suppressSizeToFit=true`. This is helpful if, for example, you want the first column to remain fixed width, but all other columns to fill the width of the table.
 
 The grid calculates new column widths while maintaining the ratio of the column default widths. So for example
@@ -54,8 +55,8 @@ the result is deterministic and not depend on any Column resizing the user may h
 | For example assuming a grid with three Columns, the algorithm will be as follows:<br/>
 |
 | scale = availableWidth / (w1 + w2 + w3)<br/>
-| w1 = round(w1 _ scale)<br/>
-| w2 = round(w2 _ scale)<br/>
+| w1 = round(w1 * scale)<br/>
+| w2 = round(w2 * scale)<br/>
 | w3 = totalGridWidth - (w1 + w2)<br/>
 |
 | Assuming the grid is 1,200 pixels wide and the Columns have default widths of 40, 120 and 300,
@@ -63,8 +64,8 @@ the result is deterministic and not depend on any Column resizing the user may h
 |
 | availableWidth = 1,198 (available width is typically smaller as the grid typically has left and right boarders)<br/>
 | scale = 1198 / (50 + 120 + 300) = 2.548936170212766<br/>
-| col 1 = 50 _ 2.54 = 127.44 -> rounded = 127<br/>
-| col 2 = 120 _ 2.54 = 305.87 -> rounded = 306<br/>
+| col 1 = 50 * 2.54 = 127.44 -> rounded = 127<br/>
+| col 2 = 120 * 2.54 = 305.87 -> rounded = 306<br/>
 | col 3 = 1198 - (127 + 306) = 765 // last col gets the space that's left, which ensures all space is used, no rounding issues<br/>
 
 ## Auto-Size Columns
@@ -74,7 +75,7 @@ Just like Excel, each column can be 'auto resized' by double clicking the right 
 Note the following with regards autosizing columns:
 
 - The grid works out the best width by considering the virtually rendered rows only. For example, if your grid has 10,000 rows, but only 50 rendered due to virtualisation of rows, then only these 50 will be considered for working out the width to display. The rendered rows are all the rows you can see on the screen through the horizontal scroll plus a small buffer (default buffer size is 20).
-- Autosizing columns looks at the rendered cells on the screen, and works out the width based on what it sees. It cannot see the columns that are not rendered due to column virtualisation. Thus it is not possible to autosize a column that is not visible on the screen.<br/><br/> Column Virtualisation is the technique the grid uses to render large amounts of columns with degrading performance by only rendering columns that are visible due to the horizontal scroll positions. For example, the grid can have 1,000 columns with only 10 rendered if the horizontal scroll is only showing 10 columns.<br/><br/>To get around this, you can turn off column virtualisation by setting grid property `suppressColumnVirtualisation=true`. The choice is yours, whether you want column virtualisation working OR auto-size working using off-screen columns.
+- Autosizing columns looks at the rendered cells on the screen, and works out the width based on what it sees. It cannot see the columns that are not rendered due to column virtualisation. Thus it is not possible to autosize a column that is not visible on the screen.<br/><br/> Column Virtualisation is the technique the grid uses to render large amounts of columns without degrading performance by only rendering columns that are visible due to the horizontal scroll positions. For example, the grid can have 1,000 columns with only 10 rendered if the horizontal scroll is only showing 10 columns.<br/><br/>To get around this, you can turn off column virtualisation by setting grid property `suppressColumnVirtualisation=true`. The choice is yours, whether you want column virtualisation working OR auto-size working using off-screen columns.
 
 By default the grid will also resize the column to fit the header. If you do not want the headers to be included in the autosize calculation, set the grid property `skipHeaderOnAutoSize=true`.
 
@@ -89,6 +90,7 @@ Autosizing columns can also be done using the following column API methods. If `
 ## Resizing Example
 
 The example below shows resizing in action. Things to note are as follows:
+
 
 - Each column can be resized by dragging (or double-clicking or auto resize) the right side of its header.
 - The button 'Size to Fit' calls `api.sizeColumnsToFit()`
@@ -122,6 +124,7 @@ The example below shows flex in action. Things to note are as follows:
 - Column A is fixed size. You can resize it with the drag handle and the other two columns will adjust to fill the available space
 - Column B has `flex: 2`, `minWidth: 200` and `maxWidth: 350`, so it should be constrained to this max/min width.
 - Column C has `flex: 1` so should be half the size of column B, unless column B is being constrained by its `minWidth`/`maxWidth` rules, in which case it should take up the remaining available space.
+
 
 <grid-example title='Column Flex' name='flex-columns' type='generated'></grid-example>
 
@@ -158,12 +161,12 @@ When you resize a group, it will distribute the extra room to all columns in the
 
 ## Resizing Columns When Data Is Rendered
 
-When auto sizing columns, the grid uses the rendered cells to work out the appropriate widths. This means that the result
-of calling `columnApi.autoSizeColumns()` is dependent on the browser's rendering and may also change depending on
+When auto sizing columns, the grid uses the rendered cells to work out the appropriate widths. This means that the result 
+of calling `columnApi.autoSizeColumns()` is dependent on the browser's rendering and may also change depending on 
 asynchronous rendering in your framework.
 
-If you intend to call `columnApi.autoSizeColumns()` after creating the grid, in most cases it should be sufficient to wait
-for the `firstDataRendered` event before resizing.
+If you intend to call `columnApi.autoSizeColumns()` after creating the grid, in most cases it should be sufficient to wait 
+for the `firstDataRendered` event before resizing. 
 
 [[note]]
 | The [Server Side Row Model](/server-side-model/#top) inserts a dummy row with a loading spinner before the actual row

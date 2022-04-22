@@ -1,20 +1,20 @@
 const gridOptions = {
   columnDefs: [
-    { field: "city", type: "dimension", cellRenderer: cityCellRenderer },
+    { field: 'city', type: 'dimension', cellRenderer: cityCellRenderer },
     {
-      field: "country",
-      type: "dimension",
+      field: 'country',
+      type: 'dimension',
       cellRenderer: countryCellRenderer,
       minWidth: 200,
     },
     {
-      field: "state",
-      type: "dimension",
+      field: 'state',
+      type: 'dimension',
       cellRenderer: stateCellRenderer,
       rowGroup: true,
     },
-    { field: "val1", type: "numberValue" },
-    { field: "val2", type: "numberValue" },
+    { field: 'val1', type: 'numberValue' },
+    { field: 'val2', type: 'numberValue' },
   ],
   defaultColDef: {
     flex: 1,
@@ -22,13 +22,13 @@ const gridOptions = {
     resizable: true,
   },
   autoGroupColumnDef: {
-    field: "city",
+    field: 'city',
     minWidth: 200,
   },
   columnTypes: {
     numberValue: {
       enableValue: true,
-      aggFunc: "sum",
+      aggFunc: 'sum',
       editable: true,
       valueParser: numberParser,
     },
@@ -39,14 +39,14 @@ const gridOptions = {
   },
   rowData: getData(),
   groupDefaultExpanded: -1,
-  rowGroupPanelShow: "always",
+  rowGroupPanelShow: 'always',
   animateRows: true,
 };
 
 const COUNTRY_CODES = {
-  Ireland: "ie",
-  "United Kingdom": "gb",
-  USA: "us",
+  Ireland: 'ie',
+  'United Kingdom': 'gb',
+  USA: 'us',
 };
 
 function numberParser(params) {
@@ -55,38 +55,38 @@ function numberParser(params) {
 
 function countryCellRenderer(params) {
   if (params.value === undefined || params.value === null) {
-    return "";
+    return '';
   } else {
     const flag =
       '<img border="0" width="15" height="10" src="https://flagcdn.com/h20/' +
       COUNTRY_CODES[params.value] +
       '.png">';
-    return flag + " " + params.value;
+    return flag + ' ' + params.value;
   }
 }
 
 function stateCellRenderer(params) {
   if (params.value === undefined || params.value === null) {
-    return "";
+    return '';
   } else {
     const flag =
       '<img border="0" width="15" height="10" src="https://www.ag-grid.com/example-assets/gold-star.png">';
-    return flag + " " + params.value;
+    return flag + ' ' + params.value;
   }
 }
 
 function cityCellRenderer(params) {
   if (params.value === undefined || params.value === null) {
-    return "";
+    return '';
   } else {
     const flag =
       '<img border="0" width="15" height="10" src="https://www.ag-grid.com/example-assets/weather/sun.png">';
-    return flag + " " + params.value;
+    return flag + ' ' + params.value;
   }
 }
 
 // setup the grid after the page has finished loading
-document.addEventListener("DOMContentLoaded", function () {
-  const gridDiv = document.querySelector("#myGrid");
+document.addEventListener('DOMContentLoaded', function () {
+  const gridDiv = document.querySelector('#myGrid');
   new agGrid.Grid(gridDiv, gridOptions);
 });

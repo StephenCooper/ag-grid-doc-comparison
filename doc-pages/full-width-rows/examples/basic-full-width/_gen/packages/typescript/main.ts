@@ -3,14 +3,15 @@ import {
   Grid,
   GridOptions,
   IsFullWidthRowParams,
-} from "ag-grid-community";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import { FullWidthCellRenderer } from "./fullWidthCellRenderer";
+  RowHeightParams,
+} from 'ag-grid-community';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import { FullWidthCellRenderer } from './fullWidthCellRenderer';
 
-const rowData = createData(100, "body");
-const pinnedTopRowData = createData(3, "pinned");
-const pinnedBottomRowData = createData(3, "pinned");
+const rowData = createData(100, 'body');
+const pinnedTopRowData = createData(3, 'pinned');
+const pinnedBottomRowData = createData(3, 'pinned');
 
 function getColumnDefs() {
   const columnDefs: ColDef[] = [];
@@ -20,11 +21,11 @@ function getColumnDefs() {
       field: letter,
       width: 150,
     };
-    if (letter === "A") {
-      colDef.pinned = "left";
+    if (letter === 'A') {
+      colDef.pinned = 'left';
     }
-    if (letter === "Z") {
-      colDef.pinned = "right";
+    if (letter === 'Z') {
+      colDef.pinned = 'right';
     }
     columnDefs.push(colDef);
   });
@@ -46,7 +47,7 @@ const gridOptions: GridOptions = {
   // see AG Grid docs cellRenderer for details on how to build cellRenderers
   // this is a simple function cellRenderer, returns plain HTML, not a component
   fullWidthCellRenderer: FullWidthCellRenderer,
-  getRowHeight: function (params) {
+  getRowHeight: function (params: RowHeightParams) {
     // you can have normal rows and full width rows any height that you want
     const isBodyRow = params.node.rowPinned === undefined;
     const isFullWidth = params.node.data.fullWidth;
@@ -57,7 +58,7 @@ const gridOptions: GridOptions = {
 };
 
 function alphabet() {
-  return "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
+  return 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
 }
 
 function createData(count: number, prefix: string) {
@@ -71,7 +72,7 @@ function createData(count: number, prefix: string) {
     item.fullWidth = i % 3 === 2;
     // put in a column for each letter of the alphabet
     alphabet().forEach(function (letter) {
-      item[letter] = prefix + " (" + letter + "," + i + ")";
+      item[letter] = prefix + ' (' + letter + ',' + i + ')';
     });
     rowData.push(item);
   }
@@ -79,5 +80,5 @@ function createData(count: number, prefix: string) {
 }
 
 // setup the grid after the page has finished loading
-const gridDiv = document.querySelector<HTMLElement>("#myGrid")!;
+const gridDiv = document.querySelector<HTMLElement>('#myGrid')!;
 new Grid(gridDiv, gridOptions);

@@ -4,11 +4,11 @@ import React, {
   useImperativeHandle,
   useRef,
   useState,
-} from "react";
-import ReactDOM from "react-dom";
+} from 'react';
+import ReactDOM from 'react-dom';
 
 export default forwardRef((props, ref) => {
-  const isHappy = (value) => value === "Happy";
+  const isHappy = (value) => value === 'Happy';
 
   const [happy, setHappy] = useState(isHappy(props.value));
   const [editing, setEditing] = useState(true);
@@ -19,7 +19,7 @@ export default forwardRef((props, ref) => {
   }, []);
 
   const checkAndToggleMoodIfLeftRight = (event) => {
-    if (["ArrowLeft", "ArrowRight"].indexOf(event.key) > -1) {
+    if (['ArrowLeft', 'ArrowRight'].indexOf(event.key) > -1) {
       // left and right
       setHappy(!happy);
       event.stopPropagation();
@@ -27,17 +27,17 @@ export default forwardRef((props, ref) => {
   };
 
   useEffect(() => {
-    window.addEventListener("keydown", checkAndToggleMoodIfLeftRight);
+    window.addEventListener('keydown', checkAndToggleMoodIfLeftRight);
 
     return () => {
-      window.removeEventListener("keydown", checkAndToggleMoodIfLeftRight);
+      window.removeEventListener('keydown', checkAndToggleMoodIfLeftRight);
     };
   }, [checkAndToggleMoodIfLeftRight]);
 
   useImperativeHandle(ref, () => {
     return {
       getValue() {
-        return happy ? "Happy" : "Sad";
+        return happy ? 'Happy' : 'Sad';
       },
     };
   });
@@ -57,8 +57,8 @@ export default forwardRef((props, ref) => {
     });
   };
 
-  const happyStyle = happy ? "selected" : "default";
-  const sadStyle = !happy ? "selected" : "default";
+  const happyStyle = happy ? 'selected' : 'default';
+  const sadStyle = !happy ? 'selected' : 'default';
 
   return (
     <div

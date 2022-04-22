@@ -31,7 +31,7 @@ export default {
   },
   created() {
     this.params.api.addEventListener(
-      "modelUpdated",
+      'modelUpdated',
       this.renderStats.bind(this)
     );
   },

@@ -1,15 +1,15 @@
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
-import { AgGridReact } from "ag-grid-react";
-import React, { useCallback, useMemo, useState } from "react";
-import { render } from "react-dom";
-("use strict");
+'use strict';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import React, { useCallback, useMemo, useState } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from 'ag-grid-react';
+import 'ag-grid-enterprise';
 
-const makes = ["Toyota", "Ford", "BMW", "Phantom", "Porsche"];
+const makes = ['Toyota', 'Ford', 'BMW', 'Phantom', 'Porsche'];
 const createRow = (index) => {
   return {
-    id: "D" + (1000 + index),
+    id: 'D' + (1000 + index),
     make: makes[Math.floor(Math.random() * makes.length)],
     price: Math.floor(Math.random() * 100000),
     // every third row is full width
@@ -39,8 +39,8 @@ const fullWidthCellRenderer = (props) => {
   // pinned rows will have node.floating set to either 'top' or 'bottom' - see docs for floating
   const [cssClass] = useState(
     props.node.rowPinned
-      ? "example-full-width-floating-row"
-      : "example-full-width-row"
+      ? 'example-full-width-floating-row'
+      : 'example-full-width-row'
   );
   const [message] = useState(
     props.node.rowPinned
@@ -51,7 +51,7 @@ const fullWidthCellRenderer = (props) => {
   return (
     <div>
       <div className={cssClass}>
-        <button onClick={() => alert("button clicked")}>Click</button>
+        <button onClick={() => alert('button clicked')}>Click</button>
         {message}
       </div>
     </div>
@@ -59,49 +59,49 @@ const fullWidthCellRenderer = (props) => {
 };
 
 const GridExample = () => {
-  const gridStyle = useMemo(() => ({ height: "100%", width: "100%" }), []);
+  const gridStyle = useMemo(() => ({ height: '100%', width: '100%' }), []);
   const [rowData] = useState(createRowData());
   const [columnDefs] = useState([
     {
-      headerName: "Core",
+      headerName: 'Core',
       children: [
-        { headerName: "ID", field: "id" },
-        { headerName: "Make", field: "make" },
-        { headerName: "Price", field: "price", filter: "number" },
+        { headerName: 'ID', field: 'id' },
+        { headerName: 'Make', field: 'make' },
+        { headerName: 'Price', field: 'price', filter: 'number' },
       ],
     },
     {
-      headerName: "Extra",
+      headerName: 'Extra',
       children: [
         {
-          headerName: "Val 1",
-          field: "val1",
-          filter: "number",
-          pinned: "left",
+          headerName: 'Val 1',
+          field: 'val1',
+          filter: 'number',
+          pinned: 'left',
         },
         {
-          headerName: "Val 2",
-          field: "val2",
-          filter: "number",
-          pinned: "left",
+          headerName: 'Val 2',
+          field: 'val2',
+          filter: 'number',
+          pinned: 'left',
         },
-        { headerName: "Val 3", field: "val3", filter: "number" },
-        { headerName: "Val 4", field: "val4", filter: "number" },
-        { headerName: "Val 5", field: "val5", filter: "number" },
-        { headerName: "Val 6", field: "val6", filter: "number" },
-        { headerName: "Val 7", field: "val7", filter: "number" },
-        { headerName: "Val 8", field: "val8", filter: "number" },
+        { headerName: 'Val 3', field: 'val3', filter: 'number' },
+        { headerName: 'Val 4', field: 'val4', filter: 'number' },
+        { headerName: 'Val 5', field: 'val5', filter: 'number' },
+        { headerName: 'Val 6', field: 'val6', filter: 'number' },
+        { headerName: 'Val 7', field: 'val7', filter: 'number' },
+        { headerName: 'Val 8', field: 'val8', filter: 'number' },
         {
-          headerName: "Val 9",
-          field: "val9",
-          filter: "number",
-          pinned: "right",
+          headerName: 'Val 9',
+          field: 'val9',
+          filter: 'number',
+          pinned: 'right',
         },
         {
-          headerName: "Val 10",
-          field: "val10",
-          filter: "number",
-          pinned: "right",
+          headerName: 'Val 10',
+          field: 'val10',
+          filter: 'number',
+          pinned: 'right',
         },
       ],
     },
@@ -121,7 +121,7 @@ const GridExample = () => {
   }, []);
   const statusBar = useMemo(() => {
     return {
-      statusPanels: [{ statusPanel: "agAggregationComponent" }],
+      statusPanels: [{ statusPanel: 'agAggregationComponent' }],
     };
   }, []);
 
@@ -140,7 +140,7 @@ const GridExample = () => {
           paginationPageSize={10}
           statusBar={statusBar}
           enableRangeSelection={true}
-          domLayout={"autoHeight"}
+          domLayout={'autoHeight'}
           isFullWidthRow={isFullWidthRow}
           fullWidthCellRenderer={fullWidthCellRenderer}
         ></AgGridReact>
@@ -184,4 +184,4 @@ const GridExample = () => {
   );
 };
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

@@ -4,14 +4,14 @@ import {
   ExcelStyle,
   GridApi,
   GridReadyEvent,
-} from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { Component } from "@angular/core";
+} from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { Component } from '@angular/core';
 // Required feature modules are registered in app.module.ts
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<div class="container">
     <div>
       <button
@@ -39,8 +39,8 @@ export class AppComponent {
   private gridApi!: GridApi;
 
   public columnDefs: ColDef[] = [
-    { field: "company" },
-    { field: "url", cellClass: "hyperlinks" },
+    { field: 'company' },
+    { field: 'url', cellClass: 'hyperlinks' },
   ];
   public defaultColDef: ColDef = {
     flex: 1,
@@ -51,29 +51,29 @@ export class AppComponent {
     autoConvertFormulas: true,
     processCellCallback: (params) => {
       const field = params.column.getColDef().field;
-      return field === "url" ? `=HYPERLINK("${params.value}")` : params.value;
+      return field === 'url' ? `=HYPERLINK("${params.value}")` : params.value;
     },
   };
   public excelStyles: ExcelStyle[] = [
     {
-      id: "hyperlinks",
+      id: 'hyperlinks',
       font: {
-        underline: "Single",
-        color: "#358ccb",
+        underline: 'Single',
+        color: '#358ccb',
       },
     },
   ];
   public rowData: any[] | null = [
-    { company: "Google", url: "https://www.google.com" },
-    { company: "Adobe", url: "https://www.adobe.com" },
-    { company: "The New York Times", url: "https://www.nytimes.com" },
-    { company: "Twitter", url: "https://www.twitter.com" },
-    { company: "StackOverflow", url: "https://stackoverflow.com/" },
-    { company: "Reddit", url: "https://www.reddit.com" },
-    { company: "Github", url: "https://www.github.com" },
-    { company: "Microsoft", url: "https://www.microsoft.com" },
-    { company: "Gizmodo", url: "https://www.gizmodo.com" },
-    { company: "LinkedIN", url: "https://www.linkedin.com" },
+    { company: 'Google', url: 'https://www.google.com' },
+    { company: 'Adobe', url: 'https://www.adobe.com' },
+    { company: 'The New York Times', url: 'https://www.nytimes.com' },
+    { company: 'Twitter', url: 'https://www.twitter.com' },
+    { company: 'StackOverflow', url: 'https://stackoverflow.com/' },
+    { company: 'Reddit', url: 'https://www.reddit.com' },
+    { company: 'Github', url: 'https://www.github.com' },
+    { company: 'Microsoft', url: 'https://www.microsoft.com' },
+    { company: 'Gizmodo', url: 'https://www.gizmodo.com' },
+    { company: 'LinkedIN', url: 'https://www.linkedin.com' },
   ];
 
   onBtExport() {

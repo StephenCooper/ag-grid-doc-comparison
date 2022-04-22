@@ -3,16 +3,17 @@ import {
   GridOptions,
   ICellRendererParams,
   IsFullWidthRowParams,
-} from "ag-grid-community";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import { FullWidthCellRenderer } from "./fullWidthCellRenderer";
+  RowHeightParams,
+} from 'ag-grid-community';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import { FullWidthCellRenderer } from './fullWidthCellRenderer';
 
 const gridOptions: GridOptions = {
   columnDefs: [
-    { field: "name", cellRenderer: countryCellRenderer },
-    { field: "continent" },
-    { field: "language" },
+    { field: 'name', cellRenderer: countryCellRenderer },
+    { field: 'continent' },
+    { field: 'language' },
   ],
   defaultColDef: {
     flex: 1,
@@ -22,7 +23,7 @@ const gridOptions: GridOptions = {
   },
   rowData: getData(),
   rowDragManaged: true,
-  getRowHeight: function (params) {
+  getRowHeight: function (params: RowHeightParams) {
     // return 100px height for full width rows
     if (isFullWidth(params.data)) {
       return 100;
@@ -45,15 +46,15 @@ function countryCellRenderer(params: ICellRendererParams) {
     params.data.code +
     '.png">';
   return (
-    '<span style="cursor: default;">' + flag + " " + params.value + "</span>"
+    '<span style="cursor: default;">' + flag + ' ' + params.value + '</span>'
   );
 }
 
 function isFullWidth(data: any) {
   // return true when country is Peru, France or Italy
-  return ["Peru", "France", "Italy"].indexOf(data.name) >= 0;
+  return ['Peru', 'France', 'Italy'].indexOf(data.name) >= 0;
 }
 
 // setup the grid after the page has finished loading
-var gridDiv = document.querySelector<HTMLElement>("#myGrid")!;
+var gridDiv = document.querySelector<HTMLElement>('#myGrid')!;
 new Grid(gridDiv, gridOptions);

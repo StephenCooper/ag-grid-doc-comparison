@@ -1,17 +1,17 @@
 const options = {
-  container: document.getElementById("myChart"),
+  container: document.getElementById('myChart'),
   title: {
-    text: "Race results",
+    text: 'Race results',
   },
   data: getData(),
   series: [
     {
-      type: "histogram",
-      aggregation: "mean",
-      xKey: "age",
-      xName: "Participant Age",
-      yKey: "time",
-      yName: "Race time",
+      type: 'histogram',
+      aggregation: 'mean',
+      xKey: 'age',
+      xName: 'Participant Age',
+      yKey: 'time',
+      yName: 'Race time',
     },
   ],
   legend: {
@@ -19,14 +19,14 @@ const options = {
   },
   axes: [
     {
-      type: "number",
-      position: "bottom",
-      title: { text: "Age band (years)" },
+      type: 'number',
+      position: 'bottom',
+      title: { text: 'Age band (years)' },
     },
     {
-      type: "number",
-      position: "left",
-      title: { text: "Mean race time (seconds)" },
+      type: 'number',
+      position: 'left',
+      title: { text: 'Mean race time (seconds)' },
     },
   ],
 };

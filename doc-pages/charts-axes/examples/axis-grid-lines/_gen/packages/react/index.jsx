@@ -1,9 +1,10 @@
-"use strict";
+'use strict';
 
-import { AgChartsReact } from "ag-charts-react";
-import { cloneDeep } from "lodash";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { cloneDeep } from 'lodash';
+import { render } from 'react-dom';
+import * as agCharts from 'ag-charts-community';
+import { AgChartsReact } from 'ag-charts-react';
 
 class ChartExample extends Component {
   constructor(props) {
@@ -15,30 +16,30 @@ class ChartExample extends Component {
           text: "Most Common Girls' First Names In English",
         },
         subtitle: {
-          text: "over the past 100 years",
+          text: 'over the past 100 years',
         },
         data: [
-          { name: "Mary", count: 234000 },
-          { name: "Patricia", count: 211000 },
-          { name: "Jennifer", count: 178000 },
-          { name: "Elizabeth", count: 153000 },
-          { name: "Linda", count: 123000 },
+          { name: 'Mary', count: 234000 },
+          { name: 'Patricia', count: 211000 },
+          { name: 'Jennifer', count: 178000 },
+          { name: 'Elizabeth', count: 153000 },
+          { name: 'Linda', count: 123000 },
         ],
         series: [
           {
-            type: "line",
-            xKey: "name",
-            yKey: "count",
+            type: 'line',
+            xKey: 'name',
+            yKey: 'count',
           },
         ],
         axes: [
           {
-            type: "category",
-            position: "bottom",
+            type: 'category',
+            position: 'bottom',
           },
           {
-            type: "number",
-            position: "left",
+            type: 'number',
+            position: 'left',
           },
         ],
         legend: {
@@ -55,11 +56,11 @@ class ChartExample extends Component {
 
     var gridStyle = [
       {
-        stroke: "gray",
+        stroke: 'gray',
         lineDash: [10, 5],
       },
       {
-        stroke: "lightgray",
+        stroke: 'lightgray',
         lineDash: [5, 5],
       },
     ];
@@ -74,13 +75,13 @@ class ChartExample extends Component {
 
     var xGridStyle = [
       {
-        stroke: "red",
+        stroke: 'red',
         lineDash: [3, 3],
       },
     ];
     var yGridStyle = [
       {
-        stroke: "green",
+        stroke: 'green',
         lineDash: [8, 3, 3, 3],
       },
     ];
@@ -95,7 +96,7 @@ class ChartExample extends Component {
 
     var gridStyle = [
       {
-        stroke: "rgba(219, 219, 219, 1)",
+        stroke: 'rgba(219, 219, 219, 1)',
         lineDash: [4, 2],
       },
     ];
@@ -123,4 +124,4 @@ class ChartExample extends Component {
   }
 }
 
-render(<ChartExample />, document.querySelector("#root"));
+render(<ChartExample />, document.querySelector('#root'));

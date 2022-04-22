@@ -1,12 +1,12 @@
-import { ColDef, ColGroupDef, GridReadyEvent } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { HttpClient } from "@angular/common/http";
-import { Component } from "@angular/core";
+import { ColDef, ColGroupDef, GridReadyEvent } from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { HttpClient } from '@angular/common/http';
+import { Component } from '@angular/core';
 // Required feature modules are registered in app.module.ts
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<ag-grid-angular
     style="width: 100%; height: 100%;"
     class="ag-theme-alpine"
@@ -19,12 +19,12 @@ import { Component } from "@angular/core";
 export class AppComponent {
   public columnDefs: (ColDef | ColGroupDef)[] = [
     {
-      groupId: "athleteGroupId",
-      headerName: "Athlete",
+      groupId: 'athleteGroupId',
+      headerName: 'Athlete',
       children: [
         {
-          headerName: "Name",
-          field: "athlete",
+          headerName: 'Name',
+          field: 'athlete',
           minWidth: 200,
           columnsMenuParams: {
             // hides the Column Filter section
@@ -36,7 +36,7 @@ export class AppComponent {
           },
         },
         {
-          field: "age",
+          field: 'age',
           minWidth: 200,
           columnsMenuParams: {
             // contracts all column groups
@@ -46,15 +46,15 @@ export class AppComponent {
       ],
     },
     {
-      groupId: "medalsGroupId",
-      headerName: "Medals",
-      children: [{ field: "gold" }, { field: "silver" }, { field: "bronze" }],
+      groupId: 'medalsGroupId',
+      headerName: 'Medals',
+      children: [{ field: 'gold' }, { field: 'silver' }, { field: 'bronze' }],
     },
   ];
   public defaultColDef: ColDef = {
     flex: 1,
     resizable: true,
-    menuTabs: ["columnsMenuTab"],
+    menuTabs: ['columnsMenuTab'],
     columnsMenuParams: {
       // suppresses updating the layout of columns as they are rearranged in the grid
       suppressSyncLayoutWithGrid: true,
@@ -66,7 +66,7 @@ export class AppComponent {
 
   onGridReady(params: GridReadyEvent) {
     this.http
-      .get<any[]>("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      .get<any[]>('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .subscribe((data) => (this.rowData = data));
   }
 }

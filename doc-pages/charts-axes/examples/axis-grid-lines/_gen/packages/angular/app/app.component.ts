@@ -1,9 +1,9 @@
-import { Component } from "@angular/core";
-import { AgCartesianChartOptions } from "ag-charts-community";
-import { cloneDeep } from "lodash";
+import { Component } from '@angular/core';
+import { AgCartesianChartOptions } from 'ag-charts-community';
+import { cloneDeep } from 'lodash';
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<div class="wrapper">
     <div id="toolPanel">
       <button (click)="useGridStyle1()">Grid Style #1</button>
@@ -27,30 +27,30 @@ export class AppComponent {
         text: "Most Common Girls' First Names In English",
       },
       subtitle: {
-        text: "over the past 100 years",
+        text: 'over the past 100 years',
       },
       data: [
-        { name: "Mary", count: 234000 },
-        { name: "Patricia", count: 211000 },
-        { name: "Jennifer", count: 178000 },
-        { name: "Elizabeth", count: 153000 },
-        { name: "Linda", count: 123000 },
+        { name: 'Mary', count: 234000 },
+        { name: 'Patricia', count: 211000 },
+        { name: 'Jennifer', count: 178000 },
+        { name: 'Elizabeth', count: 153000 },
+        { name: 'Linda', count: 123000 },
       ],
       series: [
         {
-          type: "line",
-          xKey: "name",
-          yKey: "count",
+          type: 'line',
+          xKey: 'name',
+          yKey: 'count',
         },
       ],
       axes: [
         {
-          type: "category",
-          position: "bottom",
+          type: 'category',
+          position: 'bottom',
         },
         {
-          type: "number",
-          position: "left",
+          type: 'number',
+          position: 'left',
         },
       ],
       legend: {
@@ -66,11 +66,11 @@ export class AppComponent {
 
     var gridStyle = [
       {
-        stroke: "gray",
+        stroke: 'gray',
         lineDash: [10, 5],
       },
       {
-        stroke: "lightgray",
+        stroke: 'lightgray',
         lineDash: [5, 5],
       },
     ];
@@ -85,13 +85,13 @@ export class AppComponent {
 
     var xGridStyle = [
       {
-        stroke: "red",
+        stroke: 'red',
         lineDash: [3, 3],
       },
     ];
     var yGridStyle = [
       {
-        stroke: "green",
+        stroke: 'green',
         lineDash: [8, 3, 3, 3],
       },
     ];
@@ -106,7 +106,7 @@ export class AppComponent {
 
     var gridStyle = [
       {
-        stroke: "rgba(219, 219, 219, 1)",
+        stroke: 'rgba(219, 219, 219, 1)',
         lineDash: [4, 2],
       },
     ];

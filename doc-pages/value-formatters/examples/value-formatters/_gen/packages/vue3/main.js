@@ -1,7 +1,7 @@
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine-dark.css";
-import { AgGridVue } from "ag-grid-vue3";
-import { createApp } from "vue";
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine-dark.css';
+import { AgGridVue } from 'ag-grid-vue3';
+import { createApp } from 'vue';
 
 const VueExample = {
   template: `
@@ -17,23 +17,23 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
-        { headerName: "A", field: "a" },
-        { headerName: "B", field: "b" },
-        { headerName: "£A", field: "a", valueFormatter: currencyFormatter },
-        { headerName: "£B", field: "b", valueFormatter: currencyFormatter },
-        { headerName: "(A)", field: "a", valueFormatter: bracketsFormatter },
-        { headerName: "(B)", field: "b", valueFormatter: bracketsFormatter },
+        { headerName: 'A', field: 'a' },
+        { headerName: 'B', field: 'b' },
+        { headerName: '£A', field: 'a', valueFormatter: currencyFormatter },
+        { headerName: '£B', field: 'b', valueFormatter: currencyFormatter },
+        { headerName: '(A)', field: 'a', valueFormatter: bracketsFormatter },
+        { headerName: '(B)', field: 'b', valueFormatter: bracketsFormatter },
       ],
       gridApi: null,
       columnApi: null,
       defaultColDef: {
         flex: 1,
-        cellClass: "number-cell",
+        cellClass: 'number-cell',
         resizable: true,
       },
       rowData: null,
@@ -51,11 +51,11 @@ const VueExample = {
 };
 
 window.bracketsFormatter = function bracketsFormatter(params) {
-  return "(" + params.value + ")";
+  return '(' + params.value + ')';
 };
 
 window.currencyFormatter = function currencyFormatter(params) {
-  return "£" + formatNumber(params.value);
+  return '£' + formatNumber(params.value);
 };
 
 window.formatNumber = function formatNumber(number) {
@@ -63,7 +63,7 @@ window.formatNumber = function formatNumber(number) {
   // i pulled this from stack overflow, i have no idea how it works
   return Math.floor(number)
     .toString()
-    .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
+    .replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
 };
 
 window.createRowData = function createRowData() {
@@ -77,4 +77,4 @@ window.createRowData = function createRowData() {
   return rowData;
 };
 
-createApp(VueExample).mount("#app");
+createApp(VueExample).mount('#app');

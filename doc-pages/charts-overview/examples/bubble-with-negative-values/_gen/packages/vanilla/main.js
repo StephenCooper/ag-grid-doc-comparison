@@ -1,26 +1,26 @@
 const options = {
-  container: document.getElementById("myChart"),
+  container: document.getElementById('myChart'),
   autoSize: true,
   data: getData(),
   title: {
-    text: "Most Populous Cities (2019)",
+    text: 'Most Populous Cities (2019)',
     fontSize: 18,
   },
   subtitle: {
-    text: "Source: Simple Maps",
+    text: 'Source: Simple Maps',
   },
   series: [
     {
-      type: "scatter",
-      title: "Most populous cities",
-      xKey: "lon",
-      xName: "Longitude",
-      yKey: "lat",
-      yName: "Latitude",
-      sizeKey: "population",
-      sizeName: "Population",
-      labelKey: "city",
-      labelName: "City",
+      type: 'scatter',
+      title: 'Most populous cities',
+      xKey: 'lon',
+      xName: 'Longitude',
+      yKey: 'lat',
+      yName: 'Latitude',
+      sizeKey: 'population',
+      sizeName: 'Population',
+      labelKey: 'city',
+      labelName: 'City',
       marker: {
         size: 5,
         maxSize: 100,
@@ -30,22 +30,22 @@ const options = {
   ],
   axes: [
     {
-      position: "bottom",
-      type: "number",
+      position: 'bottom',
+      type: 'number',
       title: {
         enabled: true,
-        text: "Longitude",
+        text: 'Longitude',
       },
       min: -180,
       max: 180,
       nice: false,
     },
     {
-      position: "left",
-      type: "number",
+      position: 'left',
+      type: 'number',
       title: {
         enabled: true,
-        text: "Latitude",
+        text: 'Latitude',
       },
       min: -90,
       max: 90,

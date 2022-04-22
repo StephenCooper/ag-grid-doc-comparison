@@ -1,13 +1,13 @@
-"use strict";
+'use strict';
 
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { AgGridReact } from "@ag-grid-community/react";
-import { SparklinesModule } from "@ag-grid-enterprise/sparklines";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from '@ag-grid-community/react';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import { SparklinesModule } from '@ag-grid-enterprise/sparklines';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([ClientSideRowModelModule, SparklinesModule]);
@@ -18,18 +18,18 @@ class GridExample extends Component {
 
     this.state = {
       columnDefs: [
-        { field: "symbol", maxWidth: 120 },
-        { field: "name", minWidth: 250 },
+        { field: 'symbol', maxWidth: 120 },
+        { field: 'name', minWidth: 250 },
         {
-          field: "change",
-          cellRenderer: "agSparklineCellRenderer",
+          field: 'change',
+          cellRenderer: 'agSparklineCellRenderer',
           cellRendererParams: {
             sparklineOptions: {
-              type: "bar",
-              fill: "#5470c6",
-              stroke: "#91cc75",
+              type: 'bar',
+              fill: '#5470c6',
+              stroke: '#91cc75',
               highlightStyle: {
-                fill: "#fac858",
+                fill: '#fac858',
               },
               valueAxisDomain: [0, 1],
               paddingOuter: 0,
@@ -44,8 +44,8 @@ class GridExample extends Component {
           },
         },
         {
-          field: "volume",
-          type: "numericColumn",
+          field: 'volume',
+          type: 'numericColumn',
           maxWidth: 140,
         },
       ],
@@ -66,11 +66,11 @@ class GridExample extends Component {
 
   render() {
     return (
-      <div style={{ width: "100%", height: "100%" }}>
+      <div style={{ width: '100%', height: '100%' }}>
         <div
           style={{
-            height: "100%",
-            width: "100%",
+            height: '100%',
+            width: '100%',
           }}
           className="ag-theme-alpine"
         >
@@ -87,4 +87,4 @@ class GridExample extends Component {
   }
 }
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

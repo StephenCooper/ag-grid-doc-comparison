@@ -1,10 +1,10 @@
-"use strict";
+'use strict';
 
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine-dark.css";
-import { AgGridReact } from "ag-grid-react";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from 'ag-grid-react';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine-dark.css';
 
 class GridExample extends Component {
   constructor(props) {
@@ -13,24 +13,24 @@ class GridExample extends Component {
     this.state = {
       columnDefs: [
         {
-          headerName: "String (editable)",
-          field: "simple",
+          headerName: 'String (editable)',
+          field: 'simple',
           editable: true,
         },
         {
-          headerName: "Bad Number (editable)",
-          field: "numberBad",
+          headerName: 'Bad Number (editable)',
+          field: 'numberBad',
           editable: true,
         },
         {
-          headerName: "Good Number (editable)",
-          field: "numberGood",
+          headerName: 'Good Number (editable)',
+          field: 'numberGood',
           editable: true,
           valueFormatter: `"£" + Math.floor(value).toString().replace(/(\\d)(?=(\\d{3})+(?!\\d))/g, "$1,")`,
-          valueParser: "Number(newValue)",
+          valueParser: 'Number(newValue)',
         },
         {
-          headerName: "Name (editable)",
+          headerName: 'Name (editable)',
           editable: true,
           valueGetter: 'data.firstName + " " + data.lastName',
           valueSetter:
@@ -46,9 +46,9 @@ class GridExample extends Component {
                 return false;
             }`,
         },
-        { headerName: "A", field: "a", maxWidth: 120 },
-        { headerName: "B", field: "b", maxWidth: 120 },
-        { headerName: "A + B", valueGetter: "data.a + data.b", maxWidth: 120 },
+        { headerName: 'A', field: 'a', maxWidth: 120 },
+        { headerName: 'B', field: 'b', maxWidth: 120 },
+        { headerName: 'A + B', valueGetter: 'data.a + data.b', maxWidth: 120 },
       ],
       defaultColDef: {
         flex: 1,
@@ -66,16 +66,16 @@ class GridExample extends Component {
   };
 
   onCellValueChanged = (event) => {
-    console.log("data after changes is: ", event.data);
+    console.log('data after changes is: ', event.data);
   };
 
   render() {
     return (
-      <div style={{ width: "100%", height: "100%" }}>
+      <div style={{ width: '100%', height: '100%' }}>
         <div
           style={{
-            height: "100%",
-            width: "100%",
+            height: '100%',
+            width: '100%',
           }}
           className="ag-theme-alpine-dark"
         >
@@ -93,4 +93,4 @@ class GridExample extends Component {
   }
 }
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

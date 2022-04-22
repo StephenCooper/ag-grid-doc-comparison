@@ -1,13 +1,13 @@
-import { ColDef, GridApi, GridReadyEvent } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { HttpClient } from "@angular/common/http";
-import { Component } from "@angular/core";
-import { CustomHeader } from "./custom-header.component";
+import { ColDef, GridApi, GridReadyEvent } from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { HttpClient } from '@angular/common/http';
+import { Component } from '@angular/core';
+import { CustomHeader } from './custom-header.component';
 // Required feature modules are registered in app.module.ts
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<div class="test-container">
     <div class="test-header">
       <button (click)="onBtUpperNames()">Upper Header Names</button>
@@ -33,16 +33,16 @@ export class AppComponent {
   private gridApi!: GridApi;
 
   public columnDefs: ColDef[] = [
-    { field: "athlete" },
-    { field: "age" },
-    { field: "country" },
-    { field: "year" },
-    { field: "date" },
-    { field: "sport" },
-    { field: "gold" },
-    { field: "silver" },
-    { field: "bronze" },
-    { field: "total" },
+    { field: 'athlete' },
+    { field: 'age' },
+    { field: 'country' },
+    { field: 'year' },
+    { field: 'date' },
+    { field: 'sport' },
+    { field: 'gold' },
+    { field: 'silver' },
+    { field: 'bronze' },
+    { field: 'total' },
   ];
   public defaultColDef: ColDef = {
     headerComponent: CustomHeader,
@@ -53,16 +53,16 @@ export class AppComponent {
 
   onBtUpperNames() {
     const columnDefs: ColDef[] = [
-      { field: "athlete" },
-      { field: "age" },
-      { field: "country" },
-      { field: "year" },
-      { field: "date" },
-      { field: "sport" },
-      { field: "gold" },
-      { field: "silver" },
-      { field: "bronze" },
-      { field: "total" },
+      { field: 'athlete' },
+      { field: 'age' },
+      { field: 'country' },
+      { field: 'year' },
+      { field: 'date' },
+      { field: 'sport' },
+      { field: 'gold' },
+      { field: 'silver' },
+      { field: 'bronze' },
+      { field: 'total' },
     ];
     columnDefs.forEach(function (c) {
       c.headerName = c.field!.toUpperCase();
@@ -72,16 +72,16 @@ export class AppComponent {
 
   onBtLowerNames() {
     const columnDefs: ColDef[] = [
-      { field: "athlete" },
-      { field: "age" },
-      { field: "country" },
-      { field: "year" },
-      { field: "date" },
-      { field: "sport" },
-      { field: "gold" },
-      { field: "silver" },
-      { field: "bronze" },
-      { field: "total" },
+      { field: 'athlete' },
+      { field: 'age' },
+      { field: 'country' },
+      { field: 'year' },
+      { field: 'date' },
+      { field: 'sport' },
+      { field: 'gold' },
+      { field: 'silver' },
+      { field: 'bronze' },
+      { field: 'total' },
     ];
     columnDefs.forEach(function (c) {
       c.headerName = c.field;
@@ -91,16 +91,16 @@ export class AppComponent {
 
   onBtFilterOn() {
     const columnDefs: ColDef[] = [
-      { field: "athlete" },
-      { field: "age" },
-      { field: "country" },
-      { field: "year" },
-      { field: "date" },
-      { field: "sport" },
-      { field: "gold" },
-      { field: "silver" },
-      { field: "bronze" },
-      { field: "total" },
+      { field: 'athlete' },
+      { field: 'age' },
+      { field: 'country' },
+      { field: 'year' },
+      { field: 'date' },
+      { field: 'sport' },
+      { field: 'gold' },
+      { field: 'silver' },
+      { field: 'bronze' },
+      { field: 'total' },
     ];
     columnDefs.forEach(function (c) {
       c.filter = true;
@@ -110,16 +110,16 @@ export class AppComponent {
 
   onBtFilterOff() {
     const columnDefs: ColDef[] = [
-      { field: "athlete" },
-      { field: "age" },
-      { field: "country" },
-      { field: "year" },
-      { field: "date" },
-      { field: "sport" },
-      { field: "gold" },
-      { field: "silver" },
-      { field: "bronze" },
-      { field: "total" },
+      { field: 'athlete' },
+      { field: 'age' },
+      { field: 'country' },
+      { field: 'year' },
+      { field: 'date' },
+      { field: 'sport' },
+      { field: 'gold' },
+      { field: 'silver' },
+      { field: 'bronze' },
+      { field: 'total' },
     ];
     columnDefs.forEach(function (c) {
       c.filter = false;
@@ -129,16 +129,16 @@ export class AppComponent {
 
   onBtResizeOn() {
     const columnDefs: ColDef[] = [
-      { field: "athlete" },
-      { field: "age" },
-      { field: "country" },
-      { field: "year" },
-      { field: "date" },
-      { field: "sport" },
-      { field: "gold" },
-      { field: "silver" },
-      { field: "bronze" },
-      { field: "total" },
+      { field: 'athlete' },
+      { field: 'age' },
+      { field: 'country' },
+      { field: 'year' },
+      { field: 'date' },
+      { field: 'sport' },
+      { field: 'gold' },
+      { field: 'silver' },
+      { field: 'bronze' },
+      { field: 'total' },
     ];
     columnDefs.forEach(function (c) {
       c.resizable = true;
@@ -148,16 +148,16 @@ export class AppComponent {
 
   onBtResizeOff() {
     const columnDefs: ColDef[] = [
-      { field: "athlete" },
-      { field: "age" },
-      { field: "country" },
-      { field: "year" },
-      { field: "date" },
-      { field: "sport" },
-      { field: "gold" },
-      { field: "silver" },
-      { field: "bronze" },
-      { field: "total" },
+      { field: 'athlete' },
+      { field: 'age' },
+      { field: 'country' },
+      { field: 'year' },
+      { field: 'date' },
+      { field: 'sport' },
+      { field: 'gold' },
+      { field: 'silver' },
+      { field: 'bronze' },
+      { field: 'total' },
     ];
     columnDefs.forEach(function (c) {
       c.resizable = false;
@@ -169,7 +169,7 @@ export class AppComponent {
     this.gridApi = params.api;
 
     this.http
-      .get<any[]>("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      .get<any[]>('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .subscribe((data) => {
         this.rowData = data;
       });

@@ -3,14 +3,14 @@ import {
   ColGroupDef,
   ColSpanParams,
   GridReadyEvent,
-} from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { Component } from "@angular/core";
+} from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { Component } from '@angular/core';
 // Required feature modules are registered in app.module.ts
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<ag-grid-angular
     style="width: 100%; height: 100%;"
     class="ag-theme-alpine"
@@ -23,22 +23,22 @@ import { Component } from "@angular/core";
 export class AppComponent {
   public columnDefs: (ColDef | ColGroupDef)[] = [
     {
-      headerName: "A",
-      field: "author",
+      headerName: 'A',
+      field: 'author',
       width: 300,
       colSpan: colSpan,
     },
     {
-      headerName: "Flexed Columns",
+      headerName: 'Flexed Columns',
       children: [
         {
-          headerName: "B",
+          headerName: 'B',
           minWidth: 200,
           maxWidth: 350,
           flex: 2,
         },
         {
-          headerName: "C",
+          headerName: 'C',
           flex: 1,
         },
       ],
@@ -59,10 +59,10 @@ var colSpan = function (params: ColSpanParams) {
 };
 function fillAllCellsWithWidthMeasurement() {
   Array.prototype.slice
-    .call(document.querySelectorAll(".ag-cell"))
+    .call(document.querySelectorAll('.ag-cell'))
     .forEach(function (cell) {
       var width = cell.offsetWidth;
       var isFullWidthRow = cell.parentElement.childNodes.length === 1;
-      cell.textContent = (isFullWidthRow ? "Total width: " : "") + width + "px";
+      cell.textContent = (isFullWidthRow ? 'Total width: ' : '') + width + 'px';
     });
 }

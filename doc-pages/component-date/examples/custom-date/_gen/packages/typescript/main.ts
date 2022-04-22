@@ -1,12 +1,12 @@
-import { ColDef, Grid, GridOptions } from "ag-grid-community";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import { CustomDateComponent } from "./customDateComponent";
+import { ColDef, Grid, GridOptions } from 'ag-grid-community';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import { CustomDateComponent } from './customDateComponent';
 
 const filterParams = {
   comparator: (filterLocalDateAtMidnight: Date, cellValue: string) => {
     const dateAsString = cellValue;
-    const dateParts = dateAsString.split("/");
+    const dateParts = dateAsString.split('/');
     const cellDate = new Date(
       Number(dateParts[2]),
       Number(dateParts[1]) - 1,
@@ -28,21 +28,21 @@ const filterParams = {
 };
 
 const columnDefs: ColDef[] = [
-  { field: "athlete" },
-  { field: "age", filter: "agNumberColumnFilter" },
-  { field: "country" },
-  { field: "year" },
+  { field: 'athlete' },
+  { field: 'age', filter: 'agNumberColumnFilter' },
+  { field: 'country' },
+  { field: 'year' },
   {
-    field: "date",
+    field: 'date',
     minWidth: 190,
-    filter: "agDateColumnFilter",
+    filter: 'agDateColumnFilter',
     filterParams: filterParams,
   },
-  { field: "sport" },
-  { field: "gold", filter: "agNumberColumnFilter" },
-  { field: "silver", filter: "agNumberColumnFilter" },
-  { field: "bronze", filter: "agNumberColumnFilter" },
-  { field: "total", filter: false },
+  { field: 'sport' },
+  { field: 'gold', filter: 'agNumberColumnFilter' },
+  { field: 'silver', filter: 'agNumberColumnFilter' },
+  { field: 'bronze', filter: 'agNumberColumnFilter' },
+  { field: 'total', filter: false },
 ];
 
 const gridOptions: GridOptions = {
@@ -63,10 +63,10 @@ const gridOptions: GridOptions = {
 };
 
 // setup the grid after the page has finished loading
-const gridDiv = document.querySelector<HTMLElement>("#myGrid")!;
+const gridDiv = document.querySelector<HTMLElement>('#myGrid')!;
 new Grid(gridDiv, gridOptions);
 
-fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
   .then((response) => response.json())
   .then((data) => {
     gridOptions.api!.setRowData(data);

@@ -1,11 +1,11 @@
-"use strict";
+'use strict';
 
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
-import { AgGridReact } from "ag-grid-react";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from 'ag-grid-react';
+import 'ag-grid-enterprise';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 
 class GridExample extends Component {
   constructor(props) {
@@ -14,15 +14,15 @@ class GridExample extends Component {
     this.state = {
       columnDefs: [
         {
-          headerName: "Days (Values Not Provided)",
-          field: "days",
-          filter: "agSetColumnFilter",
+          headerName: 'Days (Values Not Provided)',
+          field: 'days',
+          filter: 'agSetColumnFilter',
           filterParams: daysValuesNotProvidedFilterParams,
         },
         {
-          headerName: "Days (Values Provided)",
-          field: "days",
-          filter: "agSetColumnFilter",
+          headerName: 'Days (Values Provided)',
+          field: 'days',
+          filter: 'agSetColumnFilter',
           filterParams: daysValuesProvidedFilterParams,
         },
       ],
@@ -31,7 +31,7 @@ class GridExample extends Component {
         filter: true,
         resizable: true,
       },
-      sideBar: "filters",
+      sideBar: 'filters',
       rowData: getRowData(),
     };
   }
@@ -42,16 +42,16 @@ class GridExample extends Component {
   };
 
   onFirstDataRendered = (params) => {
-    params.api.getToolPanelInstance("filters").expandFilters();
+    params.api.getToolPanelInstance('filters').expandFilters();
   };
 
   render() {
     return (
-      <div style={{ width: "100%", height: "100%" }}>
+      <div style={{ width: '100%', height: '100%' }}>
         <div
           style={{
-            height: "100%",
-            width: "100%",
+            height: '100%',
+            width: '100%',
           }}
           className="ag-theme-alpine"
         >
@@ -70,13 +70,13 @@ class GridExample extends Component {
 }
 
 var listOfDays = [
-  "Monday",
-  "Tuesday",
-  "Wednesday",
-  "Thursday",
-  "Friday",
-  "Saturday",
-  "Sunday",
+  'Monday',
+  'Tuesday',
+  'Wednesday',
+  'Thursday',
+  'Friday',
+  'Saturday',
+  'Sunday',
 ];
 var daysValuesNotProvidedFilterParams = {
   comparator: function (a, b) {
@@ -91,7 +91,7 @@ var daysValuesProvidedFilterParams = {
   suppressSorting: true, // use provided order
 };
 function getRowData() {
-  var weekdays = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
+  var weekdays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
   var rows = [];
   for (var i = 0; i < 200; i++) {
     var index = Math.floor(Math.random() * 5);
@@ -100,4 +100,4 @@ function getRowData() {
   return rows;
 }
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

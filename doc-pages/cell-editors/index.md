@@ -59,6 +59,8 @@ To have an editor appear in a popup, have the `isPopup()` method return `true`. 
 |1. For [Custom Cell Editors](/component-cell-editor/), implement the `isPopup()` method on the Custom Cell Editor OR specify `cellEditorPopup=true` on the [Column Definition](/column-definitions/).
 |1. For [Provided Cell Editors](/provided-cell-editors/), you do not need to to anything, as `isPopup` is already implemented on these.
 
+
+
 ## Many Editors One Column
 
 It is also possible to use different editors for different rows in the same column. To configure this set `colDef.cellEditorSelector` to a function that returns alternative values for `cellEditor` and `cellEditorParams`.
@@ -70,45 +72,46 @@ The result is an object with `component` and `params` to use instead of `cellEdi
 This following shows the Selector always returning back an AG Rich Select Cell Editor:
 
 ```js
-cellEditorSelector: (params) => {
-  return {
-    component: "agRichSelect",
-    params: { values: ["Male", "Female"] },
-    popup: true,
-  };
-};
+cellEditorSelector: params => {
+    return {
+        component: 'agRichSelect',
+        params: { values: ['Male', 'Female'] },
+        popup: true
+    };
+}
 ```
 
 However a selector only makes sense when a selection is made. The following demonstrates selecting between Cell Editors:
 
 ```js
-cellEditorSelector: (params) => {
-  if (params.data.type === "age") {
+cellEditorSelector: params => {
+
+  if (params.data.type === 'age') {
     return {
       component: NumericCellEditor,
-    };
+    }
   }
 
-  if (params.data.type === "gender") {
+  if (params.data.type === 'gender') {
     return {
-      component: "agRichSelectCellEditor",
+      component: 'agRichSelectCellEditor',
       params: {
-        values: ["Male", "Female"],
+        values: ['Male', 'Female']
       },
-      popup: true,
-    };
+      popup: true
+    }
   }
 
-  if (params.data.type === "mood") {
+  if (params.data.type === 'mood') {
     return {
       component: MoodEditor,
       popup: true,
-      popupPosition: "under",
-    };
+      popupPosition: 'under'
+    }
   }
 
-  return undefined;
-};
+  return undefined
+}
 ```
 
 The return type for the selector is `CellEditorSelectorResult` and has the following attributes:
@@ -119,7 +122,7 @@ Here is a full example:
 
 - The column 'Value' holds data of different types as shown in the column 'Type' (numbers/genders/moods).
 - `colDef.cellEditorSelector` is a function that returns the name of the component to use to edit based on the type of data for that row
-- Edit a cell by double clicking to observe the different editors used.
+- Edit a cell by double clicking to observe the different editors used. 
 
 <grid-example title='Dynamic Editor Component' name='dynamic-editor-component' type='mixed' options='{ "enterprise": true, "modules": ["clientside", "menu", "columnpanel", "richselect"], "exampleHeight": 450, "includeNgFormsModule" : true }'></grid-example>
 
@@ -128,19 +131,19 @@ Here is a full example:
 Parameters for cell editors can be dynamic to allow different selections based on what cell is being edited. For example, you might have a 'City' column that has values based on the 'Country' column. To do this, provide a function that returns parameters for the property `cellEditorParams`.
 
 ```js
-cellEditorParams: (params) => {
-  const selectedCountry = params.data.country;
+cellEditorParams: params => {
+    const selectedCountry = params.data.country;
 
-  if (selectedCountry === "Ireland") {
-    return {
-      values: ["Dublin", "Cork", "Galway"],
-    };
-  } else {
-    return {
-      values: ["New York", "Los Angeles", "Chicago", "Houston"],
-    };
-  }
-};
+    if (selectedCountry === 'Ireland') {
+        return {
+            values: ['Dublin', 'Cork', 'Galway']
+        };
+    } else {
+        return {
+            values: ['New York', 'Los Angeles', 'Chicago', 'Houston']
+        };
+    }
+}
 ```
 
 ## Example: Rich Cell Editor / Dynamic Parameters
@@ -153,6 +156,7 @@ Below shows an example with dynamic editor parameters. The following can be note
 - Column **Address** uses the large text area editor.
 
 <grid-example title='Dynamic Parameters' name='dynamic-parameters' type='generated' options='{ "enterprise": true, "modules": ["clientside", "richselect", "menu", "columnpanel"], "exampleHeight": 520 }'></grid-example>
+
 
 ## Datepicker Cell Editing Example
 

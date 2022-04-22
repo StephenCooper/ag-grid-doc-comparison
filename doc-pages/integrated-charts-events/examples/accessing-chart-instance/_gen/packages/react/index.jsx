@@ -1,11 +1,11 @@
-"use strict";
+'use strict';
 
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
-import { AgGridReact } from "ag-grid-react";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from 'ag-grid-react';
+import 'ag-grid-enterprise';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 
 class GridExample extends Component {
   constructor(props) {
@@ -13,9 +13,9 @@ class GridExample extends Component {
 
     this.state = {
       columnDefs: [
-        { field: "Month", width: 150, chartDataType: "category" },
-        { field: "Sunshine (hours)", chartDataType: "series" },
-        { field: "Rainfall (mm)", chartDataType: "series" },
+        { field: 'Month', width: 150, chartDataType: 'category' },
+        { field: 'Sunshine (hours)', chartDataType: 'series' },
+        { field: 'Rainfall (mm)', chartDataType: 'series' },
       ],
       defaultColDef: {
         editable: true,
@@ -38,35 +38,35 @@ class GridExample extends Component {
       this.setState({ rowData: data });
     };
 
-    fetch("https://www.ag-grid.com/example-assets/weather-se-england.json")
+    fetch('https://www.ag-grid.com/example-assets/weather-se-england.json')
       .then((resp) => resp.json())
       .then((data) => updateData(data));
   };
 
   onChartCreated = (event) => {
-    console.log("Created chart with ID " + event.chartId);
+    console.log('Created chart with ID ' + event.chartId);
     const chartRef = this.gridApi.getChartRef(event.chartId);
     chart = chartRef.chart;
     updateTitle(this.gridApi, chart);
   };
 
   onChartRangeSelectionChanged = (event) => {
-    console.log("Changed range selection of chart with ID " + event.chartId);
+    console.log('Changed range selection of chart with ID ' + event.chartId);
     updateTitle(this.gridApi, chart);
   };
 
   onChartDestroyed = (event) => {
-    console.log("Destroyed chart with ID " + event.chartId);
+    console.log('Destroyed chart with ID ' + event.chartId);
     chart = null;
   };
 
   render() {
     return (
-      <div style={{ width: "100%", height: "100%" }}>
+      <div style={{ width: '100%', height: '100%' }}>
         <div
           style={{
-            height: "100%",
-            width: "100%",
+            height: '100%',
+            width: '100%',
           }}
           className="ag-theme-alpine"
         >
@@ -97,14 +97,14 @@ function updateTitle(api, chart) {
   var columnCount = cellRange.columns.length;
   var rowCount = cellRange.endRow.rowIndex - cellRange.startRow.rowIndex + 1;
   chart.title.enabled = true;
-  chart.title.text = "Monthly Weather";
+  chart.title.text = 'Monthly Weather';
   chart.subtitle.enabled = true;
   chart.subtitle.text =
-    "Using series data from " +
+    'Using series data from ' +
     columnCount +
-    " column(s) and " +
+    ' column(s) and ' +
     rowCount +
-    " row(s)";
+    ' row(s)';
 }
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

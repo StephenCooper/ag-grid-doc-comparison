@@ -5,25 +5,26 @@ import {
   GridOptions,
   GridReadyEvent,
   GridSizeChangedEvent,
-} from "ag-grid-community";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
+  RowHeightParams,
+} from 'ag-grid-community';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 
 var minRowHeight = 25;
 var currentRowHeight: number;
 
 const gridOptions: GridOptions = {
   columnDefs: [
-    { field: "athlete", minWidth: 150 },
-    { field: "age", minWidth: 70, maxWidth: 90 },
-    { field: "country", minWidth: 130 },
-    { field: "year", minWidth: 70, maxWidth: 90 },
-    { field: "date", minWidth: 120 },
-    { field: "sport", minWidth: 120 },
-    { field: "gold", minWidth: 80 },
-    { field: "silver", minWidth: 80 },
-    { field: "bronze", minWidth: 80 },
-    { field: "total", minWidth: 80 },
+    { field: 'athlete', minWidth: 150 },
+    { field: 'age', minWidth: 70, maxWidth: 90 },
+    { field: 'country', minWidth: 130 },
+    { field: 'year', minWidth: 70, maxWidth: 90 },
+    { field: 'date', minWidth: 120 },
+    { field: 'sport', minWidth: 120 },
+    { field: 'gold', minWidth: 80 },
+    { field: 'silver', minWidth: 80 },
+    { field: 'bronze', minWidth: 80 },
+    { field: 'total', minWidth: 80 },
   ],
 
   defaultColDef: {
@@ -38,7 +39,7 @@ const gridOptions: GridOptions = {
   },
   onFirstDataRendered: onFirstDataRendered,
   onGridSizeChanged: onGridSizeChanged,
-  getRowHeight: function () {
+  getRowHeight: function (params: RowHeightParams) {
     return currentRowHeight;
   },
 };
@@ -53,7 +54,7 @@ function onGridSizeChanged(params: GridSizeChangedEvent) {
 
 const updateRowHeight = (params: { api: GridApi }) => {
   // get the height of the grid body - this excludes the height of the headers
-  const bodyViewport = document.querySelector(".ag-body-viewport");
+  const bodyViewport = document.querySelector('.ag-body-viewport');
   if (!bodyViewport) {
     return;
   }
@@ -77,5 +78,5 @@ const updateRowHeight = (params: { api: GridApi }) => {
 };
 
 // setup the grid after the page has finished loading
-var gridDiv = document.querySelector<HTMLElement>("#myGrid")!;
+var gridDiv = document.querySelector<HTMLElement>('#myGrid')!;
 new Grid(gridDiv, gridOptions);

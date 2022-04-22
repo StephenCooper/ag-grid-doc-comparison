@@ -1,16 +1,16 @@
-import { ColDef, Grid, GridOptions } from "ag-grid-community";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
-import { MultilineCellRenderer } from "./multilineCellRenderer";
+import { ColDef, Grid, GridOptions } from 'ag-grid-community';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import 'ag-grid-enterprise';
+import { MultilineCellRenderer } from './multilineCellRenderer';
 
 const columnDefs: ColDef[] = [
-  { field: "address" },
+  { field: 'address' },
   {
-    headerName: "Custom column",
+    headerName: 'Custom column',
     autoHeight: true,
     valueGetter: function (param) {
-      return param.data.col1 + "\n" + param.data.col2;
+      return param.data.col1 + '\n' + param.data.col2;
     },
     cellRenderer: MultilineCellRenderer,
   },
@@ -19,7 +19,7 @@ const columnDefs: ColDef[] = [
 const gridOptions: GridOptions = {
   defaultColDef: {
     sortable: true,
-    cellClass: "multiline",
+    cellClass: 'multiline',
     filter: true,
     resizable: true,
     minWidth: 100,
@@ -31,33 +31,33 @@ const gridOptions: GridOptions = {
   rowData: [
     {
       address:
-        "1197 Thunder Wagon Common,\nCataract, RI, \n02987-1016, US, \n(401) 747-0763",
-      col1: "abc",
-      col2: "xyz",
+        '1197 Thunder Wagon Common,\nCataract, RI, \n02987-1016, US, \n(401) 747-0763',
+      col1: 'abc',
+      col2: 'xyz',
     },
     {
       address:
-        "3685 Rocky Glade, Showtucket, NU, \nX1E-9I0, CA, \n(867) 371-4215",
-      col1: "abc",
-      col2: "xyz",
+        '3685 Rocky Glade, Showtucket, NU, \nX1E-9I0, CA, \n(867) 371-4215',
+      col1: 'abc',
+      col2: 'xyz',
     },
     {
       address:
-        "3235 High Forest, Glen Campbell, MS, \n39035-6845, US, \n(601) 638-8186",
-      col1: "abc",
-      col2: "xyz",
+        '3235 High Forest, Glen Campbell, MS, \n39035-6845, US, \n(601) 638-8186',
+      col1: 'abc',
+      col2: 'xyz',
     },
     {
       address:
-        "2234 Sleepy Pony Mall , Drain, DC, \n20078-4243, US, \n(202) 948-3634",
-      col1: "abc",
-      col2: "xyz",
+        '2234 Sleepy Pony Mall , Drain, DC, \n20078-4243, US, \n(202) 948-3634',
+      col1: 'abc',
+      col2: 'xyz',
     },
   ],
 
   excelStyles: [
     {
-      id: "multiline",
+      id: 'multiline',
       alignment: {
         wrapText: true,
       },
@@ -70,10 +70,10 @@ function onBtExport() {
 }
 
 // setup the grid after the page has finished loading
-const gridDiv = document.querySelector<HTMLElement>("#myGrid")!;
+const gridDiv = document.querySelector<HTMLElement>('#myGrid')!;
 new Grid(gridDiv, gridOptions);
 
-if (typeof window !== "undefined") {
+if (typeof window !== 'undefined') {
   // Attach external event handlers to window so they can be called from index.html
   (<any>window).onBtExport = onBtExport;
 }

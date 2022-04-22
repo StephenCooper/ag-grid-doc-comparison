@@ -10,9 +10,9 @@ export default {
           </div>`,
   data: function () {
     return {
-      athlete: "",
-      country: "",
-      year: "",
+      athlete: '',
+      country: '',
+      year: '',
     };
   },
   beforeMount() {

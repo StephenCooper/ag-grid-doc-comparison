@@ -1,16 +1,16 @@
-"use strict";
+'use strict';
 
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { AgGridReact } from "@ag-grid-community/react";
-import { ColumnsToolPanelModule } from "@ag-grid-enterprise/column-tool-panel";
-import { FiltersToolPanelModule } from "@ag-grid-enterprise/filter-tool-panel";
-import { MenuModule } from "@ag-grid-enterprise/menu";
-import { RowGroupingModule } from "@ag-grid-enterprise/row-grouping";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from '@ag-grid-community/react';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import { RowGroupingModule } from '@ag-grid-enterprise/row-grouping';
+import { MenuModule } from '@ag-grid-enterprise/menu';
+import { ColumnsToolPanelModule } from '@ag-grid-enterprise/column-tool-panel';
+import { FiltersToolPanelModule } from '@ag-grid-enterprise/filter-tool-panel';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([
@@ -27,18 +27,18 @@ class GridExample extends Component {
 
     this.state = {
       columnDefs: [
-        { field: "country", rowGroup: true, enableRowGroup: true },
+        { field: 'country', rowGroup: true, enableRowGroup: true },
         {
-          field: "year",
+          field: 'year',
           pivot: true,
           enablePivot: true,
           pivotComparator: MyYearPivotComparator,
         },
-        { field: "date" },
-        { field: "sport" },
-        { field: "gold", aggFunc: "sum" },
-        { field: "silver", aggFunc: "sum" },
-        { field: "bronze", aggFunc: "sum" },
+        { field: 'date' },
+        { field: 'sport' },
+        { field: 'gold', aggFunc: 'sum' },
+        { field: 'silver', aggFunc: 'sum' },
+        { field: 'bronze', aggFunc: 'sum' },
       ],
       defaultColDef: {
         flex: 1,
@@ -49,26 +49,45 @@ class GridExample extends Component {
       autoGroupColumnDef: {
         minWidth: 250,
       },
-      postProcessSecondaryColDef: function (params) {
-        const colDef = params.colDef;
-        // make all the columns upper case
-        colDef.headerName = colDef.headerName.toUpperCase();
-        // the pivot keys are the keys use for the pivot
-        // don't change these, but you can use them for your information
-        // console.log('Pivot Keys:');
-        // console.log(colDef.pivotKeys);
-        // // the value column is the value we are aggregating on
-        // console.log('Pivot Value Keys:');
-        // console.log(colDef.pivotValueColumn);
+      processSecondaryColDef: function (colDef) {
+        if (
+          _optionalChain([
+            colDef,
+            'access',
+            (_) => _.pivotValueColumn,
+            'optionalAccess',
+            (_2) => _2.getId,
+            'call',
+            (_3) => _3(),
+          ]) === 'gold'
+        ) {
+          colDef.headerName = _optionalChain([
+            colDef,
+            'access',
+            (_4) => _4.headerName,
+            'optionalAccess',
+            (_5) => _5.toUpperCase,
+            'call',
+            (_6) => _6(),
+          ]);
+        }
       },
-      postProcessSecondaryColGroupDef: function (params) {
-        const colGroupDef = params.colGroupDef;
-        // for fun, add a css class for 2002
-        if (colGroupDef.pivotKeys[0] === "2002") {
-          colGroupDef.headerClass = "color-background";
+      processSecondaryColGroupDef: function (colGroupDef) {
+        // for fun, add a css class for 2010
+        if (
+          _optionalChain([
+            colGroupDef,
+            'access',
+            (_7) => _7.pivotKeys,
+            'optionalAccess',
+            (_8) => _8.length,
+          ]) &&
+          colGroupDef.pivotKeys[0] === '2010'
+        ) {
+          colGroupDef.headerClass = 'color-background';
         }
         // put 'year' in front of each group
-        colGroupDef.headerName = "Year " + colGroupDef.headerName;
+        colGroupDef.headerName = 'Year ' + colGroupDef.headerName;
       },
       rowData: null,
     };
@@ -80,18 +99,18 @@ class GridExample extends Component {
 
     const updateData = (data) => params.api.setRowData(data);
 
-    fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+    fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .then((resp) => resp.json())
       .then((data) => updateData(data));
   };
 
   render() {
     return (
-      <div style={{ width: "100%", height: "100%" }}>
+      <div style={{ width: '100%', height: '100%' }}>
         <div
           style={{
-            height: "100%",
-            width: "100%",
+            height: '100%',
+            width: '100%',
           }}
           className="ag-theme-alpine"
         >
@@ -99,13 +118,10 @@ class GridExample extends Component {
             columnDefs={this.state.columnDefs}
             defaultColDef={this.state.defaultColDef}
             autoGroupColumnDef={this.state.autoGroupColumnDef}
-            sideBar={true}
             pivotMode={true}
             suppressAggFuncInHeader={true}
-            postProcessSecondaryColDef={this.state.postProcessSecondaryColDef}
-            postProcessSecondaryColGroupDef={
-              this.state.postProcessSecondaryColGroupDef
-            }
+            processSecondaryColDef={this.state.processSecondaryColDef}
+            processSecondaryColGroupDef={this.state.processSecondaryColGroupDef}
             onGridReady={this.onGridReady}
             rowData={this.state.rowData}
           />
@@ -115,9 +131,30 @@ class GridExample extends Component {
   }
 }
 
+function _optionalChain(ops) {
+  let lastAccessLHS = undefined;
+  let value = ops[0];
+  let i = 1;
+  while (i < ops.length) {
+    const op = ops[i];
+    const fn = ops[i + 1];
+    i += 2;
+    if ((op === 'optionalAccess' || op === 'optionalCall') && value == null) {
+      return undefined;
+    }
+    if (op === 'access' || op === 'optionalAccess') {
+      lastAccessLHS = value;
+      value = fn(value);
+    } else if (op === 'call' || op === 'optionalCall') {
+      value = fn((...args) => value.call(lastAccessLHS, ...args));
+      lastAccessLHS = undefined;
+    }
+  }
+  return value;
+}
 function MyYearPivotComparator(a, b) {
-  var requiredOrder = ["2012", "2010", "2008", "2006", "2004", "2002", "2000"];
+  var requiredOrder = ['2012', '2010', '2008', '2006', '2004', '2002', '2000'];
   return requiredOrder.indexOf(a) - requiredOrder.indexOf(b);
 }
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

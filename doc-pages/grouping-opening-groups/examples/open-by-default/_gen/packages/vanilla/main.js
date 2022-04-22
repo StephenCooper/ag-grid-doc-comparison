@@ -1,10 +1,10 @@
 const gridOptions = {
   columnDefs: [
-    { field: "country", rowGroup: true },
-    { field: "year", rowGroup: true },
-    { field: "sport" },
-    { field: "athlete" },
-    { field: "total" },
+    { field: 'country', rowGroup: true },
+    { field: 'year', rowGroup: true },
+    { field: 'sport' },
+    { field: 'athlete' },
+    { field: 'total' },
   ],
   defaultColDef: {
     flex: 1,
@@ -19,18 +19,18 @@ const gridOptions = {
   animateRows: true,
   isGroupOpenByDefault: (params) => {
     return (
-      (params.field === "year" && params.key === "2004") ||
-      (params.field === "country" && params.key === "United States")
+      (params.field === 'year' && params.key === '2004') ||
+      (params.field === 'country' && params.key === 'United States')
     );
   },
 };
 
 // setup the grid after the page has finished loading
-document.addEventListener("DOMContentLoaded", function () {
-  var gridDiv = document.querySelector("#myGrid");
+document.addEventListener('DOMContentLoaded', function () {
+  var gridDiv = document.querySelector('#myGrid');
   new agGrid.Grid(gridDiv, gridOptions);
 
-  fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+  fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
     .then((response) => response.json())
     .then((data) => gridOptions.api.setRowData(data));
 });

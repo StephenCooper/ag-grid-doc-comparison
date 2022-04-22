@@ -1,13 +1,13 @@
-"use strict";
+'use strict';
 
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { AgGridReact } from "@ag-grid-community/react";
-import { RowGroupingModule } from "@ag-grid-enterprise/row-grouping";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from '@ag-grid-community/react';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import { RowGroupingModule } from '@ag-grid-enterprise/row-grouping';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([ClientSideRowModelModule, RowGroupingModule]);
@@ -18,24 +18,24 @@ class GridExample extends Component {
 
     this.state = {
       columnDefs: [
-        { headerName: "Symbol", field: "symbol" },
-        { headerName: "Price", field: "price" },
-        { headerName: "Group", field: "group" },
+        { headerName: 'Symbol', field: 'symbol' },
+        { headerName: 'Price', field: 'price' },
+        { headerName: 'Group', field: 'group' },
       ],
       defaultColDef: {
         width: 250,
         sortable: true,
         resizable: true,
       },
-      rowSelection: "multiple",
+      rowSelection: 'multiple',
       autoGroupColumnDef: {
-        headerName: "Symbol",
-        cellRenderer: "agGroupCellRenderer",
-        field: "symbol",
+        headerName: 'Symbol',
+        cellRenderer: 'agGroupCellRenderer',
+        field: 'symbol',
       },
       statusBar: {
         statusPanels: [
-          { statusPanel: "agAggregationComponent", align: "right" },
+          { statusPanel: 'agAggregationComponent', align: 'right' },
         ],
       },
       groupDefaultExpanded: 1,
@@ -130,16 +130,16 @@ class GridExample extends Component {
 
   render() {
     return (
-      <div style={{ width: "100%", height: "100%" }}>
+      <div style={{ width: '100%', height: '100%' }}>
         <div
           style={{
-            height: "100%",
-            width: "100%",
-            display: "flex",
-            flexDirection: "column",
+            height: '100%',
+            width: '100%',
+            display: 'flex',
+            flexDirection: 'column',
           }}
         >
-          <div style={{ marginBottom: "5px", minHeight: "30px" }}>
+          <div style={{ marginBottom: '5px', minHeight: '30px' }}>
             <button onClick={() => this.reverseItems()}>Reverse</button>
             <button onClick={() => this.addFiveItems(true)}>Append</button>
             <button onClick={() => this.addFiveItems(false)}>Prepend</button>
@@ -162,24 +162,24 @@ class GridExample extends Component {
             </button>
             <span
               style={{
-                border: "1px solid lightgrey",
-                marginLeft: "20px",
-                padding: "8px",
-                whiteSpace: "nowrap",
-                display: "inline-block",
+                border: '1px solid lightgrey',
+                marginLeft: '20px',
+                padding: '8px',
+                whiteSpace: 'nowrap',
+                display: 'inline-block',
               }}
             >
-              Group:
-              <button onClick={() => this.setSelectedToGroup("A")}>A</button>
-              <button onClick={() => this.setSelectedToGroup("B")}>B</button>
-              <button onClick={() => this.setSelectedToGroup("C")}>C</button>
+              Move to Group:
+              <button onClick={() => this.setSelectedToGroup('A')}>A</button>
+              <button onClick={() => this.setSelectedToGroup('B')}>B</button>
+              <button onClick={() => this.setSelectedToGroup('C')}>C</button>
             </span>
           </div>
-          <div style={{ flex: "1 1 0px" }}>
+          <div style={{ flex: '1 1 0px' }}>
             <div
               style={{
-                height: "100%",
-                width: "100%",
+                height: '100%',
+                width: '100%',
               }}
               className="ag-theme-alpine"
             >
@@ -222,7 +222,7 @@ function filter(list, callback) {
 }
 function createItem() {
   const item = {
-    group: ["A", "B", "C"][Math.floor(Math.random() * 3)],
+    group: ['A', 'B', 'C'][Math.floor(Math.random() * 3)],
     symbol: createUniqueRandomSymbol(),
     price: Math.floor(Math.random() * 100),
   };
@@ -232,32 +232,32 @@ function setGroupingEnabled(enabled, columnApi) {
   if (enabled) {
     columnApi.applyColumnState({
       state: [
-        { colId: "group", rowGroup: true, hide: true },
-        { colId: "symbol", hide: true },
+        { colId: 'group', rowGroup: true, hide: true },
+        { colId: 'symbol', hide: true },
       ],
     });
   } else {
     columnApi.applyColumnState({
       state: [
-        { colId: "group", rowGroup: false, hide: false },
-        { colId: "symbol", hide: false },
+        { colId: 'group', rowGroup: false, hide: false },
+        { colId: 'symbol', hide: false },
       ],
     });
   }
-  setItemVisible("groupingOn", !enabled);
-  setItemVisible("groupingOff", enabled);
+  setItemVisible('groupingOn', !enabled);
+  setItemVisible('groupingOff', enabled);
 }
 function setItemVisible(id, visible) {
-  const element = document.querySelector("#" + id);
-  element.style.display = visible ? "inline" : "none";
+  const element = document.querySelector('#' + id);
+  element.style.display = visible ? 'inline' : 'none';
 }
 // creates a unique symbol, eg 'ADG' or 'ZJD'
 function createUniqueRandomSymbol() {
   let symbol;
-  const possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  const possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
   let isUnique = false;
   while (!isUnique) {
-    symbol = "";
+    symbol = '';
     // create symbol
     for (let i = 0; i < 3; i++) {
       symbol += possible.charAt(Math.floor(Math.random() * possible.length));
@@ -273,4 +273,4 @@ function createUniqueRandomSymbol() {
   return symbol;
 }
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

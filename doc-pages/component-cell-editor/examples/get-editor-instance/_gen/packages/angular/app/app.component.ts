@@ -1,11 +1,11 @@
-import { Component, OnDestroy } from "@angular/core";
-import { ColDef, GridReadyEvent } from "ag-grid-community";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import { MySimpleEditor } from "./mySimple-editor.component";
+import { Component, OnDestroy } from '@angular/core';
+import { ColDef, GridReadyEvent } from 'ag-grid-community';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import { MySimpleEditor } from './mySimple-editor.component';
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `
     <ag-grid-angular
       style="width: 100%; height: 100%;"
@@ -21,39 +21,39 @@ import { MySimpleEditor } from "./mySimple-editor.component";
 export class AppComponent implements OnDestroy {
   public columnDefs: ColDef[] = [
     {
-      field: "first_name",
-      headerName: "First Name",
+      field: 'first_name',
+      headerName: 'First Name',
       width: 120,
       editable: true,
     },
     {
-      field: "last_name",
-      headerName: "Last Name",
+      field: 'last_name',
+      headerName: 'Last Name',
       width: 120,
       editable: true,
     },
     {
-      field: "gender",
+      field: 'gender',
       width: 100,
       cellEditor: MySimpleEditor,
     },
     {
-      field: "age",
+      field: 'age',
       width: 80,
       cellEditor: MySimpleEditor,
     },
     {
-      field: "mood",
+      field: 'mood',
       width: 90,
       cellEditor: MySimpleEditor,
     },
     {
-      field: "country",
+      field: 'country',
       width: 110,
       cellEditor: MySimpleEditor,
     },
     {
-      field: "address",
+      field: 'address',
       width: 502,
       cellEditor: MySimpleEditor,
     },
@@ -87,11 +87,11 @@ export class AppComponent implements OnDestroy {
           );
         } else {
           console.log(
-            "found editing cell, but method myCustomFunction not found, must be the default editor."
+            'found editing cell, but method myCustomFunction not found, must be the default editor.'
           );
         }
       } else {
-        console.log("found not editing cell.");
+        console.log('found not editing cell.');
       }
     }, 2000);
   }
@@ -105,43 +105,43 @@ export class AppComponent implements OnDestroy {
 
     const students = [
       {
-        first_name: "Bob",
-        last_name: "Harrison",
-        gender: "Male",
+        first_name: 'Bob',
+        last_name: 'Harrison',
+        gender: 'Male',
         address:
-          "1197 Thunder Wagon Common, Cataract, RI, 02987-1016, US, (401) 747-0763",
-        mood: "Happy",
-        country: "Ireland",
+          '1197 Thunder Wagon Common, Cataract, RI, 02987-1016, US, (401) 747-0763',
+        mood: 'Happy',
+        country: 'Ireland',
       },
       {
-        first_name: "Mary",
-        last_name: "Wilson",
-        gender: "Female",
+        first_name: 'Mary',
+        last_name: 'Wilson',
+        gender: 'Female',
         age: 11,
         address:
-          "3685 Rocky Glade, Showtucket, NU, X1E-9I0, CA, (867) 371-4215",
-        mood: "Sad",
-        country: "Ireland",
+          '3685 Rocky Glade, Showtucket, NU, X1E-9I0, CA, (867) 371-4215',
+        mood: 'Sad',
+        country: 'Ireland',
       },
       {
-        first_name: "Zahid",
-        last_name: "Khan",
-        gender: "Male",
+        first_name: 'Zahid',
+        last_name: 'Khan',
+        gender: 'Male',
         age: 12,
         address:
-          "3235 High Forest, Glen Campbell, MS, 39035-6845, US, (601) 638-8186",
-        mood: "Happy",
-        country: "Ireland",
+          '3235 High Forest, Glen Campbell, MS, 39035-6845, US, (601) 638-8186',
+        mood: 'Happy',
+        country: 'Ireland',
       },
       {
-        first_name: "Jerry",
-        last_name: "Mane",
-        gender: "Male",
+        first_name: 'Jerry',
+        last_name: 'Mane',
+        gender: 'Male',
         age: 12,
         address:
-          "2234 Sleepy Pony Mall , Drain, DC, 20078-4243, US, (202) 948-3634",
-        mood: "Happy",
-        country: "Ireland",
+          '2234 Sleepy Pony Mall , Drain, DC, 20078-4243, US, (202) 948-3634',
+        mood: 'Happy',
+        country: 'Ireland',
       },
     ];
 

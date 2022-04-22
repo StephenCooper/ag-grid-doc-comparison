@@ -1,11 +1,11 @@
-"use strict";
+'use strict';
 
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine-dark.css";
-import "ag-grid-enterprise";
-import { AgGridReact } from "ag-grid-react";
-import React, { useCallback, useMemo, useState } from "react";
-import { render } from "react-dom";
+import React, { useCallback, useMemo, useRef, useState } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from 'ag-grid-react';
+import 'ag-grid-enterprise';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine-dark.css';
 
 var countDownDirection = true;
 
@@ -32,9 +32,9 @@ const startInterval = (api, columnApi) => {
 };
 
 const resetCountdown = () => {
-  document.querySelector("#animationCountdown").style.width = countDownDirection
-    ? "100%"
-    : "0%";
+  document.querySelector('#animationCountdown').style.width = countDownDirection
+    ? '100%'
+    : '0%';
   countDownDirection = !countDownDirection;
 };
 
@@ -47,55 +47,55 @@ const setTitleFormatted = (apiName, methodName, paramsName) => {
       '<span class="code-highlight-yellow">command:> </span> ' +
       '<span class="code-highlight-blue">' +
       apiName +
-      "</span>" +
+      '</span>' +
       '<span class="code-highlight-blue">.</span>' +
       '<span class="code-highlight-yellow">' +
       methodName +
-      "</span>" +
+      '</span>' +
       '<span class="code-highlight-blue"></span>' +
       '<span class="code-highlight-blue">(</span>' +
       '<span class="code-highlight-green">' +
       paramsName +
-      "</span>" +
+      '</span>' +
       '<span class="code-highlight-blue">)</span>';
   }
-  document.querySelector("#animationAction").innerHTML = html;
+  document.querySelector('#animationAction').innerHTML = html;
 };
 
 const getActions = () => {
   return [
     function (api, columnApi) {
       columnApi.applyColumnState({
-        state: [{ colId: "country", sort: "asc" }],
+        state: [{ colId: 'country', sort: 'asc' }],
         defaultState: { sort: null },
       });
-      setTitleFormatted("api", "applyColumnState", "country: 'asc'");
+      setTitleFormatted('api', 'applyColumnState', "country: 'asc'");
     },
     function (api, columnApi) {
       columnApi.applyColumnState({
         state: [
-          { colId: "year", sort: "asc" },
-          { colId: "country", sort: "asc" },
+          { colId: 'year', sort: 'asc' },
+          { colId: 'country', sort: 'asc' },
         ],
         defaultState: { sort: null },
       });
       setTitleFormatted(
-        "api",
-        "applyColumnState",
+        'api',
+        'applyColumnState',
         "year: 'asc', country 'asc'"
       );
     },
     function (api, columnApi) {
       columnApi.applyColumnState({
         state: [
-          { colId: "year", sort: "asc" },
-          { colId: "country", sort: "desc" },
+          { colId: 'year', sort: 'asc' },
+          { colId: 'country', sort: 'desc' },
         ],
         defaultState: { sort: null },
       });
       setTitleFormatted(
-        "api",
-        "applyColumnState",
+        'api',
+        'applyColumnState',
         "year: 'asc', country: 'desc'"
       );
     },
@@ -103,22 +103,22 @@ const getActions = () => {
       columnApi.applyColumnState({
         defaultState: { sort: null },
       });
-      setTitleFormatted("api", "applyColumnState", "clear sort");
+      setTitleFormatted('api', 'applyColumnState', 'clear sort');
     },
   ];
 };
 
 const GridExample = () => {
-  const containerStyle = useMemo(() => ({ width: "100%", height: "100%" }), []);
-  const gridStyle = useMemo(() => ({ height: "100%", width: "100%" }), []);
+  const containerStyle = useMemo(() => ({ width: '100%', height: '100%' }), []);
+  const gridStyle = useMemo(() => ({ height: '100%', width: '100%' }), []);
   const [rowData, setRowData] = useState();
   const [columnDefs, setColumnDefs] = useState([
-    { field: "athlete", minWidth: 150 },
-    { field: "country", minWidth: 150 },
-    { field: "year", minWidth: 120 },
-    { field: "gold", aggFunc: "sum" },
-    { field: "silver", aggFunc: "sum" },
-    { field: "bronze", aggFunc: "sum" },
+    { field: 'athlete', minWidth: 150 },
+    { field: 'country', minWidth: 150 },
+    { field: 'year', minWidth: 120 },
+    { field: 'gold', aggFunc: 'sum' },
+    { field: 'silver', aggFunc: 'sum' },
+    { field: 'bronze', aggFunc: 'sum' },
   ]);
   const defaultColDef = useMemo(() => {
     return {
@@ -130,15 +130,15 @@ const GridExample = () => {
   const autoGroupColumnDef = useMemo(() => {
     return {
       // to get 'athlete' showing in the leaf level in this column
-      cellRenderer: "agGroupCellRenderer",
-      headerName: "Athlete",
+      cellRenderer: 'agGroupCellRenderer',
+      headerName: 'Athlete',
       minWidth: 200,
-      field: "athlete",
+      field: 'athlete',
     };
   }, []);
 
   const onGridReady = useCallback((params) => {
-    fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+    fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .then((resp) => resp.json())
       .then((data) => {
         setRowData(data.slice(0, 50));
@@ -152,18 +152,18 @@ const GridExample = () => {
         <div className="example-header">
           <div
             style={{
-              display: "inline-block",
-              height: "10px",
-              marginTop: "5px",
-              marginRight: "10px",
-              width: "100px",
-              border: "1px solid grey",
+              display: 'inline-block',
+              height: '10px',
+              marginTop: '5px',
+              marginRight: '10px',
+              width: '100px',
+              border: '1px solid grey',
             }}
           >
             <div
               id="animationCountdown"
               className="transition-width"
-              style={{ backgroundColor: "grey", height: "100%", width: "0%" }}
+              style={{ backgroundColor: 'grey', height: '100%', width: '0%' }}
             ></div>
           </div>
           <span id="animationAction"></span>
@@ -186,4 +186,4 @@ const GridExample = () => {
   );
 };
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

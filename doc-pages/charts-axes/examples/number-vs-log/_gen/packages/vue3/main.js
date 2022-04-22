@@ -1,6 +1,6 @@
-import { AgChartsVue } from "ag-charts-vue3";
-import { cloneDeep } from "lodash";
-import { createApp } from "vue";
+import { AgChartsVue } from 'ag-charts-vue3';
+import { cloneDeep } from 'lodash';
+import { createApp } from 'vue';
 
 const ChartExample = {
   template: `
@@ -19,7 +19,7 @@ const ChartExample = {
             </div>
     `,
   components: {
-    "ag-charts-vue": AgChartsVue,
+    'ag-charts-vue': AgChartsVue,
   },
   data: function () {
     return {
@@ -29,27 +29,27 @@ const ChartExample = {
   created() {
     this.options = {
       data: [
-        { os: "A", share: 10 },
-        { os: "B", share: 100 },
-        { os: "C", share: 1000 },
+        { os: 'A', share: 10 },
+        { os: 'B', share: 100 },
+        { os: 'C', share: 1000 },
       ],
       series: [
         {
-          type: "line",
-          xKey: "os",
-          yKey: "share",
+          type: 'line',
+          xKey: 'os',
+          yKey: 'share',
         },
       ],
       axes: [
         {
-          type: "category",
-          position: "bottom",
+          type: 'category',
+          position: 'bottom',
         },
         {
-          type: "number",
-          position: "left",
+          type: 'number',
+          position: 'left',
           label: {
-            format: ".0f",
+            format: '.0f',
           },
           tick: {
             count: 10,
@@ -68,15 +68,15 @@ const ChartExample = {
 
       options.axes = [
         {
-          type: "category",
-          position: "bottom",
+          type: 'category',
+          position: 'bottom',
         },
         {
-          type: "number",
-          position: "left",
+          type: 'number',
+          position: 'left',
           min: 1,
           label: {
-            format: ".0f",
+            format: '.0f',
           },
           tick: {
             count: 10,
@@ -91,15 +91,15 @@ const ChartExample = {
 
       options.axes = [
         {
-          type: "category",
-          position: "bottom",
+          type: 'category',
+          position: 'bottom',
         },
         {
-          type: "log",
-          position: "left",
+          type: 'log',
+          position: 'left',
           min: 10,
           label: {
-            format: ".0f",
+            format: '.0f',
           },
           tick: {
             count: 10,
@@ -114,15 +114,15 @@ const ChartExample = {
 
       options.axes = [
         {
-          type: "category",
-          position: "bottom",
+          type: 'category',
+          position: 'bottom',
         },
         {
-          type: "log",
-          position: "left",
+          type: 'log',
+          position: 'left',
           min: 10,
           label: {
-            format: ".0f",
+            format: '.0f',
           },
           tick: {
             count: 10,
@@ -138,15 +138,15 @@ const ChartExample = {
 
       options.axes = [
         {
-          type: "category",
-          position: "bottom",
+          type: 'category',
+          position: 'bottom',
         },
         {
-          type: "log",
-          position: "left",
+          type: 'log',
+          position: 'left',
           min: 10,
           label: {
-            format: ".0f",
+            format: '.0f',
           },
           tick: {
             count: 2, // a hint that we want a smaller tick count
@@ -159,4 +159,4 @@ const ChartExample = {
   },
 };
 
-createApp(ChartExample).mount("#app");
+createApp(ChartExample).mount('#app');

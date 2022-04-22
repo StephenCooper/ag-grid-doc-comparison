@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from 'react';
 
 export default (props) => {
   const node = props.node;
@@ -28,16 +28,16 @@ export default (props) => {
   const dataChangedListener = () => refreshUi();
 
   useEffect(() => {
-    props.api.addEventListener("cellValueChanged", dataChangedListener);
-    props.api.addEventListener("filterChanged", dataChangedListener);
+    props.api.addEventListener('cellValueChanged', dataChangedListener);
+    props.api.addEventListener('filterChanged', dataChangedListener);
 
     return () => {
-      props.api.removeEventListener("cellValueChanged", dataChangedListener);
-      props.api.removeEventListener("filterChanged", dataChangedListener);
+      props.api.removeEventListener('cellValueChanged', dataChangedListener);
+      props.api.removeEventListener('filterChanged', dataChangedListener);
     };
   }, []);
 
-  let img = "";
+  let img = '';
   if (flagCode) {
     img = (
       <img
@@ -51,7 +51,7 @@ export default (props) => {
   }
 
   return (
-    <div style={{ display: "inline-block" }}>
+    <div style={{ display: 'inline-block' }}>
       {img}
       <span className="groupTitle">{countryName}</span>
       <span

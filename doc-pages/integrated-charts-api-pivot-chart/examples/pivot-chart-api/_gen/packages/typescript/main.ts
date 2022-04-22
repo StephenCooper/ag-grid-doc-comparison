@@ -3,18 +3,18 @@ import {
   FirstDataRenderedEvent,
   Grid,
   GridOptions,
-} from "ag-grid-community";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
+} from 'ag-grid-community';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import 'ag-grid-enterprise';
 
 const gridOptions: GridOptions = {
   columnDefs: [
-    { field: "country", pivot: true },
-    { field: "year", rowGroup: true },
-    { field: "sport", rowGroup: true },
-    { field: "total", aggFunc: "sum" },
-    { field: "gold", aggFunc: "sum" },
+    { field: 'country', pivot: true },
+    { field: 'year', rowGroup: true },
+    { field: 'sport', rowGroup: true },
+    { field: 'total', aggFunc: 'sum' },
+    { field: 'gold', aggFunc: 'sum' },
   ],
   defaultColDef: {
     editable: true,
@@ -33,12 +33,12 @@ const gridOptions: GridOptions = {
 };
 
 function onFirstDataRendered(event: FirstDataRenderedEvent) {
-  var chartContainer = document.querySelector("#chart") as any;
+  var chartContainer = document.querySelector('#chart') as any;
 
   var params: CreatePivotChartParams = {
-    chartType: "groupedColumn",
+    chartType: 'groupedColumn',
     chartContainer: chartContainer,
-    chartThemeName: "ag-vivid",
+    chartThemeName: 'ag-vivid',
     chartThemeOverrides: {
       common: {
         padding: {
@@ -49,7 +49,7 @@ function onFirstDataRendered(event: FirstDataRenderedEvent) {
         },
         legend: {
           enabled: true,
-          position: "bottom",
+          position: 'bottom',
         },
         navigator: {
           enabled: true,
@@ -68,10 +68,10 @@ function onFirstDataRendered(event: FirstDataRenderedEvent) {
 }
 
 // setup the grid after the page has finished loading
-var gridDiv = document.querySelector<HTMLElement>("#myGrid")!;
+var gridDiv = document.querySelector<HTMLElement>('#myGrid')!;
 new Grid(gridDiv, gridOptions);
 
-fetch("https://www.ag-grid.com/example-assets/wide-spread-of-sports.json")
+fetch('https://www.ag-grid.com/example-assets/wide-spread-of-sports.json')
   .then((response) => response.json())
   .then(function (data) {
     gridOptions.api!.setRowData(data);

@@ -1,17 +1,17 @@
-import { Component } from "@angular/core";
+import { Component } from '@angular/core';
 import {
   AgChartThemeOverrides,
   ColDef,
   CreateRangeChartParams,
   FirstDataRenderedEvent,
   GridReadyEvent,
-} from "ag-grid-community";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
+} from 'ag-grid-community';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import 'ag-grid-enterprise';
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<ag-grid-angular
     style="width: 100%; height: 100%;"
     class="ag-theme-alpine"
@@ -28,11 +28,11 @@ import "ag-grid-enterprise";
 })
 export class AppComponent {
   public columnDefs: ColDef[] = [
-    { field: "country", width: 150, chartDataType: "category" },
-    { field: "total", chartDataType: "series" },
-    { field: "gold", chartDataType: "series" },
-    { field: "silver", chartDataType: "series" },
-    { field: "bronze", chartDataType: "series" },
+    { field: 'country', width: 150, chartDataType: 'category' },
+    { field: 'total', chartDataType: 'series' },
+    { field: 'gold', chartDataType: 'series' },
+    { field: 'silver', chartDataType: 'series' },
+    { field: 'bronze', chartDataType: 'series' },
   ];
   public defaultColDef: ColDef = {
     editable: true,
@@ -52,13 +52,13 @@ export class AppComponent {
         strokeWidth: 2,
         highlightStyle: {
           item: {
-            fill: "red",
-            stroke: "yellow",
+            fill: 'red',
+            stroke: 'yellow',
           },
         },
         marker: {
           enabled: true,
-          shape: "square",
+          shape: 'square',
           size: 5,
           maxSize: 12,
           strokeWidth: 4,
@@ -70,27 +70,27 @@ export class AppComponent {
             return {
               content:
                 (label != null
-                  ? "<b>" +
+                  ? '<b>' +
                     params.labelName!.toUpperCase() +
-                    ":</b> " +
+                    ':</b> ' +
                     label +
-                    "<br/>"
-                  : "") +
-                "<b>" +
+                    '<br/>'
+                  : '') +
+                '<b>' +
                 params.xName!.toUpperCase() +
-                ":</b> " +
+                ':</b> ' +
                 params.xValue +
-                "<br/>" +
-                "<b>" +
+                '<br/>' +
+                '<b>' +
                 params.yName!.toUpperCase() +
-                ":</b> " +
+                ':</b> ' +
                 params.yValue +
                 (size != null
-                  ? "<br/><b>" +
+                  ? '<br/><b>' +
                     params.sizeName!.toUpperCase() +
-                    ":</b> " +
+                    ':</b> ' +
                     size
-                  : ""),
+                  : ''),
             };
           },
         },
@@ -102,11 +102,11 @@ export class AppComponent {
     var cellRange = {
       rowStartIndex: 0,
       rowEndIndex: 4,
-      columns: ["country", "total", "gold", "silver", "bronze"],
+      columns: ['country', 'total', 'gold', 'silver', 'bronze'],
     };
     var createRangeChartParams: CreateRangeChartParams = {
       cellRange: cellRange,
-      chartType: "scatter",
+      chartType: 'scatter',
     };
     params.api.createRangeChart(createRangeChartParams);
   }

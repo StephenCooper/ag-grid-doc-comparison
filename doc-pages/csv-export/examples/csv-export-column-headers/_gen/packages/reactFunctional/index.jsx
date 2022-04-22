@@ -1,32 +1,32 @@
-"use strict";
+'use strict';
 
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
-import { AgGridReact } from "ag-grid-react";
-import React, { useCallback, useMemo, useRef, useState } from "react";
-import { render } from "react-dom";
+import React, { useCallback, useMemo, useRef, useState } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from 'ag-grid-react';
+import 'ag-grid-enterprise';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 
 const getBoolean = (id) => {
-  var field = document.querySelector("#" + id);
+  var field = document.querySelector('#' + id);
   return !!field.checked;
 };
 
 const getParams = () => {
   return {
-    skipColumnGroupHeaders: getBoolean("columnGroups"),
-    skipColumnHeaders: getBoolean("skipHeader"),
+    skipColumnGroupHeaders: getBoolean('columnGroups'),
+    skipColumnHeaders: getBoolean('skipHeader'),
   };
 };
 
 const GridExample = () => {
   const gridRef = useRef();
-  const containerStyle = useMemo(() => ({ width: "100%", height: "100%" }), []);
-  const gridStyle = useMemo(() => ({ height: "100%", width: "100%" }), []);
+  const containerStyle = useMemo(() => ({ width: '100%', height: '100%' }), []);
+  const gridStyle = useMemo(() => ({ height: '100%', width: '100%' }), []);
   const [rowData, setRowData] = useState([
-    { make: "Toyota", model: "Celica", price: 35000 },
-    { make: "Ford", model: "Mondeo", price: 32000 },
-    { make: "Porsche", model: "Boxter", price: 72000 },
+    { make: 'Toyota', model: 'Celica', price: 35000 },
+    { make: 'Ford', model: 'Mondeo', price: 32000 },
+    { make: 'Porsche', model: 'Boxster', price: 72000 },
   ]);
   const defaultColDef = useMemo(() => {
     return {
@@ -40,15 +40,15 @@ const GridExample = () => {
     return document.body;
   }, []);
   const [columnDefs, setColumnDefs] = useState([
-    { headerName: "Brand", children: [{ field: "make" }, { field: "model" }] },
+    { headerName: 'Brand', children: [{ field: 'make' }, { field: 'model' }] },
     {
-      headerName: "Value",
-      children: [{ field: "price" }],
+      headerName: 'Value',
+      children: [{ field: 'price' }],
     },
   ]);
 
   const onGridReady = useCallback((params) => {
-    document.getElementById("columnGroups").checked = true;
+    document.getElementById('columnGroups').checked = true;
   }, []);
 
   const onBtnExport = useCallback(() => {
@@ -56,32 +56,33 @@ const GridExample = () => {
   }, []);
 
   const onBtnUpdate = useCallback(() => {
-    document.querySelector("#csvResult").value =
-      gridRef.current.api.getDataAsCsv(getParams());
+    document.querySelector(
+      '#csvResult'
+    ).value = gridRef.current.api.getDataAsCsv(getParams());
   }, []);
 
   return (
     <div style={containerStyle}>
-      <div style={{ display: "flex", flexDirection: "column", height: "100%" }}>
-        <div style={{ display: "flex" }}>
+      <div style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
+        <div style={{ display: 'flex' }}>
           <div className="row">
-            <label for="columnGroups">
+            <label htmlFor="columnGroups">
               <input id="columnGroups" type="checkbox" />
               Skip Column Group Headers
             </label>
-            <label for="skipHeader">
+            <label htmlFor="skipHeader">
               <input id="skipHeader" type="checkbox" />
               Skip Column Headers
             </label>
           </div>
         </div>
 
-        <div style={{ margin: "10px 0" }}>
+        <div style={{ margin: '10px 0' }}>
           <button onClick={onBtnUpdate}>Show CSV export content text</button>
           <button onClick={onBtnExport}>Download CSV export file</button>
         </div>
 
-        <div style={{ flex: "1 1 0px", position: "relative" }}>
+        <div style={{ flex: '1 1 0px', position: 'relative' }}>
           <div id="gridContainer">
             <div style={gridStyle} className="ag-theme-alpine">
               <AgGridReact
@@ -104,4 +105,4 @@ const GridExample = () => {
   );
 };
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

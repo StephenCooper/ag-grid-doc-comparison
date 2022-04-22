@@ -1,17 +1,17 @@
-import * as agCharts from "ag-charts-community";
-import { AgChartOptions } from "ag-charts-community";
+import * as agCharts from 'ag-charts-community';
+import { AgChartOptions } from 'ag-charts-community';
 
 const options: AgChartOptions = {
-  container: document.getElementById("myChart"),
+  container: document.getElementById('myChart'),
   title: {
-    text: "Fuel Spending (2019)",
+    text: 'Fuel Spending (2019)',
   },
   data: getData(),
   series: [
     {
-      xKey: "quarter",
-      yKey: "electric",
-      title: "Electric",
+      xKey: 'quarter',
+      yKey: 'electric',
+      title: 'Electric',
       marker: {
         shape: heartFactory(),
         size: 16,
@@ -19,7 +19,7 @@ const options: AgChartOptions = {
     },
   ],
   legend: {
-    position: "bottom",
+    position: 'bottom',
   },
 };
 

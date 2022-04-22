@@ -1,18 +1,19 @@
-import { Component } from "@angular/core";
+import { Component } from '@angular/core';
 import {
   ColDef,
   ColumnApi,
   GetRowIdFunc,
+  GetRowIdParams,
   GridApi,
   GridReadyEvent,
   StatusPanelDef,
-} from "ag-grid-community";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
+} from 'ag-grid-community';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import 'ag-grid-enterprise';
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<div
     style="height: 100%; width: 100%; display: flex; flex-direction: column;"
   >
@@ -32,7 +33,7 @@ import "ag-grid-enterprise";
       <span
         style="border: 1px solid lightgrey; margin-left: 20px; padding: 8px; white-space: nowrap; display: inline-block;"
       >
-        Group:
+        Move to Group:
         <button (click)="setSelectedToGroup('A')">A</button>
         <button (click)="setSelectedToGroup('B')">B</button>
         <button (click)="setSelectedToGroup('C')">C</button>
@@ -61,29 +62,29 @@ export class AppComponent {
   private gridColumnApi!: ColumnApi;
 
   public columnDefs: ColDef[] = [
-    { headerName: "Symbol", field: "symbol" },
-    { headerName: "Price", field: "price" },
-    { headerName: "Group", field: "group" },
+    { headerName: 'Symbol', field: 'symbol' },
+    { headerName: 'Price', field: 'price' },
+    { headerName: 'Group', field: 'group' },
   ];
   public defaultColDef: ColDef = {
     width: 250,
     sortable: true,
     resizable: true,
   };
-  public rowSelection = "multiple";
+  public rowSelection = 'multiple';
   public autoGroupColumnDef: ColDef = {
-    headerName: "Symbol",
-    cellRenderer: "agGroupCellRenderer",
-    field: "symbol",
+    headerName: 'Symbol',
+    cellRenderer: 'agGroupCellRenderer',
+    field: 'symbol',
   };
   public statusBar: {
     statusPanels: StatusPanelDef[];
   } = {
-    statusPanels: [{ statusPanel: "agAggregationComponent", align: "right" }],
+    statusPanels: [{ statusPanel: 'agAggregationComponent', align: 'right' }],
   };
   public groupDefaultExpanded = 1;
   public rowData: any[] | null = immutableStore;
-  public getRowId: GetRowIdFunc = function (params) {
+  public getRowId: GetRowIdFunc = function (params: GetRowIdParams) {
     return params.data.symbol;
   };
 
@@ -189,7 +190,7 @@ function filter(list: any[], callback: any) {
 }
 function createItem() {
   const item = {
-    group: ["A", "B", "C"][Math.floor(Math.random() * 3)],
+    group: ['A', 'B', 'C'][Math.floor(Math.random() * 3)],
     symbol: createUniqueRandomSymbol(),
     price: Math.floor(Math.random() * 100),
   };
@@ -199,32 +200,32 @@ function setGroupingEnabled(enabled: boolean, columnApi: ColumnApi) {
   if (enabled) {
     columnApi.applyColumnState({
       state: [
-        { colId: "group", rowGroup: true, hide: true },
-        { colId: "symbol", hide: true },
+        { colId: 'group', rowGroup: true, hide: true },
+        { colId: 'symbol', hide: true },
       ],
     });
   } else {
     columnApi.applyColumnState({
       state: [
-        { colId: "group", rowGroup: false, hide: false },
-        { colId: "symbol", hide: false },
+        { colId: 'group', rowGroup: false, hide: false },
+        { colId: 'symbol', hide: false },
       ],
     });
   }
-  setItemVisible("groupingOn", !enabled);
-  setItemVisible("groupingOff", enabled);
+  setItemVisible('groupingOn', !enabled);
+  setItemVisible('groupingOff', enabled);
 }
 function setItemVisible(id: string, visible: boolean) {
-  const element = document.querySelector("#" + id)! as any;
-  element.style.display = visible ? "inline" : "none";
+  const element = document.querySelector('#' + id)! as any;
+  element.style.display = visible ? 'inline' : 'none';
 }
 // creates a unique symbol, eg 'ADG' or 'ZJD'
 function createUniqueRandomSymbol() {
   let symbol: any;
-  const possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  const possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
   let isUnique = false;
   while (!isUnique) {
-    symbol = "";
+    symbol = '';
     // create symbol
     for (let i = 0; i < 3; i++) {
       symbol += possible.charAt(Math.floor(Math.random() * possible.length));

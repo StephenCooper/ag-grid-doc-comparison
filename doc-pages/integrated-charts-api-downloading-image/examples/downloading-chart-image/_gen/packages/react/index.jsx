@@ -1,11 +1,11 @@
-"use strict";
+'use strict';
 
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
-import { AgGridReact } from "ag-grid-react";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from 'ag-grid-react';
+import 'ag-grid-enterprise';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 
 class GridExample extends Component {
   constructor(props) {
@@ -13,10 +13,10 @@ class GridExample extends Component {
 
     this.state = {
       columnDefs: [
-        { field: "country", chartDataType: "category" },
-        { field: "sugar", chartDataType: "series" },
-        { field: "fat", chartDataType: "series" },
-        { field: "weight", chartDataType: "series" },
+        { field: 'country', chartDataType: 'category' },
+        { field: 'sugar', chartDataType: 'series' },
+        { field: 'fat', chartDataType: 'series' },
+        { field: 'weight', chartDataType: 'series' },
       ],
       defaultColDef: {
         editable: true,
@@ -50,10 +50,10 @@ class GridExample extends Component {
   onFirstDataRendered = (params) => {
     const createRangeChartParams = {
       cellRange: {
-        columns: ["country", "sugar", "fat", "weight"],
+        columns: ['country', 'sugar', 'fat', 'weight'],
       },
-      chartType: "groupedColumn",
-      chartContainer: document.querySelector("#myChart"),
+      chartType: 'groupedColumn',
+      chartContainer: document.querySelector('#myChart'),
     };
     params.api.createRangeChart(createRangeChartParams);
   };
@@ -69,10 +69,10 @@ class GridExample extends Component {
     const params = { fileFormat, chartId };
     const imageDataURL = this.gridApi.getChartImageDataURL(params);
     if (imageDataURL) {
-      const a = document.createElement("a");
+      const a = document.createElement('a');
       a.href = imageDataURL;
-      a.download = "image";
-      a.style.display = "none";
+      a.download = 'image';
+      a.style.display = 'none';
       document.body.appendChild(a);
       a.click();
       document.body.removeChild(a);
@@ -88,7 +88,7 @@ class GridExample extends Component {
     if (imageDataURL) {
       const image = new Image();
       image.src = imageDataURL;
-      const w = window.open("");
+      const w = window.open('');
       w.document.write(image.outerHTML);
       w.document.close();
     }
@@ -96,26 +96,26 @@ class GridExample extends Component {
 
   render() {
     return (
-      <div style={{ width: "100%", height: "100%" }}>
+      <div style={{ width: '100%', height: '100%' }}>
         <div className="wrapper">
           <div id="buttons">
-            <button onClick={() => this.downloadChartImage("image/png")}>
+            <button onClick={() => this.downloadChartImage('image/png')}>
               Download chart PNG
             </button>
-            <button onClick={() => this.downloadChartImage("image/jpeg")}>
+            <button onClick={() => this.downloadChartImage('image/jpeg')}>
               Download chart JPEG
             </button>
-            <button onClick={() => this.openChartImage("image/png")}>
+            <button onClick={() => this.openChartImage('image/png')}>
               Open PNG
             </button>
-            <button onClick={() => this.openChartImage("image/jpeg")}>
+            <button onClick={() => this.openChartImage('image/jpeg')}>
               Open JPEG
             </button>
           </div>
           <div
             style={{
-              height: "100%",
-              width: "100%",
+              height: '100%',
+              width: '100%',
             }}
             className="ag-theme-alpine"
           >
@@ -141,4 +141,4 @@ class GridExample extends Component {
 
 var chartId;
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

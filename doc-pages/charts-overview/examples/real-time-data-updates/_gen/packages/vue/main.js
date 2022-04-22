@@ -1,6 +1,6 @@
-import { AgChartsVue } from "ag-charts-vue";
-import { cloneDeep } from "lodash";
-import Vue from "vue";
+import { AgChartsVue } from 'ag-charts-vue';
+import { cloneDeep } from 'lodash';
+import Vue from 'vue';
 
 const ChartExample = {
   template: `
@@ -8,7 +8,7 @@ const ChartExample = {
                 :options="options"></ag-charts-vue>
     `,
   components: {
-    "ag-charts-vue": AgChartsVue,
+    'ag-charts-vue': AgChartsVue,
   },
   data: function () {
     return {
@@ -21,50 +21,50 @@ const ChartExample = {
       data: getData(),
       theme: {
         palette: {
-          fills: ["#ec4d3d", "#4facf2"],
-          strokes: ["#ec4d3d", "#4facf2"],
+          fills: ['#ec4d3d', '#4facf2'],
+          strokes: ['#ec4d3d', '#4facf2'],
         },
         overrides: { area: { series: { fillOpacity: 0.5 } } },
       },
       title: {
-        text: "Simulated CPU Usage",
+        text: 'Simulated CPU Usage',
         fontSize: 18,
       },
       series: [
         {
-          type: "area",
-          xKey: "time",
-          yKey: "system",
+          type: 'area',
+          xKey: 'time',
+          yKey: 'system',
           stacked: true,
-          yName: "System",
+          yName: 'System',
         },
         {
-          type: "area",
-          xKey: "time",
-          yKey: "user",
+          type: 'area',
+          xKey: 'time',
+          yKey: 'user',
           stacked: true,
-          yName: "User",
+          yName: 'User',
         },
       ],
       axes: [
         {
-          type: "time",
-          position: "bottom",
+          type: 'time',
+          position: 'bottom',
           nice: false,
         },
         {
-          type: "number",
-          position: "left",
+          type: 'number',
+          position: 'left',
           title: {
             enabled: true,
-            text: "Load (%)",
+            text: 'Load (%)',
           },
           min: 0,
           max: 100,
         },
       ],
       legend: {
-        position: "bottom",
+        position: 'bottom',
       },
     };
   },
@@ -126,8 +126,8 @@ window.getData = function getData() {
 };
 
 new Vue({
-  el: "#app",
+  el: '#app',
   components: {
-    "my-component": ChartExample,
+    'my-component': ChartExample,
   },
 });

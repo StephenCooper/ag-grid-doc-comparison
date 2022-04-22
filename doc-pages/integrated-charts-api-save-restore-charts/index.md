@@ -29,6 +29,9 @@ These models can then be supplied to the following grid api method to restore th
 
 Note that an optional `chartContainer` can be specified when restoring a chart.
 
+
 ## Next Up
 
 Continue to the next section to learn about: [Downloading Chart Image](/integrated-charts-api-downloading-image/).
+
+

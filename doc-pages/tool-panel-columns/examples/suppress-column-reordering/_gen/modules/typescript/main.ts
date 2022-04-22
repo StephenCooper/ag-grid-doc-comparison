@@ -1,9 +1,9 @@
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { Grid, GridOptions, ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { ColumnsToolPanelModule } from "@ag-grid-enterprise/column-tool-panel";
-import { MenuModule } from "@ag-grid-enterprise/menu";
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import { Grid, GridOptions, ModuleRegistry } from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { ColumnsToolPanelModule } from '@ag-grid-enterprise/column-tool-panel';
+import { MenuModule } from '@ag-grid-enterprise/menu';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([
@@ -15,30 +15,30 @@ ModuleRegistry.registerModules([
 const gridOptions: GridOptions = {
   columnDefs: [
     {
-      headerName: "Athlete",
+      headerName: 'Athlete',
       children: [
         {
-          headerName: "Name",
-          field: "athlete",
+          headerName: 'Name',
+          field: 'athlete',
           minWidth: 200,
-          filter: "agTextColumnFilter",
+          filter: 'agTextColumnFilter',
         },
-        { field: "age" },
-        { field: "country", minWidth: 200 },
+        { field: 'age' },
+        { field: 'country', minWidth: 200 },
       ],
     },
     {
-      headerName: "Competition",
-      children: [{ field: "year" }, { field: "date", minWidth: 180 }],
+      headerName: 'Competition',
+      children: [{ field: 'year' }, { field: 'date', minWidth: 180 }],
     },
-    { colId: "sport", field: "sport", minWidth: 200 },
+    { colId: 'sport', field: 'sport', minWidth: 200 },
     {
-      headerName: "Medals",
+      headerName: 'Medals',
       children: [
-        { field: "gold" },
-        { field: "silver" },
-        { field: "bronze" },
-        { field: "total" },
+        { field: 'gold' },
+        { field: 'silver' },
+        { field: 'bronze' },
+        { field: 'total' },
       ],
     },
   ],
@@ -58,11 +58,11 @@ const gridOptions: GridOptions = {
   sideBar: {
     toolPanels: [
       {
-        id: "columns",
-        labelDefault: "Columns",
-        labelKey: "columns",
-        iconKey: "columns",
-        toolPanel: "agColumnsToolPanel",
+        id: 'columns',
+        labelDefault: 'Columns',
+        labelKey: 'columns',
+        iconKey: 'columns',
+        toolPanel: 'agColumnsToolPanel',
         toolPanelParams: {
           // tool panel columns won't move when columns are reordered in the grid
           suppressSyncLayoutWithGrid: true,
@@ -71,14 +71,14 @@ const gridOptions: GridOptions = {
         },
       },
     ],
-    defaultToolPanel: "columns",
+    defaultToolPanel: 'columns',
   },
 };
 
 // setup the grid after the page has finished loading
-var gridDiv = document.querySelector<HTMLElement>("#myGrid")!;
+var gridDiv = document.querySelector<HTMLElement>('#myGrid')!;
 new Grid(gridDiv, gridOptions);
 
-fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
   .then((response) => response.json())
   .then((data) => gridOptions.api!.setRowData(data));

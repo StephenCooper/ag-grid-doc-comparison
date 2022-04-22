@@ -1,11 +1,11 @@
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { AgGridVue } from "@ag-grid-community/vue";
-import { ClipboardModule } from "@ag-grid-enterprise/clipboard";
-import { RangeSelectionModule } from "@ag-grid-enterprise/range-selection";
-import Vue from "vue";
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { AgGridVue } from '@ag-grid-community/vue';
+import { ClipboardModule } from '@ag-grid-enterprise/clipboard';
+import { RangeSelectionModule } from '@ag-grid-enterprise/range-selection';
+import Vue from 'vue';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([
@@ -47,19 +47,19 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
-        { field: "a" },
-        { field: "b" },
-        { field: "c" },
-        { field: "d" },
-        { field: "e" },
-        { field: "f" },
-        { field: "g" },
-        { field: "h" },
+        { field: 'a' },
+        { field: 'b' },
+        { field: 'c' },
+        { field: 'd' },
+        { field: 'e' },
+        { field: 'f' },
+        { field: 'g' },
+        { field: 'h' },
       ],
       gridApi: null,
       columnApi: null,
@@ -77,20 +77,20 @@ const VueExample = {
   },
   methods: {
     onFirstDataRendered() {
-      setValue("#undoInput", 0);
-      disable("#undoInput", true);
-      disable("#undoBtn", true);
-      setValue("#redoInput", 0);
-      disable("#redoInput", true);
-      disable("#redoBtn", true);
+      setValue('#undoInput', 0);
+      disable('#undoInput', true);
+      disable('#undoBtn', true);
+      setValue('#redoInput', 0);
+      disable('#redoInput', true);
+      disable('#redoBtn', true);
     },
     onCellValueChanged(params) {
       var undoSize = params.api.getCurrentUndoSize();
-      setValue("#undoInput", undoSize);
-      disable("#undoBtn", undoSize < 1);
+      setValue('#undoInput', undoSize);
+      disable('#undoBtn', undoSize < 1);
       var redoSize = params.api.getCurrentRedoSize();
-      setValue("#redoInput", redoSize);
-      disable("#redoBtn", redoSize < 1);
+      setValue('#redoInput', redoSize);
+      disable('#redoBtn', redoSize < 1);
     },
     undo() {
       this.gridApi.undoCellEditing();
@@ -116,21 +116,21 @@ window.setValue = function setValue(id, value) {
 window.getRows = function getRows() {
   return Array.apply(null, Array(100)).map(function (_, i) {
     return {
-      a: "a-" + i,
-      b: "b-" + i,
-      c: "c-" + i,
-      d: "d-" + i,
-      e: "e-" + i,
-      f: "f-" + i,
-      g: "g-" + i,
-      h: "h-" + i,
+      a: 'a-' + i,
+      b: 'b-' + i,
+      c: 'c-' + i,
+      d: 'd-' + i,
+      e: 'e-' + i,
+      f: 'f-' + i,
+      g: 'g-' + i,
+      h: 'h-' + i,
     };
   });
 };
 
 new Vue({
-  el: "#app",
+  el: '#app',
   components: {
-    "my-component": VueExample,
+    'my-component': VueExample,
   },
 });

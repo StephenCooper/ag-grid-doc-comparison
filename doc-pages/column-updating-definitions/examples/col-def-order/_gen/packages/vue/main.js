@@ -1,7 +1,7 @@
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import { AgGridVue } from "ag-grid-vue";
-import Vue from "vue";
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import { AgGridVue } from 'ag-grid-vue';
+import Vue from 'vue';
 
 const VueExample = {
   template: `
@@ -25,7 +25,7 @@ const VueExample = {
       </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
@@ -62,44 +62,44 @@ const VueExample = {
         this.rowData = data;
       };
 
-      fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
         .then((resp) => resp.json())
         .then((data) => updateData(data));
     },
     getColumnDefsA() {
       return [
-        { field: "athlete", headerName: "A Athlete" },
-        { field: "age", headerName: "A Age" },
-        { field: "country", headerName: "A Country" },
-        { field: "sport", headerName: "A Sport" },
-        { field: "year", headerName: "A Year" },
-        { field: "date", headerName: "A Date" },
-        { field: "gold", headerName: "A Gold" },
-        { field: "silver", headerName: "A Silver" },
-        { field: "bronze", headerName: "A Bronze" },
-        { field: "total", headerName: "A Total" },
+        { field: 'athlete', headerName: 'A Athlete' },
+        { field: 'age', headerName: 'A Age' },
+        { field: 'country', headerName: 'A Country' },
+        { field: 'sport', headerName: 'A Sport' },
+        { field: 'year', headerName: 'A Year' },
+        { field: 'date', headerName: 'A Date' },
+        { field: 'gold', headerName: 'A Gold' },
+        { field: 'silver', headerName: 'A Silver' },
+        { field: 'bronze', headerName: 'A Bronze' },
+        { field: 'total', headerName: 'A Total' },
       ];
     },
     getColumnDefsB() {
       return [
-        { field: "gold", headerName: "B Gold" },
-        { field: "silver", headerName: "B Silver" },
-        { field: "bronze", headerName: "B Bronze" },
-        { field: "total", headerName: "B Total" },
-        { field: "athlete", headerName: "B Athlete" },
-        { field: "age", headerName: "B Age" },
-        { field: "country", headerName: "B Country" },
-        { field: "sport", headerName: "B Sport" },
-        { field: "year", headerName: "B Year" },
-        { field: "date", headerName: "B Date" },
+        { field: 'gold', headerName: 'B Gold' },
+        { field: 'silver', headerName: 'B Silver' },
+        { field: 'bronze', headerName: 'B Bronze' },
+        { field: 'total', headerName: 'B Total' },
+        { field: 'athlete', headerName: 'B Athlete' },
+        { field: 'age', headerName: 'B Age' },
+        { field: 'country', headerName: 'B Country' },
+        { field: 'sport', headerName: 'B Sport' },
+        { field: 'year', headerName: 'B Year' },
+        { field: 'date', headerName: 'B Date' },
       ];
     },
   },
 };
 
 new Vue({
-  el: "#app",
+  el: '#app',
   components: {
-    "my-component": VueExample,
+    'my-component': VueExample,
   },
 });

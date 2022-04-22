@@ -1,11 +1,11 @@
-"use strict";
+'use strict';
 
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
-import { AgGridReact } from "ag-grid-react";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from 'ag-grid-react';
+import 'ag-grid-enterprise';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 
 class GridExample extends Component {
   constructor(props) {
@@ -13,11 +13,11 @@ class GridExample extends Component {
 
     this.state = {
       columnDefs: [
-        { field: "category", rowGroupIndex: 1, hide: true },
-        { field: "price", aggFunc: "sum", valueFormatter: poundFormatter },
-        { field: "zombies" },
-        { field: "style" },
-        { field: "clothes" },
+        { field: 'category', rowGroupIndex: 1, hide: true },
+        { field: 'price', aggFunc: 'sum', valueFormatter: poundFormatter },
+        { field: 'zombies' },
+        { field: 'style' },
+        { field: 'clothes' },
       ],
       defaultColDef: {
         flex: 1,
@@ -25,28 +25,28 @@ class GridExample extends Component {
         sortable: true,
       },
       autoGroupColumnDef: {
-        headerName: "Group",
+        headerName: 'Group',
         minWidth: 250,
-        field: "model",
+        field: 'model',
         rowGroupIndex: 1,
-        cellRenderer: "agGroupCellRenderer",
+        cellRenderer: 'agGroupCellRenderer',
         cellRendererParams: {
           checkbox: true,
         },
       },
       groupDefaultExpanded: 1,
       rowData: getData(),
-      rowSelection: "multiple",
+      rowSelection: 'multiple',
       getRowClass: function (params) {
         var rowNode = params.node;
         if (rowNode.group) {
           switch (rowNode.key) {
-            case "In Workshop":
-              return "category-in-workshop";
-            case "Sold":
-              return "category-sold";
-            case "For Sale":
-              return "category-for-sale";
+            case 'In Workshop':
+              return 'category-in-workshop';
+            case 'Sold':
+              return 'category-sold';
+            case 'For Sale':
+              return 'category-for-sale';
             default:
               return undefined;
           }
@@ -68,7 +68,7 @@ class GridExample extends Component {
     this.gridApi.forEachNode(function (node) {
       rowData.push(node.data);
     });
-    console.log("Row Data:");
+    console.log('Row Data:');
     console.log(rowData);
   };
 
@@ -92,19 +92,19 @@ class GridExample extends Component {
 
   render() {
     return (
-      <div style={{ width: "100%", height: "100%" }}>
+      <div style={{ width: '100%', height: '100%' }}>
         <div className="example-wrapper">
-          <div style={{ marginBottom: "5px" }}>
+          <div style={{ marginBottom: '5px' }}>
             <div>
               <button
                 className="bt-action"
-                onClick={() => this.onAddRow("For Sale")}
+                onClick={() => this.onAddRow('For Sale')}
               >
                 Add For Sale
               </button>
               <button
                 className="bt-action"
-                onClick={() => this.onAddRow("In Workshop")}
+                onClick={() => this.onAddRow('In Workshop')}
               >
                 Add In Workshop
               </button>
@@ -118,22 +118,22 @@ class GridExample extends Component {
                 Get Row Data
               </button>
             </div>
-            <div style={{ marginTop: "5px" }}>
+            <div style={{ marginTop: '5px' }}>
               <button
                 className="bt-action"
-                onClick={() => this.onMoveToGroup("For Sale")}
+                onClick={() => this.onMoveToGroup('For Sale')}
               >
                 Move to For Sale
               </button>
               <button
                 className="bt-action"
-                onClick={() => this.onMoveToGroup("In Workshop")}
+                onClick={() => this.onMoveToGroup('In Workshop')}
               >
                 Move to In Workshop
               </button>
               <button
                 className="bt-action"
-                onClick={() => this.onMoveToGroup("Sold")}
+                onClick={() => this.onMoveToGroup('Sold')}
               >
                 Move to Sold
               </button>
@@ -142,8 +142,8 @@ class GridExample extends Component {
 
           <div
             style={{
-              height: "100%",
-              width: "100%",
+              height: '100%',
+              width: '100%',
             }}
             className="ag-theme-alpine"
           >
@@ -170,11 +170,11 @@ class GridExample extends Component {
 
 function poundFormatter(params) {
   return (
-    "£" +
+    '£' +
     Math.floor(params.value)
       .toString()
-      .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")
+      .replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
   );
 }
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

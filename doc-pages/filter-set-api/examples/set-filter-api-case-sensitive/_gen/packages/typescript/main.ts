@@ -5,26 +5,26 @@ import {
   ICellRendererParams,
   IFiltersToolPanel,
   ISetFilter,
-} from "ag-grid-community";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
+} from 'ag-grid-community';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import 'ag-grid-enterprise';
 
 const gridOptions: GridOptions = {
   columnDefs: [
     {
-      headerName: "Case Insensitive (default)",
-      field: "colour",
-      filter: "agSetColumnFilter",
+      headerName: 'Case Insensitive (default)',
+      field: 'colour',
+      filter: 'agSetColumnFilter',
       filterParams: {
         caseSensitive: false,
         cellRenderer: colourCellRenderer,
       },
     },
     {
-      headerName: "Case Sensitive",
-      field: "colour",
-      filter: "agSetColumnFilter",
+      headerName: 'Case Sensitive',
+      field: 'colour',
+      filter: 'agSetColumnFilter',
       filterParams: {
         caseSensitive: true,
         cellRenderer: colourCellRenderer,
@@ -38,21 +38,21 @@ const gridOptions: GridOptions = {
     resizable: true,
     floatingFilter: true,
   },
-  sideBar: "filters",
+  sideBar: 'filters',
   onFirstDataRendered: onFirstDataRendered,
   rowData: getData(),
 };
 
 var FIXED_STYLES =
-  "vertical-align: middle; border: 1px solid black; margin: 3px; display: inline-block; width: 10px; height: 10px";
+  'vertical-align: middle; border: 1px solid black; margin: 3px; display: inline-block; width: 10px; height: 10px';
 
 var FILTER_TYPES: Record<string, string> = {
-  insensitive: "colour",
-  sensitive: "colour_1",
+  insensitive: 'colour',
+  sensitive: 'colour_1',
 };
 
 function colourCellRenderer(params: ICellRendererParams) {
-  if (!params.value || params.value === "(Select All)") {
+  if (!params.value || params.value === '(Select All)') {
     return params.value;
   }
 
@@ -102,19 +102,19 @@ function reset(type: string) {
   gridOptions.api!.onFilterChanged();
 }
 
-var MANGLED_COLOURS = ["ReD", "OrAnGe", "WhItE", "YeLlOw"];
+var MANGLED_COLOURS = ['ReD', 'OrAnGe', 'WhItE', 'YeLlOw'];
 
 function onFirstDataRendered(params: FirstDataRenderedEvent) {
-  (
-    gridOptions.api!.getToolPanelInstance("filters") as any as IFiltersToolPanel
-  ).expandFilters();
+  ((gridOptions.api!.getToolPanelInstance(
+    'filters'
+  ) as any) as IFiltersToolPanel).expandFilters();
 }
 
 // setup the grid after the page has finished loading
-var gridDiv = document.querySelector<HTMLElement>("#myGrid")!;
+var gridDiv = document.querySelector<HTMLElement>('#myGrid')!;
 new Grid(gridDiv, gridOptions);
 
-if (typeof window !== "undefined") {
+if (typeof window !== 'undefined') {
   // Attach external event handlers to window so they can be called from index.html
   (<any>window).setModel = setModel;
   (<any>window).getModel = getModel;

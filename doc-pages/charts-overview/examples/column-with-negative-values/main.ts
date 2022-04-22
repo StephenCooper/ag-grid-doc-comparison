@@ -1,5 +1,5 @@
-import * as agCharts from "ag-charts-community";
-import { AgChartOptions } from "ag-charts-community";
+import { AgChartOptions } from "ag-charts-community"
+import * as agCharts from "ag-charts-community"
 
 const options: AgChartOptions = {
   container: document.getElementById("myChart"),
@@ -27,7 +27,8 @@ const options: AgChartOptions = {
     fontSize: 18,
   },
   subtitle: {
-    text: "Source: Ministry of Justice, HM Prison Service, and Her Majesty’s Prison and Probation Service",
+    text:
+      "Source: Ministry of Justice, HM Prison Service, and Her Majesty’s Prison and Probation Service",
   },
   series: [
     {
@@ -53,6 +54,6 @@ const options: AgChartOptions = {
       position: "left",
     },
   ],
-};
+}
 
-var chart = agCharts.AgChart.create(options);
+var chart = agCharts.AgChart.create(options)

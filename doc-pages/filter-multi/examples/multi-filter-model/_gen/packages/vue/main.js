@@ -1,8 +1,8 @@
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
-import { AgGridVue } from "ag-grid-vue";
-import Vue from "vue";
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import 'ag-grid-enterprise';
+import { AgGridVue } from 'ag-grid-vue';
+import Vue from 'vue';
 
 const VueExample = {
   template: `
@@ -26,38 +26,38 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
-        { field: "athlete", filter: "agMultiColumnFilter" },
+        { field: 'athlete', filter: 'agMultiColumnFilter' },
         {
-          field: "country",
-          filter: "agMultiColumnFilter",
+          field: 'country',
+          filter: 'agMultiColumnFilter',
           filterParams: {
             filters: [
               {
-                filter: "agTextColumnFilter",
-                filterParams: { defaultOption: "startsWith" },
+                filter: 'agTextColumnFilter',
+                filterParams: { defaultOption: 'startsWith' },
               },
-              { filter: "agSetColumnFilter" },
+              { filter: 'agSetColumnFilter' },
             ],
           },
         },
         {
-          field: "gold",
-          filter: "agMultiColumnFilter",
+          field: 'gold',
+          filter: 'agMultiColumnFilter',
           filterParams: {
             filters: [
-              { filter: "agNumberColumnFilter" },
-              { filter: "agSetColumnFilter" },
+              { filter: 'agNumberColumnFilter' },
+              { filter: 'agSetColumnFilter' },
             ],
           },
         },
         {
-          field: "date",
-          filter: "agMultiColumnFilter",
+          field: 'date',
+          filter: 'agMultiColumnFilter',
           filterParams: dateFilterParams,
         },
       ],
@@ -67,7 +67,7 @@ const VueExample = {
         flex: 1,
         minWidth: 200,
         resizable: true,
-        menuTabs: ["filterMenuTab"],
+        menuTabs: ['filterMenuTab'],
       },
       rowData: null,
     };
@@ -76,19 +76,19 @@ const VueExample = {
   methods: {
     printState() {
       var filterState = this.gridApi.getFilterModel();
-      console.log("Current filter state: ", filterState);
+      console.log('Current filter state: ', filterState);
     },
     saveState() {
       savedFilterState = this.gridApi.getFilterModel();
-      console.log("Filter state saved");
+      console.log('Filter state saved');
     },
     restoreState() {
       this.gridApi.setFilterModel(savedFilterState);
-      console.log("Filter state restored");
+      console.log('Filter state restored');
     },
     resetState() {
       this.gridApi.setFilterModel(null);
-      console.log("Filter state reset");
+      console.log('Filter state reset');
     },
     onGridReady(params) {
       this.gridApi = params.api;
@@ -96,7 +96,7 @@ const VueExample = {
 
       const updateData = (data) => params.api.setRowData(data);
 
-      fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
         .then((resp) => resp.json())
         .then((data) => updateData(data));
     },
@@ -104,7 +104,7 @@ const VueExample = {
 };
 
 window.getDate = function getDate(value) {
-  var dateParts = value.split("/");
+  var dateParts = value.split('/');
   return new Date(
     Number(dateParts[2]),
     Number(dateParts[1]) - 1,
@@ -115,7 +115,7 @@ window.getDate = function getDate(value) {
 var dateFilterParams = {
   filters: [
     {
-      filter: "agDateColumnFilter",
+      filter: 'agDateColumnFilter',
       filterParams: {
         comparator: function (filterDate, cellValue) {
           if (cellValue == null) return -1;
@@ -124,7 +124,7 @@ var dateFilterParams = {
       },
     },
     {
-      filter: "agSetColumnFilter",
+      filter: 'agSetColumnFilter',
       filterParams: {
         comparator: function (a, b) {
           return getDate(a).getTime() - getDate(b).getTime();
@@ -137,8 +137,8 @@ var dateFilterParams = {
 var savedFilterState;
 
 new Vue({
-  el: "#app",
+  el: '#app',
   components: {
-    "my-component": VueExample,
+    'my-component': VueExample,
   },
 });

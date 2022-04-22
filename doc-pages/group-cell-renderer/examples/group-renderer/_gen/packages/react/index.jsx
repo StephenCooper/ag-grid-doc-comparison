@@ -1,12 +1,12 @@
-"use strict";
+'use strict';
 
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
-import { AgGridReact } from "ag-grid-react";
-import React, { Component } from "react";
-import { render } from "react-dom";
-import SimpleCellRenderer from "./simpleCellRenderer.jsx";
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from 'ag-grid-react';
+import 'ag-grid-enterprise';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import SimpleCellRenderer from './simpleCellRenderer.jsx';
 
 class GridExample extends Component {
   constructor(props) {
@@ -16,38 +16,38 @@ class GridExample extends Component {
       columnDefs: [
         // this column shows just the country group values, but has not group renderer, so there is no expand / collapse functionality
         {
-          headerName: "Country Group - No Renderer",
-          showRowGroup: "country",
+          headerName: 'Country Group - No Renderer',
+          showRowGroup: 'country',
           minWidth: 250,
         },
         // same as before, but we show all group values, again with no cell renderer
         {
-          headerName: "All Groups - No Renderer",
+          headerName: 'All Groups - No Renderer',
           showRowGroup: true,
           minWidth: 240,
         },
         // add in a cell renderer
         {
-          headerName: "Group Renderer A",
+          headerName: 'Group Renderer A',
           showRowGroup: true,
-          cellRenderer: "agGroupCellRenderer",
+          cellRenderer: 'agGroupCellRenderer',
           minWidth: 220,
         },
         // add in a field
         {
-          headerName: "Group Renderer B",
-          field: "city",
+          headerName: 'Group Renderer B',
+          field: 'city',
           showRowGroup: true,
-          cellRenderer: "agGroupCellRenderer",
+          cellRenderer: 'agGroupCellRenderer',
           minWidth: 220,
         },
         // add in a cell renderer params
         {
-          headerName: "Group Renderer C",
-          field: "city",
+          headerName: 'Group Renderer C',
+          field: 'city',
           minWidth: 240,
           showRowGroup: true,
-          cellRenderer: "agGroupCellRenderer",
+          cellRenderer: 'agGroupCellRenderer',
           cellRendererParams: {
             suppressCount: true,
             checkbox: true,
@@ -56,9 +56,9 @@ class GridExample extends Component {
             suppressEnterExpand: true,
           },
         },
-        { headerName: "Type", field: "type", rowGroup: true },
-        { headerName: "Country", field: "country", rowGroup: true },
-        { headerName: "City", field: "city" },
+        { headerName: 'Type', field: 'type', rowGroup: true },
+        { headerName: 'Country', field: 'country', rowGroup: true },
+        { headerName: 'City', field: 'city' },
       ],
       defaultColDef: {
         flex: 1,
@@ -66,9 +66,9 @@ class GridExample extends Component {
         resizable: true,
       },
       rowData: getData(),
-      groupDisplayType: "custom",
+      groupDisplayType: 'custom',
       groupDefaultExpanded: 1,
-      rowSelection: "multiple",
+      rowSelection: 'multiple',
     };
   }
 
@@ -79,11 +79,11 @@ class GridExample extends Component {
 
   render() {
     return (
-      <div style={{ width: "100%", height: "100%" }}>
+      <div style={{ width: '100%', height: '100%' }}>
         <div
           style={{
-            height: "100%",
-            width: "100%",
+            height: '100%',
+            width: '100%',
           }}
           className="ag-theme-alpine"
         >
@@ -105,4 +105,4 @@ class GridExample extends Component {
   }
 }
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

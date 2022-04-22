@@ -2,7 +2,7 @@ class NumericEditor {
   // gets called once before the renderer is used
   init(params) {
     // create the cell
-    this.eInput = document.createElement("input");
+    this.eInput = document.createElement('input');
 
     if (this.isCharNumeric(params.charPress)) {
       this.eInput.value = params.charPress;
@@ -12,7 +12,7 @@ class NumericEditor {
       }
     }
 
-    this.eInput.addEventListener("keypress", (event) => {
+    this.eInput.addEventListener('keypress', (event) => {
       if (!this.isKeyPressedNumeric(event)) {
         this.eInput.focus();
         if (event.preventDefault) event.preventDefault();
@@ -23,12 +23,12 @@ class NumericEditor {
 
     // only start edit if key pressed is a number, not a letter
     const charPressIsNotANumber =
-      params.charPress && "1234567890".indexOf(params.charPress) < 0;
+      params.charPress && '1234567890'.indexOf(params.charPress) < 0;
     this.cancelBeforeStart = !!charPressIsNotANumber;
   }
 
   isKeyPressedNavigation(event) {
-    return event.key === "ArrowLeft" || event.key === "ArrowRight";
+    return event.key === 'ArrowLeft' || event.key === 'ArrowRight';
   }
 
   // gets called once when grid ready to insert the element
@@ -50,7 +50,7 @@ class NumericEditor {
   // - not very practical, but demonstrates the method.
   isCancelAfterEnd() {
     const value = this.getValue();
-    return value.indexOf("007") >= 0;
+    return value.indexOf('007') >= 0;
   }
 
   // returns the new value after editing

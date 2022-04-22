@@ -1,11 +1,11 @@
-"use strict";
+'use strict';
 
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine-dark.css";
-import "ag-grid-enterprise";
-import { AgGridReact } from "ag-grid-react";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from 'ag-grid-react';
+import 'ag-grid-enterprise';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine-dark.css';
 
 class GridExample extends Component {
   constructor(props) {
@@ -13,12 +13,12 @@ class GridExample extends Component {
 
     this.state = {
       columnDefs: [
-        { field: "country", enableRowGroup: true, rowGroup: true },
-        { field: "sport", enableRowGroup: true, rowGroup: true },
-        { field: "year", minWidth: 100 },
-        { field: "gold", aggFunc: "sum" },
-        { field: "silver", aggFunc: "sum" },
-        { field: "bronze", aggFunc: "sum" },
+        { field: 'country', enableRowGroup: true, rowGroup: true },
+        { field: 'sport', enableRowGroup: true, rowGroup: true },
+        { field: 'year', minWidth: 100 },
+        { field: 'gold', aggFunc: 'sum' },
+        { field: 'silver', aggFunc: 'sum' },
+        { field: 'bronze', aggFunc: 'sum' },
       ],
       defaultColDef: {
         flex: 1,
@@ -26,21 +26,21 @@ class GridExample extends Component {
         resizable: true,
         sortable: true,
       },
-      rowGroupPanelShow: "always",
-      serverSideStoreType: "full",
+      rowGroupPanelShow: 'always',
+      serverSideStoreType: 'full',
       autoGroupColumnDef: {
         flex: 1,
         minWidth: 280,
       },
       cacheBlockSize: 4,
-      rowModelType: "serverSide",
+      rowModelType: 'serverSide',
       getServerSideStoreParams: function (params) {
         var noGroupingActive = params.rowGroupColumns.length == 0;
         var res;
         if (noGroupingActive) {
           res = {
             // infinite scrolling
-            storeType: "partial",
+            storeType: 'partial',
             // 100 rows per block
             cacheBlockSize: 100,
             // purge blocks that are not needed
@@ -49,16 +49,16 @@ class GridExample extends Component {
         } else {
           var topLevelRows = params.level == 0;
           res = {
-            storeType: topLevelRows ? "full" : "partial",
+            storeType: topLevelRows ? 'full' : 'partial',
             cacheBlockSize: params.level == 1 ? 5 : 2,
             maxBlocksInCache: -1, // never purge blocks
           };
         }
-        console.log("############## NEW STORE ##############");
+        console.log('############## NEW STORE ##############');
         console.log(
-          "getServerSideStoreParams, level = " +
+          'getServerSideStoreParams, level = ' +
             params.level +
-            ", result = " +
+            ', result = ' +
             JSON.stringify(res)
         );
         return res;
@@ -79,34 +79,34 @@ class GridExample extends Component {
       params.api.setServerSideDatasource(datasource);
     };
 
-    fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+    fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .then((resp) => resp.json())
       .then((data) => updateData(data));
   };
 
   onBtStoreState = () => {
     var storeState = this.gridApi.getServerSideStoreState();
-    console.log("Store States:");
+    console.log('Store States:');
     storeState.forEach(function (state, index) {
       console.log(
         index +
-          " - " +
-          JSON.stringify(state).replace(/"/g, "").replace(/,/g, ", ")
+          ' - ' +
+          JSON.stringify(state).replace(/"/g, '').replace(/,/g, ', ')
       );
     });
   };
 
   render() {
     return (
-      <div style={{ width: "100%", height: "100%" }}>
+      <div style={{ width: '100%', height: '100%' }}>
         <div className="example-wrapper">
-          <div style={{ marginBottom: "5px" }}>
+          <div style={{ marginBottom: '5px' }}>
             <button onClick={() => this.onBtStoreState()}>Store State</button>
           </div>
           <div
             style={{
-              height: "100%",
-              width: "100%",
+              height: '100%',
+              width: '100%',
             }}
             className="ag-theme-alpine-dark"
           >
@@ -133,7 +133,7 @@ class GridExample extends Component {
 function getServerSideDatasource(server) {
   return {
     getRows: function (params) {
-      console.log("[Datasource] - rows requested by grid: ", params.request);
+      console.log('[Datasource] - rows requested by grid: ', params.request);
       var response = server.getData(params.request);
       // adding delay to simulate real server call
       setTimeout(function () {
@@ -156,4 +156,4 @@ function getServerSideDatasource(server) {
   };
 }
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

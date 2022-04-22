@@ -1,5 +1,5 @@
-import { HttpClient } from "@angular/common/http";
-import { Component } from "@angular/core";
+import { HttpClient } from '@angular/common/http';
+import { Component } from '@angular/core';
 import {
   ColDef,
   GridApi,
@@ -8,14 +8,14 @@ import {
   ISetFilter,
   ServerSideStoreType,
   SetFilterValuesFuncParams,
-} from "ag-grid-community";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine-dark.css";
-import "ag-grid-enterprise";
+} from 'ag-grid-community';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine-dark.css';
+import 'ag-grid-enterprise';
 declare var FakeServer: any;
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<ag-grid-angular
     style="width: 100%; height: 100%;"
     class="ag-theme-alpine-dark"
@@ -36,22 +36,22 @@ export class AppComponent {
 
   public columnDefs: ColDef[] = [
     {
-      field: "country",
-      filter: "agSetColumnFilter",
+      field: 'country',
+      filter: 'agSetColumnFilter',
       filterParams: {
         values: getCountryValuesAsync,
       },
-      menuTabs: ["filterMenuTab"],
+      menuTabs: ['filterMenuTab'],
     },
     {
-      field: "sport",
-      filter: "agSetColumnFilter",
+      field: 'sport',
+      filter: 'agSetColumnFilter',
       filterParams: {
         values: getSportValuesAsync,
       },
-      menuTabs: ["filterMenuTab"],
+      menuTabs: ['filterMenuTab'],
     },
-    { field: "athlete", menuTabs: undefined },
+    { field: 'athlete', menuTabs: undefined },
   ];
   public defaultColDef: ColDef = {
     flex: 1,
@@ -59,8 +59,8 @@ export class AppComponent {
     sortable: true,
     resizable: true,
   };
-  public rowModelType = "serverSide";
-  public serverSideStoreType: ServerSideStoreType = "partial";
+  public rowModelType = 'serverSide';
+  public serverSideStoreType: ServerSideStoreType = 'partial';
   public cacheBlockSize = 100;
   public maxBlocksInCache = 10;
   public rowData!: any[];
@@ -68,12 +68,12 @@ export class AppComponent {
   constructor(private http: HttpClient) {}
 
   onFilterChanged() {
-    var countryFilterModel = this.gridApi.getFilterModel()["country"];
+    var countryFilterModel = this.gridApi.getFilterModel()['country'];
     var selected = countryFilterModel && countryFilterModel.values;
     if (!areEqual(selectedCountries, selected)) {
       selectedCountries = selected;
-      console.log("Refreshing sports filter");
-      var sportFilter = this.gridApi.getFilterInstance("sport") as ISetFilter;
+      console.log('Refreshing sports filter');
+      var sportFilter = this.gridApi.getFilterInstance('sport') as ISetFilter;
       sportFilter!.refreshFilterValues();
     }
   }
@@ -82,7 +82,7 @@ export class AppComponent {
     this.gridApi = params.api;
 
     this.http
-      .get<any[]>("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      .get<any[]>('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .subscribe((data) => {
         // setup the fake server with entire dataset
         fakeServer = new FakeServer(data);
@@ -127,7 +127,7 @@ function getSportValuesAsync(params: SetFilterValuesFuncParams) {
 function getServerSideDatasource(server: any): IServerSideDatasource {
   return {
     getRows: function (params) {
-      console.log("[Datasource] - rows requested by grid: ", params.request);
+      console.log('[Datasource] - rows requested by grid: ', params.request);
       // get data for request from our fake server
       var response = server.getData(params.request);
       // simulating real server call with a 500ms delay

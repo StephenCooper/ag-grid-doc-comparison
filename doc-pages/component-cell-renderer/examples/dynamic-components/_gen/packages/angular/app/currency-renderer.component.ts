@@ -1,10 +1,10 @@
-import { Component } from "@angular/core";
-import { ICellRendererAngularComp } from "ag-grid-angular";
-import { ICellRendererParams } from "ag-grid-community";
+import { Component } from '@angular/core';
+import { ICellRendererAngularComp } from 'ag-grid-angular';
+import { ICellRendererParams } from 'ag-grid-community';
 
 @Component({
-  selector: "currency-cell",
-  template: `{{ params.value | currency: "EUR" }}`,
+  selector: 'currency-cell',
+  template: `{{ params.value | currency: 'EUR' }}`,
 })
 export class CurrencyRenderer implements ICellRendererAngularComp {
   public params!: ICellRendererParams;

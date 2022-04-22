@@ -4,14 +4,14 @@ import {
   ColDef,
   GridApi,
   GridReadyEvent,
-} from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { Component } from "@angular/core";
+} from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { Component } from '@angular/core';
 // Required feature modules are registered in app.module.ts
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<div class="wrapper">
     <div id="buttons">
       <button (click)="saveChart()">Save chart</button>
@@ -37,10 +37,10 @@ export class AppComponent {
   private gridApi!: GridApi;
 
   public columnDefs: ColDef[] = [
-    { field: "country", chartDataType: "category" },
-    { field: "sugar", chartDataType: "series" },
-    { field: "fat", chartDataType: "series" },
-    { field: "weight", chartDataType: "series" },
+    { field: 'country', chartDataType: 'category' },
+    { field: 'sugar', chartDataType: 'series' },
+    { field: 'fat', chartDataType: 'series' },
+    { field: 'weight', chartDataType: 'series' },
   ];
   public defaultColDef: ColDef = {
     editable: true,
@@ -58,7 +58,7 @@ export class AppComponent {
     if (chartModels.length > 0) {
       chartModel = chartModels[0];
     }
-    alert("Chart saved!");
+    alert('Chart saved!');
   }
 
   clearChart() {
@@ -83,7 +83,7 @@ export class AppComponent {
       currentChartRef.destroyChart();
     }
     var eChart = chartRef.chartElement;
-    var eParent = document.querySelector("#myChart") as any;
+    var eParent = document.querySelector('#myChart') as any;
     eParent.appendChild(eChart);
     currentChartRef = chartRef;
   }

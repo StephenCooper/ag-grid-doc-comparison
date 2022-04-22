@@ -1,12 +1,12 @@
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { AgGridVue } from "@ag-grid-community/vue";
-import { GridChartsModule } from "@ag-grid-enterprise/charts";
-import { MenuModule } from "@ag-grid-enterprise/menu";
-import { RowGroupingModule } from "@ag-grid-enterprise/row-grouping";
-import Vue from "vue";
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { AgGridVue } from '@ag-grid-community/vue';
+import { GridChartsModule } from '@ag-grid-enterprise/charts';
+import { MenuModule } from '@ag-grid-enterprise/menu';
+import { RowGroupingModule } from '@ag-grid-enterprise/row-grouping';
+import Vue from 'vue';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([
@@ -39,21 +39,21 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
-        { field: "day", maxWidth: 90 },
-        { field: "month", chartDataType: "category" },
-        { field: "rain", chartDataType: "series", valueParser: numberParser },
+        { field: 'day', maxWidth: 90 },
+        { field: 'month', chartDataType: 'category' },
+        { field: 'rain', chartDataType: 'series', valueParser: numberParser },
         {
-          field: "pressure",
-          chartDataType: "series",
+          field: 'pressure',
+          chartDataType: 'series',
           valueParser: numberParser,
         },
-        { field: "temp", chartDataType: "series", valueParser: numberParser },
-        { field: "wind", chartDataType: "series", valueParser: numberParser },
+        { field: 'temp', chartDataType: 'series', valueParser: numberParser },
+        { field: 'wind', chartDataType: 'series', valueParser: numberParser },
       ],
       gridApi: null,
       columnApi: null,
@@ -73,7 +73,7 @@ const VueExample = {
   },
   created() {
     this.rowData = getData();
-    this.chartThemes = ["ag-pastel", "ag-vivid"];
+    this.chartThemes = ['ag-pastel', 'ag-vivid'];
     this.popupParent = document.body;
     this.chartThemeOverrides = {
       common: {
@@ -81,7 +81,7 @@ const VueExample = {
           right: 40,
         },
         legend: {
-          position: "bottom",
+          position: 'bottom',
         },
       },
       column: {
@@ -101,18 +101,18 @@ const VueExample = {
   methods: {
     onFirstDataRendered(params) {
       params.api.createRangeChart({
-        chartType: "customCombo",
+        chartType: 'customCombo',
         cellRange: {
-          columns: ["month", "rain", "pressure", "temp"],
+          columns: ['month', 'rain', 'pressure', 'temp'],
         },
         seriesChartTypes: [
-          { colId: "rain", chartType: "groupedColumn", secondaryAxis: false },
-          { colId: "pressure", chartType: "line", secondaryAxis: true },
-          { colId: "temp", chartType: "line", secondaryAxis: true },
+          { colId: 'rain', chartType: 'groupedColumn', secondaryAxis: false },
+          { colId: 'pressure', chartType: 'line', secondaryAxis: true },
+          { colId: 'temp', chartType: 'line', secondaryAxis: true },
         ],
-        aggFunc: "sum",
+        aggFunc: 'sum',
         suppressChartRanges: true,
-        chartContainer: document.querySelector("#myChart"),
+        chartContainer: document.querySelector('#myChart'),
       });
     },
     onGridReady(params) {
@@ -124,15 +124,15 @@ const VueExample = {
 
 window.numberParser = function numberParser(params) {
   const value = params.newValue;
-  if (value === null || value === undefined || value === "") {
+  if (value === null || value === undefined || value === '') {
     return null;
   }
   return parseFloat(value);
 };
 
 new Vue({
-  el: "#app",
+  el: '#app',
   components: {
-    "my-component": VueExample,
+    'my-component': VueExample,
   },
 });

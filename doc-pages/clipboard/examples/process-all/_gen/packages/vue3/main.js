@@ -1,8 +1,8 @@
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
-import { AgGridVue } from "ag-grid-vue3";
-import { createApp } from "vue";
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import 'ag-grid-enterprise';
+import { AgGridVue } from 'ag-grid-vue3';
+import { createApp } from 'vue';
 
 const VueExample = {
   template: `
@@ -20,22 +20,22 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
-        { field: "a" },
-        { field: "b" },
-        { field: "c" },
-        { field: "d" },
-        { field: "e" },
-        { field: "f" },
-        { field: "g" },
-        { field: "h" },
-        { field: "i" },
-        { field: "j" },
-        { field: "k" },
+        { field: 'a' },
+        { field: 'b' },
+        { field: 'c' },
+        { field: 'd' },
+        { field: 'e' },
+        { field: 'f' },
+        { field: 'g' },
+        { field: 'h' },
+        { field: 'i' },
+        { field: 'j' },
+        { field: 'k' },
       ],
       gridApi: null,
       columnApi: null,
@@ -45,12 +45,12 @@ const VueExample = {
         resizable: true,
         flex: 1,
         cellClassRules: {
-          "cell-green": 'value.startsWith("Green")',
-          "cell-blue": 'value.startsWith("Blue")',
-          "cell-red": 'value.startsWith("Red")',
-          "cell-yellow": 'value.startsWith("Yellow")',
-          "cell-orange": 'value.startsWith("Orange")',
-          "cell-grey": 'value.startsWith("Grey")',
+          'cell-green': 'value.startsWith("Green")',
+          'cell-blue': 'value.startsWith("Blue")',
+          'cell-red': 'value.startsWith("Red")',
+          'cell-yellow': 'value.startsWith("Yellow")',
+          'cell-orange': 'value.startsWith("Orange")',
+          'cell-grey': 'value.startsWith("Grey")',
         },
       },
       rowData: null,
@@ -73,9 +73,9 @@ const VueExample = {
         for (var j = 0; j < row.length; j++) {
           var value = row[j];
           if (value) {
-            if (value.startsWith("Red")) {
+            if (value.startsWith('Red')) {
               containsRed = true;
-            } else if (value.startsWith("Yellow")) {
+            } else if (value.startsWith('Yellow')) {
               containsYellow = true;
             }
           }
@@ -84,8 +84,8 @@ const VueExample = {
       if (containsRed) {
         // replace the paste request with another
         return [
-          ["Orange", "Orange"],
-          ["Grey", "Grey"],
+          ['Orange', 'Orange'],
+          ['Grey', 'Grey'],
         ];
       }
       if (containsYellow) {
@@ -97,4 +97,4 @@ const VueExample = {
   },
 };
 
-createApp(VueExample).mount("#app");
+createApp(VueExample).mount('#app');

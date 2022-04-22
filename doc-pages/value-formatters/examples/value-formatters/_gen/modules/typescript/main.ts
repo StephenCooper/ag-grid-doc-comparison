@@ -1,39 +1,39 @@
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
 import {
   Grid,
   GridOptions,
   ModuleRegistry,
   ValueFormatterParams,
-} from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine-dark.css";
+} from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine-dark.css';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([ClientSideRowModelModule]);
 
 const gridOptions: GridOptions = {
   columnDefs: [
-    { headerName: "A", field: "a" },
-    { headerName: "B", field: "b" },
-    { headerName: "£A", field: "a", valueFormatter: currencyFormatter },
-    { headerName: "£B", field: "b", valueFormatter: currencyFormatter },
-    { headerName: "(A)", field: "a", valueFormatter: bracketsFormatter },
-    { headerName: "(B)", field: "b", valueFormatter: bracketsFormatter },
+    { headerName: 'A', field: 'a' },
+    { headerName: 'B', field: 'b' },
+    { headerName: '£A', field: 'a', valueFormatter: currencyFormatter },
+    { headerName: '£B', field: 'b', valueFormatter: currencyFormatter },
+    { headerName: '(A)', field: 'a', valueFormatter: bracketsFormatter },
+    { headerName: '(B)', field: 'b', valueFormatter: bracketsFormatter },
   ],
   defaultColDef: {
     flex: 1,
-    cellClass: "number-cell",
+    cellClass: 'number-cell',
     resizable: true,
   },
   rowData: createRowData(),
 };
 
 function bracketsFormatter(params: ValueFormatterParams) {
-  return "(" + params.value + ")";
+  return '(' + params.value + ')';
 }
 
 function currencyFormatter(params: ValueFormatterParams) {
-  return "£" + formatNumber(params.value);
+  return '£' + formatNumber(params.value);
 }
 
 function formatNumber(number: number) {
@@ -41,7 +41,7 @@ function formatNumber(number: number) {
   // i pulled this from stack overflow, i have no idea how it works
   return Math.floor(number)
     .toString()
-    .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
+    .replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
 }
 
 function createRowData() {
@@ -58,5 +58,5 @@ function createRowData() {
 }
 
 // setup the grid after the page has finished loading
-var gridDiv = document.querySelector<HTMLElement>("#myGrid")!;
+var gridDiv = document.querySelector<HTMLElement>('#myGrid')!;
 new Grid(gridDiv, gridOptions);

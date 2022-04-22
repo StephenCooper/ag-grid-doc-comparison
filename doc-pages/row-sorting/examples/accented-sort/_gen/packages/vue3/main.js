@@ -1,7 +1,7 @@
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import { AgGridVue } from "ag-grid-vue3";
-import { createApp } from "vue";
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import { AgGridVue } from 'ag-grid-vue3';
+import { createApp } from 'vue';
 
 const VueExample = {
   template: `
@@ -20,11 +20,11 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
-      columnDefs: [{ field: "accented", width: 150 }],
+      columnDefs: [{ field: 'accented', width: 150 }],
       gridApi: null,
       columnApi: null,
       defaultColDef: {
@@ -35,11 +35,11 @@ const VueExample = {
     };
   },
   created() {
-    this.sortingOrder = ["desc", "asc", null];
+    this.sortingOrder = ['desc', 'asc', null];
     this.rowData = [
-      { accented: "aáàä" },
-      { accented: "aàáä" },
-      { accented: "aäàá" },
+      { accented: 'aáàä' },
+      { accented: 'aàáä' },
+      { accented: 'aäàá' },
     ];
   },
   methods: {
@@ -50,4 +50,4 @@ const VueExample = {
   },
 };
 
-createApp(VueExample).mount("#app");
+createApp(VueExample).mount('#app');

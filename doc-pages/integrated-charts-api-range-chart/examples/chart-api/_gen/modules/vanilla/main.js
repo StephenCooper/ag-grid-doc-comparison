@@ -1,28 +1,28 @@
 const gridOptions = {
   columnDefs: [
-    { field: "country", width: 150, chartDataType: "category" },
-    { field: "gold", chartDataType: "series", sort: "desc" },
-    { field: "silver", chartDataType: "series", sort: "desc" },
-    { field: "bronze", chartDataType: "series" },
+    { field: 'country', width: 150, chartDataType: 'category' },
+    { field: 'gold', chartDataType: 'series', sort: 'desc' },
+    { field: 'silver', chartDataType: 'series', sort: 'desc' },
+    { field: 'bronze', chartDataType: 'series' },
     {
-      headerName: "A",
-      valueGetter: "Math.floor(Math.random()*1000)",
-      chartDataType: "series",
+      headerName: 'A',
+      valueGetter: 'Math.floor(Math.random()*1000)',
+      chartDataType: 'series',
     },
     {
-      headerName: "B",
-      valueGetter: "Math.floor(Math.random()*1000)",
-      chartDataType: "series",
+      headerName: 'B',
+      valueGetter: 'Math.floor(Math.random()*1000)',
+      chartDataType: 'series',
     },
     {
-      headerName: "C",
-      valueGetter: "Math.floor(Math.random()*1000)",
-      chartDataType: "series",
+      headerName: 'C',
+      valueGetter: 'Math.floor(Math.random()*1000)',
+      chartDataType: 'series',
     },
     {
-      headerName: "D",
-      valueGetter: "Math.floor(Math.random()*1000)",
-      chartDataType: "series",
+      headerName: 'D',
+      valueGetter: 'Math.floor(Math.random()*1000)',
+      chartDataType: 'series',
     },
   ],
   defaultColDef: {
@@ -44,15 +44,15 @@ function onChart1() {
     cellRange: {
       rowStartIndex: 0,
       rowEndIndex: 4,
-      columns: ["country", "gold", "silver"],
+      columns: ['country', 'gold', 'silver'],
     },
-    chartType: "groupedColumn",
-    chartThemeName: "ag-vivid",
+    chartType: 'groupedColumn',
+    chartThemeName: 'ag-vivid',
     chartThemeOverrides: {
       common: {
         title: {
           enabled: true,
-          text: "Top 5 Medal Winners",
+          text: 'Top 5 Medal Winners',
         },
       },
     },
@@ -64,15 +64,15 @@ function onChart1() {
 function onChart2() {
   var params = {
     cellRange: {
-      columns: ["country", "bronze"],
+      columns: ['country', 'bronze'],
     },
-    chartType: "groupedBar",
-    chartThemeName: "ag-pastel",
+    chartType: 'groupedBar',
+    chartThemeName: 'ag-pastel',
     chartThemeOverrides: {
       common: {
         title: {
           enabled: true,
-          text: "Bronze Medal by Country",
+          text: 'Bronze Medal by Country',
         },
         legend: {
           enabled: false,
@@ -86,7 +86,7 @@ function onChart2() {
 }
 
 // setup the grid after the page has finished loading
-document.addEventListener("DOMContentLoaded", function () {
-  var gridDiv = document.querySelector("#myGrid");
+document.addEventListener('DOMContentLoaded', function () {
+  var gridDiv = document.querySelector('#myGrid');
   new agGrid.Grid(gridDiv, gridOptions);
 });

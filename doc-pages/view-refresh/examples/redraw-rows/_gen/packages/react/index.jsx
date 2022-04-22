@@ -1,10 +1,10 @@
-"use strict";
+'use strict';
 
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine-dark.css";
-import { AgGridReact } from "ag-grid-react";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from 'ag-grid-react';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine-dark.css';
 
 class GridExample extends Component {
   constructor(props) {
@@ -12,18 +12,18 @@ class GridExample extends Component {
 
     this.state = {
       columnDefs: [
-        { headerName: "A", field: "a" },
-        { headerName: "B", field: "b" },
-        { headerName: "C", field: "c" },
-        { headerName: "D", field: "d" },
-        { headerName: "E", field: "e" },
-        { headerName: "F", field: "f" },
+        { headerName: 'A', field: 'a' },
+        { headerName: 'B', field: 'b' },
+        { headerName: 'C', field: 'c' },
+        { headerName: 'D', field: 'd' },
+        { headerName: 'E', field: 'e' },
+        { headerName: 'F', field: 'f' },
       ],
       defaultColDef: {
         flex: 1,
       },
       rowData: createData(12),
-      getRowStyle: function () {
+      getRowStyle: function (params) {
         return {
           backgroundColor: colors[colorIndex],
         };
@@ -53,9 +53,9 @@ class GridExample extends Component {
 
   render() {
     return (
-      <div style={{ width: "100%", height: "100%" }}>
+      <div style={{ width: '100%', height: '100%' }}>
         <div className="example-wrapper">
-          <div style={{ marginBottom: "5px" }}>
+          <div style={{ marginBottom: '5px' }}>
             <button onClick={() => this.redrawAllRows()}>
               Redraw All Rows
             </button>
@@ -66,8 +66,8 @@ class GridExample extends Component {
 
           <div
             style={{
-              height: "100%",
-              width: "100%",
+              height: '100%',
+              width: '100%',
             }}
             className="ag-theme-alpine-dark"
           >
@@ -86,7 +86,7 @@ class GridExample extends Component {
 }
 
 var colorIndex = 0;
-var colors = ["#000000", "#000066", "#006600", "#660000"];
+var colors = ['#000000', '#000066', '#006600', '#660000'];
 function createData(count) {
   var result = [];
   for (var i = 1; i <= count; i++) {
@@ -108,4 +108,4 @@ function progressColor() {
   }
 }
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

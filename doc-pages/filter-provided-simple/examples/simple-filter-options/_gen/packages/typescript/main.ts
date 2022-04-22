@@ -1,13 +1,13 @@
-import { ColDef, Grid, GridOptions } from "ag-grid-community";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
+import { ColDef, Grid, GridOptions } from 'ag-grid-community';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 
 var filterParams = {
   suppressAndOrCondition: true,
   comparator: function (filterLocalDateAtMidnight: Date, cellValue: string) {
     var dateAsString = cellValue;
     if (dateAsString == null) return -1;
-    var dateParts = dateAsString.split("/");
+    var dateParts = dateAsString.split('/');
     var cellDate = new Date(
       Number(dateParts[2]),
       Number(dateParts[1]) - 1,
@@ -30,26 +30,26 @@ var filterParams = {
 };
 
 const columnDefs: ColDef[] = [
-  { field: "athlete" },
+  { field: 'athlete' },
   {
-    field: "country",
+    field: 'country',
     filterParams: {
-      filterOptions: ["contains", "startsWith", "endsWith"],
-      defaultOption: "startsWith",
+      filterOptions: ['contains', 'startsWith', 'endsWith'],
+      defaultOption: 'startsWith',
     },
   },
   {
-    field: "age",
-    filter: "agNumberColumnFilter",
+    field: 'age',
+    filter: 'agNumberColumnFilter',
     filterParams: {
       alwaysShowBothConditions: true,
-      defaultJoinOperator: "OR",
+      defaultJoinOperator: 'OR',
     },
     maxWidth: 100,
   },
   {
-    field: "date",
-    filter: "agDateColumnFilter",
+    field: 'date',
+    filter: 'agDateColumnFilter',
     filterParams: filterParams,
   },
 ];
@@ -64,9 +64,9 @@ const gridOptions: GridOptions = {
 };
 
 // setup the grid after the page has finished loading
-var gridDiv = document.querySelector<HTMLElement>("#myGrid")!;
+var gridDiv = document.querySelector<HTMLElement>('#myGrid')!;
 new Grid(gridDiv, gridOptions);
 
-fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
   .then((response) => response.json())
   .then((data) => gridOptions.api!.setRowData(data));

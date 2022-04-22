@@ -1,47 +1,47 @@
-"use strict";
+'use strict';
 
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { AgGridReact } from "@ag-grid-community/react";
-import React, { useCallback, useMemo, useRef, useState } from "react";
-import { render } from "react-dom";
-import ControlsCellRenderer from "./controlsCellRenderer.jsx";
+import React, { useCallback, useMemo, useRef, useState } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from '@ag-grid-community/react';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import ControlsCellRenderer from './controlsCellRenderer.jsx';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([ClientSideRowModelModule]);
 
 const GridExample = () => {
   const gridRef = useRef();
-  const containerStyle = useMemo(() => ({ width: "100%", height: "100%" }), []);
-  const gridStyle = useMemo(() => ({ height: "100%", width: "100%" }), []);
+  const containerStyle = useMemo(() => ({ width: '100%', height: '100%' }), []);
+  const gridStyle = useMemo(() => ({ height: '100%', width: '100%' }), []);
   const [rowData, setRowData] = useState();
   const [columnDefs, setColumnDefs] = useState([
     {
-      lockPosition: true,
-      valueGetter: "node.rowIndex",
-      cellClass: "locked-col",
+      lockPosition: 'left',
+      valueGetter: 'node.rowIndex',
+      cellClass: 'locked-col',
       width: 60,
       suppressNavigable: true,
     },
     {
-      lockPosition: true,
+      lockPosition: 'left',
       cellRenderer: ControlsCellRenderer,
-      cellClass: "locked-col",
+      cellClass: 'locked-col',
       width: 120,
       suppressNavigable: true,
     },
-    { field: "athlete" },
-    { field: "age" },
-    { field: "country" },
-    { field: "year" },
-    { field: "date" },
-    { field: "sport" },
-    { field: "gold" },
-    { field: "silver" },
-    { field: "bronze" },
-    { field: "total" },
+    { field: 'athlete' },
+    { field: 'age' },
+    { field: 'country' },
+    { field: 'year' },
+    { field: 'date' },
+    { field: 'sport' },
+    { field: 'gold' },
+    { field: 'silver' },
+    { field: 'bronze' },
+    { field: 'total' },
   ]);
   const defaultColDef = useMemo(() => {
     return {
@@ -51,7 +51,7 @@ const GridExample = () => {
   }, []);
 
   const onGridReady = useCallback((params) => {
-    fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+    fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .then((resp) => resp.json())
       .then((data) => setRowData(data));
   }, []);
@@ -63,7 +63,7 @@ const GridExample = () => {
       (col) => !col.getColDef().lockPosition
     );
     const pinnedCount = allNonFixedCols.filter(
-      (col) => col.getPinned() === "left"
+      (col) => col.getPinned() === 'left'
     ).length;
     const pinFixed = pinnedCount > 0;
     const columnStates = [];
@@ -71,7 +71,7 @@ const GridExample = () => {
       if (pinFixed !== col.isPinned()) {
         columnStates.push({
           colId: col.getId(),
-          pinned: pinFixed ? "left" : null,
+          pinned: pinFixed ? 'left' : null,
         });
       }
     });
@@ -82,13 +82,13 @@ const GridExample = () => {
 
   const onPinAthlete = useCallback(() => {
     gridRef.current.columnApi.applyColumnState({
-      state: [{ colId: "athlete", pinned: "left" }],
+      state: [{ colId: 'athlete', pinned: 'left' }],
     });
   }, []);
 
   const onUnpinAthlete = useCallback(() => {
     gridRef.current.columnApi.applyColumnState({
-      state: [{ colId: "athlete", pinned: null }],
+      state: [{ colId: 'athlete', pinned: null }],
     });
   }, []);
 
@@ -118,4 +118,4 @@ const GridExample = () => {
   );
 };
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

@@ -1,15 +1,15 @@
-"use strict";
+'use strict';
 
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { AgGridReact } from "@ag-grid-community/react";
-import { ExcelExportModule } from "@ag-grid-enterprise/excel-export";
-import { MenuModule } from "@ag-grid-enterprise/menu";
-import { RowGroupingModule } from "@ag-grid-enterprise/row-grouping";
-import React, { useCallback, useMemo, useRef, useState } from "react";
-import { render } from "react-dom";
+import React, { useCallback, useMemo, useRef, useState } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from '@ag-grid-community/react';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import { MenuModule } from '@ag-grid-enterprise/menu';
+import { ExcelExportModule } from '@ag-grid-enterprise/excel-export';
+import { RowGroupingModule } from '@ag-grid-enterprise/row-grouping';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([
@@ -30,26 +30,26 @@ const getIndentClass = (params) => {
     indent++;
     node = node.parent;
   }
-  return "indent-" + indent;
+  return 'indent-' + indent;
 };
 
 const GridExample = () => {
   const gridRef = useRef();
-  const containerStyle = useMemo(() => ({ width: "100%", height: "100%" }), []);
-  const gridStyle = useMemo(() => ({ height: "100%", width: "100%" }), []);
+  const containerStyle = useMemo(() => ({ width: '100%', height: '100%' }), []);
+  const gridStyle = useMemo(() => ({ height: '100%', width: '100%' }), []);
   const [rowData, setRowData] = useState();
   const [columnDefs, setColumnDefs] = useState([
-    { field: "country", minWidth: 120, rowGroup: true },
-    { field: "year", rowGroup: true },
-    { headerName: "Name", field: "athlete", minWidth: 150 },
+    { field: 'country', minWidth: 120, rowGroup: true },
+    { field: 'year', rowGroup: true },
+    { headerName: 'Name', field: 'athlete', minWidth: 150 },
     {
-      headerName: "Name Length",
+      headerName: 'Name Length',
       valueGetter: 'data ? data.athlete.length : ""',
     },
-    { field: "sport", minWidth: 120, rowGroup: true },
-    { field: "silver" },
-    { field: "bronze" },
-    { field: "total" },
+    { field: 'sport', minWidth: 120, rowGroup: true },
+    { field: 'silver' },
+    { field: 'bronze' },
+    { field: 'total' },
   ]);
   const defaultColDef = useMemo(() => {
     return {
@@ -70,32 +70,32 @@ const GridExample = () => {
   const excelStyles = useMemo(() => {
     return [
       {
-        id: "indent-1",
+        id: 'indent-1',
         alignment: {
           indent: 1,
         },
         // note, dataType: 'string' required to ensure that numeric values aren't right-aligned
-        dataType: "String",
+        dataType: 'String',
       },
       {
-        id: "indent-2",
+        id: 'indent-2',
         alignment: {
           indent: 2,
         },
-        dataType: "String",
+        dataType: 'String',
       },
       {
-        id: "indent-3",
+        id: 'indent-3',
         alignment: {
           indent: 3,
         },
-        dataType: "String",
+        dataType: 'String',
       },
     ];
   }, []);
 
   const onGridReady = useCallback((params) => {
-    fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+    fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .then((resp) => resp.json())
       .then((data) => {
         setRowData(data);
@@ -118,7 +118,7 @@ const GridExample = () => {
         <div>
           <button
             onClick={onBtnExportDataAsExcel}
-            style={{ marginBottom: "5px", fontWeight: "bold" }}
+            style={{ marginBottom: '5px', fontWeight: 'bold' }}
           >
             Export to Excel
           </button>
@@ -142,4 +142,4 @@ const GridExample = () => {
   );
 };
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

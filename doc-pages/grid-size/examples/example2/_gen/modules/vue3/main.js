@@ -1,9 +1,9 @@
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { AgGridVue } from "@ag-grid-community/vue3";
-import { createApp } from "vue";
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { AgGridVue } from '@ag-grid-community/vue3';
+import { createApp } from 'vue';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([ClientSideRowModelModule]);
@@ -25,21 +25,21 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
-        { field: "athlete", minWidth: 150 },
-        { field: "age", minWidth: 70, maxWidth: 90 },
-        { field: "country", minWidth: 130 },
-        { field: "year", minWidth: 70, maxWidth: 90 },
-        { field: "date", minWidth: 120 },
-        { field: "sport", minWidth: 120 },
-        { field: "gold", minWidth: 80 },
-        { field: "silver", minWidth: 80 },
-        { field: "bronze", minWidth: 80 },
-        { field: "total", minWidth: 80 },
+        { field: 'athlete', minWidth: 150 },
+        { field: 'age', minWidth: 70, maxWidth: 90 },
+        { field: 'country', minWidth: 130 },
+        { field: 'year', minWidth: 70, maxWidth: 90 },
+        { field: 'date', minWidth: 120 },
+        { field: 'sport', minWidth: 120 },
+        { field: 'gold', minWidth: 80 },
+        { field: 'silver', minWidth: 80 },
+        { field: 'bronze', minWidth: 80 },
+        { field: 'total', minWidth: 80 },
       ],
       gridApi: null,
       columnApi: null,
@@ -52,7 +52,7 @@ const VueExample = {
   },
   created() {
     this.rowData = getData();
-    this.getRowHeight = function () {
+    this.getRowHeight = (params) => {
       return currentRowHeight;
     };
   },
@@ -80,7 +80,7 @@ var currentRowHeight;
 
 const updateRowHeight = (params) => {
   // get the height of the grid body - this excludes the height of the headers
-  const bodyViewport = document.querySelector(".ag-body-viewport");
+  const bodyViewport = document.querySelector('.ag-body-viewport');
   if (!bodyViewport) {
     return;
   }
@@ -101,4 +101,4 @@ const updateRowHeight = (params) => {
   }
 };
 
-createApp(VueExample).mount("#app");
+createApp(VueExample).mount('#app');

@@ -1,19 +1,19 @@
 const gridOptions = {
   columnDefs: [
     {
-      headerName: "No Value Formatter",
-      field: "country",
+      headerName: 'No Value Formatter',
+      field: 'country',
       valueFormatter: countryValueFormatter,
-      filter: "agSetColumnFilter",
+      filter: 'agSetColumnFilter',
       filterParams: {
         // no value formatter!
       },
     },
     {
-      headerName: "With Value Formatter",
-      field: "country",
+      headerName: 'With Value Formatter',
+      field: 'country',
       valueFormatter: countryValueFormatter,
-      filter: "agSetColumnFilter",
+      filter: 'agSetColumnFilter',
       filterParams: {
         valueFormatter: countryValueFormatter,
       },
@@ -25,13 +25,13 @@ const gridOptions = {
     resizable: true,
     floatingFilter: true,
   },
-  sideBar: "filters",
+  sideBar: 'filters',
   onFirstDataRendered: onFirstDataRendered,
 };
 
 function countryValueFormatter(params) {
   var value = params.value;
-  return value + " (" + COUNTRY_CODES[value].toUpperCase() + ")";
+  return value + ' (' + COUNTRY_CODES[value].toUpperCase() + ')';
 }
 
 function printFilterModel() {
@@ -40,15 +40,15 @@ function printFilterModel() {
 }
 
 function onFirstDataRendered(params) {
-  params.api.getToolPanelInstance("filters").expandFilters();
+  params.api.getToolPanelInstance('filters').expandFilters();
 }
 
 // setup the grid after the page has finished loading
-document.addEventListener("DOMContentLoaded", function () {
-  var gridDiv = document.querySelector("#myGrid");
+document.addEventListener('DOMContentLoaded', function () {
+  var gridDiv = document.querySelector('#myGrid');
   new agGrid.Grid(gridDiv, gridOptions);
 
-  fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+  fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
     .then((response) => response.json())
     .then(function (data) {
       // only return data that has corresponding country codes
@@ -61,23 +61,23 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 var COUNTRY_CODES = {
-  Ireland: "ie",
-  Luxembourg: "lu",
-  Belgium: "be",
-  Spain: "es",
-  France: "fr",
-  Germany: "de",
-  Sweden: "se",
-  Italy: "it",
-  Greece: "gr",
-  Iceland: "is",
-  Portugal: "pt",
-  Malta: "mt",
-  Norway: "no",
-  Brazil: "br",
-  Argentina: "ar",
-  Colombia: "co",
-  Peru: "pe",
-  Venezuela: "ve",
-  Uruguay: "uy",
+  Ireland: 'ie',
+  Luxembourg: 'lu',
+  Belgium: 'be',
+  Spain: 'es',
+  France: 'fr',
+  Germany: 'de',
+  Sweden: 'se',
+  Italy: 'it',
+  Greece: 'gr',
+  Iceland: 'is',
+  Portugal: 'pt',
+  Malta: 'mt',
+  Norway: 'no',
+  Brazil: 'br',
+  Argentina: 'ar',
+  Colombia: 'co',
+  Peru: 'pe',
+  Venezuela: 've',
+  Uruguay: 'uy',
 };

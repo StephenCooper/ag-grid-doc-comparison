@@ -1,8 +1,8 @@
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
-import { AgGridVue } from "ag-grid-vue3";
-import { createApp } from "vue";
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import 'ag-grid-enterprise';
+import { AgGridVue } from 'ag-grid-vue3';
+import { createApp } from 'vue';
 
 const VueExample = {
   template: `
@@ -20,23 +20,23 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
-        { headerName: "Default", field: "animal", filter: "agSetColumnFilter" },
+        { headerName: 'Default', field: 'animal', filter: 'agSetColumnFilter' },
         {
-          headerName: "Excel (Windows)",
-          field: "animal",
-          filter: "agSetColumnFilter",
-          filterParams: { excelMode: "windows" },
+          headerName: 'Excel (Windows)',
+          field: 'animal',
+          filter: 'agSetColumnFilter',
+          filterParams: { excelMode: 'windows' },
         },
         {
-          headerName: "Excel (Mac)",
-          field: "animal",
-          filter: "agSetColumnFilter",
-          filterParams: { excelMode: "mac" },
+          headerName: 'Excel (Mac)',
+          field: 'animal',
+          filter: 'agSetColumnFilter',
+          filterParams: { excelMode: 'mac' },
         },
       ],
       gridApi: null,
@@ -52,12 +52,12 @@ const VueExample = {
     };
   },
   created() {
-    this.sideBar = "filters";
+    this.sideBar = 'filters';
     this.rowData = getData();
     this.localeText = {
-      applyFilter: "OK",
-      cancelFilter: "Cancel",
-      resetFilter: "Clear Filter",
+      applyFilter: 'OK',
+      cancelFilter: 'Cancel',
+      resetFilter: 'Clear Filter',
     };
   },
   methods: {
@@ -68,4 +68,4 @@ const VueExample = {
   },
 };
 
-createApp(VueExample).mount("#app");
+createApp(VueExample).mount('#app');

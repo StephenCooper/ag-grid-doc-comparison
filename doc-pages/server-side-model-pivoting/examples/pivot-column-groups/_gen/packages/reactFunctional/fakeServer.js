@@ -54,7 +54,7 @@ function FakeServer(allData) {
       .map(function (groupCol) {
         return groupCol.id;
       })
-      .join(", ");
+      .join(', ');
 
     var SQL_TEMPLATE =
       "SELECT {0}, ({1} + '_{2}') AS {1}, {2} FROM ? PIVOT (SUM([{2}]) FOR {1})";
@@ -62,7 +62,7 @@ function FakeServer(allData) {
       interpolate(SQL_TEMPLATE, [selectGroupCols, pivotCol.id, valueCol.id]) +
       whereSql(request);
 
-    console.log("[FakeServer] - about to execute query:", SQL);
+    console.log('[FakeServer] - about to execute query:', SQL);
 
     var result = alasql(SQL, [allData]);
 
@@ -77,17 +77,17 @@ function FakeServer(allData) {
 
     if (groupKeys) {
       groupKeys.forEach(function (key, i) {
-        var value = typeof key === "string" ? "'" + key + "'" : key;
+        var value = typeof key === 'string' ? "'" + key + "'" : key;
 
-        whereParts.push(rowGroups[i].id + " = " + value);
+        whereParts.push(rowGroups[i].id + ' = ' + value);
       });
     }
 
     if (whereParts.length > 0) {
-      return " WHERE " + whereParts.join(" AND ");
+      return ' WHERE ' + whereParts.join(' AND ');
     }
 
-    return "";
+    return '';
   }
 
   function extractRowsForBlock(request, results) {
@@ -131,7 +131,7 @@ function FakeServer(allData) {
 function interpolate(str, o) {
   return str.replace(/{([^{}]*)}/g, function (a, b) {
     var r = o[b];
-    return typeof r === "string" || typeof r === "number" ? r : a;
+    return typeof r === 'string' || typeof r === 'number' ? r : a;
   });
 }
 

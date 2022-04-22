@@ -1,10 +1,10 @@
 const gridOptions = {
   columnDefs: [
-    { field: "country", width: 150, chartDataType: "category" },
-    { field: "total", chartDataType: "series" },
-    { field: "gold", chartDataType: "series" },
-    { field: "silver", chartDataType: "series" },
-    { field: "bronze", chartDataType: "series" },
+    { field: 'country', width: 150, chartDataType: 'category' },
+    { field: 'total', chartDataType: 'series' },
+    { field: 'gold', chartDataType: 'series' },
+    { field: 'silver', chartDataType: 'series' },
+    { field: 'bronze', chartDataType: 'series' },
   ],
   defaultColDef: {
     editable: true,
@@ -27,13 +27,13 @@ const gridOptions = {
         strokeWidth: 2,
         highlightStyle: {
           item: {
-            fill: "red",
-            stroke: "yellow",
+            fill: 'red',
+            stroke: 'yellow',
           },
         },
         marker: {
           enabled: true,
-          shape: "square",
+          shape: 'square',
           size: 5,
           maxSize: 12,
           strokeWidth: 4,
@@ -46,24 +46,24 @@ const gridOptions = {
             return {
               content:
                 (label != null
-                  ? "<b>" +
+                  ? '<b>' +
                     params.labelName.toUpperCase() +
-                    ":</b> " +
+                    ':</b> ' +
                     label +
-                    "<br/>"
-                  : "") +
-                "<b>" +
+                    '<br/>'
+                  : '') +
+                '<b>' +
                 params.xName.toUpperCase() +
-                ":</b> " +
+                ':</b> ' +
                 params.xValue +
-                "<br/>" +
-                "<b>" +
+                '<br/>' +
+                '<b>' +
                 params.yName.toUpperCase() +
-                ":</b> " +
+                ':</b> ' +
                 params.yValue +
                 (size != null
-                  ? "<br/><b>" + params.sizeName.toUpperCase() + ":</b> " + size
-                  : ""),
+                  ? '<br/><b>' + params.sizeName.toUpperCase() + ':</b> ' + size
+                  : ''),
             };
           },
         },
@@ -76,19 +76,19 @@ function onFirstDataRendered(params) {
   var cellRange = {
     rowStartIndex: 0,
     rowEndIndex: 4,
-    columns: ["country", "total", "gold", "silver", "bronze"],
+    columns: ['country', 'total', 'gold', 'silver', 'bronze'],
   };
 
   var createRangeChartParams = {
     cellRange: cellRange,
-    chartType: "scatter",
+    chartType: 'scatter',
   };
 
   params.api.createRangeChart(createRangeChartParams);
 }
 
 // setup the grid after the page has finished loading
-document.addEventListener("DOMContentLoaded", function () {
-  var gridDiv = document.querySelector("#myGrid");
+document.addEventListener('DOMContentLoaded', function () {
+  var gridDiv = document.querySelector('#myGrid');
   new agGrid.Grid(gridDiv, gridOptions);
 });

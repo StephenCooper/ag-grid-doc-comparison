@@ -1,9 +1,9 @@
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import { AgGridVue } from "ag-grid-vue3";
-import { createApp } from "vue";
-import NumberFilterComponent from "./numberFilterComponentVue.js";
-import NumberFloatingFilterComponent from "./numberFloatingFilterComponentVue.js";
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import { AgGridVue } from 'ag-grid-vue3';
+import { createApp } from 'vue';
+import NumberFilterComponent from './numberFilterComponentVue.js';
+import NumberFloatingFilterComponent from './numberFloatingFilterComponentVue.js';
 
 const VueExample = {
   template: `
@@ -19,37 +19,37 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
     NumberFloatingFilterComponent,
     NumberFilterComponent,
   },
   data: function () {
     return {
       columnDefs: [
-        { field: "athlete", filter: "agTextColumnFilter" },
+        { field: 'athlete', filter: 'agTextColumnFilter' },
         {
-          field: "gold",
-          floatingFilterComponent: "NumberFloatingFilterComponent",
+          field: 'gold',
+          floatingFilterComponent: 'NumberFloatingFilterComponent',
           floatingFilterComponentParams: { suppressFilterButton: true },
-          filter: "NumberFilterComponent",
+          filter: 'NumberFilterComponent',
         },
         {
-          field: "silver",
-          floatingFilterComponent: "NumberFloatingFilterComponent",
+          field: 'silver',
+          floatingFilterComponent: 'NumberFloatingFilterComponent',
           floatingFilterComponentParams: { suppressFilterButton: true },
-          filter: "NumberFilterComponent",
+          filter: 'NumberFilterComponent',
         },
         {
-          field: "bronze",
-          floatingFilterComponent: "NumberFloatingFilterComponent",
+          field: 'bronze',
+          floatingFilterComponent: 'NumberFloatingFilterComponent',
           floatingFilterComponentParams: { suppressFilterButton: true },
-          filter: "NumberFilterComponent",
+          filter: 'NumberFilterComponent',
         },
         {
-          field: "total",
-          floatingFilterComponent: "NumberFloatingFilterComponent",
+          field: 'total',
+          floatingFilterComponent: 'NumberFloatingFilterComponent',
           floatingFilterComponentParams: { suppressFilterButton: true },
-          filter: "NumberFilterComponent",
+          filter: 'NumberFilterComponent',
         },
       ],
       gridApi: null,
@@ -76,11 +76,11 @@ const VueExample = {
         this.rowData = data;
       };
 
-      fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
         .then((resp) => resp.json())
         .then((data) => updateData(data));
     },
   },
 };
 
-createApp(VueExample).mount("#app");
+createApp(VueExample).mount('#app');

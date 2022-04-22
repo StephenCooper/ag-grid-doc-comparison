@@ -10,15 +10,16 @@ Row Drag Between Grids is concerned with seamless integration among different gr
 
 To allow adding a grid as DropZone, the `getRowDropZoneParams` API method should be used in the target grid and the `addRowDropZone` in the source grid.
 
+
 ```js
 // example usage:
 new agGrid.Grid(gridElement, gridOptions);
 new agGrid.Grid(gridElement, gridOptions2);
 
 var dropZoneParams = GridApi2.getRowDropZoneParams({
-  onDragStop: function () {
-    alert("Record Dropped!");
-  },
+    onDragStop: function() {
+        alert('Record Dropped!');
+    }
 });
 
 gridApi.addRowDropZone(dropZoneParams);
@@ -32,14 +33,14 @@ In the example below, note the following:
 - When you drag from one grid to another, a line will appear indicating where the row will be placed.
 
 - Rows can be dragged from one grid to the other grid. When the row is received, it is **not**
-  removed from the first grid. This is the choice of the example. The example could equally have removed
-  from the other grid.
+removed from the first grid. This is the choice of the example. The example could equally have removed
+from the other grid.
 
 - Rows can be removed from both grids by dragging the row to the 'Trash' drop zone.
 
 - New rows can be created by clicking on the red, green and blue buttons.
 
-<grid-example title='Two Grids with Drop Position' name='two-grids-with-drop-position' type='multi' options='{ "extras": ["fontawesome"] }'></grid-example>
+<grid-example title='Two Grids with Drop Position' name='two-grids-with-drop-position' type='mixed' options='{ "extras": ["fontawesome"] }'></grid-example>
 
 ## Dragging Multiple Records Between Grids
 
@@ -57,4 +58,5 @@ In the example below, note the following:
 
 - If `None` is selected, the rows will be copied from one grid to another and the source grid will stay as is.
 
-<grid-example title='Multiple Records with Drop Position' name='two-grids-with-multiple-records' type='multi' options='{ "extras": ["fontawesome", "bootstrap"] }'></grid-example>
+<grid-example title='Multiple Records with Drop Position' name='two-grids-with-multiple-records' type='mixed' options='{ "extras": ["fontawesome", "bootstrap"] }'></grid-example>
+

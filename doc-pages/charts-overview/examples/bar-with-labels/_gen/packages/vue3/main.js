@@ -1,5 +1,5 @@
-import { AgChartsVue } from "ag-charts-vue3";
-import { createApp } from "vue";
+import { AgChartsVue } from 'ag-charts-vue3';
+import { createApp } from 'vue';
 
 const ChartExample = {
   template: `
@@ -7,7 +7,7 @@ const ChartExample = {
                 :options="options"></ag-charts-vue>
     `,
   components: {
-    "ag-charts-vue": AgChartsVue,
+    'ag-charts-vue': AgChartsVue,
   },
   data: function () {
     return {
@@ -19,44 +19,44 @@ const ChartExample = {
       autoSize: true,
       data: getData(),
       title: {
-        text: "Change in Number of Jobs in UK (June to September 2019)",
+        text: 'Change in Number of Jobs in UK (June to September 2019)',
         fontSize: 18,
       },
       subtitle: {
-        text: "Source: Office for National Statistics",
+        text: 'Source: Office for National Statistics',
       },
       series: [
         {
-          type: "bar",
-          xKey: "job",
-          yKey: "change",
-          fill: "rgba(0, 117, 163, 0.9)",
-          stroke: "rgba(0, 117, 163, 0.9)",
+          type: 'bar',
+          xKey: 'job',
+          yKey: 'change',
+          fill: 'rgba(0, 117, 163, 0.9)',
+          stroke: 'rgba(0, 117, 163, 0.9)',
           highlightStyle: {
             item: {
-              fill: "#0ab9ff",
+              fill: '#0ab9ff',
             },
           },
           label: {
-            fontWeight: "bold",
-            color: "white",
+            fontWeight: 'bold',
+            color: 'white',
             formatter: (params) => {
-              return (params.value > 0 ? "+" : "") + params.value;
+              return (params.value > 0 ? '+' : '') + params.value;
             },
           },
         },
       ],
       axes: [
         {
-          type: "category",
-          position: "left",
+          type: 'category',
+          position: 'left',
         },
         {
-          type: "number",
-          position: "bottom",
+          type: 'number',
+          position: 'bottom',
           title: {
             enabled: true,
-            text: "Change in number of jobs (thousands)",
+            text: 'Change in number of jobs (thousands)',
           },
         },
       ],
@@ -69,4 +69,4 @@ const ChartExample = {
   methods: {},
 };
 
-createApp(ChartExample).mount("#app");
+createApp(ChartExample).mount('#app');

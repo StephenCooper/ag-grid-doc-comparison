@@ -5,14 +5,14 @@ var rowDrag = function (params) {
 
 const gridOptions = {
   columnDefs: [
-    { field: "athlete", rowDrag: rowDrag },
-    { field: "country", rowGroup: true },
-    { field: "year", width: 100 },
-    { field: "date" },
-    { field: "sport" },
-    { field: "gold" },
-    { field: "silver" },
-    { field: "bronze" },
+    { field: 'athlete', rowDrag: rowDrag },
+    { field: 'country', rowGroup: true },
+    { field: 'year', width: 100 },
+    { field: 'date' },
+    { field: 'sport' },
+    { field: 'gold' },
+    { field: 'silver' },
+    { field: 'bronze' },
   ],
   defaultColDef: {
     width: 170,
@@ -55,7 +55,7 @@ function onRowDragMove(event) {
 }
 
 // setup the grid after the page has finished loading
-document.addEventListener("DOMContentLoaded", function () {
-  var gridDiv = document.querySelector("#myGrid");
+document.addEventListener('DOMContentLoaded', function () {
+  var gridDiv = document.querySelector('#myGrid');
   new agGrid.Grid(gridDiv, gridOptions);
 });

@@ -1,16 +1,16 @@
-"use strict";
+'use strict';
 
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
-import { AgGridReact } from "ag-grid-react";
-import React, { useCallback, useMemo, useRef, useState } from "react";
-import { render } from "react-dom";
+import React, { useCallback, useMemo, useRef, useState } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from 'ag-grid-react';
+import 'ag-grid-enterprise';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 
 const getColumnDefs = () => {
   return [
-    { field: "date", valueFormatter: dateFormatter },
-    { field: "avgTemp" },
+    { field: 'date', valueFormatter: dateFormatter },
+    { field: 'avgTemp' },
   ];
 };
 
@@ -37,8 +37,8 @@ const getRowData = () => {
 
 const GridExample = () => {
   const gridRef = useRef();
-  const containerStyle = useMemo(() => ({ width: "100%", height: "100%" }), []);
-  const gridStyle = useMemo(() => ({ height: "100%", width: "100%" }), []);
+  const containerStyle = useMemo(() => ({ width: '100%', height: '100%' }), []);
+  const gridStyle = useMemo(() => ({ height: '100%', width: '100%' }), []);
   const [rowData, setRowData] = useState(getRowData());
   const [columnDefs, setColumnDefs] = useState(getColumnDefs());
   const defaultColDef = useMemo(() => {
@@ -55,7 +55,7 @@ const GridExample = () => {
       line: {
         title: {
           enabled: true,
-          text: "Average Daily Temperatures",
+          text: 'Average Daily Temperatures',
         },
         legend: {
           enabled: false,
@@ -73,21 +73,21 @@ const GridExample = () => {
           time: {
             label: {
               rotation: 0,
-              format: "%d %b",
+              format: '%d %b',
             },
           },
           category: {
             label: {
               rotation: 0,
               formatter: function (params) {
-                return moment(new Date(params.value)).format("DD MMM");
+                return moment(new Date(params.value)).format('DD MMM');
               },
             },
           },
           number: {
             label: {
               formatter: function (params) {
-                return params.value + "°C";
+                return params.value + '°C';
               },
             },
           },
@@ -102,12 +102,12 @@ const GridExample = () => {
         currentChartRef.destroyChart();
       }
       var createRangeChartParams = {
-        chartContainer: document.querySelector("#myChart"),
+        chartContainer: document.querySelector('#myChart'),
         suppressChartRanges: true,
         cellRange: {
-          columns: ["date", "avgTemp"],
+          columns: ['date', 'avgTemp'],
         },
-        chartType: "line",
+        chartType: 'line',
       };
       currentChartRef = gridRef.current.api.createRangeChart(
         createRangeChartParams
@@ -117,12 +117,12 @@ const GridExample = () => {
   );
 
   const toggleAxis = useCallback(() => {
-    var axisBtn = document.querySelector("#axisBtn");
+    var axisBtn = document.querySelector('#axisBtn');
     axisBtn.textContent = axisBtn.value;
-    axisBtn.value = axisBtn.value === "time" ? "category" : "time";
+    axisBtn.value = axisBtn.value === 'time' ? 'category' : 'time';
     const columnDefs = getColumnDefs();
     columnDefs.forEach(function (colDef) {
-      if (colDef.field === "date") {
+      if (colDef.field === 'date') {
         colDef.chartDataType = axisBtn.value;
       }
     });
@@ -130,7 +130,7 @@ const GridExample = () => {
   }, []);
 
   const getChartToolbarItems = useCallback(() => {
-    return ["chartData", "chartFormat"];
+    return ['chartData', 'chartFormat'];
   }, []);
 
   return (
@@ -160,4 +160,4 @@ const GridExample = () => {
   );
 };
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

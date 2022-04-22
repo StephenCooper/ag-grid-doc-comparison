@@ -1,12 +1,12 @@
-"use strict";
+'use strict';
 
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { AgGridReact } from "@ag-grid-community/react";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from '@ag-grid-community/react';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([ClientSideRowModelModule]);
@@ -17,18 +17,18 @@ class GridExample extends Component {
 
     this.state = {
       columnDefs: [
-        { field: "make" },
-        { field: "model" },
-        { field: "price" },
-        { field: "zombies" },
-        { field: "style" },
-        { field: "clothes" },
+        { field: 'make' },
+        { field: 'model' },
+        { field: 'price' },
+        { field: 'zombies' },
+        { field: 'style' },
+        { field: 'clothes' },
       ],
       defaultColDef: {
         flex: 1,
       },
       rowData: getData(),
-      rowSelection: "multiple",
+      rowSelection: 'multiple',
     };
   }
 
@@ -42,8 +42,8 @@ class GridExample extends Component {
     this.gridApi.forEachNode(function (node) {
       rowData.push(node.data);
     });
-    console.log("Row Data:");
-    console.log(rowData);
+    console.log('Row Data:');
+    console.table(rowData);
   };
 
   clearData = () => {
@@ -64,10 +64,10 @@ class GridExample extends Component {
   };
 
   updateItems = () => {
-    // update the first 5 items
+    // update the first 2 items
     const itemsToUpdate = [];
     this.gridApi.forEachNodeAfterFilterAndSort(function (rowNode, index) {
-      // only do first 5
+      // only do first 2
       if (index >= 2) {
         return;
       }
@@ -87,12 +87,12 @@ class GridExample extends Component {
 
   render() {
     return (
-      <div style={{ width: "100%", height: "100%" }}>
+      <div style={{ width: '100%', height: '100%' }}>
         <div
-          style={{ height: "100%", display: "flex", flexDirection: "column" }}
+          style={{ height: '100%', display: 'flex', flexDirection: 'column' }}
         >
-          <div style={{ marginBottom: "4px" }}>
-            <button onClick={() => this.addItems()}>Add Items</button>
+          <div style={{ marginBottom: '4px' }}>
+            <button onClick={() => this.addItems(undefined)}>Add Items</button>
             <button onClick={() => this.addItems(2)}>
               Add Items addIndex=2
             </button>
@@ -103,11 +103,11 @@ class GridExample extends Component {
             <button onClick={() => this.getRowData()}>Get Row Data</button>
             <button onClick={() => this.clearData()}>Clear Data</button>
           </div>
-          <div style={{ flexGrow: "1" }}>
+          <div style={{ flexGrow: '1' }}>
             <div
               style={{
-                height: "100%",
-                width: "100%",
+                height: '100%',
+                width: '100%',
               }}
               className="ag-theme-alpine"
             >
@@ -130,33 +130,33 @@ class GridExample extends Component {
 let newCount = 1;
 function createNewRowData() {
   const newData = {
-    make: "Toyota " + newCount,
-    model: "Celica " + newCount,
+    make: 'Toyota ' + newCount,
+    model: 'Celica ' + newCount,
     price: 35000 + newCount * 17,
-    zombies: "Headless",
-    style: "Little",
-    clothes: "Airbag",
+    zombies: 'Headless',
+    style: 'Little',
+    clothes: 'Airbag',
   };
   newCount++;
   return newData;
 }
 function printResult(res) {
-  console.log("---------------------------------------");
+  console.log('---------------------------------------');
   if (res.add) {
     res.add.forEach(function (rowNode) {
-      console.log("Added Row Node", rowNode);
+      console.log('Added Row Node', rowNode);
     });
   }
   if (res.remove) {
     res.remove.forEach(function (rowNode) {
-      console.log("Removed Row Node", rowNode);
+      console.log('Removed Row Node', rowNode);
     });
   }
   if (res.update) {
     res.update.forEach(function (rowNode) {
-      console.log("Updated Row Node", rowNode);
+      console.log('Updated Row Node', rowNode);
     });
   }
 }
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

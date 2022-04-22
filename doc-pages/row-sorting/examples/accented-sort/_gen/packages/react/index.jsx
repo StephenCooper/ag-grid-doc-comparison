@@ -1,25 +1,25 @@
-"use strict";
+'use strict';
 
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import { AgGridReact } from "ag-grid-react";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from 'ag-grid-react';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 
 class GridExample extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      columnDefs: [{ field: "accented", width: 150 }],
+      columnDefs: [{ field: 'accented', width: 150 }],
       defaultColDef: {
         sortable: true,
       },
-      sortingOrder: ["desc", "asc", null],
+      sortingOrder: ['desc', 'asc', null],
       rowData: [
-        { accented: "aáàä" },
-        { accented: "aàáä" },
-        { accented: "aäàá" },
+        { accented: 'aáàä' },
+        { accented: 'aàáä' },
+        { accented: 'aäàá' },
       ],
     };
   }
@@ -31,11 +31,11 @@ class GridExample extends Component {
 
   render() {
     return (
-      <div style={{ width: "100%", height: "100%" }}>
+      <div style={{ width: '100%', height: '100%' }}>
         <div
           style={{
-            height: "100%",
-            width: "100%",
+            height: '100%',
+            width: '100%',
           }}
           className="ag-theme-alpine"
         >
@@ -54,4 +54,4 @@ class GridExample extends Component {
   }
 }
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

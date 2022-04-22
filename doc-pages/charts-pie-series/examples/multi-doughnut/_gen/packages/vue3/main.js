@@ -1,5 +1,5 @@
-import { AgChartsVue } from "ag-charts-vue3";
-import { createApp } from "vue";
+import { AgChartsVue } from 'ag-charts-vue3';
+import { createApp } from 'vue';
 
 const ChartExample = {
   template: `
@@ -7,7 +7,7 @@ const ChartExample = {
                 :options="options"></ag-charts-vue>
     `,
   components: {
-    "ag-charts-vue": AgChartsVue,
+    'ag-charts-vue': AgChartsVue,
   },
   data: function () {
     return {
@@ -17,30 +17,30 @@ const ChartExample = {
   created() {
     this.options = {
       data: [
-        { os: "Android", share: 56.9, satisfaction: 10 },
-        { os: "iOS", share: 22.5, satisfaction: 15 },
-        { os: "BlackBerry", share: 6.8, satisfaction: 5 },
-        { os: "Symbian", share: 8.5, satisfaction: 1 },
-        { os: "Bada", share: 2.6, satisfaction: 2 },
-        { os: "Windows", share: 1.9, satisfaction: 12 },
+        { os: 'Android', share: 56.9, satisfaction: 10 },
+        { os: 'iOS', share: 22.5, satisfaction: 15 },
+        { os: 'BlackBerry', share: 6.8, satisfaction: 5 },
+        { os: 'Symbian', share: 8.5, satisfaction: 1 },
+        { os: 'Bada', share: 2.6, satisfaction: 2 },
+        { os: 'Windows', share: 1.9, satisfaction: 12 },
       ],
       series: [
         {
-          type: "pie",
+          type: 'pie',
           title: {
-            text: "Market Share",
+            text: 'Market Share',
           },
-          labelKey: "os",
-          angleKey: "share",
+          labelKey: 'os',
+          angleKey: 'share',
           innerRadiusOffset: -40,
         },
         {
-          type: "pie",
+          type: 'pie',
           title: {
-            text: "Satisfaction",
+            text: 'Satisfaction',
           },
-          labelKey: "os",
-          angleKey: "satisfaction",
+          labelKey: 'os',
+          angleKey: 'satisfaction',
           outerRadiusOffset: -100,
           innerRadiusOffset: -140,
         },
@@ -51,4 +51,4 @@ const ChartExample = {
   methods: {},
 };
 
-createApp(ChartExample).mount("#app");
+createApp(ChartExample).mount('#app');

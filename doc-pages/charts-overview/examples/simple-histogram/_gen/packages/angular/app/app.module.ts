@@ -1,7 +1,7 @@
-import { NgModule } from "@angular/core";
-import { BrowserModule } from "@angular/platform-browser";
-import { AgChartsAngularModule } from "ag-charts-angular";
-import { AppComponent } from "./app.component";
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { AgChartsAngularModule } from 'ag-charts-angular';
+import { AppComponent } from './app.component';
 
 @NgModule({
   imports: [BrowserModule, AgChartsAngularModule],

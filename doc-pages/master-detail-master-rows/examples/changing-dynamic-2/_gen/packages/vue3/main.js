@@ -1,9 +1,9 @@
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
-import { AgGridVue } from "ag-grid-vue3";
-import { createApp } from "vue";
-import CallsCellRenderer from "./callsCellRendererVue.js";
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import 'ag-grid-enterprise';
+import { AgGridVue } from 'ag-grid-vue3';
+import { createApp } from 'vue';
+import CallsCellRenderer from './callsCellRendererVue.js';
 
 const VueExample = {
   template: `
@@ -25,16 +25,16 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
     CallsCellRenderer,
   },
   data: function () {
     return {
       columnDefs: [
-        { field: "name", cellRenderer: "agGroupCellRenderer" },
-        { field: "account" },
-        { field: "calls", cellRenderer: "CallsCellRenderer" },
-        { field: "minutes", valueFormatter: "x.toLocaleString() + 'm'" },
+        { field: 'name', cellRenderer: 'agGroupCellRenderer' },
+        { field: 'account' },
+        { field: 'calls', cellRenderer: 'CallsCellRenderer' },
+        { field: 'minutes', valueFormatter: "x.toLocaleString() + 'm'" },
       ],
       gridApi: null,
       columnApi: null,
@@ -57,11 +57,11 @@ const VueExample = {
     this.detailCellRendererParams = {
       detailGridOptions: {
         columnDefs: [
-          { field: "callId" },
-          { field: "direction" },
-          { field: "number", minWidth: 150 },
-          { field: "duration", valueFormatter: "x.toLocaleString() + 's'" },
-          { field: "switchCode", minWidth: 150 },
+          { field: 'callId' },
+          { field: 'direction' },
+          { field: 'number', minWidth: 150 },
+          { field: 'duration', valueFormatter: "x.toLocaleString() + 's'" },
+          { field: 'switchCode', minWidth: 150 },
         ],
         defaultColDef: {
           flex: 1,
@@ -88,7 +88,7 @@ const VueExample = {
       };
 
       fetch(
-        "https://www.ag-grid.com/example-assets/master-detail-dynamic-data.json"
+        'https://www.ag-grid.com/example-assets/master-detail-dynamic-data.json'
       )
         .then((resp) => resp.json())
         .then((data) => updateData(data));
@@ -96,4 +96,4 @@ const VueExample = {
   },
 };
 
-createApp(VueExample).mount("#app");
+createApp(VueExample).mount('#app');

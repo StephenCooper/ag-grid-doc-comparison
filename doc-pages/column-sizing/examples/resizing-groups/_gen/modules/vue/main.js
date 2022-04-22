@@ -1,9 +1,9 @@
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { AgGridVue } from "@ag-grid-community/vue";
-import Vue from "vue";
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { AgGridVue } from '@ag-grid-community/vue';
+import Vue from 'vue';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([ClientSideRowModelModule]);
@@ -29,57 +29,57 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
         {
-          headerName: "Everything Resizes",
+          headerName: 'Everything Resizes',
           children: [
-            { field: "athlete", headerClass: "resizable-header" },
-            { field: "age", headerClass: "resizable-header" },
-            { field: "country", headerClass: "resizable-header" },
+            { field: 'athlete', headerClass: 'resizable-header' },
+            { field: 'age', headerClass: 'resizable-header' },
+            { field: 'country', headerClass: 'resizable-header' },
           ],
         },
         {
-          headerName: "Only Year Resizes",
+          headerName: 'Only Year Resizes',
           children: [
-            { field: "year", headerClass: "resizable-header" },
+            { field: 'year', headerClass: 'resizable-header' },
             {
-              field: "date",
+              field: 'date',
               resizable: false,
-              headerClass: "fixed-size-header",
+              headerClass: 'fixed-size-header',
             },
             {
-              field: "sport",
+              field: 'sport',
               resizable: false,
-              headerClass: "fixed-size-header",
+              headerClass: 'fixed-size-header',
             },
           ],
         },
         {
-          headerName: "Nothing Resizes",
+          headerName: 'Nothing Resizes',
           children: [
             {
-              field: "gold",
+              field: 'gold',
               resizable: false,
-              headerClass: "fixed-size-header",
+              headerClass: 'fixed-size-header',
             },
             {
-              field: "silver",
+              field: 'silver',
               resizable: false,
-              headerClass: "fixed-size-header",
+              headerClass: 'fixed-size-header',
             },
             {
-              field: "bronze",
+              field: 'bronze',
               resizable: false,
-              headerClass: "fixed-size-header",
+              headerClass: 'fixed-size-header',
             },
             {
-              field: "total",
+              field: 'total',
               resizable: false,
-              headerClass: "fixed-size-header",
+              headerClass: 'fixed-size-header',
             },
           ],
         },
@@ -101,7 +101,7 @@ const VueExample = {
 
       const updateData = (data) => params.api.setRowData(data);
 
-      fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
         .then((resp) => resp.json())
         .then((data) => updateData(data));
     },
@@ -109,8 +109,8 @@ const VueExample = {
 };
 
 new Vue({
-  el: "#app",
+  el: '#app',
   components: {
-    "my-component": VueExample,
+    'my-component': VueExample,
   },
 });

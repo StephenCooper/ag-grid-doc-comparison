@@ -3,14 +3,14 @@ import {
   ColGroupDef,
   GridApi,
   GridReadyEvent,
-} from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { Component } from "@angular/core";
+} from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { Component } from '@angular/core';
 // Required feature modules are registered in app.module.ts
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<div
       class="test-header"
       style="padding: 5px; justify-content: space-between"
@@ -96,26 +96,26 @@ export class AppComponent {
 
   public columnDefs: (ColDef | ColGroupDef)[] = [
     {
-      headerName: "Core",
+      headerName: 'Core',
       children: [
-        { headerName: "ID", field: "id" },
-        { field: "make" },
-        { field: "price", filter: "agNumberColumnFilter" },
+        { headerName: 'ID', field: 'id' },
+        { field: 'make' },
+        { field: 'price', filter: 'agNumberColumnFilter' },
       ],
     },
     {
-      headerName: "Extra",
+      headerName: 'Extra',
       children: [
-        { field: "val1", filter: "agNumberColumnFilter" },
-        { field: "val2", filter: "agNumberColumnFilter" },
-        { field: "val3", filter: "agNumberColumnFilter" },
-        { field: "val4", filter: "agNumberColumnFilter" },
-        { field: "val5", filter: "agNumberColumnFilter" },
-        { field: "val6", filter: "agNumberColumnFilter" },
-        { field: "val7", filter: "agNumberColumnFilter" },
-        { field: "val8", filter: "agNumberColumnFilter" },
-        { field: "val9", filter: "agNumberColumnFilter" },
-        { field: "val10", filter: "agNumberColumnFilter" },
+        { field: 'val1', filter: 'agNumberColumnFilter' },
+        { field: 'val2', filter: 'agNumberColumnFilter' },
+        { field: 'val3', filter: 'agNumberColumnFilter' },
+        { field: 'val4', filter: 'agNumberColumnFilter' },
+        { field: 'val5', filter: 'agNumberColumnFilter' },
+        { field: 'val6', filter: 'agNumberColumnFilter' },
+        { field: 'val7', filter: 'agNumberColumnFilter' },
+        { field: 'val8', filter: 'agNumberColumnFilter' },
+        { field: 'val9', filter: 'agNumberColumnFilter' },
+        { field: 'val10', filter: 'agNumberColumnFilter' },
       ],
     },
   ];
@@ -128,16 +128,16 @@ export class AppComponent {
     resizable: true,
   };
   public rowData: any[] | null = getData(5);
-  public domLayout: "normal" | "autoHeight" | "print" = "autoHeight";
+  public domLayout: 'normal' | 'autoHeight' | 'print' = 'autoHeight';
   public popupParent: HTMLElement = document.body;
 
   updateRowData(rowCount: number) {
     this.gridApi.setRowData(getData(rowCount));
-    document.querySelector("#currentRowCount")!.innerHTML = `${rowCount}`;
+    document.querySelector('#currentRowCount')!.innerHTML = `${rowCount}`;
   }
 
   cbFloatingRows() {
-    var show = (document.getElementById("floating-rows") as HTMLInputElement)
+    var show = (document.getElementById('floating-rows') as HTMLInputElement)
       .checked;
     if (show) {
       this.gridApi.setPinnedTopRowData([createRow(999), createRow(998)]);
@@ -149,32 +149,32 @@ export class AppComponent {
   }
 
   setAutoHeight() {
-    this.gridApi.setDomLayout("autoHeight");
+    this.gridApi.setDomLayout('autoHeight');
     // auto height will get the grid to fill the height of the contents,
     // so the grid div should have no height set, the height is dynamic.
-    (document.querySelector<HTMLElement>("#myGrid")! as any).style.height = "";
+    (document.querySelector<HTMLElement>('#myGrid')! as any).style.height = '';
   }
 
   setFixedHeight() {
     // we could also call setDomLayout() here as normal is the default
-    this.gridApi.setDomLayout("normal");
+    this.gridApi.setDomLayout('normal');
     // when auto height is off, the grid ahs a fixed height, and then the grid
     // will provide scrollbars if the data does not fit into it.
-    (document.querySelector<HTMLElement>("#myGrid")! as any)!.style.height =
-      "400px";
+    (document.querySelector<HTMLElement>('#myGrid')! as any)!.style.height =
+      '400px';
   }
 
   onGridReady(params: GridReadyEvent) {
     this.gridApi = params.api;
 
-    document.querySelector("#currentRowCount")!.innerHTML = "5";
+    document.querySelector('#currentRowCount')!.innerHTML = '5';
   }
 }
 
 function createRow(index: number) {
-  var makes = ["Toyota", "Ford", "BMW", "Phantom", "Porsche"];
+  var makes = ['Toyota', 'Ford', 'BMW', 'Phantom', 'Porsche'];
   return {
-    id: "D" + (1000 + index),
+    id: 'D' + (1000 + index),
     make: makes[Math.floor(Math.random() * makes.length)],
     price: Math.floor(Math.random() * 100000),
     val1: Math.floor(Math.random() * 1000),

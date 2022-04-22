@@ -1,11 +1,11 @@
-"use strict";
+'use strict';
 
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
-import { AgGridReact } from "ag-grid-react";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from 'ag-grid-react';
+import 'ag-grid-enterprise';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 
 class GridExample extends Component {
   constructor(props) {
@@ -13,14 +13,14 @@ class GridExample extends Component {
 
     this.state = {
       columnDefs: [
-        { field: "country", rowGroup: true },
-        { field: "athlete" },
-        { field: "date" },
-        { field: "sport" },
-        { field: "gold" },
-        { field: "silver" },
-        { field: "bronze" },
-        { field: "total" },
+        { field: 'country', rowGroup: true },
+        { field: 'athlete' },
+        { field: 'date' },
+        { field: 'sport' },
+        { field: 'gold' },
+        { field: 'silver' },
+        { field: 'bronze' },
+        { field: 'total' },
       ],
       rowData: getData(),
       groupDefaultExpanded: 1,
@@ -46,7 +46,7 @@ class GridExample extends Component {
     // this is used next time resetRowHeights is called
     russiaHeight = height;
     this.gridApi.forEachNode(function (rowNode) {
-      if (rowNode.data && rowNode.data.country === "Russia") {
+      if (rowNode.data && rowNode.data.country === 'Russia') {
         rowNode.setRowHeight(height);
       }
     });
@@ -58,13 +58,13 @@ class GridExample extends Component {
       return groupHeight;
     } else if (
       params.data &&
-      params.data.country === "Russia" &&
+      params.data.country === 'Russia' &&
       russiaHeight != null
     ) {
       return russiaHeight;
     } else if (
       params.data &&
-      params.data.sport === "Swimming" &&
+      params.data.sport === 'Swimming' &&
       swimmingHeight != null
     ) {
       return swimmingHeight;
@@ -73,13 +73,13 @@ class GridExample extends Component {
 
   render() {
     return (
-      <div style={{ width: "100%", height: "100%" }}>
+      <div style={{ width: '100%', height: '100%' }}>
         <div className="example-wrapper">
           <div
             style={{
-              marginBottom: "5px",
-              fontFamily: "Verdana, Geneva, Tahoma, sans-serif",
-              fontSize: "13px",
+              marginBottom: '5px',
+              fontFamily: 'Verdana, Geneva, Tahoma, sans-serif',
+              fontSize: '13px',
             }}
           >
             <div>
@@ -88,13 +88,13 @@ class GridExample extends Component {
               <button onClick={() => this.setGroupHeight(75)}>75px</button>
               <button onClick={() => this.setGroupHeight(125)}>125px</button>
             </div>
-            <div style={{ marginTop: "5px" }}>
+            <div style={{ marginTop: '5px' }}>
               Swimming Leaf Rows:
               <button onClick={() => this.setSwimmingHeight(42)}>42px</button>
               <button onClick={() => this.setSwimmingHeight(75)}>75px</button>
               <button onClick={() => this.setSwimmingHeight(125)}>125px</button>
             </div>
-            <div style={{ marginTop: "5px" }}>
+            <div style={{ marginTop: '5px' }}>
               Russia Leaf Rows:
               <button onClick={() => this.setRussiaHeight(42)}>42px</button>
               <button onClick={() => this.setRussiaHeight(75)}>75px</button>
@@ -103,8 +103,8 @@ class GridExample extends Component {
           </div>
           <div
             style={{
-              height: "100%",
-              width: "100%",
+              height: '100%',
+              width: '100%',
             }}
             className="ag-theme-alpine"
           >
@@ -127,4 +127,4 @@ var swimmingHeight;
 var groupHeight;
 var russiaHeight;
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

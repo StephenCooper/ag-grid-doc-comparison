@@ -1,11 +1,11 @@
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { CsvExportModule } from "@ag-grid-community/csv-export";
-import { AgGridVue } from "@ag-grid-community/vue3";
-import { MenuModule } from "@ag-grid-enterprise/menu";
-import { createApp } from "vue";
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { CsvExportModule } from '@ag-grid-community/csv-export';
+import { AgGridVue } from '@ag-grid-community/vue3';
+import { MenuModule } from '@ag-grid-enterprise/menu';
+import { createApp } from 'vue';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([
@@ -46,18 +46,18 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
-        { field: "athlete" },
-        { field: "country" },
-        { field: "sport" },
-        { field: "gold", hide: true },
-        { field: "silver", hide: true },
-        { field: "bronze", hide: true },
-        { field: "total" },
+        { field: 'athlete' },
+        { field: 'country' },
+        { field: 'sport' },
+        { field: 'gold', hide: true },
+        { field: 'silver', hide: true },
+        { field: 'bronze', hide: true },
+        { field: 'total' },
       ],
       gridApi: null,
       columnApi: null,
@@ -80,7 +80,7 @@ const VueExample = {
       this.gridApi.exportDataAsCsv(getParams());
     },
     onBtnUpdate() {
-      document.querySelector("#csvResult").value = this.gridApi.getDataAsCsv(
+      document.querySelector('#csvResult').value = this.gridApi.getDataAsCsv(
         getParams()
       );
     },
@@ -92,14 +92,14 @@ const VueExample = {
 };
 
 window.getBoolean = function getBoolean(id) {
-  var field = document.querySelector("#" + id);
+  var field = document.querySelector('#' + id);
   return !!field.checked;
 };
 
 window.getParams = function getParams() {
   return {
-    allColumns: getBoolean("allColumns"),
+    allColumns: getBoolean('allColumns'),
   };
 };
 
-createApp(VueExample).mount("#app");
+createApp(VueExample).mount('#app');

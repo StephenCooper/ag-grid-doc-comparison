@@ -6,13 +6,13 @@ function _optionalChain(ops) {
     const op = ops[i];
     const fn = ops[i + 1];
     i += 2;
-    if ((op === "optionalAccess" || op === "optionalCall") && value == null) {
+    if ((op === 'optionalAccess' || op === 'optionalCall') && value == null) {
       return undefined;
     }
-    if (op === "access" || op === "optionalAccess") {
+    if (op === 'access' || op === 'optionalAccess') {
       lastAccessLHS = value;
       value = fn(value);
-    } else if (op === "call" || op === "optionalCall") {
+    } else if (op === 'call' || op === 'optionalCall') {
       value = fn((...args) => value.call(lastAccessLHS, ...args));
       lastAccessLHS = undefined;
     }
@@ -23,8 +23,8 @@ class MedalCellRenderer {
   // init method gets the details of the cell to be renderer
   init(params) {
     this.params = params;
-    this.eGui = document.createElement("span");
-    this.eGui.innerHTML = new Array(params.value).fill("#").join("");
+    this.eGui = document.createElement('span');
+    this.eGui.innerHTML = new Array(params.value).fill('#').join('');
   }
 
   getGui() {
@@ -37,13 +37,13 @@ class MedalCellRenderer {
         this.params.rowIndex
       }, column = ${_optionalChain([
         this,
-        "access",
+        'access',
         (_) => _.params,
-        "access",
+        'access',
         (_2) => _2.column,
-        "optionalAccess",
+        'optionalAccess',
         (_3) => _3.getId,
-        "call",
+        'call',
         (_4) => _4(),
       ])}`
     );

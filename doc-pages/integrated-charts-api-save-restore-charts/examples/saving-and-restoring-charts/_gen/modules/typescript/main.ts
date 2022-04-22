@@ -1,15 +1,15 @@
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
 import {
   ChartModel,
   ChartRef,
   Grid,
   GridOptions,
   ModuleRegistry,
-} from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { GridChartsModule } from "@ag-grid-enterprise/charts";
-import { MenuModule } from "@ag-grid-enterprise/menu";
+} from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { GridChartsModule } from '@ag-grid-enterprise/charts';
+import { MenuModule } from '@ag-grid-enterprise/menu';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([
@@ -20,10 +20,10 @@ ModuleRegistry.registerModules([
 
 const gridOptions: GridOptions = {
   columnDefs: [
-    { field: "country", chartDataType: "category" },
-    { field: "sugar", chartDataType: "series" },
-    { field: "fat", chartDataType: "series" },
-    { field: "weight", chartDataType: "series" },
+    { field: 'country', chartDataType: 'category' },
+    { field: 'sugar', chartDataType: 'series' },
+    { field: 'fat', chartDataType: 'series' },
+    { field: 'weight', chartDataType: 'series' },
   ],
   defaultColDef: {
     editable: true,
@@ -48,7 +48,7 @@ function saveChart() {
   if (chartModels.length > 0) {
     chartModel = chartModels[0];
   }
-  alert("Chart saved!");
+  alert('Chart saved!');
 }
 
 function clearChart() {
@@ -70,16 +70,16 @@ function createChartContainer(chartRef: ChartRef) {
   }
 
   var eChart = chartRef.chartElement;
-  var eParent = document.querySelector("#myChart") as any;
+  var eParent = document.querySelector('#myChart') as any;
   eParent.appendChild(eChart);
   currentChartRef = chartRef;
 }
 
 // setup the grid after the page has finished loading
-var gridDiv = document.querySelector<HTMLElement>("#myGrid")!;
+var gridDiv = document.querySelector<HTMLElement>('#myGrid')!;
 new Grid(gridDiv, gridOptions);
 
-if (typeof window !== "undefined") {
+if (typeof window !== 'undefined') {
   // Attach external event handlers to window so they can be called from index.html
   (<any>window).saveChart = saveChart;
   (<any>window).clearChart = clearChart;

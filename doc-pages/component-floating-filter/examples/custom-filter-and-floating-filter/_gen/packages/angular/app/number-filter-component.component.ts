@@ -1,9 +1,9 @@
-import { Component } from "@angular/core";
-import { IFilterAngularComp } from "ag-grid-angular";
-import { IDoesFilterPassParams, IFilterParams } from "ag-grid-community";
+import { Component } from '@angular/core';
+import { IFilterAngularComp } from 'ag-grid-angular';
+import { IDoesFilterPassParams, IFilterParams } from 'ag-grid-community';
 
 @Component({
-  selector: "number-component",
+  selector: 'number-component',
   template: `
     <div style="padding: 4px">
       <div style="font-weight: bold;">Greater than:</div>
@@ -54,7 +54,7 @@ export class NumberFilterComponent implements IFilterAngularComp {
     return (
       this.filterText !== null &&
       this.filterText !== undefined &&
-      this.filterText !== "" &&
+      this.filterText !== '' &&
       this.isNumeric(this.filterText)
     );
   }

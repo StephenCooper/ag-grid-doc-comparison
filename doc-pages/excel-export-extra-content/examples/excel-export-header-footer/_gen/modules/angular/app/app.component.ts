@@ -4,15 +4,15 @@ import {
   ExcelHeaderFooterContent,
   GridApi,
   GridReadyEvent,
-} from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { HttpClient } from "@angular/common/http";
-import { Component } from "@angular/core";
+} from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { HttpClient } from '@angular/common/http';
+import { Component } from '@angular/core';
 // Required feature modules are registered in app.module.ts
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<div class="container">
     <div class="columns">
       <div class="column">
@@ -121,13 +121,13 @@ export class AppComponent {
   private gridApi!: GridApi;
 
   public columnDefs: ColDef[] = [
-    { field: "athlete", minWidth: 200 },
-    { field: "country", minWidth: 200 },
-    { field: "sport", minWidth: 150 },
-    { field: "gold" },
-    { field: "silver" },
-    { field: "bronze" },
-    { field: "total" },
+    { field: 'athlete', minWidth: 200 },
+    { field: 'country', minWidth: 200 },
+    { field: 'sport', minWidth: 150 },
+    { field: 'gold' },
+    { field: 'silver' },
+    { field: 'bronze' },
+    { field: 'total' },
   ];
   public defaultColDef: ColDef = {
     sortable: true,
@@ -150,7 +150,7 @@ export class AppComponent {
 
     this.http
       .get<any[]>(
-        "https://www.ag-grid.com/example-assets/small-olympic-winners.json"
+        'https://www.ag-grid.com/example-assets/small-olympic-winners.json'
       )
       .subscribe((data) =>
         params.api!.setRowData(data.filter((rec: any) => rec.country != null))
@@ -159,60 +159,60 @@ export class AppComponent {
 }
 
 const getValues = (type: string) => {
-  const value = (
-    document.querySelector("#" + type + "Value") as HTMLInputElement
-  ).value;
+  const value = (document.querySelector(
+    '#' + type + 'Value'
+  ) as HTMLInputElement).value;
   if (value == null) {
     return;
   }
   const obj: ExcelHeaderFooterContent = {
     value: value,
   };
-  obj.position = (
-    document.querySelector("#" + type + "Position") as HTMLInputElement
-  ).value as "Left" | "Center" | "Right";
-  const fontName = (
-    document.querySelector("#" + type + "FontName") as HTMLInputElement
-  ).value;
-  const fontSize = (
-    document.querySelector("#" + type + "FontSize") as HTMLInputElement
-  ).value;
-  const fontWeight = (
-    document.querySelector("#" + type + "FontWeight") as HTMLInputElement
-  ).value;
-  const underline = (
-    document.querySelector("#" + type + "Underline") as HTMLInputElement
-  ).checked;
+  obj.position = (document.querySelector(
+    '#' + type + 'Position'
+  ) as HTMLInputElement).value as 'Left' | 'Center' | 'Right';
+  const fontName = (document.querySelector(
+    '#' + type + 'FontName'
+  ) as HTMLInputElement).value;
+  const fontSize = (document.querySelector(
+    '#' + type + 'FontSize'
+  ) as HTMLInputElement).value;
+  const fontWeight = (document.querySelector(
+    '#' + type + 'FontWeight'
+  ) as HTMLInputElement).value;
+  const underline = (document.querySelector(
+    '#' + type + 'Underline'
+  ) as HTMLInputElement).checked;
   if (
-    fontName !== "Calibri" ||
-    fontSize != "11" ||
-    fontWeight !== "Regular" ||
+    fontName !== 'Calibri' ||
+    fontSize != '11' ||
+    fontWeight !== 'Regular' ||
     underline
   ) {
     obj.font = {};
-    if (fontName !== "Calibri") {
+    if (fontName !== 'Calibri') {
       obj.font.fontName = fontName;
     }
-    if (fontSize != "11") {
+    if (fontSize != '11') {
       obj.font.size = Number.parseInt(fontSize);
     }
-    if (fontWeight !== "Regular") {
-      if (fontWeight.indexOf("Bold") !== -1) {
+    if (fontWeight !== 'Regular') {
+      if (fontWeight.indexOf('Bold') !== -1) {
         obj.font.bold = true;
       }
-      if (fontWeight.indexOf("Italic") !== -1) {
+      if (fontWeight.indexOf('Italic') !== -1) {
         obj.font.italic = true;
       }
     }
     if (underline) {
-      obj.font.underline = "Single";
+      obj.font.underline = 'Single';
     }
   }
   return obj;
 };
 const getParams: () => ExcelExportParams | undefined = () => {
-  const header = getValues("header");
-  const footer = getValues("footer");
+  const header = getValues('header');
+  const footer = getValues('footer');
   if (!header && !footer) {
     return undefined;
   }

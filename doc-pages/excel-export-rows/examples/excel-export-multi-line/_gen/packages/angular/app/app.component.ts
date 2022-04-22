@@ -1,12 +1,12 @@
-import { Component } from "@angular/core";
-import { ColDef, ExcelStyle, GridApi, GridReadyEvent } from "ag-grid-community";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
-import { MultilineCellRenderer } from "./multiline-cell-renderer.component";
+import { Component } from '@angular/core';
+import { ColDef, ExcelStyle, GridApi, GridReadyEvent } from 'ag-grid-community';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import 'ag-grid-enterprise';
+import { MultilineCellRenderer } from './multiline-cell-renderer.component';
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<div class="container">
     <div>
       <button
@@ -33,19 +33,19 @@ export class AppComponent {
   private gridApi!: GridApi;
 
   public columnDefs: ColDef[] = [
-    { field: "address" },
+    { field: 'address' },
     {
-      headerName: "Custom column",
+      headerName: 'Custom column',
       autoHeight: true,
       valueGetter: function (param) {
-        return param.data.col1 + "\n" + param.data.col2;
+        return param.data.col1 + '\n' + param.data.col2;
       },
       cellRenderer: MultilineCellRenderer,
     },
   ];
   public defaultColDef: ColDef = {
     sortable: true,
-    cellClass: "multiline",
+    cellClass: 'multiline',
     filter: true,
     resizable: true,
     minWidth: 100,
@@ -54,32 +54,32 @@ export class AppComponent {
   public rowData: any[] | null = [
     {
       address:
-        "1197 Thunder Wagon Common,\nCataract, RI, \n02987-1016, US, \n(401) 747-0763",
-      col1: "abc",
-      col2: "xyz",
+        '1197 Thunder Wagon Common,\nCataract, RI, \n02987-1016, US, \n(401) 747-0763',
+      col1: 'abc',
+      col2: 'xyz',
     },
     {
       address:
-        "3685 Rocky Glade, Showtucket, NU, \nX1E-9I0, CA, \n(867) 371-4215",
-      col1: "abc",
-      col2: "xyz",
+        '3685 Rocky Glade, Showtucket, NU, \nX1E-9I0, CA, \n(867) 371-4215',
+      col1: 'abc',
+      col2: 'xyz',
     },
     {
       address:
-        "3235 High Forest, Glen Campbell, MS, \n39035-6845, US, \n(601) 638-8186",
-      col1: "abc",
-      col2: "xyz",
+        '3235 High Forest, Glen Campbell, MS, \n39035-6845, US, \n(601) 638-8186',
+      col1: 'abc',
+      col2: 'xyz',
     },
     {
       address:
-        "2234 Sleepy Pony Mall , Drain, DC, \n20078-4243, US, \n(202) 948-3634",
-      col1: "abc",
-      col2: "xyz",
+        '2234 Sleepy Pony Mall , Drain, DC, \n20078-4243, US, \n(202) 948-3634',
+      col1: 'abc',
+      col2: 'xyz',
     },
   ];
   public excelStyles: ExcelStyle[] = [
     {
-      id: "multiline",
+      id: 'multiline',
       alignment: {
         wrapText: true,
       },

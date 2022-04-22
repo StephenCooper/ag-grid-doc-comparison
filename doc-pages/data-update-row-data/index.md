@@ -8,25 +8,31 @@ The example below shows the data with two sets of data. Clicking the buttons tog
 
 <grid-example title='Simple Row Data' name='simple-row-data' type='generated' options=' { "modules": ["clientside"] }'></grid-example>
 
-The example below is identical to the above except [Row IDs](/row-ids/) are provided via the `getRowId()` callback. This results in Row Selection is maintained across Row Data changes (assuming the Row exists in both sets) and the HTML is not redrawn from scratch, resulting in Row Animation (`animateRows=true`) of the rows.
+The example below is identical to the above except [Row IDs](/row-ids/) are provided via the `getRowId()` callback. This results in Row Selection being maintained across Row Data changes (assuming the Row exists in both sets) and the HTML is not redrawn from scratch, resulting in a Row Animation (`animateRows=true`) of the rows.
+
+[[only-react]]
+|[[note]]
+|| Provide Row ID's to avoid flicker when refreshing. If you do not provide Row ID's, then the HTML for all Rows is redrawn from scratch.
 
 <grid-example title='Simple Row ID' name='simple-row-id' type='generated' options=' { "modules": ["clientside"] }'></grid-example>
 
-Providing [Row IDs](/row-ids/) allows the grid to work more optimally in a few ares which are outlined as follows:
+Providing [Row IDs](/row-ids/) allows the grid to work optimally in a few areas which are outlined as follows:
 
-| Function       | Row IDs Provided                              | Row IDs Missing                                                  |
-| -------------- | --------------------------------------------- | ---------------------------------------------------------------- |
-| Row Selection  | Row Selection maintained                      | Row Selection lost                                               |
-| Row Grouping   | Row Groups re-created, all open groups closed | Groups kept / updated, open groups stay open                     |
-| Row Refresh    | Only changed rows are updated in the DOM      | All rows destroyed form the DOM and recreated, flicker may occur |
-| Row Animation  | Moved rows animate to new position            | No row animation                                                 |
-| Flashing Cells | Changed values can be flashed to show change  | No flashing available, all cells are created from scratch        |
+
+| Function | Row IDs Provided | Row IDs Missing | 
+| ----------------------------- | ------------------------- | ------------------------ | 
+| Row Selection | Row Selection maintained | Row Selection lost |
+| Row Grouping | Row Groups re-created, all open groups closed | Groups kept / updated, open groups stay open |
+| Row Refresh | Only changed rows are updated in the DOM | All rows destroyed from the DOM and recreated, flicker may occur |
+| Row Animation | Moved rows animate to new position | No row animation |
+| Flashing Cells | Changed values can be flashed to show change | No flashing available, all cells are created from scratch |
+
 
 ## Controlling Row Position
 
 The example below shows controlling the grid rows, including it's order, by updating the Row Data.
 
-The example keeps a list of records to mimic data in "a store". Each time the user does an update, the data in the store is copied, so that when Row Data is given to the grid, the grid is presented with different Row Data. This is equivalent to refreshing data from a server, or using an Immutable Data store on the client.
+The example keeps a list of records to mimic data in "a store". Each time the user does an update, the data in the store is copied, so that when Row Data is given to the grid, the grid is presented with different Row Data. This is equivalent to refreshing data from a server, or using an Immutable Data store on the client. 
 
 Note the following.
 
@@ -45,8 +51,10 @@ Note the following.
 - **Turn Grouping On / Off**: To turn grouping by symbol on and off.
 
 - **Group Selected A / B / C**: With grouping on, hit the buttons A, B and C to move selected items to that group. Notice how the rows animate to the new position.
-
+ 
 <grid-example title='Simple Immutable Store' name='simple-immutable-store' type='mixed' options='{ "enterprise": true, "exampleHeight": 540, "modules": ["clientside", "rowgrouping"] }'></grid-example>
+
+
 
 ## How It Works
 
@@ -57,11 +65,11 @@ When providing Row IDs, the grid assumes it is fed with data from an immutable s
 
 The grid works out what changes need to be applied to the grid using the following rules:
 
-- **IF** the ID for the new item doesn't have a corresponding item already in the grid **THEN** it's added as a new row to the grid.
+- If the ID for the new item doesn't have a corresponding item already in the grid then it's added as a new row to the grid.
 
-- **IF** the ID for the new item does have a corresponding item in the grid **THEN** compare the object references. If the object references are different, the row is updated with the new data, otherwise it's assumed the data is the same as the already present data.
+- If the ID for the new item does have a corresponding item in the grid then compare the object references. If the object references are different, the row is updated with the new data, otherwise it's assumed the data is the same as the already present data.
 
-- **IF** there are items in the grid for which there are no corresponding items in the new data, **THEN** those rows are removed.
+- If there are items in the grid for which there are no corresponding items in the new data, then those rows are removed.
 
 - Lastly the rows in the grid are sorted to match the order in the newly provided list.
 

@@ -1,18 +1,18 @@
-import { HttpClient } from "@angular/common/http";
-import { Component } from "@angular/core";
+import { HttpClient } from '@angular/common/http';
+import { Component } from '@angular/core';
 import {
   AgChartThemeOverrides,
   ColDef,
   CreateRangeChartParams,
   FirstDataRenderedEvent,
   GridReadyEvent,
-} from "ag-grid-community";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
+} from 'ag-grid-community';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import 'ag-grid-enterprise';
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<div class="wrapper">
     <ag-grid-angular
       style="width: 100%; height: 100%;"
@@ -33,15 +33,15 @@ import "ag-grid-enterprise";
 export class AppComponent {
   public columnDefs: ColDef[] = [
     // different ways to define 'categories'
-    { field: "athlete", width: 150, chartDataType: "category" },
-    { field: "age", chartDataType: "category", sort: "asc" },
-    { field: "sport" },
+    { field: 'athlete', width: 150, chartDataType: 'category' },
+    { field: 'age', chartDataType: 'category', sort: 'asc' },
+    { field: 'sport' },
     // excludes year from charts
-    { field: "year", chartDataType: "excluded" },
+    { field: 'year', chartDataType: 'excluded' },
     // different ways to define 'series'
-    { field: "gold", chartDataType: "series" },
-    { field: "silver", chartDataType: "series" },
-    { field: "bronze" }, // inferred as series by grid
+    { field: 'gold', chartDataType: 'series' },
+    { field: 'silver', chartDataType: 'series' },
+    { field: 'bronze' }, // inferred as series by grid
   ];
   public defaultColDef: ColDef = {
     editable: true,
@@ -56,10 +56,10 @@ export class AppComponent {
     common: {
       title: {
         enabled: true,
-        text: "Medals by Age",
+        text: 'Medals by Age',
       },
       legend: {
-        position: "bottom",
+        position: 'bottom',
       },
     },
     column: {
@@ -81,11 +81,11 @@ export class AppComponent {
       cellRange: {
         rowStartIndex: 0,
         rowEndIndex: 79,
-        columns: ["age", "gold", "silver", "bronze"],
+        columns: ['age', 'gold', 'silver', 'bronze'],
       },
-      chartType: "groupedColumn",
-      chartContainer: document.querySelector("#myChart") as any,
-      aggFunc: "sum",
+      chartType: 'groupedColumn',
+      chartContainer: document.querySelector('#myChart') as any,
+      aggFunc: 'sum',
     };
     params.api.createRangeChart(createRangeChartParams);
   }
@@ -93,7 +93,7 @@ export class AppComponent {
   onGridReady(params: GridReadyEvent) {
     this.http
       .get<any[]>(
-        "https://www.ag-grid.com/example-assets/wide-spread-of-sports.json"
+        'https://www.ag-grid.com/example-assets/wide-spread-of-sports.json'
       )
       .subscribe((data) => {
         this.rowData = data;

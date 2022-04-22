@@ -3,14 +3,14 @@ import {
   CreateRangeChartParams,
   GridApi,
   GridReadyEvent,
-} from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { Component } from "@angular/core";
+} from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { Component } from '@angular/core';
 // Required feature modules are registered in app.module.ts
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<div class="outer-div">
     <div class="button-bar">
       <button (click)="onChart1()">Top 5 Medal Winners</button>
@@ -35,29 +35,29 @@ export class AppComponent {
   private gridApi!: GridApi;
 
   public columnDefs: ColDef[] = [
-    { field: "country", width: 150, chartDataType: "category" },
-    { field: "gold", chartDataType: "series", sort: "desc" },
-    { field: "silver", chartDataType: "series", sort: "desc" },
-    { field: "bronze", chartDataType: "series" },
+    { field: 'country', width: 150, chartDataType: 'category' },
+    { field: 'gold', chartDataType: 'series', sort: 'desc' },
+    { field: 'silver', chartDataType: 'series', sort: 'desc' },
+    { field: 'bronze', chartDataType: 'series' },
     {
-      headerName: "A",
-      valueGetter: "Math.floor(Math.random()*1000)",
-      chartDataType: "series",
+      headerName: 'A',
+      valueGetter: 'Math.floor(Math.random()*1000)',
+      chartDataType: 'series',
     },
     {
-      headerName: "B",
-      valueGetter: "Math.floor(Math.random()*1000)",
-      chartDataType: "series",
+      headerName: 'B',
+      valueGetter: 'Math.floor(Math.random()*1000)',
+      chartDataType: 'series',
     },
     {
-      headerName: "C",
-      valueGetter: "Math.floor(Math.random()*1000)",
-      chartDataType: "series",
+      headerName: 'C',
+      valueGetter: 'Math.floor(Math.random()*1000)',
+      chartDataType: 'series',
     },
     {
-      headerName: "D",
-      valueGetter: "Math.floor(Math.random()*1000)",
-      chartDataType: "series",
+      headerName: 'D',
+      valueGetter: 'Math.floor(Math.random()*1000)',
+      chartDataType: 'series',
     },
   ];
   public defaultColDef: ColDef = {
@@ -76,15 +76,15 @@ export class AppComponent {
       cellRange: {
         rowStartIndex: 0,
         rowEndIndex: 4,
-        columns: ["country", "gold", "silver"],
+        columns: ['country', 'gold', 'silver'],
       },
-      chartType: "groupedColumn",
-      chartThemeName: "ag-vivid",
+      chartType: 'groupedColumn',
+      chartThemeName: 'ag-vivid',
       chartThemeOverrides: {
         common: {
           title: {
             enabled: true,
-            text: "Top 5 Medal Winners",
+            text: 'Top 5 Medal Winners',
           },
         },
       },
@@ -95,15 +95,15 @@ export class AppComponent {
   onChart2() {
     var params: CreateRangeChartParams = {
       cellRange: {
-        columns: ["country", "bronze"],
+        columns: ['country', 'bronze'],
       },
-      chartType: "groupedBar",
-      chartThemeName: "ag-pastel",
+      chartType: 'groupedBar',
+      chartThemeName: 'ag-pastel',
       chartThemeOverrides: {
         common: {
           title: {
             enabled: true,
-            text: "Bronze Medal by Country",
+            text: 'Bronze Medal by Country',
           },
           legend: {
             enabled: false,

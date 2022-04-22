@@ -1,11 +1,11 @@
-import { HttpClient } from "@angular/common/http";
-import { Component } from "@angular/core";
-import { ColDef, GridApi, GridReadyEvent } from "ag-grid-community";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
+import { HttpClient } from '@angular/common/http';
+import { Component } from '@angular/core';
+import { ColDef, GridApi, GridReadyEvent } from 'ag-grid-community';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<div class="test-container">
     <div class="test-header">
       <button (click)="onBtNormalCols()">Normal Cols</button>
@@ -45,7 +45,7 @@ export class AppComponent {
     this.gridApi = params.api;
 
     this.http
-      .get<any[]>("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      .get<any[]>('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .subscribe((data) => (this.rowData = data));
   }
 }
@@ -53,20 +53,20 @@ export class AppComponent {
 function createNormalColDefs() {
   return [
     {
-      headerName: "Athlete Details",
-      headerClass: "participant-group",
+      headerName: 'Athlete Details',
+      headerClass: 'participant-group',
       children: [
-        { field: "athlete", colId: "athlete" },
-        { field: "country", colId: "country" },
+        { field: 'athlete', colId: 'athlete' },
+        { field: 'country', colId: 'country' },
       ],
     },
-    { field: "age", colId: "age" },
+    { field: 'age', colId: 'age' },
     {
-      headerName: "Sports Results",
-      headerClass: "medals-group",
+      headerName: 'Sports Results',
+      headerClass: 'medals-group',
       children: [
-        { field: "sport", colId: "sport" },
-        { field: "gold", colId: "gold" },
+        { field: 'sport', colId: 'sport' },
+        { field: 'gold', colId: 'gold' },
       ],
     },
   ];
@@ -74,23 +74,23 @@ function createNormalColDefs() {
 function createExtraColDefs() {
   return [
     {
-      headerName: "Athlete Details",
-      headerClass: "participant-group",
+      headerName: 'Athlete Details',
+      headerClass: 'participant-group',
       children: [
-        { field: "athlete", colId: "athlete" },
-        { field: "country", colId: "country" },
-        { field: "region1", colId: "region1" },
-        { field: "region2", colId: "region2" },
+        { field: 'athlete', colId: 'athlete' },
+        { field: 'country', colId: 'country' },
+        { field: 'region1', colId: 'region1' },
+        { field: 'region2', colId: 'region2' },
       ],
     },
-    { field: "age", colId: "age" },
-    { field: "distance", colId: "distance" },
+    { field: 'age', colId: 'age' },
+    { field: 'distance', colId: 'distance' },
     {
-      headerName: "Sports Results",
-      headerClass: "medals-group",
+      headerName: 'Sports Results',
+      headerClass: 'medals-group',
       children: [
-        { field: "sport", colId: "sport" },
-        { field: "gold", colId: "gold" },
+        { field: 'sport', colId: 'sport' },
+        { field: 'gold', colId: 'gold' },
       ],
     },
   ];

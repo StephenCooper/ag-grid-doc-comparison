@@ -1,12 +1,12 @@
-"use strict";
+'use strict';
 
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { AgGridReact } from "@ag-grid-community/react";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from '@ag-grid-community/react';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([ClientSideRowModelModule]);
@@ -31,7 +31,7 @@ class GridExample extends Component {
 
     const updateData = (data) => params.api.setRowData(data);
 
-    fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+    fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .then((resp) => resp.json())
       .then((data) => updateData(data));
   };
@@ -46,7 +46,7 @@ class GridExample extends Component {
 
   render() {
     return (
-      <div style={{ width: "100%", height: "100%" }}>
+      <div style={{ width: '100%', height: '100%' }}>
         <div className="test-container">
           <div className="test-header">
             <button onClick={() => this.onBtNormalCols()}>Normal Cols</button>
@@ -54,8 +54,8 @@ class GridExample extends Component {
           </div>
           <div
             style={{
-              height: "100%",
-              width: "100%",
+              height: '100%',
+              width: '100%',
             }}
             className="ag-theme-alpine"
           >
@@ -75,20 +75,20 @@ class GridExample extends Component {
 function createNormalColDefs() {
   return [
     {
-      headerName: "Athlete Details",
-      headerClass: "participant-group",
+      headerName: 'Athlete Details',
+      headerClass: 'participant-group',
       children: [
-        { field: "athlete", colId: "athlete" },
-        { field: "country", colId: "country" },
+        { field: 'athlete', colId: 'athlete' },
+        { field: 'country', colId: 'country' },
       ],
     },
-    { field: "age", colId: "age" },
+    { field: 'age', colId: 'age' },
     {
-      headerName: "Sports Results",
-      headerClass: "medals-group",
+      headerName: 'Sports Results',
+      headerClass: 'medals-group',
       children: [
-        { field: "sport", colId: "sport" },
-        { field: "gold", colId: "gold" },
+        { field: 'sport', colId: 'sport' },
+        { field: 'gold', colId: 'gold' },
       ],
     },
   ];
@@ -96,26 +96,26 @@ function createNormalColDefs() {
 function createExtraColDefs() {
   return [
     {
-      headerName: "Athlete Details",
-      headerClass: "participant-group",
+      headerName: 'Athlete Details',
+      headerClass: 'participant-group',
       children: [
-        { field: "athlete", colId: "athlete" },
-        { field: "country", colId: "country" },
-        { field: "region1", colId: "region1" },
-        { field: "region2", colId: "region2" },
+        { field: 'athlete', colId: 'athlete' },
+        { field: 'country', colId: 'country' },
+        { field: 'region1', colId: 'region1' },
+        { field: 'region2', colId: 'region2' },
       ],
     },
-    { field: "age", colId: "age" },
-    { field: "distance", colId: "distance" },
+    { field: 'age', colId: 'age' },
+    { field: 'distance', colId: 'distance' },
     {
-      headerName: "Sports Results",
-      headerClass: "medals-group",
+      headerName: 'Sports Results',
+      headerClass: 'medals-group',
       children: [
-        { field: "sport", colId: "sport" },
-        { field: "gold", colId: "gold" },
+        { field: 'sport', colId: 'sport' },
+        { field: 'gold', colId: 'gold' },
       ],
     },
   ];
 }
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

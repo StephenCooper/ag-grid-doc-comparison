@@ -1,8 +1,8 @@
-import { Component } from "@angular/core";
-import { AgChartOptions } from "ag-charts-community";
+import { Component } from '@angular/core';
+import { AgChartOptions } from 'ag-charts-community';
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<ag-charts-angular
     style="height: 100%"
     [options]="options"
@@ -16,25 +16,25 @@ export class AppComponent {
       autoSize: true,
       data: getData(),
       title: {
-        text: "Dwelling Fires (UK)",
+        text: 'Dwelling Fires (UK)',
         fontSize: 18,
       },
       subtitle: {
-        text: "Source: Home Office",
+        text: 'Source: Home Office',
       },
       series: [
         {
-          type: "pie",
-          labelKey: "type",
+          type: 'pie',
+          labelKey: 'type',
           fillOpacity: 0.9,
           strokeWidth: 0,
-          angleKey: "2018/19",
+          angleKey: '2018/19',
           label: {
             enabled: false,
           },
           title: {
             enabled: true,
-            text: "2018/19",
+            text: '2018/19',
           },
           innerRadiusOffset: -100,
         },

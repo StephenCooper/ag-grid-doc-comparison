@@ -1,17 +1,17 @@
-"use strict";
+'use strict';
 
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine-dark.css";
-import { AgGridReact } from "ag-grid-react";
-import React, { useMemo, useState } from "react";
-import { render } from "react-dom";
+import React, { useCallback, useMemo, useRef, useState } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from 'ag-grid-react';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine-dark.css';
 
 const bracketsFormatter = (params) => {
-  return "(" + params.value + ")";
+  return '(' + params.value + ')';
 };
 
 const currencyFormatter = (params) => {
-  return "£" + formatNumber(params.value);
+  return '£' + formatNumber(params.value);
 };
 
 const formatNumber = (number) => {
@@ -19,7 +19,7 @@ const formatNumber = (number) => {
   // i pulled this from stack overflow, i have no idea how it works
   return Math.floor(number)
     .toString()
-    .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
+    .replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
 };
 
 const createRowData = () => {
@@ -34,21 +34,21 @@ const createRowData = () => {
 };
 
 const GridExample = () => {
-  const containerStyle = useMemo(() => ({ width: "100%", height: "100%" }), []);
-  const gridStyle = useMemo(() => ({ height: "100%", width: "100%" }), []);
+  const containerStyle = useMemo(() => ({ width: '100%', height: '100%' }), []);
+  const gridStyle = useMemo(() => ({ height: '100%', width: '100%' }), []);
   const [rowData, setRowData] = useState(createRowData());
   const [columnDefs, setColumnDefs] = useState([
-    { headerName: "A", field: "a" },
-    { headerName: "B", field: "b" },
-    { headerName: "£A", field: "a", valueFormatter: currencyFormatter },
-    { headerName: "£B", field: "b", valueFormatter: currencyFormatter },
-    { headerName: "(A)", field: "a", valueFormatter: bracketsFormatter },
-    { headerName: "(B)", field: "b", valueFormatter: bracketsFormatter },
+    { headerName: 'A', field: 'a' },
+    { headerName: 'B', field: 'b' },
+    { headerName: '£A', field: 'a', valueFormatter: currencyFormatter },
+    { headerName: '£B', field: 'b', valueFormatter: currencyFormatter },
+    { headerName: '(A)', field: 'a', valueFormatter: bracketsFormatter },
+    { headerName: '(B)', field: 'b', valueFormatter: bracketsFormatter },
   ]);
   const defaultColDef = useMemo(() => {
     return {
       flex: 1,
-      cellClass: "number-cell",
+      cellClass: 'number-cell',
       resizable: true,
     };
   }, []);
@@ -66,4 +66,4 @@ const GridExample = () => {
   );
 };
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

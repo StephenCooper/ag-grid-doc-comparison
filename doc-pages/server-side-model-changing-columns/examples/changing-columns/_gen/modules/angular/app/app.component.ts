@@ -6,16 +6,16 @@ import {
   IServerSideGetRowsParams,
   ServerSideStoreType,
   SetFilterValuesFuncParams,
-} from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine-dark.css";
-import { HttpClient } from "@angular/common/http";
-import { Component } from "@angular/core";
+} from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine-dark.css';
+import { HttpClient } from '@angular/common/http';
+import { Component } from '@angular/core';
 // Required feature modules are registered in app.module.ts
 declare var FakeServer: any;
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<div class="test-container">
     <div class="test-header">Select columns to show then hit 'Apply'</div>
 
@@ -70,36 +70,36 @@ export class AppComponent {
   public autoGroupColumnDef: ColDef = {
     minWidth: 200,
   };
-  public rowModelType = "serverSide";
-  public serverSideStoreType: ServerSideStoreType = "partial";
+  public rowModelType = 'serverSide';
+  public serverSideStoreType: ServerSideStoreType = 'partial';
   public rowData!: any[];
 
   constructor(private http: HttpClient) {}
 
   onBtApply() {
     var cols = [];
-    if (getBooleanValue("#athlete")) {
+    if (getBooleanValue('#athlete')) {
       cols.push(colDefAthlete);
     }
-    if (getBooleanValue("#age")) {
+    if (getBooleanValue('#age')) {
       cols.push(colDefAge);
     }
-    if (getBooleanValue("#country")) {
+    if (getBooleanValue('#country')) {
       cols.push(colDefCountry);
     }
-    if (getBooleanValue("#year")) {
+    if (getBooleanValue('#year')) {
       cols.push(colDefYear);
     }
-    if (getBooleanValue("#sport")) {
+    if (getBooleanValue('#sport')) {
       cols.push(colDefSport);
     }
-    if (getBooleanValue("#gold")) {
+    if (getBooleanValue('#gold')) {
       cols.push(colDefGold);
     }
-    if (getBooleanValue("#silver")) {
+    if (getBooleanValue('#silver')) {
       cols.push(colDefSilver);
     }
-    if (getBooleanValue("#bronze")) {
+    if (getBooleanValue('#bronze')) {
       cols.push(colDefBronze);
     }
     this.gridApi.setColumnDefs(cols);
@@ -108,44 +108,45 @@ export class AppComponent {
   onGridReady(params: GridReadyEvent) {
     this.gridApi = params.api;
 
-    (document.getElementById("athlete") as HTMLInputElement).checked = true;
-    (document.getElementById("age") as HTMLInputElement).checked = true;
-    (document.getElementById("country") as HTMLInputElement).checked = true;
-    (document.getElementById("year") as HTMLInputElement).checked = true;
-    (document.getElementById("sport") as HTMLInputElement).checked = true;
-    (document.getElementById("gold") as HTMLInputElement).checked = true;
-    (document.getElementById("silver") as HTMLInputElement).checked = true;
-    (document.getElementById("bronze") as HTMLInputElement).checked = true;
+    (document.getElementById('athlete') as HTMLInputElement).checked = true;
+    (document.getElementById('age') as HTMLInputElement).checked = true;
+    (document.getElementById('country') as HTMLInputElement).checked = true;
+    (document.getElementById('year') as HTMLInputElement).checked = true;
+    (document.getElementById('sport') as HTMLInputElement).checked = true;
+    (document.getElementById('gold') as HTMLInputElement).checked = true;
+    (document.getElementById('silver') as HTMLInputElement).checked = true;
+    (document.getElementById('bronze') as HTMLInputElement).checked = true;
 
     this.http
-      .get<any[]>("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      .get<any[]>('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .subscribe((data) => {
         // setup the fake server with entire dataset
         fakeServer = new FakeServer(data);
         // create datasource with a reference to the fake server
-        var datasource: IServerSideDatasource =
-          getServerSideDatasource(fakeServer);
+        var datasource: IServerSideDatasource = getServerSideDatasource(
+          fakeServer
+        );
         // register the datasource with the grid
         params.api!.setServerSideDatasource(datasource);
       });
   }
 }
 
-var colDefCountry: ColDef = { field: "country", rowGroup: true };
-var colDefYear: ColDef = { field: "year", rowGroup: true };
+var colDefCountry: ColDef = { field: 'country', rowGroup: true };
+var colDefYear: ColDef = { field: 'year', rowGroup: true };
 var colDefAthlete: ColDef = {
-  field: "athlete",
-  filter: "agSetColumnFilter",
+  field: 'athlete',
+  filter: 'agSetColumnFilter',
   filterParams: {
     values: getAthletesAsync,
   },
-  menuTabs: ["filterMenuTab"],
+  menuTabs: ['filterMenuTab'],
 };
-var colDefAge: ColDef = { field: "age" };
-var colDefSport: ColDef = { field: "sport" };
-var colDefGold: ColDef = { field: "gold", aggFunc: "sum" };
-var colDefSilver: ColDef = { field: "silver", aggFunc: "sum" };
-var colDefBronze: ColDef = { field: "bronze", aggFunc: "sum" };
+var colDefAge: ColDef = { field: 'age' };
+var colDefSport: ColDef = { field: 'sport' };
+var colDefGold: ColDef = { field: 'gold', aggFunc: 'sum' };
+var colDefSilver: ColDef = { field: 'silver', aggFunc: 'sum' };
+var colDefBronze: ColDef = { field: 'bronze', aggFunc: 'sum' };
 function getAthletesAsync(params: SetFilterValuesFuncParams) {
   var countries = fakeServer.getAthletes();
   // simulating real server call with a 500ms delay
@@ -161,7 +162,7 @@ function getBooleanValue(cssSelector: string) {
 function getServerSideDatasource(server: any): IServerSideDatasource {
   return {
     getRows: function (params: IServerSideGetRowsParams) {
-      console.log("[Datasource] - rows requested by grid: ", params.request);
+      console.log('[Datasource] - rows requested by grid: ', params.request);
       var response = server.getData(params.request);
       // adding delay to simulate real server call
       setTimeout(function () {

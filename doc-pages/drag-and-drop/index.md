@@ -26,6 +26,7 @@ To allow dragging from the grid, set the property `dndSource=true` on one of the
 This will result in the column having a drag handle displayed. When the dragging starts, the grid
 will by default create a JSON representation of the data and set this as MIME types `application/json` and also `text/plain`.
 
+
 <api-documentation source='column-properties/properties.json' section='row dragging' names='["dndSource"]'></api-documentation>
 
 In the example below, note the following:
@@ -52,7 +53,7 @@ In the example below, note the following:
 
 - New rows can be created by dragging out from red, green and blue 'Create' draggable areas.
 
-<grid-example title='Two Grids' name='two-grids' type='multi' options='{ "extras": ["fontawesome"] }'></grid-example>
+<grid-example title='Two Grids' name='two-grids' type='mixed' options='{ "extras": ["fontawesome"] }'></grid-example>
 
 Note that there is no specific drop zone logic in the grid. This was done on purpose after analysis.
 

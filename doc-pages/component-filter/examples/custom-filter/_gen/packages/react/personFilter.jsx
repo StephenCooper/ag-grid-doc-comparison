@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, createRef } from 'react';
 
 export default class PersonFilter extends Component {
   constructor(props) {
@@ -17,7 +17,7 @@ export default class PersonFilter extends Component {
     let passed = true;
     this.state.filterText
       .toLowerCase()
-      .split(" ")
+      .split(' ')
       .forEach((filterWord) => {
         const value = this.props.valueGetter({
           api,
@@ -39,7 +39,7 @@ export default class PersonFilter extends Component {
   }
 
   isFilterActive() {
-    return this.state.filterText != null && this.state.filterText !== "";
+    return this.state.filterText != null && this.state.filterText !== '';
   }
 
   getModel() {
@@ -63,10 +63,10 @@ export default class PersonFilter extends Component {
   render() {
     return (
       <div style={{ padding: 4, width: 200 }}>
-        <div style={{ fontWeight: "bold" }}>Custom Athlete Filter</div>
+        <div style={{ fontWeight: 'bold' }}>Custom Athlete Filter</div>
         <div>
           <input
-            style={{ margin: "4 0 4 0" }}
+            style={{ margin: '4 0 4 0' }}
             type="text"
             value={this.state.filterText}
             onChange={this.onChange.bind(this)}
@@ -85,10 +85,10 @@ export default class PersonFilter extends Component {
             src="https://www.ag-grid.com/images/ag-Grid2-200.png"
             style={{
               width: 150,
-              textAlign: "center",
+              textAlign: 'center',
               padding: 10,
               margin: 10,
-              border: "1px solid lightgrey",
+              border: '1px solid lightgrey',
             }}
           />
         </div>

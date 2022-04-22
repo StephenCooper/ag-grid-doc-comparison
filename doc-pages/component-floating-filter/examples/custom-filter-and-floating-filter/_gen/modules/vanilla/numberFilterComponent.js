@@ -11,7 +11,7 @@ class NumberFilterComponent {
 
   // not called by AG Grid, just for us to help setup
   setupGui() {
-    this.gui = document.createElement("div");
+    this.gui = document.createElement('div');
     this.gui.innerHTML = `
             <div style="padding: 4px">
                 <div style="font-weight: bold;">Greater than: </div>
@@ -26,12 +26,12 @@ class NumberFilterComponent {
       this.params.filterChangedCallback();
     };
 
-    this.eFilterText = this.gui.querySelector("#filterText");
-    this.eFilterText.addEventListener("input", this.onFilterChanged);
+    this.eFilterText = this.gui.querySelector('#filterText');
+    this.eFilterText.addEventListener('input', this.onFilterChanged);
   }
 
   __init() {
-    this.isNumeric = (n) => !isNaN(parseFloat(n)) && isFinite(n);
+    this.isNumeric = (n) => !isNaN(parseFloat(n)) && isFinite(parseFloat(n));
   }
 
   myMethodForTakingValueFromFloatingFilter(value) {
@@ -52,8 +52,14 @@ class NumberFilterComponent {
       return false;
     }
 
-    const { api, colDef, column, columnApi, context, valueGetter } =
-      this.params;
+    const {
+      api,
+      colDef,
+      column,
+      columnApi,
+      context,
+      valueGetter,
+    } = this.params;
     const { node } = params;
 
     const value = valueGetter({
@@ -77,7 +83,7 @@ class NumberFilterComponent {
     return (
       this.filterText !== null &&
       this.filterText !== undefined &&
-      this.filterText !== "" &&
+      this.filterText !== '' &&
       this.isNumeric(this.filterText)
     );
   }
@@ -92,6 +98,6 @@ class NumberFilterComponent {
   }
 
   destroy() {
-    this.eFilterText.removeEventListener("input", this.onFilterChanged);
+    this.eFilterText.removeEventListener('input', this.onFilterChanged);
   }
 }

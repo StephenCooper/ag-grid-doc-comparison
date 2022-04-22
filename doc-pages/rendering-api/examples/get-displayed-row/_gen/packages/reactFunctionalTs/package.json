@@ -1,0 +1,11 @@
+{
+  "name": "ag-grid-packages",
+  "description": "NOTE: This package.json file is solely used by Plunker to look up type definitions.",
+  "dependencies": {
+    "react": "17",
+    "react-dom": "17",
+    "ag-grid-react": "*",
+    "ag-grid-community": "*",
+    "ag-grid-enterprise": "*"
+  }
+}

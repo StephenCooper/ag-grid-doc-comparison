@@ -86,7 +86,7 @@ The following example shows how Set Filter values are formatted using a Value Fo
 - **With Value Formatter** has the same Value Formatter supplied to the Column and Set Filter. The Set Filter is supplied the value formatter through `filterParams.valueFormatter = countryValueFormatter`.
 - Click **Print Filter Model** with a filter applied and note the logged Filter Model (dev console) has not been modified.
 
-<grid-example title='Filter List Value Formatters' name='filter-list-value-formatter' type='generated' options='{ "enterprise": true, "exampleHeight": 745, "modules": ["clientside", "setfilter", "menu", "columnpanel", "filterpanel"] }'></grid-example>
+<grid-example title='Filter List Value Formatters' name='filter-list-value-formatter' type='generated' options='{ "enterprise": true, "exampleHeight": 745, "modules": ["clientside", "setfilter", "menu", "columnpanel", "filterpanel"] }'></grid-example> 
 
 ### Cell Renderer
 
@@ -117,6 +117,7 @@ const gridOptions = {
 
 [[note]]
 | A custom [Cell Renderer Component](/component-cell-renderer/#cell-renderer-component) can also be supplied to `filterParams.cellRenderer`.
+
 
 The following example shows how Set Filter values are rendered using a Cell Renderer. Note the following:
 
@@ -197,7 +198,10 @@ The interface for this parameter object is `SetFilterValuesFuncParams`:
 [[note]]
 | If you are providing values to the Set Filter asynchronously, when setting the model using `setModel` you need to wait for changes to be applied before performing any further actions by waiting on the returned grid promise, e.g.:
 |
-| `js | filter.setModel({ values: ['a', 'b'] }) | .then(() => gridApi.onFilterChanged(); ); | `
+| ```js
+| filter.setModel({ values: ['a', 'b'] })
+|   .then(() => gridApi.onFilterChanged(); );
+| ```
 
 The following example demonstrates loading set filter values asynchronously. Note the following:
 
@@ -274,7 +278,6 @@ const gridOptions = {
 | The `caseSensitive` option also affects [Mini-Filter](/filter-set-mini-filter/#enabling-case-sensitive-searches) searches and [API](/filter-set-api/#enabling-case-sensitivity) behaviours.
 
 The following example demonstrates the difference in behaviour between `caseSensitive: false` (the default) and `caseSensitive: true`:
-
 - The case insensitive column's Filter List has seven distinct values with unique colours.
   - Typing `black` into the Mini Filter will match `Black`.
 - The case sensitive column's Filter List has 21 distinct values, although there are only seven distinct colours ignoring case.
@@ -309,7 +312,9 @@ The snippet above shows a Key Creator function that returns the country name fro
 
 If the value returned by Key Creator is not human-readable then you should consider also providing a Formatter for the Filter List label.
 
+
 The following example shows the Key Creator handling complex objects for the Set Filter. Note the following:
+
 
 - **Country (Complex Object)** column is supplied a complex object through `colDef.field`.
 - A Key Creator is supplied to the column using `colDef.keyCreator = countryKeyCreator` which extracts the `name` property for the Set Filter.
@@ -392,3 +397,4 @@ The following example demonstrates tooltips in the Set Filter. Note the followin
 ## Next Up
 
 Continue to the next section: [Data Updates](/filter-set-data-updates/).
+

@@ -1,11 +1,11 @@
-import { Component } from "@angular/core";
-import { ColDef, GridApi, GridReadyEvent } from "ag-grid-community";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
+import { Component } from '@angular/core';
+import { ColDef, GridApi, GridReadyEvent } from 'ag-grid-community';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import 'ag-grid-enterprise';
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `
     <div style="display: flex; flex-direction: column; height: 100%;">
       <div style="display: flex;">
@@ -57,29 +57,30 @@ export class AppComponent {
   };
   public popupParent: HTMLElement = document.body;
   public columnDefs: ColDef[] = [
-    { field: "make" },
-    { field: "model" },
-    { field: "price" },
+    { field: 'make' },
+    { field: 'model' },
+    { field: 'price' },
   ];
   public rowData: any[] | null = [
-    { make: "Toyota", model: "Celica", price: 35000 },
-    { make: "Ford", model: "Mondeo", price: 32000 },
-    { make: "Porsche", model: "Boxter", price: 72000 },
+    { make: 'Toyota', model: 'Celica', price: 35000 },
+    { make: 'Ford', model: 'Mondeo', price: 32000 },
+    { make: 'Porsche', model: 'Boxster', price: 72000 },
   ];
 
   onBtnExport() {
     const params = getParams();
     if (params.suppressQuotes) {
       alert(
-        "NOTE: you are downloading a file with non-standard quotes - it may not render correctly in Excel."
+        'NOTE: you are downloading a file with non-standard quotes - it may not render correctly in Excel.'
       );
     }
     this.gridApi.exportDataAsCsv(params);
   }
 
   onBtnUpdate() {
-    (document.querySelector("#csvResult") as any).value =
-      this.gridApi.getDataAsCsv(getParams());
+    (document.querySelector(
+      '#csvResult'
+    ) as any).value = this.gridApi.getDataAsCsv(getParams());
   }
 
   onGridReady(params: GridReadyEvent) {
@@ -92,6 +93,6 @@ function getBoolean(inputSelector: string) {
 }
 function getParams() {
   return {
-    suppressQuotes: getBoolean("#suppressQuotes"),
+    suppressQuotes: getBoolean('#suppressQuotes'),
   };
 }

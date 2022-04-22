@@ -1,21 +1,21 @@
 const columnDefs = [
   {
-    headerName: "Group",
-    field: "name",
+    headerName: 'Group',
+    field: 'name',
     rowGroup: true,
     hide: true,
   },
   {
-    field: "autoA",
+    field: 'autoA',
     wrapText: true,
     autoHeight: true,
-    aggFunc: "last",
+    aggFunc: 'last',
   },
   {
-    field: "autoB",
+    field: 'autoB',
     wrapText: true,
     autoHeight: true,
-    aggFunc: "last",
+    aggFunc: 'last',
   },
 ];
 
@@ -31,8 +31,8 @@ const gridOptions = {
     maxWidth: 200,
   },
   // use the server-side row model
-  rowModelType: "serverSide",
-  serverSideStoreType: "partial",
+  rowModelType: 'serverSide',
+  serverSideStoreType: 'partial',
 
   animateRows: true,
   suppressAggFuncInHeader: true,
@@ -55,15 +55,15 @@ const gridOptions = {
 };
 
 // setup the grid after the page has finished loading
-document.addEventListener("DOMContentLoaded", function () {
-  var gridDiv = document.querySelector("#myGrid");
+document.addEventListener('DOMContentLoaded', function () {
+  var gridDiv = document.querySelector('#myGrid');
   new agGrid.Grid(gridDiv, gridOptions);
 });
 
 function getServerSideDatasource(server) {
   return {
     getRows: function (params) {
-      console.log("[Datasource] - rows requested by grid: ", params.request);
+      console.log('[Datasource] - rows requested by grid: ', params.request);
 
       var response = server.getData(params.request);
 

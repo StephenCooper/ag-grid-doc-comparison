@@ -1,11 +1,11 @@
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { Grid, GridOptions, ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { ClipboardModule } from "@ag-grid-enterprise/clipboard";
-import { MenuModule } from "@ag-grid-enterprise/menu";
-import { MultiFilterModule } from "@ag-grid-enterprise/multi-filter";
-import { SetFilterModule } from "@ag-grid-enterprise/set-filter";
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import { Grid, GridOptions, ModuleRegistry } from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { ClipboardModule } from '@ag-grid-enterprise/clipboard';
+import { MenuModule } from '@ag-grid-enterprise/menu';
+import { MultiFilterModule } from '@ag-grid-enterprise/multi-filter';
+import { SetFilterModule } from '@ag-grid-enterprise/set-filter';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([
@@ -19,7 +19,7 @@ ModuleRegistry.registerModules([
 var dateFilterParams = {
   filters: [
     {
-      filter: "agDateColumnFilter",
+      filter: 'agDateColumnFilter',
       filterParams: {
         comparator: function (filterDate: Date, cellValue: string) {
           if (cellValue == null) return -1;
@@ -29,7 +29,7 @@ var dateFilterParams = {
       },
     },
     {
-      filter: "agSetColumnFilter",
+      filter: 'agSetColumnFilter',
       filterParams: {
         comparator: function (a: string, b: string) {
           return getDate(a).getTime() - getDate(b).getTime();
@@ -41,41 +41,41 @@ var dateFilterParams = {
 
 const gridOptions: GridOptions = {
   columnDefs: [
-    { field: "athlete", filter: "agMultiColumnFilter" },
+    { field: 'athlete', filter: 'agMultiColumnFilter' },
     {
-      field: "country",
-      filter: "agMultiColumnFilter",
+      field: 'country',
+      filter: 'agMultiColumnFilter',
       filterParams: {
         filters: [
           {
-            filter: "agTextColumnFilter",
+            filter: 'agTextColumnFilter',
             filterParams: {
-              defaultOption: "startsWith",
+              defaultOption: 'startsWith',
             },
           },
           {
-            filter: "agSetColumnFilter",
+            filter: 'agSetColumnFilter',
           },
         ],
       },
     },
     {
-      field: "gold",
-      filter: "agMultiColumnFilter",
+      field: 'gold',
+      filter: 'agMultiColumnFilter',
       filterParams: {
         filters: [
           {
-            filter: "agNumberColumnFilter",
+            filter: 'agNumberColumnFilter',
           },
           {
-            filter: "agSetColumnFilter",
+            filter: 'agSetColumnFilter',
           },
         ],
       },
     },
     {
-      field: "date",
-      filter: "agMultiColumnFilter",
+      field: 'date',
+      filter: 'agMultiColumnFilter',
       filterParams: dateFilterParams,
     },
   ],
@@ -83,12 +83,12 @@ const gridOptions: GridOptions = {
     flex: 1,
     minWidth: 200,
     resizable: true,
-    menuTabs: ["filterMenuTab"],
+    menuTabs: ['filterMenuTab'],
   },
 };
 
 function getDate(value: string) {
-  var dateParts = value.split("/");
+  var dateParts = value.split('/');
   return new Date(
     Number(dateParts[2]),
     Number(dateParts[1]) - 1,
@@ -100,33 +100,33 @@ var savedFilterState: Record<string, any>;
 
 function printState() {
   var filterState = gridOptions.api!.getFilterModel();
-  console.log("Current filter state: ", filterState);
+  console.log('Current filter state: ', filterState);
 }
 
 function saveState() {
   savedFilterState = gridOptions.api!.getFilterModel();
-  console.log("Filter state saved");
+  console.log('Filter state saved');
 }
 
 function restoreState() {
   gridOptions.api!.setFilterModel(savedFilterState);
-  console.log("Filter state restored");
+  console.log('Filter state restored');
 }
 
 function resetState() {
   gridOptions.api!.setFilterModel(null);
-  console.log("Filter state reset");
+  console.log('Filter state reset');
 }
 
 // setup the grid after the page has finished loading
-var gridDiv = document.querySelector<HTMLElement>("#myGrid")!;
+var gridDiv = document.querySelector<HTMLElement>('#myGrid')!;
 new Grid(gridDiv, gridOptions);
 
-fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
   .then((response) => response.json())
   .then((data) => gridOptions.api!.setRowData(data));
 
-if (typeof window !== "undefined") {
+if (typeof window !== 'undefined') {
   // Attach external event handlers to window so they can be called from index.html
   (<any>window).printState = printState;
   (<any>window).saveState = saveState;

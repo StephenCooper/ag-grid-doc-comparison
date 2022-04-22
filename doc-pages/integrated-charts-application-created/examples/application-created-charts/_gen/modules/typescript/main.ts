@@ -1,41 +1,43 @@
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
 import {
   AgAxisLabelFormatterParams,
   AgCartesianSeriesTooltipRendererParams,
+  ChartMenuOptions,
   ChartType,
   ColDef,
   CreateRangeChartParams,
+  GetRowIdParams,
   Grid,
   GridOptions,
   ModuleRegistry,
   ValueFormatterParams,
-} from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-balham-dark.css";
-import { GridChartsModule } from "@ag-grid-enterprise/charts";
+} from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-balham-dark.css';
+import { GridChartsModule } from '@ag-grid-enterprise/charts';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([ClientSideRowModelModule, GridChartsModule]);
 declare var __basePath: string;
 
 const columnDefs: ColDef[] = [
-  { field: "product", chartDataType: "category" },
-  { field: "book", chartDataType: "category" },
+  { field: 'product', chartDataType: 'category' },
+  { field: 'book', chartDataType: 'category' },
 
-  { field: "current", type: "measure" },
-  { field: "previous", type: "measure" },
-  { headerName: "PL 1", field: "pl1", type: "measure" },
-  { headerName: "PL 2", field: "pl2", type: "measure" },
-  { headerName: "Gain-DX", field: "gainDx", type: "measure" },
-  { headerName: "SX / PX", field: "sxPx", type: "measure" },
+  { field: 'current', type: 'measure' },
+  { field: 'previous', type: 'measure' },
+  { headerName: 'PL 1', field: 'pl1', type: 'measure' },
+  { headerName: 'PL 2', field: 'pl2', type: 'measure' },
+  { headerName: 'Gain-DX', field: 'gainDx', type: 'measure' },
+  { headerName: 'SX / PX', field: 'sxPx', type: 'measure' },
 
-  { field: "trade", type: "measure" },
-  { field: "submitterID", type: "measure" },
-  { field: "submitterDealID", type: "measure", minWidth: 170 },
+  { field: 'trade', type: 'measure' },
+  { field: 'submitterID', type: 'measure' },
+  { field: 'submitterDealID', type: 'measure', minWidth: 170 },
 
-  { field: "portfolio" },
-  { field: "dealType" },
-  { headerName: "Bid", field: "bidFlag" },
+  { field: 'portfolio' },
+  { field: 'dealType' },
+  { headerName: 'Bid', field: 'bidFlag' },
 ];
 
 var chartRef: any;
@@ -52,44 +54,44 @@ const gridOptions: GridOptions = {
   },
   columnTypes: {
     measure: {
-      chartDataType: "series",
-      cellClass: "number",
+      chartDataType: 'series',
+      cellClass: 'number',
       valueFormatter: numberCellFormatter,
-      cellRenderer: "agAnimateShowChangeCellRenderer",
+      cellRenderer: 'agAnimateShowChangeCellRenderer',
     },
   },
   animateRows: true,
   enableCharts: true,
   suppressAggFuncInHeader: true,
-  getRowId: function (params) {
+  getRowId: function (params: GetRowIdParams) {
     return params.data.trade;
   },
   onFirstDataRendered: function (params) {
     var createRangeChartParams: CreateRangeChartParams = {
       cellRange: {
         columns: [
-          "product",
-          "current",
-          "previous",
-          "pl1",
-          "pl2",
-          "gainDx",
-          "sxPx",
+          'product',
+          'current',
+          'previous',
+          'pl1',
+          'pl2',
+          'gainDx',
+          'sxPx',
         ],
       },
-      chartType: "groupedColumn",
-      chartContainer: document.querySelector("#myChart") as any,
+      chartType: 'groupedColumn',
+      chartContainer: document.querySelector('#myChart') as any,
       suppressChartRanges: true,
-      aggFunc: "sum",
+      aggFunc: 'sum',
     };
 
     chartRef = params.api.createRangeChart(createRangeChartParams);
   },
-  chartThemes: ["ag-pastel-dark"],
+  chartThemes: ['ag-pastel-dark'],
   chartThemeOverrides: {
     common: {
       legend: {
-        position: "bottom",
+        position: 'bottom',
       },
     },
     column: {
@@ -119,7 +121,7 @@ const gridOptions: GridOptions = {
       },
     },
   },
-  getChartToolbarItems: function () {
+  getChartToolbarItems: function (): ChartMenuOptions[] {
     return []; // hide toolbar items
   },
 };
@@ -133,19 +135,19 @@ function createChart(type: ChartType) {
   var params: CreateRangeChartParams = {
     cellRange: {
       columns: [
-        "product",
-        "current",
-        "previous",
-        "pl1",
-        "pl2",
-        "gainDx",
-        "sxPx",
+        'product',
+        'current',
+        'previous',
+        'pl1',
+        'pl2',
+        'gainDx',
+        'sxPx',
       ],
     },
-    chartContainer: document.querySelector("#myChart") as any,
+    chartContainer: document.querySelector('#myChart') as any,
     chartType: type,
     suppressChartRanges: true,
-    aggFunc: "sum",
+    aggFunc: 'sum',
   };
 
   chartRef = gridOptions.api!.createRangeChart(params);
@@ -154,56 +156,56 @@ function createChart(type: ChartType) {
 function numberCellFormatter(params: ValueFormatterParams) {
   return Math.floor(params.value)
     .toString()
-    .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
+    .replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
 }
 
 function yAxisLabelFormatter(params: AgAxisLabelFormatterParams) {
   var n = params.value;
   if (n < 1e3) return n;
-  if (n >= 1e3 && n < 1e6) return +(n / 1e3).toFixed(1) + "K";
-  if (n >= 1e6 && n < 1e9) return +(n / 1e6).toFixed(1) + "M";
-  if (n >= 1e9 && n < 1e12) return +(n / 1e9).toFixed(1) + "B";
-  if (n >= 1e12) return +(n / 1e12).toFixed(1) + "T";
+  if (n >= 1e3 && n < 1e6) return +(n / 1e3).toFixed(1) + 'K';
+  if (n >= 1e6 && n < 1e9) return +(n / 1e6).toFixed(1) + 'M';
+  if (n >= 1e9 && n < 1e12) return +(n / 1e9).toFixed(1) + 'B';
+  if (n >= 1e12) return +(n / 1e12).toFixed(1) + 'T';
 }
 
 function tooltipRenderer(params: AgCartesianSeriesTooltipRendererParams) {
   var value =
-    "$" +
+    '$' +
     params.datum[params.yKey]
       .toString()
-      .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
+      .replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
   var title = params.title || params.yName;
-  return '<div style="padding: 5px"><b>' + title + "</b>: " + value + "</div>";
+  return '<div style="padding: 5px"><b>' + title + '</b>: ' + value + '</div>';
 }
 
 // after page is loaded, create the grid
-var eGridDiv = document.querySelector<HTMLElement>("#myGrid")!;
+var eGridDiv = document.querySelector<HTMLElement>('#myGrid')!;
 new Grid(eGridDiv, gridOptions);
 
 var worker: any;
 (function startWorker() {
-  worker = new Worker(__basePath + "dataUpdateWorker.js");
+  worker = new Worker(__basePath + 'dataUpdateWorker.js');
   worker.onmessage = function (e: any) {
-    if (e.data.type === "setRowData") {
+    if (e.data.type === 'setRowData') {
       gridOptions.api!.setRowData(e.data.records);
     }
-    if (e.data.type === "updateData") {
+    if (e.data.type === 'updateData') {
       gridOptions.api!.applyTransactionAsync({ update: e.data.records });
     }
   };
 
-  worker.postMessage("start");
+  worker.postMessage('start');
 })();
 
 function onStartLoad() {
-  worker.postMessage("start");
+  worker.postMessage('start');
 }
 
 function onStopMessages() {
-  worker.postMessage("stop");
+  worker.postMessage('stop');
 }
 
-if (typeof window !== "undefined") {
+if (typeof window !== 'undefined') {
   // Attach external event handlers to window so they can be called from index.html
   (<any>window).createChart = createChart;
   (<any>window).onStartLoad = onStartLoad;

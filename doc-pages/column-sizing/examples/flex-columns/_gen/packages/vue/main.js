@@ -1,7 +1,7 @@
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import { AgGridVue } from "ag-grid-vue";
-import Vue from "vue";
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import { AgGridVue } from 'ag-grid-vue';
+import Vue from 'vue';
 
 const VueExample = {
   template: `
@@ -17,17 +17,17 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
-        { headerName: "A", field: "author", width: 300, colSpan: colSpan },
+        { headerName: 'A', field: 'author', width: 300, colSpan: colSpan },
         {
-          headerName: "Flexed Columns",
+          headerName: 'Flexed Columns',
           children: [
-            { headerName: "B", minWidth: 200, maxWidth: 350, flex: 2 },
-            { headerName: "C", flex: 1 },
+            { headerName: 'B', minWidth: 200, maxWidth: 350, flex: 2 },
+            { headerName: 'C', flex: 1 },
           ],
         },
       ],
@@ -52,25 +52,23 @@ const VueExample = {
   },
 };
 
-window.fillAllCellsWithWidthMeasurement =
-  function fillAllCellsWithWidthMeasurement() {
-    Array.prototype.slice
-      .call(document.querySelectorAll(".ag-cell"))
-      .forEach(function (cell) {
-        var width = cell.offsetWidth;
-        var isFullWidthRow = cell.parentElement.childNodes.length === 1;
-        cell.textContent =
-          (isFullWidthRow ? "Total width: " : "") + width + "px";
-      });
-  };
+window.fillAllCellsWithWidthMeasurement = function fillAllCellsWithWidthMeasurement() {
+  Array.prototype.slice
+    .call(document.querySelectorAll('.ag-cell'))
+    .forEach(function (cell) {
+      var width = cell.offsetWidth;
+      var isFullWidthRow = cell.parentElement.childNodes.length === 1;
+      cell.textContent = (isFullWidthRow ? 'Total width: ' : '') + width + 'px';
+    });
+};
 
 var colSpan = function (params) {
   return params.data === 2 ? 3 : 1;
 };
 
 new Vue({
-  el: "#app",
+  el: '#app',
   components: {
-    "my-component": VueExample,
+    'my-component': VueExample,
   },
 });

@@ -47,6 +47,7 @@ Themes then also use these styles for adding different values based on whether R
 
 Under normal operation, when columns are pinned to the right, the vertical scroll will appear alongside the right pinned panel. For RTL the scroll will appear on the left pinned panel when left pinning columns.
 
-## Layout of Columns
+##  Layout of Columns 
 
 The grid normally lays the columns out from left to right. When doing RTL the columns go from the right to the left. If the grid was using normal HTML layout, then the columns would all reverse by themselves, however the grid used Column Visualisation, so it needs to know exactly where each column is. Hence there is a lot of math logic inside AG Grid that is tied with the scrolling. Not only is the scrolling inverted, all the maths logic is inverted also. All of this is taken care of for you inside AG Grid. Once `enableRtl=true` is set, the grid will know to use the RTL varient of all the calculations.
+

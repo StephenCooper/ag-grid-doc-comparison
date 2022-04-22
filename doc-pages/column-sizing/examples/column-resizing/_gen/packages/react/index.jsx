@@ -1,10 +1,10 @@
-"use strict";
+'use strict';
 
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import { AgGridReact } from "ag-grid-react";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from 'ag-grid-react';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 
 class GridExample extends Component {
   constructor(props) {
@@ -12,22 +12,22 @@ class GridExample extends Component {
 
     this.state = {
       columnDefs: [
-        { field: "athlete", width: 150, suppressSizeToFit: true },
+        { field: 'athlete', width: 150, suppressSizeToFit: true },
         {
-          field: "age",
-          headerName: "Age of Athlete",
+          field: 'age',
+          headerName: 'Age of Athlete',
           width: 90,
           minWidth: 50,
           maxWidth: 150,
         },
-        { field: "country", width: 120 },
-        { field: "year", width: 90 },
-        { field: "date", width: 110 },
-        { field: "sport", width: 110 },
-        { field: "gold", width: 100 },
-        { field: "silver", width: 100 },
-        { field: "bronze", width: 100 },
-        { field: "total", width: 100 },
+        { field: 'country', width: 120 },
+        { field: 'year', width: 90 },
+        { field: 'date', width: 110 },
+        { field: 'sport', width: 110 },
+        { field: 'gold', width: 100 },
+        { field: 'silver', width: 100 },
+        { field: 'bronze', width: 100 },
+        { field: 'total', width: 100 },
       ],
       defaultColDef: {
         resizable: true,
@@ -42,7 +42,7 @@ class GridExample extends Component {
 
     const updateData = (data) => params.api.setRowData(data);
 
-    fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+    fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .then((resp) => resp.json())
       .then((data) => updateData(data));
   };
@@ -61,7 +61,7 @@ class GridExample extends Component {
 
   render() {
     return (
-      <div style={{ width: "100%", height: "100%" }}>
+      <div style={{ width: '100%', height: '100%' }}>
         <div className="outer-div">
           <div className="button-bar">
             <button onClick={() => this.sizeToFit()}>Size to Fit</button>
@@ -75,8 +75,8 @@ class GridExample extends Component {
           <div className="grid-wrapper">
             <div
               style={{
-                height: "100%",
-                width: "100%",
+                height: '100%',
+                width: '100%',
               }}
               className="ag-theme-alpine"
             >
@@ -94,4 +94,4 @@ class GridExample extends Component {
   }
 }
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

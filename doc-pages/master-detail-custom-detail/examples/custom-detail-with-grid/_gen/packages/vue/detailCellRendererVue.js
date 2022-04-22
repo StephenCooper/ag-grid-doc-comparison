@@ -1,6 +1,6 @@
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import { AgGridVue } from "ag-grid-vue";
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import { AgGridVue } from 'ag-grid-vue';
 
 export default {
   template: `
@@ -20,7 +20,7 @@ export default {
       </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
@@ -32,11 +32,11 @@ export default {
   beforeMount() {
     this.gridOptions = {};
     this.colDefs = [
-      { field: "callId" },
-      { field: "direction" },
-      { field: "number" },
-      { field: "duration", valueFormatter: "x.toLocaleString() + 's'" },
-      { field: "switchCode" },
+      { field: 'callId' },
+      { field: 'direction' },
+      { field: 'number' },
+      { field: 'duration', valueFormatter: "x.toLocaleString() + 's'" },
+      { field: 'switchCode' },
     ];
     this.defaultColDef = {
       flex: 1,
@@ -49,7 +49,7 @@ export default {
     this.masterGridApi = this.params.api;
   },
   beforeDestroy() {
-    console.log("removing detail grid info with id: ", this.rowId);
+    console.log('removing detail grid info with id: ', this.rowId);
     this.masterGridApi.removeDetailGridInfo(this.rowId);
   },
   methods: {
@@ -60,7 +60,7 @@ export default {
         columnApi: params.columnApi,
       };
 
-      console.log("adding detail grid info with id: ", this.rowId);
+      console.log('adding detail grid info with id: ', this.rowId);
       this.masterGridApi.addDetailGridInfo(this.rowId, gridInfo);
     },
   },

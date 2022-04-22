@@ -1,8 +1,8 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 
 export default class ClickableStatusBarComponent extends Component {
   onClick = () => {
-    alert("Selected Row Count: " + this.props.api.getSelectedRows().length);
+    alert('Selected Row Count: ' + this.props.api.getSelectedRows().length);
   };
 
   render() {

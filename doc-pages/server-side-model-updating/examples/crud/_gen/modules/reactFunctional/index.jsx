@@ -1,12 +1,12 @@
-"use strict";
+'use strict';
 
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine-dark.css";
-import { AgGridReact } from "@ag-grid-community/react";
-import { ServerSideRowModelModule } from "@ag-grid-enterprise/server-side-row-model";
-import React, { useCallback, useMemo, useRef, useState } from "react";
-import { render } from "react-dom";
+import React, { useCallback, useMemo, useRef, useState } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from '@ag-grid-community/react';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine-dark.css';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import { ServerSideRowModelModule } from '@ag-grid-enterprise/server-side-row-model';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([ServerSideRowModelModule]);
@@ -36,18 +36,18 @@ const createMyDataSource = (data) => {
 
 const GridExample = () => {
   const gridRef = useRef();
-  const containerStyle = useMemo(() => ({ width: "100%", height: "100%" }), []);
-  const gridStyle = useMemo(() => ({ height: "100%", width: "100%" }), []);
+  const containerStyle = useMemo(() => ({ width: '100%', height: '100%' }), []);
+  const gridStyle = useMemo(() => ({ height: '100%', width: '100%' }), []);
 
   const [columnDefs, setColumnDefs] = useState([
-    { field: "athlete", width: 150 },
-    { field: "age" },
-    { field: "country", width: 150 },
-    { field: "year" },
-    { field: "sport" },
-    { field: "gold" },
-    { field: "silver" },
-    { field: "bronze" },
+    { field: 'athlete', width: 150 },
+    { field: 'age' },
+    { field: 'country', width: 150 },
+    { field: 'year' },
+    { field: 'sport' },
+    { field: 'gold' },
+    { field: 'silver' },
+    { field: 'bronze' },
   ]);
   const defaultColDef = useMemo(() => {
     return {
@@ -57,7 +57,7 @@ const GridExample = () => {
   }, []);
 
   const onGridReady = useCallback((params) => {
-    fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+    fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .then((resp) => resp.json())
       .then((data) => {
         // add id to data
@@ -92,8 +92,8 @@ const GridExample = () => {
     var selectedRow = selectedRows[0];
     // insert new row in the source data, at the top of the page
     window.rowDataServerSide.splice(selectedRow.rowIndex, 0, {
-      athlete: "New Item" + newItemCount,
-      id: "" + Math.random(),
+      athlete: 'New Item' + newItemCount,
+      id: '' + Math.random(),
     });
     newItemCount++;
     gridRef.current.api.refreshServerSideStore();
@@ -106,7 +106,7 @@ const GridExample = () => {
   return (
     <div style={containerStyle}>
       <div className="example-wrapper">
-        <div style={{ marginBottom: "5px" }}>
+        <div style={{ marginBottom: '5px' }}>
           <button onClick={onBtAdd}>Add Before Selected Row</button>
           <button onClick={onBtRemove}>Remove Selected Row</button>
         </div>
@@ -116,9 +116,9 @@ const GridExample = () => {
             ref={gridRef}
             columnDefs={columnDefs}
             defaultColDef={defaultColDef}
-            rowSelection={"single"}
-            rowModelType={"serverSide"}
-            serverSideStoreType={"partial"}
+            rowSelection={'single'}
+            rowModelType={'serverSide'}
+            serverSideStoreType={'partial'}
             getRowId={getRowId}
             onGridReady={onGridReady}
           ></AgGridReact>
@@ -128,4 +128,4 @@ const GridExample = () => {
   );
 };
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

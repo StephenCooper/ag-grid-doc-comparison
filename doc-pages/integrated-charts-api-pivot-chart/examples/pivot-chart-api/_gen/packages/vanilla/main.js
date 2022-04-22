@@ -1,10 +1,10 @@
 const gridOptions = {
   columnDefs: [
-    { field: "country", pivot: true },
-    { field: "year", rowGroup: true },
-    { field: "sport", rowGroup: true },
-    { field: "total", aggFunc: "sum" },
-    { field: "gold", aggFunc: "sum" },
+    { field: 'country', pivot: true },
+    { field: 'year', rowGroup: true },
+    { field: 'sport', rowGroup: true },
+    { field: 'total', aggFunc: 'sum' },
+    { field: 'gold', aggFunc: 'sum' },
   ],
   defaultColDef: {
     editable: true,
@@ -23,12 +23,12 @@ const gridOptions = {
 };
 
 function onFirstDataRendered(event) {
-  var chartContainer = document.querySelector("#chart");
+  var chartContainer = document.querySelector('#chart');
 
   var params = {
-    chartType: "groupedColumn",
+    chartType: 'groupedColumn',
     chartContainer: chartContainer,
-    chartThemeName: "ag-vivid",
+    chartThemeName: 'ag-vivid',
     chartThemeOverrides: {
       common: {
         padding: {
@@ -39,7 +39,7 @@ function onFirstDataRendered(event) {
         },
         legend: {
           enabled: true,
-          position: "bottom",
+          position: 'bottom',
         },
         navigator: {
           enabled: true,
@@ -58,11 +58,11 @@ function onFirstDataRendered(event) {
 }
 
 // setup the grid after the page has finished loading
-document.addEventListener("DOMContentLoaded", function () {
-  var gridDiv = document.querySelector("#myGrid");
+document.addEventListener('DOMContentLoaded', function () {
+  var gridDiv = document.querySelector('#myGrid');
   new agGrid.Grid(gridDiv, gridOptions);
 
-  fetch("https://www.ag-grid.com/example-assets/wide-spread-of-sports.json")
+  fetch('https://www.ag-grid.com/example-assets/wide-spread-of-sports.json')
     .then((response) => response.json())
     .then(function (data) {
       gridOptions.api.setRowData(data);

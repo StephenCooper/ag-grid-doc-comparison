@@ -4,20 +4,21 @@ import {
   ColSpanParams,
   Grid,
   GridOptions,
+  GridReadyEvent,
   RowHeightParams,
-} from "ag-grid-community";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
+} from 'ag-grid-community';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 
 var cellClassRules: CellClassRules = {
-  "header-cell": 'data.section === "big-title"',
-  "quarters-cell": 'data.section === "quarters"',
+  'header-cell': 'data.section === "big-title"',
+  'quarters-cell': 'data.section === "quarters"',
 };
 
 const columnDefs: ColDef[] = [
   {
-    headerName: "Jan",
-    field: "jan",
+    headerName: 'Jan',
+    field: 'jan',
     colSpan: function (params: ColSpanParams) {
       if (isHeaderRow(params)) {
         return 6;
@@ -29,12 +30,12 @@ const columnDefs: ColDef[] = [
     },
     cellClassRules: cellClassRules,
   },
-  { headerName: "Feb", field: "feb" },
-  { headerName: "Mar", field: "mar" },
+  { headerName: 'Feb', field: 'feb' },
+  { headerName: 'Mar', field: 'mar' },
   {
-    headerName: "Apr",
-    field: "apr",
-    colSpan: function (params) {
+    headerName: 'Apr',
+    field: 'apr',
+    colSpan: function (params: ColSpanParams) {
       if (isQuarterRow(params)) {
         return 3;
       } else {
@@ -43,12 +44,12 @@ const columnDefs: ColDef[] = [
     },
     cellClassRules: cellClassRules,
   },
-  { headerName: "May", field: "may" },
-  { headerName: "Jun", field: "jun" },
+  { headerName: 'May', field: 'may' },
+  { headerName: 'Jun', field: 'jun' },
 ];
 
 const gridOptions: GridOptions = {
-  getRowHeight: function (params) {
+  getRowHeight: function (params: RowHeightParams) {
     if (isHeaderRow(params)) {
       return 60;
     }
@@ -58,19 +59,19 @@ const gridOptions: GridOptions = {
   defaultColDef: {
     width: 100,
   },
-  onGridReady: function (params) {
+  onGridReady: function (params: GridReadyEvent) {
     params.api.sizeColumnsToFit();
   },
 };
 
 function isHeaderRow(params: RowHeightParams | ColSpanParams) {
-  return params.data.section === "big-title";
+  return params.data.section === 'big-title';
 }
 
 function isQuarterRow(params: ColSpanParams) {
-  return params.data.section === "quarters";
+  return params.data.section === 'quarters';
 }
 
 // setup the grid after the page has finished loading
-var gridDiv = document.querySelector<HTMLElement>("#myGrid")!;
+var gridDiv = document.querySelector<HTMLElement>('#myGrid')!;
 new Grid(gridDiv, gridOptions);

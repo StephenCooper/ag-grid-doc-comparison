@@ -1,47 +1,47 @@
-"use strict";
+'use strict';
 
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
-import { AgGridReact } from "ag-grid-react";
-import React, { useCallback, useMemo, useRef, useState } from "react";
-import { render } from "react-dom";
+import React, { useCallback, useMemo, useRef, useState } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from 'ag-grid-react';
+import 'ag-grid-enterprise';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 
 const getBoolean = (id) => {
-  return !!document.querySelector("#" + id).checked;
+  return !!document.querySelector('#' + id).checked;
 };
 
 const getParams = () => {
   return {
-    allColumns: getBoolean("allColumns"),
+    allColumns: getBoolean('allColumns'),
   };
 };
 
 const GridExample = () => {
   const gridRef = useRef();
-  const containerStyle = useMemo(() => ({ width: "100%", height: "100%" }), []);
-  const gridStyle = useMemo(() => ({ height: "100%", width: "100%" }), []);
+  const containerStyle = useMemo(() => ({ width: '100%', height: '100%' }), []);
+  const gridStyle = useMemo(() => ({ height: '100%', width: '100%' }), []);
   const [rowData, setRowData] = useState();
   const [columnDefs, setColumnDefs] = useState([
     {
-      headerName: "Top Level Column Group",
+      headerName: 'Top Level Column Group',
       children: [
         {
-          headerName: "Group A",
+          headerName: 'Group A',
           children: [
-            { field: "athlete", minWidth: 200 },
-            { field: "country", minWidth: 200 },
-            { headerName: "Group", valueGetter: "data.country.charAt(0)" },
+            { field: 'athlete', minWidth: 200 },
+            { field: 'country', minWidth: 200 },
+            { headerName: 'Group', valueGetter: 'data.country.charAt(0)' },
           ],
         },
         {
-          headerName: "Group B",
+          headerName: 'Group B',
           children: [
-            { field: "sport", minWidth: 150 },
-            { field: "gold", hide: true },
-            { field: "silver", hide: true },
-            { field: "bronze", hide: true },
-            { field: "total", hide: true },
+            { field: 'sport', minWidth: 150 },
+            { field: 'gold', hide: true },
+            { field: 'silver', hide: true },
+            { field: 'bronze', hide: true },
+            { field: 'total', hide: true },
           ],
         },
       ],
@@ -61,7 +61,7 @@ const GridExample = () => {
   }, []);
 
   const onGridReady = useCallback((params) => {
-    fetch("https://www.ag-grid.com/example-assets/small-olympic-winners.json")
+    fetch('https://www.ag-grid.com/example-assets/small-olympic-winners.json')
       .then((resp) => resp.json())
       .then((data) => setRowData(data.filter((rec) => rec.country != null)));
   }, []);
@@ -74,12 +74,12 @@ const GridExample = () => {
     <div style={containerStyle}>
       <div className="container">
         <div className="columns">
-          <label className="option" for="allColumns">
+          <label className="option" htmlFor="allColumns">
             <input id="allColumns" type="checkbox" />
             All Columns
           </label>
           <div>
-            <button onClick={onBtExport} style={{ fontWeight: "bold" }}>
+            <button onClick={onBtExport} style={{ fontWeight: 'bold' }}>
               Export to Excel
             </button>
           </div>
@@ -101,4 +101,4 @@ const GridExample = () => {
   );
 };
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

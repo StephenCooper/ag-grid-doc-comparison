@@ -1,25 +1,25 @@
-import { ColumnState, Grid, GridOptions } from "ag-grid-community";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
+import { ColumnState, Grid, GridOptions } from 'ag-grid-community';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import 'ag-grid-enterprise';
 
 const gridOptions: GridOptions = {
   columnDefs: [
-    { field: "athlete", enableRowGroup: true, enablePivot: true },
-    { field: "age", enableValue: true },
+    { field: 'athlete', enableRowGroup: true, enablePivot: true },
+    { field: 'age', enableValue: true },
     {
-      field: "country",
+      field: 'country',
       enableRowGroup: true,
       enablePivot: true,
       rowGroup: true,
     },
-    { field: "year", enableRowGroup: true, enablePivot: true },
-    { field: "date", enableRowGroup: true, enablePivot: true },
-    { field: "sport", enableRowGroup: true, enablePivot: true, pivot: true },
-    { field: "gold", enableValue: true, aggFunc: "sum" },
-    { field: "silver", enableValue: true, aggFunc: "sum" },
-    { field: "bronze", enableValue: true },
-    { field: "total", enableValue: true },
+    { field: 'year', enableRowGroup: true, enablePivot: true },
+    { field: 'date', enableRowGroup: true, enablePivot: true },
+    { field: 'sport', enableRowGroup: true, enablePivot: true, pivot: true },
+    { field: 'gold', enableValue: true, aggFunc: 'sum' },
+    { field: 'silver', enableValue: true, aggFunc: 'sum' },
+    { field: 'bronze', enableValue: true },
+    { field: 'total', enableValue: true },
   ],
   defaultColDef: {
     flex: 1,
@@ -45,7 +45,7 @@ function printState() {
 function saveState() {
   savedState = gridOptions.columnApi!.getColumnState();
   savedPivotMode = gridOptions.columnApi!.isPivotMode();
-  console.log("column state saved");
+  console.log('column state saved');
 }
 
 function restoreState() {
@@ -56,9 +56,9 @@ function restoreState() {
       state: savedState,
       applyOrder: true,
     });
-    console.log("column state restored");
+    console.log('column state restored');
   } else {
-    console.log("no previous column state to restore!");
+    console.log('no previous column state to restore!');
   }
 }
 
@@ -70,18 +70,18 @@ function togglePivotMode() {
 function resetState() {
   gridOptions.columnApi!.resetColumnState();
   gridOptions.columnApi!.setPivotMode(false);
-  console.log("column state reset");
+  console.log('column state reset');
 }
 
 // setup the grid after the page has finished loading
-var gridDiv = document.querySelector<HTMLElement>("#myGrid")!;
+var gridDiv = document.querySelector<HTMLElement>('#myGrid')!;
 new Grid(gridDiv, gridOptions);
 
-fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
   .then((response) => response.json())
   .then((data) => gridOptions.api!.setRowData(data));
 
-if (typeof window !== "undefined") {
+if (typeof window !== 'undefined') {
   // Attach external event handlers to window so they can be called from index.html
   (<any>window).printState = printState;
   (<any>window).saveState = saveState;

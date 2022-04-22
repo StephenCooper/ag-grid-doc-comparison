@@ -1,9 +1,9 @@
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
-import { AgGridVue } from "ag-grid-vue";
-import Vue from "vue";
-import ColourCellRenderer from "./colourCellRendererVue.js";
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import 'ag-grid-enterprise';
+import { AgGridVue } from 'ag-grid-vue';
+import Vue from 'vue';
+import ColourCellRenderer from './colourCellRendererVue.js';
 
 const VueExample = {
   template: `
@@ -19,41 +19,41 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
     ColourCellRenderer,
   },
   data: function () {
     return {
       columnDefs: [
         {
-          headerName: "Text Editor",
-          field: "color1",
-          cellRenderer: "ColourCellRenderer",
-          cellEditor: "agTextCellEditor",
+          headerName: 'Text Editor',
+          field: 'color1',
+          cellRenderer: 'ColourCellRenderer',
+          cellEditor: 'agTextCellEditor',
         },
         {
-          headerName: "Select Editor",
-          field: "color2",
-          cellRenderer: "ColourCellRenderer",
-          cellEditor: "agSelectCellEditor",
+          headerName: 'Select Editor',
+          field: 'color2',
+          cellRenderer: 'ColourCellRenderer',
+          cellEditor: 'agSelectCellEditor',
           cellEditorParams: { values: colors },
         },
         {
-          headerName: "Rich Select Editor",
-          field: "color3",
-          cellRenderer: "ColourCellRenderer",
-          cellEditor: "agRichSelectCellEditor",
+          headerName: 'Rich Select Editor',
+          field: 'color3',
+          cellRenderer: 'ColourCellRenderer',
+          cellEditor: 'agRichSelectCellEditor',
           cellEditorPopup: true,
           cellEditorParams: {
             values: colors,
-            cellRenderer: "ColourCellRenderer",
+            cellRenderer: 'ColourCellRenderer',
           },
         },
         {
-          headerName: "Large Text Editor",
-          field: "description",
+          headerName: 'Large Text Editor',
+          field: 'description',
           cellEditorPopup: true,
-          cellEditor: "agLargeTextCellEditor",
+          cellEditor: 'agLargeTextCellEditor',
           flex: 2,
         },
       ],
@@ -78,19 +78,19 @@ const VueExample = {
   },
 };
 
-const colors = ["Red", "Green", "Blue"];
+const colors = ['Red', 'Green', 'Blue'];
 
 const data = Array.from(Array(20).keys()).map((val, index) => ({
   color1: colors[index % 3],
   color2: colors[index % 3],
   color3: colors[index % 3],
   description:
-    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
 }));
 
 new Vue({
-  el: "#app",
+  el: '#app',
   components: {
-    "my-component": VueExample,
+    'my-component': VueExample,
   },
 });

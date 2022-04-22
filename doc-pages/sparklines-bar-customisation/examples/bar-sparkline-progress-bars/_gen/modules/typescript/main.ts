@@ -1,4 +1,4 @@
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
 import {
   BarFormat,
   BarFormatterParams,
@@ -6,29 +6,29 @@ import {
   GridOptions,
   LabelFormatterParams,
   ModuleRegistry,
-} from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { SparklinesModule } from "@ag-grid-enterprise/sparklines";
+} from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { SparklinesModule } from '@ag-grid-enterprise/sparklines';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([ClientSideRowModelModule, SparklinesModule]);
 
 const gridOptions: GridOptions = {
   columnDefs: [
-    { field: "symbol", maxWidth: 120 },
-    { field: "name", minWidth: 250 },
+    { field: 'symbol', maxWidth: 120 },
+    { field: 'name', minWidth: 250 },
     {
-      field: "change",
-      cellRenderer: "agSparklineCellRenderer",
+      field: 'change',
+      cellRenderer: 'agSparklineCellRenderer',
       cellRendererParams: {
         sparklineOptions: {
-          type: "bar",
+          type: 'bar',
           label: {
             enabled: true,
-            color: "white",
+            color: 'white',
             fontSize: 10,
-            fontWeight: "bold",
+            fontWeight: 'bold',
             formatter: function (params: LabelFormatterParams) {
               return `${params.value}%`;
             },
@@ -50,8 +50,8 @@ const gridOptions: GridOptions = {
       },
     },
     {
-      field: "volume",
-      type: "numericColumn",
+      field: 'volume',
+      type: 'numericColumn',
       maxWidth: 140,
     },
   ],
@@ -67,10 +67,10 @@ const gridOptions: GridOptions = {
 function formatter(params: BarFormatterParams): BarFormat {
   const { yValue } = params;
   return {
-    fill: yValue <= 20 ? "#4fa2d9" : yValue < 60 ? "#277cb5" : "#195176",
+    fill: yValue <= 20 ? '#4fa2d9' : yValue < 60 ? '#277cb5' : '#195176',
   };
 }
 
 // setup the grid after the page has finished loading
-var gridDiv = document.querySelector<HTMLElement>("#myGrid")!;
+var gridDiv = document.querySelector<HTMLElement>('#myGrid')!;
 new Grid(gridDiv, gridOptions);

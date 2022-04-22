@@ -1,10 +1,10 @@
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { AgGridVue } from "@ag-grid-community/vue";
-import { SparklinesModule } from "@ag-grid-enterprise/sparklines";
-import Vue from "vue";
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { AgGridVue } from '@ag-grid-community/vue';
+import { SparklinesModule } from '@ag-grid-enterprise/sparklines';
+import Vue from 'vue';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([ClientSideRowModelModule, SparklinesModule]);
@@ -24,61 +24,61 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
-        { field: "symbol", maxWidth: 120 },
-        { field: "name", minWidth: 250 },
+        { field: 'symbol', maxWidth: 120 },
+        { field: 'name', minWidth: 250 },
         {
-          field: "change",
-          cellRenderer: "agSparklineCellRenderer",
+          field: 'change',
+          cellRenderer: 'agSparklineCellRenderer',
           cellRendererParams: {
             sparklineOptions: {
-              type: "area",
-              fill: "rgba(185,173,77,0.3)",
-              line: { stroke: "rgb(185,173,77)" },
+              type: 'area',
+              fill: 'rgba(185,173,77,0.3)',
+              line: { stroke: 'rgb(185,173,77)' },
               highlightStyle: {
                 size: 4,
-                stroke: "rgb(185,173,77)",
-                fill: "rgb(185,173,77)",
+                stroke: 'rgb(185,173,77)',
+                fill: 'rgb(185,173,77)',
               },
               tooltip: { renderer: renderer },
               crosshairs: {
                 xLine: {
                   enabled: true,
-                  lineDash: "dash",
-                  stroke: "rgba(0, 0, 0, 0.5)",
+                  lineDash: 'dash',
+                  stroke: 'rgba(0, 0, 0, 0.5)',
                 },
                 yLine: {
                   enabled: true,
-                  lineDash: "dash",
-                  stroke: "rgba(0, 0, 0, 0.5)",
+                  lineDash: 'dash',
+                  stroke: 'rgba(0, 0, 0, 0.5)',
                 },
               },
             },
           },
         },
         {
-          field: "rateOfChange",
-          cellRenderer: "agSparklineCellRenderer",
+          field: 'rateOfChange',
+          cellRenderer: 'agSparklineCellRenderer',
           cellRendererParams: {
             sparklineOptions: {
-              type: "area",
-              fill: "rgba(77,89,185, 0.3)",
-              line: { stroke: "rgb(77,89,185)" },
+              type: 'area',
+              fill: 'rgba(77,89,185, 0.3)',
+              line: { stroke: 'rgb(77,89,185)' },
               highlightStyle: {
                 size: 4,
-                stroke: "rgb(77,89,185)",
-                fill: "rgb(77,89,185)",
+                stroke: 'rgb(77,89,185)',
+                fill: 'rgb(77,89,185)',
               },
               tooltip: { renderer: renderer },
               crosshairs: { xLine: { enabled: false } },
             },
           },
         },
-        { field: "volume", type: "numericColumn", maxWidth: 140 },
+        { field: 'volume', type: 'numericColumn', maxWidth: 140 },
       ],
       gridApi: null,
       columnApi: null,
@@ -105,15 +105,15 @@ const VueExample = {
 
 window.renderer = function renderer(params) {
   return {
-    backgroundColor: "black",
+    backgroundColor: 'black',
     opacity: 0.5,
-    color: "white",
+    color: 'white',
   };
 };
 
 new Vue({
-  el: "#app",
+  el: '#app',
   components: {
-    "my-component": VueExample,
+    'my-component': VueExample,
   },
 });

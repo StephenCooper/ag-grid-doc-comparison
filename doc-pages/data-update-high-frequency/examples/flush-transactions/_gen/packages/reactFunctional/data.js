@@ -5,37 +5,37 @@ var MIN_TRADE_COUNT = 1;
 var MAX_TRADE_COUNT = 10;
 
 var products = [
-  "Palm Oil",
-  "Rubber",
-  "Wool",
-  "Amber",
-  "Copper",
-  "Lead",
-  "Zinc",
-  "Tin",
-  "Aluminium",
-  "Aluminium Alloy",
-  "Nickel",
-  "Cobalt",
-  "Molybdenum",
-  "Recycled Steel",
-  "Corn",
-  "Oats",
-  "Rough Rice",
-  "Soybeans",
-  "Rapeseed",
-  "Soybean Meal",
-  "Soybean Oil",
-  "Wheat",
-  "Milk",
-  "Coca",
-  "Coffee C",
-  "Cotton No.2",
-  "Sugar No.11",
-  "Sugar No.14",
+  'Palm Oil',
+  'Rubber',
+  'Wool',
+  'Amber',
+  'Copper',
+  'Lead',
+  'Zinc',
+  'Tin',
+  'Aluminium',
+  'Aluminium Alloy',
+  'Nickel',
+  'Cobalt',
+  'Molybdenum',
+  'Recycled Steel',
+  'Corn',
+  'Oats',
+  'Rough Rice',
+  'Soybeans',
+  'Rapeseed',
+  'Soybean Meal',
+  'Soybean Oil',
+  'Wheat',
+  'Milk',
+  'Coca',
+  'Coffee C',
+  'Cotton No.2',
+  'Sugar No.11',
+  'Sugar No.14',
 ];
 
-var portfolios = ["Aggressive", "Defensive", "Income", "Speculative", "Hybrid"];
+var portfolios = ['Aggressive', 'Defensive', 'Income', 'Speculative', 'Hybrid'];
 
 // start the book id's and trade id's at some future random number,
 // looks more realistic than starting them at 0
@@ -83,8 +83,8 @@ function createTradeRecord(product, portfolio, book) {
     trade: createTradeId(),
     submitterID: randomBetween(10, 1000),
     submitterDealID: randomBetween(10, 1000),
-    dealType: Math.random() < 0.2 ? "Physical" : "Financial",
-    bidFlag: Math.random() < 0.5 ? "Buy" : "Sell",
+    dealType: Math.random() < 0.2 ? 'Physical' : 'Financial',
+    bidFlag: Math.random() < 0.5 ? 'Buy' : 'Sell',
     current: current,
     previous: previous,
     pl1: randomBetween(100, 1000),
@@ -98,7 +98,7 @@ function createTradeRecord(product, portfolio, book) {
 
 function createBookName() {
   nextBookId++;
-  return "GL-" + nextBookId;
+  return 'GL-' + nextBookId;
 }
 
 function createTradeId() {

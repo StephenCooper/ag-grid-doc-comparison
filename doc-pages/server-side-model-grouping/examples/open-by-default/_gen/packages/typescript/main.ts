@@ -7,19 +7,19 @@ import {
   IServerSideGetRowsParams,
   IsServerSideGroupOpenByDefaultParams,
   ServerSideStoreParams,
-} from "ag-grid-community";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine-dark.css";
-import "ag-grid-enterprise";
+} from 'ag-grid-community';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine-dark.css';
+import 'ag-grid-enterprise';
 declare var FakeServer: any;
 const gridOptions: GridOptions = {
   columnDefs: [
-    { field: "country", enableRowGroup: true, rowGroup: true, hide: true },
-    { field: "sport", enableRowGroup: true, rowGroup: true, hide: true },
-    { field: "year", minWidth: 100 },
-    { field: "gold", aggFunc: "sum" },
-    { field: "silver", aggFunc: "sum" },
-    { field: "bronze", aggFunc: "sum" },
+    { field: 'country', enableRowGroup: true, rowGroup: true, hide: true },
+    { field: 'sport', enableRowGroup: true, rowGroup: true, hide: true },
+    { field: 'year', minWidth: 100 },
+    { field: 'gold', aggFunc: 'sum' },
+    { field: 'silver', aggFunc: 'sum' },
+    { field: 'bronze', aggFunc: 'sum' },
   ],
   defaultColDef: {
     flex: 1,
@@ -31,14 +31,16 @@ const gridOptions: GridOptions = {
     flex: 1,
     minWidth: 280,
   },
-  getServerSideStoreParams: function (params: GetServerSideStoreParamsParams) {
+  getServerSideStoreParams: function (
+    params: GetServerSideStoreParamsParams
+  ): ServerSideStoreParams {
     var res: ServerSideStoreParams = {
-      storeType: params.level == 0 ? "partial" : "full",
+      storeType: params.level == 0 ? 'partial' : 'full',
     };
     return res;
   },
-  rowModelType: "serverSide",
-  rowSelection: "multiple",
+  rowModelType: 'serverSide',
+  rowSelection: 'multiple',
 
   isServerSideGroupOpenByDefault: isServerSideGroupOpenByDefault,
   suppressAggFuncInHeader: true,
@@ -58,12 +60,12 @@ function isServerSideGroupOpenByDefault(
     return false;
   }
 
-  var routeAsString = route.join(",");
+  var routeAsString = route.join(',');
 
   var routesToOpenByDefault = [
-    "Zimbabwe",
-    "Zimbabwe,Swimming",
-    "United States,Swimming",
+    'Zimbabwe',
+    'Zimbabwe,Swimming',
+    'United States,Swimming',
   ];
 
   return routesToOpenByDefault.indexOf(routeAsString) >= 0;
@@ -73,15 +75,15 @@ function onBtRouteOfSelected() {
   var selectedNodes = gridOptions.api!.getSelectedNodes();
   selectedNodes.forEach(function (rowNode, index) {
     var route = rowNode.getRoute();
-    var routeString = route ? route.join(",") : undefined;
-    console.log("#" + index + ", route = [" + routeString + "]");
+    var routeString = route ? route.join(',') : undefined;
+    console.log('#' + index + ', route = [' + routeString + ']');
   });
 }
 
 function getServerSideDatasource(server: any): IServerSideDatasource {
   return {
     getRows: function (params: IServerSideGetRowsParams) {
-      console.log("[Datasource] - rows requested by grid: ", params.request);
+      console.log('[Datasource] - rows requested by grid: ', params.request);
 
       var response = server.getData(params.request);
 
@@ -103,10 +105,10 @@ function getServerSideDatasource(server: any): IServerSideDatasource {
 }
 
 // setup the grid after the page has finished loading
-var gridDiv = document.querySelector<HTMLElement>("#myGrid")!;
+var gridDiv = document.querySelector<HTMLElement>('#myGrid')!;
 new Grid(gridDiv, gridOptions);
 
-fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
   .then((response) => response.json())
   .then(function (data) {
     // setup the fake server with entire dataset
@@ -119,7 +121,7 @@ fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
     gridOptions.api!.setServerSideDatasource(datasource);
   });
 
-if (typeof window !== "undefined") {
+if (typeof window !== 'undefined') {
   // Attach external event handlers to window so they can be called from index.html
   (<any>window).onBtRouteOfSelected = onBtRouteOfSelected;
 }

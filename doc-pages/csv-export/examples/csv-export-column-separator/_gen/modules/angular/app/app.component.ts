@@ -1,11 +1,11 @@
-import { ColDef, GridApi, GridReadyEvent } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { Component } from "@angular/core";
+import { ColDef, GridApi, GridReadyEvent } from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { Component } from '@angular/core';
 // Required feature modules are registered in app.module.ts
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `
     <div style="display: flex; flex-direction: column; height: 100%;">
       <div style="display: flex;">
@@ -55,29 +55,30 @@ export class AppComponent {
   };
   public popupParent: HTMLElement = document.body;
   public columnDefs: ColDef[] = [
-    { field: "make" },
-    { field: "model" },
-    { field: "price" },
+    { field: 'make' },
+    { field: 'model' },
+    { field: 'price' },
   ];
   public rowData: any[] | null = [
-    { make: "Toyota", model: "Celica", price: 35000 },
-    { make: "Ford", model: "Mondeo", price: 32000 },
-    { make: "Porsche", model: "Boxter", price: 72000 },
+    { make: 'Toyota', model: 'Celica', price: 35000 },
+    { make: 'Ford', model: 'Mondeo', price: 32000 },
+    { make: 'Porsche', model: 'Boxster', price: 72000 },
   ];
 
   onBtnExport() {
     var params = getParams();
     if (params.columnSeparator) {
       alert(
-        "NOTE: you are downloading a file with non-standard separators - it may not render correctly in Excel."
+        'NOTE: you are downloading a file with non-standard separators - it may not render correctly in Excel.'
       );
     }
     this.gridApi.exportDataAsCsv(params);
   }
 
   onBtnUpdate() {
-    (document.querySelector("#csvResult") as any).value =
-      this.gridApi.getDataAsCsv(getParams());
+    (document.querySelector(
+      '#csvResult'
+    ) as any).value = this.gridApi.getDataAsCsv(getParams());
   }
 
   onGridReady(params: GridReadyEvent) {
@@ -88,16 +89,16 @@ export class AppComponent {
 function getValue(inputSelector: string) {
   var text = (document.querySelector(inputSelector) as any).value;
   switch (text) {
-    case "none":
+    case 'none':
       return;
-    case "tab":
-      return "\t";
+    case 'tab':
+      return '\t';
     default:
       return text;
   }
 }
 function getParams() {
   return {
-    columnSeparator: getValue("#columnSeparator"),
+    columnSeparator: getValue('#columnSeparator'),
   };
 }

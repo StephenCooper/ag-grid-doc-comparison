@@ -1,9 +1,9 @@
-import { Component } from "@angular/core";
-import { ITooltipAngularComp } from "ag-grid-angular";
-import { ITooltipParams } from "ag-grid-community";
+import { Component } from '@angular/core';
+import { ITooltipAngularComp } from 'ag-grid-angular';
+import { ITooltipParams } from 'ag-grid-community';
 
 @Component({
-  selector: "tooltip-component",
+  selector: 'tooltip-component',
   template: ` <div class="custom-tooltip" [style.background-color]="color">
     <p>
       <span>{{ data.athlete }}</span>
@@ -45,6 +45,6 @@ export class CustomTooltip implements ITooltipAngularComp {
     this.params = params;
 
     this.data = params.api!.getDisplayedRowAtIndex(params.rowIndex!)!.data;
-    this.color = this.params.color || "white";
+    this.color = this.params.color || 'white';
   }
 }

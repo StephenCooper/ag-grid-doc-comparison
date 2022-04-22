@@ -1,11 +1,11 @@
-import { HttpClient } from "@angular/common/http";
-import { Component, OnInit, ViewChild } from "@angular/core";
-import { ColDef } from "ag-grid-community";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
+import { HttpClient } from '@angular/common/http';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { ColDef } from 'ag-grid-community';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `
     <div style="height: 100%; display: flex; flex-direction: column;">
       <div style="margin-bottom: 5px;">
@@ -27,25 +27,25 @@ import "ag-grid-community/dist/styles/ag-theme-alpine.css";
   `,
 })
 export class AppComponent implements OnInit {
-  @ViewChild("agGrid") agGrid: any;
+  @ViewChild('agGrid') agGrid: any;
 
   public style: any = {
-    width: "100%",
-    height: "100%",
-    flex: "1 1 auto",
+    width: '100%',
+    height: '100%',
+    flex: '1 1 auto',
   };
 
   public columnDefs: ColDef[] = [
-    { field: "athlete", width: 150 },
-    { field: "age", width: 90 },
-    { field: "country", width: 150 },
-    { field: "year", width: 90 },
-    { field: "date", width: 150 },
-    { field: "sport", width: 150 },
-    { field: "gold", width: 100 },
-    { field: "silver", width: 100 },
-    { field: "bronze", width: 100 },
-    { field: "total", width: 100 },
+    { field: 'athlete', width: 150 },
+    { field: 'age', width: 90 },
+    { field: 'country', width: 150 },
+    { field: 'year', width: 90 },
+    { field: 'date', width: 150 },
+    { field: 'sport', width: 150 },
+    { field: 'gold', width: 100 },
+    { field: 'silver', width: 100 },
+    { field: 'bronze', width: 100 },
+    { field: 'total', width: 100 },
   ];
   public rowData!: any[];
 
@@ -53,22 +53,22 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.http
-      .get("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      .get('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .subscribe((data) => {
         this.rowData = data as any[];
       });
   }
 
   fillLarge() {
-    this.setWidthAndHeight("100%", "100%");
+    this.setWidthAndHeight('100%', '100%');
   }
 
   fillMedium() {
-    this.setWidthAndHeight("60%", "60%");
+    this.setWidthAndHeight('60%', '60%');
   }
 
   fillExact() {
-    this.setWidthAndHeight("400px", "400px");
+    this.setWidthAndHeight('400px', '400px');
   }
 
   setWidthAndHeight(width: string, height: string) {

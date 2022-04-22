@@ -1,27 +1,27 @@
 const gridOptions = {
   columnDefs: [
     {
-      field: "athlete",
-      filter: "agSetColumnFilter",
+      field: 'athlete',
+      filter: 'agSetColumnFilter',
       filterParams: {
         cellHeight: 20,
       },
     },
-    { field: "age", maxWidth: 120, filter: "agNumberColumnFilter" },
     {
-      field: "country",
+      field: 'country',
       valueFormatter: function (params) {
         return `${params.value.name} (${params.value.code})`;
       },
       keyCreator: countryKeyCreator,
     },
-    { field: "year", maxWidth: 120 },
-    { field: "date" },
-    { field: "sport" },
-    { field: "gold", filter: "agNumberColumnFilter" },
-    { field: "silver", filter: "agNumberColumnFilter" },
-    { field: "bronze", filter: "agNumberColumnFilter" },
-    { field: "total", filter: "agNumberColumnFilter" },
+    { field: 'age', maxWidth: 120, filter: 'agNumberColumnFilter' },
+    { field: 'year', maxWidth: 120 },
+    { field: 'date' },
+    { field: 'sport' },
+    { field: 'gold', filter: 'agNumberColumnFilter' },
+    { field: 'silver', filter: 'agNumberColumnFilter' },
+    { field: 'bronze', filter: 'agNumberColumnFilter' },
+    { field: 'total', filter: 'agNumberColumnFilter' },
   ],
   defaultColDef: {
     flex: 1,
@@ -29,6 +29,8 @@ const gridOptions = {
     filter: true,
     resizable: true,
   },
+  sideBar: 'filters',
+  onFirstDataRendered: onFirstDataRendered,
 };
 
 function countryKeyCreator(params) {
@@ -48,43 +50,47 @@ function patchData(data) {
 }
 
 function selectJohnAndKenny() {
-  const instance = gridOptions.api.getFilterInstance("athlete");
-  instance.setModel({ values: ["John Joe Nevin", "Kenny Egan"] });
+  const instance = gridOptions.api.getFilterInstance('athlete');
+  instance.setModel({ values: ['John Joe Nevin', 'Kenny Egan'] });
   gridOptions.api.onFilterChanged();
 }
 
 function selectEverything() {
-  const instance = gridOptions.api.getFilterInstance("athlete");
+  const instance = gridOptions.api.getFilterInstance('athlete');
   instance.setModel(null);
   gridOptions.api.onFilterChanged();
 }
 
 function selectNothing() {
-  const instance = gridOptions.api.getFilterInstance("athlete");
+  const instance = gridOptions.api.getFilterInstance('athlete');
   instance.setModel({ values: [] });
   gridOptions.api.onFilterChanged();
 }
 
 function setCountriesToFranceAustralia() {
-  const instance = gridOptions.api.getFilterInstance("country");
-  instance.setFilterValues(["France", "Australia"]);
+  const instance = gridOptions.api.getFilterInstance('country');
+  instance.setFilterValues(['France', 'Australia']);
   instance.applyModel();
   gridOptions.api.onFilterChanged();
 }
 
 function setCountriesToAll() {
-  const instance = gridOptions.api.getFilterInstance("country");
+  const instance = gridOptions.api.getFilterInstance('country');
   instance.resetFilterValues();
   instance.applyModel();
   gridOptions.api.onFilterChanged();
 }
 
+function onFirstDataRendered() {
+  gridOptions.api.getToolPanelInstance('filters').expandFilters();
+}
+
 // setup the grid after the page has finished loading
-document.addEventListener("DOMContentLoaded", function () {
-  const gridDiv = document.querySelector("#myGrid");
+document.addEventListener('DOMContentLoaded', function () {
+  const gridDiv = document.querySelector('#myGrid');
   new agGrid.Grid(gridDiv, gridOptions);
 
-  fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+  fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
     .then((response) => response.json())
     .then(function (data) {
       patchData(data);

@@ -1,7 +1,7 @@
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import { AgGridVue } from "ag-grid-vue3";
-import { createApp } from "vue";
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import { AgGridVue } from 'ag-grid-vue3';
+import { createApp } from 'vue';
 
 const VueExample = {
   template: `
@@ -26,7 +26,7 @@ const VueExample = {
       </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
@@ -55,7 +55,7 @@ const VueExample = {
     setHeaderNames() {
       const columnDefs = this.getColumnDefs();
       columnDefs.forEach(function (colDef, index) {
-        colDef.headerName = "C" + index;
+        colDef.headerName = 'C' + index;
       });
       this.gridApi.setColumnDefs(columnDefs);
     },
@@ -70,7 +70,7 @@ const VueExample = {
       const columnDefs = this.getColumnDefs();
       columnDefs.forEach(function (colDef, index) {
         colDef.valueFormatter = function (params) {
-          return "[ " + params.value + " ]";
+          return '[ ' + params.value + ' ]';
         };
       });
       this.gridApi.setColumnDefs(columnDefs);
@@ -84,16 +84,16 @@ const VueExample = {
     },
     getColumnDefs() {
       return [
-        { field: "athlete" },
-        { field: "age" },
-        { field: "country" },
-        { field: "sport" },
-        { field: "year" },
-        { field: "date" },
-        { field: "gold" },
-        { field: "silver" },
-        { field: "bronze" },
-        { field: "total" },
+        { field: 'athlete' },
+        { field: 'age' },
+        { field: 'country' },
+        { field: 'sport' },
+        { field: 'year' },
+        { field: 'date' },
+        { field: 'gold' },
+        { field: 'silver' },
+        { field: 'bronze' },
+        { field: 'total' },
       ];
     },
     onGridReady(params) {
@@ -101,11 +101,11 @@ const VueExample = {
         this.rowData = data;
       };
 
-      fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
         .then((resp) => resp.json())
         .then((data) => updateData(data));
     },
   },
 };
 
-createApp(VueExample).mount("#app");
+createApp(VueExample).mount('#app');

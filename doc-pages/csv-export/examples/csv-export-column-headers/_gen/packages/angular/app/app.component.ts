@@ -1,16 +1,16 @@
-import { Component } from "@angular/core";
+import { Component } from '@angular/core';
 import {
   ColDef,
   ColGroupDef,
   GridApi,
   GridReadyEvent,
-} from "ag-grid-community";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
+} from 'ag-grid-community';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import 'ag-grid-enterprise';
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `
     <div style="display: flex; flex-direction: column; height: 100%;">
       <div style="display: flex;">
@@ -61,16 +61,16 @@ export class AppComponent {
   };
   public popupParent: HTMLElement = document.body;
   public columnDefs: (ColDef | ColGroupDef)[] = [
-    { headerName: "Brand", children: [{ field: "make" }, { field: "model" }] },
+    { headerName: 'Brand', children: [{ field: 'make' }, { field: 'model' }] },
     {
-      headerName: "Value",
-      children: [{ field: "price" }],
+      headerName: 'Value',
+      children: [{ field: 'price' }],
     },
   ];
   public rowData: any[] | null = [
-    { make: "Toyota", model: "Celica", price: 35000 },
-    { make: "Ford", model: "Mondeo", price: 32000 },
-    { make: "Porsche", model: "Boxter", price: 72000 },
+    { make: 'Toyota', model: 'Celica', price: 35000 },
+    { make: 'Ford', model: 'Mondeo', price: 32000 },
+    { make: 'Porsche', model: 'Boxster', price: 72000 },
   ];
 
   onBtnExport() {
@@ -78,25 +78,27 @@ export class AppComponent {
   }
 
   onBtnUpdate() {
-    (document.querySelector("#csvResult") as any).value =
-      this.gridApi.getDataAsCsv(getParams());
+    (document.querySelector(
+      '#csvResult'
+    ) as any).value = this.gridApi.getDataAsCsv(getParams());
   }
 
   onGridReady(params: GridReadyEvent) {
     this.gridApi = params.api;
 
-    (document.getElementById("columnGroups") as HTMLInputElement).checked =
-      true;
+    (document.getElementById(
+      'columnGroups'
+    ) as HTMLInputElement).checked = true;
   }
 }
 
 function getBoolean(id: string) {
-  var field = document.querySelector("#" + id) as HTMLInputElement;
+  var field = document.querySelector('#' + id) as HTMLInputElement;
   return !!field.checked;
 }
 function getParams() {
   return {
-    skipColumnGroupHeaders: getBoolean("columnGroups"),
-    skipColumnHeaders: getBoolean("skipHeader"),
+    skipColumnGroupHeaders: getBoolean('columnGroups'),
+    skipColumnHeaders: getBoolean('skipHeader'),
   };
 }

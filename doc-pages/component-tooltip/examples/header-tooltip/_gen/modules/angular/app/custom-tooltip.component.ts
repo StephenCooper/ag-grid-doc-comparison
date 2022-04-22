@@ -1,9 +1,9 @@
-import { ITooltipAngularComp } from "@ag-grid-community/angular";
-import { ITooltipParams } from "@ag-grid-community/core";
-import { Component } from "@angular/core";
+import { ITooltipAngularComp } from '@ag-grid-community/angular';
+import { ITooltipParams } from '@ag-grid-community/core';
+import { Component } from '@angular/core';
 
 @Component({
-  selector: "tooltip-component",
+  selector: 'tooltip-component',
   template: ` <div class="custom-tooltip" *ngIf="isHeader">
       <p>Group Name: {{ params.value }}</p>
       <hr *ngIf="isGroupedHeader" />
@@ -56,6 +56,6 @@ export class CustomTooltip implements ITooltipAngularComp {
     this.isGroupedHeader = !!(params.colDef && (params.colDef as any).children);
     this.valueToDisplay = params.value.value
       ? params.value.value
-      : "- Missing -";
+      : '- Missing -';
   }
 }

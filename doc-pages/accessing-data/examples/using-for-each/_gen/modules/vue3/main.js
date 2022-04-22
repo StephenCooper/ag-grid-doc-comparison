@@ -1,12 +1,12 @@
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { AgGridVue } from "@ag-grid-community/vue3";
-import { MenuModule } from "@ag-grid-enterprise/menu";
-import { RowGroupingModule } from "@ag-grid-enterprise/row-grouping";
-import { SetFilterModule } from "@ag-grid-enterprise/set-filter";
-import { createApp } from "vue";
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { AgGridVue } from '@ag-grid-community/vue3';
+import { MenuModule } from '@ag-grid-enterprise/menu';
+import { RowGroupingModule } from '@ag-grid-enterprise/row-grouping';
+import { SetFilterModule } from '@ag-grid-enterprise/set-filter';
+import { createApp } from 'vue';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([
@@ -40,21 +40,21 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
-        { field: "country", rowGroup: true, hide: true },
-        { field: "athlete", minWidth: 180 },
-        { field: "age" },
-        { field: "year" },
-        { field: "date", minWidth: 150 },
-        { field: "sport", minWidth: 150 },
-        { field: "gold" },
-        { field: "silver" },
-        { field: "bronze" },
-        { field: "total" },
+        { field: 'country', rowGroup: true, hide: true },
+        { field: 'athlete', minWidth: 180 },
+        { field: 'age' },
+        { field: 'year' },
+        { field: 'date', minWidth: 150 },
+        { field: 'sport', minWidth: 150 },
+        { field: 'gold' },
+        { field: 'silver' },
+        { field: 'bronze' },
+        { field: 'total' },
       ],
       gridApi: null,
       columnApi: null,
@@ -77,19 +77,19 @@ const VueExample = {
   },
   methods: {
     onBtForEachNode() {
-      console.log("### api.forEachNode() ###");
+      console.log('### api.forEachNode() ###');
       this.gridApi.forEachNode(printNode);
     },
     onBtForEachNodeAfterFilter() {
-      console.log("### api.forEachNodeAfterFilter() ###");
+      console.log('### api.forEachNodeAfterFilter() ###');
       this.gridApi.forEachNodeAfterFilter(printNode);
     },
     onBtForEachNodeAfterFilterAndSort() {
-      console.log("### api.forEachNodeAfterFilterAndSort() ###");
+      console.log('### api.forEachNodeAfterFilterAndSort() ###');
       this.gridApi.forEachNodeAfterFilterAndSort(printNode);
     },
     onBtForEachLeafNode() {
-      console.log("### api.forEachLeafNode() ###");
+      console.log('### api.forEachLeafNode() ###');
       this.gridApi.forEachLeafNode(printNode);
     },
     onGridReady(params) {
@@ -98,7 +98,7 @@ const VueExample = {
 
       const updateData = (data) => params.api.setRowData(data.slice(0, 50));
 
-      fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
         .then((resp) => resp.json())
         .then((data) => updateData(data));
     },
@@ -107,12 +107,12 @@ const VueExample = {
 
 const printNode = (node, index) => {
   if (node.group) {
-    console.log(index + " -> group: " + node.key);
+    console.log(index + ' -> group: ' + node.key);
   } else {
     console.log(
-      index + " -> data: " + node.data.country + ", " + node.data.athlete
+      index + ' -> data: ' + node.data.country + ', ' + node.data.athlete
     );
   }
 };
 
-createApp(VueExample).mount("#app");
+createApp(VueExample).mount('#app');

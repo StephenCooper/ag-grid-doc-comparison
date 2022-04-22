@@ -1,4 +1,4 @@
-import { IHeaderComp, IHeaderParams } from "@ag-grid-community/core";
+import { IHeaderComp, IHeaderParams } from '@ag-grid-community/core';
 
 export class CustomHeader implements IHeaderComp {
   params!: IHeaderParams;
@@ -10,16 +10,16 @@ export class CustomHeader implements IHeaderComp {
 
   init(params: IHeaderParams) {
     this.params = params;
-    console.log("CustomHeader.init() -> " + this.params.column.getId());
-    this.eGui = document.createElement("div");
+    console.log('CustomHeader.init() -> ' + this.params.column.getId());
+    this.eGui = document.createElement('div');
     this.eGui.innerHTML =
-      "" +
+      '' +
       '<div style="display: flex;">' +
       '<span ref="eMenu" class="ag-icon ag-icon-menu" style="margin-right: 4px;"></span>' +
       '<div style="flex-grow: 1;">' +
       '<span ref="eText" style=""></span>' +
-      "</div>" +
-      "</div>";
+      '</div>' +
+      '</div>';
 
     this.eMenu = this.eGui.querySelector('[ref="eMenu"]');
     this.eText = this.eGui.querySelector('[ref="eText"]');
@@ -28,7 +28,7 @@ export class CustomHeader implements IHeaderComp {
 
     if (this.menuPresent) {
       this.onMenuClickListener = this.onMenuClick.bind(this);
-      this.eMenu.addEventListener("click", this.onMenuClickListener);
+      this.eMenu.addEventListener('click', this.onMenuClickListener);
     } else {
       this.eMenu.parentNode.removeChild(this.eMenu);
     }
@@ -46,9 +46,9 @@ export class CustomHeader implements IHeaderComp {
     var res = this.params.enableMenu === this.menuPresent;
 
     console.log(
-      "CustomHeader.refresh() -> " +
+      'CustomHeader.refresh() -> ' +
         this.params.column.getId() +
-        " returning " +
+        ' returning ' +
         res
     );
 
@@ -66,9 +66,9 @@ export class CustomHeader implements IHeaderComp {
   }
 
   destroy() {
-    console.log("CustomHeader.destroy() -> " + this.params.column.getId());
+    console.log('CustomHeader.destroy() -> ' + this.params.column.getId());
     if (this.onMenuClickListener) {
-      this.eMenu.removeEventListener("click", this.onMenuClickListener);
+      this.eMenu.removeEventListener('click', this.onMenuClickListener);
     }
   }
 }

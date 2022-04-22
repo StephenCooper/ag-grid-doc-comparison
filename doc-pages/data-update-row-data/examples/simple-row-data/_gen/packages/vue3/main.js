@@ -1,7 +1,7 @@
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import { AgGridVue } from "ag-grid-vue3";
-import { createApp } from "vue";
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import { AgGridVue } from 'ag-grid-vue3';
+import { createApp } from 'vue';
 
 const VueExample = {
   template: `
@@ -26,11 +26,11 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
-      columnDefs: [{ field: "make" }, { field: "model" }, { field: "price" }],
+      columnDefs: [{ field: 'make' }, { field: 'model' }, { field: 'price' }],
       gridApi: null,
       columnApi: null,
 
@@ -40,7 +40,7 @@ const VueExample = {
   },
   created() {
     this.rowData = rowDataA;
-    this.rowSelection = "single";
+    this.rowSelection = 'single';
   },
   methods: {
     onRowDataA() {
@@ -58,17 +58,17 @@ const VueExample = {
 
 // specify the data
 var rowDataA = [
-  { make: "Toyota", model: "Celica", price: 35000 },
-  { make: "Porsche", model: "Boxter", price: 72000 },
-  { make: "Aston Martin", model: "DBX", price: 190000 },
+  { make: 'Toyota', model: 'Celica', price: 35000 },
+  { make: 'Porsche', model: 'Boxster', price: 72000 },
+  { make: 'Aston Martin', model: 'DBX', price: 190000 },
 ];
 
 var rowDataB = [
-  { make: "Toyota", model: "Celica", price: 35000 },
-  { make: "Ford", model: "Mondeo", price: 32000 },
-  { make: "Porsche", model: "Boxter", price: 72000 },
-  { make: "BMW", model: "M50", price: 60000 },
-  { make: "Aston Martin", model: "DBX", price: 190000 },
+  { make: 'Toyota', model: 'Celica', price: 35000 },
+  { make: 'Ford', model: 'Mondeo', price: 32000 },
+  { make: 'Porsche', model: 'Boxster', price: 72000 },
+  { make: 'BMW', model: 'M50', price: 60000 },
+  { make: 'Aston Martin', model: 'DBX', price: 190000 },
 ];
 
-createApp(VueExample).mount("#app");
+createApp(VueExample).mount('#app');

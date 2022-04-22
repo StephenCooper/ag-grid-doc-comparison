@@ -1,8 +1,8 @@
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
-import { AgGridVue } from "ag-grid-vue";
-import Vue from "vue";
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import 'ag-grid-enterprise';
+import { AgGridVue } from 'ag-grid-vue';
+import Vue from 'vue';
 
 const VueExample = {
   template: `
@@ -36,31 +36,31 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
         {
-          headerName: "Top Level Column Group",
+          headerName: 'Top Level Column Group',
           children: [
             {
-              headerName: "Group A",
+              headerName: 'Group A',
               children: [
-                { field: "athlete", minWidth: 200 },
-                { field: "country", minWidth: 200 },
-                { headerName: "Group", valueGetter: "data.country.charAt(0)" },
+                { field: 'athlete', minWidth: 200 },
+                { field: 'country', minWidth: 200 },
+                { headerName: 'Group', valueGetter: 'data.country.charAt(0)' },
               ],
             },
             {
-              headerName: "Group B",
+              headerName: 'Group B',
               children: [
-                { field: "date", minWidth: 150 },
-                { field: "sport", minWidth: 150 },
-                { field: "gold" },
-                { field: "silver" },
-                { field: "bronze" },
-                { field: "total" },
+                { field: 'date', minWidth: 150 },
+                { field: 'sport', minWidth: 150 },
+                { field: 'gold' },
+                { field: 'silver' },
+                { field: 'bronze' },
+                { field: 'total' },
               ],
             },
           ],
@@ -85,24 +85,24 @@ const VueExample = {
     this.popupParent = document.body;
     this.pinnedTopRowData = [
       {
-        athlete: "Floating <Top> Athlete",
-        country: "Floating <Top> Country",
-        date: "01/08/2020",
-        sport: "Track & Field",
+        athlete: 'Floating <Top> Athlete',
+        country: 'Floating <Top> Country',
+        date: '01/08/2020',
+        sport: 'Track & Field',
         gold: 22,
-        silver: "003",
+        silver: '003',
         bronze: 44,
         total: 55,
       },
     ];
     this.pinnedBottomRowData = [
       {
-        athlete: "Floating <Bottom> Athlete",
-        country: "Floating <Bottom> Country",
-        date: "01/08/2030",
-        sport: "Track & Field",
+        athlete: 'Floating <Bottom> Athlete',
+        country: 'Floating <Bottom> Country',
+        date: '01/08/2030',
+        sport: 'Track & Field',
         gold: 222,
-        silver: "005",
+        silver: '005',
         bronze: 244,
         total: 255,
       },
@@ -119,7 +119,7 @@ const VueExample = {
       const updateData = (data) =>
         params.api.setRowData(data.filter((rec) => rec.country != null));
 
-      fetch("https://www.ag-grid.com/example-assets/small-olympic-winners.json")
+      fetch('https://www.ag-grid.com/example-assets/small-olympic-winners.json')
         .then((resp) => resp.json())
         .then((data) => updateData(data));
     },
@@ -127,19 +127,19 @@ const VueExample = {
 };
 
 window.getBoolean = function getBoolean(id) {
-  return !!document.querySelector("#" + id).checked;
+  return !!document.querySelector('#' + id).checked;
 };
 
 window.getParams = function getParams() {
   return {
-    skipPinnedTop: getBoolean("skipPinnedTop"),
-    skipPinnedBottom: getBoolean("skipPinnedBottom"),
+    skipPinnedTop: getBoolean('skipPinnedTop'),
+    skipPinnedBottom: getBoolean('skipPinnedBottom'),
   };
 };
 
 new Vue({
-  el: "#app",
+  el: '#app',
   components: {
-    "my-component": VueExample,
+    'my-component': VueExample,
   },
 });

@@ -1,18 +1,18 @@
 function getData() {
   var rowData = [];
   var words = [
-    "One",
-    "Apple",
-    "Moon",
-    "Sugar",
-    "Grid",
-    "Banana",
-    "Sunshine",
-    "Stars",
-    "Black",
-    "White",
-    "Salt",
-    "Beach",
+    'One',
+    'Apple',
+    'Moon',
+    'Sugar',
+    'Grid',
+    'Banana',
+    'Sunshine',
+    'Stars',
+    'Black',
+    'White',
+    'Salt',
+    'Beach',
   ];
 
   for (var i = 0; i < 100; i++) {

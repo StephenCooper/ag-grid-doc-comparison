@@ -29,7 +29,7 @@ const createBase64ImagesFromURLArray = (arr) => {
 
 // Example specific code
 const createCountryCodeMap = (countryCodeObject) =>
-  fetch("https://flagcdn.com/en/codes.json")
+  fetch('https://flagcdn.com/en/codes.json')
     .then((response) => response.json())
     .then((codes) => {
       Object.keys(codes).forEach(
@@ -43,8 +43,8 @@ const createBase64FlagsFromResponse = (
   countryCodeObject,
   base64FlagsObject
 ) => {
-  const urlPrefix = "https://flagcdn.com/w20/";
-  const extension = ".png";
+  const urlPrefix = 'https://flagcdn.com/w20/';
+  const extension = '.png';
   return response
     .json()
     .then((data) =>
@@ -60,7 +60,7 @@ const createBase64FlagsFromResponse = (
 
       return createBase64ImagesFromURLArray(urls).then((map) => {
         map.forEach((value, key) => {
-          const code = key.replace(urlPrefix, "").replace(extension, "");
+          const code = key.replace(urlPrefix, '').replace(extension, '');
           base64FlagsObject[code] = value;
         });
         return data;

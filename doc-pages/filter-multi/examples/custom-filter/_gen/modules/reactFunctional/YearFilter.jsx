@@ -3,7 +3,7 @@ import React, {
   useEffect,
   useImperativeHandle,
   useState,
-} from "react";
+} from 'react';
 
 export default forwardRef(({ filterChangedCallback }, ref) => {
   const [isActive, setIsActive] = useState(false);
@@ -41,13 +41,13 @@ export default forwardRef(({ filterChangedCallback }, ref) => {
   }));
 
   return (
-    <div class="year-filter">
+    <div className="year-filter">
       <label>
         <input
           type="radio"
           checked={!isActive}
           onChange={() => toggleFilter(false)}
-        />{" "}
+        />{' '}
         All
       </label>
       <label>
@@ -55,7 +55,7 @@ export default forwardRef(({ filterChangedCallback }, ref) => {
           type="radio"
           checked={isActive}
           onChange={() => toggleFilter(true)}
-        />{" "}
+        />{' '}
         After 2004
       </label>
     </div>

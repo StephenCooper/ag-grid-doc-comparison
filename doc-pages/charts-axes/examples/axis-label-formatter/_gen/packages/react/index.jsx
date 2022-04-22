@@ -1,8 +1,10 @@
-"use strict";
+'use strict';
 
-import { AgChartsReact } from "ag-charts-react";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { cloneDeep } from 'lodash';
+import { render } from 'react-dom';
+import * as agCharts from 'ag-charts-community';
+import { AgChartsReact } from 'ag-charts-react';
 
 class ChartExample extends Component {
   constructor(props) {
@@ -11,36 +13,36 @@ class ChartExample extends Component {
     this.state = {
       options: {
         data: [
-          { os: "Windows", share: 88.07 },
-          { os: "macOS", share: 9.44 },
-          { os: "Linux", share: 1.87 },
+          { os: 'Windows', share: 88.07 },
+          { os: 'macOS', share: 9.44 },
+          { os: 'Linux', share: 1.87 },
         ],
         series: [
           {
-            type: "column",
-            xKey: "os",
-            yKey: "share",
+            type: 'column',
+            xKey: 'os',
+            yKey: 'share',
           },
         ],
         axes: [
           {
-            type: "category",
-            position: "bottom",
+            type: 'category',
+            position: 'bottom',
             title: {
-              text: "Desktop Operating Systems",
+              text: 'Desktop Operating Systems',
               enabled: false,
             },
           },
           {
-            type: "number",
-            position: "left",
+            type: 'number',
+            position: 'left',
             title: {
-              text: "Market Share (%)",
+              text: 'Market Share (%)',
               enabled: false,
             },
             label: {
               formatter: function (params) {
-                return params.value + "%";
+                return params.value + '%';
               },
             },
           },
@@ -63,4 +65,4 @@ class ChartExample extends Component {
   }
 }
 
-render(<ChartExample />, document.querySelector("#root"));
+render(<ChartExample />, document.querySelector('#root'));

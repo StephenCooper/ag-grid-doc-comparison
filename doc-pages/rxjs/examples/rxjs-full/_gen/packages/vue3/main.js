@@ -1,8 +1,8 @@
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
-import { AgGridVue } from "ag-grid-vue3";
-import { createApp } from "vue";
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import 'ag-grid-enterprise';
+import { AgGridVue } from 'ag-grid-vue3';
+import { createApp } from 'vue';
 
 const VueExample = {
   template: `
@@ -19,35 +19,35 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
-        { field: "code", maxWidth: 90 },
-        { field: "name", minWidth: 200 },
+        { field: 'code', maxWidth: 90 },
+        { field: 'name', minWidth: 200 },
         {
-          field: "bid",
-          cellClass: "cell-number",
+          field: 'bid',
+          cellClass: 'cell-number',
           valueFormatter: numberFormatter,
-          cellRenderer: "agAnimateShowChangeCellRenderer",
+          cellRenderer: 'agAnimateShowChangeCellRenderer',
         },
         {
-          field: "mid",
-          cellClass: "cell-number",
+          field: 'mid',
+          cellClass: 'cell-number',
           valueFormatter: numberFormatter,
-          cellRenderer: "agAnimateShowChangeCellRenderer",
+          cellRenderer: 'agAnimateShowChangeCellRenderer',
         },
         {
-          field: "ask",
-          cellClass: "cell-number",
+          field: 'ask',
+          cellClass: 'cell-number',
           valueFormatter: numberFormatter,
-          cellRenderer: "agAnimateShowChangeCellRenderer",
+          cellRenderer: 'agAnimateShowChangeCellRenderer',
         },
         {
-          field: "volume",
-          cellClass: "cell-number",
-          cellRenderer: "agAnimateSlideCellRenderer",
+          field: 'volume',
+          cellClass: 'cell-number',
+          cellRenderer: 'agAnimateSlideCellRenderer',
         },
       ],
       gridApi: null,
@@ -89,10 +89,10 @@ const VueExample = {
 };
 
 window.numberFormatter = function numberFormatter(params) {
-  if (typeof params.value === "number") {
+  if (typeof params.value === 'number') {
     return params.value.toFixed(2);
   }
   return params.value;
 };
 
-createApp(VueExample).mount("#app");
+createApp(VueExample).mount('#app');

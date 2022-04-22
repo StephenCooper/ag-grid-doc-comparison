@@ -1,10 +1,10 @@
 const gridOptions = {
   columnDefs: [
-    { field: "country", rowGroup: true, hide: true },
-    { field: "year", rowGroup: true, hide: true },
-    { field: "gold" },
-    { field: "silver" },
-    { field: "bronze" },
+    { field: 'country', rowGroup: true, hide: true },
+    { field: 'year', rowGroup: true, hide: true },
+    { field: 'gold' },
+    { field: 'silver' },
+    { field: 'bronze' },
   ],
   defaultColDef: {
     flex: 1,
@@ -32,7 +32,7 @@ function expandCountries() {
 
 function expand2000() {
   gridOptions.api.forEachNode((node) => {
-    if (node.key === "2000") {
+    if (node.key === '2000') {
       node.parent.setExpanded(true); // ensure parent 'country' group is also expanded
       node.setExpanded(true);
     }
@@ -40,7 +40,7 @@ function expand2000() {
 }
 
 // setup the grid after the page has finished loading
-document.addEventListener("DOMContentLoaded", function () {
-  var gridDiv = document.querySelector("#myGrid");
+document.addEventListener('DOMContentLoaded', function () {
+  var gridDiv = document.querySelector('#myGrid');
   new agGrid.Grid(gridDiv, gridOptions);
 });

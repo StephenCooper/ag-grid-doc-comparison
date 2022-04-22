@@ -1,54 +1,47 @@
-import {
-  CellClassRules,
-  ColDef,
-  ColSpanParams,
-  Grid,
-  GridOptions,
-  RowHeightParams,
-} from "@ag-grid-community/core";
+import { Grid, CellClassRules, ColDef, ColSpanParams, GridOptions, RowHeightParams, GridReadyEvent } from '@ag-grid-community/core'
 
 var cellClassRules: CellClassRules = {
-  "header-cell": 'data.section === "big-title"',
-  "quarters-cell": 'data.section === "quarters"',
-};
+  'header-cell': 'data.section === "big-title"',
+  'quarters-cell': 'data.section === "quarters"',
+}
 
 const columnDefs: ColDef[] = [
   {
-    headerName: "Jan",
-    field: "jan",
+    headerName: 'Jan',
+    field: 'jan',
     colSpan: function (params: ColSpanParams) {
       if (isHeaderRow(params)) {
-        return 6;
+        return 6
       } else if (isQuarterRow(params)) {
-        return 3;
+        return 3
       } else {
-        return 1;
+        return 1
       }
     },
     cellClassRules: cellClassRules,
   },
-  { headerName: "Feb", field: "feb" },
-  { headerName: "Mar", field: "mar" },
+  { headerName: 'Feb', field: 'feb' },
+  { headerName: 'Mar', field: 'mar' },
   {
-    headerName: "Apr",
-    field: "apr",
-    colSpan: function (params) {
+    headerName: 'Apr',
+    field: 'apr',
+    colSpan: function (params: ColSpanParams) {
       if (isQuarterRow(params)) {
-        return 3;
+        return 3
       } else {
-        return 1;
+        return 1
       }
     },
     cellClassRules: cellClassRules,
   },
-  { headerName: "May", field: "may" },
-  { headerName: "Jun", field: "jun" },
-];
+  { headerName: 'May', field: 'may' },
+  { headerName: 'Jun', field: 'jun' },
+]
 
 const gridOptions: GridOptions = {
-  getRowHeight: function (params) {
+  getRowHeight: function (params: RowHeightParams) {
     if (isHeaderRow(params)) {
-      return 60;
+      return 60
     }
   },
   columnDefs: columnDefs,
@@ -56,21 +49,24 @@ const gridOptions: GridOptions = {
   defaultColDef: {
     width: 100,
   },
-  onGridReady: function (params) {
-    params.api.sizeColumnsToFit();
+  onGridReady: function (params: GridReadyEvent) {
+    params.api.sizeColumnsToFit()
   },
-};
+}
+
 
 function isHeaderRow(params: RowHeightParams | ColSpanParams) {
-  return params.data.section === "big-title";
+  return params.data.section === 'big-title'
 }
 
 function isQuarterRow(params: ColSpanParams) {
-  return params.data.section === "quarters";
+  return params.data.section === 'quarters'
 }
 
+
+
 // setup the grid after the page has finished loading
-document.addEventListener("DOMContentLoaded", function () {
-  var gridDiv = document.querySelector<HTMLElement>("#myGrid")!;
-  new Grid(gridDiv, gridOptions);
-});
+document.addEventListener('DOMContentLoaded', function () {
+  var gridDiv = document.querySelector<HTMLElement>('#myGrid')!
+  new Grid(gridDiv, gridOptions)
+})

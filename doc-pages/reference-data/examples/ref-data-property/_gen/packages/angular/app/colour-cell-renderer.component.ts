@@ -1,12 +1,12 @@
-import { Component } from "@angular/core";
-import { ICellRendererAngularComp } from "ag-grid-angular";
-import { ICellRendererParams } from "ag-grid-community";
+import { Component } from '@angular/core';
+import { ICellRendererAngularComp } from 'ag-grid-angular';
+import { ICellRendererParams } from 'ag-grid-community';
 
 // simple cell renderer returns dummy buttons. in a real application, a component would probably
 // be used with operations tied to the buttons. in this example, the cell renderer is just for
 // display purposes.
 @Component({
-  selector: "simple-component",
+  selector: 'simple-component',
   template: `
     <div *ngIf="params.value === '(Select All)'; else elseBlock">
       {{ params.value }}
@@ -30,6 +30,6 @@ export class ColourCellRenderer implements ICellRendererAngularComp {
   }
 
   removeSpaces(str: string) {
-    return str ? str.replace(/\s/g, "") : str;
+    return str ? str.replace(/\s/g, '') : str;
   }
 }

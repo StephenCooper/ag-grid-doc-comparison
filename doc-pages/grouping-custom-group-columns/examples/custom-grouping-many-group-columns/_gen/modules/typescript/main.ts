@@ -1,41 +1,41 @@
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
 import {
   ColDef,
   Grid,
   GridOptions,
   ModuleRegistry,
-} from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { RowGroupingModule } from "@ag-grid-enterprise/row-grouping";
+} from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { RowGroupingModule } from '@ag-grid-enterprise/row-grouping';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([ClientSideRowModelModule, RowGroupingModule]);
 
 const columnDefs: ColDef[] = [
   {
-    headerName: "Country",
+    headerName: 'Country',
     minWidth: 200,
     // this tells the grid what values to put into the cell
-    showRowGroup: "country",
+    showRowGroup: 'country',
     // this tells the grid what to use to render the cell
-    cellRenderer: "agGroupCellRenderer",
+    cellRenderer: 'agGroupCellRenderer',
   },
   {
-    headerName: "Year",
+    headerName: 'Year',
     minWidth: 200,
-    showRowGroup: "year",
-    cellRenderer: "agGroupCellRenderer",
+    showRowGroup: 'year',
+    cellRenderer: 'agGroupCellRenderer',
   },
   // these are the two columns we use to group by. we also hide them, so there
   // is no duplication with the values above
-  { field: "country", rowGroup: true, hide: true },
-  { field: "year", rowGroup: true, hide: true },
+  { field: 'country', rowGroup: true, hide: true },
+  { field: 'year', rowGroup: true, hide: true },
 
-  { field: "athlete", minWidth: 220 },
-  { field: "gold" },
-  { field: "silver" },
-  { field: "bronze" },
+  { field: 'athlete', minWidth: 220 },
+  { field: 'gold' },
+  { field: 'silver' },
+  { field: 'bronze' },
 ];
 
 const gridOptions: GridOptions = {
@@ -46,15 +46,15 @@ const gridOptions: GridOptions = {
     sortable: true,
     resizable: true,
   },
-  groupDisplayType: "custom",
+  groupDisplayType: 'custom',
   enableRangeSelection: true,
   animateRows: true,
 };
 
 // setup the grid after the page has finished loading
-var gridDiv = document.querySelector<HTMLElement>("#myGrid")!;
+var gridDiv = document.querySelector<HTMLElement>('#myGrid')!;
 new Grid(gridDiv, gridOptions);
 
-fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
   .then((response) => response.json())
   .then((data) => gridOptions.api!.setRowData(data));

@@ -1,11 +1,11 @@
-"use strict";
+'use strict';
 
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import { AgGridReact } from "ag-grid-react";
-import React, { Component } from "react";
-import { render } from "react-dom";
-import CustomTooltip from "./customTooltip.jsx";
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from 'ag-grid-react';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import CustomTooltip from './customTooltip.jsx';
 
 class GridExample extends Component {
   constructor(props) {
@@ -14,32 +14,32 @@ class GridExample extends Component {
     this.state = {
       columnDefs: [
         {
-          headerName: "Athletes",
-          headerTooltip: "Athletes",
+          headerName: 'Athletes',
+          headerTooltip: 'Athletes',
           tooltipComponent: CustomTooltip,
           children: [
             {
-              headerName: "Athlete Col 1",
-              field: "athlete",
+              headerName: 'Athlete Col 1',
+              field: 'athlete',
               minWidth: 150,
-              headerTooltip: "Athlete 1",
-              tooltipField: "athlete",
+              headerTooltip: 'Athlete 1',
+              tooltipField: 'athlete',
             },
             {
-              headerName: "Athlete Col 2",
-              field: "athlete",
+              headerName: 'Athlete Col 2',
+              field: 'athlete',
               minWidth: 150,
-              headerTooltip: "Athlete 2",
+              headerTooltip: 'Athlete 2',
               tooltipComponent: CustomTooltip,
               tooltipValueGetter: tooltipValueGetter,
             },
           ],
         },
-        { field: "sport", width: 110 },
-        { field: "gold", width: 100 },
-        { field: "silver", width: 100 },
-        { field: "bronze", width: 100 },
-        { field: "total", width: 100 },
+        { field: 'sport', width: 110 },
+        { field: 'gold', width: 100 },
+        { field: 'silver', width: 100 },
+        { field: 'bronze', width: 100 },
+        { field: 'total', width: 100 },
       ],
       defaultColDef: {
         editable: true,
@@ -61,7 +61,7 @@ class GridExample extends Component {
       this.setState({ rowData: data });
     };
 
-    fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+    fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .then((resp) => resp.json())
       .then((data) => updateData(data));
   };
@@ -69,17 +69,17 @@ class GridExample extends Component {
   onFirstDataRendered = (params) => {
     params.api.getDisplayedRowAtIndex(0).data.athlete = undefined;
     params.api.getDisplayedRowAtIndex(1).data.athlete = null;
-    params.api.getDisplayedRowAtIndex(2).data.athlete = "";
+    params.api.getDisplayedRowAtIndex(2).data.athlete = '';
     params.api.refreshCells();
   };
 
   render() {
     return (
-      <div style={{ width: "100%", height: "100%" }}>
+      <div style={{ width: '100%', height: '100%' }}>
         <div
           style={{
-            height: "100%",
-            width: "100%",
+            height: '100%',
+            width: '100%',
           }}
           className="ag-theme-alpine"
         >
@@ -98,4 +98,4 @@ class GridExample extends Component {
 
 const tooltipValueGetter = (params) => ({ value: params.value });
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

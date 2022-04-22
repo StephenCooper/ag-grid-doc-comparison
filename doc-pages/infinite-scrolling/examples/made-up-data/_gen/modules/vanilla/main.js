@@ -1,9 +1,9 @@
-var ALPHABET = "abcdefghijklmnopqrstuvwxyz".split("");
+var ALPHABET = 'abcdefghijklmnopqrstuvwxyz'.split('');
 
 function getColumnDefs() {
   const columnDefs = [
-    { checkboxSelection: true, headerName: "", width: 60 },
-    { headerName: "#", width: 80, valueGetter: "node.rowIndex" },
+    { checkboxSelection: true, headerName: '', width: 60 },
+    { headerName: '#', width: 80, valueGetter: 'node.rowIndex' },
   ];
 
   ALPHABET.forEach(function (letter) {
@@ -21,8 +21,8 @@ const gridOptions = {
   defaultColDef: {
     resizable: true,
   },
-  rowModelType: "infinite",
-  rowSelection: "multiple",
+  rowModelType: 'infinite',
+  rowSelection: 'multiple',
   maxBlocksInCache: 2,
   suppressRowClickSelection: true,
   getRowId: function (params) {
@@ -46,7 +46,7 @@ function getDataSource(count) {
         ALPHABET.forEach(function (letter, colIndex) {
           var randomNumber = 17 + rowIndex + colIndex;
           var cellKey = letter.toUpperCase() + (rowIndex + 1);
-          record[letter] = cellKey + " = " + randomNumber;
+          record[letter] = cellKey + ' = ' + randomNumber;
         });
         rowsThisPage.push(record);
       }
@@ -61,7 +61,7 @@ function getDataSource(count) {
   return dataSource;
 }
 
-document.addEventListener("DOMContentLoaded", function () {
-  var gridDiv = document.querySelector("#myGrid");
+document.addEventListener('DOMContentLoaded', function () {
+  var gridDiv = document.querySelector('#myGrid');
   new agGrid.Grid(gridDiv, gridOptions);
 });

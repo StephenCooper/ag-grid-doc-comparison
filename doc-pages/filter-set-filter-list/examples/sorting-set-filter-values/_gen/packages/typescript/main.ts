@@ -1,7 +1,7 @@
-import { Grid, GridOptions, IFiltersToolPanel } from "ag-grid-community";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
+import { Grid, GridOptions, IFiltersToolPanel } from 'ag-grid-community';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import 'ag-grid-enterprise';
 
 var filterParams = {
   comparator: function (a: string, b: string) {
@@ -15,14 +15,14 @@ var filterParams = {
 const gridOptions: GridOptions = {
   columnDefs: [
     {
-      headerName: "Age (No Comparator)",
-      field: "age",
-      filter: "agSetColumnFilter",
+      headerName: 'Age (No Comparator)',
+      field: 'age',
+      filter: 'agSetColumnFilter',
     },
     {
-      headerName: "Age (With Comparator)",
-      field: "age",
-      filter: "agSetColumnFilter",
+      headerName: 'Age (With Comparator)',
+      field: 'age',
+      filter: 'agSetColumnFilter',
       filterParams: filterParams,
     },
   ],
@@ -32,11 +32,11 @@ const gridOptions: GridOptions = {
     resizable: true,
   },
   rowData: getRowData(),
-  sideBar: "filters",
+  sideBar: 'filters',
   onGridReady: function (params) {
-    (
-      params.api.getToolPanelInstance("filters") as any as IFiltersToolPanel
-    ).expandFilters();
+    ((params.api.getToolPanelInstance(
+      'filters'
+    ) as any) as IFiltersToolPanel).expandFilters();
   },
 };
 
@@ -49,5 +49,5 @@ function getRowData() {
 }
 
 // setup the grid after the page has finished loading
-var gridDiv = document.querySelector<HTMLElement>("#myGrid")!;
+var gridDiv = document.querySelector<HTMLElement>('#myGrid')!;
 new Grid(gridDiv, gridOptions);

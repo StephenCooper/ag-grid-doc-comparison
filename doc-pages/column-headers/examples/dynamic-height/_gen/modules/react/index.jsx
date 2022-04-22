@@ -1,13 +1,13 @@
-"use strict";
+'use strict';
 
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { AgGridReact } from "@ag-grid-community/react";
-import { RowGroupingModule } from "@ag-grid-enterprise/row-grouping";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from '@ag-grid-community/react';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import { RowGroupingModule } from '@ag-grid-enterprise/row-grouping';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([ClientSideRowModelModule, RowGroupingModule]);
@@ -19,60 +19,60 @@ class GridExample extends Component {
     this.state = {
       columnDefs: [
         {
-          headerName: "Athlete Details",
+          headerName: 'Athlete Details',
           children: [
             {
-              field: "athlete",
+              field: 'athlete',
               width: 150,
               suppressSizeToFit: true,
               enableRowGroup: true,
               rowGroupIndex: 0,
             },
             {
-              field: "age",
+              field: 'age',
               width: 90,
               minWidth: 75,
               maxWidth: 100,
               enableRowGroup: true,
             },
             {
-              field: "country",
+              field: 'country',
               enableRowGroup: true,
             },
             {
-              field: "year",
+              field: 'year',
               width: 90,
               enableRowGroup: true,
               pivotIndex: 0,
             },
-            { field: "sport", width: 110, enableRowGroup: true },
+            { field: 'sport', width: 110, enableRowGroup: true },
             {
-              field: "gold",
+              field: 'gold',
               enableValue: true,
               suppressMenu: true,
-              filter: "agNumberColumnFilter",
-              aggFunc: "sum",
+              filter: 'agNumberColumnFilter',
+              aggFunc: 'sum',
             },
             {
-              field: "silver",
+              field: 'silver',
               enableValue: true,
               suppressMenu: true,
-              filter: "agNumberColumnFilter",
-              aggFunc: "sum",
+              filter: 'agNumberColumnFilter',
+              aggFunc: 'sum',
             },
             {
-              field: "bronze",
+              field: 'bronze',
               enableValue: true,
               suppressMenu: true,
-              filter: "agNumberColumnFilter",
-              aggFunc: "sum",
+              filter: 'agNumberColumnFilter',
+              aggFunc: 'sum',
             },
             {
-              field: "total",
+              field: 'total',
               enableValue: true,
               suppressMenu: true,
-              filter: "agNumberColumnFilter",
-              aggFunc: "sum",
+              filter: 'agNumberColumnFilter',
+              aggFunc: 'sum',
             },
           ],
         },
@@ -93,53 +93,53 @@ class GridExample extends Component {
 
     const updateData = (data) => params.api.setRowData(data);
 
-    fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+    fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .then((resp) => resp.json())
       .then((data) => updateData(data));
   };
 
   setPivotOn = () => {
-    document.querySelector("#requiresPivot").className = "";
-    document.querySelector("#requiresNotPivot").className = "hidden";
+    document.querySelector('#requiresPivot').className = '';
+    document.querySelector('#requiresNotPivot').className = 'hidden';
     this.gridColumnApi.setPivotMode(true);
-    setIdText("pivot", "on");
+    setIdText('pivot', 'on');
   };
 
   setPivotOff = () => {
-    document.querySelector("#requiresPivot").className = "hidden";
-    document.querySelector("#requiresNotPivot").className = "";
+    document.querySelector('#requiresPivot').className = 'hidden';
+    document.querySelector('#requiresNotPivot').className = '';
     this.gridColumnApi.setPivotMode(false);
-    setIdText("pivot", "off");
+    setIdText('pivot', 'off');
   };
 
   setHeaderHeight = (value) => {
     this.gridApi.setHeaderHeight(value);
-    setIdText("headerHeight", value);
+    setIdText('headerHeight', value);
   };
 
   setGroupHeaderHeight = (value) => {
     this.gridApi.setGroupHeaderHeight(value);
-    setIdText("groupHeaderHeight", value);
+    setIdText('groupHeaderHeight', value);
   };
 
   setFloatingFiltersHeight = (value) => {
     this.gridApi.setFloatingFiltersHeight(value);
-    setIdText("floatingFiltersHeight", value);
+    setIdText('floatingFiltersHeight', value);
   };
 
   setPivotGroupHeaderHeight = (value) => {
     this.gridApi.setPivotGroupHeaderHeight(value);
-    setIdText("pivotGroupHeaderHeight", value);
+    setIdText('pivotGroupHeaderHeight', value);
   };
 
   setPivotHeaderHeight = (value) => {
     this.gridApi.setPivotHeaderHeight(value);
-    setIdText("pivotHeaderHeight", value);
+    setIdText('pivotHeaderHeight', value);
   };
 
   render() {
     return (
-      <div style={{ width: "100%", height: "100%" }}>
+      <div style={{ width: '100%', height: '100%' }}>
         <div className="example-wrapper">
           <div className="button-bar example-header">
             <table>
@@ -165,7 +165,9 @@ class GridExample extends Component {
                     <button onClick={() => this.setGroupHeaderHeight(60)}>
                       60px
                     </button>
-                    <button onClick={() => this.setGroupHeaderHeight()}>
+                    <button
+                      onClick={() => this.setGroupHeaderHeight(undefined)}
+                    >
                       undefined
                     </button>
                   </td>
@@ -179,14 +181,14 @@ class GridExample extends Component {
                     <button onClick={() => this.setHeaderHeight(80)}>
                       80px
                     </button>
-                    <button onClick={() => this.setHeaderHeight()}>
+                    <button onClick={() => this.setHeaderHeight(undefined)}>
                       undefined
                     </button>
                   </td>
                 </tr>
                 <tr id="requiresPivot" className="hidden">
                   <td>
-                    {" "}
+                    {' '}
                     pivotGroupHeaderHeight (
                     <span id="pivotGroupHeaderHeight">undefined</span>)
                   </td>
@@ -197,7 +199,9 @@ class GridExample extends Component {
                     <button onClick={() => this.setPivotGroupHeaderHeight(70)}>
                       70px
                     </button>
-                    <button onClick={() => this.setPivotGroupHeaderHeight()}>
+                    <button
+                      onClick={() => this.setPivotGroupHeaderHeight(undefined)}
+                    >
                       undefined
                     </button>
                   </td>
@@ -212,7 +216,9 @@ class GridExample extends Component {
                     <button onClick={() => this.setPivotHeaderHeight(80)}>
                       80px
                     </button>
-                    <button onClick={() => this.setPivotHeaderHeight()}>
+                    <button
+                      onClick={() => this.setPivotHeaderHeight(undefined)}
+                    >
                       undefined
                     </button>
                   </td>
@@ -229,7 +235,9 @@ class GridExample extends Component {
                     <button onClick={() => this.setFloatingFiltersHeight(55)}>
                       55px
                     </button>
-                    <button onClick={() => this.setFloatingFiltersHeight()}>
+                    <button
+                      onClick={() => this.setFloatingFiltersHeight(undefined)}
+                    >
                       undefined
                     </button>
                   </td>
@@ -239,8 +247,8 @@ class GridExample extends Component {
           </div>
           <div
             style={{
-              height: "100%",
-              width: "100%",
+              height: '100%',
+              width: '100%',
             }}
             className="ag-theme-alpine"
           >
@@ -259,7 +267,7 @@ class GridExample extends Component {
 
 function setIdText(id, value) {
   document.getElementById(id).innerHTML =
-    value == undefined ? "undefined" : value + "";
+    value == undefined ? 'undefined' : value + '';
 }
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

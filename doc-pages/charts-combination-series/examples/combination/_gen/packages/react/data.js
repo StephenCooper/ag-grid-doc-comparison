@@ -1,7 +1,7 @@
 function getData() {
   return [
     {
-      year: "2001",
+      year: '2001',
       adults: 24,
       men: 22,
       women: 25,
@@ -9,7 +9,7 @@ function getData() {
       portions: 3.4,
     },
     {
-      year: "2003",
+      year: '2003',
       adults: 24,
       men: 22,
       women: 26,
@@ -17,7 +17,7 @@ function getData() {
       portions: 3.4,
     },
     {
-      year: "2005",
+      year: '2005',
       adults: 28,
       men: 26,
       women: 30,
@@ -25,7 +25,7 @@ function getData() {
       portions: 3.7,
     },
     {
-      year: "2007",
+      year: '2007',
       adults: 29,
       men: 25,
       women: 31,
@@ -33,7 +33,7 @@ function getData() {
       portions: 3.8,
     },
     {
-      year: "2009",
+      year: '2009',
       adults: 26,
       men: 25,
       women: 28,
@@ -41,7 +41,7 @@ function getData() {
       portions: 3.5,
     },
     {
-      year: "2011",
+      year: '2011',
       adults: 27,
       men: 24,
       women: 29,
@@ -49,7 +49,7 @@ function getData() {
       portions: 3.6,
     },
     {
-      year: "2013",
+      year: '2013',
       adults: 26,
       men: 25,
       women: 28,
@@ -57,7 +57,7 @@ function getData() {
       portions: 3.6,
     },
     {
-      year: "2015",
+      year: '2015',
       adults: 26,
       men: 24,
       women: 27,
@@ -65,7 +65,7 @@ function getData() {
       portions: 3.5,
     },
     {
-      year: "2017",
+      year: '2017',
       adults: 29,
       men: 26,
       women: 32,

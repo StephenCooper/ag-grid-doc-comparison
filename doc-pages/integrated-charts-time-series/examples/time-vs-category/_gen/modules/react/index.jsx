@@ -1,14 +1,14 @@
-"use strict";
+'use strict';
 
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { AgGridReact } from "@ag-grid-community/react";
-import { GridChartsModule } from "@ag-grid-enterprise/charts";
-import { MenuModule } from "@ag-grid-enterprise/menu";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from '@ag-grid-community/react';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import { MenuModule } from '@ag-grid-enterprise/menu';
+import { GridChartsModule } from '@ag-grid-enterprise/charts';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([
@@ -33,7 +33,7 @@ class GridExample extends Component {
         line: {
           title: {
             enabled: true,
-            text: "Average Daily Temperatures",
+            text: 'Average Daily Temperatures',
           },
           legend: {
             enabled: false,
@@ -51,21 +51,21 @@ class GridExample extends Component {
             time: {
               label: {
                 rotation: 0,
-                format: "%d %b",
+                format: '%d %b',
               },
             },
             category: {
               label: {
                 rotation: 0,
                 formatter: function (params) {
-                  return moment(new Date(params.value)).format("DD MMM");
+                  return moment(new Date(params.value)).format('DD MMM');
                 },
               },
             },
             number: {
               label: {
                 formatter: function (params) {
-                  return params.value + "°C";
+                  return params.value + '°C';
                 },
               },
             },
@@ -85,23 +85,23 @@ class GridExample extends Component {
       currentChartRef.destroyChart();
     }
     var createRangeChartParams = {
-      chartContainer: document.querySelector("#myChart"),
+      chartContainer: document.querySelector('#myChart'),
       suppressChartRanges: true,
       cellRange: {
-        columns: ["date", "avgTemp"],
+        columns: ['date', 'avgTemp'],
       },
-      chartType: "line",
+      chartType: 'line',
     };
     currentChartRef = params.api.createRangeChart(createRangeChartParams);
   };
 
   toggleAxis = () => {
-    var axisBtn = document.querySelector("#axisBtn");
+    var axisBtn = document.querySelector('#axisBtn');
     axisBtn.textContent = axisBtn.value;
-    axisBtn.value = axisBtn.value === "time" ? "category" : "time";
+    axisBtn.value = axisBtn.value === 'time' ? 'category' : 'time';
     const columnDefs = getColumnDefs();
     columnDefs.forEach(function (colDef) {
-      if (colDef.field === "date") {
+      if (colDef.field === 'date') {
         colDef.chartDataType = axisBtn.value;
       }
     });
@@ -109,12 +109,12 @@ class GridExample extends Component {
   };
 
   getChartToolbarItems = () => {
-    return ["chartData", "chartFormat"];
+    return ['chartData', 'chartFormat'];
   };
 
   render() {
     return (
-      <div style={{ width: "100%", height: "100%" }}>
+      <div style={{ width: '100%', height: '100%' }}>
         <label>Switch Axis to: </label>
         <button id="axisBtn" onClick={() => this.toggleAxis()} value="time">
           Category
@@ -122,8 +122,8 @@ class GridExample extends Component {
         <div className="wrapper">
           <div
             style={{
-              height: "100%",
-              width: "100%",
+              height: '100%',
+              width: '100%',
             }}
             className="ag-theme-alpine"
           >
@@ -149,8 +149,8 @@ class GridExample extends Component {
 
 function getColumnDefs() {
   return [
-    { field: "date", valueFormatter: dateFormatter },
-    { field: "avgTemp" },
+    { field: 'date', valueFormatter: dateFormatter },
+    { field: 'avgTemp' },
   ];
 }
 var currentChartRef;
@@ -172,4 +172,4 @@ function getRowData() {
   ];
 }
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

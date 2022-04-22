@@ -1,19 +1,19 @@
-"use strict";
+'use strict';
 
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { AgGridReact } from "@ag-grid-community/react";
-import { RowGroupingModule } from "@ag-grid-enterprise/row-grouping";
-import React, { useCallback, useMemo, useRef, useState } from "react";
-import { render } from "react-dom";
+import React, { useCallback, useMemo, useRef, useState } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from '@ag-grid-community/react';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import { RowGroupingModule } from '@ag-grid-enterprise/row-grouping';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([ClientSideRowModelModule, RowGroupingModule]);
 
 var valueFormatter = function (params) {
-  return params.value ? params.value + " MB" : "";
+  return params.value ? params.value + ' MB' : '';
 };
 
 // this updates the filePath locations in our data, we update the data
@@ -68,13 +68,13 @@ const arePathsEqual = (path1, path2) => {
 
 const GridExample = () => {
   const gridRef = useRef();
-  const containerStyle = useMemo(() => ({ width: "100%", height: "100%" }), []);
-  const gridStyle = useMemo(() => ({ height: "100%", width: "100%" }), []);
+  const containerStyle = useMemo(() => ({ width: '100%', height: '100%' }), []);
+  const gridStyle = useMemo(() => ({ height: '100%', width: '100%' }), []);
   const [rowData, setRowData] = useState(getData());
   const [columnDefs, setColumnDefs] = useState([
-    { field: "dateModified" },
+    { field: 'dateModified' },
     {
-      field: "size",
+      field: 'size',
       valueFormatter: valueFormatter,
     },
   ]);
@@ -93,7 +93,7 @@ const GridExample = () => {
   const autoGroupColumnDef = useMemo(() => {
     return {
       rowDrag: true,
-      headerName: "Files",
+      headerName: 'Files',
       minWidth: 300,
       cellRendererParams: {
         suppressCount: true,
@@ -110,7 +110,7 @@ const GridExample = () => {
     }
     // folder to drop into is where we are going to move the file/folder to
     var folderToDropInto =
-      overNode.data.type === "folder"
+      overNode.data.type === 'folder'
         ? // if over a folder, we take the immediate row
           overNode
         : // if over a file, we take the parent row (which will be a folder)
@@ -126,7 +126,7 @@ const GridExample = () => {
     // check we are not moving a folder into a child folder
     var invalidMode = isSelectionParentOfTarget(event.node, folderToDropInto);
     if (invalidMode) {
-      console.log("invalid move");
+      console.log('invalid move');
     }
     if (needToChangeParent && !invalidMode) {
       var updatedRows = [];
@@ -159,4 +159,4 @@ const GridExample = () => {
   );
 };
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

@@ -1,15 +1,15 @@
-"use strict";
+'use strict';
 
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { AgGridReact } from "@ag-grid-community/react";
-import { MenuModule } from "@ag-grid-enterprise/menu";
-import { RowGroupingModule } from "@ag-grid-enterprise/row-grouping";
-import { SetFilterModule } from "@ag-grid-enterprise/set-filter";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from '@ag-grid-community/react';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import { MenuModule } from '@ag-grid-enterprise/menu';
+import { SetFilterModule } from '@ag-grid-enterprise/set-filter';
+import { RowGroupingModule } from '@ag-grid-enterprise/row-grouping';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([
@@ -25,16 +25,16 @@ class GridExample extends Component {
 
     this.state = {
       columnDefs: [
-        { field: "country", rowGroup: true, hide: true },
-        { field: "athlete", minWidth: 180 },
-        { field: "age" },
-        { field: "year" },
-        { field: "date", minWidth: 150 },
-        { field: "sport", minWidth: 150 },
-        { field: "gold" },
-        { field: "silver" },
-        { field: "bronze" },
-        { field: "total" },
+        { field: 'country', rowGroup: true, hide: true },
+        { field: 'athlete', minWidth: 180 },
+        { field: 'age' },
+        { field: 'year' },
+        { field: 'date', minWidth: 150 },
+        { field: 'sport', minWidth: 150 },
+        { field: 'gold' },
+        { field: 'silver' },
+        { field: 'bronze' },
+        { field: 'total' },
       ],
       defaultColDef: {
         flex: 1,
@@ -56,36 +56,36 @@ class GridExample extends Component {
 
     const updateData = (data) => params.api.setRowData(data.slice(0, 50));
 
-    fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+    fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .then((resp) => resp.json())
       .then((data) => updateData(data));
   };
 
   onBtForEachNode = () => {
-    console.log("### api.forEachNode() ###");
+    console.log('### api.forEachNode() ###');
     this.gridApi.forEachNode(printNode);
   };
 
   onBtForEachNodeAfterFilter = () => {
-    console.log("### api.forEachNodeAfterFilter() ###");
+    console.log('### api.forEachNodeAfterFilter() ###');
     this.gridApi.forEachNodeAfterFilter(printNode);
   };
 
   onBtForEachNodeAfterFilterAndSort = () => {
-    console.log("### api.forEachNodeAfterFilterAndSort() ###");
+    console.log('### api.forEachNodeAfterFilterAndSort() ###');
     this.gridApi.forEachNodeAfterFilterAndSort(printNode);
   };
 
   onBtForEachLeafNode = () => {
-    console.log("### api.forEachLeafNode() ###");
+    console.log('### api.forEachLeafNode() ###');
     this.gridApi.forEachLeafNode(printNode);
   };
 
   render() {
     return (
-      <div style={{ width: "100%", height: "100%" }}>
+      <div style={{ width: '100%', height: '100%' }}>
         <div className="example-wrapper">
-          <div style={{ marginBottom: "1rem" }}>
+          <div style={{ marginBottom: '1rem' }}>
             <button onClick={() => this.onBtForEachNode()}>
               For-Each Node
             </button>
@@ -102,8 +102,8 @@ class GridExample extends Component {
 
           <div
             style={{
-              height: "100%",
-              width: "100%",
+              height: '100%',
+              width: '100%',
             }}
             className="ag-theme-alpine"
           >
@@ -124,12 +124,12 @@ class GridExample extends Component {
 
 const printNode = (node, index) => {
   if (node.group) {
-    console.log(index + " -> group: " + node.key);
+    console.log(index + ' -> group: ' + node.key);
   } else {
     console.log(
-      index + " -> data: " + node.data.country + ", " + node.data.athlete
+      index + ' -> data: ' + node.data.country + ', ' + node.data.athlete
     );
   }
 };
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

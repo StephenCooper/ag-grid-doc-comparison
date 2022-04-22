@@ -1,7 +1,7 @@
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import { AgGridVue } from "ag-grid-vue";
-import Vue from "vue";
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import { AgGridVue } from 'ag-grid-vue';
+import Vue from 'vue';
 
 const VueExample = {
   template: `
@@ -17,21 +17,21 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
-        { field: "athlete", filterParams: athleteFilterParams },
+        { field: 'athlete', filterParams: athleteFilterParams },
         {
-          field: "country",
-          filter: "agTextColumnFilter",
+          field: 'country',
+          filter: 'agTextColumnFilter',
           filterParams: countryFilterParams,
         },
         {
-          field: "sport",
-          filter: "agTextColumnFilter",
-          filterParams: { caseSensitive: true, defaultOption: "startsWith" },
+          field: 'sport',
+          filter: 'agTextColumnFilter',
+          filterParams: { caseSensitive: true, defaultOption: 'startsWith' },
         },
       ],
       gridApi: null,
@@ -52,7 +52,7 @@ const VueExample = {
 
       const updateData = (data) => params.api.setRowData(data);
 
-      fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
         .then((resp) => resp.json())
         .then((data) => updateData(data));
     },
@@ -64,40 +64,40 @@ window.contains = function contains(target, lookingFor) {
 };
 
 var athleteFilterParams = {
-  filterOptions: ["contains", "notContains"],
+  filterOptions: ['contains', 'notContains'],
   textFormatter: function (r) {
     if (r == null) return null;
     return r
       .toLowerCase()
-      .replace(/[àáâãäå]/g, "a")
-      .replace(/æ/g, "ae")
-      .replace(/ç/g, "c")
-      .replace(/[èéêë]/g, "e")
-      .replace(/[ìíîï]/g, "i")
-      .replace(/ñ/g, "n")
-      .replace(/[òóôõö]/g, "o")
-      .replace(/œ/g, "oe")
-      .replace(/[ùúûü]/g, "u")
-      .replace(/[ýÿ]/g, "y");
+      .replace(/[àáâãäå]/g, 'a')
+      .replace(/æ/g, 'ae')
+      .replace(/ç/g, 'c')
+      .replace(/[èéêë]/g, 'e')
+      .replace(/[ìíîï]/g, 'i')
+      .replace(/ñ/g, 'n')
+      .replace(/[òóôõö]/g, 'o')
+      .replace(/œ/g, 'oe')
+      .replace(/[ùúûü]/g, 'u')
+      .replace(/[ýÿ]/g, 'y');
   },
   debounceMs: 200,
   suppressAndOrCondition: true,
 };
 
 var countryFilterParams = {
-  filterOptions: ["contains"],
+  filterOptions: ['contains'],
   textMatcher: function ({ value, filterText }) {
-    var filterTextLowerCase = filterText ? filterText.toLowerCase() : "";
+    var filterTextLowerCase = filterText ? filterText.toLowerCase() : '';
     var valueLowerCase = value.toString().toLowerCase();
     var aliases = {
-      usa: "united states",
-      holland: "netherlands",
-      vodka: "russia",
-      niall: "ireland",
-      sean: "south africa",
-      alberto: "mexico",
-      john: "australia",
-      xi: "china",
+      usa: 'united states',
+      holland: 'netherlands',
+      vodka: 'russia',
+      niall: 'ireland',
+      sean: 'south africa',
+      alberto: 'mexico',
+      john: 'australia',
+      xi: 'china',
     };
     var literalMatch = contains(valueLowerCase, filterTextLowerCase);
     return (
@@ -109,8 +109,8 @@ var countryFilterParams = {
 };
 
 new Vue({
-  el: "#app",
+  el: '#app',
   components: {
-    "my-component": VueExample,
+    'my-component': VueExample,
   },
 });

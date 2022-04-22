@@ -1,12 +1,12 @@
-"use strict";
+'use strict';
 
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine-dark.css";
-import { AgGridReact } from "@ag-grid-community/react";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from '@ag-grid-community/react';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine-dark.css';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([ClientSideRowModelModule]);
@@ -17,11 +17,11 @@ class GridExample extends Component {
 
     this.state = {
       columnDefs: [
-        { headerName: "Name", field: "simple" },
-        { headerName: "Bad Number", field: "numberBad" },
+        { headerName: 'Name', field: 'simple' },
+        { headerName: 'Bad Number', field: 'numberBad' },
         {
-          headerName: "Good Number",
-          field: "numberGood",
+          headerName: 'Good Number',
+          field: 'numberGood',
           valueParser: numberParser,
         },
       ],
@@ -41,16 +41,16 @@ class GridExample extends Component {
   };
 
   onCellValueChanged = (event) => {
-    console.log("data after changes is: ", event.data);
+    console.log('data after changes is: ', event.data);
   };
 
   render() {
     return (
-      <div style={{ width: "100%", height: "100%" }}>
+      <div style={{ width: '100%', height: '100%' }}>
         <div
           style={{
-            height: "100%",
-            width: "100%",
+            height: '100%',
+            width: '100%',
           }}
           className="ag-theme-alpine-dark"
         >
@@ -71,4 +71,4 @@ function numberParser(params) {
   return Number(params.newValue);
 }
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

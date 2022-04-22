@@ -1,12 +1,12 @@
-import { ColDef, GridReadyEvent, SideBarDef } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { HttpClient } from "@angular/common/http";
-import { Component } from "@angular/core";
+import { ColDef, GridReadyEvent, SideBarDef } from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { HttpClient } from '@angular/common/http';
+import { Component } from '@angular/core';
 // Required feature modules are registered in app.module.ts
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<ag-grid-angular
     style="width: 100%; height: 100%;"
     class="ag-theme-alpine"
@@ -19,15 +19,15 @@ import { Component } from "@angular/core";
 })
 export class AppComponent {
   public columnDefs: ColDef[] = [
-    { field: "athlete", minWidth: 200, filter: "agTextColumnFilter" },
-    { field: "age" },
-    { field: "country", minWidth: 200 },
-    { field: "year" },
-    { field: "date", minWidth: 180 },
-    { field: "gold", filter: false },
-    { field: "silver", filter: false },
-    { field: "bronze", filter: false },
-    { field: "total", filter: false },
+    { field: 'athlete', minWidth: 200, filter: 'agTextColumnFilter' },
+    { field: 'age' },
+    { field: 'country', minWidth: 200 },
+    { field: 'year' },
+    { field: 'date', minWidth: 180 },
+    { field: 'gold', filter: false },
+    { field: 'silver', filter: false },
+    { field: 'bronze', filter: false },
+    { field: 'total', filter: false },
   ];
   public defaultColDef: ColDef = {
     flex: 1,
@@ -35,14 +35,14 @@ export class AppComponent {
     filter: true,
     resizable: true,
   };
-  public sideBar: SideBarDef | string | boolean | null = "filters";
+  public sideBar: SideBarDef | string | string[] | boolean | null = 'filters';
   public rowData!: any[];
 
   constructor(private http: HttpClient) {}
 
   onGridReady(params: GridReadyEvent) {
     this.http
-      .get<any[]>("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      .get<any[]>('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .subscribe((data) => (this.rowData = data));
   }
 }

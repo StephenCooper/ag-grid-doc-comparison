@@ -1,10 +1,10 @@
 const gridOptions = {
   columnDefs: [
     // group cell renderer needed for expand / collapse icons
-    { field: "name", cellRenderer: "agGroupCellRenderer" },
-    { field: "account" },
-    { field: "calls" },
-    { field: "minutes", valueFormatter: "x.toLocaleString() + 'm'" },
+    { field: 'name', cellRenderer: 'agGroupCellRenderer' },
+    { field: 'account' },
+    { field: 'calls' },
+    { field: 'minutes', valueFormatter: "x.toLocaleString() + 'm'" },
   ],
   defaultColDef: {
     flex: 1,
@@ -15,7 +15,7 @@ const gridOptions = {
   masterDetail: true,
   enableCellChangeFlash: true,
   detailCellRendererParams: {
-    refreshStrategy: "rows",
+    refreshStrategy: 'rows',
     template: function (params) {
       return `<div class="ag-details-row ag-details-row-fixed-height">
             <div style="padding: 4px; font-weight: bold;">${params.data.name} ${params.data.calls} calls</div>
@@ -24,17 +24,17 @@ const gridOptions = {
     },
 
     detailGridOptions: {
-      rowSelection: "multiple",
+      rowSelection: 'multiple',
       enableCellChangeFlash: true,
       getRowId: function (params) {
         return params.data.callId;
       },
       columnDefs: [
-        { field: "callId", checkboxSelection: true },
-        { field: "direction" },
-        { field: "number", minWidth: 150 },
-        { field: "duration", valueFormatter: "x.toLocaleString() + 's'" },
-        { field: "switchCode", minWidth: 150 },
+        { field: 'callId', checkboxSelection: true },
+        { field: 'direction' },
+        { field: 'number', minWidth: 150 },
+        { field: 'duration', valueFormatter: "x.toLocaleString() + 's'" },
+        { field: 'switchCode', minWidth: 150 },
       ],
       defaultColDef: {
         flex: 1,
@@ -88,11 +88,11 @@ function onFirstDataRendered(params) {
 }
 
 // setup the grid after the page has finished loading
-document.addEventListener("DOMContentLoaded", function () {
-  const gridDiv = document.querySelector("#myGrid");
+document.addEventListener('DOMContentLoaded', function () {
+  const gridDiv = document.querySelector('#myGrid');
   new agGrid.Grid(gridDiv, gridOptions);
 
-  fetch("https://www.ag-grid.com/example-assets/master-detail-data.json")
+  fetch('https://www.ag-grid.com/example-assets/master-detail-data.json')
     .then((response) => response.json())
     .then(function (data) {
       allRowData = data;

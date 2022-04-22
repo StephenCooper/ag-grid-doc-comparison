@@ -1,16 +1,16 @@
-import { HttpClient } from "@angular/common/http";
-import { Component } from "@angular/core";
+import { HttpClient } from '@angular/common/http';
+import { Component } from '@angular/core';
 import {
   ColDef,
   ColGroupDef,
   GridApi,
   GridReadyEvent,
-} from "ag-grid-community";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
+} from 'ag-grid-community';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<div class="test-container">
     <div class="test-header">
       <label>
@@ -49,15 +49,15 @@ export class AppComponent {
   private gridApi!: GridApi;
 
   public columnDefs: ColDef[] = [
-    { field: "athlete", colId: "athlete" },
-    { field: "age", colId: "age" },
-    { field: "country", colId: "country" },
-    { field: "year", colId: "year" },
-    { field: "date", colId: "date" },
-    { field: "total", colId: "total" },
-    { field: "gold", colId: "gold" },
-    { field: "silver", colId: "silver" },
-    { field: "bronze", colId: "bronze" },
+    { field: 'athlete', colId: 'athlete' },
+    { field: 'age', colId: 'age' },
+    { field: 'country', colId: 'country' },
+    { field: 'year', colId: 'year' },
+    { field: 'date', colId: 'date' },
+    { field: 'total', colId: 'total' },
+    { field: 'gold', colId: 'gold' },
+    { field: 'silver', colId: 'silver' },
+    { field: 'bronze', colId: 'bronze' },
   ];
   public defaultColDef: ColDef = {
     initialWidth: 150,
@@ -71,34 +71,34 @@ export class AppComponent {
 
   onBtNoGroups() {
     const columnDefs: ColDef[] = [
-      { field: "athlete", colId: "athlete" },
-      { field: "age", colId: "age" },
-      { field: "country", colId: "country" },
-      { field: "year", colId: "year" },
-      { field: "date", colId: "date" },
-      { field: "total", colId: "total" },
-      { field: "gold", colId: "gold" },
-      { field: "silver", colId: "silver" },
-      { field: "bronze", colId: "bronze" },
+      { field: 'athlete', colId: 'athlete' },
+      { field: 'age', colId: 'age' },
+      { field: 'country', colId: 'country' },
+      { field: 'year', colId: 'year' },
+      { field: 'date', colId: 'date' },
+      { field: 'total', colId: 'total' },
+      { field: 'gold', colId: 'gold' },
+      { field: 'silver', colId: 'silver' },
+      { field: 'bronze', colId: 'bronze' },
     ];
     this.gridApi.setColumnDefs(columnDefs);
   }
 
   onMedalsInGroupOnly() {
     const columnDefs: (ColDef | ColGroupDef)[] = [
-      { field: "athlete", colId: "athlete" },
-      { field: "age", colId: "age" },
-      { field: "country", colId: "country" },
-      { field: "year", colId: "year" },
-      { field: "date", colId: "date" },
+      { field: 'athlete', colId: 'athlete' },
+      { field: 'age', colId: 'age' },
+      { field: 'country', colId: 'country' },
+      { field: 'year', colId: 'year' },
+      { field: 'date', colId: 'date' },
       {
-        headerName: "Medals",
-        headerClass: "medals-group",
+        headerName: 'Medals',
+        headerClass: 'medals-group',
         children: [
-          { field: "total", colId: "total" },
-          { field: "gold", colId: "gold" },
-          { field: "silver", colId: "silver" },
-          { field: "bronze", colId: "bronze" },
+          { field: 'total', colId: 'total' },
+          { field: 'gold', colId: 'gold' },
+          { field: 'silver', colId: 'silver' },
+          { field: 'bronze', colId: 'bronze' },
         ],
       },
     ];
@@ -108,20 +108,20 @@ export class AppComponent {
   onParticipantInGroupOnly() {
     const columnDefs: (ColDef | ColGroupDef)[] = [
       {
-        headerName: "Participant",
-        headerClass: "participant-group",
+        headerName: 'Participant',
+        headerClass: 'participant-group',
         children: [
-          { field: "athlete", colId: "athlete" },
-          { field: "age", colId: "age" },
-          { field: "country", colId: "country" },
-          { field: "year", colId: "year" },
-          { field: "date", colId: "date" },
+          { field: 'athlete', colId: 'athlete' },
+          { field: 'age', colId: 'age' },
+          { field: 'country', colId: 'country' },
+          { field: 'year', colId: 'year' },
+          { field: 'date', colId: 'date' },
         ],
       },
-      { field: "total", colId: "total" },
-      { field: "gold", colId: "gold" },
-      { field: "silver", colId: "silver" },
-      { field: "bronze", colId: "bronze" },
+      { field: 'total', colId: 'total' },
+      { field: 'gold', colId: 'gold' },
+      { field: 'silver', colId: 'silver' },
+      { field: 'bronze', colId: 'bronze' },
     ];
     this.gridApi.setColumnDefs(columnDefs);
   }
@@ -129,24 +129,24 @@ export class AppComponent {
   onParticipantAndMedalsInGroups() {
     const columnDefs: (ColDef | ColGroupDef)[] = [
       {
-        headerName: "Participant",
-        headerClass: "participant-group",
+        headerName: 'Participant',
+        headerClass: 'participant-group',
         children: [
-          { field: "athlete", colId: "athlete" },
-          { field: "age", colId: "age" },
-          { field: "country", colId: "country" },
-          { field: "year", colId: "year" },
-          { field: "date", colId: "date" },
+          { field: 'athlete', colId: 'athlete' },
+          { field: 'age', colId: 'age' },
+          { field: 'country', colId: 'country' },
+          { field: 'year', colId: 'year' },
+          { field: 'date', colId: 'date' },
         ],
       },
       {
-        headerName: "Medals",
-        headerClass: "medals-group",
+        headerName: 'Medals',
+        headerClass: 'medals-group',
         children: [
-          { field: "total", colId: "total" },
-          { field: "gold", colId: "gold" },
-          { field: "silver", colId: "silver" },
-          { field: "bronze", colId: "bronze" },
+          { field: 'total', colId: 'total' },
+          { field: 'gold', colId: 'gold' },
+          { field: 'silver', colId: 'silver' },
+          { field: 'bronze', colId: 'bronze' },
         ],
       },
     ];
@@ -157,7 +157,7 @@ export class AppComponent {
     this.gridApi = params.api;
 
     this.http
-      .get<any[]>("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      .get<any[]>('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .subscribe((data) => (this.rowData = data));
   }
 }

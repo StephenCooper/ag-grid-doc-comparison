@@ -1,34 +1,33 @@
 import {
-  FirstDataRenderedEvent,
-  Grid,
+  FirstDataRenderedEvent, Grid,
   GridOptions,
   IFiltersToolPanel,
-} from "@ag-grid-community/core";
+} from '@ag-grid-community/core'
 
 const gridOptions: GridOptions = {
   rowData: getRowData(),
   columnDefs: [
     {
-      headerName: "Set Filter Column",
-      field: "col1",
-      filter: "agSetColumnFilter",
+      headerName: 'Set Filter Column',
+      field: 'col1',
+      filter: 'agSetColumnFilter',
       flex: 1,
       editable: true,
     },
   ],
-  sideBar: "filters",
+  sideBar: 'filters',
   onFirstDataRendered: onFirstDataRendered,
-};
+}
 
 function getRowData() {
   return [
-    { col1: "A" },
-    { col1: "A" },
-    { col1: "B" },
-    { col1: "B" },
-    { col1: "C" },
-    { col1: "C" },
-  ];
+    { col1: 'A' },
+    { col1: 'A' },
+    { col1: 'B' },
+    { col1: 'B' },
+    { col1: 'C' },
+    { col1: 'C' },
+  ]
 }
 
 function reset() {
@@ -37,13 +36,13 @@ function reset() {
 }
 
 function onFirstDataRendered(params: FirstDataRenderedEvent) {
-  (
-    params.api.getToolPanelInstance("filters") as any as IFiltersToolPanel
-  ).expandFilters();
+  ((params.api.getToolPanelInstance(
+    'filters'
+  ) as any) as IFiltersToolPanel).expandFilters()
 }
 
 // setup the grid after the page has finished loading
-document.addEventListener("DOMContentLoaded", function () {
-  var gridDiv = document.querySelector<HTMLElement>("#myGrid")!;
-  new Grid(gridDiv, gridOptions);
-});
+document.addEventListener('DOMContentLoaded', function () {
+  var gridDiv = document.querySelector<HTMLElement>('#myGrid')!
+  new Grid(gridDiv, gridOptions)
+})

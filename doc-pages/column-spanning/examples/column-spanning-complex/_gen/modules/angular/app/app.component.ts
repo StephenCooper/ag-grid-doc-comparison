@@ -4,14 +4,14 @@ import {
   ColSpanParams,
   GridReadyEvent,
   RowHeightParams,
-} from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { Component } from "@angular/core";
+} from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { Component } from '@angular/core';
 // Required feature modules are registered in app.module.ts
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<ag-grid-angular
     style="width: 100%; height: 100%;"
     class="ag-theme-alpine"
@@ -25,8 +25,8 @@ import { Component } from "@angular/core";
 export class AppComponent {
   public columnDefs: ColDef[] = [
     {
-      headerName: "Jan",
-      field: "jan",
+      headerName: 'Jan',
+      field: 'jan',
       colSpan: function (params: ColSpanParams) {
         if (isHeaderRow(params)) {
           return 6;
@@ -38,12 +38,12 @@ export class AppComponent {
       },
       cellClassRules: cellClassRules,
     },
-    { headerName: "Feb", field: "feb" },
-    { headerName: "Mar", field: "mar" },
+    { headerName: 'Feb', field: 'feb' },
+    { headerName: 'Mar', field: 'mar' },
     {
-      headerName: "Apr",
-      field: "apr",
-      colSpan: function (params) {
+      headerName: 'Apr',
+      field: 'apr',
+      colSpan: function (params: ColSpanParams) {
         if (isQuarterRow(params)) {
           return 3;
         } else {
@@ -52,15 +52,16 @@ export class AppComponent {
       },
       cellClassRules: cellClassRules,
     },
-    { headerName: "May", field: "may" },
-    { headerName: "Jun", field: "jun" },
+    { headerName: 'May', field: 'may' },
+    { headerName: 'Jun', field: 'jun' },
   ];
-  public getRowHeight: (params: RowHeightParams) => number | undefined | null =
-    function (params) {
-      if (isHeaderRow(params)) {
-        return 60;
-      }
-    };
+  public getRowHeight: (
+    params: RowHeightParams
+  ) => number | undefined | null = function (params: RowHeightParams) {
+    if (isHeaderRow(params)) {
+      return 60;
+    }
+  };
   public rowData: any[] | null = getData();
   public defaultColDef: ColDef = {
     width: 100,
@@ -72,12 +73,12 @@ export class AppComponent {
 }
 
 var cellClassRules: CellClassRules = {
-  "header-cell": 'data.section === "big-title"',
-  "quarters-cell": 'data.section === "quarters"',
+  'header-cell': 'data.section === "big-title"',
+  'quarters-cell': 'data.section === "quarters"',
 };
 function isHeaderRow(params: RowHeightParams | ColSpanParams) {
-  return params.data.section === "big-title";
+  return params.data.section === 'big-title';
 }
 function isQuarterRow(params: ColSpanParams) {
-  return params.data.section === "quarters";
+  return params.data.section === 'quarters';
 }

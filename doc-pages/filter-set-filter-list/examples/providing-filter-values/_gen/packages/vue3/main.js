@@ -1,8 +1,8 @@
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
-import { AgGridVue } from "ag-grid-vue3";
-import { createApp } from "vue";
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import 'ag-grid-enterprise';
+import { AgGridVue } from 'ag-grid-vue3';
+import { createApp } from 'vue';
 
 const VueExample = {
   template: `
@@ -20,21 +20,21 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
         {
-          headerName: "Days (Values Not Provided)",
-          field: "days",
-          filter: "agSetColumnFilter",
+          headerName: 'Days (Values Not Provided)',
+          field: 'days',
+          filter: 'agSetColumnFilter',
           filterParams: daysValuesNotProvidedFilterParams,
         },
         {
-          headerName: "Days (Values Provided)",
-          field: "days",
-          filter: "agSetColumnFilter",
+          headerName: 'Days (Values Provided)',
+          field: 'days',
+          filter: 'agSetColumnFilter',
           filterParams: daysValuesProvidedFilterParams,
         },
       ],
@@ -50,12 +50,12 @@ const VueExample = {
     };
   },
   created() {
-    this.sideBar = "filters";
+    this.sideBar = 'filters';
     this.rowData = getRowData();
   },
   methods: {
     onFirstDataRendered(params) {
-      params.api.getToolPanelInstance("filters").expandFilters();
+      params.api.getToolPanelInstance('filters').expandFilters();
     },
     onGridReady(params) {
       this.gridApi = params.api;
@@ -65,7 +65,7 @@ const VueExample = {
 };
 
 window.getRowData = function getRowData() {
-  var weekdays = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
+  var weekdays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
   var rows = [];
   for (var i = 0; i < 200; i++) {
     var index = Math.floor(Math.random() * 5);
@@ -75,13 +75,13 @@ window.getRowData = function getRowData() {
 };
 
 var listOfDays = [
-  "Monday",
-  "Tuesday",
-  "Wednesday",
-  "Thursday",
-  "Friday",
-  "Saturday",
-  "Sunday",
+  'Monday',
+  'Tuesday',
+  'Wednesday',
+  'Thursday',
+  'Friday',
+  'Saturday',
+  'Sunday',
 ];
 
 var daysValuesNotProvidedFilterParams = {
@@ -98,4 +98,4 @@ var daysValuesProvidedFilterParams = {
   suppressSorting: true, // use provided order
 };
 
-createApp(VueExample).mount("#app");
+createApp(VueExample).mount('#app');

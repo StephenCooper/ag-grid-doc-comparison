@@ -2,20 +2,20 @@ const countryCodes = {};
 const base64flags = {};
 
 const columnDefs = [
-  { field: "athlete", width: 200 },
+  { field: 'athlete', width: 200 },
   {
-    field: "country",
-    cellClass: "countryCell",
+    field: 'country',
+    cellClass: 'countryCell',
     cellRenderer: CountryCellRenderer,
   },
-  { field: "age" },
-  { field: "year" },
-  { field: "date" },
-  { field: "sport" },
-  { field: "gold" },
-  { field: "silver" },
-  { field: "bronze" },
-  { field: "total" },
+  { field: 'age' },
+  { field: 'year' },
+  { field: 'date' },
+  { field: 'sport' },
+  { field: 'gold' },
+  { field: 'silver' },
+  { field: 'bronze' },
+  { field: 'total' },
 ];
 
 const gridOptions = {
@@ -26,16 +26,16 @@ const gridOptions = {
   },
   excelStyles: [
     {
-      id: "countryCell",
+      id: 'countryCell',
       alignment: {
-        vertical: "Center",
+        vertical: 'Center',
         indent: 4,
       },
     },
   ],
   defaultExcelExportParams: {
     addImageToCell: function (rowIndex, col, value) {
-      if (col.getColId() !== "country") {
+      if (col.getColId() !== 'country') {
         return;
       }
 
@@ -44,7 +44,7 @@ const gridOptions = {
         image: {
           id: countryCode,
           base64: base64flags[countryCode],
-          imageType: "png",
+          imageType: 'png',
           width: 20,
           height: 11,
           position: {
@@ -61,7 +61,7 @@ const gridOptions = {
     countryCodes: countryCodes,
   },
   onGridReady: (params) => {
-    fetch("https://www.ag-grid.com/example-assets/small-olympic-winners.json")
+    fetch('https://www.ag-grid.com/example-assets/small-olympic-winners.json')
       .then((data) =>
         createBase64FlagsFromResponse(data, countryCodes, base64flags)
       )
@@ -74,7 +74,7 @@ function onBtExport() {
 }
 
 // setup the grid after the page has finished loading
-document.addEventListener("DOMContentLoaded", function () {
-  const gridDiv = document.querySelector("#myGrid");
+document.addEventListener('DOMContentLoaded', function () {
+  const gridDiv = document.querySelector('#myGrid');
   new agGrid.Grid(gridDiv, gridOptions);
 });

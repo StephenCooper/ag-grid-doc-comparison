@@ -1,11 +1,11 @@
 const gridOptions = {
   columnDefs: [
-    { field: "year", rowGroup: true, hide: true },
-    { field: "athlete", hide: true },
-    { field: "sport", checkboxSelection: true },
-    { field: "gold", aggFunc: "sum" },
-    { field: "silver", aggFunc: "sum" },
-    { field: "bronze", aggFunc: "sum" },
+    { field: 'year', rowGroup: true, hide: true },
+    { field: 'athlete', hide: true },
+    { field: 'sport', checkboxSelection: true },
+    { field: 'gold', aggFunc: 'sum' },
+    { field: 'silver', aggFunc: 'sum' },
+    { field: 'bronze', aggFunc: 'sum' },
   ],
   defaultColDef: {
     flex: 1,
@@ -16,10 +16,10 @@ const gridOptions = {
   getRowId: function (params) {
     var data = params.data;
     // use year for group level ids, or the id we assigned for leaf level
-    return data.id || data.year;
+    return data.id != null ? 'id-' + data.id : 'year-' + data.year;
   },
   autoGroupColumnDef: {
-    field: "athlete",
+    field: 'athlete',
     flex: 1,
     minWidth: 240,
     // headerCheckboxSelection: true, // not supported for Enterprise Model
@@ -29,11 +29,11 @@ const gridOptions = {
   },
 
   // use the server-side row model
-  rowModelType: "serverSide",
-  serverSideStoreType: "partial",
+  rowModelType: 'serverSide',
+  serverSideStoreType: 'partial',
 
   // allow multiple row selections
-  rowSelection: "multiple",
+  rowSelection: 'multiple',
 
   // restrict selections to leaf rows
   isRowSelectable: function (rowNode) {
@@ -53,7 +53,7 @@ const gridOptions = {
 function getServerSideDatasource(server) {
   return {
     getRows: function (params) {
-      console.log("[Datasource] - rows requested by grid: ", params.request);
+      console.log('[Datasource] - rows requested by grid: ', params.request);
 
       var response = server.getData(params.request);
 
@@ -75,11 +75,11 @@ function getServerSideDatasource(server) {
 }
 
 // setup the grid after the page has finished loading
-document.addEventListener("DOMContentLoaded", function () {
-  var gridDiv = document.querySelector("#myGrid");
+document.addEventListener('DOMContentLoaded', function () {
+  var gridDiv = document.querySelector('#myGrid');
   new agGrid.Grid(gridDiv, gridOptions);
 
-  fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+  fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
     .then((response) => response.json())
     .then(function (data) {
       // assign a unique ID to each data item

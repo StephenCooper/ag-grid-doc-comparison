@@ -5,7 +5,7 @@ enterprise: true
 
 You can copy and paste items to and from the grid using the system clipboard.
 
-## Copy to Clipboard
+##  Copy to Clipboard
 
 Copy to clipboard operation can be done in the following ways:
 
@@ -21,7 +21,7 @@ Headers can also be included when copying to clipboard using <kbd>Ctrl</kbd>+<kb
 | Performing multiple <kbd>Ctrl</kbd>+&lt;left click> operations followed by <kbd>Ctrl</kbd>+<kbd>C</kbd> will not preserve original cell layout
 | but rather copy them vertically to the clipboard.
 
-## Paste from Clipboard
+##  Paste from Clipboard
 
 Paste to clipboard can only be done in the following ways:
 
@@ -107,7 +107,7 @@ It is possible to process clipboard data before pasting it into the grid. This c
 
 The interfaces and parameters for processing individual cells are as follows:
 
-<api-documentation source='grid-properties/properties.json' section='clipboard' names='["processCellForClipboard", "processHeaderForClipboard", "processGroupHeaderForClipboard", "processCellFromClipboard"]'  ></api-documentation>
+<api-documentation source='grid-options/properties.json' section='clipboard' names='["processCellForClipboard", "processHeaderForClipboard", "processGroupHeaderForClipboard", "processCellFromClipboard"]'  ></api-documentation>
 
 These three callbacks above are demonstrated in the example below. Note the following:
 
@@ -122,11 +122,12 @@ These three callbacks above are demonstrated in the example below. Note the foll
 
 The interface and parameters for processing the whole paste operation is as follows:
 
-<api-documentation source='grid-properties/properties.json' section='clipboard' names='["processDataFromClipboard"]'  ></api-documentation>
+<api-documentation source='grid-options/properties.json' section='clipboard' names='["processDataFromClipboard"]'  ></api-documentation>
 
 In summary the `processDataFromClipboard` takes a 2d array of data that was taken from the clipboard and the method returns a 2d array of data to be used. For the method to have no impact, it should return the 2d array it was provided. The method is free to return back anything it wants, as long as it is a 2d array of strings.
 
 The example below demonstrates `processDataFromClipboard`. Note the following:
+
 
 - Pasting data that is copied from cells in the 'Green' highlighted column works as normal. Note that it uses `processDataFromClipboard` returning the 2d array it was provided with.
 
@@ -157,3 +158,4 @@ The example below demonstrates:
 - Does not allow paste into the 'silver' column by setting `colDef.suppressPaste=true`.
 
 <grid-example title='Complex Example' name='complex' type='generated' options='{ "enterprise": true, "modules": ["clientside", "menu", "range", "clipboard"] }'></grid-example>
+

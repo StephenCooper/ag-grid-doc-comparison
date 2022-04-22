@@ -8,25 +8,25 @@ const gridOptions = {
   },
 
   columnDefs: [
-    { field: "athlete", minWidth: 200 },
-    { field: "country", minWidth: 200 },
-    { field: "sport", minWidth: 150 },
-    { field: "gold", hide: true },
-    { field: "silver", hide: true },
-    { field: "bronze", hide: true },
-    { field: "total", hide: true },
+    { field: 'athlete', minWidth: 200 },
+    { field: 'country', minWidth: 200 },
+    { field: 'sport', minWidth: 150 },
+    { field: 'gold', hide: true },
+    { field: 'silver', hide: true },
+    { field: 'bronze', hide: true },
+    { field: 'total', hide: true },
   ],
 
   excelStyles: [
     {
-      id: "coverHeading",
+      id: 'coverHeading',
       font: {
         size: 26,
         bold: true,
       },
     },
     {
-      id: "coverText",
+      id: 'coverText',
       font: {
         size: 14,
       },
@@ -38,7 +38,7 @@ function onBtExport() {
   const spreadsheets = [];
 
   //set a filter condition ensuring no records are returned so only the header content is exported
-  const filterInstance = gridOptions.api.getFilterInstance("athlete");
+  const filterInstance = gridOptions.api.getFilterInstance('athlete');
 
   filterInstance.setModel({
     values: [],
@@ -52,42 +52,42 @@ function onBtExport() {
       prependContent: [
         [
           {
-            styleId: "coverHeading",
+            styleId: 'coverHeading',
             mergeAcross: 3,
-            data: { value: "AG Grid", type: "String" },
+            data: { value: 'AG Grid', type: 'String' },
           },
         ],
         [
           {
-            styleId: "coverHeading",
+            styleId: 'coverHeading',
             mergeAcross: 3,
-            data: { value: "", type: "String" },
+            data: { value: '', type: 'String' },
           },
         ],
         [
           {
-            styleId: "coverText",
+            styleId: 'coverText',
             mergeAcross: 3,
             data: {
               value:
-                "Data shown lists Olympic medal winners for years 2000-2012",
-              type: "String",
+                'Data shown lists Olympic medal winners for years 2000-2012',
+              type: 'String',
             },
           },
         ],
         [
           {
-            styleId: "coverText",
+            styleId: 'coverText',
             data: {
               value:
-                "This data includes a row for each participation record - athlete name, country, year, sport, count of gold, silver, bronze medals won during the sports event",
-              type: "String",
+                'This data includes a row for each participation record - athlete name, country, year, sport, count of gold, silver, bronze medals won during the sports event',
+              type: 'String',
             },
           },
         ],
       ],
-      processHeaderCallback: () => "",
-      sheetName: "cover",
+      processHeaderCallback: () => '',
+      sheetName: 'cover',
     })
   );
 
@@ -99,16 +99,16 @@ function onBtExport() {
 
   gridOptions.api.exportMultipleSheetsAsExcel({
     data: spreadsheets,
-    fileName: "ag-grid.xlsx",
+    fileName: 'ag-grid.xlsx',
   });
 }
 
 // setup the grid after the page has finished loading
-document.addEventListener("DOMContentLoaded", () => {
-  const gridDiv = document.querySelector("#myGrid");
+document.addEventListener('DOMContentLoaded', () => {
+  const gridDiv = document.querySelector('#myGrid');
   new agGrid.Grid(gridDiv, gridOptions);
 
-  fetch("https://www.ag-grid.com/example-assets/small-olympic-winners.json")
+  fetch('https://www.ag-grid.com/example-assets/small-olympic-winners.json')
     .then((response) => response.json())
     .then((data) =>
       gridOptions.api.setRowData(data.filter((rec) => rec.country != null))

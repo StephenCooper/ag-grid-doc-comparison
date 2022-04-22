@@ -1,8 +1,8 @@
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import { AgGridReact } from "@ag-grid-community/react";
-import React, { useEffect } from "react";
+import React, { useEffect } from 'react';
+import { AgGridReact } from '@ag-grid-community/react';
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
 
+import { ModuleRegistry } from '@ag-grid-community/core';
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([ClientSideRowModelModule]);
 
@@ -11,7 +11,7 @@ const DetailCellRenderer = ({ data, node, api }) => {
 
   useEffect(() => {
     return () => {
-      console.log("removing detail grid info with id: ", rowId);
+      console.log('removing detail grid info with id: ', rowId);
 
       // the detail grid is automatically destroyed as it is a React component
       api.removeDetailGridInfo(rowId);
@@ -19,11 +19,11 @@ const DetailCellRenderer = ({ data, node, api }) => {
   }, []);
 
   const colDefs = [
-    { field: "callId" },
-    { field: "direction" },
-    { field: "number" },
-    { field: "duration", valueFormatter: "x.toLocaleString() + 's'" },
-    { field: "switchCode" },
+    { field: 'callId' },
+    { field: 'direction' },
+    { field: 'number' },
+    { field: 'duration', valueFormatter: "x.toLocaleString() + 's'" },
+    { field: 'switchCode' },
   ];
 
   const defaultColDef = {
@@ -38,7 +38,7 @@ const DetailCellRenderer = ({ data, node, api }) => {
       columnApi: params.columnApi,
     };
 
-    console.log("adding detail grid info with id: ", rowId);
+    console.log('adding detail grid info with id: ', rowId);
 
     api.addDetailGridInfo(rowId, gridInfo);
   };

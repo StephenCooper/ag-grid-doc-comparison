@@ -1,10 +1,10 @@
-"use strict";
+'use strict';
 
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import { AgGridReact } from "ag-grid-react";
-import React, { useMemo, useState } from "react";
-import { render } from "react-dom";
+import React, { useCallback, useMemo, useRef, useState } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from 'ag-grid-react';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 
 let count = 0;
 
@@ -17,9 +17,9 @@ class SlowCellRenderer {
   init(p) {
     const start = new Date().valueOf();
     while (new Date().valueOf() - start < 15) {
-      this.eGui = document.createElement("span");
+      this.eGui = document.createElement('span');
     }
-    this.eGui = document.createElement("span");
+    this.eGui = document.createElement('span');
     this.eGui.innerHTML = `${++count}`;
   }
 
@@ -33,30 +33,30 @@ class SlowCellRenderer {
 }
 
 const GridExample = () => {
-  const containerStyle = useMemo(() => ({ width: "100%", height: "100%" }), []);
-  const gridStyle = useMemo(() => ({ height: "95%", width: "100%" }), []);
+  const containerStyle = useMemo(() => ({ width: '100%', height: '100%' }), []);
+  const gridStyle = useMemo(() => ({ height: '95%', width: '100%' }), []);
   const [rowData, setRowData] = useState(getRowData());
   const [columnDefs, setColumnDefs] = useState([
-    { field: "1" },
-    { field: "2" },
-    { field: "3" },
-    { field: "4" },
-    { field: "5" },
-    { field: "6" },
-    { field: "7" },
-    { field: "8" },
-    { field: "9" },
-    { field: "10" },
-    { field: "11" },
-    { field: "12" },
-    { field: "13" },
-    { field: "14" },
-    { field: "15" },
-    { field: "16" },
-    { field: "17" },
-    { field: "18" },
-    { field: "19" },
-    { field: "20" },
+    { field: '1' },
+    { field: '2' },
+    { field: '3' },
+    { field: '4' },
+    { field: '5' },
+    { field: '6' },
+    { field: '7' },
+    { field: '8' },
+    { field: '9' },
+    { field: '10' },
+    { field: '11' },
+    { field: '12' },
+    { field: '13' },
+    { field: '14' },
+    { field: '15' },
+    { field: '16' },
+    { field: '17' },
+    { field: '18' },
+    { field: '19' },
+    { field: '20' },
   ]);
   const defaultColDef = useMemo(() => {
     return {
@@ -77,7 +77,7 @@ const GridExample = () => {
           rowData={rowData}
           columnDefs={columnDefs}
           defaultColDef={defaultColDef}
-          rowSelection={"single"}
+          rowSelection={'single'}
           rowBuffer={0}
         ></AgGridReact>
       </div>
@@ -85,4 +85,4 @@ const GridExample = () => {
   );
 };
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

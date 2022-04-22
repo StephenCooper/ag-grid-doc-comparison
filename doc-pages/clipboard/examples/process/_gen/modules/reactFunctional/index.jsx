@@ -1,15 +1,15 @@
-"use strict";
+'use strict';
 
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { AgGridReact } from "@ag-grid-community/react";
-import { ClipboardModule } from "@ag-grid-enterprise/clipboard";
-import { MenuModule } from "@ag-grid-enterprise/menu";
-import { RangeSelectionModule } from "@ag-grid-enterprise/range-selection";
-import React, { useCallback, useMemo, useState } from "react";
-import { render } from "react-dom";
+import React, { useCallback, useMemo, useRef, useState } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from '@ag-grid-community/react';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import { MenuModule } from '@ag-grid-enterprise/menu';
+import { RangeSelectionModule } from '@ag-grid-enterprise/range-selection';
+import { ClipboardModule } from '@ag-grid-enterprise/clipboard';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([
@@ -20,28 +20,28 @@ ModuleRegistry.registerModules([
 ]);
 
 const GridExample = () => {
-  const containerStyle = useMemo(() => ({ width: "100%", height: "100%" }), []);
-  const gridStyle = useMemo(() => ({ height: "100%", width: "100%" }), []);
+  const containerStyle = useMemo(() => ({ width: '100%', height: '100%' }), []);
+  const gridStyle = useMemo(() => ({ height: '100%', width: '100%' }), []);
   const [rowData, setRowData] = useState();
   const [columnDefs, setColumnDefs] = useState([
     {
-      headerName: "Participants",
+      headerName: 'Participants',
       children: [
-        { field: "athlete", headerName: "Athlete Name", minWidth: 200 },
-        { field: "age" },
-        { field: "country", minWidth: 150 },
+        { field: 'athlete', headerName: 'Athlete Name', minWidth: 200 },
+        { field: 'age' },
+        { field: 'country', minWidth: 150 },
       ],
     },
     {
-      headerName: "Olympic Games",
+      headerName: 'Olympic Games',
       children: [
-        { field: "year" },
-        { field: "date", minWidth: 150 },
-        { field: "sport", minWidth: 150 },
-        { field: "gold" },
-        { field: "silver", suppressPaste: true },
-        { field: "bronze" },
-        { field: "total" },
+        { field: 'year' },
+        { field: 'date', minWidth: 150 },
+        { field: 'sport', minWidth: 150 },
+        { field: 'gold' },
+        { field: 'silver', suppressPaste: true },
+        { field: 'bronze' },
+        { field: 'total' },
       ],
     },
   ]);
@@ -55,35 +55,35 @@ const GridExample = () => {
   }, []);
 
   const onGridReady = useCallback((params) => {
-    fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+    fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .then((resp) => resp.json())
       .then((data) => setRowData(data));
   }, []);
 
   const processCellForClipboard = useCallback((params) => {
-    return "C-" + params.value;
+    return 'C-' + params.value;
   }, []);
 
   const processHeaderForClipboard = useCallback((params) => {
     const colDef = params.column.getColDef();
-    let headerName = colDef.headerName || colDef.field || "";
-    if (colDef.headerName !== "") {
+    let headerName = colDef.headerName || colDef.field || '';
+    if (colDef.headerName !== '') {
       headerName = headerName.charAt(0).toUpperCase() + headerName.slice(1);
     }
-    return "H-" + headerName;
+    return 'H-' + headerName;
   }, []);
 
   const processGroupHeaderForClipboard = useCallback((params) => {
     const colGroupDef = params.columnGroup.getColGroupDef() || {};
-    const headerName = colGroupDef.headerName || "";
-    if (headerName === "") {
-      return "";
+    const headerName = colGroupDef.headerName || '';
+    if (headerName === '') {
+      return '';
     }
-    return "GH-" + headerName;
+    return 'GH-' + headerName;
   }, []);
 
   const processCellFromClipboard = useCallback((params) => {
-    return "Z-" + params.value;
+    return 'Z-' + params.value;
   }, []);
 
   return (
@@ -94,7 +94,7 @@ const GridExample = () => {
           columnDefs={columnDefs}
           defaultColDef={defaultColDef}
           enableRangeSelection={true}
-          rowSelection={"multiple"}
+          rowSelection={'multiple'}
           processCellForClipboard={processCellForClipboard}
           processHeaderForClipboard={processHeaderForClipboard}
           processGroupHeaderForClipboard={processGroupHeaderForClipboard}
@@ -106,4 +106,4 @@ const GridExample = () => {
   );
 };
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

@@ -1,10 +1,10 @@
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { AgGridVue } from "@ag-grid-community/vue3";
-import { RowGroupingModule } from "@ag-grid-enterprise/row-grouping";
-import { createApp } from "vue";
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { AgGridVue } from '@ag-grid-community/vue3';
+import { RowGroupingModule } from '@ag-grid-enterprise/row-grouping';
+import { createApp } from 'vue';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([ClientSideRowModelModule, RowGroupingModule]);
@@ -30,13 +30,13 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
-        { field: "dateModified" },
-        { field: "size", valueFormatter: valueFormatter },
+        { field: 'dateModified' },
+        { field: 'size', valueFormatter: valueFormatter },
       ],
       gridApi: null,
       columnApi: null,
@@ -62,7 +62,7 @@ const VueExample = {
     };
     this.autoGroupColumnDef = {
       rowDrag: true,
-      headerName: "Files",
+      headerName: 'Files',
       minWidth: 300,
       cellRendererParams: {
         suppressCount: true,
@@ -79,7 +79,7 @@ const VueExample = {
       }
       // folder to drop into is where we are going to move the file/folder to
       var folderToDropInto =
-        overNode.data.type === "folder"
+        overNode.data.type === 'folder'
           ? // if over a folder, we take the immediate row
             overNode
           : // if over a file, we take the parent row (which will be a folder)
@@ -98,7 +98,7 @@ const VueExample = {
       // check we are not moving a folder into a child folder
       var invalidMode = isSelectionParentOfTarget(event.node, folderToDropInto);
       if (invalidMode) {
-        console.log("invalid move");
+        console.log('invalid move');
       }
       if (needToChangeParent && !invalidMode) {
         var updatedRows = [];
@@ -170,7 +170,7 @@ window.arePathsEqual = function arePathsEqual(path1, path2) {
 };
 
 var valueFormatter = function (params) {
-  return params.value ? params.value + " MB" : "";
+  return params.value ? params.value + ' MB' : '';
 };
 
-createApp(VueExample).mount("#app");
+createApp(VueExample).mount('#app');

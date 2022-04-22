@@ -1,12 +1,12 @@
-"use strict";
+'use strict';
 
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine-dark.css";
-import { AgGridReact } from "@ag-grid-community/react";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from '@ag-grid-community/react';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine-dark.css';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([ClientSideRowModelModule]);
@@ -18,38 +18,38 @@ class GridExample extends Component {
     this.state = {
       columnDefs: [
         {
-          headerName: "#",
+          headerName: '#',
           maxWidth: 100,
           valueGetter: hashValueGetter,
         },
-        { field: "a" },
-        { field: "b" },
+        { field: 'a' },
+        { field: 'b' },
         {
-          headerName: "A + B",
-          colId: "a&b",
+          headerName: 'A + B',
+          colId: 'a&b',
           valueGetter: abValueGetter,
         },
         {
-          headerName: "A * 1000",
+          headerName: 'A * 1000',
           minWidth: 95,
           valueGetter: a1000ValueGetter,
         },
         {
-          headerName: "B * 137",
+          headerName: 'B * 137',
           minWidth: 90,
           valueGetter: b137ValueGetter,
         },
         {
-          headerName: "Random",
+          headerName: 'Random',
           minWidth: 90,
           valueGetter: randomValueGetter,
         },
         {
-          headerName: "Chain",
+          headerName: 'Chain',
           valueGetter: chainValueGetter,
         },
         {
-          headerName: "Const",
+          headerName: 'Const',
           minWidth: 85,
           valueGetter: constValueGetter,
         },
@@ -70,11 +70,11 @@ class GridExample extends Component {
 
   render() {
     return (
-      <div style={{ width: "100%", height: "100%" }}>
+      <div style={{ width: '100%', height: '100%' }}>
         <div
           style={{
-            height: "100%",
-            width: "100%",
+            height: '100%',
+            width: '100%',
           }}
           className="ag-theme-alpine-dark"
         >
@@ -106,7 +106,7 @@ var randomValueGetter = function () {
   return Math.floor(Math.random() * 1000);
 };
 var chainValueGetter = function (params) {
-  return params.getValue("a&b") * 1000;
+  return params.getValue('a&b') * 1000;
 };
 var constValueGetter = function () {
   return 99999;
@@ -122,4 +122,4 @@ function createRowData() {
   return rowData;
 }
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

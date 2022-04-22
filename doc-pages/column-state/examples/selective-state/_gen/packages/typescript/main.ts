@@ -1,20 +1,20 @@
-import { ColDef, Grid, GridOptions } from "ag-grid-community";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
+import { ColDef, Grid, GridOptions } from 'ag-grid-community';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import 'ag-grid-enterprise';
 declare var window: any;
 
 const columnDefs: ColDef[] = [
-  { field: "athlete" },
-  { field: "age" },
-  { field: "country" },
-  { field: "sport" },
-  { field: "year" },
-  { field: "date" },
-  { field: "gold" },
-  { field: "silver" },
-  { field: "bronze" },
-  { field: "total" },
+  { field: 'athlete' },
+  { field: 'age' },
+  { field: 'country' },
+  { field: 'sport' },
+  { field: 'year' },
+  { field: 'date' },
+  { field: 'gold' },
+  { field: 'silver' },
+  { field: 'bronze' },
+  { field: 'total' },
 ];
 
 const gridOptions: GridOptions = {
@@ -27,10 +27,10 @@ const gridOptions: GridOptions = {
     enableValue: true,
   },
   sideBar: {
-    toolPanels: ["columns"],
+    toolPanels: ['columns'],
   },
-  rowGroupPanelShow: "always",
-  pivotPanelShow: "always",
+  rowGroupPanelShow: 'always',
+  pivotPanelShow: 'always',
   // debug: true,
   columnDefs: columnDefs,
   rowData: null,
@@ -44,18 +44,18 @@ function onBtSaveSortState() {
     sortIndex: state.sortIndex,
   }));
   window.sortState = sortState;
-  console.log("sort state saved", sortState);
+  console.log('sort state saved', sortState);
 }
 
 function onBtRestoreSortState() {
   if (!window.sortState) {
-    console.log("no sort state to restore, you must save sort state first");
+    console.log('no sort state to restore, you must save sort state first');
     return;
   }
   gridOptions.columnApi!.applyColumnState({
     state: window.sortState,
   });
-  console.log("sort state restored");
+  console.log('sort state restored');
 }
 
 function onBtSaveOrderAndVisibilityState() {
@@ -65,13 +65,13 @@ function onBtSaveOrderAndVisibilityState() {
     hide: state.hide,
   }));
   window.orderAndVisibilityState = orderAndVisibilityState;
-  console.log("order and visibility state saved", orderAndVisibilityState);
+  console.log('order and visibility state saved', orderAndVisibilityState);
 }
 
 function onBtRestoreOrderAndVisibilityState() {
   if (!window.orderAndVisibilityState) {
     console.log(
-      "no order and visibility state to restore by, you must save order and visibility state first"
+      'no order and visibility state to restore by, you must save order and visibility state first'
     );
     return;
   }
@@ -79,23 +79,25 @@ function onBtRestoreOrderAndVisibilityState() {
     state: window.orderAndVisibilityState,
     applyOrder: true,
   });
-  console.log("column state restored");
+  console.log('column state restored');
 }
 
 // setup the grid after the page has finished loading
-const gridDiv = document.querySelector<HTMLElement>("#myGrid")!;
+const gridDiv = document.querySelector<HTMLElement>('#myGrid')!;
 new Grid(gridDiv, gridOptions);
 
-fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
   .then((response) => response.json())
   .then((data) => gridOptions.api!.setRowData(data));
 
-if (typeof window !== "undefined") {
+if (typeof window !== 'undefined') {
   // Attach external event handlers to window so they can be called from index.html
   (<any>window).onBtSaveSortState = onBtSaveSortState;
   (<any>window).onBtRestoreSortState = onBtRestoreSortState;
-  (<any>window).onBtSaveOrderAndVisibilityState =
-    onBtSaveOrderAndVisibilityState;
-  (<any>window).onBtRestoreOrderAndVisibilityState =
-    onBtRestoreOrderAndVisibilityState;
+  (<any>(
+    window
+  )).onBtSaveOrderAndVisibilityState = onBtSaveOrderAndVisibilityState;
+  (<any>(
+    window
+  )).onBtRestoreOrderAndVisibilityState = onBtRestoreOrderAndVisibilityState;
 }

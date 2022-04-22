@@ -1,14 +1,14 @@
 const gridOptions = {
   columnDefs: [
-    { field: "country", rowGroup: true, hide: true },
-    { field: "sport", rowGroup: true, hide: true },
-    { field: "age", minWidth: 120, aggFunc: "sum" },
-    { field: "year", maxWidth: 120 },
-    { field: "date", minWidth: 150 },
-    { field: "gold", aggFunc: "sum" },
-    { field: "silver", aggFunc: "sum" },
-    { field: "bronze", aggFunc: "sum" },
-    { field: "total", aggFunc: "sum" },
+    { field: 'country', rowGroup: true, hide: true },
+    { field: 'sport', rowGroup: true, hide: true },
+    { field: 'age', minWidth: 120, aggFunc: 'sum' },
+    { field: 'year', maxWidth: 120 },
+    { field: 'date', minWidth: 150 },
+    { field: 'gold', aggFunc: 'sum' },
+    { field: 'silver', aggFunc: 'sum' },
+    { field: 'bronze', aggFunc: 'sum' },
+    { field: 'total', aggFunc: 'sum' },
   ],
   defaultColDef: {
     flex: 1,
@@ -17,15 +17,15 @@ const gridOptions = {
     resizable: true,
   },
   autoGroupColumnDef: {
-    headerName: "Athlete",
-    field: "athlete",
+    headerName: 'Athlete',
+    field: 'athlete',
     minWidth: 250,
-    cellRenderer: "agGroupCellRenderer",
+    cellRenderer: 'agGroupCellRenderer',
     cellRendererParams: {
       checkbox: true,
     },
   },
-  rowSelection: "multiple",
+  rowSelection: 'multiple',
   groupSelectsChildren: true,
   groupSelectsFiltered: true,
   suppressAggFuncInHeader: true,
@@ -35,8 +35,8 @@ const gridOptions = {
 function filterSwimming() {
   gridOptions.api.setFilterModel({
     sport: {
-      type: "set",
-      values: ["Swimming"],
+      type: 'set',
+      values: ['Swimming'],
     },
   });
 }
@@ -44,8 +44,8 @@ function filterSwimming() {
 function ages16And20() {
   gridOptions.api.setFilterModel({
     age: {
-      type: "set",
-      values: ["16", "20"],
+      type: 'set',
+      values: ['16', '20'],
     },
   });
 }
@@ -55,11 +55,11 @@ function clearFilter() {
 }
 
 // setup the grid after the page has finished loading
-document.addEventListener("DOMContentLoaded", function () {
-  var gridDiv = document.querySelector("#myGrid");
+document.addEventListener('DOMContentLoaded', function () {
+  var gridDiv = document.querySelector('#myGrid');
   new agGrid.Grid(gridDiv, gridOptions);
 
-  fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+  fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
     .then((response) => response.json())
     .then((data) => gridOptions.api.setRowData(data));
 });

@@ -1,15 +1,16 @@
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
 import {
+  GetRowIdParams,
   Grid,
   GridOptions,
   ICellRendererComp,
   ICellRendererParams,
   ModuleRegistry,
   RowNode,
-} from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { RowGroupingModule } from "@ag-grid-enterprise/row-grouping";
+} from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { RowGroupingModule } from '@ag-grid-enterprise/row-grouping';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([ClientSideRowModelModule, RowGroupingModule]);
@@ -18,19 +19,19 @@ declare var window: any;
 const gridOptions: GridOptions = {
   columnDefs: [
     {
-      field: "dateModified",
+      field: 'dateModified',
       minWidth: 250,
       comparator: function (d1, d2) {
         return new Date(d1).getTime() < new Date(d2).getTime() ? -1 : 1;
       },
     },
     {
-      field: "size",
-      aggFunc: "sum",
+      field: 'size',
+      aggFunc: 'sum',
       valueFormatter: function (params) {
         return params.value
-          ? Math.round(params.value * 10) / 10 + " MB"
-          : "0 MB";
+          ? Math.round(params.value * 10) / 10 + ' MB'
+          : '0 MB';
       },
     },
   ],
@@ -41,7 +42,7 @@ const gridOptions: GridOptions = {
     resizable: true,
   },
   autoGroupColumnDef: {
-    headerName: "Files",
+    headerName: 'Files',
     minWidth: 330,
     cellRendererParams: {
       checkbox: true,
@@ -53,10 +54,10 @@ const gridOptions: GridOptions = {
   treeData: true,
   animateRows: true,
   groupDefaultExpanded: -1,
-  getDataPath: function (data) {
+  getDataPath: function (data: any) {
     return data.filePath;
   },
-  getRowId: function (params) {
+  getRowId: function (params: GetRowIdParams) {
     return params.data.id;
   },
 };
@@ -75,7 +76,7 @@ function getFileCellRenderer() {
     eGui: any;
 
     init(params: ICellRendererParams) {
-      var tempDiv = document.createElement("div");
+      var tempDiv = document.createElement('div');
       var value = params.value;
       var icon = getFileIcon(params.value);
       tempDiv.innerHTML = icon
@@ -84,7 +85,7 @@ function getFileCellRenderer() {
           '"></i>' +
           '<span class="filename"></span>' +
           value +
-          "</span>"
+          '</span>'
         : value;
       this.eGui = tempDiv.firstChild;
     }
@@ -105,8 +106,8 @@ function addNewGroup() {
   var newGroupData = [
     {
       id: getNextId(),
-      filePath: ["Music", "wav", "hit_" + new Date().getTime() + ".wav"],
-      dateModified: "Aug 23 2017 11:52:00 PM",
+      filePath: ['Music', 'wav', 'hit_' + new Date().getTime() + '.wav'],
+      dateModified: 'Aug 23 2017 11:52:00 PM',
       size: 58.9,
     },
   ];
@@ -116,7 +117,7 @@ function addNewGroup() {
 function removeSelected() {
   var selectedNode = gridOptions.api!.getSelectedNodes()[0]; // single selection
   if (!selectedNode) {
-    console.warn("No nodes selected!");
+    console.warn('No nodes selected!');
     return;
   }
 
@@ -137,7 +138,7 @@ function getRowsToRemove(node: RowNode) {
 function moveSelectedNodeToTarget(targetRowId: string) {
   var selectedNode = gridOptions.api!.getSelectedNodes()[0]; // single selection
   if (!selectedNode) {
-    console.warn("No nodes selected!");
+    console.warn('No nodes selected!');
     return;
   }
 
@@ -146,7 +147,7 @@ function moveSelectedNodeToTarget(targetRowId: string) {
     selectedNode.key === targetNode.key ||
     isSelectionParentOfTarget(selectedNode, targetNode);
   if (invalidMove) {
-    console.warn("Invalid selection - must not be parent or same as target!");
+    console.warn('Invalid selection - must not be parent or same as target!');
     return;
   }
 
@@ -183,15 +184,15 @@ function getRowsToUpdate(node: RowNode, parentPath: string[]) {
 }
 
 function getFileIcon(name: string) {
-  return endsWith(name, ".mp3") || endsWith(name, ".wav")
-    ? "far fa-file-audio"
-    : endsWith(name, ".xls")
-    ? "far fa-file-excel"
-    : endsWith(name, ".txt")
-    ? "far fa-file"
-    : endsWith(name, ".pdf")
-    ? "far fa-file-pdf"
-    : "far fa-folder";
+  return endsWith(name, '.mp3') || endsWith(name, '.wav')
+    ? 'far fa-file-audio'
+    : endsWith(name, '.xls')
+    ? 'far fa-file-excel'
+    : endsWith(name, '.txt')
+    ? 'far fa-file'
+    : endsWith(name, '.pdf')
+    ? 'far fa-file-pdf'
+    : 'far fa-folder';
 }
 
 function endsWith(str: string | null, match: string | null) {
@@ -206,12 +207,12 @@ function endsWith(str: string | null, match: string | null) {
 // wait for the document to be loaded, otherwise
 // AG Grid will not find the div in the document.
 // lookup the container we want the Grid to use
-var eGridDiv = document.querySelector<HTMLElement>("#myGrid")!;
+var eGridDiv = document.querySelector<HTMLElement>('#myGrid')!;
 
 // create the grid passing in the div to use together with the columns & data we want to use
 new Grid(eGridDiv, gridOptions);
 
-if (typeof window !== "undefined") {
+if (typeof window !== 'undefined') {
   // Attach external event handlers to window so they can be called from index.html
   (<any>window).addNewGroup = addNewGroup;
   (<any>window).removeSelected = removeSelected;

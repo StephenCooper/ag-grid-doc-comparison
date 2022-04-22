@@ -1,9 +1,9 @@
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
-import { AgGridVue } from "ag-grid-vue3";
-import { createApp } from "vue";
-import CustomLoadingCellRenderer from "./customLoadingCellRendererVue.js";
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import 'ag-grid-enterprise';
+import { AgGridVue } from 'ag-grid-vue3';
+import { createApp } from 'vue';
+import CustomLoadingCellRenderer from './customLoadingCellRendererVue.js';
 
 const VueExample = {
   template: `
@@ -27,21 +27,21 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
     CustomLoadingCellRenderer,
   },
   data: function () {
     return {
       columnDefs: [
-        { field: "id" },
-        { field: "athlete", width: 150 },
-        { field: "age" },
-        { field: "country" },
-        { field: "year" },
-        { field: "sport" },
-        { field: "gold" },
-        { field: "silver" },
-        { field: "bronze" },
+        { field: 'id' },
+        { field: 'athlete', width: 150 },
+        { field: 'age' },
+        { field: 'country' },
+        { field: 'year' },
+        { field: 'sport' },
+        { field: 'gold' },
+        { field: 'silver' },
+        { field: 'bronze' },
       ],
       gridApi: null,
       columnApi: null,
@@ -62,12 +62,12 @@ const VueExample = {
     };
   },
   created() {
-    this.loadingCellRenderer = "CustomLoadingCellRenderer";
+    this.loadingCellRenderer = 'CustomLoadingCellRenderer';
     this.loadingCellRendererParams = {
-      loadingMessage: "One moment please...",
+      loadingMessage: 'One moment please...',
     };
-    this.rowModelType = "serverSide";
-    this.serverSideStoreType = "partial";
+    this.rowModelType = 'serverSide';
+    this.serverSideStoreType = 'partial';
     this.cacheBlockSize = 100;
     this.maxBlocksInCache = 10;
   },
@@ -87,7 +87,7 @@ const VueExample = {
         params.api.setServerSideDatasource(datasource);
       };
 
-      fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
         .then((resp) => resp.json())
         .then((data) => updateData(data));
     },
@@ -119,7 +119,7 @@ window.getFakeServer = function getFakeServer(allData) {
   return {
     getResponse: (request) => {
       console.log(
-        "asking for rows: " + request.startRow + " to " + request.endRow
+        'asking for rows: ' + request.startRow + ' to ' + request.endRow
       );
       // take a slice of the total rows
       const rowsThisPage = allData.slice(request.startRow, request.endRow);
@@ -135,4 +135,4 @@ window.getFakeServer = function getFakeServer(allData) {
   };
 };
 
-createApp(VueExample).mount("#app");
+createApp(VueExample).mount('#app');

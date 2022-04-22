@@ -1,9 +1,9 @@
-import { IFloatingFilterAngularComp } from "@ag-grid-community/angular";
-import { IFloatingFilterParams } from "@ag-grid-community/core";
-import { Component } from "@angular/core";
-import { YearFilter } from "./year-filter.component";
+import { IFloatingFilterAngularComp } from '@ag-grid-community/angular';
+import { IFloatingFilterParams } from '@ag-grid-community/core';
+import { Component } from '@angular/core';
+import { YearFilter } from './year-filter.component';
 @Component({
-  selector: "year-floating-filter",
+  selector: 'year-floating-filter',
   template: ` <div class="year-filter">
     <label>
       <input
@@ -26,8 +26,7 @@ import { YearFilter } from "./year-filter.component";
   </div>`,
 })
 export class YearFloatingFilter
-  implements IFloatingFilterAngularComp<YearFilter>
-{
+  implements IFloatingFilterAngularComp<YearFilter> {
   params!: IFloatingFilterParams<YearFilter>;
   isActive!: boolean;
 

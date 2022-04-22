@@ -1,11 +1,11 @@
-"use strict";
+'use strict';
 
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
-import { AgGridReact } from "ag-grid-react";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from 'ag-grid-react';
+import 'ag-grid-enterprise';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 
 class GridExample extends Component {
   constructor(props) {
@@ -13,14 +13,14 @@ class GridExample extends Component {
 
     this.state = {
       columnDefs: [
-        { checkboxSelection: true, field: "athlete", minWidth: 200 },
-        { field: "country", minWidth: 200 },
-        { headerName: "Group", valueGetter: "data.country.charAt(0)" },
-        { field: "sport", minWidth: 150 },
-        { field: "gold", hide: true },
-        { field: "silver", hide: true },
-        { field: "bronze", hide: true },
-        { field: "total", hide: true },
+        { checkboxSelection: true, field: 'athlete', minWidth: 200 },
+        { field: 'country', minWidth: 200 },
+        { headerName: 'Group', valueGetter: 'data.country.charAt(0)' },
+        { field: 'sport', minWidth: 150 },
+        { field: 'gold', hide: true },
+        { field: 'silver', hide: true },
+        { field: 'bronze', hide: true },
+        { field: 'total', hide: true },
       ],
       defaultColDef: {
         sortable: true,
@@ -29,7 +29,7 @@ class GridExample extends Component {
         minWidth: 100,
         flex: 1,
       },
-      rowSelection: "multiple",
+      rowSelection: 'multiple',
       rowData: null,
     };
   }
@@ -41,22 +41,22 @@ class GridExample extends Component {
     const updateData = (data) =>
       params.api.setRowData(data.filter((rec) => rec.country != null));
 
-    fetch("https://www.ag-grid.com/example-assets/small-olympic-winners.json")
+    fetch('https://www.ag-grid.com/example-assets/small-olympic-winners.json')
       .then((resp) => resp.json())
       .then((data) => updateData(data));
 
-    document.getElementById("selectedOnly").checked = true;
+    document.getElementById('selectedOnly').checked = true;
   };
 
   onBtExport = () => {
     this.gridApi.exportDataAsExcel({
-      onlySelected: document.querySelector("#selectedOnly").checked,
+      onlySelected: document.querySelector('#selectedOnly').checked,
     });
   };
 
   render() {
     return (
-      <div style={{ width: "100%", height: "100%" }}>
+      <div style={{ width: '100%', height: '100%' }}>
         <div className="container">
           <div className="columns">
             <label className="option" for="selectedOnly">
@@ -66,7 +66,7 @@ class GridExample extends Component {
             <div>
               <button
                 onClick={() => this.onBtExport()}
-                style={{ fontWeight: "bold" }}
+                style={{ fontWeight: 'bold' }}
               >
                 Export to Excel
               </button>
@@ -75,8 +75,8 @@ class GridExample extends Component {
           <div className="grid-wrapper">
             <div
               style={{
-                height: "100%",
-                width: "100%",
+                height: '100%',
+                width: '100%',
               }}
               className="ag-theme-alpine"
             >
@@ -96,4 +96,4 @@ class GridExample extends Component {
   }
 }
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

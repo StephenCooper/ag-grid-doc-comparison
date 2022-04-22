@@ -3,16 +3,16 @@ import {
   ColumnApi,
   GridReadyEvent,
   SideBarDef,
-} from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { HttpClient } from "@angular/common/http";
-import { Component } from "@angular/core";
+} from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { HttpClient } from '@angular/common/http';
+import { Component } from '@angular/core';
 // Required feature modules are registered in app.module.ts
 declare var window: any;
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<div class="test-container">
     <div class="test-header">
       <div class="example-section">
@@ -38,16 +38,16 @@ export class AppComponent {
   private gridColumnApi!: ColumnApi;
 
   public columnDefs: ColDef[] = [
-    { field: "athlete" },
-    { field: "age" },
-    { field: "country" },
-    { field: "sport" },
-    { field: "year" },
-    { field: "date" },
-    { field: "gold" },
-    { field: "silver" },
-    { field: "bronze" },
-    { field: "total" },
+    { field: 'athlete' },
+    { field: 'age' },
+    { field: 'country' },
+    { field: 'sport' },
+    { field: 'year' },
+    { field: 'date' },
+    { field: 'gold' },
+    { field: 'silver' },
+    { field: 'bronze' },
+    { field: 'total' },
   ];
   public defaultColDef: ColDef = {
     sortable: true,
@@ -57,42 +57,42 @@ export class AppComponent {
     enablePivot: true,
     enableValue: true,
   };
-  public sideBar: SideBarDef | string | boolean | null = {
-    toolPanels: ["columns"],
+  public sideBar: SideBarDef | string | string[] | boolean | null = {
+    toolPanels: ['columns'],
   };
-  public rowGroupPanelShow = "always";
-  public pivotPanelShow = "always";
+  public rowGroupPanelShow = 'always';
+  public pivotPanelShow = 'always';
   public rowData!: any[];
 
   constructor(private http: HttpClient) {}
 
   saveState() {
     window.colState = this.gridColumnApi.getColumnState();
-    console.log("column state saved");
+    console.log('column state saved');
   }
 
   restoreState() {
     if (!window.colState) {
-      console.log("no columns state to restore by, you must save state first");
+      console.log('no columns state to restore by, you must save state first');
       return;
     }
     this.gridColumnApi.applyColumnState({
       state: window.colState,
       applyOrder: true,
     });
-    console.log("column state restored");
+    console.log('column state restored');
   }
 
   resetState() {
     this.gridColumnApi.resetColumnState();
-    console.log("column state reset");
+    console.log('column state reset');
   }
 
   onGridReady(params: GridReadyEvent) {
     this.gridColumnApi = params.columnApi;
 
     this.http
-      .get<any[]>("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      .get<any[]>('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .subscribe((data) => (this.rowData = data));
   }
 }

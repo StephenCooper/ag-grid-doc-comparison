@@ -1,6 +1,7 @@
 import {
   ColDef,
   GetRowIdFunc,
+  GetRowIdParams,
   GridApi,
   GridReadyEvent,
   ICellRendererParams,
@@ -9,14 +10,14 @@ import {
   RowClassParams,
   RowStyle,
   ValueFormatterParams,
-} from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { Component } from "@angular/core";
+} from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { Component } from '@angular/core';
 // Required feature modules are registered in app.module.ts
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<div style="display: flex; flex-direction: column; height: 100%;">
     <div style="margin-bottom: 10px;">
       <button (click)="insertItemsAt2AndRefresh(5)">Insert Rows</button>
@@ -57,9 +58,9 @@ export class AppComponent {
 
   public columnDefs: ColDef[] = [
     {
-      headerName: "Item ID",
-      field: "id",
-      valueGetter: "node.id",
+      headerName: 'Item ID',
+      field: 'id',
+      valueGetter: 'node.id',
       cellRenderer: function (params: ICellRendererParams) {
         if (params.value !== undefined) {
           return params.value;
@@ -68,17 +69,17 @@ export class AppComponent {
         }
       },
     },
-    { field: "make" },
-    { field: "model" },
+    { field: 'make' },
+    { field: 'model' },
     {
-      field: "price",
+      field: 'price',
       valueFormatter: valueFormatter,
     },
   ];
   public datasource: IDatasource = {
     rowCount: undefined,
     getRows: function (params: IGetRowsParams) {
-      console.log("asking for " + params.startRow + " to " + params.endRow);
+      console.log('asking for ' + params.startRow + ' to ' + params.endRow);
       // At this point in your code, you would call the server.
       // To make the demo look real, wait for 500ms before returning
       setTimeout(function () {
@@ -104,24 +105,27 @@ export class AppComponent {
   public defaultColDef: ColDef = {
     resizable: true,
   };
-  public rowSelection = "multiple";
-  public rowModelType = "infinite";
+  public rowSelection = 'multiple';
+  public rowModelType = 'infinite';
   public maxBlocksInCache = 2;
   public infiniteInitialRowCount = 500;
   public maxConcurrentDatasourceRequests = 2;
-  public getRowId: GetRowIdFunc = function (params) {
+  public getRowId: GetRowIdFunc = function (params: GetRowIdParams) {
     return params.data.id.toString();
   };
-  public getRowStyle: (params: RowClassParams) => RowStyle | undefined =
-    function (params: RowClassParams) {
-      if (params.data && params.data.make === "Honda") {
-        return {
-          fontWeight: "bold",
-        };
-      } else {
-        return undefined;
-      }
-    };
+  public getRowStyle: (
+    params: RowClassParams
+  ) => RowStyle | undefined = function (
+    params: RowClassParams
+  ): RowStyle | undefined {
+    if (params.data && params.data.make === 'Honda') {
+      return {
+        fontWeight: 'bold',
+      };
+    } else {
+      return undefined;
+    }
+  };
   public rowData!: any[];
 
   insertItemsAt2AndRefresh(count: number) {
@@ -161,10 +165,10 @@ export class AppComponent {
 
   rowsAndMaxFound() {
     console.log(
-      "getInfiniteRowCount() => " + this.gridApi.getInfiniteRowCount()
+      'getInfiniteRowCount() => ' + this.gridApi.getInfiniteRowCount()
     );
     console.log(
-      "isLastRowIndexKnown() => " + this.gridApi.isLastRowIndexKnown()
+      'isLastRowIndexKnown() => ' + this.gridApi.isLastRowIndexKnown()
     );
   }
 
@@ -182,7 +186,7 @@ export class AppComponent {
   }
 
   printCacheState() {
-    console.log("*** Cache State ***");
+    console.log('*** Cache State ***');
     console.log(this.gridApi.getCacheBlockState());
   }
 
@@ -207,8 +211,8 @@ export class AppComponent {
 }
 
 const valueFormatter = function (params: ValueFormatterParams) {
-  if (typeof params.value === "number") {
-    return "£" + params.value.toLocaleString();
+  if (typeof params.value === 'number') {
+    return '£' + params.value.toLocaleString();
   } else {
     return params.value;
   }
@@ -217,15 +221,15 @@ const valueFormatter = function (params: ValueFormatterParams) {
 var sequenceId = 0;
 var allOfTheData: any[] = [];
 function createRowData(id: number) {
-  const makes = ["Toyota", "Ford", "Porsche", "Chevy", "Honda", "Nissan"];
+  const makes = ['Toyota', 'Ford', 'Porsche', 'Chevy', 'Honda', 'Nissan'];
   const models = [
-    "Cruze",
-    "Celica",
-    "Mondeo",
-    "Boxter",
-    "Genesis",
-    "Accord",
-    "Taurus",
+    'Cruze',
+    'Celica',
+    'Mondeo',
+    'Boxster',
+    'Genesis',
+    'Accord',
+    'Taurus',
   ];
   return {
     id: id,

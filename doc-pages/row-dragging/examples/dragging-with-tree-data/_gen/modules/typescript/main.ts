@@ -1,29 +1,30 @@
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
 import {
+  GetRowIdParams,
   Grid,
   GridOptions,
   ModuleRegistry,
   RowDragEndEvent,
   RowNode,
   ValueFormatterParams,
-} from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { RowGroupingModule } from "@ag-grid-enterprise/row-grouping";
+} from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { RowGroupingModule } from '@ag-grid-enterprise/row-grouping';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([ClientSideRowModelModule, RowGroupingModule]);
 declare var FileCellRenderer: any;
 
 var valueFormatter = function (params: ValueFormatterParams) {
-  return params.value ? params.value + " MB" : "";
+  return params.value ? params.value + ' MB' : '';
 };
 
 const gridOptions: GridOptions = {
   columnDefs: [
-    { field: "dateModified" },
+    { field: 'dateModified' },
     {
-      field: "size",
+      field: 'size',
       valueFormatter: valueFormatter,
     },
   ],
@@ -35,15 +36,15 @@ const gridOptions: GridOptions = {
   treeData: true,
   animateRows: true,
   groupDefaultExpanded: -1,
-  getDataPath: function (data) {
+  getDataPath: function (data: any) {
     return data.filePath;
   },
-  getRowId: function (params) {
+  getRowId: function (params: GetRowIdParams) {
     return params.data.id;
   },
   autoGroupColumnDef: {
     rowDrag: true,
-    headerName: "Files",
+    headerName: 'Files',
     minWidth: 300,
     cellRendererParams: {
       suppressCount: true,
@@ -62,7 +63,7 @@ function onRowDragEnd(event: RowDragEndEvent) {
 
   // folder to drop into is where we are going to move the file/folder to
   var folderToDropInto =
-    overNode.data.type === "folder"
+    overNode.data.type === 'folder'
       ? // if over a folder, we take the immediate row
         overNode
       : // if over a file, we take the parent row (which will be a folder)
@@ -81,7 +82,7 @@ function onRowDragEnd(event: RowDragEndEvent) {
   // check we are not moving a folder into a child folder
   var invalidMode = isSelectionParentOfTarget(event.node, folderToDropInto);
   if (invalidMode) {
-    console.log("invalid move");
+    console.log('invalid move');
   }
 
   if (needToChangeParent && !invalidMode) {
@@ -166,7 +167,7 @@ function arePathsEqual(path1: string[], path2: string[]) {
 // wait for the document to be loaded, otherwise
 // AG Grid will not find the div in the document.
 // lookup the container we want the Grid to use
-var eGridDiv = document.querySelector<HTMLElement>("#myGrid")!;
+var eGridDiv = document.querySelector<HTMLElement>('#myGrid')!;
 
 // create the grid passing in the div to use together with the columns & data we want to use
 new Grid(eGridDiv, gridOptions);

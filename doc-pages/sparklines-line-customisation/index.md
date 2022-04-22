@@ -141,10 +141,11 @@ sparklineOptions: {
 
 Below is an example to show crosshair customisation. Note that:
 
-- The sparklines in the `Change` column have been configured so that both the vertical and horizontal crosshairs (xLine and yLine) are displayed as a dashed grey line.
-- The sparklines in the `Rate Of Change` column have been configured so that no crosshairs are displayed when the sparklines are hovered.
+- The sparklines in the **Change** column have been configured so that both the vertical and horizontal crosshairs (xLine and yLine) are displayed as a dashed grey line.
+- The sparklines in the **Rate Of Change** column have been configured so that no crosshairs are displayed when the sparklines are hovered.
 
 <grid-example title='Sparkline Crosshairs' name='sparkline-crosshairs' type='generated' options='{ "enterprise": true, "exampleHeight": 585, "modules": ["clientside", "sparklines"] }'></grid-example>
+
 
 ## Sparkline Padding Options
 
@@ -193,5 +194,6 @@ More advanced customisations are discussed separately in the following sections:
 <api-documentation source='sparklines-line-customisation/resources/line-sparkline-api.json' section='SparklineAxisOptions'></api-documentation>
 
 ## Next Up
+
 
 Continue to the next section to learn about: [Sparkline Data](/sparklines-data/).

@@ -1,12 +1,12 @@
-import { ICellRendererComp, ICellRendererParams } from "ag-grid-community";
+import { ICellRendererComp, ICellRendererParams } from 'ag-grid-community';
 
 export class CountryCellRenderer implements ICellRendererComp {
   eGui!: HTMLDivElement;
 
   init(params: ICellRendererParams) {
-    this.eGui = document.createElement("div");
+    this.eGui = document.createElement('div');
 
-    if (!params.value || params.value === "(Select All)") {
+    if (!params.value || params.value === '(Select All)') {
       this.eGui.innerHTML = params.value;
     } else {
       const url = `https://flags.fmcdn.net/data/flags/mini/${

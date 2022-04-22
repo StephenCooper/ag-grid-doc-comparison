@@ -4,22 +4,22 @@ var colSpan = function (params) {
 
 const columnDefs = [
   {
-    headerName: "A",
-    field: "author",
+    headerName: 'A',
+    field: 'author',
     width: 300,
     colSpan: colSpan,
   },
   {
-    headerName: "Flexed Columns",
+    headerName: 'Flexed Columns',
     children: [
       {
-        headerName: "B",
+        headerName: 'B',
         minWidth: 200,
         maxWidth: 350,
         flex: 2,
       },
       {
-        headerName: "C",
+        headerName: 'C',
         flex: 1,
       },
     ],
@@ -28,11 +28,11 @@ const columnDefs = [
 
 function fillAllCellsWithWidthMeasurement() {
   Array.prototype.slice
-    .call(document.querySelectorAll(".ag-cell"))
+    .call(document.querySelectorAll('.ag-cell'))
     .forEach(function (cell) {
       var width = cell.offsetWidth;
       var isFullWidthRow = cell.parentElement.childNodes.length === 1;
-      cell.textContent = (isFullWidthRow ? "Total width: " : "") + width + "px";
+      cell.textContent = (isFullWidthRow ? 'Total width: ' : '') + width + 'px';
     });
 }
 
@@ -48,7 +48,7 @@ const gridOptions = {
 };
 
 // setup the grid after the page has finished loading
-document.addEventListener("DOMContentLoaded", function () {
-  var gridDiv = document.querySelector("#myGrid");
+document.addEventListener('DOMContentLoaded', function () {
+  var gridDiv = document.querySelector('#myGrid');
   new agGrid.Grid(gridDiv, gridOptions);
 });

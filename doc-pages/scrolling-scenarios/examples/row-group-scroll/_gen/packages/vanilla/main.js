@@ -1,16 +1,16 @@
 const columnDefs = [
-  { field: "athlete", width: 150, rowGroupIndex: 0 },
-  { field: "age", width: 90, rowGroupIndex: 1 },
-  { field: "country", width: 120, rowGroupIndex: 2 },
-  { field: "year", width: 90 },
-  { field: "date", width: 110, rowGroupIndex: 2 },
+  { field: 'athlete', width: 150, rowGroupIndex: 0 },
+  { field: 'age', width: 90, rowGroupIndex: 1 },
+  { field: 'country', width: 120, rowGroupIndex: 2 },
+  { field: 'year', width: 90 },
+  { field: 'date', width: 110, rowGroupIndex: 2 },
 ];
 
 const gridOptions = {
   columnDefs: columnDefs,
   rowData: null,
   animateRows: false,
-  groupDisplayType: "groupRows",
+  groupDisplayType: 'groupRows',
   onRowGroupOpened: onRowGroupOpened,
   defaultColDef: {
     editable: true,
@@ -33,11 +33,11 @@ function onRowGroupOpened(event) {
 }
 
 // setup the grid after the page has finished loading
-document.addEventListener("DOMContentLoaded", function () {
-  var gridDiv = document.querySelector("#myGrid");
+document.addEventListener('DOMContentLoaded', function () {
+  var gridDiv = document.querySelector('#myGrid');
   new agGrid.Grid(gridDiv, gridOptions);
 
-  fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+  fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
     .then((response) => response.json())
     .then((data) => gridOptions.api.setRowData(data));
 });

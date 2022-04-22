@@ -1,16 +1,16 @@
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
 import {
   ColDef,
   Grid,
   GridOptions,
   ModuleRegistry,
-} from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { RangeSelectionModule } from "@ag-grid-enterprise/range-selection";
-import { StatusBarModule } from "@ag-grid-enterprise/status-bar";
-import { ClickableStatusBarComponent } from "./clickableStatusBarComponent";
-import { CountStatusBarComponent } from "./countStatusBarComponent";
+} from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { RangeSelectionModule } from '@ag-grid-enterprise/range-selection';
+import { StatusBarModule } from '@ag-grid-enterprise/status-bar';
+import { ClickableStatusBarComponent } from './clickableStatusBarComponent';
+import { CountStatusBarComponent } from './countStatusBarComponent';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([
@@ -21,10 +21,10 @@ ModuleRegistry.registerModules([
 
 const columnDefs: ColDef[] = [
   {
-    field: "row",
+    field: 'row',
   },
   {
-    field: "name",
+    field: 'name',
   },
 ];
 
@@ -39,23 +39,23 @@ const gridOptions: GridOptions = {
   },
   columnDefs: columnDefs,
   rowData: [
-    { row: "Row 1", name: "Michael Phelps" },
-    { row: "Row 2", name: "Natalie Coughlin" },
-    { row: "Row 3", name: "Aleksey Nemov" },
-    { row: "Row 4", name: "Alicia Coutts" },
-    { row: "Row 5", name: "Missy Franklin" },
-    { row: "Row 6", name: "Ryan Lochte" },
-    { row: "Row 7", name: "Allison Schmitt" },
-    { row: "Row 8", name: "Natalie Coughlin" },
-    { row: "Row 9", name: "Ian Thorpe" },
-    { row: "Row 10", name: "Bob Mill" },
-    { row: "Row 11", name: "Willy Walsh" },
-    { row: "Row 12", name: "Sarah McCoy" },
-    { row: "Row 13", name: "Jane Jack" },
-    { row: "Row 14", name: "Tina Wills" },
+    { row: 'Row 1', name: 'Michael Phelps' },
+    { row: 'Row 2', name: 'Natalie Coughlin' },
+    { row: 'Row 3', name: 'Aleksey Nemov' },
+    { row: 'Row 4', name: 'Alicia Coutts' },
+    { row: 'Row 5', name: 'Missy Franklin' },
+    { row: 'Row 6', name: 'Ryan Lochte' },
+    { row: 'Row 7', name: 'Allison Schmitt' },
+    { row: 'Row 8', name: 'Natalie Coughlin' },
+    { row: 'Row 9', name: 'Ian Thorpe' },
+    { row: 'Row 10', name: 'Bob Mill' },
+    { row: 'Row 11', name: 'Willy Walsh' },
+    { row: 'Row 12', name: 'Sarah McCoy' },
+    { row: 'Row 13', name: 'Jane Jack' },
+    { row: 'Row 14', name: 'Tina Wills' },
   ],
   enableRangeSelection: true,
-  rowSelection: "multiple",
+  rowSelection: 'multiple',
   statusBar: {
     statusPanels: [
       {
@@ -65,9 +65,9 @@ const gridOptions: GridOptions = {
         statusPanel: ClickableStatusBarComponent,
       },
       {
-        statusPanel: "agAggregationComponent",
+        statusPanel: 'agAggregationComponent',
         statusPanelParams: {
-          aggFuncs: ["count", "sum"],
+          aggFuncs: ['count', 'sum'],
         },
       },
     ],
@@ -75,6 +75,6 @@ const gridOptions: GridOptions = {
 };
 
 // setup the grid after the page has finished loading
-const gridDiv = document.querySelector<HTMLElement>("#myGrid")!;
+const gridDiv = document.querySelector<HTMLElement>('#myGrid')!;
 new Grid(gridDiv, gridOptions);
 gridOptions.api!.sizeColumnsToFit();

@@ -1,12 +1,12 @@
-import { Component } from "@angular/core";
-import { ColDef, GridReadyEvent, SideBarDef } from "ag-grid-community";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
+import { Component } from '@angular/core';
+import { ColDef, GridReadyEvent, SideBarDef } from 'ag-grid-community';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import 'ag-grid-enterprise';
 declare var CustomTooltip: any;
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<ag-grid-angular
     style="width: 100%; height: 100%;"
     class="ag-theme-alpine"
@@ -21,29 +21,29 @@ declare var CustomTooltip: any;
 export class AppComponent {
   public columnDefs: ColDef[] = [
     {
-      field: "colA",
-      tooltipField: "colA",
-      filter: "agSetColumnFilter",
+      field: 'colA',
+      tooltipField: 'colA',
+      filter: 'agSetColumnFilter',
     },
     {
-      field: "colB",
-      tooltipField: "colB",
-      filter: "agSetColumnFilter",
+      field: 'colB',
+      tooltipField: 'colB',
+      filter: 'agSetColumnFilter',
       filterParams: {
         showTooltips: true,
       },
     },
     {
-      field: "colC",
-      tooltipField: "colC",
+      field: 'colC',
+      tooltipField: 'colC',
       tooltipComponent: CustomTooltip,
-      filter: "agSetColumnFilter",
+      filter: 'agSetColumnFilter',
       filterParams: {
         showTooltips: true,
       },
     },
   ];
-  public sideBar: SideBarDef | string | boolean | null = "filters";
+  public sideBar: SideBarDef | string | string[] | boolean | null = 'filters';
   public defaultColDef: ColDef = {
     flex: 1,
     resizable: true,

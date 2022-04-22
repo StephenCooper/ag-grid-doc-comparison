@@ -1,8 +1,8 @@
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
-import { AgGridVue } from "ag-grid-vue";
-import Vue from "vue";
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import 'ag-grid-enterprise';
+import { AgGridVue } from 'ag-grid-vue';
+import Vue from 'vue';
 
 const VueExample = {
   template: `
@@ -21,29 +21,29 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
         {
-          headerName: "Country",
+          headerName: 'Country',
           minWidth: 200,
-          showRowGroup: "country",
-          cellRenderer: "agGroupCellRenderer",
+          showRowGroup: 'country',
+          cellRenderer: 'agGroupCellRenderer',
         },
         {
-          headerName: "Year",
+          headerName: 'Year',
           minWidth: 200,
-          showRowGroup: "year",
-          cellRenderer: "agGroupCellRenderer",
+          showRowGroup: 'year',
+          cellRenderer: 'agGroupCellRenderer',
         },
-        { field: "country", rowGroup: true, hide: true },
-        { field: "year", rowGroup: true, hide: true },
-        { field: "athlete", minWidth: 220 },
-        { field: "gold" },
-        { field: "silver" },
-        { field: "bronze" },
+        { field: 'country', rowGroup: true, hide: true },
+        { field: 'year', rowGroup: true, hide: true },
+        { field: 'athlete', minWidth: 220 },
+        { field: 'gold' },
+        { field: 'silver' },
+        { field: 'bronze' },
       ],
       gridApi: null,
       columnApi: null,
@@ -58,7 +58,7 @@ const VueExample = {
     };
   },
   created() {
-    this.groupDisplayType = "custom";
+    this.groupDisplayType = 'custom';
   },
   methods: {
     onGridReady(params) {
@@ -67,7 +67,7 @@ const VueExample = {
 
       const updateData = (data) => params.api.setRowData(data);
 
-      fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
         .then((resp) => resp.json())
         .then((data) => updateData(data));
     },
@@ -75,8 +75,8 @@ const VueExample = {
 };
 
 new Vue({
-  el: "#app",
+  el: '#app',
   components: {
-    "my-component": VueExample,
+    'my-component': VueExample,
   },
 });

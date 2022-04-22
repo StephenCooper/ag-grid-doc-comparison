@@ -11,7 +11,7 @@ export default {
   },
   methods: {
     onInputBoxChanged() {
-      if (this.currentValue === "") {
+      if (this.currentValue === '') {
         // Remove the filter
         this.params.parentFilterInstance((instance) => {
           instance.myMethodForTakingValueFromFloatingFilter(null);
@@ -27,7 +27,7 @@ export default {
     onParentModelChanged(parentModel) {
       // When the filter is empty we will receive a null value here
       if (!parentModel) {
-        this.currentValue = "";
+        this.currentValue = '';
       } else {
         this.currentValue = parentModel;
       }

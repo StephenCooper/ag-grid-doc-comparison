@@ -1,23 +1,23 @@
-"use strict";
+'use strict';
 
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import { AgGridReact } from "ag-grid-react";
-import React, { useCallback, useMemo, useRef, useState } from "react";
-import { render } from "react-dom";
-import PartialMatchFilter from "./partialMatchFilter.jsx";
+import React, { useCallback, useMemo, useRef, useState } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from 'ag-grid-react';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import PartialMatchFilter from './partialMatchFilter.jsx';
 
 const GridExample = () => {
   const gridRef = useRef();
-  const containerStyle = useMemo(() => ({ width: "100%", height: "100%" }), []);
-  const gridStyle = useMemo(() => ({ height: "100%", width: "100%" }), []);
+  const containerStyle = useMemo(() => ({ width: '100%', height: '100%' }), []);
+  const gridStyle = useMemo(() => ({ height: '100%', width: '100%' }), []);
   const [rowData, setRowData] = useState(getData());
   const [columnDefs, setColumnDefs] = useState([
-    { field: "row" },
+    { field: 'row' },
     {
-      field: "name",
+      field: 'name',
       filter: PartialMatchFilter,
-      menuTabs: ["filterMenuTab"],
+      menuTabs: ['filterMenuTab'],
     },
   ]);
   const defaultColDef = useMemo(() => {
@@ -36,8 +36,8 @@ const GridExample = () => {
   }, []);
 
   const onClicked = useCallback(() => {
-    gridRef.current.api.getFilterInstance("name", function (instance) {
-      instance.componentMethod("Hello World!");
+    gridRef.current.api.getFilterInstance('name', function (instance) {
+      instance.componentMethod('Hello World!');
     });
   }, []);
 
@@ -45,7 +45,7 @@ const GridExample = () => {
     <div style={containerStyle}>
       <div className="example-wrapper">
         <button
-          style={{ marginBottom: "5px" }}
+          style={{ marginBottom: '5px' }}
           onClick={onClicked}
           className="btn btn-primary"
         >
@@ -66,4 +66,4 @@ const GridExample = () => {
   );
 };
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

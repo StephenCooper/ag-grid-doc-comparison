@@ -1,12 +1,12 @@
-import { Component } from "@angular/core";
-import { ColDef, GridReadyEvent, ICellRendererParams } from "ag-grid-community";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import { GenderRenderer } from "./gender-renderer.component";
-import { MoodRenderer } from "./mood-renderer.component";
+import { Component } from '@angular/core';
+import { ColDef, GridReadyEvent, ICellRendererParams } from 'ag-grid-community';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import { GenderRenderer } from './gender-renderer.component';
+import { MoodRenderer } from './mood-renderer.component';
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<ag-grid-angular
     style="width: 100%; height: 100%;"
     class="ag-theme-alpine"
@@ -18,32 +18,32 @@ import { MoodRenderer } from "./mood-renderer.component";
 })
 export class AppComponent {
   public rowData: any[] | null = [
-    { value: 14, type: "age" },
-    { value: "female", type: "gender" },
-    { value: "Happy", type: "mood" },
-    { value: 21, type: "age" },
-    { value: "male", type: "gender" },
-    { value: "Sad", type: "mood" },
+    { value: 14, type: 'age' },
+    { value: 'female', type: 'gender' },
+    { value: 'Happy', type: 'mood' },
+    { value: 21, type: 'age' },
+    { value: 'male', type: 'gender' },
+    { value: 'Sad', type: 'mood' },
   ];
   public columnDefs: ColDef[] = [
-    { field: "value" },
+    { field: 'value' },
     {
-      headerName: "Rendered Value",
-      field: "value",
+      headerName: 'Rendered Value',
+      field: 'value',
       cellRendererSelector: function (params: ICellRendererParams) {
         const moodDetails = {
           component: MoodRenderer,
         };
         const genderDetails = {
           component: GenderRenderer,
-          params: { values: ["Male", "Female"] },
+          params: { values: ['Male', 'Female'] },
         };
-        if (params.data.type === "gender") return genderDetails;
-        else if (params.data.type === "mood") return moodDetails;
+        if (params.data.type === 'gender') return genderDetails;
+        else if (params.data.type === 'mood') return moodDetails;
         else return undefined;
       },
     },
-    { field: "type" },
+    { field: 'type' },
   ];
   public defaultColDef: ColDef = {
     flex: 1,

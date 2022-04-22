@@ -1,8 +1,8 @@
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
-import { AgGridVue } from "ag-grid-vue";
-import Vue from "vue";
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import 'ag-grid-enterprise';
+import { AgGridVue } from 'ag-grid-vue';
+import Vue from 'vue';
 
 const VueExample = {
   template: `
@@ -26,26 +26,26 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
         {
-          field: "athlete",
+          field: 'athlete',
           minWidth: 170,
           checkboxSelection: checkboxSelection,
           headerCheckboxSelection: headerCheckboxSelection,
         },
-        { field: "age" },
-        { field: "country" },
-        { field: "year" },
-        { field: "date" },
-        { field: "sport" },
-        { field: "gold" },
-        { field: "silver" },
-        { field: "bronze" },
-        { field: "total" },
+        { field: 'age' },
+        { field: 'country' },
+        { field: 'year' },
+        { field: 'date' },
+        { field: 'sport' },
+        { field: 'gold' },
+        { field: 'silver' },
+        { field: 'bronze' },
+        { field: 'total' },
       ],
       gridApi: null,
       columnApi: null,
@@ -69,9 +69,9 @@ const VueExample = {
   },
   created() {
     this.autoGroupColumnDef = {
-      headerName: "Group",
+      headerName: 'Group',
       minWidth: 170,
-      field: "athlete",
+      field: 'athlete',
       valueGetter: (params) => {
         if (params.node.group) {
           return params.node.key;
@@ -80,14 +80,14 @@ const VueExample = {
         }
       },
       headerCheckboxSelection: true,
-      cellRenderer: "agGroupCellRenderer",
+      cellRenderer: 'agGroupCellRenderer',
       cellRendererParams: {
         checkbox: true,
       },
     };
-    this.rowSelection = "multiple";
-    this.rowGroupPanelShow = "always";
-    this.pivotPanelShow = "always";
+    this.rowSelection = 'multiple';
+    this.rowGroupPanelShow = 'always';
+    this.pivotPanelShow = 'always';
   },
   methods: {
     onGridReady(params) {
@@ -96,7 +96,7 @@ const VueExample = {
 
       const updateData = (data) => params.api.setRowData(data);
 
-      fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
         .then((resp) => resp.json())
         .then((data) => updateData(data));
     },
@@ -114,8 +114,8 @@ var headerCheckboxSelection = function (params) {
 };
 
 new Vue({
-  el: "#app",
+  el: '#app',
   components: {
-    "my-component": VueExample,
+    'my-component': VueExample,
   },
 });

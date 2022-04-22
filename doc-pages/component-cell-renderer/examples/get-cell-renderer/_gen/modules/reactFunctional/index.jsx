@@ -1,30 +1,30 @@
-"use strict";
+'use strict';
 
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { AgGridReact } from "@ag-grid-community/react";
-import React, { useCallback, useMemo, useRef, useState } from "react";
-import { render } from "react-dom";
-import MedalCellRenderer from "./medalCellRenderer.jsx";
+import React, { useCallback, useMemo, useRef, useState } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from '@ag-grid-community/react';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import MedalCellRenderer from './medalCellRenderer.jsx';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([ClientSideRowModelModule]);
 
 const GridExample = () => {
   const gridRef = useRef();
-  const containerStyle = useMemo(() => ({ width: "100%", height: "100%" }), []);
-  const gridStyle = useMemo(() => ({ height: "100%", width: "100%" }), []);
+  const containerStyle = useMemo(() => ({ width: '100%', height: '100%' }), []);
+  const gridStyle = useMemo(() => ({ height: '100%', width: '100%' }), []);
   const [rowData, setRowData] = useState();
   const [columnDefs, setColumnDefs] = useState([
-    { field: "athlete", width: 150 },
-    { field: "country", width: 150 },
-    { field: "year", width: 100 },
-    { field: "gold", width: 100, cellRenderer: MedalCellRenderer },
-    { field: "silver", width: 100, cellRenderer: MedalCellRenderer },
-    { field: "bronze", width: 100, cellRenderer: MedalCellRenderer },
-    { field: "total", width: 100 },
+    { field: 'athlete', width: 150 },
+    { field: 'country', width: 150 },
+    { field: 'year', width: 100 },
+    { field: 'gold', width: 100, cellRenderer: MedalCellRenderer },
+    { field: 'silver', width: 100, cellRenderer: MedalCellRenderer },
+    { field: 'bronze', width: 100, cellRenderer: MedalCellRenderer },
+    { field: 'total', width: 100 },
   ]);
   const defaultColDef = useMemo(() => {
     return {
@@ -38,7 +38,7 @@ const GridExample = () => {
   }, []);
 
   const onGridReady = useCallback((params) => {
-    fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+    fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .then((resp) => resp.json())
       .then((data) => {
         setRowData(data);
@@ -46,9 +46,9 @@ const GridExample = () => {
   }, []);
 
   const onCallGold = useCallback(() => {
-    console.log("=========> calling all gold");
+    console.log('=========> calling all gold');
     // pass in list of columns, here it's gold only
-    const params = { columns: ["gold"] };
+    const params = { columns: ['gold'] };
     const instances = gridRef.current.api.getCellRendererInstances(params);
     instances.forEach((instance) => {
       instance.medalUserFunction();
@@ -56,10 +56,10 @@ const GridExample = () => {
   }, []);
 
   const onFirstRowGold = useCallback(() => {
-    console.log("=========> calling gold row one");
+    console.log('=========> calling gold row one');
     // pass in one column and one row to identify one cell
     const firstRowNode = gridRef.current.api.getDisplayedRowAtIndex(0);
-    const params = { columns: ["gold"], rowNodes: [firstRowNode] };
+    const params = { columns: ['gold'], rowNodes: [firstRowNode] };
     const instances = gridRef.current.api.getCellRendererInstances(params);
     instances.forEach((instance) => {
       instance.medalUserFunction();
@@ -67,7 +67,7 @@ const GridExample = () => {
   }, []);
 
   const onCallAllCells = useCallback(() => {
-    console.log("=========> calling everything");
+    console.log('=========> calling everything');
     // no params, goes through all rows and columns where cell renderer exists
     const instances = gridRef.current.api.getCellRendererInstances();
     instances.forEach((instance) => {
@@ -78,7 +78,7 @@ const GridExample = () => {
   return (
     <div style={containerStyle}>
       <div className="example-wrapper">
-        <div style={{ marginBottom: "5px" }}>
+        <div style={{ marginBottom: '5px' }}>
           <button onClick={onCallGold}>Gold</button>
           <button onClick={onFirstRowGold}>First Row Gold</button>
           <button onClick={onCallAllCells}>All Cells</button>
@@ -98,4 +98,4 @@ const GridExample = () => {
   );
 };
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

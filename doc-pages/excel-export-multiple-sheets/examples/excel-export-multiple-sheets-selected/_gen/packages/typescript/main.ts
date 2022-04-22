@@ -1,17 +1,17 @@
-import { ColDef, Grid, GridOptions } from "ag-grid-community";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
+import { ColDef, Grid, GridOptions } from 'ag-grid-community';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import 'ag-grid-enterprise';
 
 const columnDefs: ColDef[] = [
-  { field: "athlete", minWidth: 200 },
-  { field: "age" },
-  { field: "country", minWidth: 200 },
-  { field: "year" },
-  { field: "date", minWidth: 150 },
-  { field: "sport", minWidth: 150 },
-  { field: "gold" },
-  { field: "silver" },
+  { field: 'athlete', minWidth: 200 },
+  { field: 'age' },
+  { field: 'country', minWidth: 200 },
+  { field: 'year' },
+  { field: 'date', minWidth: 150 },
+  { field: 'sport', minWidth: 150 },
+  { field: 'gold' },
+  { field: 'silver' },
 ];
 
 const gridOptions: GridOptions = {
@@ -24,7 +24,7 @@ const gridOptions: GridOptions = {
   },
 
   columnDefs: columnDefs,
-  rowSelection: "multiple",
+  rowSelection: 'multiple',
 };
 
 function onBtExport() {
@@ -63,14 +63,14 @@ function onBtExport() {
 }
 
 // setup the grid after the page has finished loading
-var gridDiv = document.querySelector<HTMLElement>("#myGrid")!;
+var gridDiv = document.querySelector<HTMLElement>('#myGrid')!;
 new Grid(gridDiv, gridOptions);
 
-fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
   .then((response) => response.json())
   .then((data) => gridOptions.api!.setRowData(data));
 
-if (typeof window !== "undefined") {
+if (typeof window !== 'undefined') {
   // Attach external event handlers to window so they can be called from index.html
   (<any>window).onBtExport = onBtExport;
 }

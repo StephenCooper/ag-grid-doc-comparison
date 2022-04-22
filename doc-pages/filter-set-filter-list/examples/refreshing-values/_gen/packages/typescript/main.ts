@@ -6,13 +6,13 @@ import {
   ISetFilter,
   ISetFilterParams,
   SetFilterValuesFuncParams,
-} from "ag-grid-community";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
+} from 'ag-grid-community';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import 'ag-grid-enterprise';
 
-var list1 = ["Elephant", "Lion", "Monkey"];
-var list2 = ["Elephant", "Giraffe", "Tiger"];
+var list1 = ['Elephant', 'Lion', 'Monkey'];
+var list2 = ['Elephant', 'Giraffe', 'Tiger'];
 
 var valuesArray = list1.slice();
 var valuesCallbackList = list1;
@@ -35,17 +35,17 @@ var callbackFilterParams: Partial<ISetFilterParams> = {
 const gridOptions: GridOptions = {
   columnDefs: [
     {
-      colId: "array",
-      headerName: "Values Array",
-      field: "animal",
-      filter: "agSetColumnFilter",
+      colId: 'array',
+      headerName: 'Values Array',
+      field: 'animal',
+      filter: 'agSetColumnFilter',
       filterParams: arrayFilterParams,
     },
     {
-      colId: "callback",
-      headerName: "Values Callback",
-      field: "animal",
-      filter: "agSetColumnFilter",
+      colId: 'callback',
+      headerName: 'Values Callback',
+      field: 'animal',
+      filter: 'agSetColumnFilter',
       filterParams: callbackFilterParams,
     },
   ],
@@ -54,48 +54,48 @@ const gridOptions: GridOptions = {
     filter: true,
     resizable: true,
   },
-  sideBar: "filters",
+  sideBar: 'filters',
   rowData: getData(),
   onFirstDataRendered: onFirstDataRendered,
 };
 
 function onFirstDataRendered(params: FirstDataRenderedEvent) {
-  (
-    params.api.getToolPanelInstance("filters") as any as IFiltersToolPanel
-  ).expandFilters();
+  ((params.api.getToolPanelInstance(
+    'filters'
+  ) as any) as IFiltersToolPanel).expandFilters();
 }
 
 function useList1() {
-  console.log("Updating values to " + list1);
+  console.log('Updating values to ' + list1);
   valuesArray.length = 0;
   list1.forEach(function (value) {
     valuesArray.push(value);
   });
 
-  var filter = gridOptions.api!.getFilterInstance("array") as ISetFilter;
+  var filter = gridOptions.api!.getFilterInstance('array') as ISetFilter;
   filter.refreshFilterValues();
 
   valuesCallbackList = list1;
 }
 
 function useList2() {
-  console.log("Updating values to " + list2);
+  console.log('Updating values to ' + list2);
   valuesArray.length = 0;
   list2.forEach(function (value) {
     valuesArray.push(value);
   });
 
-  var filter = gridOptions.api!.getFilterInstance("array") as ISetFilter;
+  var filter = gridOptions.api!.getFilterInstance('array') as ISetFilter;
   filter.refreshFilterValues();
 
   valuesCallbackList = list2;
 }
 
 // setup the grid after the page has finished loading
-var gridDiv = document.querySelector<HTMLElement>("#myGrid")!;
+var gridDiv = document.querySelector<HTMLElement>('#myGrid')!;
 new Grid(gridDiv, gridOptions);
 
-if (typeof window !== "undefined") {
+if (typeof window !== 'undefined') {
   // Attach external event handlers to window so they can be called from index.html
   (<any>window).useList1 = useList1;
   (<any>window).useList2 = useList2;

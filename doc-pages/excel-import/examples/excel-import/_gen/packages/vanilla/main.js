@@ -1,15 +1,15 @@
 const gridOptions = {
   columnDefs: [
-    { field: "athlete", minWidth: 180 },
-    { field: "age" },
-    { field: "country", minWidth: 150 },
-    { field: "year" },
-    { field: "date", minWidth: 130 },
-    { field: "sport", minWidth: 100 },
-    { field: "gold" },
-    { field: "silver" },
-    { field: "bronze" },
-    { field: "total" },
+    { field: 'athlete', minWidth: 180 },
+    { field: 'age' },
+    { field: 'country', minWidth: 150 },
+    { field: 'year' },
+    { field: 'date', minWidth: 130 },
+    { field: 'sport', minWidth: 100 },
+    { field: 'gold' },
+    { field: 'silver' },
+    { field: 'bronze' },
+    { field: 'total' },
   ],
 
   defaultColDef: {
@@ -24,8 +24,8 @@ const gridOptions = {
 // XMLHttpRequest in promise format
 function makeRequest(method, url, success, error) {
   var httpRequest = new XMLHttpRequest();
-  httpRequest.open("GET", url, true);
-  httpRequest.responseType = "arraybuffer";
+  httpRequest.open('GET', url, true);
+  httpRequest.responseType = 'arraybuffer';
 
   httpRequest.open(method, url);
   httpRequest.onload = function () {
@@ -47,9 +47,9 @@ function convertDataToWorkbook(dataRows) {
     arr[i] = String.fromCharCode(data[i]);
   }
 
-  var bstr = arr.join("");
+  var bstr = arr.join('');
 
-  return XLSX.read(bstr, { type: "binary" });
+  return XLSX.read(bstr, { type: 'binary' });
 }
 
 // pull out the values we're after, converting it into an array of rowData
@@ -61,16 +61,16 @@ function populateGrid(workbook) {
 
   // we expect the following columns to be present
   var columns = {
-    A: "athlete",
-    B: "age",
-    C: "country",
-    D: "year",
-    E: "date",
-    F: "sport",
-    G: "gold",
-    H: "silver",
-    I: "bronze",
-    J: "total",
+    A: 'athlete',
+    B: 'age',
+    C: 'country',
+    D: 'year',
+    E: 'date',
+    F: 'sport',
+    G: 'gold',
+    H: 'silver',
+    I: 'bronze',
+    J: 'total',
   };
 
   var rowData = [];
@@ -79,7 +79,7 @@ function populateGrid(workbook) {
   var rowIndex = 2;
 
   // iterate over the worksheet pulling out the columns we're expecting
-  while (worksheet["A" + rowIndex]) {
+  while (worksheet['A' + rowIndex]) {
     var row = {};
     Object.keys(columns).forEach(function (column) {
       row[columns[column]] = worksheet[column + rowIndex].w;
@@ -96,8 +96,8 @@ function populateGrid(workbook) {
 
 function importExcel() {
   makeRequest(
-    "GET",
-    "https://www.ag-grid.com/example-assets/olympic-data.xlsx",
+    'GET',
+    'https://www.ag-grid.com/example-assets/olympic-data.xlsx',
     // success
     function (data) {
       var workbook = convertDataToWorkbook(data);
@@ -113,9 +113,9 @@ function importExcel() {
 
 // wait for the document to be loaded, otherwise
 // AG Grid will not find the div in the document.
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener('DOMContentLoaded', function () {
   // lookup the container we want the Grid to use
-  var eGridDiv = document.querySelector("#myGrid");
+  var eGridDiv = document.querySelector('#myGrid');
 
   // create the grid passing in the div to use together with the columns & data we want to use
   new agGrid.Grid(eGridDiv, gridOptions);

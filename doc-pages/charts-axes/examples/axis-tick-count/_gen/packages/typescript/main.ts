@@ -1,14 +1,14 @@
-import * as agCharts from "ag-charts-community";
-import { AgCartesianChartOptions } from "ag-charts-community";
+import * as agCharts from 'ag-charts-community';
+import { AgCartesianChartOptions } from 'ag-charts-community';
 
 const options: AgCartesianChartOptions = {
-  container: document.getElementById("myChart"),
+  container: document.getElementById('myChart'),
   data: generateSpiralData(),
   series: [
     {
-      type: "line",
-      xKey: "x",
-      yKey: "y",
+      type: 'line',
+      xKey: 'x',
+      yKey: 'y',
       marker: {
         enabled: false,
       },
@@ -16,15 +16,15 @@ const options: AgCartesianChartOptions = {
   ],
   axes: [
     {
-      type: "number",
-      position: "bottom",
+      type: 'number',
+      position: 'bottom',
       tick: {
         count: 10,
       },
     },
     {
-      type: "number",
-      position: "left",
+      type: 'number',
+      position: 'left',
       tick: {
         count: 10,
       },
@@ -65,7 +65,7 @@ function generateSpiralData() {
   return data;
 }
 
-if (typeof window !== "undefined") {
+if (typeof window !== 'undefined') {
   // Attach external event handlers to window so they can be called from index.html
   (<any>window).setTickCountTo5 = setTickCountTo5;
   (<any>window).setTickCountTo10 = setTickCountTo10;

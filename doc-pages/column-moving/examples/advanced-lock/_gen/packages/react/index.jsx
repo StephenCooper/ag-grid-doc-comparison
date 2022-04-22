@@ -1,11 +1,11 @@
-"use strict";
+'use strict';
 
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import { AgGridReact } from "ag-grid-react";
-import React, { Component } from "react";
-import { render } from "react-dom";
-import ControlsCellRenderer from "./controlsCellRenderer.jsx";
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from 'ag-grid-react';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import ControlsCellRenderer from './controlsCellRenderer.jsx';
 
 class GridExample extends Component {
   constructor(props) {
@@ -14,29 +14,29 @@ class GridExample extends Component {
     this.state = {
       columnDefs: [
         {
-          lockPosition: true,
-          valueGetter: "node.rowIndex",
-          cellClass: "locked-col",
+          lockPosition: 'left',
+          valueGetter: 'node.rowIndex',
+          cellClass: 'locked-col',
           width: 60,
           suppressNavigable: true,
         },
         {
-          lockPosition: true,
+          lockPosition: 'left',
           cellRenderer: ControlsCellRenderer,
-          cellClass: "locked-col",
+          cellClass: 'locked-col',
           width: 120,
           suppressNavigable: true,
         },
-        { field: "athlete" },
-        { field: "age" },
-        { field: "country" },
-        { field: "year" },
-        { field: "date" },
-        { field: "sport" },
-        { field: "gold" },
-        { field: "silver" },
-        { field: "bronze" },
-        { field: "total" },
+        { field: 'athlete' },
+        { field: 'age' },
+        { field: 'country' },
+        { field: 'year' },
+        { field: 'date' },
+        { field: 'sport' },
+        { field: 'gold' },
+        { field: 'silver' },
+        { field: 'bronze' },
+        { field: 'total' },
       ],
       defaultColDef: {
         width: 150,
@@ -52,7 +52,7 @@ class GridExample extends Component {
 
     const updateData = (data) => params.api.setRowData(data);
 
-    fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+    fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .then((resp) => resp.json())
       .then((data) => updateData(data));
   };
@@ -64,7 +64,7 @@ class GridExample extends Component {
       (col) => !col.getColDef().lockPosition
     );
     const pinnedCount = allNonFixedCols.filter(
-      (col) => col.getPinned() === "left"
+      (col) => col.getPinned() === 'left'
     ).length;
     const pinFixed = pinnedCount > 0;
     const columnStates = [];
@@ -72,7 +72,7 @@ class GridExample extends Component {
       if (pinFixed !== col.isPinned()) {
         columnStates.push({
           colId: col.getId(),
-          pinned: pinFixed ? "left" : null,
+          pinned: pinFixed ? 'left' : null,
         });
       }
     });
@@ -83,19 +83,19 @@ class GridExample extends Component {
 
   onPinAthlete = () => {
     this.gridColumnApi.applyColumnState({
-      state: [{ colId: "athlete", pinned: "left" }],
+      state: [{ colId: 'athlete', pinned: 'left' }],
     });
   };
 
   onUnpinAthlete = () => {
     this.gridColumnApi.applyColumnState({
-      state: [{ colId: "athlete", pinned: null }],
+      state: [{ colId: 'athlete', pinned: null }],
     });
   };
 
   render() {
     return (
-      <div style={{ width: "100%", height: "100%" }}>
+      <div style={{ width: '100%', height: '100%' }}>
         <div className="example-wrapper">
           <div className="legend-bar">
             <button onClick={() => this.onPinAthlete()}>Pin Athlete</button>
@@ -108,8 +108,8 @@ class GridExample extends Component {
           </div>
           <div
             style={{
-              height: "100%",
-              width: "100%",
+              height: '100%',
+              width: '100%',
             }}
             className="ag-theme-alpine"
           >
@@ -128,4 +128,4 @@ class GridExample extends Component {
   }
 }
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

@@ -5,7 +5,7 @@ import {
   GridOptions,
   ICellRendererComp,
   ICellRendererParams,
-} from "@ag-grid-community/core";
+} from '@ag-grid-community/core';
 
 export class DetailCellRenderer implements ICellRendererComp {
   eGui!: HTMLElement;
@@ -16,7 +16,7 @@ export class DetailCellRenderer implements ICellRendererComp {
     this.params = params;
 
     // trick to convert string of HTML into DOM object
-    var eTemp = document.createElement("div");
+    var eTemp = document.createElement('div');
     eTemp.innerHTML = this.getTemplate();
     this.eGui = eTemp.firstElementChild as HTMLElement;
 
@@ -24,14 +24,14 @@ export class DetailCellRenderer implements ICellRendererComp {
   }
 
   setupDetailGrid() {
-    var eDetailGrid = this.eGui.querySelector<HTMLElement>(".full-width-grid")!;
+    var eDetailGrid = this.eGui.querySelector<HTMLElement>('.full-width-grid')!;
     var detailGridOptions: GridOptions = {
       columnDefs: [
-        { field: "callId" },
-        { field: "direction" },
-        { field: "number" },
-        { field: "duration", valueFormatter: "x.toLocaleString() + 's'" },
-        { field: "switchCode" },
+        { field: 'callId' },
+        { field: 'direction' },
+        { field: 'number' },
+        { field: 'duration', valueFormatter: "x.toLocaleString() + 's'" },
+        { field: 'switchCode' },
       ],
       defaultColDef: {
         flex: 1,
@@ -53,7 +53,7 @@ export class DetailCellRenderer implements ICellRendererComp {
       columnApi: detailGridOptions.columnApi!,
     };
 
-    console.log("adding detail grid info with id: ", rowId);
+    console.log('adding detail grid info with id: ', rowId);
     masterGridApi.addDetailGridInfo(rowId, gridInfo);
   }
 
@@ -64,13 +64,13 @@ export class DetailCellRenderer implements ICellRendererComp {
       '  <div class="full-width-details">' +
       '    <div class="full-width-detail"><b>Name: </b>' +
       data.name +
-      "</div>" +
+      '</div>' +
       '    <div class="full-width-detail"><b>Account: </b>' +
       data.account +
-      "</div>" +
-      "  </div>" +
+      '</div>' +
+      '  </div>' +
       '  <div class="full-width-grid ag-theme-alpine"></div>' +
-      "</div>";
+      '</div>';
 
     return template;
   }
@@ -85,11 +85,11 @@ export class DetailCellRenderer implements ICellRendererComp {
 
   destroy() {
     var rowId = this.params.node.id!;
-    console.log("removing Grid Info with id: " + rowId);
+    console.log('removing Grid Info with id: ' + rowId);
     var masterGridApi = this.params.api;
     masterGridApi.removeDetailGridInfo(rowId);
 
-    console.log("destroying detail grid");
+    console.log('destroying detail grid');
     this.detailGridApi.destroy();
   }
 }

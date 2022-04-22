@@ -1,16 +1,16 @@
-"use strict";
+'use strict';
 
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine-dark.css";
-import "ag-grid-enterprise";
-import { AgGridReact } from "ag-grid-react";
-import React, { useCallback, useMemo, useState } from "react";
-import { render } from "react-dom";
+import React, { useCallback, useMemo, useRef, useState } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from 'ag-grid-react';
+import 'ag-grid-enterprise';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine-dark.css';
 
 const getServerSideDatasource = (server) => {
   return {
     getRows: function (params) {
-      console.log("[Datasource] - rows requested by grid: ", params.request);
+      console.log('[Datasource] - rows requested by grid: ', params.request);
       var response = server.getData(params.request);
       // adding delay to simulate real server call
       setTimeout(function () {
@@ -30,27 +30,27 @@ const getServerSideDatasource = (server) => {
 };
 
 const GridExample = () => {
-  const containerStyle = useMemo(() => ({ width: "100%", height: "100%" }), []);
-  const gridStyle = useMemo(() => ({ height: "100%", width: "100%" }), []);
+  const containerStyle = useMemo(() => ({ width: '100%', height: '100%' }), []);
+  const gridStyle = useMemo(() => ({ height: '100%', width: '100%' }), []);
 
   const [columnDefs, setColumnDefs] = useState([
     {
-      headerName: "Group",
-      field: "name",
+      headerName: 'Group',
+      field: 'name',
       rowGroup: true,
       hide: true,
     },
     {
-      field: "autoA",
+      field: 'autoA',
       wrapText: true,
       autoHeight: true,
-      aggFunc: "last",
+      aggFunc: 'last',
     },
     {
-      field: "autoB",
+      field: 'autoB',
       wrapText: true,
       autoHeight: true,
-      aggFunc: "last",
+      aggFunc: 'last',
     },
   ]);
   const defaultColDef = useMemo(() => {
@@ -85,8 +85,8 @@ const GridExample = () => {
           columnDefs={columnDefs}
           defaultColDef={defaultColDef}
           autoGroupColumnDef={autoGroupColumnDef}
-          rowModelType={"serverSide"}
-          serverSideStoreType={"partial"}
+          rowModelType={'serverSide'}
+          serverSideStoreType={'partial'}
           animateRows={true}
           suppressAggFuncInHeader={true}
           onGridReady={onGridReady}
@@ -96,4 +96,4 @@ const GridExample = () => {
   );
 };
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

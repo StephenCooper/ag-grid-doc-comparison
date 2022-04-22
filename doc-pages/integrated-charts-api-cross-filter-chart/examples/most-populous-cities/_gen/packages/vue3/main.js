@@ -1,8 +1,8 @@
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine-dark.css";
-import "ag-grid-enterprise";
-import { AgGridVue } from "ag-grid-vue3";
-import { createApp } from "vue";
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine-dark.css';
+import 'ag-grid-enterprise';
+import { AgGridVue } from 'ag-grid-vue3';
+import { createApp } from 'vue';
 
 const VueExample = {
   template: `
@@ -25,16 +25,16 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
-        { field: "city", chartDataType: "category" },
-        { field: "country", chartDataType: "category" },
-        { field: "longitude", chartDataType: "series" },
-        { field: "latitude", chartDataType: "series" },
-        { field: "population", chartDataType: "series" },
+        { field: 'city', chartDataType: 'category' },
+        { field: 'country', chartDataType: 'category' },
+        { field: 'longitude', chartDataType: 'series' },
+        { field: 'latitude', chartDataType: 'series' },
+        { field: 'population', chartDataType: 'series' },
       ],
       gridApi: null,
       columnApi: null,
@@ -42,7 +42,7 @@ const VueExample = {
         flex: 1,
         editable: true,
         sortable: true,
-        filter: "agMultiColumnFilter",
+        filter: 'agMultiColumnFilter',
         floatingFilter: true,
         resizable: true,
       },
@@ -52,7 +52,7 @@ const VueExample = {
   },
   created() {
     this.rowData = getData();
-    this.chartThemes = ["ag-default-dark"];
+    this.chartThemes = ['ag-default-dark'];
   },
   methods: {
     onFirstDataRendered(params) {
@@ -68,16 +68,16 @@ const VueExample = {
 
 window.createColumnChart = function createColumnChart(gridApi) {
   gridApi.createCrossFilterChart({
-    chartType: "column",
+    chartType: 'column',
     cellRange: {
-      columns: ["country", "population"],
+      columns: ['country', 'population'],
     },
-    aggFunc: "count",
+    aggFunc: 'count',
     chartThemeOverrides: {
       common: {
         title: {
           enabled: true,
-          text: "Number of Most Populous Cities by Country",
+          text: 'Number of Most Populous Cities by Country',
         },
         legend: {
           enabled: false,
@@ -93,29 +93,29 @@ window.createColumnChart = function createColumnChart(gridApi) {
         },
       },
     },
-    chartContainer: document.querySelector("#barChart"),
+    chartContainer: document.querySelector('#barChart'),
   });
 };
 
 window.createBubbleChart = function createBubbleChart(gridApi) {
   gridApi.createCrossFilterChart({
-    chartType: "bubble",
+    chartType: 'bubble',
     cellRange: {
-      columns: ["longitude", "latitude", "population"],
+      columns: ['longitude', 'latitude', 'population'],
     },
     chartThemeOverrides: {
       common: {
         title: {
           enabled: true,
-          text: "Latitude vs Longitude of Most Populous Cities",
+          text: 'Latitude vs Longitude of Most Populous Cities',
         },
         legend: {
           enabled: false,
         },
       },
     },
-    chartContainer: document.querySelector("#bubbleChart"),
+    chartContainer: document.querySelector('#bubbleChart'),
   });
 };
 
-createApp(VueExample).mount("#app");
+createApp(VueExample).mount('#app');

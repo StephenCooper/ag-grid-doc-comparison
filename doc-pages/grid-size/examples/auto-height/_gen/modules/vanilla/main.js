@@ -1,25 +1,25 @@
 const columnDefs = [
   {
-    headerName: "Core",
+    headerName: 'Core',
     children: [
-      { headerName: "ID", field: "id" },
-      { field: "make" },
-      { field: "price", filter: "agNumberColumnFilter" },
+      { headerName: 'ID', field: 'id' },
+      { field: 'make' },
+      { field: 'price', filter: 'agNumberColumnFilter' },
     ],
   },
   {
-    headerName: "Extra",
+    headerName: 'Extra',
     children: [
-      { field: "val1", filter: "agNumberColumnFilter" },
-      { field: "val2", filter: "agNumberColumnFilter" },
-      { field: "val3", filter: "agNumberColumnFilter" },
-      { field: "val4", filter: "agNumberColumnFilter" },
-      { field: "val5", filter: "agNumberColumnFilter" },
-      { field: "val6", filter: "agNumberColumnFilter" },
-      { field: "val7", filter: "agNumberColumnFilter" },
-      { field: "val8", filter: "agNumberColumnFilter" },
-      { field: "val9", filter: "agNumberColumnFilter" },
-      { field: "val10", filter: "agNumberColumnFilter" },
+      { field: 'val1', filter: 'agNumberColumnFilter' },
+      { field: 'val2', filter: 'agNumberColumnFilter' },
+      { field: 'val3', filter: 'agNumberColumnFilter' },
+      { field: 'val4', filter: 'agNumberColumnFilter' },
+      { field: 'val5', filter: 'agNumberColumnFilter' },
+      { field: 'val6', filter: 'agNumberColumnFilter' },
+      { field: 'val7', filter: 'agNumberColumnFilter' },
+      { field: 'val8', filter: 'agNumberColumnFilter' },
+      { field: 'val9', filter: 'agNumberColumnFilter' },
+      { field: 'val10', filter: 'agNumberColumnFilter' },
     ],
   },
 ];
@@ -35,19 +35,19 @@ const gridOptions = {
     resizable: true,
   },
   rowData: getData(5),
-  domLayout: "autoHeight",
+  domLayout: 'autoHeight',
   animateRows: true,
   onGridReady: function () {
-    document.querySelector("#currentRowCount").innerHTML = "5";
+    document.querySelector('#currentRowCount').innerHTML = '5';
   },
   popupParent: document.body,
 };
 
 function createRow(index) {
-  var makes = ["Toyota", "Ford", "BMW", "Phantom", "Porsche"];
+  var makes = ['Toyota', 'Ford', 'BMW', 'Phantom', 'Porsche'];
 
   return {
-    id: "D" + (1000 + index),
+    id: 'D' + (1000 + index),
     make: makes[Math.floor(Math.random() * makes.length)],
     price: Math.floor(Math.random() * 100000),
     val1: Math.floor(Math.random() * 1000),
@@ -74,11 +74,11 @@ function getData(count) {
 function updateRowData(rowCount) {
   gridOptions.api.setRowData(getData(rowCount));
 
-  document.querySelector("#currentRowCount").innerHTML = `${rowCount}`;
+  document.querySelector('#currentRowCount').innerHTML = `${rowCount}`;
 }
 
 function cbFloatingRows() {
-  var show = document.getElementById("floating-rows").checked;
+  var show = document.getElementById('floating-rows').checked;
   if (show) {
     gridOptions.api.setPinnedTopRowData([createRow(999), createRow(998)]);
     gridOptions.api.setPinnedBottomRowData([createRow(997), createRow(996)]);
@@ -89,22 +89,22 @@ function cbFloatingRows() {
 }
 
 function setAutoHeight() {
-  gridOptions.api.setDomLayout("autoHeight");
+  gridOptions.api.setDomLayout('autoHeight');
   // auto height will get the grid to fill the height of the contents,
   // so the grid div should have no height set, the height is dynamic.
-  document.querySelector("#myGrid").style.height = "";
+  document.querySelector('#myGrid').style.height = '';
 }
 
 function setFixedHeight() {
   // we could also call setDomLayout() here as normal is the default
-  gridOptions.api.setDomLayout("normal");
+  gridOptions.api.setDomLayout('normal');
   // when auto height is off, the grid ahs a fixed height, and then the grid
   // will provide scrollbars if the data does not fit into it.
-  document.querySelector("#myGrid").style.height = "400px";
+  document.querySelector('#myGrid').style.height = '400px';
 }
 
 // setup the grid after the page has finished loading
-document.addEventListener("DOMContentLoaded", function () {
-  var gridDiv = document.querySelector("#myGrid");
+document.addEventListener('DOMContentLoaded', function () {
+  var gridDiv = document.querySelector('#myGrid');
   new agGrid.Grid(gridDiv, gridOptions);
 });

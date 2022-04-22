@@ -1,8 +1,8 @@
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
-import { AgGridVue } from "ag-grid-vue";
-import Vue from "vue";
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import 'ag-grid-enterprise';
+import { AgGridVue } from 'ag-grid-vue';
+import Vue from 'vue';
 
 const VueExample = {
   template: `
@@ -21,13 +21,13 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
         {
-          headerName: " ",
+          headerName: ' ',
           headerCheckboxSelection: true,
           checkboxSelection: true,
           floatingFilter: false,
@@ -43,47 +43,47 @@ const VueExample = {
           suppressColumnsToolPanel: true,
         },
         {
-          headerName: "Participant",
+          headerName: 'Participant',
           children: [
-            { field: "athlete", minWidth: 170 },
-            { field: "country", minWidth: 150 },
+            { field: 'athlete', minWidth: 170 },
+            { field: 'country', minWidth: 150 },
           ],
         },
-        { field: "sport" },
+        { field: 'sport' },
         {
-          headerName: "Medals",
+          headerName: 'Medals',
           children: [
             {
-              field: "total",
-              columnGroupShow: "closed",
-              filter: "agNumberColumnFilter",
+              field: 'total',
+              columnGroupShow: 'closed',
+              filter: 'agNumberColumnFilter',
               width: 120,
               flex: 0,
             },
             {
-              field: "gold",
-              columnGroupShow: "open",
-              filter: "agNumberColumnFilter",
+              field: 'gold',
+              columnGroupShow: 'open',
+              filter: 'agNumberColumnFilter',
               width: 100,
               flex: 0,
             },
             {
-              field: "silver",
-              columnGroupShow: "open",
-              filter: "agNumberColumnFilter",
+              field: 'silver',
+              columnGroupShow: 'open',
+              filter: 'agNumberColumnFilter',
               width: 100,
               flex: 0,
             },
             {
-              field: "bronze",
-              columnGroupShow: "open",
-              filter: "agNumberColumnFilter",
+              field: 'bronze',
+              columnGroupShow: 'open',
+              filter: 'agNumberColumnFilter',
               width: 100,
               flex: 0,
             },
           ],
         },
-        { field: "year", filter: "agNumberColumnFilter" },
+        { field: 'year', filter: 'agNumberColumnFilter' },
       ],
       gridApi: null,
       columnApi: null,
@@ -102,8 +102,8 @@ const VueExample = {
     };
   },
   created() {
-    this.rowSelection = "multiple";
-    this.sideBar = { toolPanels: ["columns", "filters"], defaultToolPanel: "" };
+    this.rowSelection = 'multiple';
+    this.sideBar = { toolPanels: ['columns', 'filters'], defaultToolPanel: '' };
   },
   methods: {
     onGridReady(params) {
@@ -112,7 +112,7 @@ const VueExample = {
 
       const updateData = (data) => params.api.setRowData(data);
 
-      fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
         .then((resp) => resp.json())
         .then((data) => updateData(data));
     },
@@ -120,8 +120,8 @@ const VueExample = {
 };
 
 new Vue({
-  el: "#app",
+  el: '#app',
   components: {
-    "my-component": VueExample,
+    'my-component': VueExample,
   },
 });

@@ -1,11 +1,11 @@
-"use strict";
+'use strict';
 
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import { AgGridReact } from "ag-grid-react";
-import React, { Component } from "react";
-import { render } from "react-dom";
-import FullWidthCellRenderer from "./fullWidthCellRenderer.jsx";
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from 'ag-grid-react';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import FullWidthCellRenderer from './fullWidthCellRenderer.jsx';
 
 class GridExample extends Component {
   constructor(props) {
@@ -13,9 +13,9 @@ class GridExample extends Component {
 
     this.state = {
       columnDefs: [
-        { field: "name", cellRenderer: countryCellRenderer },
-        { field: "continent" },
-        { field: "language" },
+        { field: 'name', cellRenderer: countryCellRenderer },
+        { field: 'continent' },
+        { field: 'language' },
       ],
       defaultColDef: {
         flex: 1,
@@ -44,11 +44,11 @@ class GridExample extends Component {
 
   render() {
     return (
-      <div style={{ width: "100%", height: "100%" }}>
+      <div style={{ width: '100%', height: '100%' }}>
         <div
           style={{
-            height: "100%",
-            width: "100%",
+            height: '100%',
+            width: '100%',
           }}
           className="ag-theme-alpine"
         >
@@ -78,12 +78,12 @@ function countryCellRenderer(params) {
     params.data.code +
     '.png">';
   return (
-    '<span style="cursor: default;">' + flag + " " + params.value + "</span>"
+    '<span style="cursor: default;">' + flag + ' ' + params.value + '</span>'
   );
 }
 function isFullWidth(data) {
   // return true when country is Peru, France or Italy
-  return ["Peru", "France", "Italy"].indexOf(data.name) >= 0;
+  return ['Peru', 'France', 'Italy'].indexOf(data.name) >= 0;
 }
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

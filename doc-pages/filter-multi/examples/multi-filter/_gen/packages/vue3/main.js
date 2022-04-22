@@ -1,8 +1,8 @@
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
-import { AgGridVue } from "ag-grid-vue3";
-import { createApp } from "vue";
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import 'ag-grid-enterprise';
+import { AgGridVue } from 'ag-grid-vue3';
+import { createApp } from 'vue';
 
 const VueExample = {
   template: `
@@ -19,38 +19,38 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
-        { field: "athlete", filter: "agMultiColumnFilter" },
+        { field: 'athlete', filter: 'agMultiColumnFilter' },
         {
-          field: "country",
-          filter: "agMultiColumnFilter",
+          field: 'country',
+          filter: 'agMultiColumnFilter',
           filterParams: {
             filters: [
               {
-                filter: "agTextColumnFilter",
-                filterParams: { defaultOption: "startsWith" },
+                filter: 'agTextColumnFilter',
+                filterParams: { defaultOption: 'startsWith' },
               },
-              { filter: "agSetColumnFilter" },
+              { filter: 'agSetColumnFilter' },
             ],
           },
         },
         {
-          field: "gold",
-          filter: "agMultiColumnFilter",
+          field: 'gold',
+          filter: 'agMultiColumnFilter',
           filterParams: {
             filters: [
-              { filter: "agNumberColumnFilter" },
-              { filter: "agSetColumnFilter" },
+              { filter: 'agNumberColumnFilter' },
+              { filter: 'agSetColumnFilter' },
             ],
           },
         },
         {
-          field: "date",
-          filter: "agMultiColumnFilter",
+          field: 'date',
+          filter: 'agMultiColumnFilter',
           filterParams: dateFilterParams,
         },
       ],
@@ -60,14 +60,14 @@ const VueExample = {
         flex: 1,
         minWidth: 200,
         resizable: true,
-        menuTabs: ["filterMenuTab"],
+        menuTabs: ['filterMenuTab'],
       },
       sideBar: null,
       rowData: null,
     };
   },
   created() {
-    this.sideBar = { toolPanels: ["filters"] };
+    this.sideBar = { toolPanels: ['filters'] };
   },
   methods: {
     onGridReady(params) {
@@ -76,7 +76,7 @@ const VueExample = {
 
       const updateData = (data) => params.api.setRowData(data);
 
-      fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
         .then((resp) => resp.json())
         .then((data) => updateData(data));
     },
@@ -84,7 +84,7 @@ const VueExample = {
 };
 
 window.getDate = function getDate(value) {
-  var dateParts = value.split("/");
+  var dateParts = value.split('/');
   return new Date(
     Number(dateParts[2]),
     Number(dateParts[1]) - 1,
@@ -95,7 +95,7 @@ window.getDate = function getDate(value) {
 var dateFilterParams = {
   filters: [
     {
-      filter: "agDateColumnFilter",
+      filter: 'agDateColumnFilter',
       filterParams: {
         comparator: function (filterDate, cellValue) {
           if (cellValue == null) return -1;
@@ -104,7 +104,7 @@ var dateFilterParams = {
       },
     },
     {
-      filter: "agSetColumnFilter",
+      filter: 'agSetColumnFilter',
       filterParams: {
         comparator: function (a, b) {
           return getDate(a).getTime() - getDate(b).getTime();
@@ -114,4 +114,4 @@ var dateFilterParams = {
   ],
 };
 
-createApp(VueExample).mount("#app");
+createApp(VueExample).mount('#app');

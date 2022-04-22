@@ -4,15 +4,15 @@ import {
   GridReadyEvent,
   RowClassParams,
   ValueFormatterParams,
-} from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { Component } from "@angular/core";
+} from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { Component } from '@angular/core';
 // Required feature modules are registered in app.module.ts
 declare function createNewRowData(category: string): any;
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<div class="example-wrapper">
     <div style="margin-bottom: 5px;">
       <div>
@@ -62,11 +62,11 @@ export class AppComponent {
   private gridApi!: GridApi;
 
   public columnDefs: ColDef[] = [
-    { field: "category", rowGroupIndex: 1, hide: true },
-    { field: "price", aggFunc: "sum", valueFormatter: poundFormatter },
-    { field: "zombies" },
-    { field: "style" },
-    { field: "clothes" },
+    { field: 'category', rowGroupIndex: 1, hide: true },
+    { field: 'price', aggFunc: 'sum', valueFormatter: poundFormatter },
+    { field: 'zombies' },
+    { field: 'style' },
+    { field: 'clothes' },
   ];
   public defaultColDef: ColDef = {
     flex: 1,
@@ -74,30 +74,30 @@ export class AppComponent {
     sortable: true,
   };
   public autoGroupColumnDef: ColDef = {
-    headerName: "Group",
+    headerName: 'Group',
     minWidth: 250,
-    field: "model",
+    field: 'model',
     rowGroupIndex: 1,
-    cellRenderer: "agGroupCellRenderer",
+    cellRenderer: 'agGroupCellRenderer',
     cellRendererParams: {
       checkbox: true,
     },
   };
   public groupDefaultExpanded = 1;
   public rowData: any[] | null = getData();
-  public rowSelection = "multiple";
+  public rowSelection = 'multiple';
   public getRowClass: (
     params: RowClassParams
-  ) => string | string[] | undefined = function (params) {
+  ) => string | string[] | undefined = function (params: RowClassParams) {
     var rowNode = params.node;
     if (rowNode.group) {
       switch (rowNode.key) {
-        case "In Workshop":
-          return "category-in-workshop";
-        case "Sold":
-          return "category-sold";
-        case "For Sale":
-          return "category-for-sale";
+        case 'In Workshop':
+          return 'category-in-workshop';
+        case 'Sold':
+          return 'category-sold';
+        case 'For Sale':
+          return 'category-for-sale';
         default:
           return undefined;
       }
@@ -112,7 +112,7 @@ export class AppComponent {
     this.gridApi.forEachNode(function (node) {
       rowData.push(node.data);
     });
-    console.log("Row Data:");
+    console.log('Row Data:');
     console.log(rowData);
   }
 
@@ -141,9 +141,9 @@ export class AppComponent {
 
 function poundFormatter(params: ValueFormatterParams) {
   return (
-    "£" +
+    '£' +
     Math.floor(params.value)
       .toString()
-      .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")
+      .replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
   );
 }

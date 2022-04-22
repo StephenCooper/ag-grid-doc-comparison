@@ -1,5 +1,5 @@
-import { AgChartsVue } from "ag-charts-vue";
-import Vue from "vue";
+import { AgChartsVue } from 'ag-charts-vue';
+import Vue from 'vue';
 
 const ChartExample = {
   template: `
@@ -9,7 +9,7 @@ const ChartExample = {
             </div>
     `,
   components: {
-    "ag-charts-vue": AgChartsVue,
+    'ag-charts-vue': AgChartsVue,
   },
   data: function () {
     return {
@@ -24,18 +24,18 @@ const ChartExample = {
       height: 550,
       series: [
         {
-          xKey: "x",
-          yKey: "y",
+          xKey: 'x',
+          yKey: 'y',
         },
       ],
       axes: [
         {
-          type: "number",
-          position: "left",
+          type: 'number',
+          position: 'left',
         },
         {
-          type: "number",
-          position: "bottom",
+          type: 'number',
+          position: 'bottom',
         },
       ],
       legend: {
@@ -66,8 +66,8 @@ window.generateSpiralData = function generateSpiralData() {
 };
 
 new Vue({
-  el: "#app",
+  el: '#app',
   components: {
-    "my-component": ChartExample,
+    'my-component': ChartExample,
   },
 });

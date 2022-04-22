@@ -1,14 +1,14 @@
-import { ColDef, Grid, GridOptions } from "ag-grid-community";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import { PartialMatchFilter } from "./partialMatchFilter";
+import { ColDef, Grid, GridOptions } from 'ag-grid-community';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import { PartialMatchFilter } from './partialMatchFilter';
 
 const columnDefs: ColDef[] = [
-  { field: "row" },
+  { field: 'row' },
   {
-    field: "name",
+    field: 'name',
     filter: PartialMatchFilter,
-    menuTabs: ["filterMenuTab"],
+    menuTabs: ['filterMenuTab'],
   },
 ];
 
@@ -26,17 +26,17 @@ const gridOptions: GridOptions = {
 };
 
 function onClicked() {
-  gridOptions.api!.getFilterInstance("name", function (instance) {
-    (instance as PartialMatchFilter).componentMethod("Hello World!");
+  gridOptions.api!.getFilterInstance('name', function (instance) {
+    (instance as PartialMatchFilter).componentMethod('Hello World!');
   });
 }
 
 // setup the grid after the page has finished loading
-var gridDiv = document.querySelector<HTMLElement>("#myGrid")!;
+var gridDiv = document.querySelector<HTMLElement>('#myGrid')!;
 new Grid(gridDiv, gridOptions);
 gridOptions.api!.sizeColumnsToFit();
 
-if (typeof window !== "undefined") {
+if (typeof window !== 'undefined') {
   // Attach external event handlers to window so they can be called from index.html
   (<any>window).onClicked = onClicked;
 }

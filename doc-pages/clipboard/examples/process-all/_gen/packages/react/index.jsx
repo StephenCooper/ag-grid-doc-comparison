@@ -1,11 +1,11 @@
-"use strict";
+'use strict';
 
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
-import { AgGridReact } from "ag-grid-react";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from 'ag-grid-react';
+import 'ag-grid-enterprise';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 
 class GridExample extends Component {
   constructor(props) {
@@ -13,17 +13,17 @@ class GridExample extends Component {
 
     this.state = {
       columnDefs: [
-        { field: "a" },
-        { field: "b" },
-        { field: "c" },
-        { field: "d" },
-        { field: "e" },
-        { field: "f" },
-        { field: "g" },
-        { field: "h" },
-        { field: "i" },
-        { field: "j" },
-        { field: "k" },
+        { field: 'a' },
+        { field: 'b' },
+        { field: 'c' },
+        { field: 'd' },
+        { field: 'e' },
+        { field: 'f' },
+        { field: 'g' },
+        { field: 'h' },
+        { field: 'i' },
+        { field: 'j' },
+        { field: 'k' },
       ],
       rowData: getData(),
       defaultColDef: {
@@ -32,12 +32,12 @@ class GridExample extends Component {
         resizable: true,
         flex: 1,
         cellClassRules: {
-          "cell-green": 'value.startsWith("Green")',
-          "cell-blue": 'value.startsWith("Blue")',
-          "cell-red": 'value.startsWith("Red")',
-          "cell-yellow": 'value.startsWith("Yellow")',
-          "cell-orange": 'value.startsWith("Orange")',
-          "cell-grey": 'value.startsWith("Grey")',
+          'cell-green': 'value.startsWith("Green")',
+          'cell-blue': 'value.startsWith("Blue")',
+          'cell-red': 'value.startsWith("Red")',
+          'cell-yellow': 'value.startsWith("Yellow")',
+          'cell-orange': 'value.startsWith("Orange")',
+          'cell-grey': 'value.startsWith("Grey")',
         },
       },
     };
@@ -57,9 +57,9 @@ class GridExample extends Component {
       for (var j = 0; j < row.length; j++) {
         var value = row[j];
         if (value) {
-          if (value.startsWith("Red")) {
+          if (value.startsWith('Red')) {
             containsRed = true;
-          } else if (value.startsWith("Yellow")) {
+          } else if (value.startsWith('Yellow')) {
             containsYellow = true;
           }
         }
@@ -68,8 +68,8 @@ class GridExample extends Component {
     if (containsRed) {
       // replace the paste request with another
       return [
-        ["Orange", "Orange"],
-        ["Grey", "Grey"],
+        ['Orange', 'Orange'],
+        ['Grey', 'Grey'],
       ];
     }
     if (containsYellow) {
@@ -81,11 +81,11 @@ class GridExample extends Component {
 
   render() {
     return (
-      <div style={{ width: "100%", height: "100%" }}>
+      <div style={{ width: '100%', height: '100%' }}>
         <div
           style={{
-            height: "100%",
-            width: "100%",
+            height: '100%',
+            width: '100%',
           }}
           className="ag-theme-alpine"
         >
@@ -103,4 +103,4 @@ class GridExample extends Component {
   }
 }
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

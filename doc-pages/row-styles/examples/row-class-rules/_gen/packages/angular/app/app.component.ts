@@ -1,15 +1,15 @@
-import { Component } from "@angular/core";
+import { Component } from '@angular/core';
 import {
   ColDef,
   GridApi,
   GridReadyEvent,
   RowClassRules,
-} from "ag-grid-community";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
+} from 'ag-grid-community';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<div class="example-wrapper">
     <div style="margin-bottom: 5px;">
       <button (click)="setDataValue()">rowNode.setDataValue</button>
@@ -32,22 +32,22 @@ export class AppComponent {
 
   public rowData: any[] | null = getData();
   public columnDefs: ColDef[] = [
-    { headerName: "Employee", field: "employee" },
-    { headerName: "Number Sick Days", field: "sickDays", editable: true },
+    { headerName: 'Employee', field: 'employee' },
+    { headerName: 'Number Sick Days', field: 'sickDays', editable: true },
   ];
   public rowClassRules: RowClassRules = {
     // row style function
-    "sick-days-warning": function (params) {
+    'sick-days-warning': function (params) {
       var numSickDays = params.data.sickDays;
       return numSickDays > 5 && numSickDays <= 7;
     },
     // row style expression
-    "sick-days-breach": "data.sickDays >= 8",
+    'sick-days-breach': 'data.sickDays >= 8',
   };
 
   setDataValue() {
     this.gridApi.forEachNode(function (rowNode) {
-      rowNode.setDataValue("sickDays", randomInt());
+      rowNode.setDataValue('sickDays', randomInt());
     });
   }
 

@@ -1,10 +1,10 @@
-import { Component } from "@angular/core";
-import * as agCharts from "ag-charts-community";
-import { AgChartOptions } from "ag-charts-community";
-import { cloneDeep } from "lodash";
+import { Component } from '@angular/core';
+import * as agCharts from 'ag-charts-community';
+import { AgChartOptions } from 'ag-charts-community';
+import { cloneDeep } from 'lodash';
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<div class="wrapper">
     <div id="toolPanel">
       <button (click)="startUpdates()">Start Updates</button>
@@ -24,31 +24,31 @@ export class AppComponent {
       data: getData(),
       series: [
         {
-          xKey: "time",
-          yKey: "voltage",
+          xKey: 'time',
+          yKey: 'voltage',
         },
       ],
       axes: [
         {
-          type: "time",
-          position: "bottom",
+          type: 'time',
+          position: 'bottom',
           tick: {
             count: agCharts.time.second.every(5),
           },
           label: {
-            format: "%H:%M:%S",
+            format: '%H:%M:%S',
           },
         },
         {
-          type: "number",
-          position: "left",
+          type: 'number',
+          position: 'left',
           label: {
-            format: "#{.2f}V",
+            format: '#{.2f}V',
           },
         },
       ],
       title: {
-        text: "Core Voltage",
+        text: 'Core Voltage',
       },
       legend: {
         enabled: false,
@@ -78,7 +78,7 @@ export class AppComponent {
   };
 }
 
-var lastTime = new Date("07 Jan 2020 13:25:00 GMT").getTime();
+var lastTime = new Date('07 Jan 2020 13:25:00 GMT').getTime();
 var data: {
   time: Date;
   voltage: number;

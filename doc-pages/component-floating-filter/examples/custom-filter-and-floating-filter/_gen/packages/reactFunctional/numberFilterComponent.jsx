@@ -1,10 +1,10 @@
 import React, {
   forwardRef,
-  useEffect,
   useImperativeHandle,
   useRef,
+  useEffect,
   useState,
-} from "react";
+} from 'react';
 
 export default forwardRef((props, ref) => {
   const [filterText, setFilterText] = useState(null);
@@ -23,7 +23,7 @@ export default forwardRef((props, ref) => {
     return (
       filterText !== null &&
       filterText !== undefined &&
-      filterText !== "" &&
+      filterText !== '' &&
       isNumeric(filterText)
     );
   };
@@ -79,12 +79,12 @@ export default forwardRef((props, ref) => {
   };
 
   return (
-    <div style={{ padding: "4px" }}>
-      <div style={{ fontWeight: "bold" }}>Greater than:</div>
+    <div style={{ padding: '4px' }}>
+      <div style={{ fontWeight: 'bold' }}>Greater than:</div>
       <div>
         <input
           ref={inputRef}
-          style={{ margin: "4px 0 4px 0" }}
+          style={{ margin: '4px 0 4px 0' }}
           type="number"
           onInput={onInputBoxChanged}
           placeholder="Number of medals..."

@@ -1,8 +1,8 @@
-import { Component } from "@angular/core";
-import { ICellRendererAngularComp } from "ag-grid-angular";
+import { Component } from '@angular/core';
+import { ICellRendererAngularComp } from 'ag-grid-angular';
 
 @Component({
-  selector: "app-detail-cell-renderer",
+  selector: 'app-detail-cell-renderer',
   template: `
     <div>
       <form>

@@ -1,12 +1,12 @@
-import { HttpClient } from "@angular/common/http";
-import { Component } from "@angular/core";
-import { ColDef, GridApi, GridReadyEvent } from "ag-grid-community";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
+import { HttpClient } from '@angular/common/http';
+import { Component } from '@angular/core';
+import { ColDef, GridApi, GridReadyEvent } from 'ag-grid-community';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import 'ag-grid-enterprise';
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<div class="example-wrapper">
     <div style="margin-bottom: 1rem;">
       <button (click)="printState()">Print State</button>
@@ -28,41 +28,41 @@ export class AppComponent {
   private gridApi!: GridApi;
 
   public columnDefs: ColDef[] = [
-    { field: "athlete", filter: "agMultiColumnFilter" },
+    { field: 'athlete', filter: 'agMultiColumnFilter' },
     {
-      field: "country",
-      filter: "agMultiColumnFilter",
+      field: 'country',
+      filter: 'agMultiColumnFilter',
       filterParams: {
         filters: [
           {
-            filter: "agTextColumnFilter",
+            filter: 'agTextColumnFilter',
             filterParams: {
-              defaultOption: "startsWith",
+              defaultOption: 'startsWith',
             },
           },
           {
-            filter: "agSetColumnFilter",
+            filter: 'agSetColumnFilter',
           },
         ],
       },
     },
     {
-      field: "gold",
-      filter: "agMultiColumnFilter",
+      field: 'gold',
+      filter: 'agMultiColumnFilter',
       filterParams: {
         filters: [
           {
-            filter: "agNumberColumnFilter",
+            filter: 'agNumberColumnFilter',
           },
           {
-            filter: "agSetColumnFilter",
+            filter: 'agSetColumnFilter',
           },
         ],
       },
     },
     {
-      field: "date",
-      filter: "agMultiColumnFilter",
+      field: 'date',
+      filter: 'agMultiColumnFilter',
       filterParams: dateFilterParams,
     },
   ];
@@ -70,7 +70,7 @@ export class AppComponent {
     flex: 1,
     minWidth: 200,
     resizable: true,
-    menuTabs: ["filterMenuTab"],
+    menuTabs: ['filterMenuTab'],
   };
   public rowData!: any[];
 
@@ -78,29 +78,29 @@ export class AppComponent {
 
   printState() {
     var filterState = this.gridApi.getFilterModel();
-    console.log("Current filter state: ", filterState);
+    console.log('Current filter state: ', filterState);
   }
 
   saveState() {
     savedFilterState = this.gridApi.getFilterModel();
-    console.log("Filter state saved");
+    console.log('Filter state saved');
   }
 
   restoreState() {
     this.gridApi.setFilterModel(savedFilterState);
-    console.log("Filter state restored");
+    console.log('Filter state restored');
   }
 
   resetState() {
     this.gridApi.setFilterModel(null);
-    console.log("Filter state reset");
+    console.log('Filter state reset');
   }
 
   onGridReady(params: GridReadyEvent) {
     this.gridApi = params.api;
 
     this.http
-      .get<any[]>("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      .get<any[]>('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .subscribe((data) => (this.rowData = data));
   }
 }
@@ -108,7 +108,7 @@ export class AppComponent {
 var dateFilterParams = {
   filters: [
     {
-      filter: "agDateColumnFilter",
+      filter: 'agDateColumnFilter',
       filterParams: {
         comparator: function (filterDate: Date, cellValue: string) {
           if (cellValue == null) return -1;
@@ -117,7 +117,7 @@ var dateFilterParams = {
       },
     },
     {
-      filter: "agSetColumnFilter",
+      filter: 'agSetColumnFilter',
       filterParams: {
         comparator: function (a: string, b: string) {
           return getDate(a).getTime() - getDate(b).getTime();
@@ -127,7 +127,7 @@ var dateFilterParams = {
   ],
 };
 function getDate(value: string) {
-  var dateParts = value.split("/");
+  var dateParts = value.split('/');
   return new Date(
     Number(dateParts[2]),
     Number(dateParts[1]) - 1,

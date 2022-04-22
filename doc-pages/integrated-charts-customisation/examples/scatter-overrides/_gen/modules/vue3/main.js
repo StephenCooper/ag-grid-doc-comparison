@@ -1,11 +1,11 @@
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { AgGridVue } from "@ag-grid-community/vue3";
-import { GridChartsModule } from "@ag-grid-enterprise/charts";
-import { MenuModule } from "@ag-grid-enterprise/menu";
-import { createApp } from "vue";
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { AgGridVue } from '@ag-grid-community/vue3';
+import { GridChartsModule } from '@ag-grid-enterprise/charts';
+import { MenuModule } from '@ag-grid-enterprise/menu';
+import { createApp } from 'vue';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([
@@ -33,16 +33,16 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
-        { field: "country", width: 150, chartDataType: "category" },
-        { field: "total", chartDataType: "series" },
-        { field: "gold", chartDataType: "series" },
-        { field: "silver", chartDataType: "series" },
-        { field: "bronze", chartDataType: "series" },
+        { field: 'country', width: 150, chartDataType: 'category' },
+        { field: 'total', chartDataType: 'series' },
+        { field: 'gold', chartDataType: 'series' },
+        { field: 'silver', chartDataType: 'series' },
+        { field: 'bronze', chartDataType: 'series' },
       ],
       gridApi: null,
       columnApi: null,
@@ -70,13 +70,13 @@ const VueExample = {
           strokeWidth: 2,
           highlightStyle: {
             item: {
-              fill: "red",
-              stroke: "yellow",
+              fill: 'red',
+              stroke: 'yellow',
             },
           },
           marker: {
             enabled: true,
-            shape: "square",
+            shape: 'square',
             size: 5,
             maxSize: 12,
             strokeWidth: 4,
@@ -88,27 +88,27 @@ const VueExample = {
               return {
                 content:
                   (label != null
-                    ? "<b>" +
+                    ? '<b>' +
                       params.labelName.toUpperCase() +
-                      ":</b> " +
+                      ':</b> ' +
                       label +
-                      "<br/>"
-                    : "") +
-                  "<b>" +
+                      '<br/>'
+                    : '') +
+                  '<b>' +
                   params.xName.toUpperCase() +
-                  ":</b> " +
+                  ':</b> ' +
                   params.xValue +
-                  "<br/>" +
-                  "<b>" +
+                  '<br/>' +
+                  '<b>' +
                   params.yName.toUpperCase() +
-                  ":</b> " +
+                  ':</b> ' +
                   params.yValue +
                   (size != null
-                    ? "<br/><b>" +
+                    ? '<br/><b>' +
                       params.sizeName.toUpperCase() +
-                      ":</b> " +
+                      ':</b> ' +
                       size
-                    : ""),
+                    : ''),
               };
             },
           },
@@ -121,11 +121,11 @@ const VueExample = {
       var cellRange = {
         rowStartIndex: 0,
         rowEndIndex: 4,
-        columns: ["country", "total", "gold", "silver", "bronze"],
+        columns: ['country', 'total', 'gold', 'silver', 'bronze'],
       };
       var createRangeChartParams = {
         cellRange: cellRange,
-        chartType: "scatter",
+        chartType: 'scatter',
       };
       params.api.createRangeChart(createRangeChartParams);
     },
@@ -136,4 +136,4 @@ const VueExample = {
   },
 };
 
-createApp(VueExample).mount("#app");
+createApp(VueExample).mount('#app');

@@ -1,12 +1,12 @@
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
 import {
   Grid,
   GridOptions,
   GridReadyEvent,
   ModuleRegistry,
-} from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
+} from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([ClientSideRowModelModule]);
@@ -14,18 +14,18 @@ ModuleRegistry.registerModules([ClientSideRowModelModule]);
 var gridOptions: GridOptions = {
   columnDefs: [
     // colId will be 'firstCol'
-    { headerName: "Col 1", colId: "firstCol", field: "height" },
+    { headerName: 'Col 1', colId: 'firstCol', field: 'height' },
     // colId will be 'firstCol_1', cos 'firstCol' already taken
-    { headerName: "Col 2", colId: "firstCol", field: "height" },
+    { headerName: 'Col 2', colId: 'firstCol', field: 'height' },
 
     // colId will be 'height'
-    { headerName: "Col 3", field: "height" },
+    { headerName: 'Col 3', field: 'height' },
     // colId will be 'height_1', cos 'height' already taken
-    { headerName: "Col 4", field: "height" },
+    { headerName: 'Col 4', field: 'height' },
 
     // no colId, no field, so grid generated ID
-    { headerName: "Col 5", valueGetter: "data.width" },
-    { headerName: "Col 6", valueGetter: "data.width" },
+    { headerName: 'Col 5', valueGetter: 'data.width' },
+    { headerName: 'Col 6', valueGetter: 'data.width' },
   ],
   rowData: createRowData(),
   onGridReady: function (params: GridReadyEvent) {
@@ -33,7 +33,7 @@ var gridOptions: GridOptions = {
     cols.forEach(function (col) {
       var colDef = col.getColDef();
       console.log(
-        colDef.headerName + ", Column ID = " + col.getId(),
+        colDef.headerName + ', Column ID = ' + col.getId(),
         JSON.stringify(colDef)
       );
     });
@@ -53,5 +53,5 @@ function createRowData() {
 }
 
 // setup the grid after the page has finished loading
-var gridDiv = document.querySelector<HTMLElement>("#myGrid")!;
+var gridDiv = document.querySelector<HTMLElement>('#myGrid')!;
 new Grid(gridDiv, gridOptions);

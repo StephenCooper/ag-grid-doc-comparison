@@ -1,9 +1,10 @@
-"use strict";
+'use strict';
 
-import * as agCharts from "ag-charts-community";
-import { AgChartsReact } from "ag-charts-react";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { cloneDeep } from 'lodash';
+import { render } from 'react-dom';
+import * as agCharts from 'ag-charts-community';
+import { AgChartsReact } from 'ag-charts-react';
 
 class ChartExample extends Component {
   constructor(props) {
@@ -13,33 +14,33 @@ class ChartExample extends Component {
       options: {
         series: [
           {
-            type: "line",
-            xKey: "date",
-            yKey: "temp",
+            type: 'line',
+            xKey: 'date',
+            yKey: 'temp',
           },
         ],
         axes: [
           {
-            type: "number",
-            position: "left",
+            type: 'number',
+            position: 'left',
             label: {
-              format: "$~s",
+              format: '$~s',
               formatter: (params) =>
                 params
                   .formatter(params.value)
-                  .replace("k", "K")
-                  .replace("G", "B"),
+                  .replace('k', 'K')
+                  .replace('G', 'B'),
             },
           },
           {
-            type: "time",
+            type: 'time',
             nice: false,
-            position: "bottom",
+            position: 'bottom',
             tick: {
               count: agCharts.time.month,
             },
             label: {
-              format: "%b %Y",
+              format: '%b %Y',
             },
           },
         ],
@@ -54,23 +55,23 @@ class ChartExample extends Component {
         },
         data: [
           {
-            date: new Date("01 Jan 2019 00:00:00 GMT"),
+            date: new Date('01 Jan 2019 00:00:00 GMT'),
             temp: 2253707135,
           },
           {
-            date: new Date("01 Feb 2019 00:00:00 GMT"),
+            date: new Date('01 Feb 2019 00:00:00 GMT'),
             temp: 3159723083,
           },
           {
-            date: new Date("01 Mar 2019 00:00:00 GMT"),
+            date: new Date('01 Mar 2019 00:00:00 GMT'),
             temp: 2725102372,
           },
           {
-            date: new Date("01 Apr 2019 00:00:00 GMT"),
+            date: new Date('01 Apr 2019 00:00:00 GMT'),
             temp: 1725002378,
           },
           {
-            date: new Date("01 May 2019 00:00:00 GMT"),
+            date: new Date('01 May 2019 00:00:00 GMT'),
             temp: 4725823927,
           },
         ],
@@ -85,4 +86,4 @@ class ChartExample extends Component {
   }
 }
 
-render(<ChartExample />, document.querySelector("#root"));
+render(<ChartExample />, document.querySelector('#root'));

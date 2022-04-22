@@ -1,13 +1,14 @@
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
 import {
   Grid,
   GridOptions,
   ModuleRegistry,
+  RowClassParams,
   ValueFormatterParams,
-} from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { RowGroupingModule } from "@ag-grid-enterprise/row-grouping";
+} from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { RowGroupingModule } from '@ag-grid-enterprise/row-grouping';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([ClientSideRowModelModule, RowGroupingModule]);
@@ -16,20 +17,20 @@ declare function createNewRowData(category: string): any;
 
 function poundFormatter(params: ValueFormatterParams) {
   return (
-    "£" +
+    '£' +
     Math.floor(params.value)
       .toString()
-      .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")
+      .replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
   );
 }
 
 const gridOptions: GridOptions = {
   columnDefs: [
-    { field: "category", rowGroupIndex: 1, hide: true },
-    { field: "price", aggFunc: "sum", valueFormatter: poundFormatter },
-    { field: "zombies" },
-    { field: "style" },
-    { field: "clothes" },
+    { field: 'category', rowGroupIndex: 1, hide: true },
+    { field: 'price', aggFunc: 'sum', valueFormatter: poundFormatter },
+    { field: 'zombies' },
+    { field: 'style' },
+    { field: 'clothes' },
   ],
   defaultColDef: {
     flex: 1,
@@ -37,11 +38,11 @@ const gridOptions: GridOptions = {
     sortable: true,
   },
   autoGroupColumnDef: {
-    headerName: "Group",
+    headerName: 'Group',
     minWidth: 250,
-    field: "model",
+    field: 'model',
     rowGroupIndex: 1,
-    cellRenderer: "agGroupCellRenderer",
+    cellRenderer: 'agGroupCellRenderer',
     cellRendererParams: {
       checkbox: true,
     },
@@ -49,22 +50,22 @@ const gridOptions: GridOptions = {
   groupDefaultExpanded: 1,
   rowData: getData(),
   suppressRowClickSelection: true,
-  rowSelection: "multiple",
+  rowSelection: 'multiple',
   animateRows: true,
   groupSelectsChildren: true,
   suppressAggFuncInHeader: true,
   // this allows the different colors per group, by assigning a different
   // css class to each group level based on the key
-  getRowClass: function (params) {
+  getRowClass: function (params: RowClassParams) {
     var rowNode = params.node;
     if (rowNode.group) {
       switch (rowNode.key) {
-        case "In Workshop":
-          return "category-in-workshop";
-        case "Sold":
-          return "category-sold";
-        case "For Sale":
-          return "category-for-sale";
+        case 'In Workshop':
+          return 'category-in-workshop';
+        case 'Sold':
+          return 'category-sold';
+        case 'For Sale':
+          return 'category-for-sale';
         default:
           return undefined;
       }
@@ -80,7 +81,7 @@ function getRowData() {
   gridOptions.api!.forEachNode(function (node) {
     rowData.push(node.data);
   });
-  console.log("Row Data:");
+  console.log('Row Data:');
   console.log(rowData);
 }
 
@@ -104,10 +105,10 @@ function onRemoveSelected() {
 
 // wait for the document to be loaded, otherwise
 // AG Grid will not find the div in the document.
-var eGridDiv = document.querySelector<HTMLElement>("#myGrid")!;
+var eGridDiv = document.querySelector<HTMLElement>('#myGrid')!;
 new Grid(eGridDiv, gridOptions);
 
-if (typeof window !== "undefined") {
+if (typeof window !== 'undefined') {
   // Attach external event handlers to window so they can be called from index.html
   (<any>window).getRowData = getRowData;
   (<any>window).onAddRow = onAddRow;

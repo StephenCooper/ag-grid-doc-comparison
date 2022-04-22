@@ -1,12 +1,12 @@
-"use strict";
+'use strict';
 
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { AgGridReact } from "@ag-grid-community/react";
-import React, { useMemo, useState } from "react";
-import { render } from "react-dom";
+import React, { useCallback, useMemo, useRef, useState } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from '@ag-grid-community/react';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([ClientSideRowModelModule]);
@@ -16,38 +16,38 @@ var numberValueFormatter = function (params) {
 };
 
 var saleFilterParams = {
-  allowedCharPattern: "\\d\\-\\,\\$",
+  allowedCharPattern: '\\d\\-\\,\\$',
   numberParser: function (text) {
     return text == null
       ? null
-      : parseFloat(text.replace(",", ".").replace("$", ""));
+      : parseFloat(text.replace(',', '.').replace('$', ''));
   },
 };
 
 var saleValueFormatter = function (params) {
-  var formatted = params.value.toFixed(2).replace(".", ",");
-  if (formatted.indexOf("-") === 0) {
-    return "-$" + formatted.slice(1);
+  var formatted = params.value.toFixed(2).replace('.', ',');
+  if (formatted.indexOf('-') === 0) {
+    return '-$' + formatted.slice(1);
   }
-  return "$" + formatted;
+  return '$' + formatted;
 };
 
 const GridExample = () => {
-  const containerStyle = useMemo(() => ({ width: "100%", height: "100%" }), []);
-  const gridStyle = useMemo(() => ({ height: "100%", width: "100%" }), []);
+  const containerStyle = useMemo(() => ({ width: '100%', height: '100%' }), []);
+  const gridStyle = useMemo(() => ({ height: '100%', width: '100%' }), []);
   const [rowData, setRowData] = useState(getData());
   const [columnDefs, setColumnDefs] = useState([
     {
-      field: "sale",
-      headerName: "Sale ($)",
-      filter: "agNumberColumnFilter",
+      field: 'sale',
+      headerName: 'Sale ($)',
+      filter: 'agNumberColumnFilter',
       floatingFilter: true,
       valueFormatter: numberValueFormatter,
     },
     {
-      field: "sale",
-      headerName: "Sale",
-      filter: "agNumberColumnFilter",
+      field: 'sale',
+      headerName: 'Sale',
+      filter: 'agNumberColumnFilter',
       floatingFilter: true,
       filterParams: saleFilterParams,
       valueFormatter: saleValueFormatter,
@@ -73,4 +73,4 @@ const GridExample = () => {
   );
 };
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

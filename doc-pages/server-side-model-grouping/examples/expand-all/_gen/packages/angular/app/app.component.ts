@@ -1,5 +1,5 @@
-import { HttpClient } from "@angular/common/http";
-import { Component } from "@angular/core";
+import { HttpClient } from '@angular/common/http';
+import { Component } from '@angular/core';
 import {
   ColDef,
   GridApi,
@@ -7,14 +7,14 @@ import {
   IServerSideDatasource,
   IServerSideGetRowsParams,
   ServerSideStoreType,
-} from "ag-grid-community";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine-dark.css";
-import "ag-grid-enterprise";
+} from 'ag-grid-community';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine-dark.css';
+import 'ag-grid-enterprise';
 declare var FakeServer: any;
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<div class="example-wrapper">
     <div style="margin-bottom: 5px;">
       <button (click)="onBtExpandAll()">Expand All</button>
@@ -44,17 +44,17 @@ export class AppComponent {
 
   public columnDefs: ColDef[] = [
     {
-      field: "year",
+      field: 'year',
       enableRowGroup: true,
       rowGroup: true,
       hide: true,
       minWidth: 100,
     },
-    { field: "country", enableRowGroup: true, rowGroup: true, hide: true },
-    { field: "sport", enableRowGroup: true, rowGroup: true, hide: true },
-    { field: "gold", aggFunc: "sum" },
-    { field: "silver", aggFunc: "sum" },
-    { field: "bronze", aggFunc: "sum" },
+    { field: 'country', enableRowGroup: true, rowGroup: true, hide: true },
+    { field: 'sport', enableRowGroup: true, rowGroup: true, hide: true },
+    { field: 'gold', aggFunc: 'sum' },
+    { field: 'silver', aggFunc: 'sum' },
+    { field: 'bronze', aggFunc: 'sum' },
   ];
   public defaultColDef: ColDef = {
     flex: 1,
@@ -67,8 +67,8 @@ export class AppComponent {
     minWidth: 280,
   };
   public maxConcurrentDatasourceRequests = 1;
-  public rowModelType = "serverSide";
-  public serverSideStoreType: ServerSideStoreType = "full";
+  public rowModelType = 'serverSide';
+  public serverSideStoreType: ServerSideStoreType = 'full';
   public rowData!: any[];
 
   constructor(private http: HttpClient) {}
@@ -93,7 +93,7 @@ export class AppComponent {
     this.gridApi = params.api;
 
     this.http
-      .get<any[]>("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      .get<any[]>('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .subscribe((data) => {
         // setup the fake server with entire dataset
         var fakeServer = new FakeServer(data);
@@ -108,7 +108,7 @@ export class AppComponent {
 function getServerSideDatasource(server: any): IServerSideDatasource {
   return {
     getRows: function (params: IServerSideGetRowsParams) {
-      console.log("[Datasource] - rows requested by grid: ", params.request);
+      console.log('[Datasource] - rows requested by grid: ', params.request);
       var response = server.getData(params.request);
       // adding delay to simulate real server call
       setTimeout(function () {

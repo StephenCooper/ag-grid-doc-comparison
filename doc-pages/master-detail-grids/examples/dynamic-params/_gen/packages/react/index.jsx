@@ -1,11 +1,11 @@
-"use strict";
+'use strict';
 
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
-import { AgGridReact } from "ag-grid-react";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from 'ag-grid-react';
+import 'ag-grid-enterprise';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 
 class GridExample extends Component {
   constructor(props) {
@@ -14,10 +14,10 @@ class GridExample extends Component {
     this.state = {
       columnDefs: [
         // group cell renderer needed for expand / collapse icons
-        { field: "name", cellRenderer: "agGroupCellRenderer" },
-        { field: "account" },
-        { field: "calls" },
-        { field: "minutes", valueFormatter: "x.toLocaleString() + 'm'" },
+        { field: 'name', cellRenderer: 'agGroupCellRenderer' },
+        { field: 'account' },
+        { field: 'calls' },
+        { field: 'minutes', valueFormatter: "x.toLocaleString() + 'm'" },
       ],
       defaultColDef: {
         flex: 1,
@@ -30,12 +30,12 @@ class GridExample extends Component {
           params.successCallback(params.data.callRecords);
         };
         var nameMatch =
-          params.data.name === "Mila Smith" ||
-          params.data.name === "Harper Johnson";
+          params.data.name === 'Mila Smith' ||
+          params.data.name === 'Harper Johnson';
         if (nameMatch) {
           // grid options for columns {callId, number}
           res.detailGridOptions = {
-            columnDefs: [{ field: "callId" }, { field: "number" }],
+            columnDefs: [{ field: 'callId' }, { field: 'number' }],
             defaultColDef: {
               flex: 1,
             },
@@ -44,10 +44,10 @@ class GridExample extends Component {
           // grid options for columns {callId, direction, duration, switchCode}
           res.detailGridOptions = {
             columnDefs: [
-              { field: "callId" },
-              { field: "direction" },
-              { field: "duration", valueFormatter: "x.toLocaleString() + 's'" },
-              { field: "switchCode" },
+              { field: 'callId' },
+              { field: 'direction' },
+              { field: 'duration', valueFormatter: "x.toLocaleString() + 's'" },
+              { field: 'switchCode' },
             ],
             defaultColDef: {
               flex: 1,
@@ -68,7 +68,7 @@ class GridExample extends Component {
       this.setState({ rowData: data });
     };
 
-    fetch("https://www.ag-grid.com/example-assets/master-detail-data.json")
+    fetch('https://www.ag-grid.com/example-assets/master-detail-data.json')
       .then((resp) => resp.json())
       .then((data) => updateData(data));
   };
@@ -85,11 +85,11 @@ class GridExample extends Component {
 
   render() {
     return (
-      <div style={{ width: "100%", height: "100%" }}>
+      <div style={{ width: '100%', height: '100%' }}>
         <div
           style={{
-            height: "100%",
-            width: "100%",
+            height: '100%',
+            width: '100%',
           }}
           className="ag-theme-alpine"
         >
@@ -109,4 +109,4 @@ class GridExample extends Component {
   }
 }
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

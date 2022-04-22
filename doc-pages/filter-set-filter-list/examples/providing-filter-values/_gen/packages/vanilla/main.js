@@ -1,11 +1,11 @@
 var listOfDays = [
-  "Monday",
-  "Tuesday",
-  "Wednesday",
-  "Thursday",
-  "Friday",
-  "Saturday",
-  "Sunday",
+  'Monday',
+  'Tuesday',
+  'Wednesday',
+  'Thursday',
+  'Friday',
+  'Saturday',
+  'Sunday',
 ];
 
 var daysValuesNotProvidedFilterParams = {
@@ -25,15 +25,15 @@ var daysValuesProvidedFilterParams = {
 const gridOptions = {
   columnDefs: [
     {
-      headerName: "Days (Values Not Provided)",
-      field: "days",
-      filter: "agSetColumnFilter",
+      headerName: 'Days (Values Not Provided)',
+      field: 'days',
+      filter: 'agSetColumnFilter',
       filterParams: daysValuesNotProvidedFilterParams,
     },
     {
-      headerName: "Days (Values Provided)",
-      field: "days",
-      filter: "agSetColumnFilter",
+      headerName: 'Days (Values Provided)',
+      field: 'days',
+      filter: 'agSetColumnFilter',
       filterParams: daysValuesProvidedFilterParams,
     },
   ],
@@ -42,13 +42,13 @@ const gridOptions = {
     filter: true,
     resizable: true,
   },
-  sideBar: "filters",
+  sideBar: 'filters',
   rowData: getRowData(),
   onFirstDataRendered: onFirstDataRendered,
 };
 
 function getRowData() {
-  var weekdays = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
+  var weekdays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
 
   var rows = [];
   for (var i = 0; i < 200; i++) {
@@ -60,11 +60,11 @@ function getRowData() {
 }
 
 function onFirstDataRendered(params) {
-  params.api.getToolPanelInstance("filters").expandFilters();
+  params.api.getToolPanelInstance('filters').expandFilters();
 }
 
 // setup the grid after the page has finished loading
-document.addEventListener("DOMContentLoaded", function () {
-  var gridDiv = document.querySelector("#myGrid");
+document.addEventListener('DOMContentLoaded', function () {
+  var gridDiv = document.querySelector('#myGrid');
   new agGrid.Grid(gridDiv, gridOptions);
 });

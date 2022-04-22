@@ -9,6 +9,7 @@ to create a seamless data drag and drop experience.
 
 <api-documentation source='grid-api/api.json' section='rowDrag' names='["addRowDropZone", "removeRowDropZone"]'></api-documentation>
 
+
 [[note]]
 | If you read the [Managed Dragging](/row-dragging/#managed-dragging) section of the Row Dragging
 | documentation you probably noticed that when you `sort`, `filter` and
@@ -17,20 +18,21 @@ to create a seamless data drag and drop experience.
 | will be able to drag from one container to another, but will not be able to drag the rows within the
 | grid.
 
+
 ## Adding and Removing Row Drop Targets
 
 To allow dragging from the grid onto an outside element, or a different grid, call the `addRowDropZone` from the grid API. This will result in making the passed element or `Grid` a valid target when moving rows around. If you later wish to remove that drop zone use the `removeRowDropZone` method from the grid API.
 
 ```js
 // define drop zone
-const targetContainer = document.querySelector(".target-container");
+const targetContainer = document.querySelector('.target-container');
 const dropZoneParams = {
-  getContainer: () => targetContainer,
-  onDragStop: (params) => {
-    // here we create an element for the target container
-    const element = createElement(params.node.data);
-    targetContainer.appendChild(element);
-  },
+    getContainer: () => targetContainer,
+    onDragStop: params => {
+        // here we create an element for the target container
+        const element = createElement(params.node.data);
+        targetContainer.appendChild(element);
+    }
 };
 
 // register drop zone with grid
@@ -63,4 +65,5 @@ In the example below, note the following:
 
 - New rows can be created by clicking on the red, green and blue buttons.
 
-<grid-example title='Two Grids' name='two-grids' type='multi' options='{ "extras": ["fontawesome"] }'></grid-example>
+
+<grid-example title='Two Grids' name='two-grids' type='mixed' options='{ "extras": ["fontawesome"] }'></grid-example>

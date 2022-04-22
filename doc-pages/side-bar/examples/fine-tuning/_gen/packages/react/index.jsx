@@ -1,11 +1,11 @@
-"use strict";
+'use strict';
 
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
-import { AgGridReact } from "ag-grid-react";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from 'ag-grid-react';
+import 'ag-grid-enterprise';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 
 class GridExample extends Component {
   constructor(props) {
@@ -13,15 +13,15 @@ class GridExample extends Component {
 
     this.state = {
       columnDefs: [
-        { field: "athlete", filter: "agTextColumnFilter", minWidth: 200 },
-        { field: "age" },
-        { field: "country", minWidth: 180 },
-        { field: "year" },
-        { field: "date", minWidth: 150 },
-        { field: "gold" },
-        { field: "silver" },
-        { field: "bronze" },
-        { field: "total" },
+        { field: 'athlete', filter: 'agTextColumnFilter', minWidth: 200 },
+        { field: 'age' },
+        { field: 'country', minWidth: 180 },
+        { field: 'year' },
+        { field: 'date', minWidth: 150 },
+        { field: 'gold' },
+        { field: 'silver' },
+        { field: 'bronze' },
+        { field: 'total' },
       ],
       defaultColDef: {
         flex: 1,
@@ -37,23 +37,23 @@ class GridExample extends Component {
       },
       sideBar: {
         toolPanels: [
-          "columns",
+          'columns',
           {
-            id: "filters",
-            labelKey: "filters",
-            labelDefault: "Filters",
-            iconKey: "menu",
-            toolPanel: "agFiltersToolPanel",
+            id: 'filters',
+            labelKey: 'filters',
+            labelDefault: 'Filters',
+            iconKey: 'menu',
+            toolPanel: 'agFiltersToolPanel',
           },
           {
-            id: "filters 2",
-            labelKey: "filters",
-            labelDefault: "Filters XXXXXXXX",
-            iconKey: "filter",
-            toolPanel: "agFiltersToolPanel",
+            id: 'filters 2',
+            labelKey: 'filters',
+            labelDefault: 'Filters XXXXXXXX',
+            iconKey: 'filter',
+            toolPanel: 'agFiltersToolPanel',
           },
         ],
-        defaultToolPanel: "filters",
+        defaultToolPanel: 'filters',
       },
       rowData: null,
     };
@@ -65,18 +65,18 @@ class GridExample extends Component {
 
     const updateData = (data) => params.api.setRowData(data);
 
-    fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+    fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .then((resp) => resp.json())
       .then((data) => updateData(data));
   };
 
   render() {
     return (
-      <div style={{ width: "100%", height: "100%" }}>
+      <div style={{ width: '100%', height: '100%' }}>
         <div
           style={{
-            height: "100%",
-            width: "100%",
+            height: '100%',
+            width: '100%',
           }}
           className="ag-theme-alpine"
         >
@@ -93,4 +93,4 @@ class GridExample extends Component {
   }
 }
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

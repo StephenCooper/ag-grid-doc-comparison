@@ -1,12 +1,12 @@
-"use strict";
+'use strict';
 
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { AgGridReact } from "@ag-grid-community/react";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from '@ag-grid-community/react';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([ClientSideRowModelModule]);
@@ -17,16 +17,16 @@ class GridExample extends Component {
 
     this.state = {
       columnDefs: [
-        { field: "athlete", minWidth: 180 },
-        { field: "age" },
-        { field: "country", minWidth: 160 },
-        { field: "year" },
-        { field: "date", minWidth: 160 },
-        { field: "sport", minWidth: 180 },
-        { field: "gold" },
-        { field: "silver" },
-        { field: "bronze" },
-        { field: "total" },
+        { field: 'athlete', minWidth: 180 },
+        { field: 'age' },
+        { field: 'country', minWidth: 160 },
+        { field: 'year' },
+        { field: 'date', minWidth: 160 },
+        { field: 'sport', minWidth: 180 },
+        { field: 'gold' },
+        { field: 'silver' },
+        { field: 'bronze' },
+        { field: 'total' },
       ],
       defaultColDef: {
         flex: 1,
@@ -46,18 +46,18 @@ class GridExample extends Component {
 
     const updateData = (data) => params.api.setRowData(data);
 
-    fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+    fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .then((resp) => resp.json())
       .then((data) => updateData(data));
   };
 
   render() {
     return (
-      <div style={{ width: "100%", height: "100%" }}>
+      <div style={{ width: '100%', height: '100%' }}>
         <div
           style={{
-            height: "100%",
-            width: "100%",
+            height: '100%',
+            width: '100%',
           }}
           className="ag-theme-alpine"
         >
@@ -79,7 +79,7 @@ function getRenderer() {
     createGui() {
       const template =
         '<span><button id="theButton" style="height: 39px">#</button><span id="theValue" style="padding-left: 4px;"></span></span>';
-      const tempDiv = document.createElement("div");
+      const tempDiv = document.createElement('div');
       tempDiv.innerHTML = template;
       this.eGui = tempDiv.firstElementChild;
     }
@@ -89,14 +89,14 @@ function getRenderer() {
       // keep params, we use it in onButtonClicked
       this.params = params;
       // attach the value to the value span
-      const eValue = this.eGui.querySelector("#theValue");
+      const eValue = this.eGui.querySelector('#theValue');
       eValue.innerHTML = params.value;
       // setup the button, first get reference to it
-      this.eButton = this.eGui.querySelector("#theButton");
+      this.eButton = this.eGui.querySelector('#theButton');
       // bind the listener so 'this' is preserved, also keep reference to it for removal
       this.buttonClickListener = this.onButtonClicked.bind(this);
       // add the listener
-      this.eButton.addEventListener("click", this.buttonClickListener);
+      this.eButton.addEventListener('click', this.buttonClickListener);
     }
     onButtonClicked() {
       // start editing this cell. see the docs on the params that this method takes
@@ -115,10 +115,10 @@ function getRenderer() {
     }
     destroy() {
       // be good, clean up the listener
-      this.eButton.removeEventListener("click", this.buttonClickListener);
+      this.eButton.removeEventListener('click', this.buttonClickListener);
     }
   }
   return CellRenderer;
 }
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

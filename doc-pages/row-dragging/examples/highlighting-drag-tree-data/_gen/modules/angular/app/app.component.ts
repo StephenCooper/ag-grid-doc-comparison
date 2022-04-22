@@ -3,6 +3,7 @@ import {
   ColDef,
   GetDataPath,
   GetRowIdFunc,
+  GetRowIdParams,
   GridApi,
   GridReadyEvent,
   RefreshCellsParams,
@@ -11,15 +12,15 @@ import {
   RowDragMoveEvent,
   RowNode,
   ValueFormatterParams,
-} from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { Component } from "@angular/core";
+} from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { Component } from '@angular/core';
 // Required feature modules are registered in app.module.ts
 declare var FileCellRenderer: any;
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<ag-grid-angular
     style="width: 100%; height: 100%;"
     class="ag-theme-alpine"
@@ -43,11 +44,11 @@ export class AppComponent {
 
   public columnDefs: ColDef[] = [
     {
-      field: "dateModified",
+      field: 'dateModified',
       cellClassRules: cellClassRules,
     },
     {
-      field: "size",
+      field: 'size',
       valueFormatter: valueFormatter,
       cellClassRules: cellClassRules,
     },
@@ -58,22 +59,22 @@ export class AppComponent {
   };
   public rowData: any[] | null = getData();
   public groupDefaultExpanded = -1;
-  public getDataPath: GetDataPath = function (data) {
+  public getDataPath: GetDataPath = function (data: any) {
     return data.filePath;
   };
-  public getRowId: GetRowIdFunc = function (params) {
+  public getRowId: GetRowIdFunc = function (params: GetRowIdParams) {
     return params.data.id;
   };
   public autoGroupColumnDef: ColDef = {
     rowDrag: true,
-    headerName: "Files",
+    headerName: 'Files',
     minWidth: 300,
     cellRendererParams: {
       suppressCount: true,
       innerRenderer: FileCellRenderer,
     },
     cellClassRules: {
-      "hover-over": function (params) {
+      'hover-over': function (params) {
         return params.node === potentialParent;
       },
     },
@@ -102,7 +103,7 @@ export class AppComponent {
     // check we are not moving a folder into a child folder
     var invalidMode = isSelectionParentOfTarget(event.node, potentialParent);
     if (invalidMode) {
-      console.log("invalid move");
+      console.log('invalid move');
     }
     if (needToChangeParent && !invalidMode) {
       var updatedRows: any[] = [];
@@ -122,10 +123,10 @@ export class AppComponent {
 }
 
 var valueFormatter = function (params: ValueFormatterParams) {
-  return params.value ? params.value + " MB" : "";
+  return params.value ? params.value + ' MB' : '';
 };
 var cellClassRules = {
-  "hover-over": function (params: CellClassParams) {
+  'hover-over': function (params: CellClassParams) {
     return params.node === potentialParent;
   },
 };
@@ -175,7 +176,7 @@ function setPotentialParentForNode(
   var newPotentialParent;
   if (overNode) {
     newPotentialParent =
-      overNode.data.type === "folder"
+      overNode.data.type === 'folder'
         ? // if over a folder, we take the immediate row
           overNode
         : // if over a file, we take the parent row (which will be a folder)

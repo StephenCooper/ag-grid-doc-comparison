@@ -1,11 +1,11 @@
-"use strict";
+'use strict';
 
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
-import { AgGridReact } from "ag-grid-react";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from 'ag-grid-react';
+import 'ag-grid-enterprise';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 
 class GridExample extends Component {
   constructor(props) {
@@ -13,24 +13,24 @@ class GridExample extends Component {
 
     this.state = {
       columnDefs: [
-        { field: "athlete", filter: "agMultiColumnFilter" },
+        { field: 'athlete', filter: 'agMultiColumnFilter' },
         {
-          field: "gold",
-          filter: "agMultiColumnFilter",
+          field: 'gold',
+          filter: 'agMultiColumnFilter',
           filterParams: {
             filters: [
               {
-                filter: "agNumberColumnFilter",
+                filter: 'agNumberColumnFilter',
               },
               {
-                filter: "agSetColumnFilter",
+                filter: 'agSetColumnFilter',
               },
             ],
           },
         },
         {
-          field: "date",
-          filter: "agMultiColumnFilter",
+          field: 'date',
+          filter: 'agMultiColumnFilter',
           filterParams: dateFilterParams,
         },
       ],
@@ -39,7 +39,7 @@ class GridExample extends Component {
         minWidth: 200,
         resizable: true,
         floatingFilter: true,
-        menuTabs: ["filterMenuTab"],
+        menuTabs: ['filterMenuTab'],
       },
       rowData: null,
     };
@@ -51,18 +51,18 @@ class GridExample extends Component {
 
     const updateData = (data) => params.api.setRowData(data);
 
-    fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+    fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .then((resp) => resp.json())
       .then((data) => updateData(data));
   };
 
   render() {
     return (
-      <div style={{ width: "100%", height: "100%" }}>
+      <div style={{ width: '100%', height: '100%' }}>
         <div
           style={{
-            height: "100%",
-            width: "100%",
+            height: '100%',
+            width: '100%',
           }}
           className="ag-theme-alpine"
         >
@@ -81,7 +81,7 @@ class GridExample extends Component {
 var dateFilterParams = {
   filters: [
     {
-      filter: "agDateColumnFilter",
+      filter: 'agDateColumnFilter',
       filterParams: {
         comparator: function (filterDate, cellValue) {
           if (cellValue == null) return -1;
@@ -90,7 +90,7 @@ var dateFilterParams = {
       },
     },
     {
-      filter: "agSetColumnFilter",
+      filter: 'agSetColumnFilter',
       filterParams: {
         comparator: function (a, b) {
           return getDate(a).getTime() - getDate(b).getTime();
@@ -100,7 +100,7 @@ var dateFilterParams = {
   ],
 };
 function getDate(value) {
-  var dateParts = value.split("/");
+  var dateParts = value.split('/');
   return new Date(
     Number(dateParts[2]),
     Number(dateParts[1]) - 1,
@@ -108,4 +108,4 @@ function getDate(value) {
   );
 }
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

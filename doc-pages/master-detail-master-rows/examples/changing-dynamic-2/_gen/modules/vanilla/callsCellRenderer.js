@@ -1,12 +1,12 @@
 class CallsCellRenderer {
   init(params) {
-    var eTemp = document.createElement("div");
+    var eTemp = document.createElement('div');
     eTemp.innerHTML =
       '<span class="calls-cell-renderer">' +
       '<button ref="btAdd">+</button>' +
       '<button ref="btRemove">-</button>' +
       '<span ref="eValue"></span>' +
-      "</span>";
+      '</span>';
 
     this.eGui = eTemp.firstChild;
 
@@ -14,8 +14,8 @@ class CallsCellRenderer {
     var btAdd = this.eGui.querySelector('[ref="btAdd"]');
     var btRemove = this.eGui.querySelector('[ref="btRemove"]');
 
-    btAdd.addEventListener("click", this.onBtAdd.bind(this, params));
-    btRemove.addEventListener("click", this.onBtRemove.bind(this, params));
+    btAdd.addEventListener('click', this.onBtAdd.bind(this, params));
+    btRemove.addEventListener('click', this.onBtRemove.bind(this, params));
 
     this.refresh(params);
   }
@@ -55,12 +55,12 @@ class CallsCellRenderer {
 
     var newCallRecords = oldCallRecords.slice(0); // make a copy
     newCallRecords.push({
-      name: ["Bob", "Paul", "David", "John"][Math.floor(Math.random() * 4)],
+      name: ['Bob', 'Paul', 'David', 'John'][Math.floor(Math.random() * 4)],
       callId: Math.floor(Math.random() * 1000),
       duration: Math.floor(Math.random() * 100) + 1,
-      switchCode: "SW5",
-      direction: "Out",
-      number: "(02) " + Math.floor(Math.random() * 1000000),
+      switchCode: 'SW5',
+      direction: 'Out',
+      number: '(02) ' + Math.floor(Math.random() * 1000000),
     }); // add one item
 
     var minutes = 0;

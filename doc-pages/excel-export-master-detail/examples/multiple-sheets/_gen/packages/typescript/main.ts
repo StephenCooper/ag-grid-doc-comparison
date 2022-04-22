@@ -1,25 +1,26 @@
 import {
   FirstDataRenderedEvent,
+  GetRowIdParams,
   Grid,
   GridOptions,
   IDetailCellRendererParams,
-} from "ag-grid-community";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
+} from 'ag-grid-community';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import 'ag-grid-enterprise';
 
 const gridOptions: GridOptions = {
   columnDefs: [
     // group cell renderer needed for expand / collapse icons
-    { field: "name", cellRenderer: "agGroupCellRenderer" },
-    { field: "account" },
-    { field: "calls" },
-    { field: "minutes", valueFormatter: "x.toLocaleString() + 'm'" },
+    { field: 'name', cellRenderer: 'agGroupCellRenderer' },
+    { field: 'account' },
+    { field: 'calls' },
+    { field: 'minutes', valueFormatter: "x.toLocaleString() + 'm'" },
   ],
   defaultColDef: {
     flex: 1,
   },
-  getRowId: function (params) {
+  getRowId: function (params: GetRowIdParams) {
     return params.data.name;
   },
   groupDefaultExpanded: 1,
@@ -28,11 +29,11 @@ const gridOptions: GridOptions = {
   detailCellRendererParams: {
     detailGridOptions: {
       columnDefs: [
-        { field: "callId" },
-        { field: "direction" },
-        { field: "number", minWidth: 150 },
-        { field: "duration", valueFormatter: "x.toLocaleString() + 's'" },
-        { field: "switchCode", minWidth: 150 },
+        { field: 'callId' },
+        { field: 'direction' },
+        { field: 'number', minWidth: 150 },
+        { field: 'duration', valueFormatter: "x.toLocaleString() + 's'" },
+        { field: 'switchCode', minWidth: 150 },
       ],
       defaultColDef: {
         flex: 1,
@@ -60,7 +61,7 @@ function onBtExport() {
 
   gridOptions.api!.forEachDetailGridInfo(function (node) {
     const sheet = node.api!.getSheetDataForExcel({
-      sheetName: node.id.replace("detail_", ""),
+      sheetName: node.id.replace('detail_', ''),
     });
     if (sheet) {
       spreadsheets.push(sheet);
@@ -69,21 +70,21 @@ function onBtExport() {
 
   gridOptions.api!.exportMultipleSheetsAsExcel({
     data: spreadsheets,
-    fileName: "ag-grid.xlsx",
+    fileName: 'ag-grid.xlsx',
   });
 }
 
 // setup the grid after the page has finished loading
-var gridDiv = document.querySelector<HTMLElement>("#myGrid")!;
+var gridDiv = document.querySelector<HTMLElement>('#myGrid')!;
 new Grid(gridDiv, gridOptions);
 
-fetch("https://www.ag-grid.com/example-assets/master-detail-data.json")
+fetch('https://www.ag-grid.com/example-assets/master-detail-data.json')
   .then((response) => response.json())
   .then(function (data) {
     gridOptions.api!.setRowData(data);
   });
 
-if (typeof window !== "undefined") {
+if (typeof window !== 'undefined') {
   // Attach external event handlers to window so they can be called from index.html
   (<any>window).onBtExport = onBtExport;
 }

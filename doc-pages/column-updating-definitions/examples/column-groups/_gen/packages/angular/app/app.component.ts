@@ -1,16 +1,16 @@
-import { HttpClient } from "@angular/common/http";
-import { Component } from "@angular/core";
+import { HttpClient } from '@angular/common/http';
+import { Component } from '@angular/core';
 import {
   ColDef,
   ColGroupDef,
   GridApi,
   GridReadyEvent,
-} from "ag-grid-community";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
+} from 'ag-grid-community';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<div class="test-container">
     <div class="test-header">
       <button (click)="onBtSetA()">First Column Set</button>
@@ -36,30 +36,30 @@ export class AppComponent {
   };
   public columnDefs: (ColDef | ColGroupDef)[] = [
     {
-      headerName: "Group A",
-      groupId: "groupA",
+      headerName: 'Group A',
+      groupId: 'groupA',
       children: [
-        { field: "athlete" },
-        { field: "age" },
-        { field: "country", columnGroupShow: "open" },
+        { field: 'athlete' },
+        { field: 'age' },
+        { field: 'country', columnGroupShow: 'open' },
       ],
     },
     {
-      headerName: "Group B",
+      headerName: 'Group B',
       children: [
-        { field: "sport" },
-        { field: "year" },
-        { field: "date", columnGroupShow: "open" },
+        { field: 'sport' },
+        { field: 'year' },
+        { field: 'date', columnGroupShow: 'open' },
       ],
     },
     {
-      headerName: "Group C",
-      groupId: "groupC",
+      headerName: 'Group C',
+      groupId: 'groupC',
       children: [
-        { field: "total" },
-        { field: "gold", columnGroupShow: "open" },
-        { field: "silver", columnGroupShow: "open" },
-        { field: "bronze", columnGroupShow: "open" },
+        { field: 'total' },
+        { field: 'gold', columnGroupShow: 'open' },
+        { field: 'silver', columnGroupShow: 'open' },
+        { field: 'bronze', columnGroupShow: 'open' },
       ],
     },
   ];
@@ -79,7 +79,7 @@ export class AppComponent {
     this.gridApi = params.api;
 
     this.http
-      .get<any[]>("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      .get<any[]>('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .subscribe((data) => {
         this.rowData = data;
       });
@@ -89,30 +89,30 @@ export class AppComponent {
 function createColSetA(): ColGroupDef[] {
   return [
     {
-      headerName: "Group A",
-      groupId: "groupA",
+      headerName: 'Group A',
+      groupId: 'groupA',
       children: [
-        { field: "athlete" },
-        { field: "age" },
-        { field: "country", columnGroupShow: "open" },
+        { field: 'athlete' },
+        { field: 'age' },
+        { field: 'country', columnGroupShow: 'open' },
       ],
     },
     {
-      headerName: "Group B",
+      headerName: 'Group B',
       children: [
-        { field: "sport" },
-        { field: "year" },
-        { field: "date", columnGroupShow: "open" },
+        { field: 'sport' },
+        { field: 'year' },
+        { field: 'date', columnGroupShow: 'open' },
       ],
     },
     {
-      headerName: "Group C",
-      groupId: "groupC",
+      headerName: 'Group C',
+      groupId: 'groupC',
       children: [
-        { field: "total" },
-        { field: "gold", columnGroupShow: "open" },
-        { field: "silver", columnGroupShow: "open" },
-        { field: "bronze", columnGroupShow: "open" },
+        { field: 'total' },
+        { field: 'gold', columnGroupShow: 'open' },
+        { field: 'silver', columnGroupShow: 'open' },
+        { field: 'bronze', columnGroupShow: 'open' },
       ],
     },
   ];
@@ -120,32 +120,32 @@ function createColSetA(): ColGroupDef[] {
 function createColSetB(): ColGroupDef[] {
   return [
     {
-      headerName: "GROUP A",
-      groupId: "groupA",
+      headerName: 'GROUP A',
+      groupId: 'groupA',
       children: [
-        { field: "athlete" },
-        { field: "age" },
-        { field: "country", columnGroupShow: "open" },
+        { field: 'athlete' },
+        { field: 'age' },
+        { field: 'country', columnGroupShow: 'open' },
       ],
     },
     {
-      headerName: "Group B",
+      headerName: 'Group B',
       children: [
-        { field: "sport" },
-        { field: "year" },
-        { field: "date", columnGroupShow: "open" },
+        { field: 'sport' },
+        { field: 'year' },
+        { field: 'date', columnGroupShow: 'open' },
       ],
     },
     {
-      headerName: "Group C",
-      groupId: "groupC",
+      headerName: 'Group C',
+      groupId: 'groupC',
       children: [
-        { field: "total" },
-        { field: "gold", columnGroupShow: "open" },
-        { field: "silver", columnGroupShow: "open" },
-        { field: "bronze", columnGroupShow: "open" },
-        { field: "extraA" },
-        { field: "extraB", columnGroupShow: "open" },
+        { field: 'total' },
+        { field: 'gold', columnGroupShow: 'open' },
+        { field: 'silver', columnGroupShow: 'open' },
+        { field: 'bronze', columnGroupShow: 'open' },
+        { field: 'extraA' },
+        { field: 'extraB', columnGroupShow: 'open' },
       ],
     },
   ];

@@ -1,8 +1,8 @@
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine-dark.css";
-import "ag-grid-enterprise";
-import { AgGridVue } from "ag-grid-vue3";
-import { createApp } from "vue";
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine-dark.css';
+import 'ag-grid-enterprise';
+import { AgGridVue } from 'ag-grid-vue3';
+import { createApp } from 'vue';
 
 const VueExample = {
   template: `
@@ -27,11 +27,11 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
-      columnDefs: [{ field: "product" }, { field: "value" }],
+      columnDefs: [{ field: 'product' }, { field: 'value' }],
       gridApi: null,
       columnApi: null,
       defaultColDef: {
@@ -51,31 +51,31 @@ const VueExample = {
       var txCreatedSinceRowDataRead =
         tx.serverVersion > storeInfo.serverVersion;
       console.log(
-        "tx.serverVersion = " +
+        'tx.serverVersion = ' +
           tx.serverVersion +
-          ", storeInfo.serverVersion = " +
+          ', storeInfo.serverVersion = ' +
           storeInfo.serverVersion
       );
       if (txCreatedSinceRowDataRead) {
-        console.log("Applying transaction");
+        console.log('Applying transaction');
         return true;
       } else {
-        console.log("Cancelling transaction");
+        console.log('Cancelling transaction');
         return false;
       }
     };
     this.getRowId = (params) => {
       return params.data.product;
     };
-    this.rowModelType = "serverSide";
-    this.serverSideStoreType = "full";
+    this.rowModelType = 'serverSide';
+    this.serverSideStoreType = 'full';
   },
   methods: {
     onBtAdd() {
       var newProductName =
         all_products[Math.floor(all_products.length * Math.random())];
       var newItem = {
-        product: newProductName + " " + newProductSequence++,
+        product: newProductName + ' ' + newProductSequence++,
         value: Math.floor(Math.random() * 10000),
       };
       allServerSideData.push(newItem);
@@ -99,7 +99,7 @@ const VueExample = {
           setTimeout(function () {
             var rowData = allServerSideData.slice();
             console.log(
-              "getRows: found " + rowData.length + " records on server."
+              'getRows: found ' + rowData.length + ' records on server.'
             );
             params2.success({
               rowData: rowData,
@@ -122,43 +122,43 @@ window.setupData = function setupData() {
   });
 };
 
-var products = ["Palm Oil", "Rubber", "Wool", "Amber", "Copper"];
+var products = ['Palm Oil', 'Rubber', 'Wool', 'Amber', 'Copper'];
 
 var newProductSequence = 0;
 
 var all_products = [
-  "Palm Oil",
-  "Rubber",
-  "Wool",
-  "Amber",
-  "Copper",
-  "Lead",
-  "Zinc",
-  "Tin",
-  "Aluminium",
-  "Aluminium Alloy",
-  "Nickel",
-  "Cobalt",
-  "Molybdenum",
-  "Recycled Steel",
-  "Corn",
-  "Oats",
-  "Rough Rice",
-  "Soybeans",
-  "Rapeseed",
-  "Soybean Meal",
-  "Soybean Oil",
-  "Wheat",
-  "Milk",
-  "Coca",
-  "Coffee C",
-  "Cotton No.2",
-  "Sugar No.11",
-  "Sugar No.14",
+  'Palm Oil',
+  'Rubber',
+  'Wool',
+  'Amber',
+  'Copper',
+  'Lead',
+  'Zinc',
+  'Tin',
+  'Aluminium',
+  'Aluminium Alloy',
+  'Nickel',
+  'Cobalt',
+  'Molybdenum',
+  'Recycled Steel',
+  'Corn',
+  'Oats',
+  'Rough Rice',
+  'Soybeans',
+  'Rapeseed',
+  'Soybean Meal',
+  'Soybean Oil',
+  'Wheat',
+  'Milk',
+  'Coca',
+  'Coffee C',
+  'Cotton No.2',
+  'Sugar No.11',
+  'Sugar No.14',
 ];
 
 var allServerSideData = [];
 
 var serverVersion = 0;
 
-createApp(VueExample).mount("#app");
+createApp(VueExample).mount('#app');

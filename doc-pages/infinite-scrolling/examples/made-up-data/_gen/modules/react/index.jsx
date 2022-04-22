@@ -1,12 +1,12 @@
-"use strict";
+'use strict';
 
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { InfiniteRowModelModule } from "@ag-grid-community/infinite-row-model";
-import { AgGridReact } from "@ag-grid-community/react";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from '@ag-grid-community/react';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import { InfiniteRowModelModule } from '@ag-grid-community/infinite-row-model';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([InfiniteRowModelModule]);
@@ -20,8 +20,8 @@ class GridExample extends Component {
       defaultColDef: {
         resizable: true,
       },
-      rowModelType: "infinite",
-      rowSelection: "multiple",
+      rowModelType: 'infinite',
+      rowSelection: 'multiple',
       maxBlocksInCache: 2,
       getRowId: function (params) {
         return params.data.a;
@@ -37,11 +37,11 @@ class GridExample extends Component {
 
   render() {
     return (
-      <div style={{ width: "100%", height: "100%" }}>
+      <div style={{ width: '100%', height: '100%' }}>
         <div
           style={{
-            height: "100%",
-            width: "100%",
+            height: '100%',
+            width: '100%',
           }}
           className="ag-theme-alpine"
         >
@@ -62,11 +62,11 @@ class GridExample extends Component {
   }
 }
 
-var ALPHABET = "abcdefghijklmnopqrstuvwxyz".split("");
+var ALPHABET = 'abcdefghijklmnopqrstuvwxyz'.split('');
 function getColumnDefs() {
   const columnDefs = [
-    { checkboxSelection: true, headerName: "", width: 60 },
-    { headerName: "#", width: 80, valueGetter: "node.rowIndex" },
+    { checkboxSelection: true, headerName: '', width: 60 },
+    { headerName: '#', width: 80, valueGetter: 'node.rowIndex' },
   ];
   ALPHABET.forEach(function (letter) {
     columnDefs.push({
@@ -91,7 +91,7 @@ function getDataSource(count) {
         ALPHABET.forEach(function (letter, colIndex) {
           var randomNumber = 17 + rowIndex + colIndex;
           var cellKey = letter.toUpperCase() + (rowIndex + 1);
-          record[letter] = cellKey + " = " + randomNumber;
+          record[letter] = cellKey + ' = ' + randomNumber;
         });
         rowsThisPage.push(record);
       }
@@ -105,4 +105,4 @@ function getDataSource(count) {
   return dataSource;
 }
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

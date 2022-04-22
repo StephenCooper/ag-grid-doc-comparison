@@ -3,14 +3,14 @@ import {
   GetDataPath,
   GridApi,
   GridReadyEvent,
-} from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { Component } from "@angular/core";
+} from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { Component } from '@angular/core';
 // Required feature modules are registered in app.module.ts
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<div class="example-wrapper">
     <div style="margin-bottom: 5px;">
       <input
@@ -40,14 +40,14 @@ export class AppComponent {
 
   public columnDefs: ColDef[] = [
     // we're using the auto group column by default!
-    { field: "jobTitle" },
-    { field: "employmentType" },
+    { field: 'jobTitle' },
+    { field: 'employmentType' },
   ];
   public defaultColDef: ColDef = {
     flex: 1,
   };
   public autoGroupColumnDef: ColDef = {
-    headerName: "Organisation Hierarchy",
+    headerName: 'Organisation Hierarchy',
     minWidth: 300,
     cellRendererParams: {
       suppressCount: true,
@@ -55,13 +55,13 @@ export class AppComponent {
   };
   public rowData: any[] | null = getData();
   public groupDefaultExpanded = -1;
-  public getDataPath: GetDataPath = function (data) {
+  public getDataPath: GetDataPath = function (data: any) {
     return data.orgHierarchy;
   };
 
   onFilterTextBoxChanged() {
     this.gridApi.setQuickFilter(
-      (document.getElementById("filter-text-box") as any).value
+      (document.getElementById('filter-text-box') as any).value
     );
   }
 

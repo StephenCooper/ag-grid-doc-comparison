@@ -1,9 +1,9 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from 'react';
 
 export default (props) => {
-  const [ascSort, setAscSort] = useState("inactive");
-  const [descSort, setDescSort] = useState("inactive");
-  const [noSort, setNoSort] = useState("inactive");
+  const [ascSort, setAscSort] = useState('inactive');
+  const [descSort, setDescSort] = useState('inactive');
+  const [noSort, setNoSort] = useState('inactive');
   const refButton = useRef(null);
 
   const onMenuClicked = () => {
@@ -11,12 +11,12 @@ export default (props) => {
   };
 
   const onSortChanged = () => {
-    setAscSort(props.column.isSortAscending() ? "active" : "inactive");
-    setDescSort(props.column.isSortDescending() ? "active" : "inactive");
+    setAscSort(props.column.isSortAscending() ? 'active' : 'inactive');
+    setDescSort(props.column.isSortDescending() ? 'active' : 'inactive');
     setNoSort(
       !props.column.isSortAscending() && !props.column.isSortDescending()
-        ? "active"
-        : "inactive"
+        ? 'active'
+        : 'inactive'
     );
   };
 
@@ -25,7 +25,7 @@ export default (props) => {
   };
 
   useEffect(() => {
-    props.column.addEventListener("sortChanged", onSortChanged);
+    props.column.addEventListener('sortChanged', onSortChanged);
     onSortChanged();
   }, []);
 
@@ -45,24 +45,24 @@ export default (props) => {
   let sort = null;
   if (props.enableSorting) {
     sort = (
-      <div style={{ display: "inline-block" }}>
+      <div style={{ display: 'inline-block' }}>
         <div
-          onClick={(event) => onSortRequested("asc", event)}
-          onTouchEnd={(event) => onSortRequested("asc", event)}
+          onClick={(event) => onSortRequested('asc', event)}
+          onTouchEnd={(event) => onSortRequested('asc', event)}
           className={`customSortDownLabel ${ascSort}`}
         >
           <i class="fa fa-long-arrow-alt-down"></i>
         </div>
         <div
-          onClick={(event) => onSortRequested("desc", event)}
-          onTouchEnd={(event) => onSortRequested("desc", event)}
+          onClick={(event) => onSortRequested('desc', event)}
+          onTouchEnd={(event) => onSortRequested('desc', event)}
           className={`customSortUpLabel ${descSort}`}
         >
           <i class="fa fa-long-arrow-alt-up"></i>
         </div>
         <div
-          onClick={(event) => onSortRequested("", event)}
-          onTouchEnd={(event) => onSortRequested("", event)}
+          onClick={(event) => onSortRequested('', event)}
+          onTouchEnd={(event) => onSortRequested('', event)}
           className={`customSortRemoveLabel ${noSort}`}
         >
           <i class="fa fa-times"></i>

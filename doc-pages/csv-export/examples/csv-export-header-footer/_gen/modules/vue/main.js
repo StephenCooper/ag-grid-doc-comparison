@@ -1,11 +1,11 @@
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { CsvExportModule } from "@ag-grid-community/csv-export";
-import { AgGridVue } from "@ag-grid-community/vue";
-import { MenuModule } from "@ag-grid-enterprise/menu";
-import Vue from "vue";
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { CsvExportModule } from '@ag-grid-community/csv-export';
+import { AgGridVue } from '@ag-grid-community/vue';
+import { MenuModule } from '@ag-grid-enterprise/menu';
+import Vue from 'vue';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([
@@ -61,11 +61,11 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
-      columnDefs: [{ field: "make" }, { field: "model" }, { field: "price" }],
+      columnDefs: [{ field: 'make' }, { field: 'model' }, { field: 'price' }],
       gridApi: null,
       columnApi: null,
       defaultColDef: {
@@ -81,9 +81,9 @@ const VueExample = {
   created() {
     this.popupParent = document.body;
     this.rowData = [
-      { make: "Toyota", model: "Celica", price: 35000 },
-      { make: "Ford", model: "Mondeo", price: 32000 },
-      { make: "Porsche", model: "Boxter", price: 72000 },
+      { make: 'Toyota', model: 'Celica', price: 35000 },
+      { make: 'Ford', model: 'Mondeo', price: 32000 },
+      { make: 'Porsche', model: 'Boxster', price: 72000 },
     ];
   },
   methods: {
@@ -91,13 +91,13 @@ const VueExample = {
       var params = getParams();
       if (params.suppressQuotes || params.columnSeparator) {
         alert(
-          "NOTE: you are downloading a file with non-standard quotes or separators - it may not render correctly in Excel."
+          'NOTE: you are downloading a file with non-standard quotes or separators - it may not render correctly in Excel.'
         );
       }
       this.gridApi.exportDataAsCsv(params);
     },
     onBtnUpdate() {
-      document.querySelector("#csvResult").value = this.gridApi.getDataAsCsv(
+      document.querySelector('#csvResult').value = this.gridApi.getDataAsCsv(
         getParams()
       );
     },
@@ -111,21 +111,21 @@ const VueExample = {
 window.getValue = function getValue(inputSelector) {
   var text = document.querySelector(inputSelector).value;
   switch (text) {
-    case "string":
+    case 'string':
       return (
         'Here is a comma, and a some "quotes". You can see them using the\n' +
-        "api.getDataAsCsv() button but they will not be visible when the downloaded\n" +
-        "CSV file is opened in Excel because string content passed to\n" +
-        "prependContent and appendContent is not escaped."
+        'api.getDataAsCsv() button but they will not be visible when the downloaded\n' +
+        'CSV file is opened in Excel because string content passed to\n' +
+        'prependContent and appendContent is not escaped.'
       );
-    case "array":
+    case 'array':
       return [
         [],
         [
           {
             data: {
               value: 'Here is a comma, and a some "quotes".',
-              type: "String",
+              type: 'String',
             },
           },
         ],
@@ -133,23 +133,23 @@ window.getValue = function getValue(inputSelector) {
           {
             data: {
               value:
-                "They are visible when the downloaded CSV file is opened in Excel because custom content is properly escaped (provided that suppressQuotes is not set to true)",
-              type: "String",
+                'They are visible when the downloaded CSV file is opened in Excel because custom content is properly escaped (provided that suppressQuotes is not set to true)',
+              type: 'String',
             },
           },
         ],
         [
-          { data: { value: "this cell:", type: "String" }, mergeAcross: 1 },
+          { data: { value: 'this cell:', type: 'String' }, mergeAcross: 1 },
           {
             data: {
-              value: "is empty because the first cell has mergeAcross=1",
-              type: "String",
+              value: 'is empty because the first cell has mergeAcross=1',
+              type: 'String',
             },
           },
         ],
         [],
       ];
-    case "none":
+    case 'none':
       return;
     default:
       return text;
@@ -158,16 +158,16 @@ window.getValue = function getValue(inputSelector) {
 
 window.getParams = function getParams() {
   return {
-    prependContent: getValue("#prependContent"),
-    appendContent: getValue("#appendContent"),
+    prependContent: getValue('#prependContent'),
+    appendContent: getValue('#appendContent'),
     suppressQuotes: undefined,
     columnSeparator: undefined,
   };
 };
 
 new Vue({
-  el: "#app",
+  el: '#app',
   components: {
-    "my-component": VueExample,
+    'my-component': VueExample,
   },
 });

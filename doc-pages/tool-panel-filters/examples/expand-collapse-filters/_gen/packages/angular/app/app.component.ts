@@ -1,5 +1,5 @@
-import { HttpClient } from "@angular/common/http";
-import { Component } from "@angular/core";
+import { HttpClient } from '@angular/common/http';
+import { Component } from '@angular/core';
 import {
   ColDef,
   ColGroupDef,
@@ -7,13 +7,13 @@ import {
   GridReadyEvent,
   IFiltersToolPanel,
   SideBarDef,
-} from "ag-grid-community";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
+} from 'ag-grid-community';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import 'ag-grid-enterprise';
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<div class="example-wrapper">
     <div>
       <span class="button-group">
@@ -39,32 +39,32 @@ export class AppComponent {
 
   public columnDefs: (ColDef | ColGroupDef)[] = [
     {
-      groupId: "athleteGroupId",
-      headerName: "Athlete",
+      groupId: 'athleteGroupId',
+      headerName: 'Athlete',
       children: [
         {
-          headerName: "Name",
-          field: "athlete",
+          headerName: 'Name',
+          field: 'athlete',
           minWidth: 200,
-          filter: "agTextColumnFilter",
+          filter: 'agTextColumnFilter',
         },
-        { field: "age" },
+        { field: 'age' },
         {
-          groupId: "competitionGroupId",
-          headerName: "Competition",
-          children: [{ field: "year" }, { field: "date", minWidth: 180 }],
+          groupId: 'competitionGroupId',
+          headerName: 'Competition',
+          children: [{ field: 'year' }, { field: 'date', minWidth: 180 }],
         },
-        { field: "country", minWidth: 200 },
+        { field: 'country', minWidth: 200 },
       ],
     },
-    { colId: "sport", field: "sport", minWidth: 200 },
+    { colId: 'sport', field: 'sport', minWidth: 200 },
     {
-      headerName: "Medals",
+      headerName: 'Medals',
       children: [
-        { field: "gold" },
-        { field: "silver" },
-        { field: "bronze" },
-        { field: "total" },
+        { field: 'gold' },
+        { field: 'silver' },
+        { field: 'bronze' },
+        { field: 'total' },
       ],
     },
   ];
@@ -74,40 +74,40 @@ export class AppComponent {
     filter: true,
     resizable: true,
   };
-  public sideBar: SideBarDef | string | boolean | null = "filters";
+  public sideBar: SideBarDef | string | string[] | boolean | null = 'filters';
   public rowData!: any[];
 
   constructor(private http: HttpClient) {}
 
   collapseAll() {
-    (
-      this.gridApi.getToolPanelInstance("filters") as any as IFiltersToolPanel
-    ).collapseFilters();
+    ((this.gridApi.getToolPanelInstance(
+      'filters'
+    ) as any) as IFiltersToolPanel).collapseFilters();
   }
 
   expandYearAndSport() {
-    (
-      this.gridApi.getToolPanelInstance("filters") as any as IFiltersToolPanel
-    ).expandFilters(["year", "sport"]);
+    ((this.gridApi.getToolPanelInstance(
+      'filters'
+    ) as any) as IFiltersToolPanel).expandFilters(['year', 'sport']);
   }
 
   collapseYear() {
-    (
-      this.gridApi.getToolPanelInstance("filters") as any as IFiltersToolPanel
-    ).collapseFilters(["year"]);
+    ((this.gridApi.getToolPanelInstance(
+      'filters'
+    ) as any) as IFiltersToolPanel).collapseFilters(['year']);
   }
 
   expandAll() {
-    (
-      this.gridApi.getToolPanelInstance("filters") as any as IFiltersToolPanel
-    ).expandFilters();
+    ((this.gridApi.getToolPanelInstance(
+      'filters'
+    ) as any) as IFiltersToolPanel).expandFilters();
   }
 
   onGridReady(params: GridReadyEvent) {
     this.gridApi = params.api;
 
     this.http
-      .get<any[]>("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      .get<any[]>('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .subscribe((data) => (this.rowData = data));
   }
 }

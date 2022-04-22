@@ -1,13 +1,13 @@
-"use strict";
+'use strict';
 
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { AgGridReact } from "@ag-grid-community/react";
-import { ServerSideRowModelModule } from "@ag-grid-enterprise/server-side-row-model";
-import React, { Component } from "react";
-import { render } from "react-dom";
-import CustomLoadingCellRenderer from "./customLoadingCellRenderer.jsx";
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from '@ag-grid-community/react';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import CustomLoadingCellRenderer from './customLoadingCellRenderer.jsx';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import { ServerSideRowModelModule } from '@ag-grid-enterprise/server-side-row-model';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([ServerSideRowModelModule]);
@@ -18,15 +18,15 @@ class GridExample extends Component {
 
     this.state = {
       columnDefs: [
-        { field: "id" },
-        { field: "athlete", width: 150 },
-        { field: "age" },
-        { field: "country" },
-        { field: "year" },
-        { field: "sport" },
-        { field: "gold" },
-        { field: "silver" },
-        { field: "bronze" },
+        { field: 'id' },
+        { field: 'athlete', width: 150 },
+        { field: 'age' },
+        { field: 'country' },
+        { field: 'year' },
+        { field: 'sport' },
+        { field: 'gold' },
+        { field: 'silver' },
+        { field: 'bronze' },
       ],
       defaultColDef: {
         editable: true,
@@ -38,10 +38,10 @@ class GridExample extends Component {
       },
       loadingCellRenderer: CustomLoadingCellRenderer,
       loadingCellRendererParams: {
-        loadingMessage: "One moment please...",
+        loadingMessage: 'One moment please...',
       },
-      rowModelType: "serverSide",
-      serverSideStoreType: "partial",
+      rowModelType: 'serverSide',
+      serverSideStoreType: 'partial',
       cacheBlockSize: 100,
       maxBlocksInCache: 10,
     };
@@ -62,25 +62,25 @@ class GridExample extends Component {
       params.api.setServerSideDatasource(datasource);
     };
 
-    fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+    fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .then((resp) => resp.json())
       .then((data) => updateData(data));
   };
 
   render() {
     return (
-      <div style={{ width: "100%", height: "100%" }}>
+      <div style={{ width: '100%', height: '100%' }}>
         <div
           style={{
-            height: "100%",
-            paddingTop: "25px",
-            boxSizing: "border-box",
+            height: '100%',
+            paddingTop: '25px',
+            boxSizing: 'border-box',
           }}
         >
           <div
             style={{
-              height: "100%",
-              width: "100%",
+              height: '100%',
+              width: '100%',
             }}
             className="ag-theme-alpine"
           >
@@ -127,7 +127,7 @@ function getFakeServer(allData) {
   return {
     getResponse: (request) => {
       console.log(
-        "asking for rows: " + request.startRow + " to " + request.endRow
+        'asking for rows: ' + request.startRow + ' to ' + request.endRow
       );
       // take a slice of the total rows
       const rowsThisPage = allData.slice(request.startRow, request.endRow);
@@ -143,4 +143,4 @@ function getFakeServer(allData) {
   };
 }
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

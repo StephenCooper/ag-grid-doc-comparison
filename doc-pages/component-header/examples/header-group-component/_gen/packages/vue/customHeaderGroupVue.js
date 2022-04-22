@@ -14,7 +14,7 @@ export default {
   mounted() {
     this.params.columnGroup
       .getProvidedColumnGroup()
-      .addEventListener("expandedChanged", this.syncExpandButtons.bind(this));
+      .addEventListener('expandedChanged', this.syncExpandButtons.bind(this));
 
     this.syncExpandButtons();
   },

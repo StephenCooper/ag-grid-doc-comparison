@@ -1,25 +1,26 @@
 import {
+  GetServerSideStoreParamsParams,
   Grid,
   GridOptions,
   IServerSideDatasource,
   ModuleRegistry,
   ServerSideStoreParams,
-} from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine-dark.css";
-import { ServerSideRowModelModule } from "@ag-grid-enterprise/server-side-row-model";
+} from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine-dark.css';
+import { ServerSideRowModelModule } from '@ag-grid-enterprise/server-side-row-model';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([ServerSideRowModelModule]);
 declare var FakeServer: any;
 const gridOptions: GridOptions = {
   columnDefs: [
-    { field: "country", enableRowGroup: true, rowGroup: true },
-    { field: "sport", enableRowGroup: true, rowGroup: true },
-    { field: "year", minWidth: 100 },
-    { field: "gold", aggFunc: "sum" },
-    { field: "silver", aggFunc: "sum" },
-    { field: "bronze", aggFunc: "sum" },
+    { field: 'country', enableRowGroup: true, rowGroup: true },
+    { field: 'sport', enableRowGroup: true, rowGroup: true },
+    { field: 'year', minWidth: 100 },
+    { field: 'gold', aggFunc: 'sum' },
+    { field: 'silver', aggFunc: 'sum' },
+    { field: 'bronze', aggFunc: 'sum' },
   ],
   defaultColDef: {
     flex: 1,
@@ -27,8 +28,8 @@ const gridOptions: GridOptions = {
     resizable: true,
     sortable: true,
   },
-  rowGroupPanelShow: "always",
-  serverSideStoreType: "full",
+  rowGroupPanelShow: 'always',
+  serverSideStoreType: 'full',
   autoGroupColumnDef: {
     flex: 1,
     minWidth: 280,
@@ -38,15 +39,17 @@ const gridOptions: GridOptions = {
   cacheBlockSize: 4,
 
   // use the server-side row model
-  rowModelType: "serverSide",
+  rowModelType: 'serverSide',
 
-  getServerSideStoreParams: function (params) {
+  getServerSideStoreParams: function (
+    params: GetServerSideStoreParamsParams
+  ): ServerSideStoreParams {
     var noGroupingActive = params.rowGroupColumns.length == 0;
     var res: ServerSideStoreParams;
     if (noGroupingActive) {
       res = {
         // infinite scrolling
-        storeType: "partial",
+        storeType: 'partial',
         // 100 rows per block
         cacheBlockSize: 100,
         // purge blocks that are not needed
@@ -55,17 +58,17 @@ const gridOptions: GridOptions = {
     } else {
       var topLevelRows = params.level == 0;
       res = {
-        storeType: topLevelRows ? "full" : "partial",
+        storeType: topLevelRows ? 'full' : 'partial',
         cacheBlockSize: params.level == 1 ? 5 : 2,
         maxBlocksInCache: -1, // never purge blocks
       };
     }
 
-    console.log("############## NEW STORE ##############");
+    console.log('############## NEW STORE ##############');
     console.log(
-      "getServerSideStoreParams, level = " +
+      'getServerSideStoreParams, level = ' +
         params.level +
-        ", result = " +
+        ', result = ' +
         JSON.stringify(res)
     );
 
@@ -79,12 +82,12 @@ const gridOptions: GridOptions = {
 
 function onBtStoreState() {
   var storeState = gridOptions.api!.getServerSideStoreState();
-  console.log("Store States:");
+  console.log('Store States:');
   storeState.forEach(function (state, index) {
     console.log(
       index +
-        " - " +
-        JSON.stringify(state).replace(/"/g, "").replace(/,/g, ", ")
+        ' - ' +
+        JSON.stringify(state).replace(/"/g, '').replace(/,/g, ', ')
     );
   });
 }
@@ -92,7 +95,7 @@ function onBtStoreState() {
 function getServerSideDatasource(server: any): IServerSideDatasource {
   return {
     getRows: function (params) {
-      console.log("[Datasource] - rows requested by grid: ", params.request);
+      console.log('[Datasource] - rows requested by grid: ', params.request);
 
       var response = server.getData(params.request);
 
@@ -118,10 +121,10 @@ function getServerSideDatasource(server: any): IServerSideDatasource {
 }
 
 // setup the grid after the page has finished loading
-var gridDiv = document.querySelector<HTMLElement>("#myGrid")!;
+var gridDiv = document.querySelector<HTMLElement>('#myGrid')!;
 new Grid(gridDiv, gridOptions);
 
-fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
   .then((response) => response.json())
   .then(function (data) {
     // setup the fake server with entire dataset
@@ -134,7 +137,7 @@ fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
     gridOptions.api!.setServerSideDatasource(datasource);
   });
 
-if (typeof window !== "undefined") {
+if (typeof window !== 'undefined') {
   // Attach external event handlers to window so they can be called from index.html
   (<any>window).onBtStoreState = onBtStoreState;
 }

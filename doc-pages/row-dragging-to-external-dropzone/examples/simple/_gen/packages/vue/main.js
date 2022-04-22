@@ -1,7 +1,7 @@
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import { AgGridVue } from "ag-grid-vue";
-import Vue from "vue";
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import { AgGridVue } from 'ag-grid-vue';
+import Vue from 'vue';
 
 const VueExample = {
   template: `
@@ -33,15 +33,15 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
-        { field: "id", rowDrag: true },
-        { field: "color" },
-        { field: "value1" },
-        { field: "value2" },
+        { field: 'id', rowDrag: true },
+        { field: 'color' },
+        { field: 'value1' },
+        { field: 'value2' },
       ],
       gridApi: null,
       columnApi: null,
@@ -57,9 +57,9 @@ const VueExample = {
   },
   created() {
     this.rowClassRules = {
-      "red-row": 'data.color == "Red"',
-      "green-row": 'data.color == "Green"',
-      "blue-row": 'data.color == "Blue"',
+      'red-row': 'data.color == "Red"',
+      'green-row': 'data.color == "Green"',
+      'blue-row': 'data.color == "Blue"',
     };
     this.rowData = createRowData();
   },
@@ -75,8 +75,8 @@ const VueExample = {
 };
 
 window.addCheckboxListener = function addCheckboxListener(params) {
-  var checkbox = document.querySelector("input[type=checkbox]");
-  checkbox.addEventListener("change", function () {
+  var checkbox = document.querySelector('input[type=checkbox]');
+  checkbox.addEventListener('change', function () {
     params.api.setSuppressMoveWhenRowDragging(checkbox.checked);
   });
 };
@@ -84,15 +84,15 @@ window.addCheckboxListener = function addCheckboxListener(params) {
 window.createRowData = function createRowData() {
   var data = [];
   [
-    "Red",
-    "Green",
-    "Blue",
-    "Red",
-    "Green",
-    "Blue",
-    "Red",
-    "Green",
-    "Blue",
+    'Red',
+    'Green',
+    'Blue',
+    'Red',
+    'Green',
+    'Blue',
+    'Red',
+    'Green',
+    'Blue',
   ].forEach(function (color) {
     var newDataItem = {
       id: rowIdSequence++,
@@ -106,24 +106,24 @@ window.createRowData = function createRowData() {
 };
 
 window.createTile = function createTile(data) {
-  var el = document.createElement("div");
-  el.classList.add("tile");
+  var el = document.createElement('div');
+  el.classList.add('tile');
   el.classList.add(data.color.toLowerCase());
   el.innerHTML =
     '<div class="id">' +
     data.id +
-    "</div>" +
+    '</div>' +
     '<div class="value">' +
     data.value1 +
-    "</div>" +
+    '</div>' +
     '<div class="value">' +
     data.value2 +
-    "</div>";
+    '</div>';
   return el;
 };
 
 window.addDropZones = function addDropZones(params) {
-  var tileContainer = document.querySelector(".tile-container");
+  var tileContainer = document.querySelector('.tile-container');
   var dropZone = {
     getContainer: function () {
       return tileContainer;
@@ -139,8 +139,8 @@ window.addDropZones = function addDropZones(params) {
 var rowIdSequence = 100;
 
 new Vue({
-  el: "#app",
+  el: '#app',
   components: {
-    "my-component": VueExample,
+    'my-component': VueExample,
   },
 });

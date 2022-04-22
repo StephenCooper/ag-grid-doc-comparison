@@ -1,12 +1,12 @@
-import { ColDef, GridReadyEvent } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { HttpClient } from "@angular/common/http";
-import { Component } from "@angular/core";
+import { ColDef, GridReadyEvent } from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { HttpClient } from '@angular/common/http';
+import { Component } from '@angular/core';
 // Required feature modules are registered in app.module.ts
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<ag-grid-angular
     style="width: 100%; height: 100%;"
     class="ag-theme-alpine"
@@ -23,22 +23,22 @@ import { Component } from "@angular/core";
 export class AppComponent {
   public columnDefs: ColDef[] = [
     {
-      field: "athlete",
+      field: 'athlete',
       rowGroup: true,
       hide: true,
     },
     {
-      field: "age",
+      field: 'age',
       width: 90,
       enableValue: true,
       icons: {
         // not very useful, but demonstrates you can just have strings
-        sortAscending: "U",
-        sortDescending: "D",
+        sortAscending: 'U',
+        sortDescending: 'D',
       },
     },
     {
-      field: "country",
+      field: 'country',
       width: 150,
       rowGroupIndex: 0,
       icons: {
@@ -46,17 +46,17 @@ export class AppComponent {
         sortDescending: '<i class="fa fa-sort-alpha-down"/>',
       },
     },
-    { field: "year", width: 90, enableRowGroup: true },
-    { field: "date" },
+    { field: 'year', width: 90, enableRowGroup: true },
+    { field: 'date' },
     {
-      field: "sport",
+      field: 'sport',
       width: 110,
       icons: myIcons,
     },
-    { field: "gold", width: 100 },
-    { field: "silver", width: 100 },
-    { field: "bronze", width: 100 },
-    { field: "total", width: 100 },
+    { field: 'gold', width: 100 },
+    { field: 'silver', width: 100 },
+    { field: 'bronze', width: 100 },
+    { field: 'total', width: 100 },
   ];
   public defaultColDef: ColDef = {
     width: 150,
@@ -66,8 +66,8 @@ export class AppComponent {
     floatingFilter: true,
   };
   public autoGroupColumnDef: ColDef = {
-    headerName: "Athlete",
-    field: "athlete",
+    headerName: 'Athlete',
+    field: 'athlete',
     rowDrag: true,
     // use font awesome for first col, with numbers for sort
     icons: {
@@ -104,31 +104,31 @@ export class AppComponent {
     rowGroupPanel: '<i class="fa fa-university"/>',
     pivotPanel: '<i class="fa fa-magic"/>',
     valuePanel: '<i class="fa fa-magnet"/>',
-    menuPin: "P",
-    menuValue: "V",
-    menuAddRowGroup: "A",
-    menuRemoveRowGroup: "R",
-    clipboardCopy: ">>",
-    clipboardPaste: ">>",
+    menuPin: 'P',
+    menuValue: 'V',
+    menuAddRowGroup: 'A',
+    menuRemoveRowGroup: 'R',
+    clipboardCopy: '>>',
+    clipboardPaste: '>>',
     rowDrag: '<i class="fa fa-circle"/>',
   };
-  public rowSelection = "multiple";
+  public rowSelection = 'multiple';
   public rowData!: any[];
 
   constructor(private http: HttpClient) {}
 
   onGridReady(params: GridReadyEvent) {
     this.http
-      .get<any[]>("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      .get<any[]>('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .subscribe((data) => (this.rowData = data));
   }
 }
 
 var myIcons = {
   sortAscending: function () {
-    return "ASC";
+    return 'ASC';
   },
   sortDescending: function () {
-    return "DESC";
+    return 'DESC';
   },
 };

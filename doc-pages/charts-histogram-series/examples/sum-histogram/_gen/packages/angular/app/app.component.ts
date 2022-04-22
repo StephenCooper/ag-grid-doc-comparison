@@ -1,8 +1,8 @@
-import { Component } from "@angular/core";
-import { AgChartOptions } from "ag-charts-community";
+import { Component } from '@angular/core';
+import { AgChartOptions } from 'ag-charts-community';
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<ag-charts-angular
     style="height: 100%"
     [options]="options"
@@ -14,20 +14,20 @@ export class AppComponent {
   constructor() {
     this.options = {
       title: {
-        text: "Prize money distribution",
+        text: 'Prize money distribution',
       },
       subtitle: {
-        text: "Total winnings by participant age",
+        text: 'Total winnings by participant age',
       },
       data: getData(),
       series: [
         {
-          type: "histogram",
-          xKey: "age",
-          xName: "Participant Age",
-          yKey: "winnings",
-          yName: "Winnings",
-          aggregation: "sum",
+          type: 'histogram',
+          xKey: 'age',
+          xName: 'Participant Age',
+          yKey: 'winnings',
+          yName: 'Winnings',
+          aggregation: 'sum',
         },
       ],
       legend: {
@@ -35,17 +35,16 @@ export class AppComponent {
       },
       axes: [
         {
-          type: "number",
-          position: "bottom",
-          title: { text: "Age band (years)" },
+          type: 'number',
+          position: 'bottom',
+          title: { text: 'Age band (years)' },
         },
         {
-          type: "number",
-          position: "left",
-          title: { text: "Total winnings (USD)" },
+          type: 'number',
+          position: 'left',
+          title: { text: 'Total winnings (USD)' },
         },
       ],
-      height: 550,
     };
   }
 

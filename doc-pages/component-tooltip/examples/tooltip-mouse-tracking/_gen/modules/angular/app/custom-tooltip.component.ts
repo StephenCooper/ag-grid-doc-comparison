@@ -1,9 +1,9 @@
-import { ITooltipAngularComp } from "@ag-grid-community/angular";
-import { ITooltipParams } from "@ag-grid-community/core";
-import { Component } from "@angular/core";
+import { ITooltipAngularComp } from '@ag-grid-community/angular';
+import { ITooltipParams } from '@ag-grid-community/core';
+import { Component } from '@angular/core';
 
 @Component({
-  selector: "tooltip-component",
+  selector: 'tooltip-component',
   template: ` <div class="custom-tooltip">
     <div [ngClass]="'panel panel-' + type">
       <div class="panel-heading">
@@ -48,6 +48,6 @@ export class CustomTooltip implements ITooltipAngularComp {
     this.params = params;
 
     this.data = params.api!.getDisplayedRowAtIndex(params.rowIndex!)!.data;
-    this.type = this.params.type || "primary";
+    this.type = this.params.type || 'primary';
   }
 }

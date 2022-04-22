@@ -1,5 +1,5 @@
-import { AgChartsVue } from "ag-charts-vue3";
-import { createApp } from "vue";
+import { AgChartsVue } from 'ag-charts-vue3';
+import { createApp } from 'vue';
 
 const ChartExample = {
   template: `
@@ -7,7 +7,7 @@ const ChartExample = {
                 :options="options"></ag-charts-vue>
     `,
   components: {
-    "ag-charts-vue": AgChartsVue,
+    'ag-charts-vue': AgChartsVue,
   },
   data: function () {
     return {
@@ -20,47 +20,47 @@ const ChartExample = {
         text: "Apple's revenue by product category",
       },
       subtitle: {
-        text: "in billion U.S. dollars",
+        text: 'in billion U.S. dollars',
       },
       data: getData(),
       series: [
         {
-          type: "column",
-          xKey: "quarter",
-          yKey: "iphone",
-          yName: "iPhone",
+          type: 'column',
+          xKey: 'quarter',
+          yKey: 'iphone',
+          yName: 'iPhone',
           stacked: true,
           label: { formatter },
         },
         {
-          type: "column",
-          xKey: "quarter",
-          yKey: "mac",
-          yName: "Mac",
+          type: 'column',
+          xKey: 'quarter',
+          yKey: 'mac',
+          yName: 'Mac',
           stacked: true,
           label: { formatter },
         },
         {
-          type: "column",
-          xKey: "quarter",
-          yKey: "ipad",
-          yName: "iPad",
+          type: 'column',
+          xKey: 'quarter',
+          yKey: 'ipad',
+          yName: 'iPad',
           stacked: true,
           label: { formatter },
         },
         {
-          type: "column",
-          xKey: "quarter",
-          yKey: "wearables",
-          yName: "Wearables",
+          type: 'column',
+          xKey: 'quarter',
+          yKey: 'wearables',
+          yName: 'Wearables',
           stacked: true,
           label: { formatter },
         },
         {
-          type: "column",
-          xKey: "quarter",
-          yKey: "services",
-          yName: "Services",
+          type: 'column',
+          xKey: 'quarter',
+          yKey: 'services',
+          yName: 'Services',
           stacked: true,
           label: { formatter },
         },
@@ -71,6 +71,6 @@ const ChartExample = {
   methods: {},
 };
 
-const formatter = ({ value }) => (value == null ? "" : value.toFixed(0));
+const formatter = ({ value }) => (value == null ? '' : value.toFixed(0));
 
-createApp(ChartExample).mount("#app");
+createApp(ChartExample).mount('#app');

@@ -1,11 +1,11 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 
 export default class CountryCellRenderer extends Component {
   constructor(props) {
     super(props);
 
     let value;
-    if (!props.value || props.value === "(Select All)") {
+    if (!props.value || props.value === '(Select All)') {
       value = props.value;
     } else {
       const url = `https://flags.fmcdn.net/data/flags/mini/${

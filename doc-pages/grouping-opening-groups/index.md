@@ -7,7 +7,7 @@ This section covers different ways to control how row groups are expanded and co
 
 ## Opening Group Levels by Default
 
-To open all groups down to a given group level use the `groupDefaultExpanded` grid option as shown below:
+To open all groups down to a given group level use the `groupDefaultExpanded` grid option as shown below: 
 
 <snippet>
 const gridOptions = {
@@ -59,9 +59,9 @@ countries, not just 'United States'.
 
 <grid-example title='Open by Default' name='open-by-default' type='generated' options='{ "enterprise": true, "exampleHeight": 515, "modules": ["clientside", "rowgrouping"] }'></grid-example>
 
-## Expand / Collapse Groups via API
+## Expand / Collapse Groups via API  
 
-It is possible to expand and collapse all group rows using the `expandAll()` and `collapseAll()` grid API's as shown below:
+It is possible to expand and collapse all group rows using the `expandAll()` and `collapseAll()` grid API's as shown below: 
 
 <snippet>
 |// Expand all group rows
@@ -71,7 +71,7 @@ It is possible to expand and collapse all group rows using the `expandAll()` and
 |gridOptions.api.collapseAll();
 </snippet>
 
-When more custom behaviour is required, obtain a reference to the rowNode and then call `rowNode.setExpanded(boolean)`.
+When more custom behaviour is required, obtain a reference to the rowNode and then call `rowNode.setExpanded(boolean)`. 
 For example, to expand a group with the name 'United States' would be done as follows:
 
 <snippet>

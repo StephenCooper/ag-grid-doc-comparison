@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React, { useMemo } from 'react';
 
 export default (props) => {
   const data = useMemo(
@@ -9,7 +9,7 @@ export default (props) => {
   return (
     <div
       className="custom-tooltip"
-      style={{ backgroundColor: props.color || "white" }}
+      style={{ backgroundColor: props.color || 'white' }}
     >
       <p>
         <span>{data.athlete}</span>

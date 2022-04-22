@@ -28,6 +28,7 @@ Note in the snippet above that specifying an `agSparklineCellRenderer` will disp
 
 The following example shows the minimum configuration required to display data in a sparkline. Note the following:
 
+
 - The **Change** column is configured to use an `agSparklineCellRenderer`.
 - No sparkline options are supplied to the `agSparklineCellRenderer` so the default [Line Sparkline](/sparklines-line-customisation/) is used.
 - An array of numbers is supplied as data to the **Change** column, which means no [Data Mapping](/sparklines-data/) is required.
@@ -68,7 +69,7 @@ Each Sparkline type contains specific `sparklineOptions` that can be overridden 
 The following sections are relevant to all sparkline types:
 
 - [Sparkline Data](/sparklines-data/) - compares the different data formats that can be supplied to sparklines.
-- [Axes Types](/sparklines-axis-types/) - compares the different axes types available to sparklines.
+- [Axis Types](/sparklines-axis-types/) - compares the different axis types available to sparklines.
 - [Sparkline Tooltips](/sparklines-tooltips/) - covers the various ways sparkline tooltips can be customised.
 - [Points of Interest](/sparklines-points-of-interest/) - shows how points of interest can be formatted on sparklines.
 

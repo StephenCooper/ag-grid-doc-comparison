@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 
 export default class CustomStatsToolPanel extends Component {
   constructor(props) {
@@ -8,21 +8,21 @@ export default class CustomStatsToolPanel extends Component {
 
     // calculate stats when new rows loaded, i.e. onModelUpdated
     this.props.api.addEventListener(
-      "modelUpdated",
+      'modelUpdated',
       this.updateTotals.bind(this)
     );
   }
 
   render() {
-    const totalStyle = { paddingBottom: "15px" };
+    const totalStyle = { paddingBottom: '15px' };
 
     return (
-      <div style={{ textAlign: "center" }}>
+      <div style={{ textAlign: 'center' }}>
         <span>
           <h2>
             <i className="fa fa-calculator"></i> Custom Stats
           </h2>
-          <dl style={{ fontSize: "large", padding: "30px 40px 10px 30px" }}>
+          <dl style={{ fontSize: 'large', padding: '30px 40px 10px 30px' }}>
             <dt style={totalStyle}>
               Total Medals: <b>{this.state.numMedals}</b>
             </dt>

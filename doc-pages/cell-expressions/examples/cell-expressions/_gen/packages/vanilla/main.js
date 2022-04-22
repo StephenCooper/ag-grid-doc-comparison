@@ -1,16 +1,16 @@
 ///// left table
 var columnDefsLeft = [
-  { headerName: "Function", field: "function", minWidth: 150 },
-  { headerName: "Value", field: "value" },
-  { headerName: "Times 10", valueGetter: 'getValue("value") * 10' },
+  { headerName: 'Function', field: 'function', minWidth: 150 },
+  { headerName: 'Value', field: 'value' },
+  { headerName: 'Times 10', valueGetter: 'getValue("value") * 10' },
 ];
 
 var rowDataLeft = [
-  { function: "Number Squared", value: "=ctx.theNumber * ctx.theNumber" },
-  { function: "Number x 2", value: "=ctx.theNumber * 2" },
-  { function: "Today's Date", value: "=new Date().toLocaleDateString()" },
-  { function: "Sum A", value: '=ctx.sum("a")' },
-  { function: "Sum B", value: '=ctx.sum("b")' },
+  { function: 'Number Squared', value: '=ctx.theNumber * ctx.theNumber' },
+  { function: 'Number x 2', value: '=ctx.theNumber * 2' },
+  { function: "Today's Date", value: '=new Date().toLocaleDateString()' },
+  { function: 'Sum A', value: '=ctx.sum("a")' },
+  { function: 'Sum B', value: '=ctx.sum("b")' },
 ];
 
 var gridOptionsLeft = {
@@ -28,16 +28,16 @@ var gridOptionsLeft = {
 ///// Right table
 var columnDefsRight = [
   {
-    headerName: "A",
-    field: "a",
+    headerName: 'A',
+    field: 'a',
     width: 150,
     editable: true,
     valueSetter: numberNewValueHandler,
     onCellValueChanged: cellValueChanged,
   },
   {
-    headerName: "B",
-    field: "b",
+    headerName: 'B',
+    field: 'b',
     width: 150,
     editable: true,
     newValueHandler: numberNewValueHandler,
@@ -92,9 +92,9 @@ function cellValueChanged(params) {
 }
 
 // setup the grid after the page has finished loading
-document.addEventListener("DOMContentLoaded", function () {
-  var gridDivLeft = document.querySelector("#myGridLeft");
+document.addEventListener('DOMContentLoaded', function () {
+  var gridDivLeft = document.querySelector('#myGridLeft');
   new agGrid.Grid(gridDivLeft, gridOptionsLeft);
-  var gridDivRight = document.querySelector("#myGridRight");
+  var gridDivRight = document.querySelector('#myGridRight');
   new agGrid.Grid(gridDivRight, gridOptionsRight);
 });

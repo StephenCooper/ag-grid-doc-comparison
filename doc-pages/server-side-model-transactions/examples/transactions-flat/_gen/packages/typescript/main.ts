@@ -1,62 +1,63 @@
 import {
   ColDef,
+  GetRowIdParams,
   Grid,
   GridOptions,
   IServerSideDatasource,
   IServerSideGetRowsParams,
-} from "ag-grid-community";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine-dark.css";
-import "ag-grid-enterprise";
+} from 'ag-grid-community';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine-dark.css';
+import 'ag-grid-enterprise';
 
-const products = ["Palm Oil", "Rubber", "Wool", "Amber", "Copper"];
+const products = ['Palm Oil', 'Rubber', 'Wool', 'Amber', 'Copper'];
 const all_products = [
-  "Palm Oil",
-  "Rubber",
-  "Wool",
-  "Amber",
-  "Copper",
-  "Lead",
-  "Zinc",
-  "Tin",
-  "Aluminium",
-  "Aluminium Alloy",
-  "Nickel",
-  "Cobalt",
-  "Molybdenum",
-  "Recycled Steel",
-  "Corn",
-  "Oats",
-  "Rough Rice",
-  "Soybeans",
-  "Rapeseed",
-  "Soybean Meal",
-  "Soybean Oil",
-  "Wheat",
-  "Milk",
-  "Coca",
-  "Coffee C",
-  "Cotton No.2",
-  "Sugar No.11",
-  "Sugar No.14",
+  'Palm Oil',
+  'Rubber',
+  'Wool',
+  'Amber',
+  'Copper',
+  'Lead',
+  'Zinc',
+  'Tin',
+  'Aluminium',
+  'Aluminium Alloy',
+  'Nickel',
+  'Cobalt',
+  'Molybdenum',
+  'Recycled Steel',
+  'Corn',
+  'Oats',
+  'Rough Rice',
+  'Soybeans',
+  'Rapeseed',
+  'Soybean Meal',
+  'Soybean Oil',
+  'Wheat',
+  'Milk',
+  'Coca',
+  'Coffee C',
+  'Cotton No.2',
+  'Sugar No.11',
+  'Sugar No.14',
 ];
 
-const columnDefs: ColDef[] = [{ field: "product" }, { field: "value" }];
+const columnDefs: ColDef[] = [{ field: 'product' }, { field: 'value' }];
 
 const gridOptions: GridOptions = {
   defaultColDef: {
     width: 250,
     resizable: true,
   },
-  getRowId: function (params) {
+  getRowId: function (params: GetRowIdParams) {
     return params.data.product;
   },
-  rowSelection: "multiple",
-  serverSideStoreType: "full",
+  rowSelection: 'multiple',
+  serverSideStoreType: 'full',
   enableCellChangeFlash: true,
   columnDefs: columnDefs,
   // use the enterprise row model
-  rowModelType: "serverSide",
+  rowModelType: 'serverSide',
   // cacheBlockSize: 100,
   animateRows: true,
 };
@@ -133,13 +134,13 @@ function onUpdateRandom() {
   gridOptions.api!.applyServerSideTransaction(tx);
 }
 
-function onAdd(index: number) {
+function onAdd(index: number | undefined) {
   const newProductName =
     all_products[Math.floor(all_products.length * Math.random())];
   const itemsToAdd = [];
   for (let i = 0; i < 5; i++) {
     itemsToAdd.push({
-      product: newProductName + " " + newProductSequence++,
+      product: newProductName + ' ' + newProductSequence++,
       value: getNextValue(),
     });
   }
@@ -156,10 +157,10 @@ function getNextValue() {
 }
 
 // setup the grid after the page has finished loading
-const gridDiv = document.querySelector<HTMLElement>("#myGrid")!;
+const gridDiv = document.querySelector<HTMLElement>('#myGrid')!;
 new Grid(gridDiv, gridOptions);
 
-fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
   .then((response) => response.json())
   .then(function (data) {
     const dataSource: IServerSideDatasource = {
@@ -183,7 +184,7 @@ fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
     gridOptions.api!.setServerSideDatasource(dataSource);
   });
 
-if (typeof window !== "undefined") {
+if (typeof window !== 'undefined') {
   // Attach external event handlers to window so they can be called from index.html
   (<any>window).onRemoveSelected = onRemoveSelected;
   (<any>window).onRemoveRandom = onRemoveRandom;

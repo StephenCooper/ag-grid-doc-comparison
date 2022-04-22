@@ -1,11 +1,11 @@
-"use strict";
+'use strict';
 
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import { AgGridReact } from "ag-grid-react";
-import React, { Component } from "react";
-import { render } from "react-dom";
-import CustomHeaderGroup from "./customHeaderGroup.jsx";
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from 'ag-grid-react';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import CustomHeaderGroup from './customHeaderGroup.jsx';
 
 class GridExample extends Component {
   constructor(props) {
@@ -14,48 +14,48 @@ class GridExample extends Component {
     this.state = {
       columnDefs: [
         {
-          headerName: "Athlete Details",
+          headerName: 'Athlete Details',
           headerGroupComponent: CustomHeaderGroup,
           children: [
-            { field: "athlete", width: 150 },
-            { field: "age", width: 90, columnGroupShow: "open" },
+            { field: 'athlete', width: 150 },
+            { field: 'age', width: 90, columnGroupShow: 'open' },
             {
-              field: "country",
+              field: 'country',
               width: 120,
-              columnGroupShow: "open",
+              columnGroupShow: 'open',
             },
           ],
         },
         {
-          headerName: "Medal details",
+          headerName: 'Medal details',
           headerGroupComponent: CustomHeaderGroup,
           children: [
-            { field: "year", width: 90 },
-            { field: "date", width: 110 },
+            { field: 'year', width: 90 },
+            { field: 'date', width: 110 },
             {
-              field: "sport",
+              field: 'sport',
               width: 110,
-              columnGroupShow: "open",
+              columnGroupShow: 'open',
             },
             {
-              field: "gold",
+              field: 'gold',
               width: 100,
-              columnGroupShow: "open",
+              columnGroupShow: 'open',
             },
             {
-              field: "silver",
+              field: 'silver',
               width: 100,
-              columnGroupShow: "open",
+              columnGroupShow: 'open',
             },
             {
-              field: "bronze",
+              field: 'bronze',
               width: 100,
-              columnGroupShow: "open",
+              columnGroupShow: 'open',
             },
             {
-              field: "total",
+              field: 'total',
               width: 100,
-              columnGroupShow: "open",
+              columnGroupShow: 'open',
             },
           ],
         },
@@ -74,18 +74,18 @@ class GridExample extends Component {
 
     const updateData = (data) => params.api.setRowData(data);
 
-    fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+    fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .then((resp) => resp.json())
       .then((data) => updateData(data));
   };
 
   render() {
     return (
-      <div style={{ width: "100%", height: "100%" }}>
+      <div style={{ width: '100%', height: '100%' }}>
         <div
           style={{
-            height: "100%",
-            width: "100%",
+            height: '100%',
+            width: '100%',
           }}
           className="ag-theme-alpine"
         >
@@ -101,4 +101,4 @@ class GridExample extends Component {
   }
 }
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

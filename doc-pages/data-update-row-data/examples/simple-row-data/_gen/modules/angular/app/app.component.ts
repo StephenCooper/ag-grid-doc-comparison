@@ -1,11 +1,11 @@
-import { ColDef, GridApi, GridReadyEvent } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { Component } from "@angular/core";
+import { ColDef, GridApi, GridReadyEvent } from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { Component } from '@angular/core';
 // Required feature modules are registered in app.module.ts
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<div
     style="height: 100%; width: 100%; display: flex; flex-direction: column;"
   >
@@ -30,12 +30,12 @@ export class AppComponent {
   private gridApi!: GridApi;
 
   public columnDefs: ColDef[] = [
-    { field: "make" },
-    { field: "model" },
-    { field: "price" },
+    { field: 'make' },
+    { field: 'model' },
+    { field: 'price' },
   ];
   public rowData: any[] | null = rowDataA;
-  public rowSelection = "single";
+  public rowSelection = 'single';
 
   onRowDataA() {
     this.gridApi.setRowData(rowDataA);
@@ -52,14 +52,14 @@ export class AppComponent {
 
 // specify the data
 var rowDataA = [
-  { make: "Toyota", model: "Celica", price: 35000 },
-  { make: "Porsche", model: "Boxter", price: 72000 },
-  { make: "Aston Martin", model: "DBX", price: 190000 },
+  { make: 'Toyota', model: 'Celica', price: 35000 },
+  { make: 'Porsche', model: 'Boxster', price: 72000 },
+  { make: 'Aston Martin', model: 'DBX', price: 190000 },
 ];
 var rowDataB = [
-  { make: "Toyota", model: "Celica", price: 35000 },
-  { make: "Ford", model: "Mondeo", price: 32000 },
-  { make: "Porsche", model: "Boxter", price: 72000 },
-  { make: "BMW", model: "M50", price: 60000 },
-  { make: "Aston Martin", model: "DBX", price: 190000 },
+  { make: 'Toyota', model: 'Celica', price: 35000 },
+  { make: 'Ford', model: 'Mondeo', price: 32000 },
+  { make: 'Porsche', model: 'Boxster', price: 72000 },
+  { make: 'BMW', model: 'M50', price: 60000 },
+  { make: 'Aston Martin', model: 'DBX', price: 190000 },
 ];

@@ -1,14 +1,14 @@
-"use strict";
+'use strict';
 
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { AgGridReact } from "@ag-grid-community/react";
-import { GridChartsModule } from "@ag-grid-enterprise/charts";
-import { MenuModule } from "@ag-grid-enterprise/menu";
-import React, { useCallback, useMemo, useRef, useState } from "react";
-import { render } from "react-dom";
+import React, { useCallback, useMemo, useRef, useState } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from '@ag-grid-community/react';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import { MenuModule } from '@ag-grid-enterprise/menu';
+import { GridChartsModule } from '@ag-grid-enterprise/charts';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([
@@ -132,12 +132,12 @@ const getRowData = () => {
 
 const GridExample = () => {
   const gridRef = useRef();
-  const containerStyle = useMemo(() => ({ width: "100%", height: "100%" }), []);
-  const gridStyle = useMemo(() => ({ height: "100%", width: "100%" }), []);
+  const containerStyle = useMemo(() => ({ width: '100%', height: '100%' }), []);
+  const gridStyle = useMemo(() => ({ height: '100%', width: '100%' }), []);
   const [rowData, setRowData] = useState(getRowData());
   const [columnDefs, setColumnDefs] = useState([
-    { field: "timestamp", chartDataType: "time" },
-    { field: "cpuUsage" },
+    { field: 'timestamp', chartDataType: 'time' },
+    { field: 'cpuUsage' },
   ]);
   const defaultColDef = useMemo(() => {
     return {
@@ -153,7 +153,7 @@ const GridExample = () => {
       area: {
         title: {
           enabled: true,
-          text: "CPU Usage",
+          text: 'CPU Usage',
         },
         legend: {
           enabled: false,
@@ -171,21 +171,21 @@ const GridExample = () => {
           time: {
             label: {
               rotation: 45,
-              format: "%H:%M",
+              format: '%H:%M',
             },
           },
           category: {
             label: {
               rotation: 0,
               formatter: function (params) {
-                return moment(new Date(params.value)).format("DD MMM");
+                return moment(new Date(params.value)).format('DD MMM');
               },
             },
           },
           number: {
             label: {
               formatter: function (params) {
-                return params.value + "%";
+                return params.value + '%';
               },
             },
           },
@@ -196,18 +196,18 @@ const GridExample = () => {
 
   const onFirstDataRendered = useCallback((params) => {
     var createRangeChartParams = {
-      chartContainer: document.querySelector("#myChart"),
+      chartContainer: document.querySelector('#myChart'),
       suppressChartRanges: true,
       cellRange: {
-        columns: ["timestamp", "cpuUsage"],
+        columns: ['timestamp', 'cpuUsage'],
       },
-      chartType: "area",
+      chartType: 'area',
     };
     gridRef.current.api.createRangeChart(createRangeChartParams);
   }, []);
 
   const getChartToolbarItems = useCallback(() => {
-    return ["chartData", "chartFormat"];
+    return ['chartData', 'chartFormat'];
   }, []);
 
   return (
@@ -233,4 +233,4 @@ const GridExample = () => {
   );
 };
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

@@ -1,79 +1,73 @@
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
+import React, { Component } from 'react';
+import { connect } from "react-redux";
+import { bindActionCreators } from 'redux';
+import { AgGridReact } from "@ag-grid-community/react";
+import { actions } from './actions/fileActions.jsx'
+
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import { MenuModule } from '@ag-grid-enterprise/menu';
+import { RowGroupingModule } from '@ag-grid-enterprise/row-grouping';
+
 import "@ag-grid-community/core/dist/styles/ag-grid.css";
 import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { AgGridReact } from "@ag-grid-community/react";
-import { MenuModule } from "@ag-grid-enterprise/menu";
-import { RowGroupingModule } from "@ag-grid-enterprise/row-grouping";
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { bindActionCreators } from "redux";
-import { actions } from "./actions/fileActions.jsx";
 
+import { ModuleRegistry } from '@ag-grid-community/core';
 // Register the required feature modules with the Grid
-ModuleRegistry.registerModules([
-  ClientSideRowModelModule,
-  RowGroupingModule,
-  MenuModule,
-]);
+ModuleRegistry.registerModules([ClientSideRowModelModule, RowGroupingModule, MenuModule]);
 
 class FileView extends Component {
   colDefs = [
     { field: "file" },
     { field: "folder", rowGroup: true, hide: true },
     { field: "dateModified" },
-    { field: "size" },
+    { field: "size" }
   ];
 
   autoGroupColumnDef = {
     headerName: "Folder",
-    sort: "asc",
+    sort: 'asc',
     cellRendererParams: {
-      suppressCount: true,
-    },
+      suppressCount: true
+    }
   };
 
   render() {
     return (
-      <div id="myGrid" style={{ flex: 1 }} className="ag-theme-alpine">
+      <div id='myGrid' style={{ flex: 1 }} className="ag-theme-alpine">
         <AgGridReact
           columnDefs={this.colDefs}
           rowData={this.props.files}
-          getRowId={(params) => params.data.id}
+          getRowId={params => params.data.id}
           autoGroupColumnDef={this.autoGroupColumnDef}
           groupDefaultExpanded={-1}
-          onFirstDataRendered={(params) => params.api.sizeColumnsToFit()}
-          getContextMenuItems={this.getContextMenuItems}
-        ></AgGridReact>
+          onFirstDataRendered={params => params.api.sizeColumnsToFit()}
+          getContextMenuItems={this.getContextMenuItems}>
+        </AgGridReact>
       </div>
-    );
+    )
   }
 
   getContextMenuItems = (params) => {
-    const folderActions = [
-      {
-        name: "New File",
-        action: () => this.props.actions.newFile(params.node.key),
-      },
-    ];
+    const folderActions = [{
+      name: "New File",
+      action: () => this.props.actions.newFile(params.node.key)
+    }];
 
-    const fileActions = [
-      {
-        name: "Delete File",
-        action: () => this.props.actions.deleteFile(params.node.data.id),
-      },
-    ];
+    const fileActions = [{
+      name: "Delete File",
+      action: () => this.props.actions.deleteFile(params.node.data.id)
+    }];
 
     return params.node.group ? folderActions : fileActions;
   };
 }
 
 const mapStateToProps = (state) => ({
-  files: state.files,
+  files: state.files
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  actions: bindActionCreators(actions, dispatch),
+  actions: bindActionCreators(actions, dispatch)
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(FileView);

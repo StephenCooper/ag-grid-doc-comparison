@@ -7,9 +7,11 @@ This section shows how the detail height can be customised to suit application r
 
 ## Detail Height Options
 
+
 The default height of each detail section (ie the row containing the Detail Grid in the master) is fixed at `300px`. The height does not change based on how much data there is to display in the detail section.
 
 To change the height of the details section from the default you have the following options:
+
 
 - [Fixed Height](/master-detail-height/#fixed-height): a custom fixed height can be provided for all detail sections instead of the default `300px`.
 
@@ -57,7 +59,12 @@ So make sure the CSS on the top most element is set so that its height is correc
 | `display: inline-block` style to the top most element of your component. This is done as follows:
 |
 |
-| `ts | @Component({ | styles: [':host { display: inline-block; }'], | // other items here | } | `
+| ```ts
+| @Component({
+|   styles: [':host { display: inline-block; }'],
+|   // other items here
+| }
+| ```
 
 [[note]]
 | When using Auto Height feature, the Detail Grid will render all of it's rows all the time.
@@ -68,12 +75,13 @@ So make sure the CSS on the top most element is set so that its height is correc
 | Do not use Auto Height if you have many rows (eg 100+) in the Detail Grid's. To know if this
 | is a concern for your grid and dataset, try it out and check the performance.
 
+
 ## Dynamic Height
 
 Use the callback `getRowHeight(params)` to set height for each row individually. This is a specific use of the callback that is explained in more detail in
 [Get Row Height](/row-height/#getrowheight-callback)
 
-<api-documentation source='grid-properties/properties.json' section='styling' names='["getRowHeight"]'></api-documentation>
+<api-documentation source='grid-options/properties.json' section='styling' names='["getRowHeight"]'></api-documentation>
 
 Note that this callback gets called for **all rows** in the Master Grid, not just rows containing Detail Grids. If you do not want to set row heights explicitly for other rows simply return `undefined / null` and the grid will ignore the result for that particular row.
 

@@ -9,5 +9,5 @@
 |- `refresh()` is called 0...n times (i.e. it may never be called, or called multiple times).
 |- The component is destroyed once.
 |
-|In other words, component instantiation, `agInit` and destruction are always called exactly once. The component's GUI will
+|In other words, component instantiation, `agInit` and destruction are always called exactly once. The component's GUI will 
 |typically get rendered once unless the component is destroyed first. `refresh()` is optionally called multiple times.

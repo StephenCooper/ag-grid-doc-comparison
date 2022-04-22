@@ -1,8 +1,8 @@
-import { Component } from "@angular/core";
-import { AgChartOptions } from "ag-charts-community";
+import { Component } from '@angular/core';
+import { AgChartOptions } from 'ag-charts-community';
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<div class="wrapper">
     <ag-charts-angular
       style="height: 100%"
@@ -16,36 +16,36 @@ export class AppComponent {
   constructor() {
     this.options = {
       title: {
-        text: "Average low/high temperatures in London",
+        text: 'Average low/high temperatures in London',
       },
       subtitle: {
-        text: "(click a data point for details)",
+        text: '(click a data point for details)',
       },
       data: [
-        { month: "March", low: 3.9, high: 11.3 },
-        { month: "April", low: 5.5, high: 14.2 },
-        { month: "May", low: 8.7, high: 17.9 },
+        { month: 'March', low: 3.9, high: 11.3 },
+        { month: 'April', low: 5.5, high: 14.2 },
+        { month: 'May', low: 8.7, high: 17.9 },
       ],
       series: [
         {
-          type: "line",
-          xKey: "month",
-          yKey: "high",
+          type: 'line',
+          xKey: 'month',
+          yKey: 'high',
         },
         {
-          type: "column",
-          xKey: "month",
-          yKey: "low",
+          type: 'column',
+          xKey: 'month',
+          yKey: 'low',
         },
       ],
       axes: [
         {
-          type: "category",
-          position: "bottom",
+          type: 'category',
+          position: 'bottom',
         },
         {
-          type: "number",
-          position: "left",
+          type: 'number',
+          position: 'left',
         },
       ],
       legend: {
@@ -58,12 +58,12 @@ export class AppComponent {
         seriesNodeClick: function (event: any) {
           var datum = event.datum;
           window.alert(
-            "Temperature in " +
+            'Temperature in ' +
               datum[event.xKey] +
-              ": " +
+              ': ' +
               String(datum[event.yKey]) +
-              "°C" +
-              "\nSeries: " +
+              '°C' +
+              '\nSeries: ' +
               event.series.id
           );
         },
@@ -75,9 +75,9 @@ export class AppComponent {
 }
 
 function listUnitsSoldByBrand(brands: Record<string, number>) {
-  var result = "";
+  var result = '';
   for (var key in brands) {
-    result += key + ": " + brands[key] + "\n";
+    result += key + ': ' + brands[key] + '\n';
   }
   return result;
 }

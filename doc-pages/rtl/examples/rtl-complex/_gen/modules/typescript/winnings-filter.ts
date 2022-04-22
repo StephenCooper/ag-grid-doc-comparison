@@ -2,7 +2,7 @@ import {
   IDoesFilterPassParams,
   IFilterComp,
   IFilterParams,
-} from "@ag-grid-community/core";
+} from '@ag-grid-community/core';
 
 export class WinningsFilter implements IFilterComp {
   filterChangedCallback!: (additionalEventAttributes?: any) => void;
@@ -17,7 +17,7 @@ export class WinningsFilter implements IFilterComp {
   init(params: IFilterParams) {
     var uniqueId = Math.random();
     this.filterChangedCallback = params.filterChangedCallback;
-    this.eGui = document.createElement("div");
+    this.eGui = document.createElement('div');
     this.eGui.innerHTML =
       '<div style="padding: 4px;">' +
       '<div style="font-weight: bold;">Example Custom Filter</div>' +
@@ -36,12 +36,12 @@ export class WinningsFilter implements IFilterComp {
       '<div><label><input type="radio" name="filter"' +
       uniqueId +
       ' id="cbGreater90">&gt; &pound;90,000</label></div>' +
-      "</div>";
-    this.cbNoFilter = this.eGui.querySelector("#cbNoFilter");
-    this.cbPositive = this.eGui.querySelector("#cbPositive");
-    this.cbNegative = this.eGui.querySelector("#cbNegative");
-    this.cbGreater50 = this.eGui.querySelector("#cbGreater50");
-    this.cbGreater90 = this.eGui.querySelector("#cbGreater90");
+      '</div>';
+    this.cbNoFilter = this.eGui.querySelector('#cbNoFilter');
+    this.cbPositive = this.eGui.querySelector('#cbPositive');
+    this.cbNegative = this.eGui.querySelector('#cbNegative');
+    this.cbGreater50 = this.eGui.querySelector('#cbGreater50');
+    this.cbGreater90 = this.eGui.querySelector('#cbGreater90');
     this.cbNoFilter.checked = true; // initialise the first to checked
     this.cbNoFilter.onclick = this.filterChangedCallback;
     this.cbPositive.onclick = this.filterChangedCallback;
@@ -81,7 +81,7 @@ export class WinningsFilter implements IFilterComp {
     } else if (this.cbGreater90.checked) {
       return value >= 90000;
     } else {
-      console.error("invalid checkbox selection");
+      console.error('invalid checkbox selection');
     }
     return true;
   }

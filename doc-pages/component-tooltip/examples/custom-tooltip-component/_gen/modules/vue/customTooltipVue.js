@@ -18,6 +18,6 @@ export default {
     this.data = this.params.api.getDisplayedRowAtIndex(
       this.params.rowIndex
     ).data;
-    this.color = this.params.color || "white";
+    this.color = this.params.color || 'white';
   },
 };

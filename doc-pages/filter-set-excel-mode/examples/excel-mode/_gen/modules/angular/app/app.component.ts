@@ -1,11 +1,11 @@
-import { ColDef, GridReadyEvent, SideBarDef } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { Component } from "@angular/core";
+import { ColDef, GridReadyEvent, SideBarDef } from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { Component } from '@angular/core';
 // Required feature modules are registered in app.module.ts
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<ag-grid-angular
     style="width: 100%; height: 100%;"
     class="ag-theme-alpine"
@@ -20,24 +20,24 @@ import { Component } from "@angular/core";
 export class AppComponent {
   public columnDefs: ColDef[] = [
     {
-      headerName: "Default",
-      field: "animal",
-      filter: "agSetColumnFilter",
+      headerName: 'Default',
+      field: 'animal',
+      filter: 'agSetColumnFilter',
     },
     {
-      headerName: "Excel (Windows)",
-      field: "animal",
-      filter: "agSetColumnFilter",
+      headerName: 'Excel (Windows)',
+      field: 'animal',
+      filter: 'agSetColumnFilter',
       filterParams: {
-        excelMode: "windows",
+        excelMode: 'windows',
       },
     },
     {
-      headerName: "Excel (Mac)",
-      field: "animal",
-      filter: "agSetColumnFilter",
+      headerName: 'Excel (Mac)',
+      field: 'animal',
+      filter: 'agSetColumnFilter',
       filterParams: {
-        excelMode: "mac",
+        excelMode: 'mac',
       },
     },
   ];
@@ -46,14 +46,14 @@ export class AppComponent {
     minWidth: 200,
     resizable: true,
   };
-  public sideBar: SideBarDef | string | boolean | null = "filters";
+  public sideBar: SideBarDef | string | string[] | boolean | null = 'filters';
   public rowData: any[] | null = getData();
   public localeText: {
     [key: string]: string;
   } = {
-    applyFilter: "OK",
-    cancelFilter: "Cancel",
-    resetFilter: "Clear Filter",
+    applyFilter: 'OK',
+    cancelFilter: 'Cancel',
+    resetFilter: 'Clear Filter',
   };
 
   onGridReady(params: GridReadyEvent) {}

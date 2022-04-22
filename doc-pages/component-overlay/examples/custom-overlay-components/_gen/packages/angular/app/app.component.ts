@@ -1,13 +1,13 @@
-import { HttpClient } from "@angular/common/http";
-import { Component } from "@angular/core";
-import { ColDef, GridApi, GridReadyEvent } from "ag-grid-community";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import { CustomLoadingOverlay } from "./custom-loading-overlay.component";
-import { CustomNoRowsOverlay } from "./custom-no-rows-overlay.component";
+import { HttpClient } from '@angular/common/http';
+import { Component } from '@angular/core';
+import { ColDef, GridApi, GridReadyEvent } from 'ag-grid-community';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import { CustomLoadingOverlay } from './custom-loading-overlay.component';
+import { CustomNoRowsOverlay } from './custom-no-rows-overlay.component';
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<div class="example-wrapper">
     <div style="margin-bottom: 5px;">
       <button (click)="onBtShowLoading()">Show Loading Overlay</button>
@@ -32,16 +32,16 @@ export class AppComponent {
   private gridApi!: GridApi;
 
   public columnDefs: ColDef[] = [
-    { field: "athlete", width: 150 },
-    { field: "age", width: 90 },
-    { field: "country", width: 120 },
-    { field: "year", width: 90 },
-    { field: "date", width: 110 },
-    { field: "sport", width: 110 },
-    { field: "gold", width: 100 },
-    { field: "silver", width: 100 },
-    { field: "bronze", width: 100 },
-    { field: "total", width: 100 },
+    { field: 'athlete', width: 150 },
+    { field: 'age', width: 90 },
+    { field: 'country', width: 120 },
+    { field: 'year', width: 90 },
+    { field: 'date', width: 110 },
+    { field: 'sport', width: 110 },
+    { field: 'gold', width: 100 },
+    { field: 'silver', width: 100 },
+    { field: 'bronze', width: 100 },
+    { field: 'total', width: 100 },
   ];
   public defaultColDef: ColDef = {
     editable: true,
@@ -53,11 +53,11 @@ export class AppComponent {
   };
   public loadingOverlayComponent: any = CustomLoadingOverlay;
   public loadingOverlayComponentParams: any = {
-    loadingMessage: "One moment please...",
+    loadingMessage: 'One moment please...',
   };
   public noRowsOverlayComponent: any = CustomNoRowsOverlay;
   public noRowsOverlayComponentParams: any = {
-    noRowsMessageFunc: () => "Sorry - no rows! at: " + new Date(),
+    noRowsMessageFunc: () => 'Sorry - no rows! at: ' + new Date(),
   };
   public rowData!: any[];
 
@@ -79,7 +79,7 @@ export class AppComponent {
     this.gridApi = params.api;
 
     this.http
-      .get<any[]>("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      .get<any[]>('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .subscribe((data) => {
         this.rowData = data;
       });

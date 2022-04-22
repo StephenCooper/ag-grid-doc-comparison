@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 
 export default class DaysFrostRenderer extends Component {
   constructor(props) {
@@ -16,7 +16,7 @@ export default class DaysFrostRenderer extends Component {
   render() {
     return (
       <span>
-        {new Array(this.props.value).fill("").map((ignore) => (
+        {new Array(this.props.value).fill('').map((ignore) => (
           <img src={this.state.rendererImage} />
         ))}
       </span>

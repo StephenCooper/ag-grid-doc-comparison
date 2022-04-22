@@ -1,19 +1,20 @@
-import { HttpClient } from "@angular/common/http";
-import { Component } from "@angular/core";
+import { HttpClient } from '@angular/common/http';
+import { Component } from '@angular/core';
 import {
   ColDef,
   FirstDataRenderedEvent,
   GetRowIdFunc,
+  GetRowIdParams,
   GridApi,
   GridReadyEvent,
   IDetailCellRendererParams,
-} from "ag-grid-community";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
+} from 'ag-grid-community';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import 'ag-grid-enterprise';
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<div style="display: flex; flex-direction: column; height: 100%;">
     <div style="padding-bottom: 4px;">
       <button (click)="flashMilaSmithOnly()">Flash Mila Smith</button>
@@ -39,20 +40,20 @@ export class AppComponent {
 
   public columnDefs: ColDef[] = [
     // group cell renderer needed for expand / collapse icons
-    { field: "name", cellRenderer: "agGroupCellRenderer" },
-    { field: "account" },
-    { field: "calls" },
-    { field: "minutes", valueFormatter: "x.toLocaleString() + 'm'" },
+    { field: 'name', cellRenderer: 'agGroupCellRenderer' },
+    { field: 'account' },
+    { field: 'calls' },
+    { field: 'minutes', valueFormatter: "x.toLocaleString() + 'm'" },
   ];
   public detailRowHeight = 200;
   public detailCellRendererParams: any = {
     detailGridOptions: {
       columnDefs: [
-        { field: "callId" },
-        { field: "direction" },
-        { field: "number", minWidth: 150 },
-        { field: "duration", valueFormatter: "x.toLocaleString() + 's'" },
-        { field: "switchCode", minWidth: 150 },
+        { field: 'callId' },
+        { field: 'direction' },
+        { field: 'number', minWidth: 150 },
+        { field: 'duration', valueFormatter: "x.toLocaleString() + 's'" },
+        { field: 'switchCode', minWidth: 150 },
       ],
       defaultColDef: {
         flex: 1,
@@ -64,7 +65,7 @@ export class AppComponent {
       params.successCallback(params.data.callRecords);
     },
   } as IDetailCellRendererParams;
-  public getRowId: GetRowIdFunc = function (params) {
+  public getRowId: GetRowIdFunc = function (params: GetRowIdParams) {
     // use 'account' as the row ID
     return params.data.account;
   };
@@ -88,7 +89,7 @@ export class AppComponent {
 
   flashMilaSmithOnly() {
     // flash Mila Smith - we know her account is 177001 and we use the account for the row ID
-    var detailGrid = this.gridApi.getDetailGridInfo("detail_177001");
+    var detailGrid = this.gridApi.getDetailGridInfo('detail_177001');
     if (detailGrid) {
       detailGrid.api!.flashCells();
     }
@@ -105,7 +106,7 @@ export class AppComponent {
 
     this.http
       .get<any[]>(
-        "https://www.ag-grid.com/example-assets/master-detail-data.json"
+        'https://www.ag-grid.com/example-assets/master-detail-data.json'
       )
       .subscribe((data) => {
         this.rowData = data;

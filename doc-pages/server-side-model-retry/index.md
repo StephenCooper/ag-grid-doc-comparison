@@ -5,7 +5,9 @@ enterprise: true
 
 When a datasource load fails, it is possible to retry loading the rows again at a later time.
 
+
 When loading fails, the datasource informs the grid of such using the `fail()` callback instead of using the `success()` callback. Calling `fail()` puts the loading rows into a Loading Failed state which hides the loading spinner. No data is shown in these rows as they are not loaded.
+
 
 Failed loads can be retried by using the grid API `retryServerSideLoads()`. This will retry all loads that have previously failed.
 
@@ -33,3 +35,4 @@ The following is the retry example with Full Store:
 ## Next Up
 
 Continue to the next section to learn how to set [Row Height](/server-side-model-row-height/).
+

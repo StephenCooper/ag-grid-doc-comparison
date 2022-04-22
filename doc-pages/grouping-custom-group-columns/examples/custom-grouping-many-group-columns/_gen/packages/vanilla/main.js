@@ -1,27 +1,27 @@
 const columnDefs = [
   {
-    headerName: "Country",
+    headerName: 'Country',
     minWidth: 200,
     // this tells the grid what values to put into the cell
-    showRowGroup: "country",
+    showRowGroup: 'country',
     // this tells the grid what to use to render the cell
-    cellRenderer: "agGroupCellRenderer",
+    cellRenderer: 'agGroupCellRenderer',
   },
   {
-    headerName: "Year",
+    headerName: 'Year',
     minWidth: 200,
-    showRowGroup: "year",
-    cellRenderer: "agGroupCellRenderer",
+    showRowGroup: 'year',
+    cellRenderer: 'agGroupCellRenderer',
   },
   // these are the two columns we use to group by. we also hide them, so there
   // is no duplication with the values above
-  { field: "country", rowGroup: true, hide: true },
-  { field: "year", rowGroup: true, hide: true },
+  { field: 'country', rowGroup: true, hide: true },
+  { field: 'year', rowGroup: true, hide: true },
 
-  { field: "athlete", minWidth: 220 },
-  { field: "gold" },
-  { field: "silver" },
-  { field: "bronze" },
+  { field: 'athlete', minWidth: 220 },
+  { field: 'gold' },
+  { field: 'silver' },
+  { field: 'bronze' },
 ];
 
 const gridOptions = {
@@ -32,17 +32,17 @@ const gridOptions = {
     sortable: true,
     resizable: true,
   },
-  groupDisplayType: "custom",
+  groupDisplayType: 'custom',
   enableRangeSelection: true,
   animateRows: true,
 };
 
 // setup the grid after the page has finished loading
-document.addEventListener("DOMContentLoaded", function () {
-  var gridDiv = document.querySelector("#myGrid");
+document.addEventListener('DOMContentLoaded', function () {
+  var gridDiv = document.querySelector('#myGrid');
   new agGrid.Grid(gridDiv, gridOptions);
 
-  fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+  fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
     .then((response) => response.json())
     .then((data) => gridOptions.api.setRowData(data));
 });

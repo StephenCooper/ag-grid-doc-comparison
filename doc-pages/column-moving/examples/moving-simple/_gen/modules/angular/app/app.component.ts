@@ -3,15 +3,15 @@ import {
   Column,
   ColumnApi,
   GridReadyEvent,
-} from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { HttpClient } from "@angular/common/http";
-import { Component } from "@angular/core";
+} from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { HttpClient } from '@angular/common/http';
+import { Component } from '@angular/core';
 // Required feature modules are registered in app.module.ts
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<div class="example-wrapper">
     <div style="margin-bottom: 1rem;">
       <button (click)="onMedalsFirst()">Medals First</button>
@@ -35,16 +35,16 @@ export class AppComponent {
   private gridColumnApi!: ColumnApi;
 
   public columnDefs: ColDef[] = [
-    { field: "athlete" },
-    { field: "age" },
-    { field: "country" },
-    { field: "year" },
-    { field: "date" },
-    { field: "sport" },
-    { field: "gold" },
-    { field: "silver" },
-    { field: "bronze" },
-    { field: "total" },
+    { field: 'athlete' },
+    { field: 'age' },
+    { field: 'country' },
+    { field: 'year' },
+    { field: 'date' },
+    { field: 'sport' },
+    { field: 'gold' },
+    { field: 'silver' },
+    { field: 'bronze' },
+    { field: 'total' },
   ];
   public defaultColDef: ColDef = {
     width: 150,
@@ -54,15 +54,15 @@ export class AppComponent {
   constructor(private http: HttpClient) {}
 
   onMedalsFirst() {
-    this.gridColumnApi.moveColumns(["gold", "silver", "bronze", "total"], 0);
+    this.gridColumnApi.moveColumns(['gold', 'silver', 'bronze', 'total'], 0);
   }
 
   onMedalsLast() {
-    this.gridColumnApi.moveColumns(["gold", "silver", "bronze", "total"], 6);
+    this.gridColumnApi.moveColumns(['gold', 'silver', 'bronze', 'total'], 6);
   }
 
   onCountryFirst() {
-    this.gridColumnApi.moveColumn("country", 0);
+    this.gridColumnApi.moveColumn('country', 0);
   }
 
   onSwapFirstTwo() {
@@ -72,16 +72,16 @@ export class AppComponent {
   onPrintColumns() {
     const cols = this.gridColumnApi.getAllGridColumns();
     const colToNameFunc = (col: Column, index: number) =>
-      index + " = " + col.getId();
-    const colNames = cols.map(colToNameFunc).join(", ");
-    console.log("columns are: " + colNames);
+      index + ' = ' + col.getId();
+    const colNames = cols.map(colToNameFunc).join(', ');
+    console.log('columns are: ' + colNames);
   }
 
   onGridReady(params: GridReadyEvent) {
     this.gridColumnApi = params.columnApi;
 
     this.http
-      .get<any[]>("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      .get<any[]>('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .subscribe((data) => (this.rowData = data));
   }
 }

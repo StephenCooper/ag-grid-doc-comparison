@@ -1,7 +1,7 @@
-import * as agCharts from "ag-charts-community";
-import { AgChartOptions } from "ag-charts-community";
+import * as agCharts from 'ag-charts-community';
+import { AgChartOptions } from 'ag-charts-community';
 
-var lastTime = new Date("07 Jan 2020 13:25:00 GMT").getTime();
+var lastTime = new Date('07 Jan 2020 13:25:00 GMT').getTime();
 var data: { time: Date; voltage: number }[] = [];
 
 function getData() {
@@ -18,36 +18,36 @@ function getData() {
 }
 
 const options: AgChartOptions = {
-  container: document.getElementById("myChart"),
+  container: document.getElementById('myChart'),
   autoSize: true,
   data: getData(),
   series: [
     {
-      xKey: "time",
-      yKey: "voltage",
+      xKey: 'time',
+      yKey: 'voltage',
     },
   ],
   axes: [
     {
-      type: "time",
-      position: "bottom",
+      type: 'time',
+      position: 'bottom',
       tick: {
         count: agCharts.time.second.every(5),
       },
       label: {
-        format: "%H:%M:%S",
+        format: '%H:%M:%S',
       },
     },
     {
-      type: "number",
-      position: "left",
+      type: 'number',
+      position: 'left',
       label: {
-        format: "#{.2f}V",
+        format: '#{.2f}V',
       },
     },
   ],
   title: {
-    text: "Core Voltage",
+    text: 'Core Voltage',
   },
   legend: {
     enabled: false,
@@ -72,7 +72,7 @@ function update() {
   agCharts.AgChart.update(chart, options);
 }
 
-if (typeof window !== "undefined") {
+if (typeof window !== 'undefined') {
   // Attach external event handlers to window so they can be called from index.html
   (<any>window).startUpdates = startUpdates;
 }

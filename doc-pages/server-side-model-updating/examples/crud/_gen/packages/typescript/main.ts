@@ -5,21 +5,21 @@ import {
   GridOptions,
   IServerSideDatasource,
   IServerSideGetRowsParams,
-} from "ag-grid-community";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine-dark.css";
-import "ag-grid-enterprise";
+} from 'ag-grid-community';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine-dark.css';
+import 'ag-grid-enterprise';
 declare var window: any;
 
 const columnDefs: ColDef[] = [
-  { field: "athlete", width: 150 },
-  { field: "age" },
-  { field: "country", width: 150 },
-  { field: "year" },
-  { field: "sport" },
-  { field: "gold" },
-  { field: "silver" },
-  { field: "bronze" },
+  { field: 'athlete', width: 150 },
+  { field: 'age' },
+  { field: 'country', width: 150 },
+  { field: 'year' },
+  { field: 'sport' },
+  { field: 'gold' },
+  { field: 'silver' },
+  { field: 'bronze' },
 ];
 
 const gridOptions: GridOptions = {
@@ -27,10 +27,10 @@ const gridOptions: GridOptions = {
     width: 100,
     resizable: true,
   },
-  rowSelection: "single",
+  rowSelection: 'single',
   columnDefs: columnDefs,
-  rowModelType: "serverSide",
-  serverSideStoreType: "partial",
+  rowModelType: 'serverSide',
+  serverSideStoreType: 'partial',
   getRowId: getRowId,
 };
 
@@ -39,10 +39,10 @@ function getRowId(params: GetRowIdParams) {
 }
 
 // setup the grid after the page has finished loading
-var gridDiv = document.querySelector<HTMLElement>("#myGrid")!;
+var gridDiv = document.querySelector<HTMLElement>('#myGrid')!;
 new Grid(gridDiv, gridOptions);
 
-fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
   .then((response) => response.json())
   .then(function (data) {
     // add id to data
@@ -83,8 +83,8 @@ function onBtAdd() {
 
   // insert new row in the source data, at the top of the page
   window.rowDataServerSide.splice(selectedRow.rowIndex, 0, {
-    athlete: "New Item" + newItemCount,
-    id: "" + Math.random(),
+    athlete: 'New Item' + newItemCount,
+    id: '' + Math.random(),
   });
   newItemCount++;
 
@@ -114,7 +114,7 @@ function createMyDataSource(data: any[]) {
   return dataSource;
 }
 
-if (typeof window !== "undefined") {
+if (typeof window !== 'undefined') {
   // Attach external event handlers to window so they can be called from index.html
   (<any>window).onBtRemove = onBtRemove;
   (<any>window).onBtAdd = onBtAdd;

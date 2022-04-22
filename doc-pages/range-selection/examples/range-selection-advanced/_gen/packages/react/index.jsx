@@ -1,11 +1,11 @@
-"use strict";
+'use strict';
 
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
-import { AgGridReact } from "ag-grid-react";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from 'ag-grid-react';
+import 'ag-grid-enterprise';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 
 class GridExample extends Component {
   constructor(props) {
@@ -13,16 +13,16 @@ class GridExample extends Component {
 
     this.state = {
       columnDefs: [
-        { field: "athlete", minWidth: 150 },
-        { field: "age", maxWidth: 90 },
-        { field: "country", minWidth: 150 },
-        { field: "year", maxWidth: 90 },
-        { field: "date", minWidth: 150 },
-        { field: "sport", minWidth: 150 },
-        { field: "gold" },
-        { field: "silver" },
-        { field: "bronze" },
-        { field: "total" },
+        { field: 'athlete', minWidth: 150 },
+        { field: 'age', maxWidth: 90 },
+        { field: 'country', minWidth: 150 },
+        { field: 'year', maxWidth: 90 },
+        { field: 'date', minWidth: 150 },
+        { field: 'sport', minWidth: 150 },
+        { field: 'gold' },
+        { field: 'silver' },
+        { field: 'bronze' },
+        { field: 'total' },
       ],
       defaultColDef: {
         flex: 1,
@@ -31,7 +31,7 @@ class GridExample extends Component {
       },
       processCellForClipboard: function (params) {
         if (
-          params.column.getColId() === "athlete" &&
+          params.column.getColId() === 'athlete' &&
           params.value &&
           params.value.toUpperCase
         ) {
@@ -41,7 +41,7 @@ class GridExample extends Component {
       },
       processCellFromClipboard: function (params) {
         if (
-          params.column.getColId() === "athlete" &&
+          params.column.getColId() === 'athlete' &&
           params.value &&
           params.value.toLowerCase
         ) {
@@ -59,25 +59,25 @@ class GridExample extends Component {
 
     const updateData = (data) => params.api.setRowData(data);
 
-    fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+    fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .then((resp) => resp.json())
       .then((data) => updateData(data));
   };
 
   onRangeSelectionChanged = (event) => {
-    var lbRangeCount = document.querySelector("#lbRangeCount");
-    var lbEagerSum = document.querySelector("#lbEagerSum");
-    var lbLazySum = document.querySelector("#lbLazySum");
+    var lbRangeCount = document.querySelector('#lbRangeCount');
+    var lbEagerSum = document.querySelector('#lbEagerSum');
+    var lbLazySum = document.querySelector('#lbLazySum');
     var cellRanges = this.gridApi.getCellRanges();
     // if no selection, clear all the results and do nothing more
     if (!cellRanges || cellRanges.length === 0) {
-      lbRangeCount.innerHTML = "0";
-      lbEagerSum.innerHTML = "-";
-      lbLazySum.innerHTML = "-";
+      lbRangeCount.innerHTML = '0';
+      lbEagerSum.innerHTML = '-';
+      lbLazySum.innerHTML = '-';
       return;
     }
     // set range count to the number of ranges selected
-    lbRangeCount.innerHTML = cellRanges.length + "";
+    lbRangeCount.innerHTML = cellRanges.length + '';
     var sum = 0;
     var api = this.gridApi;
     if (cellRanges) {
@@ -90,19 +90,19 @@ class GridExample extends Component {
             var rowModel = api.getModel();
             var rowNode = rowModel.getRow(rowIndex);
             var value = api.getValue(column, rowNode);
-            if (typeof value === "number") {
+            if (typeof value === 'number') {
               sum += value;
             }
           });
         }
       });
     }
-    lbEagerSum.innerHTML = sum + "";
+    lbEagerSum.innerHTML = sum + '';
     if (event.started) {
-      lbLazySum.innerHTML = "?";
+      lbLazySum.innerHTML = '?';
     }
     if (event.finished) {
-      lbLazySum.innerHTML = sum + "";
+      lbLazySum.innerHTML = sum + '';
     }
   };
 
@@ -110,8 +110,8 @@ class GridExample extends Component {
     this.gridApi.addCellRange({
       rowStartIndex: 4,
       rowEndIndex: 8,
-      columnStart: "age",
-      columnEnd: "date",
+      columnStart: 'age',
+      columnEnd: 'date',
     });
   };
 
@@ -121,22 +121,22 @@ class GridExample extends Component {
 
   render() {
     return (
-      <div style={{ width: "100%", height: "100%" }}>
+      <div style={{ width: '100%', height: '100%' }}>
         <div className="example-wrapper">
           <div className="example-header">
             <button onClick={() => this.onAddRange()}>Add Range</button>
             <button onClick={() => this.onClearRange()}>Clear Range</button>
             Range Count:
-            <span id="lbRangeCount" style={{ paddingRight: "20px" }}></span>
+            <span id="lbRangeCount" style={{ paddingRight: '20px' }}></span>
             Eager Sum:
-            <span id="lbEagerSum" style={{ paddingRight: "20px" }}></span>
+            <span id="lbEagerSum" style={{ paddingRight: '20px' }}></span>
             Lazy Sum:
-            <span id="lbLazySum" style={{ paddingRight: "20px" }}></span>
+            <span id="lbLazySum" style={{ paddingRight: '20px' }}></span>
           </div>
           <div
             style={{
-              height: "100%",
-              width: "100%",
+              height: '100%',
+              width: '100%',
             }}
             className="ag-theme-alpine"
           >
@@ -157,4 +157,4 @@ class GridExample extends Component {
   }
 }
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

@@ -1,16 +1,16 @@
-"use strict";
+'use strict';
 
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { AgGridReact } from "@ag-grid-community/react";
-import { ColumnsToolPanelModule } from "@ag-grid-enterprise/column-tool-panel";
-import { FiltersToolPanelModule } from "@ag-grid-enterprise/filter-tool-panel";
-import { MenuModule } from "@ag-grid-enterprise/menu";
-import { SetFilterModule } from "@ag-grid-enterprise/set-filter";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from '@ag-grid-community/react';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import { SetFilterModule } from '@ag-grid-enterprise/set-filter';
+import { MenuModule } from '@ag-grid-enterprise/menu';
+import { ColumnsToolPanelModule } from '@ag-grid-enterprise/column-tool-panel';
+import { FiltersToolPanelModule } from '@ag-grid-enterprise/filter-tool-panel';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([
@@ -28,17 +28,17 @@ class GridExample extends Component {
     this.state = {
       columnDefs: [
         {
-          colId: "array",
-          headerName: "Values Array",
-          field: "animal",
-          filter: "agSetColumnFilter",
+          colId: 'array',
+          headerName: 'Values Array',
+          field: 'animal',
+          filter: 'agSetColumnFilter',
           filterParams: arrayFilterParams,
         },
         {
-          colId: "callback",
-          headerName: "Values Callback",
-          field: "animal",
-          filter: "agSetColumnFilter",
+          colId: 'callback',
+          headerName: 'Values Callback',
+          field: 'animal',
+          filter: 'agSetColumnFilter',
           filterParams: callbackFilterParams,
         },
       ],
@@ -47,7 +47,7 @@ class GridExample extends Component {
         filter: true,
         resizable: true,
       },
-      sideBar: "filters",
+      sideBar: 'filters',
       rowData: getData(),
     };
   }
@@ -58,34 +58,34 @@ class GridExample extends Component {
   };
 
   onFirstDataRendered = (params) => {
-    params.api.getToolPanelInstance("filters").expandFilters();
+    params.api.getToolPanelInstance('filters').expandFilters();
   };
 
   useList1 = () => {
-    console.log("Updating values to " + list1);
+    console.log('Updating values to ' + list1);
     valuesArray.length = 0;
     list1.forEach(function (value) {
       valuesArray.push(value);
     });
-    var filter = this.gridApi.getFilterInstance("array");
+    var filter = this.gridApi.getFilterInstance('array');
     filter.refreshFilterValues();
     valuesCallbackList = list1;
   };
 
   useList2 = () => {
-    console.log("Updating values to " + list2);
+    console.log('Updating values to ' + list2);
     valuesArray.length = 0;
     list2.forEach(function (value) {
       valuesArray.push(value);
     });
-    var filter = this.gridApi.getFilterInstance("array");
+    var filter = this.gridApi.getFilterInstance('array');
     filter.refreshFilterValues();
     valuesCallbackList = list2;
   };
 
   render() {
     return (
-      <div style={{ width: "100%", height: "100%" }}>
+      <div style={{ width: '100%', height: '100%' }}>
         <div id="container">
           <div id="header">
             <button onClick={() => this.useList1()}>
@@ -97,8 +97,8 @@ class GridExample extends Component {
           </div>
           <div
             style={{
-              height: "100%",
-              width: "100%",
+              height: '100%',
+              width: '100%',
             }}
             className="ag-theme-alpine"
           >
@@ -117,8 +117,8 @@ class GridExample extends Component {
   }
 }
 
-var list1 = ["Elephant", "Lion", "Monkey"];
-var list2 = ["Elephant", "Giraffe", "Tiger"];
+var list1 = ['Elephant', 'Lion', 'Monkey'];
+var list2 = ['Elephant', 'Giraffe', 'Tiger'];
 var valuesArray = list1.slice();
 var valuesCallbackList = list1;
 function valuesCallback(params) {
@@ -134,4 +134,4 @@ var callbackFilterParams = {
   refreshValuesOnOpen: true,
 };
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

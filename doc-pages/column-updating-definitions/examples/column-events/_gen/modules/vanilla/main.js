@@ -1,45 +1,45 @@
 function getColumnDefs() {
   return [
-    { field: "athlete" },
-    { field: "age" },
-    { field: "country" },
-    { field: "sport" },
-    { field: "gold" },
-    { field: "silver" },
-    { field: "bronze" },
+    { field: 'athlete' },
+    { field: 'age' },
+    { field: 'country' },
+    { field: 'sport' },
+    { field: 'gold' },
+    { field: 'silver' },
+    { field: 'bronze' },
   ];
 }
 
 function onSortChanged(e) {
-  console.log("Event Sort Changed", e);
+  console.log('Event Sort Changed', e);
 }
 
 function onColumnResized(e) {
-  console.log("Event Column Resized", e);
+  console.log('Event Column Resized', e);
 }
 
 function onColumnVisible(e) {
-  console.log("Event Column Visible", e);
+  console.log('Event Column Visible', e);
 }
 
 function onColumnPivotChanged(e) {
-  console.log("Event Pivot Changed", e);
+  console.log('Event Pivot Changed', e);
 }
 
 function onColumnRowGroupChanged(e) {
-  console.log("Event Row Group Changed", e);
+  console.log('Event Row Group Changed', e);
 }
 
 function onColumnValueChanged(e) {
-  console.log("Event Value Changed", e);
+  console.log('Event Value Changed', e);
 }
 
 function onColumnMoved(e) {
-  console.log("Event Column Moved", e);
+  console.log('Event Column Moved', e);
 }
 
 function onColumnPinned(e) {
-  console.log("Event Column Pinned", e);
+  console.log('Event Column Pinned', e);
 }
 
 const gridOptions = {
@@ -66,11 +66,11 @@ const gridOptions = {
 function onBtSortOn() {
   const columnDefs = getColumnDefs();
   columnDefs.forEach(function (colDef) {
-    if (colDef.field === "age") {
-      colDef.sort = "desc";
+    if (colDef.field === 'age') {
+      colDef.sort = 'desc';
     }
-    if (colDef.field === "athlete") {
-      colDef.sort = "asc";
+    if (colDef.field === 'athlete') {
+      colDef.sort = 'asc';
     }
   });
   gridOptions.api.setColumnDefs(columnDefs);
@@ -87,7 +87,7 @@ function onBtSortOff() {
 function onBtWidthNarrow() {
   const columnDefs = getColumnDefs();
   columnDefs.forEach(function (colDef) {
-    if (colDef.field === "age" || colDef.field === "athlete") {
+    if (colDef.field === 'age' || colDef.field === 'athlete') {
       colDef.width = 100;
     }
   });
@@ -105,7 +105,7 @@ function onBtWidthNormal() {
 function onBtHide() {
   const columnDefs = getColumnDefs();
   columnDefs.forEach(function (colDef) {
-    if (colDef.field === "age" || colDef.field === "athlete") {
+    if (colDef.field === 'age' || colDef.field === 'athlete') {
       colDef.hide = true;
     }
   });
@@ -125,7 +125,7 @@ function onBtPivotOn() {
 
   const columnDefs = getColumnDefs();
   columnDefs.forEach(function (colDef) {
-    if (colDef.field === "country") {
+    if (colDef.field === 'country') {
       colDef.pivot = true;
     }
   });
@@ -145,7 +145,7 @@ function onBtPivotOff() {
 function onBtRowGroupOn() {
   const columnDefs = getColumnDefs();
   columnDefs.forEach(function (colDef) {
-    if (colDef.field === "sport") {
+    if (colDef.field === 'sport') {
       colDef.rowGroup = true;
     }
   });
@@ -164,11 +164,11 @@ function onBtAggFuncOn() {
   const columnDefs = getColumnDefs();
   columnDefs.forEach(function (colDef) {
     if (
-      colDef.field === "gold" ||
-      colDef.field === "silver" ||
-      colDef.field === "bronze"
+      colDef.field === 'gold' ||
+      colDef.field === 'silver' ||
+      colDef.field === 'bronze'
     ) {
-      colDef.aggFunc = "sum";
+      colDef.aggFunc = 'sum';
     }
   });
   gridOptions.api.setColumnDefs(columnDefs);
@@ -185,11 +185,11 @@ function onBtAggFuncOff() {
 function onBtPinnedOn() {
   const columnDefs = getColumnDefs();
   columnDefs.forEach(function (colDef) {
-    if (colDef.field === "athlete") {
-      colDef.pinned = "left";
+    if (colDef.field === 'athlete') {
+      colDef.pinned = 'left';
     }
-    if (colDef.field === "age") {
-      colDef.pinned = "right";
+    if (colDef.field === 'age') {
+      colDef.pinned = 'right';
     }
   });
   gridOptions.api.setColumnDefs(columnDefs);
@@ -204,11 +204,11 @@ function onBtPinnedOff() {
 }
 
 // setup the grid after the page has finished loading
-document.addEventListener("DOMContentLoaded", function () {
-  var gridDiv = document.querySelector("#myGrid");
+document.addEventListener('DOMContentLoaded', function () {
+  var gridDiv = document.querySelector('#myGrid');
   new agGrid.Grid(gridDiv, gridOptions);
 
-  fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+  fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
     .then((response) => response.json())
     .then((data) => gridOptions.api.setRowData(data));
 });

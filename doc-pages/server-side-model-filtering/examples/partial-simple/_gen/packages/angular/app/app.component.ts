@@ -1,18 +1,18 @@
-import { HttpClient } from "@angular/common/http";
-import { Component } from "@angular/core";
+import { HttpClient } from '@angular/common/http';
+import { Component } from '@angular/core';
 import {
   ColDef,
   GridReadyEvent,
   IServerSideDatasource,
   ServerSideStoreType,
-} from "ag-grid-community";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine-dark.css";
-import "ag-grid-enterprise";
+} from 'ag-grid-community';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine-dark.css';
+import 'ag-grid-enterprise';
 declare var FakeServer: any;
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<ag-grid-angular
     style="width: 100%; height: 100%;"
     class="ag-theme-alpine-dark"
@@ -29,44 +29,44 @@ declare var FakeServer: any;
 export class AppComponent {
   public columnDefs: ColDef[] = [
     {
-      field: "athlete",
-      filter: "agTextColumnFilter",
+      field: 'athlete',
+      filter: 'agTextColumnFilter',
       minWidth: 220,
     },
     {
-      field: "year",
-      filter: "agNumberColumnFilter",
+      field: 'year',
+      filter: 'agNumberColumnFilter',
       filterParams: {
-        buttons: ["reset"],
+        buttons: ['reset'],
         debounceMs: 1000,
         suppressAndOrCondition: true,
       },
     },
-    { field: "gold", type: "number" },
-    { field: "silver", type: "number" },
-    { field: "bronze", type: "number" },
+    { field: 'gold', type: 'number' },
+    { field: 'silver', type: 'number' },
+    { field: 'bronze', type: 'number' },
   ];
   public defaultColDef: ColDef = {
     flex: 1,
     minWidth: 100,
     sortable: true,
     resizable: true,
-    menuTabs: ["filterMenuTab"],
+    menuTabs: ['filterMenuTab'],
   };
   public columnTypes: {
     [key: string]: ColDef;
   } = {
-    number: { filter: "agNumberColumnFilter" },
+    number: { filter: 'agNumberColumnFilter' },
   };
-  public rowModelType = "serverSide";
-  public serverSideStoreType: ServerSideStoreType = "partial";
+  public rowModelType = 'serverSide';
+  public serverSideStoreType: ServerSideStoreType = 'partial';
   public rowData!: any[];
 
   constructor(private http: HttpClient) {}
 
   onGridReady(params: GridReadyEvent) {
     this.http
-      .get<any[]>("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      .get<any[]>('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .subscribe((data) => {
         // setup the fake server with entire dataset
         var fakeServer = new FakeServer(data);
@@ -81,7 +81,7 @@ export class AppComponent {
 function getServerSideDatasource(server: any): IServerSideDatasource {
   return {
     getRows: function (params) {
-      console.log("[Datasource] - rows requested by grid: ", params.request);
+      console.log('[Datasource] - rows requested by grid: ', params.request);
       // get data for request from our fake server
       var response = server.getData(params.request);
       // simulating real server call with a 500ms delay

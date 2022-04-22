@@ -1,12 +1,12 @@
 const gridOptions = {
   columnDefs: [
-    { field: "country", enableRowGroup: true },
-    { field: "year", enableRowGroup: true },
-    { field: "athlete", minWidth: 180 },
-    { field: "gold", aggFunc: "sum" },
-    { field: "silver", aggFunc: "sum" },
-    { field: "bronze", aggFunc: "sum" },
-    { field: "total", aggFunc: "sum" },
+    { field: 'country', enableRowGroup: true },
+    { field: 'year', enableRowGroup: true },
+    { field: 'athlete', minWidth: 180 },
+    { field: 'gold', aggFunc: 'sum' },
+    { field: 'silver', aggFunc: 'sum' },
+    { field: 'bronze', aggFunc: 'sum' },
+    { field: 'total', aggFunc: 'sum' },
   ],
   defaultColDef: {
     flex: 1,
@@ -17,15 +17,15 @@ const gridOptions = {
   },
   suppressDragLeaveHidesColumns: true,
   suppressMakeColumnVisibleAfterUnGroup: true,
-  rowGroupPanelShow: "always",
+  rowGroupPanelShow: 'always',
 };
 
 // setup the grid after the page has finished loading
-document.addEventListener("DOMContentLoaded", function () {
-  var gridDiv = document.querySelector("#myGrid");
+document.addEventListener('DOMContentLoaded', function () {
+  var gridDiv = document.querySelector('#myGrid');
   new agGrid.Grid(gridDiv, gridOptions);
 
-  fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+  fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
     .then((response) => response.json())
     .then((data) => gridOptions.api.setRowData(data));
 });

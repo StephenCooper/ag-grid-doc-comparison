@@ -1,11 +1,11 @@
-"use strict";
+'use strict';
 
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
-import { AgGridReact } from "ag-grid-react";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from 'ag-grid-react';
+import 'ag-grid-enterprise';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 
 class GridExample extends Component {
   constructor(props) {
@@ -14,19 +14,19 @@ class GridExample extends Component {
     this.state = {
       columnDefs: [
         {
-          headerName: "Animals (array)",
-          field: "animalsArray",
-          filter: "agSetColumnFilter",
+          headerName: 'Animals (array)',
+          field: 'animalsArray',
+          filter: 'agSetColumnFilter',
         },
         {
-          headerName: "Animals (string)",
-          filter: "agSetColumnFilter",
+          headerName: 'Animals (string)',
+          filter: 'agSetColumnFilter',
           valueGetter: valueGetter,
         },
         {
-          headerName: "Animals (objects)",
-          field: "animalsObjects",
-          filter: "agSetColumnFilter",
+          headerName: 'Animals (objects)',
+          field: 'animalsObjects',
+          filter: 'agSetColumnFilter',
           valueFormatter: valueFormatter,
           keyCreator: keyCreator,
         },
@@ -35,7 +35,7 @@ class GridExample extends Component {
         flex: 1,
       },
       rowData: getData(),
-      sideBar: "filters",
+      sideBar: 'filters',
     };
   }
 
@@ -46,11 +46,11 @@ class GridExample extends Component {
 
   render() {
     return (
-      <div style={{ width: "100%", height: "100%" }}>
+      <div style={{ width: '100%', height: '100%' }}>
         <div
           style={{
-            height: "100%",
-            width: "100%",
+            height: '100%',
+            width: '100%',
           }}
           className="ag-theme-alpine"
         >
@@ -68,14 +68,14 @@ class GridExample extends Component {
 }
 
 var valueGetter = function (params) {
-  return params.data["animalsString"].split("|");
+  return params.data['animalsString'].split('|');
 };
 var valueFormatter = function (params) {
   return params.value
     .map(function (animal) {
       return animal.name;
     })
-    .join(", ");
+    .join(', ');
 };
 var keyCreator = function (params) {
   return params.value.map(function (animal) {
@@ -83,4 +83,4 @@ var keyCreator = function (params) {
   });
 };
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

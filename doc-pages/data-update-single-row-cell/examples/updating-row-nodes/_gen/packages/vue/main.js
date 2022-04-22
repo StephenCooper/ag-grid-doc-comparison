@@ -1,7 +1,7 @@
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import { AgGridVue } from "ag-grid-vue";
-import Vue from "vue";
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import { AgGridVue } from 'ag-grid-vue';
+import Vue from 'vue';
 
 const VueExample = {
   template: `
@@ -27,14 +27,14 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
-        { field: "make" },
-        { field: "model" },
-        { field: "price", filter: "agNumberColumnFilter" },
+        { field: 'make' },
+        { field: 'model' },
+        { field: 'price', filter: 'agNumberColumnFilter' },
       ],
       gridApi: null,
       columnApi: null,
@@ -50,13 +50,13 @@ const VueExample = {
   },
   created() {
     this.rowData = [
-      { id: "aa", make: "Toyota", model: "Celica", price: 35000 },
-      { id: "bb", make: "Ford", model: "Mondeo", price: 32000 },
-      { id: "cc", make: "Porsche", model: "Boxter", price: 72000 },
-      { id: "dd", make: "BMW", model: "5 Series", price: 59000 },
-      { id: "ee", make: "Dodge", model: "Challanger", price: 35000 },
-      { id: "ff", make: "Mazda", model: "MX5", price: 28000 },
-      { id: "gg", make: "Horse", model: "Outside", price: 99000 },
+      { id: 'aa', make: 'Toyota', model: 'Celica', price: 35000 },
+      { id: 'bb', make: 'Ford', model: 'Mondeo', price: 32000 },
+      { id: 'cc', make: 'Porsche', model: 'Boxster', price: 72000 },
+      { id: 'dd', make: 'BMW', model: '5 Series', price: 59000 },
+      { id: 'ee', make: 'Dodge', model: 'Challanger', price: 35000 },
+      { id: 'ff', make: 'Mazda', model: 'MX5', price: 28000 },
+      { id: 'gg', make: 'Horse', model: 'Outside', price: 99000 },
     ];
     this.getRowId = (params) => {
       return params.data.id;
@@ -64,23 +64,23 @@ const VueExample = {
   },
   methods: {
     updateSort() {
-      this.gridApi.refreshClientSideRowModel("sort");
+      this.gridApi.refreshClientSideRowModel('sort');
     },
     updateFilter() {
-      this.gridApi.refreshClientSideRowModel("filter");
+      this.gridApi.refreshClientSideRowModel('filter');
     },
     setPriceOnToyota() {
-      var rowNode = this.gridApi.getRowNode("aa");
+      var rowNode = this.gridApi.getRowNode('aa');
       var newPrice = Math.floor(Math.random() * 100000);
-      rowNode.setDataValue("price", newPrice);
+      rowNode.setDataValue('price', newPrice);
     },
     setDataOnFord() {
-      var rowNode = this.gridApi.getRowNode("bb");
+      var rowNode = this.gridApi.getRowNode('bb');
       var newPrice = Math.floor(Math.random() * 100000);
-      var newModel = "T-" + Math.floor(Math.random() * 1000);
+      var newModel = 'T-' + Math.floor(Math.random() * 1000);
       var newData = {
-        id: "bb",
-        make: "Ford",
+        id: 'bb',
+        make: 'Ford',
         model: newModel,
         price: newPrice,
       };
@@ -94,8 +94,8 @@ const VueExample = {
 };
 
 new Vue({
-  el: "#app",
+  el: '#app',
   components: {
-    "my-component": VueExample,
+    'my-component': VueExample,
   },
 });

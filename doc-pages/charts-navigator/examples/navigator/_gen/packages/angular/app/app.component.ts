@@ -1,9 +1,9 @@
-import { Component } from "@angular/core";
-import { AgCartesianChartOptions } from "ag-charts-community";
-import { cloneDeep } from "lodash";
+import { Component } from '@angular/core';
+import { AgCartesianChartOptions } from 'ag-charts-community';
+import { cloneDeep } from 'lodash';
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<div class="wrapper">
     <div class="toolPanel">
       <button (click)="toggleEnabled(true)">Show Navigator</button>
@@ -24,31 +24,31 @@ export class AppComponent {
         text: "Try dragging the Navigator's handles to zoom in",
       },
       subtitle: {
-        text: "or the area between them to pan around",
+        text: 'or the area between them to pan around',
       },
       data: [
-        { label: "Android", value: 56.9 },
-        { label: "iOS", value: 22.5 },
-        { label: "BlackBerry", value: 6.8 },
-        { label: "Symbian", value: 8.5 },
-        { label: "Bada", value: 2.6 },
-        { label: "Windows", value: 1.9 },
+        { label: 'Android', value: 56.9 },
+        { label: 'iOS', value: 22.5 },
+        { label: 'BlackBerry', value: 6.8 },
+        { label: 'Symbian', value: 8.5 },
+        { label: 'Bada', value: 2.6 },
+        { label: 'Windows', value: 1.9 },
       ],
       series: [
         {
-          type: "column",
-          xKey: "label",
-          yKey: "value",
+          type: 'column',
+          xKey: 'label',
+          yKey: 'value',
         },
       ],
       axes: [
         {
-          type: "number",
-          position: "left",
+          type: 'number',
+          position: 'left',
         },
         {
-          type: "category",
-          position: "bottom",
+          type: 'category',
+          position: 'bottom',
         },
       ],
       legend: {

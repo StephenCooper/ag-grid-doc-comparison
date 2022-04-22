@@ -1,11 +1,11 @@
-import { HttpClient } from "@angular/common/http";
-import { Component } from "@angular/core";
-import { ColDef, GridReadyEvent } from "ag-grid-community";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
+import { HttpClient } from '@angular/common/http';
+import { Component } from '@angular/core';
+import { ColDef, GridReadyEvent } from 'ag-grid-community';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<ag-grid-angular
     style="width: 100%; height: 100%;"
     class="ag-theme-alpine"
@@ -17,16 +17,16 @@ import "ag-grid-community/dist/styles/ag-theme-alpine.css";
 })
 export class AppComponent {
   public columnDefs: ColDef[] = [
-    { field: "athlete", pinned: "left" },
-    { field: "age", pinned: "left" },
+    { field: 'athlete', pinned: 'left' },
+    { field: 'age', pinned: 'left' },
     {
-      field: "country",
+      field: 'country',
       colSpan: function (params) {
         const country = params.data.country;
-        if (country === "Russia") {
+        if (country === 'Russia') {
           // have all Russia age columns width 2
           return 2;
-        } else if (country === "United States") {
+        } else if (country === 'United States') {
           // have all United States column width 4
           return 4;
         } else {
@@ -35,13 +35,13 @@ export class AppComponent {
         }
       },
     },
-    { field: "year" },
-    { field: "date" },
-    { field: "sport" },
-    { field: "gold" },
-    { field: "silver" },
-    { field: "bronze" },
-    { field: "total" },
+    { field: 'year' },
+    { field: 'date' },
+    { field: 'sport' },
+    { field: 'gold' },
+    { field: 'silver' },
+    { field: 'bronze' },
+    { field: 'total' },
   ];
   public defaultColDef: ColDef = {
     width: 150,
@@ -53,7 +53,7 @@ export class AppComponent {
 
   onGridReady(params: GridReadyEvent) {
     this.http
-      .get<any[]>("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      .get<any[]>('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .subscribe((data) => (this.rowData = data));
   }
 }

@@ -1,26 +1,24 @@
-"use strict";
+'use strict';
 
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { AgGridReact } from "@ag-grid-community/react";
-import { ColumnsToolPanelModule } from "@ag-grid-enterprise/column-tool-panel";
-import { FiltersToolPanelModule } from "@ag-grid-enterprise/filter-tool-panel";
-import { MenuModule } from "@ag-grid-enterprise/menu";
-import { RowGroupingModule } from "@ag-grid-enterprise/row-grouping";
-import { SetFilterModule } from "@ag-grid-enterprise/set-filter";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from '@ag-grid-community/react';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import { RowGroupingModule } from '@ag-grid-enterprise/row-grouping';
+import { FiltersToolPanelModule } from '@ag-grid-enterprise/filter-tool-panel';
+import { MenuModule } from '@ag-grid-enterprise/menu';
+import { SetFilterModule } from '@ag-grid-enterprise/set-filter';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([
   ClientSideRowModelModule,
   RowGroupingModule,
-  ColumnsToolPanelModule,
   FiltersToolPanelModule,
-  SetFilterModule,
   MenuModule,
+  SetFilterModule,
 ]);
 
 class GridExample extends Component {
@@ -29,21 +27,21 @@ class GridExample extends Component {
 
     this.state = {
       columnDefs: [
-        { field: "country", pivot: true, enablePivot: true },
-        { field: "year" },
-        { field: "date" },
-        { field: "sport" },
-        { field: "gold", aggFunc: "sum" },
-        { field: "silver", aggFunc: "sum" },
-        { field: "bronze", aggFunc: "sum" },
+        { field: 'country', rowGroup: true, filter: true },
+        { field: 'year', pivot: true, filter: true },
+        { field: 'sport', filter: true },
+        { field: 'gold', aggFunc: 'sum' },
+        { field: 'silver', aggFunc: 'sum' },
+        { field: 'bronze', aggFunc: 'sum' },
       ],
       defaultColDef: {
         flex: 1,
         minWidth: 150,
-        filter: true,
+        floatingFilter: true,
         sortable: true,
         resizable: true,
       },
+      sideBar: 'filters',
       rowData: null,
     };
   }
@@ -54,118 +52,33 @@ class GridExample extends Component {
 
     const updateData = (data) => params.api.setRowData(data);
 
-    fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+    fetch('https://www.ag-grid.com/example-assets/small-olympic-winners.json')
       .then((resp) => resp.json())
       .then((data) => updateData(data));
   };
 
-  clearFilter = () => {
-    this.gridApi.setFilterModel(null);
-    setTitle("All Medals by Country");
-  };
-
-  filterUKAndIrelandBoxing = () => {
-    this.gridApi.setFilterModel({
-      country: {
-        type: "set",
-        values: ["Ireland", "Great Britain"],
-      },
-      sport: {
-        type: "set",
-        values: ["Boxing"],
-      },
-    });
-    setTitle("UK and Ireland - Boxing");
-  };
-
-  filterUKAndIrelandEquestrian = () => {
-    this.gridApi.setFilterModel({
-      country: {
-        type: "set",
-        values: ["Ireland", "Great Britain"],
-      },
-      sport: {
-        type: "set",
-        values: ["Equestrian"],
-      },
-    });
-    setTitle("UK and Ireland - Equestrian");
-  };
-
-  filterUsaAndCanadaBoxing = () => {
-    this.gridApi.setFilterModel({
-      country: {
-        type: "set",
-        values: ["United States", "Canada"],
-      },
-      sport: {
-        type: "set",
-        values: ["Bobsleigh"],
-      },
-    });
-    setTitle("USA and Canada - Boxing");
-  };
-
-  filterUsaAndCanadaEquestrian = () => {
-    this.gridApi.setFilterModel({
-      country: {
-        type: "set",
-        values: ["United States", "Canada"],
-      },
-      sport: {
-        type: "set",
-        values: ["Equestrian"],
-      },
-    });
-    setTitle("USA and Canada - Equestrian");
-  };
-
   render() {
     return (
-      <div style={{ width: "100%", height: "100%" }}>
-        <div className="test-container">
-          <div className="test-header">
-            <div style={{ marginBottom: "10px" }}>
-              <button onClick={() => this.clearFilter()}>Clear Filter</button>
-              <button onClick={() => this.filterUKAndIrelandBoxing()}>
-                UK and Ireland Boxing
-              </button>
-              <button onClick={() => this.filterUKAndIrelandEquestrian()}>
-                UK and Ireland Equestrian
-              </button>
-              <button onClick={() => this.filterUsaAndCanadaBoxing()}>
-                USA and Canada Bobsleigh
-              </button>
-              <button onClick={() => this.filterUsaAndCanadaEquestrian()}>
-                USA and Canada Equestrian
-              </button>
-            </div>
-            <div id="title">All Medals by Country</div>
-          </div>
-          <div
-            style={{
-              height: "100%",
-              width: "100%",
-            }}
-            className="ag-theme-alpine"
-          >
-            <AgGridReact
-              columnDefs={this.state.columnDefs}
-              defaultColDef={this.state.defaultColDef}
-              pivotMode={true}
-              sideBar={true}
-              onGridReady={this.onGridReady}
-              rowData={this.state.rowData}
-            />
-          </div>
+      <div style={{ width: '100%', height: '100%' }}>
+        <div
+          style={{
+            height: '100%',
+            width: '100%',
+          }}
+          className="ag-theme-alpine"
+        >
+          <AgGridReact
+            columnDefs={this.state.columnDefs}
+            defaultColDef={this.state.defaultColDef}
+            pivotMode={true}
+            sideBar={this.state.sideBar}
+            onGridReady={this.onGridReady}
+            rowData={this.state.rowData}
+          />
         </div>
       </div>
     );
   }
 }
 
-function setTitle(title) {
-  document.querySelector("#title").innerText = title;
-}
-
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

@@ -1,35 +1,36 @@
 const options = {
-  type: "hierarchy",
-  container: document.getElementById("myChart"),
+  type: 'hierarchy',
+  container: document.getElementById('myChart'),
   data,
   series: [
     {
-      type: "treemap",
-      labelKey: "name", // defaults to 'label', but current dataset uses 'name'
-      sizeKey: "size", // default (can be omitted for current dataset)
-      colorKey: "color", // default (can be omitted for current dataset)
+      type: 'treemap',
+      labelKey: 'name', // defaults to 'label', but current dataset uses 'name'
+      sizeKey: 'size', // default (can be omitted for current dataset)
+      colorKey: 'color', // default (can be omitted for current dataset)
       tooltip: {
         renderer: tooltipRenderer,
       },
     },
   ],
   title: {
-    text: "S&P 500 index stocks categorized by sectors and industries.",
+    text: 'S&P 500 index stocks categorized by sectors and industries.',
   },
   subtitle: {
-    text: "Area represents market cap. Color represents change from the day before.",
+    text:
+      'Area represents market cap. Color represents change from the day before.',
   },
 };
 
 function tooltipRenderer(params) {
   const { datum } = params;
-  const customRootText = "Custom Root Text";
+  const customRootText = 'Custom Root Text';
   const title = datum.parent
     ? datum.parent.depth
       ? datum.parent.datum[params.labelKey]
       : customRootText
     : customRootText;
-  let content = "<div>";
+  let content = '<div>';
   let ellipsis = false;
 
   if (datum.parent) {
@@ -41,18 +42,18 @@ function tooltipRenderer(params) {
       }; padding: 5px;"><strong>${
         child.datum.name || child.label
       }</strong>: ${String(
-        isFinite(child.colorValue) ? child.colorValue.toFixed(2) : ""
+        isFinite(child.colorValue) ? child.colorValue.toFixed(2) : ''
       )}%</div>`;
     });
   }
   if (ellipsis) {
     content += `<div style="text-align: center;">...</div>`;
   }
-  content += "</div>";
+  content += '</div>';
   return {
     title,
     content,
-    backgroundColor: "gray",
+    backgroundColor: 'gray',
   };
 }
 

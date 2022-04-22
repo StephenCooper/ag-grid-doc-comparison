@@ -1,5 +1,5 @@
-import { HttpClient } from "@angular/common/http";
-import { Component } from "@angular/core";
+import { HttpClient } from '@angular/common/http';
+import { Component } from '@angular/core';
 import {
   ColDef,
   ColGroupDef,
@@ -7,13 +7,13 @@ import {
   GridReadyEvent,
   IColumnToolPanel,
   SideBarDef,
-} from "ag-grid-community";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
+} from 'ag-grid-community';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import 'ag-grid-enterprise';
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<div class="example-wrapper">
     <div>
       <span class="button-group">
@@ -43,30 +43,30 @@ export class AppComponent {
 
   public columnDefs: (ColDef | ColGroupDef)[] = [
     {
-      groupId: "athleteGroupId",
-      headerName: "Athlete",
+      groupId: 'athleteGroupId',
+      headerName: 'Athlete',
       children: [
         {
-          headerName: "Name",
-          field: "athlete",
+          headerName: 'Name',
+          field: 'athlete',
           minWidth: 200,
-          filter: "agTextColumnFilter",
+          filter: 'agTextColumnFilter',
         },
         {
-          groupId: "competitionGroupId",
-          headerName: "Competition",
-          children: [{ field: "year" }, { field: "date", minWidth: 180 }],
+          groupId: 'competitionGroupId',
+          headerName: 'Competition',
+          children: [{ field: 'year' }, { field: 'date', minWidth: 180 }],
         },
       ],
     },
     {
-      groupId: "medalsGroupId",
-      headerName: "Medals",
+      groupId: 'medalsGroupId',
+      headerName: 'Medals',
       children: [
-        { field: "gold" },
-        { field: "silver" },
-        { field: "bronze" },
-        { field: "total" },
+        { field: 'gold' },
+        { field: 'silver' },
+        { field: 'bronze' },
+        { field: 'total' },
       ],
     },
   ];
@@ -83,52 +83,52 @@ export class AppComponent {
     sortable: true,
     resizable: true,
   };
-  public sideBar: SideBarDef | string | boolean | null = "columns";
+  public sideBar: SideBarDef | string | string[] | boolean | null = 'columns';
   public rowData!: any[];
 
   constructor(private http: HttpClient) {}
 
   expandAllGroups() {
-    var columnToolPanel = this.gridApi.getToolPanelInstance(
-      "columns"
-    ) as unknown as IColumnToolPanel;
+    var columnToolPanel = (this.gridApi.getToolPanelInstance(
+      'columns'
+    ) as unknown) as IColumnToolPanel;
     columnToolPanel.expandColumnGroups();
   }
 
   collapseAllGroups() {
-    var columnToolPanel = this.gridApi.getToolPanelInstance(
-      "columns"
-    ) as unknown as IColumnToolPanel;
+    var columnToolPanel = (this.gridApi.getToolPanelInstance(
+      'columns'
+    ) as unknown) as IColumnToolPanel;
     columnToolPanel.collapseColumnGroups();
   }
 
   expandAthleteAndCompetitionGroups() {
-    var columnToolPanel = this.gridApi.getToolPanelInstance(
-      "columns"
-    ) as unknown as IColumnToolPanel;
+    var columnToolPanel = (this.gridApi.getToolPanelInstance(
+      'columns'
+    ) as unknown) as IColumnToolPanel;
     columnToolPanel.expandColumnGroups([
-      "athleteGroupId",
-      "competitionGroupId",
+      'athleteGroupId',
+      'competitionGroupId',
     ]);
   }
 
   collapseCompetitionGroups() {
-    var columnToolPanel = this.gridApi.getToolPanelInstance(
-      "columns"
-    ) as unknown as IColumnToolPanel;
-    columnToolPanel.collapseColumnGroups(["competitionGroupId"]);
+    var columnToolPanel = (this.gridApi.getToolPanelInstance(
+      'columns'
+    ) as unknown) as IColumnToolPanel;
+    columnToolPanel.collapseColumnGroups(['competitionGroupId']);
   }
 
   onGridReady(params: GridReadyEvent) {
     this.gridApi = params.api;
 
-    var columnToolPanel = params.api!.getToolPanelInstance(
-      "columns"
-    ) as unknown as IColumnToolPanel;
+    var columnToolPanel = (params.api!.getToolPanelInstance(
+      'columns'
+    ) as unknown) as IColumnToolPanel;
     columnToolPanel.collapseColumnGroups();
 
     this.http
-      .get<any[]>("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      .get<any[]>('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .subscribe((data) => (this.rowData = data));
   }
 }

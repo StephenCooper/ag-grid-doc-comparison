@@ -1,8 +1,8 @@
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
-import { AgGridVue } from "ag-grid-vue3";
-import { createApp } from "vue";
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import 'ag-grid-enterprise';
+import { AgGridVue } from 'ag-grid-vue3';
+import { createApp } from 'vue';
 
 const VueExample = {
   template: `
@@ -27,13 +27,13 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
-        { field: "timestamp", chartDataType: "time" },
-        { field: "cpuUsage" },
+        { field: 'timestamp', chartDataType: 'time' },
+        { field: 'cpuUsage' },
       ],
       gridApi: null,
       columnApi: null,
@@ -53,7 +53,7 @@ const VueExample = {
       area: {
         title: {
           enabled: true,
-          text: "CPU Usage",
+          text: 'CPU Usage',
         },
         legend: {
           enabled: false,
@@ -71,21 +71,21 @@ const VueExample = {
           time: {
             label: {
               rotation: 45,
-              format: "%H:%M",
+              format: '%H:%M',
             },
           },
           category: {
             label: {
               rotation: 0,
               formatter: (params) => {
-                return moment(new Date(params.value)).format("DD MMM");
+                return moment(new Date(params.value)).format('DD MMM');
               },
             },
           },
           number: {
             label: {
               formatter: function (params) {
-                return params.value + "%";
+                return params.value + '%';
               },
             },
           },
@@ -96,12 +96,12 @@ const VueExample = {
   methods: {
     onFirstDataRendered(params) {
       var createRangeChartParams = {
-        chartContainer: document.querySelector("#myChart"),
+        chartContainer: document.querySelector('#myChart'),
         suppressChartRanges: true,
         cellRange: {
-          columns: ["timestamp", "cpuUsage"],
+          columns: ['timestamp', 'cpuUsage'],
         },
-        chartType: "area",
+        chartType: 'area',
       };
       params.api.createRangeChart(createRangeChartParams);
     },
@@ -110,7 +110,7 @@ const VueExample = {
       this.gridColumnApi = params.columnApi;
     },
     getChartToolbarItems() {
-      return ["chartData", "chartFormat"];
+      return ['chartData', 'chartFormat'];
     },
   },
 };
@@ -228,4 +228,4 @@ window.getRowData = function getRowData() {
   ];
 };
 
-createApp(VueExample).mount("#app");
+createApp(VueExample).mount('#app');

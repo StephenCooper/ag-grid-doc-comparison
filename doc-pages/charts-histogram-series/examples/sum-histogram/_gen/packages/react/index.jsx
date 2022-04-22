@@ -1,8 +1,10 @@
-"use strict";
+'use strict';
 
-import { AgChartsReact } from "ag-charts-react";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { cloneDeep } from 'lodash';
+import { render } from 'react-dom';
+import * as agCharts from 'ag-charts-community';
+import { AgChartsReact } from 'ag-charts-react';
 
 class ChartExample extends Component {
   constructor(props) {
@@ -11,20 +13,20 @@ class ChartExample extends Component {
     this.state = {
       options: {
         title: {
-          text: "Prize money distribution",
+          text: 'Prize money distribution',
         },
         subtitle: {
-          text: "Total winnings by participant age",
+          text: 'Total winnings by participant age',
         },
         data: getData(),
         series: [
           {
-            type: "histogram",
-            xKey: "age",
-            xName: "Participant Age",
-            yKey: "winnings",
-            yName: "Winnings",
-            aggregation: "sum",
+            type: 'histogram',
+            xKey: 'age',
+            xName: 'Participant Age',
+            yKey: 'winnings',
+            yName: 'Winnings',
+            aggregation: 'sum',
           },
         ],
         legend: {
@@ -32,17 +34,16 @@ class ChartExample extends Component {
         },
         axes: [
           {
-            type: "number",
-            position: "bottom",
-            title: { text: "Age band (years)" },
+            type: 'number',
+            position: 'bottom',
+            title: { text: 'Age band (years)' },
           },
           {
-            type: "number",
-            position: "left",
-            title: { text: "Total winnings (USD)" },
+            type: 'number',
+            position: 'left',
+            title: { text: 'Total winnings (USD)' },
           },
         ],
-        height: 550,
       },
     };
   }
@@ -54,4 +55,4 @@ class ChartExample extends Component {
   }
 }
 
-render(<ChartExample />, document.querySelector("#root"));
+render(<ChartExample />, document.querySelector('#root'));

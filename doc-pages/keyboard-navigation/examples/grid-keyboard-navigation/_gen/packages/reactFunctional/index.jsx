@@ -1,19 +1,19 @@
-"use strict";
+'use strict';
 
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
-import { AgGridReact } from "ag-grid-react";
-import React, { useCallback, useMemo, useState } from "react";
-import { render } from "react-dom";
+import React, { useCallback, useMemo, useRef, useState } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from 'ag-grid-react';
+import 'ag-grid-enterprise';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 
 const GridExample = () => {
-  const containerStyle = useMemo(() => ({ width: "100%", height: "100%" }), []);
-  const gridStyle = useMemo(() => ({ height: "100%", width: "100%" }), []);
+  const containerStyle = useMemo(() => ({ width: '100%', height: '100%' }), []);
+  const gridStyle = useMemo(() => ({ height: '100%', width: '100%' }), []);
   const [rowData, setRowData] = useState();
   const [columnDefs, setColumnDefs] = useState([
     {
-      headerName: " ",
+      headerName: ' ',
       headerCheckboxSelection: true,
       checkboxSelection: true,
       floatingFilter: false,
@@ -29,47 +29,47 @@ const GridExample = () => {
       suppressColumnsToolPanel: true,
     },
     {
-      headerName: "Participant",
+      headerName: 'Participant',
       children: [
-        { field: "athlete", minWidth: 170 },
-        { field: "country", minWidth: 150 },
+        { field: 'athlete', minWidth: 170 },
+        { field: 'country', minWidth: 150 },
       ],
     },
-    { field: "sport" },
+    { field: 'sport' },
     {
-      headerName: "Medals",
+      headerName: 'Medals',
       children: [
         {
-          field: "total",
-          columnGroupShow: "closed",
-          filter: "agNumberColumnFilter",
+          field: 'total',
+          columnGroupShow: 'closed',
+          filter: 'agNumberColumnFilter',
           width: 120,
           flex: 0,
         },
         {
-          field: "gold",
-          columnGroupShow: "open",
-          filter: "agNumberColumnFilter",
+          field: 'gold',
+          columnGroupShow: 'open',
+          filter: 'agNumberColumnFilter',
           width: 100,
           flex: 0,
         },
         {
-          field: "silver",
-          columnGroupShow: "open",
-          filter: "agNumberColumnFilter",
+          field: 'silver',
+          columnGroupShow: 'open',
+          filter: 'agNumberColumnFilter',
           width: 100,
           flex: 0,
         },
         {
-          field: "bronze",
-          columnGroupShow: "open",
-          filter: "agNumberColumnFilter",
+          field: 'bronze',
+          columnGroupShow: 'open',
+          filter: 'agNumberColumnFilter',
           width: 100,
           flex: 0,
         },
       ],
     },
-    { field: "year", filter: "agNumberColumnFilter" },
+    { field: 'year', filter: 'agNumberColumnFilter' },
   ]);
   const defaultColDef = useMemo(() => {
     return {
@@ -84,13 +84,13 @@ const GridExample = () => {
   }, []);
   const sideBar = useMemo(() => {
     return {
-      toolPanels: ["columns", "filters"],
-      defaultToolPanel: "",
+      toolPanels: ['columns', 'filters'],
+      defaultToolPanel: '',
     };
   }, []);
 
   const onGridReady = useCallback((params) => {
-    fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+    fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .then((resp) => resp.json())
       .then((data) => setRowData(data));
   }, []);
@@ -101,7 +101,7 @@ const GridExample = () => {
         <AgGridReact
           rowData={rowData}
           columnDefs={columnDefs}
-          rowSelection={"multiple"}
+          rowSelection={'multiple'}
           suppressRowClickSelection={true}
           defaultColDef={defaultColDef}
           sideBar={sideBar}
@@ -112,4 +112,4 @@ const GridExample = () => {
   );
 };
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

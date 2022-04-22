@@ -1,7 +1,7 @@
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import { AgGridVue } from "ag-grid-vue";
-import Vue from "vue";
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import { AgGridVue } from 'ag-grid-vue';
+import Vue from 'vue';
 
 const VueExample = {
   template: `
@@ -24,17 +24,17 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
-        { field: "name" },
-        { headerName: "Age", field: "person.age" },
-        { headerName: "Country", valueGetter: "data.person.country" },
+        { field: 'name' },
+        { headerName: 'Age', field: 'person.age' },
+        { headerName: 'Country', valueGetter: 'data.person.country' },
         {
-          headerName: "Results",
-          field: "medals",
+          headerName: 'Results',
+          field: 'medals',
           cellRenderer: MedalRenderer,
           getQuickFilterText: (params) => {
             return getMedalString(params.value);
@@ -56,15 +56,15 @@ const VueExample = {
   methods: {
     onFilterTextBoxChanged() {
       this.gridApi.setQuickFilter(
-        document.getElementById("filter-text-box").value
+        document.getElementById('filter-text-box').value
       );
     },
     onPrintQuickFilterTexts() {
       this.gridApi.forEachNode(function (rowNode, index) {
         console.log(
-          "Row " +
+          'Row ' +
             index +
-            " quick filter text is " +
+            ' quick filter text is ' +
             rowNode.quickFilterAggregateText
         );
       });
@@ -77,9 +77,9 @@ const VueExample = {
 };
 
 const getMedalString = function ({ gold, silver, bronze }) {
-  const goldStr = gold > 0 ? `Gold: ${gold} ` : "";
-  const silverStr = silver > 0 ? `Silver: ${silver} ` : "";
-  const bronzeStr = bronze > 0 ? `Bronze: ${bronze}` : "";
+  const goldStr = gold > 0 ? `Gold: ${gold} ` : '';
+  const silverStr = silver > 0 ? `Silver: ${silver} ` : '';
+  const bronzeStr = bronze > 0 ? `Bronze: ${bronze}` : '';
   return goldStr + silverStr + bronzeStr;
 };
 
@@ -88,8 +88,8 @@ const MedalRenderer = function (params) {
 };
 
 new Vue({
-  el: "#app",
+  el: '#app',
   components: {
-    "my-component": VueExample,
+    'my-component': VueExample,
   },
 });

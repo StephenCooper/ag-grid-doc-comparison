@@ -1,15 +1,15 @@
-import { nextTick } from "vue";
+import { nextTick } from 'vue';
 
-const KEY_BACKSPACE = "Backspace";
-const KEY_DELETE = "Delete";
-const KEY_ENTER = "Enter";
-const KEY_TAB = "Tab";
+const KEY_BACKSPACE = 'Backspace';
+const KEY_DELETE = 'Delete';
+const KEY_ENTER = 'Enter';
+const KEY_TAB = 'Tab';
 
 export default {
   template: `<input :ref="'input'" class="simple-input-editor" @keydown="onKeyDown($event)" v-model="value"/>`,
   data() {
     return {
-      value: "",
+      value: '',
       cancelBeforeStart: true,
     };
   },
@@ -27,7 +27,7 @@ export default {
 
       if (params.key === KEY_BACKSPACE || params.key === KEY_DELETE) {
         // if backspace or delete pressed, we clear the cell
-        startValue = "";
+        startValue = '';
       } else if (params.charPress) {
         // if a letter was pressed, we start with the letter
         startValue = params.charPress;
@@ -46,7 +46,7 @@ export default {
     },
 
     onKeyDown(event) {
-      if (event.key === "Escape") {
+      if (event.key === 'Escape') {
         return;
       }
       if (this.isLeftOrRight(event) || this.deleteOrBackspace(event)) {
@@ -81,7 +81,7 @@ export default {
     },
 
     isLeftOrRight(event) {
-      return ["ArrowLeft", "ArrowRight"].indexOf(event.key) > -1;
+      return ['ArrowLeft', 'ArrowRight'].indexOf(event.key) > -1;
     },
   },
 
@@ -90,7 +90,7 @@ export default {
 
     // only start edit if key pressed is a number, not a letter
     this.cancelBeforeStart =
-      this.params.charPress && "1234567890".indexOf(this.params.charPress) < 0;
+      this.params.charPress && '1234567890'.indexOf(this.params.charPress) < 0;
   },
   mounted() {
     nextTick(() => {

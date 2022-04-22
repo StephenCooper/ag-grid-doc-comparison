@@ -1,5 +1,5 @@
-import { AgChartsVue } from "ag-charts-vue";
-import Vue from "vue";
+import { AgChartsVue } from 'ag-charts-vue';
+import Vue from 'vue';
 
 const ChartExample = {
   template: `
@@ -7,7 +7,7 @@ const ChartExample = {
                 :options="options"></ag-charts-vue>
     `,
   components: {
-    "ag-charts-vue": AgChartsVue,
+    'ag-charts-vue': AgChartsVue,
   },
   data: function () {
     return {
@@ -18,33 +18,33 @@ const ChartExample = {
     this.options = {
       theme: {
         palette: {
-          fills: ["#f44336", "#8bc34a"],
-          strokes: ["#ab2f26", "#618834"],
+          fills: ['#f3622d', '#41a9c9'],
+          strokes: ['#aa4520', '#2d768d'],
         },
       },
       title: {
-        text: "Microsoft Internet Explorer vs Google Chrome",
+        text: 'Microsoft Internet Explorer vs Google Chrome',
       },
       subtitle: {
-        text: "2009-2019",
+        text: '2009-2019',
       },
       data: getData(),
       series: [
         {
-          type: "area",
-          xKey: "year",
-          yKey: "ie",
-          yName: "IE",
+          type: 'area',
+          xKey: 'year',
+          yKey: 'ie',
+          yName: 'IE',
           fillOpacity: 0.7,
           marker: {
             enabled: true,
           },
         },
         {
-          type: "area",
-          xKey: "year",
-          yKey: "chrome",
-          yName: "Chrome",
+          type: 'area',
+          xKey: 'year',
+          yKey: 'chrome',
+          yName: 'Chrome',
           fillOpacity: 0.7,
           marker: {
             enabled: true,
@@ -52,7 +52,7 @@ const ChartExample = {
         },
       ],
       legend: {
-        position: "top",
+        position: 'top',
       },
     };
   },
@@ -61,8 +61,8 @@ const ChartExample = {
 };
 
 new Vue({
-  el: "#app",
+  el: '#app',
   components: {
-    "my-component": ChartExample,
+    'my-component': ChartExample,
   },
 });

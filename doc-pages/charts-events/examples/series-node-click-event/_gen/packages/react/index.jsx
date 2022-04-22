@@ -1,8 +1,10 @@
-"use strict";
+'use strict';
 
-import { AgChartsReact } from "ag-charts-react";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { cloneDeep } from 'lodash';
+import { render } from 'react-dom';
+import * as agCharts from 'ag-charts-community';
+import { AgChartsReact } from 'ag-charts-react';
 
 class ChartExample extends Component {
   constructor(props) {
@@ -11,36 +13,36 @@ class ChartExample extends Component {
     this.state = {
       options: {
         title: {
-          text: "Average low/high temperatures in London",
+          text: 'Average low/high temperatures in London',
         },
         subtitle: {
-          text: "(click a data point for details)",
+          text: '(click a data point for details)',
         },
         data: [
-          { month: "March", low: 3.9, high: 11.3 },
-          { month: "April", low: 5.5, high: 14.2 },
-          { month: "May", low: 8.7, high: 17.9 },
+          { month: 'March', low: 3.9, high: 11.3 },
+          { month: 'April', low: 5.5, high: 14.2 },
+          { month: 'May', low: 8.7, high: 17.9 },
         ],
         series: [
           {
-            type: "line",
-            xKey: "month",
-            yKey: "high",
+            type: 'line',
+            xKey: 'month',
+            yKey: 'high',
           },
           {
-            type: "column",
-            xKey: "month",
-            yKey: "low",
+            type: 'column',
+            xKey: 'month',
+            yKey: 'low',
           },
         ],
         axes: [
           {
-            type: "category",
-            position: "bottom",
+            type: 'category',
+            position: 'bottom',
           },
           {
-            type: "number",
-            position: "left",
+            type: 'number',
+            position: 'left',
           },
         ],
         legend: {
@@ -53,12 +55,12 @@ class ChartExample extends Component {
           seriesNodeClick: function (event) {
             var datum = event.datum;
             window.alert(
-              "Temperature in " +
+              'Temperature in ' +
                 datum[event.xKey] +
-                ": " +
+                ': ' +
                 String(datum[event.yKey]) +
-                "°C" +
-                "\nSeries: " +
+                '°C' +
+                '\nSeries: ' +
                 event.series.id
             );
           },
@@ -79,11 +81,11 @@ class ChartExample extends Component {
 }
 
 function listUnitsSoldByBrand(brands) {
-  var result = "";
+  var result = '';
   for (var key in brands) {
-    result += key + ": " + brands[key] + "\n";
+    result += key + ': ' + brands[key] + '\n';
   }
   return result;
 }
 
-render(<ChartExample />, document.querySelector("#root"));
+render(<ChartExample />, document.querySelector('#root'));

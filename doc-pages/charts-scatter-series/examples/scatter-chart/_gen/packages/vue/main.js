@@ -1,5 +1,5 @@
-import { AgChartsVue } from "ag-charts-vue";
-import Vue from "vue";
+import { AgChartsVue } from 'ag-charts-vue';
+import Vue from 'vue';
 
 const ChartExample = {
   template: `
@@ -7,7 +7,7 @@ const ChartExample = {
                 :options="options"></ag-charts-vue>
     `,
   components: {
-    "ag-charts-vue": AgChartsVue,
+    'ag-charts-vue': AgChartsVue,
   },
   data: function () {
     return {
@@ -18,26 +18,16 @@ const ChartExample = {
     this.options = {
       autoSize: true,
       title: {
-        text: "Mean Sea Level (mm)",
+        text: 'Mean Sea Level (mm)',
       },
 
       data: getData(),
       series: [
         {
-          type: "scatter",
-          xKey: "time",
-          yKey: "mm",
+          type: 'scatter',
+          xKey: 'time',
+          yKey: 'mm',
           showInLegend: false,
-        },
-      ],
-      axes: [
-        {
-          type: "number",
-          position: "bottom",
-        },
-        {
-          type: "number",
-          position: "left",
         },
       ],
     };
@@ -47,8 +37,8 @@ const ChartExample = {
 };
 
 new Vue({
-  el: "#app",
+  el: '#app',
   components: {
-    "my-component": ChartExample,
+    'my-component': ChartExample,
   },
 });

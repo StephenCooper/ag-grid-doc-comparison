@@ -2,18 +2,20 @@ import {
   ColDef,
   GridApi,
   GridReadyEvent,
+  IFiltersToolPanel,
   ISetFilter,
   KeyCreatorParams,
+  SideBarDef,
   ValueFormatterParams,
-} from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { HttpClient } from "@angular/common/http";
-import { Component } from "@angular/core";
+} from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { HttpClient } from '@angular/common/http';
+import { Component } from '@angular/core';
 // Required feature modules are registered in app.module.ts
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<div class="example-wrapper">
     <div class="example-header">
       <div>
@@ -39,7 +41,9 @@ import { Component } from "@angular/core";
       class="ag-theme-alpine"
       [columnDefs]="columnDefs"
       [defaultColDef]="defaultColDef"
+      [sideBar]="sideBar"
       [rowData]="rowData"
+      (firstDataRendered)="onFirstDataRendered($event)"
       (gridReady)="onGridReady($event)"
     ></ag-grid-angular>
   </div>`,
@@ -49,27 +53,27 @@ export class AppComponent {
 
   public columnDefs: ColDef[] = [
     {
-      field: "athlete",
-      filter: "agSetColumnFilter",
+      field: 'athlete',
+      filter: 'agSetColumnFilter',
       filterParams: {
         cellHeight: 20,
       },
     },
-    { field: "age", maxWidth: 120, filter: "agNumberColumnFilter" },
     {
-      field: "country",
+      field: 'country',
       valueFormatter: function (params: ValueFormatterParams) {
         return `${params.value.name} (${params.value.code})`;
       },
       keyCreator: countryKeyCreator,
     },
-    { field: "year", maxWidth: 120 },
-    { field: "date" },
-    { field: "sport" },
-    { field: "gold", filter: "agNumberColumnFilter" },
-    { field: "silver", filter: "agNumberColumnFilter" },
-    { field: "bronze", filter: "agNumberColumnFilter" },
-    { field: "total", filter: "agNumberColumnFilter" },
+    { field: 'age', maxWidth: 120, filter: 'agNumberColumnFilter' },
+    { field: 'year', maxWidth: 120 },
+    { field: 'date' },
+    { field: 'sport' },
+    { field: 'gold', filter: 'agNumberColumnFilter' },
+    { field: 'silver', filter: 'agNumberColumnFilter' },
+    { field: 'bronze', filter: 'agNumberColumnFilter' },
+    { field: 'total', filter: 'agNumberColumnFilter' },
   ];
   public defaultColDef: ColDef = {
     flex: 1,
@@ -77,37 +81,44 @@ export class AppComponent {
     filter: true,
     resizable: true,
   };
+  public sideBar: SideBarDef | string | string[] | boolean | null = 'filters';
   public rowData!: any[];
 
   constructor(private http: HttpClient) {}
 
+  onFirstDataRendered() {
+    ((this.gridApi.getToolPanelInstance(
+      'filters'
+    ) as any) as IFiltersToolPanel).expandFilters();
+  }
+
   selectJohnAndKenny() {
-    const instance = this.gridApi.getFilterInstance("athlete")!;
-    instance.setModel({ values: ["John Joe Nevin", "Kenny Egan"] });
+    const instance = this.gridApi.getFilterInstance('athlete')!;
+    instance.setModel({ values: ['John Joe Nevin', 'Kenny Egan'] });
     this.gridApi.onFilterChanged();
   }
 
   selectEverything() {
-    const instance = this.gridApi.getFilterInstance("athlete")!;
+    const instance = this.gridApi.getFilterInstance('athlete')!;
     instance.setModel(null);
     this.gridApi.onFilterChanged();
   }
 
   selectNothing() {
-    const instance = this.gridApi.getFilterInstance("athlete")!;
+    const instance = this.gridApi.getFilterInstance('athlete')!;
     instance.setModel({ values: [] });
     this.gridApi.onFilterChanged();
   }
 
   setCountriesToFranceAustralia() {
-    const instance = this.gridApi.getFilterInstance("country") as ISetFilter;
-    instance.setFilterValues(["France", "Australia"]);
+    const instance = this.gridApi.getFilterInstance('country') as ISetFilter;
+    instance.setFilterValues(['France', 'Australia']);
     instance.applyModel();
     this.gridApi.onFilterChanged();
   }
 
   setCountriesToAll() {
-    const instance = this.gridApi.getFilterInstance("country") as ISetFilter;
+    const instance = this.gridApi.getFilterInstance('country') as ISetFilter;
     instance.resetFilterValues();
     instance.applyModel();
     this.gridApi.onFilterChanged();
@@ -117,7 +128,7 @@ export class AppComponent {
     this.gridApi = params.api;
 
     this.http
-      .get<any[]>("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      .get<any[]>('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .subscribe((data) => {
         patchData(data);
         this.rowData = data;

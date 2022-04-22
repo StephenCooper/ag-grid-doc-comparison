@@ -1,16 +1,16 @@
-import { HttpClient } from "@angular/common/http";
-import { Component } from "@angular/core";
+import { HttpClient } from '@angular/common/http';
+import { Component } from '@angular/core';
 import {
   ColDef,
   FirstDataRenderedEvent,
   GridReadyEvent,
   GridSizeChangedEvent,
-} from "ag-grid-community";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
+} from 'ag-grid-community';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<div id="grid-wrapper" style="width:100%; height: 100%">
     <ag-grid-angular
       style="width: 100%; height: 100%;"
@@ -26,16 +26,16 @@ import "ag-grid-community/dist/styles/ag-theme-alpine.css";
 })
 export class AppComponent {
   public columnDefs: ColDef[] = [
-    { field: "athlete", minWidth: 150 },
-    { field: "age", minWidth: 70, maxWidth: 90 },
-    { field: "country", minWidth: 130 },
-    { field: "year", minWidth: 70, maxWidth: 90 },
-    { field: "date", minWidth: 120 },
-    { field: "sport", minWidth: 120 },
-    { field: "gold", minWidth: 80 },
-    { field: "silver", minWidth: 80 },
-    { field: "bronze", minWidth: 80 },
-    { field: "total", minWidth: 80 },
+    { field: 'athlete', minWidth: 150 },
+    { field: 'age', minWidth: 70, maxWidth: 90 },
+    { field: 'country', minWidth: 130 },
+    { field: 'year', minWidth: 70, maxWidth: 90 },
+    { field: 'date', minWidth: 120 },
+    { field: 'sport', minWidth: 120 },
+    { field: 'gold', minWidth: 80 },
+    { field: 'silver', minWidth: 80 },
+    { field: 'bronze', minWidth: 80 },
+    { field: 'total', minWidth: 80 },
   ];
   public defaultColDef: ColDef = {
     resizable: true,
@@ -50,7 +50,7 @@ export class AppComponent {
 
   onGridSizeChanged(params: GridSizeChangedEvent) {
     // get the current grids width
-    var gridWidth = document.getElementById("grid-wrapper")!.offsetWidth;
+    var gridWidth = document.getElementById('grid-wrapper')!.offsetWidth;
     // keep track of which columns to hide/show
     var columnsToShow = [];
     var columnsToHide = [];
@@ -78,7 +78,7 @@ export class AppComponent {
 
   onGridReady(params: GridReadyEvent) {
     this.http
-      .get<any[]>("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      .get<any[]>('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .subscribe((data) => (this.rowData = data));
   }
 }

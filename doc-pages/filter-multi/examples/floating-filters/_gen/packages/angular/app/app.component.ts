@@ -1,12 +1,12 @@
-import { HttpClient } from "@angular/common/http";
-import { Component } from "@angular/core";
-import { ColDef, GridReadyEvent } from "ag-grid-community";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
+import { HttpClient } from '@angular/common/http';
+import { Component } from '@angular/core';
+import { ColDef, GridReadyEvent } from 'ag-grid-community';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import 'ag-grid-enterprise';
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<ag-grid-angular
     style="width: 100%; height: 100%;"
     class="ag-theme-alpine"
@@ -18,24 +18,24 @@ import "ag-grid-enterprise";
 })
 export class AppComponent {
   public columnDefs: ColDef[] = [
-    { field: "athlete", filter: "agMultiColumnFilter" },
+    { field: 'athlete', filter: 'agMultiColumnFilter' },
     {
-      field: "gold",
-      filter: "agMultiColumnFilter",
+      field: 'gold',
+      filter: 'agMultiColumnFilter',
       filterParams: {
         filters: [
           {
-            filter: "agNumberColumnFilter",
+            filter: 'agNumberColumnFilter',
           },
           {
-            filter: "agSetColumnFilter",
+            filter: 'agSetColumnFilter',
           },
         ],
       },
     },
     {
-      field: "date",
-      filter: "agMultiColumnFilter",
+      field: 'date',
+      filter: 'agMultiColumnFilter',
       filterParams: dateFilterParams,
     },
   ];
@@ -44,7 +44,7 @@ export class AppComponent {
     minWidth: 200,
     resizable: true,
     floatingFilter: true,
-    menuTabs: ["filterMenuTab"],
+    menuTabs: ['filterMenuTab'],
   };
   public rowData!: any[];
 
@@ -52,7 +52,7 @@ export class AppComponent {
 
   onGridReady(params: GridReadyEvent) {
     this.http
-      .get<any[]>("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      .get<any[]>('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .subscribe((data) => (this.rowData = data));
   }
 }
@@ -60,7 +60,7 @@ export class AppComponent {
 var dateFilterParams = {
   filters: [
     {
-      filter: "agDateColumnFilter",
+      filter: 'agDateColumnFilter',
       filterParams: {
         comparator: function (filterDate: Date, cellValue: string) {
           if (cellValue == null) return -1;
@@ -69,7 +69,7 @@ var dateFilterParams = {
       },
     },
     {
-      filter: "agSetColumnFilter",
+      filter: 'agSetColumnFilter',
       filterParams: {
         comparator: function (a: string, b: string) {
           return getDate(a).getTime() - getDate(b).getTime();
@@ -79,7 +79,7 @@ var dateFilterParams = {
   ],
 };
 function getDate(value: string) {
-  var dateParts = value.split("/");
+  var dateParts = value.split('/');
   return new Date(
     Number(dateParts[2]),
     Number(dateParts[1]) - 1,

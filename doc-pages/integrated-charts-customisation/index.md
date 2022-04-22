@@ -24,24 +24,24 @@ You can change which themes are available by setting the `chartThemes` property 
 You can create your own chart theme and provide it to the grid in the `customChartThemes` map on `gridOptions`. Your theme should then be specified in `chartThemes` to make it available to your users.
 <snippet spaceBetweenProperties="true">
 |const gridOptions = {
-| customChartThemes: {
-| myCustomTheme: {
-| baseTheme: 'ag-pastel',
-| palette: {
-| fills: ['#c16068', '#a2bf8a', '#ebcc87'],
-| strokes: ['#874349', '#718661', '#a48f5f']
-| },
-| overrides: {
-| common: {
-| title: {
-| fontSize: 22,
-| fontFamily: 'Arial, sans-serif'
-| }
-| }
-| }
-| }
-| },
-| chartThemes: ['myCustomTheme', 'ag-vivid']
+|    customChartThemes: {
+|        myCustomTheme: {
+|            baseTheme: 'ag-pastel',
+|            palette: {
+|                fills: ['#c16068', '#a2bf8a', '#ebcc87'],
+|                strokes: ['#874349', '#718661', '#a48f5f']
+|            },
+|            overrides: {
+|                common: {
+|                    title: {
+|                        fontSize: 22,
+|                        fontFamily: 'Arial, sans-serif'
+|                    }
+|                }
+|            }
+|        }
+|    },
+|    chartThemes: ['myCustomTheme', 'ag-vivid']
 |}
 </snippet>
 
@@ -107,3 +107,6 @@ These overrides can be used with any cartesian chart.
 ## Next Up
 
 Continue to the next section to learn about: [Chart Events](/integrated-charts-events/).
+
+
+

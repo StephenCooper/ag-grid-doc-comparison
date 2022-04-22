@@ -1,10 +1,10 @@
-"use strict";
+'use strict';
 
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import { AgGridReact } from "ag-grid-react";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from 'ag-grid-react';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 
 class GridExample extends Component {
   constructor(props) {
@@ -13,127 +13,127 @@ class GridExample extends Component {
     this.state = {
       columnDefs: [
         {
-          headerName: "Group A",
-          groupId: "GroupA",
+          headerName: 'Group A',
+          groupId: 'GroupA',
           children: [
             {
-              headerName: "Athlete 1",
-              field: "athlete",
+              headerName: 'Athlete 1',
+              field: 'athlete',
               width: 150,
-              filter: "agTextColumnFilter",
+              filter: 'agTextColumnFilter',
             },
             {
-              headerName: "Group B",
-              groupId: "GroupB",
+              headerName: 'Group B',
+              groupId: 'GroupB',
               children: [
-                { headerName: "Country 1", field: "country", width: 120 },
+                { headerName: 'Country 1', field: 'country', width: 120 },
                 {
-                  headerName: "Group C",
-                  groupId: "GroupC",
+                  headerName: 'Group C',
+                  groupId: 'GroupC',
                   children: [
-                    { headerName: "Sport 1", field: "sport", width: 110 },
+                    { headerName: 'Sport 1', field: 'sport', width: 110 },
                     {
-                      headerName: "Group D",
-                      groupId: "GroupD",
+                      headerName: 'Group D',
+                      groupId: 'GroupD',
                       children: [
                         {
-                          headerName: "Total 1",
-                          field: "total",
+                          headerName: 'Total 1',
+                          field: 'total',
                           width: 100,
-                          filter: "agNumberColumnFilter",
+                          filter: 'agNumberColumnFilter',
                         },
                         {
-                          headerName: "Group E",
-                          groupId: "GroupE",
+                          headerName: 'Group E',
+                          groupId: 'GroupE',
                           openByDefault: true,
                           children: [
                             {
-                              headerName: "Gold 1",
-                              field: "gold",
+                              headerName: 'Gold 1',
+                              field: 'gold',
                               width: 100,
-                              filter: "agNumberColumnFilter",
+                              filter: 'agNumberColumnFilter',
                             },
                             {
-                              headerName: "Group F",
-                              groupId: "GroupF",
+                              headerName: 'Group F',
+                              groupId: 'GroupF',
                               openByDefault: true,
                               children: [
                                 {
-                                  headerName: "Silver 1",
-                                  field: "silver",
+                                  headerName: 'Silver 1',
+                                  field: 'silver',
                                   width: 100,
-                                  filter: "agNumberColumnFilter",
+                                  filter: 'agNumberColumnFilter',
                                 },
                                 {
-                                  headerName: "Group G",
-                                  groupId: "GroupG",
+                                  headerName: 'Group G',
+                                  groupId: 'GroupG',
                                   children: [
                                     {
-                                      headerName: "Bronze",
-                                      field: "bronze",
+                                      headerName: 'Bronze',
+                                      field: 'bronze',
                                       width: 100,
-                                      filter: "agNumberColumnFilter",
+                                      filter: 'agNumberColumnFilter',
                                     },
                                   ],
                                 },
                                 {
-                                  headerName: "Silver 2",
-                                  columnGroupShow: "open",
-                                  field: "silver",
+                                  headerName: 'Silver 2',
+                                  columnGroupShow: 'open',
+                                  field: 'silver',
                                   width: 100,
-                                  filter: "agNumberColumnFilter",
+                                  filter: 'agNumberColumnFilter',
                                 },
                               ],
                             },
                             {
-                              headerName: "Gold 2",
-                              columnGroupShow: "open",
-                              field: "gold",
+                              headerName: 'Gold 2',
+                              columnGroupShow: 'open',
+                              field: 'gold',
                               width: 100,
-                              filter: "agNumberColumnFilter",
+                              filter: 'agNumberColumnFilter',
                             },
                           ],
                         },
                         {
-                          headerName: "Total 2",
-                          columnGroupShow: "open",
-                          field: "total",
+                          headerName: 'Total 2',
+                          columnGroupShow: 'open',
+                          field: 'total',
                           width: 100,
-                          filter: "agNumberColumnFilter",
+                          filter: 'agNumberColumnFilter',
                         },
                       ],
                     },
                     {
-                      headerName: "Sport 2",
-                      columnGroupShow: "open",
-                      field: "sport",
+                      headerName: 'Sport 2',
+                      columnGroupShow: 'open',
+                      field: 'sport',
                       width: 110,
                     },
                   ],
                 },
                 {
-                  headerName: "Country 2",
-                  columnGroupShow: "open",
-                  field: "country",
+                  headerName: 'Country 2',
+                  columnGroupShow: 'open',
+                  field: 'country',
                   width: 120,
                 },
               ],
             },
             {
-              headerName: "Age 2",
-              columnGroupShow: "open",
-              field: "age",
+              headerName: 'Age 2',
+              columnGroupShow: 'open',
+              field: 'age',
               width: 90,
-              filter: "agNumberColumnFilter",
+              filter: 'agNumberColumnFilter',
             },
           ],
         },
         {
-          headerName: "Athlete 2",
-          columnGroupShow: "open",
-          field: "athlete",
+          headerName: 'Athlete 2',
+          columnGroupShow: 'open',
+          field: 'athlete',
           width: 150,
-          filter: "agTextColumnFilter",
+          filter: 'agTextColumnFilter',
         },
       ],
       rowData: null,
@@ -157,20 +157,20 @@ class GridExample extends Component {
 
     const updateData = (data) => params.api.setRowData(data);
 
-    fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+    fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .then((resp) => resp.json())
       .then((data) => updateData(data));
   };
 
   expandAll = (expand) => {
     const groupNames = [
-      "GroupA",
-      "GroupB",
-      "GroupC",
-      "GroupD",
-      "GroupE",
-      "GroupF",
-      "GroupG",
+      'GroupA',
+      'GroupB',
+      'GroupC',
+      'GroupD',
+      'GroupE',
+      'GroupF',
+      'GroupG',
     ];
     groupNames.forEach((groupId) => {
       this.gridColumnApi.setColumnGroupOpened(groupId, expand);
@@ -179,7 +179,7 @@ class GridExample extends Component {
 
   render() {
     return (
-      <div style={{ width: "100%", height: "100%" }}>
+      <div style={{ width: '100%', height: '100%' }}>
         <div className="example-wrapper">
           <div className="button-bar">
             <button onClick={() => this.expandAll(true)}>Expand All</button>
@@ -187,8 +187,8 @@ class GridExample extends Component {
           </div>
           <div
             style={{
-              height: "100%",
-              width: "100%",
+              height: '100%',
+              width: '100%',
             }}
             className="ag-theme-alpine"
           >
@@ -218,18 +218,18 @@ function headerClassFunc(params) {
   while (item) {
     // if groupId is set then this must be a group.
     const colDef = item.getDefinition();
-    if (colDef.groupId === "GroupC") {
+    if (colDef.groupId === 'GroupC') {
       foundC = true;
-    } else if (colDef.groupId === "GroupG") {
+    } else if (colDef.groupId === 'GroupG') {
       foundG = true;
     }
     item = item.getParent();
   }
   if (foundG) {
-    return "column-group-g";
+    return 'column-group-g';
   } else if (foundC) {
-    return "column-group-c";
+    return 'column-group-c';
   }
 }
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

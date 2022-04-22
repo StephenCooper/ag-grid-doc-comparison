@@ -10,11 +10,11 @@ export default {
   },
   beforeMount() {
     this.cellValue = this.params.value;
-    this.color = this.params.node.footer ? "navy" : "";
+    this.color = this.params.node.footer ? 'navy' : '';
     this.fontWeight =
-      this.params.node.footer && this.params.node.level === -1 ? "bold" : "";
+      this.params.node.footer && this.params.node.level === -1 ? 'bold' : '';
     if (this.params.node.footer) {
-      this.prefix = this.params.node.level === -1 ? "Grand Total" : "Sub Total";
+      this.prefix = this.params.node.level === -1 ? 'Grand Total' : 'Sub Total';
     }
   },
   methods: {},

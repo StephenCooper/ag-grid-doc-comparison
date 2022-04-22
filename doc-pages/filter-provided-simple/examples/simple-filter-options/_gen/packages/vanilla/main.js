@@ -3,7 +3,7 @@ var filterParams = {
   comparator: function (filterLocalDateAtMidnight, cellValue) {
     var dateAsString = cellValue;
     if (dateAsString == null) return -1;
-    var dateParts = dateAsString.split("/");
+    var dateParts = dateAsString.split('/');
     var cellDate = new Date(
       Number(dateParts[2]),
       Number(dateParts[1]) - 1,
@@ -26,26 +26,26 @@ var filterParams = {
 };
 
 const columnDefs = [
-  { field: "athlete" },
+  { field: 'athlete' },
   {
-    field: "country",
+    field: 'country',
     filterParams: {
-      filterOptions: ["contains", "startsWith", "endsWith"],
-      defaultOption: "startsWith",
+      filterOptions: ['contains', 'startsWith', 'endsWith'],
+      defaultOption: 'startsWith',
     },
   },
   {
-    field: "age",
-    filter: "agNumberColumnFilter",
+    field: 'age',
+    filter: 'agNumberColumnFilter',
     filterParams: {
       alwaysShowBothConditions: true,
-      defaultJoinOperator: "OR",
+      defaultJoinOperator: 'OR',
     },
     maxWidth: 100,
   },
   {
-    field: "date",
-    filter: "agDateColumnFilter",
+    field: 'date',
+    filter: 'agDateColumnFilter',
     filterParams: filterParams,
   },
 ];
@@ -60,11 +60,11 @@ const gridOptions = {
 };
 
 // setup the grid after the page has finished loading
-document.addEventListener("DOMContentLoaded", function () {
-  var gridDiv = document.querySelector("#myGrid");
+document.addEventListener('DOMContentLoaded', function () {
+  var gridDiv = document.querySelector('#myGrid');
   new agGrid.Grid(gridDiv, gridOptions);
 
-  fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+  fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
     .then((response) => response.json())
     .then((data) => gridOptions.api.setRowData(data));
 });

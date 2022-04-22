@@ -1,8 +1,8 @@
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
-import { AgGridVue } from "ag-grid-vue3";
-import { createApp } from "vue";
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import 'ag-grid-enterprise';
+import { AgGridVue } from 'ag-grid-vue3';
+import { createApp } from 'vue';
 
 const VueExample = {
   template: `
@@ -46,28 +46,28 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
         {
-          headerName: "#",
+          headerName: '#',
           width: 50,
           valueFormatter: (params) => {
             return `${parseInt(params.node.id) + 1}`;
           },
         },
-        { headerName: "Athlete", field: "athlete", width: 150 },
-        { headerName: "Age", field: "age", width: 90 },
-        { headerName: "Country", field: "country", width: 120 },
-        { headerName: "Year", field: "year", width: 90 },
-        { headerName: "Date", field: "date", width: 110 },
-        { headerName: "Sport", field: "sport", width: 110 },
-        { headerName: "Gold", field: "gold", width: 100 },
-        { headerName: "Silver", field: "silver", width: 100 },
-        { headerName: "Bronze", field: "bronze", width: 100 },
-        { headerName: "Total", field: "total", width: 100 },
+        { headerName: 'Athlete', field: 'athlete', width: 150 },
+        { headerName: 'Age', field: 'age', width: 90 },
+        { headerName: 'Country', field: 'country', width: 120 },
+        { headerName: 'Year', field: 'year', width: 90 },
+        { headerName: 'Date', field: 'date', width: 110 },
+        { headerName: 'Sport', field: 'sport', width: 110 },
+        { headerName: 'Gold', field: 'gold', width: 100 },
+        { headerName: 'Silver', field: 'silver', width: 100 },
+        { headerName: 'Bronze', field: 'bronze', width: 100 },
+        { headerName: 'Total', field: 'total', width: 100 },
       ],
       gridApi: null,
       columnApi: null,
@@ -81,19 +81,19 @@ const VueExample = {
     };
   },
   created() {
-    this.rowSelection = "multiple";
+    this.rowSelection = 'multiple';
     this.paginationPageSize = 500;
   },
   methods: {
     onPaginationChanged() {
-      console.log("onPaginationPageLoaded");
+      console.log('onPaginationPageLoaded');
       // Workaround for bug in events order
       if (this.gridApi) {
-        setText("#lbLastPageFound", this.gridApi.paginationIsLastPageFound());
-        setText("#lbPageSize", this.gridApi.paginationGetPageSize());
+        setText('#lbLastPageFound', this.gridApi.paginationIsLastPageFound());
+        setText('#lbPageSize', this.gridApi.paginationGetPageSize());
         // we +1 to current page, as pages are zero based
-        setText("#lbCurrentPage", this.gridApi.paginationGetCurrentPage() + 1);
-        setText("#lbTotalPages", this.gridApi.paginationGetTotalPages());
+        setText('#lbCurrentPage', this.gridApi.paginationGetCurrentPage() + 1);
+        setText('#lbTotalPages', this.gridApi.paginationGetTotalPages());
         setLastButtonDisabled(!this.gridApi.paginationIsLastPageFound());
       }
     },
@@ -123,7 +123,7 @@ const VueExample = {
 
       const updateData = (data) => params.api.setRowData(data);
 
-      fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
         .then((resp) => resp.json())
         .then((data) => updateData(data));
     },
@@ -135,7 +135,7 @@ window.setText = function setText(selector, text) {
 };
 
 window.setLastButtonDisabled = function setLastButtonDisabled(disabled) {
-  document.querySelector("#btLast").disabled = disabled;
+  document.querySelector('#btLast').disabled = disabled;
 };
 
-createApp(VueExample).mount("#app");
+createApp(VueExample).mount('#app');

@@ -1,10 +1,10 @@
-import * as agCharts from "ag-charts-community";
-import { AgChartOptions } from "ag-charts-community";
+import * as agCharts from "ag-charts-community"
+import { AgChartOptions } from "ag-charts-community"
 
 const options: AgChartOptions = {
   container: document.getElementById("myChart"),
   theme: {
-    palette: { fills: ["#f44336", "#8bc34a"], strokes: ["#ab2f26", "#618834"] },
+    palette: { fills: ["#f3622d", "#41a9c9"], strokes: ["#aa4520", "#2d768d"] },
   },
   title: {
     text: "Microsoft Internet Explorer vs Google Chrome",
@@ -38,6 +38,6 @@ const options: AgChartOptions = {
   legend: {
     position: "top",
   },
-};
+}
 
-agCharts.AgChart.create(options);
+agCharts.AgChart.create(options)

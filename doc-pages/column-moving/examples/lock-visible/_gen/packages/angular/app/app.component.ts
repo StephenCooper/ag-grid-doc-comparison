@@ -1,16 +1,16 @@
-import { HttpClient } from "@angular/common/http";
-import { Component } from "@angular/core";
+import { HttpClient } from '@angular/common/http';
+import { Component } from '@angular/core';
 import {
   ColDef,
   ColGroupDef,
   GridReadyEvent,
   SideBarDef,
-} from "ag-grid-community";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
+} from 'ag-grid-community';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<div class="example-wrapper">
     <div class="legend-bar">
       <span class="legend-box locked-visible"></span> Locked Visible Column
@@ -29,39 +29,39 @@ import "ag-grid-community/dist/styles/ag-theme-alpine.css";
 export class AppComponent {
   public columnDefs: (ColDef | ColGroupDef)[] = [
     {
-      headerName: "Athlete",
+      headerName: 'Athlete',
       children: [
-        { field: "athlete", width: 150 },
-        { field: "age", lockVisible: true, cellClass: "locked-visible" },
-        { field: "country", width: 150 },
-        { field: "year" },
-        { field: "date" },
-        { field: "sport" },
+        { field: 'athlete', width: 150 },
+        { field: 'age', lockVisible: true, cellClass: 'locked-visible' },
+        { field: 'country', width: 150 },
+        { field: 'year' },
+        { field: 'date' },
+        { field: 'sport' },
       ],
     },
     {
-      headerName: "Medals",
+      headerName: 'Medals',
       children: [
-        { field: "gold", lockVisible: true, cellClass: "locked-visible" },
-        { field: "silver", lockVisible: true, cellClass: "locked-visible" },
-        { field: "bronze", lockVisible: true, cellClass: "locked-visible" },
+        { field: 'gold', lockVisible: true, cellClass: 'locked-visible' },
+        { field: 'silver', lockVisible: true, cellClass: 'locked-visible' },
+        { field: 'bronze', lockVisible: true, cellClass: 'locked-visible' },
         {
-          field: "total",
+          field: 'total',
           lockVisible: true,
-          cellClass: "locked-visible",
+          cellClass: 'locked-visible',
           hide: true,
         },
       ],
     },
   ];
-  public sideBar: SideBarDef | string | boolean | null = {
+  public sideBar: SideBarDef | string | string[] | boolean | null = {
     toolPanels: [
       {
-        id: "columns",
-        labelDefault: "Columns",
-        labelKey: "columns",
-        iconKey: "columns",
-        toolPanel: "agColumnsToolPanel",
+        id: 'columns',
+        labelDefault: 'Columns',
+        labelKey: 'columns',
+        iconKey: 'columns',
+        toolPanel: 'agColumnsToolPanel',
         toolPanelParams: {
           suppressRowGroups: true,
           suppressValues: true,
@@ -80,7 +80,7 @@ export class AppComponent {
 
   onGridReady(params: GridReadyEvent) {
     this.http
-      .get<any[]>("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      .get<any[]>('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .subscribe((data) => (this.rowData = data));
   }
 }

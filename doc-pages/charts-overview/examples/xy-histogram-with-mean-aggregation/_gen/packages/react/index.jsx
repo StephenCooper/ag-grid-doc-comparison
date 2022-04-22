@@ -1,8 +1,10 @@
-"use strict";
+'use strict';
 
-import { AgChartsReact } from "ag-charts-react";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { cloneDeep } from 'lodash';
+import { render } from 'react-dom';
+import * as agCharts from 'ag-charts-community';
+import { AgChartsReact } from 'ag-charts-react';
 
 class ChartExample extends Component {
   constructor(props) {
@@ -13,50 +15,50 @@ class ChartExample extends Component {
         autoSize: true,
         data: getData(),
         title: {
-          text: "Vehicle fuel efficiency by engine size (USA 1987)",
+          text: 'Vehicle fuel efficiency by engine size (USA 1987)',
           fontSize: 18,
         },
         subtitle: {
-          text: "Source: UCI",
+          text: 'Source: UCI',
         },
         series: [
           {
-            type: "histogram",
-            xKey: "engine-size",
-            xName: "Engine Size",
-            yKey: "highway-mpg",
-            yName: "Highway MPG",
-            fill: "#41874b",
-            stroke: "#41874b",
+            type: 'histogram',
+            xKey: 'engine-size',
+            xName: 'Engine Size',
+            yKey: 'highway-mpg',
+            yName: 'Highway MPG',
+            fill: '#41874b',
+            stroke: '#41874b',
             fillOpacity: 0.5,
-            aggregation: "mean",
+            aggregation: 'mean',
           },
           {
-            type: "scatter",
-            xKey: "engine-size",
-            xName: "Engine Size",
-            yKey: "highway-mpg",
-            yName: "Highway MPG",
-            fill: "#333",
-            stroke: "#333",
+            type: 'scatter',
+            xKey: 'engine-size',
+            xName: 'Engine Size',
+            yKey: 'highway-mpg',
+            yName: 'Highway MPG',
+            fill: '#333',
+            stroke: '#333',
             fillOpacity: 0.5,
           },
         ],
         axes: [
           {
-            position: "bottom",
-            type: "number",
+            position: 'bottom',
+            type: 'number',
             title: {
               enabled: true,
-              text: "Engine Size (Cubic inches)",
+              text: 'Engine Size (Cubic inches)',
             },
           },
           {
-            position: "left",
-            type: "number",
+            position: 'left',
+            type: 'number',
             title: {
               enabled: true,
-              text: "Highway MPG",
+              text: 'Highway MPG',
             },
           },
         ],
@@ -74,4 +76,4 @@ class ChartExample extends Component {
   }
 }
 
-render(<ChartExample />, document.querySelector("#root"));
+render(<ChartExample />, document.querySelector('#root'));

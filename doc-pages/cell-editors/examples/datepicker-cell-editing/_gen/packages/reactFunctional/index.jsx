@@ -1,24 +1,24 @@
-"use strict";
+'use strict';
 
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
-import { AgGridReact } from "ag-grid-react";
-import React, { useCallback, useMemo, useState } from "react";
-import { render } from "react-dom";
+import React, { useCallback, useMemo, useRef, useState } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from 'ag-grid-react';
+import 'ag-grid-enterprise';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 
 class DatePicker {
   // gets called once before the renderer is used
   init(params) {
     // create the cell
-    this.eInput = document.createElement("input");
+    this.eInput = document.createElement('input');
     this.eInput.value = params.value;
-    this.eInput.classList.add("ag-input");
-    this.eInput.style.height = "100%";
+    this.eInput.classList.add('ag-input');
+    this.eInput.style.height = '100%';
 
     // https://jqueryui.com/datepicker/
     $(this.eInput).datepicker({
-      dateFormat: "dd/mm/yy",
+      dateFormat: 'dd/mm/yy',
       onSelect: () => {
         this.eInput.focus();
       },
@@ -55,25 +55,25 @@ class DatePicker {
 }
 
 const GridExample = () => {
-  const containerStyle = useMemo(() => ({ width: "100%", height: "100%" }), []);
-  const gridStyle = useMemo(() => ({ height: "100%", width: "100%" }), []);
+  const containerStyle = useMemo(() => ({ width: '100%', height: '100%' }), []);
+  const gridStyle = useMemo(() => ({ height: '100%', width: '100%' }), []);
   const [rowData, setRowData] = useState();
   const [columnDefs, setColumnDefs] = useState([
-    { field: "athlete" },
+    { field: 'athlete' },
     {
-      field: "date",
+      field: 'date',
       editable: true,
       cellEditor: DatePicker,
       cellEditorPopup: true,
     },
-    { field: "age", maxWidth: 110 },
-    { field: "country" },
-    { field: "year", maxWidth: 120 },
-    { field: "sport" },
-    { field: "gold" },
-    { field: "silver" },
-    { field: "bronze" },
-    { field: "total" },
+    { field: 'age', maxWidth: 110 },
+    { field: 'country' },
+    { field: 'year', maxWidth: 120 },
+    { field: 'sport' },
+    { field: 'gold' },
+    { field: 'silver' },
+    { field: 'bronze' },
+    { field: 'total' },
   ]);
   const defaultColDef = useMemo(() => {
     return {
@@ -83,7 +83,7 @@ const GridExample = () => {
   }, []);
 
   const onGridReady = useCallback((params) => {
-    fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+    fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .then((resp) => resp.json())
       .then((data) => setRowData(data));
   }, []);
@@ -102,4 +102,4 @@ const GridExample = () => {
   );
 };
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

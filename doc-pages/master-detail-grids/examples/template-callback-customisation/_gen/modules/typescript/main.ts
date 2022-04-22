@@ -1,16 +1,16 @@
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
 import {
   FirstDataRenderedEvent,
   Grid,
   GridOptions,
   IDetailCellRendererParams,
   ModuleRegistry,
-} from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { ColumnsToolPanelModule } from "@ag-grid-enterprise/column-tool-panel";
-import { MasterDetailModule } from "@ag-grid-enterprise/master-detail";
-import { MenuModule } from "@ag-grid-enterprise/menu";
+} from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { ColumnsToolPanelModule } from '@ag-grid-enterprise/column-tool-panel';
+import { MasterDetailModule } from '@ag-grid-enterprise/master-detail';
+import { MenuModule } from '@ag-grid-enterprise/menu';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([
@@ -23,10 +23,10 @@ ModuleRegistry.registerModules([
 const gridOptions: GridOptions = {
   columnDefs: [
     // group cell renderer needed for expand / collapse icons
-    { field: "name", cellRenderer: "agGroupCellRenderer" },
-    { field: "account" },
-    { field: "calls" },
-    { field: "minutes", valueFormatter: "x.toLocaleString() + 'm'" },
+    { field: 'name', cellRenderer: 'agGroupCellRenderer' },
+    { field: 'account' },
+    { field: 'calls' },
+    { field: 'minutes', valueFormatter: "x.toLocaleString() + 'm'" },
   ],
   defaultColDef: {
     flex: 1,
@@ -35,11 +35,11 @@ const gridOptions: GridOptions = {
   detailCellRendererParams: {
     detailGridOptions: {
       columnDefs: [
-        { field: "callId" },
-        { field: "direction" },
-        { field: "number" },
-        { field: "duration", valueFormatter: "x.toLocaleString() + 's'" },
-        { field: "switchCode" },
+        { field: 'callId' },
+        { field: 'direction' },
+        { field: 'number' },
+        { field: 'duration', valueFormatter: "x.toLocaleString() + 's'" },
+        { field: 'switchCode' },
       ],
       defaultColDef: {
         flex: 1,
@@ -54,9 +54,9 @@ const gridOptions: GridOptions = {
         '<div style="height: 100%; background-color: #EDF6FF; padding: 20px; box-sizing: border-box;">' +
         '  <div style="height: 10%; padding: 2px; font-weight: bold;">###### Name: ' +
         personName +
-        "</div>" +
+        '</div>' +
         '  <div ref="eDetailGrid" style="height: 90%;"></div>' +
-        "</div>"
+        '</div>'
       );
     },
   } as IDetailCellRendererParams,
@@ -71,10 +71,10 @@ function onFirstDataRendered(params: FirstDataRenderedEvent) {
 }
 
 // setup the grid after the page has finished loading
-var gridDiv = document.querySelector<HTMLElement>("#myGrid")!;
+var gridDiv = document.querySelector<HTMLElement>('#myGrid')!;
 new Grid(gridDiv, gridOptions);
 
-fetch("https://www.ag-grid.com/example-assets/master-detail-data.json")
+fetch('https://www.ag-grid.com/example-assets/master-detail-data.json')
   .then((response) => response.json())
   .then(function (data) {
     gridOptions.api!.setRowData(data);

@@ -8,26 +8,26 @@ var headerCheckboxSelection = function (params) {
 };
 const columnDefs = [
   {
-    field: "athlete",
+    field: 'athlete',
     minWidth: 170,
     checkboxSelection: checkboxSelection,
     headerCheckboxSelection: headerCheckboxSelection,
   },
-  { field: "age" },
-  { field: "country" },
-  { field: "year" },
-  { field: "date" },
-  { field: "sport" },
-  { field: "gold" },
-  { field: "silver" },
-  { field: "bronze" },
-  { field: "total" },
+  { field: 'age' },
+  { field: 'country' },
+  { field: 'year' },
+  { field: 'date' },
+  { field: 'sport' },
+  { field: 'gold' },
+  { field: 'silver' },
+  { field: 'bronze' },
+  { field: 'total' },
 ];
 
 var autoGroupColumnDef = {
-  headerName: "Group",
+  headerName: 'Group',
   minWidth: 170,
-  field: "athlete",
+  field: 'athlete',
   valueGetter: function (params) {
     if (params.node.group) {
       return params.node.key;
@@ -37,7 +37,7 @@ var autoGroupColumnDef = {
   },
   headerCheckboxSelection: true,
   // headerCheckboxSelectionFilteredOnly: true,
-  cellRenderer: "agGroupCellRenderer",
+  cellRenderer: 'agGroupCellRenderer',
   cellRendererParams: {
     checkbox: true,
   },
@@ -58,9 +58,9 @@ const gridOptions = {
   suppressRowClickSelection: true,
   groupSelectsChildren: true,
   // debug: true,
-  rowSelection: "multiple",
-  rowGroupPanelShow: "always",
-  pivotPanelShow: "always",
+  rowSelection: 'multiple',
+  rowGroupPanelShow: 'always',
+  pivotPanelShow: 'always',
   enableRangeSelection: true,
   columnDefs: columnDefs,
   paginationAutoPageSize: true,
@@ -69,11 +69,11 @@ const gridOptions = {
 };
 
 // setup the grid after the page has finished loading
-document.addEventListener("DOMContentLoaded", function () {
-  var gridDiv = document.querySelector("#myGrid");
+document.addEventListener('DOMContentLoaded', function () {
+  var gridDiv = document.querySelector('#myGrid');
   new agGrid.Grid(gridDiv, gridOptions);
 
-  fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+  fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
     .then((response) => response.json())
     .then((data) => gridOptions.api.setRowData(data));
 });

@@ -1,0 +1,126 @@
+'use strict';
+
+import React, { useCallback, useMemo, useRef, useState } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from 'ag-grid-react';
+import 'ag-grid-enterprise';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import {
+  ColDef,
+  ColGroupDef,
+  Grid,
+  GridOptions,
+  RowHeightParams,
+} from 'ag-grid-community';
+
+var swimmingHeight: number;
+
+var groupHeight: number;
+
+var russiaHeight: number;
+
+const GridExample = () => {
+  const gridRef = useRef<AgGridReact>(null);
+  const containerStyle = useMemo(() => ({ width: '100%', height: '100%' }), []);
+  const gridStyle = useMemo(() => ({ height: '100%', width: '100%' }), []);
+  const [rowData, setRowData] = useState<any[]>(getData());
+  const [columnDefs, setColumnDefs] = useState<ColDef[]>([
+    { field: 'country', rowGroup: true },
+    { field: 'athlete' },
+    { field: 'date' },
+    { field: 'sport' },
+    { field: 'gold' },
+    { field: 'silver' },
+    { field: 'bronze' },
+    { field: 'total' },
+  ]);
+
+  const setSwimmingHeight = useCallback((height: number) => {
+    swimmingHeight = height;
+    gridRef.current!.api.resetRowHeights();
+  }, []);
+
+  const setGroupHeight = useCallback((height: number) => {
+    groupHeight = height;
+    gridRef.current!.api.resetRowHeights();
+  }, []);
+
+  const setRussiaHeight = useCallback((height: number) => {
+    // this is used next time resetRowHeights is called
+    russiaHeight = height;
+    gridRef.current!.api.forEachNode(function (rowNode) {
+      if (rowNode.data && rowNode.data.country === 'Russia') {
+        rowNode.setRowHeight(height);
+      }
+    });
+    gridRef.current!.api.onRowHeightChanged();
+  }, []);
+
+  const getRowHeight = useCallback(
+    (params: RowHeightParams): number | undefined | null => {
+      if (params.node.group && groupHeight != null) {
+        return groupHeight;
+      } else if (
+        params.data &&
+        params.data.country === 'Russia' &&
+        russiaHeight != null
+      ) {
+        return russiaHeight;
+      } else if (
+        params.data &&
+        params.data.sport === 'Swimming' &&
+        swimmingHeight != null
+      ) {
+        return swimmingHeight;
+      }
+    },
+    [groupHeight, russiaHeight, swimmingHeight]
+  );
+
+  return (
+    <div style={containerStyle}>
+      <div className="example-wrapper">
+        <div
+          style={{
+            marginBottom: '5px',
+            fontFamily: 'Verdana, Geneva, Tahoma, sans-serif',
+            fontSize: '13px',
+          }}
+        >
+          <div>
+            Top Level Groups:
+            <button onClick={() => setGroupHeight(42)}>42px</button>
+            <button onClick={() => setGroupHeight(75)}>75px</button>
+            <button onClick={() => setGroupHeight(125)}>125px</button>
+          </div>
+          <div style={{ marginTop: '5px' }}>
+            Swimming Leaf Rows:
+            <button onClick={() => setSwimmingHeight(42)}>42px</button>
+            <button onClick={() => setSwimmingHeight(75)}>75px</button>
+            <button onClick={() => setSwimmingHeight(125)}>125px</button>
+          </div>
+          <div style={{ marginTop: '5px' }}>
+            Russia Leaf Rows:
+            <button onClick={() => setRussiaHeight(42)}>42px</button>
+            <button onClick={() => setRussiaHeight(75)}>75px</button>
+            <button onClick={() => setRussiaHeight(125)}>125px</button>
+          </div>
+        </div>
+
+        <div style={gridStyle} className="ag-theme-alpine">
+          <AgGridReact
+            ref={gridRef}
+            rowData={rowData}
+            columnDefs={columnDefs}
+            animateRows={true}
+            groupDefaultExpanded={1}
+            getRowHeight={getRowHeight}
+          ></AgGridReact>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+render(<GridExample></GridExample>, document.querySelector('#root'));

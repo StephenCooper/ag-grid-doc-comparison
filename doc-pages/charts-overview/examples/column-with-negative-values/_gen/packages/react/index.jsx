@@ -1,8 +1,10 @@
-"use strict";
+'use strict';
 
-import { AgChartsReact } from "ag-charts-react";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { cloneDeep } from 'lodash';
+import { render } from 'react-dom';
+import * as agCharts from 'ag-charts-community';
+import { AgChartsReact } from 'ag-charts-react';
 
 class ChartExample extends Component {
   constructor(props) {
@@ -14,8 +16,8 @@ class ChartExample extends Component {
         data: getData(),
         theme: {
           palette: {
-            fills: ["#19A0AA", "#F15F36"],
-            strokes: ["#19A0AA", "#F15F36"],
+            fills: ['#19A0AA', '#F15F36'],
+            strokes: ['#19A0AA', '#F15F36'],
           },
           overrides: {
             column: {
@@ -30,34 +32,35 @@ class ChartExample extends Component {
           },
         },
         title: {
-          text: "Changes in Prison Population (2019)",
+          text: 'Changes in Prison Population (2019)',
           fontSize: 18,
         },
         subtitle: {
-          text: "Source: Ministry of Justice, HM Prison Service, and Her Majesty’s Prison and Probation Service",
+          text:
+            'Source: Ministry of Justice, HM Prison Service, and Her Majesty’s Prison and Probation Service',
         },
         series: [
           {
-            type: "column",
-            xKey: "month",
-            yKey: "menDelta",
-            yName: "Male",
+            type: 'column',
+            xKey: 'month',
+            yKey: 'menDelta',
+            yName: 'Male',
           },
           {
-            type: "column",
-            xKey: "month",
-            yKey: "womenDelta",
-            yName: "Female",
+            type: 'column',
+            xKey: 'month',
+            yKey: 'womenDelta',
+            yName: 'Female',
           },
         ],
         axes: [
           {
-            type: "category",
-            position: "bottom",
+            type: 'category',
+            position: 'bottom',
           },
           {
-            type: "number",
-            position: "left",
+            type: 'number',
+            position: 'left',
           },
         ],
       },
@@ -71,4 +74,4 @@ class ChartExample extends Component {
   }
 }
 
-render(<ChartExample />, document.querySelector("#root"));
+render(<ChartExample />, document.querySelector('#root'));

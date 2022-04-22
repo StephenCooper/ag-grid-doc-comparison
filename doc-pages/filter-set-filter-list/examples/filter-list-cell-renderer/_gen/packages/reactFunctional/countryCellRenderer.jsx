@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from 'react';
 
 export default (props) => {
   const [value, setValue] = useState();
 
   useEffect(() => {
-    if (!props.value || props.value === "(Select All)") {
+    if (!props.value || props.value === '(Select All)') {
       setValue(props.value);
     } else {
       const url = `https://flags.fmcdn.net/data/flags/mini/${

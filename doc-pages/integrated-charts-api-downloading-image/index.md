@@ -21,3 +21,5 @@ The example below demonstrates how you can retrieve images rendered from the cha
 ## Next Up
 
 Continue to the next section to learn about: [Chart Customisation](/integrated-charts-customisation/).
+
+

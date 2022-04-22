@@ -1,21 +1,21 @@
-import { Grid, GridOptions, RowNodeTransaction } from "ag-grid-community";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
+import { Grid, GridOptions, RowNodeTransaction } from 'ag-grid-community';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 
 const gridOptions: GridOptions = {
   columnDefs: [
-    { field: "make" },
-    { field: "model" },
-    { field: "price" },
-    { field: "zombies" },
-    { field: "style" },
-    { field: "clothes" },
+    { field: 'make' },
+    { field: 'model' },
+    { field: 'price' },
+    { field: 'zombies' },
+    { field: 'style' },
+    { field: 'clothes' },
   ],
   defaultColDef: {
     flex: 1,
   },
   rowData: getData(),
-  rowSelection: "multiple",
+  rowSelection: 'multiple',
   animateRows: true,
 };
 
@@ -23,12 +23,12 @@ let newCount = 1;
 
 function createNewRowData() {
   const newData = {
-    make: "Toyota " + newCount,
-    model: "Celica " + newCount,
+    make: 'Toyota ' + newCount,
+    model: 'Celica ' + newCount,
     price: 35000 + newCount * 17,
-    zombies: "Headless",
-    style: "Little",
-    clothes: "Airbag",
+    zombies: 'Headless',
+    style: 'Little',
+    clothes: 'Airbag',
   };
   newCount++;
   return newData;
@@ -39,15 +39,15 @@ function getRowData() {
   gridOptions.api!.forEachNode(function (node) {
     rowData.push(node.data);
   });
-  console.log("Row Data:");
-  console.log(rowData);
+  console.log('Row Data:');
+  console.table(rowData);
 }
 
 function clearData() {
   gridOptions.api!.setRowData([]);
 }
 
-function addItems(addIndex: number) {
+function addItems(addIndex: number | undefined) {
   const newItems = [createNewRowData(), createNewRowData(), createNewRowData()];
   const res = gridOptions.api!.applyTransaction({
     add: newItems,
@@ -57,10 +57,10 @@ function addItems(addIndex: number) {
 }
 
 function updateItems() {
-  // update the first 5 items
+  // update the first 2 items
   const itemsToUpdate: any[] = [];
   gridOptions.api!.forEachNodeAfterFilterAndSort(function (rowNode, index) {
-    // only do first 5
+    // only do first 2
     if (index >= 2) {
       return;
     }
@@ -80,30 +80,30 @@ function onRemoveSelected() {
 }
 
 function printResult(res: RowNodeTransaction) {
-  console.log("---------------------------------------");
+  console.log('---------------------------------------');
   if (res.add) {
     res.add.forEach(function (rowNode) {
-      console.log("Added Row Node", rowNode);
+      console.log('Added Row Node', rowNode);
     });
   }
   if (res.remove) {
     res.remove.forEach(function (rowNode) {
-      console.log("Removed Row Node", rowNode);
+      console.log('Removed Row Node', rowNode);
     });
   }
   if (res.update) {
     res.update.forEach(function (rowNode) {
-      console.log("Updated Row Node", rowNode);
+      console.log('Updated Row Node', rowNode);
     });
   }
 }
 
 // wait for the document to be loaded, otherwise
 // AG Grid will not find the div in the document.
-const eGridDiv = document.querySelector<HTMLElement>("#myGrid")!;
+const eGridDiv = document.querySelector<HTMLElement>('#myGrid')!;
 new Grid(eGridDiv, gridOptions);
 
-if (typeof window !== "undefined") {
+if (typeof window !== 'undefined') {
   // Attach external event handlers to window so they can be called from index.html
   (<any>window).getRowData = getRowData;
   (<any>window).clearData = clearData;

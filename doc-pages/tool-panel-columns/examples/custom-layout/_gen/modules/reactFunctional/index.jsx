@@ -1,15 +1,15 @@
-"use strict";
+'use strict';
 
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { AgGridReact } from "@ag-grid-community/react";
-import { ColumnsToolPanelModule } from "@ag-grid-enterprise/column-tool-panel";
-import { MenuModule } from "@ag-grid-enterprise/menu";
-import { SetFilterModule } from "@ag-grid-enterprise/set-filter";
-import React, { useCallback, useMemo, useRef, useState } from "react";
-import { render } from "react-dom";
+import React, { useCallback, useMemo, useRef, useState } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from '@ag-grid-community/react';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import { MenuModule } from '@ag-grid-enterprise/menu';
+import { SetFilterModule } from '@ag-grid-enterprise/set-filter';
+import { ColumnsToolPanelModule } from '@ag-grid-enterprise/column-tool-panel';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([
@@ -21,49 +21,49 @@ ModuleRegistry.registerModules([
 
 var sortedToolPanelColumnDefs = [
   {
-    headerName: "Athlete",
+    headerName: 'Athlete',
     children: [
-      { field: "age" },
-      { field: "country" },
-      { headerName: "Name", field: "athlete" },
+      { field: 'age' },
+      { field: 'country' },
+      { headerName: 'Name', field: 'athlete' },
     ],
   },
   {
-    headerName: "Competition",
-    children: [{ field: "date" }, { field: "year" }],
+    headerName: 'Competition',
+    children: [{ field: 'date' }, { field: 'year' }],
   },
   {
-    headerName: "Medals",
+    headerName: 'Medals',
     children: [
-      { field: "bronze" },
-      { field: "gold" },
-      { field: "silver" },
-      { field: "total" },
+      { field: 'bronze' },
+      { field: 'gold' },
+      { field: 'silver' },
+      { field: 'total' },
     ],
   },
-  { colId: "sport", field: "sport" },
+  { colId: 'sport', field: 'sport' },
 ];
 
 var customToolPanelColumnDefs = [
   {
-    headerName: "Dummy Group 1",
+    headerName: 'Dummy Group 1',
     children: [
-      { field: "age" },
-      { headerName: "Name", field: "athlete" },
+      { field: 'age' },
+      { headerName: 'Name', field: 'athlete' },
       {
-        headerName: "Dummy Group 2",
-        children: [{ colId: "sport" }, { field: "country" }],
+        headerName: 'Dummy Group 2',
+        children: [{ colId: 'sport' }, { field: 'country' }],
       },
     ],
   },
   {
-    headerName: "Medals",
+    headerName: 'Medals',
     children: [
-      { field: "total" },
-      { field: "bronze" },
+      { field: 'total' },
+      { field: 'bronze' },
       {
-        headerName: "Dummy Group 3",
-        children: [{ field: "silver" }, { field: "gold" }],
+        headerName: 'Dummy Group 3',
+        children: [{ field: 'silver' }, { field: 'gold' }],
       },
     ],
   },
@@ -71,35 +71,35 @@ var customToolPanelColumnDefs = [
 
 const GridExample = () => {
   const gridRef = useRef();
-  const containerStyle = useMemo(() => ({ width: "100%", height: "100%" }), []);
-  const gridStyle = useMemo(() => ({ height: "100%", width: "100%" }), []);
+  const containerStyle = useMemo(() => ({ width: '100%', height: '100%' }), []);
+  const gridStyle = useMemo(() => ({ height: '100%', width: '100%' }), []);
   const [rowData, setRowData] = useState();
   const [columnDefs, setColumnDefs] = useState([
     {
-      headerName: "Athlete",
+      headerName: 'Athlete',
       children: [
         {
-          headerName: "Name",
-          field: "athlete",
+          headerName: 'Name',
+          field: 'athlete',
           minWidth: 200,
-          filter: "agTextColumnFilter",
+          filter: 'agTextColumnFilter',
         },
-        { field: "age" },
-        { field: "country", minWidth: 200 },
+        { field: 'age' },
+        { field: 'country', minWidth: 200 },
       ],
     },
     {
-      headerName: "Competition",
-      children: [{ field: "year" }, { field: "date", minWidth: 180 }],
+      headerName: 'Competition',
+      children: [{ field: 'year' }, { field: 'date', minWidth: 180 }],
     },
-    { colId: "sport", field: "sport", minWidth: 200 },
+    { colId: 'sport', field: 'sport', minWidth: 200 },
     {
-      headerName: "Medals",
+      headerName: 'Medals',
       children: [
-        { field: "gold" },
-        { field: "silver" },
-        { field: "bronze" },
-        { field: "total" },
+        { field: 'gold' },
+        { field: 'silver' },
+        { field: 'bronze' },
+        { field: 'total' },
       ],
     },
   ]);
@@ -122,11 +122,11 @@ const GridExample = () => {
     return {
       toolPanels: [
         {
-          id: "columns",
-          labelDefault: "Columns",
-          labelKey: "columns",
-          iconKey: "columns",
-          toolPanel: "agColumnsToolPanel",
+          id: 'columns',
+          labelDefault: 'Columns',
+          labelKey: 'columns',
+          iconKey: 'columns',
+          toolPanel: 'agColumnsToolPanel',
           toolPanelParams: {
             // prevents custom layout changing when columns are reordered in the grid
             suppressSyncLayoutWithGrid: true,
@@ -135,23 +135,23 @@ const GridExample = () => {
           },
         },
       ],
-      defaultToolPanel: "columns",
+      defaultToolPanel: 'columns',
     };
   }, []);
 
   const onGridReady = useCallback((params) => {
-    fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+    fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .then((resp) => resp.json())
       .then((data) => setRowData(data));
   }, []);
 
   const setCustomSortLayout = useCallback(() => {
-    var columnToolPanel = gridRef.current.api.getToolPanelInstance("columns");
+    var columnToolPanel = gridRef.current.api.getToolPanelInstance('columns');
     columnToolPanel.setColumnLayout(sortedToolPanelColumnDefs);
   }, []);
 
   const setCustomGroupLayout = useCallback(() => {
-    var columnToolPanel = gridRef.current.api.getToolPanelInstance("columns");
+    var columnToolPanel = gridRef.current.api.getToolPanelInstance('columns');
     columnToolPanel.setColumnLayout(customToolPanelColumnDefs);
   }, []);
 
@@ -180,4 +180,4 @@ const GridExample = () => {
   );
 };
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

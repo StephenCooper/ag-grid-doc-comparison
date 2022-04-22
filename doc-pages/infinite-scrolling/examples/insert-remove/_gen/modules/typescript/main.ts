@@ -1,33 +1,37 @@
 import {
   ColDef,
+  FirstDataRenderedEvent,
+  GetRowIdParams,
   Grid,
   GridOptions,
+  GridReadyEvent,
   ICellRendererParams,
   IDatasource,
   IGetRowsParams,
   ModuleRegistry,
   RowClassParams,
+  RowStyle,
   ValueFormatterParams,
-} from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { InfiniteRowModelModule } from "@ag-grid-community/infinite-row-model";
+} from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { InfiniteRowModelModule } from '@ag-grid-community/infinite-row-model';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([InfiniteRowModelModule]);
 
 const valueFormatter = function (params: ValueFormatterParams) {
-  if (typeof params.value === "number") {
-    return "£" + params.value.toLocaleString();
+  if (typeof params.value === 'number') {
+    return '£' + params.value.toLocaleString();
   } else {
     return params.value;
   }
 };
 const columnDefs: ColDef[] = [
   {
-    headerName: "Item ID",
-    field: "id",
-    valueGetter: "node.id",
+    headerName: 'Item ID',
+    field: 'id',
+    valueGetter: 'node.id',
     cellRenderer: function (params: ICellRendererParams) {
       if (params.value !== undefined) {
         return params.value;
@@ -36,10 +40,10 @@ const columnDefs: ColDef[] = [
       }
     },
   },
-  { field: "make" },
-  { field: "model" },
+  { field: 'make' },
+  { field: 'model' },
   {
-    field: "price",
+    field: 'price',
     valueFormatter: valueFormatter,
   },
 ];
@@ -47,7 +51,7 @@ const columnDefs: ColDef[] = [
 const datasource: IDatasource = {
   rowCount: undefined, // behave as infinite scroll
   getRows: function (params: IGetRowsParams) {
-    console.log("asking for " + params.startRow + " to " + params.endRow);
+    console.log('asking for ' + params.startRow + ' to ' + params.endRow);
     // At this point in your code, you would call the server.
     // To make the demo look real, wait for 500ms before returning
     setTimeout(function () {
@@ -75,20 +79,20 @@ const gridOptions: GridOptions = {
   defaultColDef: {
     resizable: true,
   },
-  rowSelection: "multiple",
+  rowSelection: 'multiple',
   columnDefs: columnDefs,
-  rowModelType: "infinite",
+  rowModelType: 'infinite',
   datasource: datasource,
 
   maxBlocksInCache: 2,
   infiniteInitialRowCount: 500,
   maxConcurrentDatasourceRequests: 2,
 
-  getRowId: function (params) {
+  getRowId: function (params: GetRowIdParams) {
     return params.data.id.toString();
   },
 
-  onGridReady: function (params) {
+  onGridReady: function (params: GridReadyEvent) {
     sequenceId = 1;
     allOfTheData = [];
     for (let i = 0; i < 1000; i++) {
@@ -96,14 +100,14 @@ const gridOptions: GridOptions = {
     }
   },
 
-  onFirstDataRendered: function (params) {
+  onFirstDataRendered: function (params: FirstDataRenderedEvent) {
     params.api.sizeColumnsToFit();
   },
 
-  getRowStyle: function (params: RowClassParams) {
-    if (params.data && params.data.make === "Honda") {
+  getRowStyle: function (params: RowClassParams): RowStyle | undefined {
+    if (params.data && params.data.make === 'Honda') {
       return {
-        fontWeight: "bold",
+        fontWeight: 'bold',
       };
     } else {
       return undefined;
@@ -116,15 +120,15 @@ var sequenceId = 0;
 var allOfTheData: any[] = [];
 
 function createRowData(id: number) {
-  const makes = ["Toyota", "Ford", "Porsche", "Chevy", "Honda", "Nissan"];
+  const makes = ['Toyota', 'Ford', 'Porsche', 'Chevy', 'Honda', 'Nissan'];
   const models = [
-    "Cruze",
-    "Celica",
-    "Mondeo",
-    "Boxter",
-    "Genesis",
-    "Accord",
-    "Taurus",
+    'Cruze',
+    'Celica',
+    'Mondeo',
+    'Boxster',
+    'Genesis',
+    'Accord',
+    'Taurus',
   ];
   return {
     id: id,
@@ -183,10 +187,10 @@ function setRowCountTo200() {
 
 function rowsAndMaxFound() {
   console.log(
-    "getInfiniteRowCount() => " + gridOptions.api!.getInfiniteRowCount()
+    'getInfiniteRowCount() => ' + gridOptions.api!.getInfiniteRowCount()
   );
   console.log(
-    "isLastRowIndexKnown() => " + gridOptions.api!.isLastRowIndexKnown()
+    'isLastRowIndexKnown() => ' + gridOptions.api!.isLastRowIndexKnown()
   );
 }
 
@@ -204,7 +208,7 @@ function setPricesLow() {
 }
 
 function printCacheState() {
-  console.log("*** Cache State ***");
+  console.log('*** Cache State ***');
   console.log(gridOptions.api!.getCacheBlockState());
 }
 
@@ -218,10 +222,10 @@ function jumpTo500() {
 }
 
 // setup the grid after the page has finished loading
-const gridDiv = document.querySelector<HTMLElement>("#myGrid")!;
+const gridDiv = document.querySelector<HTMLElement>('#myGrid')!;
 new Grid(gridDiv, gridOptions);
 
-if (typeof window !== "undefined") {
+if (typeof window !== 'undefined') {
   // Attach external event handlers to window so they can be called from index.html
   (<any>window).insertItemsAt2AndRefresh = insertItemsAt2AndRefresh;
   (<any>window).removeItem = removeItem;

@@ -1,9 +1,9 @@
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import { AgGridVue } from "ag-grid-vue";
-import Vue from "vue";
-import PersonFilter from "./personFilterVue.js";
-import YearFilter from "./yearFilterVue.js";
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import { AgGridVue } from 'ag-grid-vue';
+import Vue from 'vue';
+import PersonFilter from './personFilterVue.js';
+import YearFilter from './yearFilterVue.js';
 
 const VueExample = {
   template: `
@@ -19,25 +19,25 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
     PersonFilter,
     YearFilter,
   },
   data: function () {
     return {
       columnDefs: [
-        { field: "athlete", minWidth: 150, filter: "PersonFilter" },
-        { field: "age", filter: "agNumberColumnFilter" },
-        { field: "country", minWidth: 150 },
-        { field: "year", filter: "YearFilter" },
+        { field: 'athlete', minWidth: 150, filter: 'PersonFilter' },
+        { field: 'age', filter: 'agNumberColumnFilter' },
+        { field: 'country', minWidth: 150 },
+        { field: 'year', filter: 'YearFilter' },
         {
-          field: "date",
+          field: 'date',
           minWidth: 130,
-          filter: "agDateColumnFilter",
+          filter: 'agDateColumnFilter',
           filterParams: {
             comparator: (filterLocalDateAtMidnight, cellValue) => {
               const dateAsString = cellValue;
-              const dateParts = dateAsString.split("/");
+              const dateParts = dateAsString.split('/');
               const cellDate = new Date(
                 Number(dateParts[2]),
                 Number(dateParts[1]) - 1,
@@ -55,11 +55,11 @@ const VueExample = {
             },
           },
         },
-        { field: "sport" },
-        { field: "gold", filter: "agNumberColumnFilter" },
-        { field: "silver", filter: "agNumberColumnFilter" },
-        { field: "bronze", filter: "agNumberColumnFilter" },
-        { field: "total", filter: "agNumberColumnFilter" },
+        { field: 'sport' },
+        { field: 'gold', filter: 'agNumberColumnFilter' },
+        { field: 'silver', filter: 'agNumberColumnFilter' },
+        { field: 'bronze', filter: 'agNumberColumnFilter' },
+        { field: 'total', filter: 'agNumberColumnFilter' },
       ],
       gridApi: null,
       columnApi: null,
@@ -84,7 +84,7 @@ const VueExample = {
         this.rowData = data;
       };
 
-      fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
         .then((resp) => resp.json())
         .then((data) => updateData(data));
     },
@@ -92,8 +92,8 @@ const VueExample = {
 };
 
 new Vue({
-  el: "#app",
+  el: '#app',
   components: {
-    "my-component": VueExample,
+    'my-component': VueExample,
   },
 });

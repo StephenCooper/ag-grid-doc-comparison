@@ -1,16 +1,16 @@
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
-import { AgGridVue } from "ag-grid-vue";
-import Vue from "vue";
-import GenderRenderer from "./genderRendererVue.js";
-import MoodEditor from "./moodEditorVue.js";
-import MoodRenderer from "./moodRendererVue.js";
-import NumericEditor from "./numericEditorVue.js";
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import 'ag-grid-enterprise';
+import { AgGridVue } from 'ag-grid-vue';
+import Vue from 'vue';
+import GenderRenderer from './genderRendererVue.js';
+import MoodEditor from './moodEditorVue.js';
+import MoodRenderer from './moodRendererVue.js';
+import NumericEditor from './numericEditorVue.js';
 
 class CountryCellRenderer {
   init(params) {
-    this.eGui = document.createElement("div");
+    this.eGui = document.createElement('div');
     this.eGui.innerHTML = `${params.value.name}`;
   }
 
@@ -38,7 +38,7 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
     GenderRenderer,
     NumericEditor,
     MoodRenderer,
@@ -48,48 +48,48 @@ const VueExample = {
     return {
       columnDefs: [
         {
-          field: "first_name",
-          headerName: "First Name",
+          field: 'first_name',
+          headerName: 'First Name',
           width: 120,
           editable: true,
         },
         {
-          field: "last_name",
-          headerName: "Last Name",
+          field: 'last_name',
+          headerName: 'Last Name',
           width: 120,
           editable: true,
         },
         {
-          field: "gender",
+          field: 'gender',
           width: 100,
           editable: true,
-          cellRenderer: "GenderRenderer",
-          cellEditor: "agRichSelectCellEditor",
+          cellRenderer: 'GenderRenderer',
+          cellEditor: 'agRichSelectCellEditor',
           cellEditorPopup: true,
           cellEditorParams: {
-            cellRenderer: "GenderRenderer",
-            values: ["Male", "Female"],
+            cellRenderer: 'GenderRenderer',
+            values: ['Male', 'Female'],
           },
         },
         {
-          field: "age",
+          field: 'age',
           width: 80,
           editable: true,
-          cellEditor: "NumericEditor",
+          cellEditor: 'NumericEditor',
           cellEditorPopup: true,
         },
         {
-          field: "mood",
+          field: 'mood',
           width: 100,
-          cellRenderer: "MoodRenderer",
-          cellEditor: "MoodEditor",
+          cellRenderer: 'MoodRenderer',
+          cellEditor: 'MoodEditor',
           cellEditorPopup: true,
           editable: true,
         },
         {
-          field: "country",
+          field: 'country',
           width: 110,
-          cellEditor: "agRichSelectCellEditor",
+          cellEditor: 'agRichSelectCellEditor',
           cellEditorPopup: true,
           cellRenderer: CountryCellRenderer,
           keyCreator: (params) => {
@@ -98,19 +98,19 @@ const VueExample = {
           cellEditorParams: {
             cellRenderer: CountryCellRenderer,
             values: [
-              { name: "Ireland", code: "IE" },
-              { name: "UK", code: "UK" },
-              { name: "France", code: "FR" },
+              { name: 'Ireland', code: 'IE' },
+              { name: 'UK', code: 'UK' },
+              { name: 'France', code: 'FR' },
             ],
           },
           editable: true,
         },
         {
-          field: "address",
+          field: 'address',
           editable: true,
-          cellEditor: "agLargeTextCellEditor",
+          cellEditor: 'agLargeTextCellEditor',
           cellEditorPopup: true,
-          cellEditorParams: { maxLength: "300", cols: "50", rows: "6" },
+          cellEditorParams: { maxLength: '300', cols: '50', rows: '6' },
         },
       ],
       gridApi: null,
@@ -138,8 +138,8 @@ const VueExample = {
 };
 
 new Vue({
-  el: "#app",
+  el: '#app',
   components: {
-    "my-component": VueExample,
+    'my-component': VueExample,
   },
 });

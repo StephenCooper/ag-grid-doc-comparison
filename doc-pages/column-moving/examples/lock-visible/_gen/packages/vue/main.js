@@ -1,7 +1,7 @@
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import { AgGridVue } from "ag-grid-vue";
-import Vue from "vue";
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import { AgGridVue } from 'ag-grid-vue';
+import Vue from 'vue';
 
 const VueExample = {
   template: `
@@ -23,32 +23,32 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
         {
-          headerName: "Athlete",
+          headerName: 'Athlete',
           children: [
-            { field: "athlete", width: 150 },
-            { field: "age", lockVisible: true, cellClass: "locked-visible" },
-            { field: "country", width: 150 },
-            { field: "year" },
-            { field: "date" },
-            { field: "sport" },
+            { field: 'athlete', width: 150 },
+            { field: 'age', lockVisible: true, cellClass: 'locked-visible' },
+            { field: 'country', width: 150 },
+            { field: 'year' },
+            { field: 'date' },
+            { field: 'sport' },
           ],
         },
         {
-          headerName: "Medals",
+          headerName: 'Medals',
           children: [
-            { field: "gold", lockVisible: true, cellClass: "locked-visible" },
-            { field: "silver", lockVisible: true, cellClass: "locked-visible" },
-            { field: "bronze", lockVisible: true, cellClass: "locked-visible" },
+            { field: 'gold', lockVisible: true, cellClass: 'locked-visible' },
+            { field: 'silver', lockVisible: true, cellClass: 'locked-visible' },
+            { field: 'bronze', lockVisible: true, cellClass: 'locked-visible' },
             {
-              field: "total",
+              field: 'total',
               lockVisible: true,
-              cellClass: "locked-visible",
+              cellClass: 'locked-visible',
               hide: true,
             },
           ],
@@ -67,11 +67,11 @@ const VueExample = {
     this.sideBar = {
       toolPanels: [
         {
-          id: "columns",
-          labelDefault: "Columns",
-          labelKey: "columns",
-          iconKey: "columns",
-          toolPanel: "agColumnsToolPanel",
+          id: 'columns',
+          labelDefault: 'Columns',
+          labelKey: 'columns',
+          iconKey: 'columns',
+          toolPanel: 'agColumnsToolPanel',
           toolPanelParams: {
             suppressRowGroups: true,
             suppressValues: true,
@@ -89,7 +89,7 @@ const VueExample = {
 
       const updateData = (data) => params.api.setRowData(data);
 
-      fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
         .then((resp) => resp.json())
         .then((data) => updateData(data));
     },
@@ -97,8 +97,8 @@ const VueExample = {
 };
 
 new Vue({
-  el: "#app",
+  el: '#app',
   components: {
-    "my-component": VueExample,
+    'my-component': VueExample,
   },
 });

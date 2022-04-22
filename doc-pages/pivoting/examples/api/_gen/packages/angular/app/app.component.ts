@@ -1,12 +1,12 @@
-import { HttpClient } from "@angular/common/http";
-import { Component } from "@angular/core";
-import { ColDef, ColumnApi, GridApi, GridReadyEvent } from "ag-grid-community";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
+import { HttpClient } from '@angular/common/http';
+import { Component } from '@angular/core';
+import { ColDef, ColumnApi, GridApi, GridReadyEvent } from 'ag-grid-community';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import 'ag-grid-enterprise';
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<div style="margin-bottom: 5px;">
       <div>
         <button (click)="turnOnPivotMode()">Pivot Mode On</button>
@@ -43,20 +43,20 @@ export class AppComponent {
 
   public columnDefs: ColDef[] = [
     {
-      field: "athlete",
+      field: 'athlete',
       enableRowGroup: true,
       enablePivot: true,
       minWidth: 200,
     },
-    { field: "age", enableValue: true },
-    { field: "country", enableRowGroup: true, enablePivot: true },
-    { field: "year", enableRowGroup: true, enablePivot: true },
-    { field: "date", enableRowGroup: true, enablePivot: true },
-    { field: "sport", enableRowGroup: true, enablePivot: true, minWidth: 200 },
-    { field: "gold", enableValue: true, aggFunc: "sum" },
-    { field: "silver", enableValue: true },
-    { field: "bronze", enableValue: true },
-    { field: "total", enableValue: true },
+    { field: 'age', enableValue: true },
+    { field: 'country', enableRowGroup: true, enablePivot: true },
+    { field: 'year', enableRowGroup: true, enablePivot: true },
+    { field: 'date', enableRowGroup: true, enablePivot: true },
+    { field: 'sport', enableRowGroup: true, enablePivot: true, minWidth: 200 },
+    { field: 'gold', enableValue: true, aggFunc: 'sum' },
+    { field: 'silver', enableValue: true },
+    { field: 'bronze', enableValue: true },
+    { field: 'total', enableValue: true },
   ];
   public defaultColDef: ColDef = {
     flex: 1,
@@ -81,7 +81,7 @@ export class AppComponent {
 
   addPivotColumn() {
     this.gridColumnApi.applyColumnState({
-      state: [{ colId: "country", pivot: true }],
+      state: [{ colId: 'country', pivot: true }],
       defaultState: { pivot: false },
     });
   }
@@ -89,8 +89,8 @@ export class AppComponent {
   addPivotColumns() {
     this.gridColumnApi.applyColumnState({
       state: [
-        { colId: "year", pivot: true },
-        { colId: "country", pivot: true },
+        { colId: 'year', pivot: true },
+        { colId: 'country', pivot: true },
       ],
       defaultState: { pivot: false },
     });
@@ -98,7 +98,7 @@ export class AppComponent {
 
   removePivotColumn() {
     this.gridColumnApi.applyColumnState({
-      state: [{ colId: "country", pivot: false }],
+      state: [{ colId: 'country', pivot: false }],
     });
   }
 
@@ -117,7 +117,7 @@ export class AppComponent {
     this.gridColumnApi = params.columnApi;
 
     this.http
-      .get<any[]>("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      .get<any[]>('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .subscribe((data) => (this.rowData = data));
   }
 }

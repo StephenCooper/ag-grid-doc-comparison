@@ -1,15 +1,15 @@
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
-import { AgGridReact } from "ag-grid-react";
-import React, { Component } from "react";
-import { render } from "react-dom";
-("use strict");
+'use strict';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from 'ag-grid-react';
+import 'ag-grid-enterprise';
 
 const COUNTRY_CODES = {
-  Ireland: "ie",
-  "United Kingdom": "gb",
-  USA: "us",
+  Ireland: 'ie',
+  'United Kingdom': 'gb',
+  USA: 'us',
 };
 
 function numberParser(params) {
@@ -76,21 +76,21 @@ class GridExample extends Component {
 
     this.state = {
       columnDefs: [
-        { field: "city", type: "dimension", cellRenderer: cityCellRenderer },
+        { field: 'city', type: 'dimension', cellRenderer: cityCellRenderer },
         {
-          field: "country",
-          type: "dimension",
+          field: 'country',
+          type: 'dimension',
           cellRenderer: countryCellRenderer,
           minWidth: 200,
         },
         {
-          field: "state",
-          type: "dimension",
+          field: 'state',
+          type: 'dimension',
           cellRenderer: stateCellRenderer,
           rowGroup: true,
         },
-        { field: "val1", type: "numberValue" },
-        { field: "val2", type: "numberValue" },
+        { field: 'val1', type: 'numberValue' },
+        { field: 'val2', type: 'numberValue' },
       ],
       defaultColDef: {
         flex: 1,
@@ -98,13 +98,13 @@ class GridExample extends Component {
         resizable: true,
       },
       autoGroupColumnDef: {
-        field: "city",
+        field: 'city',
         minWidth: 200,
       },
       columnTypes: {
         numberValue: {
           enableValue: true,
-          aggFunc: "sum",
+          aggFunc: 'sum',
           editable: true,
           valueParser: numberParser,
         },
@@ -115,7 +115,7 @@ class GridExample extends Component {
       },
       rowData: getData(),
       groupDefaultExpanded: -1,
-      rowGroupPanelShow: "always",
+      rowGroupPanelShow: 'always',
     };
   }
 
@@ -126,11 +126,11 @@ class GridExample extends Component {
 
   render() {
     return (
-      <div style={{ width: "100%", height: "100%" }}>
+      <div style={{ width: '100%', height: '100%' }}>
         <div
           style={{
-            height: "98%",
-            width: "100%",
+            height: '98%',
+            width: '100%',
           }}
           className="ag-theme-alpine"
         >
@@ -151,4 +151,4 @@ class GridExample extends Component {
   }
 }
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

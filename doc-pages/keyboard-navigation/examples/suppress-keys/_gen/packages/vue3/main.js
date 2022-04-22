@@ -1,8 +1,8 @@
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
-import { AgGridVue } from "ag-grid-vue3";
-import { createApp } from "vue";
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import 'ag-grid-enterprise';
+import { AgGridVue } from 'ag-grid-vue3';
+import { createApp } from 'vue';
 
 const VueExample = {
   template: `
@@ -21,36 +21,36 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
         {
-          field: "athlete",
+          field: 'athlete',
           minWidth: 170,
           suppressKeyboardEvent: (params) => {
             return suppressEnter(params) || suppressNavigation(params);
           },
         },
-        { field: "age" },
+        { field: 'age' },
         {
-          field: "country",
+          field: 'country',
           minWidth: 130,
           suppressHeaderKeyboardEvent: (params) => {
             var key = params.event.key;
             return (
-              key === "ArrowLeft" || key === "ArrowRight" || key === "Enter"
+              key === 'ArrowLeft' || key === 'ArrowRight' || key === 'Enter'
             );
           },
         },
-        { field: "year" },
-        { field: "date" },
-        { field: "sport" },
-        { field: "gold" },
-        { field: "silver" },
-        { field: "bronze" },
-        { field: "total" },
+        { field: 'year' },
+        { field: 'date' },
+        { field: 'sport' },
+        { field: 'gold' },
+        { field: 'silver' },
+        { field: 'bronze' },
+        { field: 'total' },
       ],
       gridApi: null,
       columnApi: null,
@@ -69,7 +69,7 @@ const VueExample = {
     };
   },
   created() {
-    this.rowSelection = "multiple";
+    this.rowSelection = 'multiple';
   },
   methods: {
     onGridReady(params) {
@@ -78,7 +78,7 @@ const VueExample = {
 
       const updateData = (data) => params.api.setRowData(data);
 
-      fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
         .then((resp) => resp.json())
         .then((data) => updateData(data));
     },
@@ -86,7 +86,7 @@ const VueExample = {
 };
 
 window.suppressEnter = function suppressEnter(params) {
-  var KEY_ENTER = "Enter";
+  var KEY_ENTER = 'Enter';
   var event = params.event;
   var key = event.key;
   var suppress = key === KEY_ENTER;
@@ -94,24 +94,24 @@ window.suppressEnter = function suppressEnter(params) {
 };
 
 window.suppressNavigation = function suppressNavigation(params) {
-  var KEY_A = "A";
-  var KEY_C = "C";
-  var KEY_V = "V";
-  var KEY_D = "D";
-  var KEY_PAGE_UP = "PageUp";
-  var KEY_PAGE_DOWN = "PageDown";
-  var KEY_TAB = "Tab";
-  var KEY_LEFT = "ArrowLeft";
-  var KEY_UP = "ArrowUp";
-  var KEY_RIGHT = "ArrowRight";
-  var KEY_DOWN = "ArrowDown";
-  var KEY_F2 = "F2";
-  var KEY_BACKSPACE = "Backspace";
-  var KEY_ESCAPE = "Escape";
-  var KEY_SPACE = " ";
-  var KEY_DELETE = "Delete";
-  var KEY_PAGE_HOME = "Home";
-  var KEY_PAGE_END = "End";
+  var KEY_A = 'A';
+  var KEY_C = 'C';
+  var KEY_V = 'V';
+  var KEY_D = 'D';
+  var KEY_PAGE_UP = 'PageUp';
+  var KEY_PAGE_DOWN = 'PageDown';
+  var KEY_TAB = 'Tab';
+  var KEY_LEFT = 'ArrowLeft';
+  var KEY_UP = 'ArrowUp';
+  var KEY_RIGHT = 'ArrowRight';
+  var KEY_DOWN = 'ArrowDown';
+  var KEY_F2 = 'F2';
+  var KEY_BACKSPACE = 'Backspace';
+  var KEY_ESCAPE = 'Escape';
+  var KEY_SPACE = ' ';
+  var KEY_DELETE = 'Delete';
+  var KEY_PAGE_HOME = 'Home';
+  var KEY_PAGE_END = 'End';
   var event = params.event;
   var key = event.key;
   var keysToSuppress = [
@@ -142,7 +142,7 @@ window.suppressNavigation = function suppressNavigation(params) {
     keysToSuppress = keysToSuppress.concat(editingKeys);
   }
   if (
-    params.column.getId() === "country" &&
+    params.column.getId() === 'country' &&
     (key === KEY_UP || key === KEY_DOWN)
   ) {
     return false;
@@ -155,7 +155,7 @@ window.suppressNavigation = function suppressNavigation(params) {
 
 window.suppressUpDownNavigation = function suppressUpDownNavigation(params) {
   var key = params.event.key;
-  return key === "ArrowUp" || key === "ArrowDown";
+  return key === 'ArrowUp' || key === 'ArrowDown';
 };
 
-createApp(VueExample).mount("#app");
+createApp(VueExample).mount('#app');

@@ -4,16 +4,16 @@ import {
   IServerSideDatasource,
   IServerSideGetRowsRequest,
   ServerSideStoreType,
-} from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { HttpClient } from "@angular/common/http";
-import { Component } from "@angular/core";
-import { CustomLoadingCellRenderer } from "./custom-loading-cell-renderer.component";
+} from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { HttpClient } from '@angular/common/http';
+import { Component } from '@angular/core';
+import { CustomLoadingCellRenderer } from './custom-loading-cell-renderer.component';
 // Required feature modules are registered in app.module.ts
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<div
     style="height: 100%; padding-top: 25px; box-sizing: border-box;"
   >
@@ -36,15 +36,15 @@ import { CustomLoadingCellRenderer } from "./custom-loading-cell-renderer.compon
 })
 export class AppComponent {
   public columnDefs: ColDef[] = [
-    { field: "id" },
-    { field: "athlete", width: 150 },
-    { field: "age" },
-    { field: "country" },
-    { field: "year" },
-    { field: "sport" },
-    { field: "gold" },
-    { field: "silver" },
-    { field: "bronze" },
+    { field: 'id' },
+    { field: 'athlete', width: 150 },
+    { field: 'age' },
+    { field: 'country' },
+    { field: 'year' },
+    { field: 'sport' },
+    { field: 'gold' },
+    { field: 'silver' },
+    { field: 'bronze' },
   ];
   public defaultColDef: ColDef = {
     editable: true,
@@ -56,10 +56,10 @@ export class AppComponent {
   };
   public loadingCellRenderer: any = CustomLoadingCellRenderer;
   public loadingCellRendererParams: any = {
-    loadingMessage: "One moment please...",
+    loadingMessage: 'One moment please...',
   };
-  public rowModelType = "serverSide";
-  public serverSideStoreType: ServerSideStoreType = "partial";
+  public rowModelType = 'serverSide';
+  public serverSideStoreType: ServerSideStoreType = 'partial';
   public cacheBlockSize = 100;
   public maxBlocksInCache = 10;
   public rowData!: any[];
@@ -68,7 +68,7 @@ export class AppComponent {
 
   onGridReady(params: GridReadyEvent) {
     this.http
-      .get<any[]>("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      .get<any[]>('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .subscribe((data) => {
         // add id to data
         let idSequence = 0;
@@ -76,8 +76,9 @@ export class AppComponent {
           item.id = idSequence++;
         });
         const server: any = getFakeServer(data);
-        const datasource: IServerSideDatasource =
-          getServerSideDatasource(server);
+        const datasource: IServerSideDatasource = getServerSideDatasource(
+          server
+        );
         params.api!.setServerSideDatasource(datasource);
       });
   }
@@ -107,7 +108,7 @@ function getFakeServer(allData: any[]): any {
   return {
     getResponse: (request: IServerSideGetRowsRequest) => {
       console.log(
-        "asking for rows: " + request.startRow + " to " + request.endRow
+        'asking for rows: ' + request.startRow + ' to ' + request.endRow
       );
       // take a slice of the total rows
       const rowsThisPage = allData.slice(request.startRow, request.endRow);

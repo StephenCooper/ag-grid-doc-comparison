@@ -1,14 +1,14 @@
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { AgGridVue } from "@ag-grid-community/vue3";
-import { ColumnsToolPanelModule } from "@ag-grid-enterprise/column-tool-panel";
-import { FiltersToolPanelModule } from "@ag-grid-enterprise/filter-tool-panel";
-import { MenuModule } from "@ag-grid-enterprise/menu";
-import { RowGroupingModule } from "@ag-grid-enterprise/row-grouping";
-import { SetFilterModule } from "@ag-grid-enterprise/set-filter";
-import { createApp } from "vue";
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { AgGridVue } from '@ag-grid-community/vue3';
+import { ColumnsToolPanelModule } from '@ag-grid-enterprise/column-tool-panel';
+import { FiltersToolPanelModule } from '@ag-grid-enterprise/filter-tool-panel';
+import { MenuModule } from '@ag-grid-enterprise/menu';
+import { RowGroupingModule } from '@ag-grid-enterprise/row-grouping';
+import { SetFilterModule } from '@ag-grid-enterprise/set-filter';
+import { createApp } from 'vue';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([
@@ -46,31 +46,31 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
-        { field: "athlete", enableRowGroup: true, enablePivot: true },
-        { field: "age", enableValue: true },
+        { field: 'athlete', enableRowGroup: true, enablePivot: true },
+        { field: 'age', enableValue: true },
         {
-          field: "country",
+          field: 'country',
           enableRowGroup: true,
           enablePivot: true,
           rowGroup: true,
         },
-        { field: "year", enableRowGroup: true, enablePivot: true },
-        { field: "date", enableRowGroup: true, enablePivot: true },
+        { field: 'year', enableRowGroup: true, enablePivot: true },
+        { field: 'date', enableRowGroup: true, enablePivot: true },
         {
-          field: "sport",
+          field: 'sport',
           enableRowGroup: true,
           enablePivot: true,
           pivot: true,
         },
-        { field: "gold", enableValue: true, aggFunc: "sum" },
-        { field: "silver", enableValue: true, aggFunc: "sum" },
-        { field: "bronze", enableValue: true },
-        { field: "total", enableValue: true },
+        { field: 'gold', enableValue: true, aggFunc: 'sum' },
+        { field: 'silver', enableValue: true, aggFunc: 'sum' },
+        { field: 'bronze', enableValue: true },
+        { field: 'total', enableValue: true },
       ],
       gridApi: null,
       columnApi: null,
@@ -97,7 +97,7 @@ const VueExample = {
     saveState() {
       savedState = this.gridColumnApi.getColumnState();
       savedPivotMode = this.gridColumnApi.isPivotMode();
-      console.log("column state saved");
+      console.log('column state saved');
     },
     restoreState() {
       if (savedState) {
@@ -107,9 +107,9 @@ const VueExample = {
           state: savedState,
           applyOrder: true,
         });
-        console.log("column state restored");
+        console.log('column state restored');
       } else {
-        console.log("no previous column state to restore!");
+        console.log('no previous column state to restore!');
       }
     },
     togglePivotMode() {
@@ -119,7 +119,7 @@ const VueExample = {
     resetState() {
       this.gridColumnApi.resetColumnState();
       this.gridColumnApi.setPivotMode(false);
-      console.log("column state reset");
+      console.log('column state reset');
     },
     onGridReady(params) {
       this.gridApi = params.api;
@@ -127,7 +127,7 @@ const VueExample = {
 
       const updateData = (data) => params.api.setRowData(data);
 
-      fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
         .then((resp) => resp.json())
         .then((data) => updateData(data));
     },
@@ -138,4 +138,4 @@ var savedState;
 
 var savedPivotMode;
 
-createApp(VueExample).mount("#app");
+createApp(VueExample).mount('#app');

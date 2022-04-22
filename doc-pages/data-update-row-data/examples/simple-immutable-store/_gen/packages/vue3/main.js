@@ -1,8 +1,8 @@
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
-import { AgGridVue } from "ag-grid-vue3";
-import { createApp } from "vue";
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import 'ag-grid-enterprise';
+import { AgGridVue } from 'ag-grid-vue3';
+import { createApp } from 'vue';
 
 const VueExample = {
   template: `
@@ -17,7 +17,7 @@ const VueExample = {
                     <button id="groupingOn" v-on:click="onGroupingEnabled(true)">Grouping On</button>
                     <button id="groupingOff" v-on:click="onGroupingEnabled(false)">Grouping Off</button>
                     <span style="border: 1px solid lightgrey; margin-left: 20px; padding: 8px; white-space: nowrap; display: inline-block;">
-                        Group:
+                        Move to Group:
                         <button v-on:click="setSelectedToGroup('A')">A</button>
                         <button v-on:click="setSelectedToGroup('B')">B</button>
                         <button v-on:click="setSelectedToGroup('C')">C</button>
@@ -43,14 +43,14 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
-        { headerName: "Symbol", field: "symbol" },
-        { headerName: "Price", field: "price" },
-        { headerName: "Group", field: "group" },
+        { headerName: 'Symbol', field: 'symbol' },
+        { headerName: 'Price', field: 'price' },
+        { headerName: 'Group', field: 'group' },
       ],
       gridApi: null,
       columnApi: null,
@@ -68,14 +68,14 @@ const VueExample = {
     };
   },
   created() {
-    this.rowSelection = "multiple";
+    this.rowSelection = 'multiple';
     this.autoGroupColumnDef = {
-      headerName: "Symbol",
-      cellRenderer: "agGroupCellRenderer",
-      field: "symbol",
+      headerName: 'Symbol',
+      cellRenderer: 'agGroupCellRenderer',
+      field: 'symbol',
     };
     this.statusBar = {
-      statusPanels: [{ statusPanel: "agAggregationComponent", align: "right" }],
+      statusPanels: [{ statusPanel: 'agAggregationComponent', align: 'right' }],
     };
     this.groupDefaultExpanded = 1;
     this.rowData = immutableStore;
@@ -182,7 +182,7 @@ window.filter = function filter(list, callback) {
 
 window.createItem = function createItem() {
   const item = {
-    group: ["A", "B", "C"][Math.floor(Math.random() * 3)],
+    group: ['A', 'B', 'C'][Math.floor(Math.random() * 3)],
     symbol: createUniqueRandomSymbol(),
     price: Math.floor(Math.random() * 100),
   };
@@ -193,49 +193,48 @@ window.setGroupingEnabled = function setGroupingEnabled(enabled, columnApi) {
   if (enabled) {
     columnApi.applyColumnState({
       state: [
-        { colId: "group", rowGroup: true, hide: true },
-        { colId: "symbol", hide: true },
+        { colId: 'group', rowGroup: true, hide: true },
+        { colId: 'symbol', hide: true },
       ],
     });
   } else {
     columnApi.applyColumnState({
       state: [
-        { colId: "group", rowGroup: false, hide: false },
-        { colId: "symbol", hide: false },
+        { colId: 'group', rowGroup: false, hide: false },
+        { colId: 'symbol', hide: false },
       ],
     });
   }
-  setItemVisible("groupingOn", !enabled);
-  setItemVisible("groupingOff", enabled);
+  setItemVisible('groupingOn', !enabled);
+  setItemVisible('groupingOff', enabled);
 };
 
 window.setItemVisible = function setItemVisible(id, visible) {
-  const element = document.querySelector("#" + id);
-  element.style.display = visible ? "inline" : "none";
+  const element = document.querySelector('#' + id);
+  element.style.display = visible ? 'inline' : 'none';
 };
 
-window.createUniqueRandomSymbol = // creates a unique symbol, eg 'ADG' or 'ZJD'
-  function createUniqueRandomSymbol() {
-    let symbol;
-    const possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    let isUnique = false;
-    while (!isUnique) {
-      symbol = "";
-      // create symbol
-      for (let i = 0; i < 3; i++) {
-        symbol += possible.charAt(Math.floor(Math.random() * possible.length));
-      }
-      // check uniqueness
-      isUnique = true;
-      immutableStore.forEach(function (oldItem) {
-        if (oldItem.symbol === symbol) {
-          isUnique = false;
-        }
-      });
+window.createUniqueRandomSymbol = function createUniqueRandomSymbol() { // creates a unique symbol, eg 'ADG' or 'ZJD'
+  let symbol;
+  const possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+  let isUnique = false;
+  while (!isUnique) {
+    symbol = '';
+    // create symbol
+    for (let i = 0; i < 3; i++) {
+      symbol += possible.charAt(Math.floor(Math.random() * possible.length));
     }
-    return symbol;
-  };
+    // check uniqueness
+    isUnique = true;
+    immutableStore.forEach(function (oldItem) {
+      if (oldItem.symbol === symbol) {
+        isUnique = false;
+      }
+    });
+  }
+  return symbol;
+};
 
 let immutableStore = [];
 
-createApp(VueExample).mount("#app");
+createApp(VueExample).mount('#app');

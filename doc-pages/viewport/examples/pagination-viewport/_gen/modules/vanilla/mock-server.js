@@ -37,7 +37,7 @@ function createMockServer() {
         // send msg to this connection if one or more changes
         if (changesThisConnection.length > 0) {
           that.sendEventAsync(connectionId, {
-            eventType: "dataUpdated",
+            eventType: 'dataUpdated',
             changes: changesThisConnection,
           });
         }
@@ -57,7 +57,7 @@ function createMockServer() {
 
         changes.push({
           rowIndex: index,
-          columnId: "volume",
+          columnId: 'volume',
           newValue: dataItem.volume,
         });
       }
@@ -78,17 +78,17 @@ function createMockServer() {
 
         changes.push({
           rowIndex: index,
-          columnId: "mid",
+          columnId: 'mid',
           newValue: dataItem.mid,
         });
         changes.push({
           rowIndex: index,
-          columnId: "bid",
+          columnId: 'bid',
           newValue: dataItem.bid,
         });
         changes.push({
           rowIndex: index,
-          columnId: "ask",
+          columnId: 'ask',
           newValue: dataItem.ask,
         });
       }
@@ -132,7 +132,7 @@ function createMockServer() {
       };
 
       this.sendEventAsync(connectionId, {
-        eventType: "rowCountChanged",
+        eventType: 'rowCountChanged',
         rowCount: this.allData.length,
       });
 
@@ -174,7 +174,7 @@ function createMockServer() {
 
     sendResultsToClient(connectionId, firstRow, lastRow) {
       if (firstRow < 0 || lastRow < firstRow) {
-        console.warn("start or end is not valid");
+        console.warn('start or end is not valid');
         return;
       }
 
@@ -197,7 +197,7 @@ function createMockServer() {
       }
 
       this.sendEventAsync(connectionId, {
-        eventType: "rowData",
+        eventType: 'rowData',
         rowDataMap: rowDataMap,
       });
     }

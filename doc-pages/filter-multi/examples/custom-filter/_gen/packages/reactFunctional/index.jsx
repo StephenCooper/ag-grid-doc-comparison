@@ -1,24 +1,24 @@
-"use strict";
+'use strict';
 
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
-import { AgGridReact } from "ag-grid-react";
-import React, { useCallback, useMemo, useState } from "react";
-import { render } from "react-dom";
-import YearFilter from "./YearFilter.jsx";
-import YearFloatingFilter from "./YearFloatingFilter.jsx";
+import React, { useCallback, useMemo, useRef, useState } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from 'ag-grid-react';
+import 'ag-grid-enterprise';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import YearFilter from './YearFilter.jsx';
+import YearFloatingFilter from './YearFloatingFilter.jsx';
 
 const GridExample = () => {
-  const containerStyle = useMemo(() => ({ width: "100%", height: "100%" }), []);
-  const gridStyle = useMemo(() => ({ height: "100%", width: "100%" }), []);
+  const containerStyle = useMemo(() => ({ width: '100%', height: '100%' }), []);
+  const gridStyle = useMemo(() => ({ height: '100%', width: '100%' }), []);
   const [rowData, setRowData] = useState();
   const [columnDefs, setColumnDefs] = useState([
-    { field: "athlete", filter: "agMultiColumnFilter" },
-    { field: "sport", filter: "agMultiColumnFilter" },
+    { field: 'athlete', filter: 'agMultiColumnFilter' },
+    { field: 'sport', filter: 'agMultiColumnFilter' },
     {
-      field: "year",
-      filter: "agMultiColumnFilter",
+      field: 'year',
+      filter: 'agMultiColumnFilter',
       filterParams: {
         filters: [
           {
@@ -26,7 +26,7 @@ const GridExample = () => {
             floatingFilterComponent: YearFloatingFilter,
           },
           {
-            filter: "agNumberColumnFilter",
+            filter: 'agNumberColumnFilter',
           },
         ],
       },
@@ -38,12 +38,12 @@ const GridExample = () => {
       minWidth: 200,
       resizable: true,
       floatingFilter: true,
-      menuTabs: ["filterMenuTab"],
+      menuTabs: ['filterMenuTab'],
     };
   }, []);
 
   const onGridReady = useCallback((params) => {
-    fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+    fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .then((resp) => resp.json())
       .then((data) => setRowData(data));
   }, []);
@@ -62,4 +62,4 @@ const GridExample = () => {
   );
 };
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

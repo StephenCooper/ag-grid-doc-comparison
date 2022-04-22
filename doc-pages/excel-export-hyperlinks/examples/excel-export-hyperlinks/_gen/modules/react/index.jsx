@@ -1,14 +1,14 @@
-"use strict";
+'use strict';
 
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { AgGridReact } from "@ag-grid-community/react";
-import { ExcelExportModule } from "@ag-grid-enterprise/excel-export";
-import { MenuModule } from "@ag-grid-enterprise/menu";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from '@ag-grid-community/react';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import { ExcelExportModule } from '@ag-grid-enterprise/excel-export';
+import { MenuModule } from '@ag-grid-enterprise/menu';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([
@@ -23,8 +23,8 @@ class GridExample extends Component {
 
     this.state = {
       columnDefs: [
-        { field: "company" },
-        { field: "url", cellClass: "hyperlinks" },
+        { field: 'company' },
+        { field: 'url', cellClass: 'hyperlinks' },
       ],
       defaultColDef: {
         flex: 1,
@@ -35,31 +35,31 @@ class GridExample extends Component {
         autoConvertFormulas: true,
         processCellCallback: (params) => {
           const field = params.column.getColDef().field;
-          return field === "url"
+          return field === 'url'
             ? `=HYPERLINK("${params.value}")`
             : params.value;
         },
       },
       excelStyles: [
         {
-          id: "hyperlinks",
+          id: 'hyperlinks',
           font: {
-            underline: "Single",
-            color: "#358ccb",
+            underline: 'Single',
+            color: '#358ccb',
           },
         },
       ],
       rowData: [
-        { company: "Google", url: "https://www.google.com" },
-        { company: "Adobe", url: "https://www.adobe.com" },
-        { company: "The New York Times", url: "https://www.nytimes.com" },
-        { company: "Twitter", url: "https://www.twitter.com" },
-        { company: "StackOverflow", url: "https://stackoverflow.com/" },
-        { company: "Reddit", url: "https://www.reddit.com" },
-        { company: "Github", url: "https://www.github.com" },
-        { company: "Microsoft", url: "https://www.microsoft.com" },
-        { company: "Gizmodo", url: "https://www.gizmodo.com" },
-        { company: "LinkedIN", url: "https://www.linkedin.com" },
+        { company: 'Google', url: 'https://www.google.com' },
+        { company: 'Adobe', url: 'https://www.adobe.com' },
+        { company: 'The New York Times', url: 'https://www.nytimes.com' },
+        { company: 'Twitter', url: 'https://www.twitter.com' },
+        { company: 'StackOverflow', url: 'https://stackoverflow.com/' },
+        { company: 'Reddit', url: 'https://www.reddit.com' },
+        { company: 'Github', url: 'https://www.github.com' },
+        { company: 'Microsoft', url: 'https://www.microsoft.com' },
+        { company: 'Gizmodo', url: 'https://www.gizmodo.com' },
+        { company: 'LinkedIN', url: 'https://www.linkedin.com' },
       ],
     };
   }
@@ -75,12 +75,12 @@ class GridExample extends Component {
 
   render() {
     return (
-      <div style={{ width: "100%", height: "100%" }}>
+      <div style={{ width: '100%', height: '100%' }}>
         <div className="container">
           <div>
             <button
               onClick={() => this.onBtExport()}
-              style={{ marginBottom: "5px", fontWeight: "bold" }}
+              style={{ marginBottom: '5px', fontWeight: 'bold' }}
             >
               Export to Excel
             </button>
@@ -88,8 +88,8 @@ class GridExample extends Component {
           <div className="grid-wrapper">
             <div
               style={{
-                height: "100%",
-                width: "100%",
+                height: '100%',
+                width: '100%',
               }}
               className="ag-theme-alpine"
             >
@@ -109,4 +109,4 @@ class GridExample extends Component {
   }
 }
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

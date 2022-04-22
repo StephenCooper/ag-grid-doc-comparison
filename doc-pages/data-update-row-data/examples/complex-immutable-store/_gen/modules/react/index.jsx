@@ -1,13 +1,13 @@
-"use strict";
+'use strict';
 
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { AgGridReact } from "@ag-grid-community/react";
-import { RowGroupingModule } from "@ag-grid-enterprise/row-grouping";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from '@ag-grid-community/react';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import { RowGroupingModule } from '@ag-grid-enterprise/row-grouping';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([ClientSideRowModelModule, RowGroupingModule]);
@@ -20,21 +20,21 @@ class GridExample extends Component {
       columnDefs: [
         // these are the row groups, so they are all hidden (they are showd in the group column)
         {
-          field: "product",
+          field: 'product',
           enableRowGroup: true,
           enablePivot: true,
           rowGroupIndex: 0,
           hide: true,
         },
         {
-          field: "portfolio",
+          field: 'portfolio',
           enableRowGroup: true,
           enablePivot: true,
           rowGroupIndex: 1,
           hide: true,
         },
         {
-          field: "book",
+          field: 'book',
           enableRowGroup: true,
           enablePivot: true,
           rowGroupIndex: 2,
@@ -42,121 +42,121 @@ class GridExample extends Component {
         },
         // all the other columns (visible and not grouped)
         {
-          field: "batch",
+          field: 'batch',
           width: 100,
-          cellClass: "number",
-          aggFunc: "max",
+          cellClass: 'number',
+          aggFunc: 'max',
           enableValue: true,
-          cellRenderer: "agAnimateShowChangeCellRenderer",
+          cellRenderer: 'agAnimateShowChangeCellRenderer',
         },
         {
-          field: "current",
+          field: 'current',
           width: 200,
-          aggFunc: "sum",
+          aggFunc: 'sum',
           enableValue: true,
-          cellClass: "number",
+          cellClass: 'number',
           valueFormatter: numberCellFormatter,
-          cellRenderer: "agAnimateShowChangeCellRenderer",
+          cellRenderer: 'agAnimateShowChangeCellRenderer',
         },
         {
-          field: "previous",
+          field: 'previous',
           width: 200,
-          aggFunc: "sum",
+          aggFunc: 'sum',
           enableValue: true,
-          cellClass: "number",
+          cellClass: 'number',
           valueFormatter: numberCellFormatter,
-          cellRenderer: "agAnimateShowChangeCellRenderer",
+          cellRenderer: 'agAnimateShowChangeCellRenderer',
         },
         {
-          headerName: "Change",
+          headerName: 'Change',
           valueGetter: changeValueGetter,
           width: 200,
-          aggFunc: "sum",
+          aggFunc: 'sum',
           enableValue: true,
-          cellClass: "number",
+          cellClass: 'number',
           valueFormatter: numberCellFormatter,
-          cellRenderer: "agAnimateShowChangeCellRenderer",
+          cellRenderer: 'agAnimateShowChangeCellRenderer',
         },
         {
-          headerName: "PL 1",
-          field: "pl1",
+          headerName: 'PL 1',
+          field: 'pl1',
           width: 200,
-          aggFunc: "sum",
+          aggFunc: 'sum',
           enableValue: true,
-          cellClass: "number",
+          cellClass: 'number',
           valueFormatter: numberCellFormatter,
-          cellRenderer: "agAnimateShowChangeCellRenderer",
+          cellRenderer: 'agAnimateShowChangeCellRenderer',
         },
         {
-          headerName: "PL 2",
-          field: "pl2",
+          headerName: 'PL 2',
+          field: 'pl2',
           width: 200,
-          aggFunc: "sum",
+          aggFunc: 'sum',
           enableValue: true,
-          cellClass: "number",
+          cellClass: 'number',
           valueFormatter: numberCellFormatter,
-          cellRenderer: "agAnimateShowChangeCellRenderer",
+          cellRenderer: 'agAnimateShowChangeCellRenderer',
         },
         {
-          headerName: "Gain-DX",
-          field: "gainDx",
+          headerName: 'Gain-DX',
+          field: 'gainDx',
           width: 200,
-          aggFunc: "sum",
+          aggFunc: 'sum',
           enableValue: true,
-          cellClass: "number",
+          cellClass: 'number',
           valueFormatter: numberCellFormatter,
-          cellRenderer: "agAnimateShowChangeCellRenderer",
+          cellRenderer: 'agAnimateShowChangeCellRenderer',
         },
         {
-          headerName: "SX / PX",
-          field: "sxPx",
+          headerName: 'SX / PX',
+          field: 'sxPx',
           width: 200,
-          aggFunc: "sum",
+          aggFunc: 'sum',
           enableValue: true,
-          cellClass: "number",
+          cellClass: 'number',
           valueFormatter: numberCellFormatter,
-          cellRenderer: "agAnimateShowChangeCellRenderer",
+          cellRenderer: 'agAnimateShowChangeCellRenderer',
         },
         {
-          headerName: "99 Out",
-          field: "_99Out",
+          headerName: '99 Out',
+          field: '_99Out',
           width: 200,
-          aggFunc: "sum",
+          aggFunc: 'sum',
           enableValue: true,
-          cellClass: "number",
+          cellClass: 'number',
           valueFormatter: numberCellFormatter,
-          cellRenderer: "agAnimateShowChangeCellRenderer",
+          cellRenderer: 'agAnimateShowChangeCellRenderer',
         },
         {
-          headerName: "Submitter ID",
-          field: "submitterID",
+          headerName: 'Submitter ID',
+          field: 'submitterID',
           width: 200,
-          aggFunc: "sum",
+          aggFunc: 'sum',
           enableValue: true,
-          cellClass: "number",
+          cellClass: 'number',
           valueFormatter: numberCellFormatter,
-          cellRenderer: "agAnimateShowChangeCellRenderer",
+          cellRenderer: 'agAnimateShowChangeCellRenderer',
         },
         {
-          headerName: "Submitted Deal ID",
-          field: "submitterDealID",
+          headerName: 'Submitted Deal ID',
+          field: 'submitterDealID',
           width: 200,
-          aggFunc: "sum",
+          aggFunc: 'sum',
           enableValue: true,
-          cellClass: "number",
+          cellClass: 'number',
           valueFormatter: numberCellFormatter,
-          cellRenderer: "agAnimateShowChangeCellRenderer",
+          cellRenderer: 'agAnimateShowChangeCellRenderer',
         },
         // some string values, that do not get aggregated
-        { field: "dealType", enableRowGroup: true, enablePivot: true },
+        { field: 'dealType', enableRowGroup: true, enablePivot: true },
         {
-          headerName: "Bid",
-          field: "bidFlag",
+          headerName: 'Bid',
+          field: 'bidFlag',
           enableRowGroup: true,
           enablePivot: true,
           width: 100,
         },
-        { field: "comment", editable: true },
+        { field: 'comment', editable: true },
       ],
       defaultColDef: {
         width: 120,
@@ -165,12 +165,12 @@ class GridExample extends Component {
       },
       autoGroupColumnDef: {
         width: 250,
-        field: "trade",
+        field: 'trade',
         cellRendererParams: {
           checkbox: true,
         },
       },
-      rowSelection: "multiple",
+      rowSelection: 'multiple',
       rowData: globalRowData,
       getRowId: function (params) {
         return params.data.trade;
@@ -195,15 +195,15 @@ class GridExample extends Component {
 
   render() {
     return (
-      <div style={{ width: "100%", height: "100%" }}>
+      <div style={{ width: '100%', height: '100%' }}>
         <div className="example-wrapper">
-          <div style={{ marginBottom: "5px" }}>
+          <div style={{ marginBottom: '5px' }}>
             <button onClick={() => this.updateData()}>Update</button>
           </div>
           <div
             style={{
-              height: "100%",
-              width: "100%",
+              height: '100%',
+              width: '100%',
             }}
             className="ag-theme-alpine"
           >
@@ -232,41 +232,41 @@ const MAX_BOOK_COUNT = 20;
 const MIN_TRADE_COUNT = 1;
 const MAX_TRADE_COUNT = 10;
 const products = [
-  "Palm Oil",
-  "Rubber",
-  "Wool",
-  "Amber",
-  "Copper",
-  "Lead",
-  "Zinc",
-  "Tin",
-  "Aluminium",
-  "Aluminium Alloy",
-  "Nickel",
-  "Cobalt",
-  "Molybdenum",
-  "Recycled Steel",
-  "Corn",
-  "Oats",
-  "Rough Rice",
-  "Soybeans",
-  "Rapeseed",
-  "Soybean Meal",
-  "Soybean Oil",
-  "Wheat",
-  "Milk",
-  "Coca",
-  "Coffee C",
-  "Cotton No.2",
-  "Sugar No.11",
-  "Sugar No.14",
+  'Palm Oil',
+  'Rubber',
+  'Wool',
+  'Amber',
+  'Copper',
+  'Lead',
+  'Zinc',
+  'Tin',
+  'Aluminium',
+  'Aluminium Alloy',
+  'Nickel',
+  'Cobalt',
+  'Molybdenum',
+  'Recycled Steel',
+  'Corn',
+  'Oats',
+  'Rough Rice',
+  'Soybeans',
+  'Rapeseed',
+  'Soybean Meal',
+  'Soybean Oil',
+  'Wheat',
+  'Milk',
+  'Coca',
+  'Coffee C',
+  'Cotton No.2',
+  'Sugar No.11',
+  'Sugar No.14',
 ];
 const portfolios = [
-  "Aggressive",
-  "Defensive",
-  "Income",
-  "Speculative",
-  "Hybrid",
+  'Aggressive',
+  'Defensive',
+  'Income',
+  'Speculative',
+  'Hybrid',
 ];
 // as we create books, we remember what products they belong to, so we can
 // add to these books later when use clicks one of the buttons
@@ -321,8 +321,8 @@ function createTradeRecord(product, portfolio, book, batch) {
     trade: createTradeId(),
     submitterID: randomBetween(10, 1000),
     submitterDealID: randomBetween(10, 1000),
-    dealType: Math.random() < 0.2 ? "Physical" : "Financial",
-    bidFlag: Math.random() < 0.5 ? "Buy" : "Sell",
+    dealType: Math.random() < 0.2 ? 'Physical' : 'Financial',
+    bidFlag: Math.random() < 0.5 ? 'Buy' : 'Sell',
     current: current,
     previous: previous,
     pl1: randomBetween(100, 1000),
@@ -337,11 +337,11 @@ function createTradeRecord(product, portfolio, book, batch) {
 function numberCellFormatter(params) {
   return Math.floor(params.value)
     .toString()
-    .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
+    .replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
 }
 function createBookName() {
   nextBookId++;
-  return "GL-" + nextBookId;
+  return 'GL-' + nextBookId;
 }
 function createTradeId() {
   nextTradeId++;
@@ -373,7 +373,7 @@ function addSomeItems() {
   const batch = nextBatchId++;
   for (let j = 0; j < addCount; j++) {
     const portfolio = portfolios[Math.floor(Math.random() * portfolios.length)];
-    const books = productToPortfolioToBooks["Palm Oil"][portfolio];
+    const books = productToPortfolioToBooks['Palm Oil'][portfolio];
     const book = books[Math.floor(Math.random() * books.length)];
     const product = products[Math.floor(Math.random() * products.length)];
     const trade = createTradeRecord(product, portfolio, book, batch);
@@ -411,4 +411,4 @@ function updateImmutableObject(original, newValues) {
   return newObject;
 }
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

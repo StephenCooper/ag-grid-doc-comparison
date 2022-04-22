@@ -4,18 +4,18 @@ import {
   GridOptions,
   ICellRendererParams,
   IDetailCellRendererParams,
-} from "ag-grid-community";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
+} from 'ag-grid-community';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import 'ag-grid-enterprise';
 
 const gridOptions: GridOptions = {
   columnDefs: [
     // group cell renderer needed for expand / collapse icons
-    { field: "name", cellRenderer: "agGroupCellRenderer" },
-    { field: "account" },
-    { field: "calls" },
-    { field: "minutes", valueFormatter: "x.toLocaleString() + 'm'" },
+    { field: 'name', cellRenderer: 'agGroupCellRenderer' },
+    { field: 'account' },
+    { field: 'calls' },
+    { field: 'minutes', valueFormatter: "x.toLocaleString() + 'm'" },
   ],
   defaultColDef: {
     flex: 1,
@@ -31,13 +31,13 @@ const gridOptions: GridOptions = {
     };
 
     var nameMatch =
-      params.data.name === "Mila Smith" ||
-      params.data.name === "Harper Johnson";
+      params.data.name === 'Mila Smith' ||
+      params.data.name === 'Harper Johnson';
 
     if (nameMatch) {
       // grid options for columns {callId, number}
       res.detailGridOptions = {
-        columnDefs: [{ field: "callId" }, { field: "number" }],
+        columnDefs: [{ field: 'callId' }, { field: 'number' }],
         defaultColDef: {
           flex: 1,
         },
@@ -46,10 +46,10 @@ const gridOptions: GridOptions = {
       // grid options for columns {callId, direction, duration, switchCode}
       res.detailGridOptions = {
         columnDefs: [
-          { field: "callId" },
-          { field: "direction" },
-          { field: "duration", valueFormatter: "x.toLocaleString() + 's'" },
-          { field: "switchCode" },
+          { field: 'callId' },
+          { field: 'direction' },
+          { field: 'duration', valueFormatter: "x.toLocaleString() + 's'" },
+          { field: 'switchCode' },
         ],
         defaultColDef: {
           flex: 1,
@@ -73,10 +73,10 @@ function onFirstDataRendered(params: FirstDataRenderedEvent) {
 }
 
 // setup the grid after the page has finished loading
-var gridDiv = document.querySelector<HTMLElement>("#myGrid")!;
+var gridDiv = document.querySelector<HTMLElement>('#myGrid')!;
 new Grid(gridDiv, gridOptions);
 
-fetch("https://www.ag-grid.com/example-assets/master-detail-data.json")
+fetch('https://www.ag-grid.com/example-assets/master-detail-data.json')
   .then((response) => response.json())
   .then(function (data) {
     gridOptions.api!.setRowData(data);

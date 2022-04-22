@@ -1,17 +1,17 @@
-import { HttpClient } from "@angular/common/http";
-import { Component } from "@angular/core";
+import { HttpClient } from '@angular/common/http';
+import { Component } from '@angular/core';
 import {
   ColDef,
   GridApi,
   GridReadyEvent,
   IDatasource,
   SortModelItem,
-} from "ag-grid-community";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
+} from 'ag-grid-community';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<div class="test-container">
     <div class="test-header">
       <button (click)="onBtShowYearColumn()">Show Year</button>
@@ -33,11 +33,11 @@ export class AppComponent {
   private gridApi!: GridApi;
 
   public columnDefs: ColDef[] = [
-    { field: "athlete", colId: "athlete", minWidth: 180 },
-    { field: "age", colId: "age" },
-    { field: "country", colId: "country", minWidth: 180 },
-    { field: "year", colId: "year" },
-    { field: "sport", colId: "sport", minWidth: 180 },
+    { field: 'athlete', colId: 'athlete', minWidth: 180 },
+    { field: 'age', colId: 'age' },
+    { field: 'country', colId: 'country', minWidth: 180 },
+    { field: 'year', colId: 'year' },
+    { field: 'sport', colId: 'sport', minWidth: 180 },
   ];
   public defaultColDef: ColDef = {
     flex: 1,
@@ -45,27 +45,27 @@ export class AppComponent {
     resizable: true,
     filter: true,
   };
-  public rowModelType = "infinite";
+  public rowModelType = 'infinite';
   public rowData!: any[];
 
   constructor(private http: HttpClient) {}
 
   onBtShowYearColumn() {
     this.gridApi.setColumnDefs([
-      { field: "athlete", colId: "athlete" },
-      { field: "age", colId: "age" },
-      { field: "country", colId: "country" },
-      { field: "year", colId: "year" },
-      { field: "sport", colId: "sport" },
+      { field: 'athlete', colId: 'athlete' },
+      { field: 'age', colId: 'age' },
+      { field: 'country', colId: 'country' },
+      { field: 'year', colId: 'year' },
+      { field: 'sport', colId: 'sport' },
     ]);
   }
 
   onBtHideYearColumn() {
     this.gridApi.setColumnDefs([
-      { field: "athlete", colId: "athlete" },
-      { field: "age", colId: "age" },
-      { field: "country", colId: "country" },
-      { field: "sport", colId: "sport" },
+      { field: 'athlete', colId: 'athlete' },
+      { field: 'age', colId: 'age' },
+      { field: 'country', colId: 'country' },
+      { field: 'sport', colId: 'sport' },
     ]);
   }
 
@@ -73,17 +73,17 @@ export class AppComponent {
     this.gridApi = params.api;
 
     this.http
-      .get<any[]>("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      .get<any[]>('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .subscribe((data) => {
         // give each row an id
         data.forEach(function (d: any, index: number) {
-          d.id = "R" + (index + 1);
+          d.id = 'R' + (index + 1);
         });
         var dataSource: IDatasource = {
           rowCount: undefined,
           getRows: function (params) {
             console.log(
-              "asking for " + params.startRow + " to " + params.endRow
+              'asking for ' + params.startRow + ' to ' + params.endRow
             );
             // At this point in your code, you would call the server.
             // To make the demo look real, wait for 500ms before returning
@@ -136,7 +136,7 @@ function sortData(sortModel: SortModelItem[], data: any[]) {
       if (valueA == valueB) {
         continue;
       }
-      var sortDirection = sortColModel.sort === "asc" ? 1 : -1;
+      var sortDirection = sortColModel.sort === 'asc' ? 1 : -1;
       if (valueA > valueB) {
         return sortDirection;
       } else {

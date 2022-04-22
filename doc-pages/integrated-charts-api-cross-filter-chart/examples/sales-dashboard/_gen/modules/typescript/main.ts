@@ -1,19 +1,19 @@
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
 import {
   FirstDataRenderedEvent,
   Grid,
   GridApi,
   GridOptions,
   ModuleRegistry,
-} from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine-dark.css";
-import { GridChartsModule } from "@ag-grid-enterprise/charts";
-import { ColumnsToolPanelModule } from "@ag-grid-enterprise/column-tool-panel";
-import { FiltersToolPanelModule } from "@ag-grid-enterprise/filter-tool-panel";
-import { MenuModule } from "@ag-grid-enterprise/menu";
-import { MultiFilterModule } from "@ag-grid-enterprise/multi-filter";
-import { SetFilterModule } from "@ag-grid-enterprise/set-filter";
+} from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine-dark.css';
+import { GridChartsModule } from '@ag-grid-enterprise/charts';
+import { ColumnsToolPanelModule } from '@ag-grid-enterprise/column-tool-panel';
+import { FiltersToolPanelModule } from '@ag-grid-enterprise/filter-tool-panel';
+import { MenuModule } from '@ag-grid-enterprise/menu';
+import { MultiFilterModule } from '@ag-grid-enterprise/multi-filter';
+import { SetFilterModule } from '@ag-grid-enterprise/set-filter';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([
@@ -28,35 +28,35 @@ ModuleRegistry.registerModules([
 
 const gridOptions: GridOptions = {
   columnDefs: [
-    { field: "salesRep", chartDataType: "category" },
-    { field: "handset", chartDataType: "category" },
+    { field: 'salesRep', chartDataType: 'category' },
+    { field: 'handset', chartDataType: 'category' },
     {
-      headerName: "Sale Price",
-      field: "sale",
+      headerName: 'Sale Price',
+      field: 'sale',
       maxWidth: 160,
-      aggFunc: "sum",
-      filter: "agNumberColumnFilter",
-      chartDataType: "series",
+      aggFunc: 'sum',
+      filter: 'agNumberColumnFilter',
+      chartDataType: 'series',
     },
-    { field: "saleDate", chartDataType: "category" },
+    { field: 'saleDate', chartDataType: 'category' },
     {
-      field: "quarter",
+      field: 'quarter',
       maxWidth: 160,
-      filter: "agSetColumnFilter",
-      chartDataType: "category",
+      filter: 'agSetColumnFilter',
+      chartDataType: 'category',
     },
   ],
   defaultColDef: {
     flex: 1,
     editable: true,
     sortable: true,
-    filter: "agMultiColumnFilter",
+    filter: 'agMultiColumnFilter',
     floatingFilter: true,
     resizable: true,
   },
   rowData: getData(),
   enableCharts: true,
-  chartThemes: ["ag-default-dark"],
+  chartThemes: ['ag-default-dark'],
   chartThemeOverrides: {
     common: {
       padding: {
@@ -87,16 +87,16 @@ function onFirstDataRendered(params: FirstDataRenderedEvent) {
 
 function createQuarterlySalesChart(gridApi: GridApi) {
   gridApi.createCrossFilterChart({
-    chartType: "column",
+    chartType: 'column',
     cellRange: {
-      columns: ["quarter", "sale"],
+      columns: ['quarter', 'sale'],
     },
-    aggFunc: "sum",
+    aggFunc: 'sum',
     chartThemeOverrides: {
       common: {
         title: {
           enabled: true,
-          text: "Quarterly Sales ($)",
+          text: 'Quarterly Sales ($)',
         },
         legend: {
           enabled: false,
@@ -110,29 +110,29 @@ function createQuarterlySalesChart(gridApi: GridApi) {
           number: {
             label: {
               formatter: function (params: any) {
-                return params.value / 1000 + "k";
+                return params.value / 1000 + 'k';
               },
             },
           },
         },
       },
     },
-    chartContainer: document.querySelector("#columnChart") as any,
+    chartContainer: document.querySelector('#columnChart') as any,
   });
 }
 
 function createSalesByRefChart(gridApi: GridApi) {
   gridApi.createCrossFilterChart({
-    chartType: "pie",
+    chartType: 'pie',
     cellRange: {
-      columns: ["salesRep", "sale"],
+      columns: ['salesRep', 'sale'],
     },
-    aggFunc: "sum",
+    aggFunc: 'sum',
     chartThemeOverrides: {
       common: {
         title: {
           enabled: true,
-          text: "Sales by Representative ($)",
+          text: 'Sales by Representative ($)',
         },
       },
       pie: {
@@ -146,32 +146,32 @@ function createSalesByRefChart(gridApi: GridApi) {
         },
       },
     },
-    chartContainer: document.querySelector("#pieChart") as any,
+    chartContainer: document.querySelector('#pieChart') as any,
   });
 }
 
 function createHandsetSalesChart(gridApi: GridApi) {
   gridApi.createCrossFilterChart({
-    chartType: "bar",
+    chartType: 'bar',
     cellRange: {
-      columns: ["handset", "sale"],
+      columns: ['handset', 'sale'],
     },
-    aggFunc: "count",
+    aggFunc: 'count',
     chartThemeOverrides: {
       common: {
         title: {
           enabled: true,
-          text: "Handsets Sold (Units)",
+          text: 'Handsets Sold (Units)',
         },
         legend: {
           enabled: false,
         },
       },
     },
-    chartContainer: document.querySelector("#barChart") as any,
+    chartContainer: document.querySelector('#barChart') as any,
   });
 }
 
 // setup the grid after the page has finished loading
-var gridDiv = document.querySelector<HTMLElement>("#myGrid")!;
+var gridDiv = document.querySelector<HTMLElement>('#myGrid')!;
 new Grid(gridDiv, gridOptions);

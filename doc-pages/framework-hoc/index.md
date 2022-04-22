@@ -2,7 +2,6 @@
 title: "Higher Order Components"
 frameworks: ["react"]
 ---
-
 ### Redux / Higher Order Components (HOC)
 
 [[note]]
@@ -13,15 +12,11 @@ you'll also need to ensure the grid can get access to the newly created componen
 is set:
 
 ```js
-export default connect(
-  (state) => {
+export default connect((state) => {
     return {
-      currencySymbol: state.currencySymbol,
-      exchangeRate: state.exchangeRate,
-    };
-  },
-  null,
-  null,
-  { forwardRef: true } // must be supplied for react/redux when using AgGridReact
+        currencySymbol: state.currencySymbol,
+        exchangeRate: state.exchangeRate
+    }
+}, null, null, { forwardRef: true } // must be supplied for react/redux when using AgGridReact
 )(PriceRenderer);
 ```

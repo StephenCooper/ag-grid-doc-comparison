@@ -1,8 +1,10 @@
-"use strict";
+'use strict';
 
-import { AgChartsReact } from "ag-charts-react";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { cloneDeep } from 'lodash';
+import { render } from 'react-dom';
+import * as agCharts from 'ag-charts-community';
+import { AgChartsReact } from 'ag-charts-react';
 
 class ChartExample extends Component {
   constructor(props) {
@@ -11,31 +13,31 @@ class ChartExample extends Component {
     this.state = {
       options: {
         title: {
-          text: "Number of Cars Sold",
+          text: 'Number of Cars Sold',
         },
         subtitle: {
-          text: "(click a column for details)",
+          text: '(click a column for details)',
         },
         data: [
-          { month: "March", units: 25, brands: { BMW: 10, Toyota: 15 } },
-          { month: "April", units: 27, brands: { Ford: 17, BMW: 10 } },
-          { month: "May", units: 42, brands: { Nissan: 20, Toyota: 22 } },
+          { month: 'March', units: 25, brands: { BMW: 10, Toyota: 15 } },
+          { month: 'April', units: 27, brands: { Ford: 17, BMW: 10 } },
+          { month: 'May', units: 42, brands: { Nissan: 20, Toyota: 22 } },
         ],
         series: [
           {
-            type: "column",
-            xKey: "month",
-            yKey: "units",
+            type: 'column',
+            xKey: 'month',
+            yKey: 'units',
             listeners: {
               nodeClick: function (event) {
                 var datum = event.datum;
                 window.alert(
-                  "Cars sold in " +
+                  'Cars sold in ' +
                     datum[event.xKey] +
-                    ": " +
+                    ': ' +
                     String(datum[event.yKey]) +
-                    "\n" +
-                    listUnitsSoldByBrand(datum["brands"])
+                    '\n' +
+                    listUnitsSoldByBrand(datum['brands'])
                 );
               },
             },
@@ -43,12 +45,12 @@ class ChartExample extends Component {
         ],
         axes: [
           {
-            type: "category",
-            position: "bottom",
+            type: 'category',
+            position: 'bottom',
           },
           {
-            type: "number",
-            position: "left",
+            type: 'number',
+            position: 'left',
           },
         ],
         legend: {
@@ -70,11 +72,11 @@ class ChartExample extends Component {
 }
 
 function listUnitsSoldByBrand(brands) {
-  var result = "";
+  var result = '';
   for (var key in brands) {
-    result += key + ": " + brands[key] + "\n";
+    result += key + ': ' + brands[key] + '\n';
   }
   return result;
 }
 
-render(<ChartExample />, document.querySelector("#root"));
+render(<ChartExample />, document.querySelector('#root'));

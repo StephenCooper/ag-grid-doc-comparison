@@ -1,14 +1,14 @@
-"use strict";
+'use strict';
 
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { AgGridReact } from "@ag-grid-community/react";
-import { ColumnsToolPanelModule } from "@ag-grid-enterprise/column-tool-panel";
-import { MenuModule } from "@ag-grid-enterprise/menu";
-import React, { useCallback, useMemo, useRef, useState } from "react";
-import { render } from "react-dom";
+import React, { useCallback, useMemo, useRef, useState } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from '@ag-grid-community/react';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import { MenuModule } from '@ag-grid-enterprise/menu';
+import { ColumnsToolPanelModule } from '@ag-grid-enterprise/column-tool-panel';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([
@@ -19,68 +19,68 @@ ModuleRegistry.registerModules([
 
 const GridExample = () => {
   const gridRef = useRef();
-  const containerStyle = useMemo(() => ({ width: "100%", height: "100%" }), []);
-  const gridStyle = useMemo(() => ({ height: "100%", width: "100%" }), []);
+  const containerStyle = useMemo(() => ({ width: '100%', height: '100%' }), []);
+  const gridStyle = useMemo(() => ({ height: '100%', width: '100%' }), []);
   const [rowData, setRowData] = useState();
   const [columnDefs, setColumnDefs] = useState([
     {
-      field: "athlete",
+      field: 'athlete',
       minWidth: 200,
       enableRowGroup: true,
       enablePivot: true,
     },
     {
-      field: "age",
+      field: 'age',
       enableValue: true,
     },
     {
-      field: "country",
+      field: 'country',
       minWidth: 200,
       enableRowGroup: true,
       enablePivot: true,
       rowGroupIndex: 1,
     },
     {
-      field: "year",
+      field: 'year',
       enableRowGroup: true,
       enablePivot: true,
       pivotIndex: 1,
     },
     {
-      field: "date",
+      field: 'date',
       minWidth: 180,
       enableRowGroup: true,
       enablePivot: true,
     },
     {
-      field: "sport",
+      field: 'sport',
       minWidth: 200,
       enableRowGroup: true,
       enablePivot: true,
       rowGroupIndex: 2,
     },
     {
-      field: "gold",
+      field: 'gold',
       hide: true,
       enableValue: true,
     },
     {
-      field: "silver",
+      field: 'silver',
       hide: true,
       enableValue: true,
-      aggFunc: "sum",
+      aggFunc: 'sum',
     },
     {
-      field: "bronze",
+      field: 'bronze',
       hide: true,
       enableValue: true,
-      aggFunc: "sum",
+      aggFunc: 'sum',
     },
     {
-      headerName: "Total",
-      field: "totalAgg",
+      headerName: 'Total',
+      field: 'totalAgg',
       valueGetter:
-        "node.group ? data.totalAgg : data.gold + data.silver + data.bronze",
+        'node.group ? data.totalAgg : data.gold + data.silver + data.bronze',
     },
   ]);
   const defaultColDef = useMemo(() => {
@@ -98,16 +98,16 @@ const GridExample = () => {
   }, []);
 
   const onGridReady = useCallback((params) => {
-    fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+    fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .then((resp) => resp.json())
       .then((data) => setRowData(data));
 
-    document.getElementById("read-only").checked = true;
+    document.getElementById('read-only').checked = true;
   }, []);
 
   const setReadOnly = useCallback(() => {
     gridRef.current.api.setFunctionsReadOnly(
-      document.getElementById("read-only").checked
+      document.getElementById('read-only').checked
     );
   }, []);
 
@@ -116,7 +116,7 @@ const GridExample = () => {
       <div className="test-container">
         <div className="test-header">
           <label>
-            <input type="checkbox" id="read-only" onChange={setReadOnly} />{" "}
+            <input type="checkbox" id="read-only" onChange={setReadOnly} />{' '}
             Functions Read Only
           </label>
         </div>
@@ -129,9 +129,9 @@ const GridExample = () => {
             defaultColDef={defaultColDef}
             autoGroupColumnDef={autoGroupColumnDef}
             pivotMode={true}
-            sideBar={"columns"}
-            rowGroupPanelShow={"always"}
-            pivotPanelShow={"always"}
+            sideBar={'columns'}
+            rowGroupPanelShow={'always'}
+            pivotPanelShow={'always'}
             functionsReadOnly={true}
             onGridReady={onGridReady}
           ></AgGridReact>
@@ -141,4 +141,4 @@ const GridExample = () => {
   );
 };
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

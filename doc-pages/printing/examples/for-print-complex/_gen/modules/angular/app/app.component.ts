@@ -4,14 +4,14 @@ import {
   GridApi,
   GridReadyEvent,
   RowGroupingDisplayType,
-} from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { Component } from "@angular/core";
+} from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { Component } from '@angular/core';
 // Required feature modules are registered in app.module.ts
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `
     <button (click)="onBtPrint()">Print</button>
 
@@ -51,23 +51,23 @@ export class AppComponent {
   private gridApi!: GridApi;
 
   public columnDefs: ColDef[] = [
-    { field: "group", rowGroup: true, hide: true },
-    { field: "id", pinned: "left", width: 70 },
-    { field: "model", width: 180 },
-    { field: "color", width: 100 },
+    { field: 'group', rowGroup: true, hide: true },
+    { field: 'id', pinned: 'left', width: 70 },
+    { field: 'model', width: 180 },
+    { field: 'color', width: 100 },
     {
-      field: "price",
+      field: 'price',
       valueFormatter: "'$' + value.toLocaleString()",
       width: 100,
     },
-    { field: "year", width: 100 },
-    { field: "country", width: 120 },
+    { field: 'year', width: 100 },
+    { field: 'country', width: 120 },
   ];
   public defaultColDef: ColDef = {
     sortable: true,
   };
   public rowData: any[] | null = getData();
-  public groupDisplayType: RowGroupingDisplayType = "groupRows";
+  public groupDisplayType: RowGroupingDisplayType = 'groupRows';
 
   onFirstDataRendered(params: FirstDataRenderedEvent) {
     params.api.expandAll();
@@ -88,13 +88,13 @@ export class AppComponent {
 }
 
 function setPrinterFriendly(api: GridApi) {
-  const eGridDiv = document.querySelector<HTMLElement>("#myGrid")! as any;
-  eGridDiv.style.height = "";
-  api.setDomLayout("print");
+  const eGridDiv = document.querySelector<HTMLElement>('#myGrid')! as any;
+  eGridDiv.style.height = '';
+  api.setDomLayout('print');
 }
 function setNormal(api: GridApi) {
-  const eGridDiv = document.querySelector<HTMLElement>("#myGrid")! as any;
-  eGridDiv.style.width = "700px";
-  eGridDiv.style.height = "200px";
+  const eGridDiv = document.querySelector<HTMLElement>('#myGrid')! as any;
+  eGridDiv.style.width = '700px';
+  eGridDiv.style.height = '200px';
   api.setDomLayout();
 }

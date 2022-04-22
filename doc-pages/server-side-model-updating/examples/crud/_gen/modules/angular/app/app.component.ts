@@ -6,16 +6,16 @@ import {
   IServerSideDatasource,
   IServerSideGetRowsParams,
   ServerSideStoreType,
-} from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine-dark.css";
-import { HttpClient } from "@angular/common/http";
-import { Component } from "@angular/core";
+} from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine-dark.css';
+import { HttpClient } from '@angular/common/http';
+import { Component } from '@angular/core';
 // Required feature modules are registered in app.module.ts
 declare var window: any;
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<div class="example-wrapper">
     <div style="margin-bottom: 5px;">
       <button (click)="onBtAdd()">Add Before Selected Row</button>
@@ -39,22 +39,22 @@ export class AppComponent {
   private gridApi!: GridApi;
 
   public columnDefs: ColDef[] = [
-    { field: "athlete", width: 150 },
-    { field: "age" },
-    { field: "country", width: 150 },
-    { field: "year" },
-    { field: "sport" },
-    { field: "gold" },
-    { field: "silver" },
-    { field: "bronze" },
+    { field: 'athlete', width: 150 },
+    { field: 'age' },
+    { field: 'country', width: 150 },
+    { field: 'year' },
+    { field: 'sport' },
+    { field: 'gold' },
+    { field: 'silver' },
+    { field: 'bronze' },
   ];
   public defaultColDef: ColDef = {
     width: 100,
     resizable: true,
   };
-  public rowSelection = "single";
-  public rowModelType = "serverSide";
-  public serverSideStoreType: ServerSideStoreType = "partial";
+  public rowSelection = 'single';
+  public rowModelType = 'serverSide';
+  public serverSideStoreType: ServerSideStoreType = 'partial';
   public rowData!: any[];
 
   constructor(private http: HttpClient) {}
@@ -81,8 +81,8 @@ export class AppComponent {
     var selectedRow = selectedRows[0];
     // insert new row in the source data, at the top of the page
     window.rowDataServerSide.splice(selectedRow.rowIndex, 0, {
-      athlete: "New Item" + newItemCount,
-      id: "" + Math.random(),
+      athlete: 'New Item' + newItemCount,
+      id: '' + Math.random(),
     });
     newItemCount++;
     this.gridApi.refreshServerSideStore();
@@ -92,7 +92,7 @@ export class AppComponent {
     this.gridApi = params.api;
 
     this.http
-      .get<any[]>("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      .get<any[]>('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .subscribe((data) => {
         // add id to data
         let idSequence = 0;

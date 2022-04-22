@@ -1,17 +1,17 @@
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
+import Vue from 'vue';
+import {AgGridVue} from '@ag-grid-community/vue';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
 import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { AgGridVue } from "@ag-grid-community/vue";
-import { RowGroupingModule } from "@ag-grid-enterprise/row-grouping";
-import Vue from "vue";
-import SimpleCellRenderer from "./simpleCellRendererVue.js";
+import SimpleCellRenderer from './simpleCellRendererVue.js';
+import {ModuleRegistry} from '@ag-grid-community/core';
+import {ClientSideRowModelModule} from '@ag-grid-community/client-side-row-model';
+import {RowGroupingModule} from '@ag-grid-enterprise/row-grouping';
 
 // Register the required feature modules with the Grid
-ModuleRegistry.registerModules([ClientSideRowModelModule, RowGroupingModule]);
+ModuleRegistry.registerModules([ClientSideRowModelModule, RowGroupingModule])
 
 const VueExample = {
-  template: `
+    template: `
         <div style="height: 100%">
                 <ag-grid-vue                
                 style="width: 100%; height: 100%;"
@@ -28,95 +28,88 @@ const VueExample = {
                 :animateRows="true"></ag-grid-vue>
         </div>
     `,
-  components: {
-    "ag-grid-vue": AgGridVue,
-    SimpleCellRenderer,
-  },
-  data: function () {
-    return {
-      columnDefs: [
-        {
-          headerName: "Country Group - No Renderer",
-          showRowGroup: "country",
-          minWidth: 250,
-        },
-        {
-          headerName: "All Groups - No Renderer",
-          showRowGroup: true,
-          minWidth: 240,
-        },
-        {
-          headerName: "Group Renderer A",
-          showRowGroup: true,
-          cellRenderer: "agGroupCellRenderer",
-          minWidth: 220,
-        },
-        {
-          headerName: "Group Renderer B",
-          field: "city",
-          showRowGroup: true,
-          cellRenderer: "agGroupCellRenderer",
-          minWidth: 220,
-        },
-        {
-          headerName: "Group Renderer C",
-          field: "city",
-          minWidth: 240,
-          showRowGroup: true,
-          cellRenderer: "agGroupCellRenderer",
-          cellRendererParams: {
-            suppressCount: true,
-            checkbox: true,
-            innerRenderer: "SimpleCellRenderer",
-            suppressDoubleClickExpand: true,
-            suppressEnterExpand: true,
-          },
-        },
-        {
-          headerName: "Type",
-          field: "type",
-          rowGroup: true,
-        },
-        {
-          headerName: "Country",
-          field: "country",
-          rowGroup: true,
-        },
-        {
-          headerName: "City",
-          field: "city",
-        },
-      ],
-      gridApi: null,
-      columnApi: null,
-      defaultColDef: {
-        flex: 1,
-        minWidth: 120,
-        resizable: true,
-      },
-      rowData: null,
-      groupDisplayType: null,
-      groupDefaultExpanded: null,
-      rowSelection: null,
-    };
-  },
-  created() {
-    this.rowData = getData();
-    this.groupDisplayType = "custom";
-    this.groupDefaultExpanded = 1;
-    this.rowSelection = "multiple";
-  },
-  methods: {
-    onGridReady(params) {
-      this.gridApi = params.api;
-      this.gridColumnApi = params.columnApi;
+    components: {
+        'ag-grid-vue': AgGridVue,
+        SimpleCellRenderer
     },
-  },
-};
+    data: function () {
+        return {
+            columnDefs: [{
+                headerName: "Country Group - No Renderer",
+                showRowGroup: "country",
+                minWidth: 250
+            }, {
+                headerName: "All Groups - No Renderer",
+                showRowGroup: true,
+                minWidth: 240
+            }, {
+                headerName: "Group Renderer A",
+                showRowGroup: true,
+                cellRenderer: "agGroupCellRenderer",
+                minWidth: 220
+            }, {
+                headerName: "Group Renderer B",
+                field: "city",
+                showRowGroup: true,
+                cellRenderer: "agGroupCellRenderer",
+                minWidth: 220
+            }, {
+                headerName: "Group Renderer C",
+                field: "city",
+                minWidth: 240,
+                showRowGroup: true,
+                cellRenderer: "agGroupCellRenderer",
+                cellRendererParams: {
+                    "suppressCount": true,
+                    "checkbox": true,
+                    "innerRenderer": 'SimpleCellRenderer',
+                    "suppressDoubleClickExpand": true,
+                    "suppressEnterExpand": true
+                }
+            }, {
+                headerName: "Type",
+                field: "type",
+                rowGroup: true
+            }, {
+                headerName: "Country",
+                field: "country",
+                rowGroup: true
+            }, {
+                headerName: "City",
+                field: "city"
+            }],
+            gridApi: null,
+            columnApi: null,
+            defaultColDef: {
+                flex: 1,
+                minWidth: 120,
+                resizable: true,
+            },
+            rowData: null,
+            groupDisplayType: null,
+            groupDefaultExpanded: null,
+            rowSelection: null
+        }
+    },
+    created() {
+        this.rowData = getData();
+        this.groupDisplayType = 'custom';
+        this.groupDefaultExpanded = 1;
+        this.rowSelection = 'multiple'
+    },
+    methods: {
+        onGridReady(params) {
+            this.gridApi = params.api;
+            this.gridColumnApi = params.columnApi;
+
+        },
+    }
+}
+
 
 new Vue({
-  el: "#app",
-  components: {
-    "my-component": VueExample,
-  },
+    el: '#app',
+    components: {
+        'my-component': VueExample
+    }
 });

@@ -1,17 +1,17 @@
-"use strict";
+'use strict';
 
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { AgGridReact } from "@ag-grid-community/react";
-import { ColumnsToolPanelModule } from "@ag-grid-enterprise/column-tool-panel";
-import { FiltersToolPanelModule } from "@ag-grid-enterprise/filter-tool-panel";
-import { MenuModule } from "@ag-grid-enterprise/menu";
-import { RowGroupingModule } from "@ag-grid-enterprise/row-grouping";
-import { SetFilterModule } from "@ag-grid-enterprise/set-filter";
-import React, { useCallback, useMemo, useRef, useState } from "react";
-import { render } from "react-dom";
+import React, { useCallback, useMemo, useRef, useState } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from '@ag-grid-community/react';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import { RowGroupingModule } from '@ag-grid-enterprise/row-grouping';
+import { MenuModule } from '@ag-grid-enterprise/menu';
+import { SetFilterModule } from '@ag-grid-enterprise/set-filter';
+import { ColumnsToolPanelModule } from '@ag-grid-enterprise/column-tool-panel';
+import { FiltersToolPanelModule } from '@ag-grid-enterprise/filter-tool-panel';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([
@@ -29,25 +29,25 @@ var savedPivotMode;
 
 const GridExample = () => {
   const gridRef = useRef();
-  const containerStyle = useMemo(() => ({ width: "100%", height: "100%" }), []);
-  const gridStyle = useMemo(() => ({ height: "100%", width: "100%" }), []);
+  const containerStyle = useMemo(() => ({ width: '100%', height: '100%' }), []);
+  const gridStyle = useMemo(() => ({ height: '100%', width: '100%' }), []);
   const [rowData, setRowData] = useState();
   const [columnDefs, setColumnDefs] = useState([
-    { field: "athlete", enableRowGroup: true, enablePivot: true },
-    { field: "age", enableValue: true },
+    { field: 'athlete', enableRowGroup: true, enablePivot: true },
+    { field: 'age', enableValue: true },
     {
-      field: "country",
+      field: 'country',
       enableRowGroup: true,
       enablePivot: true,
       rowGroup: true,
     },
-    { field: "year", enableRowGroup: true, enablePivot: true },
-    { field: "date", enableRowGroup: true, enablePivot: true },
-    { field: "sport", enableRowGroup: true, enablePivot: true, pivot: true },
-    { field: "gold", enableValue: true, aggFunc: "sum" },
-    { field: "silver", enableValue: true, aggFunc: "sum" },
-    { field: "bronze", enableValue: true },
-    { field: "total", enableValue: true },
+    { field: 'year', enableRowGroup: true, enablePivot: true },
+    { field: 'date', enableRowGroup: true, enablePivot: true },
+    { field: 'sport', enableRowGroup: true, enablePivot: true, pivot: true },
+    { field: 'gold', enableValue: true, aggFunc: 'sum' },
+    { field: 'silver', enableValue: true, aggFunc: 'sum' },
+    { field: 'bronze', enableValue: true },
+    { field: 'total', enableValue: true },
   ]);
   const defaultColDef = useMemo(() => {
     return {
@@ -64,7 +64,7 @@ const GridExample = () => {
   }, []);
 
   const onGridReady = useCallback((params) => {
-    fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+    fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .then((resp) => resp.json())
       .then((data) => setRowData(data));
   }, []);
@@ -77,7 +77,7 @@ const GridExample = () => {
   const saveState = useCallback(() => {
     savedState = gridRef.current.columnApi.getColumnState();
     savedPivotMode = gridRef.current.columnApi.isPivotMode();
-    console.log("column state saved");
+    console.log('column state saved');
   }, []);
 
   const restoreState = useCallback(() => {
@@ -88,9 +88,9 @@ const GridExample = () => {
         state: savedState,
         applyOrder: true,
       });
-      console.log("column state restored");
+      console.log('column state restored');
     } else {
-      console.log("no previous column state to restore!");
+      console.log('no previous column state to restore!');
     }
   }, [savedState]);
 
@@ -102,13 +102,13 @@ const GridExample = () => {
   const resetState = useCallback(() => {
     gridRef.current.columnApi.resetColumnState();
     gridRef.current.columnApi.setPivotMode(false);
-    console.log("column state reset");
+    console.log('column state reset');
   }, []);
 
   return (
     <div style={containerStyle}>
-      <div style={{ height: "100%", display: "flex", flexDirection: "column" }}>
-        <div style={{ marginBottom: "5px" }}>
+      <div style={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
+        <div style={{ marginBottom: '5px' }}>
           <button onClick={saveState}>Save State</button>
           <button onClick={restoreState}>Restore State</button>
           <button onClick={printState}>Print State</button>
@@ -133,4 +133,4 @@ const GridExample = () => {
   );
 };
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

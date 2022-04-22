@@ -1,26 +1,26 @@
 class CustomHeaderGroup {
   init(params) {
     this.params = params;
-    this.eGui = document.createElement("div");
-    this.eGui.className = "ag-header-group-cell-label";
+    this.eGui = document.createElement('div');
+    this.eGui.className = 'ag-header-group-cell-label';
     this.eGui.innerHTML =
-      "" +
+      '' +
       '<div class="customHeaderLabel">' +
       this.params.displayName +
-      "</div>" +
+      '</div>' +
       '<div class="customExpandButton"><i class="fa fa-arrow-right"></i></div>';
 
     this.onExpandButtonClickedListener = this.expandOrCollapse.bind(this);
-    this.eExpandButton = this.eGui.querySelector(".customExpandButton");
+    this.eExpandButton = this.eGui.querySelector('.customExpandButton');
     this.eExpandButton.addEventListener(
-      "click",
+      'click',
       this.onExpandButtonClickedListener
     );
 
     this.onExpandChangedListener = this.syncExpandButtons.bind(this);
     this.params.columnGroup
       .getProvidedColumnGroup()
-      .addEventListener("expandedChanged", this.onExpandChangedListener);
+      .addEventListener('expandedChanged', this.onExpandChangedListener);
 
     this.syncExpandButtons();
   }
@@ -39,11 +39,11 @@ class CustomHeaderGroup {
   syncExpandButtons() {
     function collapsed(toDeactivate) {
       toDeactivate.className =
-        toDeactivate.className.split(" ")[0] + " collapsed";
+        toDeactivate.className.split(' ')[0] + ' collapsed';
     }
 
     function expanded(toActivate) {
-      toActivate.className = toActivate.className.split(" ")[0] + " expanded";
+      toActivate.className = toActivate.className.split(' ')[0] + ' expanded';
     }
 
     if (this.params.columnGroup.getProvidedColumnGroup().isExpanded()) {
@@ -55,7 +55,7 @@ class CustomHeaderGroup {
 
   destroy() {
     this.eExpandButton.removeEventListener(
-      "click",
+      'click',
       this.onExpandButtonClickedListener
     );
   }

@@ -1,13 +1,13 @@
-"use strict";
+'use strict';
 
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { AgGridReact } from "@ag-grid-community/react";
-import { RowGroupingModule } from "@ag-grid-enterprise/row-grouping";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from '@ag-grid-community/react';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import { RowGroupingModule } from '@ag-grid-enterprise/row-grouping';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([ClientSideRowModelModule, RowGroupingModule]);
@@ -18,13 +18,13 @@ class GridExample extends Component {
 
     this.state = {
       columnDefs: [
-        { field: "athlete" },
-        { field: "age" },
-        { field: "country" },
-        { field: "sport" },
-        { field: "gold" },
-        { field: "silver" },
-        { field: "bronze" },
+        { field: 'athlete' },
+        { field: 'age' },
+        { field: 'country' },
+        { field: 'sport' },
+        { field: 'gold' },
+        { field: 'silver' },
+        { field: 'bronze' },
       ],
       defaultColDef: {
         sortable: true,
@@ -44,48 +44,48 @@ class GridExample extends Component {
 
     const updateData = (data) => params.api.setRowData(data);
 
-    fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+    fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .then((resp) => resp.json())
       .then((data) => updateData(data));
   };
 
   onSortChanged = (e) => {
-    console.log("Event Sort Changed", e);
+    console.log('Event Sort Changed', e);
   };
 
   onColumnResized = (e) => {
-    console.log("Event Column Resized", e);
+    console.log('Event Column Resized', e);
   };
 
   onColumnVisible = (e) => {
-    console.log("Event Column Visible", e);
+    console.log('Event Column Visible', e);
   };
 
   onColumnPivotChanged = (e) => {
-    console.log("Event Pivot Changed", e);
+    console.log('Event Pivot Changed', e);
   };
 
   onColumnRowGroupChanged = (e) => {
-    console.log("Event Row Group Changed", e);
+    console.log('Event Row Group Changed', e);
   };
 
   onColumnValueChanged = (e) => {
-    console.log("Event Value Changed", e);
+    console.log('Event Value Changed', e);
   };
 
   onColumnMoved = (e) => {
-    console.log("Event Column Moved", e);
+    console.log('Event Column Moved', e);
   };
 
   onColumnPinned = (e) => {
-    console.log("Event Column Pinned", e);
+    console.log('Event Column Pinned', e);
   };
 
   onBtSortOn = () => {
     this.gridColumnApi.applyColumnState({
       state: [
-        { colId: "age", sort: "desc" },
-        { colId: "athlete", sort: "asc" },
+        { colId: 'age', sort: 'desc' },
+        { colId: 'athlete', sort: 'asc' },
       ],
     });
   };
@@ -99,8 +99,8 @@ class GridExample extends Component {
   onBtWidthNarrow = () => {
     this.gridColumnApi.applyColumnState({
       state: [
-        { colId: "age", width: 100 },
-        { colId: "athlete", width: 100 },
+        { colId: 'age', width: 100 },
+        { colId: 'athlete', width: 100 },
       ],
     });
   };
@@ -108,8 +108,8 @@ class GridExample extends Component {
   onBtWidthNormal = () => {
     this.gridColumnApi.applyColumnState({
       state: [
-        { colId: "age", width: 200 },
-        { colId: "athlete", width: 200 },
+        { colId: 'age', width: 200 },
+        { colId: 'athlete', width: 200 },
       ],
     });
   };
@@ -117,8 +117,8 @@ class GridExample extends Component {
   onBtHide = () => {
     this.gridColumnApi.applyColumnState({
       state: [
-        { colId: "age", hide: true },
-        { colId: "athlete", hide: true },
+        { colId: 'age', hide: true },
+        { colId: 'athlete', hide: true },
       ],
     });
   };
@@ -132,7 +132,7 @@ class GridExample extends Component {
   onBtPivotOn = () => {
     this.gridColumnApi.setPivotMode(true);
     this.gridColumnApi.applyColumnState({
-      state: [{ colId: "country", pivot: true }],
+      state: [{ colId: 'country', pivot: true }],
     });
   };
 
@@ -145,7 +145,7 @@ class GridExample extends Component {
 
   onBtRowGroupOn = () => {
     this.gridColumnApi.applyColumnState({
-      state: [{ colId: "sport", rowGroup: true }],
+      state: [{ colId: 'sport', rowGroup: true }],
     });
   };
 
@@ -158,9 +158,9 @@ class GridExample extends Component {
   onBtAggFuncOn = () => {
     this.gridColumnApi.applyColumnState({
       state: [
-        { colId: "gold", aggFunc: "sum" },
-        { colId: "silver", aggFunc: "sum" },
-        { colId: "bronze", aggFunc: "sum" },
+        { colId: 'gold', aggFunc: 'sum' },
+        { colId: 'silver', aggFunc: 'sum' },
+        { colId: 'bronze', aggFunc: 'sum' },
       ],
     });
   };
@@ -174,13 +174,13 @@ class GridExample extends Component {
   onBtNormalOrder = () => {
     this.gridColumnApi.applyColumnState({
       state: [
-        { colId: "athlete" },
-        { colId: "age" },
-        { colId: "country" },
-        { colId: "sport" },
-        { colId: "gold" },
-        { colId: "silver" },
-        { colId: "bronze" },
+        { colId: 'athlete' },
+        { colId: 'age' },
+        { colId: 'country' },
+        { colId: 'sport' },
+        { colId: 'gold' },
+        { colId: 'silver' },
+        { colId: 'bronze' },
       ],
       applyOrder: true,
     });
@@ -189,13 +189,13 @@ class GridExample extends Component {
   onBtReverseOrder = () => {
     this.gridColumnApi.applyColumnState({
       state: [
-        { colId: "athlete" },
-        { colId: "age" },
-        { colId: "country" },
-        { colId: "sport" },
-        { colId: "bronze" },
-        { colId: "silver" },
-        { colId: "gold" },
+        { colId: 'athlete' },
+        { colId: 'age' },
+        { colId: 'country' },
+        { colId: 'sport' },
+        { colId: 'bronze' },
+        { colId: 'silver' },
+        { colId: 'gold' },
       ],
       applyOrder: true,
     });
@@ -204,8 +204,8 @@ class GridExample extends Component {
   onBtPinnedOn = () => {
     this.gridColumnApi.applyColumnState({
       state: [
-        { colId: "athlete", pinned: "left" },
-        { colId: "age", pinned: "right" },
+        { colId: 'athlete', pinned: 'left' },
+        { colId: 'age', pinned: 'right' },
       ],
     });
   };
@@ -218,7 +218,7 @@ class GridExample extends Component {
 
   render() {
     return (
-      <div style={{ width: "100%", height: "100%" }}>
+      <div style={{ width: '100%', height: '100%' }}>
         <div className="test-container">
           <div className="test-header">
             <div className="test-button-row">
@@ -282,8 +282,8 @@ class GridExample extends Component {
           </div>
           <div
             style={{
-              height: "100%",
-              width: "100%",
+              height: '100%',
+              width: '100%',
             }}
             className="ag-theme-alpine"
           >
@@ -308,4 +308,4 @@ class GridExample extends Component {
   }
 }
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

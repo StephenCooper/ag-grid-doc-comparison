@@ -1,19 +1,19 @@
-import { ColDef, Grid, GridOptions } from "ag-grid-community";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
+import { ColDef, Grid, GridOptions } from 'ag-grid-community';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import 'ag-grid-enterprise';
 
 const columnDefs: ColDef[] = [
-  { field: "athlete" },
-  { field: "age" },
-  { field: "country" },
-  { field: "sport" },
-  { field: "year" },
-  { field: "date" },
-  { field: "gold" },
-  { field: "silver" },
-  { field: "bronze" },
-  { field: "total" },
+  { field: 'athlete' },
+  { field: 'age' },
+  { field: 'country' },
+  { field: 'sport' },
+  { field: 'year' },
+  { field: 'date' },
+  { field: 'gold' },
+  { field: 'silver' },
+  { field: 'bronze' },
+  { field: 'total' },
 ];
 
 const gridOptions: GridOptions = {
@@ -26,10 +26,10 @@ const gridOptions: GridOptions = {
     enableValue: true,
   },
   sideBar: {
-    toolPanels: ["columns"],
+    toolPanels: ['columns'],
   },
-  rowGroupPanelShow: "always",
-  pivotPanelShow: "always",
+  rowGroupPanelShow: 'always',
+  pivotPanelShow: 'always',
   // debug: true,
   columnDefs: columnDefs,
   rowData: null,
@@ -37,15 +37,15 @@ const gridOptions: GridOptions = {
 
 function onBtSortAthlete() {
   gridOptions.columnApi!.applyColumnState({
-    state: [{ colId: "athlete", sort: "asc" }],
+    state: [{ colId: 'athlete', sort: 'asc' }],
   });
 }
 
 function onBtSortCountryThenSportClearOthers() {
   gridOptions.columnApi!.applyColumnState({
     state: [
-      { colId: "country", sort: "asc", sortIndex: 0 },
-      { colId: "sport", sort: "asc", sortIndex: 1 },
+      { colId: 'country', sort: 'asc', sortIndex: 0 },
+      { colId: 'sport', sort: 'asc', sortIndex: 1 },
     ],
     defaultState: { sort: null },
   });
@@ -60,8 +60,8 @@ function onBtClearAllSorting() {
 function onBtRowGroupCountryThenSport() {
   gridOptions.columnApi!.applyColumnState({
     state: [
-      { colId: "country", rowGroupIndex: 0 },
-      { colId: "sport", rowGroupIndex: 1 },
+      { colId: 'country', rowGroupIndex: 0 },
+      { colId: 'sport', rowGroupIndex: 1 },
     ],
     defaultState: { rowGroup: false },
   });
@@ -69,7 +69,7 @@ function onBtRowGroupCountryThenSport() {
 
 function onBtRemoveCountryRowGroup() {
   gridOptions.columnApi!.applyColumnState({
-    state: [{ colId: "country", rowGroup: false }],
+    state: [{ colId: 'country', rowGroup: false }],
   });
 }
 
@@ -82,16 +82,16 @@ function onBtClearAllRowGroups() {
 function onBtOrderColsMedalsFirst() {
   gridOptions.columnApi!.applyColumnState({
     state: [
-      { colId: "gold" },
-      { colId: "silver" },
-      { colId: "bronze" },
-      { colId: "total" },
-      { colId: "athlete" },
-      { colId: "age" },
-      { colId: "country" },
-      { colId: "sport" },
-      { colId: "year" },
-      { colId: "date" },
+      { colId: 'gold' },
+      { colId: 'silver' },
+      { colId: 'bronze' },
+      { colId: 'total' },
+      { colId: 'athlete' },
+      { colId: 'age' },
+      { colId: 'country' },
+      { colId: 'sport' },
+      { colId: 'year' },
+      { colId: 'date' },
     ],
     applyOrder: true,
   });
@@ -100,16 +100,16 @@ function onBtOrderColsMedalsFirst() {
 function onBtOrderColsMedalsLast() {
   gridOptions.columnApi!.applyColumnState({
     state: [
-      { colId: "athlete" },
-      { colId: "age" },
-      { colId: "country" },
-      { colId: "sport" },
-      { colId: "year" },
-      { colId: "date" },
-      { colId: "gold" },
-      { colId: "silver" },
-      { colId: "bronze" },
-      { colId: "total" },
+      { colId: 'athlete' },
+      { colId: 'age' },
+      { colId: 'country' },
+      { colId: 'sport' },
+      { colId: 'year' },
+      { colId: 'date' },
+      { colId: 'gold' },
+      { colId: 'silver' },
+      { colId: 'bronze' },
+      { colId: 'total' },
     ],
     applyOrder: true,
   });
@@ -118,10 +118,10 @@ function onBtOrderColsMedalsLast() {
 function onBtHideMedals() {
   gridOptions.columnApi!.applyColumnState({
     state: [
-      { colId: "gold", hide: true },
-      { colId: "silver", hide: true },
-      { colId: "bronze", hide: true },
-      { colId: "total", hide: true },
+      { colId: 'gold', hide: true },
+      { colId: 'silver', hide: true },
+      { colId: 'bronze', hide: true },
+      { colId: 'total', hide: true },
     ],
   });
 }
@@ -129,27 +129,28 @@ function onBtHideMedals() {
 function onBtShowMedals() {
   gridOptions.columnApi!.applyColumnState({
     state: [
-      { colId: "gold", hide: false },
-      { colId: "silver", hide: false },
-      { colId: "bronze", hide: false },
-      { colId: "total", hide: false },
+      { colId: 'gold', hide: false },
+      { colId: 'silver', hide: false },
+      { colId: 'bronze', hide: false },
+      { colId: 'total', hide: false },
     ],
   });
 }
 
 // setup the grid after the page has finished loading
-const gridDiv = document.querySelector<HTMLElement>("#myGrid")!;
+const gridDiv = document.querySelector<HTMLElement>('#myGrid')!;
 new Grid(gridDiv, gridOptions);
 
-fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
   .then((response) => response.json())
   .then((data) => gridOptions.api!.setRowData(data));
 
-if (typeof window !== "undefined") {
+if (typeof window !== 'undefined') {
   // Attach external event handlers to window so they can be called from index.html
   (<any>window).onBtSortAthlete = onBtSortAthlete;
-  (<any>window).onBtSortCountryThenSportClearOthers =
-    onBtSortCountryThenSportClearOthers;
+  (<any>(
+    window
+  )).onBtSortCountryThenSportClearOthers = onBtSortCountryThenSportClearOthers;
   (<any>window).onBtClearAllSorting = onBtClearAllSorting;
   (<any>window).onBtRowGroupCountryThenSport = onBtRowGroupCountryThenSport;
   (<any>window).onBtRemoveCountryRowGroup = onBtRemoveCountryRowGroup;

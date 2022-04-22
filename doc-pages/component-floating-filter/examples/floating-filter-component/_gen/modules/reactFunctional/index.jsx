@@ -1,39 +1,39 @@
-"use strict";
+'use strict';
 
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { AgGridReact } from "@ag-grid-community/react";
-import React, { useCallback, useMemo, useRef, useState } from "react";
-import { render } from "react-dom";
-import SliderFloatingFilter from "./sliderFloatingFilter.jsx";
+import React, { useCallback, useMemo, useRef, useState } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from '@ag-grid-community/react';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import SliderFloatingFilter from './sliderFloatingFilter.jsx';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([ClientSideRowModelModule]);
 
 const GridExample = () => {
   const gridRef = useRef();
-  const containerStyle = useMemo(() => ({ width: "100%", height: "100%" }), []);
-  const gridStyle = useMemo(() => ({ height: "100%", width: "100%" }), []);
+  const containerStyle = useMemo(() => ({ width: '100%', height: '100%' }), []);
+  const gridStyle = useMemo(() => ({ height: '100%', width: '100%' }), []);
   const [rowData, setRowData] = useState(getData());
   const [columnDefs, setColumnDefs] = useState([
-    { field: "country", filter: false },
-    { field: "language", filter: false },
-    { field: "name", filter: false },
+    { field: 'country', filter: false },
+    { field: 'language', filter: false },
+    { field: 'name', filter: false },
     {
-      field: "gold",
+      field: 'gold',
       floatingFilterComponent: SliderFloatingFilter,
       floatingFilterComponentParams: {
         maxValue: 7,
         suppressFilterButton: true,
       },
-      filter: "agNumberColumnFilter",
+      filter: 'agNumberColumnFilter',
       suppressMenu: false,
     },
     {
-      field: "silver",
-      filter: "agNumberColumnFilter",
+      field: 'silver',
+      filter: 'agNumberColumnFilter',
       floatingFilterComponent: SliderFloatingFilter,
       floatingFilterComponentParams: {
         maxValue: 5,
@@ -42,8 +42,8 @@ const GridExample = () => {
       suppressMenu: false,
     },
     {
-      field: "bronze",
-      filter: "agNumberColumnFilter",
+      field: 'bronze',
+      filter: 'agNumberColumnFilter',
       floatingFilterComponent: SliderFloatingFilter,
       floatingFilterComponentParams: {
         maxValue: 10,
@@ -70,7 +70,7 @@ const GridExample = () => {
 
   return (
     <div style={containerStyle}>
-      <div style={{ height: "100%", boxSizing: "border-box" }}>
+      <div style={{ height: '100%', boxSizing: 'border-box' }}>
         <div style={gridStyle} className="ag-theme-alpine">
           <AgGridReact
             ref={gridRef}
@@ -85,4 +85,4 @@ const GridExample = () => {
   );
 };
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

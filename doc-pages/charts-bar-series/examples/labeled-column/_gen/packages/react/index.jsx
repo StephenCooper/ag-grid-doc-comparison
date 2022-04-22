@@ -1,8 +1,10 @@
-"use strict";
+'use strict';
 
-import { AgChartsReact } from "ag-charts-react";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { cloneDeep } from 'lodash';
+import { render } from 'react-dom';
+import * as agCharts from 'ag-charts-community';
+import { AgChartsReact } from 'ag-charts-react';
 
 class ChartExample extends Component {
   constructor(props) {
@@ -14,47 +16,47 @@ class ChartExample extends Component {
           text: "Apple's revenue by product category",
         },
         subtitle: {
-          text: "in billion U.S. dollars",
+          text: 'in billion U.S. dollars',
         },
         data: getData(),
         series: [
           {
-            type: "column",
-            xKey: "quarter",
-            yKey: "iphone",
-            yName: "iPhone",
+            type: 'column',
+            xKey: 'quarter',
+            yKey: 'iphone',
+            yName: 'iPhone',
             stacked: true,
             label: { formatter },
           },
           {
-            type: "column",
-            xKey: "quarter",
-            yKey: "mac",
-            yName: "Mac",
+            type: 'column',
+            xKey: 'quarter',
+            yKey: 'mac',
+            yName: 'Mac',
             stacked: true,
             label: { formatter },
           },
           {
-            type: "column",
-            xKey: "quarter",
-            yKey: "ipad",
-            yName: "iPad",
+            type: 'column',
+            xKey: 'quarter',
+            yKey: 'ipad',
+            yName: 'iPad',
             stacked: true,
             label: { formatter },
           },
           {
-            type: "column",
-            xKey: "quarter",
-            yKey: "wearables",
-            yName: "Wearables",
+            type: 'column',
+            xKey: 'quarter',
+            yKey: 'wearables',
+            yName: 'Wearables',
             stacked: true,
             label: { formatter },
           },
           {
-            type: "column",
-            xKey: "quarter",
-            yKey: "services",
-            yName: "Services",
+            type: 'column',
+            xKey: 'quarter',
+            yKey: 'services',
+            yName: 'Services',
             stacked: true,
             label: { formatter },
           },
@@ -70,6 +72,6 @@ class ChartExample extends Component {
   }
 }
 
-const formatter = ({ value }) => (value == null ? "" : value.toFixed(0));
+const formatter = ({ value }) => (value == null ? '' : value.toFixed(0));
 
-render(<ChartExample />, document.querySelector("#root"));
+render(<ChartExample />, document.querySelector('#root'));

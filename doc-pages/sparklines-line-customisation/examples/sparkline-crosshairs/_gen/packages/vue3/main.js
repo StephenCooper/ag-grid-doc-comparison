@@ -1,8 +1,8 @@
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
-import { AgGridVue } from "ag-grid-vue3";
-import { createApp } from "vue";
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import 'ag-grid-enterprise';
+import { AgGridVue } from 'ag-grid-vue3';
+import { createApp } from 'vue';
 
 const VueExample = {
   template: `
@@ -19,57 +19,57 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
-        { field: "symbol", maxWidth: 120 },
-        { field: "name", minWidth: 250 },
+        { field: 'symbol', maxWidth: 120 },
+        { field: 'name', minWidth: 250 },
         {
-          field: "change",
-          cellRenderer: "agSparklineCellRenderer",
+          field: 'change',
+          cellRenderer: 'agSparklineCellRenderer',
           cellRendererParams: {
             sparklineOptions: {
-              line: { stroke: "rgb(52, 168, 83)" },
+              line: { stroke: 'rgb(52, 168, 83)' },
               highlightStyle: {
                 size: 4,
-                stroke: "rgb(52, 168, 83)",
-                fill: "rgb(52, 168, 83)",
+                stroke: 'rgb(52, 168, 83)',
+                fill: 'rgb(52, 168, 83)',
               },
               tooltip: { renderer: renderer },
               crosshairs: {
                 xLine: {
                   enabled: true,
-                  lineDash: "dash",
-                  stroke: "rgba(0, 0, 0, 0.5)",
+                  lineDash: 'dash',
+                  stroke: 'rgba(0, 0, 0, 0.5)',
                 },
                 yLine: {
                   enabled: true,
-                  lineDash: "dash",
-                  stroke: "rgba(0, 0, 0, 0.5)",
+                  lineDash: 'dash',
+                  stroke: 'rgba(0, 0, 0, 0.5)',
                 },
               },
             },
           },
         },
         {
-          field: "rateOfChange",
-          cellRenderer: "agSparklineCellRenderer",
+          field: 'rateOfChange',
+          cellRenderer: 'agSparklineCellRenderer',
           cellRendererParams: {
             sparklineOptions: {
-              line: { stroke: "rgb(168,52,137)" },
+              line: { stroke: 'rgb(168,52,137)' },
               highlightStyle: {
                 size: 4,
-                stroke: "rgb(168,52,137)",
-                fill: "rgb(168,52,137)",
+                stroke: 'rgb(168,52,137)',
+                fill: 'rgb(168,52,137)',
               },
               tooltip: { renderer: renderer },
               crosshairs: { xLine: { enabled: false } },
             },
           },
         },
-        { field: "volume", type: "numericColumn", maxWidth: 140 },
+        { field: 'volume', type: 'numericColumn', maxWidth: 140 },
       ],
       gridApi: null,
       columnApi: null,
@@ -96,10 +96,10 @@ const VueExample = {
 
 window.renderer = function renderer(params) {
   return {
-    backgroundColor: "black",
+    backgroundColor: 'black',
     opacity: 0.5,
-    color: "white",
+    color: 'white',
   };
 };
 
-createApp(VueExample).mount("#app");
+createApp(VueExample).mount('#app');

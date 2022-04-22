@@ -1,12 +1,12 @@
-import { IDateAngularComp } from "@ag-grid-community/angular";
-import { IDateParams } from "@ag-grid-community/core";
-import { Component, ElementRef, ViewChild } from "@angular/core";
+import { IDateAngularComp } from '@ag-grid-community/angular';
+import { IDateParams } from '@ag-grid-community/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 
 // we'll be using the globally provided flatpickr for our example
 declare var flatpickr: any;
 
 @Component({
-  selector: "app-loading-overlay",
+  selector: 'app-loading-overlay',
   template: `
     <div
       #flatpickrEl
@@ -30,10 +30,10 @@ declare var flatpickr: any;
 
       .custom-date-filter:after {
         position: absolute;
-        content: "\f073";
+        content: '\f073';
         display: block;
         font-weight: 400;
-        font-family: "Font Awesome 5 Free";
+        font-family: 'Font Awesome 5 Free';
         right: 5px;
         pointer-events: none;
         color: rgba(0, 0, 0, 0.54);
@@ -42,8 +42,8 @@ declare var flatpickr: any;
   ],
 })
 export class CustomDateComponent implements IDateAngularComp {
-  @ViewChild("flatpickrEl", { read: ElementRef }) flatpickrEl!: ElementRef;
-  @ViewChild("eInput", { read: ElementRef }) eInput!: ElementRef;
+  @ViewChild('flatpickrEl', { read: ElementRef }) flatpickrEl!: ElementRef;
+  @ViewChild('eInput', { read: ElementRef }) eInput!: ElementRef;
   private date!: Date;
   private params!: IDateParams;
   private picker: any;
@@ -58,7 +58,7 @@ export class CustomDateComponent implements IDateAngularComp {
       wrap: true,
     });
 
-    this.picker.calendarContainer.classList.add("ag-custom-component-popup");
+    this.picker.calendarContainer.classList.add('ag-custom-component-popup');
   }
 
   ngOnDestroy() {
@@ -80,10 +80,10 @@ export class CustomDateComponent implements IDateAngularComp {
   }
 
   setInputPlaceholder(placeholder: string): void {
-    this.eInput.nativeElement.setAttribute("placeholder", placeholder);
+    this.eInput.nativeElement.setAttribute('placeholder', placeholder);
   }
 
   setInputAriaLabel(label: string): void {
-    this.eInput.nativeElement.setAttribute("aria-label", label);
+    this.eInput.nativeElement.setAttribute('aria-label', label);
   }
 }

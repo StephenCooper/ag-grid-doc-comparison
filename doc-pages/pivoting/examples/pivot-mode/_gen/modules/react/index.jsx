@@ -1,15 +1,15 @@
-"use strict";
+'use strict';
 
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { AgGridReact } from "@ag-grid-community/react";
-import { ColumnsToolPanelModule } from "@ag-grid-enterprise/column-tool-panel";
-import { MenuModule } from "@ag-grid-enterprise/menu";
-import { RowGroupingModule } from "@ag-grid-enterprise/row-grouping";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from '@ag-grid-community/react';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import { RowGroupingModule } from '@ag-grid-enterprise/row-grouping';
+import { MenuModule } from '@ag-grid-enterprise/menu';
+import { ColumnsToolPanelModule } from '@ag-grid-enterprise/column-tool-panel';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([
@@ -25,18 +25,18 @@ class GridExample extends Component {
 
     this.state = {
       columnDefs: [
-        { field: "country", rowGroup: true, enableRowGroup: true },
+        { field: 'country', rowGroup: true, enableRowGroup: true },
         {
-          field: "year",
+          field: 'year',
           rowGroup: true,
           enableRowGroup: true,
           enablePivot: true,
         },
-        { field: "date" },
-        { field: "sport" },
-        { field: "gold", aggFunc: "sum" },
-        { field: "silver", aggFunc: "sum" },
-        { field: "bronze", aggFunc: "sum" },
+        { field: 'date' },
+        { field: 'sport' },
+        { field: 'gold', aggFunc: 'sum' },
+        { field: 'silver', aggFunc: 'sum' },
+        { field: 'bronze', aggFunc: 'sum' },
       ],
       defaultColDef: {
         flex: 1,
@@ -47,7 +47,7 @@ class GridExample extends Component {
       autoGroupColumnDef: {
         minWidth: 250,
       },
-      sideBar: "columns",
+      sideBar: 'columns',
       rowData: null,
     };
   }
@@ -58,7 +58,7 @@ class GridExample extends Component {
 
     const updateData = (data) => params.api.setRowData(data);
 
-    fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+    fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .then((resp) => resp.json())
       .then((data) => updateData(data));
   };
@@ -67,8 +67,8 @@ class GridExample extends Component {
     this.gridColumnApi.setPivotMode(false);
     this.gridColumnApi.applyColumnState({
       state: [
-        { colId: "country", rowGroup: true },
-        { colId: "year", rowGroup: true },
+        { colId: 'country', rowGroup: true },
+        { colId: 'year', rowGroup: true },
       ],
       defaultState: {
         pivot: false,
@@ -81,8 +81,8 @@ class GridExample extends Component {
     this.gridColumnApi.setPivotMode(true);
     this.gridColumnApi.applyColumnState({
       state: [
-        { colId: "country", rowGroup: true },
-        { colId: "year", rowGroup: true },
+        { colId: 'country', rowGroup: true },
+        { colId: 'year', rowGroup: true },
       ],
       defaultState: {
         pivot: false,
@@ -95,8 +95,8 @@ class GridExample extends Component {
     this.gridColumnApi.setPivotMode(true);
     this.gridColumnApi.applyColumnState({
       state: [
-        { colId: "country", rowGroup: true },
-        { colId: "year", pivot: true },
+        { colId: 'country', rowGroup: true },
+        { colId: 'year', pivot: true },
       ],
       defaultState: {
         pivot: false,
@@ -107,9 +107,9 @@ class GridExample extends Component {
 
   render() {
     return (
-      <div style={{ width: "100%", height: "100%" }}>
+      <div style={{ width: '100%', height: '100%' }}>
         <div className="example-wrapper">
-          <div style={{ marginBottom: "5px" }}>
+          <div style={{ marginBottom: '5px' }}>
             <button onClick={() => this.onBtNormal()}>
               1 - Grouping Active
             </button>
@@ -123,8 +123,8 @@ class GridExample extends Component {
 
           <div
             style={{
-              height: "100%",
-              width: "100%",
+              height: '100%',
+              width: '100%',
             }}
             className="ag-theme-alpine"
           >
@@ -143,4 +143,4 @@ class GridExample extends Component {
   }
 }
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

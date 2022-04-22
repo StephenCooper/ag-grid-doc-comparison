@@ -1,19 +1,20 @@
-import { Component } from "@angular/core";
+import { Component } from "@angular/core"
+import { AgChartOptions, AgChartTheme } from "ag-charts-community"
 
 @Component({
   selector: "my-app",
   template: `
     <div class="wrapper">
-      <ag-charts-angular style="height: 100%" [options]="chartOptions1">
+      <ag-charts-angular id="chart1" [options]="chartOptions1">
       </ag-charts-angular>
 
-      <ag-charts-angular style="height: 100%" [options]="chartOptions2">
+      <ag-charts-angular id="chart2" [options]="chartOptions2">
       </ag-charts-angular>
     </div>
   `,
 })
 export class AppComponent {
-  private chartOptions1 = {
+  chartOptions1: AgChartOptions = {
     type: "cartesian",
     theme: myTheme,
     autoSize: true,
@@ -51,9 +52,9 @@ export class AppComponent {
         yName: "Price",
       },
     ],
-  };
+  }
 
-  private chartOptions2 = {
+  chartOptions2: AgChartOptions = {
     theme: myTheme,
     autoSize: true,
     title: {
@@ -68,7 +69,7 @@ export class AppComponent {
         labelKey: "label",
       },
     ],
-  };
+  }
 }
 
 var data = [
@@ -77,9 +78,9 @@ var data = [
   { label: "BlackBerry", v1: 7.54, v2: 1.98, v3: 9.88, v4: 1.38, v5: 4.44 },
   { label: "Symbian", v1: 9.27, v2: 4.21, v3: 2.53, v4: 6.31, v5: 4.44 },
   { label: "Windows", v1: 2.8, v2: 1.908, v3: 7.48, v4: 5.29, v5: 8.8 },
-];
+]
 
-var myTheme = {
+var myTheme: AgChartTheme = {
   baseTheme: "ag-default-dark",
   palette: {
     fills: ["#5C2983", "#0076C5", "#21B372", "#FDDE02", "#F76700", "#D30018"],
@@ -148,4 +149,4 @@ var myTheme = {
       },
     },
   },
-};
+}

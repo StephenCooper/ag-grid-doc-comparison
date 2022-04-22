@@ -1,13 +1,13 @@
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
 import {
   ColDef,
   Grid,
   GridOptions,
   ITextFilterParams,
   ModuleRegistry,
-} from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
+} from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([ClientSideRowModelModule]);
@@ -17,41 +17,41 @@ function contains(target: string, lookingFor: string) {
 }
 
 var athleteFilterParams: ITextFilterParams = {
-  filterOptions: ["contains", "notContains"],
+  filterOptions: ['contains', 'notContains'],
   textFormatter: function (r) {
     if (r == null) return null;
 
     return r
       .toLowerCase()
-      .replace(/[àáâãäå]/g, "a")
-      .replace(/æ/g, "ae")
-      .replace(/ç/g, "c")
-      .replace(/[èéêë]/g, "e")
-      .replace(/[ìíîï]/g, "i")
-      .replace(/ñ/g, "n")
-      .replace(/[òóôõö]/g, "o")
-      .replace(/œ/g, "oe")
-      .replace(/[ùúûü]/g, "u")
-      .replace(/[ýÿ]/g, "y");
+      .replace(/[àáâãäå]/g, 'a')
+      .replace(/æ/g, 'ae')
+      .replace(/ç/g, 'c')
+      .replace(/[èéêë]/g, 'e')
+      .replace(/[ìíîï]/g, 'i')
+      .replace(/ñ/g, 'n')
+      .replace(/[òóôõö]/g, 'o')
+      .replace(/œ/g, 'oe')
+      .replace(/[ùúûü]/g, 'u')
+      .replace(/[ýÿ]/g, 'y');
   },
   debounceMs: 200,
   suppressAndOrCondition: true,
 } as ITextFilterParams;
 
 var countryFilterParams: ITextFilterParams = {
-  filterOptions: ["contains"],
+  filterOptions: ['contains'],
   textMatcher: function ({ value, filterText }) {
-    var filterTextLowerCase = filterText ? filterText.toLowerCase() : "";
+    var filterTextLowerCase = filterText ? filterText.toLowerCase() : '';
     var valueLowerCase = value.toString().toLowerCase();
     var aliases: Record<string, string> = {
-      usa: "united states",
-      holland: "netherlands",
-      vodka: "russia",
-      niall: "ireland",
-      sean: "south africa",
-      alberto: "mexico",
-      john: "australia",
-      xi: "china",
+      usa: 'united states',
+      holland: 'netherlands',
+      vodka: 'russia',
+      niall: 'ireland',
+      sean: 'south africa',
+      alberto: 'mexico',
+      john: 'australia',
+      xi: 'china',
     };
 
     var literalMatch = contains(valueLowerCase, filterTextLowerCase);
@@ -66,20 +66,20 @@ var countryFilterParams: ITextFilterParams = {
 
 const columnDefs: ColDef[] = [
   {
-    field: "athlete",
+    field: 'athlete',
     filterParams: athleteFilterParams,
   },
   {
-    field: "country",
-    filter: "agTextColumnFilter",
+    field: 'country',
+    filter: 'agTextColumnFilter',
     filterParams: countryFilterParams,
   },
   {
-    field: "sport",
-    filter: "agTextColumnFilter",
+    field: 'sport',
+    filter: 'agTextColumnFilter',
     filterParams: {
       caseSensitive: true,
-      defaultOption: "startsWith",
+      defaultOption: 'startsWith',
     },
   },
 ];
@@ -95,9 +95,9 @@ const gridOptions: GridOptions = {
 };
 
 // setup the grid after the page has finished loading
-var gridDiv = document.querySelector<HTMLElement>("#myGrid")!;
+var gridDiv = document.querySelector<HTMLElement>('#myGrid')!;
 new Grid(gridDiv, gridOptions);
 
-fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
   .then((response) => response.json())
   .then((data) => gridOptions.api!.setRowData(data));

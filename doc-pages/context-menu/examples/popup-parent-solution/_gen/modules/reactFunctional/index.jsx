@@ -1,15 +1,15 @@
-"use strict";
+'use strict';
 
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { AgGridReact } from "@ag-grid-community/react";
-import { ClipboardModule } from "@ag-grid-enterprise/clipboard";
-import { ExcelExportModule } from "@ag-grid-enterprise/excel-export";
-import { MenuModule } from "@ag-grid-enterprise/menu";
-import React, { useMemo, useState } from "react";
-import { render } from "react-dom";
+import React, { useCallback, useMemo, useRef, useState } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from '@ag-grid-community/react';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import { MenuModule } from '@ag-grid-enterprise/menu';
+import { ExcelExportModule } from '@ag-grid-enterprise/excel-export';
+import { ClipboardModule } from '@ag-grid-enterprise/clipboard';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([
@@ -20,21 +20,21 @@ ModuleRegistry.registerModules([
 ]);
 
 const GridExample = () => {
-  const containerStyle = useMemo(() => ({ width: "100%", height: "100%" }), []);
-  const gridStyle = useMemo(() => ({ height: "100px", width: "100%" }), []);
+  const containerStyle = useMemo(() => ({ width: '100%', height: '100%' }), []);
+  const gridStyle = useMemo(() => ({ height: '100px', width: '100%' }), []);
   const [rowData, setRowData] = useState([
     { a: 1, b: 1, c: 1, d: 1, e: 1 },
     { a: 2, b: 2, c: 2, d: 2, e: 2 },
   ]);
   const [columnDefs, setColumnDefs] = useState([
-    { field: "a" },
-    { field: "b" },
-    { field: "c" },
-    { field: "d" },
-    { field: "e" },
+    { field: 'a' },
+    { field: 'b' },
+    { field: 'c' },
+    { field: 'd' },
+    { field: 'e' },
   ]);
   const popupParent = useMemo(() => {
-    return document.querySelector("body");
+    return document.querySelector('body');
   }, []);
 
   return (
@@ -47,7 +47,7 @@ const GridExample = () => {
         ></AgGridReact>
       </div>
 
-      <div style={{ padding: "10px" }}>
+      <div style={{ padding: '10px' }}>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc posuere
         lobortis est, sit amet molestie justo mattis et. Suspendisse congue
         condimentum tristique. Cras et purus vehicula, rhoncus ante sit amet,
@@ -59,7 +59,7 @@ const GridExample = () => {
         scelerisque arcu. Mauris ac nunc purus. Aenean sit amet dapibus augue.
       </div>
 
-      <div style={{ padding: "10px" }}>
+      <div style={{ padding: '10px' }}>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc posuere
         lobortis est, sit amet molestie justo mattis et. Suspendisse congue
         condimentum tristique. Cras et purus vehicula, rhoncus ante sit amet,
@@ -74,4 +74,4 @@ const GridExample = () => {
   );
 };
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

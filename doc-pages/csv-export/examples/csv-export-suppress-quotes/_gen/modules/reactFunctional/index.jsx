@@ -1,14 +1,14 @@
-"use strict";
+'use strict';
 
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { CsvExportModule } from "@ag-grid-community/csv-export";
-import { AgGridReact } from "@ag-grid-community/react";
-import { MenuModule } from "@ag-grid-enterprise/menu";
-import React, { useCallback, useMemo, useRef, useState } from "react";
-import { render } from "react-dom";
+import React, { useCallback, useMemo, useRef, useState } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from '@ag-grid-community/react';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import { CsvExportModule } from '@ag-grid-community/csv-export';
+import { MenuModule } from '@ag-grid-enterprise/menu';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([
@@ -23,18 +23,18 @@ const getBoolean = (inputSelector) => {
 
 const getParams = () => {
   return {
-    suppressQuotes: getBoolean("#suppressQuotes"),
+    suppressQuotes: getBoolean('#suppressQuotes'),
   };
 };
 
 const GridExample = () => {
   const gridRef = useRef();
-  const containerStyle = useMemo(() => ({ width: "100%", height: "100%" }), []);
-  const gridStyle = useMemo(() => ({ height: "100%", width: "100%" }), []);
+  const containerStyle = useMemo(() => ({ width: '100%', height: '100%' }), []);
+  const gridStyle = useMemo(() => ({ height: '100%', width: '100%' }), []);
   const [rowData, setRowData] = useState([
-    { make: "Toyota", model: "Celica", price: 35000 },
-    { make: "Ford", model: "Mondeo", price: 32000 },
-    { make: "Porsche", model: "Boxter", price: 72000 },
+    { make: 'Toyota', model: 'Celica', price: 35000 },
+    { make: 'Ford', model: 'Mondeo', price: 32000 },
+    { make: 'Porsche', model: 'Boxster', price: 72000 },
   ]);
   const defaultColDef = useMemo(() => {
     return {
@@ -48,33 +48,34 @@ const GridExample = () => {
     return document.body;
   }, []);
   const [columnDefs, setColumnDefs] = useState([
-    { field: "make" },
-    { field: "model" },
-    { field: "price" },
+    { field: 'make' },
+    { field: 'model' },
+    { field: 'price' },
   ]);
 
   const onBtnExport = useCallback(() => {
     const params = getParams();
     if (params.suppressQuotes) {
       alert(
-        "NOTE: you are downloading a file with non-standard quotes - it may not render correctly in Excel."
+        'NOTE: you are downloading a file with non-standard quotes - it may not render correctly in Excel.'
       );
     }
     gridRef.current.api.exportDataAsCsv(params);
   }, [alert]);
 
   const onBtnUpdate = useCallback(() => {
-    document.querySelector("#csvResult").value =
-      gridRef.current.api.getDataAsCsv(getParams());
+    document.querySelector(
+      '#csvResult'
+    ).value = gridRef.current.api.getDataAsCsv(getParams());
   }, []);
 
   return (
     <div style={containerStyle}>
-      <div style={{ display: "flex", flexDirection: "column", height: "100%" }}>
-        <div style={{ display: "flex" }}>
+      <div style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
+        <div style={{ display: 'flex' }}>
           <div>
             <div className="row">
-              <label for="suppressQuotes">
+              <label htmlFor="suppressQuotes">
                 <input type="checkbox" id="suppressQuotes" />
                 suppressQuotes
               </label>
@@ -82,12 +83,12 @@ const GridExample = () => {
           </div>
         </div>
 
-        <div style={{ margin: "10px 0" }}>
+        <div style={{ margin: '10px 0' }}>
           <button onClick={onBtnUpdate}>Show CSV export content text</button>
           <button onClick={onBtnExport}>Download CSV export file</button>
         </div>
 
-        <div style={{ flex: "1 1 0px", position: "relative" }}>
+        <div style={{ flex: '1 1 0px', position: 'relative' }}>
           <div id="gridContainer">
             <div style={gridStyle} className="ag-theme-alpine">
               <AgGridReact
@@ -109,4 +110,4 @@ const GridExample = () => {
   );
 };
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

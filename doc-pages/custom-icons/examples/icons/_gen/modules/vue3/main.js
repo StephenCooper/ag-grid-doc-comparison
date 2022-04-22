@@ -1,13 +1,13 @@
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { AgGridVue } from "@ag-grid-community/vue3";
-import { ColumnsToolPanelModule } from "@ag-grid-enterprise/column-tool-panel";
-import { FiltersToolPanelModule } from "@ag-grid-enterprise/filter-tool-panel";
-import { RowGroupingModule } from "@ag-grid-enterprise/row-grouping";
-import { SideBarModule } from "@ag-grid-enterprise/side-bar";
-import { createApp } from "vue";
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { AgGridVue } from '@ag-grid-community/vue3';
+import { ColumnsToolPanelModule } from '@ag-grid-enterprise/column-tool-panel';
+import { FiltersToolPanelModule } from '@ag-grid-enterprise/filter-tool-panel';
+import { RowGroupingModule } from '@ag-grid-enterprise/row-grouping';
+import { SideBarModule } from '@ag-grid-enterprise/side-bar';
+import { createApp } from 'vue';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([
@@ -36,20 +36,20 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
-        { field: "athlete", rowGroup: true, hide: true },
+        { field: 'athlete', rowGroup: true, hide: true },
         {
-          field: "age",
+          field: 'age',
           width: 90,
           enableValue: true,
-          icons: { sortAscending: "U", sortDescending: "D" },
+          icons: { sortAscending: 'U', sortDescending: 'D' },
         },
         {
-          field: "country",
+          field: 'country',
           width: 150,
           rowGroupIndex: 0,
           icons: {
@@ -57,13 +57,13 @@ const VueExample = {
             sortDescending: '<i class="fa fa-sort-alpha-down"/>',
           },
         },
-        { field: "year", width: 90, enableRowGroup: true },
-        { field: "date" },
-        { field: "sport", width: 110, icons: myIcons },
-        { field: "gold", width: 100 },
-        { field: "silver", width: 100 },
-        { field: "bronze", width: 100 },
-        { field: "total", width: 100 },
+        { field: 'year', width: 90, enableRowGroup: true },
+        { field: 'date' },
+        { field: 'sport', width: 110, icons: myIcons },
+        { field: 'gold', width: 100 },
+        { field: 'silver', width: 100 },
+        { field: 'bronze', width: 100 },
+        { field: 'total', width: 100 },
       ],
       gridApi: null,
       columnApi: null,
@@ -82,8 +82,8 @@ const VueExample = {
   },
   created() {
     this.autoGroupColumnDef = {
-      headerName: "Athlete",
-      field: "athlete",
+      headerName: 'Athlete',
+      field: 'athlete',
       rowDrag: true,
       // use font awesome for first col, with numbers for sort
       icons: {
@@ -118,15 +118,15 @@ const VueExample = {
       rowGroupPanel: '<i class="fa fa-university"/>',
       pivotPanel: '<i class="fa fa-magic"/>',
       valuePanel: '<i class="fa fa-magnet"/>',
-      menuPin: "P",
-      menuValue: "V",
-      menuAddRowGroup: "A",
-      menuRemoveRowGroup: "R",
-      clipboardCopy: ">>",
-      clipboardPaste: ">>",
+      menuPin: 'P',
+      menuValue: 'V',
+      menuAddRowGroup: 'A',
+      menuRemoveRowGroup: 'R',
+      clipboardCopy: '>>',
+      clipboardPaste: '>>',
       rowDrag: '<i class="fa fa-circle"/>',
     };
-    this.rowSelection = "multiple";
+    this.rowSelection = 'multiple';
   },
   methods: {
     onGridReady(params) {
@@ -135,7 +135,7 @@ const VueExample = {
 
       const updateData = (data) => params.api.setRowData(data);
 
-      fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
         .then((resp) => resp.json())
         .then((data) => updateData(data));
     },
@@ -144,11 +144,11 @@ const VueExample = {
 
 var myIcons = {
   sortAscending: function () {
-    return "ASC";
+    return 'ASC';
   },
   sortDescending: function () {
-    return "DESC";
+    return 'DESC';
   },
 };
 
-createApp(VueExample).mount("#app");
+createApp(VueExample).mount('#app');

@@ -6,15 +6,15 @@ import {
   GridReadyEvent,
   HeaderCheckboxSelectionCallbackParams,
   PaginationNumberFormatterParams,
-} from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { HttpClient } from "@angular/common/http";
-import { Component } from "@angular/core";
+} from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { HttpClient } from '@angular/common/http';
+import { Component } from '@angular/core';
 // Required feature modules are registered in app.module.ts
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<div class="example-wrapper">
     <div class="example-header">
       Page Size:
@@ -51,26 +51,26 @@ export class AppComponent {
 
   public columnDefs: ColDef[] = [
     {
-      headerName: "Athlete",
-      field: "athlete",
+      headerName: 'Athlete',
+      field: 'athlete',
       minWidth: 170,
       checkboxSelection: checkboxSelection,
       headerCheckboxSelection: headerCheckboxSelection,
     },
-    { field: "age" },
-    { field: "country" },
-    { field: "year" },
-    { field: "date" },
-    { field: "sport" },
-    { field: "gold" },
-    { field: "silver" },
-    { field: "bronze" },
-    { field: "total" },
+    { field: 'age' },
+    { field: 'country' },
+    { field: 'year' },
+    { field: 'date' },
+    { field: 'sport' },
+    { field: 'gold' },
+    { field: 'silver' },
+    { field: 'bronze' },
+    { field: 'total' },
   ];
   public autoGroupColumnDef: ColDef = {
-    headerName: "Group",
+    headerName: 'Group',
     minWidth: 170,
-    field: "athlete",
+    field: 'athlete',
     valueGetter: function (params) {
       if (params.node!.group) {
         return params.node!.key;
@@ -79,7 +79,7 @@ export class AppComponent {
       }
     },
     headerCheckboxSelection: true,
-    cellRenderer: "agGroupCellRenderer",
+    cellRenderer: 'agGroupCellRenderer',
     cellRendererParams: {
       checkbox: true,
     },
@@ -95,14 +95,14 @@ export class AppComponent {
     flex: 1,
     minWidth: 100,
   };
-  public rowSelection = "multiple";
-  public rowGroupPanelShow = "always";
-  public pivotPanelShow = "always";
+  public rowSelection = 'multiple';
+  public rowGroupPanelShow = 'always';
+  public pivotPanelShow = 'always';
   public paginationPageSize = 10;
   public paginationNumberFormatter: (
     params: PaginationNumberFormatterParams
-  ) => string = function (params) {
-    return "[" + params.value.toLocaleString() + "]";
+  ) => string = function (params: PaginationNumberFormatterParams) {
+    return '[' + params.value.toLocaleString() + ']';
   };
   public rowData!: any[];
 
@@ -113,7 +113,7 @@ export class AppComponent {
   }
 
   onPageSizeChanged() {
-    var value = (document.getElementById("page-size") as HTMLInputElement)
+    var value = (document.getElementById('page-size') as HTMLInputElement)
       .value;
     this.gridApi.paginationSetPageSize(Number(value));
   }
@@ -122,7 +122,7 @@ export class AppComponent {
     this.gridApi = params.api;
 
     this.http
-      .get<any[]>("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      .get<any[]>('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .subscribe((data) => {
         this.rowData = data;
       });

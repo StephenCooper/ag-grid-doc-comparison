@@ -1,9 +1,9 @@
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
-import { AgGridVue } from "ag-grid-vue";
-import Vue from "vue";
-import CountryCellRenderer from "./countryCellRendererVue.js";
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import 'ag-grid-enterprise';
+import { AgGridVue } from 'ag-grid-vue';
+import Vue from 'vue';
+import CountryCellRenderer from './countryCellRendererVue.js';
 
 const VueExample = {
   template: `
@@ -27,25 +27,25 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
     CountryCellRenderer,
   },
   data: function () {
     return {
       columnDefs: [
         {
-          headerName: "No Cell Renderer",
-          field: "country",
-          cellRenderer: "CountryCellRenderer",
-          filter: "agSetColumnFilter",
+          headerName: 'No Cell Renderer',
+          field: 'country',
+          cellRenderer: 'CountryCellRenderer',
+          filter: 'agSetColumnFilter',
           filterParams: {},
         },
         {
-          headerName: "With Cell Renderers",
-          field: "country",
-          cellRenderer: "CountryCellRenderer",
-          filter: "agSetColumnFilter",
-          filterParams: { cellRenderer: "CountryCellRenderer" },
+          headerName: 'With Cell Renderers',
+          field: 'country',
+          cellRenderer: 'CountryCellRenderer',
+          filter: 'agSetColumnFilter',
+          filterParams: { cellRenderer: 'CountryCellRenderer' },
         },
       ],
       gridApi: null,
@@ -65,11 +65,11 @@ const VueExample = {
     this.context = {
       COUNTRY_CODES: COUNTRY_CODES,
     };
-    this.sideBar = "filters";
+    this.sideBar = 'filters';
   },
   methods: {
     onFirstDataRendered(params) {
-      params.api.getToolPanelInstance("filters").expandFilters();
+      params.api.getToolPanelInstance('filters').expandFilters();
     },
     printFilterModel() {
       const filterModel = this.gridApi.getFilterModel();
@@ -87,7 +87,7 @@ const VueExample = {
         params.api.setRowData(dataWithFlags);
       };
 
-      fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
         .then((resp) => resp.json())
         .then((data) => updateData(data));
     },
@@ -95,30 +95,30 @@ const VueExample = {
 };
 
 const COUNTRY_CODES = {
-  Ireland: "ie",
-  Luxembourg: "lu",
-  Belgium: "be",
-  Spain: "es",
-  France: "fr",
-  Germany: "de",
-  Sweden: "se",
-  Italy: "it",
-  Greece: "gr",
-  Iceland: "is",
-  Portugal: "pt",
-  Malta: "mt",
-  Norway: "no",
-  Brazil: "br",
-  Argentina: "ar",
-  Colombia: "co",
-  Peru: "pe",
-  Venezuela: "ve",
-  Uruguay: "uy",
+  Ireland: 'ie',
+  Luxembourg: 'lu',
+  Belgium: 'be',
+  Spain: 'es',
+  France: 'fr',
+  Germany: 'de',
+  Sweden: 'se',
+  Italy: 'it',
+  Greece: 'gr',
+  Iceland: 'is',
+  Portugal: 'pt',
+  Malta: 'mt',
+  Norway: 'no',
+  Brazil: 'br',
+  Argentina: 'ar',
+  Colombia: 'co',
+  Peru: 'pe',
+  Venezuela: 've',
+  Uruguay: 'uy',
 };
 
 new Vue({
-  el: "#app",
+  el: '#app',
   components: {
-    "my-component": VueExample,
+    'my-component': VueExample,
   },
 });

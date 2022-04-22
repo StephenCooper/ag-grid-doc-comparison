@@ -1,8 +1,8 @@
-import { Component } from "@angular/core";
-import { AgChartOptions } from "ag-charts-community";
+import { Component } from '@angular/core';
+import { AgChartOptions } from 'ag-charts-community';
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<ag-charts-angular
     style="height: 100%"
     [options]="options"
@@ -16,15 +16,15 @@ export class AppComponent {
       autoSize: true,
       data: getData(),
       title: {
-        text: "People Born",
+        text: 'People Born',
       },
       subtitle: {
-        text: "2008-2020",
+        text: '2008-2020',
       },
       series: [
         {
-          xKey: "year",
-          yKey: "visitors",
+          xKey: 'year',
+          yKey: 'visitors',
         },
       ],
       legend: {

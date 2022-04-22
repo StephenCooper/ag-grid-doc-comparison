@@ -1,4 +1,5 @@
 import {
+  CellPosition,
   ColDef,
   ColGroupDef,
   Grid,
@@ -8,38 +9,38 @@ import {
   NavigateToNextHeaderParams,
   TabToNextCellParams,
   TabToNextHeaderParams,
-} from "ag-grid-community";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
+} from 'ag-grid-community';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 
 const columnDefs: (ColDef | ColGroupDef)[] = [
   {
-    headerName: "Athlete",
+    headerName: 'Athlete',
     children: [
-      { field: "athlete", headerName: "Name", minWidth: 170 },
-      { field: "age" },
-      { field: "country" },
+      { field: 'athlete', headerName: 'Name', minWidth: 170 },
+      { field: 'age' },
+      { field: 'country' },
     ],
   },
 
-  { field: "year" },
-  { field: "sport" },
+  { field: 'year' },
+  { field: 'sport' },
   {
-    headerName: "Medals",
+    headerName: 'Medals',
     children: [
-      { field: "gold" },
-      { field: "silver" },
-      { field: "bronze" },
-      { field: "total" },
+      { field: 'gold' },
+      { field: 'silver' },
+      { field: 'bronze' },
+      { field: 'total' },
     ],
   },
 ];
 
 // define some handy keycode constants
-const KEY_LEFT = "ArrowLeft";
-const KEY_UP = "ArrowUp";
-const KEY_RIGHT = "ArrowRight";
-const KEY_DOWN = "ArrowDown";
+const KEY_LEFT = 'ArrowLeft';
+const KEY_UP = 'ArrowUp';
+const KEY_RIGHT = 'ArrowRight';
+const KEY_DOWN = 'ArrowDown';
 
 const gridOptions: GridOptions = {
   // make all cols editable
@@ -61,23 +62,25 @@ const gridOptions: GridOptions = {
   columnDefs: columnDefs,
 };
 
-function navigateToNextHeader(params: NavigateToNextHeaderParams) {
+function navigateToNextHeader(
+  params: NavigateToNextHeaderParams
+): HeaderPosition | null {
   const nextHeader = params.nextHeaderPosition;
 
-  if (params.key !== "ArrowDown" && params.key !== "ArrowUp") {
+  if (params.key !== 'ArrowDown' && params.key !== 'ArrowUp') {
     return nextHeader;
   }
 
   const processedNextHeader = moveHeaderFocusUpDown(
     params.previousHeaderPosition!,
     params.headerRowCount,
-    params.key === "ArrowDown"
+    params.key === 'ArrowDown'
   );
 
   return processedNextHeader === nextHeader ? null : processedNextHeader;
 }
 
-function tabToNextHeader(params: TabToNextHeaderParams) {
+function tabToNextHeader(params: TabToNextHeaderParams): HeaderPosition | null {
   return moveHeaderFocusUpDown(
     params.previousHeaderPosition!,
     params.headerRowCount,
@@ -118,7 +121,7 @@ function moveHeaderFocusUpDown(
   };
 }
 
-function tabToNextCell(params: TabToNextCellParams) {
+function tabToNextCell(params: TabToNextCellParams): CellPosition | null {
   const previousCell = params.previousCellPosition;
   const lastRowIndex = previousCell.rowIndex;
   let nextRowIndex = params.backwards ? lastRowIndex - 1 : lastRowIndex + 1;
@@ -140,7 +143,9 @@ function tabToNextCell(params: TabToNextCellParams) {
   return result;
 }
 
-function navigateToNextCell(params: NavigateToNextCellParams) {
+function navigateToNextCell(
+  params: NavigateToNextCellParams
+): CellPosition | null {
   const previousCell = params.previousCellPosition,
     suggestedNextCell = params.nextCellPosition;
   let nextRowIndex, renderedRowCount;
@@ -176,15 +181,15 @@ function navigateToNextCell(params: NavigateToNextCellParams) {
       return suggestedNextCell;
     default:
       throw Error(
-        "this will never happen, navigation is always one of the 4 keys above"
+        'this will never happen, navigation is always one of the 4 keys above'
       );
   }
 }
 
 // setup the grid after the page has finished loading
-const gridDiv = document.querySelector<HTMLElement>("#myGrid")!;
+const gridDiv = document.querySelector<HTMLElement>('#myGrid')!;
 new Grid(gridDiv, gridOptions);
 
-fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
   .then((response) => response.json())
   .then((data) => gridOptions.api!.setRowData(data));

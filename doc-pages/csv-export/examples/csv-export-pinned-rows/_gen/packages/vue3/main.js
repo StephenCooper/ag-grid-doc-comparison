@@ -1,8 +1,8 @@
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
-import { AgGridVue } from "ag-grid-vue3";
-import { createApp } from "vue";
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import 'ag-grid-enterprise';
+import { AgGridVue } from 'ag-grid-vue3';
+import { createApp } from 'vue';
 
 const VueExample = {
   template: `
@@ -39,11 +39,11 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
-      columnDefs: [{ field: "make" }, { field: "model" }, { field: "price" }],
+      columnDefs: [{ field: 'make' }, { field: 'model' }, { field: 'price' }],
       gridApi: null,
       columnApi: null,
       defaultColDef: {
@@ -61,15 +61,15 @@ const VueExample = {
   created() {
     this.popupParent = document.body;
     this.pinnedTopRowData = [
-      { make: "Top Make", model: "Top Model", price: 0 },
+      { make: 'Top Make', model: 'Top Model', price: 0 },
     ];
     this.pinnedBottomRowData = [
-      { make: "Bottom Make", model: "Bottom Model", price: 10101010 },
+      { make: 'Bottom Make', model: 'Bottom Model', price: 10101010 },
     ];
     this.rowData = [
-      { make: "Toyota", model: "Celica", price: 35000 },
-      { make: "Ford", model: "Mondeo", price: 32000 },
-      { make: "Porsche", model: "Boxter", price: 72000 },
+      { make: 'Toyota', model: 'Celica', price: 35000 },
+      { make: 'Ford', model: 'Mondeo', price: 32000 },
+      { make: 'Porsche', model: 'Boxster', price: 72000 },
     ];
   },
   methods: {
@@ -77,7 +77,7 @@ const VueExample = {
       this.gridApi.exportDataAsCsv(getParams());
     },
     onBtnUpdate() {
-      document.querySelector("#csvResult").value = this.gridApi.getDataAsCsv(
+      document.querySelector('#csvResult').value = this.gridApi.getDataAsCsv(
         getParams()
       );
     },
@@ -89,15 +89,15 @@ const VueExample = {
 };
 
 window.getBoolean = function getBoolean(id) {
-  var field = document.querySelector("#" + id);
+  var field = document.querySelector('#' + id);
   return !!field.checked;
 };
 
 window.getParams = function getParams() {
   return {
-    skipPinnedTop: getBoolean("skipPinnedTop"),
-    skipPinnedBottom: getBoolean("skipPinnedBottom"),
+    skipPinnedTop: getBoolean('skipPinnedTop'),
+    skipPinnedBottom: getBoolean('skipPinnedBottom'),
   };
 };
 
-createApp(VueExample).mount("#app");
+createApp(VueExample).mount('#app');

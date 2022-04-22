@@ -1,8 +1,8 @@
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
-import { AgGridVue } from "ag-grid-vue";
-import Vue from "vue";
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import 'ag-grid-enterprise';
+import { AgGridVue } from 'ag-grid-vue';
+import Vue from 'vue';
 
 const VueExample = {
   template: `
@@ -24,21 +24,21 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
         {
-          field: "athlete",
-          filter: "agMultiColumnFilter",
+          field: 'athlete',
+          filter: 'agMultiColumnFilter',
           filterParams: {
             filters: [
               {
-                filter: "agTextColumnFilter",
-                filterParams: { buttons: ["apply", "clear"] },
+                filter: 'agTextColumnFilter',
+                filterParams: { buttons: ['apply', 'clear'] },
               },
-              { filter: "agSetColumnFilter" },
+              { filter: 'agSetColumnFilter' },
             ],
           },
         },
@@ -49,7 +49,7 @@ const VueExample = {
         flex: 1,
         minWidth: 200,
         resizable: true,
-        menuTabs: ["filterMenuTab"],
+        menuTabs: ['filterMenuTab'],
       },
       rowData: null,
     };
@@ -58,16 +58,16 @@ const VueExample = {
   methods: {
     getTextModel() {
       var textFilter = this.gridApi
-        .getFilterInstance("athlete")
+        .getFilterInstance('athlete')
         .getChildFilterInstance(0);
-      console.log("Current Text Filter model: ", textFilter.getModel());
+      console.log('Current Text Filter model: ', textFilter.getModel());
     },
     getSetMiniFilter() {
       var setFilter = this.gridApi
-        .getFilterInstance("athlete")
+        .getFilterInstance('athlete')
         .getChildFilterInstance(1);
       console.log(
-        "Current Set Filter search text: ",
+        'Current Set Filter search text: ',
         setFilter.getMiniFilter()
       );
     },
@@ -77,7 +77,7 @@ const VueExample = {
 
       const updateData = (data) => params.api.setRowData(data);
 
-      fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
         .then((resp) => resp.json())
         .then((data) => updateData(data));
     },
@@ -85,8 +85,8 @@ const VueExample = {
 };
 
 new Vue({
-  el: "#app",
+  el: '#app',
   components: {
-    "my-component": VueExample,
+    'my-component': VueExample,
   },
 });

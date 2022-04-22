@@ -1,10 +1,10 @@
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine-dark.css";
-import { AgGridVue } from "@ag-grid-community/vue3";
-import { RowGroupingModule } from "@ag-grid-enterprise/row-grouping";
-import { ServerSideRowModelModule } from "@ag-grid-enterprise/server-side-row-model";
-import { createApp } from "vue";
+import { ModuleRegistry } from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine-dark.css';
+import { AgGridVue } from '@ag-grid-community/vue3';
+import { RowGroupingModule } from '@ag-grid-enterprise/row-grouping';
+import { ServerSideRowModelModule } from '@ag-grid-enterprise/server-side-row-model';
+import { createApp } from 'vue';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([ServerSideRowModelModule, RowGroupingModule]);
@@ -16,7 +16,7 @@ const VueExample = {
                 <div style="margin-bottom: 5px;">
                     <button v-on:click="refreshCache([])">Refresh Top Level</button>
                     <button v-on:click="refreshCache(['Canada'])">Refresh [Canada]</button>
-                    <button v-on:click="refreshCache(['Canada',2002])">Refresh [Canada,2002]</button>
+                    <button v-on:click="refreshCache(['Canada','2002'])">Refresh [Canada,2002]</button>
                     <button v-on:click="getBlockState()">Print Block State</button>
                     <label><input type="checkbox" id="purge"> Purge</label>
                 </div>
@@ -38,17 +38,17 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
-        { field: "country", rowGroup: true, enableRowGroup: true, hide: true },
-        { field: "year", rowGroup: true, enableRowGroup: true, hide: true },
-        { field: "version" },
-        { field: "gold", aggFunc: "sum" },
-        { field: "silver", aggFunc: "sum" },
-        { field: "bronze", aggFunc: "sum" },
+        { field: 'country', rowGroup: true, enableRowGroup: true, hide: true },
+        { field: 'year', rowGroup: true, enableRowGroup: true, hide: true },
+        { field: 'version' },
+        { field: 'gold', aggFunc: 'sum' },
+        { field: 'silver', aggFunc: 'sum' },
+        { field: 'bronze', aggFunc: 'sum' },
       ],
       gridApi: null,
       columnApi: null,
@@ -68,16 +68,16 @@ const VueExample = {
     this.autoGroupColumnDef = {
       flex: 1,
       minWidth: 280,
-      field: "athlete",
+      field: 'athlete',
     };
-    this.rowModelType = "serverSide";
-    this.serverSideStoreType = "full";
-    this.rowGroupPanelShow = "always";
+    this.rowModelType = 'serverSide';
+    this.serverSideStoreType = 'full';
+    this.rowGroupPanelShow = 'always';
   },
   methods: {
     refreshCache(route) {
       versionCounter++;
-      var purge = document.querySelector("#purge").checked === true;
+      var purge = document.querySelector('#purge').checked === true;
       this.gridApi.refreshServerSideStore({ route: route, purge: purge });
     },
     getBlockState() {
@@ -97,7 +97,7 @@ const VueExample = {
         params.api.setServerSideDatasource(datasource);
       };
 
-      fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
         .then((resp) => resp.json())
         .then((data) => updateData(data));
     },
@@ -107,13 +107,13 @@ const VueExample = {
 window.getServerSideDatasource = function getServerSideDatasource(server) {
   return {
     getRows: function (params) {
-      console.log("[Datasource] - rows requested by grid: ", params.request);
+      console.log('[Datasource] - rows requested by grid: ', params.request);
       var response = server.getData(params.request);
       response.rows = response.rows.map(function (item) {
         var res = {};
         Object.assign(res, item);
         res.version =
-          versionCounter + " - " + versionCounter + " - " + versionCounter;
+          versionCounter + ' - ' + versionCounter + ' - ' + versionCounter;
         return res;
       });
       // adding delay to simulate real server call
@@ -135,4 +135,4 @@ window.getServerSideDatasource = function getServerSideDatasource(server) {
 
 var versionCounter = 1;
 
-createApp(VueExample).mount("#app");
+createApp(VueExample).mount('#app');

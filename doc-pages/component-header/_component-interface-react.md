@@ -3,7 +3,13 @@
 |
 |The interface for a custom header component is as follows:
 |
-|`ts |interface IHeaderReactComp { | // Gets called when a new Column Definition has been set for this header. | // If you handle the refresh of your header return true otherwise return false and the grid will re-create your header from scratch. | refresh?(params: IHeaderParams): boolean; |} |`
+|```ts
+|interface IHeaderReactComp {
+|    // Gets called when a new Column Definition has been set for this header.
+|    // If you handle the refresh of your header return true otherwise return false and the grid will re-create your header from scratch.
+|    refresh?(params: IHeaderParams): boolean;
+|}
+|```
 |
 |[[note]]
 ||Note that if you're using Hooks for Grid Components that have lifecycle/callbacks that the
@@ -13,7 +19,7 @@
 ||Please refer to the [Hook](/react-hooks/) documentation (or the examples on this page) for more information.
 |
 |[[note]]
-||Implementing `refresh` is entirely optional - if you omit it then the `props` of the Custom Header Component will get updated when changes occur
+||Implementing `refresh` is entirely optional - if you omit it then the `props` of the Custom Header Component will get updated when changes occur 
 ||as per the normal React lifecycle.
 ||
 |

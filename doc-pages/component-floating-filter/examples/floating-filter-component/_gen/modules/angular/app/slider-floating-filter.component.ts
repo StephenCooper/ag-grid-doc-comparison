@@ -1,10 +1,10 @@
-import { AgFrameworkComponent } from "@ag-grid-community/angular";
+import { AgFrameworkComponent } from '@ag-grid-community/angular';
 import {
   IFloatingFilter,
   IFloatingFilterParams,
   NumberFilterModel,
-} from "@ag-grid-community/core";
-import { Component } from "@angular/core";
+} from '@ag-grid-community/core';
+import { Component } from '@angular/core';
 
 export interface SliderFloatingFilterParams extends IFloatingFilterParams {
   value: number;
@@ -23,8 +23,7 @@ export interface SliderFloatingFilterParams extends IFloatingFilterParams {
   />`,
 })
 export class SliderFloatingFilter
-  implements IFloatingFilter, AgFrameworkComponent<SliderFloatingFilterParams>
-{
+  implements IFloatingFilter, AgFrameworkComponent<SliderFloatingFilterParams> {
   private params!: SliderFloatingFilterParams;
 
   public maxValue!: number;
@@ -39,7 +38,7 @@ export class SliderFloatingFilter
   valueChanged() {
     const valueToUse = this.currentValue === 0 ? null : this.currentValue;
     this.params.parentFilterInstance(function (instance) {
-      instance.onFloatingFilterChanged("greaterThan", valueToUse);
+      instance.onFloatingFilterChanged('greaterThan', valueToUse);
     });
   }
 

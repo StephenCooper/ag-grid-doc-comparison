@@ -1,10 +1,10 @@
 function getData() {
   const rowData = [
     {
-      name: "Michael Phelps",
+      name: 'Michael Phelps',
       person: {
         age: 23,
-        country: "United States",
+        country: 'United States',
       },
       medals: {
         gold: 8,
@@ -13,10 +13,10 @@ function getData() {
       },
     },
     {
-      name: "Michael Phelps",
+      name: 'Michael Phelps',
       person: {
         age: 19,
-        country: "United States",
+        country: 'United States',
       },
       medals: {
         gold: 6,
@@ -25,10 +25,10 @@ function getData() {
       },
     },
     {
-      name: "Michael Phelps",
+      name: 'Michael Phelps',
       person: {
         age: 27,
-        country: "United States",
+        country: 'United States',
       },
       medals: {
         gold: 4,
@@ -37,10 +37,10 @@ function getData() {
       },
     },
     {
-      name: "Natalie Coughlin",
+      name: 'Natalie Coughlin',
       person: {
         age: 25,
-        country: "United States",
+        country: 'United States',
       },
       medals: {
         gold: 1,
@@ -49,10 +49,10 @@ function getData() {
       },
     },
     {
-      name: "Aleksey Nemov",
+      name: 'Aleksey Nemov',
       person: {
         age: 24,
-        country: "Russia",
+        country: 'Russia',
       },
       medals: {
         gold: 2,
@@ -61,10 +61,10 @@ function getData() {
       },
     },
     {
-      name: "Alicia Coutts",
+      name: 'Alicia Coutts',
       person: {
         age: 24,
-        country: "Australia",
+        country: 'Australia',
       },
       medals: {
         gold: 1,
@@ -73,10 +73,10 @@ function getData() {
       },
     },
     {
-      name: "Missy Franklin",
+      name: 'Missy Franklin',
       person: {
         age: 17,
-        country: "United States",
+        country: 'United States',
       },
       medals: {
         gold: 4,
@@ -85,10 +85,10 @@ function getData() {
       },
     },
     {
-      name: "Ryan Lochte",
+      name: 'Ryan Lochte',
       person: {
         age: 27,
-        country: "United States",
+        country: 'United States',
       },
       medals: {
         gold: 2,
@@ -97,10 +97,10 @@ function getData() {
       },
     },
     {
-      name: "Allison Schmitt",
+      name: 'Allison Schmitt',
       person: {
         age: 22,
-        country: "United States",
+        country: 'United States',
       },
       medals: {
         gold: 3,
@@ -109,10 +109,10 @@ function getData() {
       },
     },
     {
-      name: "Natalie Coughlin",
+      name: 'Natalie Coughlin',
       person: {
         age: 21,
-        country: "United States",
+        country: 'United States',
       },
       medals: {
         gold: 2,
@@ -121,10 +121,10 @@ function getData() {
       },
     },
     {
-      name: "Ian Thorpe",
+      name: 'Ian Thorpe',
       person: {
         age: 17,
-        country: "Australia",
+        country: 'Australia',
       },
       medals: {
         gold: 3,
@@ -133,10 +133,10 @@ function getData() {
       },
     },
     {
-      name: "Dara Torres",
+      name: 'Dara Torres',
       person: {
         age: 33,
-        country: "United States",
+        country: 'United States',
       },
       medals: {
         gold: 2,
@@ -145,10 +145,10 @@ function getData() {
       },
     },
     {
-      name: "Cindy Klassen",
+      name: 'Cindy Klassen',
       person: {
         age: 26,
-        country: "Canada",
+        country: 'Canada',
       },
       medals: {
         gold: 1,
@@ -157,10 +157,10 @@ function getData() {
       },
     },
     {
-      name: "Nastia Liukin",
+      name: 'Nastia Liukin',
       person: {
         age: 18,
-        country: "United States",
+        country: 'United States',
       },
       medals: {
         gold: 1,
@@ -169,10 +169,10 @@ function getData() {
       },
     },
     {
-      name: "Marit Bjørgen",
+      name: 'Marit Bjørgen',
       person: {
         age: 29,
-        country: "Norway",
+        country: 'Norway',
       },
       medals: {
         gold: 3,
@@ -181,10 +181,10 @@ function getData() {
       },
     },
     {
-      name: "Sun Yang",
+      name: 'Sun Yang',
       person: {
         age: 20,
-        country: "China",
+        country: 'China',
       },
       medals: {
         gold: 2,
@@ -193,10 +193,10 @@ function getData() {
       },
     },
     {
-      name: "Kirsty Coventry",
+      name: 'Kirsty Coventry',
       person: {
         age: 24,
-        country: "Zimbabwe",
+        country: 'Zimbabwe',
       },
       medals: {
         gold: 1,
@@ -205,10 +205,10 @@ function getData() {
       },
     },
     {
-      name: "Libby Lenton-Trickett",
+      name: 'Libby Lenton-Trickett',
       person: {
         age: 23,
-        country: "Australia",
+        country: 'Australia',
       },
       medals: {
         gold: 2,
@@ -217,10 +217,10 @@ function getData() {
       },
     },
     {
-      name: "Ryan Lochte",
+      name: 'Ryan Lochte',
       person: {
         age: 24,
-        country: "United States",
+        country: 'United States',
       },
       medals: {
         gold: 2,
@@ -229,10 +229,10 @@ function getData() {
       },
     },
     {
-      name: "Inge de Bruijn",
+      name: 'Inge de Bruijn',
       person: {
         age: 30,
-        country: "Netherlands",
+        country: 'Netherlands',
       },
       medals: {
         gold: 1,
@@ -241,10 +241,10 @@ function getData() {
       },
     },
     {
-      name: "Petria Thomas",
+      name: 'Petria Thomas',
       person: {
         age: 28,
-        country: "Australia",
+        country: 'Australia',
       },
       medals: {
         gold: 3,
@@ -253,10 +253,10 @@ function getData() {
       },
     },
     {
-      name: "Ian Thorpe",
+      name: 'Ian Thorpe',
       person: {
         age: 21,
-        country: "Australia",
+        country: 'Australia',
       },
       medals: {
         gold: 2,
@@ -265,10 +265,10 @@ function getData() {
       },
     },
     {
-      name: "Inge de Bruijn",
+      name: 'Inge de Bruijn',
       person: {
         age: 27,
-        country: "Netherlands",
+        country: 'Netherlands',
       },
       medals: {
         gold: 3,
@@ -277,10 +277,10 @@ function getData() {
       },
     },
     {
-      name: "Gary Hall Jr.",
+      name: 'Gary Hall Jr.',
       person: {
         age: 25,
-        country: "United States",
+        country: 'United States',
       },
       medals: {
         gold: 2,
@@ -289,10 +289,10 @@ function getData() {
       },
     },
     {
-      name: "Michael Klim",
+      name: 'Michael Klim',
       person: {
         age: 23,
-        country: "Australia",
+        country: 'Australia',
       },
       medals: {
         gold: 2,
@@ -304,7 +304,7 @@ function getData() {
       name: "Susie O'Neill",
       person: {
         age: 27,
-        country: "Australia",
+        country: 'Australia',
       },
       medals: {
         gold: 1,
@@ -313,10 +313,10 @@ function getData() {
       },
     },
     {
-      name: "Jenny Thompson",
+      name: 'Jenny Thompson',
       person: {
         age: 27,
-        country: "United States",
+        country: 'United States',
       },
       medals: {
         gold: 3,
@@ -325,10 +325,10 @@ function getData() {
       },
     },
     {
-      name: "Pieter van den Hoogenband",
+      name: 'Pieter van den Hoogenband',
       person: {
         age: 22,
-        country: "Netherlands",
+        country: 'Netherlands',
       },
       medals: {
         gold: 2,
@@ -337,10 +337,10 @@ function getData() {
       },
     },
     {
-      name: "An Hyeon-Su",
+      name: 'An Hyeon-Su',
       person: {
         age: 20,
-        country: "South Korea",
+        country: 'South Korea',
       },
       medals: {
         gold: 3,
@@ -349,10 +349,10 @@ function getData() {
       },
     },
     {
-      name: "Aliya Mustafina",
+      name: 'Aliya Mustafina',
       person: {
         age: 17,
-        country: "Russia",
+        country: 'Russia',
       },
       medals: {
         gold: 1,
@@ -361,10 +361,10 @@ function getData() {
       },
     },
     {
-      name: "Shawn Johnson",
+      name: 'Shawn Johnson',
       person: {
         age: 16,
-        country: "United States",
+        country: 'United States',
       },
       medals: {
         gold: 1,
@@ -373,10 +373,10 @@ function getData() {
       },
     },
     {
-      name: "Dmitry Sautin",
+      name: 'Dmitry Sautin',
       person: {
         age: 26,
-        country: "Russia",
+        country: 'Russia',
       },
       medals: {
         gold: 1,
@@ -385,10 +385,10 @@ function getData() {
       },
     },
     {
-      name: "Leontien Zijlaard-van Moorsel",
+      name: 'Leontien Zijlaard-van Moorsel',
       person: {
         age: 30,
-        country: "Netherlands",
+        country: 'Netherlands',
       },
       medals: {
         gold: 3,
@@ -397,10 +397,10 @@ function getData() {
       },
     },
     {
-      name: "Petter Northug Jr.",
+      name: 'Petter Northug Jr.',
       person: {
         age: 24,
-        country: "Norway",
+        country: 'Norway',
       },
       medals: {
         gold: 2,
@@ -409,10 +409,10 @@ function getData() {
       },
     },
     {
-      name: "Ole Einar Bjørndalen",
+      name: 'Ole Einar Bjørndalen',
       person: {
         age: 28,
-        country: "Norway",
+        country: 'Norway',
       },
       medals: {
         gold: 4,
@@ -421,10 +421,10 @@ function getData() {
       },
     },
     {
-      name: "Janica Kostelic",
+      name: 'Janica Kostelic',
       person: {
         age: 20,
-        country: "Croatia",
+        country: 'Croatia',
       },
       medals: {
         gold: 3,
@@ -433,10 +433,10 @@ function getData() {
       },
     },
     {
-      name: "Nathan Adrian",
+      name: 'Nathan Adrian',
       person: {
         age: 23,
-        country: "United States",
+        country: 'United States',
       },
       medals: {
         gold: 2,
@@ -445,10 +445,10 @@ function getData() {
       },
     },
     {
-      name: "Yannick Agnel",
+      name: 'Yannick Agnel',
       person: {
         age: 20,
-        country: "France",
+        country: 'France',
       },
       medals: {
         gold: 2,
@@ -457,10 +457,10 @@ function getData() {
       },
     },
     {
-      name: "Brittany Elmslie",
+      name: 'Brittany Elmslie',
       person: {
         age: 18,
-        country: "Australia",
+        country: 'Australia',
       },
       medals: {
         gold: 1,
@@ -469,10 +469,10 @@ function getData() {
       },
     },
     {
-      name: "Matt Grevers",
+      name: 'Matt Grevers',
       person: {
         age: 27,
-        country: "United States",
+        country: 'United States',
       },
       medals: {
         gold: 2,
@@ -481,10 +481,10 @@ function getData() {
       },
     },
     {
-      name: "Ryosuke Irie",
+      name: 'Ryosuke Irie',
       person: {
         age: 22,
-        country: "Japan",
+        country: 'Japan',
       },
       medals: {
         gold: 0,
@@ -493,10 +493,10 @@ function getData() {
       },
     },
     {
-      name: "Cullen Jones",
+      name: 'Cullen Jones',
       person: {
         age: 28,
-        country: "United States",
+        country: 'United States',
       },
       medals: {
         gold: 1,
@@ -505,10 +505,10 @@ function getData() {
       },
     },
     {
-      name: "Ranomi Kromowidjojo",
+      name: 'Ranomi Kromowidjojo',
       person: {
         age: 21,
-        country: "Netherlands",
+        country: 'Netherlands',
       },
       medals: {
         gold: 2,
@@ -517,10 +517,10 @@ function getData() {
       },
     },
     {
-      name: "Camille Muffat",
+      name: 'Camille Muffat',
       person: {
         age: 22,
-        country: "France",
+        country: 'France',
       },
       medals: {
         gold: 1,
@@ -529,10 +529,10 @@ function getData() {
       },
     },
     {
-      name: "Mel Schlanger",
+      name: 'Mel Schlanger',
       person: {
         age: 25,
-        country: "Australia",
+        country: 'Australia',
       },
       medals: {
         gold: 1,
@@ -541,10 +541,10 @@ function getData() {
       },
     },
     {
-      name: "Emily Seebohm",
+      name: 'Emily Seebohm',
       person: {
         age: 20,
-        country: "Australia",
+        country: 'Australia',
       },
       medals: {
         gold: 1,
@@ -553,10 +553,10 @@ function getData() {
       },
     },
     {
-      name: "Rebecca Soni",
+      name: 'Rebecca Soni',
       person: {
         age: 25,
-        country: "United States",
+        country: 'United States',
       },
       medals: {
         gold: 2,
@@ -565,10 +565,10 @@ function getData() {
       },
     },
     {
-      name: "Satomi Suzuki",
+      name: 'Satomi Suzuki',
       person: {
         age: 21,
-        country: "Japan",
+        country: 'Japan',
       },
       medals: {
         gold: 0,
@@ -577,10 +577,10 @@ function getData() {
       },
     },
     {
-      name: "Dana Vollmer",
+      name: 'Dana Vollmer',
       person: {
         age: 24,
-        country: "United States",
+        country: 'United States',
       },
       medals: {
         gold: 3,
@@ -589,10 +589,10 @@ function getData() {
       },
     },
     {
-      name: "Alain Bernard",
+      name: 'Alain Bernard',
       person: {
         age: 25,
-        country: "France",
+        country: 'France',
       },
       medals: {
         gold: 1,
@@ -601,10 +601,10 @@ function getData() {
       },
     },
     {
-      name: "László Cseh Jr.",
+      name: 'László Cseh Jr.',
       person: {
         age: 22,
-        country: "Hungary",
+        country: 'Hungary',
       },
       medals: {
         gold: 0,
@@ -613,10 +613,10 @@ function getData() {
       },
     },
     {
-      name: "Matt Grevers",
+      name: 'Matt Grevers',
       person: {
         age: 23,
-        country: "United States",
+        country: 'United States',
       },
       medals: {
         gold: 2,
@@ -625,10 +625,10 @@ function getData() {
       },
     },
     {
-      name: "Margaret Hoelzer",
+      name: 'Margaret Hoelzer',
       person: {
         age: 25,
-        country: "United States",
+        country: 'United States',
       },
       medals: {
         gold: 0,
@@ -637,10 +637,10 @@ function getData() {
       },
     },
     {
-      name: "Katie Hoff",
+      name: 'Katie Hoff',
       person: {
         age: 19,
-        country: "United States",
+        country: 'United States',
       },
       medals: {
         gold: 0,
@@ -649,10 +649,10 @@ function getData() {
       },
     },
     {
-      name: "Leisel Jones",
+      name: 'Leisel Jones',
       person: {
         age: 22,
-        country: "Australia",
+        country: 'Australia',
       },
       medals: {
         gold: 2,
@@ -661,10 +661,10 @@ function getData() {
       },
     },
     {
-      name: "Kosuke Kitajima",
+      name: 'Kosuke Kitajima',
       person: {
         age: 25,
-        country: "Japan",
+        country: 'Japan',
       },
       medals: {
         gold: 2,
@@ -673,10 +673,10 @@ function getData() {
       },
     },
     {
-      name: "Andrew Lauterstein",
+      name: 'Andrew Lauterstein',
       person: {
         age: 21,
-        country: "Australia",
+        country: 'Australia',
       },
       medals: {
         gold: 0,
@@ -685,10 +685,10 @@ function getData() {
       },
     },
     {
-      name: "Jason Lezak",
+      name: 'Jason Lezak',
       person: {
         age: 32,
-        country: "United States",
+        country: 'United States',
       },
       medals: {
         gold: 2,
@@ -697,10 +697,10 @@ function getData() {
       },
     },
     {
-      name: "Pang Jiaying",
+      name: 'Pang Jiaying',
       person: {
         age: 23,
-        country: "China",
+        country: 'China',
       },
       medals: {
         gold: 0,
@@ -709,10 +709,10 @@ function getData() {
       },
     },
     {
-      name: "Aaron Peirsol",
+      name: 'Aaron Peirsol',
       person: {
         age: 25,
-        country: "United States",
+        country: 'United States',
       },
       medals: {
         gold: 2,
@@ -721,10 +721,10 @@ function getData() {
       },
     },
     {
-      name: "Steph Rice",
+      name: 'Steph Rice',
       person: {
         age: 20,
-        country: "Australia",
+        country: 'Australia',
       },
       medals: {
         gold: 3,
@@ -733,10 +733,10 @@ function getData() {
       },
     },
     {
-      name: "Jess Schipper",
+      name: 'Jess Schipper',
       person: {
         age: 21,
-        country: "Australia",
+        country: 'Australia',
       },
       medals: {
         gold: 1,
@@ -745,10 +745,10 @@ function getData() {
       },
     },
     {
-      name: "Rebecca Soni",
+      name: 'Rebecca Soni',
       person: {
         age: 21,
-        country: "United States",
+        country: 'United States',
       },
       medals: {
         gold: 1,
@@ -757,10 +757,10 @@ function getData() {
       },
     },
     {
-      name: "Eamon Sullivan",
+      name: 'Eamon Sullivan',
       person: {
         age: 22,
-        country: "Australia",
+        country: 'Australia',
       },
       medals: {
         gold: 0,
@@ -769,10 +769,10 @@ function getData() {
       },
     },
     {
-      name: "Dara Torres",
+      name: 'Dara Torres',
       person: {
         age: 41,
-        country: "United States",
+        country: 'United States',
       },
       medals: {
         gold: 0,
@@ -781,10 +781,10 @@ function getData() {
       },
     },
     {
-      name: "Amanda Beard",
+      name: 'Amanda Beard',
       person: {
         age: 22,
-        country: "United States",
+        country: 'United States',
       },
       medals: {
         gold: 1,
@@ -793,10 +793,10 @@ function getData() {
       },
     },
     {
-      name: "Antje Buschschulte",
+      name: 'Antje Buschschulte',
       person: {
         age: 25,
-        country: "Germany",
+        country: 'Germany',
       },
       medals: {
         gold: 0,
@@ -805,10 +805,10 @@ function getData() {
       },
     },
     {
-      name: "Kirsty Coventry",
+      name: 'Kirsty Coventry',
       person: {
         age: 20,
-        country: "Zimbabwe",
+        country: 'Zimbabwe',
       },
       medals: {
         gold: 1,
@@ -817,10 +817,10 @@ function getData() {
       },
     },
     {
-      name: "Ian Crocker",
+      name: 'Ian Crocker',
       person: {
         age: 21,
-        country: "United States",
+        country: 'United States',
       },
       medals: {
         gold: 1,
@@ -829,10 +829,10 @@ function getData() {
       },
     },
     {
-      name: "Grant Hackett",
+      name: 'Grant Hackett',
       person: {
         age: 24,
-        country: "Australia",
+        country: 'Australia',
       },
       medals: {
         gold: 1,
@@ -841,10 +841,10 @@ function getData() {
       },
     },
     {
-      name: "Brendan Hansen",
+      name: 'Brendan Hansen',
       person: {
         age: 22,
-        country: "United States",
+        country: 'United States',
       },
       medals: {
         gold: 1,
@@ -853,10 +853,10 @@ function getData() {
       },
     },
     {
-      name: "Jodie Henry",
+      name: 'Jodie Henry',
       person: {
         age: 20,
-        country: "Australia",
+        country: 'Australia',
       },
       medals: {
         gold: 3,
@@ -865,10 +865,10 @@ function getData() {
       },
     },
     {
-      name: "Otylia Jedrzejczak",
+      name: 'Otylia Jedrzejczak',
       person: {
         age: 20,
-        country: "Poland",
+        country: 'Poland',
       },
       medals: {
         gold: 1,
@@ -877,10 +877,10 @@ function getData() {
       },
     },
     {
-      name: "Leisel Jones",
+      name: 'Leisel Jones',
       person: {
         age: 18,
-        country: "Australia",
+        country: 'Australia',
       },
       medals: {
         gold: 1,
@@ -889,10 +889,10 @@ function getData() {
       },
     },
     {
-      name: "Kosuke Kitajima",
+      name: 'Kosuke Kitajima',
       person: {
         age: 21,
-        country: "Japan",
+        country: 'Japan',
       },
       medals: {
         gold: 2,
@@ -901,10 +901,10 @@ function getData() {
       },
     },
     {
-      name: "Laure Manaudou",
+      name: 'Laure Manaudou',
       person: {
         age: 17,
-        country: "France",
+        country: 'France',
       },
       medals: {
         gold: 1,
@@ -913,10 +913,10 @@ function getData() {
       },
     },
     {
-      name: "Aaron Peirsol",
+      name: 'Aaron Peirsol',
       person: {
         age: 21,
-        country: "United States",
+        country: 'United States',
       },
       medals: {
         gold: 3,
@@ -925,10 +925,10 @@ function getData() {
       },
     },
     {
-      name: "Kaitlin Sandeno",
+      name: 'Kaitlin Sandeno',
       person: {
         age: 21,
-        country: "United States",
+        country: 'United States',
       },
       medals: {
         gold: 1,
@@ -937,10 +937,10 @@ function getData() {
       },
     },
     {
-      name: "Roland Schoeman",
+      name: 'Roland Schoeman',
       person: {
         age: 24,
-        country: "South Africa",
+        country: 'South Africa',
       },
       medals: {
         gold: 1,
@@ -949,10 +949,10 @@ function getData() {
       },
     },
     {
-      name: "Pieter van den Hoogenband",
+      name: 'Pieter van den Hoogenband',
       person: {
         age: 26,
-        country: "Netherlands",
+        country: 'Netherlands',
       },
       medals: {
         gold: 1,
@@ -961,10 +961,10 @@ function getData() {
       },
     },
     {
-      name: "Therese Alshammar",
+      name: 'Therese Alshammar',
       person: {
         age: 23,
-        country: "Sweden",
+        country: 'Sweden',
       },
       medals: {
         gold: 0,
@@ -973,10 +973,10 @@ function getData() {
       },
     },
     {
-      name: "Yana Klochkova",
+      name: 'Yana Klochkova',
       person: {
         age: 18,
-        country: "Ukraine",
+        country: 'Ukraine',
       },
       medals: {
         gold: 2,
@@ -985,10 +985,10 @@ function getData() {
       },
     },
     {
-      name: "Lenny Krayzelburg",
+      name: 'Lenny Krayzelburg',
       person: {
         age: 24,
-        country: "United States",
+        country: 'United States',
       },
       medals: {
         gold: 3,
@@ -997,10 +997,10 @@ function getData() {
       },
     },
     {
-      name: "Massimiliano Rosolino",
+      name: 'Massimiliano Rosolino',
       person: {
         age: 22,
-        country: "Italy",
+        country: 'Italy',
       },
       medals: {
         gold: 1,
@@ -1009,10 +1009,10 @@ function getData() {
       },
     },
     {
-      name: "Petria Thomas",
+      name: 'Petria Thomas',
       person: {
         age: 25,
-        country: "Australia",
+        country: 'Australia',
       },
       medals: {
         gold: 0,
@@ -1021,10 +1021,10 @@ function getData() {
       },
     },
     {
-      name: "Matt Welsh",
+      name: 'Matt Welsh',
       person: {
         age: 23,
-        country: "Australia",
+        country: 'Australia',
       },
       medals: {
         gold: 0,
@@ -1033,10 +1033,10 @@ function getData() {
       },
     },
     {
-      name: "Lee Jeong-Su",
+      name: 'Lee Jeong-Su',
       person: {
         age: 20,
-        country: "South Korea",
+        country: 'South Korea',
       },
       medals: {
         gold: 2,
@@ -1045,10 +1045,10 @@ function getData() {
       },
     },
     {
-      name: "Apolo Anton Ohno",
+      name: 'Apolo Anton Ohno',
       person: {
         age: 27,
-        country: "United States",
+        country: 'United States',
       },
       medals: {
         gold: 0,
@@ -1057,10 +1057,10 @@ function getData() {
       },
     },
     {
-      name: "Wang Meng",
+      name: 'Wang Meng',
       person: {
         age: 24,
-        country: "China",
+        country: 'China',
       },
       medals: {
         gold: 3,
@@ -1069,10 +1069,10 @@ function getData() {
       },
     },
     {
-      name: "Jin Seon-Yu",
+      name: 'Jin Seon-Yu',
       person: {
         age: 17,
-        country: "South Korea",
+        country: 'South Korea',
       },
       medals: {
         gold: 3,
@@ -1081,10 +1081,10 @@ function getData() {
       },
     },
     {
-      name: "Lee Ho-Seok",
+      name: 'Lee Ho-Seok',
       person: {
         age: 19,
-        country: "South Korea",
+        country: 'South Korea',
       },
       medals: {
         gold: 1,
@@ -1093,10 +1093,10 @@ function getData() {
       },
     },
     {
-      name: "Apolo Anton Ohno",
+      name: 'Apolo Anton Ohno',
       person: {
         age: 23,
-        country: "United States",
+        country: 'United States',
       },
       medals: {
         gold: 1,
@@ -1105,10 +1105,10 @@ function getData() {
       },
     },
     {
-      name: "Wang Meng",
+      name: 'Wang Meng',
       person: {
         age: 20,
-        country: "China",
+        country: 'China',
       },
       medals: {
         gold: 1,
@@ -1117,10 +1117,10 @@ function getData() {
       },
     },
     {
-      name: "Marc Gagnon",
+      name: 'Marc Gagnon',
       person: {
         age: 26,
-        country: "Canada",
+        country: 'Canada',
       },
       medals: {
         gold: 2,
@@ -1129,10 +1129,10 @@ function getData() {
       },
     },
     {
-      name: "Yang Yang (A)",
+      name: 'Yang Yang (A)',
       person: {
         age: 25,
-        country: "China",
+        country: 'China',
       },
       medals: {
         gold: 2,
@@ -1141,10 +1141,10 @@ function getData() {
       },
     },
     {
-      name: "Stephanie Beckert",
+      name: 'Stephanie Beckert',
       person: {
         age: 21,
-        country: "Germany",
+        country: 'Germany',
       },
       medals: {
         gold: 1,
@@ -1153,10 +1153,10 @@ function getData() {
       },
     },
     {
-      name: "Martina Sáblíková",
+      name: 'Martina Sáblíková',
       person: {
         age: 22,
-        country: "Czech Republic",
+        country: 'Czech Republic',
       },
       medals: {
         gold: 2,
@@ -1165,10 +1165,10 @@ function getData() {
       },
     },
     {
-      name: "Enrico Fabris",
+      name: 'Enrico Fabris',
       person: {
         age: 24,
-        country: "Italy",
+        country: 'Italy',
       },
       medals: {
         gold: 2,
@@ -1177,10 +1177,10 @@ function getData() {
       },
     },
     {
-      name: "Chad Hedrick",
+      name: 'Chad Hedrick',
       person: {
         age: 28,
-        country: "United States",
+        country: 'United States',
       },
       medals: {
         gold: 1,
@@ -1189,10 +1189,10 @@ function getData() {
       },
     },
     {
-      name: "Jochem Uytdehaage",
+      name: 'Jochem Uytdehaage',
       person: {
         age: 25,
-        country: "Netherlands",
+        country: 'Netherlands',
       },
       medals: {
         gold: 2,
@@ -1201,10 +1201,10 @@ function getData() {
       },
     },
     {
-      name: "Sabine Völker",
+      name: 'Sabine Völker',
       person: {
         age: 28,
-        country: "Germany",
+        country: 'Germany',
       },
       medals: {
         gold: 0,
@@ -1213,10 +1213,10 @@ function getData() {
       },
     },
     {
-      name: "Gregor Schlierenzauer",
+      name: 'Gregor Schlierenzauer',
       person: {
         age: 20,
-        country: "Austria",
+        country: 'Austria',
       },
       medals: {
         gold: 1,
@@ -1225,10 +1225,10 @@ function getData() {
       },
     },
     {
-      name: "Lars Bystøl",
+      name: 'Lars Bystøl',
       person: {
         age: 27,
-        country: "Norway",
+        country: 'Norway',
       },
       medals: {
         gold: 1,
@@ -1237,10 +1237,10 @@ function getData() {
       },
     },
     {
-      name: "Johnny Spillane",
+      name: 'Johnny Spillane',
       person: {
         age: 29,
-        country: "United States",
+        country: 'United States',
       },
       medals: {
         gold: 0,
@@ -1249,10 +1249,10 @@ function getData() {
       },
     },
     {
-      name: "Felix Gottwald",
+      name: 'Felix Gottwald',
       person: {
         age: 30,
-        country: "Austria",
+        country: 'Austria',
       },
       medals: {
         gold: 2,
@@ -1261,10 +1261,10 @@ function getData() {
       },
     },
     {
-      name: "Georg Hettich",
+      name: 'Georg Hettich',
       person: {
         age: 27,
-        country: "Germany",
+        country: 'Germany',
       },
       medals: {
         gold: 1,
@@ -1273,10 +1273,10 @@ function getData() {
       },
     },
     {
-      name: "Felix Gottwald",
+      name: 'Felix Gottwald',
       person: {
         age: 26,
-        country: "Austria",
+        country: 'Austria',
       },
       medals: {
         gold: 0,
@@ -1285,10 +1285,10 @@ function getData() {
       },
     },
     {
-      name: "Samppa Lajunen",
+      name: 'Samppa Lajunen',
       person: {
         age: 22,
-        country: "Finland",
+        country: 'Finland',
       },
       medals: {
         gold: 3,
@@ -1297,10 +1297,10 @@ function getData() {
       },
     },
     {
-      name: "Aly Raisman",
+      name: 'Aly Raisman',
       person: {
         age: 18,
-        country: "United States",
+        country: 'United States',
       },
       medals: {
         gold: 2,
@@ -1309,10 +1309,10 @@ function getData() {
       },
     },
     {
-      name: "Kohei Uchimura",
+      name: 'Kohei Uchimura',
       person: {
         age: 23,
-        country: "Japan",
+        country: 'Japan',
       },
       medals: {
         gold: 1,
@@ -1321,10 +1321,10 @@ function getData() {
       },
     },
     {
-      name: "Zou Kai",
+      name: 'Zou Kai',
       person: {
         age: 24,
-        country: "China",
+        country: 'China',
       },
       medals: {
         gold: 2,
@@ -1333,10 +1333,10 @@ function getData() {
       },
     },
     {
-      name: "Cheng Fei",
+      name: 'Cheng Fei',
       person: {
         age: 20,
-        country: "China",
+        country: 'China',
       },
       medals: {
         gold: 1,
@@ -1345,10 +1345,10 @@ function getData() {
       },
     },
     {
-      name: "Yang Wei",
+      name: 'Yang Wei',
       person: {
         age: 28,
-        country: "China",
+        country: 'China',
       },
       medals: {
         gold: 2,
@@ -1357,10 +1357,10 @@ function getData() {
       },
     },
     {
-      name: "Yang Yilin",
+      name: 'Yang Yilin',
       person: {
         age: 15,
-        country: "China",
+        country: 'China',
       },
       medals: {
         gold: 1,
@@ -1369,10 +1369,10 @@ function getData() {
       },
     },
     {
-      name: "Zou Kai",
+      name: 'Zou Kai',
       person: {
         age: 20,
-        country: "China",
+        country: 'China',
       },
       medals: {
         gold: 3,
@@ -1381,10 +1381,10 @@ function getData() {
       },
     },
     {
-      name: "Marian Dragulescu",
+      name: 'Marian Dragulescu',
       person: {
         age: 23,
-        country: "Romania",
+        country: 'Romania',
       },
       medals: {
         gold: 0,
@@ -1393,10 +1393,10 @@ function getData() {
       },
     },
     {
-      name: "Paul Hamm",
+      name: 'Paul Hamm',
       person: {
         age: 21,
-        country: "United States",
+        country: 'United States',
       },
       medals: {
         gold: 1,
@@ -1405,10 +1405,10 @@ function getData() {
       },
     },
     {
-      name: "Carly Patterson",
+      name: 'Carly Patterson',
       person: {
         age: 16,
-        country: "United States",
+        country: 'United States',
       },
       medals: {
         gold: 1,
@@ -1417,10 +1417,10 @@ function getData() {
       },
     },
     {
-      name: "Catalina Ponor",
+      name: 'Catalina Ponor',
       person: {
         age: 16,
-        country: "Romania",
+        country: 'Romania',
       },
       medals: {
         gold: 3,
@@ -1429,10 +1429,10 @@ function getData() {
       },
     },
     {
-      name: "Simona Amânar",
+      name: 'Simona Amânar',
       person: {
         age: 20,
-        country: "Romania",
+        country: 'Romania',
       },
       medals: {
         gold: 2,
@@ -1441,10 +1441,10 @@ function getData() {
       },
     },
     {
-      name: "Svetlana Khorkina",
+      name: 'Svetlana Khorkina',
       person: {
         age: 21,
-        country: "Russia",
+        country: 'Russia',
       },
       medals: {
         gold: 1,
@@ -1453,10 +1453,10 @@ function getData() {
       },
     },
     {
-      name: "Yekaterina Lobaznyuk",
+      name: 'Yekaterina Lobaznyuk',
       person: {
         age: 17,
-        country: "Russia",
+        country: 'Russia',
       },
       medals: {
         gold: 0,
@@ -1465,10 +1465,10 @@ function getData() {
       },
     },
     {
-      name: "Yelena Zamolodchikova",
+      name: 'Yelena Zamolodchikova',
       person: {
         age: 17,
-        country: "Russia",
+        country: 'Russia',
       },
       medals: {
         gold: 2,
@@ -1477,10 +1477,10 @@ function getData() {
       },
     },
     {
-      name: "Guo Shuang",
+      name: 'Guo Shuang',
       person: {
         age: 26,
-        country: "China",
+        country: 'China',
       },
       medals: {
         gold: 0,
@@ -1489,10 +1489,10 @@ function getData() {
       },
     },
     {
-      name: "Chris Hoy",
+      name: 'Chris Hoy',
       person: {
         age: 32,
-        country: "Great Britain",
+        country: 'Great Britain',
       },
       medals: {
         gold: 3,
@@ -1501,10 +1501,10 @@ function getData() {
       },
     },
     {
-      name: "Bradley Wiggins",
+      name: 'Bradley Wiggins',
       person: {
         age: 24,
-        country: "Great Britain",
+        country: 'Great Britain',
       },
       medals: {
         gold: 1,
@@ -1513,10 +1513,10 @@ function getData() {
       },
     },
     {
-      name: "Florian Rousseau",
+      name: 'Florian Rousseau',
       person: {
         age: 26,
-        country: "France",
+        country: 'France',
       },
       medals: {
         gold: 2,
@@ -1525,10 +1525,10 @@ function getData() {
       },
     },
     {
-      name: "Justyna Kowalczyk",
+      name: 'Justyna Kowalczyk',
       person: {
         age: 27,
-        country: "Poland",
+        country: 'Poland',
       },
       medals: {
         gold: 1,
@@ -1537,10 +1537,10 @@ function getData() {
       },
     },
     {
-      name: "Johan Olsson",
+      name: 'Johan Olsson',
       person: {
         age: 29,
-        country: "Sweden",
+        country: 'Sweden',
       },
       medals: {
         gold: 1,
@@ -1549,10 +1549,10 @@ function getData() {
       },
     },
     {
-      name: "Stefania Belmondo",
+      name: 'Stefania Belmondo',
       person: {
         age: 33,
-        country: "Italy",
+        country: 'Italy',
       },
       medals: {
         gold: 1,
@@ -1561,10 +1561,10 @@ function getData() {
       },
     },
     {
-      name: "Yuliya Chepalova",
+      name: 'Yuliya Chepalova',
       person: {
         age: 25,
-        country: "Russia",
+        country: 'Russia',
       },
       medals: {
         gold: 1,
@@ -1573,10 +1573,10 @@ function getData() {
       },
     },
     {
-      name: "Frode Estil",
+      name: 'Frode Estil',
       person: {
         age: 29,
-        country: "Norway",
+        country: 'Norway',
       },
       medals: {
         gold: 2,
@@ -1585,10 +1585,10 @@ function getData() {
       },
     },
     {
-      name: "Bente Skari-Martinsen",
+      name: 'Bente Skari-Martinsen',
       person: {
         age: 29,
-        country: "Norway",
+        country: 'Norway',
       },
       medals: {
         gold: 1,
@@ -1597,10 +1597,10 @@ function getData() {
       },
     },
     {
-      name: "Magdalena Neuner",
+      name: 'Magdalena Neuner',
       person: {
         age: 23,
-        country: "Germany",
+        country: 'Germany',
       },
       medals: {
         gold: 2,
@@ -1609,10 +1609,10 @@ function getData() {
       },
     },
     {
-      name: "Emil Hegle Svendsen",
+      name: 'Emil Hegle Svendsen',
       person: {
         age: 24,
-        country: "Norway",
+        country: 'Norway',
       },
       medals: {
         gold: 2,
@@ -1621,10 +1621,10 @@ function getData() {
       },
     },
     {
-      name: "Albina Akhatova",
+      name: 'Albina Akhatova',
       person: {
         age: 29,
-        country: "Russia",
+        country: 'Russia',
       },
       medals: {
         gold: 1,
@@ -1633,10 +1633,10 @@ function getData() {
       },
     },
     {
-      name: "Ole Einar Bjørndalen",
+      name: 'Ole Einar Bjørndalen',
       person: {
         age: 32,
-        country: "Norway",
+        country: 'Norway',
       },
       medals: {
         gold: 0,
@@ -1645,10 +1645,10 @@ function getData() {
       },
     },
     {
-      name: "Sven Fischer",
+      name: 'Sven Fischer',
       person: {
         age: 34,
-        country: "Germany",
+        country: 'Germany',
       },
       medals: {
         gold: 2,
@@ -1657,10 +1657,10 @@ function getData() {
       },
     },
     {
-      name: "Martina Glagow-Beck",
+      name: 'Martina Glagow-Beck',
       person: {
         age: 26,
-        country: "Germany",
+        country: 'Germany',
       },
       medals: {
         gold: 0,
@@ -1669,10 +1669,10 @@ function getData() {
       },
     },
     {
-      name: "Michael Greis",
+      name: 'Michael Greis',
       person: {
         age: 29,
-        country: "Germany",
+        country: 'Germany',
       },
       medals: {
         gold: 3,
@@ -1681,10 +1681,10 @@ function getData() {
       },
     },
     {
-      name: "Kati Wilhelm",
+      name: 'Kati Wilhelm',
       person: {
         age: 29,
-        country: "Germany",
+        country: 'Germany',
       },
       medals: {
         gold: 1,
@@ -1693,10 +1693,10 @@ function getData() {
       },
     },
     {
-      name: "Kati Wilhelm",
+      name: 'Kati Wilhelm',
       person: {
         age: 25,
-        country: "Germany",
+        country: 'Germany',
       },
       medals: {
         gold: 2,
@@ -1705,10 +1705,10 @@ function getData() {
       },
     },
     {
-      name: "Yohan Blake",
+      name: 'Yohan Blake',
       person: {
         age: 22,
-        country: "Jamaica",
+        country: 'Jamaica',
       },
       medals: {
         gold: 1,
@@ -1717,10 +1717,10 @@ function getData() {
       },
     },
     {
-      name: "Usain Bolt",
+      name: 'Usain Bolt',
       person: {
         age: 25,
-        country: "Jamaica",
+        country: 'Jamaica',
       },
       medals: {
         gold: 3,
@@ -1729,10 +1729,10 @@ function getData() {
       },
     },
     {
-      name: "Allyson Felix",
+      name: 'Allyson Felix',
       person: {
         age: 26,
-        country: "United States",
+        country: 'United States',
       },
       medals: {
         gold: 3,
@@ -1741,10 +1741,10 @@ function getData() {
       },
     },
     {
-      name: "Shelly-Ann Fraser-Pryce",
+      name: 'Shelly-Ann Fraser-Pryce',
       person: {
         age: 25,
-        country: "Jamaica",
+        country: 'Jamaica',
       },
       medals: {
         gold: 1,
@@ -1753,10 +1753,10 @@ function getData() {
       },
     },
     {
-      name: "Carmelita Jeter",
+      name: 'Carmelita Jeter',
       person: {
         age: 32,
-        country: "United States",
+        country: 'United States',
       },
       medals: {
         gold: 1,
@@ -1765,10 +1765,10 @@ function getData() {
       },
     },
     {
-      name: "Usain Bolt",
+      name: 'Usain Bolt',
       person: {
         age: 21,
-        country: "Jamaica",
+        country: 'Jamaica',
       },
       medals: {
         gold: 3,
@@ -1777,10 +1777,10 @@ function getData() {
       },
     },
     {
-      name: "Veronica Campbell-Brown",
+      name: 'Veronica Campbell-Brown',
       person: {
         age: 22,
-        country: "Jamaica",
+        country: 'Jamaica',
       },
       medals: {
         gold: 2,
@@ -1789,10 +1789,10 @@ function getData() {
       },
     },
     {
-      name: "Justin Gatlin",
+      name: 'Justin Gatlin',
       person: {
         age: 22,
-        country: "United States",
+        country: 'United States',
       },
       medals: {
         gold: 1,
@@ -1801,10 +1801,10 @@ function getData() {
       },
     },
     {
-      name: "Bode Miller",
+      name: 'Bode Miller',
       person: {
         age: 32,
-        country: "United States",
+        country: 'United States',
       },
       medals: {
         gold: 1,
@@ -1813,10 +1813,10 @@ function getData() {
       },
     },
     {
-      name: "Aksel Lund Svindal",
+      name: 'Aksel Lund Svindal',
       person: {
         age: 27,
-        country: "Norway",
+        country: 'Norway',
       },
       medals: {
         gold: 1,
@@ -1825,10 +1825,10 @@ function getData() {
       },
     },
     {
-      name: "Anja Pärson",
+      name: 'Anja Pärson',
       person: {
         age: 24,
-        country: "Sweden",
+        country: 'Sweden',
       },
       medals: {
         gold: 1,
@@ -1837,10 +1837,10 @@ function getData() {
       },
     },
     {
-      name: "Stephan Eberharter",
+      name: 'Stephan Eberharter',
       person: {
         age: 32,
-        country: "Austria",
+        country: 'Austria',
       },
       medals: {
         gold: 1,
@@ -1849,10 +1849,10 @@ function getData() {
       },
     },
     {
-      name: "Ding Ning",
+      name: 'Ding Ning',
       person: {
         age: 22,
-        country: "China",
+        country: 'China',
       },
       medals: {
         gold: 1,
@@ -1861,10 +1861,10 @@ function getData() {
       },
     },
     {
-      name: "Feng Tian Wei",
+      name: 'Feng Tian Wei',
       person: {
         age: 25,
-        country: "Singapore",
+        country: 'Singapore',
       },
       medals: {
         gold: 0,
@@ -1873,10 +1873,10 @@ function getData() {
       },
     },
     {
-      name: "Li Xiaoxia",
+      name: 'Li Xiaoxia',
       person: {
         age: 24,
-        country: "China",
+        country: 'China',
       },
       medals: {
         gold: 2,
@@ -1885,10 +1885,10 @@ function getData() {
       },
     },
     {
-      name: "Dmitrij Ovtcharov",
+      name: 'Dmitrij Ovtcharov',
       person: {
         age: 23,
-        country: "Germany",
+        country: 'Germany',
       },
       medals: {
         gold: 0,
@@ -1897,10 +1897,10 @@ function getData() {
       },
     },
     {
-      name: "Wang Hao",
+      name: 'Wang Hao',
       person: {
         age: 28,
-        country: "China",
+        country: 'China',
       },
       medals: {
         gold: 1,
@@ -1909,10 +1909,10 @@ function getData() {
       },
     },
     {
-      name: "Zhang Jike",
+      name: 'Zhang Jike',
       person: {
         age: 24,
-        country: "China",
+        country: 'China',
       },
       medals: {
         gold: 2,
@@ -1921,10 +1921,10 @@ function getData() {
       },
     },
     {
-      name: "Guo Yue",
+      name: 'Guo Yue',
       person: {
         age: 20,
-        country: "China",
+        country: 'China',
       },
       medals: {
         gold: 1,
@@ -1933,10 +1933,10 @@ function getData() {
       },
     },
     {
-      name: "Ma Lin",
+      name: 'Ma Lin',
       person: {
         age: 28,
-        country: "China",
+        country: 'China',
       },
       medals: {
         gold: 2,
@@ -1945,10 +1945,10 @@ function getData() {
       },
     },
     {
-      name: "Wang Hao",
+      name: 'Wang Hao',
       person: {
         age: 24,
-        country: "China",
+        country: 'China',
       },
       medals: {
         gold: 1,
@@ -1957,10 +1957,10 @@ function getData() {
       },
     },
     {
-      name: "Wang Liqin",
+      name: 'Wang Liqin',
       person: {
         age: 30,
-        country: "China",
+        country: 'China',
       },
       medals: {
         gold: 1,
@@ -1969,10 +1969,10 @@ function getData() {
       },
     },
     {
-      name: "Wang Nan",
+      name: 'Wang Nan',
       person: {
         age: 29,
-        country: "China",
+        country: 'China',
       },
       medals: {
         gold: 1,
@@ -1981,10 +1981,10 @@ function getData() {
       },
     },
     {
-      name: "Zhang Yining",
+      name: 'Zhang Yining',
       person: {
         age: 26,
-        country: "China",
+        country: 'China',
       },
       medals: {
         gold: 2,
@@ -1993,10 +1993,10 @@ function getData() {
       },
     },
     {
-      name: "Zhang Yining",
+      name: 'Zhang Yining',
       person: {
         age: 22,
-        country: "China",
+        country: 'China',
       },
       medals: {
         gold: 2,
@@ -2005,10 +2005,10 @@ function getData() {
       },
     },
     {
-      name: "Kong Linghui",
+      name: 'Kong Linghui',
       person: {
         age: 24,
-        country: "China",
+        country: 'China',
       },
       medals: {
         gold: 1,
@@ -2017,10 +2017,10 @@ function getData() {
       },
     },
     {
-      name: "Li Ju",
+      name: 'Li Ju',
       person: {
         age: 24,
-        country: "China",
+        country: 'China',
       },
       medals: {
         gold: 1,
@@ -2029,10 +2029,10 @@ function getData() {
       },
     },
     {
-      name: "Liu Guoliang",
+      name: 'Liu Guoliang',
       person: {
         age: 24,
-        country: "China",
+        country: 'China',
       },
       medals: {
         gold: 0,
@@ -2041,10 +2041,10 @@ function getData() {
       },
     },
     {
-      name: "Wang Nan",
+      name: 'Wang Nan',
       person: {
         age: 21,
-        country: "China",
+        country: 'China',
       },
       medals: {
         gold: 2,
@@ -2053,10 +2053,10 @@ function getData() {
       },
     },
     {
-      name: "Viktoriya Azarenko",
+      name: 'Viktoriya Azarenko',
       person: {
         age: 22,
-        country: "Belarus",
+        country: 'Belarus',
       },
       medals: {
         gold: 1,
@@ -2065,10 +2065,10 @@ function getData() {
       },
     },
     {
-      name: "Mike Bryan",
+      name: 'Mike Bryan',
       person: {
         age: 34,
-        country: "United States",
+        country: 'United States',
       },
       medals: {
         gold: 1,
@@ -2077,10 +2077,10 @@ function getData() {
       },
     },
     {
-      name: "Andy Murray",
+      name: 'Andy Murray',
       person: {
         age: 25,
-        country: "Great Britain",
+        country: 'Great Britain',
       },
       medals: {
         gold: 1,
@@ -2089,10 +2089,10 @@ function getData() {
       },
     },
     {
-      name: "Serena Williams",
+      name: 'Serena Williams',
       person: {
         age: 30,
-        country: "United States",
+        country: 'United States',
       },
       medals: {
         gold: 2,
@@ -2101,10 +2101,10 @@ function getData() {
       },
     },
     {
-      name: "Fernando González",
+      name: 'Fernando González',
       person: {
         age: 24,
-        country: "Chile",
+        country: 'Chile',
       },
       medals: {
         gold: 1,
@@ -2113,10 +2113,10 @@ function getData() {
       },
     },
     {
-      name: "Nicolás Massú",
+      name: 'Nicolás Massú',
       person: {
         age: 26,
-        country: "Chile",
+        country: 'Chile',
       },
       medals: {
         gold: 2,
@@ -2125,10 +2125,10 @@ function getData() {
       },
     },
     {
-      name: "Venus Williams",
+      name: 'Venus Williams',
       person: {
         age: 20,
-        country: "United States",
+        country: 'United States',
       },
       medals: {
         gold: 2,
@@ -2137,10 +2137,10 @@ function getData() {
       },
     },
     {
-      name: "Ona Carbonell",
+      name: 'Ona Carbonell',
       person: {
         age: 22,
-        country: "Spain",
+        country: 'Spain',
       },
       medals: {
         gold: 0,
@@ -2149,10 +2149,10 @@ function getData() {
       },
     },
     {
-      name: "Andrea Fuentes",
+      name: 'Andrea Fuentes',
       person: {
         age: 29,
-        country: "Spain",
+        country: 'Spain',
       },
       medals: {
         gold: 0,
@@ -2161,10 +2161,10 @@ function getData() {
       },
     },
     {
-      name: "Huang Xuechen",
+      name: 'Huang Xuechen',
       person: {
         age: 22,
-        country: "China",
+        country: 'China',
       },
       medals: {
         gold: 0,
@@ -2173,10 +2173,10 @@ function getData() {
       },
     },
     {
-      name: "Nataliya Ishchenko",
+      name: 'Nataliya Ishchenko',
       person: {
         age: 26,
-        country: "Russia",
+        country: 'Russia',
       },
       medals: {
         gold: 2,
@@ -2185,10 +2185,10 @@ function getData() {
       },
     },
     {
-      name: "Liu Ou",
+      name: 'Liu Ou',
       person: {
         age: 25,
-        country: "China",
+        country: 'China',
       },
       medals: {
         gold: 0,
@@ -2197,10 +2197,10 @@ function getData() {
       },
     },
     {
-      name: "Svetlana Romashina",
+      name: 'Svetlana Romashina',
       person: {
         age: 22,
-        country: "Russia",
+        country: 'Russia',
       },
       medals: {
         gold: 2,
@@ -2209,10 +2209,10 @@ function getData() {
       },
     },
     {
-      name: "Anastasiya Davydova",
+      name: 'Anastasiya Davydova',
       person: {
         age: 25,
-        country: "Russia",
+        country: 'Russia',
       },
       medals: {
         gold: 2,
@@ -2221,10 +2221,10 @@ function getData() {
       },
     },
     {
-      name: "Andrea Fuentes",
+      name: 'Andrea Fuentes',
       person: {
         age: 25,
-        country: "Spain",
+        country: 'Spain',
       },
       medals: {
         gold: 0,
@@ -2233,10 +2233,10 @@ function getData() {
       },
     },
     {
-      name: "Gemma Mengual",
+      name: 'Gemma Mengual',
       person: {
         age: 31,
-        country: "Spain",
+        country: 'Spain',
       },
       medals: {
         gold: 0,
@@ -2245,10 +2245,10 @@ function getData() {
       },
     },
     {
-      name: "Anastasiya Yermakova",
+      name: 'Anastasiya Yermakova',
       person: {
         age: 25,
-        country: "Russia",
+        country: 'Russia',
       },
       medals: {
         gold: 2,
@@ -2257,10 +2257,10 @@ function getData() {
       },
     },
     {
-      name: "Alison Bartosik",
+      name: 'Alison Bartosik',
       person: {
         age: 21,
-        country: "United States",
+        country: 'United States',
       },
       medals: {
         gold: 0,
@@ -2269,10 +2269,10 @@ function getData() {
       },
     },
     {
-      name: "Anastasiya Davydova",
+      name: 'Anastasiya Davydova',
       person: {
         age: 21,
-        country: "Russia",
+        country: 'Russia',
       },
       medals: {
         gold: 2,
@@ -2281,10 +2281,10 @@ function getData() {
       },
     },
     {
-      name: "Anna Kozlova",
+      name: 'Anna Kozlova',
       person: {
         age: 31,
-        country: "United States",
+        country: 'United States',
       },
       medals: {
         gold: 0,
@@ -2293,10 +2293,10 @@ function getData() {
       },
     },
     {
-      name: "Miya Tachibana",
+      name: 'Miya Tachibana',
       person: {
         age: 29,
-        country: "Japan",
+        country: 'Japan',
       },
       medals: {
         gold: 0,
@@ -2305,10 +2305,10 @@ function getData() {
       },
     },
     {
-      name: "Miho Takeda",
+      name: 'Miho Takeda',
       person: {
         age: 27,
-        country: "Japan",
+        country: 'Japan',
       },
       medals: {
         gold: 0,
@@ -2317,10 +2317,10 @@ function getData() {
       },
     },
     {
-      name: "Anastasiya Yermakova",
+      name: 'Anastasiya Yermakova',
       person: {
         age: 21,
-        country: "Russia",
+        country: 'Russia',
       },
       medals: {
         gold: 2,
@@ -2329,10 +2329,10 @@ function getData() {
       },
     },
     {
-      name: "Olga Brusnikina",
+      name: 'Olga Brusnikina',
       person: {
         age: 21,
-        country: "Russia",
+        country: 'Russia',
       },
       medals: {
         gold: 2,
@@ -2341,10 +2341,10 @@ function getData() {
       },
     },
     {
-      name: "Mariya Kiselyova",
+      name: 'Mariya Kiselyova',
       person: {
         age: 25,
-        country: "Russia",
+        country: 'Russia',
       },
       medals: {
         gold: 2,
@@ -2353,10 +2353,10 @@ function getData() {
       },
     },
     {
-      name: "Miya Tachibana",
+      name: 'Miya Tachibana',
       person: {
         age: 25,
-        country: "Japan",
+        country: 'Japan',
       },
       medals: {
         gold: 0,
@@ -2365,10 +2365,10 @@ function getData() {
       },
     },
     {
-      name: "Miho Takeda",
+      name: 'Miho Takeda',
       person: {
         age: 24,
-        country: "Japan",
+        country: 'Japan',
       },
       medals: {
         gold: 0,
@@ -2377,10 +2377,10 @@ function getData() {
       },
     },
     {
-      name: "Becky Adlington",
+      name: 'Becky Adlington',
       person: {
         age: 23,
-        country: "Great Britain",
+        country: 'Great Britain',
       },
       medals: {
         gold: 0,
@@ -2389,10 +2389,10 @@ function getData() {
       },
     },
     {
-      name: "Bronte Barratt",
+      name: 'Bronte Barratt',
       person: {
         age: 23,
-        country: "Australia",
+        country: 'Australia',
       },
       medals: {
         gold: 0,
@@ -2401,10 +2401,10 @@ function getData() {
       },
     },
     {
-      name: "Elizabeth Beisel",
+      name: 'Elizabeth Beisel',
       person: {
         age: 19,
-        country: "United States",
+        country: 'United States',
       },
       medals: {
         gold: 0,
@@ -2413,10 +2413,10 @@ function getData() {
       },
     },
     {
-      name: "Mireia Belmonte",
+      name: 'Mireia Belmonte',
       person: {
         age: 21,
-        country: "Spain",
+        country: 'Spain',
       },
       medals: {
         gold: 0,
@@ -2425,10 +2425,10 @@ function getData() {
       },
     },
     {
-      name: "Ricky Berens",
+      name: 'Ricky Berens',
       person: {
         age: 24,
-        country: "United States",
+        country: 'United States',
       },
       medals: {
         gold: 1,
@@ -2437,10 +2437,10 @@ function getData() {
       },
     },
     {
-      name: "Aleksandra Gerasimenya",
+      name: 'Aleksandra Gerasimenya',
       person: {
         age: 26,
-        country: "Belarus",
+        country: 'Belarus',
       },
       medals: {
         gold: 0,
@@ -2449,10 +2449,10 @@ function getData() {
       },
     },
     {
-      name: "Brendan Hansen",
+      name: 'Brendan Hansen',
       person: {
         age: 30,
-        country: "United States",
+        country: 'United States',
       },
       medals: {
         gold: 1,
@@ -2461,10 +2461,10 @@ function getData() {
       },
     },
     {
-      name: "Jessica Hardy",
+      name: 'Jessica Hardy',
       person: {
         age: 25,
-        country: "United States",
+        country: 'United States',
       },
       medals: {
         gold: 1,
@@ -2473,10 +2473,10 @@ function getData() {
       },
     },
     {
-      name: "Chad le Clos",
+      name: 'Chad le Clos',
       person: {
         age: 20,
-        country: "South Africa",
+        country: 'South Africa',
       },
       medals: {
         gold: 1,
@@ -2485,10 +2485,10 @@ function getData() {
       },
     },
     {
-      name: "Clément Lefert",
+      name: 'Clément Lefert',
       person: {
         age: 24,
-        country: "France",
+        country: 'France',
       },
       medals: {
         gold: 1,
@@ -2497,10 +2497,10 @@ function getData() {
       },
     },
     {
-      name: "Amaury Leveaux",
+      name: 'Amaury Leveaux',
       person: {
         age: 26,
-        country: "France",
+        country: 'France',
       },
       medals: {
         gold: 1,
@@ -2509,10 +2509,10 @@ function getData() {
       },
     },
     {
-      name: "James Magnussen",
+      name: 'James Magnussen',
       person: {
         age: 21,
-        country: "Australia",
+        country: 'Australia',
       },
       medals: {
         gold: 0,
@@ -2521,10 +2521,10 @@ function getData() {
       },
     },
     {
-      name: "Takeshi Matsuda",
+      name: 'Takeshi Matsuda',
       person: {
         age: 28,
-        country: "Japan",
+        country: 'Japan',
       },
       medals: {
         gold: 0,
@@ -2533,10 +2533,10 @@ function getData() {
       },
     },
     {
-      name: "Oussama Mellouli",
+      name: 'Oussama Mellouli',
       person: {
         age: 28,
-        country: "Tunisia",
+        country: 'Tunisia',
       },
       medals: {
         gold: 1,
@@ -2545,10 +2545,10 @@ function getData() {
       },
     },
     {
-      name: "Park Tae-Hwan",
+      name: 'Park Tae-Hwan',
       person: {
         age: 22,
-        country: "South Korea",
+        country: 'South Korea',
       },
       medals: {
         gold: 0,
@@ -2557,10 +2557,10 @@ function getData() {
       },
     },
     {
-      name: "Christian Sprenger",
+      name: 'Christian Sprenger',
       person: {
         age: 26,
-        country: "Australia",
+        country: 'Australia',
       },
       medals: {
         gold: 0,
@@ -2569,10 +2569,10 @@ function getData() {
       },
     },
     {
-      name: "Jeremy Stravius",
+      name: 'Jeremy Stravius',
       person: {
         age: 24,
-        country: "France",
+        country: 'France',
       },
       medals: {
         gold: 1,
@@ -2581,10 +2581,10 @@ function getData() {
       },
     },
     {
-      name: "Aya Terakawa",
+      name: 'Aya Terakawa',
       person: {
         age: 27,
-        country: "Japan",
+        country: 'Japan',
       },
       medals: {
         gold: 0,
@@ -2593,10 +2593,10 @@ function getData() {
       },
     },
     {
-      name: "Nick Thoman",
+      name: 'Nick Thoman',
       person: {
         age: 26,
-        country: "United States",
+        country: 'United States',
       },
       medals: {
         gold: 1,
@@ -2605,10 +2605,10 @@ function getData() {
       },
     },
     {
-      name: "Marleen Veldhuis",
+      name: 'Marleen Veldhuis',
       person: {
         age: 33,
-        country: "Netherlands",
+        country: 'Netherlands',
       },
       medals: {
         gold: 0,
@@ -2617,10 +2617,10 @@ function getData() {
       },
     },
     {
-      name: "Ye Shiwen",
+      name: 'Ye Shiwen',
       person: {
         age: 16,
-        country: "China",
+        country: 'China',
       },
       medals: {
         gold: 2,
@@ -2629,10 +2629,10 @@ function getData() {
       },
     },
     {
-      name: "Becky Adlington",
+      name: 'Becky Adlington',
       person: {
         age: 19,
-        country: "Great Britain",
+        country: 'Great Britain',
       },
       medals: {
         gold: 2,
@@ -2641,10 +2641,10 @@ function getData() {
       },
     },
     {
-      name: "Leith Brodie",
+      name: 'Leith Brodie',
       person: {
         age: 22,
-        country: "Australia",
+        country: 'Australia',
       },
       medals: {
         gold: 0,
@@ -2653,10 +2653,10 @@ function getData() {
       },
     },
     {
-      name: "Cate Campbell",
+      name: 'Cate Campbell',
       person: {
         age: 16,
-        country: "Australia",
+        country: 'Australia',
       },
       medals: {
         gold: 0,
@@ -2665,10 +2665,10 @@ function getData() {
       },
     },
     {
-      name: "César Cielo Filho",
+      name: 'César Cielo Filho',
       person: {
         age: 21,
-        country: "Brazil",
+        country: 'Brazil',
       },
       medals: {
         gold: 1,
@@ -2677,10 +2677,10 @@ function getData() {
       },
     },
     {
-      name: "Hugues Duboscq",
+      name: 'Hugues Duboscq',
       person: {
         age: 26,
-        country: "France",
+        country: 'France',
       },
       medals: {
         gold: 0,
@@ -2689,10 +2689,10 @@ function getData() {
       },
     },
     {
-      name: "Felicity Galvez",
+      name: 'Felicity Galvez',
       person: {
         age: 23,
-        country: "Australia",
+        country: 'Australia',
       },
       medals: {
         gold: 2,
@@ -2701,10 +2701,10 @@ function getData() {
       },
     },
     {
-      name: "Grant Hackett",
+      name: 'Grant Hackett',
       person: {
         age: 28,
-        country: "Australia",
+        country: 'Australia',
       },
       medals: {
         gold: 0,
@@ -2713,10 +2713,10 @@ function getData() {
       },
     },
     {
-      name: "Kara Lynn Joyce",
+      name: 'Kara Lynn Joyce',
       person: {
         age: 22,
-        country: "United States",
+        country: 'United States',
       },
       medals: {
         gold: 0,
@@ -2725,10 +2725,10 @@ function getData() {
       },
     },
     {
-      name: "Amaury Leveaux",
+      name: 'Amaury Leveaux',
       person: {
         age: 22,
-        country: "France",
+        country: 'France',
       },
       medals: {
         gold: 0,
@@ -2737,10 +2737,10 @@ function getData() {
       },
     },
     {
-      name: "Christine Magnuson",
+      name: 'Christine Magnuson',
       person: {
         age: 22,
-        country: "United States",
+        country: 'United States',
       },
       medals: {
         gold: 0,
@@ -2749,10 +2749,10 @@ function getData() {
       },
     },
     {
-      name: "Patrick Murphy",
+      name: 'Patrick Murphy',
       person: {
         age: 24,
-        country: "Australia",
+        country: 'Australia',
       },
       medals: {
         gold: 0,
@@ -2761,10 +2761,10 @@ function getData() {
       },
     },
     {
-      name: "Park Tae-Hwan",
+      name: 'Park Tae-Hwan',
       person: {
         age: 18,
-        country: "South Korea",
+        country: 'South Korea',
       },
       medals: {
         gold: 1,
@@ -2773,10 +2773,10 @@ function getData() {
       },
     },
     {
-      name: "Shayne Reese",
+      name: 'Shayne Reese',
       person: {
         age: 25,
-        country: "Australia",
+        country: 'Australia',
       },
       medals: {
         gold: 1,
@@ -2785,10 +2785,10 @@ function getData() {
       },
     },
     {
-      name: "Brenton Rickard",
+      name: 'Brenton Rickard',
       person: {
         age: 24,
-        country: "Australia",
+        country: 'Australia',
       },
       medals: {
         gold: 0,
@@ -2797,10 +2797,10 @@ function getData() {
       },
     },
     {
-      name: "Mel Schlanger",
+      name: 'Mel Schlanger',
       person: {
         age: 21,
-        country: "Australia",
+        country: 'Australia',
       },
       medals: {
         gold: 1,
@@ -2809,10 +2809,10 @@ function getData() {
       },
     },
     {
-      name: "Julia Smit",
+      name: 'Julia Smit',
       person: {
         age: 20,
-        country: "United States",
+        country: 'United States',
       },
       medals: {
         gold: 0,
@@ -2821,10 +2821,10 @@ function getData() {
       },
     },
     {
-      name: "Britta Steffen",
+      name: 'Britta Steffen',
       person: {
         age: 24,
-        country: "Germany",
+        country: 'Germany',
       },
       medals: {
         gold: 2,
@@ -2833,10 +2833,10 @@ function getData() {
       },
     },
     {
-      name: "Hayden Stoeckel",
+      name: 'Hayden Stoeckel',
       person: {
         age: 24,
-        country: "Australia",
+        country: 'Australia',
       },
       medals: {
         gold: 0,
@@ -2845,10 +2845,10 @@ function getData() {
       },
     },
     {
-      name: "Matt Targett",
+      name: 'Matt Targett',
       person: {
         age: 22,
-        country: "Australia",
+        country: 'Australia',
       },
       medals: {
         gold: 0,
@@ -2857,10 +2857,10 @@ function getData() {
       },
     },
     {
-      name: "Peter Vanderkaay",
+      name: 'Peter Vanderkaay',
       person: {
         age: 24,
-        country: "United States",
+        country: 'United States',
       },
       medals: {
         gold: 1,
@@ -2869,10 +2869,10 @@ function getData() {
       },
     },
     {
-      name: "Arkady Vyachanin",
+      name: 'Arkady Vyachanin',
       person: {
         age: 24,
-        country: "Russia",
+        country: 'Russia',
       },
       medals: {
         gold: 0,
@@ -2881,10 +2881,10 @@ function getData() {
       },
     },
     {
-      name: "Garrett Weber-Gale",
+      name: 'Garrett Weber-Gale',
       person: {
         age: 23,
-        country: "United States",
+        country: 'United States',
       },
       medals: {
         gold: 2,
@@ -2893,10 +2893,10 @@ function getData() {
       },
     },
     {
-      name: "Lindsay Benko",
+      name: 'Lindsay Benko',
       person: {
         age: 27,
-        country: "United States",
+        country: 'United States',
       },
       medals: {
         gold: 1,
@@ -2905,10 +2905,10 @@ function getData() {
       },
     },
     {
-      name: "Gary Hall Jr.",
+      name: 'Gary Hall Jr.',
       person: {
         age: 29,
-        country: "United States",
+        country: 'United States',
       },
       medals: {
         gold: 1,
@@ -2917,10 +2917,10 @@ function getData() {
       },
     },
     {
-      name: "Brooke Hanson",
+      name: 'Brooke Hanson',
       person: {
         age: 26,
-        country: "Australia",
+        country: 'Australia',
       },
       medals: {
         gold: 1,
@@ -2929,10 +2929,10 @@ function getData() {
       },
     },
     {
-      name: "Kara Lynn Joyce",
+      name: 'Kara Lynn Joyce',
       person: {
         age: 18,
-        country: "United States",
+        country: 'United States',
       },
       medals: {
         gold: 0,
@@ -2941,10 +2941,10 @@ function getData() {
       },
     },
     {
-      name: "Klete Keller",
+      name: 'Klete Keller',
       person: {
         age: 22,
-        country: "United States",
+        country: 'United States',
       },
       medals: {
         gold: 1,
@@ -2953,10 +2953,10 @@ function getData() {
       },
     },
     {
-      name: "Yana Klochkova",
+      name: 'Yana Klochkova',
       person: {
         age: 22,
-        country: "Ukraine",
+        country: 'Ukraine',
       },
       medals: {
         gold: 2,
@@ -2965,10 +2965,10 @@ function getData() {
       },
     },
     {
-      name: "Rachel Komisarz",
+      name: 'Rachel Komisarz',
       person: {
         age: 27,
-        country: "United States",
+        country: 'United States',
       },
       medals: {
         gold: 1,
@@ -2977,10 +2977,10 @@ function getData() {
       },
     },
     {
-      name: "Libby Lenton-Trickett",
+      name: 'Libby Lenton-Trickett',
       person: {
         age: 19,
-        country: "Australia",
+        country: 'Australia',
       },
       medals: {
         gold: 1,
@@ -2989,10 +2989,10 @@ function getData() {
       },
     },
     {
-      name: "Jason Lezak",
+      name: 'Jason Lezak',
       person: {
         age: 28,
-        country: "United States",
+        country: 'United States',
       },
       medals: {
         gold: 1,
@@ -3001,10 +3001,10 @@ function getData() {
       },
     },
     {
-      name: "Ryan Lochte",
+      name: 'Ryan Lochte',
       person: {
         age: 20,
-        country: "United States",
+        country: 'United States',
       },
       medals: {
         gold: 1,
@@ -3013,10 +3013,10 @@ function getData() {
       },
     },
     {
-      name: "Alice Mills",
+      name: 'Alice Mills',
       person: {
         age: 18,
-        country: "Australia",
+        country: 'Australia',
       },
       medals: {
         gold: 2,
@@ -3025,10 +3025,10 @@ function getData() {
       },
     },
     {
-      name: "Tomomi Morita",
+      name: 'Tomomi Morita',
       person: {
         age: 19,
-        country: "Japan",
+        country: 'Japan',
       },
       medals: {
         gold: 0,
@@ -3037,10 +3037,10 @@ function getData() {
       },
     },
     {
-      name: "Markus Rogan",
+      name: 'Markus Rogan',
       person: {
         age: 22,
-        country: "Austria",
+        country: 'Austria',
       },
       medals: {
         gold: 0,
@@ -3049,10 +3049,10 @@ function getData() {
       },
     },
     {
-      name: "Jenny Thompson",
+      name: 'Jenny Thompson',
       person: {
         age: 31,
-        country: "United States",
+        country: 'United States',
       },
       medals: {
         gold: 0,
@@ -3061,10 +3061,10 @@ function getData() {
       },
     },
     {
-      name: "Franziska van Almsick",
+      name: 'Franziska van Almsick',
       person: {
         age: 26,
-        country: "Germany",
+        country: 'Germany',
       },
       medals: {
         gold: 0,
@@ -3073,10 +3073,10 @@ function getData() {
       },
     },
     {
-      name: "Neil Walker",
+      name: 'Neil Walker',
       person: {
         age: 28,
-        country: "United States",
+        country: 'United States',
       },
       medals: {
         gold: 1,
@@ -3085,10 +3085,10 @@ function getData() {
       },
     },
     {
-      name: "Amanda Weir",
+      name: 'Amanda Weir',
       person: {
         age: 18,
-        country: "United States",
+        country: 'United States',
       },
       medals: {
         gold: 0,
@@ -3097,10 +3097,10 @@ function getData() {
       },
     },
     {
-      name: "Takashi Yamamoto",
+      name: 'Takashi Yamamoto',
       person: {
         age: 26,
-        country: "Japan",
+        country: 'Japan',
       },
       medals: {
         gold: 0,
@@ -3109,10 +3109,10 @@ function getData() {
       },
     },
     {
-      name: "Brooke Bennett",
+      name: 'Brooke Bennett',
       person: {
         age: 20,
-        country: "United States",
+        country: 'United States',
       },
       medals: {
         gold: 2,
@@ -3121,10 +3121,10 @@ function getData() {
       },
     },
     {
-      name: "Beatrice Coada-Caslaru",
+      name: 'Beatrice Coada-Caslaru',
       person: {
         age: 25,
-        country: "Romania",
+        country: 'Romania',
       },
       medals: {
         gold: 0,
@@ -3133,10 +3133,10 @@ function getData() {
       },
     },
     {
-      name: "Josh Davis",
+      name: 'Josh Davis',
       person: {
         age: 28,
-        country: "United States",
+        country: 'United States',
       },
       medals: {
         gold: 0,
@@ -3145,10 +3145,10 @@ function getData() {
       },
     },
     {
-      name: "Tom Dolan",
+      name: 'Tom Dolan',
       person: {
         age: 25,
-        country: "United States",
+        country: 'United States',
       },
       medals: {
         gold: 1,
@@ -3157,10 +3157,10 @@ function getData() {
       },
     },
     {
-      name: "Anthony Ervin",
+      name: 'Anthony Ervin',
       person: {
         age: 19,
-        country: "United States",
+        country: 'United States',
       },
       medals: {
         gold: 1,
@@ -3169,10 +3169,10 @@ function getData() {
       },
     },
     {
-      name: "Domenico Fioravanti",
+      name: 'Domenico Fioravanti',
       person: {
         age: 23,
-        country: "Italy",
+        country: 'Italy',
       },
       medals: {
         gold: 2,
@@ -3181,10 +3181,10 @@ function getData() {
       },
     },
     {
-      name: "Grant Hackett",
+      name: 'Grant Hackett',
       person: {
         age: 20,
-        country: "Australia",
+        country: 'Australia',
       },
       medals: {
         gold: 2,
@@ -3193,10 +3193,10 @@ function getData() {
       },
     },
     {
-      name: "Geoff Huegill",
+      name: 'Geoff Huegill',
       person: {
         age: 21,
-        country: "Australia",
+        country: 'Australia',
       },
       medals: {
         gold: 0,
@@ -3205,10 +3205,10 @@ function getData() {
       },
     },
     {
-      name: "Leisel Jones",
+      name: 'Leisel Jones',
       person: {
         age: 15,
-        country: "Australia",
+        country: 'Australia',
       },
       medals: {
         gold: 0,
@@ -3217,10 +3217,10 @@ function getData() {
       },
     },
     {
-      name: "Klete Keller",
+      name: 'Klete Keller',
       person: {
         age: 18,
-        country: "United States",
+        country: 'United States',
       },
       medals: {
         gold: 0,
@@ -3229,10 +3229,10 @@ function getData() {
       },
     },
     {
-      name: "Jason Lezak",
+      name: 'Jason Lezak',
       person: {
         age: 24,
-        country: "United States",
+        country: 'United States',
       },
       medals: {
         gold: 1,
@@ -3241,10 +3241,10 @@ function getData() {
       },
     },
     {
-      name: "Diana Mocanu",
+      name: 'Diana Mocanu',
       person: {
         age: 16,
-        country: "Romania",
+        country: 'Romania',
       },
       medals: {
         gold: 2,
@@ -3253,10 +3253,10 @@ function getData() {
       },
     },
     {
-      name: "Martina Moravcová",
+      name: 'Martina Moravcová',
       person: {
         age: 24,
-        country: "Slovakia",
+        country: 'Slovakia',
       },
       medals: {
         gold: 0,
@@ -3265,10 +3265,10 @@ function getData() {
       },
     },
     {
-      name: "Ed Moses",
+      name: 'Ed Moses',
       person: {
         age: 20,
-        country: "United States",
+        country: 'United States',
       },
       medals: {
         gold: 1,
@@ -3277,10 +3277,10 @@ function getData() {
       },
     },
     {
-      name: "Diana Munz",
+      name: 'Diana Munz',
       person: {
         age: 18,
-        country: "United States",
+        country: 'United States',
       },
       medals: {
         gold: 1,
@@ -3289,10 +3289,10 @@ function getData() {
       },
     },
     {
-      name: "Mai Nakamura",
+      name: 'Mai Nakamura',
       person: {
         age: 21,
-        country: "Japan",
+        country: 'Japan',
       },
       medals: {
         gold: 0,
@@ -3301,10 +3301,10 @@ function getData() {
       },
     },
     {
-      name: "Todd Pearson",
+      name: 'Todd Pearson',
       person: {
         age: 22,
-        country: "Australia",
+        country: 'Australia',
       },
       medals: {
         gold: 2,
@@ -3313,10 +3313,10 @@ function getData() {
       },
     },
     {
-      name: "Adam Pine",
+      name: 'Adam Pine',
       person: {
         age: 24,
-        country: "Australia",
+        country: 'Australia',
       },
       medals: {
         gold: 1,
@@ -3325,10 +3325,10 @@ function getData() {
       },
     },
     {
-      name: "Claudia Poll",
+      name: 'Claudia Poll',
       person: {
         age: 27,
-        country: "Costa Rica",
+        country: 'Costa Rica',
       },
       medals: {
         gold: 0,
@@ -3337,10 +3337,10 @@ function getData() {
       },
     },
     {
-      name: "Megan Quann-Jendrick",
+      name: 'Megan Quann-Jendrick',
       person: {
         age: 16,
-        country: "United States",
+        country: 'United States',
       },
       medals: {
         gold: 2,
@@ -3349,10 +3349,10 @@ function getData() {
       },
     },
     {
-      name: "Giaan Rooney",
+      name: 'Giaan Rooney',
       person: {
         age: 17,
-        country: "Australia",
+        country: 'Australia',
       },
       medals: {
         gold: 0,
@@ -3361,10 +3361,10 @@ function getData() {
       },
     },
     {
-      name: "Courtney Shealy",
+      name: 'Courtney Shealy',
       person: {
         age: 22,
-        country: "United States",
+        country: 'United States',
       },
       medals: {
         gold: 2,
@@ -3373,10 +3373,10 @@ function getData() {
       },
     },
     {
-      name: "Ashley Tappin",
+      name: 'Ashley Tappin',
       person: {
         age: 25,
-        country: "United States",
+        country: 'United States',
       },
       medals: {
         gold: 2,
@@ -3385,10 +3385,10 @@ function getData() {
       },
     },
     {
-      name: "Stev Theloke",
+      name: 'Stev Theloke',
       person: {
         age: 22,
-        country: "Germany",
+        country: 'Germany',
       },
       medals: {
         gold: 0,
@@ -3397,10 +3397,10 @@ function getData() {
       },
     },
     {
-      name: "Amy Van Dyken",
+      name: 'Amy Van Dyken',
       person: {
         age: 27,
-        country: "United States",
+        country: 'United States',
       },
       medals: {
         gold: 2,
@@ -3409,10 +3409,10 @@ function getData() {
       },
     },
     {
-      name: "Neil Walker",
+      name: 'Neil Walker',
       person: {
         age: 24,
-        country: "United States",
+        country: 'United States',
       },
       medals: {
         gold: 1,
@@ -3421,10 +3421,10 @@ function getData() {
       },
     },
     {
-      name: "J. R. Celski",
+      name: 'J. R. Celski',
       person: {
         age: 19,
-        country: "United States",
+        country: 'United States',
       },
       medals: {
         gold: 0,
@@ -3433,10 +3433,10 @@ function getData() {
       },
     },
     {
-      name: "Charles Hamelin",
+      name: 'Charles Hamelin',
       person: {
         age: 25,
-        country: "Canada",
+        country: 'Canada',
       },
       medals: {
         gold: 2,
@@ -3445,10 +3445,10 @@ function getData() {
       },
     },
     {
-      name: "Lee Ho-Seok",
+      name: 'Lee Ho-Seok',
       person: {
         age: 23,
-        country: "South Korea",
+        country: 'South Korea',
       },
       medals: {
         gold: 0,
@@ -3457,10 +3457,10 @@ function getData() {
       },
     },
     {
-      name: "Park Seung-Hui",
+      name: 'Park Seung-Hui',
       person: {
         age: 17,
-        country: "South Korea",
+        country: 'South Korea',
       },
       medals: {
         gold: 0,
@@ -3469,10 +3469,10 @@ function getData() {
       },
     },
     {
-      name: "Katherine Reutter",
+      name: 'Katherine Reutter',
       person: {
         age: 21,
-        country: "United States",
+        country: 'United States',
       },
       medals: {
         gold: 0,
@@ -3481,10 +3481,10 @@ function getData() {
       },
     },
     {
-      name: "Seong Si-Baek",
+      name: 'Seong Si-Baek',
       person: {
         age: 22,
-        country: "South Korea",
+        country: 'South Korea',
       },
       medals: {
         gold: 0,
@@ -3493,10 +3493,10 @@ function getData() {
       },
     },
     {
-      name: "Marianne St-Gelais",
+      name: 'Marianne St-Gelais',
       person: {
         age: 19,
-        country: "Canada",
+        country: 'Canada',
       },
       medals: {
         gold: 0,
@@ -3505,10 +3505,10 @@ function getData() {
       },
     },
     {
-      name: "François-Louis Tremblay",
+      name: 'François-Louis Tremblay',
       person: {
         age: 29,
-        country: "Canada",
+        country: 'Canada',
       },
       medals: {
         gold: 1,
@@ -3517,10 +3517,10 @@ function getData() {
       },
     },
     {
-      name: "Zhou Yang",
+      name: 'Zhou Yang',
       person: {
         age: 18,
-        country: "China",
+        country: 'China',
       },
       medals: {
         gold: 2,
@@ -3529,10 +3529,10 @@ function getData() {
       },
     },
     {
-      name: "Choi Eun-Gyeong",
+      name: 'Choi Eun-Gyeong',
       person: {
         age: 21,
-        country: "South Korea",
+        country: 'South Korea',
       },
       medals: {
         gold: 1,
@@ -3541,10 +3541,10 @@ function getData() {
       },
     },
     {
-      name: "Anouk Leblanc-Boucher",
+      name: 'Anouk Leblanc-Boucher',
       person: {
         age: 21,
-        country: "Canada",
+        country: 'Canada',
       },
       medals: {
         gold: 0,
@@ -3553,10 +3553,10 @@ function getData() {
       },
     },
     {
-      name: "François-Louis Tremblay",
+      name: 'François-Louis Tremblay',
       person: {
         age: 25,
-        country: "Canada",
+        country: 'Canada',
       },
       medals: {
         gold: 0,
@@ -3565,10 +3565,10 @@ function getData() {
       },
     },
     {
-      name: "Choi Eun-Gyeong",
+      name: 'Choi Eun-Gyeong',
       person: {
         age: 17,
-        country: "South Korea",
+        country: 'South Korea',
       },
       medals: {
         gold: 1,
@@ -3577,10 +3577,10 @@ function getData() {
       },
     },
     {
-      name: "Go Gi-Hyeon",
+      name: 'Go Gi-Hyeon',
       person: {
         age: 15,
-        country: "South Korea",
+        country: 'South Korea',
       },
       medals: {
         gold: 1,
@@ -3589,10 +3589,10 @@ function getData() {
       },
     },
     {
-      name: "Jonathan Guilmette",
+      name: 'Jonathan Guilmette',
       person: {
         age: 23,
-        country: "Canada",
+        country: 'Canada',
       },
       medals: {
         gold: 1,
@@ -3601,10 +3601,10 @@ function getData() {
       },
     },
     {
-      name: "Li Jiajun",
+      name: 'Li Jiajun',
       person: {
         age: 26,
-        country: "China",
+        country: 'China',
       },
       medals: {
         gold: 0,
@@ -3613,10 +3613,10 @@ function getData() {
       },
     },
     {
-      name: "Apolo Anton Ohno",
+      name: 'Apolo Anton Ohno',
       person: {
         age: 19,
-        country: "United States",
+        country: 'United States',
       },
       medals: {
         gold: 1,
@@ -3625,10 +3625,10 @@ function getData() {
       },
     },
     {
-      name: "Evgeniya Radanova",
+      name: 'Evgeniya Radanova',
       person: {
         age: 24,
-        country: "Bulgaria",
+        country: 'Bulgaria',
       },
       medals: {
         gold: 0,
@@ -3637,10 +3637,10 @@ function getData() {
       },
     },
     {
-      name: "Mathieu Turcotte",
+      name: 'Mathieu Turcotte',
       person: {
         age: 25,
-        country: "Canada",
+        country: 'Canada',
       },
       medals: {
         gold: 1,
@@ -3649,10 +3649,10 @@ function getData() {
       },
     },
     {
-      name: "Wang Chunlu",
+      name: 'Wang Chunlu',
       person: {
         age: 23,
-        country: "China",
+        country: 'China',
       },
       medals: {
         gold: 0,
@@ -3661,10 +3661,10 @@ function getData() {
       },
     },
     {
-      name: "Yang Yang (S)",
+      name: 'Yang Yang (S)',
       person: {
         age: 24,
-        country: "China",
+        country: 'China',
       },
       medals: {
         gold: 0,
@@ -3673,10 +3673,10 @@ function getData() {
       },
     },
     {
-      name: "Shani Davis",
+      name: 'Shani Davis',
       person: {
         age: 27,
-        country: "United States",
+        country: 'United States',
       },
       medals: {
         gold: 1,
@@ -3685,10 +3685,10 @@ function getData() {
       },
     },
     {
-      name: "Kristina Groves",
+      name: 'Kristina Groves',
       person: {
         age: 33,
-        country: "Canada",
+        country: 'Canada',
       },
       medals: {
         gold: 0,
@@ -3697,10 +3697,10 @@ function getData() {
       },
     },
     {
-      name: "Chad Hedrick",
+      name: 'Chad Hedrick',
       person: {
         age: 32,
-        country: "United States",
+        country: 'United States',
       },
       medals: {
         gold: 0,
@@ -3709,10 +3709,10 @@ function getData() {
       },
     },
     {
-      name: "Sven Kramer",
+      name: 'Sven Kramer',
       person: {
         age: 23,
-        country: "Netherlands",
+        country: 'Netherlands',
       },
       medals: {
         gold: 1,
@@ -3721,10 +3721,10 @@ function getData() {
       },
     },
     {
-      name: "Lee Seung-Hun",
+      name: 'Lee Seung-Hun',
       person: {
         age: 21,
-        country: "South Korea",
+        country: 'South Korea',
       },
       medals: {
         gold: 1,
@@ -3733,10 +3733,10 @@ function getData() {
       },
     },
     {
-      name: "Mo Tae-Beom",
+      name: 'Mo Tae-Beom',
       person: {
         age: 21,
-        country: "South Korea",
+        country: 'South Korea',
       },
       medals: {
         gold: 1,
@@ -3745,10 +3745,10 @@ function getData() {
       },
     },
     {
-      name: "Ivan Skobrev",
+      name: 'Ivan Skobrev',
       person: {
         age: 27,
-        country: "Russia",
+        country: 'Russia',
       },
       medals: {
         gold: 0,
@@ -3757,10 +3757,10 @@ function getData() {
       },
     },
     {
-      name: "Mark Tuitert",
+      name: 'Mark Tuitert',
       person: {
         age: 29,
-        country: "Netherlands",
+        country: 'Netherlands',
       },
       medals: {
         gold: 1,
@@ -3769,10 +3769,10 @@ function getData() {
       },
     },
     {
-      name: "Joey Cheek",
+      name: 'Joey Cheek',
       person: {
         age: 26,
-        country: "United States",
+        country: 'United States',
       },
       medals: {
         gold: 1,
@@ -3781,10 +3781,10 @@ function getData() {
       },
     },
     {
-      name: "Shani Davis",
+      name: 'Shani Davis',
       person: {
         age: 23,
-        country: "United States",
+        country: 'United States',
       },
       medals: {
         gold: 1,
@@ -3793,10 +3793,10 @@ function getData() {
       },
     },
     {
-      name: "Anni Friesinger-Postma",
+      name: 'Anni Friesinger-Postma',
       person: {
         age: 29,
-        country: "Germany",
+        country: 'Germany',
       },
       medals: {
         gold: 1,
@@ -3805,10 +3805,10 @@ function getData() {
       },
     },
     {
-      name: "Kristina Groves",
+      name: 'Kristina Groves',
       person: {
         age: 29,
-        country: "Canada",
+        country: 'Canada',
       },
       medals: {
         gold: 0,
@@ -3817,10 +3817,10 @@ function getData() {
       },
     },
     {
-      name: "Clara Hughes",
+      name: 'Clara Hughes',
       person: {
         age: 33,
-        country: "Canada",
+        country: 'Canada',
       },
       medals: {
         gold: 1,
@@ -3829,10 +3829,10 @@ function getData() {
       },
     },
     {
-      name: "Sven Kramer",
+      name: 'Sven Kramer',
       person: {
         age: 19,
-        country: "Netherlands",
+        country: 'Netherlands',
       },
       medals: {
         gold: 0,
@@ -3841,10 +3841,10 @@ function getData() {
       },
     },
     {
-      name: "Claudia Pechstein",
+      name: 'Claudia Pechstein',
       person: {
         age: 33,
-        country: "Germany",
+        country: 'Germany',
       },
       medals: {
         gold: 1,
@@ -3853,10 +3853,10 @@ function getData() {
       },
     },
     {
-      name: "Carl Verheijen",
+      name: 'Carl Verheijen',
       person: {
         age: 30,
-        country: "Netherlands",
+        country: 'Netherlands',
       },
       medals: {
         gold: 0,
@@ -3865,10 +3865,10 @@ function getData() {
       },
     },
     {
-      name: "Erben Wennemars",
+      name: 'Erben Wennemars',
       person: {
         age: 30,
-        country: "Netherlands",
+        country: 'Netherlands',
       },
       medals: {
         gold: 0,
@@ -3877,10 +3877,10 @@ function getData() {
       },
     },
     {
-      name: "Ireen Wüst",
+      name: 'Ireen Wüst',
       person: {
         age: 19,
-        country: "Netherlands",
+        country: 'Netherlands',
       },
       medals: {
         gold: 1,
@@ -3889,10 +3889,10 @@ function getData() {
       },
     },
     {
-      name: "Derek Parra",
+      name: 'Derek Parra',
       person: {
         age: 31,
-        country: "United States",
+        country: 'United States',
       },
       medals: {
         gold: 1,
@@ -3901,10 +3901,10 @@ function getData() {
       },
     },
     {
-      name: "Claudia Pechstein",
+      name: 'Claudia Pechstein',
       person: {
         age: 29,
-        country: "Germany",
+        country: 'Germany',
       },
       medals: {
         gold: 2,
@@ -3913,10 +3913,10 @@ function getData() {
       },
     },
     {
-      name: "Jennifer Rodriguez",
+      name: 'Jennifer Rodriguez',
       person: {
         age: 25,
-        country: "United States",
+        country: 'United States',
       },
       medals: {
         gold: 0,
@@ -3925,10 +3925,10 @@ function getData() {
       },
     },
     {
-      name: "Simon Ammann",
+      name: 'Simon Ammann',
       person: {
         age: 28,
-        country: "Switzerland",
+        country: 'Switzerland',
       },
       medals: {
         gold: 2,
@@ -3937,10 +3937,10 @@ function getData() {
       },
     },
     {
-      name: "Adam Malysz",
+      name: 'Adam Malysz',
       person: {
         age: 32,
-        country: "Poland",
+        country: 'Poland',
       },
       medals: {
         gold: 0,
@@ -3949,10 +3949,10 @@ function getData() {
       },
     },
     {
-      name: "Matti Hautamäki",
+      name: 'Matti Hautamäki',
       person: {
         age: 24,
-        country: "Finland",
+        country: 'Finland',
       },
       medals: {
         gold: 0,
@@ -3961,10 +3961,10 @@ function getData() {
       },
     },
     {
-      name: "Andreas Kofler",
+      name: 'Andreas Kofler',
       person: {
         age: 21,
-        country: "Austria",
+        country: 'Austria',
       },
       medals: {
         gold: 1,
@@ -3973,10 +3973,10 @@ function getData() {
       },
     },
     {
-      name: "Roar Ljøkelsøy",
+      name: 'Roar Ljøkelsøy',
       person: {
         age: 29,
-        country: "Norway",
+        country: 'Norway',
       },
       medals: {
         gold: 0,
@@ -3985,10 +3985,10 @@ function getData() {
       },
     },
     {
-      name: "Thomas Morgenstern",
+      name: 'Thomas Morgenstern',
       person: {
         age: 19,
-        country: "Austria",
+        country: 'Austria',
       },
       medals: {
         gold: 2,
@@ -3997,10 +3997,10 @@ function getData() {
       },
     },
     {
-      name: "Simon Ammann",
+      name: 'Simon Ammann',
       person: {
         age: 20,
-        country: "Switzerland",
+        country: 'Switzerland',
       },
       medals: {
         gold: 2,
@@ -4009,10 +4009,10 @@ function getData() {
       },
     },
     {
-      name: "Sven Hannawald",
+      name: 'Sven Hannawald',
       person: {
         age: 27,
-        country: "Germany",
+        country: 'Germany',
       },
       medals: {
         gold: 1,
@@ -4021,10 +4021,10 @@ function getData() {
       },
     },
     {
-      name: "Matti Hautamäki",
+      name: 'Matti Hautamäki',
       person: {
         age: 20,
-        country: "Finland",
+        country: 'Finland',
       },
       medals: {
         gold: 0,
@@ -4033,10 +4033,10 @@ function getData() {
       },
     },
     {
-      name: "Adam Malysz",
+      name: 'Adam Malysz',
       person: {
         age: 24,
-        country: "Poland",
+        country: 'Poland',
       },
       medals: {
         gold: 0,
@@ -4045,10 +4045,10 @@ function getData() {
       },
     },
     {
-      name: "Niccolò Campriani",
+      name: 'Niccolò Campriani',
       person: {
         age: 24,
-        country: "Italy",
+        country: 'Italy',
       },
       medals: {
         gold: 1,
@@ -4057,10 +4057,10 @@ function getData() {
       },
     },
     {
-      name: "Jin Jong-O",
+      name: 'Jin Jong-O',
       person: {
         age: 32,
-        country: "South Korea",
+        country: 'South Korea',
       },
       medals: {
         gold: 2,
@@ -4069,10 +4069,10 @@ function getData() {
       },
     },
     {
-      name: "Olena Kostevych",
+      name: 'Olena Kostevych',
       person: {
         age: 27,
-        country: "Ukraine",
+        country: 'Ukraine',
       },
       medals: {
         gold: 0,
@@ -4081,10 +4081,10 @@ function getData() {
       },
     },
     {
-      name: "Jin Jong-O",
+      name: 'Jin Jong-O',
       person: {
         age: 28,
-        country: "South Korea",
+        country: 'South Korea',
       },
       medals: {
         gold: 1,
@@ -4093,10 +4093,10 @@ function getData() {
       },
     },
     {
-      name: "Katerina Kurková-Emmons",
+      name: 'Katerina Kurková-Emmons',
       person: {
         age: 24,
-        country: "Czech Republic",
+        country: 'Czech Republic',
       },
       medals: {
         gold: 1,
@@ -4105,10 +4105,10 @@ function getData() {
       },
     },
     {
-      name: "Lyubov Galkina",
+      name: 'Lyubov Galkina',
       person: {
         age: 31,
-        country: "Russia",
+        country: 'Russia',
       },
       medals: {
         gold: 1,
@@ -4117,10 +4117,10 @@ function getData() {
       },
     },
     {
-      name: "Mariya Grozdeva",
+      name: 'Mariya Grozdeva',
       person: {
         age: 32,
-        country: "Bulgaria",
+        country: 'Bulgaria',
       },
       medals: {
         gold: 1,
@@ -4129,10 +4129,10 @@ function getData() {
       },
     },
     {
-      name: "Lee Bo-Na",
+      name: 'Lee Bo-Na',
       person: {
         age: 23,
-        country: "South Korea",
+        country: 'South Korea',
       },
       medals: {
         gold: 0,
@@ -4141,10 +4141,10 @@ function getData() {
       },
     },
     {
-      name: "Mikhail Nestruyev",
+      name: 'Mikhail Nestruyev',
       person: {
         age: 35,
-        country: "Russia",
+        country: 'Russia',
       },
       medals: {
         gold: 1,
@@ -4153,10 +4153,10 @@ function getData() {
       },
     },
     {
-      name: "Igor Basinsky",
+      name: 'Igor Basinsky',
       person: {
         age: 37,
-        country: "Belarus",
+        country: 'Belarus',
       },
       medals: {
         gold: 0,
@@ -4165,10 +4165,10 @@ function getData() {
       },
     },
     {
-      name: "Tao Luna",
+      name: 'Tao Luna',
       person: {
         age: 26,
-        country: "China",
+        country: 'China',
       },
       medals: {
         gold: 1,
@@ -4177,10 +4177,10 @@ function getData() {
       },
     },
     {
-      name: "Kim Crow",
+      name: 'Kim Crow',
       person: {
         age: 26,
-        country: "Australia",
+        country: 'Australia',
       },
       medals: {
         gold: 0,
@@ -4189,10 +4189,10 @@ function getData() {
       },
     },
     {
-      name: "Georgeta Damian-Andrunache",
+      name: 'Georgeta Damian-Andrunache',
       person: {
         age: 32,
-        country: "Romania",
+        country: 'Romania',
       },
       medals: {
         gold: 1,
@@ -4201,10 +4201,10 @@ function getData() {
       },
     },
     {
-      name: "Viorica Susanu",
+      name: 'Viorica Susanu',
       person: {
         age: 32,
-        country: "Romania",
+        country: 'Romania',
       },
       medals: {
         gold: 1,
@@ -4213,10 +4213,10 @@ function getData() {
       },
     },
     {
-      name: "Georgeta Damian-Andrunache",
+      name: 'Georgeta Damian-Andrunache',
       person: {
         age: 28,
-        country: "Romania",
+        country: 'Romania',
       },
       medals: {
         gold: 2,
@@ -4225,10 +4225,10 @@ function getData() {
       },
     },
     {
-      name: "Viorica Susanu",
+      name: 'Viorica Susanu',
       person: {
         age: 28,
-        country: "Romania",
+        country: 'Romania',
       },
       medals: {
         gold: 2,
@@ -4237,10 +4237,10 @@ function getData() {
       },
     },
     {
-      name: "Georgeta Damian-Andrunache",
+      name: 'Georgeta Damian-Andrunache',
       person: {
         age: 24,
-        country: "Romania",
+        country: 'Romania',
       },
       medals: {
         gold: 2,
@@ -4249,10 +4249,10 @@ function getData() {
       },
     },
     {
-      name: "Doina Ignat",
+      name: 'Doina Ignat',
       person: {
         age: 31,
-        country: "Romania",
+        country: 'Romania',
       },
       medals: {
         gold: 2,
@@ -4261,10 +4261,10 @@ function getData() {
       },
     },
     {
-      name: "Pieta van Dishoeck",
+      name: 'Pieta van Dishoeck',
       person: {
         age: 28,
-        country: "Netherlands",
+        country: 'Netherlands',
       },
       medals: {
         gold: 0,
@@ -4273,10 +4273,10 @@ function getData() {
       },
     },
     {
-      name: "Eeke van Nes",
+      name: 'Eeke van Nes',
       person: {
         age: 31,
-        country: "Netherlands",
+        country: 'Netherlands',
       },
       medals: {
         gold: 0,
@@ -4285,10 +4285,10 @@ function getData() {
       },
     },
     {
-      name: "Bill Demong",
+      name: 'Bill Demong',
       person: {
         age: 29,
-        country: "United States",
+        country: 'United States',
       },
       medals: {
         gold: 1,
@@ -4297,10 +4297,10 @@ function getData() {
       },
     },
     {
-      name: "Bernhard Gruber",
+      name: 'Bernhard Gruber',
       person: {
         age: 27,
-        country: "Austria",
+        country: 'Austria',
       },
       medals: {
         gold: 1,
@@ -4309,10 +4309,10 @@ function getData() {
       },
     },
     {
-      name: "Magnus Moan",
+      name: 'Magnus Moan',
       person: {
         age: 22,
-        country: "Norway",
+        country: 'Norway',
       },
       medals: {
         gold: 0,
@@ -4321,10 +4321,10 @@ function getData() {
       },
     },
     {
-      name: "Ronny Ackermann",
+      name: 'Ronny Ackermann',
       person: {
         age: 24,
-        country: "Germany",
+        country: 'Germany',
       },
       medals: {
         gold: 0,
@@ -4333,10 +4333,10 @@ function getData() {
       },
     },
     {
-      name: "Jaakko Tallus",
+      name: 'Jaakko Tallus',
       person: {
         age: 20,
-        country: "Finland",
+        country: 'Finland',
       },
       medals: {
         gold: 1,
@@ -4345,10 +4345,10 @@ function getData() {
       },
     },
     {
-      name: "Denis Ablyazin",
+      name: 'Denis Ablyazin',
       person: {
         age: 19,
-        country: "Russia",
+        country: 'Russia',
       },
       medals: {
         gold: 0,
@@ -4357,10 +4357,10 @@ function getData() {
       },
     },
     {
-      name: "Chen Yibing",
+      name: 'Chen Yibing',
       person: {
         age: 27,
-        country: "China",
+        country: 'China',
       },
       medals: {
         gold: 1,
@@ -4369,10 +4369,10 @@ function getData() {
       },
     },
     {
-      name: "Gabby Douglas",
+      name: 'Gabby Douglas',
       person: {
         age: 16,
-        country: "United States",
+        country: 'United States',
       },
       medals: {
         gold: 2,
@@ -4381,10 +4381,10 @@ function getData() {
       },
     },
     {
-      name: "Feng Zhe",
+      name: 'Feng Zhe',
       person: {
         age: 24,
-        country: "China",
+        country: 'China',
       },
       medals: {
         gold: 2,
@@ -4393,10 +4393,10 @@ function getData() {
       },
     },
     {
-      name: "Sandra Izbasa",
+      name: 'Sandra Izbasa',
       person: {
         age: 22,
-        country: "Romania",
+        country: 'Romania',
       },
       medals: {
         gold: 1,
@@ -4405,10 +4405,10 @@ function getData() {
       },
     },
     {
-      name: "Viktoriya Komova",
+      name: 'Viktoriya Komova',
       person: {
         age: 17,
-        country: "Russia",
+        country: 'Russia',
       },
       medals: {
         gold: 0,
@@ -4417,10 +4417,10 @@ function getData() {
       },
     },
     {
-      name: "McKayla Maroney",
+      name: 'McKayla Maroney',
       person: {
         age: 16,
-        country: "United States",
+        country: 'United States',
       },
       medals: {
         gold: 1,
@@ -4429,10 +4429,10 @@ function getData() {
       },
     },
     {
-      name: "Marcel Nguyen",
+      name: 'Marcel Nguyen',
       person: {
         age: 24,
-        country: "Germany",
+        country: 'Germany',
       },
       medals: {
         gold: 0,
@@ -4441,10 +4441,10 @@ function getData() {
       },
     },
     {
-      name: "Mariya Paseka",
+      name: 'Mariya Paseka',
       person: {
         age: 17,
-        country: "Russia",
+        country: 'Russia',
       },
       medals: {
         gold: 0,
@@ -4453,10 +4453,10 @@ function getData() {
       },
     },
     {
-      name: "Catalina Ponor",
+      name: 'Catalina Ponor',
       person: {
         age: 24,
-        country: "Romania",
+        country: 'Romania',
       },
       medals: {
         gold: 0,
@@ -4465,10 +4465,10 @@ function getData() {
       },
     },
     {
-      name: "Louis Smith",
+      name: 'Louis Smith',
       person: {
         age: 23,
-        country: "Great Britain",
+        country: 'Great Britain',
       },
       medals: {
         gold: 0,
@@ -4477,10 +4477,10 @@ function getData() {
       },
     },
     {
-      name: "Max Whitlock",
+      name: 'Max Whitlock',
       person: {
         age: 19,
-        country: "Great Britain",
+        country: 'Great Britain',
       },
       medals: {
         gold: 0,
@@ -4489,10 +4489,10 @@ function getData() {
       },
     },
     {
-      name: "Chen Yibing",
+      name: 'Chen Yibing',
       person: {
         age: 23,
-        country: "China",
+        country: 'China',
       },
       medals: {
         gold: 2,
@@ -4501,10 +4501,10 @@ function getData() {
       },
     },
     {
-      name: "Anton Golotsutskov",
+      name: 'Anton Golotsutskov',
       person: {
         age: 23,
-        country: "Russia",
+        country: 'Russia',
       },
       medals: {
         gold: 0,
@@ -4513,10 +4513,10 @@ function getData() {
       },
     },
     {
-      name: "He Kexin",
+      name: 'He Kexin',
       person: {
         age: 16,
-        country: "China",
+        country: 'China',
       },
       medals: {
         gold: 2,
@@ -4525,10 +4525,10 @@ function getData() {
       },
     },
     {
-      name: "Jonathan Horton",
+      name: 'Jonathan Horton',
       person: {
         age: 22,
-        country: "United States",
+        country: 'United States',
       },
       medals: {
         gold: 0,
@@ -4537,10 +4537,10 @@ function getData() {
       },
     },
     {
-      name: "Sandra Izbasa",
+      name: 'Sandra Izbasa',
       person: {
         age: 18,
-        country: "Romania",
+        country: 'Romania',
       },
       medals: {
         gold: 1,
@@ -4549,10 +4549,10 @@ function getData() {
       },
     },
     {
-      name: "Li Xiaopeng",
+      name: 'Li Xiaopeng',
       person: {
         age: 27,
-        country: "China",
+        country: 'China',
       },
       medals: {
         gold: 2,
@@ -4561,10 +4561,10 @@ function getData() {
       },
     },
     {
-      name: "Kohei Uchimura",
+      name: 'Kohei Uchimura',
       person: {
         age: 19,
-        country: "Japan",
+        country: 'Japan',
       },
       medals: {
         gold: 0,
@@ -4573,10 +4573,10 @@ function getData() {
       },
     },
     {
-      name: "Xiao Qin",
+      name: 'Xiao Qin',
       person: {
         age: 23,
-        country: "China",
+        country: 'China',
       },
       medals: {
         gold: 2,
@@ -4585,10 +4585,10 @@ function getData() {
       },
     },
     {
-      name: "Alexandra Eremia",
+      name: 'Alexandra Eremia',
       person: {
         age: 17,
-        country: "Romania",
+        country: 'Romania',
       },
       medals: {
         gold: 1,
@@ -4597,10 +4597,10 @@ function getData() {
       },
     },
     {
-      name: "Annia Hatch",
+      name: 'Annia Hatch',
       person: {
         age: 26,
-        country: "United States",
+        country: 'United States',
       },
       medals: {
         gold: 0,
@@ -4609,10 +4609,10 @@ function getData() {
       },
     },
     {
-      name: "Terin Humphrey",
+      name: 'Terin Humphrey',
       person: {
         age: 18,
-        country: "United States",
+        country: 'United States',
       },
       medals: {
         gold: 0,
@@ -4621,10 +4621,10 @@ function getData() {
       },
     },
     {
-      name: "Takehiro Kashima",
+      name: 'Takehiro Kashima',
       person: {
         age: 24,
-        country: "Japan",
+        country: 'Japan',
       },
       medals: {
         gold: 1,
@@ -4633,10 +4633,10 @@ function getData() {
       },
     },
     {
-      name: "Svetlana Khorkina",
+      name: 'Svetlana Khorkina',
       person: {
         age: 25,
-        country: "Russia",
+        country: 'Russia',
       },
       medals: {
         gold: 0,
@@ -4645,10 +4645,10 @@ function getData() {
       },
     },
     {
-      name: "Courtney Kupets",
+      name: 'Courtney Kupets',
       person: {
         age: 18,
-        country: "United States",
+        country: 'United States',
       },
       medals: {
         gold: 0,
@@ -4657,10 +4657,10 @@ function getData() {
       },
     },
     {
-      name: "Anna Pavlova",
+      name: 'Anna Pavlova',
       person: {
         age: 16,
-        country: "Russia",
+        country: 'Russia',
       },
       medals: {
         gold: 0,
@@ -4669,10 +4669,10 @@ function getData() {
       },
     },
     {
-      name: "Monica Rosu",
+      name: 'Monica Rosu',
       person: {
         age: 17,
-        country: "Romania",
+        country: 'Romania',
       },
       medals: {
         gold: 2,
@@ -4681,10 +4681,10 @@ function getData() {
       },
     },
     {
-      name: "Dana Sofronie",
+      name: 'Dana Sofronie',
       person: {
         age: 16,
-        country: "Romania",
+        country: 'Romania',
       },
       medals: {
         gold: 1,
@@ -4693,10 +4693,10 @@ function getData() {
       },
     },
     {
-      name: "Hiroyuki Tomita",
+      name: 'Hiroyuki Tomita',
       person: {
         age: 23,
-        country: "Japan",
+        country: 'Japan',
       },
       medals: {
         gold: 1,
@@ -4705,10 +4705,10 @@ function getData() {
       },
     },
     {
-      name: "Marius Urzica",
+      name: 'Marius Urzica',
       person: {
         age: 28,
-        country: "Romania",
+        country: 'Romania',
       },
       medals: {
         gold: 0,
@@ -4717,10 +4717,10 @@ function getData() {
       },
     },
     {
-      name: "Isao Yoneda",
+      name: 'Isao Yoneda',
       person: {
         age: 26,
-        country: "Japan",
+        country: 'Japan',
       },
       medals: {
         gold: 1,
@@ -4729,10 +4729,10 @@ function getData() {
       },
     },
     {
-      name: "Yordan Yovchev",
+      name: 'Yordan Yovchev',
       person: {
         age: 31,
-        country: "Bulgaria",
+        country: 'Bulgaria',
       },
       medals: {
         gold: 0,
@@ -4741,10 +4741,10 @@ function getData() {
       },
     },
     {
-      name: "Oleksandr Beresh",
+      name: 'Oleksandr Beresh',
       person: {
         age: 22,
-        country: "Ukraine",
+        country: 'Ukraine',
       },
       medals: {
         gold: 0,
@@ -4753,10 +4753,10 @@ function getData() {
       },
     },
     {
-      name: "Aleksey Bondarenko",
+      name: 'Aleksey Bondarenko',
       person: {
         age: 22,
-        country: "Russia",
+        country: 'Russia',
       },
       medals: {
         gold: 0,
@@ -4765,10 +4765,10 @@ function getData() {
       },
     },
     {
-      name: "Lee Ju-Hyeong",
+      name: 'Lee Ju-Hyeong',
       person: {
         age: 27,
-        country: "South Korea",
+        country: 'South Korea',
       },
       medals: {
         gold: 0,
@@ -4777,10 +4777,10 @@ function getData() {
       },
     },
     {
-      name: "Li Xiaopeng",
+      name: 'Li Xiaopeng',
       person: {
         age: 19,
-        country: "China",
+        country: 'China',
       },
       medals: {
         gold: 2,
@@ -4789,10 +4789,10 @@ function getData() {
       },
     },
     {
-      name: "Liu Xuan",
+      name: 'Liu Xuan',
       person: {
         age: 21,
-        country: "China",
+        country: 'China',
       },
       medals: {
         gold: 1,
@@ -4801,10 +4801,10 @@ function getData() {
       },
     },
     {
-      name: "Maria Olaru",
+      name: 'Maria Olaru',
       person: {
         age: 18,
-        country: "Romania",
+        country: 'Romania',
       },
       medals: {
         gold: 1,
@@ -4813,10 +4813,10 @@ function getData() {
       },
     },
     {
-      name: "Yelena Produnova",
+      name: 'Yelena Produnova',
       person: {
         age: 20,
-        country: "Russia",
+        country: 'Russia',
       },
       medals: {
         gold: 0,
@@ -4825,10 +4825,10 @@ function getData() {
       },
     },
     {
-      name: "Andreea Raducan",
+      name: 'Andreea Raducan',
       person: {
         age: 16,
-        country: "Romania",
+        country: 'Romania',
       },
       medals: {
         gold: 1,
@@ -4837,10 +4837,10 @@ function getData() {
       },
     },
     {
-      name: "Yang Wei",
+      name: 'Yang Wei',
       person: {
         age: 20,
-        country: "China",
+        country: 'China',
       },
       medals: {
         gold: 1,
@@ -4849,10 +4849,10 @@ function getData() {
       },
     },
     {
-      name: "Yordan Yovchev",
+      name: 'Yordan Yovchev',
       person: {
         age: 27,
-        country: "Bulgaria",
+        country: 'Bulgaria',
       },
       medals: {
         gold: 0,
@@ -4861,10 +4861,10 @@ function getData() {
       },
     },
     {
-      name: "Elisa Di Francisca",
+      name: 'Elisa Di Francisca',
       person: {
         age: 29,
-        country: "Italy",
+        country: 'Italy',
       },
       medals: {
         gold: 2,
@@ -4873,10 +4873,10 @@ function getData() {
       },
     },
     {
-      name: "Arianna Errigo",
+      name: 'Arianna Errigo',
       person: {
         age: 24,
-        country: "Italy",
+        country: 'Italy',
       },
       medals: {
         gold: 1,
@@ -4885,10 +4885,10 @@ function getData() {
       },
     },
     {
-      name: "Diego Occhiuzzi",
+      name: 'Diego Occhiuzzi',
       person: {
         age: 31,
-        country: "Italy",
+        country: 'Italy',
       },
       medals: {
         gold: 0,
@@ -4897,10 +4897,10 @@ function getData() {
       },
     },
     {
-      name: "Sun Yujie",
+      name: 'Sun Yujie',
       person: {
         age: 19,
-        country: "China",
+        country: 'China',
       },
       medals: {
         gold: 1,
@@ -4909,10 +4909,10 @@ function getData() {
       },
     },
     {
-      name: "Valentina Vezzali",
+      name: 'Valentina Vezzali',
       person: {
         age: 38,
-        country: "Italy",
+        country: 'Italy',
       },
       medals: {
         gold: 1,
@@ -4921,10 +4921,10 @@ function getData() {
       },
     },
     {
-      name: "Stefano Carozzo",
+      name: 'Stefano Carozzo',
       person: {
         age: 29,
-        country: "Italy",
+        country: 'Italy',
       },
       medals: {
         gold: 0,
@@ -4933,10 +4933,10 @@ function getData() {
       },
     },
     {
-      name: "Margherita Granbassi",
+      name: 'Margherita Granbassi',
       person: {
         age: 28,
-        country: "Italy",
+        country: 'Italy',
       },
       medals: {
         gold: 0,
@@ -4945,10 +4945,10 @@ function getData() {
       },
     },
     {
-      name: "Sada Jacobson",
+      name: 'Sada Jacobson',
       person: {
         age: 25,
-        country: "United States",
+        country: 'United States',
       },
       medals: {
         gold: 0,
@@ -4957,10 +4957,10 @@ function getData() {
       },
     },
     {
-      name: "Fabrice Jeannet",
+      name: 'Fabrice Jeannet',
       person: {
         age: 27,
-        country: "France",
+        country: 'France',
       },
       medals: {
         gold: 1,
@@ -4969,10 +4969,10 @@ function getData() {
       },
     },
     {
-      name: "Nicolas Lopez",
+      name: 'Nicolas Lopez',
       person: {
         age: 27,
-        country: "France",
+        country: 'France',
       },
       medals: {
         gold: 1,
@@ -4981,10 +4981,10 @@ function getData() {
       },
     },
     {
-      name: "Matteo Tagliariol",
+      name: 'Matteo Tagliariol',
       person: {
         age: 25,
-        country: "Italy",
+        country: 'Italy',
       },
       medals: {
         gold: 1,
@@ -4993,10 +4993,10 @@ function getData() {
       },
     },
     {
-      name: "Valentina Vezzali",
+      name: 'Valentina Vezzali',
       person: {
         age: 34,
-        country: "Italy",
+        country: 'Italy',
       },
       medals: {
         gold: 1,
@@ -5005,10 +5005,10 @@ function getData() {
       },
     },
     {
-      name: "Becca Ward",
+      name: 'Becca Ward',
       person: {
         age: 18,
-        country: "United States",
+        country: 'United States',
       },
       medals: {
         gold: 0,
@@ -5017,10 +5017,10 @@ function getData() {
       },
     },
     {
-      name: "Mariel Zagunis",
+      name: 'Mariel Zagunis',
       person: {
         age: 23,
-        country: "United States",
+        country: 'United States',
       },
       medals: {
         gold: 1,
@@ -5029,10 +5029,10 @@ function getData() {
       },
     },
     {
-      name: "Andrea Cassarà",
+      name: 'Andrea Cassarà',
       person: {
         age: 20,
-        country: "Italy",
+        country: 'Italy',
       },
       medals: {
         gold: 1,
@@ -5041,10 +5041,10 @@ function getData() {
       },
     },
     {
-      name: "Laura Flessel-Colovic",
+      name: 'Laura Flessel-Colovic',
       person: {
         age: 32,
-        country: "France",
+        country: 'France',
       },
       medals: {
         gold: 0,
@@ -5053,10 +5053,10 @@ function getData() {
       },
     },
     {
-      name: "Aldo Montano",
+      name: 'Aldo Montano',
       person: {
         age: 25,
-        country: "Italy",
+        country: 'Italy',
       },
       medals: {
         gold: 1,
@@ -5065,10 +5065,10 @@ function getData() {
       },
     },
     {
-      name: "Maureen Nisima",
+      name: 'Maureen Nisima',
       person: {
         age: 23,
-        country: "France",
+        country: 'France',
       },
       medals: {
         gold: 0,
@@ -5077,10 +5077,10 @@ function getData() {
       },
     },
     {
-      name: "Salvatore Sanzo",
+      name: 'Salvatore Sanzo',
       person: {
         age: 28,
-        country: "Italy",
+        country: 'Italy',
       },
       medals: {
         gold: 1,
@@ -5089,10 +5089,10 @@ function getData() {
       },
     },
     {
-      name: "Mathieu Gourdain",
+      name: 'Mathieu Gourdain',
       person: {
         age: 26,
-        country: "France",
+        country: 'France',
       },
       medals: {
         gold: 0,
@@ -5101,10 +5101,10 @@ function getData() {
       },
     },
     {
-      name: "Gianna Hablützel-Bürki",
+      name: 'Gianna Hablützel-Bürki',
       person: {
         age: 30,
-        country: "Switzerland",
+        country: 'Switzerland',
       },
       medals: {
         gold: 0,
@@ -5113,10 +5113,10 @@ function getData() {
       },
     },
     {
-      name: "Rita König",
+      name: 'Rita König',
       person: {
         age: 23,
-        country: "Germany",
+        country: 'Germany',
       },
       medals: {
         gold: 0,
@@ -5125,10 +5125,10 @@ function getData() {
       },
     },
     {
-      name: "Wiradech Kothny",
+      name: 'Wiradech Kothny',
       person: {
         age: 21,
-        country: "Germany",
+        country: 'Germany',
       },
       medals: {
         gold: 0,
@@ -5137,10 +5137,10 @@ function getData() {
       },
     },
     {
-      name: "Hugues Obry",
+      name: 'Hugues Obry',
       person: {
         age: 27,
-        country: "France",
+        country: 'France',
       },
       medals: {
         gold: 0,
@@ -5149,10 +5149,10 @@ function getData() {
       },
     },
     {
-      name: "Giovanna Trillini",
+      name: 'Giovanna Trillini',
       person: {
         age: 30,
-        country: "Italy",
+        country: 'Italy',
       },
       medals: {
         gold: 1,
@@ -5161,10 +5161,10 @@ function getData() {
       },
     },
     {
-      name: "Valentina Vezzali",
+      name: 'Valentina Vezzali',
       person: {
         age: 26,
-        country: "Italy",
+        country: 'Italy',
       },
       medals: {
         gold: 2,
@@ -5173,10 +5173,10 @@ function getData() {
       },
     },
     {
-      name: "Sandra Auffarth",
+      name: 'Sandra Auffarth',
       person: {
         age: 25,
-        country: "Germany",
+        country: 'Germany',
       },
       medals: {
         gold: 1,
@@ -5185,10 +5185,10 @@ function getData() {
       },
     },
     {
-      name: "Laura Bechtolsheimer",
+      name: 'Laura Bechtolsheimer',
       person: {
         age: 27,
-        country: "Great Britain",
+        country: 'Great Britain',
       },
       medals: {
         gold: 1,
@@ -5197,10 +5197,10 @@ function getData() {
       },
     },
     {
-      name: "Adelinde Cornelissen",
+      name: 'Adelinde Cornelissen',
       person: {
         age: 33,
-        country: "Netherlands",
+        country: 'Netherlands',
       },
       medals: {
         gold: 0,
@@ -5209,10 +5209,10 @@ function getData() {
       },
     },
     {
-      name: "Charlotte Dujardin",
+      name: 'Charlotte Dujardin',
       person: {
         age: 27,
-        country: "Great Britain",
+        country: 'Great Britain',
       },
       medals: {
         gold: 2,
@@ -5221,10 +5221,10 @@ function getData() {
       },
     },
     {
-      name: "Michael Jung",
+      name: 'Michael Jung',
       person: {
         age: 29,
-        country: "Germany",
+        country: 'Germany',
       },
       medals: {
         gold: 2,
@@ -5233,10 +5233,10 @@ function getData() {
       },
     },
     {
-      name: "Gerco Schröder",
+      name: 'Gerco Schröder',
       person: {
         age: 34,
-        country: "Netherlands",
+        country: 'Netherlands',
       },
       medals: {
         gold: 0,
@@ -5245,10 +5245,10 @@ function getData() {
       },
     },
     {
-      name: "Tina Cook",
+      name: 'Tina Cook',
       person: {
         age: 37,
-        country: "Great Britain",
+        country: 'Great Britain',
       },
       medals: {
         gold: 0,
@@ -5257,10 +5257,10 @@ function getData() {
       },
     },
     {
-      name: "Heike Kemmer",
+      name: 'Heike Kemmer',
       person: {
         age: 46,
-        country: "Germany",
+        country: 'Germany',
       },
       medals: {
         gold: 1,
@@ -5269,10 +5269,10 @@ function getData() {
       },
     },
     {
-      name: "Eric Lamaze",
+      name: 'Eric Lamaze',
       person: {
         age: 40,
-        country: "Canada",
+        country: 'Canada',
       },
       medals: {
         gold: 1,
@@ -5281,10 +5281,10 @@ function getData() {
       },
     },
     {
-      name: "Beezie Madden",
+      name: 'Beezie Madden',
       person: {
         age: 44,
-        country: "United States",
+        country: 'United States',
       },
       medals: {
         gold: 1,
@@ -5293,10 +5293,10 @@ function getData() {
       },
     },
     {
-      name: "Hinrich Romeike",
+      name: 'Hinrich Romeike',
       person: {
         age: 45,
-        country: "Germany",
+        country: 'Germany',
       },
       medals: {
         gold: 2,
@@ -5305,10 +5305,10 @@ function getData() {
       },
     },
     {
-      name: "Anky van Grunsven",
+      name: 'Anky van Grunsven',
       person: {
         age: 40,
-        country: "Netherlands",
+        country: 'Netherlands',
       },
       medals: {
         gold: 1,
@@ -5317,10 +5317,10 @@ function getData() {
       },
     },
     {
-      name: "Isabell Werth",
+      name: 'Isabell Werth',
       person: {
         age: 39,
-        country: "Germany",
+        country: 'Germany',
       },
       medals: {
         gold: 1,
@@ -5329,10 +5329,10 @@ function getData() {
       },
     },
     {
-      name: "Beatriz Ferrer-Salat",
+      name: 'Beatriz Ferrer-Salat',
       person: {
         age: 38,
-        country: "Spain",
+        country: 'Spain',
       },
       medals: {
         gold: 0,
@@ -5341,10 +5341,10 @@ function getData() {
       },
     },
     {
-      name: "Pippa Funnell",
+      name: 'Pippa Funnell',
       person: {
         age: 35,
-        country: "Great Britain",
+        country: 'Great Britain',
       },
       medals: {
         gold: 0,
@@ -5353,10 +5353,10 @@ function getData() {
       },
     },
     {
-      name: "Chris Kappler",
+      name: 'Chris Kappler',
       person: {
         age: 37,
-        country: "United States",
+        country: 'United States',
       },
       medals: {
         gold: 1,
@@ -5365,10 +5365,10 @@ function getData() {
       },
     },
     {
-      name: "Marco Kutscher",
+      name: 'Marco Kutscher',
       person: {
         age: 29,
-        country: "Germany",
+        country: 'Germany',
       },
       medals: {
         gold: 0,
@@ -5377,10 +5377,10 @@ function getData() {
       },
     },
     {
-      name: "Leslie Law",
+      name: 'Leslie Law',
       person: {
         age: 39,
-        country: "Great Britain",
+        country: 'Great Britain',
       },
       medals: {
         gold: 1,
@@ -5389,10 +5389,10 @@ function getData() {
       },
     },
     {
-      name: "Ulla Salzgeber",
+      name: 'Ulla Salzgeber',
       person: {
         age: 46,
-        country: "Germany",
+        country: 'Germany',
       },
       medals: {
         gold: 1,
@@ -5401,10 +5401,10 @@ function getData() {
       },
     },
     {
-      name: "Kim Severson",
+      name: 'Kim Severson',
       person: {
         age: 30,
-        country: "United States",
+        country: 'United States',
       },
       medals: {
         gold: 0,
@@ -5413,10 +5413,10 @@ function getData() {
       },
     },
     {
-      name: "Andrew Hoy",
+      name: 'Andrew Hoy',
       person: {
         age: 41,
-        country: "Australia",
+        country: 'Australia',
       },
       medals: {
         gold: 1,
@@ -5428,7 +5428,7 @@ function getData() {
       name: "David O'Connor",
       person: {
         age: 38,
-        country: "United States",
+        country: 'United States',
       },
       medals: {
         gold: 1,
@@ -5437,10 +5437,10 @@ function getData() {
       },
     },
     {
-      name: "Ulla Salzgeber",
+      name: 'Ulla Salzgeber',
       person: {
         age: 42,
-        country: "Germany",
+        country: 'Germany',
       },
       medals: {
         gold: 1,
@@ -5449,10 +5449,10 @@ function getData() {
       },
     },
     {
-      name: "Anky van Grunsven",
+      name: 'Anky van Grunsven',
       person: {
         age: 32,
-        country: "Netherlands",
+        country: 'Netherlands',
       },
       medals: {
         gold: 1,
@@ -5461,10 +5461,10 @@ function getData() {
       },
     },
     {
-      name: "Isabell Werth",
+      name: 'Isabell Werth',
       person: {
         age: 31,
-        country: "Germany",
+        country: 'Germany',
       },
       medals: {
         gold: 1,
@@ -5473,10 +5473,10 @@ function getData() {
       },
     },
     {
-      name: "David Boudia",
+      name: 'David Boudia',
       person: {
         age: 23,
-        country: "United States",
+        country: 'United States',
       },
       medals: {
         gold: 1,
@@ -5485,10 +5485,10 @@ function getData() {
       },
     },
     {
-      name: "Chen Ruolin",
+      name: 'Chen Ruolin',
       person: {
         age: 19,
-        country: "China",
+        country: 'China',
       },
       medals: {
         gold: 2,
@@ -5497,10 +5497,10 @@ function getData() {
       },
     },
     {
-      name: "He Zi",
+      name: 'He Zi',
       person: {
         age: 21,
-        country: "China",
+        country: 'China',
       },
       medals: {
         gold: 1,
@@ -5509,10 +5509,10 @@ function getData() {
       },
     },
     {
-      name: "Qin Kai",
+      name: 'Qin Kai',
       person: {
         age: 26,
-        country: "China",
+        country: 'China',
       },
       medals: {
         gold: 1,
@@ -5521,10 +5521,10 @@ function getData() {
       },
     },
     {
-      name: "Wu Minxia",
+      name: 'Wu Minxia',
       person: {
         age: 26,
-        country: "China",
+        country: 'China',
       },
       medals: {
         gold: 2,
@@ -5533,10 +5533,10 @@ function getData() {
       },
     },
     {
-      name: "Ilya Zakharov",
+      name: 'Ilya Zakharov',
       person: {
         age: 21,
-        country: "Russia",
+        country: 'Russia',
       },
       medals: {
         gold: 1,
@@ -5545,10 +5545,10 @@ function getData() {
       },
     },
     {
-      name: "Chen Ruolin",
+      name: 'Chen Ruolin',
       person: {
         age: 15,
-        country: "China",
+        country: 'China',
       },
       medals: {
         gold: 2,
@@ -5557,10 +5557,10 @@ function getData() {
       },
     },
     {
-      name: "Gleb Galperin",
+      name: 'Gleb Galperin',
       person: {
         age: 25,
-        country: "Russia",
+        country: 'Russia',
       },
       medals: {
         gold: 0,
@@ -5569,10 +5569,10 @@ function getData() {
       },
     },
     {
-      name: "Guo Jingjing",
+      name: 'Guo Jingjing',
       person: {
         age: 26,
-        country: "China",
+        country: 'China',
       },
       medals: {
         gold: 2,
@@ -5581,10 +5581,10 @@ function getData() {
       },
     },
     {
-      name: "Yuliya Pakhalina",
+      name: 'Yuliya Pakhalina',
       person: {
         age: 30,
-        country: "Russia",
+        country: 'Russia',
       },
       medals: {
         gold: 0,
@@ -5593,10 +5593,10 @@ function getData() {
       },
     },
     {
-      name: "Qin Kai",
+      name: 'Qin Kai',
       person: {
         age: 22,
-        country: "China",
+        country: 'China',
       },
       medals: {
         gold: 1,
@@ -5605,10 +5605,10 @@ function getData() {
       },
     },
     {
-      name: "Wang Xin",
+      name: 'Wang Xin',
       person: {
         age: 16,
-        country: "China",
+        country: 'China',
       },
       medals: {
         gold: 1,
@@ -5617,10 +5617,10 @@ function getData() {
       },
     },
     {
-      name: "Wu Minxia",
+      name: 'Wu Minxia',
       person: {
         age: 22,
-        country: "China",
+        country: 'China',
       },
       medals: {
         gold: 1,
@@ -5629,10 +5629,10 @@ function getData() {
       },
     },
     {
-      name: "Guo Jingjing",
+      name: 'Guo Jingjing',
       person: {
         age: 22,
-        country: "China",
+        country: 'China',
       },
       medals: {
         gold: 2,
@@ -5641,10 +5641,10 @@ function getData() {
       },
     },
     {
-      name: "Mathew Helm",
+      name: 'Mathew Helm',
       person: {
         age: 23,
-        country: "Australia",
+        country: 'Australia',
       },
       medals: {
         gold: 0,
@@ -5653,10 +5653,10 @@ function getData() {
       },
     },
     {
-      name: "Lao Lishi",
+      name: 'Lao Lishi',
       person: {
         age: 16,
-        country: "China",
+        country: 'China',
       },
       medals: {
         gold: 1,
@@ -5665,10 +5665,10 @@ function getData() {
       },
     },
     {
-      name: "Chantelle Michell-Newbery",
+      name: 'Chantelle Michell-Newbery',
       person: {
         age: 27,
-        country: "Australia",
+        country: 'Australia',
       },
       medals: {
         gold: 1,
@@ -5677,10 +5677,10 @@ function getData() {
       },
     },
     {
-      name: "Robert Newbery",
+      name: 'Robert Newbery',
       person: {
         age: 25,
-        country: "Australia",
+        country: 'Australia',
       },
       medals: {
         gold: 0,
@@ -5689,10 +5689,10 @@ function getData() {
       },
     },
     {
-      name: "Yuliya Pakhalina",
+      name: 'Yuliya Pakhalina',
       person: {
         age: 26,
-        country: "Russia",
+        country: 'Russia',
       },
       medals: {
         gold: 0,
@@ -5701,10 +5701,10 @@ function getData() {
       },
     },
     {
-      name: "Tian Liang",
+      name: 'Tian Liang',
       person: {
         age: 24,
-        country: "China",
+        country: 'China',
       },
       medals: {
         gold: 1,
@@ -5713,10 +5713,10 @@ function getData() {
       },
     },
     {
-      name: "Wu Minxia",
+      name: 'Wu Minxia',
       person: {
         age: 18,
-        country: "China",
+        country: 'China',
       },
       medals: {
         gold: 1,
@@ -5725,10 +5725,10 @@ function getData() {
       },
     },
     {
-      name: "Fu Mingxia",
+      name: 'Fu Mingxia',
       person: {
         age: 22,
-        country: "China",
+        country: 'China',
       },
       medals: {
         gold: 1,
@@ -5737,10 +5737,10 @@ function getData() {
       },
     },
     {
-      name: "Guo Jingjing",
+      name: 'Guo Jingjing',
       person: {
         age: 18,
-        country: "China",
+        country: 'China',
       },
       medals: {
         gold: 0,
@@ -5749,10 +5749,10 @@ function getData() {
       },
     },
     {
-      name: "Hu Jia",
+      name: 'Hu Jia',
       person: {
         age: 17,
-        country: "China",
+        country: 'China',
       },
       medals: {
         gold: 0,
@@ -5761,10 +5761,10 @@ function getData() {
       },
     },
     {
-      name: "Li Na",
+      name: 'Li Na',
       person: {
         age: 16,
-        country: "China",
+        country: 'China',
       },
       medals: {
         gold: 1,
@@ -5773,10 +5773,10 @@ function getData() {
       },
     },
     {
-      name: "Anne Montminy",
+      name: 'Anne Montminy',
       person: {
         age: 25,
-        country: "Canada",
+        country: 'Canada',
       },
       medals: {
         gold: 0,
@@ -5785,10 +5785,10 @@ function getData() {
       },
     },
     {
-      name: "Tian Liang",
+      name: 'Tian Liang',
       person: {
         age: 21,
-        country: "China",
+        country: 'China',
       },
       medals: {
         gold: 1,
@@ -5797,10 +5797,10 @@ function getData() {
       },
     },
     {
-      name: "Xiong Ni",
+      name: 'Xiong Ni',
       person: {
         age: 26,
-        country: "China",
+        country: 'China',
       },
       medals: {
         gold: 2,
@@ -5809,10 +5809,10 @@ function getData() {
       },
     },
     {
-      name: "Grégory Baugé",
+      name: 'Grégory Baugé',
       person: {
         age: 27,
-        country: "France",
+        country: 'France',
       },
       medals: {
         gold: 0,
@@ -5821,10 +5821,10 @@ function getData() {
       },
     },
     {
-      name: "Ed Clancy",
+      name: 'Ed Clancy',
       person: {
         age: 27,
-        country: "Great Britain",
+        country: 'Great Britain',
       },
       medals: {
         gold: 1,
@@ -5833,10 +5833,10 @@ function getData() {
       },
     },
     {
-      name: "Sarah Hammer",
+      name: 'Sarah Hammer',
       person: {
         age: 28,
-        country: "United States",
+        country: 'United States',
       },
       medals: {
         gold: 0,
@@ -5845,10 +5845,10 @@ function getData() {
       },
     },
     {
-      name: "Chris Hoy",
+      name: 'Chris Hoy',
       person: {
         age: 36,
-        country: "Great Britain",
+        country: 'Great Britain',
       },
       medals: {
         gold: 2,
@@ -5857,10 +5857,10 @@ function getData() {
       },
     },
     {
-      name: "Jason Kenny",
+      name: 'Jason Kenny',
       person: {
         age: 24,
-        country: "Great Britain",
+        country: 'Great Britain',
       },
       medals: {
         gold: 2,
@@ -5869,10 +5869,10 @@ function getData() {
       },
     },
     {
-      name: "Maximilian Levy",
+      name: 'Maximilian Levy',
       person: {
         age: 25,
-        country: "Germany",
+        country: 'Germany',
       },
       medals: {
         gold: 0,
@@ -5881,10 +5881,10 @@ function getData() {
       },
     },
     {
-      name: "Anna Meares",
+      name: 'Anna Meares',
       person: {
         age: 28,
-        country: "Australia",
+        country: 'Australia',
       },
       medals: {
         gold: 1,
@@ -5893,10 +5893,10 @@ function getData() {
       },
     },
     {
-      name: "Vicki Pendleton",
+      name: 'Vicki Pendleton',
       person: {
         age: 31,
-        country: "Great Britain",
+        country: 'Great Britain',
       },
       medals: {
         gold: 1,
@@ -5905,10 +5905,10 @@ function getData() {
       },
     },
     {
-      name: "Laura Trott",
+      name: 'Laura Trott',
       person: {
         age: 20,
-        country: "Great Britain",
+        country: 'Great Britain',
       },
       medals: {
         gold: 2,
@@ -5917,10 +5917,10 @@ function getData() {
       },
     },
     {
-      name: "Olga Zabelinskaya",
+      name: 'Olga Zabelinskaya',
       person: {
         age: 32,
-        country: "Russia",
+        country: 'Russia',
       },
       medals: {
         gold: 0,
@@ -5929,10 +5929,10 @@ function getData() {
       },
     },
     {
-      name: "Mickaël Bourgain",
+      name: 'Mickaël Bourgain',
       person: {
         age: 28,
-        country: "France",
+        country: 'France',
       },
       medals: {
         gold: 0,
@@ -5941,10 +5941,10 @@ function getData() {
       },
     },
     {
-      name: "Fabian Cancellara",
+      name: 'Fabian Cancellara',
       person: {
         age: 27,
-        country: "Switzerland",
+        country: 'Switzerland',
       },
       medals: {
         gold: 1,
@@ -5953,10 +5953,10 @@ function getData() {
       },
     },
     {
-      name: "Jason Kenny",
+      name: 'Jason Kenny',
       person: {
         age: 20,
-        country: "Great Britain",
+        country: 'Great Britain',
       },
       medals: {
         gold: 1,
@@ -5965,10 +5965,10 @@ function getData() {
       },
     },
     {
-      name: "Joan Llaneras",
+      name: 'Joan Llaneras',
       person: {
         age: 39,
-        country: "Spain",
+        country: 'Spain',
       },
       medals: {
         gold: 1,
@@ -5977,10 +5977,10 @@ function getData() {
       },
     },
     {
-      name: "Hayden Roulston",
+      name: 'Hayden Roulston',
       person: {
         age: 27,
-        country: "New Zealand",
+        country: 'New Zealand',
       },
       medals: {
         gold: 0,
@@ -5989,10 +5989,10 @@ function getData() {
       },
     },
     {
-      name: "Bradley Wiggins",
+      name: 'Bradley Wiggins',
       person: {
         age: 28,
-        country: "Great Britain",
+        country: 'Great Britain',
       },
       medals: {
         gold: 2,
@@ -6001,10 +6001,10 @@ function getData() {
       },
     },
     {
-      name: "Ryan Bayley",
+      name: 'Ryan Bayley',
       person: {
         age: 22,
-        country: "Australia",
+        country: 'Australia',
       },
       medals: {
         gold: 2,
@@ -6013,10 +6013,10 @@ function getData() {
       },
     },
     {
-      name: "Graeme Brown",
+      name: 'Graeme Brown',
       person: {
         age: 25,
-        country: "Australia",
+        country: 'Australia',
       },
       medals: {
         gold: 2,
@@ -6025,10 +6025,10 @@ function getData() {
       },
     },
     {
-      name: "Sergi Escobar",
+      name: 'Sergi Escobar',
       person: {
         age: 29,
-        country: "Spain",
+        country: 'Spain',
       },
       medals: {
         gold: 0,
@@ -6037,10 +6037,10 @@ function getData() {
       },
     },
     {
-      name: "Rob Hayles",
+      name: 'Rob Hayles',
       person: {
         age: 31,
-        country: "Great Britain",
+        country: 'Great Britain',
       },
       medals: {
         gold: 0,
@@ -6049,10 +6049,10 @@ function getData() {
       },
     },
     {
-      name: "Brad McGee",
+      name: 'Brad McGee',
       person: {
         age: 28,
-        country: "Australia",
+        country: 'Australia',
       },
       medals: {
         gold: 1,
@@ -6061,10 +6061,10 @@ function getData() {
       },
     },
     {
-      name: "Anna Meares",
+      name: 'Anna Meares',
       person: {
         age: 20,
-        country: "Australia",
+        country: 'Australia',
       },
       medals: {
         gold: 1,
@@ -6073,10 +6073,10 @@ function getData() {
       },
     },
     {
-      name: "Stefan Nimke",
+      name: 'Stefan Nimke',
       person: {
         age: 26,
-        country: "Germany",
+        country: 'Germany',
       },
       medals: {
         gold: 1,
@@ -6085,10 +6085,10 @@ function getData() {
       },
     },
     {
-      name: "Olga Slyusareva",
+      name: 'Olga Slyusareva',
       person: {
         age: 35,
-        country: "Russia",
+        country: 'Russia',
       },
       medals: {
         gold: 1,
@@ -6097,10 +6097,10 @@ function getData() {
       },
     },
     {
-      name: "Arnaud Tournant",
+      name: 'Arnaud Tournant',
       person: {
         age: 26,
-        country: "France",
+        country: 'France',
       },
       medals: {
         gold: 0,
@@ -6109,10 +6109,10 @@ function getData() {
       },
     },
     {
-      name: "René Wolff",
+      name: 'René Wolff',
       person: {
         age: 26,
-        country: "Germany",
+        country: 'Germany',
       },
       medals: {
         gold: 1,
@@ -6121,10 +6121,10 @@ function getData() {
       },
     },
     {
-      name: "Leontien Zijlaard-van Moorsel",
+      name: 'Leontien Zijlaard-van Moorsel',
       person: {
         age: 34,
-        country: "Netherlands",
+        country: 'Netherlands',
       },
       medals: {
         gold: 1,
@@ -6133,10 +6133,10 @@ function getData() {
       },
     },
     {
-      name: "Félicia Ballanger",
+      name: 'Félicia Ballanger',
       person: {
         age: 29,
-        country: "France",
+        country: 'France',
       },
       medals: {
         gold: 2,
@@ -6145,10 +6145,10 @@ function getData() {
       },
     },
     {
-      name: "Robert Bartko",
+      name: 'Robert Bartko',
       person: {
         age: 24,
-        country: "Germany",
+        country: 'Germany',
       },
       medals: {
         gold: 2,
@@ -6157,10 +6157,10 @@ function getData() {
       },
     },
     {
-      name: "Jens Fiedler",
+      name: 'Jens Fiedler',
       person: {
         age: 30,
-        country: "Germany",
+        country: 'Germany',
       },
       medals: {
         gold: 0,
@@ -6169,10 +6169,10 @@ function getData() {
       },
     },
     {
-      name: "Jens Lehmann",
+      name: 'Jens Lehmann',
       person: {
         age: 32,
-        country: "Germany",
+        country: 'Germany',
       },
       medals: {
         gold: 1,
@@ -6181,10 +6181,10 @@ function getData() {
       },
     },
     {
-      name: "Gary Neiwand",
+      name: 'Gary Neiwand',
       person: {
         age: 34,
-        country: "Australia",
+        country: 'Australia',
       },
       medals: {
         gold: 0,
@@ -6193,10 +6193,10 @@ function getData() {
       },
     },
     {
-      name: "Jason Queally",
+      name: 'Jason Queally',
       person: {
         age: 30,
-        country: "Great Britain",
+        country: 'Great Britain',
       },
       medals: {
         gold: 1,
@@ -6205,10 +6205,10 @@ function getData() {
       },
     },
     {
-      name: "Jan Ullrich",
+      name: 'Jan Ullrich',
       person: {
         age: 26,
-        country: "Germany",
+        country: 'Germany',
       },
       medals: {
         gold: 1,
@@ -6217,10 +6217,10 @@ function getData() {
       },
     },
     {
-      name: "Lukáš Bauer",
+      name: 'Lukáš Bauer',
       person: {
         age: 32,
-        country: "Czech Republic",
+        country: 'Czech Republic',
       },
       medals: {
         gold: 0,
@@ -6229,10 +6229,10 @@ function getData() {
       },
     },
     {
-      name: "Anna Haag",
+      name: 'Anna Haag',
       person: {
         age: 23,
-        country: "Sweden",
+        country: 'Sweden',
       },
       medals: {
         gold: 0,
@@ -6241,10 +6241,10 @@ function getData() {
       },
     },
     {
-      name: "Marcus Hellner",
+      name: 'Marcus Hellner',
       person: {
         age: 24,
-        country: "Sweden",
+        country: 'Sweden',
       },
       medals: {
         gold: 2,
@@ -6253,10 +6253,10 @@ function getData() {
       },
     },
     {
-      name: "Charlotte Kalla",
+      name: 'Charlotte Kalla',
       person: {
         age: 22,
-        country: "Sweden",
+        country: 'Sweden',
       },
       medals: {
         gold: 1,
@@ -6265,10 +6265,10 @@ function getData() {
       },
     },
     {
-      name: "Claudia Künzel-Nystad",
+      name: 'Claudia Künzel-Nystad',
       person: {
         age: 32,
-        country: "Germany",
+        country: 'Germany',
       },
       medals: {
         gold: 1,
@@ -6277,10 +6277,10 @@ function getData() {
       },
     },
     {
-      name: "Aino-Kaisa Saarinen",
+      name: 'Aino-Kaisa Saarinen',
       person: {
         age: 31,
-        country: "Finland",
+        country: 'Finland',
       },
       medals: {
         gold: 0,
@@ -6289,10 +6289,10 @@ function getData() {
       },
     },
     {
-      name: "Evi Sachenbacher-Stehle",
+      name: 'Evi Sachenbacher-Stehle',
       person: {
         age: 29,
-        country: "Germany",
+        country: 'Germany',
       },
       medals: {
         gold: 1,
@@ -6301,10 +6301,10 @@ function getData() {
       },
     },
     {
-      name: "Axel Teichmann",
+      name: 'Axel Teichmann',
       person: {
         age: 30,
-        country: "Germany",
+        country: 'Germany',
       },
       medals: {
         gold: 0,
@@ -6313,10 +6313,10 @@ function getData() {
       },
     },
     {
-      name: "Tobias Angerer",
+      name: 'Tobias Angerer',
       person: {
         age: 28,
-        country: "Germany",
+        country: 'Germany',
       },
       medals: {
         gold: 0,
@@ -6325,10 +6325,10 @@ function getData() {
       },
     },
     {
-      name: "Yuliya Chepalova",
+      name: 'Yuliya Chepalova',
       person: {
         age: 29,
-        country: "Russia",
+        country: 'Russia',
       },
       medals: {
         gold: 1,
@@ -6337,10 +6337,10 @@ function getData() {
       },
     },
     {
-      name: "Yevgeny Dementyev",
+      name: 'Yevgeny Dementyev',
       person: {
         age: 23,
-        country: "Russia",
+        country: 'Russia',
       },
       medals: {
         gold: 1,
@@ -6349,10 +6349,10 @@ function getData() {
       },
     },
     {
-      name: "Giorgio Di Centa",
+      name: 'Giorgio Di Centa',
       person: {
         age: 33,
-        country: "Italy",
+        country: 'Italy',
       },
       medals: {
         gold: 2,
@@ -6361,10 +6361,10 @@ function getData() {
       },
     },
     {
-      name: "Thobias Fredriksson",
+      name: 'Thobias Fredriksson',
       person: {
         age: 30,
-        country: "Sweden",
+        country: 'Sweden',
       },
       medals: {
         gold: 1,
@@ -6373,10 +6373,10 @@ function getData() {
       },
     },
     {
-      name: "Claudia Künzel-Nystad",
+      name: 'Claudia Künzel-Nystad',
       person: {
         age: 28,
-        country: "Germany",
+        country: 'Germany',
       },
       medals: {
         gold: 0,
@@ -6385,10 +6385,10 @@ function getData() {
       },
     },
     {
-      name: "Björn Lind",
+      name: 'Björn Lind',
       person: {
         age: 27,
-        country: "Sweden",
+        country: 'Sweden',
       },
       medals: {
         gold: 2,
@@ -6397,10 +6397,10 @@ function getData() {
       },
     },
     {
-      name: "Yevgeniya Medvedeva",
+      name: 'Yevgeniya Medvedeva',
       person: {
         age: 29,
-        country: "Russia",
+        country: 'Russia',
       },
       medals: {
         gold: 1,
@@ -6409,10 +6409,10 @@ function getData() {
       },
     },
     {
-      name: "Katerina Neumannová",
+      name: 'Katerina Neumannová',
       person: {
         age: 32,
-        country: "Czech Republic",
+        country: 'Czech Republic',
       },
       medals: {
         gold: 1,
@@ -6421,10 +6421,10 @@ function getData() {
       },
     },
     {
-      name: "Pietro Piller Cottrer",
+      name: 'Pietro Piller Cottrer',
       person: {
         age: 31,
-        country: "Italy",
+        country: 'Italy',
       },
       medals: {
         gold: 1,
@@ -6433,10 +6433,10 @@ function getData() {
       },
     },
     {
-      name: "Kristina Šmigun-Vähi",
+      name: 'Kristina Šmigun-Vähi',
       person: {
         age: 28,
-        country: "Estonia",
+        country: 'Estonia',
       },
       medals: {
         gold: 2,
@@ -6445,10 +6445,10 @@ function getData() {
       },
     },
     {
-      name: "Thomas Alsgaard",
+      name: 'Thomas Alsgaard',
       person: {
         age: 30,
-        country: "Norway",
+        country: 'Norway',
       },
       medals: {
         gold: 2,
@@ -6457,10 +6457,10 @@ function getData() {
       },
     },
     {
-      name: "Viola Bauer",
+      name: 'Viola Bauer',
       person: {
         age: 25,
-        country: "Germany",
+        country: 'Germany',
       },
       medals: {
         gold: 1,
@@ -6469,10 +6469,10 @@ function getData() {
       },
     },
     {
-      name: "Anita Moen-Guidon",
+      name: 'Anita Moen-Guidon',
       person: {
         age: 34,
-        country: "Norway",
+        country: 'Norway',
       },
       medals: {
         gold: 0,
@@ -6481,10 +6481,10 @@ function getData() {
       },
     },
     {
-      name: "Katerina Neumannová",
+      name: 'Katerina Neumannová',
       person: {
         age: 28,
-        country: "Czech Republic",
+        country: 'Czech Republic',
       },
       medals: {
         gold: 0,
@@ -6493,10 +6493,10 @@ function getData() {
       },
     },
     {
-      name: "Evi Sachenbacher-Stehle",
+      name: 'Evi Sachenbacher-Stehle',
       person: {
         age: 21,
-        country: "Germany",
+        country: 'Germany',
       },
       medals: {
         gold: 1,
@@ -6505,10 +6505,10 @@ function getData() {
       },
     },
     {
-      name: "Kristen Skjeldal",
+      name: 'Kristen Skjeldal',
       person: {
         age: 34,
-        country: "Norway",
+        country: 'Norway',
       },
       medals: {
         gold: 1,
@@ -6517,10 +6517,10 @@ function getData() {
       },
     },
     {
-      name: "Andrus Veerpalu",
+      name: 'Andrus Veerpalu',
       person: {
         age: 31,
-        country: "Estonia",
+        country: 'Estonia',
       },
       medals: {
         gold: 1,
@@ -6529,10 +6529,10 @@ function getData() {
       },
     },
     {
-      name: "Cristian Zorzi",
+      name: 'Cristian Zorzi',
       person: {
         age: 29,
-        country: "Italy",
+        country: 'Italy',
       },
       medals: {
         gold: 0,
@@ -6541,10 +6541,10 @@ function getData() {
       },
     },
     {
-      name: "Tina Dietze",
+      name: 'Tina Dietze',
       person: {
         age: 24,
-        country: "Germany",
+        country: 'Germany',
       },
       medals: {
         gold: 1,
@@ -6553,10 +6553,10 @@ function getData() {
       },
     },
     {
-      name: "Natasa Douchev-Janics",
+      name: 'Natasa Douchev-Janics',
       person: {
         age: 30,
-        country: "Hungary",
+        country: 'Hungary',
       },
       medals: {
         gold: 0,
@@ -6565,10 +6565,10 @@ function getData() {
       },
     },
     {
-      name: "Katalin Kovács",
+      name: 'Katalin Kovács',
       person: {
         age: 36,
-        country: "Hungary",
+        country: 'Hungary',
       },
       medals: {
         gold: 1,
@@ -6577,10 +6577,10 @@ function getData() {
       },
     },
     {
-      name: "Danuta Kozák",
+      name: 'Danuta Kozák',
       person: {
         age: 25,
-        country: "Hungary",
+        country: 'Hungary',
       },
       medals: {
         gold: 2,
@@ -6589,10 +6589,10 @@ function getData() {
       },
     },
     {
-      name: "Inna Osypenko-Radomska",
+      name: 'Inna Osypenko-Radomska',
       person: {
         age: 29,
-        country: "Ukraine",
+        country: 'Ukraine',
       },
       medals: {
         gold: 0,
@@ -6601,10 +6601,10 @@ function getData() {
       },
     },
     {
-      name: "Franziska Weber",
+      name: 'Franziska Weber',
       person: {
         age: 23,
-        country: "Germany",
+        country: 'Germany',
       },
       medals: {
         gold: 1,
@@ -6613,10 +6613,10 @@ function getData() {
       },
     },
     {
-      name: "Tim Brabants",
+      name: 'Tim Brabants',
       person: {
         age: 31,
-        country: "Great Britain",
+        country: 'Great Britain',
       },
       medals: {
         gold: 1,
@@ -6625,10 +6625,10 @@ function getData() {
       },
     },
     {
-      name: "David Cal",
+      name: 'David Cal',
       person: {
         age: 25,
-        country: "Spain",
+        country: 'Spain',
       },
       medals: {
         gold: 0,
@@ -6637,10 +6637,10 @@ function getData() {
       },
     },
     {
-      name: "Natasa Douchev-Janics",
+      name: 'Natasa Douchev-Janics',
       person: {
         age: 26,
-        country: "Hungary",
+        country: 'Hungary',
       },
       medals: {
         gold: 1,
@@ -6649,10 +6649,10 @@ function getData() {
       },
     },
     {
-      name: "Christian Gille",
+      name: 'Christian Gille',
       person: {
         age: 32,
-        country: "Germany",
+        country: 'Germany',
       },
       medals: {
         gold: 0,
@@ -6661,10 +6661,10 @@ function getData() {
       },
     },
     {
-      name: "Katalin Kovács",
+      name: 'Katalin Kovács',
       person: {
         age: 32,
-        country: "Hungary",
+        country: 'Hungary',
       },
       medals: {
         gold: 1,
@@ -6673,10 +6673,10 @@ function getData() {
       },
     },
     {
-      name: "Vadim Makhnyov",
+      name: 'Vadim Makhnyov',
       person: {
         age: 28,
-        country: "Belarus",
+        country: 'Belarus',
       },
       medals: {
         gold: 1,
@@ -6685,10 +6685,10 @@ function getData() {
       },
     },
     {
-      name: "Roman Petrushenko",
+      name: 'Roman Petrushenko',
       person: {
         age: 27,
-        country: "Belarus",
+        country: 'Belarus',
       },
       medals: {
         gold: 1,
@@ -6697,10 +6697,10 @@ function getData() {
       },
     },
     {
-      name: "Katrin Wagner-Augustin",
+      name: 'Katrin Wagner-Augustin',
       person: {
         age: 30,
-        country: "Germany",
+        country: 'Germany',
       },
       medals: {
         gold: 1,
@@ -6709,10 +6709,10 @@ function getData() {
       },
     },
     {
-      name: "Ken Wallace",
+      name: 'Ken Wallace',
       person: {
         age: 25,
-        country: "Australia",
+        country: 'Australia',
       },
       medals: {
         gold: 1,
@@ -6721,10 +6721,10 @@ function getData() {
       },
     },
     {
-      name: "Tomasz Wylenzek",
+      name: 'Tomasz Wylenzek',
       person: {
         age: 25,
-        country: "Germany",
+        country: 'Germany',
       },
       medals: {
         gold: 0,
@@ -6733,10 +6733,10 @@ function getData() {
       },
     },
     {
-      name: "Nathan Baggaley",
+      name: 'Nathan Baggaley',
       person: {
         age: 28,
-        country: "Australia",
+        country: 'Australia',
       },
       medals: {
         gold: 0,
@@ -6745,10 +6745,10 @@ function getData() {
       },
     },
     {
-      name: "David Cal",
+      name: 'David Cal',
       person: {
         age: 21,
-        country: "Spain",
+        country: 'Spain',
       },
       medals: {
         gold: 1,
@@ -6757,10 +6757,10 @@ function getData() {
       },
     },
     {
-      name: "Andreas Dittmer",
+      name: 'Andreas Dittmer',
       person: {
         age: 32,
-        country: "Germany",
+        country: 'Germany',
       },
       medals: {
         gold: 1,
@@ -6769,10 +6769,10 @@ function getData() {
       },
     },
     {
-      name: "Natasa Douchev-Janics",
+      name: 'Natasa Douchev-Janics',
       person: {
         age: 22,
-        country: "Hungary",
+        country: 'Hungary',
       },
       medals: {
         gold: 2,
@@ -6781,10 +6781,10 @@ function getData() {
       },
     },
     {
-      name: "Birgit Fischer-Schmidt",
+      name: 'Birgit Fischer-Schmidt',
       person: {
         age: 42,
-        country: "Germany",
+        country: 'Germany',
       },
       medals: {
         gold: 1,
@@ -6793,10 +6793,10 @@ function getData() {
       },
     },
     {
-      name: "Aleksandr Kostoglod",
+      name: 'Aleksandr Kostoglod',
       person: {
         age: 30,
-        country: "Russia",
+        country: 'Russia',
       },
       medals: {
         gold: 0,
@@ -6805,10 +6805,10 @@ function getData() {
       },
     },
     {
-      name: "Katalin Kovács",
+      name: 'Katalin Kovács',
       person: {
         age: 28,
-        country: "Hungary",
+        country: 'Hungary',
       },
       medals: {
         gold: 1,
@@ -6817,10 +6817,10 @@ function getData() {
       },
     },
     {
-      name: "Aleksandr Kovalyov",
+      name: 'Aleksandr Kovalyov',
       person: {
         age: 29,
-        country: "Russia",
+        country: 'Russia',
       },
       medals: {
         gold: 0,
@@ -6829,10 +6829,10 @@ function getData() {
       },
     },
     {
-      name: "Eirik Verås Larsen",
+      name: 'Eirik Verås Larsen',
       person: {
         age: 28,
-        country: "Norway",
+        country: 'Norway',
       },
       medals: {
         gold: 1,
@@ -6841,10 +6841,10 @@ function getData() {
       },
     },
     {
-      name: "Carolin Leonhardt",
+      name: 'Carolin Leonhardt',
       person: {
         age: 19,
-        country: "Germany",
+        country: 'Germany',
       },
       medals: {
         gold: 1,
@@ -6853,10 +6853,10 @@ function getData() {
       },
     },
     {
-      name: "Adam Van Koeverden",
+      name: 'Adam Van Koeverden',
       person: {
         age: 22,
-        country: "Canada",
+        country: 'Canada',
       },
       medals: {
         gold: 1,
@@ -6865,10 +6865,10 @@ function getData() {
       },
     },
     {
-      name: "Andreas Dittmer",
+      name: 'Andreas Dittmer',
       person: {
         age: 28,
-        country: "Germany",
+        country: 'Germany',
       },
       medals: {
         gold: 1,
@@ -6877,10 +6877,10 @@ function getData() {
       },
     },
     {
-      name: "Birgit Fischer-Schmidt",
+      name: 'Birgit Fischer-Schmidt',
       person: {
         age: 38,
-        country: "Germany",
+        country: 'Germany',
       },
       medals: {
         gold: 2,
@@ -6889,10 +6889,10 @@ function getData() {
       },
     },
     {
-      name: "Knut Holmann",
+      name: 'Knut Holmann',
       person: {
         age: 32,
-        country: "Norway",
+        country: 'Norway',
       },
       medals: {
         gold: 2,
@@ -6901,10 +6901,10 @@ function getData() {
       },
     },
     {
-      name: "Zoltán Kammerer",
+      name: 'Zoltán Kammerer',
       person: {
         age: 22,
-        country: "Hungary",
+        country: 'Hungary',
       },
       medals: {
         gold: 2,
@@ -6913,10 +6913,10 @@ function getData() {
       },
     },
     {
-      name: "Katalin Kovács",
+      name: 'Katalin Kovács',
       person: {
         age: 24,
-        country: "Hungary",
+        country: 'Hungary',
       },
       medals: {
         gold: 0,
@@ -6925,10 +6925,10 @@ function getData() {
       },
     },
     {
-      name: "Petar Merkov",
+      name: 'Petar Merkov',
       person: {
         age: 23,
-        country: "Bulgaria",
+        country: 'Bulgaria',
       },
       medals: {
         gold: 0,
@@ -6937,10 +6937,10 @@ function getData() {
       },
     },
     {
-      name: "Florin Popescu",
+      name: 'Florin Popescu',
       person: {
         age: 26,
-        country: "Romania",
+        country: 'Romania',
       },
       medals: {
         gold: 1,
@@ -6949,10 +6949,10 @@ function getData() {
       },
     },
     {
-      name: "Mitica Pricop",
+      name: 'Mitica Pricop',
       person: {
         age: 22,
-        country: "Romania",
+        country: 'Romania',
       },
       medals: {
         gold: 1,
@@ -6961,10 +6961,10 @@ function getData() {
       },
     },
     {
-      name: "Botond Storcz",
+      name: 'Botond Storcz',
       person: {
         age: 25,
-        country: "Hungary",
+        country: 'Hungary',
       },
       medals: {
         gold: 2,
@@ -6973,10 +6973,10 @@ function getData() {
       },
     },
     {
-      name: "Szilvia Szabó",
+      name: 'Szilvia Szabó',
       person: {
         age: 21,
-        country: "Hungary",
+        country: 'Hungary',
       },
       medals: {
         gold: 0,
@@ -6985,10 +6985,10 @@ function getData() {
       },
     },
     {
-      name: "Katrin Wagner-Augustin",
+      name: 'Katrin Wagner-Augustin',
       person: {
         age: 22,
-        country: "Germany",
+        country: 'Germany',
       },
       medals: {
         gold: 2,
@@ -6997,10 +6997,10 @@ function getData() {
       },
     },
     {
-      name: "Kevin Kuske",
+      name: 'Kevin Kuske',
       person: {
         age: 31,
-        country: "Germany",
+        country: 'Germany',
       },
       medals: {
         gold: 1,
@@ -7009,10 +7009,10 @@ function getData() {
       },
     },
     {
-      name: "André Lange",
+      name: 'André Lange',
       person: {
         age: 36,
-        country: "Germany",
+        country: 'Germany',
       },
       medals: {
         gold: 1,
@@ -7021,10 +7021,10 @@ function getData() {
       },
     },
     {
-      name: "Martin Annen",
+      name: 'Martin Annen',
       person: {
         age: 32,
-        country: "Switzerland",
+        country: 'Switzerland',
       },
       medals: {
         gold: 0,
@@ -7033,10 +7033,10 @@ function getData() {
       },
     },
     {
-      name: "Beat Hefti",
+      name: 'Beat Hefti',
       person: {
         age: 28,
-        country: "Switzerland",
+        country: 'Switzerland',
       },
       medals: {
         gold: 0,
@@ -7045,10 +7045,10 @@ function getData() {
       },
     },
     {
-      name: "Kevin Kuske",
+      name: 'Kevin Kuske',
       person: {
         age: 27,
-        country: "Germany",
+        country: 'Germany',
       },
       medals: {
         gold: 2,
@@ -7057,10 +7057,10 @@ function getData() {
       },
     },
     {
-      name: "André Lange",
+      name: 'André Lange',
       person: {
         age: 32,
-        country: "Germany",
+        country: 'Germany',
       },
       medals: {
         gold: 2,
@@ -7069,10 +7069,10 @@ function getData() {
       },
     },
     {
-      name: "Ole Einar Bjørndalen",
+      name: 'Ole Einar Bjørndalen',
       person: {
         age: 36,
-        country: "Norway",
+        country: 'Norway',
       },
       medals: {
         gold: 1,
@@ -7081,10 +7081,10 @@ function getData() {
       },
     },
     {
-      name: "Marie Laure Brunet",
+      name: 'Marie Laure Brunet',
       person: {
         age: 21,
-        country: "France",
+        country: 'France',
       },
       medals: {
         gold: 0,
@@ -7093,10 +7093,10 @@ function getData() {
       },
     },
     {
-      name: "Marie Dorin",
+      name: 'Marie Dorin',
       person: {
         age: 23,
-        country: "France",
+        country: 'France',
       },
       medals: {
         gold: 0,
@@ -7105,10 +7105,10 @@ function getData() {
       },
     },
     {
-      name: "Simone Hauswald",
+      name: 'Simone Hauswald',
       person: {
         age: 30,
-        country: "Germany",
+        country: 'Germany',
       },
       medals: {
         gold: 0,
@@ -7117,10 +7117,10 @@ function getData() {
       },
     },
     {
-      name: "Vincent Jay",
+      name: 'Vincent Jay',
       person: {
         age: 24,
-        country: "France",
+        country: 'France',
       },
       medals: {
         gold: 1,
@@ -7129,10 +7129,10 @@ function getData() {
       },
     },
     {
-      name: "Anastasia Kuzmina",
+      name: 'Anastasia Kuzmina',
       person: {
         age: 25,
-        country: "Slovakia",
+        country: 'Slovakia',
       },
       medals: {
         gold: 1,
@@ -7141,10 +7141,10 @@ function getData() {
       },
     },
     {
-      name: "Christoph Sumann",
+      name: 'Christoph Sumann',
       person: {
         age: 34,
-        country: "Austria",
+        country: 'Austria',
       },
       medals: {
         gold: 0,
@@ -7153,10 +7153,10 @@ function getData() {
       },
     },
     {
-      name: "Yevgeny Ustyugov",
+      name: 'Yevgeny Ustyugov',
       person: {
         age: 24,
-        country: "Russia",
+        country: 'Russia',
       },
       medals: {
         gold: 1,
@@ -7165,10 +7165,10 @@ function getData() {
       },
     },
     {
-      name: "Olga Zaytseva",
+      name: 'Olga Zaytseva',
       person: {
         age: 31,
-        country: "Russia",
+        country: 'Russia',
       },
       medals: {
         gold: 1,
@@ -7177,10 +7177,10 @@ function getData() {
       },
     },
     {
-      name: "Florence Baverel-Robert",
+      name: 'Florence Baverel-Robert',
       person: {
         age: 31,
-        country: "France",
+        country: 'France',
       },
       medals: {
         gold: 1,
@@ -7189,10 +7189,10 @@ function getData() {
       },
     },
     {
-      name: "Vincent Defrasne",
+      name: 'Vincent Defrasne',
       person: {
         age: 28,
-        country: "France",
+        country: 'France',
       },
       medals: {
         gold: 1,
@@ -7201,10 +7201,10 @@ function getData() {
       },
     },
     {
-      name: "Halvard Hanevold",
+      name: 'Halvard Hanevold',
       person: {
         age: 36,
-        country: "Norway",
+        country: 'Norway',
       },
       medals: {
         gold: 0,
@@ -7213,10 +7213,10 @@ function getData() {
       },
     },
     {
-      name: "Svetlana Ishmuratova",
+      name: 'Svetlana Ishmuratova',
       person: {
         age: 33,
-        country: "Russia",
+        country: 'Russia',
       },
       medals: {
         gold: 2,
@@ -7225,10 +7225,10 @@ function getData() {
       },
     },
     {
-      name: "Anna-Carin Olofsson-Zidek",
+      name: 'Anna-Carin Olofsson-Zidek',
       person: {
         age: 32,
-        country: "Sweden",
+        country: 'Sweden',
       },
       medals: {
         gold: 1,
@@ -7237,10 +7237,10 @@ function getData() {
       },
     },
     {
-      name: "Uschi Disl",
+      name: 'Uschi Disl',
       person: {
         age: 31,
-        country: "Germany",
+        country: 'Germany',
       },
       medals: {
         gold: 1,
@@ -7249,10 +7249,10 @@ function getData() {
       },
     },
     {
-      name: "Sven Fischer",
+      name: 'Sven Fischer',
       person: {
         age: 30,
-        country: "Germany",
+        country: 'Germany',
       },
       medals: {
         gold: 0,
@@ -7261,10 +7261,10 @@ function getData() {
       },
     },
     {
-      name: "Ricco Groß",
+      name: 'Ricco Groß',
       person: {
         age: 31,
-        country: "Germany",
+        country: 'Germany',
       },
       medals: {
         gold: 0,
@@ -7273,10 +7273,10 @@ function getData() {
       },
     },
     {
-      name: "Andrea Henkel",
+      name: 'Andrea Henkel',
       person: {
         age: 24,
-        country: "Germany",
+        country: 'Germany',
       },
       medals: {
         gold: 2,
@@ -7285,10 +7285,10 @@ function getData() {
       },
     },
     {
-      name: "Frank Luck",
+      name: 'Frank Luck',
       person: {
         age: 34,
-        country: "Germany",
+        country: 'Germany',
       },
       medals: {
         gold: 0,
@@ -7297,10 +7297,10 @@ function getData() {
       },
     },
     {
-      name: "Raphaël Poirée",
+      name: 'Raphaël Poirée',
       person: {
         age: 27,
-        country: "France",
+        country: 'France',
       },
       medals: {
         gold: 0,
@@ -7309,10 +7309,10 @@ function getData() {
       },
     },
     {
-      name: "Olga Pylyova-Medvedtseva",
+      name: 'Olga Pylyova-Medvedtseva',
       person: {
         age: 26,
-        country: "Russia",
+        country: 'Russia',
       },
       medals: {
         gold: 1,
@@ -7321,10 +7321,10 @@ function getData() {
       },
     },
     {
-      name: "Liv Grete Skjelbreid-Poirée",
+      name: 'Liv Grete Skjelbreid-Poirée',
       person: {
         age: 27,
-        country: "Norway",
+        country: 'Norway',
       },
       medals: {
         gold: 0,
@@ -7333,10 +7333,10 @@ function getData() {
       },
     },
     {
-      name: "Magdalena Wallin-Forsberg",
+      name: 'Magdalena Wallin-Forsberg',
       person: {
         age: 34,
-        country: "Sweden",
+        country: 'Sweden',
       },
       medals: {
         gold: 0,
@@ -7345,10 +7345,10 @@ function getData() {
       },
     },
     {
-      name: "Zhao Yunlei",
+      name: 'Zhao Yunlei',
       person: {
         age: 25,
-        country: "China",
+        country: 'China',
       },
       medals: {
         gold: 2,
@@ -7357,10 +7357,10 @@ function getData() {
       },
     },
     {
-      name: "Lee Hyo-Jeong",
+      name: 'Lee Hyo-Jeong',
       person: {
         age: 27,
-        country: "South Korea",
+        country: 'South Korea',
       },
       medals: {
         gold: 1,
@@ -7369,10 +7369,10 @@ function getData() {
       },
     },
     {
-      name: "Yu Yang",
+      name: 'Yu Yang',
       person: {
         age: 22,
-        country: "China",
+        country: 'China',
       },
       medals: {
         gold: 1,
@@ -7381,10 +7381,10 @@ function getData() {
       },
     },
     {
-      name: "Gao Ling",
+      name: 'Gao Ling',
       person: {
         age: 25,
-        country: "China",
+        country: 'China',
       },
       medals: {
         gold: 1,
@@ -7393,10 +7393,10 @@ function getData() {
       },
     },
     {
-      name: "Gao Ling",
+      name: 'Gao Ling',
       person: {
         age: 21,
-        country: "China",
+        country: 'China',
       },
       medals: {
         gold: 1,
@@ -7405,10 +7405,10 @@ function getData() {
       },
     },
     {
-      name: "Nataliya Antyukh",
+      name: 'Nataliya Antyukh',
       person: {
         age: 31,
-        country: "Russia",
+        country: 'Russia',
       },
       medals: {
         gold: 1,
@@ -7417,10 +7417,10 @@ function getData() {
       },
     },
     {
-      name: "Veronica Campbell-Brown",
+      name: 'Veronica Campbell-Brown',
       person: {
         age: 30,
-        country: "Jamaica",
+        country: 'Jamaica',
       },
       medals: {
         gold: 0,
@@ -7429,10 +7429,10 @@ function getData() {
       },
     },
     {
-      name: "Vivian Cheruiyot",
+      name: 'Vivian Cheruiyot',
       person: {
         age: 28,
-        country: "Kenya",
+        country: 'Kenya',
       },
       medals: {
         gold: 0,
@@ -7441,10 +7441,10 @@ function getData() {
       },
     },
     {
-      name: "Will Claye",
+      name: 'Will Claye',
       person: {
         age: 21,
-        country: "United States",
+        country: 'United States',
       },
       medals: {
         gold: 0,
@@ -7453,10 +7453,10 @@ function getData() {
       },
     },
     {
-      name: "Tirunesh Dibaba",
+      name: 'Tirunesh Dibaba',
       person: {
         age: 27,
-        country: "Ethiopia",
+        country: 'Ethiopia',
       },
       medals: {
         gold: 1,
@@ -7465,10 +7465,10 @@ function getData() {
       },
     },
     {
-      name: "Mo Farah",
+      name: 'Mo Farah',
       person: {
         age: 29,
-        country: "Great Britain",
+        country: 'Great Britain',
       },
       medals: {
         gold: 2,
@@ -7477,10 +7477,10 @@ function getData() {
       },
     },
     {
-      name: "Justin Gatlin",
+      name: 'Justin Gatlin',
       person: {
         age: 30,
-        country: "United States",
+        country: 'United States',
       },
       medals: {
         gold: 0,
@@ -7489,10 +7489,10 @@ function getData() {
       },
     },
     {
-      name: "Lalonde Gordon",
+      name: 'Lalonde Gordon',
       person: {
         age: 23,
-        country: "Trinidad and Tobago",
+        country: 'Trinidad and Tobago',
       },
       medals: {
         gold: 0,
@@ -7501,10 +7501,10 @@ function getData() {
       },
     },
     {
-      name: "Sanya Richards-Ross",
+      name: 'Sanya Richards-Ross',
       person: {
         age: 27,
-        country: "United States",
+        country: 'United States',
       },
       medals: {
         gold: 2,
@@ -7513,10 +7513,10 @@ function getData() {
       },
     },
     {
-      name: "DeeDee Trotter",
+      name: 'DeeDee Trotter',
       person: {
         age: 29,
-        country: "United States",
+        country: 'United States',
       },
       medals: {
         gold: 1,
@@ -7525,10 +7525,10 @@ function getData() {
       },
     },
     {
-      name: "Elvan Abeylegesse",
+      name: 'Elvan Abeylegesse',
       person: {
         age: 25,
-        country: "Turkey",
+        country: 'Turkey',
       },
       medals: {
         gold: 0,
@@ -7537,10 +7537,10 @@ function getData() {
       },
     },
     {
-      name: "Kenenisa Bekele",
+      name: 'Kenenisa Bekele',
       person: {
         age: 26,
-        country: "Ethiopia",
+        country: 'Ethiopia',
       },
       medals: {
         gold: 2,
@@ -7549,10 +7549,10 @@ function getData() {
       },
     },
     {
-      name: "Kerron Clement",
+      name: 'Kerron Clement',
       person: {
         age: 22,
-        country: "United States",
+        country: 'United States',
       },
       medals: {
         gold: 1,
@@ -7561,10 +7561,10 @@ function getData() {
       },
     },
     {
-      name: "Tirunesh Dibaba",
+      name: 'Tirunesh Dibaba',
       person: {
         age: 23,
-        country: "Ethiopia",
+        country: 'Ethiopia',
       },
       medals: {
         gold: 2,
@@ -7573,10 +7573,10 @@ function getData() {
       },
     },
     {
-      name: "Walter Dix",
+      name: 'Walter Dix',
       person: {
         age: 22,
-        country: "United States",
+        country: 'United States',
       },
       medals: {
         gold: 0,
@@ -7585,10 +7585,10 @@ function getData() {
       },
     },
     {
-      name: "Allyson Felix",
+      name: 'Allyson Felix',
       person: {
         age: 22,
-        country: "United States",
+        country: 'United States',
       },
       medals: {
         gold: 1,
@@ -7597,10 +7597,10 @@ function getData() {
       },
     },
     {
-      name: "Yuliya Gushchina",
+      name: 'Yuliya Gushchina',
       person: {
         age: 25,
-        country: "Russia",
+        country: 'Russia',
       },
       medals: {
         gold: 1,
@@ -7609,10 +7609,10 @@ function getData() {
       },
     },
     {
-      name: "Tatyana Lebedeva",
+      name: 'Tatyana Lebedeva',
       person: {
         age: 32,
-        country: "Russia",
+        country: 'Russia',
       },
       medals: {
         gold: 0,
@@ -7621,10 +7621,10 @@ function getData() {
       },
     },
     {
-      name: "LaShawn Merritt",
+      name: 'LaShawn Merritt',
       person: {
         age: 22,
-        country: "United States",
+        country: 'United States',
       },
       medals: {
         gold: 2,
@@ -7633,10 +7633,10 @@ function getData() {
       },
     },
     {
-      name: "David Neville",
+      name: 'David Neville',
       person: {
         age: 24,
-        country: "United States",
+        country: 'United States',
       },
       medals: {
         gold: 1,
@@ -7645,10 +7645,10 @@ function getData() {
       },
     },
     {
-      name: "Sanya Richards-Ross",
+      name: 'Sanya Richards-Ross',
       person: {
         age: 23,
-        country: "United States",
+        country: 'United States',
       },
       medals: {
         gold: 1,
@@ -7657,10 +7657,10 @@ function getData() {
       },
     },
     {
-      name: "Kerron Stewart",
+      name: 'Kerron Stewart',
       person: {
         age: 24,
-        country: "Jamaica",
+        country: 'Jamaica',
       },
       medals: {
         gold: 0,
@@ -7669,10 +7669,10 @@ function getData() {
       },
     },
     {
-      name: "Jared Tallent",
+      name: 'Jared Tallent',
       person: {
         age: 23,
-        country: "Australia",
+        country: 'Australia',
       },
       medals: {
         gold: 0,
@@ -7681,10 +7681,10 @@ function getData() {
       },
     },
     {
-      name: "Angelo Taylor",
+      name: 'Angelo Taylor',
       person: {
         age: 29,
-        country: "United States",
+        country: 'United States',
       },
       medals: {
         gold: 2,
@@ -7693,10 +7693,10 @@ function getData() {
       },
     },
     {
-      name: "Richard Thompson",
+      name: 'Richard Thompson',
       person: {
         age: 23,
-        country: "Trinidad and Tobago",
+        country: 'Trinidad and Tobago',
       },
       medals: {
         gold: 0,
@@ -7705,10 +7705,10 @@ function getData() {
       },
     },
     {
-      name: "Jeremy Wariner",
+      name: 'Jeremy Wariner',
       person: {
         age: 24,
-        country: "United States",
+        country: 'United States',
       },
       medals: {
         gold: 1,
@@ -7717,10 +7717,10 @@ function getData() {
       },
     },
     {
-      name: "Shericka Williams",
+      name: 'Shericka Williams',
       person: {
         age: 22,
-        country: "Jamaica",
+        country: 'Jamaica',
       },
       medals: {
         gold: 0,
@@ -7729,10 +7729,10 @@ function getData() {
       },
     },
     {
-      name: "Nataliya Antyukh",
+      name: 'Nataliya Antyukh',
       person: {
         age: 23,
-        country: "Russia",
+        country: 'Russia',
       },
       medals: {
         gold: 0,
@@ -7741,10 +7741,10 @@ function getData() {
       },
     },
     {
-      name: "Kenenisa Bekele",
+      name: 'Kenenisa Bekele',
       person: {
         age: 22,
-        country: "Ethiopia",
+        country: 'Ethiopia',
       },
       medals: {
         gold: 1,
@@ -7753,10 +7753,10 @@ function getData() {
       },
     },
     {
-      name: "Derrick Brew",
+      name: 'Derrick Brew',
       person: {
         age: 26,
-        country: "United States",
+        country: 'United States',
       },
       medals: {
         gold: 1,
@@ -7765,10 +7765,10 @@ function getData() {
       },
     },
     {
-      name: "Shawn Crawford",
+      name: 'Shawn Crawford',
       person: {
         age: 26,
-        country: "United States",
+        country: 'United States',
       },
       medals: {
         gold: 1,
@@ -7777,10 +7777,10 @@ function getData() {
       },
     },
     {
-      name: "Hicham El Guerrouj",
+      name: 'Hicham El Guerrouj',
       person: {
         age: 29,
-        country: "Morocco",
+        country: 'Morocco',
       },
       medals: {
         gold: 2,
@@ -7789,10 +7789,10 @@ function getData() {
       },
     },
     {
-      name: "Maurice Greene",
+      name: 'Maurice Greene',
       person: {
         age: 30,
-        country: "United States",
+        country: 'United States',
       },
       medals: {
         gold: 0,
@@ -7801,10 +7801,10 @@ function getData() {
       },
     },
     {
-      name: "Otis Harris",
+      name: 'Otis Harris',
       person: {
         age: 22,
-        country: "United States",
+        country: 'United States',
       },
       medals: {
         gold: 1,
@@ -7813,10 +7813,10 @@ function getData() {
       },
     },
     {
-      name: "Kelly Holmes",
+      name: 'Kelly Holmes',
       person: {
         age: 34,
-        country: "Great Britain",
+        country: 'Great Britain',
       },
       medals: {
         gold: 2,
@@ -7825,10 +7825,10 @@ function getData() {
       },
     },
     {
-      name: "Tatyana Lebedeva",
+      name: 'Tatyana Lebedeva',
       person: {
         age: 28,
-        country: "Russia",
+        country: 'Russia',
       },
       medals: {
         gold: 1,
@@ -7837,10 +7837,10 @@ function getData() {
       },
     },
     {
-      name: "Jeremy Wariner",
+      name: 'Jeremy Wariner',
       person: {
         age: 20,
-        country: "United States",
+        country: 'United States',
       },
       medals: {
         gold: 2,
@@ -7849,10 +7849,10 @@ function getData() {
       },
     },
     {
-      name: "Ato Boldon",
+      name: 'Ato Boldon',
       person: {
         age: 26,
-        country: "Trinidad and Tobago",
+        country: 'Trinidad and Tobago',
       },
       medals: {
         gold: 0,
@@ -7861,10 +7861,10 @@ function getData() {
       },
     },
     {
-      name: "Pauline Davis-Thompson",
+      name: 'Pauline Davis-Thompson',
       person: {
         age: 34,
-        country: "Bahamas",
+        country: 'Bahamas',
       },
       medals: {
         gold: 2,
@@ -7873,10 +7873,10 @@ function getData() {
       },
     },
     {
-      name: "Lorraine Graham",
+      name: 'Lorraine Graham',
       person: {
         age: 27,
-        country: "Jamaica",
+        country: 'Jamaica',
       },
       medals: {
         gold: 0,
@@ -7885,10 +7885,10 @@ function getData() {
       },
     },
     {
-      name: "Maurice Greene",
+      name: 'Maurice Greene',
       person: {
         age: 26,
-        country: "United States",
+        country: 'United States',
       },
       medals: {
         gold: 2,
@@ -7897,10 +7897,10 @@ function getData() {
       },
     },
     {
-      name: "Greg Haughton",
+      name: 'Greg Haughton',
       person: {
         age: 26,
-        country: "Jamaica",
+        country: 'Jamaica',
       },
       medals: {
         gold: 0,
@@ -7909,10 +7909,10 @@ function getData() {
       },
     },
     {
-      name: "Deon Hemmings",
+      name: 'Deon Hemmings',
       person: {
         age: 31,
-        country: "Jamaica",
+        country: 'Jamaica',
       },
       medals: {
         gold: 0,
@@ -7921,10 +7921,10 @@ function getData() {
       },
     },
     {
-      name: "Robert Korzeniowski",
+      name: 'Robert Korzeniowski',
       person: {
         age: 32,
-        country: "Poland",
+        country: 'Poland',
       },
       medals: {
         gold: 2,
@@ -7933,10 +7933,10 @@ function getData() {
       },
     },
     {
-      name: "Tayna Lawrence",
+      name: 'Tayna Lawrence',
       person: {
         age: 25,
-        country: "Jamaica",
+        country: 'Jamaica',
       },
       medals: {
         gold: 0,
@@ -7945,10 +7945,10 @@ function getData() {
       },
     },
     {
-      name: "Beverly McDonald",
+      name: 'Beverly McDonald',
       person: {
         age: 30,
-        country: "Jamaica",
+        country: 'Jamaica',
       },
       medals: {
         gold: 0,
@@ -7957,10 +7957,10 @@ function getData() {
       },
     },
     {
-      name: "Merlene Ottey-Page",
+      name: 'Merlene Ottey-Page',
       person: {
         age: 40,
-        country: "Jamaica",
+        country: 'Jamaica',
       },
       medals: {
         gold: 0,
@@ -7969,10 +7969,10 @@ function getData() {
       },
     },
     {
-      name: "Irina Privalova",
+      name: 'Irina Privalova',
       person: {
         age: 31,
-        country: "Russia",
+        country: 'Russia',
       },
       medals: {
         gold: 1,
@@ -7981,10 +7981,10 @@ function getData() {
       },
     },
     {
-      name: "Gabriela Szabo",
+      name: 'Gabriela Szabo',
       person: {
         age: 24,
-        country: "Romania",
+        country: 'Romania',
       },
       medals: {
         gold: 1,
@@ -7993,10 +7993,10 @@ function getData() {
       },
     },
     {
-      name: "Gete Wami",
+      name: 'Gete Wami',
       person: {
         age: 25,
-        country: "Ethiopia",
+        country: 'Ethiopia',
       },
       medals: {
         gold: 0,
@@ -8005,10 +8005,10 @@ function getData() {
       },
     },
     {
-      name: "Elisabeth Görgl",
+      name: 'Elisabeth Görgl',
       person: {
         age: 28,
-        country: "Austria",
+        country: 'Austria',
       },
       medals: {
         gold: 0,
@@ -8017,10 +8017,10 @@ function getData() {
       },
     },
     {
-      name: "Lindsey Kildow-Vonn",
+      name: 'Lindsey Kildow-Vonn',
       person: {
         age: 25,
-        country: "United States",
+        country: 'United States',
       },
       medals: {
         gold: 1,
@@ -8029,10 +8029,10 @@ function getData() {
       },
     },
     {
-      name: "Ivica Kostelic",
+      name: 'Ivica Kostelic',
       person: {
         age: 30,
-        country: "Croatia",
+        country: 'Croatia',
       },
       medals: {
         gold: 0,
@@ -8041,10 +8041,10 @@ function getData() {
       },
     },
     {
-      name: "Julia Mancuso",
+      name: 'Julia Mancuso',
       person: {
         age: 25,
-        country: "United States",
+        country: 'United States',
       },
       medals: {
         gold: 0,
@@ -8053,10 +8053,10 @@ function getData() {
       },
     },
     {
-      name: "Tina Maze",
+      name: 'Tina Maze',
       person: {
         age: 26,
-        country: "Slovenia",
+        country: 'Slovenia',
       },
       medals: {
         gold: 0,
@@ -8065,10 +8065,10 @@ function getData() {
       },
     },
     {
-      name: "Maria Riesch",
+      name: 'Maria Riesch',
       person: {
         age: 25,
-        country: "Germany",
+        country: 'Germany',
       },
       medals: {
         gold: 2,
@@ -8077,10 +8077,10 @@ function getData() {
       },
     },
     {
-      name: "Michaela Dorfmeister",
+      name: 'Michaela Dorfmeister',
       person: {
         age: 32,
-        country: "Austria",
+        country: 'Austria',
       },
       medals: {
         gold: 2,
@@ -8089,10 +8089,10 @@ function getData() {
       },
     },
     {
-      name: "Janica Kostelic",
+      name: 'Janica Kostelic',
       person: {
         age: 24,
-        country: "Croatia",
+        country: 'Croatia',
       },
       medals: {
         gold: 1,
@@ -8101,10 +8101,10 @@ function getData() {
       },
     },
     {
-      name: "Hermann Maier",
+      name: 'Hermann Maier',
       person: {
         age: 33,
-        country: "Austria",
+        country: 'Austria',
       },
       medals: {
         gold: 0,
@@ -8113,10 +8113,10 @@ function getData() {
       },
     },
     {
-      name: "Benjamin Raich",
+      name: 'Benjamin Raich',
       person: {
         age: 27,
-        country: "Austria",
+        country: 'Austria',
       },
       medals: {
         gold: 2,
@@ -8125,10 +8125,10 @@ function getData() {
       },
     },
     {
-      name: "Marlies Schild",
+      name: 'Marlies Schild',
       person: {
         age: 24,
-        country: "Austria",
+        country: 'Austria',
       },
       medals: {
         gold: 0,
@@ -8137,10 +8137,10 @@ function getData() {
       },
     },
     {
-      name: "Rainer Schönfelder",
+      name: 'Rainer Schönfelder',
       person: {
         age: 28,
-        country: "Austria",
+        country: 'Austria',
       },
       medals: {
         gold: 0,
@@ -8149,10 +8149,10 @@ function getData() {
       },
     },
     {
-      name: "Kjetil André Aamodt",
+      name: 'Kjetil André Aamodt',
       person: {
         age: 30,
-        country: "Norway",
+        country: 'Norway',
       },
       medals: {
         gold: 2,
@@ -8161,10 +8161,10 @@ function getData() {
       },
     },
     {
-      name: "Renate Götschl",
+      name: 'Renate Götschl',
       person: {
         age: 26,
-        country: "Austria",
+        country: 'Austria',
       },
       medals: {
         gold: 0,
@@ -8173,10 +8173,10 @@ function getData() {
       },
     },
     {
-      name: "Lasse Kjus",
+      name: 'Lasse Kjus',
       person: {
         age: 31,
-        country: "Norway",
+        country: 'Norway',
       },
       medals: {
         gold: 0,
@@ -8185,10 +8185,10 @@ function getData() {
       },
     },
     {
-      name: "Bode Miller",
+      name: 'Bode Miller',
       person: {
         age: 24,
-        country: "United States",
+        country: 'United States',
       },
       medals: {
         gold: 0,
@@ -8197,10 +8197,10 @@ function getData() {
       },
     },
     {
-      name: "Anja Pärson",
+      name: 'Anja Pärson',
       person: {
         age: 20,
-        country: "Sweden",
+        country: 'Sweden',
       },
       medals: {
         gold: 0,
@@ -8209,10 +8209,10 @@ function getData() {
       },
     },
     {
-      name: "Benjamin Raich",
+      name: 'Benjamin Raich',
       person: {
         age: 23,
-        country: "Austria",
+        country: 'Austria',
       },
       medals: {
         gold: 0,
@@ -8221,10 +8221,10 @@ function getData() {
       },
     },
     {
-      name: "Ki Bo-Bae",
+      name: 'Ki Bo-Bae',
       person: {
         age: 24,
-        country: "South Korea",
+        country: 'South Korea',
       },
       medals: {
         gold: 2,
@@ -8233,10 +8233,10 @@ function getData() {
       },
     },
     {
-      name: "Oh Jin-Hyek",
+      name: 'Oh Jin-Hyek',
       person: {
         age: 30,
-        country: "South Korea",
+        country: 'South Korea',
       },
       medals: {
         gold: 1,
@@ -8245,10 +8245,10 @@ function getData() {
       },
     },
     {
-      name: "Park Gyeong-Mo",
+      name: 'Park Gyeong-Mo',
       person: {
         age: 32,
-        country: "South Korea",
+        country: 'South Korea',
       },
       medals: {
         gold: 1,
@@ -8257,10 +8257,10 @@ function getData() {
       },
     },
     {
-      name: "Park Seong-Hyeon",
+      name: 'Park Seong-Hyeon',
       person: {
         age: 25,
-        country: "South Korea",
+        country: 'South Korea',
       },
       medals: {
         gold: 1,
@@ -8269,10 +8269,10 @@ function getData() {
       },
     },
     {
-      name: "Yun Ok-Hui",
+      name: 'Yun Ok-Hui',
       person: {
         age: 23,
-        country: "South Korea",
+        country: 'South Korea',
       },
       medals: {
         gold: 1,
@@ -8281,10 +8281,10 @@ function getData() {
       },
     },
     {
-      name: "Zhang Juanjuan",
+      name: 'Zhang Juanjuan',
       person: {
         age: 27,
-        country: "China",
+        country: 'China',
       },
       medals: {
         gold: 1,
@@ -8293,10 +8293,10 @@ function getData() {
       },
     },
     {
-      name: "Lee Seong-Jin",
+      name: 'Lee Seong-Jin',
       person: {
         age: 19,
-        country: "South Korea",
+        country: 'South Korea',
       },
       medals: {
         gold: 1,
@@ -8305,10 +8305,10 @@ function getData() {
       },
     },
     {
-      name: "Park Seong-Hyeon",
+      name: 'Park Seong-Hyeon',
       person: {
         age: 21,
-        country: "South Korea",
+        country: 'South Korea',
       },
       medals: {
         gold: 2,
@@ -8317,10 +8317,10 @@ function getData() {
       },
     },
     {
-      name: "Kim Nam-Sun",
+      name: 'Kim Nam-Sun',
       person: {
         age: 20,
-        country: "South Korea",
+        country: 'South Korea',
       },
       medals: {
         gold: 1,
@@ -8329,10 +8329,10 @@ function getData() {
       },
     },
     {
-      name: "Kim Su-Nyeong",
+      name: 'Kim Su-Nyeong',
       person: {
         age: 29,
-        country: "South Korea",
+        country: 'South Korea',
       },
       medals: {
         gold: 1,
@@ -8341,10 +8341,10 @@ function getData() {
       },
     },
     {
-      name: "Vic Wunderle",
+      name: 'Vic Wunderle',
       person: {
         age: 24,
-        country: "United States",
+        country: 'United States',
       },
       medals: {
         gold: 0,
@@ -8353,10 +8353,10 @@ function getData() {
       },
     },
     {
-      name: "Yun Mi-Jin",
+      name: 'Yun Mi-Jin',
       person: {
         age: 17,
-        country: "South Korea",
+        country: 'South Korea',
       },
       medals: {
         gold: 2,
@@ -8365,10 +8365,10 @@ function getData() {
       },
     },
     {
-      name: "Artur Aleksanyan",
+      name: 'Artur Aleksanyan',
       person: {
         age: 20,
-        country: "Armenia",
+        country: 'Armenia',
       },
       medals: {
         gold: 0,
@@ -8377,10 +8377,10 @@ function getData() {
       },
     },
     {
-      name: "Valeriy Andriitsev",
+      name: 'Valeriy Andriitsev',
       person: {
         age: 25,
-        country: "Ukraine",
+        country: 'Ukraine',
       },
       medals: {
         gold: 0,
@@ -8389,10 +8389,10 @@ function getData() {
       },
     },
     {
-      name: "Rövs?n Bayramov",
+      name: 'Rövs?n Bayramov',
       person: {
         age: 25,
-        country: "Azerbaijan",
+        country: 'Azerbaijan',
       },
       medals: {
         gold: 0,
@@ -8401,10 +8401,10 @@ function getData() {
       },
     },
     {
-      name: "Jordan Burroughs",
+      name: 'Jordan Burroughs',
       person: {
         age: 24,
-        country: "United States",
+        country: 'United States',
       },
       medals: {
         gold: 1,
@@ -8413,10 +8413,10 @@ function getData() {
       },
     },
     {
-      name: "Clarissa Chun",
+      name: 'Clarissa Chun',
       person: {
         age: 30,
-        country: "United States",
+        country: 'United States',
       },
       medals: {
         gold: 0,
@@ -8425,10 +8425,10 @@ function getData() {
       },
     },
     {
-      name: "Yogeshwar Dutt",
+      name: 'Yogeshwar Dutt',
       person: {
         age: 29,
-        country: "India",
+        country: 'India',
       },
       medals: {
         gold: 0,
@@ -8437,10 +8437,10 @@ function getData() {
       },
     },
     {
-      name: "Jaime Espinal",
+      name: 'Jaime Espinal',
       person: {
         age: 27,
-        country: "Puerto Rico",
+        country: 'Puerto Rico',
       },
       medals: {
         gold: 0,
@@ -8449,10 +8449,10 @@ function getData() {
       },
     },
     {
-      name: "Johan Eurén",
+      name: 'Johan Eurén',
       person: {
         age: 27,
-        country: "Sweden",
+        country: 'Sweden',
       },
       medals: {
         gold: 0,
@@ -8461,10 +8461,10 @@ function getData() {
       },
     },
     {
-      name: "Karam Gaber",
+      name: 'Karam Gaber',
       person: {
         age: 32,
-        country: "Egypt",
+        country: 'Egypt',
       },
       medals: {
         gold: 0,
@@ -8473,10 +8473,10 @@ function getData() {
       },
     },
     {
-      name: "Daniyal Gadzhiyev",
+      name: 'Daniyal Gadzhiyev',
       person: {
         age: 26,
-        country: "Kazakhstan",
+        country: 'Kazakhstan',
       },
       medals: {
         gold: 0,
@@ -8485,10 +8485,10 @@ function getData() {
       },
     },
     {
-      name: "Komeil Ghasemi",
+      name: 'Komeil Ghasemi',
       person: {
         age: 24,
-        country: "Iran",
+        country: 'Iran',
       },
       medals: {
         gold: 0,
@@ -8497,10 +8497,10 @@ function getData() {
       },
     },
     {
-      name: "Giorgi Gogshelidze",
+      name: 'Giorgi Gogshelidze',
       person: {
         age: 32,
-        country: "Georgia",
+        country: 'Georgia',
       },
       medals: {
         gold: 0,
@@ -8509,10 +8509,10 @@ function getData() {
       },
     },
     {
-      name: "Sadegh Goudarzi",
+      name: 'Sadegh Goudarzi',
       person: {
         age: 24,
-        country: "Iran",
+        country: 'Iran',
       },
       medals: {
         gold: 0,
@@ -8521,10 +8521,10 @@ function getData() {
       },
     },
     {
-      name: "Steeve Guénot",
+      name: 'Steeve Guénot',
       person: {
         age: 26,
-        country: "France",
+        country: 'France',
       },
       medals: {
         gold: 0,
@@ -8533,10 +8533,10 @@ function getData() {
       },
     },
     {
-      name: "Carol Huynh",
+      name: 'Carol Huynh',
       person: {
         age: 31,
-        country: "Canada",
+        country: 'Canada',
       },
       medals: {
         gold: 0,
@@ -8545,10 +8545,10 @@ function getData() {
       },
     },
     {
-      name: "Kaori Icho",
+      name: 'Kaori Icho',
       person: {
         age: 28,
-        country: "Japan",
+        country: 'Japan',
       },
       medals: {
         gold: 1,
@@ -8557,10 +8557,10 @@ function getData() {
       },
     },
     {
-      name: "Damian Janikowski",
+      name: 'Damian Janikowski',
       person: {
         age: 23,
-        country: "Poland",
+        country: 'Poland',
       },
       medals: {
         gold: 0,
@@ -8569,10 +8569,10 @@ function getData() {
       },
     },
     {
-      name: "Jing Ruixue",
+      name: 'Jing Ruixue',
       person: {
         age: 24,
-        country: "China",
+        country: 'China',
       },
       medals: {
         gold: 0,
@@ -8581,10 +8581,10 @@ function getData() {
       },
     },
     {
-      name: "Arsen Julfalakyan",
+      name: 'Arsen Julfalakyan',
       person: {
         age: 25,
-        country: "Armenia",
+        country: 'Armenia',
       },
       medals: {
         gold: 0,
@@ -8593,10 +8593,10 @@ function getData() {
       },
     },
     {
-      name: "Riza Kayaalp",
+      name: 'Riza Kayaalp',
       person: {
         age: 22,
-        country: "Turkey",
+        country: 'Turkey',
       },
       medals: {
         gold: 0,
@@ -8605,10 +8605,10 @@ function getData() {
       },
     },
     {
-      name: "Aleksandras Kazakevicius",
+      name: 'Aleksandras Kazakevicius',
       person: {
         age: 26,
-        country: "Lithuania",
+        country: 'Lithuania',
       },
       medals: {
         gold: 0,
@@ -8617,10 +8617,10 @@ function getData() {
       },
     },
     {
-      name: "Vladimer Khinchegashvili",
+      name: 'Vladimer Khinchegashvili',
       person: {
         age: 21,
-        country: "Georgia",
+        country: 'Georgia',
       },
       medals: {
         gold: 0,
@@ -8629,10 +8629,10 @@ function getData() {
       },
     },
     {
-      name: "Alan Khugayev",
+      name: 'Alan Khugayev',
       person: {
         age: 23,
-        country: "Russia",
+        country: 'Russia',
       },
       medals: {
         gold: 1,
@@ -8641,10 +8641,10 @@ function getData() {
       },
     },
     {
-      name: "Kim Hyeon-Wu",
+      name: 'Kim Hyeon-Wu',
       person: {
         age: 23,
-        country: "South Korea",
+        country: 'South Korea',
       },
       medals: {
         gold: 1,
@@ -8653,10 +8653,10 @@ function getData() {
       },
     },
     {
-      name: "Besik Kudukhov",
+      name: 'Besik Kudukhov',
       person: {
         age: 25,
-        country: "Russia",
+        country: 'Russia',
       },
       medals: {
         gold: 0,
@@ -8665,10 +8665,10 @@ function getData() {
       },
     },
     {
-      name: "Sushil Kumar",
+      name: 'Sushil Kumar',
       person: {
         age: 29,
-        country: "India",
+        country: 'India',
       },
       medals: {
         gold: 0,
@@ -8677,10 +8677,10 @@ function getData() {
       },
     },
     {
-      name: "Zaur Kuramagomedov",
+      name: 'Zaur Kuramagomedov',
       person: {
         age: 24,
-        country: "Russia",
+        country: 'Russia',
       },
       medals: {
         gold: 0,
@@ -8689,10 +8689,10 @@ function getData() {
       },
     },
     {
-      name: "Ehsan Naser Lashgari",
+      name: 'Ehsan Naser Lashgari',
       person: {
         age: 26,
-        country: "Iran",
+        country: 'Iran',
       },
       medals: {
         gold: 0,
@@ -8701,10 +8701,10 @@ function getData() {
       },
     },
     {
-      name: "Revaz Lashkhi",
+      name: 'Revaz Lashkhi',
       person: {
         age: 24,
-        country: "Georgia",
+        country: 'Georgia',
       },
       medals: {
         gold: 0,
@@ -8713,10 +8713,10 @@ function getData() {
       },
     },
     {
-      name: "Jimmy Lidberg",
+      name: 'Jimmy Lidberg',
       person: {
         age: 30,
-        country: "Sweden",
+        country: 'Sweden',
       },
       medals: {
         gold: 0,
@@ -8725,10 +8725,10 @@ function getData() {
       },
     },
     {
-      name: "Liván López",
+      name: 'Liván López',
       person: {
         age: 30,
-        country: "Cuba",
+        country: 'Cuba',
       },
       medals: {
         gold: 0,
@@ -8737,10 +8737,10 @@ function getData() {
       },
     },
     {
-      name: "Mijaín López",
+      name: 'Mijaín López',
       person: {
         age: 29,
-        country: "Cuba",
+        country: 'Cuba',
       },
       medals: {
         gold: 1,
@@ -8749,10 +8749,10 @@ function getData() {
       },
     },
     {
-      name: "Tamás Lorincz",
+      name: 'Tamás Lorincz',
       person: {
         age: 25,
-        country: "Hungary",
+        country: 'Hungary',
       },
       medals: {
         gold: 0,
@@ -8761,10 +8761,10 @@ function getData() {
       },
     },
     {
-      name: "Bilyal Makhov",
+      name: 'Bilyal Makhov',
       person: {
         age: 24,
-        country: "Russia",
+        country: 'Russia',
       },
       medals: {
         gold: 0,
@@ -8773,10 +8773,10 @@ function getData() {
       },
     },
     {
-      name: "Gyuzel Manyurova",
+      name: 'Gyuzel Manyurova',
       person: {
         age: 34,
-        country: "Kazakhstan",
+        country: 'Kazakhstan',
       },
       medals: {
         gold: 0,
@@ -8785,10 +8785,10 @@ function getData() {
       },
     },
     {
-      name: "Dato Marsagishvili",
+      name: 'Dato Marsagishvili',
       person: {
         age: 21,
-        country: "Georgia",
+        country: 'Georgia',
       },
       medals: {
         gold: 0,
@@ -8797,10 +8797,10 @@ function getData() {
       },
     },
     {
-      name: "Ryutaro Matsumoto",
+      name: 'Ryutaro Matsumoto',
       person: {
         age: 26,
-        country: "Japan",
+        country: 'Japan',
       },
       medals: {
         gold: 0,
@@ -8809,10 +8809,10 @@ function getData() {
       },
     },
     {
-      name: "Péter Módos",
+      name: 'Péter Módos',
       person: {
         age: 24,
-        country: "Hungary",
+        country: 'Hungary',
       },
       medals: {
         gold: 0,
@@ -8821,10 +8821,10 @@ function getData() {
       },
     },
     {
-      name: "Davit Modzmanashvili",
+      name: 'Davit Modzmanashvili',
       person: {
         age: 25,
-        country: "Georgia",
+        country: 'Georgia',
       },
       medals: {
         gold: 0,
@@ -8833,10 +8833,10 @@ function getData() {
       },
     },
     {
-      name: "Heiki Nabi",
+      name: 'Heiki Nabi',
       person: {
         age: 27,
-        country: "Estonia",
+        country: 'Estonia',
       },
       medals: {
         gold: 0,
@@ -8845,10 +8845,10 @@ function getData() {
       },
     },
     {
-      name: "Omid Noroozi",
+      name: 'Omid Noroozi',
       person: {
         age: 26,
-        country: "Iran",
+        country: 'Iran',
       },
       medals: {
         gold: 1,
@@ -8857,10 +8857,10 @@ function getData() {
       },
     },
     {
-      name: "Hitomi Obara",
+      name: 'Hitomi Obara',
       person: {
         age: 31,
-        country: "Japan",
+        country: 'Japan',
       },
       medals: {
         gold: 1,
@@ -8869,10 +8869,10 @@ function getData() {
       },
     },
     {
-      name: "Dzhamal Otarsultanov",
+      name: 'Dzhamal Otarsultanov',
       person: {
         age: 25,
-        country: "Russia",
+        country: 'Russia',
       },
       medals: {
         gold: 1,
@@ -8881,10 +8881,10 @@ function getData() {
       },
     },
     {
-      name: "Xetaq Qazyumov",
+      name: 'Xetaq Qazyumov',
       person: {
         age: 29,
-        country: "Azerbaijan",
+        country: 'Azerbaijan',
       },
       medals: {
         gold: 0,
@@ -8893,10 +8893,10 @@ function getData() {
       },
     },
     {
-      name: "Yuliya Ratkeviç",
+      name: 'Yuliya Ratkeviç',
       person: {
         age: 27,
-        country: "Azerbaijan",
+        country: 'Azerbaijan',
       },
       medals: {
         gold: 0,
@@ -8905,10 +8905,10 @@ function getData() {
       },
     },
     {
-      name: "Jackeline Rentería",
+      name: 'Jackeline Rentería',
       person: {
         age: 26,
-        country: "Colombia",
+        country: 'Colombia',
       },
       medals: {
         gold: 0,
@@ -8917,10 +8917,10 @@ function getData() {
       },
     },
     {
-      name: "Ghasem Rezaei",
+      name: 'Ghasem Rezaei',
       person: {
         age: 26,
-        country: "Iran",
+        country: 'Iran',
       },
       medals: {
         gold: 1,
@@ -8929,10 +8929,10 @@ function getData() {
       },
     },
     {
-      name: "Coleman Scott",
+      name: 'Coleman Scott',
       person: {
         age: 26,
-        country: "United States",
+        country: 'United States',
       },
       medals: {
         gold: 0,
@@ -8941,10 +8941,10 @@ function getData() {
       },
     },
     {
-      name: "Mingiyan Semyonov",
+      name: 'Mingiyan Semyonov',
       person: {
         age: 22,
-        country: "Russia",
+        country: 'Russia',
       },
       medals: {
         gold: 0,
@@ -8953,10 +8953,10 @@ function getData() {
       },
     },
     {
-      name: "Soronzonboldyn Battsetseg",
+      name: 'Soronzonboldyn Battsetseg',
       person: {
         age: 22,
-        country: "Mongolia",
+        country: 'Mongolia',
       },
       medals: {
         gold: 0,
@@ -8965,10 +8965,10 @@ function getData() {
       },
     },
     {
-      name: "Hamid Soryan",
+      name: 'Hamid Soryan',
       person: {
         age: 26,
-        country: "Iran",
+        country: 'Iran',
       },
       medals: {
         gold: 1,
@@ -8977,10 +8977,10 @@ function getData() {
       },
     },
     {
-      name: "Mariya Stadnik",
+      name: 'Mariya Stadnik',
       person: {
         age: 24,
-        country: "Azerbaijan",
+        country: 'Azerbaijan',
       },
       medals: {
         gold: 0,
@@ -8989,10 +8989,10 @@ function getData() {
       },
     },
     {
-      name: "S?rif S?rifov",
+      name: 'S?rif S?rifov',
       person: {
         age: 23,
-        country: "Azerbaijan",
+        country: 'Azerbaijan',
       },
       medals: {
         gold: 1,
@@ -9001,10 +9001,10 @@ function getData() {
       },
     },
     {
-      name: "Akzhurek Tanatarov",
+      name: 'Akzhurek Tanatarov',
       person: {
         age: 25,
-        country: "Kazakhstan",
+        country: 'Kazakhstan',
       },
       medals: {
         gold: 0,
@@ -9013,10 +9013,10 @@ function getData() {
       },
     },
     {
-      name: "Artur Taymazov",
+      name: 'Artur Taymazov',
       person: {
         age: 33,
-        country: "Uzbekistan",
+        country: 'Uzbekistan',
       },
       medals: {
         gold: 1,
@@ -9025,10 +9025,10 @@ function getData() {
       },
     },
     {
-      name: "Soslan Tigiyev",
+      name: 'Soslan Tigiyev',
       person: {
         age: 28,
-        country: "Uzbekistan",
+        country: 'Uzbekistan',
       },
       medals: {
         gold: 0,
@@ -9037,10 +9037,10 @@ function getData() {
       },
     },
     {
-      name: "Rustam Totrov",
+      name: 'Rustam Totrov',
       person: {
         age: 28,
-        country: "Russia",
+        country: 'Russia',
       },
       medals: {
         gold: 0,
@@ -9049,10 +9049,10 @@ function getData() {
       },
     },
     {
-      name: "Denis Tsargush",
+      name: 'Denis Tsargush',
       person: {
         age: 24,
-        country: "Russia",
+        country: 'Russia',
       },
       medals: {
         gold: 0,
@@ -9061,10 +9061,10 @@ function getData() {
       },
     },
     {
-      name: "Manuchar Tskhadaia",
+      name: 'Manuchar Tskhadaia',
       person: {
         age: 27,
-        country: "Georgia",
+        country: 'Georgia',
       },
       medals: {
         gold: 0,
@@ -9073,10 +9073,10 @@ function getData() {
       },
     },
     {
-      name: "Maider Unda",
+      name: 'Maider Unda',
       person: {
         age: 35,
-        country: "Spain",
+        country: 'Spain',
       },
       medals: {
         gold: 0,
@@ -9085,10 +9085,10 @@ function getData() {
       },
     },
     {
-      name: "Jake Varner",
+      name: 'Jake Varner',
       person: {
         age: 26,
-        country: "United States",
+        country: 'United States',
       },
       medals: {
         gold: 1,
@@ -9097,10 +9097,10 @@ function getData() {
       },
     },
     {
-      name: "Tonya Verbeek",
+      name: 'Tonya Verbeek',
       person: {
         age: 34,
-        country: "Canada",
+        country: 'Canada',
       },
       medals: {
         gold: 0,
@@ -9109,10 +9109,10 @@ function getData() {
       },
     },
     {
-      name: "Roman Vlasov",
+      name: 'Roman Vlasov',
       person: {
         age: 21,
-        country: "Russia",
+        country: 'Russia',
       },
       medals: {
         gold: 1,
@@ -9121,10 +9121,10 @@ function getData() {
       },
     },
     {
-      name: "Lyubov Volosova",
+      name: 'Lyubov Volosova',
       person: {
         age: 29,
-        country: "Russia",
+        country: 'Russia',
       },
       medals: {
         gold: 0,
@@ -9133,10 +9133,10 @@ function getData() {
       },
     },
     {
-      name: "Nataliya Vorobyova",
+      name: 'Nataliya Vorobyova',
       person: {
         age: 21,
-        country: "Russia",
+        country: 'Russia',
       },
       medals: {
         gold: 1,
@@ -9145,10 +9145,10 @@ function getData() {
       },
     },
     {
-      name: "Yang Kyong-Il",
+      name: 'Yang Kyong-Il',
       person: {
         age: 23,
-        country: "North Korea",
+        country: 'North Korea',
       },
       medals: {
         gold: 0,
@@ -9157,10 +9157,10 @@ function getData() {
       },
     },
     {
-      name: "Tatsuhiro Yonemitsu",
+      name: 'Tatsuhiro Yonemitsu',
       person: {
         age: 26,
-        country: "Japan",
+        country: 'Japan',
       },
       medals: {
         gold: 1,
@@ -9169,10 +9169,10 @@ function getData() {
       },
     },
     {
-      name: "Saori Yoshida",
+      name: 'Saori Yoshida',
       person: {
         age: 29,
-        country: "Japan",
+        country: 'Japan',
       },
       medals: {
         gold: 1,
@@ -9181,10 +9181,10 @@ function getData() {
       },
     },
     {
-      name: "Shinichi Yumoto",
+      name: 'Shinichi Yumoto',
       person: {
         age: 27,
-        country: "Japan",
+        country: 'Japan',
       },
       medals: {
         gold: 0,
@@ -9193,10 +9193,10 @@ function getData() {
       },
     },
     {
-      name: "Stanka Zlateva",
+      name: 'Stanka Zlateva',
       person: {
         age: 29,
-        country: "Bulgaria",
+        country: 'Bulgaria',
       },
       medals: {
         gold: 0,
@@ -9205,10 +9205,10 @@ function getData() {
       },
     },
     {
-      name: "Emin ?hm?dov",
+      name: 'Emin ?hm?dov',
       person: {
         age: 25,
-        country: "Azerbaijan",
+        country: 'Azerbaijan',
       },
       medals: {
         gold: 0,
@@ -9217,10 +9217,10 @@ function getData() {
       },
     },
     {
-      name: "Togrul ?sg?rov",
+      name: 'Togrul ?sg?rov',
       person: {
         age: 19,
-        country: "Azerbaijan",
+        country: 'Azerbaijan',
       },
       medals: {
         gold: 1,
@@ -9229,10 +9229,10 @@ function getData() {
       },
     },
     {
-      name: "Yusuf Abdusalomov",
+      name: 'Yusuf Abdusalomov',
       person: {
         age: 30,
-        country: "Tajikistan",
+        country: 'Tajikistan',
       },
       medals: {
         gold: 0,
@@ -9241,10 +9241,10 @@ function getData() {
       },
     },
     {
-      name: "Bakhtiyar Akhmedov",
+      name: 'Bakhtiyar Akhmedov',
       person: {
         age: 21,
-        country: "Russia",
+        country: 'Russia',
       },
       medals: {
         gold: 0,
@@ -9253,10 +9253,10 @@ function getData() {
       },
     },
     {
-      name: "Islam-Beka Albiyev",
+      name: 'Islam-Beka Albiyev',
       person: {
         age: 19,
-        country: "Russia",
+        country: 'Russia',
       },
       medals: {
         gold: 1,
@@ -9265,10 +9265,10 @@ function getData() {
       },
     },
     {
-      name: "Roman Amoyan",
+      name: 'Roman Amoyan',
       person: {
         age: 24,
-        country: "Armenia",
+        country: 'Armenia',
       },
       medals: {
         gold: 0,
@@ -9277,10 +9277,10 @@ function getData() {
       },
     },
     {
-      name: "Nazmi Avluca",
+      name: 'Nazmi Avluca',
       person: {
         age: 31,
-        country: "Turkey",
+        country: 'Turkey',
       },
       medals: {
         gold: 0,
@@ -9289,10 +9289,10 @@ function getData() {
       },
     },
     {
-      name: "Khasan Baroyev",
+      name: 'Khasan Baroyev',
       person: {
         age: 25,
-        country: "Russia",
+        country: 'Russia',
       },
       medals: {
         gold: 0,
@@ -9301,10 +9301,10 @@ function getData() {
       },
     },
     {
-      name: "Mavlet Batyrov",
+      name: 'Mavlet Batyrov',
       person: {
         age: 24,
-        country: "Russia",
+        country: 'Russia',
       },
       medals: {
         gold: 1,
@@ -9313,10 +9313,10 @@ function getData() {
       },
     },
     {
-      name: "Rövs?n Bayramov",
+      name: 'Rövs?n Bayramov',
       person: {
         age: 21,
-        country: "Azerbaijan",
+        country: 'Azerbaijan',
       },
       medals: {
         gold: 0,
@@ -9325,10 +9325,10 @@ function getData() {
       },
     },
     {
-      name: "Kanat Begaliyev",
+      name: 'Kanat Begaliyev',
       person: {
         age: 24,
-        country: "Kyrgyzstan",
+        country: 'Kyrgyzstan',
       },
       medals: {
         gold: 0,
@@ -9337,10 +9337,10 @@ function getData() {
       },
     },
     {
-      name: "Henry Cejudo",
+      name: 'Henry Cejudo',
       person: {
         age: 21,
-        country: "United States",
+        country: 'United States',
       },
       medals: {
         gold: 1,
@@ -9349,10 +9349,10 @@ function getData() {
       },
     },
     {
-      name: "Chang Yongxiang",
+      name: 'Chang Yongxiang',
       person: {
         age: 24,
-        country: "China",
+        country: 'China',
       },
       medals: {
         gold: 0,
@@ -9361,10 +9361,10 @@ function getData() {
       },
     },
     {
-      name: "Taras Danko",
+      name: 'Taras Danko',
       person: {
         age: 28,
-        country: "Ukraine",
+        country: 'Ukraine',
       },
       medals: {
         gold: 0,
@@ -9373,10 +9373,10 @@ function getData() {
       },
     },
     {
-      name: "Mirko Englich",
+      name: 'Mirko Englich',
       person: {
         age: 29,
-        country: "Germany",
+        country: 'Germany',
       },
       medals: {
         gold: 0,
@@ -9385,10 +9385,10 @@ function getData() {
       },
     },
     {
-      name: "Vasyl Fedoryshyn",
+      name: 'Vasyl Fedoryshyn',
       person: {
         age: 27,
-        country: "Ukraine",
+        country: 'Ukraine',
       },
       medals: {
         gold: 0,
@@ -9397,10 +9397,10 @@ function getData() {
       },
     },
     {
-      name: "Zoltán Fodor",
+      name: 'Zoltán Fodor',
       person: {
         age: 23,
-        country: "Hungary",
+        country: 'Hungary',
       },
       medals: {
         gold: 0,
@@ -9409,10 +9409,10 @@ function getData() {
       },
     },
     {
-      name: "Murad Gaydarov",
+      name: 'Murad Gaydarov',
       person: {
         age: 28,
-        country: "Belarus",
+        country: 'Belarus',
       },
       medals: {
         gold: 0,
@@ -9421,10 +9421,10 @@ function getData() {
       },
     },
     {
-      name: "Giorgi Gogshelidze",
+      name: 'Giorgi Gogshelidze',
       person: {
         age: 28,
-        country: "Georgia",
+        country: 'Georgia',
       },
       medals: {
         gold: 0,
@@ -9433,10 +9433,10 @@ function getData() {
       },
     },
     {
-      name: "Christophe Guénot",
+      name: 'Christophe Guénot',
       person: {
         age: 29,
-        country: "France",
+        country: 'France',
       },
       medals: {
         gold: 0,
@@ -9445,10 +9445,10 @@ function getData() {
       },
     },
     {
-      name: "Steeve Guénot",
+      name: 'Steeve Guénot',
       person: {
         age: 22,
-        country: "France",
+        country: 'France',
       },
       medals: {
         gold: 1,
@@ -9457,10 +9457,10 @@ function getData() {
       },
     },
     {
-      name: "Kyoko Hamaguchi",
+      name: 'Kyoko Hamaguchi',
       person: {
         age: 30,
-        country: "Japan",
+        country: 'Japan',
       },
       medals: {
         gold: 0,
@@ -9469,10 +9469,10 @@ function getData() {
       },
     },
     {
-      name: "Carol Huynh",
+      name: 'Carol Huynh',
       person: {
         age: 27,
-        country: "Canada",
+        country: 'Canada',
       },
       medals: {
         gold: 1,
@@ -9481,10 +9481,10 @@ function getData() {
       },
     },
     {
-      name: "Chiharu Icho",
+      name: 'Chiharu Icho',
       person: {
         age: 26,
-        country: "Japan",
+        country: 'Japan',
       },
       medals: {
         gold: 0,
@@ -9493,10 +9493,10 @@ function getData() {
       },
     },
     {
-      name: "Kaori Icho",
+      name: 'Kaori Icho',
       person: {
         age: 24,
-        country: "Japan",
+        country: 'Japan',
       },
       medals: {
         gold: 1,
@@ -9508,7 +9508,7 @@ function getData() {
       name: "Manuchar K'virk'elia",
       person: {
         age: 29,
-        country: "Georgia",
+        country: 'Georgia',
       },
       medals: {
         gold: 1,
@@ -9517,10 +9517,10 @@ function getData() {
       },
     },
     {
-      name: "Alyona Kartashova",
+      name: 'Alyona Kartashova',
       person: {
         age: 26,
-        country: "Russia",
+        country: 'Russia',
       },
       medals: {
         gold: 0,
@@ -9529,10 +9529,10 @@ function getData() {
       },
     },
     {
-      name: "Georgy Ketoyev",
+      name: 'Georgy Ketoyev',
       person: {
         age: 22,
-        country: "Russia",
+        country: 'Russia',
       },
       medals: {
         gold: 0,
@@ -9541,10 +9541,10 @@ function getData() {
       },
     },
     {
-      name: "Aslanbek Khushtov",
+      name: 'Aslanbek Khushtov',
       person: {
         age: 28,
-        country: "Russia",
+        country: 'Russia',
       },
       medals: {
         gold: 1,
@@ -9553,10 +9553,10 @@ function getData() {
       },
     },
     {
-      name: "Besik Kudukhov",
+      name: 'Besik Kudukhov',
       person: {
         age: 22,
-        country: "Russia",
+        country: 'Russia',
       },
       medals: {
         gold: 0,
@@ -9565,10 +9565,10 @@ function getData() {
       },
     },
     {
-      name: "Sushil Kumar",
+      name: 'Sushil Kumar',
       person: {
         age: 25,
-        country: "India",
+        country: 'India',
       },
       medals: {
         gold: 0,
@@ -9577,10 +9577,10 @@ function getData() {
       },
     },
     {
-      name: "Mijaín López",
+      name: 'Mijaín López',
       person: {
         age: 25,
-        country: "Cuba",
+        country: 'Cuba',
       },
       medals: {
         gold: 1,
@@ -9589,10 +9589,10 @@ function getData() {
       },
     },
     {
-      name: "Aset Mambetov",
+      name: 'Aset Mambetov',
       person: {
         age: 26,
-        country: "Kazakhstan",
+        country: 'Kazakhstan',
       },
       medals: {
         gold: 0,
@@ -9601,10 +9601,10 @@ function getData() {
       },
     },
     {
-      name: "Nazyr Mankiyev",
+      name: 'Nazyr Mankiyev',
       person: {
         age: 23,
-        country: "Russia",
+        country: 'Russia',
       },
       medals: {
         gold: 1,
@@ -9613,10 +9613,10 @@ function getData() {
       },
     },
     {
-      name: "Tomohiro Matsunaga",
+      name: 'Tomohiro Matsunaga',
       person: {
         age: 28,
-        country: "Japan",
+        country: 'Japan',
       },
       medals: {
         gold: 0,
@@ -9625,10 +9625,10 @@ function getData() {
       },
     },
     {
-      name: "Iryna Merleni-Mykulchyn",
+      name: 'Iryna Merleni-Mykulchyn',
       person: {
         age: 26,
-        country: "Ukraine",
+        country: 'Ukraine',
       },
       medals: {
         gold: 0,
@@ -9637,10 +9637,10 @@ function getData() {
       },
     },
     {
-      name: "Randi Miller",
+      name: 'Randi Miller',
       person: {
         age: 24,
-        country: "United States",
+        country: 'United States',
       },
       medals: {
         gold: 0,
@@ -9649,10 +9649,10 @@ function getData() {
       },
     },
     {
-      name: "Revaz Mindorashvili",
+      name: 'Revaz Mindorashvili',
       person: {
         age: 32,
-        country: "Georgia",
+        country: 'Georgia',
       },
       medals: {
         gold: 1,
@@ -9661,10 +9661,10 @@ function getData() {
       },
     },
     {
-      name: "Andrea Minguzzi",
+      name: 'Andrea Minguzzi',
       person: {
         age: 26,
-        country: "Italy",
+        country: 'Italy',
       },
       medals: {
         gold: 1,
@@ -9673,10 +9673,10 @@ function getData() {
       },
     },
     {
-      name: "Mindaugas Mizgaitis",
+      name: 'Mindaugas Mizgaitis',
       person: {
         age: 28,
-        country: "Lithuania",
+        country: 'Lithuania',
       },
       medals: {
         gold: 0,
@@ -9685,10 +9685,10 @@ function getData() {
       },
     },
     {
-      name: "Seyed Mohammadi",
+      name: 'Seyed Mohammadi',
       person: {
         age: 28,
-        country: "Iran",
+        country: 'Iran',
       },
       medals: {
         gold: 0,
@@ -9697,10 +9697,10 @@ function getData() {
       },
     },
     {
-      name: "Sharvani Muradov",
+      name: 'Sharvani Muradov',
       person: {
         age: 23,
-        country: "Russia",
+        country: 'Russia',
       },
       medals: {
         gold: 1,
@@ -9709,10 +9709,10 @@ function getData() {
       },
     },
     {
-      name: "David Musulbes",
+      name: 'David Musulbes',
       person: {
         age: 36,
-        country: "Slovakia",
+        country: 'Slovakia',
       },
       medals: {
         gold: 0,
@@ -9721,10 +9721,10 @@ function getData() {
       },
     },
     {
-      name: "Marid Mutalimov",
+      name: 'Marid Mutalimov',
       person: {
         age: 28,
-        country: "Kazakhstan",
+        country: 'Kazakhstan',
       },
       medals: {
         gold: 0,
@@ -9733,10 +9733,10 @@ function getData() {
       },
     },
     {
-      name: "Park Eun-Chul",
+      name: 'Park Eun-Chul',
       person: {
         age: 27,
-        country: "South Korea",
+        country: 'South Korea',
       },
       medals: {
         gold: 0,
@@ -9745,10 +9745,10 @@ function getData() {
       },
     },
     {
-      name: "Yury Patrikeyev",
+      name: 'Yury Patrikeyev',
       person: {
         age: 28,
-        country: "Armenia",
+        country: 'Armenia',
       },
       medals: {
         gold: 0,
@@ -9757,10 +9757,10 @@ function getData() {
       },
     },
     {
-      name: "Xetaq Qazyumov",
+      name: 'Xetaq Qazyumov',
       person: {
         age: 25,
-        country: "Azerbaijan",
+        country: 'Azerbaijan',
       },
       medals: {
         gold: 0,
@@ -9769,10 +9769,10 @@ function getData() {
       },
     },
     {
-      name: "Jackeline Rentería",
+      name: 'Jackeline Rentería',
       person: {
         age: 22,
-        country: "Colombia",
+        country: 'Colombia',
       },
       medals: {
         gold: 0,
@@ -9781,10 +9781,10 @@ function getData() {
       },
     },
     {
-      name: "Vitaliy R?himov",
+      name: 'Vitaliy R?himov',
       person: {
         age: 23,
-        country: "Azerbaijan",
+        country: 'Azerbaijan',
       },
       medals: {
         gold: 0,
@@ -9793,10 +9793,10 @@ function getData() {
       },
     },
     {
-      name: "Ramazan Sahin",
+      name: 'Ramazan Sahin',
       person: {
         age: 25,
-        country: "Turkey",
+        country: 'Turkey',
       },
       medals: {
         gold: 1,
@@ -9805,10 +9805,10 @@ function getData() {
       },
     },
     {
-      name: "Buvaisa Saytiyev",
+      name: 'Buvaisa Saytiyev',
       person: {
         age: 33,
-        country: "Russia",
+        country: 'Russia',
       },
       medals: {
         gold: 1,
@@ -9817,10 +9817,10 @@ function getData() {
       },
     },
     {
-      name: "Mikhail Semyonov",
+      name: 'Mikhail Semyonov',
       person: {
         age: 24,
-        country: "Belarus",
+        country: 'Belarus',
       },
       medals: {
         gold: 0,
@@ -9829,10 +9829,10 @@ function getData() {
       },
     },
     {
-      name: "Yelena Shalygina",
+      name: 'Yelena Shalygina',
       person: {
         age: 21,
-        country: "Kazakhstan",
+        country: 'Kazakhstan',
       },
       medals: {
         gold: 0,
@@ -9841,10 +9841,10 @@ function getData() {
       },
     },
     {
-      name: "Andriy Stadnik",
+      name: 'Andriy Stadnik',
       person: {
         age: 26,
-        country: "Ukraine",
+        country: 'Ukraine',
       },
       medals: {
         gold: 0,
@@ -9853,10 +9853,10 @@ function getData() {
       },
     },
     {
-      name: "Mariya Stadnik",
+      name: 'Mariya Stadnik',
       person: {
         age: 20,
-        country: "Azerbaijan",
+        country: 'Azerbaijan',
       },
       medals: {
         gold: 0,
@@ -9865,10 +9865,10 @@ function getData() {
       },
     },
     {
-      name: "Artur Taymazov",
+      name: 'Artur Taymazov',
       person: {
         age: 29,
-        country: "Uzbekistan",
+        country: 'Uzbekistan',
       },
       medals: {
         gold: 1,
@@ -9877,10 +9877,10 @@ function getData() {
       },
     },
     {
-      name: "Nurbakyt Tengizbayev",
+      name: 'Nurbakyt Tengizbayev',
       person: {
         age: 25,
-        country: "Kazakhstan",
+        country: 'Kazakhstan',
       },
       medals: {
         gold: 0,
@@ -9889,10 +9889,10 @@ function getData() {
       },
     },
     {
-      name: "Kiril Terziev",
+      name: 'Kiril Terziev',
       person: {
         age: 24,
-        country: "Bulgaria",
+        country: 'Bulgaria',
       },
       medals: {
         gold: 0,
@@ -9901,10 +9901,10 @@ function getData() {
       },
     },
     {
-      name: "Soslan Tigiyev",
+      name: 'Soslan Tigiyev',
       person: {
         age: 24,
-        country: "Uzbekistan",
+        country: 'Uzbekistan',
       },
       medals: {
         gold: 0,
@@ -9913,10 +9913,10 @@ function getData() {
       },
     },
     {
-      name: "Taymuraz Tigiyev",
+      name: 'Taymuraz Tigiyev',
       person: {
         age: 26,
-        country: "Kazakhstan",
+        country: 'Kazakhstan',
       },
       medals: {
         gold: 0,
@@ -9925,10 +9925,10 @@ function getData() {
       },
     },
     {
-      name: "Otar Tushishvili",
+      name: 'Otar Tushishvili',
       person: {
         age: 30,
-        country: "Georgia",
+        country: 'Georgia',
       },
       medals: {
         gold: 0,
@@ -9937,10 +9937,10 @@ function getData() {
       },
     },
     {
-      name: "Ruslan Tyumenbayev",
+      name: 'Ruslan Tyumenbayev',
       person: {
         age: 22,
-        country: "Kyrgyzstan",
+        country: 'Kyrgyzstan',
       },
       medals: {
         gold: 0,
@@ -9949,10 +9949,10 @@ function getData() {
       },
     },
     {
-      name: "Armen Vardanian",
+      name: 'Armen Vardanian',
       person: {
         age: 25,
-        country: "Ukraine",
+        country: 'Ukraine',
       },
       medals: {
         gold: 0,
@@ -9961,10 +9961,10 @@ function getData() {
       },
     },
     {
-      name: "Radoslav Velikov",
+      name: 'Radoslav Velikov',
       person: {
         age: 24,
-        country: "Bulgaria",
+        country: 'Bulgaria',
       },
       medals: {
         gold: 0,
@@ -9973,10 +9973,10 @@ function getData() {
       },
     },
     {
-      name: "Tonya Verbeek",
+      name: 'Tonya Verbeek',
       person: {
         age: 31,
-        country: "Canada",
+        country: 'Canada',
       },
       medals: {
         gold: 0,
@@ -9985,10 +9985,10 @@ function getData() {
       },
     },
     {
-      name: "Wang Jiao",
+      name: 'Wang Jiao',
       person: {
         age: 20,
-        country: "China",
+        country: 'China',
       },
       medals: {
         gold: 1,
@@ -9997,10 +9997,10 @@ function getData() {
       },
     },
     {
-      name: "Adam Wheeler",
+      name: 'Adam Wheeler',
       person: {
         age: 27,
-        country: "United States",
+        country: 'United States',
       },
       medals: {
         gold: 0,
@@ -10009,10 +10009,10 @@ function getData() {
       },
     },
     {
-      name: "Agnieszka Wieszczek",
+      name: 'Agnieszka Wieszczek',
       person: {
         age: 25,
-        country: "Poland",
+        country: 'Poland',
       },
       medals: {
         gold: 0,
@@ -10021,10 +10021,10 @@ function getData() {
       },
     },
     {
-      name: "Xu Li",
+      name: 'Xu Li',
       person: {
         age: 18,
-        country: "China",
+        country: 'China',
       },
       medals: {
         gold: 0,
@@ -10033,10 +10033,10 @@ function getData() {
       },
     },
     {
-      name: "Yavor Yanakiev",
+      name: 'Yavor Yanakiev',
       person: {
         age: 23,
-        country: "Bulgaria",
+        country: 'Bulgaria',
       },
       medals: {
         gold: 0,
@@ -10045,10 +10045,10 @@ function getData() {
       },
     },
     {
-      name: "Saori Yoshida",
+      name: 'Saori Yoshida',
       person: {
         age: 25,
-        country: "Japan",
+        country: 'Japan',
       },
       medals: {
         gold: 1,
@@ -10057,10 +10057,10 @@ function getData() {
       },
     },
     {
-      name: "Kenichi Yumoto",
+      name: 'Kenichi Yumoto',
       person: {
         age: 23,
-        country: "Japan",
+        country: 'Japan',
       },
       medals: {
         gold: 0,
@@ -10069,10 +10069,10 @@ function getData() {
       },
     },
     {
-      name: "Stanka Zlateva",
+      name: 'Stanka Zlateva',
       person: {
         age: 25,
-        country: "Bulgaria",
+        country: 'Bulgaria',
       },
       medals: {
         gold: 0,
@@ -10081,10 +10081,10 @@ function getData() {
       },
     },
     {
-      name: "Stephen Abas",
+      name: 'Stephen Abas',
       person: {
         age: 26,
-        country: "United States",
+        country: 'United States',
       },
       medals: {
         gold: 0,
@@ -10093,10 +10093,10 @@ function getData() {
       },
     },
     {
-      name: "Ara Abrahamian",
+      name: 'Ara Abrahamian',
       person: {
         age: 29,
-        country: "Sweden",
+        country: 'Sweden',
       },
       medals: {
         gold: 0,
@@ -10105,10 +10105,10 @@ function getData() {
       },
     },
     {
-      name: "Khasan Baroyev",
+      name: 'Khasan Baroyev',
       person: {
         age: 21,
-        country: "Russia",
+        country: 'Russia',
       },
       medals: {
         gold: 1,
@@ -10117,10 +10117,10 @@ function getData() {
       },
     },
     {
-      name: "Mavlet Batyrov",
+      name: 'Mavlet Batyrov',
       person: {
         age: 20,
-        country: "Russia",
+        country: 'Russia',
       },
       medals: {
         gold: 1,
@@ -10129,10 +10129,10 @@ function getData() {
       },
     },
     {
-      name: "Aleksandr Dokturishivili",
+      name: 'Aleksandr Dokturishivili',
       person: {
         age: 24,
-        country: "Uzbekistan",
+        country: 'Uzbekistan',
       },
       medals: {
         gold: 1,
@@ -10141,10 +10141,10 @@ function getData() {
       },
     },
     {
-      name: "Seref Eroglu",
+      name: 'Seref Eroglu',
       person: {
         age: 28,
-        country: "Turkey",
+        country: 'Turkey',
       },
       medals: {
         gold: 0,
@@ -10153,10 +10153,10 @@ function getData() {
       },
     },
     {
-      name: "Iván Fundora",
+      name: 'Iván Fundora',
       person: {
         age: 28,
-        country: "Cuba",
+        country: 'Cuba',
       },
       medals: {
         gold: 0,
@@ -10165,10 +10165,10 @@ function getData() {
       },
     },
     {
-      name: "Karam Gaber",
+      name: 'Karam Gaber',
       person: {
         age: 24,
-        country: "Egypt",
+        country: 'Egypt',
       },
       medals: {
         gold: 1,
@@ -10177,10 +10177,10 @@ function getData() {
       },
     },
     {
-      name: "Rulon Gardner",
+      name: 'Rulon Gardner',
       person: {
         age: 33,
-        country: "United States",
+        country: 'United States',
       },
       medals: {
         gold: 0,
@@ -10189,10 +10189,10 @@ function getData() {
       },
     },
     {
-      name: "Khadzhimurat Gatsalov",
+      name: 'Khadzhimurat Gatsalov',
       person: {
         age: 21,
-        country: "Russia",
+        country: 'Russia',
       },
       medals: {
         gold: 1,
@@ -10201,10 +10201,10 @@ function getData() {
       },
     },
     {
-      name: "Lise Golliot-Legrand",
+      name: 'Lise Golliot-Legrand',
       person: {
         age: 27,
-        country: "France",
+        country: 'France',
       },
       medals: {
         gold: 0,
@@ -10213,10 +10213,10 @@ function getData() {
       },
     },
     {
-      name: "Anna Gomis",
+      name: 'Anna Gomis',
       person: {
         age: 30,
-        country: "France",
+        country: 'France',
       },
       medals: {
         gold: 0,
@@ -10225,10 +10225,10 @@ function getData() {
       },
     },
     {
-      name: "Kyoko Hamaguchi",
+      name: 'Kyoko Hamaguchi',
       person: {
         age: 26,
-        country: "Japan",
+        country: 'Japan',
       },
       medals: {
         gold: 0,
@@ -10237,10 +10237,10 @@ function getData() {
       },
     },
     {
-      name: "Ali Reza Heidari",
+      name: 'Ali Reza Heidari',
       person: {
         age: 28,
-        country: "Iran",
+        country: 'Iran',
       },
       medals: {
         gold: 0,
@@ -10249,10 +10249,10 @@ function getData() {
       },
     },
     {
-      name: "Magamed Ibragimov",
+      name: 'Magamed Ibragimov',
       person: {
         age: 21,
-        country: "Uzbekistan",
+        country: 'Uzbekistan',
       },
       medals: {
         gold: 0,
@@ -10261,10 +10261,10 @@ function getData() {
       },
     },
     {
-      name: "Chiharu Icho",
+      name: 'Chiharu Icho',
       person: {
         age: 22,
-        country: "Japan",
+        country: 'Japan',
       },
       medals: {
         gold: 0,
@@ -10273,10 +10273,10 @@ function getData() {
       },
     },
     {
-      name: "Kaori Icho",
+      name: 'Kaori Icho',
       person: {
         age: 20,
-        country: "Japan",
+        country: 'Japan',
       },
       medals: {
         gold: 1,
@@ -10285,10 +10285,10 @@ function getData() {
       },
     },
     {
-      name: "Kenji Inoue",
+      name: 'Kenji Inoue',
       person: {
         age: 27,
-        country: "Japan",
+        country: 'Japan',
       },
       medals: {
         gold: 0,
@@ -10297,10 +10297,10 @@ function getData() {
       },
     },
     {
-      name: "Jeong Ji-Hyeon",
+      name: 'Jeong Ji-Hyeon',
       person: {
         age: 21,
-        country: "South Korea",
+        country: 'South Korea',
       },
       medals: {
         gold: 1,
@@ -10309,10 +10309,10 @@ function getData() {
       },
     },
     {
-      name: "Jamill Kelly",
+      name: 'Jamill Kelly',
       person: {
         age: 26,
-        country: "United States",
+        country: 'United States',
       },
       medals: {
         gold: 0,
@@ -10321,10 +10321,10 @@ function getData() {
       },
     },
     {
-      name: "Atryom Kyuregyan",
+      name: 'Atryom Kyuregyan',
       person: {
         age: 27,
-        country: "Greece",
+        country: 'Greece',
       },
       medals: {
         gold: 0,
@@ -10333,10 +10333,10 @@ function getData() {
       },
     },
     {
-      name: "Gennady Laliyev",
+      name: 'Gennady Laliyev',
       person: {
         age: 25,
-        country: "Kazakhstan",
+        country: 'Kazakhstan',
       },
       medals: {
         gold: 0,
@@ -10345,10 +10345,10 @@ function getData() {
       },
     },
     {
-      name: "István Majoros",
+      name: 'István Majoros',
       person: {
         age: 30,
-        country: "Hungary",
+        country: 'Hungary',
       },
       medals: {
         gold: 1,
@@ -10357,10 +10357,10 @@ function getData() {
       },
     },
     {
-      name: "Vyacheslav Makarenko",
+      name: 'Vyacheslav Makarenko',
       person: {
         age: 28,
-        country: "Belarus",
+        country: 'Belarus',
       },
       medals: {
         gold: 0,
@@ -10369,10 +10369,10 @@ function getData() {
       },
     },
     {
-      name: "Gaydar Mamedaliyev",
+      name: 'Gaydar Mamedaliyev',
       person: {
         age: 30,
-        country: "Russia",
+        country: 'Russia',
       },
       medals: {
         gold: 0,
@@ -10381,10 +10381,10 @@ function getData() {
       },
     },
     {
-      name: "Mkhitar Manukyan",
+      name: 'Mkhitar Manukyan',
       person: {
         age: 31,
-        country: "Kazakhstan",
+        country: 'Kazakhstan',
       },
       medals: {
         gold: 0,
@@ -10393,10 +10393,10 @@ function getData() {
       },
     },
     {
-      name: "Gyuzel Manyurova",
+      name: 'Gyuzel Manyurova',
       person: {
         age: 26,
-        country: "Russia",
+        country: 'Russia',
       },
       medals: {
         gold: 0,
@@ -10405,10 +10405,10 @@ function getData() {
       },
     },
     {
-      name: "Sara McMann",
+      name: 'Sara McMann',
       person: {
         age: 23,
-        country: "United States",
+        country: 'United States',
       },
       medals: {
         gold: 0,
@@ -10417,10 +10417,10 @@ function getData() {
       },
     },
     {
-      name: "Iryna Merleni-Mykulchyn",
+      name: 'Iryna Merleni-Mykulchyn',
       person: {
         age: 22,
-        country: "Ukraine",
+        country: 'Ukraine',
       },
       medals: {
         gold: 1,
@@ -10429,10 +10429,10 @@ function getData() {
       },
     },
     {
-      name: "Patricia Miranda",
+      name: 'Patricia Miranda',
       person: {
         age: 25,
-        country: "United States",
+        country: 'United States',
       },
       medals: {
         gold: 0,
@@ -10441,10 +10441,10 @@ function getData() {
       },
     },
     {
-      name: "Aleksey Mishin",
+      name: 'Aleksey Mishin',
       person: {
         age: 25,
-        country: "Russia",
+        country: 'Russia',
       },
       medals: {
         gold: 1,
@@ -10453,10 +10453,10 @@ function getData() {
       },
     },
     {
-      name: "Roberto Monzón",
+      name: 'Roberto Monzón',
       person: {
         age: 26,
-        country: "Cuba",
+        country: 'Cuba',
       },
       medals: {
         gold: 0,
@@ -10465,10 +10465,10 @@ function getData() {
       },
     },
     {
-      name: "Masoud Moustafa Gokar",
+      name: 'Masoud Moustafa Gokar',
       person: {
         age: 26,
-        country: "Iran",
+        country: 'Iran',
       },
       medals: {
         gold: 0,
@@ -10477,10 +10477,10 @@ function getData() {
       },
     },
     {
-      name: "Mun Ui-Je",
+      name: 'Mun Ui-Je',
       person: {
         age: 29,
-        country: "South Korea",
+        country: 'South Korea',
       },
       medals: {
         gold: 0,
@@ -10489,10 +10489,10 @@ function getData() {
       },
     },
     {
-      name: "Makhach Murtazaliyev",
+      name: 'Makhach Murtazaliyev',
       person: {
         age: 20,
-        country: "Russia",
+        country: 'Russia',
       },
       medals: {
         gold: 0,
@@ -10501,10 +10501,10 @@ function getData() {
       },
     },
     {
-      name: "F?rid M?nsurov",
+      name: 'F?rid M?nsurov',
       person: {
         age: 22,
-        country: "Azerbaijan",
+        country: 'Azerbaijan',
       },
       medals: {
         gold: 1,
@@ -10513,10 +10513,10 @@ function getData() {
       },
     },
     {
-      name: "Armen Nazaryan",
+      name: 'Armen Nazaryan',
       person: {
         age: 30,
-        country: "Bulgaria",
+        country: 'Bulgaria',
       },
       medals: {
         gold: 0,
@@ -10525,10 +10525,10 @@ function getData() {
       },
     },
     {
-      name: "Ramaz Nozadze",
+      name: 'Ramaz Nozadze',
       person: {
         age: 20,
-        country: "Georgia",
+        country: 'Georgia',
       },
       medals: {
         gold: 0,
@@ -10537,10 +10537,10 @@ function getData() {
       },
     },
     {
-      name: "Mehmet Özal",
+      name: 'Mehmet Özal',
       person: {
         age: 30,
-        country: "Turkey",
+        country: 'Turkey',
       },
       medals: {
         gold: 0,
@@ -10549,10 +10549,10 @@ function getData() {
       },
     },
     {
-      name: "Aydin Polatçi",
+      name: 'Aydin Polatçi',
       person: {
         age: 27,
-        country: "Turkey",
+        country: 'Turkey',
       },
       medals: {
         gold: 0,
@@ -10561,10 +10561,10 @@ function getData() {
       },
     },
     {
-      name: "Yandro Quintana",
+      name: 'Yandro Quintana',
       person: {
         age: 24,
-        country: "Cuba",
+        country: 'Cuba',
       },
       medals: {
         gold: 1,
@@ -10573,10 +10573,10 @@ function getData() {
       },
     },
     {
-      name: "Ali Reza Rezaei",
+      name: 'Ali Reza Rezaei',
       person: {
         age: 28,
-        country: "Iran",
+        country: 'Iran',
       },
       medals: {
         gold: 0,
@@ -10585,10 +10585,10 @@ function getData() {
       },
     },
     {
-      name: "Varteres Samurgashev",
+      name: 'Varteres Samurgashev',
       person: {
         age: 24,
-        country: "Russia",
+        country: 'Russia',
       },
       medals: {
         gold: 0,
@@ -10597,10 +10597,10 @@ function getData() {
       },
     },
     {
-      name: "Cael Sanderson",
+      name: 'Cael Sanderson',
       person: {
         age: 25,
-        country: "United States",
+        country: 'United States',
       },
       medals: {
         gold: 1,
@@ -10609,10 +10609,10 @@ function getData() {
       },
     },
     {
-      name: "Buvaisa Saytiyev",
+      name: 'Buvaisa Saytiyev',
       person: {
         age: 29,
-        country: "Russia",
+        country: 'Russia',
       },
       medals: {
         gold: 1,
@@ -10621,10 +10621,10 @@ function getData() {
       },
     },
     {
-      name: "Sazhid Sazhidov",
+      name: 'Sazhid Sazhidov',
       person: {
         age: 24,
-        country: "Russia",
+        country: 'Russia',
       },
       medals: {
         gold: 0,
@@ -10633,10 +10633,10 @@ function getData() {
       },
     },
     {
-      name: "Chikara Tanabe",
+      name: 'Chikara Tanabe',
       person: {
         age: 29,
-        country: "Japan",
+        country: 'Japan',
       },
       medals: {
         gold: 0,
@@ -10645,10 +10645,10 @@ function getData() {
       },
     },
     {
-      name: "Artur Taymazov",
+      name: 'Artur Taymazov',
       person: {
         age: 25,
-        country: "Uzbekistan",
+        country: 'Uzbekistan',
       },
       medals: {
         gold: 1,
@@ -10657,10 +10657,10 @@ function getData() {
       },
     },
     {
-      name: "Elbrus Tedieiev",
+      name: 'Elbrus Tedieiev',
       person: {
         age: 29,
-        country: "Ukraine",
+        country: 'Ukraine',
       },
       medals: {
         gold: 1,
@@ -10669,10 +10669,10 @@ function getData() {
       },
     },
     {
-      name: "Georgy Tsurtsumia",
+      name: 'Georgy Tsurtsumia',
       person: {
         age: 23,
-        country: "Kazakhstan",
+        country: 'Kazakhstan',
       },
       medals: {
         gold: 0,
@@ -10681,10 +10681,10 @@ function getData() {
       },
     },
     {
-      name: "Tonya Verbeek",
+      name: 'Tonya Verbeek',
       person: {
         age: 27,
-        country: "Canada",
+        country: 'Canada',
       },
       medals: {
         gold: 0,
@@ -10693,10 +10693,10 @@ function getData() {
       },
     },
     {
-      name: "Wang Xu",
+      name: 'Wang Xu',
       person: {
         age: 18,
-        country: "China",
+        country: 'China',
       },
       medals: {
         gold: 1,
@@ -10705,10 +10705,10 @@ function getData() {
       },
     },
     {
-      name: "Marko Yli-Hannuksela",
+      name: 'Marko Yli-Hannuksela',
       person: {
         age: 30,
-        country: "Finland",
+        country: 'Finland',
       },
       medals: {
         gold: 0,
@@ -10717,10 +10717,10 @@ function getData() {
       },
     },
     {
-      name: "Saori Yoshida",
+      name: 'Saori Yoshida',
       person: {
         age: 21,
-        country: "Japan",
+        country: 'Japan',
       },
       medals: {
         gold: 1,
@@ -10729,10 +10729,10 @@ function getData() {
       },
     },
     {
-      name: "Namiq Abdullayev",
+      name: 'Namiq Abdullayev',
       person: {
         age: 29,
-        country: "Azerbaijan",
+        country: 'Azerbaijan',
       },
       medals: {
         gold: 1,
@@ -10741,10 +10741,10 @@ function getData() {
       },
     },
     {
-      name: "Filiberto Azcuy",
+      name: 'Filiberto Azcuy',
       person: {
         age: 27,
-        country: "Cuba",
+        country: 'Cuba',
       },
       medals: {
         gold: 1,
@@ -10753,10 +10753,10 @@ function getData() {
       },
     },
     {
-      name: "Sándor István Bárdosi",
+      name: 'Sándor István Bárdosi',
       person: {
         age: 23,
-        country: "Hungary",
+        country: 'Hungary',
       },
       medals: {
         gold: 0,
@@ -10765,10 +10765,10 @@ function getData() {
       },
     },
     {
-      name: "Serafim Barzakov",
+      name: 'Serafim Barzakov',
       person: {
         age: 25,
-        country: "Bulgaria",
+        country: 'Bulgaria',
       },
       medals: {
         gold: 0,
@@ -10777,10 +10777,10 @@ function getData() {
       },
     },
     {
-      name: "Islam Bayramukov",
+      name: 'Islam Bayramukov',
       person: {
         age: 29,
-        country: "Kazakhstan",
+        country: 'Kazakhstan',
       },
       medals: {
         gold: 0,
@@ -10789,10 +10789,10 @@ function getData() {
       },
     },
     {
-      name: "Adem Bereket",
+      name: 'Adem Bereket',
       person: {
         age: 27,
-        country: "Turkey",
+        country: 'Turkey',
       },
       medals: {
         gold: 0,
@@ -10801,10 +10801,10 @@ function getData() {
       },
     },
     {
-      name: "Terry Brands",
+      name: 'Terry Brands',
       person: {
         age: 32,
-        country: "United States",
+        country: 'United States',
       },
       medals: {
         gold: 0,
@@ -10813,10 +10813,10 @@ function getData() {
       },
     },
     {
-      name: "Yevhen Buslovych",
+      name: 'Yevhen Buslovych',
       person: {
         age: 28,
-        country: "Ukraine",
+        country: 'Ukraine',
       },
       medals: {
         gold: 0,
@@ -10828,7 +10828,7 @@ function getData() {
       name: "Ak'ak'i Chachua",
       person: {
         age: 31,
-        country: "Georgia",
+        country: 'Georgia',
       },
       medals: {
         gold: 0,
@@ -10837,10 +10837,10 @@ function getData() {
       },
     },
     {
-      name: "Ali Reza Dabir",
+      name: 'Ali Reza Dabir',
       person: {
         age: 23,
-        country: "Iran",
+        country: 'Iran',
       },
       medals: {
         gold: 1,
@@ -10849,10 +10849,10 @@ function getData() {
       },
     },
     {
-      name: "Dmitry Debelka",
+      name: 'Dmitry Debelka',
       person: {
         age: 24,
-        country: "Belarus",
+        country: 'Belarus',
       },
       medals: {
         gold: 0,
@@ -10861,10 +10861,10 @@ function getData() {
       },
     },
     {
-      name: "Rulon Gardner",
+      name: 'Rulon Gardner',
       person: {
         age: 29,
-        country: "United States",
+        country: 'United States',
       },
       medals: {
         gold: 1,
@@ -10873,10 +10873,10 @@ function getData() {
       },
     },
     {
-      name: "Arsen Gitinov",
+      name: 'Arsen Gitinov',
       person: {
         age: 23,
-        country: "Russia",
+        country: 'Russia',
       },
       medals: {
         gold: 0,
@@ -10885,10 +10885,10 @@ function getData() {
       },
     },
     {
-      name: "Aleksey Glushkov",
+      name: 'Aleksey Glushkov',
       person: {
         age: 25,
-        country: "Russia",
+        country: 'Russia',
       },
       medals: {
         gold: 0,
@@ -10897,10 +10897,10 @@ function getData() {
       },
     },
     {
-      name: "Sammie Henson",
+      name: 'Sammie Henson',
       person: {
         age: 29,
-        country: "United States",
+        country: 'United States',
       },
       medals: {
         gold: 0,
@@ -10909,10 +10909,10 @@ function getData() {
       },
     },
     {
-      name: "Mogamed Ibragimov",
+      name: 'Mogamed Ibragimov',
       person: {
         age: 26,
-        country: "Macedonia",
+        country: 'Macedonia',
       },
       medals: {
         gold: 0,
@@ -10921,10 +10921,10 @@ function getData() {
       },
     },
     {
-      name: "Daniel Igali",
+      name: 'Daniel Igali',
       person: {
         age: 26,
-        country: "Canada",
+        country: 'Canada',
       },
       medals: {
         gold: 1,
@@ -10933,10 +10933,10 @@ function getData() {
       },
     },
     {
-      name: "Jang Jae-Seong",
+      name: 'Jang Jae-Seong',
       person: {
         age: 25,
-        country: "South Korea",
+        country: 'South Korea',
       },
       medals: {
         gold: 0,
@@ -10948,7 +10948,7 @@ function getData() {
       name: "Eldar K'urt'anidze",
       person: {
         age: 28,
-        country: "Georgia",
+        country: 'Georgia',
       },
       medals: {
         gold: 0,
@@ -10957,10 +10957,10 @@ function getData() {
       },
     },
     {
-      name: "Kang Yong-Gyun",
+      name: 'Kang Yong-Gyun',
       person: {
         age: 26,
-        country: "North Korea",
+        country: 'North Korea',
       },
       medals: {
         gold: 0,
@@ -10969,10 +10969,10 @@ function getData() {
       },
     },
     {
-      name: "Amiran Kardanov",
+      name: 'Amiran Kardanov',
       person: {
         age: 24,
-        country: "Greece",
+        country: 'Greece',
       },
       medals: {
         gold: 0,
@@ -10981,10 +10981,10 @@ function getData() {
       },
     },
     {
-      name: "Murat Kardanov",
+      name: 'Murat Kardanov',
       person: {
         age: 29,
-        country: "Russia",
+        country: 'Russia',
       },
       medals: {
         gold: 1,
@@ -10993,10 +10993,10 @@ function getData() {
       },
     },
     {
-      name: "Aleksandr Karelin",
+      name: 'Aleksandr Karelin',
       person: {
         age: 33,
-        country: "Russia",
+        country: 'Russia',
       },
       medals: {
         gold: 0,
@@ -11005,10 +11005,10 @@ function getData() {
       },
     },
     {
-      name: "Kim In-Seop",
+      name: 'Kim In-Seop',
       person: {
         age: 27,
-        country: "South Korea",
+        country: 'South Korea',
       },
       medals: {
         gold: 0,
@@ -11017,10 +11017,10 @@ function getData() {
       },
     },
     {
-      name: "Matt Lindland",
+      name: 'Matt Lindland',
       person: {
         age: 30,
-        country: "United States",
+        country: 'United States',
       },
       medals: {
         gold: 0,
@@ -11029,10 +11029,10 @@ function getData() {
       },
     },
     {
-      name: "Mikael Ljungberg",
+      name: 'Mikael Ljungberg',
       person: {
         age: 30,
-        country: "Sweden",
+        country: 'Sweden',
       },
       medals: {
         gold: 1,
@@ -11041,10 +11041,10 @@ function getData() {
       },
     },
     {
-      name: "Garrett Lowney",
+      name: 'Garrett Lowney',
       person: {
         age: 20,
-        country: "United States",
+        country: 'United States',
       },
       medals: {
         gold: 0,
@@ -11053,10 +11053,10 @@ function getData() {
       },
     },
     {
-      name: "Juan Luis Marén",
+      name: 'Juan Luis Marén',
       person: {
         age: 29,
-        country: "Cuba",
+        country: 'Cuba',
       },
       medals: {
         gold: 0,
@@ -11065,10 +11065,10 @@ function getData() {
       },
     },
     {
-      name: "Lincoln McIlravy",
+      name: 'Lincoln McIlravy',
       person: {
         age: 26,
-        country: "United States",
+        country: 'United States',
       },
       medals: {
         gold: 0,
@@ -11077,10 +11077,10 @@ function getData() {
       },
     },
     {
-      name: "Mun Ui-Je",
+      name: 'Mun Ui-Je',
       person: {
         age: 25,
-        country: "South Korea",
+        country: 'South Korea',
       },
       medals: {
         gold: 0,
@@ -11089,10 +11089,10 @@ function getData() {
       },
     },
     {
-      name: "Sagid Murtazaliyev",
+      name: 'Sagid Murtazaliyev',
       person: {
         age: 26,
-        country: "Russia",
+        country: 'Russia',
       },
       medals: {
         gold: 1,
@@ -11101,10 +11101,10 @@ function getData() {
       },
     },
     {
-      name: "David Musulbes",
+      name: 'David Musulbes',
       person: {
         age: 28,
-        country: "Russia",
+        country: 'Russia',
       },
       medals: {
         gold: 1,
@@ -11113,10 +11113,10 @@ function getData() {
       },
     },
     {
-      name: "Katsuhiko Nagata",
+      name: 'Katsuhiko Nagata',
       person: {
         age: 26,
-        country: "Japan",
+        country: 'Japan',
       },
       medals: {
         gold: 0,
@@ -11125,10 +11125,10 @@ function getData() {
       },
     },
     {
-      name: "Armen Nazaryan",
+      name: 'Armen Nazaryan',
       person: {
         age: 26,
-        country: "Bulgaria",
+        country: 'Bulgaria',
       },
       medals: {
         gold: 1,
@@ -11137,10 +11137,10 @@ function getData() {
       },
     },
     {
-      name: "Lázaro Rivas",
+      name: 'Lázaro Rivas',
       person: {
         age: 25,
-        country: "Cuba",
+        country: 'Cuba',
       },
       medals: {
         gold: 0,
@@ -11149,10 +11149,10 @@ function getData() {
       },
     },
     {
-      name: "Alexis Rodríguez",
+      name: 'Alexis Rodríguez',
       person: {
         age: 22,
-        country: "Cuba",
+        country: 'Cuba',
       },
       medals: {
         gold: 0,
@@ -11161,10 +11161,10 @@ function getData() {
       },
     },
     {
-      name: "Yoel Romero",
+      name: 'Yoel Romero',
       person: {
         age: 23,
-        country: "Cuba",
+        country: 'Cuba',
       },
       medals: {
         gold: 0,
@@ -11173,10 +11173,10 @@ function getData() {
       },
     },
     {
-      name: "David Saldadze",
+      name: 'David Saldadze',
       person: {
         age: 22,
-        country: "Ukraine",
+        country: 'Ukraine',
       },
       medals: {
         gold: 0,
@@ -11185,10 +11185,10 @@ function getData() {
       },
     },
     {
-      name: "Varteres Samurgashev",
+      name: 'Varteres Samurgashev',
       person: {
         age: 21,
-        country: "Russia",
+        country: 'Russia',
       },
       medals: {
         gold: 1,
@@ -11197,10 +11197,10 @@ function getData() {
       },
     },
     {
-      name: "Adam Saytiyev",
+      name: 'Adam Saytiyev',
       person: {
         age: 22,
-        country: "Russia",
+        country: 'Russia',
       },
       medals: {
         gold: 1,
@@ -11209,10 +11209,10 @@ function getData() {
       },
     },
     {
-      name: "Sheng Zetian",
+      name: 'Sheng Zetian',
       person: {
         age: 27,
-        country: "China",
+        country: 'China',
       },
       medals: {
         gold: 0,
@@ -11221,10 +11221,10 @@ function getData() {
       },
     },
     {
-      name: "Sim Gwon-Ho",
+      name: 'Sim Gwon-Ho',
       person: {
         age: 27,
-        country: "South Korea",
+        country: 'South Korea',
       },
       medals: {
         gold: 1,
@@ -11233,10 +11233,10 @@ function getData() {
       },
     },
     {
-      name: "Brandon Slay",
+      name: 'Brandon Slay',
       person: {
         age: 24,
-        country: "United States",
+        country: 'United States',
       },
       medals: {
         gold: 1,
@@ -11245,10 +11245,10 @@ function getData() {
       },
     },
     {
-      name: "Artur Taymazov",
+      name: 'Artur Taymazov',
       person: {
         age: 21,
-        country: "Uzbekistan",
+        country: 'Uzbekistan',
       },
       medals: {
         gold: 0,
@@ -11257,10 +11257,10 @@ function getData() {
       },
     },
     {
-      name: "Murad Umakhanov",
+      name: 'Murad Umakhanov',
       person: {
         age: 23,
-        country: "Russia",
+        country: 'Russia',
       },
       medals: {
         gold: 1,
@@ -11272,7 +11272,7 @@ function getData() {
       name: "Mukhran Vakht'angadze",
       person: {
         age: 27,
-        country: "Georgia",
+        country: 'Georgia',
       },
       medals: {
         gold: 0,
@@ -11281,10 +11281,10 @@ function getData() {
       },
     },
     {
-      name: "Hamza Yerlikaya",
+      name: 'Hamza Yerlikaya',
       person: {
         age: 24,
-        country: "Turkey",
+        country: 'Turkey',
       },
       medals: {
         gold: 1,
@@ -11293,10 +11293,10 @@ function getData() {
       },
     },
     {
-      name: "Marko Yli-Hannuksela",
+      name: 'Marko Yli-Hannuksela',
       person: {
         age: 26,
-        country: "Finland",
+        country: 'Finland',
       },
       medals: {
         gold: 0,
@@ -11305,10 +11305,10 @@ function getData() {
       },
     },
     {
-      name: "Ruslan Albegov",
+      name: 'Ruslan Albegov',
       person: {
         age: 24,
-        country: "Russia",
+        country: 'Russia',
       },
       medals: {
         gold: 0,
@@ -11317,10 +11317,10 @@ function getData() {
       },
     },
     {
-      name: "Sajjad Anoushiravani",
+      name: 'Sajjad Anoushiravani',
       person: {
         age: 28,
-        country: "Iran",
+        country: 'Iran',
       },
       medals: {
         gold: 0,
@@ -11329,10 +11329,10 @@ function getData() {
       },
     },
     {
-      name: "Apti Aukhadov",
+      name: 'Apti Aukhadov',
       person: {
         age: 19,
-        country: "Russia",
+        country: 'Russia',
       },
       medals: {
         gold: 0,
@@ -11341,10 +11341,10 @@ function getData() {
       },
     },
     {
-      name: "Bartlomiej Bonk",
+      name: 'Bartlomiej Bonk',
       person: {
         age: 27,
-        country: "Poland",
+        country: 'Poland',
       },
       medals: {
         gold: 0,
@@ -11353,10 +11353,10 @@ function getData() {
       },
     },
     {
-      name: "Iván Cambar",
+      name: 'Iván Cambar',
       person: {
         age: 28,
-        country: "Cuba",
+        country: 'Cuba',
       },
       medals: {
         gold: 0,
@@ -11365,10 +11365,10 @@ function getData() {
       },
     },
     {
-      name: "Zulfiya Chinshanlo",
+      name: 'Zulfiya Chinshanlo',
       person: {
         age: 19,
-        country: "Kazakhstan",
+        country: 'Kazakhstan',
       },
       medals: {
         gold: 1,
@@ -11377,10 +11377,10 @@ function getData() {
       },
     },
     {
-      name: "Anatolii Cîrîcu",
+      name: 'Anatolii Cîrîcu',
       person: {
         age: 23,
-        country: "Moldova",
+        country: 'Moldova',
       },
       medals: {
         gold: 0,
@@ -11389,10 +11389,10 @@ function getData() {
       },
     },
     {
-      name: "Roxana Cocos",
+      name: 'Roxana Cocos',
       person: {
         age: 23,
-        country: "Romania",
+        country: 'Romania',
       },
       medals: {
         gold: 0,
@@ -11401,10 +11401,10 @@ function getData() {
       },
     },
     {
-      name: "Oscar Figueroa",
+      name: 'Oscar Figueroa',
       person: {
         age: 29,
-        country: "Colombia",
+        country: 'Colombia',
       },
       medals: {
         gold: 0,
@@ -11413,10 +11413,10 @@ function getData() {
       },
     },
     {
-      name: "Christine Girard",
+      name: 'Christine Girard',
       person: {
         age: 27,
-        country: "Canada",
+        country: 'Canada',
       },
       medals: {
         gold: 0,
@@ -11425,10 +11425,10 @@ function getData() {
       },
     },
     {
-      name: "Hsu Shu-Ching",
+      name: 'Hsu Shu-Ching',
       person: {
         age: 21,
-        country: "Chinese Taipei",
+        country: 'Chinese Taipei',
       },
       medals: {
         gold: 0,
@@ -11437,10 +11437,10 @@ function getData() {
       },
     },
     {
-      name: "Ilya Ilyin",
+      name: 'Ilya Ilyin',
       person: {
         age: 24,
-        country: "Kazakhstan",
+        country: 'Kazakhstan',
       },
       medals: {
         gold: 1,
@@ -11449,10 +11449,10 @@ function getData() {
       },
     },
     {
-      name: "Cristina Iovu",
+      name: 'Cristina Iovu',
       person: {
         age: 19,
-        country: "Moldova",
+        country: 'Moldova',
       },
       medals: {
         gold: 0,
@@ -11461,10 +11461,10 @@ function getData() {
       },
     },
     {
-      name: "Eko Irawan",
+      name: 'Eko Irawan',
       person: {
         age: 23,
-        country: "Indonesia",
+        country: 'Indonesia',
       },
       medals: {
         gold: 0,
@@ -11473,10 +11473,10 @@ function getData() {
       },
     },
     {
-      name: "Aleksandr Ivanov",
+      name: 'Aleksandr Ivanov',
       person: {
         age: 23,
-        country: "Russia",
+        country: 'Russia',
       },
       medals: {
         gold: 0,
@@ -11485,10 +11485,10 @@ function getData() {
       },
     },
     {
-      name: "Yuliya Kalina",
+      name: 'Yuliya Kalina',
       person: {
         age: 23,
-        country: "Ukraine",
+        country: 'Ukraine',
       },
       medals: {
         gold: 0,
@@ -11497,10 +11497,10 @@ function getData() {
       },
     },
     {
-      name: "Tatyana Kashirina",
+      name: 'Tatyana Kashirina',
       person: {
         age: 21,
-        country: "Russia",
+        country: 'Russia',
       },
       medals: {
         gold: 0,
@@ -11509,10 +11509,10 @@ function getData() {
       },
     },
     {
-      name: "Hripsime Khurshudyan",
+      name: 'Hripsime Khurshudyan',
       person: {
         age: 25,
-        country: "Armenia",
+        country: 'Armenia',
       },
       medals: {
         gold: 0,
@@ -11521,10 +11521,10 @@ function getData() {
       },
     },
     {
-      name: "Kim Un-Guk",
+      name: 'Kim Un-Guk',
       person: {
         age: 23,
-        country: "North Korea",
+        country: 'North Korea',
       },
       medals: {
         gold: 1,
@@ -11533,10 +11533,10 @@ function getData() {
       },
     },
     {
-      name: "Irina Kulesha",
+      name: 'Irina Kulesha',
       person: {
         age: 26,
-        country: "Belarus",
+        country: 'Belarus',
       },
       medals: {
         gold: 0,
@@ -11545,10 +11545,10 @@ function getData() {
       },
     },
     {
-      name: "Li Xueying",
+      name: 'Li Xueying',
       person: {
         age: 22,
-        country: "China",
+        country: 'China',
       },
       medals: {
         gold: 1,
@@ -11557,10 +11557,10 @@ function getData() {
       },
     },
     {
-      name: "Lin Qingfeng",
+      name: 'Lin Qingfeng',
       person: {
         age: 23,
-        country: "China",
+        country: 'China',
       },
       medals: {
         gold: 1,
@@ -11569,10 +11569,10 @@ function getData() {
       },
     },
     {
-      name: "Lu Haojie",
+      name: 'Lu Haojie',
       person: {
         age: 21,
-        country: "China",
+        country: 'China',
       },
       medals: {
         gold: 0,
@@ -11581,10 +11581,10 @@ function getData() {
       },
     },
     {
-      name: "Lu Xiaojun",
+      name: 'Lu Xiaojun',
       person: {
         age: 28,
-        country: "China",
+        country: 'China',
       },
       medals: {
         gold: 1,
@@ -11593,10 +11593,10 @@ function getData() {
       },
     },
     {
-      name: "Maiya Maneza",
+      name: 'Maiya Maneza',
       person: {
         age: 26,
-        country: "Kazakhstan",
+        country: 'Kazakhstan',
       },
       medals: {
         gold: 1,
@@ -11605,10 +11605,10 @@ function getData() {
       },
     },
     {
-      name: "Razvan Martin",
+      name: 'Razvan Martin',
       person: {
         age: 20,
-        country: "Romania",
+        country: 'Romania',
       },
       medals: {
         gold: 0,
@@ -11617,10 +11617,10 @@ function getData() {
       },
     },
     {
-      name: "Hiromi Miyake",
+      name: 'Hiromi Miyake',
       person: {
         age: 26,
-        country: "Japan",
+        country: 'Japan',
       },
       medals: {
         gold: 0,
@@ -11629,10 +11629,10 @@ function getData() {
       },
     },
     {
-      name: "Navab Nasirshelal",
+      name: 'Navab Nasirshelal',
       person: {
         age: 23,
-        country: "Iran",
+        country: 'Iran',
       },
       medals: {
         gold: 0,
@@ -11641,10 +11641,10 @@ function getData() {
       },
     },
     {
-      name: "Om Yun-Chol",
+      name: 'Om Yun-Chol',
       person: {
         age: 20,
-        country: "North Korea",
+        country: 'North Korea',
       },
       medals: {
         gold: 1,
@@ -11653,10 +11653,10 @@ function getData() {
       },
     },
     {
-      name: "Svetlana Podobedova",
+      name: 'Svetlana Podobedova',
       person: {
         age: 26,
-        country: "Kazakhstan",
+        country: 'Kazakhstan',
       },
       medals: {
         gold: 1,
@@ -11665,10 +11665,10 @@ function getData() {
       },
     },
     {
-      name: "Rim Jong-Sim",
+      name: 'Rim Jong-Sim',
       person: {
         age: 19,
-        country: "North Korea",
+        country: 'North Korea',
       },
       medals: {
         gold: 1,
@@ -11677,10 +11677,10 @@ function getData() {
       },
     },
     {
-      name: "Kianoush Rostami",
+      name: 'Kianoush Rostami',
       person: {
         age: 21,
-        country: "Iran",
+        country: 'Iran',
       },
       medals: {
         gold: 0,
@@ -11689,10 +11689,10 @@ function getData() {
       },
     },
     {
-      name: "Ryang Chun-Hwa",
+      name: 'Ryang Chun-Hwa',
       person: {
         age: 21,
-        country: "North Korea",
+        country: 'North Korea',
       },
       medals: {
         gold: 0,
@@ -11701,10 +11701,10 @@ function getData() {
       },
     },
     {
-      name: "Behdad Salimi",
+      name: 'Behdad Salimi',
       person: {
         age: 22,
-        country: "Iran",
+        country: 'Iran',
       },
       medals: {
         gold: 1,
@@ -11713,10 +11713,10 @@ function getData() {
       },
     },
     {
-      name: "Marina Shkermankova",
+      name: 'Marina Shkermankova',
       person: {
         age: 22,
-        country: "Belarus",
+        country: 'Belarus',
       },
       medals: {
         gold: 0,
@@ -11725,10 +11725,10 @@ function getData() {
       },
     },
     {
-      name: "Pimsiri Sirikaew",
+      name: 'Pimsiri Sirikaew',
       person: {
         age: 22,
-        country: "Thailand",
+        country: 'Thailand',
       },
       medals: {
         gold: 0,
@@ -11737,10 +11737,10 @@ function getData() {
       },
     },
     {
-      name: "Oleksiy Torokhtiy",
+      name: 'Oleksiy Torokhtiy',
       person: {
         age: 26,
-        country: "Ukraine",
+        country: 'Ukraine',
       },
       medals: {
         gold: 1,
@@ -11749,10 +11749,10 @@ function getData() {
       },
     },
     {
-      name: "Triyatno",
+      name: 'Triyatno',
       person: {
         age: 24,
-        country: "Indonesia",
+        country: 'Indonesia',
       },
       medals: {
         gold: 0,
@@ -11761,10 +11761,10 @@ function getData() {
       },
     },
     {
-      name: "Svetlana Tsarukayeva",
+      name: 'Svetlana Tsarukayeva',
       person: {
         age: 24,
-        country: "Russia",
+        country: 'Russia',
       },
       medals: {
         gold: 0,
@@ -11773,10 +11773,10 @@ function getData() {
       },
     },
     {
-      name: "Wang Mingjuan",
+      name: 'Wang Mingjuan',
       person: {
         age: 26,
-        country: "China",
+        country: 'China',
       },
       medals: {
         gold: 1,
@@ -11785,10 +11785,10 @@ function getData() {
       },
     },
     {
-      name: "Wu Jingbiao",
+      name: 'Wu Jingbiao',
       person: {
         age: 23,
-        country: "China",
+        country: 'China',
       },
       medals: {
         gold: 0,
@@ -11797,10 +11797,10 @@ function getData() {
       },
     },
     {
-      name: "Valentin Xristov",
+      name: 'Valentin Xristov',
       person: {
         age: 18,
-        country: "Azerbaijan",
+        country: 'Azerbaijan',
       },
       medals: {
         gold: 0,
@@ -11809,10 +11809,10 @@ function getData() {
       },
     },
     {
-      name: "Nataliya Zabolotnaya",
+      name: 'Nataliya Zabolotnaya',
       person: {
         age: 26,
-        country: "Russia",
+        country: 'Russia',
       },
       medals: {
         gold: 0,
@@ -11821,10 +11821,10 @@ function getData() {
       },
     },
     {
-      name: "Zhou Lulu",
+      name: 'Zhou Lulu',
       person: {
         age: 24,
-        country: "China",
+        country: 'China',
       },
       medals: {
         gold: 1,
@@ -11833,10 +11833,10 @@ function getData() {
       },
     },
     {
-      name: "Adrian Zielinski",
+      name: 'Adrian Zielinski',
       person: {
         age: 23,
-        country: "Poland",
+        country: 'Poland',
       },
       medals: {
         gold: 1,
@@ -11845,10 +11845,10 @@ function getData() {
       },
     },
     {
-      name: "Khadzhimurat Akkayev",
+      name: 'Khadzhimurat Akkayev',
       person: {
         age: 23,
-        country: "Russia",
+        country: 'Russia',
       },
       medals: {
         gold: 0,
@@ -11857,10 +11857,10 @@ function getData() {
       },
     },
     {
-      name: "Andrey Aryamnov",
+      name: 'Andrey Aryamnov',
       person: {
         age: 20,
-        country: "Belarus",
+        country: 'Belarus',
       },
       medals: {
         gold: 1,
@@ -11869,10 +11869,10 @@ function getData() {
       },
     },
     {
-      name: "Cao Lei",
+      name: 'Cao Lei',
       person: {
         age: 24,
-        country: "China",
+        country: 'China',
       },
       medals: {
         gold: 1,
@@ -11881,10 +11881,10 @@ function getData() {
       },
     },
     {
-      name: "Chen Wei-Ling",
+      name: 'Chen Wei-Ling',
       person: {
         age: 26,
-        country: "Chinese Taipei",
+        country: 'Chinese Taipei',
       },
       medals: {
         gold: 0,
@@ -11893,10 +11893,10 @@ function getData() {
       },
     },
     {
-      name: "Chen Xiexia",
+      name: 'Chen Xiexia',
       person: {
         age: 25,
-        country: "China",
+        country: 'China',
       },
       medals: {
         gold: 1,
@@ -11905,10 +11905,10 @@ function getData() {
       },
     },
     {
-      name: "Chen Yanqing",
+      name: 'Chen Yanqing',
       person: {
         age: 29,
-        country: "China",
+        country: 'China',
       },
       medals: {
         gold: 1,
@@ -11917,10 +11917,10 @@ function getData() {
       },
     },
     {
-      name: "Yevgeny Chigishev",
+      name: 'Yevgeny Chigishev',
       person: {
         age: 29,
-        country: "Russia",
+        country: 'Russia',
       },
       medals: {
         gold: 0,
@@ -11929,10 +11929,10 @@ function getData() {
       },
     },
     {
-      name: "Vencelas Dabaya",
+      name: 'Vencelas Dabaya',
       person: {
         age: 27,
-        country: "France",
+        country: 'France',
       },
       medals: {
         gold: 0,
@@ -11941,10 +11941,10 @@ function getData() {
       },
     },
     {
-      name: "Gevorg Davtyan",
+      name: 'Gevorg Davtyan',
       person: {
         age: 25,
-        country: "Armenia",
+        country: 'Armenia',
       },
       medals: {
         gold: 0,
@@ -11953,10 +11953,10 @@ function getData() {
       },
     },
     {
-      name: "Nataliya Davydova",
+      name: 'Nataliya Davydova',
       person: {
         age: 23,
-        country: "Ukraine",
+        country: 'Ukraine',
       },
       medals: {
         gold: 0,
@@ -11965,10 +11965,10 @@ function getData() {
       },
     },
     {
-      name: "Mariya Grabovetskaya",
+      name: 'Mariya Grabovetskaya',
       person: {
         age: 21,
-        country: "Kazakhstan",
+        country: 'Kazakhstan',
       },
       medals: {
         gold: 0,
@@ -11977,10 +11977,10 @@ function getData() {
       },
     },
     {
-      name: "Hoàng Anh Tu?n",
+      name: 'Hoàng Anh Tu?n',
       person: {
         age: 23,
-        country: "Vietnam",
+        country: 'Vietnam',
       },
       medals: {
         gold: 0,
@@ -11989,10 +11989,10 @@ function getData() {
       },
     },
     {
-      name: "Ilya Ilyin",
+      name: 'Ilya Ilyin',
       person: {
         age: 20,
-        country: "Kazakhstan",
+        country: 'Kazakhstan',
       },
       medals: {
         gold: 1,

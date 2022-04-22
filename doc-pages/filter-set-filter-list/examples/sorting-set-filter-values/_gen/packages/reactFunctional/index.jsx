@@ -1,11 +1,11 @@
-"use strict";
+'use strict';
 
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
-import { AgGridReact } from "ag-grid-react";
-import React, { useCallback, useMemo, useState } from "react";
-import { render } from "react-dom";
+import React, { useCallback, useMemo, useRef, useState } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from 'ag-grid-react';
+import 'ag-grid-enterprise';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 
 var filterParams = {
   comparator: function (a, b) {
@@ -25,19 +25,19 @@ const getRowData = () => {
 };
 
 const GridExample = () => {
-  const containerStyle = useMemo(() => ({ width: "100%", height: "100%" }), []);
-  const gridStyle = useMemo(() => ({ height: "100%", width: "100%" }), []);
+  const containerStyle = useMemo(() => ({ width: '100%', height: '100%' }), []);
+  const gridStyle = useMemo(() => ({ height: '100%', width: '100%' }), []);
   const [rowData, setRowData] = useState(getRowData());
   const [columnDefs, setColumnDefs] = useState([
     {
-      headerName: "Age (No Comparator)",
-      field: "age",
-      filter: "agSetColumnFilter",
+      headerName: 'Age (No Comparator)',
+      field: 'age',
+      filter: 'agSetColumnFilter',
     },
     {
-      headerName: "Age (With Comparator)",
-      field: "age",
-      filter: "agSetColumnFilter",
+      headerName: 'Age (With Comparator)',
+      field: 'age',
+      filter: 'agSetColumnFilter',
       filterParams: filterParams,
     },
   ]);
@@ -50,7 +50,7 @@ const GridExample = () => {
   }, []);
 
   const onGridReady = useCallback((params) => {
-    params.api.getToolPanelInstance("filters").expandFilters();
+    params.api.getToolPanelInstance('filters').expandFilters();
   }, []);
 
   return (
@@ -60,7 +60,7 @@ const GridExample = () => {
           rowData={rowData}
           columnDefs={columnDefs}
           defaultColDef={defaultColDef}
-          sideBar={"filters"}
+          sideBar={'filters'}
           onGridReady={onGridReady}
         ></AgGridReact>
       </div>
@@ -68,4 +68,4 @@ const GridExample = () => {
   );
 };
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

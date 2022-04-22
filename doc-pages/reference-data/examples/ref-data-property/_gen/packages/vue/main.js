@@ -1,9 +1,9 @@
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine-dark.css";
-import "ag-grid-enterprise";
-import { AgGridVue } from "ag-grid-vue";
-import Vue from "vue";
-import ColourCellRenderer from "./colourCellRendererVue.js";
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine-dark.css';
+import 'ag-grid-enterprise';
+import { AgGridVue } from 'ag-grid-vue';
+import Vue from 'vue';
+import ColourCellRenderer from './colourCellRendererVue.js';
 
 const VueExample = {
   template: `
@@ -20,46 +20,46 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
     ColourCellRenderer,
   },
   data: function () {
     return {
       columnDefs: [
         {
-          field: "make",
-          cellEditor: "agSelectCellEditor",
+          field: 'make',
+          cellEditor: 'agSelectCellEditor',
           cellEditorParams: { values: carBrands },
-          filter: "agSetColumnFilter",
+          filter: 'agSetColumnFilter',
           refData: carMappings,
         },
         {
-          field: "exteriorColour",
+          field: 'exteriorColour',
           minWidth: 150,
-          cellEditor: "agRichSelectCellEditor",
+          cellEditor: 'agRichSelectCellEditor',
           cellEditorPopup: true,
           cellEditorParams: {
             values: colours,
-            cellRenderer: "ColourCellRenderer",
+            cellRenderer: 'ColourCellRenderer',
           },
-          filter: "agSetColumnFilter",
-          filterParams: { cellRenderer: "ColourCellRenderer" },
+          filter: 'agSetColumnFilter',
+          filterParams: { cellRenderer: 'ColourCellRenderer' },
           refData: colourMappings,
-          cellRenderer: "ColourCellRenderer",
+          cellRenderer: 'ColourCellRenderer',
         },
         {
-          field: "interiorColour",
+          field: 'interiorColour',
           minWidth: 150,
-          filter: "agSetColumnFilter",
-          filterParams: { cellRenderer: "ColourCellRenderer" },
+          filter: 'agSetColumnFilter',
+          filterParams: { cellRenderer: 'ColourCellRenderer' },
           refData: colourMappings,
-          cellRenderer: "ColourCellRenderer",
+          cellRenderer: 'ColourCellRenderer',
         },
         {
-          headerName: "Retail Price",
-          field: "price",
+          headerName: 'Retail Price',
+          field: 'price',
           minWidth: 140,
-          colId: "retailPrice",
+          colId: 'retailPrice',
           valueGetter: (params) => {
             return params.data.price;
           },
@@ -67,12 +67,12 @@ const VueExample = {
           valueSetter: numberValueSetter,
         },
         {
-          headerName: "Retail Price (incl Taxes)",
+          headerName: 'Retail Price (incl Taxes)',
           minWidth: 205,
           editable: false,
           valueGetter: (params) => {
             // example of chaining value getters
-            return params.getValue("retailPrice") * 1.2;
+            return params.getValue('retailPrice') * 1.2;
           },
           valueFormatter: currencyFormatter,
         },
@@ -93,7 +93,7 @@ const VueExample = {
   methods: {
     onCellValueChanged(params) {
       // notice that the data always contains the keys rather than values after editing
-      console.log("onCellValueChanged: ", params);
+      console.log('onCellValueChanged: ', params);
     },
     onGridReady(params) {
       this.gridApi = params.api;
@@ -109,9 +109,9 @@ window.extractValues = function extractValues(mappings) {
 window.currencyFormatter = function currencyFormatter(params) {
   const value = Math.floor(params.value);
   if (isNaN(value)) {
-    return "";
+    return '';
   }
-  return "£" + value.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
+  return '£' + value.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
 };
 
 window.numberValueSetter = function numberValueSetter(params) {
@@ -123,20 +123,20 @@ window.numberValueSetter = function numberValueSetter(params) {
 };
 
 window.removeSpaces = function removeSpaces(str) {
-  return str ? str.replace(/\s/g, "") : str;
+  return str ? str.replace(/\s/g, '') : str;
 };
 
 const carMappings = {
-  tyt: "Toyota",
-  frd: "Ford",
-  prs: "Porsche",
-  nss: "Nissan",
+  tyt: 'Toyota',
+  frd: 'Ford',
+  prs: 'Porsche',
+  nss: 'Nissan',
 };
 
 const colourMappings = {
-  cb: "Cadet Blue",
-  bw: "Burlywood",
-  fg: "Forest Green",
+  cb: 'Cadet Blue',
+  bw: 'Burlywood',
+  fg: 'Forest Green',
 };
 
 const carBrands = extractValues(carMappings);
@@ -144,8 +144,8 @@ const carBrands = extractValues(carMappings);
 const colours = extractValues(colourMappings);
 
 new Vue({
-  el: "#app",
+  el: '#app',
   components: {
-    "my-component": VueExample,
+    'my-component': VueExample,
   },
 });

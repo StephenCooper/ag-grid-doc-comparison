@@ -1,24 +1,24 @@
-"use strict";
+'use strict';
 
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine-dark.css";
-import "ag-grid-enterprise";
-import { AgGridReact } from "ag-grid-react";
-import React, { useCallback, useMemo, useState } from "react";
-import { render } from "react-dom";
+import React, { useCallback, useMemo, useRef, useState } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from 'ag-grid-react';
+import 'ag-grid-enterprise';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine-dark.css';
 
 const createQuarterlySalesChart = (gridApi) => {
   gridApi.createCrossFilterChart({
-    chartType: "column",
+    chartType: 'column',
     cellRange: {
-      columns: ["quarter", "sale"],
+      columns: ['quarter', 'sale'],
     },
-    aggFunc: "sum",
+    aggFunc: 'sum',
     chartThemeOverrides: {
       common: {
         title: {
           enabled: true,
-          text: "Quarterly Sales ($)",
+          text: 'Quarterly Sales ($)',
         },
         legend: {
           enabled: false,
@@ -32,29 +32,29 @@ const createQuarterlySalesChart = (gridApi) => {
           number: {
             label: {
               formatter: function (params) {
-                return params.value / 1000 + "k";
+                return params.value / 1000 + 'k';
               },
             },
           },
         },
       },
     },
-    chartContainer: document.querySelector("#columnChart"),
+    chartContainer: document.querySelector('#columnChart'),
   });
 };
 
 const createSalesByRefChart = (gridApi) => {
   gridApi.createCrossFilterChart({
-    chartType: "pie",
+    chartType: 'pie',
     cellRange: {
-      columns: ["salesRep", "sale"],
+      columns: ['salesRep', 'sale'],
     },
-    aggFunc: "sum",
+    aggFunc: 'sum',
     chartThemeOverrides: {
       common: {
         title: {
           enabled: true,
-          text: "Sales by Representative ($)",
+          text: 'Sales by Representative ($)',
         },
       },
       pie: {
@@ -68,53 +68,53 @@ const createSalesByRefChart = (gridApi) => {
         },
       },
     },
-    chartContainer: document.querySelector("#pieChart"),
+    chartContainer: document.querySelector('#pieChart'),
   });
 };
 
 const createHandsetSalesChart = (gridApi) => {
   gridApi.createCrossFilterChart({
-    chartType: "bar",
+    chartType: 'bar',
     cellRange: {
-      columns: ["handset", "sale"],
+      columns: ['handset', 'sale'],
     },
-    aggFunc: "count",
+    aggFunc: 'count',
     chartThemeOverrides: {
       common: {
         title: {
           enabled: true,
-          text: "Handsets Sold (Units)",
+          text: 'Handsets Sold (Units)',
         },
         legend: {
           enabled: false,
         },
       },
     },
-    chartContainer: document.querySelector("#barChart"),
+    chartContainer: document.querySelector('#barChart'),
   });
 };
 
 const GridExample = () => {
-  const containerStyle = useMemo(() => ({ width: "100%", height: "100%" }), []);
-  const gridStyle = useMemo(() => ({ height: "100%", width: "100%" }), []);
+  const containerStyle = useMemo(() => ({ width: '100%', height: '100%' }), []);
+  const gridStyle = useMemo(() => ({ height: '100%', width: '100%' }), []);
   const [rowData, setRowData] = useState(getData());
   const [columnDefs, setColumnDefs] = useState([
-    { field: "salesRep", chartDataType: "category" },
-    { field: "handset", chartDataType: "category" },
+    { field: 'salesRep', chartDataType: 'category' },
+    { field: 'handset', chartDataType: 'category' },
     {
-      headerName: "Sale Price",
-      field: "sale",
+      headerName: 'Sale Price',
+      field: 'sale',
       maxWidth: 160,
-      aggFunc: "sum",
-      filter: "agNumberColumnFilter",
-      chartDataType: "series",
+      aggFunc: 'sum',
+      filter: 'agNumberColumnFilter',
+      chartDataType: 'series',
     },
-    { field: "saleDate", chartDataType: "category" },
+    { field: 'saleDate', chartDataType: 'category' },
     {
-      field: "quarter",
+      field: 'quarter',
       maxWidth: 160,
-      filter: "agSetColumnFilter",
-      chartDataType: "category",
+      filter: 'agSetColumnFilter',
+      chartDataType: 'category',
     },
   ]);
   const defaultColDef = useMemo(() => {
@@ -122,13 +122,13 @@ const GridExample = () => {
       flex: 1,
       editable: true,
       sortable: true,
-      filter: "agMultiColumnFilter",
+      filter: 'agMultiColumnFilter',
       floatingFilter: true,
       resizable: true,
     };
   }, []);
   const chartThemes = useMemo(() => {
-    return ["ag-default-dark"];
+    return ['ag-default-dark'];
   }, []);
   const chartThemeOverrides = useMemo(() => {
     return {
@@ -183,4 +183,4 @@ const GridExample = () => {
   );
 };
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

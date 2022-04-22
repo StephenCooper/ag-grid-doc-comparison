@@ -5,15 +5,15 @@ import {
   IFiltersToolPanel,
   ISetFilter,
   SideBarDef,
-} from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { HttpClient } from "@angular/common/http";
-import { Component } from "@angular/core";
+} from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { HttpClient } from '@angular/common/http';
+import { Component } from '@angular/core';
 // Required feature modules are registered in app.module.ts
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<div class="example-wrapper">
     <div class="example-header">
       <button (click)="getMiniFilterText()">Get Mini Filter Text</button>
@@ -38,7 +38,7 @@ export class AppComponent {
   private gridApi!: GridApi;
 
   public columnDefs: ColDef[] = [
-    { field: "athlete", filter: "agSetColumnFilter" },
+    { field: 'athlete', filter: 'agSetColumnFilter' },
   ];
   public defaultColDef: ColDef = {
     flex: 1,
@@ -46,35 +46,35 @@ export class AppComponent {
     filter: true,
     sortable: true,
   };
-  public sideBar: SideBarDef | string | boolean | null = "filters";
+  public sideBar: SideBarDef | string | string[] | boolean | null = 'filters';
   public rowData!: any[];
 
   constructor(private http: HttpClient) {}
 
   getMiniFilterText() {
     const athleteFilter = this.gridApi.getFilterInstance(
-      "athlete"
+      'athlete'
     ) as ISetFilter;
     console.log(athleteFilter.getMiniFilter());
   }
 
   saveMiniFilterText() {
     const athleteFilter = this.gridApi.getFilterInstance(
-      "athlete"
+      'athlete'
     ) as ISetFilter;
     savedMiniFilterText = athleteFilter.getMiniFilter();
   }
 
   restoreMiniFilterText() {
     const athleteFilter = this.gridApi.getFilterInstance(
-      "athlete"
+      'athlete'
     ) as ISetFilter;
     athleteFilter.setMiniFilter(savedMiniFilterText);
   }
 
   resetFilter() {
     const athleteFilter = this.gridApi.getFilterInstance(
-      "athlete"
+      'athlete'
     ) as ISetFilter;
     athleteFilter.setModel(null);
     this.gridApi.onFilterChanged();
@@ -83,14 +83,14 @@ export class AppComponent {
   onGridReady(params: GridReadyEvent) {
     this.gridApi = params.api;
 
-    (
-      params.api.getToolPanelInstance("filters") as any as IFiltersToolPanel
-    ).expandFilters();
+    ((params.api.getToolPanelInstance(
+      'filters'
+    ) as any) as IFiltersToolPanel).expandFilters();
 
     this.http
-      .get<any[]>("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      .get<any[]>('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .subscribe((data) => (this.rowData = data));
   }
 }
 
-let savedMiniFilterText: string | null = "";
+let savedMiniFilterText: string | null = '';

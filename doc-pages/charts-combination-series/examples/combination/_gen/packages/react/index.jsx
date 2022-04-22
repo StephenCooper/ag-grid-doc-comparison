@@ -1,9 +1,10 @@
-"use strict";
+'use strict';
 
-import { AgChartsReact } from "ag-charts-react";
-import { cloneDeep } from "lodash";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { cloneDeep } from 'lodash';
+import { render } from 'react-dom';
+import * as agCharts from 'ag-charts-community';
+import { AgChartsReact } from 'ag-charts-react';
 
 class ChartExample extends Component {
   constructor(props) {
@@ -15,19 +16,19 @@ class ChartExample extends Component {
         data: getData(),
         theme: {
           palette: {
-            fills: ["#7cecb3", "#7cb5ec", "#ecb37c", "#ec7cb5", "#7c7dec"],
-            strokes: ["#7cecb3", "#7cb5ec", "#ecb37c", "#ec7cb5", "#7c7dec"],
+            fills: ['#7cecb3', '#7cb5ec', '#ecb37c', '#ec7cb5', '#7c7dec'],
+            strokes: ['#7cecb3', '#7cb5ec', '#ecb37c', '#ec7cb5', '#7c7dec'],
           },
         },
         title: {
-          text: "Fruit & Vegetable Consumption",
+          text: 'Fruit & Vegetable Consumption',
           fontSize: 15,
         },
         series: COLUMN_AND_LINE,
         axes: [
           {
-            type: "category",
-            position: "bottom",
+            type: 'category',
+            position: 'bottom',
             gridStyle: [
               {
                 strokeWidth: 0,
@@ -36,27 +37,27 @@ class ChartExample extends Component {
           },
           {
             // primary y axis
-            type: "number",
-            position: "left",
-            keys: ["women", "men", "children", "adults"],
+            type: 'number',
+            position: 'left',
+            keys: ['women', 'men', 'children', 'adults'],
             title: {
               enabled: true,
-              text: "Adults Who Eat 5 A Day (%)",
+              text: 'Adults Who Eat 5 A Day (%)',
             },
           },
           {
             // secondary y axis
-            type: "number",
-            position: "right",
-            keys: ["portions"],
+            type: 'number',
+            position: 'right',
+            keys: ['portions'],
             title: {
               enabled: true,
-              text: "Portions Consumed (Per Day)",
+              text: 'Portions Consumed (Per Day)',
             },
           },
         ],
         legend: {
-          position: "bottom",
+          position: 'bottom',
           item: {
             marker: {
               strokeWidth: 0,
@@ -72,7 +73,7 @@ class ChartExample extends Component {
   columnLine = () => {
     const options = cloneDeep(this.state.options);
 
-    console.log("Column & Line", COLUMN_AND_LINE);
+    console.log('Column & Line', COLUMN_AND_LINE);
     options.series = COLUMN_AND_LINE;
 
     this.setState({ options });
@@ -81,7 +82,7 @@ class ChartExample extends Component {
   areaColumn = () => {
     const options = cloneDeep(this.state.options);
 
-    console.log("Column & Area", AREA_AND_COLUMN);
+    console.log('Column & Area', AREA_AND_COLUMN);
     options.series = AREA_AND_COLUMN;
 
     this.setState({ options });
@@ -109,10 +110,10 @@ function tooltipRenderer(params) {
   };
 }
 const WOMEN = {
-  type: "column",
-  xKey: "year",
-  yKey: "women",
-  yName: "Women",
+  type: 'column',
+  xKey: 'year',
+  yKey: 'women',
+  yName: 'Women',
   grouped: true,
   strokeWidth: 0,
   tooltip: {
@@ -120,10 +121,10 @@ const WOMEN = {
   },
 };
 const MEN = {
-  type: "column",
-  xKey: "year",
-  yKey: "men",
-  yName: "Men",
+  type: 'column',
+  xKey: 'year',
+  yKey: 'men',
+  yName: 'Men',
   grouped: true,
   strokeWidth: 0,
   tooltip: {
@@ -131,10 +132,10 @@ const MEN = {
   },
 };
 const PORTIONS = {
-  type: "line",
-  xKey: "year",
-  yKey: "portions",
-  yName: "Portions",
+  type: 'line',
+  xKey: 'year',
+  yKey: 'portions',
+  yName: 'Portions',
   strokeWidth: 3,
   marker: {
     enabled: false,
@@ -144,14 +145,14 @@ const PORTIONS = {
   },
 };
 const COLUMN_AND_LINE = [
-  { ...WOMEN, type: "column" },
-  { ...MEN, type: "column" },
-  { ...PORTIONS, type: "line" },
+  { ...WOMEN, type: 'column' },
+  { ...MEN, type: 'column' },
+  { ...PORTIONS, type: 'line' },
 ];
 const AREA_AND_COLUMN = [
-  { ...PORTIONS, type: "area" },
-  { ...WOMEN, type: "column" },
-  { ...MEN, type: "column" },
+  { ...PORTIONS, type: 'area' },
+  { ...WOMEN, type: 'column' },
+  { ...MEN, type: 'column' },
 ];
 
-render(<ChartExample />, document.querySelector("#root"));
+render(<ChartExample />, document.querySelector('#root'));

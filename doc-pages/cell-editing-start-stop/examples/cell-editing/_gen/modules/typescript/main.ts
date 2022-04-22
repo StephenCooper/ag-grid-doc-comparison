@@ -1,20 +1,20 @@
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { Grid, GridOptions, ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import { Grid, GridOptions, ModuleRegistry } from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([ClientSideRowModelModule]);
 
 const gridOptions: GridOptions = {
   columnDefs: [
-    { field: "firstName" },
-    { field: "lastName" },
-    { field: "gender" },
-    { field: "age" },
-    { field: "mood" },
-    { field: "country" },
-    { field: "address", minWidth: 550 },
+    { field: 'firstName' },
+    { field: 'lastName' },
+    { field: 'gender' },
+    { field: 'age' },
+    { field: 'mood' },
+    { field: 'country' },
+    { field: 'address', minWidth: 550 },
   ],
   defaultColDef: {
     flex: 1,
@@ -26,28 +26,28 @@ const gridOptions: GridOptions = {
   pinnedTopRowData: getPinnedTopData(),
   pinnedBottomRowData: getPinnedBottomData(),
   onRowEditingStarted: function (event) {
-    console.log("never called - not doing row editing");
+    console.log('never called - not doing row editing');
   },
   onRowEditingStopped: function (event) {
-    console.log("never called - not doing row editing");
+    console.log('never called - not doing row editing');
   },
   onCellEditingStarted: function (event) {
-    console.log("cellEditingStarted");
+    console.log('cellEditingStarted');
   },
   onCellEditingStopped: function (event) {
-    console.log("cellEditingStopped");
+    console.log('cellEditingStopped');
   },
 };
 
 function getPinnedTopData() {
   return [
     {
-      firstName: "##",
-      lastName: "##",
-      gender: "##",
-      address: "##",
-      mood: "##",
-      country: "##",
+      firstName: '##',
+      lastName: '##',
+      gender: '##',
+      address: '##',
+      mood: '##',
+      country: '##',
     },
   ];
 }
@@ -55,12 +55,12 @@ function getPinnedTopData() {
 function getPinnedBottomData() {
   return [
     {
-      firstName: "##",
-      lastName: "##",
-      gender: "##",
-      address: "##",
-      mood: "##",
-      country: "##",
+      firstName: '##',
+      lastName: '##',
+      gender: '##',
+      address: '##',
+      mood: '##',
+      country: '##',
     },
   ];
 }
@@ -68,16 +68,12 @@ function onBtStopEditing() {
   gridOptions.api!.stopEditing();
 }
 
-function onBtStartEditing(
-  key: string | undefined,
-  char: string | undefined,
-  pinned: string
-) {
-  gridOptions.api!.setFocusedCell(0, "lastName", pinned);
+function onBtStartEditing(key?: string, char?: string, pinned?: string) {
+  gridOptions.api!.setFocusedCell(0, 'lastName', pinned);
 
   gridOptions.api!.startEditingCell({
     rowIndex: 0,
-    colKey: "lastName",
+    colKey: 'lastName',
     // set to 'top', 'bottom' or undefined
     rowPinned: pinned,
     key: key,
@@ -98,23 +94,23 @@ function onBtWhich() {
   if (cellDefs.length > 0) {
     var cellDef = cellDefs[0];
     console.log(
-      "editing cell is: row = " +
+      'editing cell is: row = ' +
         cellDef.rowIndex +
-        ", col = " +
+        ', col = ' +
         cellDef.column.getId() +
-        ", floating = " +
+        ', floating = ' +
         cellDef.rowPinned
     );
   } else {
-    console.log("no cells are editing");
+    console.log('no cells are editing');
   }
 }
 
 // setup the grid after the page has finished loading
-var gridDiv = document.querySelector<HTMLElement>("#myGrid")!;
+var gridDiv = document.querySelector<HTMLElement>('#myGrid')!;
 new Grid(gridDiv, gridOptions);
 
-if (typeof window !== "undefined") {
+if (typeof window !== 'undefined') {
   // Attach external event handlers to window so they can be called from index.html
   (<any>window).onBtStopEditing = onBtStopEditing;
   (<any>window).onBtStartEditing = onBtStartEditing;

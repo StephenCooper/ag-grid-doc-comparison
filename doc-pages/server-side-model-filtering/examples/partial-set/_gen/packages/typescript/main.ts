@@ -5,30 +5,30 @@ import {
   IServerSideDatasource,
   ISetFilter,
   SetFilterValuesFuncParams,
-} from "ag-grid-community";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine-dark.css";
-import "ag-grid-enterprise";
+} from 'ag-grid-community';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine-dark.css';
+import 'ag-grid-enterprise';
 
 declare var FakeServer: any;
 const columnDefs: ColDef[] = [
   {
-    field: "country",
-    filter: "agSetColumnFilter",
+    field: 'country',
+    filter: 'agSetColumnFilter',
     filterParams: {
       values: getCountryValuesAsync,
     },
-    menuTabs: ["filterMenuTab"],
+    menuTabs: ['filterMenuTab'],
   },
   {
-    field: "sport",
-    filter: "agSetColumnFilter",
+    field: 'sport',
+    filter: 'agSetColumnFilter',
     filterParams: {
       values: getSportValuesAsync,
     },
-    menuTabs: ["filterMenuTab"],
+    menuTabs: ['filterMenuTab'],
   },
-  { field: "athlete", menuTabs: undefined },
+  { field: 'athlete', menuTabs: undefined },
 ];
 
 const gridOptions: GridOptions = {
@@ -40,8 +40,8 @@ const gridOptions: GridOptions = {
     resizable: true,
   },
   // use the server-side row model
-  rowModelType: "serverSide",
-  serverSideStoreType: "partial",
+  rowModelType: 'serverSide',
+  serverSideStoreType: 'partial',
 
   // fetch 100 rows at a time
   cacheBlockSize: 100,
@@ -59,14 +59,14 @@ var fakeServer: any;
 var selectedCountries: string[] | null = null;
 
 function onFilterChanged() {
-  var countryFilterModel = gridOptions.api!.getFilterModel()["country"];
+  var countryFilterModel = gridOptions.api!.getFilterModel()['country'];
   var selected = countryFilterModel && countryFilterModel.values;
 
   if (!areEqual(selectedCountries, selected)) {
     selectedCountries = selected;
 
-    console.log("Refreshing sports filter");
-    var sportFilter = gridOptions.api!.getFilterInstance("sport") as ISetFilter;
+    console.log('Refreshing sports filter');
+    var sportFilter = gridOptions.api!.getFilterInstance('sport') as ISetFilter;
     sportFilter!.refreshFilterValues();
   }
 }
@@ -108,7 +108,7 @@ function getSportValuesAsync(params: SetFilterValuesFuncParams) {
 function getServerSideDatasource(server: any): IServerSideDatasource {
   return {
     getRows: function (params) {
-      console.log("[Datasource] - rows requested by grid: ", params.request);
+      console.log('[Datasource] - rows requested by grid: ', params.request);
 
       // get data for request from our fake server
       var response = server.getData(params.request);
@@ -130,10 +130,10 @@ function getServerSideDatasource(server: any): IServerSideDatasource {
 }
 
 // setup the grid after the page has finished loading
-var gridDiv = document.querySelector<HTMLElement>("#myGrid")!;
+var gridDiv = document.querySelector<HTMLElement>('#myGrid')!;
 new Grid(gridDiv, gridOptions);
 
-fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
   .then((response) => response.json())
   .then(function (data) {
     // setup the fake server with entire dataset

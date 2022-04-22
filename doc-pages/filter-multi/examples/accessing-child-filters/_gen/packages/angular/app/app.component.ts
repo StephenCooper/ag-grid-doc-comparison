@@ -1,18 +1,18 @@
-import { HttpClient } from "@angular/common/http";
-import { Component } from "@angular/core";
+import { HttpClient } from '@angular/common/http';
+import { Component } from '@angular/core';
 import {
   ColDef,
   GridApi,
   GridReadyEvent,
   IMultiFilter,
   ISetFilter,
-} from "ag-grid-community";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
+} from 'ag-grid-community';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import 'ag-grid-enterprise';
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<div class="example-wrapper">
     <div style="margin-bottom: 1rem;">
       <button (click)="getTextModel()">Print Text Filter model</button>
@@ -33,18 +33,18 @@ export class AppComponent {
 
   public columnDefs: ColDef[] = [
     {
-      field: "athlete",
-      filter: "agMultiColumnFilter",
+      field: 'athlete',
+      filter: 'agMultiColumnFilter',
       filterParams: {
         filters: [
           {
-            filter: "agTextColumnFilter",
+            filter: 'agTextColumnFilter',
             filterParams: {
-              buttons: ["apply", "clear"],
+              buttons: ['apply', 'clear'],
             },
           },
           {
-            filter: "agSetColumnFilter",
+            filter: 'agSetColumnFilter',
           },
         ],
       },
@@ -54,31 +54,31 @@ export class AppComponent {
     flex: 1,
     minWidth: 200,
     resizable: true,
-    menuTabs: ["filterMenuTab"],
+    menuTabs: ['filterMenuTab'],
   };
   public rowData!: any[];
 
   constructor(private http: HttpClient) {}
 
   getTextModel() {
-    var textFilter = (
-      this.gridApi.getFilterInstance("athlete") as IMultiFilter
-    ).getChildFilterInstance(0)!;
-    console.log("Current Text Filter model: ", textFilter.getModel());
+    var textFilter = (this.gridApi.getFilterInstance(
+      'athlete'
+    ) as IMultiFilter).getChildFilterInstance(0)!;
+    console.log('Current Text Filter model: ', textFilter.getModel());
   }
 
   getSetMiniFilter() {
-    var setFilter = (
-      this.gridApi.getFilterInstance("athlete") as IMultiFilter
-    ).getChildFilterInstance(1) as ISetFilter;
-    console.log("Current Set Filter search text: ", setFilter.getMiniFilter());
+    var setFilter = (this.gridApi.getFilterInstance(
+      'athlete'
+    ) as IMultiFilter).getChildFilterInstance(1) as ISetFilter;
+    console.log('Current Set Filter search text: ', setFilter.getMiniFilter());
   }
 
   onGridReady(params: GridReadyEvent) {
     this.gridApi = params.api;
 
     this.http
-      .get<any[]>("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      .get<any[]>('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .subscribe((data) => (this.rowData = data));
   }
 }

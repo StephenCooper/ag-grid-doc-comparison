@@ -3,15 +3,16 @@ import React, {
   memo,
   useEffect,
   useImperativeHandle,
+  useMemo,
   useRef,
   useState,
-} from "react";
+} from 'react';
 
-const KEY_BACKSPACE = "Backspace";
-const KEY_DELETE = "Delete";
-const KEY_F2 = "F2";
-const KEY_ENTER = "Enter";
-const KEY_TAB = "Tab";
+const KEY_BACKSPACE = 'Backspace';
+const KEY_DELETE = 'Delete';
+const KEY_F2 = 'F2';
+const KEY_ENTER = 'Enter';
+const KEY_TAB = 'Tab';
 
 export default memo(
   forwardRef((props, ref) => {
@@ -21,7 +22,7 @@ export default memo(
 
       if (props.key === KEY_BACKSPACE || props.key === KEY_DELETE) {
         // if backspace or delete pressed, we clear the cell
-        startValue = "";
+        startValue = '';
       } else if (props.charPress) {
         // if a letter was pressed, we start with the letter
         startValue = props.charPress;
@@ -70,10 +71,10 @@ export default memo(
 
     /* Utility Methods */
     const cancelBeforeStart =
-      props.charPress && "1234567890".indexOf(props.charPress) < 0;
+      props.charPress && '1234567890'.indexOf(props.charPress) < 0;
 
     const isLeftOrRight = (event) => {
-      return ["ArrowLeft", "ArrowLeft"].indexOf(event.key) > -1;
+      return ['ArrowLeft', 'ArrowLeft'].indexOf(event.key) > -1;
     };
 
     const isCharNumeric = (charStr) => {
@@ -139,7 +140,7 @@ export default memo(
         value={value}
         onChange={(event) => setValue(event.target.value)}
         onKeyDown={(event) => onKeyDown(event)}
-        style={{ width: "100%" }}
+        style={{ width: '100%' }}
       />
     );
   })

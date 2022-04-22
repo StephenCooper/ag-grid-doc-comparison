@@ -75,22 +75,22 @@ The following example demonstrates those configuration options that can be appli
 
 Each simple filter presents a list of options to the user. The list of options for each filter are as follows:
 
-| Option Name           | Option Key           | Supported Filters  |
-| --------------------- | -------------------- | ------------------ |
-| Equals                | `equals`             | Text, Number, Date |
-| Not Equals            | `notEqual`           | Text, Number, Date |
-| Contains              | `contains`           | Text               |
-| Not Contains          | `notContains`        | Text               |
-| Starts With           | `startsWith`         | Text               |
-| Ends With             | `endsWith`           | Text               |
-| Less Than             | `lessThan`           | Number, Date       |
-| Less Than or Equal    | `lessThanOrEqual`    | Number             |
-| Greater Than          | `greaterThan`        | Number, Date       |
-| Greater Than or Equal | `greaterThanOrEqual` | Number             |
-| In Range              | `inRange`            | Number, Date       |
-| Blank                 | `blank`              | Text, Number, Date |
-| Not blank             | `notBlank`           | Text, Number, Date |
-| Choose One            | `empty`              | Text, Number, Date |
+| Option Name             | Option Key            | Supported Filters   |
+| ----------------------- | --------------------- | ------------------- |
+| Equals                  | `equals`              | Text, Number, Date  |
+| Not Equals              | `notEqual`            | Text, Number, Date  |
+| Contains                | `contains`            | Text                |
+| Not Contains            | `notContains`         | Text                |
+| Starts With             | `startsWith`          | Text                |
+| Ends With               | `endsWith`            | Text                |
+| Less Than               | `lessThan`            | Number, Date        |
+| Less Than or Equal      | `lessThanOrEqual`     | Number              |
+| Greater Than            | `greaterThan`         | Number, Date        |
+| Greater Than or Equal   | `greaterThanOrEqual`  | Number              |
+| In Range                | `inRange`             | Number, Date        |
+| Blank                   | `blank`               | Text, Number, Date  |
+| Not blank               | `notBlank`            | Text, Number, Date  |
+| Choose One              | `empty`               | Text, Number, Date  |
 
 Note that the `empty` filter option is primarily used when creating [Custom Filter Options](/filter-provided-simple/#custom-filter-options). When 'Choose One' is displayed, the filter is not active.
 
@@ -98,11 +98,11 @@ Note that the `empty` filter option is primarily used when creating [Custom Filt
 
 Each of the three filter types has the following default options and default selected option.
 
-| Filter | Default List of Options                                                                           | Default Selected Option |
-| ------ | ------------------------------------------------------------------------------------------------- | ----------------------- |
-| Text   | Contains, Not Contains, Equals, Not Equals, Starts With, Ends With.                               | Contains                |
-| Number | Equals, Not Equals, Less Than, Less Than or Equal, Greater Than, Greater Than or Equal, In Range. | Equals                  |
-| Date   | Equals, Greater Than, Less Than, Not Equals, In Range.                                            | Equals                  |
+| Filter   | Default List of Options                                                                           | Default Selected Option   |
+| -------- | ------------------------------------------------------------------------------------------------- | ------------------------- |
+| Text     | Contains, Not Contains, Equals, Not Equals, Starts With, Ends With.                               | Contains                  |
+| Number   | Equals, Not Equals, Less Than, Less Than or Equal, Greater Than, Greater Than or Equal, In Range. | Equals                    |
+| Date     | Equals, Greater Than, Less Than, Not Equals, In Range.                                            | Equals                    |
 
 ## Simple Filter Models
 
@@ -142,19 +142,19 @@ Examples of filter model instances are as follows:
 ```js
 // number filter with one condition, with equals type
 const numberLessThan35 = {
-  filterType: "number",
-  type: "lessThan",
-  filter: 35,
+    filterType: 'number',
+    type: 'lessThan',
+    filter: 35
 };
 ```
 
 ```js
 // number filter with one condition, with inRange type
 const numberBetween35And40 = {
-  filterType: "number",
-  type: "inRange",
-  filter: 35,
-  filterTo: 40,
+    filterType: 'number',
+    type: 'inRange',
+    filter: 35,
+    filterTo: 40
 };
 ```
 
@@ -167,17 +167,17 @@ If the filter has both Condition 1 and Condition 2 set, then two instances of th
 // A filter combining two conditions
 // M is either TextFilterModel, NumberFilterModel or DateFilterModel
 interface ICombinedSimpleModel<M> {
-  // the filter type: date, number or text
-  filterType: string;
+    // the filter type: date, number or text
+    filterType: string;
 
-  operator: JoinOperator;
+    operator: JoinOperator;
 
-  // two instances of the filter model
-  condition1: M;
-  condition2: M;
+    // two instances of the filter model
+    condition1: M;
+    condition2: M;
 }
 
-type JoinOperator = "AND" | "OR";
+type JoinOperator = 'AND' | 'OR';
 ```
 
 An example of a filter model with two conditions is as follows:
@@ -185,18 +185,18 @@ An example of a filter model with two conditions is as follows:
 ```js
 // number filter with two conditions, both are equals type
 const numberEquals18OrEquals20 = {
-  filterType: "number",
-  operator: "OR",
-  condition1: {
-    filterType: "number",
-    type: "equals",
-    filter: 18,
-  },
-  condition2: {
-    filterType: "number",
-    type: "equals",
-    filter: 18,
-  },
+    filterType: 'number',
+    operator: 'OR',
+    condition1: {
+        filterType: 'number',
+        type: 'equals',
+        filter: 18
+    },
+    condition2: {
+        filterType: 'number',
+        type: 'equals',
+        filter: 18
+    }
 };
 ```
 
@@ -213,8 +213,7 @@ The `displayKey` should contain a unique key value that doesn't clash with the b
 The custom filter logic is implemented through the `predicate` function, which receives the `filterValues` typed by the user along with the `cellValue` from the grid, and returns `true` or `false`.
 
 The number of `filterValues` and corresponding inputs is controlled by the optional property `numberOfInputs`:
-
-- If set to `0` all inputs are hidden, and an empty array of `filterValues` is provided to the `predicate` function.
+- If set to `0`  all inputs are hidden, and an empty array of `filterValues` is provided to the `predicate` function.
 - If unspecified or set to `1` a single input is displayed, and one-element array of `filterValues` are provided to the `predicate` function.
 - If set to `2` two inputs are displayed, and a two-element array of `filterValues` is provided to the `predicate` function.
 
@@ -271,8 +270,8 @@ The following example demonstrates several custom filter options:
   - `Between (Exclusive)` has two inputs; its predicate function is provided two values.
   - NOTE: a custom `comparator` is still required for the built-in date filter options, i.e. `equals`.
 - The **Country** column includes:
-  - a custom `* Not Equals (No Nulls) *` filter which also removes null values.
-  - it also demonstrates how localisation can be achieved via the `gridOptions.getLocaleText(params)` callback function, where the default value is replaced for the filter option `'notEqualNoNulls'`.
+    - a custom `* Not Equals (No Nulls) *` filter which also removes null values.
+    - it also demonstrates how localisation can be achieved via the `gridOptions.getLocaleText(params)` callback function, where the default value is replaced for the filter option `'notEqualNoNulls'`.
 - Saving and restoring custom filter options via `api.getFilterModel()` and `api.setFilterModel()` can be tested using the provided buttons.
 
 <grid-example title='Custom Filter Options' name='custom-filter-options' type='generated'></grid-example>
@@ -283,10 +282,10 @@ If the row data contains blanks (i.e. `null` or `undefined`), by default the row
 
 ```js
 const filterParams = {
-  includeBlanksInEquals: true,
-  includeBlanksInLessThan: false,
-  includeBlanksInGreaterThan: false,
-  includeBlanksInRange: false,
+    includeBlanksInEquals: true,
+    includeBlanksInLessThan: false,
+    includeBlanksInGreaterThan: false,
+    includeBlanksInRange: false,
 };
 ```
 
@@ -300,13 +299,11 @@ In the following example you can filter by age or date and see how blank values 
 ## Data Updates
 
 Grid data can be updated in a number of ways, including:
-
 - [Cell Editing](/cell-editing/).
 - [Updating Data](/data-update/).
 - [Clipboard Operations](/clipboard/).
 
 Simple filters are not affected by data changes, as is demonstrated by the following example:
-
 - Perform some filtering using the configured simple filters, such as filtering by **Age** equals
   `24`.
 - Click the **Jumble Ages** button to update the grid data by jumbling values in the **Age** column

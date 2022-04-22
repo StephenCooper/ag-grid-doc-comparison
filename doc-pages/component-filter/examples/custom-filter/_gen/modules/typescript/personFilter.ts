@@ -2,7 +2,7 @@ import {
   IDoesFilterPassParams,
   IFilterComp,
   IFilterParams,
-} from "@ag-grid-community/core";
+} from '@ag-grid-community/core';
 
 export class PersonFilter implements IFilterComp {
   params!: IFilterParams;
@@ -18,7 +18,7 @@ export class PersonFilter implements IFilterComp {
 
   // not called by AG Grid, just for us to help setup
   setupGui(params: IFilterParams) {
-    this.gui = document.createElement("div");
+    this.gui = document.createElement('div');
     this.gui.innerHTML = `<div style="padding: 4px; width: 200px;">
                 <div style="font-weight: bold;">Custom Athlete Filter</div>
                 <div>
@@ -37,10 +37,10 @@ export class PersonFilter implements IFilterComp {
       params.filterChangedCallback();
     };
 
-    this.eFilterText = this.gui.querySelector("#filterText");
-    this.eFilterText.addEventListener("changed", listener);
-    this.eFilterText.addEventListener("paste", listener);
-    this.eFilterText.addEventListener("input", listener);
+    this.eFilterText = this.gui.querySelector('#filterText');
+    this.eFilterText.addEventListener('changed', listener);
+    this.eFilterText.addEventListener('paste', listener);
+    this.eFilterText.addEventListener('input', listener);
   }
 
   getGui() {
@@ -55,7 +55,7 @@ export class PersonFilter implements IFilterComp {
     let passed = true;
     this.filterText
       ?.toLowerCase()
-      .split(" ")
+      .split(' ')
       .forEach((filterWord) => {
         const value = this.params.valueGetter({
           api,
@@ -77,7 +77,7 @@ export class PersonFilter implements IFilterComp {
   }
 
   isFilterActive() {
-    return this.filterText != null && this.filterText !== "";
+    return this.filterText != null && this.filterText !== '';
   }
 
   getModel() {

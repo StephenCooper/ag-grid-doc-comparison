@@ -1,9 +1,9 @@
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import { AgGridVue } from "ag-grid-vue";
-import Vue from "vue";
-import GenderRenderer from "./genderRendererVue.js";
-import MoodRenderer from "./moodRendererVue.js";
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import { AgGridVue } from 'ag-grid-vue';
+import Vue from 'vue';
+import GenderRenderer from './genderRendererVue.js';
+import MoodRenderer from './moodRendererVue.js';
 
 const VueExample = {
   template: `
@@ -19,57 +19,57 @@ const VueExample = {
       </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
     genderCellRenderer: GenderRenderer,
     moodCellRenderer: MoodRenderer,
   },
   data: function () {
     return {
       columnDefs: [
-        { field: "value" },
+        { field: 'value' },
         {
-          headerName: "Rendered Value",
-          field: "value",
+          headerName: 'Rendered Value',
+          field: 'value',
           cellRendererSelector: (params) => {
-            const moodDetails = { component: "moodCellRenderer" };
+            const moodDetails = { component: 'moodCellRenderer' };
             const genderDetails = {
-              component: "genderCellRenderer",
+              component: 'genderCellRenderer',
               params: {
-                values: ["Male", "Female"],
+                values: ['Male', 'Female'],
               },
             };
-            if (params.data.type === "gender") return genderDetails;
-            else if (params.data.type === "mood") return moodDetails;
+            if (params.data.type === 'gender') return genderDetails;
+            else if (params.data.type === 'mood') return moodDetails;
             else return undefined;
           },
         },
-        { field: "type" },
+        { field: 'type' },
       ],
       defaultColDef: { flex: 1 },
       rowData: [
         {
           value: 14,
-          type: "age",
+          type: 'age',
         },
         {
-          value: "female",
-          type: "gender",
+          value: 'female',
+          type: 'gender',
         },
         {
-          value: "Happy",
-          type: "mood",
+          value: 'Happy',
+          type: 'mood',
         },
         {
           value: 21,
-          type: "age",
+          type: 'age',
         },
         {
-          value: "male",
-          type: "gender",
+          value: 'male',
+          type: 'gender',
         },
         {
-          value: "Sad",
-          type: "mood",
+          value: 'Sad',
+          type: 'mood',
         },
       ],
     };
@@ -77,8 +77,8 @@ const VueExample = {
 };
 
 new Vue({
-  el: "#app",
+  el: '#app',
   components: {
-    "my-component": VueExample,
+    'my-component': VueExample,
   },
 });

@@ -1,5 +1,5 @@
-import { AgChartsVue } from "ag-charts-vue3";
-import { createApp } from "vue";
+import { AgChartsVue } from 'ag-charts-vue3';
+import { createApp } from 'vue';
 
 const ChartExample = {
   template: `
@@ -7,7 +7,7 @@ const ChartExample = {
                 :options="options"></ag-charts-vue>
     `,
   components: {
-    "ag-charts-vue": AgChartsVue,
+    'ag-charts-vue': AgChartsVue,
   },
   data: function () {
     return {
@@ -19,18 +19,18 @@ const ChartExample = {
       autoSize: true,
       data: getData(),
       title: {
-        text: "Total Visitors to Museums and Galleries",
+        text: 'Total Visitors to Museums and Galleries',
         fontSize: 18,
       },
       subtitle: {
-        text: "Source: Department for Digital, Culture, Media & Sport",
+        text: 'Source: Department for Digital, Culture, Media & Sport',
       },
       series: [
         {
-          type: "column",
-          xKey: "year",
-          yKey: "visitors",
-          fill: "#0084e7",
+          type: 'column',
+          xKey: 'year',
+          yKey: 'visitors',
+          fill: '#0084e7',
           strokeWidth: 0,
           shadow: {
             enabled: true,
@@ -40,23 +40,23 @@ const ChartExample = {
       ],
       axes: [
         {
-          type: "category",
-          position: "bottom",
+          type: 'category',
+          position: 'bottom',
           title: {
             enabled: true,
-            text: "Year",
+            text: 'Year',
           },
         },
         {
-          type: "number",
-          position: "left",
+          type: 'number',
+          position: 'left',
           title: {
             enabled: true,
-            text: "Total visitors",
+            text: 'Total visitors',
           },
           label: {
             formatter: (params) => {
-              return params.value / 1000000 + "M";
+              return params.value / 1000000 + 'M';
             },
           },
         },
@@ -70,4 +70,4 @@ const ChartExample = {
   methods: {},
 };
 
-createApp(ChartExample).mount("#app");
+createApp(ChartExample).mount('#app');

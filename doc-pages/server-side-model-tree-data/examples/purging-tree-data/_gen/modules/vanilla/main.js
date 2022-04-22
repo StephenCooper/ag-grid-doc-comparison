@@ -1,8 +1,8 @@
 const columnDefs = [
-  { field: "employeeId", hide: true },
-  { field: "employeeName", hide: true },
-  { field: "employmentType" },
-  { field: "startDate" },
+  { field: 'employeeId', hide: true },
+  { field: 'employeeName', hide: true },
+  { field: 'employmentType' },
+  { field: 'startDate' },
 ];
 
 const gridOptions = {
@@ -12,19 +12,19 @@ const gridOptions = {
     flex: 1,
   },
   autoGroupColumnDef: {
-    field: "employeeName",
+    field: 'employeeName',
   },
-  rowModelType: "serverSide",
-  serverSideStoreType: "partial",
+  rowModelType: 'serverSide',
+  serverSideStoreType: 'partial',
   treeData: true,
   columnDefs: columnDefs,
   animateRows: true,
   cacheBlockSize: 10,
   isServerSideGroupOpenByDefault: function (params) {
     var isKathrynPowers =
-      params.rowNode.level == 0 && params.data.employeeName == "Kathryn Powers";
+      params.rowNode.level == 0 && params.data.employeeName == 'Kathryn Powers';
     var isMabelWard =
-      params.rowNode.level == 1 && params.data.employeeName == "Mabel Ward";
+      params.rowNode.level == 1 && params.data.employeeName == 'Mabel Ward';
     return isKathrynPowers || isMabelWard;
   },
   isServerSideGroup: function (dataItem) {
@@ -42,11 +42,11 @@ function refreshCache(route) {
 }
 
 // setup the grid after the page has finished loading
-document.addEventListener("DOMContentLoaded", function () {
-  var gridDiv = document.querySelector("#myGrid");
+document.addEventListener('DOMContentLoaded', function () {
+  var gridDiv = document.querySelector('#myGrid');
   new agGrid.Grid(gridDiv, gridOptions);
 
-  fetch("https://www.ag-grid.com/example-assets/tree-data.json")
+  fetch('https://www.ag-grid.com/example-assets/tree-data.json')
     .then((response) => response.json())
     .then(function (data) {
       var fakeServer = createFakeServer(data);
@@ -63,7 +63,7 @@ function createFakeServer(fakeServerData) {
           return data.map(function (d) {
             return {
               group: !!d.underlings,
-              employeeId: d.employeeId + "",
+              employeeId: d.employeeId + '',
               employeeName: d.employeeName,
               employmentType: d.employmentType,
               startDate: d.startDate,
@@ -91,7 +91,7 @@ function createFakeServer(fakeServerData) {
 function createServerSideDatasource(fakeServer) {
   const dataSource = {
     getRows: function (params) {
-      console.log("ServerSideDatasource.getRows: params = ", params);
+      console.log('ServerSideDatasource.getRows: params = ', params);
       var request = params.request;
       var allRows = fakeServer.getData(request);
       var doingInfinite = request.startRow != null && request.endRow != null;
@@ -101,7 +101,7 @@ function createServerSideDatasource(fakeServer) {
             rowCount: allRows.length,
           }
         : { rowData: allRows };
-      console.log("getRows: result = ", result);
+      console.log('getRows: result = ', result);
       setTimeout(function () {
         params.success(result);
       }, 500);

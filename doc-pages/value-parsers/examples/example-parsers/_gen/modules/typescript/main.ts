@@ -1,24 +1,24 @@
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
 import {
   CellValueChangedEvent,
   Grid,
   GridOptions,
   ModuleRegistry,
   ValueParserParams,
-} from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine-dark.css";
+} from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine-dark.css';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([ClientSideRowModelModule]);
 
 const gridOptions: GridOptions = {
   columnDefs: [
-    { headerName: "Name", field: "simple" },
-    { headerName: "Bad Number", field: "numberBad" },
+    { headerName: 'Name', field: 'simple' },
+    { headerName: 'Bad Number', field: 'numberBad' },
     {
-      headerName: "Good Number",
-      field: "numberGood",
+      headerName: 'Good Number',
+      field: 'numberGood',
       valueParser: numberParser,
     },
   ],
@@ -32,7 +32,7 @@ const gridOptions: GridOptions = {
 };
 
 function onCellValueChanged(event: CellValueChangedEvent) {
-  console.log("data after changes is: ", event.data);
+  console.log('data after changes is: ', event.data);
 }
 
 function numberParser(params: ValueParserParams) {
@@ -40,6 +40,6 @@ function numberParser(params: ValueParserParams) {
 }
 
 // setup the grid after the page has finished loading
-var gridDiv = document.querySelector<HTMLElement>("#myGrid")!;
+var gridDiv = document.querySelector<HTMLElement>('#myGrid')!;
 new Grid(gridDiv, gridOptions);
 gridOptions.api!.sizeColumnsToFit();

@@ -1,12 +1,12 @@
-"use strict";
+'use strict';
 
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { AgGridReact } from "@ag-grid-community/react";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from '@ag-grid-community/react';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([ClientSideRowModelModule]);
@@ -18,17 +18,17 @@ class GridExample extends Component {
     this.state = {
       rowData: getData(),
       columnDefs: [
-        { headerName: "Employee", field: "employee" },
-        { headerName: "Number Sick Days", field: "sickDays", editable: true },
+        { headerName: 'Employee', field: 'employee' },
+        { headerName: 'Number Sick Days', field: 'sickDays', editable: true },
       ],
       rowClassRules: {
         // row style function
-        "sick-days-warning": function (params) {
+        'sick-days-warning': function (params) {
           var numSickDays = params.data.sickDays;
           return numSickDays > 5 && numSickDays <= 7;
         },
         // row style expression
-        "sick-days-breach": "data.sickDays >= 8",
+        'sick-days-breach': 'data.sickDays >= 8',
       },
     };
   }
@@ -40,7 +40,7 @@ class GridExample extends Component {
 
   setDataValue = () => {
     this.gridApi.forEachNode(function (rowNode) {
-      rowNode.setDataValue("sickDays", randomInt());
+      rowNode.setDataValue('sickDays', randomInt());
     });
   };
 
@@ -66,9 +66,9 @@ class GridExample extends Component {
 
   render() {
     return (
-      <div style={{ width: "100%", height: "100%" }}>
+      <div style={{ width: '100%', height: '100%' }}>
         <div className="example-wrapper">
-          <div style={{ marginBottom: "5px" }}>
+          <div style={{ marginBottom: '5px' }}>
             <button onClick={() => this.setDataValue()}>
               rowNode.setDataValue
             </button>
@@ -80,8 +80,8 @@ class GridExample extends Component {
 
           <div
             style={{
-              height: "100%",
-              width: "100%",
+              height: '100%',
+              width: '100%',
             }}
             className="ag-theme-alpine"
           >
@@ -102,4 +102,4 @@ function randomInt() {
   return Math.floor(Math.random() * 10);
 }
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

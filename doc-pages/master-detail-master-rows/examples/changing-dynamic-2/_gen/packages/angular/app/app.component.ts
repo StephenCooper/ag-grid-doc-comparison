@@ -1,20 +1,21 @@
-import { HttpClient } from "@angular/common/http";
-import { Component } from "@angular/core";
+import { HttpClient } from '@angular/common/http';
+import { Component } from '@angular/core';
 import {
   ColDef,
   FirstDataRenderedEvent,
   GetRowIdFunc,
+  GetRowIdParams,
   GridReadyEvent,
   IDetailCellRendererParams,
   IsRowMaster,
-} from "ag-grid-community";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
-import { CallsCellRenderer } from "./calls-cell-renderer.component";
+} from 'ag-grid-community';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import 'ag-grid-enterprise';
+import { CallsCellRenderer } from './calls-cell-renderer.component';
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<ag-grid-angular
     style="width: 100%; height: 100%;"
     class="ag-theme-alpine"
@@ -31,30 +32,30 @@ import { CallsCellRenderer } from "./calls-cell-renderer.component";
   ></ag-grid-angular> `,
 })
 export class AppComponent {
-  public isRowMaster: IsRowMaster = function (dataItem) {
+  public isRowMaster: IsRowMaster = function (dataItem: any) {
     return dataItem ? dataItem.callRecords.length > 0 : false;
   };
   public columnDefs: ColDef[] = [
     // group cell renderer needed for expand / collapse icons
-    { field: "name", cellRenderer: "agGroupCellRenderer" },
-    { field: "account" },
-    { field: "calls", cellRenderer: CallsCellRenderer },
-    { field: "minutes", valueFormatter: "x.toLocaleString() + 'm'" },
+    { field: 'name', cellRenderer: 'agGroupCellRenderer' },
+    { field: 'account' },
+    { field: 'calls', cellRenderer: CallsCellRenderer },
+    { field: 'minutes', valueFormatter: "x.toLocaleString() + 'm'" },
   ];
   public defaultColDef: ColDef = {
     flex: 1,
   };
-  public getRowId: GetRowIdFunc = function (params) {
+  public getRowId: GetRowIdFunc = function (params: GetRowIdParams) {
     return params.data.account;
   };
   public detailCellRendererParams: any = {
     detailGridOptions: {
       columnDefs: [
-        { field: "callId" },
-        { field: "direction" },
-        { field: "number", minWidth: 150 },
-        { field: "duration", valueFormatter: "x.toLocaleString() + 's'" },
-        { field: "switchCode", minWidth: 150 },
+        { field: 'callId' },
+        { field: 'direction' },
+        { field: 'number', minWidth: 150 },
+        { field: 'duration', valueFormatter: "x.toLocaleString() + 's'" },
+        { field: 'switchCode', minWidth: 150 },
       ],
       defaultColDef: {
         flex: 1,
@@ -78,7 +79,7 @@ export class AppComponent {
   onGridReady(params: GridReadyEvent) {
     this.http
       .get<any[]>(
-        "https://www.ag-grid.com/example-assets/master-detail-dynamic-data.json"
+        'https://www.ag-grid.com/example-assets/master-detail-dynamic-data.json'
       )
       .subscribe((data) => {
         this.rowData = data;

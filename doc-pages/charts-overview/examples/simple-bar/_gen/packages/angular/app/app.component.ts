@@ -1,8 +1,8 @@
-import { Component } from "@angular/core";
-import { AgChartOptions } from "ag-charts-community";
+import { Component } from '@angular/core';
+import { AgChartOptions } from 'ag-charts-community';
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<ag-charts-angular
     style="height: 100%"
     [options]="options"
@@ -25,30 +25,30 @@ export class AppComponent {
         },
       },
       title: {
-        text: "Gross Weekly Earnings by Occupation (Q4 2019)",
+        text: 'Gross Weekly Earnings by Occupation (Q4 2019)',
         fontSize: 18,
       },
       subtitle: {
-        text: "Source: Office for National Statistics",
+        text: 'Source: Office for National Statistics',
       },
       series: [
         {
-          type: "bar",
-          xKey: "type",
-          yKey: "earnings",
+          type: 'bar',
+          xKey: 'type',
+          yKey: 'earnings',
         },
       ],
       axes: [
         {
-          type: "category",
-          position: "left",
+          type: 'category',
+          position: 'left',
         },
         {
-          type: "number",
-          position: "bottom",
+          type: 'number',
+          position: 'bottom',
           title: {
             enabled: true,
-            text: "£/week",
+            text: '£/week',
           },
         },
       ],

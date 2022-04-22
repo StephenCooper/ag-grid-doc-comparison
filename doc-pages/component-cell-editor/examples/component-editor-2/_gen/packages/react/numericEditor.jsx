@@ -1,10 +1,10 @@
-import React, { Component, createRef } from "react";
+import React, { Component, createRef } from 'react';
 
-const KEY_BACKSPACE = "Backspace";
-const KEY_DELETE = "Delete";
-const KEY_F2 = "F2";
-const KEY_ENTER = "Enter";
-const KEY_TAB = "Tab";
+const KEY_BACKSPACE = 'Backspace';
+const KEY_DELETE = 'Delete';
+const KEY_F2 = 'F2';
+const KEY_ENTER = 'Enter';
+const KEY_TAB = 'Tab';
 
 export default class NumericEditor extends Component {
   constructor(props) {
@@ -13,7 +13,7 @@ export default class NumericEditor extends Component {
     this.inputRef = createRef(null);
 
     this.cancelBeforeStart =
-      this.props.charPress && "1234567890".indexOf(this.props.charPress) < 0;
+      this.props.charPress && '1234567890'.indexOf(this.props.charPress) < 0;
 
     this.state = this.createInitialState(props);
 
@@ -32,7 +32,7 @@ export default class NumericEditor extends Component {
         value={this.state.value}
         onKeyDown={this.onKeyDown}
         onChange={this.handleChange}
-        style={{ width: "100%" }}
+        style={{ width: '100%' }}
       />
     );
   }
@@ -64,7 +64,7 @@ export default class NumericEditor extends Component {
 
     if (props.key === KEY_BACKSPACE || props.key === KEY_DELETE) {
       // if backspace or delete pressed, we clear the cell
-      startValue = "";
+      startValue = '';
     } else if (props.charPress) {
       // if a letter was pressed, we start with the letter
       startValue = props.charPress;
@@ -98,7 +98,7 @@ export default class NumericEditor extends Component {
   }
 
   isLeftOrRight(event) {
-    return ["ArrowLeft", "ArrowRight"].indexOf(event.key) > -1;
+    return ['ArrowLeft', 'ArrowRight'].indexOf(event.key) > -1;
   }
 
   handleChange(event) {

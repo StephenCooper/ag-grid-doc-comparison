@@ -1,8 +1,8 @@
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
-import { AgGridVue } from "ag-grid-vue";
-import Vue from "vue";
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import 'ag-grid-enterprise';
+import { AgGridVue } from 'ag-grid-vue';
+import Vue from 'vue';
 
 const VueExample = {
   template: `
@@ -34,22 +34,22 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
-        { field: "group", rowGroup: true, hide: true },
-        { field: "id", pinned: "left", width: 70 },
-        { field: "model", width: 180 },
-        { field: "color", width: 100 },
+        { field: 'group', rowGroup: true, hide: true },
+        { field: 'id', pinned: 'left', width: 70 },
+        { field: 'model', width: 180 },
+        { field: 'color', width: 100 },
         {
-          field: "price",
+          field: 'price',
           valueFormatter: "'$' + value.toLocaleString()",
           width: 100,
         },
-        { field: "year", width: 100 },
-        { field: "country", width: 120 },
+        { field: 'year', width: 100 },
+        { field: 'country', width: 120 },
       ],
       gridApi: null,
       columnApi: null,
@@ -62,7 +62,7 @@ const VueExample = {
   },
   created() {
     this.rowData = getData();
-    this.groupDisplayType = "groupRows";
+    this.groupDisplayType = 'groupRows';
   },
   methods: {
     onFirstDataRendered(params) {
@@ -84,21 +84,21 @@ const VueExample = {
 };
 
 window.setPrinterFriendly = function setPrinterFriendly(api) {
-  const eGridDiv = document.querySelector("#myGrid");
-  eGridDiv.style.height = "";
-  api.setDomLayout("print");
+  const eGridDiv = document.querySelector('#myGrid');
+  eGridDiv.style.height = '';
+  api.setDomLayout('print');
 };
 
 window.setNormal = function setNormal(api) {
-  const eGridDiv = document.querySelector("#myGrid");
-  eGridDiv.style.width = "700px";
-  eGridDiv.style.height = "200px";
+  const eGridDiv = document.querySelector('#myGrid');
+  eGridDiv.style.width = '700px';
+  eGridDiv.style.height = '200px';
   api.setDomLayout();
 };
 
 new Vue({
-  el: "#app",
+  el: '#app',
   components: {
-    "my-component": VueExample,
+    'my-component': VueExample,
   },
 });

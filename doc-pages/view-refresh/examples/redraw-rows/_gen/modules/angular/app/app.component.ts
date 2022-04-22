@@ -4,14 +4,14 @@ import {
   GridReadyEvent,
   RowClassParams,
   RowStyle,
-} from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine-dark.css";
-import { Component } from "@angular/core";
+} from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine-dark.css';
+import { Component } from '@angular/core';
 // Required feature modules are registered in app.module.ts
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<div class="example-wrapper">
     <div style="margin-bottom: 5px;">
       <button (click)="redrawAllRows()">Redraw All Rows</button>
@@ -33,23 +33,26 @@ export class AppComponent {
   private gridApi!: GridApi;
 
   public columnDefs: ColDef[] = [
-    { headerName: "A", field: "a" },
-    { headerName: "B", field: "b" },
-    { headerName: "C", field: "c" },
-    { headerName: "D", field: "d" },
-    { headerName: "E", field: "e" },
-    { headerName: "F", field: "f" },
+    { headerName: 'A', field: 'a' },
+    { headerName: 'B', field: 'b' },
+    { headerName: 'C', field: 'c' },
+    { headerName: 'D', field: 'd' },
+    { headerName: 'E', field: 'e' },
+    { headerName: 'F', field: 'f' },
   ];
   public defaultColDef: ColDef = {
     flex: 1,
   };
   public rowData: any[] | null = createData(12);
-  public getRowStyle: (params: RowClassParams) => RowStyle | undefined =
-    function () {
-      return {
-        backgroundColor: colors[colorIndex],
-      };
+  public getRowStyle: (
+    params: RowClassParams
+  ) => RowStyle | undefined = function (
+    params: RowClassParams
+  ): RowStyle | undefined {
+    return {
+      backgroundColor: colors[colorIndex],
     };
+  };
 
   redrawAllRows() {
     progressColor();
@@ -72,7 +75,7 @@ export class AppComponent {
 }
 
 var colorIndex = 0;
-var colors = ["#000000", "#000066", "#006600", "#660000"];
+var colors = ['#000000', '#000066', '#006600', '#660000'];
 function createData(count: number) {
   var result = [];
   for (var i = 1; i <= count; i++) {

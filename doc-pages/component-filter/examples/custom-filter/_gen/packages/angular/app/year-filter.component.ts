@@ -1,9 +1,9 @@
-import { Component } from "@angular/core";
-import { IFilterAngularComp } from "ag-grid-angular";
-import { IDoesFilterPassParams, IFilterParams } from "ag-grid-community";
+import { Component } from '@angular/core';
+import { IFilterAngularComp } from 'ag-grid-angular';
+import { IDoesFilterPassParams, IFilterParams } from 'ag-grid-community';
 
 @Component({
-  selector: "year-component",
+  selector: 'year-component',
   template: `
     <div style="display: inline-block; width: 400px;">
       <div
@@ -40,14 +40,14 @@ import { IDoesFilterPassParams, IFilterParams } from "ag-grid-community";
 })
 export class YearFilter implements IFilterAngularComp {
   params!: IFilterParams;
-  year = "All";
+  year = 'All';
 
   agInit(params: IFilterParams): void {
     this.params = params;
   }
 
   isFilterActive(): boolean {
-    return this.year === "2010";
+    return this.year === '2010';
   }
 
   doesFilterPass(params: IDoesFilterPassParams): boolean {

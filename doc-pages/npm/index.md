@@ -13,6 +13,7 @@ npm install --save ag-grid-community
 
 To install AG Grid Enterprise and update your `package.json` file run:
 
+
 ```bash
 npm install --save ag-grid-enterprise
 ```
@@ -21,16 +22,16 @@ Afterwards, depending on your project setup, you can either `require` or `import
 
 ```js
 // ECMA 5 - using nodes require() method
-var AgGrid = require("ag-grid-community");
+var AgGrid = require('ag-grid-community');
 
 // ECMA 6 - using the system import method
-import { Grid } from "ag-grid-community";
+import { Grid } from 'ag-grid-community';
 ```
 
 For AG Grid Enterprise features, import the `ag-grid-enterprise` package for it to be included in your application:
 
 ```js
-import "ag-grid-enterprise";
+import 'ag-grid-enterprise'
 ```
 
 After you have loaded the scripts, you should include the styles in your project. There are several

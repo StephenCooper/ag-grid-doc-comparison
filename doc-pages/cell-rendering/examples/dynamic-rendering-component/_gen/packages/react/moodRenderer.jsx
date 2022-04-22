@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 
 export default class MoodRenderer extends Component {
   constructor(props) {
@@ -16,8 +16,8 @@ export default class MoodRenderer extends Component {
   setMood(mood) {
     this.setState({
       imgForMood:
-        "https://www.ag-grid.com/example-assets/smileys/" +
-        (mood === "Happy" ? "happy.png" : "sad.png"),
+        'https://www.ag-grid.com/example-assets/smileys/' +
+        (mood === 'Happy' ? 'happy.png' : 'sad.png'),
     });
   }
 

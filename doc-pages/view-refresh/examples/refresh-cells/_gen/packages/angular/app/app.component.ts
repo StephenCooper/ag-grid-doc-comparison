@@ -1,16 +1,16 @@
-import { Component } from "@angular/core";
+import { Component } from '@angular/core';
 import {
   ColDef,
   GridApi,
   GridReadyEvent,
   RefreshCellsParams,
   RowNode,
-} from "ag-grid-community";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine-dark.css";
+} from 'ag-grid-community';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine-dark.css';
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<div class="example-wrapper">
     <div class="example-header">
       <div>
@@ -52,12 +52,12 @@ export class AppComponent {
   private gridApi!: GridApi;
 
   public columnDefs: ColDef[] = [
-    { field: "a", suppressCellFlash: true },
-    { field: "b" },
-    { field: "c" },
-    { field: "d" },
-    { field: "e" },
-    { field: "f" },
+    { field: 'a', suppressCellFlash: true },
+    { field: 'b' },
+    { field: 'c' },
+    { field: 'd' },
+    { field: 'e' },
+    { field: 'f' },
   ];
   public defaultColDef: ColDef = {
     flex: 1,
@@ -78,7 +78,7 @@ export class AppComponent {
   scrambleAndRefreshLeftToRight() {
     scramble();
     var api = this.gridApi!;
-    ["a", "b", "c", "d", "e", "f"].forEach(function (col, index) {
+    ['a', 'b', 'c', 'd', 'e', 'f'].forEach(function (col, index) {
       var millis = index * 100;
       var params = {
         force: isForceRefreshSelected(),
@@ -99,12 +99,12 @@ export class AppComponent {
       rowNode = api.getPinnedTopRow(i)!;
       refreshRow(rowNode, api);
     }
-    for (i = 0; i < this.gridApi.getDisplayedRowCount(); i++) {
-      rowNode = this.gridApi.getDisplayedRowAtIndex(i)!;
+    for (i = 0; i < api.getDisplayedRowCount(); i++) {
+      rowNode = api.getDisplayedRowAtIndex(i)!;
       refreshRow(rowNode, api);
     }
-    for (i = 0; i < this.gridApi.getPinnedBottomRowCount(); i++) {
-      rowNode = this.gridApi.getPinnedBottomRow(i)!;
+    for (i = 0; i < api.getPinnedBottomRowCount(); i++) {
+      rowNode = api.getPinnedBottomRow(i)!;
       refreshRow(rowNode, api);
     }
     function refreshRow(rowNode: RowNode, api: GridApi) {
@@ -153,10 +153,10 @@ function createData(count: number): any[] {
   return result;
 }
 function isForceRefreshSelected() {
-  return (document.querySelector("#forceRefresh") as HTMLInputElement).checked;
+  return (document.querySelector('#forceRefresh') as HTMLInputElement).checked;
 }
 function isSuppressFlashSelected() {
-  return (document.querySelector("#suppressFlash") as HTMLInputElement).checked;
+  return (document.querySelector('#suppressFlash') as HTMLInputElement).checked;
 }
 function callRefreshAfterMillis(
   params: RefreshCellsParams,
@@ -173,7 +173,7 @@ function scramble() {
   bottomRowData.forEach(scrambleItem);
 }
 function scrambleItem(item: any) {
-  ["a", "b", "c", "d", "e", "f"].forEach(function (colId) {
+  ['a', 'b', 'c', 'd', 'e', 'f'].forEach(function (colId) {
     // skip 50% of the cells so updates are random
     if (Math.random() > 0.5) {
       return;

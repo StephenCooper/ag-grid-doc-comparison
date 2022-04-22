@@ -2,7 +2,7 @@ import {
   IDoesFilterPassParams,
   IFilterComp,
   IFilterParams,
-} from "ag-grid-community";
+} from 'ag-grid-community';
 
 export class PersonFilter implements IFilterComp {
   params!: IFilterParams;
@@ -18,7 +18,7 @@ export class PersonFilter implements IFilterComp {
 
   // not called by AG Grid, just for us to help setup
   setupGui(params: IFilterParams) {
-    this.gui = document.createElement("div");
+    this.gui = document.createElement('div');
     this.gui.innerHTML =
       '<div style="padding: 4px;">' +
       '<div style="font-weight: bold;">Custom Athlete Filter</div>' +
@@ -26,16 +26,16 @@ export class PersonFilter implements IFilterComp {
       '<div style="margin-top: 20px; width: 200px;">This filter does partial word search on multiple words, eg "mich phel" still brings back Michael Phelps.</div>' +
       '<div style="margin-top: 20px; width: 200px;">Just to iterate anything can go in here, here is an image:</div>' +
       '<div><img src="images/ag-Grid2-200.png" style="width: 150px; text-align: center; padding: 10px; margin: 10px; border: 1px solid lightgrey;"/></div>' +
-      "</div>";
+      '</div>';
     const listener = (event: any) => {
       this.filterText = event.target.value;
       params.filterChangedCallback();
     };
 
-    this.eFilterText = this.gui.querySelector("#filterText");
-    this.eFilterText.addEventListener("changed", listener);
-    this.eFilterText.addEventListener("paste", listener);
-    this.eFilterText.addEventListener("input", listener);
+    this.eFilterText = this.gui.querySelector('#filterText');
+    this.eFilterText.addEventListener('changed', listener);
+    this.eFilterText.addEventListener('paste', listener);
+    this.eFilterText.addEventListener('input', listener);
   }
 
   getGui() {
@@ -62,7 +62,7 @@ export class PersonFilter implements IFilterComp {
 
     // make sure each word passes separately, ie search for firstname, lastname
     return this.filterText!.toLowerCase()
-      .split(" ")
+      .split(' ')
       .every((filterWord) => {
         return value.indexOf(filterWord) >= 0;
       });
@@ -72,7 +72,7 @@ export class PersonFilter implements IFilterComp {
     var isActive =
       this.filterText !== null &&
       this.filterText !== undefined &&
-      this.filterText !== "";
+      this.filterText !== '';
     return isActive;
   }
 

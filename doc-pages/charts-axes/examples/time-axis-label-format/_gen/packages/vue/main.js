@@ -1,7 +1,7 @@
-import * as agCharts from "ag-charts-community";
-import { AgChartsVue } from "ag-charts-vue";
-import { cloneDeep } from "lodash";
-import Vue from "vue";
+import * as agCharts from 'ag-charts-community';
+import { AgChartsVue } from 'ag-charts-vue';
+import { cloneDeep } from 'lodash';
+import Vue from 'vue';
 
 const ChartExample = {
   template: `
@@ -16,7 +16,7 @@ const ChartExample = {
             </div>
     `,
   components: {
-    "ag-charts-vue": AgChartsVue,
+    'ag-charts-vue': AgChartsVue,
   },
   data: function () {
     return {
@@ -26,33 +26,33 @@ const ChartExample = {
   created() {
     this.options = {
       title: {
-        text: "Monthly average daily temperatures in the UK",
+        text: 'Monthly average daily temperatures in the UK',
       },
       series: [
         {
-          type: "line",
-          xKey: "date",
-          yKey: "temp",
+          type: 'line',
+          xKey: 'date',
+          yKey: 'temp',
         },
       ],
       axes: [
         {
-          type: "time",
+          type: 'time',
           nice: false,
-          position: "bottom",
+          position: 'bottom',
           tick: {
             count: agCharts.time.month,
           },
           label: {
-            format: "%b %Y",
+            format: '%b %Y',
           },
         },
         {
-          type: "number",
-          position: "left",
+          type: 'number',
+          position: 'left',
           label: {
             formatter: (params) => {
-              return params.value + " °C";
+              return params.value + ' °C';
             },
           },
         },
@@ -68,23 +68,23 @@ const ChartExample = {
       },
       data: [
         {
-          date: new Date("01 Jan 2019 00:00:00 GMT"),
+          date: new Date('01 Jan 2019 00:00:00 GMT'),
           temp: 4.2,
         },
         {
-          date: new Date("01 Feb 2019 00:00:00 GMT"),
+          date: new Date('01 Feb 2019 00:00:00 GMT'),
           temp: 6.9,
         },
         {
-          date: new Date("01 Mar 2019 00:00:00 GMT"),
+          date: new Date('01 Mar 2019 00:00:00 GMT'),
           temp: 7.9,
         },
         {
-          date: new Date("01 Apr 2019 00:00:00 GMT"),
+          date: new Date('01 Apr 2019 00:00:00 GMT'),
           temp: 9.1,
         },
         {
-          date: new Date("01 May 2019 00:00:00 GMT"),
+          date: new Date('01 May 2019 00:00:00 GMT'),
           temp: 11.2,
         },
       ],
@@ -110,8 +110,8 @@ const ChartExample = {
 };
 
 new Vue({
-  el: "#app",
+  el: '#app',
   components: {
-    "my-component": ChartExample,
+    'my-component': ChartExample,
   },
 });

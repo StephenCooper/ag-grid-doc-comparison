@@ -4,15 +4,15 @@ import {
   ExcelExportParams,
   GridApi,
   GridReadyEvent,
-} from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { HttpClient } from "@angular/common/http";
-import { Component } from "@angular/core";
+} from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { HttpClient } from '@angular/common/http';
+import { Component } from '@angular/core';
 // Required feature modules are registered in app.module.ts
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<div class="container">
     <div class="columns">
       <label class="option" for="prependContent"
@@ -47,13 +47,13 @@ export class AppComponent {
   private gridApi!: GridApi;
 
   public columnDefs: ColDef[] = [
-    { field: "athlete", minWidth: 200 },
-    { field: "country", minWidth: 200 },
-    { field: "sport", minWidth: 150 },
-    { field: "gold" },
-    { field: "silver" },
-    { field: "bronze" },
-    { field: "total" },
+    { field: 'athlete', minWidth: 200 },
+    { field: 'country', minWidth: 200 },
+    { field: 'sport', minWidth: 150 },
+    { field: 'gold' },
+    { field: 'silver' },
+    { field: 'bronze' },
+    { field: 'total' },
   ];
   public defaultColDef: ColDef = {
     sortable: true,
@@ -76,7 +76,7 @@ export class AppComponent {
 
     this.http
       .get<any[]>(
-        "https://www.ag-grid.com/example-assets/small-olympic-winners.json"
+        'https://www.ag-grid.com/example-assets/small-olympic-winners.json'
       )
       .subscribe((data) =>
         params.api!.setRowData(data.filter((rec: any) => rec.country != null))
@@ -88,24 +88,24 @@ const getRows: () => ExcelCell[][] = () => [
   [],
   [
     {
-      data: { value: 'Here is a comma, and a some "quotes".', type: "String" },
+      data: { value: 'Here is a comma, and a some "quotes".', type: 'String' },
     },
   ],
   [
     {
       data: {
         value:
-          "They are visible when the downloaded file is opened in Excel because custom content is properly escaped.",
-        type: "String",
+          'They are visible when the downloaded file is opened in Excel because custom content is properly escaped.',
+        type: 'String',
       },
     },
   ],
   [
-    { data: { value: "this cell:", type: "String" }, mergeAcross: 1 },
+    { data: { value: 'this cell:', type: 'String' }, mergeAcross: 1 },
     {
       data: {
-        value: "is empty because the first cell has mergeAcross=1",
-        type: "String",
+        value: 'is empty because the first cell has mergeAcross=1',
+        type: 'String',
       },
     },
   ],
@@ -114,6 +114,6 @@ const getRows: () => ExcelCell[][] = () => [
 const getBoolean = (inputSelector: string) =>
   !!(document.querySelector(inputSelector) as HTMLInputElement).checked;
 const getParams: () => ExcelExportParams = () => ({
-  prependContent: getBoolean("#prependContent") ? getRows() : undefined,
-  appendContent: getBoolean("#appendContent") ? getRows() : undefined,
+  prependContent: getBoolean('#prependContent') ? getRows() : undefined,
+  appendContent: getBoolean('#appendContent') ? getRows() : undefined,
 });

@@ -1,15 +1,15 @@
 const columnDefs = [
-  { headerName: "#", colId: "rowNum", valueGetter: "node.id" },
-  { field: "athlete", minWidth: 170 },
-  { field: "age" },
-  { field: "country" },
-  { field: "year" },
-  { field: "date" },
-  { field: "sport" },
-  { field: "gold" },
-  { field: "silver" },
-  { field: "bronze" },
-  { field: "total" },
+  { headerName: '#', colId: 'rowNum', valueGetter: 'node.id' },
+  { field: 'athlete', minWidth: 170 },
+  { field: 'age' },
+  { field: 'country' },
+  { field: 'year' },
+  { field: 'date' },
+  { field: 'sport' },
+  { field: 'gold' },
+  { field: 'silver' },
+  { field: 'bronze' },
+  { field: 'total' },
 ];
 
 const gridOptions = {
@@ -28,14 +28,14 @@ const gridOptions = {
 
 function onFirstDataRendered(params) {
   // obtain reference to input element
-  var myInput = document.getElementById("my-input");
+  var myInput = document.getElementById('my-input');
 
   // intercept key strokes within input element
   myInput.addEventListener(
-    "keydown",
+    'keydown',
     function (event) {
       // ignore non Tab key strokes
-      if (event.key !== "Tab") return;
+      if (event.key !== 'Tab') return;
 
       // prevents tabbing into the url section
       event.preventDefault();
@@ -55,11 +55,11 @@ function onFirstDataRendered(params) {
 }
 
 // setup the grid after the page has finished loading
-document.addEventListener("DOMContentLoaded", function () {
-  var gridDiv = document.querySelector("#myGrid");
+document.addEventListener('DOMContentLoaded', function () {
+  var gridDiv = document.querySelector('#myGrid');
   new agGrid.Grid(gridDiv, gridOptions);
 
-  fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+  fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
     .then((response) => response.json())
     .then((data) => gridOptions.api.setRowData(data));
 });

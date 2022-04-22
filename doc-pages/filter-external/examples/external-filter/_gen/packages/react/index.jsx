@@ -1,11 +1,11 @@
-"use strict";
+'use strict';
 
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
-import { AgGridReact } from "ag-grid-react";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from 'ag-grid-react';
+import 'ag-grid-enterprise';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 
 class GridExample extends Component {
   constructor(props) {
@@ -13,18 +13,18 @@ class GridExample extends Component {
 
     this.state = {
       columnDefs: [
-        { field: "athlete", minWidth: 180 },
-        { field: "age", filter: "agNumberColumnFilter", maxWidth: 80 },
-        { field: "country" },
-        { field: "year", maxWidth: 90 },
+        { field: 'athlete', minWidth: 180 },
+        { field: 'age', filter: 'agNumberColumnFilter', maxWidth: 80 },
+        { field: 'country' },
+        { field: 'year', maxWidth: 90 },
         {
-          field: "date",
-          filter: "agDateColumnFilter",
+          field: 'date',
+          filter: 'agDateColumnFilter',
           filterParams: dateFilterParams,
         },
-        { field: "gold", filter: "agNumberColumnFilter" },
-        { field: "silver", filter: "agNumberColumnFilter" },
-        { field: "bronze", filter: "agNumberColumnFilter" },
+        { field: 'gold', filter: 'agNumberColumnFilter' },
+        { field: 'silver', filter: 'agNumberColumnFilter' },
+        { field: 'bronze', filter: 'agNumberColumnFilter' },
       ],
       defaultColDef: {
         flex: 1,
@@ -40,11 +40,11 @@ class GridExample extends Component {
     this.gridColumnApi = params.columnApi;
 
     const updateData = (data) => {
-      document.querySelector("#everyone").checked = true;
+      document.querySelector('#everyone').checked = true;
       this.setState({ rowData: data });
     };
 
-    fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+    fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .then((resp) => resp.json())
       .then((data) => updateData(data));
   };
@@ -56,18 +56,18 @@ class GridExample extends Component {
 
   isExternalFilterPresent = () => {
     // if ageType is not everyone, then we are filtering
-    return ageType !== "everyone";
+    return ageType !== 'everyone';
   };
 
   doesExternalFilterPass = (node) => {
     switch (ageType) {
-      case "below25":
+      case 'below25':
         return node.data.age < 25;
-      case "between25and50":
+      case 'between25and50':
         return node.data.age >= 25 && node.data.age <= 50;
-      case "above50":
+      case 'above50':
         return node.data.age > 50;
-      case "dateAfter2008":
+      case 'dateAfter2008':
         return asDate(node.data.date) > new Date(2008, 1, 1);
       default:
         return true;
@@ -76,7 +76,7 @@ class GridExample extends Component {
 
   render() {
     return (
-      <div style={{ width: "100%", height: "100%" }}>
+      <div style={{ width: '100%', height: '100%' }}>
         <div className="test-container">
           <div className="test-header">
             <label>
@@ -84,7 +84,7 @@ class GridExample extends Component {
                 type="radio"
                 name="filter"
                 id="everyone"
-                onChange={() => this.externalFilterChanged("everyone")}
+                onChange={() => this.externalFilterChanged('everyone')}
               />
               Everyone
             </label>
@@ -93,7 +93,7 @@ class GridExample extends Component {
                 type="radio"
                 name="filter"
                 id="below25"
-                onChange={() => this.externalFilterChanged("below25")}
+                onChange={() => this.externalFilterChanged('below25')}
               />
               Below 25
             </label>
@@ -102,7 +102,7 @@ class GridExample extends Component {
                 type="radio"
                 name="filter"
                 id="between25and50"
-                onChange={() => this.externalFilterChanged("between25and50")}
+                onChange={() => this.externalFilterChanged('between25and50')}
               />
               Between 25 and 50
             </label>
@@ -111,7 +111,7 @@ class GridExample extends Component {
                 type="radio"
                 name="filter"
                 id="above50"
-                onChange={() => this.externalFilterChanged("above50")}
+                onChange={() => this.externalFilterChanged('above50')}
               />
               Above 50
             </label>
@@ -120,15 +120,15 @@ class GridExample extends Component {
                 type="radio"
                 name="filter"
                 id="dateAfter2008"
-                onChange={() => this.externalFilterChanged("dateAfter2008")}
+                onChange={() => this.externalFilterChanged('dateAfter2008')}
               />
               After 01/01/2008
             </label>
           </div>
           <div
             style={{
-              height: "100%",
-              width: "100%",
+              height: '100%',
+              width: '100%',
             }}
             className="ag-theme-alpine"
           >
@@ -162,9 +162,9 @@ var dateFilterParams = {
     }
   },
 };
-var ageType = "everyone";
+var ageType = 'everyone';
 function asDate(dateAsString) {
-  var splitFields = dateAsString.split("/");
+  var splitFields = dateAsString.split('/');
   return new Date(
     Number.parseInt(splitFields[2]),
     Number.parseInt(splitFields[1]) - 1,
@@ -172,4 +172,4 @@ function asDate(dateAsString) {
   );
 }
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

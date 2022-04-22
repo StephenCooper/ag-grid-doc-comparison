@@ -7,19 +7,19 @@ import {
   IServerSideGetRowsParams,
   IServerSideGetRowsRequest,
   RowNode,
-} from "ag-grid-community";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine-dark.css";
-import "ag-grid-enterprise";
+} from 'ag-grid-community';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine-dark.css';
+import 'ag-grid-enterprise';
 declare var _: any;
 
 const columnDefs: ColDef[] = [
-  { field: "id", hide: true },
-  { field: "athlete" },
-  { field: "country", rowGroup: true, hide: true },
-  { field: "gold" },
-  { field: "silver" },
-  { field: "bronze" },
+  { field: 'id', hide: true },
+  { field: 'athlete' },
+  { field: 'country', rowGroup: true, hide: true },
+  { field: 'gold' },
+  { field: 'silver' },
+  { field: 'bronze' },
 ];
 
 const gridOptions: GridOptions = {
@@ -28,10 +28,10 @@ const gridOptions: GridOptions = {
     resizable: true,
   },
   columnDefs: columnDefs,
-  rowSelection: "multiple",
+  rowSelection: 'multiple',
   // use the enterprise row model
-  rowModelType: "serverSide",
-  serverSideStoreType: "partial",
+  rowModelType: 'serverSide',
+  serverSideStoreType: 'partial',
   cacheBlockSize: 75,
   animateRows: true,
   isRowSelectable: isRowSelectable,
@@ -85,10 +85,10 @@ var idSequence = 0;
 var allData: any[] = [];
 
 // setup the grid after the page has finished loading
-var gridDiv = document.querySelector<HTMLElement>("#myGrid")!;
+var gridDiv = document.querySelector<HTMLElement>('#myGrid')!;
 new Grid(gridDiv, gridOptions);
 
-fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
   .then((response) => response.json())
   .then(function (data) {
     allData = data;
@@ -124,7 +124,7 @@ function getMockServerResponse(request: IServerSideGetRowsRequest) {
   var rowGroupColIds = request.rowGroupCols.map(function (x) {
     return x.id;
   });
-  var parentId = groupKeys.length > 0 ? groupKeys.join("") : "";
+  var parentId = groupKeys.length > 0 ? groupKeys.join('') : '';
 
   var rows = group(allData, rowGroupColIds, groupKeys, parentId);
 
@@ -157,7 +157,7 @@ function group(
 
       // Note: the server provides group id's using a simple heuristic based on group keys:
       // i.e. group node ids will be in the following format: 'Russia', 'Russia-2002'
-      res["id"] = getGroupId(parentId, key);
+      res['id'] = getGroupId(parentId, key);
 
       res[groupColId!] = key;
       return res;
@@ -185,10 +185,10 @@ function updateServerRows(rowsToUpdate: any[]) {
 }
 
 function getGroupId(parentId: string, key: string) {
-  return parentId ? parentId + "-" + key : key;
+  return parentId ? parentId + '-' + key : key;
 }
 
-if (typeof window !== "undefined") {
+if (typeof window !== 'undefined') {
   // Attach external event handlers to window so they can be called from index.html
   (<any>window).refreshStore = refreshStore;
   (<any>window).updateSelectedRows = updateSelectedRows;

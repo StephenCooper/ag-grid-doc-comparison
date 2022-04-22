@@ -19,9 +19,9 @@ export default {
   methods: {
     valueChanged(event) {
       this.currentValue = event.target.value;
-      let valueToUse = this.currentValue === "0" ? null : this.currentValue;
+      let valueToUse = this.currentValue === '0' ? null : this.currentValue;
       this.params.parentFilterInstance(function (instance) {
-        instance.onFloatingFilterChanged("greaterThan", valueToUse);
+        instance.onFloatingFilterChanged('greaterThan', valueToUse);
       });
     },
 

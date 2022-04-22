@@ -1,4 +1,4 @@
-import React, { Component, createRef, Fragment } from "react";
+import React, { Component, createRef, Fragment } from 'react';
 
 export default class NumberFloatingFilterComponent extends Component {
   constructor(props) {
@@ -14,16 +14,16 @@ export default class NumberFloatingFilterComponent extends Component {
   onParentModelChanged(parentModel) {
     // When the filter is empty we will receive a null value here
     if (!parentModel) {
-      this.inputRef.current.value = "";
+      this.inputRef.current.value = '';
       this.setState({ currentValue: null });
     } else {
-      this.inputRef.current.value = parentModel.filter + "";
+      this.inputRef.current.value = parentModel.filter + '';
       this.setState({ currentValue: parentModel.filter });
     }
   }
 
   onInputBoxChanged = (input) => {
-    if (input.target.value === "") {
+    if (input.target.value === '') {
       // Remove the filter
       this.props.parentFilterInstance((instance) => {
         instance.onFloatingFilterChanged(null, null);
@@ -33,19 +33,19 @@ export default class NumberFloatingFilterComponent extends Component {
 
     this.setState({ currentValue: Number(input.target.value) });
     this.props.parentFilterInstance((instance) => {
-      instance.onFloatingFilterChanged("greaterThan", input.target.value);
+      instance.onFloatingFilterChanged('greaterThan', input.target.value);
     });
   };
 
   render() {
     const style = {
       color: this.props.color,
-      width: "30px",
+      width: '30px',
     };
 
     return (
       <Fragment>
-        &gt;{" "}
+        &gt;{' '}
         <input
           ref={this.inputRef}
           style={style}

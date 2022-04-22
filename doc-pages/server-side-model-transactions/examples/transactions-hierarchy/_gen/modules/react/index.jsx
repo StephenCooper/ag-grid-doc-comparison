@@ -1,13 +1,13 @@
-"use strict";
+'use strict';
 
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine-dark.css";
-import { AgGridReact } from "@ag-grid-community/react";
-import { RowGroupingModule } from "@ag-grid-enterprise/row-grouping";
-import { ServerSideRowModelModule } from "@ag-grid-enterprise/server-side-row-model";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from '@ag-grid-community/react';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine-dark.css';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import { ServerSideRowModelModule } from '@ag-grid-enterprise/server-side-row-model';
+import { RowGroupingModule } from '@ag-grid-enterprise/row-grouping';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([ServerSideRowModelModule, RowGroupingModule]);
@@ -18,9 +18,9 @@ class GridExample extends Component {
 
     this.state = {
       columnDefs: [
-        { field: "productName", rowGroup: true, hide: true },
-        { field: "tradeName" },
-        { field: "value" },
+        { field: 'productName', rowGroup: true, hide: true },
+        { field: 'tradeName' },
+        { field: 'value' },
       ],
       defaultColDef: {
         width: 250,
@@ -29,10 +29,10 @@ class GridExample extends Component {
       getRowId: function (params) {
         return params.data.id;
       },
-      rowModelType: "serverSide",
-      serverSideStoreType: "full",
+      rowModelType: 'serverSide',
+      serverSideStoreType: 'full',
       getServerSideStoreParams: function (params) {
-        const type = params.level == 0 ? "partial" : "full";
+        const type = params.level == 0 ? 'partial' : 'full';
         return {
           storeType: type,
         };
@@ -77,65 +77,65 @@ class GridExample extends Component {
 
   onBtNewPalmOil = () => {
     const transaction = {
-      route: ["Palm Oil"],
+      route: ['Palm Oil'],
       add: [createOneTrade()],
     };
     const res = this.gridApi.applyServerSideTransaction(transaction);
-    console.log("New Palm Oil, result = " + (res && res.status));
+    console.log('New Palm Oil, result = ' + (res && res.status));
   };
 
   onBtNewRubber = () => {
     const transaction = {
-      route: ["Rubber"],
+      route: ['Rubber'],
       add: [createOneTrade()],
     };
     const res = this.gridApi.applyServerSideTransaction(transaction);
-    console.log("New Rubber, result = " + (res && res.status));
+    console.log('New Rubber, result = ' + (res && res.status));
   };
 
   onBtNewWoolAmber = () => {
     const transactions = [];
     transactions.push({
-      route: ["Wool"],
+      route: ['Wool'],
       add: [createOneTrade()],
     });
     transactions.push({
-      route: ["Amber"],
+      route: ['Amber'],
       add: [createOneTrade()],
     });
     const api = this.gridApi;
     transactions.forEach(function (tx) {
       const res = api.applyServerSideTransaction(tx);
-      console.log("New " + tx.route[0] + ", result = " + (res && res.status));
+      console.log('New ' + tx.route[0] + ', result = ' + (res && res.status));
     });
   };
 
   onBtNewProduct = () => {
     const transaction = {
       route: [],
-      add: [{ id: idSequence++, productName: "Rice", trades: [] }],
+      add: [{ id: idSequence++, productName: 'Rice', trades: [] }],
     };
     const res = this.gridApi.applyServerSideTransaction(transaction);
-    console.log("New Product, result = " + (res && res.status));
+    console.log('New Product, result = ' + (res && res.status));
   };
 
   onBtStoreState = () => {
     const storeState = this.gridApi.getServerSideStoreState();
-    console.log("Store States:");
+    console.log('Store States:');
     storeState.forEach(function (state, index) {
       console.log(
         index +
-          " - " +
-          JSON.stringify(state).replace(/"/g, "").replace(/,/g, ", ")
+          ' - ' +
+          JSON.stringify(state).replace(/"/g, '').replace(/,/g, ', ')
       );
     });
   };
 
   render() {
     return (
-      <div style={{ width: "100%", height: "100%" }}>
+      <div style={{ width: '100%', height: '100%' }}>
         <div className="example-wrapper">
-          <div style={{ marginBottom: "5px" }}>
+          <div style={{ marginBottom: '5px' }}>
             <button onClick={() => this.onBtNewPalmOil()}>New Palm Oil</button>
             <button onClick={() => this.onBtNewRubber()}>New Rubber</button>
             <button onClick={() => this.onBtNewWoolAmber()}>
@@ -149,8 +149,8 @@ class GridExample extends Component {
           </div>
           <div
             style={{
-              height: "100%",
-              width: "100%",
+              height: '100%',
+              width: '100%',
             }}
             className="ag-theme-alpine-dark"
           >
@@ -172,13 +172,13 @@ class GridExample extends Component {
   }
 }
 
-const productsNames = ["Palm Oil", "Rubber", "Wool", "Amber", "Copper"];
+const productsNames = ['Palm Oil', 'Rubber', 'Wool', 'Amber', 'Copper'];
 const products = [];
 let idSequence = 0;
 function createOneTrade() {
   return {
     id: idSequence++,
-    tradeName: "TRD-" + Math.floor(Math.random() * 20000),
+    tradeName: 'TRD-' + Math.floor(Math.random() * 20000),
     value: Math.floor(Math.random() * 20000),
   };
 }
@@ -192,4 +192,4 @@ function setupData() {
   });
 }
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

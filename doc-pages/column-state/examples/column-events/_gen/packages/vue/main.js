@@ -1,8 +1,8 @@
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
-import { AgGridVue } from "ag-grid-vue";
-import Vue from "vue";
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import 'ag-grid-enterprise';
+import { AgGridVue } from 'ag-grid-vue';
+import Vue from 'vue';
 
 const VueExample = {
   template: `
@@ -72,18 +72,18 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: [
-        { field: "athlete" },
-        { field: "age" },
-        { field: "country" },
-        { field: "sport" },
-        { field: "gold" },
-        { field: "silver" },
-        { field: "bronze" },
+        { field: 'athlete' },
+        { field: 'age' },
+        { field: 'country' },
+        { field: 'sport' },
+        { field: 'gold' },
+        { field: 'silver' },
+        { field: 'bronze' },
       ],
       gridApi: null,
       columnApi: null,
@@ -101,34 +101,34 @@ const VueExample = {
   created() {},
   methods: {
     onSortChanged(e) {
-      console.log("Event Sort Changed", e);
+      console.log('Event Sort Changed', e);
     },
     onColumnResized(e) {
-      console.log("Event Column Resized", e);
+      console.log('Event Column Resized', e);
     },
     onColumnVisible(e) {
-      console.log("Event Column Visible", e);
+      console.log('Event Column Visible', e);
     },
     onColumnPivotChanged(e) {
-      console.log("Event Pivot Changed", e);
+      console.log('Event Pivot Changed', e);
     },
     onColumnRowGroupChanged(e) {
-      console.log("Event Row Group Changed", e);
+      console.log('Event Row Group Changed', e);
     },
     onColumnValueChanged(e) {
-      console.log("Event Value Changed", e);
+      console.log('Event Value Changed', e);
     },
     onColumnMoved(e) {
-      console.log("Event Column Moved", e);
+      console.log('Event Column Moved', e);
     },
     onColumnPinned(e) {
-      console.log("Event Column Pinned", e);
+      console.log('Event Column Pinned', e);
     },
     onBtSortOn() {
       this.gridColumnApi.applyColumnState({
         state: [
-          { colId: "age", sort: "desc" },
-          { colId: "athlete", sort: "asc" },
+          { colId: 'age', sort: 'desc' },
+          { colId: 'athlete', sort: 'asc' },
         ],
       });
     },
@@ -140,24 +140,24 @@ const VueExample = {
     onBtWidthNarrow() {
       this.gridColumnApi.applyColumnState({
         state: [
-          { colId: "age", width: 100 },
-          { colId: "athlete", width: 100 },
+          { colId: 'age', width: 100 },
+          { colId: 'athlete', width: 100 },
         ],
       });
     },
     onBtWidthNormal() {
       this.gridColumnApi.applyColumnState({
         state: [
-          { colId: "age", width: 200 },
-          { colId: "athlete", width: 200 },
+          { colId: 'age', width: 200 },
+          { colId: 'athlete', width: 200 },
         ],
       });
     },
     onBtHide() {
       this.gridColumnApi.applyColumnState({
         state: [
-          { colId: "age", hide: true },
-          { colId: "athlete", hide: true },
+          { colId: 'age', hide: true },
+          { colId: 'athlete', hide: true },
         ],
       });
     },
@@ -169,7 +169,7 @@ const VueExample = {
     onBtPivotOn() {
       this.gridColumnApi.setPivotMode(true);
       this.gridColumnApi.applyColumnState({
-        state: [{ colId: "country", pivot: true }],
+        state: [{ colId: 'country', pivot: true }],
       });
     },
     onBtPivotOff() {
@@ -180,7 +180,7 @@ const VueExample = {
     },
     onBtRowGroupOn() {
       this.gridColumnApi.applyColumnState({
-        state: [{ colId: "sport", rowGroup: true }],
+        state: [{ colId: 'sport', rowGroup: true }],
       });
     },
     onBtRowGroupOff() {
@@ -191,9 +191,9 @@ const VueExample = {
     onBtAggFuncOn() {
       this.gridColumnApi.applyColumnState({
         state: [
-          { colId: "gold", aggFunc: "sum" },
-          { colId: "silver", aggFunc: "sum" },
-          { colId: "bronze", aggFunc: "sum" },
+          { colId: 'gold', aggFunc: 'sum' },
+          { colId: 'silver', aggFunc: 'sum' },
+          { colId: 'bronze', aggFunc: 'sum' },
         ],
       });
     },
@@ -205,13 +205,13 @@ const VueExample = {
     onBtNormalOrder() {
       this.gridColumnApi.applyColumnState({
         state: [
-          { colId: "athlete" },
-          { colId: "age" },
-          { colId: "country" },
-          { colId: "sport" },
-          { colId: "gold" },
-          { colId: "silver" },
-          { colId: "bronze" },
+          { colId: 'athlete' },
+          { colId: 'age' },
+          { colId: 'country' },
+          { colId: 'sport' },
+          { colId: 'gold' },
+          { colId: 'silver' },
+          { colId: 'bronze' },
         ],
         applyOrder: true,
       });
@@ -219,13 +219,13 @@ const VueExample = {
     onBtReverseOrder() {
       this.gridColumnApi.applyColumnState({
         state: [
-          { colId: "athlete" },
-          { colId: "age" },
-          { colId: "country" },
-          { colId: "sport" },
-          { colId: "bronze" },
-          { colId: "silver" },
-          { colId: "gold" },
+          { colId: 'athlete' },
+          { colId: 'age' },
+          { colId: 'country' },
+          { colId: 'sport' },
+          { colId: 'bronze' },
+          { colId: 'silver' },
+          { colId: 'gold' },
         ],
         applyOrder: true,
       });
@@ -233,8 +233,8 @@ const VueExample = {
     onBtPinnedOn() {
       this.gridColumnApi.applyColumnState({
         state: [
-          { colId: "athlete", pinned: "left" },
-          { colId: "age", pinned: "right" },
+          { colId: 'athlete', pinned: 'left' },
+          { colId: 'age', pinned: 'right' },
         ],
       });
     },
@@ -249,7 +249,7 @@ const VueExample = {
 
       const updateData = (data) => params.api.setRowData(data);
 
-      fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
         .then((resp) => resp.json())
         .then((data) => updateData(data));
     },
@@ -257,8 +257,8 @@ const VueExample = {
 };
 
 new Vue({
-  el: "#app",
+  el: '#app',
   components: {
-    "my-component": VueExample,
+    'my-component': VueExample,
   },
 });

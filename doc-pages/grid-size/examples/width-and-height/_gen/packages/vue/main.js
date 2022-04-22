@@ -1,7 +1,7 @@
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import { AgGridVue } from "ag-grid-vue";
-import Vue from "vue";
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import { AgGridVue } from 'ag-grid-vue';
+import Vue from 'vue';
 
 const VueExample = {
   template: `
@@ -21,40 +21,40 @@ const VueExample = {
         </div>
     `,
   components: {
-    "ag-grid-vue": AgGridVue,
+    'ag-grid-vue': AgGridVue,
   },
   data: function () {
     return {
       columnDefs: null,
       rowData: null,
-      height: "100%",
-      width: "100%",
+      height: '100%',
+      width: '100%',
     };
   },
   beforeMount() {
     this.columnDefs = [
-      { field: "athlete", width: 150 },
-      { field: "age", width: 90 },
-      { field: "country", width: 150 },
-      { field: "year", width: 90 },
-      { field: "date", width: 150 },
-      { field: "sport", width: 150 },
-      { field: "gold", width: 100 },
-      { field: "silver", width: 100 },
-      { field: "bronze", width: 100 },
-      { field: "total", width: 100 },
+      { field: 'athlete', width: 150 },
+      { field: 'age', width: 90 },
+      { field: 'country', width: 150 },
+      { field: 'year', width: 90 },
+      { field: 'date', width: 150 },
+      { field: 'sport', width: 150 },
+      { field: 'gold', width: 100 },
+      { field: 'silver', width: 100 },
+      { field: 'bronze', width: 100 },
+      { field: 'total', width: 100 },
     ];
   },
   mounted() {},
   methods: {
     fillLarge() {
-      this.setWidthAndHeight("100%", "100%");
+      this.setWidthAndHeight('100%', '100%');
     },
     fillMedium() {
-      this.setWidthAndHeight("60%", "60%");
+      this.setWidthAndHeight('60%', '60%');
     },
     fillExact() {
-      this.setWidthAndHeight("400px", "400px");
+      this.setWidthAndHeight('400px', '400px');
     },
     setWidthAndHeight(width, height) {
       this.width = width;
@@ -64,8 +64,8 @@ const VueExample = {
       const httpRequest = new XMLHttpRequest();
 
       httpRequest.open(
-        "GET",
-        "https://www.ag-grid.com/example-assets/olympic-winners.json"
+        'GET',
+        'https://www.ag-grid.com/example-assets/olympic-winners.json'
       );
       httpRequest.send();
       httpRequest.onreadystatechange = () => {
@@ -82,8 +82,8 @@ var minRowHeight = 25;
 var currentRowHeight = minRowHeight;
 
 new Vue({
-  el: "#app",
+  el: '#app',
   components: {
-    "my-component": VueExample,
+    'my-component': VueExample,
   },
 });

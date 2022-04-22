@@ -1,24 +1,24 @@
-"use strict";
+'use strict';
 
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { AgGridReact } from "@ag-grid-community/react";
-import { RichSelectModule } from "@ag-grid-enterprise/rich-select";
-import React, { Component } from "react";
-import { render } from "react-dom";
-import GenderRenderer from "./genderRenderer.jsx";
-import MoodEditor from "./moodEditor.jsx";
-import MoodRenderer from "./moodRenderer.jsx";
-import NumericEditor from "./numericEditor.jsx";
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from '@ag-grid-community/react';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import GenderRenderer from './genderRenderer.jsx';
+import MoodEditor from './moodEditor.jsx';
+import MoodRenderer from './moodRenderer.jsx';
+import NumericEditor from './numericEditor.jsx';
+import { ModuleRegistry } from '@ag-grid-community/core';
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import { RichSelectModule } from '@ag-grid-enterprise/rich-select';
 
 // Register the required feature modules with the Grid
 ModuleRegistry.registerModules([ClientSideRowModelModule, RichSelectModule]);
 
 class CountryCellRenderer {
   init(params) {
-    this.eGui = document.createElement("div");
+    this.eGui = document.createElement('div');
     this.eGui.innerHTML = `${params.value.name}`;
   }
 
@@ -38,38 +38,38 @@ class GridExample extends Component {
     this.state = {
       columnDefs: [
         {
-          field: "first_name",
-          headerName: "First Name",
+          field: 'first_name',
+          headerName: 'First Name',
           width: 120,
           editable: true,
         },
         {
-          field: "last_name",
-          headerName: "Last Name",
+          field: 'last_name',
+          headerName: 'Last Name',
           width: 120,
           editable: true,
         },
         {
-          field: "gender",
+          field: 'gender',
           width: 100,
           editable: true,
           cellRenderer: GenderRenderer,
-          cellEditor: "agRichSelectCellEditor",
+          cellEditor: 'agRichSelectCellEditor',
           cellEditorPopup: true,
           cellEditorParams: {
             cellRenderer: GenderRenderer,
-            values: ["Male", "Female"],
+            values: ['Male', 'Female'],
           },
         },
         {
-          field: "age",
+          field: 'age',
           width: 80,
           editable: true,
           cellEditor: NumericEditor,
           cellEditorPopup: true,
         },
         {
-          field: "mood",
+          field: 'mood',
           width: 100,
           cellRenderer: MoodRenderer,
           cellEditor: MoodEditor,
@@ -77,9 +77,9 @@ class GridExample extends Component {
           editable: true,
         },
         {
-          field: "country",
+          field: 'country',
           width: 110,
-          cellEditor: "agRichSelectCellEditor",
+          cellEditor: 'agRichSelectCellEditor',
           cellEditorPopup: true,
           cellRenderer: CountryCellRenderer,
           keyCreator: function (params) {
@@ -88,22 +88,22 @@ class GridExample extends Component {
           cellEditorParams: {
             cellRenderer: CountryCellRenderer,
             values: [
-              { name: "Ireland", code: "IE" },
-              { name: "UK", code: "UK" },
-              { name: "France", code: "FR" },
+              { name: 'Ireland', code: 'IE' },
+              { name: 'UK', code: 'UK' },
+              { name: 'France', code: 'FR' },
             ],
           },
           editable: true,
         },
         {
-          field: "address",
+          field: 'address',
           editable: true,
-          cellEditor: "agLargeTextCellEditor",
+          cellEditor: 'agLargeTextCellEditor',
           cellEditorPopup: true,
           cellEditorParams: {
-            maxLength: "300",
-            cols: "50",
-            rows: "6",
+            maxLength: '300',
+            cols: '50',
+            rows: '6',
           },
         },
       ],
@@ -126,11 +126,11 @@ class GridExample extends Component {
 
   render() {
     return (
-      <div style={{ width: "100%", height: "100%" }}>
+      <div style={{ width: '100%', height: '100%' }}>
         <div
           style={{
-            height: "100%",
-            width: "100%",
+            height: '100%',
+            width: '100%',
           }}
           className="ag-theme-alpine"
         >
@@ -146,4 +146,4 @@ class GridExample extends Component {
   }
 }
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

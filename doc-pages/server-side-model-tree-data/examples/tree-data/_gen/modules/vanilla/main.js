@@ -1,18 +1,18 @@
 const columnDefs = [
-  { field: "employeeId", hide: true },
-  { field: "employeeName", hide: true },
-  { field: "jobTitle" },
-  { field: "employmentType" },
+  { field: 'employeeId', hide: true },
+  { field: 'employeeName', hide: true },
+  { field: 'jobTitle' },
+  { field: 'employmentType' },
 ];
 
 const gridOptions = {
   defaultColDef: {
     width: 240,
-    filter: "agTextColumnFilter",
+    filter: 'agTextColumnFilter',
     flex: 1,
   },
   autoGroupColumnDef: {
-    field: "employeeName",
+    field: 'employeeName',
     cellRendererParams: {
       innerRenderer: function (params) {
         // display employeeName rather than group key (employeeId)
@@ -20,8 +20,8 @@ const gridOptions = {
       },
     },
   },
-  rowModelType: "serverSide",
-  serverSideStoreType: "partial",
+  rowModelType: 'serverSide',
+  serverSideStoreType: 'partial',
   treeData: true,
   columnDefs: columnDefs,
   animateRows: true,
@@ -40,11 +40,11 @@ const gridOptions = {
 };
 
 // setup the grid after the page has finished loading
-document.addEventListener("DOMContentLoaded", function () {
-  var gridDiv = document.querySelector("#myGrid");
+document.addEventListener('DOMContentLoaded', function () {
+  var gridDiv = document.querySelector('#myGrid');
   new agGrid.Grid(gridDiv, gridOptions);
 
-  fetch("https://www.ag-grid.com/example-assets/small-tree-data.json")
+  fetch('https://www.ag-grid.com/example-assets/small-tree-data.json')
     .then((response) => response.json())
     .then(function (data) {
       var fakeServer = createFakeServer(data);
@@ -91,7 +91,7 @@ function createFakeServer(fakeServerData) {
 function createServerSideDatasource(fakeServer) {
   const dataSource = {
     getRows: function (params) {
-      console.log("ServerSideDatasource.getRows: params = ", params);
+      console.log('ServerSideDatasource.getRows: params = ', params);
 
       var allRows = fakeServer.getData(params.request);
 
@@ -103,7 +103,7 @@ function createServerSideDatasource(fakeServer) {
             rowCount: allRows.length,
           }
         : { rowData: allRows };
-      console.log("getRows: result = ", result);
+      console.log('getRows: result = ', result);
       setTimeout(function () {
         params.success(result);
       }, 200);

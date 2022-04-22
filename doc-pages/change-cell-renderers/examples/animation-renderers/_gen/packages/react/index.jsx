@@ -1,10 +1,10 @@
-"use strict";
+'use strict';
 
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import { AgGridReact } from "ag-grid-react";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from 'ag-grid-react';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 
 class GridExample extends Component {
   constructor(props) {
@@ -13,55 +13,55 @@ class GridExample extends Component {
     this.state = {
       columnDefs: [
         {
-          headerName: "Editable A",
-          field: "a",
+          headerName: 'Editable A',
+          field: 'a',
           editable: true,
           valueParser: numberValueParser,
         },
         {
-          headerName: "Editable B",
-          field: "b",
+          headerName: 'Editable B',
+          field: 'b',
           editable: true,
           valueParser: numberValueParser,
         },
         {
-          headerName: "Editable C",
-          field: "c",
+          headerName: 'Editable C',
+          field: 'c',
           editable: true,
           valueParser: numberValueParser,
         },
         {
-          headerName: "API D",
-          field: "d",
+          headerName: 'API D',
+          field: 'd',
           minWidth: 140,
           valueParser: numberValueParser,
-          cellRenderer: "agAnimateShowChangeCellRenderer",
+          cellRenderer: 'agAnimateShowChangeCellRenderer',
         },
         {
-          headerName: "API E",
-          field: "e",
+          headerName: 'API E',
+          field: 'e',
           minWidth: 140,
           valueParser: numberValueParser,
-          cellRenderer: "agAnimateShowChangeCellRenderer",
+          cellRenderer: 'agAnimateShowChangeCellRenderer',
         },
         {
-          headerName: "Total",
+          headerName: 'Total',
           minWidth: 140,
-          valueGetter: "data.a + data.b + data.c + data.d + data.e",
-          cellRenderer: "agAnimateShowChangeCellRenderer",
+          valueGetter: 'data.a + data.b + data.c + data.d + data.e',
+          cellRenderer: 'agAnimateShowChangeCellRenderer',
         },
         {
-          headerName: "Average",
+          headerName: 'Average',
           minWidth: 140,
-          valueGetter: "(data.a + data.b + data.c + data.d + data.e) / 5",
-          cellRenderer: "agAnimateSlideCellRenderer",
+          valueGetter: '(data.a + data.b + data.c + data.d + data.e) / 5',
+          cellRenderer: 'agAnimateSlideCellRenderer',
         },
       ],
       defaultColDef: {
         flex: 1,
         minWidth: 120,
         resizable: true,
-        cellClass: "align-right",
+        cellClass: 'align-right',
         valueFormatter: function (params) {
           return formatNumber(params.value);
         },
@@ -80,24 +80,24 @@ class GridExample extends Component {
     for (let i = 0; i < 10; i++) {
       const row = Math.floor(Math.random() * rowCount);
       const rowNode = this.gridApi.getDisplayedRowAtIndex(row);
-      rowNode.setDataValue("d", Math.floor(Math.random() * 10000));
-      rowNode.setDataValue("e", Math.floor(Math.random() * 10000));
+      rowNode.setDataValue('d', Math.floor(Math.random() * 10000));
+      rowNode.setDataValue('e', Math.floor(Math.random() * 10000));
     }
   };
 
   render() {
     return (
-      <div style={{ width: "100%", height: "100%" }}>
+      <div style={{ width: '100%', height: '100%' }}>
         <div className="example-wrapper">
-          <div style={{ marginBottom: "5px" }}>
+          <div style={{ marginBottom: '5px' }}>
             <button onClick={() => this.onUpdateSomeValues()}>
               Update Some D &amp; E Values
             </button>
           </div>
           <div
             style={{
-              height: "100%",
-              width: "100%",
+              height: '100%',
+              width: '100%',
             }}
             className="ag-theme-alpine"
           >
@@ -122,7 +122,7 @@ function formatNumber(number) {
   // i pulled this from stack overflow, i have no idea how it works
   return Math.floor(number)
     .toString()
-    .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
+    .replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
 }
 function createRowData() {
   const rowData = [];
@@ -138,4 +138,4 @@ function createRowData() {
   return rowData;
 }
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

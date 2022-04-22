@@ -7,13 +7,13 @@ This section covers how to group rows when the row data contains complex objects
 
 ## Creating group keys from complex objects
 
-When grouping by columns that contain complex objects in the supplied row data, the values will be converted to
-`"[object object]"` by default. This will not produce the desired grouping results.
+When grouping by columns that contain complex objects in the supplied row data, the values will be converted to 
+`"[object object]"` by default. This will not produce the desired grouping results. 
 
 One way to get around this is to add a `toString()` method to the complex objects, however this may not be possible if
 you are working with JSON data.
 
-A more flexible solution is to use the `colDef.keyCreator(params)` callback function to return a meaningful key for the
+A more flexible solution is to use the `colDef.keyCreator(params)` callback function to return a meaningful key for the 
 supplied object, as shown in the following code snippets:
 
 <api-documentation source='column-properties/properties.json' section='columns' names='["keyCreator"]'></api-documentation>
@@ -42,7 +42,7 @@ const gridOptions = {
 }
 </snippet>
 
-Note in the snippet above that the `colDef.keyCreator(params)` returns the country name to be used as the group key from
+Note in the snippet above that the `colDef.keyCreator(params)` returns the country name to be used as the group key from 
 `country` complex object supplied in the row data.
 
 The example below shows grouping on the `country` column that contains complex object values:

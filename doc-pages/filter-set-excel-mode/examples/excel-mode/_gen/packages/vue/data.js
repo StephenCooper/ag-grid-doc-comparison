@@ -1,13 +1,13 @@
 function getData() {
   var animals = [
-    "Monkey",
-    "Lion",
-    "Elephant",
-    "Tiger",
-    "Giraffe",
-    "Antelope",
-    "Otter",
-    "Penguin",
+    'Monkey',
+    'Lion',
+    'Elephant',
+    'Tiger',
+    'Giraffe',
+    'Antelope',
+    'Otter',
+    'Penguin',
     null,
   ];
   var rows = [];

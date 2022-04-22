@@ -1,11 +1,11 @@
-"use strict";
+'use strict';
 
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
-import { AgGridReact } from "ag-grid-react";
-import React, { useMemo, useState } from "react";
-import { render } from "react-dom";
+import React, { useCallback, useMemo, useRef, useState } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from 'ag-grid-react';
+import 'ag-grid-enterprise';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 
 const createViewportDatasource = () => {
   let initParams;
@@ -20,9 +20,9 @@ const createViewportDatasource = () => {
       for (var rowIndex = firstRow; rowIndex <= lastRow; rowIndex++) {
         var item = {};
         item.id = rowIndex;
-        item.a = "A-" + rowIndex;
-        item.b = "B-" + rowIndex;
-        item.c = "C-" + rowIndex;
+        item.a = 'A-' + rowIndex;
+        item.b = 'B-' + rowIndex;
+        item.c = 'C-' + rowIndex;
         rowData[rowIndex] = item;
       }
       initParams.setRowData(rowData);
@@ -32,26 +32,26 @@ const createViewportDatasource = () => {
 };
 
 const GridExample = () => {
-  const containerStyle = useMemo(() => ({ width: "100%", height: "100%" }), []);
-  const gridStyle = useMemo(() => ({ height: "100%", width: "100%" }), []);
+  const containerStyle = useMemo(() => ({ width: '100%', height: '100%' }), []);
+  const gridStyle = useMemo(() => ({ height: '100%', width: '100%' }), []);
   const [rowData, setRowData] = useState();
   const [columnDefs, setColumnDefs] = useState([
     {
-      headerName: "ID",
-      field: "id",
+      headerName: 'ID',
+      field: 'id',
     },
     {
-      headerName: "Expected Position",
+      headerName: 'Expected Position',
       valueGetter: '"translateY(" + node.rowIndex * 100 + "px)"',
     },
     {
-      field: "a",
+      field: 'a',
     },
     {
-      field: "b",
+      field: 'b',
     },
     {
-      field: "c",
+      field: 'c',
     },
   ]);
   const viewportDatasource = useMemo(() => {
@@ -65,7 +65,7 @@ const GridExample = () => {
           rowData={rowData}
           columnDefs={columnDefs}
           rowHeight={100}
-          rowModelType={"viewport"}
+          rowModelType={'viewport'}
           viewportDatasource={viewportDatasource}
         ></AgGridReact>
       </div>
@@ -73,4 +73,4 @@ const GridExample = () => {
   );
 };
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

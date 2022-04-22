@@ -1,17 +1,18 @@
 import {
   ColDef,
   GetRowIdFunc,
+  GetRowIdParams,
   GridReadyEvent,
   IDatasource,
   IGetRowsParams,
-} from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { Component } from "@angular/core";
+} from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { Component } from '@angular/core';
 // Required feature modules are registered in app.module.ts
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<ag-grid-angular
     style="width: 100%; height: 100%;"
     class="ag-theme-alpine"
@@ -32,10 +33,10 @@ export class AppComponent {
   public defaultColDef: ColDef = {
     resizable: true,
   };
-  public rowModelType = "infinite";
-  public rowSelection = "multiple";
+  public rowModelType = 'infinite';
+  public rowSelection = 'multiple';
   public maxBlocksInCache = 2;
-  public getRowId: GetRowIdFunc = function (params) {
+  public getRowId: GetRowIdFunc = function (params: GetRowIdParams) {
     return params.data.a;
   };
   public datasource: IDatasource = getDataSource(100);
@@ -44,11 +45,11 @@ export class AppComponent {
   onGridReady(params: GridReadyEvent) {}
 }
 
-var ALPHABET = "abcdefghijklmnopqrstuvwxyz".split("");
+var ALPHABET = 'abcdefghijklmnopqrstuvwxyz'.split('');
 function getColumnDefs() {
   const columnDefs: ColDef[] = [
-    { checkboxSelection: true, headerName: "", width: 60 },
-    { headerName: "#", width: 80, valueGetter: "node.rowIndex" },
+    { checkboxSelection: true, headerName: '', width: 60 },
+    { headerName: '#', width: 80, valueGetter: 'node.rowIndex' },
   ];
   ALPHABET.forEach(function (letter) {
     columnDefs.push({
@@ -73,7 +74,7 @@ function getDataSource(count: number) {
         ALPHABET.forEach(function (letter, colIndex) {
           var randomNumber = 17 + rowIndex + colIndex;
           var cellKey = letter.toUpperCase() + (rowIndex + 1);
-          record[letter] = cellKey + " = " + randomNumber;
+          record[letter] = cellKey + ' = ' + randomNumber;
         });
         rowsThisPage.push(record);
       }

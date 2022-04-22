@@ -1,7 +1,7 @@
 const options = {
-  container: document.getElementById("myChart"),
+  container: document.getElementById('myChart'),
   title: {
-    text: "Internet Explorer Market Share",
+    text: 'Internet Explorer Market Share',
   },
   subtitle: {
     text: '2009-2019 (aka "good times")',
@@ -9,18 +9,17 @@ const options = {
   data: getData(),
   series: [
     {
-      type: "area",
-      xKey: "year",
-      yKey: "ie",
-      yName: "IE",
+      type: 'area',
+      xKey: 'year',
+      yKey: 'ie',
+      yName: 'IE',
       marker: {
         enabled: true,
       },
       tooltip: {
         renderer: function (params) {
           return {
-            content:
-              params.yName + " - " + params.yValue + "% - Jan " + params.xValue,
+            content: `${params.xValue}: ${params.yValue.toFixed(1)}%`,
           };
         },
       },

@@ -5,11 +5,12 @@ enterprise: true
 
 Learn how to set Row Height when using the Server-Side Row Model.
 
+
 ## Dynamic Row Height
 
 To enable [Dynamic Row Height](/row-height/) when using the Server-Side Row Model you need to provide an implementation for the `getRowHeight` Grid Options property. This is demonstrated in the example below:
 
-<api-documentation source='grid-properties/properties.json' section='styling' names='["getRowHeight"]' ></api-documentation>
+<api-documentation source='grid-options/properties.json' section='styling' names='["getRowHeight"]' ></api-documentation>
 
 <grid-example title='Dynamic Row Height Example' name='dynamic-row-height' type='generated' options='{ "enterprise": true, "exampleHeight": 630, "extras": ["alasql"], "modules": ["serverside", "rowgrouping"] }'></grid-example>
 
@@ -37,3 +38,4 @@ details on these properties.
 ## Next Up
 
 Continue to the next section to learn how to combine [Master Detail](/server-side-model-master-detail/) with the SSRM.
+

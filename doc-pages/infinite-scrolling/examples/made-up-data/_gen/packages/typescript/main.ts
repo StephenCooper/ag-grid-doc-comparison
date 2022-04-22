@@ -1,19 +1,20 @@
 import {
   ColDef,
+  GetRowIdParams,
   Grid,
   GridOptions,
   IDatasource,
   IGetRowsParams,
-} from "ag-grid-community";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
+} from 'ag-grid-community';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 
-var ALPHABET = "abcdefghijklmnopqrstuvwxyz".split("");
+var ALPHABET = 'abcdefghijklmnopqrstuvwxyz'.split('');
 
 function getColumnDefs() {
   const columnDefs: ColDef[] = [
-    { checkboxSelection: true, headerName: "", width: 60 },
-    { headerName: "#", width: 80, valueGetter: "node.rowIndex" },
+    { checkboxSelection: true, headerName: '', width: 60 },
+    { headerName: '#', width: 80, valueGetter: 'node.rowIndex' },
   ];
 
   ALPHABET.forEach(function (letter) {
@@ -31,11 +32,11 @@ const gridOptions: GridOptions = {
   defaultColDef: {
     resizable: true,
   },
-  rowModelType: "infinite",
-  rowSelection: "multiple",
+  rowModelType: 'infinite',
+  rowSelection: 'multiple',
   maxBlocksInCache: 2,
   suppressRowClickSelection: true,
-  getRowId: function (params) {
+  getRowId: function (params: GetRowIdParams) {
     return params.data.a;
   },
   datasource: getDataSource(100),
@@ -56,7 +57,7 @@ function getDataSource(count: number) {
         ALPHABET.forEach(function (letter, colIndex) {
           var randomNumber = 17 + rowIndex + colIndex;
           var cellKey = letter.toUpperCase() + (rowIndex + 1);
-          record[letter] = cellKey + " = " + randomNumber;
+          record[letter] = cellKey + ' = ' + randomNumber;
         });
         rowsThisPage.push(record);
       }
@@ -71,5 +72,5 @@ function getDataSource(count: number) {
   return dataSource;
 }
 
-var gridDiv = document.querySelector<HTMLElement>("#myGrid")!;
+var gridDiv = document.querySelector<HTMLElement>('#myGrid')!;
 new Grid(gridDiv, gridOptions);

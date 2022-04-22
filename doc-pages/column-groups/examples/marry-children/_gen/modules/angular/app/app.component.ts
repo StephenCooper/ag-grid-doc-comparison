@@ -1,12 +1,12 @@
-import { ColDef, ColGroupDef, GridReadyEvent } from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine.css";
-import { HttpClient } from "@angular/common/http";
-import { Component } from "@angular/core";
+import { ColDef, ColGroupDef, GridReadyEvent } from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import { HttpClient } from '@angular/common/http';
+import { Component } from '@angular/core';
 // Required feature modules are registered in app.module.ts
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<ag-grid-angular
     style="width: 100%; height: 100%;"
     class="ag-theme-alpine"
@@ -19,23 +19,23 @@ import { Component } from "@angular/core";
 export class AppComponent {
   public columnDefs: (ColDef | ColGroupDef)[] = [
     {
-      headerName: "Athlete Details",
+      headerName: 'Athlete Details',
       marryChildren: true,
       children: [
-        { field: "athlete", colId: "athlete" },
-        { field: "country", colId: "country" },
+        { field: 'athlete', colId: 'athlete' },
+        { field: 'country', colId: 'country' },
       ],
     },
-    { field: "age", colId: "age" },
+    { field: 'age', colId: 'age' },
     {
-      headerName: "Sports Results",
+      headerName: 'Sports Results',
       marryChildren: true,
       children: [
-        { field: "sport", colId: "sport" },
-        { field: "total", colId: "total" },
-        { field: "gold", colId: "gold" },
-        { field: "silver", colId: "silver" },
-        { field: "bronze", colId: "bronze" },
+        { field: 'sport', colId: 'sport' },
+        { field: 'total', colId: 'total' },
+        { field: 'gold', colId: 'gold' },
+        { field: 'silver', colId: 'silver' },
+        { field: 'bronze', colId: 'bronze' },
       ],
     },
   ];
@@ -49,7 +49,7 @@ export class AppComponent {
 
   onGridReady(params: GridReadyEvent) {
     this.http
-      .get<any[]>("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      .get<any[]>('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .subscribe((data) => (this.rowData = data));
   }
 }

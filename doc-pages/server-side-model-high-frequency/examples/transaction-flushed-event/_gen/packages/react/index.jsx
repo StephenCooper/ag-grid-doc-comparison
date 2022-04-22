@@ -1,18 +1,18 @@
-"use strict";
+'use strict';
 
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine-dark.css";
-import "ag-grid-enterprise";
-import { AgGridReact } from "ag-grid-react";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from 'ag-grid-react';
+import 'ag-grid-enterprise';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine-dark.css';
 
 class GridExample extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      columnDefs: [{ field: "product" }, { field: "value" }],
+      columnDefs: [{ field: 'product' }, { field: 'value' }],
       defaultColDef: {
         width: 250,
         resizable: true,
@@ -20,9 +20,9 @@ class GridExample extends Component {
       getRowId: function (params) {
         return params.data.product;
       },
-      rowSelection: "multiple",
-      serverSideStoreType: "full",
-      rowModelType: "serverSide",
+      rowSelection: 'multiple',
+      serverSideStoreType: 'full',
+      rowModelType: 'serverSide',
       asyncTransactionWaitMillis: 4000,
     };
   }
@@ -52,14 +52,14 @@ class GridExample extends Component {
       }
       summary[status]++;
     });
-    console.log("onAsyncTransactionsFlushed: " + JSON.stringify(summary));
+    console.log('onAsyncTransactionsFlushed: ' + JSON.stringify(summary));
   };
 
   onBtAdd = () => {
     var newProductName =
       all_products[Math.floor(all_products.length * Math.random())];
     var newItem = {
-      product: newProductName + " " + newProductSequence++,
+      product: newProductName + ' ' + newProductSequence++,
       value: Math.floor(Math.random() * 10000),
     };
     allServerSideData.push(newItem);
@@ -75,16 +75,16 @@ class GridExample extends Component {
 
   render() {
     return (
-      <div style={{ width: "100%", height: "100%" }}>
+      <div style={{ width: '100%', height: '100%' }}>
         <div className="example-wrapper">
-          <div style={{ marginBottom: "5px" }}>
+          <div style={{ marginBottom: '5px' }}>
             <button onClick={() => this.onBtAdd()}>Add</button>
             <button onClick={() => this.onBtFlush()}>Flush</button>
           </div>
           <div
             style={{
-              height: "100%",
-              width: "100%",
+              height: '100%',
+              width: '100%',
             }}
             className="ag-theme-alpine-dark"
           >
@@ -109,37 +109,37 @@ class GridExample extends Component {
   }
 }
 
-var products = ["Palm Oil", "Rubber", "Wool", "Amber", "Copper"];
+var products = ['Palm Oil', 'Rubber', 'Wool', 'Amber', 'Copper'];
 var newProductSequence = 0;
 var all_products = [
-  "Palm Oil",
-  "Rubber",
-  "Wool",
-  "Amber",
-  "Copper",
-  "Lead",
-  "Zinc",
-  "Tin",
-  "Aluminium",
-  "Aluminium Alloy",
-  "Nickel",
-  "Cobalt",
-  "Molybdenum",
-  "Recycled Steel",
-  "Corn",
-  "Oats",
-  "Rough Rice",
-  "Soybeans",
-  "Rapeseed",
-  "Soybean Meal",
-  "Soybean Oil",
-  "Wheat",
-  "Milk",
-  "Coca",
-  "Coffee C",
-  "Cotton No.2",
-  "Sugar No.11",
-  "Sugar No.14",
+  'Palm Oil',
+  'Rubber',
+  'Wool',
+  'Amber',
+  'Copper',
+  'Lead',
+  'Zinc',
+  'Tin',
+  'Aluminium',
+  'Aluminium Alloy',
+  'Nickel',
+  'Cobalt',
+  'Molybdenum',
+  'Recycled Steel',
+  'Corn',
+  'Oats',
+  'Rough Rice',
+  'Soybeans',
+  'Rapeseed',
+  'Soybean Meal',
+  'Soybean Oil',
+  'Wheat',
+  'Milk',
+  'Coca',
+  'Coffee C',
+  'Cotton No.2',
+  'Sugar No.11',
+  'Sugar No.14',
 ];
 var allServerSideData = [];
 function setupData() {
@@ -156,4 +156,4 @@ function getNextValue() {
   return Math.floor((valueCounter * 987654321) / 7) % 10000;
 }
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));

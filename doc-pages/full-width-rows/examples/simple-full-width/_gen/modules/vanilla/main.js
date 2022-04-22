@@ -2,7 +2,7 @@ class CountryCellRenderer {
   init(params) {
     const flag = `<img border="0" width="15" height="10" src="https://www.ag-grid.com/example-assets/flags/${params.data.code}.png">`;
 
-    const eTemp = document.createElement("div");
+    const eTemp = document.createElement('div');
     eTemp.innerHTML = `<span style="cursor: default;">${flag} ${params.value}</span>`;
     this.eGui = eTemp.firstElementChild;
   }
@@ -18,9 +18,9 @@ class CountryCellRenderer {
 
 const gridOptions = {
   columnDefs: [
-    { field: "name", cellRenderer: CountryCellRenderer },
-    { field: "continent" },
-    { field: "language" },
+    { field: 'name', cellRenderer: CountryCellRenderer },
+    { field: 'continent' },
+    { field: 'language' },
   ],
   defaultColDef: {
     flex: 1,
@@ -44,11 +44,11 @@ const gridOptions = {
 
 function isFullWidth(data) {
   // return true when country is Peru, France or Italy
-  return ["Peru", "France", "Italy"].indexOf(data.name) >= 0;
+  return ['Peru', 'France', 'Italy'].indexOf(data.name) >= 0;
 }
 
 // setup the grid after the page has finished loading
-document.addEventListener("DOMContentLoaded", function () {
-  const gridDiv = document.querySelector("#myGrid");
+document.addEventListener('DOMContentLoaded', function () {
+  const gridDiv = document.querySelector('#myGrid');
   new agGrid.Grid(gridDiv, gridOptions);
 });

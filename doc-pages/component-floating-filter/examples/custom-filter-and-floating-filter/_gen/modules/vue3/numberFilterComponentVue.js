@@ -22,7 +22,7 @@ export default {
       return (
         this.filterText !== null &&
         this.filterText !== undefined &&
-        this.filterText !== "" &&
+        this.filterText !== '' &&
         this.isNumeric(this.filterText)
       );
     },

@@ -2,11 +2,11 @@ const gridOptions = {
   columnDefs: [
     // this row shows the row index, doesn't use any data from the row
     {
-      headerName: "ID",
+      headerName: 'ID',
       maxWidth: 100,
       // it is important to have node.id here, so that when the id changes (which happens
       // when the row is loaded) then the cell is refreshed.
-      valueGetter: "node.id",
+      valueGetter: 'node.id',
       cellRenderer: function (params) {
         if (params.value !== undefined) {
           return params.value;
@@ -15,16 +15,16 @@ const gridOptions = {
         }
       },
     },
-    { field: "athlete", minWidth: 200 },
-    { field: "age" },
-    { field: "country", minWidth: 200, checkboxSelection: true },
-    { field: "year" },
-    { field: "date", minWidth: 150 },
-    { field: "sport", minWidth: 150 },
-    { field: "gold" },
-    { field: "silver" },
-    { field: "bronze" },
-    { field: "total" },
+    { field: 'athlete', minWidth: 200 },
+    { field: 'age' },
+    { field: 'country', minWidth: 200, checkboxSelection: true },
+    { field: 'year' },
+    { field: 'date', minWidth: 150 },
+    { field: 'sport', minWidth: 150 },
+    { field: 'gold' },
+    { field: 'silver' },
+    { field: 'bronze' },
+    { field: 'total' },
   ],
   defaultColDef: {
     flex: 1,
@@ -33,12 +33,12 @@ const gridOptions = {
   },
   rowBuffer: 0,
   // debug: true,
-  rowSelection: "multiple",
+  rowSelection: 'multiple',
   isRowSelectable: function (rowNode) {
-    return rowNode.data ? rowNode.data.country === "United States" : false;
+    return rowNode.data ? rowNode.data.country === 'United States' : false;
   },
   // tell grid we want virtual row model type
-  rowModelType: "infinite",
+  rowModelType: 'infinite',
   // how big each page in our page cache will be, default is 100
   cacheBlockSize: 100,
   // how many extra blank rows to display to the user at the end of the dataset,
@@ -58,11 +58,11 @@ const gridOptions = {
 };
 
 // setup the grid after the page has finished loading
-document.addEventListener("DOMContentLoaded", function () {
-  const gridDiv = document.querySelector("#myGrid");
+document.addEventListener('DOMContentLoaded', function () {
+  const gridDiv = document.querySelector('#myGrid');
   new agGrid.Grid(gridDiv, gridOptions);
 
-  fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+  fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
     .then((response) => response.json())
     .then(function (data) {
       const dataSource = {

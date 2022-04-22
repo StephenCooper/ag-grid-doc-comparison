@@ -6,16 +6,16 @@ import {
   Grid,
   GridOptions,
   ValueFormatterParams,
-} from "ag-grid-community";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
+} from 'ag-grid-community';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import 'ag-grid-enterprise';
 declare var moment: any;
 
 function getColumnDefs() {
   return [
-    { field: "date", valueFormatter: dateFormatter },
-    { field: "avgTemp" },
+    { field: 'date', valueFormatter: dateFormatter },
+    { field: 'avgTemp' },
   ];
 }
 
@@ -33,7 +33,7 @@ const gridOptions: GridOptions = {
     line: {
       title: {
         enabled: true,
-        text: "Average Daily Temperatures",
+        text: 'Average Daily Temperatures',
       },
       legend: {
         enabled: false,
@@ -51,21 +51,21 @@ const gridOptions: GridOptions = {
         time: {
           label: {
             rotation: 0,
-            format: "%d %b",
+            format: '%d %b',
           },
         },
         category: {
           label: {
             rotation: 0,
             formatter: function (params) {
-              return moment(new Date(params.value)).format("DD MMM");
+              return moment(new Date(params.value)).format('DD MMM');
             },
           },
         },
         number: {
           label: {
             formatter: function (params) {
-              return params.value + "°C";
+              return params.value + '°C';
             },
           },
         },
@@ -84,12 +84,12 @@ function onFirstDataRendered(params: FirstDataRenderedEvent) {
   }
 
   var createRangeChartParams: CreateRangeChartParams = {
-    chartContainer: document.querySelector("#myChart") as any,
+    chartContainer: document.querySelector('#myChart') as any,
     suppressChartRanges: true,
     cellRange: {
-      columns: ["date", "avgTemp"],
+      columns: ['date', 'avgTemp'],
     },
-    chartType: "line",
+    chartType: 'line',
   };
   currentChartRef = params.api.createRangeChart(createRangeChartParams);
 }
@@ -101,17 +101,17 @@ function dateFormatter(params: ValueFormatterParams) {
 }
 
 function getChartToolbarItems(): ChartMenuOptions[] {
-  return ["chartData", "chartFormat"];
+  return ['chartData', 'chartFormat'];
 }
 
 function toggleAxis() {
-  var axisBtn = document.querySelector("#axisBtn") as any;
+  var axisBtn = document.querySelector('#axisBtn') as any;
   axisBtn.textContent = axisBtn.value;
-  axisBtn.value = axisBtn.value === "time" ? "category" : "time";
+  axisBtn.value = axisBtn.value === 'time' ? 'category' : 'time';
 
   const columnDefs: ColDef[] = getColumnDefs();
   columnDefs.forEach(function (colDef) {
-    if (colDef.field === "date") {
+    if (colDef.field === 'date') {
       colDef.chartDataType = axisBtn.value;
     }
   });
@@ -133,10 +133,10 @@ function getRowData() {
 }
 
 // setup the grid after the page has finished loading
-var gridDiv = document.querySelector<HTMLElement>("#myGrid")!;
+var gridDiv = document.querySelector<HTMLElement>('#myGrid')!;
 new Grid(gridDiv, gridOptions);
 
-if (typeof window !== "undefined") {
+if (typeof window !== 'undefined') {
   // Attach external event handlers to window so they can be called from index.html
   (<any>window).toggleAxis = toggleAxis;
 }

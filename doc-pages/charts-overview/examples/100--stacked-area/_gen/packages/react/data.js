@@ -2,7 +2,7 @@
 function getData() {
   return [
     {
-      month: "Jan",
+      month: 'Jan',
       coal: 0.8,
       petroleum: 5.6,
       naturalGas: 9.4,
@@ -12,7 +12,7 @@ function getData() {
       imported: 0.2,
     },
     {
-      month: "Feb",
+      month: 'Feb',
       coal: 1.1,
       petroleum: 5.6,
       naturalGas: 8.8,
@@ -22,7 +22,7 @@ function getData() {
       imported: 0.1,
     },
     {
-      month: "Mar",
+      month: 'Mar',
       coal: 1.4,
       petroleum: 5.4,
       naturalGas: 9.0,
@@ -32,7 +32,7 @@ function getData() {
       imported: 0.1,
     },
     {
-      month: "Apr",
+      month: 'Apr',
       coal: 0.6,
       petroleum: 5.9,
       naturalGas: 6.3,
@@ -42,7 +42,7 @@ function getData() {
       imported: 0.1,
     },
     {
-      month: "May",
+      month: 'May',
       coal: 0.5,
       petroleum: 5.6,
       naturalGas: 4.5,
@@ -52,7 +52,7 @@ function getData() {
       imported: 0.2,
     },
     {
-      month: "Jun",
+      month: 'Jun',
       coal: 0.5,
       petroleum: 5.8,
       naturalGas: 3.8,
@@ -62,7 +62,7 @@ function getData() {
       imported: 0.1,
     },
     {
-      month: "Jul",
+      month: 'Jul',
       coal: 0.4,
       petroleum: 5.6,
       naturalGas: 3.9,
@@ -72,7 +72,7 @@ function getData() {
       imported: 0.2,
     },
     {
-      month: "Aug",
+      month: 'Aug',
       coal: 0.4,
       petroleum: 5.9,
       naturalGas: 3.7,
@@ -82,7 +82,7 @@ function getData() {
       imported: 0.1,
     },
     {
-      month: "Sep",
+      month: 'Sep',
       coal: 0.7,
       petroleum: 5.8,
       naturalGas: 4.1,
@@ -92,7 +92,7 @@ function getData() {
       imported: 0.1,
     },
     {
-      month: "Oct",
+      month: 'Oct',
       coal: 0.6,
       petroleum: 5.5,
       naturalGas: 5.9,
@@ -102,7 +102,7 @@ function getData() {
       imported: 0.1,
     },
     {
-      month: "Nov",
+      month: 'Nov',
       coal: 0.9,
       petroleum: 5.9,
       naturalGas: 7.3,
@@ -112,7 +112,7 @@ function getData() {
       imported: 0.1,
     },
     {
-      month: "Dec",
+      month: 'Dec',
       coal: 0.7,
       petroleum: 5.8,
       naturalGas: 8.2,

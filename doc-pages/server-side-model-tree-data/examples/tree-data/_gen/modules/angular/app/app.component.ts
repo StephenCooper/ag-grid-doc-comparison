@@ -9,15 +9,15 @@ import {
   IsServerSideGroup,
   IsServerSideGroupOpenByDefaultParams,
   ServerSideStoreType,
-} from "@ag-grid-community/core";
-import "@ag-grid-community/core/dist/styles/ag-grid.css";
-import "@ag-grid-community/core/dist/styles/ag-theme-alpine-dark.css";
-import { HttpClient } from "@angular/common/http";
-import { Component } from "@angular/core";
+} from '@ag-grid-community/core';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine-dark.css';
+import { HttpClient } from '@angular/common/http';
+import { Component } from '@angular/core';
 // Required feature modules are registered in app.module.ts
 
 @Component({
-  selector: "my-app",
+  selector: 'my-app',
   template: `<ag-grid-angular
     style="width: 100%; height: 100%;"
     class="ag-theme-alpine-dark"
@@ -37,18 +37,18 @@ import { Component } from "@angular/core";
 })
 export class AppComponent {
   public columnDefs: ColDef[] = [
-    { field: "employeeId", hide: true },
-    { field: "employeeName", hide: true },
-    { field: "jobTitle" },
-    { field: "employmentType" },
+    { field: 'employeeId', hide: true },
+    { field: 'employeeName', hide: true },
+    { field: 'jobTitle' },
+    { field: 'employmentType' },
   ];
   public defaultColDef: ColDef = {
     width: 240,
-    filter: "agTextColumnFilter",
+    filter: 'agTextColumnFilter',
     flex: 1,
   };
   public autoGroupColumnDef: ColDef = {
-    field: "employeeName",
+    field: 'employeeName',
     cellRendererParams: {
       innerRenderer: function (params: ICellRendererParams) {
         // display employeeName rather than group key (employeeId)
@@ -56,8 +56,8 @@ export class AppComponent {
       },
     },
   };
-  public rowModelType = "serverSide";
-  public serverSideStoreType: ServerSideStoreType = "partial";
+  public rowModelType = 'serverSide';
+  public serverSideStoreType: ServerSideStoreType = 'partial';
   public isServerSideGroupOpenByDefault: (
     params: IsServerSideGroupOpenByDefaultParams
   ) => boolean = function (params: IsServerSideGroupOpenByDefaultParams) {
@@ -80,7 +80,7 @@ export class AppComponent {
 
   onGridReady(params: GridReadyEvent) {
     this.http
-      .get<any[]>("https://www.ag-grid.com/example-assets/small-tree-data.json")
+      .get<any[]>('https://www.ag-grid.com/example-assets/small-tree-data.json')
       .subscribe((data) => {
         var fakeServer = createFakeServer(data);
         var datasource = createServerSideDatasource(fakeServer);
@@ -123,7 +123,7 @@ function createFakeServer(fakeServerData: any[]) {
 function createServerSideDatasource(fakeServer: any) {
   const dataSource: IServerSideDatasource = {
     getRows: function (params: IServerSideGetRowsParams) {
-      console.log("ServerSideDatasource.getRows: params = ", params);
+      console.log('ServerSideDatasource.getRows: params = ', params);
       var allRows = fakeServer.getData(params.request);
       var request = params.request;
       var doingInfinite = request.startRow != null && request.endRow != null;
@@ -133,7 +133,7 @@ function createServerSideDatasource(fakeServer: any) {
             rowCount: allRows.length,
           }
         : { rowData: allRows };
-      console.log("getRows: result = ", result);
+      console.log('getRows: result = ', result);
       setTimeout(function () {
         params.success(result);
       }, 200);

@@ -1,11 +1,11 @@
-"use strict";
+'use strict';
 
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-enterprise";
-import { AgGridReact } from "ag-grid-react";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from 'ag-grid-react';
+import 'ag-grid-enterprise';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 
 class GridExample extends Component {
   constructor(props) {
@@ -13,13 +13,13 @@ class GridExample extends Component {
 
     this.state = {
       columnDefs: [
-        { field: "athlete", minWidth: 200 },
-        { field: "country", minWidth: 200 },
-        { field: "sport", minWidth: 150 },
-        { field: "gold" },
-        { field: "silver" },
-        { field: "bronze" },
-        { field: "total" },
+        { field: 'athlete', minWidth: 200 },
+        { field: 'country', minWidth: 200 },
+        { field: 'sport', minWidth: 150 },
+        { field: 'gold' },
+        { field: 'silver' },
+        { field: 'bronze' },
+        { field: 'total' },
       ],
       defaultColDef: {
         sortable: true,
@@ -40,7 +40,7 @@ class GridExample extends Component {
     const updateData = (data) =>
       params.api.setRowData(data.filter((rec) => rec.country != null));
 
-    fetch("https://www.ag-grid.com/example-assets/small-olympic-winners.json")
+    fetch('https://www.ag-grid.com/example-assets/small-olympic-winners.json')
       .then((resp) => resp.json())
       .then((data) => updateData(data));
   };
@@ -51,7 +51,7 @@ class GridExample extends Component {
 
   render() {
     return (
-      <div style={{ width: "100%", height: "100%" }}>
+      <div style={{ width: '100%', height: '100%' }}>
         <div className="container">
           <div className="columns">
             <label className="option" for="prependContent">
@@ -65,7 +65,7 @@ class GridExample extends Component {
           <div>
             <button
               onClick={() => this.onBtExport()}
-              style={{ margin: "5px 0px", fontWeight: "bold" }}
+              style={{ margin: '5px 0px', fontWeight: 'bold' }}
             >
               Export to Excel
             </button>
@@ -73,8 +73,8 @@ class GridExample extends Component {
           <div className="grid-wrapper">
             <div
               style={{
-                height: "100%",
-                width: "100%",
+                height: '100%',
+                width: '100%',
               }}
               className="ag-theme-alpine"
             >
@@ -97,24 +97,24 @@ const getRows = () => [
   [],
   [
     {
-      data: { value: 'Here is a comma, and a some "quotes".', type: "String" },
+      data: { value: 'Here is a comma, and a some "quotes".', type: 'String' },
     },
   ],
   [
     {
       data: {
         value:
-          "They are visible when the downloaded file is opened in Excel because custom content is properly escaped.",
-        type: "String",
+          'They are visible when the downloaded file is opened in Excel because custom content is properly escaped.',
+        type: 'String',
       },
     },
   ],
   [
-    { data: { value: "this cell:", type: "String" }, mergeAcross: 1 },
+    { data: { value: 'this cell:', type: 'String' }, mergeAcross: 1 },
     {
       data: {
-        value: "is empty because the first cell has mergeAcross=1",
-        type: "String",
+        value: 'is empty because the first cell has mergeAcross=1',
+        type: 'String',
       },
     },
   ],
@@ -123,8 +123,8 @@ const getRows = () => [
 const getBoolean = (inputSelector) =>
   !!document.querySelector(inputSelector).checked;
 const getParams = () => ({
-  prependContent: getBoolean("#prependContent") ? getRows() : undefined,
-  appendContent: getBoolean("#appendContent") ? getRows() : undefined,
+  prependContent: getBoolean('#prependContent') ? getRows() : undefined,
+  appendContent: getBoolean('#appendContent') ? getRows() : undefined,
 });
 
-render(<GridExample></GridExample>, document.querySelector("#root"));
+render(<GridExample></GridExample>, document.querySelector('#root'));
