@@ -35,7 +35,7 @@ const GridExample = () => {
           type: 'area',
         } as AreaSparklineOptions,
       },
-      valueGetter: function (params: ValueGetterParams) {
+      valueGetter: (params: ValueGetterParams) => {
         const formattedData: any = [];
         const rateOfChange = params.data.rateOfChange;
         const { x, y } = rateOfChange;

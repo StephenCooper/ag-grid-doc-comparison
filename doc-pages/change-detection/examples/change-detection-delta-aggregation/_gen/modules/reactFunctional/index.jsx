@@ -136,7 +136,7 @@ const GridExample = () => {
   }, []);
   const aggFuncs = useMemo(() => {
     return {
-      sum: function (params) {
+      sum: (params) => {
         var values = params && params.values ? params.values : [];
         var result = 0;
         if (values) {
@@ -158,7 +158,7 @@ const GridExample = () => {
       },
     };
   }, []);
-  const getRowId = useCallback(function (params) {
+  const getRowId = useCallback((params) => {
     return params.data.id;
   }, []);
 

@@ -43,14 +43,14 @@ const gridOptions = {
         category: {
           label: {
             rotation: 0,
-            formatter: function (params) {
+            formatter: (params) => {
               return moment(new Date(params.value)).format('DD MMM');
             },
           },
         },
         number: {
           label: {
-            formatter: function (params) {
+            formatter: (params) => {
               return params.value + '°C';
             },
           },

@@ -28,7 +28,7 @@ const getServerSideDatasource: (server: any) => IServerSideDatasource = (
   server: any
 ) => {
   return {
-    getRows: function (params) {
+    getRows: (params) => {
       console.log('[Datasource] - rows requested by grid: ', params.request);
       var response = server.getData(params.request);
       // adding delay to simulate real server call
@@ -73,7 +73,7 @@ const GridExample = () => {
       minWidth: 180,
     };
   }, []);
-  const getRowHeight = useCallback(function (params: RowHeightParams) {
+  const getRowHeight = useCallback((params: RowHeightParams) => {
     if (params.node.level === 0) {
       return 80;
     }

@@ -59,10 +59,10 @@ export class AppComponent {
   };
   public rowData: any[] | null = getData();
   public groupDefaultExpanded = -1;
-  public getDataPath: GetDataPath = function (data: any) {
+  public getDataPath: GetDataPath = (data: any) => {
     return data.filePath;
   };
-  public getRowId: GetRowIdFunc = function (params: GetRowIdParams) {
+  public getRowId: GetRowIdFunc = (params: GetRowIdParams) => {
     return params.data.id;
   };
   public autoGroupColumnDef: ColDef = {
@@ -74,7 +74,7 @@ export class AppComponent {
       innerRenderer: FileCellRenderer,
     },
     cellClassRules: {
-      'hover-over': function (params) {
+      'hover-over': (params) => {
         return params.node === potentialParent;
       },
     },
@@ -126,7 +126,7 @@ var valueFormatter = function (params: ValueFormatterParams) {
   return params.value ? params.value + ' MB' : '';
 };
 var cellClassRules = {
-  'hover-over': function (params: CellClassParams) {
+  'hover-over': (params: CellClassParams) => {
     return params.node === potentialParent;
   },
 };

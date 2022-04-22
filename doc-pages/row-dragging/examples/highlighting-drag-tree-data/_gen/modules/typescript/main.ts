@@ -26,7 +26,7 @@ var valueFormatter = function (params: ValueFormatterParams) {
 };
 
 var cellClassRules = {
-  'hover-over': function (params: CellClassParams) {
+  'hover-over': (params: CellClassParams) => {
     return params.node === potentialParent;
   },
 };
@@ -51,10 +51,10 @@ const gridOptions: GridOptions = {
   treeData: true,
   animateRows: true,
   groupDefaultExpanded: -1,
-  getDataPath: function (data: any) {
+  getDataPath: (data: any) => {
     return data.filePath;
   },
-  getRowId: function (params: GetRowIdParams) {
+  getRowId: (params: GetRowIdParams) => {
     return params.data.id;
   },
   autoGroupColumnDef: {
@@ -66,7 +66,7 @@ const gridOptions: GridOptions = {
       innerRenderer: FileCellRenderer,
     },
     cellClassRules: {
-      'hover-over': function (params) {
+      'hover-over': (params) => {
         return params.node === potentialParent;
       },
     },

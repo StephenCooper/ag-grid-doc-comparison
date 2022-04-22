@@ -8,7 +8,7 @@ const gridOptions = {
 
   onAsyncTransactionsFlushed: onAsyncTransactionsFlushed,
 
-  onGridReady: function (params) {
+  onGridReady: (params) => {
     setupData();
 
     var dataSource = {
@@ -24,7 +24,7 @@ const gridOptions = {
     gridOptions.api.setServerSideDatasource(dataSource);
   },
 
-  getRowId: function (params) {
+  getRowId: (params) => {
     return params.data.product;
   },
   rowModelType: 'serverSide',

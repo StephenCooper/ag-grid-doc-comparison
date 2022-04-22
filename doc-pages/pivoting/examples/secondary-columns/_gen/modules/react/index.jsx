@@ -49,7 +49,7 @@ class GridExample extends Component {
       autoGroupColumnDef: {
         minWidth: 250,
       },
-      processSecondaryColDef: function (colDef) {
+      processSecondaryColDef: (colDef) => {
         if (
           _optionalChain([
             colDef,
@@ -72,7 +72,7 @@ class GridExample extends Component {
           ]);
         }
       },
-      processSecondaryColGroupDef: function (colGroupDef) {
+      processSecondaryColGroupDef: (colGroupDef) => {
         // for fun, add a css class for 2010
         if (
           _optionalChain([

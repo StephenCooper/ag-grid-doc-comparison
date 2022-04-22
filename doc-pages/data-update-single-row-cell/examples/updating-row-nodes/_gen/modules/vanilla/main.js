@@ -21,7 +21,7 @@ const gridOptions = {
     filter: true,
   },
   animateRows: true,
-  getRowId: function (params) {
+  getRowId: (params) => {
     return params.data.id;
   },
   rowData: rowData,

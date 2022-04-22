@@ -26,7 +26,7 @@ const gridOptions = {
   // use the server-side row model
   rowModelType: 'serverSide',
 
-  getServerSideStoreParams: function (params) {
+  getServerSideStoreParams: (params) => {
     var noGroupingActive = params.rowGroupColumns.length == 0;
     var res;
     if (noGroupingActive) {
@@ -77,7 +77,7 @@ function onBtStoreState() {
 
 function getServerSideDatasource(server) {
   return {
-    getRows: function (params) {
+    getRows: (params) => {
       console.log('[Datasource] - rows requested by grid: ', params.request);
 
       var response = server.getData(params.request);

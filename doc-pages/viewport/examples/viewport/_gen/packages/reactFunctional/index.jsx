@@ -72,7 +72,7 @@ const GridExample = () => {
       resizable: true,
     };
   }, []);
-  const getRowId = useCallback(function (params) {
+  const getRowId = useCallback((params) => {
     // the code is unique, so perfect for the id
     return params.data.code;
   }, []);

@@ -53,7 +53,7 @@ const gridOptions: GridOptions = {
     resizable: true,
   },
   rowData: getData(),
-  onGridReady: function () {
+  onGridReady: (params) => {
     setInterval(() => {
       const instances = gridOptions.api!.getCellEditorInstances();
       if (instances.length > 0) {

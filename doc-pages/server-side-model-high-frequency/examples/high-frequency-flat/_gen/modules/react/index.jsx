@@ -25,7 +25,7 @@ class GridExample extends Component {
       serverSideStoreType: 'full',
       rowModelType: 'serverSide',
       asyncTransactionWaitMillis: 4000,
-      getRowId: function (params) {
+      getRowId: (params) => {
         return params.data.product;
       },
     };

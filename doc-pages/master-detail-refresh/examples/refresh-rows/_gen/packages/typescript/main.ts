@@ -20,14 +20,14 @@ const gridOptions: GridOptions = {
   defaultColDef: {
     flex: 1,
   },
-  getRowId: function (params: GetRowIdParams) {
+  getRowId: (params: GetRowIdParams) => {
     return params.data.account;
   },
   masterDetail: true,
   enableCellChangeFlash: true,
   detailCellRendererParams: {
     refreshStrategy: 'rows',
-    template: function (params) {
+    template: (params) => {
       return `<div class="ag-details-row ag-details-row-fixed-height">
             <div style="padding: 4px; font-weight: bold;">${params.data.name} ${params.data.calls} calls</div>
             <div ref="eDetailGrid" class="ag-details-grid ag-details-grid-fixed-height"/>
@@ -37,7 +37,7 @@ const gridOptions: GridOptions = {
     detailGridOptions: {
       rowSelection: 'multiple',
       enableCellChangeFlash: true,
-      getRowId: function (params: GetRowIdParams) {
+      getRowId: (params: GetRowIdParams) => {
         return params.data.callId;
       },
       columnDefs: [
@@ -52,7 +52,7 @@ const gridOptions: GridOptions = {
         sortable: true,
       },
     },
-    getDetailRowData: function (params) {
+    getDetailRowData: (params) => {
       // params.successCallback([]);
       params.successCallback(params.data.callRecords);
     },

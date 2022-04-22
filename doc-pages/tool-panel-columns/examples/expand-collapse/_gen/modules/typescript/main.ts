@@ -66,7 +66,7 @@ const gridOptions: GridOptions = {
     resizable: true,
   },
   sideBar: 'columns',
-  onGridReady: function (params) {
+  onGridReady: (params) => {
     var columnToolPanel = (gridOptions.api!.getToolPanelInstance(
       'columns'
     ) as unknown) as IColumnToolPanel;

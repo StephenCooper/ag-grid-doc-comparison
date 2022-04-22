@@ -70,7 +70,7 @@ class GridExample extends Component {
       rowModelType: 'viewport',
       viewportRowModelPageSize: 1,
       viewportRowModelBufferSize: 0,
-      getRowId: function (params) {
+      getRowId: (params) => {
         // the code is unique, so perfect for the id
         return params.data.code;
       },

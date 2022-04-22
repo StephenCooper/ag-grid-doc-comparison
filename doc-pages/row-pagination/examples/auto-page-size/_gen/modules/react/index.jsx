@@ -38,7 +38,7 @@ class GridExample extends Component {
         headerName: 'Group',
         minWidth: 170,
         field: 'athlete',
-        valueGetter: function (params) {
+        valueGetter: (params) => {
           if (params.node.group) {
             return params.node.key;
           } else {

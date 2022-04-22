@@ -23,7 +23,7 @@ const gridOptions = {
     { make: 'Porsche', model: 'Boxster', price: 72000 },
   ],
 
-  onGridReady: function (params) {
+  onGridReady: (params) => {
     document.getElementById('columnGroups').checked = true;
   },
 };

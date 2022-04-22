@@ -56,7 +56,7 @@ const gridOptions: GridOptions = {
     flex: 1,
   },
 
-  onGridReady: function (params: GridReadyEvent) {
+  onGridReady: (params: GridReadyEvent) => {
     (document.getElementById(
       'columnGroups'
     ) as HTMLInputElement).checked = true;

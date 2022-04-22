@@ -42,7 +42,7 @@ const ChartExample = {
           },
           marker: {
             size: 16,
-            formatter: function (params) {
+            formatter: (params) => {
               // Use a different size and color for selected nodes.
               if (params.datum.selected) {
                 return {

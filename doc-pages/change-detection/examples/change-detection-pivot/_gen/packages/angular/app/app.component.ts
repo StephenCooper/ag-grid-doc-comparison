@@ -79,7 +79,7 @@ export class AppComponent {
   };
   public rowData: any[] | null = getRowData();
   public groupDefaultExpanded = 1;
-  public getRowId: GetRowIdFunc = function (params: GetRowIdParams) {
+  public getRowId: GetRowIdFunc = (params: GetRowIdParams) => {
     return params.data.student;
   };
 

@@ -43,7 +43,7 @@ export class AppComponent {
       headerName: 'ID',
       maxWidth: 100,
       valueGetter: 'node.id',
-      cellRenderer: function (params: ICellRendererParams) {
+      cellRenderer: (params: ICellRendererParams) => {
         if (params.value !== undefined) {
           return params.value;
         } else {
@@ -94,7 +94,7 @@ export class AppComponent {
   public maxConcurrentDatasourceRequests = 2;
   public infiniteInitialRowCount = 1;
   public maxBlocksInCache = 2;
-  public getRowId: GetRowIdFunc = function (params: GetRowIdParams) {
+  public getRowId: GetRowIdFunc = (params: GetRowIdParams) => {
     return params.data.id;
   };
   public rowData!: any[];
@@ -110,7 +110,7 @@ export class AppComponent {
         });
         const dataSource: IDatasource = {
           rowCount: undefined,
-          getRows: function (params: IGetRowsParams) {
+          getRows: (params: IGetRowsParams) => {
             console.log(
               'asking for ' + params.startRow + ' to ' + params.endRow
             );

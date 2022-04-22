@@ -153,7 +153,7 @@ const VueExample = {
       columnApi: null,
       defaultColDef: {
         cellClassRules: {
-          darkGreyBackground: function (params) {
+          darkGreyBackground: (params) => {
             return (params.node.rowIndex || 0) % 2 == 0;
           },
         },

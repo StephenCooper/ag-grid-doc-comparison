@@ -9,7 +9,7 @@ import 'ag-grid-community/dist/styles/ag-theme-alpine-dark.css';
 
 const getServerSideDatasource = (server) => {
   return {
-    getRows: function (params) {
+    getRows: (params) => {
       console.log('[Datasource] - rows requested by grid: ', params.request);
       var response = server.getData(params.request);
       // adding delay to simulate real server call
@@ -49,7 +49,7 @@ const GridExample = () => {
       sortable: true,
     };
   }, []);
-  const getRowId = useCallback(function (params) {
+  const getRowId = useCallback((params) => {
     var data = params.data;
     // use year for group level ids, or the id we assigned for leaf level
     return data.id != null ? 'id-' + data.id : 'year-' + data.year;
@@ -65,7 +65,7 @@ const GridExample = () => {
       },
     };
   }, []);
-  const isRowSelectable = useCallback(function (rowNode) {
+  const isRowSelectable = useCallback((rowNode) => {
     return !rowNode.group;
   }, []);
 

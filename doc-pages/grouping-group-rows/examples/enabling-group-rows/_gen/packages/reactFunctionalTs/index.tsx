@@ -17,7 +17,7 @@ const GridExample = () => {
     {
       field: 'athlete',
       minWidth: 250,
-      cellRenderer: function (params: ICellRendererParams) {
+      cellRenderer: (params: ICellRendererParams) => {
         return <span style={{ marginLeft: 60 }}>{params.value}</span>;
       },
     },

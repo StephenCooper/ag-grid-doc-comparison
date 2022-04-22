@@ -211,7 +211,7 @@ var valueFormatter = function (params) {
 };
 
 var cellClassRules = {
-  'hover-over': function (params) {
+  'hover-over': (params) => {
     return params.node === potentialParent;
   },
 };

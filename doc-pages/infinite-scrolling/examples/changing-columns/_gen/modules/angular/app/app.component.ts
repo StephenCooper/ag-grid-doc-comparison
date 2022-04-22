@@ -82,7 +82,7 @@ export class AppComponent {
         });
         var dataSource: IDatasource = {
           rowCount: undefined,
-          getRows: function (params) {
+          getRows: (params) => {
             console.log(
               'asking for ' + params.startRow + ' to ' + params.endRow
             );

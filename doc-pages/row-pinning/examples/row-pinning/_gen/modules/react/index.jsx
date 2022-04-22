@@ -20,7 +20,7 @@ class GridExample extends Component {
       columnDefs: [
         {
           field: 'athlete',
-          cellRendererSelector: function (params) {
+          cellRendererSelector: (params) => {
             if (params.node.rowPinned) {
               return {
                 component: CustomPinnedRowRenderer,
@@ -36,7 +36,7 @@ class GridExample extends Component {
         },
         {
           field: 'age',
-          cellRendererSelector: function (params) {
+          cellRendererSelector: (params) => {
             if (params.node.rowPinned) {
               return {
                 component: CustomPinnedRowRenderer,
@@ -62,7 +62,7 @@ class GridExample extends Component {
         resizable: true,
       },
       rowData: null,
-      getRowStyle: function (params) {
+      getRowStyle: (params) => {
         if (params.node.rowPinned) {
           return { 'font-weight': 'bold' };
         }

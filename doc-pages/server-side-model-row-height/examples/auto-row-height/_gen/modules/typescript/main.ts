@@ -52,7 +52,7 @@ const gridOptions: GridOptions = {
   animateRows: true,
   suppressAggFuncInHeader: true,
 
-  onGridReady: function () {
+  onGridReady: (params) => {
     // generate data for example
     var data = getData();
 
@@ -75,7 +75,7 @@ new Grid(gridDiv, gridOptions);
 
 function getServerSideDatasource(server: any): IServerSideDatasource {
   return {
-    getRows: function (params) {
+    getRows: (params) => {
       console.log('[Datasource] - rows requested by grid: ', params.request);
 
       var response = server.getData(params.request);

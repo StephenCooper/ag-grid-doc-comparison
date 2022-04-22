@@ -108,7 +108,7 @@ const VueExample = {
         var values = params && params.values ? params.values : [];
         var result = 0;
         if (values) {
-          values.forEach(function (value) {
+          values.forEach((value) => {
             if (typeof value === 'number') {
               result += value;
             }

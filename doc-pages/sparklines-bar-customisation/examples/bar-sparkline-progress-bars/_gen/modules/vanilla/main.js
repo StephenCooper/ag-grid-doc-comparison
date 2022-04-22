@@ -13,7 +13,7 @@ const gridOptions = {
             color: 'white',
             fontSize: 10,
             fontWeight: 'bold',
-            formatter: function (params) {
+            formatter: (params) => {
               return `${params.value}%`;
             },
           },

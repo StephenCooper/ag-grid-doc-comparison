@@ -25,7 +25,7 @@ const gridOptions = {
   rowSelection: 'multiple',
   maxBlocksInCache: 2,
   suppressRowClickSelection: true,
-  getRowId: function (params) {
+  getRowId: (params) => {
     return params.data.a;
   },
   datasource: getDataSource(100),
@@ -34,7 +34,7 @@ const gridOptions = {
 function getDataSource(count) {
   const dataSource = {
     rowCount: count,
-    getRows: function (params) {
+    getRows: (params) => {
       var rowsThisPage = [];
 
       for (

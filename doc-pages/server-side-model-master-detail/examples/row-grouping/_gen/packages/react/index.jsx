@@ -40,7 +40,7 @@ class GridExample extends Component {
             flex: 1,
           },
         },
-        getDetailRowData: function (params) {
+        getDetailRowData: (params) => {
           // supply details records to detail cell renderer (i.e. detail grid)
           params.successCallback(params.data.callRecords);
         },
@@ -103,7 +103,7 @@ class GridExample extends Component {
 
 function getServerSideDatasource(server) {
   return {
-    getRows: function (params) {
+    getRows: (params) => {
       console.log('[Datasource] - rows requested by grid: ', params.request);
       var response = server.getData(params.request);
       // adding delay to simulate real server call

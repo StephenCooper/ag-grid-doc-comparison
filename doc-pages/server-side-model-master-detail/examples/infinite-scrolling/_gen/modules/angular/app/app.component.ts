@@ -57,7 +57,7 @@ export class AppComponent {
         flex: 1,
       },
     },
-    getDetailRowData: function (params) {
+    getDetailRowData: (params) => {
       // supply details records to detail cell renderer (i.e. detail grid)
       params.successCallback(params.data.callRecords);
     },
@@ -87,7 +87,7 @@ export class AppComponent {
 
 function getServerSideDatasource(server: any): IServerSideDatasource {
   return {
-    getRows: function (params) {
+    getRows: (params) => {
       // adding delay to simulate real server call
       setTimeout(function () {
         var response = server.getResponse(params.request);
@@ -107,7 +107,7 @@ function getServerSideDatasource(server: any): IServerSideDatasource {
 }
 function getFakeServer(allData: any) {
   return {
-    getResponse: function (request: IServerSideGetRowsRequest) {
+    getResponse: (request: IServerSideGetRowsRequest) => {
       console.log(
         'asking for rows: ' + request.startRow + ' to ' + request.endRow
       );

@@ -69,7 +69,7 @@ export class AppComponent {
 
 function getServerSideDatasource(server: any): IServerSideDatasource {
   return {
-    getRows: function (params) {
+    getRows: (params) => {
       var request = params.request;
       console.log('[Datasource] - rows requested by grid: ', params.request);
       var response = server.getData(request);

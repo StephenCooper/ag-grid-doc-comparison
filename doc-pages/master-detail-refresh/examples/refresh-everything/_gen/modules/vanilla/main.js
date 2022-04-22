@@ -9,7 +9,7 @@ const gridOptions = {
   defaultColDef: {
     flex: 1,
   },
-  getRowId: function (params) {
+  getRowId: (params) => {
     return params.data.account;
   },
   masterDetail: true,
@@ -17,7 +17,7 @@ const gridOptions = {
   detailCellRendererParams: {
     refreshStrategy: 'everything',
 
-    template: function (params) {
+    template: (params) => {
       return (
         '<div class="ag-details-row ag-details-row-fixed-height">' +
         '<div style="padding: 4px; font-weight: bold;">' +
@@ -33,7 +33,7 @@ const gridOptions = {
     detailGridOptions: {
       rowSelection: 'multiple',
       enableCellChangeFlash: true,
-      getRowId: function (params) {
+      getRowId: (params) => {
         return params.data.callId;
       },
       columnDefs: [
@@ -48,7 +48,7 @@ const gridOptions = {
         sortable: true,
       },
     },
-    getDetailRowData: function (params) {
+    getDetailRowData: (params) => {
       // params.successCallback([]);
       params.successCallback(params.data.callRecords);
     },

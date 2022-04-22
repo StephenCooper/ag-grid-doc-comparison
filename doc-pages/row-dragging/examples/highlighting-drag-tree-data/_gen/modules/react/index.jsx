@@ -34,10 +34,10 @@ class GridExample extends Component {
       },
       rowData: getData(),
       groupDefaultExpanded: -1,
-      getDataPath: function (data) {
+      getDataPath: (data) => {
         return data.filePath;
       },
-      getRowId: function (params) {
+      getRowId: (params) => {
         return params.data.id;
       },
       autoGroupColumnDef: {
@@ -49,7 +49,7 @@ class GridExample extends Component {
           innerRenderer: FileCellRenderer,
         },
         cellClassRules: {
-          'hover-over': function (params) {
+          'hover-over': (params) => {
             return params.node === potentialParent;
           },
         },
@@ -134,7 +134,7 @@ var valueFormatter = function (params) {
   return params.value ? params.value + ' MB' : '';
 };
 var cellClassRules = {
-  'hover-over': function (params) {
+  'hover-over': (params) => {
     return params.node === potentialParent;
   },
 };

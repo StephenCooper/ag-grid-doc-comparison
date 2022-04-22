@@ -49,13 +49,13 @@ const GridExample = () => {
       flex: 1,
     };
   }, []);
-  const getRowId = useCallback(function (params: GetRowIdParams) {
+  const getRowId = useCallback((params: GetRowIdParams) => {
     return params.data.account;
   }, []);
   const detailCellRendererParams = useMemo<any>(() => {
     return {
       refreshStrategy: 'nothing',
-      template: function (params) {
+      template: (params) => {
         return (
           '<div class="ag-details-row ag-details-row-fixed-height">' +
           '<div style="padding: 4px; font-weight: bold;">' +
@@ -70,7 +70,7 @@ const GridExample = () => {
       detailGridOptions: {
         rowSelection: 'multiple',
         enableCellChangeFlash: true,
-        getRowId: function (params: GetRowIdParams) {
+        getRowId: (params: GetRowIdParams) => {
           return params.data.callId;
         },
         columnDefs: [
@@ -85,7 +85,7 @@ const GridExample = () => {
           sortable: true,
         },
       },
-      getDetailRowData: function (params) {
+      getDetailRowData: (params) => {
         // params.successCallback([]);
         params.successCallback(params.data.callRecords);
       },

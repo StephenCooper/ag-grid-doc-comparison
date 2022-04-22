@@ -19,7 +19,7 @@ class GridExample extends Component {
           showRowGroup: 'country',
           minWidth: 200,
           cellRenderer: 'agGroupCellRenderer',
-          filterValueGetter: function (params) {
+          filterValueGetter: (params) => {
             return params.data ? params.data.country : null;
           },
         },

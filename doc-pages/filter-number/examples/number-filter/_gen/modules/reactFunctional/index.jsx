@@ -17,7 +17,7 @@ var numberValueFormatter = function (params) {
 
 var saleFilterParams = {
   allowedCharPattern: '\\d\\-\\,\\$',
-  numberParser: function (text) {
+  numberParser: (text) => {
     return text == null
       ? null
       : parseFloat(text.replace(',', '.').replace('$', ''));

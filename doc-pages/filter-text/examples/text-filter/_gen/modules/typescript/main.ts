@@ -18,7 +18,7 @@ function contains(target: string, lookingFor: string) {
 
 var athleteFilterParams: ITextFilterParams = {
   filterOptions: ['contains', 'notContains'],
-  textFormatter: function (r) {
+  textFormatter: (r) => {
     if (r == null) return null;
 
     return r
@@ -40,7 +40,7 @@ var athleteFilterParams: ITextFilterParams = {
 
 var countryFilterParams: ITextFilterParams = {
   filterOptions: ['contains'],
-  textMatcher: function ({ value, filterText }) {
+  textMatcher: ({ value, filterText }) => {
     var filterTextLowerCase = filterText ? filterText.toLowerCase() : '';
     var valueLowerCase = value.toString().toLowerCase();
     var aliases: Record<string, string> = {

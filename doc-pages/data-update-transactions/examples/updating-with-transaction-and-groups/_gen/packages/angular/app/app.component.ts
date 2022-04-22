@@ -88,7 +88,7 @@ export class AppComponent {
   public rowSelection = 'multiple';
   public getRowClass: (
     params: RowClassParams
-  ) => string | string[] | undefined = function (params: RowClassParams) {
+  ) => string | string[] | undefined = (params: RowClassParams) => {
     var rowNode = params.node;
     if (rowNode.group) {
       switch (rowNode.key) {

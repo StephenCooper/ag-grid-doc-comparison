@@ -45,7 +45,7 @@ function getBlockState() {
 
 function getServerSideDatasource(server) {
   return {
-    getRows: function (params) {
+    getRows: (params) => {
       console.log('[Datasource] - rows requested by grid: ', params.request);
 
       var response = server.getData(params.request);

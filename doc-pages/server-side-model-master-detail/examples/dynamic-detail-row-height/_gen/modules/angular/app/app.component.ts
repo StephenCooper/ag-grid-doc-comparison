@@ -61,14 +61,14 @@ export class AppComponent {
         flex: 1,
       },
     },
-    getDetailRowData: function (params: GetDetailRowDataParams) {
+    getDetailRowData: (params: GetDetailRowDataParams) => {
       // supply details records to detail cell renderer (i.e. detail grid)
       params.successCallback(params.data.callRecords);
     },
   } as IDetailCellRendererParams;
   public getRowHeight: (
     params: RowHeightParams
-  ) => number | undefined | null = function (params: RowHeightParams) {
+  ) => number | undefined | null = (params: RowHeightParams) => {
     if (params.node && params.node.detail) {
       var offset = 60;
       var sizes = params.api.getSizesForCurrentTheme() || {};
@@ -104,7 +104,7 @@ export class AppComponent {
 
 function getServerSideDatasource(server: any): IServerSideDatasource {
   return {
-    getRows: function (params) {
+    getRows: (params) => {
       console.log('[Datasource] - rows requested by grid: ', params.request);
       var response = server.getData(params.request);
       // adding delay to simulate real server call

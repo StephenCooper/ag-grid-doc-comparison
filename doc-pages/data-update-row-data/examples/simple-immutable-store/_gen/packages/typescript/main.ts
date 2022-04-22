@@ -183,10 +183,10 @@ const gridOptions: GridOptions = {
   },
   groupDefaultExpanded: 1,
   rowData: immutableStore,
-  getRowId: function (params: GetRowIdParams) {
+  getRowId: (params: GetRowIdParams) => {
     return params.data.symbol;
   },
-  onGridReady: function (params) {
+  onGridReady: (params) => {
     immutableStore = [];
     immutableStore = getInitialData();
     params.api.setRowData(immutableStore);

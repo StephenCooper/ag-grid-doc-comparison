@@ -16,10 +16,10 @@ import {
 } from 'ag-grid-community';
 
 var myIcons = {
-  sortAscending: function () {
+  sortAscending: () => {
     return 'ASC';
   },
-  sortDescending: function () {
+  sortDescending: () => {
     return 'DESC';
   },
 };

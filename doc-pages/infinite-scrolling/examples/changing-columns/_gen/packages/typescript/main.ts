@@ -135,7 +135,7 @@ fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
 
     var dataSource: IDatasource = {
       rowCount: undefined, // behave as infinite scroll
-      getRows: function (params) {
+      getRows: (params) => {
         console.log('asking for ' + params.startRow + ' to ' + params.endRow);
         // At this point in your code, you would call the server.
         // To make the demo look real, wait for 500ms before returning

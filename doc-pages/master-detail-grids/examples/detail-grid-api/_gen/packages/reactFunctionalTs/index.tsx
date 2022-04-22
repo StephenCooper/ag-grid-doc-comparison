@@ -46,12 +46,12 @@ const GridExample = () => {
           resizable: true,
         },
       },
-      getDetailRowData: function (params) {
+      getDetailRowData: (params) => {
         params.successCallback(params.data.callRecords);
       },
     } as IDetailCellRendererParams;
   }, []);
-  const getRowId = useCallback(function (params: GetRowIdParams) {
+  const getRowId = useCallback((params: GetRowIdParams) => {
     // use 'account' as the row ID
     return params.data.account;
   }, []);

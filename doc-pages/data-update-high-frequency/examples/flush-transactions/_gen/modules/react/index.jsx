@@ -152,7 +152,7 @@ class GridExample extends Component {
       rowGroupPanelShow: 'always',
       pivotPanelShow: 'always',
       asyncTransactionWaitMillis: 4000,
-      getRowId: function (params) {
+      getRowId: (params) => {
         return params.data.trade;
       },
       defaultColDef: {

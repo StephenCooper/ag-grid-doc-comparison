@@ -83,7 +83,7 @@ export class AppComponent {
           fontSize: 15,
           fontFamily: 'Arial, sans-serif',
           color: 'green',
-          formatter: function (params) {
+          formatter: (params) => {
             return '<' + params.value + '>';
           },
         },
@@ -94,7 +94,7 @@ export class AppComponent {
           },
         },
         tooltip: {
-          renderer: function (params) {
+          renderer: (params) => {
             return {
               content:
                 '<b>' +

@@ -18,7 +18,7 @@ const columnDefs: ColDef[] = [{ headerName: 'Make', field: 'make' }];
 const gridOptions: GridOptions = {
   columnDefs: columnDefs,
   rowData: [],
-  onGridReady: function (params) {
+  onGridReady: (params) => {
     params.api.sizeColumnsToFit();
   },
 };

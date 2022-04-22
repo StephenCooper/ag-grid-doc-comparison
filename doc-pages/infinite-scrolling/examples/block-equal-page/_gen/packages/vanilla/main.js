@@ -5,7 +5,7 @@ const columnDefs = [
     headerName: 'ID',
     maxWidth: 100,
     valueGetter: 'node.id',
-    cellRenderer: function (params) {
+    cellRenderer: (params) => {
       if (params.value !== undefined) {
         return params.value;
       } else {
@@ -60,7 +60,7 @@ const gridOptions = {
   maxBlocksInCache: 2,
   pagination: true,
   // debug: true,
-  getRowId: function (params) {
+  getRowId: (params) => {
     return params.data.id;
   },
 };
@@ -163,7 +163,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
       const dataSource = {
         rowCount: undefined, // behave as infinite scroll
-        getRows: function (params) {
+        getRows: (params) => {
           console.log('asking for ' + params.startRow + ' to ' + params.endRow);
           // At this point in your code, you would call the server
           // To make the demo look real, wait for 500ms before returning

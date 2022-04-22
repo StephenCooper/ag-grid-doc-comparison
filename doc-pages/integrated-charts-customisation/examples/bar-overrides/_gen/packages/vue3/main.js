@@ -102,7 +102,7 @@ const VueExample = {
             },
           },
           tooltip: {
-            renderer: function (params) {
+            renderer: (params) => {
               return {
                 content:
                   '<b>' +

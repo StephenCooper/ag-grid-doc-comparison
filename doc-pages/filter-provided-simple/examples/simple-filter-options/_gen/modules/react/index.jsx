@@ -84,7 +84,7 @@ class GridExample extends Component {
 
 var filterParams = {
   suppressAndOrCondition: true,
-  comparator: function (filterLocalDateAtMidnight, cellValue) {
+  comparator: (filterLocalDateAtMidnight, cellValue) => {
     var dateAsString = cellValue;
     if (dateAsString == null) return -1;
     var dateParts = dateAsString.split('/');

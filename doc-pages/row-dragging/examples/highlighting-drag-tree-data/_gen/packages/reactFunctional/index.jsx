@@ -12,7 +12,7 @@ var valueFormatter = function (params) {
 };
 
 var cellClassRules = {
-  'hover-over': function (params) {
+  'hover-over': (params) => {
     return params.node === potentialParent;
   },
 };
@@ -120,10 +120,10 @@ const GridExample = () => {
       resizable: true,
     };
   }, []);
-  const getDataPath = useCallback(function (data) {
+  const getDataPath = useCallback((data) => {
     return data.filePath;
   }, []);
-  const getRowId = useCallback(function (params) {
+  const getRowId = useCallback((params) => {
     return params.data.id;
   }, []);
   const autoGroupColumnDef = useMemo(() => {
@@ -136,7 +136,7 @@ const GridExample = () => {
         innerRenderer: FileCellRenderer,
       },
       cellClassRules: {
-        'hover-over': function (params) {
+        'hover-over': (params) => {
           return params.node === potentialParent;
         },
       },

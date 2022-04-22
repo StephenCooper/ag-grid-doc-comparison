@@ -31,7 +31,7 @@ export class AppComponent {
     // we're using the auto group column by default!
     {
       field: 'groupType',
-      valueGetter: function (params) {
+      valueGetter: (params) => {
         return params.data ? 'Provided' : 'Filler';
       },
     },
@@ -46,7 +46,7 @@ export class AppComponent {
     },
   };
   public groupDefaultExpanded = -1;
-  public getDataPath: GetDataPath = function (data: any) {
+  public getDataPath: GetDataPath = (data: any) => {
     return data.orgHierarchy;
   };
 

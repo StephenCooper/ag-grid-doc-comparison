@@ -49,7 +49,7 @@ export class AppComponent {
     filter: true,
   };
   public rowSelection = 'multiple';
-  public isRowSelectable: IsRowSelectable = function (rowNode: RowNode) {
+  public isRowSelectable: IsRowSelectable = (rowNode: RowNode) => {
     return rowNode.data ? rowNode.data.year < 2007 : false;
   };
   public rowData!: any[];

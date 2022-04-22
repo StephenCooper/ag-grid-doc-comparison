@@ -58,7 +58,7 @@ export class AppComponent {
   };
   public autoGroupColumnDef: ColDef = {
     minWidth: 200,
-    filterValueGetter: function (params: ValueGetterParams) {
+    filterValueGetter: (params: ValueGetterParams) => {
       if (params.node) {
         var colGettingGrouped = params.colDef.showRowGroup + '';
         return params.api.getValue(colGettingGrouped, params.node);

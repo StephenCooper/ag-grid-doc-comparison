@@ -26,7 +26,7 @@ var leftGridOptions = {
     'green-row': 'data.color == "Green"',
     'blue-row': 'data.color == "Blue"',
   },
-  getRowId: function (params) {
+  getRowId: (params) => {
     return params.data.id;
   },
   rowData: createLeftRowData(),
@@ -47,7 +47,7 @@ var rightGridOptions = {
     'green-row': 'data.color == "Green"',
     'blue-row': 'data.color == "Blue"',
   },
-  getRowId: function (params) {
+  getRowId: (params) => {
     return params.data.id;
   },
   rowData: [],

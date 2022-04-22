@@ -83,7 +83,7 @@ class GridExample extends Component {
               blur: 8,
             },
             tooltip: {
-              renderer: function (params) {
+              renderer: (params) => {
                 return {
                   content:
                     '<b>' +

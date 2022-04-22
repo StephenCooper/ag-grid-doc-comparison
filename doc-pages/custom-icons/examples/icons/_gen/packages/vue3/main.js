@@ -129,10 +129,10 @@ const VueExample = {
 };
 
 var myIcons = {
-  sortAscending: function () {
+  sortAscending: () => {
     return 'ASC';
   },
-  sortDescending: function () {
+  sortDescending: () => {
     return 'DESC';
   },
 };

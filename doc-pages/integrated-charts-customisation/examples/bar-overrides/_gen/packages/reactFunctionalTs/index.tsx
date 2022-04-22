@@ -81,7 +81,7 @@ const GridExample = () => {
             fontSize: 15,
             fontFamily: 'Arial, sans-serif',
             color: 'green',
-            formatter: function (params) {
+            formatter: (params) => {
               return '<' + params.value + '>';
             },
           },
@@ -92,7 +92,7 @@ const GridExample = () => {
             },
           },
           tooltip: {
-            renderer: function (params) {
+            renderer: (params) => {
               return {
                 content:
                   '<b>' +

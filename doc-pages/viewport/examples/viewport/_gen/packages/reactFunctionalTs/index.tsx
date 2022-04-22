@@ -89,7 +89,7 @@ const GridExample = () => {
       resizable: true,
     };
   }, []);
-  const getRowId = useCallback(function (params: GetRowIdParams) {
+  const getRowId = useCallback((params: GetRowIdParams) => {
     // the code is unique, so perfect for the id
     return params.data.code;
   }, []);

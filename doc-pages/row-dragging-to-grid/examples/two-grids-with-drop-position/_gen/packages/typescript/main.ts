@@ -37,7 +37,7 @@ var leftGridOptions: GridOptions = {
     'green-row': 'data.color == "Green"',
     'blue-row': 'data.color == "Blue"',
   },
-  getRowId: function (params: GetRowIdParams) {
+  getRowId: (params: GetRowIdParams) => {
     return params.data.id;
   },
   rowData: createRowBlock(2),
@@ -45,7 +45,7 @@ var leftGridOptions: GridOptions = {
   suppressMoveWhenRowDragging: true,
   columnDefs: leftColumnDefs,
   animateRows: true,
-  onGridReady: function (params) {
+  onGridReady: (params) => {
     addBinZone(params);
     addGridDropZone(params, 'Right');
   },
@@ -64,7 +64,7 @@ var rightGridOptions: GridOptions = {
     'green-row': 'data.color == "Green"',
     'blue-row': 'data.color == "Blue"',
   },
-  getRowId: function (params: GetRowIdParams) {
+  getRowId: (params: GetRowIdParams) => {
     return params.data.id;
   },
   rowData: createRowBlock(2),
@@ -72,7 +72,7 @@ var rightGridOptions: GridOptions = {
   suppressMoveWhenRowDragging: true,
   columnDefs: rightColumnDefs,
   animateRows: true,
-  onGridReady: function (params) {
+  onGridReady: (params) => {
     addBinZone(params);
     addGridDropZone(params, 'Left');
   },
@@ -158,18 +158,18 @@ function addBinZone(params: GridReadyEvent) {
   var eBin = document.querySelector('.bin') as any,
     icon = eBin.querySelector('i'),
     dropZone: RowDropZoneParams = {
-      getContainer: function () {
+      getContainer: () => {
         return eBin;
       },
-      onDragEnter: function () {
+      onDragEnter: () => {
         eBin.style.color = 'blue';
         icon.style.transform = 'scale(1.5)';
       },
-      onDragLeave: function () {
+      onDragLeave: () => {
         eBin.style.color = 'black';
         icon.style.transform = 'scale(1)';
       },
-      onDragStop: function (params) {
+      onDragStop: (params) => {
         binDrop(params.node.data);
         eBin.style.color = 'black';
         icon.style.transform = 'scale(1)';

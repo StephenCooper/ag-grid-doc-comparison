@@ -29,7 +29,7 @@ export class AppComponent {
     { field: 'year', rowGroup: true, hide: true },
     {
       field: 'total',
-      aggFunc: function (params: IAggFuncParams) {
+      aggFunc: (params: IAggFuncParams) => {
         let sum = 0;
         params.values.forEach((value: number) => (sum += value));
         return sum;

@@ -50,7 +50,7 @@ export class AppComponent {
     resizable: true,
     sortable: true,
   };
-  public getRowId: GetRowIdFunc = function (params: GetRowIdParams) {
+  public getRowId: GetRowIdFunc = (params: GetRowIdParams) => {
     var data = params.data;
     // use year for group level ids, or the id we assigned for leaf level
     return data.id != null ? 'id-' + data.id : 'year-' + data.year;
@@ -67,7 +67,7 @@ export class AppComponent {
   public rowModelType = 'serverSide';
   public serverSideStoreType: ServerSideStoreType = 'partial';
   public rowSelection = 'multiple';
-  public isRowSelectable: IsRowSelectable = function (rowNode: RowNode) {
+  public isRowSelectable: IsRowSelectable = (rowNode: RowNode) => {
     return !rowNode.group;
   };
   public rowData!: any[];
@@ -94,7 +94,7 @@ export class AppComponent {
 
 function getServerSideDatasource(server: any): IServerSideDatasource {
   return {
-    getRows: function (params) {
+    getRows: (params) => {
       console.log('[Datasource] - rows requested by grid: ', params.request);
       var response = server.getData(params.request);
       // adding delay to simulate real server call

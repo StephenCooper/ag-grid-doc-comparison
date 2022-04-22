@@ -35,7 +35,7 @@ export class AppComponent {
   public rowModelType = 'infinite';
   public rowSelection = 'multiple';
   public maxBlocksInCache = 2;
-  public getRowId: GetRowIdFunc = function (params: GetRowIdParams) {
+  public getRowId: GetRowIdFunc = (params: GetRowIdParams) => {
     return params.data.a;
   };
   public datasource: IDatasource = getDataSource(100);
@@ -62,7 +62,7 @@ function getColumnDefs() {
 function getDataSource(count: number) {
   const dataSource: IDatasource = {
     rowCount: count,
-    getRows: function (params: IGetRowsParams) {
+    getRows: (params: IGetRowsParams) => {
       var rowsThisPage: any[] = [];
       for (
         var rowIndex = params.startRow;

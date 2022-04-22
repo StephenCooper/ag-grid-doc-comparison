@@ -39,7 +39,7 @@ const options = {
         text: 'Total visitors',
       },
       label: {
-        formatter: function (params) {
+        formatter: (params) => {
           return params.value / 1000000 + 'M';
         },
       },

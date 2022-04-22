@@ -64,7 +64,7 @@ const GridExample = () => {
     return createData(3, 'pinned');
   }, []);
   const [columnDefs, setColumnDefs] = useState(getColumnDefs());
-  const isFullWidthRow = useCallback(function (params) {
+  const isFullWidthRow = useCallback((params) => {
     // in this example, we check the fullWidth attribute that we set
     // while creating the data. what check you do to decide if you
     // want a row full width is up to you, as long as you return a boolean
@@ -74,7 +74,7 @@ const GridExample = () => {
   const fullWidthCellRenderer = useMemo(() => {
     return FullWidthCellRenderer;
   }, []);
-  const getRowHeight = useCallback(function (params) {
+  const getRowHeight = useCallback((params) => {
     // you can have normal rows and full width rows any height that you want
     const isBodyRow = params.node.rowPinned === undefined;
     const isFullWidth = params.node.data.fullWidth;

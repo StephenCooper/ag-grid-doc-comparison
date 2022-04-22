@@ -134,7 +134,7 @@ export class AppComponent {
 }
 
 var dateFilterParams = {
-  comparator: function (filterLocalDateAtMidnight: Date, cellValue: string) {
+  comparator: (filterLocalDateAtMidnight: Date, cellValue: string) => {
     var cellDate = asDate(cellValue);
     if (filterLocalDateAtMidnight.getTime() === cellDate.getTime()) {
       return 0;

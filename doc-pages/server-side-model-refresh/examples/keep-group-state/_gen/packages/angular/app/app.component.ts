@@ -66,7 +66,7 @@ export class AppComponent {
     minWidth: 280,
     field: 'athlete',
   };
-  public getRowId: GetRowIdFunc = function (params: GetRowIdParams) {
+  public getRowId: GetRowIdFunc = (params: GetRowIdParams) => {
     var data = params.data;
     var parts = [];
     if (data.country != null) {
@@ -116,7 +116,7 @@ export class AppComponent {
 var versionCounter = 1;
 function getServerSideDatasource(server: any): IServerSideDatasource {
   return {
-    getRows: function (params) {
+    getRows: (params) => {
       console.log('[Datasource] - rows requested by grid: ', params.request);
       var response = server.getData(params.request);
       response.rows = response.rows.map(function (item: any) {

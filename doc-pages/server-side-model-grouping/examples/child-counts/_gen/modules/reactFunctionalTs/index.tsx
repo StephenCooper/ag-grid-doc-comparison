@@ -26,7 +26,7 @@ const getServerSideDatasource: (server: any) => IServerSideDatasource = (
   server: any
 ) => {
   return {
-    getRows: function (params) {
+    getRows: (params) => {
       console.log('[Datasource] - rows requested by grid: ', params.request);
       var response = server.getData(params.request);
       // adding delay to simulate real server call
@@ -71,7 +71,7 @@ const GridExample = () => {
       minWidth: 280,
     };
   }, []);
-  const getChildCount = useCallback(function (data: any) {
+  const getChildCount = useCallback((data: any) => {
     return data ? data.childCount : undefined;
   }, []);
 

@@ -66,20 +66,18 @@ export class AppComponent {
   public cacheBlockSize = 10;
   public isServerSideGroupOpenByDefault: (
     params: IsServerSideGroupOpenByDefaultParams
-  ) => boolean = function (params: IsServerSideGroupOpenByDefaultParams) {
+  ) => boolean = (params: IsServerSideGroupOpenByDefaultParams) => {
     var isKathrynPowers =
       params.rowNode.level == 0 && params.data.employeeName == 'Kathryn Powers';
     var isMabelWard =
       params.rowNode.level == 1 && params.data.employeeName == 'Mabel Ward';
     return isKathrynPowers || isMabelWard;
   };
-  public isServerSideGroup: IsServerSideGroup = function (dataItem: any) {
+  public isServerSideGroup: IsServerSideGroup = (dataItem: any) => {
     // indicate if node is a group
     return dataItem.group;
   };
-  public getServerSideGroupKey: GetServerSideGroupKey = function (
-    dataItem: any
-  ) {
+  public getServerSideGroupKey: GetServerSideGroupKey = (dataItem: any) => {
     // specify which group key to use
     return dataItem.employeeName;
   };
@@ -106,7 +104,7 @@ export class AppComponent {
 
 function createFakeServer(fakeServerData: any[]) {
   const fakeServer = {
-    getData: function (request: IServerSideGetRowsRequest) {
+    getData: (request: IServerSideGetRowsRequest) => {
       function extractRowsFromData(groupKeys: string[], data: any[]): any {
         if (groupKeys.length === 0) {
           return data.map(function (d) {
@@ -136,7 +134,7 @@ function createFakeServer(fakeServerData: any[]) {
 }
 function createServerSideDatasource(fakeServer: any) {
   const dataSource: IServerSideDatasource = {
-    getRows: function (params: IServerSideGetRowsParams) {
+    getRows: (params: IServerSideGetRowsParams) => {
       console.log('ServerSideDatasource.getRows: params = ', params);
       var request = params.request;
       var allRows = fakeServer.getData(request);

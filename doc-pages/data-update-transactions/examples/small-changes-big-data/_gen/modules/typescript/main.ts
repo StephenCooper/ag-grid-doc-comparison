@@ -242,7 +242,7 @@ const gridOptions: GridOptions = {
     field: 'name',
     cellRendererParams: { checkbox: true },
   },
-  onGridReady: function (params) {
+  onGridReady: (params) => {
     params.api.setFilterModel({
       value: { value: '50' },
     });
@@ -251,7 +251,7 @@ const gridOptions: GridOptions = {
       params.api.setRowData(getData());
     });
   },
-  isGroupOpenByDefault: function (params) {
+  isGroupOpenByDefault: (params) => {
     return ['Delhi', 'Seoul'].includes(params.key);
   },
 };

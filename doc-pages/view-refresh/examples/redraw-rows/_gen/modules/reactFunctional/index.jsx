@@ -55,7 +55,7 @@ const GridExample = () => {
       flex: 1,
     };
   }, []);
-  const getRowStyle = useCallback(function (params) {
+  const getRowStyle = useCallback((params) => {
     return {
       backgroundColor: colors[colorIndex],
     };

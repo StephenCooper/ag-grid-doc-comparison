@@ -127,7 +127,7 @@ window.createQuarterlySalesChart = function createQuarterlySalesChart(gridApi) {
           },
           number: {
             label: {
-              formatter: function (params) {
+              formatter: (params) => {
                 return params.value / 1000 + 'k';
               },
             },

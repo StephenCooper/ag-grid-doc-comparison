@@ -50,7 +50,7 @@ const GridExample = () => {
     },
     {
       field: 'country',
-      valueFormatter: function (params) {
+      valueFormatter: (params) => {
         return `${params.value.name} (${params.value.code})`;
       },
       keyCreator: countryKeyCreator,

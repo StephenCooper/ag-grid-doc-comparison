@@ -24,7 +24,7 @@ const createServerSideDatasource: (server: any) => IServerSideDatasource = (
   server: any
 ) => {
   return {
-    getRows: function (params) {
+    getRows: (params) => {
       console.log(
         '[Datasource] - rows requested by grid: startRow = ' +
           params.request.startRow +
@@ -48,7 +48,7 @@ const createServerSideDatasource: (server: any) => IServerSideDatasource = (
 
 function createFakeServer(allData: any[]) {
   return {
-    getData: function () {
+    getData: () => {
       return {
         success: true,
         rows: allData,

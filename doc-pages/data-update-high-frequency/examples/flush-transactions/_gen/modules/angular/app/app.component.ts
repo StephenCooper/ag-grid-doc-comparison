@@ -176,7 +176,7 @@ export class AppComponent {
   public rowGroupPanelShow = 'always';
   public pivotPanelShow = 'always';
   public asyncTransactionWaitMillis = 4000;
-  public getRowId: GetRowIdFunc = function (params: GetRowIdParams) {
+  public getRowId: GetRowIdFunc = (params: GetRowIdParams) => {
     return params.data.trade;
   };
   public defaultColDef: ColDef = {

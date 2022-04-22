@@ -104,7 +104,7 @@ export class AppComponent {
           length: 15,
         },
         tooltip: {
-          renderer: function (params) {
+          renderer: (params) => {
             return {
               content:
                 '<b>' +

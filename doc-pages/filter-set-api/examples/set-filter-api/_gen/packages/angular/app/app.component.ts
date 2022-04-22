@@ -61,7 +61,7 @@ export class AppComponent {
     },
     {
       field: 'country',
-      valueFormatter: function (params: ValueFormatterParams) {
+      valueFormatter: (params: ValueFormatterParams) => {
         return `${params.value.name} (${params.value.code})`;
       },
       keyCreator: countryKeyCreator,

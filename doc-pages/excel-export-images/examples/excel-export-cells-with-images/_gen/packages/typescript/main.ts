@@ -44,7 +44,7 @@ const gridOptions: GridOptions = {
     resizable: true,
   },
   defaultExcelExportParams: {
-    addImageToCell: function (rowIndex, col, value) {
+    addImageToCell: (rowIndex, col, value) => {
       if (col.getColId() !== 'country') {
         return;
       }

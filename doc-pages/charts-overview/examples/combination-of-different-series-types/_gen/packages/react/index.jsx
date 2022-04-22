@@ -66,7 +66,7 @@ class ChartExample extends Component {
               text: 'Number of cattle',
             },
             label: {
-              formatter: function (params) {
+              formatter: (params) => {
                 return params.value / 1000 + 'M';
               },
             },
@@ -80,7 +80,7 @@ class ChartExample extends Component {
               text: 'Exports (tonnes)',
             },
             label: {
-              formatter: function (params) {
+              formatter: (params) => {
                 return params.value / 1000 + 'k';
               },
             },

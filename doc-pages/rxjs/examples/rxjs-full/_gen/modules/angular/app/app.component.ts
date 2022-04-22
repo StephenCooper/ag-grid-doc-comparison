@@ -57,7 +57,7 @@ export class AppComponent {
     minWidth: 100,
     resizable: true,
   };
-  public getRowId: GetRowIdFunc = function (params: GetRowIdParams) {
+  public getRowId: GetRowIdFunc = (params: GetRowIdParams) => {
     return params.data.code;
   };
   public rowData!: any[];

@@ -77,7 +77,7 @@ const GridExample = () => {
             blur: 8,
           },
           tooltip: {
-            renderer: function (params) {
+            renderer: (params) => {
               return {
                 content:
                   '<b>' +

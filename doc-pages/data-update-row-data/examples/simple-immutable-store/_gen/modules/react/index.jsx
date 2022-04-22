@@ -40,7 +40,7 @@ class GridExample extends Component {
       },
       groupDefaultExpanded: 1,
       rowData: immutableStore,
-      getRowId: function (params) {
+      getRowId: (params) => {
         return params.data.symbol;
       },
     };

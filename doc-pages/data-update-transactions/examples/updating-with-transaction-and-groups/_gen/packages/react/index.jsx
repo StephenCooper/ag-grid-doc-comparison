@@ -37,7 +37,7 @@ class GridExample extends Component {
       groupDefaultExpanded: 1,
       rowData: getData(),
       rowSelection: 'multiple',
-      getRowClass: function (params) {
+      getRowClass: (params) => {
         var rowNode = params.node;
         if (rowNode.group) {
           switch (rowNode.key) {

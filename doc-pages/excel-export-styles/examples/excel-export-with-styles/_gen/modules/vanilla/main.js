@@ -10,10 +10,10 @@ const columnDefs = [
             field: 'age',
             cellClass: 'twoDecimalPlaces',
             cellClassRules: {
-              greenBackground: function (params) {
+              greenBackground: (params) => {
                 return params.value < 23;
               },
-              redFont: function (params) {
+              redFont: (params) => {
                 return params.value < 20;
               },
             },
@@ -22,7 +22,7 @@ const columnDefs = [
             field: 'country',
             minWidth: 200,
             cellClassRules: {
-              redFont: function (params) {
+              redFont: (params) => {
                 return params.value === 'United States';
               },
             },
@@ -31,7 +31,7 @@ const columnDefs = [
             headerName: 'Group',
             valueGetter: 'data.country.charAt(0)',
             cellClassRules: {
-              boldBorders: function (params) {
+              boldBorders: (params) => {
                 return params.value === 'U';
               },
             },
@@ -40,7 +40,7 @@ const columnDefs = [
           {
             field: 'year',
             cellClassRules: {
-              notInExcel: function (params) {
+              notInExcel: (params) => {
                 return true;
               },
             },
@@ -54,7 +54,7 @@ const columnDefs = [
             field: 'date',
             minWidth: 150,
             cellClass: 'dateFormat',
-            valueGetter: function (params) {
+            valueGetter: (params) => {
               var val = params.data.date;
 
               if (val.indexOf('/') < 0) {
@@ -70,7 +70,7 @@ const columnDefs = [
           {
             field: 'gold',
             cellClassRules: {
-              boldBorders: function (params) {
+              boldBorders: (params) => {
                 return params.value > 2;
               },
             },
@@ -87,7 +87,7 @@ const columnDefs = [
 const gridOptions = {
   defaultColDef: {
     cellClassRules: {
-      darkGreyBackground: function (params) {
+      darkGreyBackground: (params) => {
         return (params.node.rowIndex || 0) % 2 == 0;
       },
     },
@@ -100,7 +100,7 @@ const gridOptions = {
 
   columnDefs: columnDefs,
 
-  onGridReady: function (params) {
+  onGridReady: (params) => {
     document.getElementById('fontSize').checked = true;
     document.getElementById('rowHeight').checked = true;
     document.getElementById('headerRowHeight').checked = true;

@@ -139,7 +139,7 @@ const VueExample = {
 
       const updateData = (data) => {
         const dataSource = {
-          getRows: function (params) {
+          getRows: (params) => {
             // To make the demo look real, wait for 500ms before returning
             setTimeout(function () {
               const rows = [];

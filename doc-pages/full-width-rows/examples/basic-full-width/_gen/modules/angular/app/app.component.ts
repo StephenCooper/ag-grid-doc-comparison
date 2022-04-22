@@ -30,9 +30,9 @@ export class AppComponent {
   public pinnedTopRowData: any[] = createData(3, 'pinned');
   public pinnedBottomRowData: any[] = createData(3, 'pinned');
   public columnDefs: ColDef[] = getColumnDefs();
-  public isFullWidthRow: (params: IsFullWidthRowParams) => boolean = function (
+  public isFullWidthRow: (params: IsFullWidthRowParams) => boolean = (
     params: IsFullWidthRowParams
-  ) {
+  ) => {
     // in this example, we check the fullWidth attribute that we set
     // while creating the data. what check you do to decide if you
     // want a row full width is up to you, as long as you return a boolean
@@ -42,7 +42,7 @@ export class AppComponent {
   public fullWidthCellRenderer: any = FullWidthCellRenderer;
   public getRowHeight: (
     params: RowHeightParams
-  ) => number | undefined | null = function (params: RowHeightParams) {
+  ) => number | undefined | null = (params: RowHeightParams) => {
     // you can have normal rows and full width rows any height that you want
     const isBodyRow = params.node.rowPinned === undefined;
     const isFullWidth = params.node.data.fullWidth;

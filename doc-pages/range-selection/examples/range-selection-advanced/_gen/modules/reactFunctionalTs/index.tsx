@@ -53,32 +53,32 @@ const GridExample = () => {
       editable: true,
     };
   }, []);
-  const processCellForClipboard = useCallback(function (
-    params: ProcessCellForExportParams
-  ) {
-    if (
-      params.column.getColId() === 'athlete' &&
-      params.value &&
-      params.value.toUpperCase
-    ) {
-      return params.value.toUpperCase();
-    }
-    return params.value;
-  },
-  []);
-  const processCellFromClipboard = useCallback(function (
-    params: ProcessCellForExportParams
-  ) {
-    if (
-      params.column.getColId() === 'athlete' &&
-      params.value &&
-      params.value.toLowerCase
-    ) {
-      return params.value.toLowerCase();
-    }
-    return params.value;
-  },
-  []);
+  const processCellForClipboard = useCallback(
+    (params: ProcessCellForExportParams) => {
+      if (
+        params.column.getColId() === 'athlete' &&
+        params.value &&
+        params.value.toUpperCase
+      ) {
+        return params.value.toUpperCase();
+      }
+      return params.value;
+    },
+    []
+  );
+  const processCellFromClipboard = useCallback(
+    (params: ProcessCellForExportParams) => {
+      if (
+        params.column.getColId() === 'athlete' &&
+        params.value &&
+        params.value.toLowerCase
+      ) {
+        return params.value.toLowerCase();
+      }
+      return params.value;
+    },
+    []
+  );
 
   const onGridReady = useCallback((params: GridReadyEvent) => {
     fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')

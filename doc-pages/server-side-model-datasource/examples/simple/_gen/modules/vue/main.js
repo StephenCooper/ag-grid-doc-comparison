@@ -78,7 +78,7 @@ window.createServerSideDatasource = function createServerSideDatasource(
   server
 ) {
   return {
-    getRows: function (params) {
+    getRows: (params) => {
       console.log('[Datasource] - rows requested by grid: ', params.request);
       // get data for request from our fake server
       var response = server.getData(params.request);
@@ -97,7 +97,7 @@ window.createServerSideDatasource = function createServerSideDatasource(
 
 window.createFakeServer = function createFakeServer(allData) {
   return {
-    getData: function (request) {
+    getData: (request) => {
       // take a copy of the data to return to the client
       var requestedRows = allData.slice();
       return {

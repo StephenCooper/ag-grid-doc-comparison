@@ -34,7 +34,7 @@ export class AppComponent {
             fontWeight: 'bold',
           },
           tooltip: {
-            renderer: function (params) {
+            renderer: (params) => {
               return {
                 content: `${params.xValue}: ${params.yValue.toFixed(1)}%`,
               };

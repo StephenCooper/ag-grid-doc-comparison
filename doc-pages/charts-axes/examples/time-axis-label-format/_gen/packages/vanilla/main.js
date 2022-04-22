@@ -26,7 +26,7 @@ const options = {
       type: 'number',
       position: 'left',
       label: {
-        formatter: function (params) {
+        formatter: (params) => {
           return params.value + ' °C';
         },
       },

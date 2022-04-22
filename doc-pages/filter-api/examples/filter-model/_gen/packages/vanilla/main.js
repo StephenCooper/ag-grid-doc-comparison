@@ -1,5 +1,5 @@
 var filterParams = {
-  comparator: function (filterLocalDateAtMidnight, cellValue) {
+  comparator: (filterLocalDateAtMidnight, cellValue) => {
     var dateAsString = cellValue;
     if (dateAsString == null) return -1;
     var dateParts = dateAsString.split('/');
@@ -50,7 +50,7 @@ const gridOptions = {
     sortable: true,
   },
   sideBar: 'filters',
-  onGridReady: function (params) {
+  onGridReady: (params) => {
     params.api.getToolPanelInstance('filters').expandFilters();
   },
 };

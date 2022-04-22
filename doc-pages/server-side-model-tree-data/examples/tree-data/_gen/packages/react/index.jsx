@@ -26,7 +26,7 @@ class GridExample extends Component {
       autoGroupColumnDef: {
         field: 'employeeName',
         cellRendererParams: {
-          innerRenderer: function (params) {
+          innerRenderer: (params) => {
             // display employeeName rather than group key (employeeId)
             return params.data.employeeName;
           },
@@ -34,15 +34,15 @@ class GridExample extends Component {
       },
       rowModelType: 'serverSide',
       serverSideStoreType: 'partial',
-      isServerSideGroupOpenByDefault: function (params) {
+      isServerSideGroupOpenByDefault: (params) => {
         // open first two levels by default
         return params.rowNode.level < 2;
       },
-      isServerSideGroup: function (dataItem) {
+      isServerSideGroup: (dataItem) => {
         // indicate if node is a group
         return dataItem.group;
       },
-      getServerSideGroupKey: function (dataItem) {
+      getServerSideGroupKey: (dataItem) => {
         // specify which group key to use
         return dataItem.employeeId;
       },
@@ -128,7 +128,7 @@ function createFakeServer(fakeServerData) {
 }
 function createServerSideDatasource(fakeServer) {
   const dataSource = {
-    getRows: function (params) {
+    getRows: (params) => {
       console.log('ServerSideDatasource.getRows: params = ', params);
       var allRows = fakeServer.getData(params.request);
       var request = params.request;

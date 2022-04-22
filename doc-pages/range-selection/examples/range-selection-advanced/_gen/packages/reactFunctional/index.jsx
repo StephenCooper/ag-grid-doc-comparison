@@ -31,7 +31,7 @@ const GridExample = () => {
       editable: true,
     };
   }, []);
-  const processCellForClipboard = useCallback(function (params) {
+  const processCellForClipboard = useCallback((params) => {
     if (
       params.column.getColId() === 'athlete' &&
       params.value &&
@@ -41,7 +41,7 @@ const GridExample = () => {
     }
     return params.value;
   }, []);
-  const processCellFromClipboard = useCallback(function (params) {
+  const processCellFromClipboard = useCallback((params) => {
     if (
       params.column.getColId() === 'athlete' &&
       params.value &&

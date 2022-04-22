@@ -89,9 +89,9 @@ export class AppComponent {
   };
   public rowGroupPanelShow = 'always';
   public paginationPageSize = 500;
-  public getLocaleText: (params: GetLocaleTextParams) => string = function (
+  public getLocaleText: (params: GetLocaleTextParams) => string = (
     params: GetLocaleTextParams
-  ) {
+  ) => {
     switch (params.key) {
       case 'thousandSeparator':
         return '.';

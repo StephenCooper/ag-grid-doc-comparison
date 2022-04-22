@@ -55,7 +55,7 @@ export class AppComponent {
   };
   public rowData: any[] | null = getData();
   public groupDefaultExpanded = -1;
-  public getDataPath: GetDataPath = function (data: any) {
+  public getDataPath: GetDataPath = (data: any) => {
     return data.orgHierarchy;
   };
 

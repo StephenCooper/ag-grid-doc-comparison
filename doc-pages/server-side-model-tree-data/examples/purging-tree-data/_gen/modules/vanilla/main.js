@@ -20,18 +20,18 @@ const gridOptions = {
   columnDefs: columnDefs,
   animateRows: true,
   cacheBlockSize: 10,
-  isServerSideGroupOpenByDefault: function (params) {
+  isServerSideGroupOpenByDefault: (params) => {
     var isKathrynPowers =
       params.rowNode.level == 0 && params.data.employeeName == 'Kathryn Powers';
     var isMabelWard =
       params.rowNode.level == 1 && params.data.employeeName == 'Mabel Ward';
     return isKathrynPowers || isMabelWard;
   },
-  isServerSideGroup: function (dataItem) {
+  isServerSideGroup: (dataItem) => {
     // indicate if node is a group
     return dataItem.group;
   },
-  getServerSideGroupKey: function (dataItem) {
+  getServerSideGroupKey: (dataItem) => {
     // specify which group key to use
     return dataItem.employeeName;
   },
@@ -57,7 +57,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 function createFakeServer(fakeServerData) {
   const fakeServer = {
-    getData: function (request) {
+    getData: (request) => {
       function extractRowsFromData(groupKeys, data) {
         if (groupKeys.length === 0) {
           return data.map(function (d) {
@@ -90,7 +90,7 @@ function createFakeServer(fakeServerData) {
 
 function createServerSideDatasource(fakeServer) {
   const dataSource = {
-    getRows: function (params) {
+    getRows: (params) => {
       console.log('ServerSideDatasource.getRows: params = ', params);
       var request = params.request;
       var allRows = fakeServer.getData(request);

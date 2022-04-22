@@ -13,7 +13,7 @@ const gridOptions = {
     {
       headerName: 'Rendered Value',
       field: 'value',
-      cellRendererSelector: function (params) {
+      cellRendererSelector: (params) => {
         const moodDetails = {
           component: MoodRenderer,
         };

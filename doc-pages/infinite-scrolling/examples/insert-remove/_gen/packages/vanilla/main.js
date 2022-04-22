@@ -10,7 +10,7 @@ const columnDefs = [
     headerName: 'Item ID',
     field: 'id',
     valueGetter: 'node.id',
-    cellRenderer: function (params) {
+    cellRenderer: (params) => {
       if (params.value !== undefined) {
         return params.value;
       } else {
@@ -28,7 +28,7 @@ const columnDefs = [
 
 const datasource = {
   rowCount: undefined, // behave as infinite scroll
-  getRows: function (params) {
+  getRows: (params) => {
     console.log('asking for ' + params.startRow + ' to ' + params.endRow);
     // At this point in your code, you would call the server.
     // To make the demo look real, wait for 500ms before returning
@@ -66,11 +66,11 @@ const gridOptions = {
   infiniteInitialRowCount: 500,
   maxConcurrentDatasourceRequests: 2,
 
-  getRowId: function (params) {
+  getRowId: (params) => {
     return params.data.id.toString();
   },
 
-  onGridReady: function (params) {
+  onGridReady: (params) => {
     sequenceId = 1;
     allOfTheData = [];
     for (let i = 0; i < 1000; i++) {
@@ -78,11 +78,11 @@ const gridOptions = {
     }
   },
 
-  onFirstDataRendered: function (params) {
+  onFirstDataRendered: (params) => {
     params.api.sizeColumnsToFit();
   },
 
-  getRowStyle: function (params) {
+  getRowStyle: (params) => {
     if (params.data && params.data.make === 'Honda') {
       return {
         fontWeight: 'bold',

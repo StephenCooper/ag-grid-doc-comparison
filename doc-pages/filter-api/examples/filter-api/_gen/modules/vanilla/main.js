@@ -9,7 +9,7 @@ const gridOptions = {
     sortable: true,
   },
   sideBar: 'filters',
-  onGridReady: function (params) {
+  onGridReady: (params) => {
     params.api.getToolPanelInstance('filters').expandFilters();
   },
 };

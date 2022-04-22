@@ -81,7 +81,7 @@ const gridOptions: GridOptions = {
   rowGroupPanelShow: 'always',
   pivotPanelShow: 'always',
   functionsReadOnly: true,
-  onGridReady: function () {
+  onGridReady: (params) => {
     (document.getElementById('read-only') as HTMLInputElement).checked = true;
   },
 };

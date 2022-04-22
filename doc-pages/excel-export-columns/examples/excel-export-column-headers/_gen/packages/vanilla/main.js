@@ -34,7 +34,7 @@ const gridOptions = {
     flex: 1,
   },
 
-  onGridReady: function (params) {
+  onGridReady: (params) => {
     document.getElementById('columnGroups').checked = true;
   },
 

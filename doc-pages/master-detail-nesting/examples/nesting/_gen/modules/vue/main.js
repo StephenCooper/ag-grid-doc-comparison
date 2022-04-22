@@ -120,7 +120,7 @@ const VueExample = {
           },
         },
       },
-      getDetailRowData: function (params) {
+      getDetailRowData: (params) => {
         params.successCallback(params.data.children);
       },
     };

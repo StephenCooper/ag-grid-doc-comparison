@@ -89,7 +89,7 @@ export class AppComponent {
           fontSize: 15,
           fontFamily: 'Arial, sans-serif',
           color: 'green',
-          formatter: function (params) {
+          formatter: (params) => {
             return '<' + params.value + '>';
           },
         },
@@ -100,7 +100,7 @@ export class AppComponent {
           },
         },
         tooltip: {
-          renderer: function (params) {
+          renderer: (params) => {
             var bin = params.datum;
             var binSize = bin.frequency;
             var medalColour = params.xKey;

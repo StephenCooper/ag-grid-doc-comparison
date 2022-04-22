@@ -26,7 +26,7 @@ export class AppComponent {
     {
       headerName: 'Jan',
       field: 'jan',
-      colSpan: function (params: ColSpanParams) {
+      colSpan: (params: ColSpanParams) => {
         if (isHeaderRow(params)) {
           return 6;
         } else if (isQuarterRow(params)) {
@@ -42,7 +42,7 @@ export class AppComponent {
     {
       headerName: 'Apr',
       field: 'apr',
-      colSpan: function (params: ColSpanParams) {
+      colSpan: (params: ColSpanParams) => {
         if (isQuarterRow(params)) {
           return 3;
         } else {
@@ -56,7 +56,7 @@ export class AppComponent {
   ];
   public getRowHeight: (
     params: RowHeightParams
-  ) => number | undefined | null = function (params: RowHeightParams) {
+  ) => number | undefined | null = (params: RowHeightParams) => {
     if (isHeaderRow(params)) {
       return 60;
     }

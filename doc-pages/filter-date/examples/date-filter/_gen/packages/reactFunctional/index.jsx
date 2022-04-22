@@ -7,7 +7,7 @@ import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 
 var filterParams = {
-  comparator: function (filterLocalDateAtMidnight, cellValue) {
+  comparator: (filterLocalDateAtMidnight, cellValue) => {
     var dateAsString = cellValue;
     if (dateAsString == null) return -1;
     var dateParts = dateAsString.split('/');

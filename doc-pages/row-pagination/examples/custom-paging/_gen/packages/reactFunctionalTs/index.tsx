@@ -59,7 +59,7 @@ const GridExample = () => {
       headerName: 'Group',
       minWidth: 170,
       field: 'athlete',
-      valueGetter: function (params) {
+      valueGetter: (params) => {
         if (params.node!.group) {
           return params.node!.key;
         } else {
@@ -86,12 +86,12 @@ const GridExample = () => {
       minWidth: 100,
     };
   }, []);
-  const paginationNumberFormatter = useCallback(function (
-    params: PaginationNumberFormatterParams
-  ) {
-    return '[' + params.value.toLocaleString() + ']';
-  },
-  []);
+  const paginationNumberFormatter = useCallback(
+    (params: PaginationNumberFormatterParams) => {
+      return '[' + params.value.toLocaleString() + ']';
+    },
+    []
+  );
 
   const onGridReady = useCallback((params: GridReadyEvent) => {
     fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')

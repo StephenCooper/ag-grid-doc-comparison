@@ -29,7 +29,7 @@ const options = {
         enabled: false,
       },
       label: {
-        formatter: function (params) {
+        formatter: (params) => {
           return params.value + '%';
         },
       },

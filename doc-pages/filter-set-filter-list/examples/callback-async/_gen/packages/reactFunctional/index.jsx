@@ -8,7 +8,7 @@ import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 
 var filterParams = {
-  values: function (params) {
+  values: (params) => {
     setTimeout(function () {
       params.success(['value 1', 'value 2']);
     }, 3000);

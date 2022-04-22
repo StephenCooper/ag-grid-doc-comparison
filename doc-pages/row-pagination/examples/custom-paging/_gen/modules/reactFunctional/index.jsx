@@ -50,7 +50,7 @@ const GridExample = () => {
       headerName: 'Group',
       minWidth: 170,
       field: 'athlete',
-      valueGetter: function (params) {
+      valueGetter: (params) => {
         if (params.node.group) {
           return params.node.key;
         } else {
@@ -77,7 +77,7 @@ const GridExample = () => {
       minWidth: 100,
     };
   }, []);
-  const paginationNumberFormatter = useCallback(function (params) {
+  const paginationNumberFormatter = useCallback((params) => {
     return '[' + params.value.toLocaleString() + ']';
   }, []);
 

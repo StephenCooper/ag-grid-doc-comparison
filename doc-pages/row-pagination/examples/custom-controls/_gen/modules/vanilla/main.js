@@ -3,7 +3,7 @@ const columnDefs = [
   {
     headerName: '#',
     width: 50,
-    valueFormatter: function (params) {
+    valueFormatter: (params) => {
       return `${parseInt(params.node.id) + 1}`;
     },
   },

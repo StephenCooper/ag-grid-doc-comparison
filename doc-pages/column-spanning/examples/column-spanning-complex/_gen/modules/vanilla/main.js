@@ -7,7 +7,7 @@ const columnDefs = [
   {
     headerName: 'Jan',
     field: 'jan',
-    colSpan: function (params) {
+    colSpan: (params) => {
       if (isHeaderRow(params)) {
         return 6;
       } else if (isQuarterRow(params)) {
@@ -23,7 +23,7 @@ const columnDefs = [
   {
     headerName: 'Apr',
     field: 'apr',
-    colSpan: function (params) {
+    colSpan: (params) => {
       if (isQuarterRow(params)) {
         return 3;
       } else {
@@ -37,7 +37,7 @@ const columnDefs = [
 ];
 
 const gridOptions = {
-  getRowHeight: function (params) {
+  getRowHeight: (params) => {
     if (isHeaderRow(params)) {
       return 60;
     }
@@ -47,7 +47,7 @@ const gridOptions = {
   defaultColDef: {
     width: 100,
   },
-  onGridReady: function (params) {
+  onGridReady: (params) => {
     params.api.sizeColumnsToFit();
   },
 };

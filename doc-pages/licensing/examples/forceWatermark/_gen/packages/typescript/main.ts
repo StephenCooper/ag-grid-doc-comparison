@@ -33,7 +33,7 @@ const gridOptions: GridOptions = {
 
   rowData: null,
 
-  onGridReady: function (params) {
+  onGridReady: (params) => {
     params.api.sizeColumnsToFit();
   },
 };

@@ -127,14 +127,14 @@ const GridExample = () => {
     {
       field: 'dateModified',
       minWidth: 250,
-      comparator: function (d1, d2) {
+      comparator: (d1, d2) => {
         return new Date(d1).getTime() < new Date(d2).getTime() ? -1 : 1;
       },
     },
     {
       field: 'size',
       aggFunc: 'sum',
-      valueFormatter: function (params) {
+      valueFormatter: (params) => {
         return params.value
           ? Math.round(params.value * 10) / 10 + ' MB'
           : '0 MB';
@@ -160,10 +160,10 @@ const GridExample = () => {
       },
     };
   }, []);
-  const getDataPath = useCallback(function (data: any) {
+  const getDataPath = useCallback((data: any) => {
     return data.filePath;
   }, []);
-  const getRowId = useCallback(function (params: GetRowIdParams) {
+  const getRowId = useCallback((params: GetRowIdParams) => {
     return params.data.id;
   }, []);
 

@@ -38,7 +38,7 @@ export class AppComponent {
   ];
   public rowClassRules: RowClassRules = {
     // row style function
-    'sick-days-warning': function (params) {
+    'sick-days-warning': (params) => {
       var numSickDays = params.data.sickDays;
       return numSickDays > 5 && numSickDays <= 7;
     },

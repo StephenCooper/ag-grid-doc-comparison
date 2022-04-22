@@ -10,12 +10,12 @@ export default {
     return {};
   },
   computed: {
-    value: function () {
+    value: () => {
       return this.params.value;
     },
   },
   methods: {
-    onAdd: function () {
+    onAdd: () => {
       const oldData = this.params.node.data;
       const oldCallRecords = oldData.callRecords;
       const newCallRecords = oldCallRecords.slice(0); // make a copy
@@ -46,7 +46,7 @@ export default {
 
       this.params.node.setExpanded(true);
     },
-    onRemove: function () {
+    onRemove: () => {
       const oldData = this.params.node.data;
 
       const oldCallRecords = oldData.callRecords;

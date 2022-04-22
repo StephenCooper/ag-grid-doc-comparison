@@ -96,7 +96,7 @@ export class AppComponent {
   public aggFuncs: {
     [key: string]: IAggFunc;
   } = {
-    sum: function (params) {
+    sum: (params) => {
       var values = params && params.values ? params.values : [];
       var result = 0;
       if (values) {
@@ -114,7 +114,7 @@ export class AppComponent {
     },
   };
   public groupDefaultExpanded = 1;
-  public getRowId: GetRowIdFunc = function (params: GetRowIdParams) {
+  public getRowId: GetRowIdFunc = (params: GetRowIdParams) => {
     return params.data.id;
   };
   public rowData!: any[];

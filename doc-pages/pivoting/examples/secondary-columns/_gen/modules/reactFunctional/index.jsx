@@ -79,7 +79,7 @@ const GridExample = () => {
       minWidth: 250,
     };
   }, []);
-  const processSecondaryColDef = useCallback(function (colDef) {
+  const processSecondaryColDef = useCallback((colDef) => {
     if (
       _optionalChain([
         colDef,
@@ -102,7 +102,7 @@ const GridExample = () => {
       ]);
     }
   }, []);
-  const processSecondaryColGroupDef = useCallback(function (colGroupDef) {
+  const processSecondaryColGroupDef = useCallback((colGroupDef) => {
     // for fun, add a css class for 2010
     if (
       _optionalChain([

@@ -12,7 +12,7 @@ import { CustomPinnedRowRenderer } from './customPinnedRowRenderer';
 const columnDefs: ColDef[] = [
   {
     field: 'athlete',
-    cellRendererSelector: function (params) {
+    cellRendererSelector: (params) => {
       if (params.node.rowPinned) {
         return {
           component: CustomPinnedRowRenderer,
@@ -28,7 +28,7 @@ const columnDefs: ColDef[] = [
   },
   {
     field: 'age',
-    cellRendererSelector: function (params) {
+    cellRendererSelector: (params) => {
       if (params.node.rowPinned) {
         return {
           component: CustomPinnedRowRenderer,
@@ -57,7 +57,7 @@ const gridOptions: GridOptions = {
   },
   columnDefs: columnDefs,
   rowData: null,
-  getRowStyle: function (params: RowClassParams): RowStyle | undefined {
+  getRowStyle: (params: RowClassParams): RowStyle | undefined => {
     if (params.node.rowPinned) {
       return { 'font-weight': 'bold' };
     }

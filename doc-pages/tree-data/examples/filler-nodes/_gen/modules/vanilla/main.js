@@ -11,7 +11,7 @@ const gridOptions = {
     // we're using the auto group column by default!
     {
       field: 'groupType',
-      valueGetter: function (params) {
+      valueGetter: (params) => {
         return params.data ? 'Provided' : 'Filler';
       },
     },
@@ -29,7 +29,7 @@ const gridOptions = {
   treeData: true, // enable Tree Data mode
   animateRows: true,
   groupDefaultExpanded: -1, // expand all groups by default
-  getDataPath: function (data) {
+  getDataPath: (data) => {
     return data.orgHierarchy;
   },
 };

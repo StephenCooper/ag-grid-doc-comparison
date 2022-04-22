@@ -34,7 +34,7 @@ class GridExample extends Component {
         headerName: 'Group',
         minWidth: 170,
         field: 'athlete',
-        valueGetter: function (params) {
+        valueGetter: (params) => {
           if (params.node.group) {
             return params.node.key;
           } else {
@@ -62,7 +62,7 @@ class GridExample extends Component {
       rowGroupPanelShow: 'always',
       pivotPanelShow: 'always',
       paginationPageSize: 10,
-      paginationNumberFormatter: function (params) {
+      paginationNumberFormatter: (params) => {
         return '[' + params.value.toLocaleString() + ']';
       },
       rowData: null,

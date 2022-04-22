@@ -15,7 +15,7 @@ class GridExample extends Component {
         {
           headerName: 'Jan',
           field: 'jan',
-          colSpan: function (params) {
+          colSpan: (params) => {
             if (isHeaderRow(params)) {
               return 6;
             } else if (isQuarterRow(params)) {
@@ -31,7 +31,7 @@ class GridExample extends Component {
         {
           headerName: 'Apr',
           field: 'apr',
-          colSpan: function (params) {
+          colSpan: (params) => {
             if (isQuarterRow(params)) {
               return 3;
             } else {
@@ -43,7 +43,7 @@ class GridExample extends Component {
         { headerName: 'May', field: 'may' },
         { headerName: 'Jun', field: 'jun' },
       ],
-      getRowHeight: function (params) {
+      getRowHeight: (params) => {
         if (isHeaderRow(params)) {
           return 60;
         }

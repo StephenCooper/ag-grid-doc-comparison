@@ -41,7 +41,7 @@ class GridExample extends Component {
         minWidth: 100,
         editable: true,
       },
-      processCellForClipboard: function (params) {
+      processCellForClipboard: (params) => {
         if (
           params.column.getColId() === 'athlete' &&
           params.value &&
@@ -51,7 +51,7 @@ class GridExample extends Component {
         }
         return params.value;
       },
-      processCellFromClipboard: function (params) {
+      processCellFromClipboard: (params) => {
         if (
           params.column.getColId() === 'athlete' &&
           params.value &&

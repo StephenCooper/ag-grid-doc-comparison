@@ -5,7 +5,7 @@ const gridOptions = {
     width: 250,
     resizable: true,
   },
-  onAsyncTransactionsFlushed: function (e) {
+  onAsyncTransactionsFlushed: (e) => {
     var summary = {};
     e.results.forEach((result) => {
       var status = result.status;
@@ -16,7 +16,7 @@ const gridOptions = {
     });
     console.log('onAsyncTransactionsFlushed: ' + JSON.stringify(summary));
   },
-  isApplyServerSideTransaction: function (params) {
+  isApplyServerSideTransaction: (params) => {
     var tx = params.transaction;
     var storeInfo = params.storeInfo;
     var txCreatedSinceRowDataRead = tx.serverVersion > storeInfo.serverVersion;
@@ -34,11 +34,11 @@ const gridOptions = {
       return false;
     }
   },
-  onGridReady: function (params) {
+  onGridReady: (params) => {
     setupData();
 
     var dataSource = {
-      getRows: function (params2) {
+      getRows: (params2) => {
         setTimeout(function () {
           var rowData = allServerSideData.slice();
           console.log(
@@ -55,7 +55,7 @@ const gridOptions = {
 
     params.api.setServerSideDatasource(dataSource);
   },
-  getRowId: function (params) {
+  getRowId: (params) => {
     return params.data.product;
   },
   rowModelType: 'serverSide',

@@ -131,7 +131,7 @@ var dateFilterParams = {
     {
       filter: 'agDateColumnFilter',
       filterParams: {
-        comparator: function (filterDate, cellValue) {
+        comparator: (filterDate, cellValue) => {
           if (cellValue == null) return -1;
           return getDate(cellValue).getTime() - filterDate.getTime();
         },
@@ -140,7 +140,7 @@ var dateFilterParams = {
     {
       filter: 'agSetColumnFilter',
       filterParams: {
-        comparator: function (a, b) {
+        comparator: (a, b) => {
           return getDate(a).getTime() - getDate(b).getTime();
         },
       },

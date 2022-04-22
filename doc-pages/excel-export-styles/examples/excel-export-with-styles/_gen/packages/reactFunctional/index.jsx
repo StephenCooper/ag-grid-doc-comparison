@@ -42,10 +42,10 @@ const GridExample = () => {
               field: 'age',
               cellClass: 'twoDecimalPlaces',
               cellClassRules: {
-                greenBackground: function (params) {
+                greenBackground: (params) => {
                   return params.value < 23;
                 },
-                redFont: function (params) {
+                redFont: (params) => {
                   return params.value < 20;
                 },
               },
@@ -54,7 +54,7 @@ const GridExample = () => {
               field: 'country',
               minWidth: 200,
               cellClassRules: {
-                redFont: function (params) {
+                redFont: (params) => {
                   return params.value === 'United States';
                 },
               },
@@ -63,7 +63,7 @@ const GridExample = () => {
               headerName: 'Group',
               valueGetter: 'data.country.charAt(0)',
               cellClassRules: {
-                boldBorders: function (params) {
+                boldBorders: (params) => {
                   return params.value === 'U';
                 },
               },
@@ -72,7 +72,7 @@ const GridExample = () => {
             {
               field: 'year',
               cellClassRules: {
-                notInExcel: function (params) {
+                notInExcel: (params) => {
                   return true;
                 },
               },
@@ -86,7 +86,7 @@ const GridExample = () => {
               field: 'date',
               minWidth: 150,
               cellClass: 'dateFormat',
-              valueGetter: function (params) {
+              valueGetter: (params) => {
                 var val = params.data.date;
                 if (val.indexOf('/') < 0) {
                   return val;
@@ -99,7 +99,7 @@ const GridExample = () => {
             {
               field: 'gold',
               cellClassRules: {
-                boldBorders: function (params) {
+                boldBorders: (params) => {
                   return params.value > 2;
                 },
               },
@@ -115,7 +115,7 @@ const GridExample = () => {
   const defaultColDef = useMemo(() => {
     return {
       cellClassRules: {
-        darkGreyBackground: function (params) {
+        darkGreyBackground: (params) => {
           return (params.node.rowIndex || 0) % 2 == 0;
         },
       },

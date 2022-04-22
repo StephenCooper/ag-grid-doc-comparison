@@ -157,7 +157,7 @@ const GridExample = () => {
         });
         const dataSource = {
           rowCount: undefined,
-          getRows: function (params) {
+          getRows: (params) => {
             console.log(
               'asking for ' + params.startRow + ' to ' + params.endRow
             );

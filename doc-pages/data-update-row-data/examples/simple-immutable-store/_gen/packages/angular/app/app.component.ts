@@ -84,7 +84,7 @@ export class AppComponent {
   };
   public groupDefaultExpanded = 1;
   public rowData: any[] | null = immutableStore;
-  public getRowId: GetRowIdFunc = function (params: GetRowIdParams) {
+  public getRowId: GetRowIdFunc = (params: GetRowIdParams) => {
     return params.data.symbol;
   };
 

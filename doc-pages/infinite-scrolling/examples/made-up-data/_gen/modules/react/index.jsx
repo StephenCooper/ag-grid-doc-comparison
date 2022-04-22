@@ -23,7 +23,7 @@ class GridExample extends Component {
       rowModelType: 'infinite',
       rowSelection: 'multiple',
       maxBlocksInCache: 2,
-      getRowId: function (params) {
+      getRowId: (params) => {
         return params.data.a;
       },
       datasource: getDataSource(100),
@@ -80,7 +80,7 @@ function getColumnDefs() {
 function getDataSource(count) {
   const dataSource = {
     rowCount: count,
-    getRows: function (params) {
+    getRows: (params) => {
       var rowsThisPage = [];
       for (
         var rowIndex = params.startRow;

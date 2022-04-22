@@ -22,7 +22,7 @@ class GridExample extends Component {
         // we're using the auto group column by default!
         {
           field: 'groupType',
-          valueGetter: function (params) {
+          valueGetter: (params) => {
             return params.data ? 'Provided' : 'Filler';
           },
         },
@@ -37,7 +37,7 @@ class GridExample extends Component {
         },
       },
       groupDefaultExpanded: -1,
-      getDataPath: function (data) {
+      getDataPath: (data) => {
         return data.orgHierarchy;
       },
     };

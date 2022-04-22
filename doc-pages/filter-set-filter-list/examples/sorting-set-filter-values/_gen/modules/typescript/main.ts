@@ -22,7 +22,7 @@ ModuleRegistry.registerModules([
 ]);
 
 var filterParams = {
-  comparator: function (a: string, b: string) {
+  comparator: (a: string, b: string) => {
     var valA = parseInt(a);
     var valB = parseInt(b);
     if (valA === valB) return 0;
@@ -51,7 +51,7 @@ const gridOptions: GridOptions = {
   },
   rowData: getRowData(),
   sideBar: 'filters',
-  onGridReady: function (params) {
+  onGridReady: (params) => {
     ((params.api.getToolPanelInstance(
       'filters'
     ) as any) as IFiltersToolPanel).expandFilters();

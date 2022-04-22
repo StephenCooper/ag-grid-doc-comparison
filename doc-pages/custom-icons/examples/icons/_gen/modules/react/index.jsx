@@ -158,10 +158,10 @@ class GridExample extends Component {
 }
 
 var myIcons = {
-  sortAscending: function () {
+  sortAscending: () => {
     return 'ASC';
   },
-  sortDescending: function () {
+  sortDescending: () => {
     return 'DESC';
   },
 };

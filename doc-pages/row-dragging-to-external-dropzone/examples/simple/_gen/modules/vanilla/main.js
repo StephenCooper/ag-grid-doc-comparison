@@ -23,7 +23,7 @@ const gridOptions = {
   rowDragManaged: true,
   columnDefs: columnDefs,
   animateRows: true,
-  onGridReady: function (params) {
+  onGridReady: (params) => {
     addDropZones(params);
     addCheckboxListener(params);
   },
@@ -83,10 +83,10 @@ function createTile(data) {
 function addDropZones(params) {
   var tileContainer = document.querySelector('.tile-container');
   var dropZone = {
-    getContainer: function () {
+    getContainer: () => {
       return tileContainer;
     },
-    onDragStop: function (params) {
+    onDragStop: (params) => {
       var tile = createTile(params.node.data);
       tileContainer.appendChild(tile);
     },

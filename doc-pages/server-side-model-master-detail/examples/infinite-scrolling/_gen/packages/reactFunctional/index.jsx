@@ -9,7 +9,7 @@ import 'ag-grid-community/dist/styles/ag-theme-alpine-dark.css';
 
 const getServerSideDatasource = (server) => {
   return {
-    getRows: function (params) {
+    getRows: (params) => {
       // adding delay to simulate real server call
       setTimeout(function () {
         var response = server.getResponse(params.request);
@@ -30,7 +30,7 @@ const getServerSideDatasource = (server) => {
 
 const getFakeServer = (allData) => {
   return {
-    getResponse: function (request) {
+    getResponse: (request) => {
       console.log(
         'asking for rows: ' + request.startRow + ' to ' + request.endRow
       );
@@ -78,7 +78,7 @@ const GridExample = () => {
           flex: 1,
         },
       },
-      getDetailRowData: function (params) {
+      getDetailRowData: (params) => {
         // supply details records to detail cell renderer (i.e. detail grid)
         params.successCallback(params.data.callRecords);
       },

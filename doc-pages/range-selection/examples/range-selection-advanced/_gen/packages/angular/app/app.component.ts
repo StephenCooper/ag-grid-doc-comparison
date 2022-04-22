@@ -61,7 +61,7 @@ export class AppComponent {
   };
   public processCellForClipboard: (
     params: ProcessCellForExportParams
-  ) => any = function (params: ProcessCellForExportParams) {
+  ) => any = (params: ProcessCellForExportParams) => {
     if (
       params.column.getColId() === 'athlete' &&
       params.value &&
@@ -73,7 +73,7 @@ export class AppComponent {
   };
   public processCellFromClipboard: (
     params: ProcessCellForExportParams
-  ) => any = function (params: ProcessCellForExportParams) {
+  ) => any = (params: ProcessCellForExportParams) => {
     if (
       params.column.getColId() === 'athlete' &&
       params.value &&

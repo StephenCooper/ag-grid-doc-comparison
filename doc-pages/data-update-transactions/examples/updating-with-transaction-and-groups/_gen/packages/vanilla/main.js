@@ -39,7 +39,7 @@ const gridOptions = {
   suppressAggFuncInHeader: true,
   // this allows the different colors per group, by assigning a different
   // css class to each group level based on the key
-  getRowClass: function (params) {
+  getRowClass: (params) => {
     var rowNode = params.node;
     if (rowNode.group) {
       switch (rowNode.key) {

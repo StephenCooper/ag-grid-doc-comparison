@@ -117,7 +117,7 @@ const VueExample = {
 
 window.createFakeServer = function createFakeServer(fakeServerData) {
   const fakeServer = {
-    getData: function (request) {
+    getData: (request) => {
       function extractRowsFromData(groupKeys, data) {
         if (groupKeys.length === 0) {
           return data.map(function (d) {
@@ -150,7 +150,7 @@ window.createServerSideDatasource = function createServerSideDatasource(
   fakeServer
 ) {
   const dataSource = {
-    getRows: function (params) {
+    getRows: (params) => {
       console.log('ServerSideDatasource.getRows: params = ', params);
       var request = params.request;
       var allRows = fakeServer.getData(request);

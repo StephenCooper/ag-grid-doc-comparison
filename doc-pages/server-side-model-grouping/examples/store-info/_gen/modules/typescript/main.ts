@@ -41,9 +41,9 @@ const gridOptions: GridOptions = {
   // use the server-side row model
   rowModelType: 'serverSide',
 
-  getServerSideStoreParams: function (
+  getServerSideStoreParams: (
     params: GetServerSideStoreParamsParams
-  ): ServerSideStoreParams {
+  ): ServerSideStoreParams => {
     var noGroupingActive = params.rowGroupColumns.length == 0;
     var res: ServerSideStoreParams;
     if (noGroupingActive) {
@@ -94,7 +94,7 @@ function onBtStoreState() {
 
 function getServerSideDatasource(server: any): IServerSideDatasource {
   return {
-    getRows: function (params) {
+    getRows: (params) => {
       console.log('[Datasource] - rows requested by grid: ', params.request);
 
       var response = server.getData(params.request);

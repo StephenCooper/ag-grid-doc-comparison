@@ -62,7 +62,7 @@ const gridOptions: GridOptions = {
     resizable: true,
   },
   sideBar: 'filters',
-  onGridReady: function (params) {
+  onGridReady: (params) => {
     // initially collapse all filter groups
     ((params.api.getToolPanelInstance(
       'filters'

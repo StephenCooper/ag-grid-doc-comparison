@@ -29,13 +29,13 @@ const gridOptions = {
     filter: true,
   },
   rowData: getData(),
-  getRowHeight: function (params) {
+  getRowHeight: (params) => {
     // return 100px height for full width rows
     if (isFullWidth(params.data)) {
       return 100;
     }
   },
-  isFullWidthRow: function (params) {
+  isFullWidthRow: (params) => {
     return isFullWidth(params.rowNode.data);
   },
   // see AG Grid docs cellRenderer for details on how to build cellRenderers

@@ -18,7 +18,7 @@ const gridOptions: GridOptions = {
       // it is important to have node.id here, so that when the id changes (which happens
       // when the row is loaded) then the cell is refreshed.
       valueGetter: 'node.id',
-      cellRenderer: function (params: ICellRendererParams) {
+      cellRenderer: (params: ICellRendererParams) => {
         if (params.value !== undefined) {
           return params.value;
         } else {
@@ -45,7 +45,7 @@ const gridOptions: GridOptions = {
   rowBuffer: 0,
   // debug: true,
   rowSelection: 'multiple',
-  isRowSelectable: function (rowNode: RowNode) {
+  isRowSelectable: (rowNode: RowNode) => {
     return rowNode.data ? rowNode.data.country === 'United States' : false;
   },
   // tell grid we want virtual row model type
@@ -77,7 +77,7 @@ fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
   .then(function (data) {
     const dataSource: IDatasource = {
       rowCount: undefined, // behave as infinite scroll
-      getRows: function (params: IGetRowsParams) {
+      getRows: (params: IGetRowsParams) => {
         // console.log('asking for ' + params.startRow + ' to ' + params.endRow);
         // At this point in your code, you would call the server.
         // To make the demo look real, wait for 500ms before returning

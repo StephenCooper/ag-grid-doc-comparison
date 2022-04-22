@@ -19,7 +19,7 @@ const gridOptions = {
   enableRangeSelection: true,
   onRangeSelectionChanged: onRangeSelectionChanged,
 
-  processCellForClipboard: function (params) {
+  processCellForClipboard: (params) => {
     if (
       params.column.getColId() === 'athlete' &&
       params.value &&
@@ -31,7 +31,7 @@ const gridOptions = {
     return params.value;
   },
 
-  processCellFromClipboard: function (params) {
+  processCellFromClipboard: (params) => {
     if (
       params.column.getColId() === 'athlete' &&
       params.value &&

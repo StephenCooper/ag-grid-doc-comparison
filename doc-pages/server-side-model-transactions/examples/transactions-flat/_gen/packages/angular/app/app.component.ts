@@ -49,7 +49,7 @@ export class AppComponent {
     width: 250,
     resizable: true,
   };
-  public getRowId: GetRowIdFunc = function (params: GetRowIdParams) {
+  public getRowId: GetRowIdFunc = (params: GetRowIdParams) => {
     return params.data.product;
   };
   public rowSelection = 'multiple';
@@ -141,7 +141,7 @@ export class AppComponent {
       .get<any[]>('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .subscribe((data) => {
         const dataSource: IServerSideDatasource = {
-          getRows: function (params: IServerSideGetRowsParams) {
+          getRows: (params: IServerSideGetRowsParams) => {
             // To make the demo look real, wait for 500ms before returning
             setTimeout(function () {
               const rows: any[] = [];

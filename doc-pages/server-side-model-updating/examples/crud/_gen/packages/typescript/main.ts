@@ -95,7 +95,7 @@ function createMyDataSource(data: any[]) {
   window.rowDataServerSide = data;
 
   const dataSource: IServerSideDatasource = {
-    getRows: function (params: IServerSideGetRowsParams) {
+    getRows: (params: IServerSideGetRowsParams) => {
       setTimeout(function () {
         // take a slice of the total rows
         var rowsThisPage = data.slice(

@@ -50,22 +50,25 @@ const GridExample = () => {
       minWidth: 250,
     };
   }, []);
-  const processSecondaryColDef = useCallback(function (colDef: ColDef) {
+  const processSecondaryColDef = useCallback((colDef: ColDef) => {
     if (colDef.pivotValueColumn?.getId() === 'gold') {
       colDef.headerName = colDef.headerName?.toUpperCase();
     }
   }, []);
-  const processSecondaryColGroupDef = useCallback(function (
-    colGroupDef: ColGroupDef
-  ) {
-    // for fun, add a css class for 2010
-    if (colGroupDef.pivotKeys?.length && colGroupDef.pivotKeys[0] === '2010') {
-      colGroupDef.headerClass = 'color-background';
-    }
-    // put 'year' in front of each group
-    colGroupDef.headerName = 'Year ' + colGroupDef.headerName;
-  },
-  []);
+  const processSecondaryColGroupDef = useCallback(
+    (colGroupDef: ColGroupDef) => {
+      // for fun, add a css class for 2010
+      if (
+        colGroupDef.pivotKeys?.length &&
+        colGroupDef.pivotKeys[0] === '2010'
+      ) {
+        colGroupDef.headerClass = 'color-background';
+      }
+      // put 'year' in front of each group
+      colGroupDef.headerName = 'Year ' + colGroupDef.headerName;
+    },
+    []
+  );
 
   const onGridReady = useCallback((params: GridReadyEvent) => {
     fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')

@@ -21,7 +21,7 @@ class GridExample extends Component {
         },
         {
           headerName: 'Year',
-          valueGetter: function (params) {
+          valueGetter: (params) => {
             if (params.data) {
               return params.data.year;
             }

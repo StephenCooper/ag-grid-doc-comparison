@@ -44,7 +44,7 @@ export class AppComponent {
   public rowData: any[] | null = getData();
   public getRowHeight: (
     params: RowHeightParams
-  ) => number | undefined | null = function (params: RowHeightParams) {
+  ) => number | undefined | null = (params: RowHeightParams) => {
     return currentRowHeight;
   };
 

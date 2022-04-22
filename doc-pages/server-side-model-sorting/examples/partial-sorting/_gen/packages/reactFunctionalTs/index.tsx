@@ -23,7 +23,7 @@ const getServerSideDatasource: (server: any) => IServerSideDatasource = (
   server: any
 ) => {
   return {
-    getRows: function (params: IServerSideGetRowsParams) {
+    getRows: (params: IServerSideGetRowsParams) => {
       console.log('[Datasource] - rows requested by grid: ', params.request);
       // get data for request from our fake server
       var response = server.getData(params.request);

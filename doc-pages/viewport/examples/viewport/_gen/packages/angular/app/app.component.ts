@@ -73,7 +73,7 @@ export class AppComponent {
   };
   public rowSelection = 'multiple';
   public rowModelType = 'viewport';
-  public getRowId: GetRowIdFunc = function (params: GetRowIdParams) {
+  public getRowId: GetRowIdFunc = (params: GetRowIdParams) => {
     // the code is unique, so perfect for the id
     return params.data.code;
   };

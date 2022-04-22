@@ -34,11 +34,11 @@ const gridOptions: GridOptions = {
         resizable: true,
       },
     },
-    getDetailRowData: function (params) {
+    getDetailRowData: (params) => {
       params.successCallback(params.data.callRecords);
     },
   } as IDetailCellRendererParams,
-  getRowId: function (params: GetRowIdParams) {
+  getRowId: (params: GetRowIdParams) => {
     // use 'account' as the row ID
     return params.data.account;
   },

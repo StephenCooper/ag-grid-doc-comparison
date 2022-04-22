@@ -62,7 +62,7 @@ const GridExample = () => {
       },
     };
   }, []);
-  const getRowClass = useCallback(function (params: RowClassParams) {
+  const getRowClass = useCallback((params: RowClassParams) => {
     var rowNode = params.node;
     if (rowNode.group) {
       switch (rowNode.key) {

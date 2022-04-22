@@ -123,7 +123,7 @@ var newItemCount = 0;
 function createMyDataSource(data) {
   window.rowDataServerSide = data;
   const dataSource = {
-    getRows: function (params) {
+    getRows: (params) => {
       setTimeout(function () {
         // take a slice of the total rows
         var rowsThisPage = data.slice(

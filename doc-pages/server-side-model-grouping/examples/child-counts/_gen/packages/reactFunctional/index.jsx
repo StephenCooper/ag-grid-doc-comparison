@@ -9,7 +9,7 @@ import 'ag-grid-community/dist/styles/ag-theme-alpine-dark.css';
 
 const getServerSideDatasource = (server) => {
   return {
-    getRows: function (params) {
+    getRows: (params) => {
       console.log('[Datasource] - rows requested by grid: ', params.request);
       var response = server.getData(params.request);
       // adding delay to simulate real server call
@@ -54,7 +54,7 @@ const GridExample = () => {
       minWidth: 280,
     };
   }, []);
-  const getChildCount = useCallback(function (data) {
+  const getChildCount = useCallback((data) => {
     return data ? data.childCount : undefined;
   }, []);
 

@@ -72,7 +72,7 @@ const VueExample = {
           params.api.setDomLayout('autoHeight');
         },
       },
-      getDetailRowData: function (params) {
+      getDetailRowData: (params) => {
         params.successCallback(params.data.callRecords);
       },
     };

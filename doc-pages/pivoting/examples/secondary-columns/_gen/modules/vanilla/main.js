@@ -49,7 +49,7 @@ const gridOptions = {
   suppressAggFuncInHeader: true,
 
   // this is a callback that gets called on each column definition
-  processSecondaryColDef: function (colDef) {
+  processSecondaryColDef: (colDef) => {
     if (
       _optionalChain([
         colDef,
@@ -74,7 +74,7 @@ const gridOptions = {
   },
 
   // this is a callback that gets called on each group definition
-  processSecondaryColGroupDef: function (colGroupDef) {
+  processSecondaryColGroupDef: (colGroupDef) => {
     // for fun, add a css class for 2010
     if (
       _optionalChain([

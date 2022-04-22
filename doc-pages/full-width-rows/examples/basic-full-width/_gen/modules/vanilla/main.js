@@ -26,7 +26,7 @@ const gridOptions = {
   rowData: rowData,
   pinnedTopRowData: pinnedTopRowData,
   pinnedBottomRowData: pinnedBottomRowData,
-  isFullWidthRow: function (params) {
+  isFullWidthRow: (params) => {
     // in this example, we check the fullWidth attribute that we set
     // while creating the data. what check you do to decide if you
     // want a row full width is up to you, as long as you return a boolean
@@ -36,7 +36,7 @@ const gridOptions = {
   // see AG Grid docs cellRenderer for details on how to build cellRenderers
   // this is a simple function cellRenderer, returns plain HTML, not a component
   fullWidthCellRenderer: FullWidthCellRenderer,
-  getRowHeight: function (params) {
+  getRowHeight: (params) => {
     // you can have normal rows and full width rows any height that you want
     const isBodyRow = params.node.rowPinned === undefined;
     const isFullWidth = params.node.data.fullWidth;

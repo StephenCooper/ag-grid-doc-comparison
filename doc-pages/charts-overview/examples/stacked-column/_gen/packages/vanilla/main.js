@@ -77,7 +77,7 @@ const options = {
       type: 'number',
       position: 'left',
       label: {
-        formatter: function (params) {
+        formatter: (params) => {
           return params.value / 1000 + 'k';
         },
       },

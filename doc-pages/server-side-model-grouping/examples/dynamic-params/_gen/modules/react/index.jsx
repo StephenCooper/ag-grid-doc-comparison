@@ -39,7 +39,7 @@ class GridExample extends Component {
       cacheBlockSize: 4,
       rowModelType: 'serverSide',
       serverSideStoreType: 'partial',
-      getServerSideStoreParams: function (params) {
+      getServerSideStoreParams: (params) => {
         var noGroupingActive = params.rowGroupColumns.length == 0;
         var res;
         if (noGroupingActive) {
@@ -120,7 +120,7 @@ class GridExample extends Component {
 
 function getServerSideDatasource(server) {
   return {
-    getRows: function (params) {
+    getRows: (params) => {
       console.log('[Datasource] - rows requested by grid: ', params.request);
       var response = server.getData(params.request);
       // adding delay to simulate real server call

@@ -67,7 +67,7 @@ class GridExample extends Component {
         },
       },
       aggFuncs: {
-        sum: function (params) {
+        sum: (params) => {
           var values = params && params.values ? params.values : [];
           var result = 0;
           if (values) {
@@ -89,7 +89,7 @@ class GridExample extends Component {
         },
       },
       groupDefaultExpanded: 1,
-      getRowId: function (params) {
+      getRowId: (params) => {
         return params.data.id;
       },
     };

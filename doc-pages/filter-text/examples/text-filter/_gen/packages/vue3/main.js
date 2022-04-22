@@ -65,7 +65,7 @@ window.contains = function contains(target, lookingFor) {
 
 var athleteFilterParams = {
   filterOptions: ['contains', 'notContains'],
-  textFormatter: function (r) {
+  textFormatter: (r) => {
     if (r == null) return null;
     return r
       .toLowerCase()
@@ -86,7 +86,7 @@ var athleteFilterParams = {
 
 var countryFilterParams = {
   filterOptions: ['contains'],
-  textMatcher: function ({ value, filterText }) {
+  textMatcher: ({ value, filterText }) => {
     var filterTextLowerCase = filterText ? filterText.toLowerCase() : '';
     var valueLowerCase = value.toString().toLowerCase();
     var aliases = {

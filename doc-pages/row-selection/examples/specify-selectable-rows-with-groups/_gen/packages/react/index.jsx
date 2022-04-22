@@ -38,7 +38,7 @@ class GridExample extends Component {
       },
       rowSelection: 'multiple',
       groupDefaultExpanded: -1,
-      isRowSelectable: function (node) {
+      isRowSelectable: (node) => {
         return node.data
           ? node.data.year === 2008 || node.data.year === 2004
           : false;

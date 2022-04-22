@@ -44,15 +44,15 @@ export class AppComponent {
   public rowData: any[] | null = getData();
   public getRowHeight: (
     params: RowHeightParams
-  ) => number | undefined | null = function (params: RowHeightParams) {
+  ) => number | undefined | null = (params: RowHeightParams) => {
     // return 100px height for full width rows
     if (isFullWidth(params.data)) {
       return 100;
     }
   };
-  public isFullWidthRow: (params: IsFullWidthRowParams) => boolean = function (
+  public isFullWidthRow: (params: IsFullWidthRowParams) => boolean = (
     params: IsFullWidthRowParams
-  ) {
+  ) => {
     return isFullWidth(params.rowNode.data);
   };
   public fullWidthCellRenderer: any = FullWidthCellRenderer;

@@ -83,7 +83,7 @@ export class AppComponent {
           strokeOpacity: 0.2,
         },
         tooltip: {
-          renderer: function (params) {
+          renderer: (params) => {
             return {
               content:
                 '<b>' +

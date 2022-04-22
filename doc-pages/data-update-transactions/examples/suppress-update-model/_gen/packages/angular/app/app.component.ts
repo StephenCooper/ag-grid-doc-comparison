@@ -74,7 +74,7 @@ export class AppComponent {
   };
   public isGroupOpenByDefault: (
     params: IsGroupOpenByDefaultParams
-  ) => boolean = function (params) {
+  ) => boolean = (params) => {
     return ['Delhi', 'Seoul'].includes(params.key);
   };
   public rowData!: any[];

@@ -17,7 +17,7 @@ class GridExample extends Component {
         width: 250,
         resizable: true,
       },
-      getRowId: function (params) {
+      getRowId: (params) => {
         return params.data.product;
       },
       rowModelType: 'serverSide',

@@ -5,7 +5,7 @@ const columnDefs = [
     showRowGroup: 'country',
     minWidth: 200,
     cellRenderer: 'agGroupCellRenderer',
-    filterValueGetter: function (params) {
+    filterValueGetter: (params) => {
       return params.data ? params.data.country : null;
     },
   },

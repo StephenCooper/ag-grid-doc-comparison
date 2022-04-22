@@ -78,7 +78,7 @@ export class AppComponent {
   public rowModelType = 'viewport';
   public viewportRowModelPageSize = 1;
   public viewportRowModelBufferSize = 0;
-  public getRowId: GetRowIdFunc = function (params: GetRowIdParams) {
+  public getRowId: GetRowIdFunc = (params: GetRowIdParams) => {
     // the code is unique, so perfect for the id
     return params.data.code;
   };

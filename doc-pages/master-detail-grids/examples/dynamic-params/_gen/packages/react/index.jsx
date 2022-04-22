@@ -23,7 +23,7 @@ class GridExample extends Component {
         flex: 1,
       },
       detailRowHeight: 195,
-      detailCellRendererParams: function (params) {
+      detailCellRendererParams: (params) => {
         var res = {};
         // we use the same getDetailRowData for both options
         res.getDetailRowData = function (params) {

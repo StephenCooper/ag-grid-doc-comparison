@@ -25,7 +25,7 @@ const GridExample = () => {
   const containerStyle = useMemo(() => ({ width: '100%', height: '100%' }), []);
   const gridStyle = useMemo(() => ({ height: '100%', width: '100%' }), []);
   const [rowData, setRowData] = useState<any[]>();
-  const isRowMaster = useCallback(function (dataItem: any) {
+  const isRowMaster = useCallback((dataItem: any) => {
     return dataItem ? dataItem.callRecords.length > 0 : false;
   }, []);
   const [columnDefs, setColumnDefs] = useState<ColDef[]>([
@@ -40,7 +40,7 @@ const GridExample = () => {
       flex: 1,
     };
   }, []);
-  const getRowId = useCallback(function (params: GetRowIdParams) {
+  const getRowId = useCallback((params: GetRowIdParams) => {
     return params.data.account;
   }, []);
   const detailCellRendererParams = useMemo<any>(() => {
@@ -57,7 +57,7 @@ const GridExample = () => {
           flex: 1,
         },
       },
-      getDetailRowData: function (params) {
+      getDetailRowData: (params) => {
         params.successCallback(params.data.callRecords);
       },
     } as IDetailCellRendererParams;

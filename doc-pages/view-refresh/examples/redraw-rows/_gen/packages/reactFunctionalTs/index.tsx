@@ -58,14 +58,13 @@ const GridExample = () => {
       flex: 1,
     };
   }, []);
-  const getRowStyle = useCallback(function (
-    params: RowClassParams
-  ): RowStyle | undefined {
+  const getRowStyle = useCallback((params: RowClassParams):
+    | RowStyle
+    | undefined => {
     return {
       backgroundColor: colors[colorIndex],
     };
-  },
-  []);
+  }, []);
 
   const redrawAllRows = useCallback(() => {
     progressColor();

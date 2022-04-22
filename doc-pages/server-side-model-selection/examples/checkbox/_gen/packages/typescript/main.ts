@@ -24,7 +24,7 @@ const gridOptions: GridOptions = {
     resizable: true,
     sortable: true,
   },
-  getRowId: function (params: GetRowIdParams) {
+  getRowId: (params: GetRowIdParams) => {
     var data = params.data;
     // use year for group level ids, or the id we assigned for leaf level
     return data.id != null ? 'id-' + data.id : 'year-' + data.year;
@@ -47,7 +47,7 @@ const gridOptions: GridOptions = {
   rowSelection: 'multiple',
 
   // restrict selections to leaf rows
-  isRowSelectable: function (rowNode: RowNode) {
+  isRowSelectable: (rowNode: RowNode) => {
     return !rowNode.group;
   },
 
@@ -63,7 +63,7 @@ const gridOptions: GridOptions = {
 
 function getServerSideDatasource(server: any): IServerSideDatasource {
   return {
-    getRows: function (params) {
+    getRows: (params) => {
       console.log('[Datasource] - rows requested by grid: ', params.request);
 
       var response = server.getData(params.request);

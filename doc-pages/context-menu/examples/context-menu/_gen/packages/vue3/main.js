@@ -64,7 +64,7 @@ const VueExample = {
         {
           // custom item
           name: 'Alert ' + params.value,
-          action: function () {
+          action: () => {
             window.alert('Alerting about ' + params.value);
           },
           cssClasses: ['redFont', 'bold'],
@@ -81,21 +81,21 @@ const VueExample = {
           subMenu: [
             {
               name: 'Ireland',
-              action: function () {
+              action: () => {
                 console.log('Ireland was pressed');
               },
               icon: createFlagImg('ie'),
             },
             {
               name: 'UK',
-              action: function () {
+              action: () => {
                 console.log('UK was pressed');
               },
               icon: createFlagImg('gb'),
             },
             {
               name: 'France',
-              action: function () {
+              action: () => {
                 console.log('France was pressed');
               },
               icon: createFlagImg('fr'),
@@ -107,55 +107,55 @@ const VueExample = {
           subMenu: [
             {
               name: 'Niall',
-              action: function () {
+              action: () => {
                 console.log('Niall was pressed');
               },
             },
             {
               name: 'Sean',
-              action: function () {
+              action: () => {
                 console.log('Sean was pressed');
               },
             },
             {
               name: 'John',
-              action: function () {
+              action: () => {
                 console.log('John was pressed');
               },
             },
             {
               name: 'Alberto',
-              action: function () {
+              action: () => {
                 console.log('Alberto was pressed');
               },
             },
             {
               name: 'Tony',
-              action: function () {
+              action: () => {
                 console.log('Tony was pressed');
               },
             },
             {
               name: 'Andrew',
-              action: function () {
+              action: () => {
                 console.log('Andrew was pressed');
               },
             },
             {
               name: 'Kev',
-              action: function () {
+              action: () => {
                 console.log('Kev was pressed');
               },
             },
             {
               name: 'Will',
-              action: function () {
+              action: () => {
                 console.log('Will was pressed');
               },
             },
             {
               name: 'Armaan',
-              action: function () {
+              action: () => {
                 console.log('Armaan was pressed');
               },
             },
@@ -166,7 +166,7 @@ const VueExample = {
           // custom item
           name: 'Windows',
           shortcut: 'Alt + W',
-          action: function () {
+          action: () => {
             console.log('Windows Item Selected');
           },
           icon:
@@ -176,7 +176,7 @@ const VueExample = {
           // custom item
           name: 'Mac',
           shortcut: 'Alt + M',
-          action: function () {
+          action: () => {
             console.log('Mac Item Selected');
           },
           icon:
@@ -187,7 +187,7 @@ const VueExample = {
           // custom item
           name: 'Checked',
           checked: true,
-          action: function () {
+          action: () => {
             console.log('Checked Selected');
           },
           icon:

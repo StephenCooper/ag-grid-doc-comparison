@@ -40,7 +40,7 @@ const GridExample = () => {
       flex: 1,
     };
   }, []);
-  const getRowId = useCallback(function (params) {
+  const getRowId = useCallback((params) => {
     return params.data.name;
   }, []);
   const detailCellRendererParams = useMemo(() => {
@@ -57,7 +57,7 @@ const GridExample = () => {
           flex: 1,
         },
       },
-      getDetailRowData: function (params) {
+      getDetailRowData: (params) => {
         params.successCallback(params.data.callRecords);
       },
     };

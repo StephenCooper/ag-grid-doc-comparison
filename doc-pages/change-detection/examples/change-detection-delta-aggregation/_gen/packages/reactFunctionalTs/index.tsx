@@ -145,7 +145,7 @@ const GridExample = () => {
     [key: string]: IAggFunc;
   }>(() => {
     return {
-      sum: function (params) {
+      sum: (params) => {
         var values = params && params.values ? params.values : [];
         var result = 0;
         if (values) {
@@ -167,7 +167,7 @@ const GridExample = () => {
       },
     };
   }, []);
-  const getRowId = useCallback(function (params: GetRowIdParams) {
+  const getRowId = useCallback((params: GetRowIdParams) => {
     return params.data.id;
   }, []);
 

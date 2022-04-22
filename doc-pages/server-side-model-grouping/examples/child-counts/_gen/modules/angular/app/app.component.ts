@@ -48,7 +48,7 @@ export class AppComponent {
   };
   public rowModelType = 'serverSide';
   public serverSideStoreType: ServerSideStoreType = 'partial';
-  public getChildCount: (dataItem: any) => number = function (data: any) {
+  public getChildCount: (dataItem: any) => number = (data: any) => {
     return data ? data.childCount : undefined;
   };
   public rowData!: any[];
@@ -71,7 +71,7 @@ export class AppComponent {
 
 function getServerSideDatasource(server: any): IServerSideDatasource {
   return {
-    getRows: function (params) {
+    getRows: (params) => {
       console.log('[Datasource] - rows requested by grid: ', params.request);
       var response = server.getData(params.request);
       // adding delay to simulate real server call

@@ -5,7 +5,7 @@ import Vue from 'vue';
 
 const athleteColumn = {
   headerName: 'Athlete',
-  valueGetter: function (params) {
+  valueGetter: (params) => {
     return params.data.athlete;
   },
 };
@@ -72,14 +72,14 @@ const VueExample = {
         {
           colId: 'myAgeCol',
           headerName: 'Age',
-          valueGetter: function (params) {
+          valueGetter: (params) => {
             return params.data.age;
           },
         },
         {
           headerName: 'Country',
           headerClass: 'country-header',
-          valueGetter: function (params) {
+          valueGetter: (params) => {
             return params.data.country;
           },
         },
@@ -98,14 +98,14 @@ const VueExample = {
         {
           colId: 'myAgeCol',
           headerName: 'Age',
-          valueGetter: function (params) {
+          valueGetter: (params) => {
             return params.data.age;
           },
         },
         {
           headerName: 'Country',
           headerClass: 'country-header',
-          valueGetter: function (params) {
+          valueGetter: (params) => {
             return params.data.country;
           },
         },

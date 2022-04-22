@@ -49,7 +49,7 @@ export class AppComponent {
     flex: 1,
     minWidth: 180,
   };
-  public getRowId: GetRowIdFunc = function (params: GetRowIdParams) {
+  public getRowId: GetRowIdFunc = (params: GetRowIdParams) => {
     // use country for group level ids, or the id we assigned for leaf level
     var data = params.data;
     return data.id || data.country;
@@ -81,7 +81,7 @@ export class AppComponent {
 
 function getServerSideDatasource(server: any): IServerSideDatasource {
   return {
-    getRows: function (params) {
+    getRows: (params) => {
       console.log('[Datasource] - rows requested by grid: ', params.request);
       var response = server.getData(params.request);
       // adding delay to simulate real server call

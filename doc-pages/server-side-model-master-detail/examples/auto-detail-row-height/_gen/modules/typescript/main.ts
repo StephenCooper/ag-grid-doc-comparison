@@ -57,13 +57,13 @@ const gridOptions: GridOptions = {
         flex: 1,
       },
     },
-    getDetailRowData: function (params) {
+    getDetailRowData: (params) => {
       // supply details records to detail cell renderer (i.e. detail grid)
       params.successCallback(params.data.callRecords);
     },
   } as IDetailCellRendererParams,
 
-  onGridReady: function (params) {
+  onGridReady: (params) => {
     setTimeout(function () {
       // expand some master row
       var someRow = params.api.getRowNode('1');
@@ -76,7 +76,7 @@ const gridOptions: GridOptions = {
 
 function getServerSideDatasource(server: any): IServerSideDatasource {
   return {
-    getRows: function (params) {
+    getRows: (params) => {
       console.log('[Datasource] - rows requested by grid: ', params.request);
 
       var response = server.getData(params.request);

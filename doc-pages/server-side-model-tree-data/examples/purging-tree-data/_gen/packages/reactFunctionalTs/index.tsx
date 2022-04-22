@@ -23,7 +23,7 @@ import {
 
 function createFakeServer(fakeServerData: any[]) {
   const fakeServer = {
-    getData: function (request: IServerSideGetRowsRequest) {
+    getData: (request: IServerSideGetRowsRequest) => {
       const extractRowsFromData: (groupKeys: string[], data: any[]) => any = (
         groupKeys: string[],
         data: any[]
@@ -57,7 +57,7 @@ function createFakeServer(fakeServerData: any[]) {
 
 function createServerSideDatasource(fakeServer: any) {
   const dataSource: IServerSideDatasource = {
-    getRows: function (params: IServerSideGetRowsParams) {
+    getRows: (params: IServerSideGetRowsParams) => {
       console.log('ServerSideDatasource.getRows: params = ', params);
       var request = params.request;
       var allRows = fakeServer.getData(request);
@@ -100,21 +100,22 @@ const GridExample = () => {
       field: 'employeeName',
     };
   }, []);
-  const isServerSideGroupOpenByDefault = useCallback(function (
-    params: IsServerSideGroupOpenByDefaultParams
-  ) {
-    var isKathrynPowers =
-      params.rowNode.level == 0 && params.data.employeeName == 'Kathryn Powers';
-    var isMabelWard =
-      params.rowNode.level == 1 && params.data.employeeName == 'Mabel Ward';
-    return isKathrynPowers || isMabelWard;
-  },
-  []);
-  const isServerSideGroup = useCallback(function (dataItem: any) {
+  const isServerSideGroupOpenByDefault = useCallback(
+    (params: IsServerSideGroupOpenByDefaultParams) => {
+      var isKathrynPowers =
+        params.rowNode.level == 0 &&
+        params.data.employeeName == 'Kathryn Powers';
+      var isMabelWard =
+        params.rowNode.level == 1 && params.data.employeeName == 'Mabel Ward';
+      return isKathrynPowers || isMabelWard;
+    },
+    []
+  );
+  const isServerSideGroup = useCallback((dataItem: any) => {
     // indicate if node is a group
     return dataItem.group;
   }, []);
-  const getServerSideGroupKey = useCallback(function (dataItem: any) {
+  const getServerSideGroupKey = useCallback((dataItem: any) => {
     // specify which group key to use
     return dataItem.employeeName;
   }, []);

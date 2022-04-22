@@ -49,7 +49,7 @@ class GridExample extends Component {
       },
       autoGroupColumnDef: {
         minWidth: 200,
-        filterValueGetter: function (params) {
+        filterValueGetter: (params) => {
           if (params.node) {
             var colGettingGrouped = params.colDef.showRowGroup + '';
             return params.api.getValue(colGettingGrouped, params.node);

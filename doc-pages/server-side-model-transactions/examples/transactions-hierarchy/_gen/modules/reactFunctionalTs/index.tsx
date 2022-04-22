@@ -70,23 +70,23 @@ const GridExample = () => {
       resizable: true,
     };
   }, []);
-  const getRowId = useCallback(function (params: GetRowIdParams) {
+  const getRowId = useCallback((params: GetRowIdParams) => {
     return params.data.id;
   }, []);
-  const getServerSideStoreParams = useCallback(function (
-    params: GetServerSideStoreParamsParams
-  ): ServerSideStoreParams {
-    const type = params.level == 0 ? 'partial' : 'full';
-    return {
-      storeType: type,
-    };
-  },
-  []);
+  const getServerSideStoreParams = useCallback(
+    (params: GetServerSideStoreParamsParams): ServerSideStoreParams => {
+      const type = params.level == 0 ? 'partial' : 'full';
+      return {
+        storeType: type,
+      };
+    },
+    []
+  );
 
   const onGridReady = useCallback((params: GridReadyEvent) => {
     setupData();
     const dataSource: IServerSideDatasource = {
-      getRows: function (params2: IServerSideGetRowsParams) {
+      getRows: (params2: IServerSideGetRowsParams) => {
         // To make the demo look real, wait for 500ms before returning
         setTimeout(function () {
           const doingTopLevel = params2.request.groupKeys.length == 0;

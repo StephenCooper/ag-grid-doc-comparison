@@ -7,7 +7,7 @@ const gridOptions = {
       // it is important to have node.id here, so that when the id changes (which happens
       // when the row is loaded) then the cell is refreshed.
       valueGetter: 'node.id',
-      cellRenderer: function (params) {
+      cellRenderer: (params) => {
         if (params.value !== undefined) {
           return params.value;
         } else {
@@ -66,7 +66,7 @@ document.addEventListener('DOMContentLoaded', function () {
       const dataSource = {
         rowCount: undefined, // behave as infinite scroll
 
-        getRows: function (params) {
+        getRows: (params) => {
           console.log('asking for ' + params.startRow + ' to ' + params.endRow);
 
           // At this point in your code, you would call the server.

@@ -114,7 +114,7 @@ const GridExample = () => {
       ],
     };
   }, []);
-  const getLocaleText = useCallback(function (params) {
+  const getLocaleText = useCallback((params) => {
     switch (params.key) {
       case 'thousandSeparator':
         return '.';

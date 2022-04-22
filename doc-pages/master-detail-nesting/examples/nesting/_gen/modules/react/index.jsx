@@ -94,12 +94,12 @@ class GridExample extends Component {
                 flex: 1,
               },
             },
-            getDetailRowData: function (params) {
+            getDetailRowData: (params) => {
               params.successCallback(params.data.children);
             },
           },
         },
-        getDetailRowData: function (params) {
+        getDetailRowData: (params) => {
           params.successCallback(params.data.children);
         },
       },

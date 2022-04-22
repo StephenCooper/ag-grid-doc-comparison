@@ -58,7 +58,7 @@ export class AppComponent {
     {
       headerName: '#',
       width: 50,
-      valueFormatter: function (params: ValueFormatterParams) {
+      valueFormatter: (params: ValueFormatterParams) => {
         return `${parseInt(params.node!.id!) + 1}`;
       },
     },

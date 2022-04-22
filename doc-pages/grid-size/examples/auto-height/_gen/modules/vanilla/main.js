@@ -37,7 +37,7 @@ const gridOptions = {
   rowData: getData(5),
   domLayout: 'autoHeight',
   animateRows: true,
-  onGridReady: function () {
+  onGridReady: (params) => {
     document.querySelector('#currentRowCount').innerHTML = '5';
   },
   popupParent: document.body,
