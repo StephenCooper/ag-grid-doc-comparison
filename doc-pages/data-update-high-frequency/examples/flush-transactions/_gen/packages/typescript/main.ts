@@ -1,4 +1,5 @@
 import {
+  AsyncTransactionsFlushed,
   ColDef,
   GetRowIdParams,
   Grid,
@@ -177,7 +178,7 @@ const gridOptions: GridOptions = {
     params.api.setRowData(globalRowData);
     startFeed(params.api);
   },
-  onAsyncTransactionsFlushed: function (e) {
+  onAsyncTransactionsFlushed: function (e: AsyncTransactionsFlushed) {
     console.log(
       '========== onAsyncTransactionsFlushed: applied ' +
         e.results.length +

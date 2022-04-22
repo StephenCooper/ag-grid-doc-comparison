@@ -6,6 +6,8 @@ import { AgGridReact } from '@ag-grid-community/react';
 import '@ag-grid-community/core/dist/styles/ag-grid.css';
 import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
 import {
+  CellEditingStartedEvent,
+  CellEditingStoppedEvent,
   ColDef,
   ColGroupDef,
   Grid,
@@ -13,6 +15,8 @@ import {
   ICellRendererComp,
   ICellRendererParams,
   KeyCreatorParams,
+  RowEditingStartedEvent,
+  RowEditingStoppedEvent,
 } from '@ag-grid-community/core';
 import GenderRenderer from './genderRenderer';
 import MoodEditor from './moodEditor';
@@ -123,19 +127,19 @@ const GridExample = () => {
     };
   }, []);
 
-  const onRowEditingStarted = useCallback((event) => {
+  const onRowEditingStarted = useCallback((event: RowEditingStartedEvent) => {
     console.log('never called - not doing row editing');
   }, []);
 
-  const onRowEditingStopped = useCallback((event) => {
+  const onRowEditingStopped = useCallback((event: RowEditingStoppedEvent) => {
     console.log('never called - not doing row editing');
   }, []);
 
-  const onCellEditingStarted = useCallback((event) => {
+  const onCellEditingStarted = useCallback((event: CellEditingStartedEvent) => {
     console.log('cellEditingStarted');
   }, []);
 
-  const onCellEditingStopped = useCallback((event) => {
+  const onCellEditingStopped = useCallback((event: CellEditingStoppedEvent) => {
     console.log('cellEditingStopped');
   }, []);
 

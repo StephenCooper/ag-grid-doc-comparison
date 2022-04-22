@@ -1,4 +1,9 @@
-import { ColDef, Grid, GridOptions } from 'ag-grid-community';
+import {
+  ColDef,
+  ColumnResizedEvent,
+  Grid,
+  GridOptions,
+} from 'ag-grid-community';
 import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 
@@ -27,7 +32,7 @@ const gridOptions: GridOptions = {
   },
   columnDefs: columnDefs,
   rowData: null,
-  onColumnResized: (params) => {
+  onColumnResized: (params: ColumnResizedEvent) => {
     console.log(params);
   },
 };

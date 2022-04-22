@@ -17,16 +17,16 @@ const gridOptions = {
   rowData: getData(),
   pinnedTopRowData: getPinnedTopData(),
   pinnedBottomRowData: getPinnedBottomData(),
-  onRowEditingStarted: function (event) {
+  onRowEditingStarted: (event) => {
     console.log('never called - not doing row editing');
   },
-  onRowEditingStopped: function (event) {
+  onRowEditingStopped: (event) => {
     console.log('never called - not doing row editing');
   },
-  onCellEditingStarted: function (event) {
+  onCellEditingStarted: (event) => {
     console.log('cellEditingStarted');
   },
-  onCellEditingStopped: function (event) {
+  onCellEditingStopped: (event) => {
     console.log('cellEditingStopped');
   },
 };

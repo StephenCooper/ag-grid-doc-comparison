@@ -1,6 +1,7 @@
 import {
   ColDef,
   ColumnApi,
+  ColumnResizedEvent,
   GridApi,
   GridReadyEvent,
 } from '@ag-grid-community/core';
@@ -60,7 +61,7 @@ export class AppComponent {
 
   constructor(private http: HttpClient) {}
 
-  onColumnResized(params) {
+  onColumnResized(params: ColumnResizedEvent) {
     console.log(params);
   }
 

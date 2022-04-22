@@ -1,7 +1,11 @@
 import {
+  CellEditingStartedEvent,
+  CellEditingStoppedEvent,
   ColDef,
   GridReadyEvent,
   ICellRendererParams,
+  RowEditingStartedEvent,
+  RowEditingStoppedEvent,
 } from '@ag-grid-community/core';
 import '@ag-grid-community/core/dist/styles/ag-grid.css';
 import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
@@ -58,19 +62,19 @@ export class AppComponent {
     flex: 1,
   };
 
-  onRowEditingStarted(event) {
+  onRowEditingStarted(event: RowEditingStartedEvent) {
     console.log('never called - not doing row editing');
   }
 
-  onRowEditingStopped(event) {
+  onRowEditingStopped(event: RowEditingStoppedEvent) {
     console.log('never called - not doing row editing');
   }
 
-  onCellEditingStarted(event) {
+  onCellEditingStarted(event: CellEditingStartedEvent) {
     console.log('cellEditingStarted');
   }
 
-  onCellEditingStopped(event) {
+  onCellEditingStopped(event: CellEditingStoppedEvent) {
     console.log('cellEditingStopped');
   }
 

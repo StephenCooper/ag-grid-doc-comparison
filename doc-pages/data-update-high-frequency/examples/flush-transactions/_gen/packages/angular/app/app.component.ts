@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {
+  AsyncTransactionsFlushed,
   ColDef,
   GetRowIdFunc,
   GetRowIdParams,
@@ -188,7 +189,7 @@ export class AppComponent {
   };
   public rowData!: any[];
 
-  onAsyncTransactionsFlushed(e) {
+  onAsyncTransactionsFlushed(e: AsyncTransactionsFlushed) {
     console.log(
       '========== onAsyncTransactionsFlushed: applied ' +
         e.results.length +

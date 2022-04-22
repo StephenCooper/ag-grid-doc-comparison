@@ -1,6 +1,12 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { ColDef, ColumnApi, GridApi, GridReadyEvent } from 'ag-grid-community';
+import {
+  ColDef,
+  ColumnApi,
+  ColumnResizedEvent,
+  GridApi,
+  GridReadyEvent,
+} from 'ag-grid-community';
 import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 
@@ -54,7 +60,7 @@ export class AppComponent {
 
   constructor(private http: HttpClient) {}
 
-  onColumnResized(params) {
+  onColumnResized(params: ColumnResizedEvent) {
     console.log(params);
   }
 

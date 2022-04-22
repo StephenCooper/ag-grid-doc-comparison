@@ -1,9 +1,13 @@
 import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
 import {
+  CellEditingStartedEvent,
+  CellEditingStoppedEvent,
   Grid,
   GridOptions,
   ICellRendererParams,
   ModuleRegistry,
+  RowEditingStartedEvent,
+  RowEditingStoppedEvent,
 } from '@ag-grid-community/core';
 import '@ag-grid-community/core/dist/styles/ag-grid.css';
 import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
@@ -49,16 +53,16 @@ const gridOptions: GridOptions = {
     flex: 1,
   },
   rowData: rowData,
-  onRowEditingStarted: function (event) {
+  onRowEditingStarted: (event: RowEditingStartedEvent) => {
     console.log('never called - not doing row editing');
   },
-  onRowEditingStopped: function (event) {
+  onRowEditingStopped: (event: RowEditingStoppedEvent) => {
     console.log('never called - not doing row editing');
   },
-  onCellEditingStarted: function (event) {
+  onCellEditingStarted: (event: CellEditingStartedEvent) => {
     console.log('cellEditingStarted');
   },
-  onCellEditingStopped: function (event) {
+  onCellEditingStopped: (event: CellEditingStoppedEvent) => {
     console.log('cellEditingStopped');
   },
 };
