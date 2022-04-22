@@ -20,7 +20,8 @@ const VueExample = {
                 :columnDefs="columnDefs"
                 @grid-ready="onGridReady"
                 :defaultColDef="defaultColDef"
-                :rowData="rowData"></ag-grid-vue>
+                :rowData="rowData"
+                @column-resized="onColumnResized"></ag-grid-vue>
                 </div>
             </div>
         </div>
@@ -58,6 +59,9 @@ const VueExample = {
   },
   created() {},
   methods: {
+    onColumnResized(params) {
+      console.log(params);
+    },
     sizeToFit() {
       this.gridApi.sizeColumnsToFit();
     },

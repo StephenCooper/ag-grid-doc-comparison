@@ -13,6 +13,10 @@ import { MoodRenderer } from './mood-renderer.component';
     [rowData]="rowData"
     [columnDefs]="columnDefs"
     [defaultColDef]="defaultColDef"
+    (rowEditingStarted)="onRowEditingStarted($event)"
+    (rowEditingStopped)="onRowEditingStopped($event)"
+    (cellEditingStarted)="onCellEditingStarted($event)"
+    (cellEditingStopped)="onCellEditingStopped($event)"
     (gridReady)="onGridReady($event)"
   ></ag-grid-angular> `,
 })
@@ -48,6 +52,22 @@ export class AppComponent {
   public defaultColDef: ColDef = {
     flex: 1,
   };
+
+  onRowEditingStarted(event) {
+    console.log('never called - not doing row editing');
+  }
+
+  onRowEditingStopped(event) {
+    console.log('never called - not doing row editing');
+  }
+
+  onCellEditingStarted(event) {
+    console.log('cellEditingStarted');
+  }
+
+  onCellEditingStopped(event) {
+    console.log('cellEditingStopped');
+  }
 
   onGridReady(params: GridReadyEvent) {}
 }

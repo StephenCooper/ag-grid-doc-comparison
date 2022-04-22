@@ -71,6 +71,10 @@ class GridExample extends Component {
     this.gridColumnApi = params.columnApi;
   };
 
+  onCellValueChanged = () => {
+    console.log('onCellValueChanged');
+  };
+
   onExpireValueCache = () => {
     console.log('onInvalidateValueCache -> start');
     this.gridApi.expireValueCache();
@@ -129,6 +133,7 @@ class GridExample extends Component {
               valueCache={true}
               getRowId={this.state.getRowId}
               onGridReady={this.onGridReady}
+              onCellValueChanged={this.onCellValueChanged.bind(this)}
             />
           </div>
         </div>

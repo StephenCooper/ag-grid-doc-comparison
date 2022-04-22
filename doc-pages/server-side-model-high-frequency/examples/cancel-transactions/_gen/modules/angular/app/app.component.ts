@@ -1,4 +1,5 @@
 import {
+  AsyncTransactionsFlushed,
   ColDef,
   GetRowIdFunc,
   GetRowIdParams,
@@ -8,6 +9,8 @@ import {
   IsApplyServerSideTransactionParams,
   IServerSideDatasource,
   ServerSideStoreType,
+  ServerSideTransactionResult,
+  ServerSideTransactionResultStatus,
 } from '@ag-grid-community/core';
 import '@ag-grid-community/core/dist/styles/ag-grid.css';
 import '@ag-grid-community/core/dist/styles/ag-theme-alpine-dark.css';
@@ -31,6 +34,7 @@ import { Component } from '@angular/core';
       [rowModelType]="rowModelType"
       [serverSideStoreType]="serverSideStoreType"
       [rowData]="rowData"
+      (asyncTransactionsFlushed)="onAsyncTransactionsFlushed($event)"
       (gridReady)="onGridReady($event)"
     ></ag-grid-angular>
   </div>`,
@@ -69,6 +73,22 @@ export class AppComponent {
   public rowModelType = 'serverSide';
   public serverSideStoreType: ServerSideStoreType = 'full';
   public rowData!: any[];
+
+  onAsyncTransactionsFlushed(e: AsyncTransactionsFlushed) {
+    var summary: {
+      [key in ServerSideTransactionResultStatus]?: any;
+    } = {};
+    (e.results as ServerSideTransactionResult[]).forEach(
+      (result: ServerSideTransactionResult) => {
+        var status = result.status;
+        if (summary[status] == null) {
+          summary[status] = 0;
+        }
+        summary[status]++;
+      }
+    );
+    console.log('onAsyncTransactionsFlushed: ' + JSON.stringify(summary));
+  }
 
   onBtAdd() {
     var newProductName =

@@ -22,6 +22,10 @@ import { NumericEditor } from './numeric-editor.component';
     [columnDefs]="columnDefs"
     [rowData]="rowData"
     [defaultColDef]="defaultColDef"
+    (rowEditingStarted)="onRowEditingStarted($event)"
+    (rowEditingStopped)="onRowEditingStopped($event)"
+    (cellEditingStarted)="onCellEditingStarted($event)"
+    (cellEditingStopped)="onCellEditingStopped($event)"
     (gridReady)="onGridReady($event)"
   ></ag-grid-angular> `,
 })
@@ -101,6 +105,22 @@ export class AppComponent {
     filter: true,
     resizable: true,
   };
+
+  onRowEditingStarted(event) {
+    console.log('never called - not doing row editing');
+  }
+
+  onRowEditingStopped(event) {
+    console.log('never called - not doing row editing');
+  }
+
+  onCellEditingStarted(event) {
+    console.log('cellEditingStarted');
+  }
+
+  onCellEditingStopped(event) {
+    console.log('cellEditingStopped');
+  }
 
   onGridReady(params: GridReadyEvent) {}
 }

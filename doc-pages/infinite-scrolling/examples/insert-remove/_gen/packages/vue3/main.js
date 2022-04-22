@@ -36,7 +36,8 @@ const VueExample = {
                 :infiniteInitialRowCount="infiniteInitialRowCount"
                 :maxConcurrentDatasourceRequests="maxConcurrentDatasourceRequests"
                 :getRowId="getRowId"
-                :getRowStyle="getRowStyle"></ag-grid-vue>
+                :getRowStyle="getRowStyle"
+                @first-data-rendered="onFirstDataRendered"></ag-grid-vue>
                 </div>
             </div>
         </div>
@@ -127,6 +128,9 @@ const VueExample = {
     };
   },
   methods: {
+    onFirstDataRendered(params) {
+      params.api.sizeColumnsToFit();
+    },
     insertItemsAt2AndRefresh(count) {
       insertItemsAt2(count);
       // if the data has stopped looking for the last row, then we need to adjust the

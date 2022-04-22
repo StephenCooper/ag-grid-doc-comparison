@@ -72,6 +72,22 @@ const GridExample = () => {
     return getPinnedBottomData();
   }, []);
 
+  const onRowEditingStarted = useCallback((event) => {
+    console.log('never called - not doing row editing');
+  }, []);
+
+  const onRowEditingStopped = useCallback((event) => {
+    console.log('never called - not doing row editing');
+  }, []);
+
+  const onCellEditingStarted = useCallback((event) => {
+    console.log('cellEditingStarted');
+  }, []);
+
+  const onCellEditingStopped = useCallback((event) => {
+    console.log('cellEditingStopped');
+  }, []);
+
   const onBtStopEditing = useCallback(() => {
     gridRef.current!.api.stopEditing();
   }, []);
@@ -165,6 +181,10 @@ const GridExample = () => {
               defaultColDef={defaultColDef}
               pinnedTopRowData={pinnedTopRowData}
               pinnedBottomRowData={pinnedBottomRowData}
+              onRowEditingStarted={onRowEditingStarted}
+              onRowEditingStopped={onRowEditingStopped}
+              onCellEditingStarted={onCellEditingStarted}
+              onCellEditingStopped={onCellEditingStopped}
             ></AgGridReact>
           </div>
         </div>

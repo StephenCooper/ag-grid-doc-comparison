@@ -123,6 +123,22 @@ const GridExample = () => {
     };
   }, []);
 
+  const onRowEditingStarted = useCallback((event) => {
+    console.log('never called - not doing row editing');
+  }, []);
+
+  const onRowEditingStopped = useCallback((event) => {
+    console.log('never called - not doing row editing');
+  }, []);
+
+  const onCellEditingStarted = useCallback((event) => {
+    console.log('cellEditingStarted');
+  }, []);
+
+  const onCellEditingStopped = useCallback((event) => {
+    console.log('cellEditingStopped');
+  }, []);
+
   return (
     <div style={containerStyle}>
       <div style={gridStyle} className="ag-theme-alpine">
@@ -130,6 +146,10 @@ const GridExample = () => {
           rowData={rowData}
           columnDefs={columnDefs}
           defaultColDef={defaultColDef}
+          onRowEditingStarted={onRowEditingStarted}
+          onRowEditingStopped={onRowEditingStopped}
+          onCellEditingStarted={onCellEditingStarted}
+          onCellEditingStopped={onCellEditingStopped}
         ></AgGridReact>
       </div>
     </div>

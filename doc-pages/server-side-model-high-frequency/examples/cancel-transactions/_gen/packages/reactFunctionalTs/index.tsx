@@ -130,6 +130,25 @@ const GridExample = () => {
     params.api.setServerSideDatasource(dataSource);
   }, []);
 
+  const onAsyncTransactionsFlushed = useCallback(
+    (e: AsyncTransactionsFlushed) => {
+      var summary: {
+        [key in ServerSideTransactionResultStatus]?: any;
+      } = {};
+      (e.results as ServerSideTransactionResult[]).forEach(
+        (result: ServerSideTransactionResult) => {
+          var status = result.status;
+          if (summary[status] == null) {
+            summary[status] = 0;
+          }
+          summary[status]++;
+        }
+      );
+      console.log('onAsyncTransactionsFlushed: ' + JSON.stringify(summary));
+    },
+    []
+  );
+
   const onBtAdd = useCallback(() => {
     var newProductName =
       all_products[Math.floor(all_products.length * Math.random())];
@@ -168,6 +187,7 @@ const GridExample = () => {
             rowModelType={'serverSide'}
             serverSideStoreType={'full'}
             onGridReady={onGridReady}
+            onAsyncTransactionsFlushed={onAsyncTransactionsFlushed}
           ></AgGridReact>
         </div>
       </div>

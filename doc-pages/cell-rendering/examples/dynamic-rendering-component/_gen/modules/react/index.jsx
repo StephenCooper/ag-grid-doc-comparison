@@ -57,6 +57,22 @@ class GridExample extends Component {
     this.gridColumnApi = params.columnApi;
   };
 
+  onRowEditingStarted = (event) => {
+    console.log('never called - not doing row editing');
+  };
+
+  onRowEditingStopped = (event) => {
+    console.log('never called - not doing row editing');
+  };
+
+  onCellEditingStarted = (event) => {
+    console.log('cellEditingStarted');
+  };
+
+  onCellEditingStopped = (event) => {
+    console.log('cellEditingStopped');
+  };
+
   render() {
     return (
       <div style={{ width: '100%', height: '100%' }}>
@@ -72,6 +88,10 @@ class GridExample extends Component {
             columnDefs={this.state.columnDefs}
             defaultColDef={this.state.defaultColDef}
             onGridReady={this.onGridReady}
+            onRowEditingStarted={this.onRowEditingStarted.bind(this)}
+            onRowEditingStopped={this.onRowEditingStopped.bind(this)}
+            onCellEditingStarted={this.onCellEditingStarted.bind(this)}
+            onCellEditingStopped={this.onCellEditingStopped.bind(this)}
           />
         </div>
       </div>

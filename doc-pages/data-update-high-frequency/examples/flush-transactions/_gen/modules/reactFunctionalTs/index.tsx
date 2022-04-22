@@ -232,6 +232,14 @@ const GridExample = () => {
     startFeed(params.api);
   }, []);
 
+  const onAsyncTransactionsFlushed = useCallback((e) => {
+    console.log(
+      '========== onAsyncTransactionsFlushed: applied ' +
+        e.results.length +
+        ' transactions'
+    );
+  }, []);
+
   const onFlushTransactions = useCallback(() => {
     gridRef.current!.api.flushAsyncTransactions();
   }, []);
@@ -258,6 +266,7 @@ const GridExample = () => {
             defaultColDef={defaultColDef}
             autoGroupColumnDef={autoGroupColumnDef}
             onGridReady={onGridReady}
+            onAsyncTransactionsFlushed={onAsyncTransactionsFlushed}
           ></AgGridReact>
         </div>
       </div>

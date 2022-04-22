@@ -66,6 +66,18 @@ class GridExample extends Component {
     params.api.setServerSideDatasource(dataSource);
   };
 
+  onAsyncTransactionsFlushed = (e) => {
+    var summary = {};
+    e.results.forEach((result) => {
+      var status = result.status;
+      if (summary[status] == null) {
+        summary[status] = 0;
+      }
+      summary[status]++;
+    });
+    console.log('onAsyncTransactionsFlushed: ' + JSON.stringify(summary));
+  };
+
   onBtAdd = () => {
     var newProductName =
       all_products[Math.floor(all_products.length * Math.random())];
@@ -111,6 +123,9 @@ class GridExample extends Component {
               rowModelType={this.state.rowModelType}
               serverSideStoreType={this.state.serverSideStoreType}
               onGridReady={this.onGridReady}
+              onAsyncTransactionsFlushed={this.onAsyncTransactionsFlushed.bind(
+                this
+              )}
             />
           </div>
         </div>

@@ -32,6 +32,7 @@ declare var globalRowData: any[];
       [defaultColDef]="defaultColDef"
       [autoGroupColumnDef]="autoGroupColumnDef"
       [rowData]="rowData"
+      (asyncTransactionsFlushed)="onAsyncTransactionsFlushed($event)"
       (gridReady)="onGridReady($event)"
     ></ag-grid-angular>
   </div> `,
@@ -186,6 +187,14 @@ export class AppComponent {
     width: 250,
   };
   public rowData!: any[];
+
+  onAsyncTransactionsFlushed(e) {
+    console.log(
+      '========== onAsyncTransactionsFlushed: applied ' +
+        e.results.length +
+        ' transactions'
+    );
+  }
 
   onFlushTransactions() {
     this.gridApi.flushAsyncTransactions();

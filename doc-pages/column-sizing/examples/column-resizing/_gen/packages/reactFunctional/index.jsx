@@ -41,6 +41,10 @@ const GridExample = () => {
       .then((data) => setRowData(data));
   }, []);
 
+  const onColumnResized = useCallback((params) => {
+    console.log(params);
+  }, []);
+
   const sizeToFit = useCallback(() => {
     gridRef.current.api.sizeColumnsToFit();
   }, []);
@@ -71,6 +75,7 @@ const GridExample = () => {
               columnDefs={columnDefs}
               defaultColDef={defaultColDef}
               onGridReady={onGridReady}
+              onColumnResized={onColumnResized}
             ></AgGridReact>
           </div>
         </div>

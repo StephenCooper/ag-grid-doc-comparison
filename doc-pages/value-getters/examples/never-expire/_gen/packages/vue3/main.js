@@ -24,7 +24,8 @@ const VueExample = {
                 :enableCellChangeFlash="true"
                 :enableRangeSelection="true"
                 :groupDefaultExpanded="groupDefaultExpanded"
-                :getRowId="getRowId"></ag-grid-vue>
+                :getRowId="getRowId"
+                @cell-value-changed="onCellValueChanged"></ag-grid-vue>
             </div>
             <div style="position: absolute; top: 10px; left: 15px;">
                 <button v-on:click="onUpdateOneValue()">Update One Value</button>
@@ -96,6 +97,9 @@ const VueExample = {
     };
   },
   methods: {
+    onCellValueChanged() {
+      console.log('onCellValueChanged');
+    },
     onExpireValueCache() {
       console.log('onInvalidateValueCache -> start');
       this.gridApi.expireValueCache();

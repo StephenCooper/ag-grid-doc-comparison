@@ -111,6 +111,10 @@ const GridExample = () => {
     return params.data.id;
   }, []);
 
+  const onCellValueChanged = useCallback(() => {
+    console.log('onCellValueChanged');
+  }, []);
+
   const onExpireValueCache = useCallback(() => {
     console.log('onInvalidateValueCache -> start');
     gridRef.current!.api.expireValueCache();
@@ -156,6 +160,7 @@ const GridExample = () => {
             enableRangeSelection={true}
             groupDefaultExpanded={1}
             getRowId={getRowId}
+            onCellValueChanged={onCellValueChanged}
           ></AgGridReact>
         </div>
       </div>

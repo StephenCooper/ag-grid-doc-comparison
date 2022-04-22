@@ -25,7 +25,8 @@ const VueExample = {
                 :asyncTransactionWaitMillis="asyncTransactionWaitMillis"
                 :getRowId="getRowId"
                 :defaultColDef="defaultColDef"
-                :autoGroupColumnDef="autoGroupColumnDef"></ag-grid-vue>
+                :autoGroupColumnDef="autoGroupColumnDef"
+                @async-transactions-flushed="onAsyncTransactionsFlushed"></ag-grid-vue>
             </div>
         </div>
     `,
@@ -190,6 +191,13 @@ const VueExample = {
     };
   },
   methods: {
+    onAsyncTransactionsFlushed(e) {
+      console.log(
+        '========== onAsyncTransactionsFlushed: applied ' +
+          e.results.length +
+          ' transactions'
+      );
+    },
     onFlushTransactions() {
       this.gridApi.flushAsyncTransactions();
     },

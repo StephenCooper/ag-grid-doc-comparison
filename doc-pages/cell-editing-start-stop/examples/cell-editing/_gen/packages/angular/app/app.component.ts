@@ -40,6 +40,10 @@ import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
         [rowData]="rowData"
         [pinnedTopRowData]="pinnedTopRowData"
         [pinnedBottomRowData]="pinnedBottomRowData"
+        (rowEditingStarted)="onRowEditingStarted($event)"
+        (rowEditingStopped)="onRowEditingStopped($event)"
+        (cellEditingStarted)="onCellEditingStarted($event)"
+        (cellEditingStopped)="onCellEditingStopped($event)"
         (gridReady)="onGridReady($event)"
       ></ag-grid-angular>
     </div>
@@ -66,6 +70,22 @@ export class AppComponent {
   public rowData: any[] | null = getData();
   public pinnedTopRowData: any[] = getPinnedTopData();
   public pinnedBottomRowData: any[] = getPinnedBottomData();
+
+  onRowEditingStarted(event) {
+    console.log('never called - not doing row editing');
+  }
+
+  onRowEditingStopped(event) {
+    console.log('never called - not doing row editing');
+  }
+
+  onCellEditingStarted(event) {
+    console.log('cellEditingStarted');
+  }
+
+  onCellEditingStopped(event) {
+    console.log('cellEditingStopped');
+  }
 
   onBtStopEditing() {
     this.gridApi.stopEditing();

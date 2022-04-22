@@ -19,6 +19,7 @@ import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
         [columnDefs]="columnDefs"
         [defaultColDef]="defaultColDef"
         [rowData]="rowData"
+        (columnResized)="onColumnResized($event)"
         (gridReady)="onGridReady($event)"
       ></ag-grid-angular>
     </div>
@@ -52,6 +53,10 @@ export class AppComponent {
   public rowData!: any[];
 
   constructor(private http: HttpClient) {}
+
+  onColumnResized(params) {
+    console.log(params);
+  }
 
   sizeToFit() {
     this.gridApi.sizeColumnsToFit();
