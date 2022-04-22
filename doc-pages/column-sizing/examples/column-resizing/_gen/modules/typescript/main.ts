@@ -1,6 +1,7 @@
 import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
 import {
   ColDef,
+  ColumnResizedEvent,
   Grid,
   GridOptions,
   ModuleRegistry,
@@ -36,7 +37,7 @@ const gridOptions: GridOptions = {
   },
   columnDefs: columnDefs,
   rowData: null,
-  onColumnResized: (params) => {
+  onColumnResized: (params: ColumnResizedEvent) => {
     console.log(params);
   },
 };

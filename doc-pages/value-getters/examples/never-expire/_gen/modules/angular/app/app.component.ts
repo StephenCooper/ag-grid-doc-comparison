@@ -32,6 +32,7 @@ import { Component } from '@angular/core';
         [enableRangeSelection]="true"
         [groupDefaultExpanded]="groupDefaultExpanded"
         [getRowId]="getRowId"
+        (cellValueChanged)="onCellValueChanged($event)"
         (gridReady)="onGridReady($event)"
       ></ag-grid-angular>
     </div>
@@ -94,6 +95,10 @@ export class AppComponent {
   public getRowId: GetRowIdFunc = function (params: GetRowIdParams) {
     return params.data.id;
   };
+
+  onCellValueChanged() {
+    console.log('onCellValueChanged');
+  }
 
   onExpireValueCache() {
     console.log('onInvalidateValueCache -> start');

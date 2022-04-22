@@ -1,5 +1,13 @@
 import { Component } from '@angular/core';
-import { ColDef, GridReadyEvent, ICellRendererParams } from 'ag-grid-community';
+import {
+  CellEditingStartedEvent,
+  CellEditingStoppedEvent,
+  ColDef,
+  GridReadyEvent,
+  ICellRendererParams,
+  RowEditingStartedEvent,
+  RowEditingStoppedEvent,
+} from 'ag-grid-community';
 import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 import { GenderRenderer } from './gender-renderer.component';
@@ -13,6 +21,10 @@ import { MoodRenderer } from './mood-renderer.component';
     [rowData]="rowData"
     [columnDefs]="columnDefs"
     [defaultColDef]="defaultColDef"
+    (rowEditingStarted)="onRowEditingStarted($event)"
+    (rowEditingStopped)="onRowEditingStopped($event)"
+    (cellEditingStarted)="onCellEditingStarted($event)"
+    (cellEditingStopped)="onCellEditingStopped($event)"
     (gridReady)="onGridReady($event)"
   ></ag-grid-angular> `,
 })
@@ -48,6 +60,22 @@ export class AppComponent {
   public defaultColDef: ColDef = {
     flex: 1,
   };
+
+  onRowEditingStarted(event: RowEditingStartedEvent) {
+    console.log('never called - not doing row editing');
+  }
+
+  onRowEditingStopped(event: RowEditingStoppedEvent) {
+    console.log('never called - not doing row editing');
+  }
+
+  onCellEditingStarted(event: CellEditingStartedEvent) {
+    console.log('cellEditingStarted');
+  }
+
+  onCellEditingStopped(event: CellEditingStoppedEvent) {
+    console.log('cellEditingStopped');
+  }
 
   onGridReady(params: GridReadyEvent) {}
 }

@@ -34,7 +34,11 @@ const VueExample = {
                 :defaultColDef="defaultColDef"
                 :rowData="rowData"
                 :pinnedTopRowData="pinnedTopRowData"
-                :pinnedBottomRowData="pinnedBottomRowData"></ag-grid-vue>
+                :pinnedBottomRowData="pinnedBottomRowData"
+                @row-editing-started="onRowEditingStarted"
+                @row-editing-stopped="onRowEditingStopped"
+                @cell-editing-started="onCellEditingStarted"
+                @cell-editing-stopped="onCellEditingStopped"></ag-grid-vue>
                 </div>
             </div>
         </div>
@@ -72,6 +76,18 @@ const VueExample = {
     this.pinnedBottomRowData = getPinnedBottomData();
   },
   methods: {
+    onRowEditingStarted(event) {
+      console.log('never called - not doing row editing');
+    },
+    onRowEditingStopped(event) {
+      console.log('never called - not doing row editing');
+    },
+    onCellEditingStarted(event) {
+      console.log('cellEditingStarted');
+    },
+    onCellEditingStopped(event) {
+      console.log('cellEditingStopped');
+    },
     onBtStopEditing() {
       this.gridApi.stopEditing();
     },

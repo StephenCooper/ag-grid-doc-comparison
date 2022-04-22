@@ -1,6 +1,7 @@
 import {
   ColDef,
   ColumnApi,
+  ColumnResizedEvent,
   GridApi,
   GridReadyEvent,
 } from '@ag-grid-community/core';
@@ -25,6 +26,7 @@ import { Component } from '@angular/core';
         [columnDefs]="columnDefs"
         [defaultColDef]="defaultColDef"
         [rowData]="rowData"
+        (columnResized)="onColumnResized($event)"
         (gridReady)="onGridReady($event)"
       ></ag-grid-angular>
     </div>
@@ -58,6 +60,10 @@ export class AppComponent {
   public rowData!: any[];
 
   constructor(private http: HttpClient) {}
+
+  onColumnResized(params: ColumnResizedEvent) {
+    console.log(params);
+  }
 
   sizeToFit() {
     this.gridApi.sizeColumnsToFit();

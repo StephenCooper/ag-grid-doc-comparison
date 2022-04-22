@@ -33,7 +33,8 @@ const VueExample = {
                 :enableRangeSelection="true"
                 :groupDefaultExpanded="groupDefaultExpanded"
                 :valueCache="true"
-                :getRowId="getRowId"></ag-grid-vue>
+                :getRowId="getRowId"
+                @cell-value-changed="onCellValueChanged"></ag-grid-vue>
             </div>
         </div>
     `,
@@ -100,6 +101,9 @@ const VueExample = {
     };
   },
   methods: {
+    onCellValueChanged() {
+      console.log('onCellValueChanged');
+    },
     onExpireValueCache() {
       console.log('onInvalidateValueCache -> start');
       this.gridApi.expireValueCache();

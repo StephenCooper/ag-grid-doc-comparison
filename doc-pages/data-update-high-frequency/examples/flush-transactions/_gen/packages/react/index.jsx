@@ -170,6 +170,14 @@ class GridExample extends Component {
     startFeed(params.api);
   };
 
+  onAsyncTransactionsFlushed = (e) => {
+    console.log(
+      '========== onAsyncTransactionsFlushed: applied ' +
+        e.results.length +
+        ' transactions'
+    );
+  };
+
   onFlushTransactions = () => {
     this.gridApi.flushAsyncTransactions();
   };
@@ -202,6 +210,9 @@ class GridExample extends Component {
               defaultColDef={this.state.defaultColDef}
               autoGroupColumnDef={this.state.autoGroupColumnDef}
               onGridReady={this.onGridReady}
+              onAsyncTransactionsFlushed={this.onAsyncTransactionsFlushed.bind(
+                this
+              )}
             />
           </div>
         </div>

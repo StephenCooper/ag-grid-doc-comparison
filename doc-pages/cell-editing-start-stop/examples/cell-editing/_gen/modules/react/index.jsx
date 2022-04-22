@@ -42,6 +42,22 @@ class GridExample extends Component {
     this.gridColumnApi = params.columnApi;
   };
 
+  onRowEditingStarted = (event) => {
+    console.log('never called - not doing row editing');
+  };
+
+  onRowEditingStopped = (event) => {
+    console.log('never called - not doing row editing');
+  };
+
+  onCellEditingStarted = (event) => {
+    console.log('cellEditingStarted');
+  };
+
+  onCellEditingStopped = (event) => {
+    console.log('cellEditingStopped');
+  };
+
   onBtStopEditing = () => {
     this.gridApi.stopEditing();
   };
@@ -145,6 +161,10 @@ class GridExample extends Component {
                 pinnedTopRowData={this.state.pinnedTopRowData}
                 pinnedBottomRowData={this.state.pinnedBottomRowData}
                 onGridReady={this.onGridReady}
+                onRowEditingStarted={this.onRowEditingStarted.bind(this)}
+                onRowEditingStopped={this.onRowEditingStopped.bind(this)}
+                onCellEditingStarted={this.onCellEditingStarted.bind(this)}
+                onCellEditingStopped={this.onCellEditingStopped.bind(this)}
               />
             </div>
           </div>

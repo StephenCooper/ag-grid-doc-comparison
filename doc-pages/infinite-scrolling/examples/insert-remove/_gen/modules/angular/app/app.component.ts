@@ -1,5 +1,6 @@
 import {
   ColDef,
+  FirstDataRenderedEvent,
   GetRowIdFunc,
   GetRowIdParams,
   GridApi,
@@ -48,6 +49,7 @@ import { Component } from '@angular/core';
         [getRowId]="getRowId"
         [getRowStyle]="getRowStyle"
         [rowData]="rowData"
+        (firstDataRendered)="onFirstDataRendered($event)"
         (gridReady)="onGridReady($event)"
       ></ag-grid-angular>
     </div>
@@ -127,6 +129,10 @@ export class AppComponent {
     }
   };
   public rowData!: any[];
+
+  onFirstDataRendered(params: FirstDataRenderedEvent) {
+    params.api.sizeColumnsToFit();
+  }
 
   insertItemsAt2AndRefresh(count: number) {
     insertItemsAt2(count);

@@ -5,7 +5,16 @@ import { render } from 'react-dom';
 import { AgGridReact } from 'ag-grid-react';
 import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
-import { ColDef, ColGroupDef, Grid, GridOptions } from 'ag-grid-community';
+import {
+  CellEditingStartedEvent,
+  CellEditingStoppedEvent,
+  ColDef,
+  ColGroupDef,
+  Grid,
+  GridOptions,
+  RowEditingStartedEvent,
+  RowEditingStoppedEvent,
+} from 'ag-grid-community';
 
 function getPinnedTopData() {
   return [
@@ -60,6 +69,22 @@ const GridExample = () => {
   }, []);
   const pinnedBottomRowData = useMemo<any[]>(() => {
     return getPinnedBottomData();
+  }, []);
+
+  const onRowEditingStarted = useCallback((event: RowEditingStartedEvent) => {
+    console.log('never called - not doing row editing');
+  }, []);
+
+  const onRowEditingStopped = useCallback((event: RowEditingStoppedEvent) => {
+    console.log('never called - not doing row editing');
+  }, []);
+
+  const onCellEditingStarted = useCallback((event: CellEditingStartedEvent) => {
+    console.log('cellEditingStarted');
+  }, []);
+
+  const onCellEditingStopped = useCallback((event: CellEditingStoppedEvent) => {
+    console.log('cellEditingStopped');
   }, []);
 
   const onBtStopEditing = useCallback(() => {
@@ -155,6 +180,10 @@ const GridExample = () => {
               defaultColDef={defaultColDef}
               pinnedTopRowData={pinnedTopRowData}
               pinnedBottomRowData={pinnedBottomRowData}
+              onRowEditingStarted={onRowEditingStarted}
+              onRowEditingStopped={onRowEditingStopped}
+              onCellEditingStarted={onCellEditingStarted}
+              onCellEditingStopped={onCellEditingStopped}
             ></AgGridReact>
           </div>
         </div>

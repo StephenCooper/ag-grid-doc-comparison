@@ -8,6 +8,7 @@ import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 import {
   ColDef,
   ColGroupDef,
+  ColumnResizedEvent,
   Grid,
   GridOptions,
   GridReadyEvent,
@@ -48,6 +49,10 @@ const GridExample = () => {
       .then((data: any[]) => setRowData(data));
   }, []);
 
+  const onColumnResized = useCallback((params: ColumnResizedEvent) => {
+    console.log(params);
+  }, []);
+
   const sizeToFit = useCallback(() => {
     gridRef.current!.api.sizeColumnsToFit();
   }, []);
@@ -78,6 +83,7 @@ const GridExample = () => {
               columnDefs={columnDefs}
               defaultColDef={defaultColDef}
               onGridReady={onGridReady}
+              onColumnResized={onColumnResized}
             ></AgGridReact>
           </div>
         </div>

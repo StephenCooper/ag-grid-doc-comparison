@@ -22,7 +22,8 @@ const VueExample = {
                 :isApplyServerSideTransaction="isApplyServerSideTransaction"
                 :getRowId="getRowId"
                 :rowModelType="rowModelType"
-                :serverSideStoreType="serverSideStoreType"></ag-grid-vue>
+                :serverSideStoreType="serverSideStoreType"
+                @async-transactions-flushed="onAsyncTransactionsFlushed"></ag-grid-vue>
             </div>
         </div>
     `,
@@ -71,6 +72,17 @@ const VueExample = {
     this.serverSideStoreType = 'full';
   },
   methods: {
+    onAsyncTransactionsFlushed(e) {
+      var summary = {};
+      e.results.forEach((result) => {
+        var status = result.status;
+        if (summary[status] == null) {
+          summary[status] = 0;
+        }
+        summary[status]++;
+      });
+      console.log('onAsyncTransactionsFlushed: ' + JSON.stringify(summary));
+    },
     onBtAdd() {
       var newProductName =
         all_products[Math.floor(all_products.length * Math.random())];

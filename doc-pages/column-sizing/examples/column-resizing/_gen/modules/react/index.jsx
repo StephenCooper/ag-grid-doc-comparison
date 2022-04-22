@@ -52,6 +52,10 @@ class GridExample extends Component {
       .then((data) => updateData(data));
   };
 
+  onColumnResized = (params) => {
+    console.log(params);
+  };
+
   sizeToFit = () => {
     this.gridApi.sizeColumnsToFit();
   };
@@ -90,6 +94,7 @@ class GridExample extends Component {
                 defaultColDef={this.state.defaultColDef}
                 rowData={this.state.rowData}
                 onGridReady={this.onGridReady}
+                onColumnResized={this.onColumnResized.bind(this)}
               />
             </div>
           </div>

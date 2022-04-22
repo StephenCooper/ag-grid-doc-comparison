@@ -1,10 +1,14 @@
 import { Component } from '@angular/core';
 import {
+  CellEditingStartedEvent,
+  CellEditingStoppedEvent,
   ColDef,
   GridReadyEvent,
   ICellRendererComp,
   ICellRendererParams,
   KeyCreatorParams,
+  RowEditingStartedEvent,
+  RowEditingStoppedEvent,
 } from 'ag-grid-community';
 import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
@@ -22,6 +26,10 @@ import { NumericEditor } from './numeric-editor.component';
     [columnDefs]="columnDefs"
     [rowData]="rowData"
     [defaultColDef]="defaultColDef"
+    (rowEditingStarted)="onRowEditingStarted($event)"
+    (rowEditingStopped)="onRowEditingStopped($event)"
+    (cellEditingStarted)="onCellEditingStarted($event)"
+    (cellEditingStopped)="onCellEditingStopped($event)"
     (gridReady)="onGridReady($event)"
   ></ag-grid-angular> `,
 })
@@ -101,6 +109,22 @@ export class AppComponent {
     filter: true,
     resizable: true,
   };
+
+  onRowEditingStarted(event: RowEditingStartedEvent) {
+    console.log('never called - not doing row editing');
+  }
+
+  onRowEditingStopped(event: RowEditingStoppedEvent) {
+    console.log('never called - not doing row editing');
+  }
+
+  onCellEditingStarted(event: CellEditingStartedEvent) {
+    console.log('cellEditingStarted');
+  }
+
+  onCellEditingStopped(event: CellEditingStoppedEvent) {
+    console.log('cellEditingStopped');
+  }
 
   onGridReady(params: GridReadyEvent) {}
 }

@@ -7,6 +7,8 @@ import 'ag-grid-enterprise';
 import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 import {
+  CellEditingStartedEvent,
+  CellEditingStoppedEvent,
   ColDef,
   ColGroupDef,
   Grid,
@@ -14,6 +16,8 @@ import {
   ICellRendererComp,
   ICellRendererParams,
   KeyCreatorParams,
+  RowEditingStartedEvent,
+  RowEditingStoppedEvent,
 } from 'ag-grid-community';
 import GenderRenderer from './genderRenderer';
 import MoodEditor from './moodEditor';
@@ -118,6 +122,22 @@ const GridExample = () => {
     };
   }, []);
 
+  const onRowEditingStarted = useCallback((event: RowEditingStartedEvent) => {
+    console.log('never called - not doing row editing');
+  }, []);
+
+  const onRowEditingStopped = useCallback((event: RowEditingStoppedEvent) => {
+    console.log('never called - not doing row editing');
+  }, []);
+
+  const onCellEditingStarted = useCallback((event: CellEditingStartedEvent) => {
+    console.log('cellEditingStarted');
+  }, []);
+
+  const onCellEditingStopped = useCallback((event: CellEditingStoppedEvent) => {
+    console.log('cellEditingStopped');
+  }, []);
+
   return (
     <div style={containerStyle}>
       <div style={gridStyle} className="ag-theme-alpine">
@@ -125,6 +145,10 @@ const GridExample = () => {
           rowData={rowData}
           columnDefs={columnDefs}
           defaultColDef={defaultColDef}
+          onRowEditingStarted={onRowEditingStarted}
+          onRowEditingStopped={onRowEditingStopped}
+          onCellEditingStarted={onCellEditingStarted}
+          onCellEditingStopped={onCellEditingStopped}
         ></AgGridReact>
       </div>
     </div>

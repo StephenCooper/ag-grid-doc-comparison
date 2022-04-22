@@ -1,4 +1,12 @@
-import { Grid, GridOptions, ICellRendererParams } from 'ag-grid-community';
+import {
+  CellEditingStartedEvent,
+  CellEditingStoppedEvent,
+  Grid,
+  GridOptions,
+  ICellRendererParams,
+  RowEditingStartedEvent,
+  RowEditingStoppedEvent,
+} from 'ag-grid-community';
 import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 import { GenderRenderer } from './genderRenderer';
@@ -40,16 +48,16 @@ const gridOptions: GridOptions = {
     flex: 1,
   },
   rowData: rowData,
-  onRowEditingStarted: function (event) {
+  onRowEditingStarted: (event: RowEditingStartedEvent) => {
     console.log('never called - not doing row editing');
   },
-  onRowEditingStopped: function (event) {
+  onRowEditingStopped: (event: RowEditingStoppedEvent) => {
     console.log('never called - not doing row editing');
   },
-  onCellEditingStarted: function (event) {
+  onCellEditingStarted: (event: CellEditingStartedEvent) => {
     console.log('cellEditingStarted');
   },
-  onCellEditingStopped: function (event) {
+  onCellEditingStopped: (event: CellEditingStoppedEvent) => {
     console.log('cellEditingStopped');
   },
 };

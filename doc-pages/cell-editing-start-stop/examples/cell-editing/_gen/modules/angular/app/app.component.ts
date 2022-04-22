@@ -1,4 +1,12 @@
-import { ColDef, GridApi, GridReadyEvent } from '@ag-grid-community/core';
+import {
+  CellEditingStartedEvent,
+  CellEditingStoppedEvent,
+  ColDef,
+  GridApi,
+  GridReadyEvent,
+  RowEditingStartedEvent,
+  RowEditingStoppedEvent,
+} from '@ag-grid-community/core';
 import '@ag-grid-community/core/dist/styles/ag-grid.css';
 import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
 import { Component } from '@angular/core';
@@ -41,6 +49,10 @@ import { Component } from '@angular/core';
         [rowData]="rowData"
         [pinnedTopRowData]="pinnedTopRowData"
         [pinnedBottomRowData]="pinnedBottomRowData"
+        (rowEditingStarted)="onRowEditingStarted($event)"
+        (rowEditingStopped)="onRowEditingStopped($event)"
+        (cellEditingStarted)="onCellEditingStarted($event)"
+        (cellEditingStopped)="onCellEditingStopped($event)"
         (gridReady)="onGridReady($event)"
       ></ag-grid-angular>
     </div>
@@ -67,6 +79,22 @@ export class AppComponent {
   public rowData: any[] | null = getData();
   public pinnedTopRowData: any[] = getPinnedTopData();
   public pinnedBottomRowData: any[] = getPinnedBottomData();
+
+  onRowEditingStarted(event: RowEditingStartedEvent) {
+    console.log('never called - not doing row editing');
+  }
+
+  onRowEditingStopped(event: RowEditingStoppedEvent) {
+    console.log('never called - not doing row editing');
+  }
+
+  onCellEditingStarted(event: CellEditingStartedEvent) {
+    console.log('cellEditingStarted');
+  }
+
+  onCellEditingStopped(event: CellEditingStoppedEvent) {
+    console.log('cellEditingStopped');
+  }
 
   onBtStopEditing() {
     this.gridApi.stopEditing();
