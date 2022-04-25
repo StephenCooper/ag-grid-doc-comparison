@@ -50,7 +50,7 @@ const GridExample = () => {
       headerName: 'Full Name',
       colId: 'fullName',
       cellClass: 'fullName',
-      valueGetter: function (params) {
+      valueGetter: (params) => {
         return `${params.data.firstName} ${params.data.lastName}`;
       },
     },

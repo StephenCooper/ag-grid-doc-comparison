@@ -25,7 +25,7 @@ class GridExample extends Component {
         minWidth: 100,
         editable: true,
       },
-      fillOperation: function (params) {
+      fillOperation: (params) => {
         if (params.column.getColId() === 'country') {
           return params.currentCellValue;
         }

@@ -81,7 +81,7 @@ class GridExample extends Component {
       },
       rowGroupPanelShow: 'always',
       paginationPageSize: 500,
-      getLocaleText: function (params) {
+      getLocaleText: (params) => {
         switch (params.key) {
           case 'thousandSeparator':
             return '.';

@@ -33,7 +33,7 @@ const gridOptions: GridOptions = {
   },
   enableRangeSelection: true,
   enableFillHandle: true,
-  fillOperation: function (params: FillOperationParams) {
+  fillOperation: (params: FillOperationParams) => {
     var hasNonDayValues = params.initialValues.some(function (val) {
       return daysList.indexOf(val) === -1;
     });

@@ -55,7 +55,7 @@ export class AppComponent {
         tracking: false,
       },
       listeners: {
-        seriesNodeClick: function (event: any) {
+        seriesNodeClick: (event: any) => {
           var datum = event.datum;
           window.alert(
             'Temperature in ' +

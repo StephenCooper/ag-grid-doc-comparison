@@ -9,7 +9,7 @@ var listOfDays = [
 ];
 
 var daysValuesNotProvidedFilterParams = {
-  comparator: function (a, b) {
+  comparator: (a, b) => {
     var aIndex = listOfDays.indexOf(a);
     var bIndex = listOfDays.indexOf(b);
     if (aIndex === bIndex) return 0;

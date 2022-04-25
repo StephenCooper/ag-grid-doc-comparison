@@ -141,7 +141,7 @@ window.createServerSideDatasource = function createServerSideDatasource(
   fakeServer
 ) {
   const dataSource = {
-    getRows: function (params) {
+    getRows: (params) => {
       console.log('ServerSideDatasource.getRows: params = ', params);
       var allRows = fakeServer.getData(params.request);
       var request = params.request;

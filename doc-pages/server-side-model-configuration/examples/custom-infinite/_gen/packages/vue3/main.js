@@ -88,7 +88,7 @@ window.createServerSideDatasource = function createServerSideDatasource(
   server
 ) {
   return {
-    getRows: function (params) {
+    getRows: (params) => {
       console.log('[Datasource] - rows requested by grid: ', params.request);
       // get data for request from our fake server
       var response = server.getData(params.request);
@@ -110,7 +110,7 @@ window.createServerSideDatasource = function createServerSideDatasource(
 
 window.createFakeServer = function createFakeServer(allData) {
   return {
-    getData: function (request) {
+    getData: (request) => {
       // take a slice of the total rows for requested block
       var rowsForBlock = allData.slice(request.startRow, request.endRow);
       // here we are pretending we don't know the last row until we reach it!

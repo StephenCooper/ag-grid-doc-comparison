@@ -38,7 +38,7 @@ const VueExample = {
         {
           field: 'value',
           editable: true,
-          cellEditorSelector: function (params) {
+          cellEditorSelector: (params) => {
             if (params.data.type === 'age') {
               return {
                 component: 'NumericCellEditor',

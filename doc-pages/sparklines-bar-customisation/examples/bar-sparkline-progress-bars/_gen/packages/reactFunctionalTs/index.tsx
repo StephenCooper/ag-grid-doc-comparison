@@ -44,7 +44,7 @@ const GridExample = () => {
             color: 'white',
             fontSize: 10,
             fontWeight: 'bold',
-            formatter: function (params: LabelFormatterParams) {
+            formatter: (params: LabelFormatterParams) => {
               return `${params.value}%`;
             },
           },

@@ -31,7 +31,7 @@ class GridExample extends Component {
       },
       rowModelType: 'serverSide',
       serverSideStoreType: 'partial',
-      getRowHeight: function (params) {
+      getRowHeight: (params) => {
         if (params.node.level === 0) {
           return 80;
         }
@@ -90,7 +90,7 @@ class GridExample extends Component {
 
 function getServerSideDatasource(server) {
   return {
-    getRows: function (params) {
+    getRows: (params) => {
       console.log('[Datasource] - rows requested by grid: ', params.request);
       var response = server.getData(params.request);
       // adding delay to simulate real server call

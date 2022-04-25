@@ -19,10 +19,10 @@ class GridExample extends Component {
       columnDefs: [
         {
           headerName: 'Name',
-          valueGetter: function (params) {
+          valueGetter: (params) => {
             return params.data.firstName + ' ' + params.data.lastName;
           },
-          valueSetter: function (params) {
+          valueSetter: (params) => {
             var fullName = params.newValue;
             var nameSplit = fullName.split(' ');
             var newFirstName = nameSplit[0];
@@ -49,10 +49,10 @@ class GridExample extends Component {
         },
         {
           headerName: 'B',
-          valueGetter: function (params) {
+          valueGetter: (params) => {
             return params.data.b;
           },
-          valueSetter: function (params) {
+          valueSetter: (params) => {
             var newValInt = parseInt(params.newValue);
             var valueChanged = params.data.b !== newValInt;
             if (valueChanged) {
@@ -63,14 +63,14 @@ class GridExample extends Component {
         },
         {
           headerName: 'C.X',
-          valueGetter: function (params) {
+          valueGetter: (params) => {
             if (params.data.c) {
               return params.data.c.x;
             } else {
               return undefined;
             }
           },
-          valueSetter: function (params) {
+          valueSetter: (params) => {
             if (!params.data.c) {
               params.data.c = {};
             }
@@ -80,14 +80,14 @@ class GridExample extends Component {
         },
         {
           headerName: 'C.Y',
-          valueGetter: function (params) {
+          valueGetter: (params) => {
             if (params.data.c) {
               return params.data.c.y;
             } else {
               return undefined;
             }
           },
-          valueSetter: function (params) {
+          valueSetter: (params) => {
             if (!params.data.c) {
               params.data.c = {};
             }

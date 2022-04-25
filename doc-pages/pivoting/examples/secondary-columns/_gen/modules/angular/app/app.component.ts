@@ -45,16 +45,16 @@ export class AppComponent {
   public autoGroupColumnDef: ColDef = {
     minWidth: 250,
   };
-  public processSecondaryColDef: (colDef: ColDef) => void = function (
+  public processSecondaryColDef: (colDef: ColDef) => void = (
     colDef: ColDef
-  ) {
+  ) => {
     if (colDef.pivotValueColumn?.getId() === 'gold') {
       colDef.headerName = colDef.headerName?.toUpperCase();
     }
   };
-  public processSecondaryColGroupDef: (
+  public processSecondaryColGroupDef: (colGroupDef: ColGroupDef) => void = (
     colGroupDef: ColGroupDef
-  ) => void = function (colGroupDef: ColGroupDef) {
+  ) => {
     // for fun, add a css class for 2010
     if (colGroupDef.pivotKeys?.length && colGroupDef.pivotKeys[0] === '2010') {
       colGroupDef.headerClass = 'color-background';

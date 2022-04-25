@@ -34,12 +34,12 @@ class GridExample extends Component {
       defaultColDef: {
         flex: 1,
       },
-      getRowId: function (params) {
+      getRowId: (params) => {
         return params.data.account;
       },
       detailCellRendererParams: {
         refreshStrategy: 'everything',
-        template: function (params) {
+        template: (params) => {
           return (
             '<div class="ag-details-row ag-details-row-fixed-height">' +
             '<div style="padding: 4px; font-weight: bold;">' +
@@ -54,7 +54,7 @@ class GridExample extends Component {
         detailGridOptions: {
           rowSelection: 'multiple',
           enableCellChangeFlash: true,
-          getRowId: function (params) {
+          getRowId: (params) => {
             return params.data.callId;
           },
           columnDefs: [
@@ -69,7 +69,7 @@ class GridExample extends Component {
             sortable: true,
           },
         },
-        getDetailRowData: function (params) {
+        getDetailRowData: (params) => {
           // params.successCallback([]);
           params.successCallback(params.data.callRecords);
         },

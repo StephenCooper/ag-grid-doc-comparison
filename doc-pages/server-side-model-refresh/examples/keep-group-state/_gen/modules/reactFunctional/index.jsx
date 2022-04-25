@@ -16,7 +16,7 @@ var versionCounter = 1;
 
 const getServerSideDatasource = (server) => {
   return {
-    getRows: function (params) {
+    getRows: (params) => {
       console.log('[Datasource] - rows requested by grid: ', params.request);
       var response = server.getData(params.request);
       response.rows = response.rows.map(function (item) {
@@ -78,7 +78,7 @@ const GridExample = () => {
       field: 'athlete',
     };
   }, []);
-  const getRowId = useCallback(function (params) {
+  const getRowId = useCallback((params) => {
     var data = params.data;
     var parts = [];
     if (data.country != null) {

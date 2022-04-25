@@ -41,7 +41,7 @@ class GridExample extends Component {
         filter: true,
       },
       rowSelection: 'multiple',
-      isRowSelectable: function (rowNode) {
+      isRowSelectable: (rowNode) => {
         return rowNode.data ? rowNode.data.year < 2007 : false;
       },
       rowData: null,

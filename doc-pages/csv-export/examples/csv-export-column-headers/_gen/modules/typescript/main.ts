@@ -42,7 +42,7 @@ const gridOptions: GridOptions = {
     { make: 'Porsche', model: 'Boxster', price: 72000 },
   ],
 
-  onGridReady: function (params: GridReadyEvent) {
+  onGridReady: (params: GridReadyEvent) => {
     (document.getElementById(
       'columnGroups'
     ) as HTMLInputElement).checked = true;

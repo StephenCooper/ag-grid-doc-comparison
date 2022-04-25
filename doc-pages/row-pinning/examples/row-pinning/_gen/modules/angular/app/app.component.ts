@@ -60,7 +60,7 @@ export class AppComponent {
   public columnDefs: ColDef[] = [
     {
       field: 'athlete',
-      cellRendererSelector: function (params) {
+      cellRendererSelector: (params) => {
         if (params.node.rowPinned) {
           return {
             component: CustomPinnedRowRenderer,
@@ -76,7 +76,7 @@ export class AppComponent {
     },
     {
       field: 'age',
-      cellRendererSelector: function (params) {
+      cellRendererSelector: (params) => {
         if (params.node.rowPinned) {
           return {
             component: CustomPinnedRowRenderer,
@@ -101,11 +101,9 @@ export class AppComponent {
     filter: true,
     resizable: true,
   };
-  public getRowStyle: (
+  public getRowStyle: (params: RowClassParams) => RowStyle | undefined = (
     params: RowClassParams
-  ) => RowStyle | undefined = function (
-    params: RowClassParams
-  ): RowStyle | undefined {
+  ): RowStyle | undefined => {
     if (params.node.rowPinned) {
       return { 'font-weight': 'bold' };
     }

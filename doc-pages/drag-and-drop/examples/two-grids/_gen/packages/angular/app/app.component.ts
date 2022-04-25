@@ -107,7 +107,7 @@ export class AppComponent {
       'green-row': 'data.color == "Green"',
       'blue-row': 'data.color == "Blue"',
     },
-    getRowId: function (params) {
+    getRowId: (params) => {
       return params.data.id;
     },
     rowData: this.createLeftRowData(),
@@ -127,7 +127,7 @@ export class AppComponent {
       'green-row': 'data.color == "Green"',
       'blue-row': 'data.color == "Blue"',
     },
-    getRowId: function (params) {
+    getRowId: (params) => {
       return params.data.id;
     },
     rowData: [],

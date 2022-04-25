@@ -31,7 +31,7 @@ const GridExample = () => {
       },
     };
   }, []);
-  const getDataPath = useCallback(function (data) {
+  const getDataPath = useCallback((data) => {
     return data.orgHierarchy;
   }, []);
 

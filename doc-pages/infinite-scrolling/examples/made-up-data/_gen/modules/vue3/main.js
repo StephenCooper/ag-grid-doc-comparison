@@ -79,7 +79,7 @@ window.getColumnDefs = function getColumnDefs() {
 window.getDataSource = function getDataSource(count) {
   const dataSource = {
     rowCount: count,
-    getRows: function (params) {
+    getRows: (params) => {
       var rowsThisPage = [];
       for (
         var rowIndex = params.startRow;

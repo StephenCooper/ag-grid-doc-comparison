@@ -74,7 +74,7 @@ const gridOptions: GridOptions = {
           fontSize: 15,
           fontFamily: 'Arial, sans-serif',
           color: 'green',
-          formatter: function (params) {
+          formatter: (params) => {
             return '<' + params.value + '>';
           },
         },
@@ -85,7 +85,7 @@ const gridOptions: GridOptions = {
           },
         },
         tooltip: {
-          renderer: function (params) {
+          renderer: (params) => {
             var bin = params.datum;
             var binSize = bin.frequency;
             var medalColour = params.xKey;

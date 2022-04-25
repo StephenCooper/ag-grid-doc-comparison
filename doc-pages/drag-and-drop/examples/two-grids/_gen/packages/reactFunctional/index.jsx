@@ -12,7 +12,7 @@ const baseDefaultColDef = {
 };
 
 const baseGridOptions = {
-  getRowId: function (params) {
+  getRowId: (params) => {
     return params.data.id;
   },
   rowClassRules: {

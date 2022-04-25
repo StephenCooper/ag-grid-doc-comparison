@@ -7,7 +7,7 @@ const gridOptions = {
       // it is important to have node.id here, so that when the id changes (which happens
       // when the row is loaded) then the cell is refreshed.
       valueGetter: 'node.id',
-      cellRenderer: function (params) {
+      cellRenderer: (params) => {
         if (params.value !== undefined) {
           return params.value;
         } else {
@@ -34,7 +34,7 @@ const gridOptions = {
   rowBuffer: 0,
   // debug: true,
   rowSelection: 'multiple',
-  isRowSelectable: function (rowNode) {
+  isRowSelectable: (rowNode) => {
     return rowNode.data ? rowNode.data.country === 'United States' : false;
   },
   // tell grid we want virtual row model type
@@ -67,7 +67,7 @@ document.addEventListener('DOMContentLoaded', function () {
     .then(function (data) {
       const dataSource = {
         rowCount: undefined, // behave as infinite scroll
-        getRows: function (params) {
+        getRows: (params) => {
           // console.log('asking for ' + params.startRow + ' to ' + params.endRow);
           // At this point in your code, you would call the server.
           // To make the demo look real, wait for 500ms before returning

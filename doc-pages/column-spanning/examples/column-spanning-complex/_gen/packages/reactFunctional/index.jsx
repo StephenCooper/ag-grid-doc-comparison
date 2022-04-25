@@ -27,7 +27,7 @@ const GridExample = () => {
     {
       headerName: 'Jan',
       field: 'jan',
-      colSpan: function (params) {
+      colSpan: (params) => {
         if (isHeaderRow(params)) {
           return 6;
         } else if (isQuarterRow(params)) {
@@ -43,7 +43,7 @@ const GridExample = () => {
     {
       headerName: 'Apr',
       field: 'apr',
-      colSpan: function (params) {
+      colSpan: (params) => {
         if (isQuarterRow(params)) {
           return 3;
         } else {
@@ -55,7 +55,7 @@ const GridExample = () => {
     { headerName: 'May', field: 'may' },
     { headerName: 'Jun', field: 'jun' },
   ]);
-  const getRowHeight = useCallback(function (params) {
+  const getRowHeight = useCallback((params) => {
     if (isHeaderRow(params)) {
       return 60;
     }

@@ -61,11 +61,11 @@ export class AppComponent {
         resizable: true,
       },
     },
-    getDetailRowData: function (params) {
+    getDetailRowData: (params) => {
       params.successCallback(params.data.callRecords);
     },
   } as IDetailCellRendererParams;
-  public getRowId: GetRowIdFunc = function (params: GetRowIdParams) {
+  public getRowId: GetRowIdFunc = (params: GetRowIdParams) => {
     // use 'account' as the row ID
     return params.data.account;
   };

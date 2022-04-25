@@ -47,7 +47,7 @@ const GridExample = () => {
       editable: true,
     };
   }, []);
-  const fillOperation = useCallback(function (params: FillOperationParams) {
+  const fillOperation = useCallback((params: FillOperationParams) => {
     if (params.column.getColId() === 'country') {
       return params.currentCellValue;
     }

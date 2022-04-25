@@ -50,10 +50,10 @@ const GridExample = () => {
           flex: 1,
         },
       },
-      getDetailRowData: function (params) {
+      getDetailRowData: (params) => {
         params.successCallback(params.data.callRecords);
       },
-      template: function (params) {
+      template: (params) => {
         var personName = params.data.name;
         return (
           '<div style="height: 100%; background-color: #EDF6FF; padding: 20px; box-sizing: border-box;">' +

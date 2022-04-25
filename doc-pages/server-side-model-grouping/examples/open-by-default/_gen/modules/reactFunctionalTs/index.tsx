@@ -31,7 +31,7 @@ const getServerSideDatasource: (server: any) => IServerSideDatasource = (
   server: any
 ) => {
   return {
-    getRows: function (params: IServerSideGetRowsParams) {
+    getRows: (params: IServerSideGetRowsParams) => {
       console.log('[Datasource] - rows requested by grid: ', params.request);
       var response = server.getData(params.request);
       // adding delay to simulate real server call
@@ -78,15 +78,15 @@ const GridExample = () => {
       minWidth: 280,
     };
   }, []);
-  const getServerSideStoreParams = useCallback(function (
-    params: GetServerSideStoreParamsParams
-  ): ServerSideStoreParams {
-    var res: ServerSideStoreParams = {
-      storeType: params.level == 0 ? 'partial' : 'full',
-    };
-    return res;
-  },
-  []);
+  const getServerSideStoreParams = useCallback(
+    (params: GetServerSideStoreParamsParams): ServerSideStoreParams => {
+      var res: ServerSideStoreParams = {
+        storeType: params.level == 0 ? 'partial' : 'full',
+      };
+      return res;
+    },
+    []
+  );
 
   const onGridReady = useCallback((params: GridReadyEvent) => {
     fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')

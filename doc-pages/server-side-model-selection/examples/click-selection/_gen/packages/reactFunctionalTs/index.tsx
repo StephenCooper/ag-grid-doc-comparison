@@ -24,7 +24,7 @@ const getServerSideDatasource: (server: any) => IServerSideDatasource = (
   server: any
 ) => {
   return {
-    getRows: function (params) {
+    getRows: (params) => {
       console.log('[Datasource] - rows requested by grid: ', params.request);
       var response = server.getData(params.request);
       // adding delay to simulate real server call
@@ -69,7 +69,7 @@ const GridExample = () => {
       minWidth: 180,
     };
   }, []);
-  const getRowId = useCallback(function (params: GetRowIdParams) {
+  const getRowId = useCallback((params: GetRowIdParams) => {
     // use country for group level ids, or the id we assigned for leaf level
     var data = params.data;
     return data.id || data.country;

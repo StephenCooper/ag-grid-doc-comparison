@@ -49,7 +49,7 @@ class GridExample extends Component {
         minWidth: 100,
         resizable: true,
       },
-      getRowId: function (params) {
+      getRowId: (params) => {
         return params.data.code;
       },
     };

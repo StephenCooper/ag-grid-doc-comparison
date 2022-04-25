@@ -43,7 +43,7 @@ export class AppComponent {
     {
       headerName: 'Rendered Value',
       field: 'value',
-      cellRendererSelector: function (params: ICellRendererParams) {
+      cellRendererSelector: (params: ICellRendererParams) => {
         const moodDetails = {
           component: MoodRenderer,
         };

@@ -58,7 +58,7 @@ export class AppComponent {
 
 const athleteColumn = {
   headerName: 'Athlete',
-  valueGetter: function (params: ValueGetterParams) {
+  valueGetter: (params: ValueGetterParams) => {
     return params.data.athlete;
   },
 };
@@ -68,14 +68,14 @@ function getColDefsMedalsIncluded() {
     {
       colId: 'myAgeCol',
       headerName: 'Age',
-      valueGetter: function (params: ValueGetterParams) {
+      valueGetter: (params: ValueGetterParams) => {
         return params.data.age;
       },
     },
     {
       headerName: 'Country',
       headerClass: 'country-header',
-      valueGetter: function (params: ValueGetterParams) {
+      valueGetter: (params: ValueGetterParams) => {
         return params.data.country;
       },
     },
@@ -94,14 +94,14 @@ function getColDefsMedalsExcluded() {
     {
       colId: 'myAgeCol',
       headerName: 'Age',
-      valueGetter: function (params: ValueGetterParams) {
+      valueGetter: (params: ValueGetterParams) => {
         return params.data.age;
       },
     },
     {
       headerName: 'Country',
       headerClass: 'country-header',
-      valueGetter: function (params: ValueGetterParams) {
+      valueGetter: (params: ValueGetterParams) => {
         return params.data.country;
       },
     },

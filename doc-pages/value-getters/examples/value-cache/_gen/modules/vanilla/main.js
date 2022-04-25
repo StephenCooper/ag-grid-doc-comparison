@@ -12,7 +12,7 @@ const columnDefs = [
     cellClass: ['number-cell', 'total-col'],
     aggFunc: 'sum',
     valueFormatter: formatNumber,
-    valueGetter: function (params) {
+    valueGetter: (params) => {
       var q1 = params.getValue('q1');
       var q2 = params.getValue('q2');
       var q3 = params.getValue('q3');
@@ -58,10 +58,10 @@ const gridOptions = {
   enableCellChangeFlash: true,
   enableRangeSelection: true,
   groupDefaultExpanded: 1,
-  getRowId: function (params) {
+  getRowId: (params) => {
     return params.data.id;
   },
-  onCellValueChanged: function () {
+  onCellValueChanged: () => {
     console.log('onCellValueChanged');
   },
 };

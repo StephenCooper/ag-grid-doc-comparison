@@ -104,7 +104,7 @@ const GridExample = () => {
       field: 'price',
       minWidth: 140,
       colId: 'retailPrice',
-      valueGetter: function (params) {
+      valueGetter: (params) => {
         return params.data.price;
       },
       valueFormatter: currencyFormatter,
@@ -114,7 +114,7 @@ const GridExample = () => {
       headerName: 'Retail Price (incl Taxes)',
       minWidth: 205,
       editable: false,
-      valueGetter: function (params) {
+      valueGetter: (params) => {
         // example of chaining value getters
         return params.getValue('retailPrice') * 1.2;
       },

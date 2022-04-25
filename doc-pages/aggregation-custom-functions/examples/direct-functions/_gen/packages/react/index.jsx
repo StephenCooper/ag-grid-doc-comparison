@@ -17,7 +17,7 @@ class GridExample extends Component {
         { field: 'year', rowGroup: true, hide: true },
         {
           field: 'total',
-          aggFunc: function (params) {
+          aggFunc: (params) => {
             let sum = 0;
             params.values.forEach((value) => (sum += value));
             return sum;

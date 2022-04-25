@@ -23,7 +23,7 @@ const gridOptions = {
       field: 'medals',
       cellRenderer: MedalRenderer,
       // this is needed to avoid toString=[object,object] result with objects
-      getQuickFilterText: function (params) {
+      getQuickFilterText: (params) => {
         return getMedalString(params.value);
       },
     },

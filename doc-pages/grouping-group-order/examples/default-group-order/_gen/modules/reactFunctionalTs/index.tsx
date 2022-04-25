@@ -50,14 +50,14 @@ const GridExample = () => {
       minWidth: 200,
     };
   }, []);
-  const initialGroupOrderComparator = useCallback(function (
-    params: InitialGroupOrderComparatorParams
-  ) {
-    const a = params.nodeA.key || '';
-    const b = params.nodeB.key || '';
-    return a < b ? -1 : a > b ? 1 : 0;
-  },
-  []);
+  const initialGroupOrderComparator = useCallback(
+    (params: InitialGroupOrderComparatorParams) => {
+      const a = params.nodeA.key || '';
+      const b = params.nodeB.key || '';
+      return a < b ? -1 : a > b ? 1 : 0;
+    },
+    []
+  );
 
   const onGridReady = useCallback((params: GridReadyEvent) => {
     fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')

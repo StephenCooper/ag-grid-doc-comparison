@@ -41,7 +41,7 @@ const GridExample = () => {
       minWidth: 200,
     };
   }, []);
-  const initialGroupOrderComparator = useCallback(function (params) {
+  const initialGroupOrderComparator = useCallback((params) => {
     const a = params.nodeA.key || '';
     const b = params.nodeB.key || '';
     return a < b ? -1 : a > b ? 1 : 0;

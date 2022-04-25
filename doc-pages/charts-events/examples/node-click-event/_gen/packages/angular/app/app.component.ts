@@ -32,7 +32,7 @@ export class AppComponent {
           xKey: 'month',
           yKey: 'units',
           listeners: {
-            nodeClick: function (event: any) {
+            nodeClick: (event: any) => {
               var datum = event.datum;
               window.alert(
                 'Cars sold in ' +

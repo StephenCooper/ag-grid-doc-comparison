@@ -49,7 +49,7 @@ const columnDefs = [
     field: 'bronze',
     hide: true,
     enableValue: true,
-    toolPanelClass: function (params) {
+    toolPanelClass: (params) => {
       return 'tp-bronze';
     },
   },

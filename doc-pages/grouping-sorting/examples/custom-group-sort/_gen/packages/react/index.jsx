@@ -22,7 +22,7 @@ class GridExample extends Component {
           field: 'month',
           rowGroup: true,
           hide: true,
-          comparator: function (a, b) {
+          comparator: (a, b) => {
             const months = [
               'January',
               'February',

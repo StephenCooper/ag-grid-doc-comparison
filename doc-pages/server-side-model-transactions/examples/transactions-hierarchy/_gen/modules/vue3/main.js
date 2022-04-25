@@ -130,7 +130,7 @@ const VueExample = {
 
       setupData();
       const dataSource = {
-        getRows: function (params2) {
+        getRows: (params2) => {
           // To make the demo look real, wait for 500ms before returning
           setTimeout(function () {
             const doingTopLevel = params2.request.groupKeys.length == 0;

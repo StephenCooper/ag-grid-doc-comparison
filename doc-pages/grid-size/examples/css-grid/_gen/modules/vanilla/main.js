@@ -8,7 +8,7 @@ var rowData = [
 const gridOptions = {
   columnDefs: [{ field: 'make' }, { field: 'model' }, { field: 'price' }],
   rowData: rowData,
-  onGridReady: function (params) {
+  onGridReady: (params) => {
     params.api.sizeColumnsToFit();
 
     window.addEventListener('resize', function () {

@@ -17,14 +17,14 @@ const options = {
       xKey: 'month',
       yKey: 'units',
       listeners: {
-        nodeClick: function (event) {
+        nodeClick: (event) => {
           event.datum.selected = !event.datum.selected;
           event.series.update();
         },
       },
       marker: {
         size: 16,
-        formatter: function (params) {
+        formatter: (params) => {
           // Use a different size and color for selected nodes.
           if (params.datum.selected) {
             return {

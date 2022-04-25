@@ -1,6 +1,6 @@
 const gridOptions = {
   masterDetail: true,
-  isRowMaster: function (dataItem) {
+  isRowMaster: (dataItem) => {
     return dataItem ? dataItem.callRecords.length > 0 : false;
   },
   columnDefs: [
@@ -13,7 +13,7 @@ const gridOptions = {
   defaultColDef: {
     flex: 1,
   },
-  getRowId: function (params) {
+  getRowId: (params) => {
     return params.data.account;
   },
   detailCellRendererParams: {
@@ -29,7 +29,7 @@ const gridOptions = {
         flex: 1,
       },
     },
-    getDetailRowData: function (params) {
+    getDetailRowData: (params) => {
       params.successCallback(params.data.callRecords);
     },
   },

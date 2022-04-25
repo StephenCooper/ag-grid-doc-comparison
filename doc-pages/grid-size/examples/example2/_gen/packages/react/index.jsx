@@ -27,7 +27,7 @@ class GridExample extends Component {
         resizable: true,
       },
       rowData: getData(),
-      getRowHeight: function (params) {
+      getRowHeight: (params) => {
         return currentRowHeight;
       },
     };

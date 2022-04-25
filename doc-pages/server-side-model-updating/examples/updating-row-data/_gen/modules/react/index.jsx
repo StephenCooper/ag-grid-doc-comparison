@@ -47,7 +47,7 @@ class GridExample extends Component {
         item.id = idSequence++;
       });
       var dataSource = {
-        getRows: function (params) {
+        getRows: (params) => {
           // To make the demo look real, wait for 500ms before returning
           setTimeout(function () {
             var response = getMockServerResponse(params.request);

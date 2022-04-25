@@ -29,7 +29,7 @@ var autoGroupColumnDef = {
   headerName: 'Group',
   minWidth: 170,
   field: 'athlete',
-  valueGetter: function (params) {
+  valueGetter: (params) => {
     if (params.node.group) {
       return params.node.key;
     } else {
@@ -67,7 +67,7 @@ const gridOptions = {
   paginationPageSize: 10,
   autoGroupColumnDef: autoGroupColumnDef,
   onFirstDataRendered: onFirstDataRendered,
-  paginationNumberFormatter: function (params) {
+  paginationNumberFormatter: (params) => {
     return '[' + params.value.toLocaleString() + ']';
   },
 };

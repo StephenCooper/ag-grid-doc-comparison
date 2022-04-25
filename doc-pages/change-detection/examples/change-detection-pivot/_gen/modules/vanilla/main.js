@@ -23,10 +23,10 @@ const gridOptions = {
   groupDefaultExpanded: 1,
   // enableCellChangeFlash: true,
   animateRows: true,
-  getRowId: function (params) {
+  getRowId: (params) => {
     return params.data.student;
   },
-  onGridReady: function (params) {
+  onGridReady: (params) => {
     document.getElementById('pivot-mode').checked = true;
   },
 };

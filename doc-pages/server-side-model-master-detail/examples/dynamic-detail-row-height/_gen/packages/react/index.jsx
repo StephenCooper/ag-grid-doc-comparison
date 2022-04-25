@@ -43,12 +43,12 @@ class GridExample extends Component {
             flex: 1,
           },
         },
-        getDetailRowData: function (params) {
+        getDetailRowData: (params) => {
           // supply details records to detail cell renderer (i.e. detail grid)
           params.successCallback(params.data.callRecords);
         },
       },
-      getRowHeight: function (params) {
+      getRowHeight: (params) => {
         if (params.node && params.node.detail) {
           var offset = 60;
           var sizes = params.api.getSizesForCurrentTheme() || {};
@@ -117,7 +117,7 @@ class GridExample extends Component {
 
 function getServerSideDatasource(server) {
   return {
-    getRows: function (params) {
+    getRows: (params) => {
       console.log('[Datasource] - rows requested by grid: ', params.request);
       var response = server.getData(params.request);
       // adding delay to simulate real server call

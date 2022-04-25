@@ -59,7 +59,7 @@ const GridExample = () => {
       editable: true,
     };
   }, []);
-  const fillOperation = useCallback(function (params) {
+  const fillOperation = useCallback((params) => {
     var hasNonDayValues = params.initialValues.some(function (val) {
       return daysList.indexOf(val) === -1;
     });

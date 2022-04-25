@@ -27,7 +27,7 @@ const GridExample = () => {
       showRowGroup: 'country',
       minWidth: 200,
       cellRenderer: 'agGroupCellRenderer',
-      filterValueGetter: function (params: ValueGetterParams) {
+      filterValueGetter: (params: ValueGetterParams) => {
         return params.data ? params.data.country : null;
       },
     },

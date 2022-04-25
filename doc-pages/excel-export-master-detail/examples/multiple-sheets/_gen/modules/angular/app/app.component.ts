@@ -55,7 +55,7 @@ export class AppComponent {
   public defaultColDef: ColDef = {
     flex: 1,
   };
-  public getRowId: GetRowIdFunc = function (params: GetRowIdParams) {
+  public getRowId: GetRowIdFunc = (params: GetRowIdParams) => {
     return params.data.name;
   };
   public groupDefaultExpanded = 1;
@@ -73,7 +73,7 @@ export class AppComponent {
         flex: 1,
       },
     },
-    getDetailRowData: function (params) {
+    getDetailRowData: (params) => {
       params.successCallback(params.data.callRecords);
     },
   } as IDetailCellRendererParams;

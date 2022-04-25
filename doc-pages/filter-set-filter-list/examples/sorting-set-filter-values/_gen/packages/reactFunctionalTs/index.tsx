@@ -17,7 +17,7 @@ import {
 } from 'ag-grid-community';
 
 var filterParams = {
-  comparator: function (a: string, b: string) {
+  comparator: (a: string, b: string) => {
     var valA = parseInt(a);
     var valB = parseInt(b);
     if (valA === valB) return 0;

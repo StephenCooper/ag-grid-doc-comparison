@@ -25,7 +25,7 @@ const getServerSideDatasource: (server: any) => IServerSideDatasource = (
   server: any
 ) => {
   return {
-    getRows: function (params) {
+    getRows: (params) => {
       console.log('[Datasource] - rows requested by grid: ', params.request);
       var response = server.getData(params.request);
       // adding delay to simulate real server call
@@ -77,13 +77,13 @@ const GridExample = () => {
           flex: 1,
         },
       },
-      getDetailRowData: function (params: GetDetailRowDataParams) {
+      getDetailRowData: (params: GetDetailRowDataParams) => {
         // supply details records to detail cell renderer (i.e. detail grid)
         params.successCallback(params.data.callRecords);
       },
     } as IDetailCellRendererParams;
   }, []);
-  const getRowHeight = useCallback(function (params: RowHeightParams) {
+  const getRowHeight = useCallback((params: RowHeightParams) => {
     if (params.node && params.node.detail) {
       var offset = 60;
       var sizes = params.api.getSizesForCurrentTheme() || {};

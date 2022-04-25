@@ -31,7 +31,7 @@ class GridExample extends Component {
         resizable: true,
         sortable: true,
       },
-      getRowId: function (params) {
+      getRowId: (params) => {
         var data = params.data;
         // use year for group level ids, or the id we assigned for leaf level
         return data.id != null ? 'id-' + data.id : 'year-' + data.year;
@@ -48,7 +48,7 @@ class GridExample extends Component {
       rowModelType: 'serverSide',
       serverSideStoreType: 'partial',
       rowSelection: 'multiple',
-      isRowSelectable: function (rowNode) {
+      isRowSelectable: (rowNode) => {
         return !rowNode.group;
       },
     };
@@ -108,7 +108,7 @@ class GridExample extends Component {
 
 function getServerSideDatasource(server) {
   return {
-    getRows: function (params) {
+    getRows: (params) => {
       console.log('[Datasource] - rows requested by grid: ', params.request);
       var response = server.getData(params.request);
       // adding delay to simulate real server call

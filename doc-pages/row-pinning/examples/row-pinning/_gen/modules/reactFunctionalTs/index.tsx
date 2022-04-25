@@ -44,7 +44,7 @@ const GridExample = () => {
   const [columnDefs, setColumnDefs] = useState<ColDef[]>([
     {
       field: 'athlete',
-      cellRendererSelector: function (params) {
+      cellRendererSelector: (params) => {
         if (params.node.rowPinned) {
           return {
             component: CustomPinnedRowRenderer,
@@ -60,7 +60,7 @@ const GridExample = () => {
     },
     {
       field: 'age',
-      cellRendererSelector: function (params) {
+      cellRendererSelector: (params) => {
         if (params.node.rowPinned) {
           return {
             component: CustomPinnedRowRenderer,
@@ -87,14 +87,13 @@ const GridExample = () => {
       resizable: true,
     };
   }, []);
-  const getRowStyle = useCallback(function (
-    params: RowClassParams
-  ): RowStyle | undefined {
+  const getRowStyle = useCallback((params: RowClassParams):
+    | RowStyle
+    | undefined => {
     if (params.node.rowPinned) {
       return { 'font-weight': 'bold' };
     }
-  },
-  []);
+  }, []);
   const pinnedTopRowData = useMemo<any[]>(() => {
     return createData(1, 'Top');
   }, []);

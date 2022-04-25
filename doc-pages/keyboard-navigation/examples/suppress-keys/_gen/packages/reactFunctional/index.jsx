@@ -88,7 +88,7 @@ const GridExample = () => {
     {
       field: 'athlete',
       minWidth: 170,
-      suppressKeyboardEvent: function (params) {
+      suppressKeyboardEvent: (params) => {
         return suppressEnter(params) || suppressNavigation(params);
       },
     },
@@ -96,7 +96,7 @@ const GridExample = () => {
     {
       field: 'country',
       minWidth: 130,
-      suppressHeaderKeyboardEvent: function (params) {
+      suppressHeaderKeyboardEvent: (params) => {
         var key = params.event.key;
         return key === 'ArrowLeft' || key === 'ArrowRight' || key === 'Enter';
       },

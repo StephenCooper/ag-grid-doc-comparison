@@ -1,5 +1,5 @@
 var filterParams = {
-  comparator: function (a, b) {
+  comparator: (a, b) => {
     var valA = parseInt(a);
     var valB = parseInt(b);
     if (valA === valB) return 0;
@@ -28,7 +28,7 @@ const gridOptions = {
   },
   rowData: getRowData(),
   sideBar: 'filters',
-  onGridReady: function (params) {
+  onGridReady: (params) => {
     params.api.getToolPanelInstance('filters').expandFilters();
   },
 };

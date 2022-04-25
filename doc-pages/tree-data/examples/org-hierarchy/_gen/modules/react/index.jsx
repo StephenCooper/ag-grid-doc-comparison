@@ -34,7 +34,7 @@ class GridExample extends Component {
       },
       rowData: getData(),
       groupDefaultExpanded: -1,
-      getDataPath: function (data) {
+      getDataPath: (data) => {
         return data.orgHierarchy;
       },
     };

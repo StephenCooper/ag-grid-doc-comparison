@@ -42,7 +42,7 @@ const gridOptions = {
   },
   columnDefs: columnDefs,
   rowData: [1, 2],
-  onGridReady: function () {
+  onGridReady: (params) => {
     setInterval(fillAllCellsWithWidthMeasurement, 50);
   },
 };

@@ -41,7 +41,7 @@ class ChartExample extends Component {
               enabled: false,
             },
             label: {
-              formatter: function (params) {
+              formatter: (params) => {
                 return params.value + '%';
               },
             },

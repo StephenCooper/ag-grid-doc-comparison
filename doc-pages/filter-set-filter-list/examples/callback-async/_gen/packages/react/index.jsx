@@ -63,7 +63,7 @@ class GridExample extends Component {
 }
 
 var filterParams = {
-  values: function (params) {
+  values: (params) => {
     setTimeout(function () {
       params.success(['value 1', 'value 2']);
     }, 3000);

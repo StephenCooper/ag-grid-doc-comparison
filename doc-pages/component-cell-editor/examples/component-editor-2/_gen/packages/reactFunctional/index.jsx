@@ -71,7 +71,7 @@ const GridExample = () => {
       cellEditor: 'agRichSelectCellEditor',
       cellEditorPopup: true,
       cellRenderer: CountryCellRenderer,
-      keyCreator: function (params) {
+      keyCreator: (params) => {
         return params.value.name;
       },
       cellEditorParams: {

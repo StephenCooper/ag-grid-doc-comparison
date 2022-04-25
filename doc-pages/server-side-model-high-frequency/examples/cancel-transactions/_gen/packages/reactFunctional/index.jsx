@@ -70,7 +70,7 @@ const GridExample = () => {
       resizable: true,
     };
   }, []);
-  const isApplyServerSideTransaction = useCallback(function (params) {
+  const isApplyServerSideTransaction = useCallback((params) => {
     var tx = params.transaction;
     var storeInfo = params.storeInfo;
     var txCreatedSinceRowDataRead = tx.serverVersion > storeInfo.serverVersion;
@@ -88,14 +88,14 @@ const GridExample = () => {
       return false;
     }
   }, []);
-  const getRowId = useCallback(function (params) {
+  const getRowId = useCallback((params) => {
     return params.data.product;
   }, []);
 
   const onGridReady = useCallback((params) => {
     setupData();
     var dataSource = {
-      getRows: function (params2) {
+      getRows: (params2) => {
         setTimeout(function () {
           var rowData = allServerSideData.slice();
           console.log(

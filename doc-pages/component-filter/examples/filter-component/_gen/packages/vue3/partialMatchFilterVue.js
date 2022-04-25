@@ -71,7 +71,7 @@ export default {
     },
   },
   watch: {
-    text: function (val, oldVal) {
+    text: (val, oldVal) => {
       if (val !== oldVal) {
         this.params.filterChangedCallback();
       }

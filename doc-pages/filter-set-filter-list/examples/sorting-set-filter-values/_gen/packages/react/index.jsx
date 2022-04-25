@@ -66,7 +66,7 @@ class GridExample extends Component {
 }
 
 var filterParams = {
-  comparator: function (a, b) {
+  comparator: (a, b) => {
     var valA = parseInt(a);
     var valB = parseInt(b);
     if (valA === valB) return 0;

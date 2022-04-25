@@ -51,7 +51,7 @@ const VueExample = {
         cellClass: 'align-right',
         enableCellChangeFlash: true,
         resizable: true,
-        valueFormatter: function (params) {
+        valueFormatter: (params) => {
           return formatNumber(params.value);
         },
       },

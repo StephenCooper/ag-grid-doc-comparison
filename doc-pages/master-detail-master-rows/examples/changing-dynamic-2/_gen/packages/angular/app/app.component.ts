@@ -32,7 +32,7 @@ import { CallsCellRenderer } from './calls-cell-renderer.component';
   ></ag-grid-angular> `,
 })
 export class AppComponent {
-  public isRowMaster: IsRowMaster = function (dataItem: any) {
+  public isRowMaster: IsRowMaster = (dataItem: any) => {
     return dataItem ? dataItem.callRecords.length > 0 : false;
   };
   public columnDefs: ColDef[] = [
@@ -45,7 +45,7 @@ export class AppComponent {
   public defaultColDef: ColDef = {
     flex: 1,
   };
-  public getRowId: GetRowIdFunc = function (params: GetRowIdParams) {
+  public getRowId: GetRowIdFunc = (params: GetRowIdParams) => {
     return params.data.account;
   };
   public detailCellRendererParams: any = {
@@ -61,7 +61,7 @@ export class AppComponent {
         flex: 1,
       },
     },
-    getDetailRowData: function (params) {
+    getDetailRowData: (params) => {
       params.successCallback(params.data.callRecords);
     },
   } as IDetailCellRendererParams;

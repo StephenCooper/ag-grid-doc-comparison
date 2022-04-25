@@ -22,7 +22,7 @@ class GridExample extends Component {
       defaultColDef: {
         flex: 1,
       },
-      getRowId: function (params) {
+      getRowId: (params) => {
         return params.data.name;
       },
       groupDefaultExpanded: 1,
@@ -40,7 +40,7 @@ class GridExample extends Component {
             flex: 1,
           },
         },
-        getDetailRowData: function (params) {
+        getDetailRowData: (params) => {
           params.successCallback(params.data.callRecords);
         },
       },

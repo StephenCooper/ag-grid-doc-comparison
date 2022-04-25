@@ -65,7 +65,7 @@ const GridExample = () => {
       resizable: true,
     };
   }, []);
-  const getRowHeight = useCallback(function (params: RowHeightParams) {
+  const getRowHeight = useCallback((params: RowHeightParams) => {
     return currentRowHeight;
   }, []);
 

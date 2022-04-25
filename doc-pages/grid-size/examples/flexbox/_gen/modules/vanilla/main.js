@@ -10,7 +10,7 @@ const gridOptions = {
 
   rowData: rowData,
 
-  onGridReady: function (params) {
+  onGridReady: (params) => {
     params.api.sizeColumnsToFit();
 
     window.addEventListener('resize', function () {

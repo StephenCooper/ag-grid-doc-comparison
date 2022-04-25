@@ -31,9 +31,9 @@ const gridOptions: GridOptions = {
     flex: 1,
     minWidth: 280,
   },
-  getServerSideStoreParams: function (
+  getServerSideStoreParams: (
     params: GetServerSideStoreParamsParams
-  ): ServerSideStoreParams {
+  ): ServerSideStoreParams => {
     var res: ServerSideStoreParams = {
       storeType: params.level == 0 ? 'partial' : 'full',
     };
@@ -82,7 +82,7 @@ function onBtRouteOfSelected() {
 
 function getServerSideDatasource(server: any): IServerSideDatasource {
   return {
-    getRows: function (params: IServerSideGetRowsParams) {
+    getRows: (params: IServerSideGetRowsParams) => {
       console.log('[Datasource] - rows requested by grid: ', params.request);
 
       var response = server.getData(params.request);

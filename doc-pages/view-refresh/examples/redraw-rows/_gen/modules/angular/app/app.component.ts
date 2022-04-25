@@ -44,11 +44,9 @@ export class AppComponent {
     flex: 1,
   };
   public rowData: any[] | null = createData(12);
-  public getRowStyle: (
+  public getRowStyle: (params: RowClassParams) => RowStyle | undefined = (
     params: RowClassParams
-  ) => RowStyle | undefined = function (
-    params: RowClassParams
-  ): RowStyle | undefined {
+  ): RowStyle | undefined => {
     return {
       backgroundColor: colors[colorIndex],
     };

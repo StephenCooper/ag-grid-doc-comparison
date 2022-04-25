@@ -17,7 +17,7 @@ const gridOptions = {
     minWidth: 180,
   },
 
-  getRowId: function (params) {
+  getRowId: (params) => {
     // use country for group level ids, or the id we assigned for leaf level
     var data = params.data;
     return data.id || data.country;
@@ -37,7 +37,7 @@ const gridOptions = {
 
 function getServerSideDatasource(server) {
   return {
-    getRows: function (params) {
+    getRows: (params) => {
       console.log('[Datasource] - rows requested by grid: ', params.request);
 
       var response = server.getData(params.request);

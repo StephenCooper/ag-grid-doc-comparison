@@ -33,7 +33,7 @@ class GridExample extends Component {
       },
       rowData: getRowData(),
       groupDefaultExpanded: 1,
-      getRowId: function (params) {
+      getRowId: (params) => {
         return params.data.student;
       },
     };

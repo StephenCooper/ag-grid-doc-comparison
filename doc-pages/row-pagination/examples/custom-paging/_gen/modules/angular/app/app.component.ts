@@ -71,7 +71,7 @@ export class AppComponent {
     headerName: 'Group',
     minWidth: 170,
     field: 'athlete',
-    valueGetter: function (params) {
+    valueGetter: (params) => {
       if (params.node!.group) {
         return params.node!.key;
       } else {
@@ -101,7 +101,7 @@ export class AppComponent {
   public paginationPageSize = 10;
   public paginationNumberFormatter: (
     params: PaginationNumberFormatterParams
-  ) => string = function (params: PaginationNumberFormatterParams) {
+  ) => string = (params: PaginationNumberFormatterParams) => {
     return '[' + params.value.toLocaleString() + ']';
   };
   public rowData!: any[];

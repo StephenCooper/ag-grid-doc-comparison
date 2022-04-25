@@ -59,7 +59,7 @@ class GridExample extends Component {
               strokeWidth: 4,
             },
             tooltip: {
-              renderer: function (params) {
+              renderer: (params) => {
                 var label = params.datum[params.labelKey];
                 var size = params.datum[params.sizeKey];
                 return {

@@ -71,7 +71,7 @@ const gridOptions = {
   paginationPageSize: 500,
   enableRangeSelection: true,
   enableCharts: true,
-  getLocaleText: function (params) {
+  getLocaleText: (params) => {
     switch (params.key) {
       case 'thousandSeparator':
         return '.';

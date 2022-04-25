@@ -74,10 +74,10 @@ const gridOptions = {
   enableCellChangeFlash: true,
   enableRangeSelection: true,
   groupDefaultExpanded: 1,
-  getRowId: function (params) {
+  getRowId: (params) => {
     return params.data.id;
   },
-  onCellValueChanged: function () {
+  onCellValueChanged: () => {
     console.log('onCellValueChanged');
   },
 };

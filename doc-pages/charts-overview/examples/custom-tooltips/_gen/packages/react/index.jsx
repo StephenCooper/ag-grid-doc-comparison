@@ -107,7 +107,7 @@ class ChartExample extends Component {
               text: 'Waste collected (tonnes)',
             },
             label: {
-              formatter: function (params) {
+              formatter: (params) => {
                 return params.value / 1000 + 'k';
               },
             },

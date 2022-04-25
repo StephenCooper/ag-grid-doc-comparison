@@ -9,7 +9,7 @@ import 'ag-grid-community/dist/styles/ag-theme-alpine-dark.css';
 
 const getServerSideDatasource = (server) => {
   return {
-    getRows: function (params) {
+    getRows: (params) => {
       console.log('[Datasource] - rows requested by grid: ', params.request);
       var response = server.getData(params.request);
       // adding delay to simulate real server call
@@ -60,7 +60,7 @@ const GridExample = () => {
           flex: 1,
         },
       },
-      getDetailRowData: function (params) {
+      getDetailRowData: (params) => {
         // supply details records to detail cell renderer (i.e. detail grid)
         params.successCallback(params.data.callRecords);
       },

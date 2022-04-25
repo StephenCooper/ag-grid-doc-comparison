@@ -62,7 +62,7 @@ export class AppComponent {
       headerName: 'Item ID',
       field: 'id',
       valueGetter: 'node.id',
-      cellRenderer: function (params: ICellRendererParams) {
+      cellRenderer: (params: ICellRendererParams) => {
         if (params.value !== undefined) {
           return params.value;
         } else {
@@ -79,7 +79,7 @@ export class AppComponent {
   ];
   public datasource: IDatasource = {
     rowCount: undefined,
-    getRows: function (params: IGetRowsParams) {
+    getRows: (params: IGetRowsParams) => {
       console.log('asking for ' + params.startRow + ' to ' + params.endRow);
       // At this point in your code, you would call the server.
       // To make the demo look real, wait for 500ms before returning
@@ -111,14 +111,12 @@ export class AppComponent {
   public maxBlocksInCache = 2;
   public infiniteInitialRowCount = 500;
   public maxConcurrentDatasourceRequests = 2;
-  public getRowId: GetRowIdFunc = function (params: GetRowIdParams) {
+  public getRowId: GetRowIdFunc = (params: GetRowIdParams) => {
     return params.data.id.toString();
   };
-  public getRowStyle: (
+  public getRowStyle: (params: RowClassParams) => RowStyle | undefined = (
     params: RowClassParams
-  ) => RowStyle | undefined = function (
-    params: RowClassParams
-  ): RowStyle | undefined {
+  ): RowStyle | undefined => {
     if (params.data && params.data.make === 'Honda') {
       return {
         fontWeight: 'bold',

@@ -39,12 +39,12 @@ export class AppComponent {
   public defaultColDef: ColDef = {
     flex: 1,
   };
-  public getRowId: GetRowIdFunc = function (params: GetRowIdParams) {
+  public getRowId: GetRowIdFunc = (params: GetRowIdParams) => {
     return params.data.account;
   };
   public detailCellRendererParams: any = {
     refreshStrategy: 'rows',
-    template: function (params) {
+    template: (params) => {
       return `<div class="ag-details-row ag-details-row-fixed-height">
             <div style="padding: 4px; font-weight: bold;">${params.data.name} ${params.data.calls} calls</div>
             <div ref="eDetailGrid" class="ag-details-grid ag-details-grid-fixed-height"/>
@@ -53,7 +53,7 @@ export class AppComponent {
     detailGridOptions: {
       rowSelection: 'multiple',
       enableCellChangeFlash: true,
-      getRowId: function (params: GetRowIdParams) {
+      getRowId: (params: GetRowIdParams) => {
         return params.data.callId;
       },
       columnDefs: [
@@ -68,7 +68,7 @@ export class AppComponent {
         sortable: true,
       },
     },
-    getDetailRowData: function (params) {
+    getDetailRowData: (params) => {
       // params.successCallback([]);
       params.successCallback(params.data.callRecords);
     },

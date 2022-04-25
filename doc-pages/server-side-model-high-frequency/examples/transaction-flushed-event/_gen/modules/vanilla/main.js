@@ -6,7 +6,7 @@ const gridOptions = {
     resizable: true,
   },
   onAsyncTransactionsFlushed: onAsyncTransactionsFlushed,
-  onGridReady: function (params) {
+  onGridReady: (params) => {
     setupData();
     var dataSource = {
       getRows: function (params2) {
@@ -18,7 +18,7 @@ const gridOptions = {
     };
     params.api.setServerSideDatasource(dataSource);
   },
-  getRowId: function (params) {
+  getRowId: (params) => {
     return params.data.product;
   },
   rowSelection: 'multiple',

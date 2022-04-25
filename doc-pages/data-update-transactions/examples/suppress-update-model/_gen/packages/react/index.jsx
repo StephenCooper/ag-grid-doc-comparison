@@ -34,7 +34,7 @@ class GridExample extends Component {
         field: 'name',
         cellRendererParams: { checkbox: true },
       },
-      isGroupOpenByDefault: function (params) {
+      isGroupOpenByDefault: (params) => {
         return ['Delhi', 'Seoul'].includes(params.key);
       },
     };

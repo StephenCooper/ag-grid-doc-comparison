@@ -55,7 +55,7 @@ class GridExample extends Component {
       },
       rowData: getData(),
       groupDefaultExpanded: 1,
-      getRowId: function (params) {
+      getRowId: (params) => {
         return params.data.id;
       },
     };

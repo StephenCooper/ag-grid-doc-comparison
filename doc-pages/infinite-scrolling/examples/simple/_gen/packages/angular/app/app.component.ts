@@ -38,7 +38,7 @@ export class AppComponent {
       // it is important to have node.id here, so that when the id changes (which happens
       // when the row is loaded) then the cell is refreshed.
       valueGetter: 'node.id',
-      cellRenderer: function (params: ICellRendererParams) {
+      cellRenderer: (params: ICellRendererParams) => {
         if (params.value !== undefined) {
           return params.value;
         } else {
@@ -80,7 +80,7 @@ export class AppComponent {
       .subscribe((data) => {
         const dataSource: IDatasource = {
           rowCount: undefined,
-          getRows: function (params: IGetRowsParams) {
+          getRows: (params: IGetRowsParams) => {
             console.log(
               'asking for ' + params.startRow + ' to ' + params.endRow
             );

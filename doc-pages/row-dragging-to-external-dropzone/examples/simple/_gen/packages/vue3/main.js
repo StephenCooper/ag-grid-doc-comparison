@@ -125,10 +125,10 @@ window.createTile = function createTile(data) {
 window.addDropZones = function addDropZones(params) {
   var tileContainer = document.querySelector('.tile-container');
   var dropZone = {
-    getContainer: function () {
+    getContainer: () => {
       return tileContainer;
     },
-    onDragStop: function (params) {
+    onDragStop: (params) => {
       var tile = createTile(params.node.data);
       tileContainer.appendChild(tile);
     },

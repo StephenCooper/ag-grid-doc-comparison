@@ -108,7 +108,7 @@ const GridExample = () => {
       cellRenderer: 'agAnimateShowChangeCellRenderer',
     };
   }, []);
-  const getRowId = useCallback(function (params) {
+  const getRowId = useCallback((params) => {
     return params.data.student;
   }, []);
 

@@ -99,7 +99,7 @@ const ChartExample = {
             text: 'Weight',
           },
           label: {
-            formatter: function (params) {
+            formatter: (params) => {
               return params.value + 'kg';
             },
           },

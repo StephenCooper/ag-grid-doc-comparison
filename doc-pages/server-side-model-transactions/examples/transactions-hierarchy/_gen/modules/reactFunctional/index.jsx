@@ -52,10 +52,10 @@ const GridExample = () => {
       resizable: true,
     };
   }, []);
-  const getRowId = useCallback(function (params) {
+  const getRowId = useCallback((params) => {
     return params.data.id;
   }, []);
-  const getServerSideStoreParams = useCallback(function (params) {
+  const getServerSideStoreParams = useCallback((params) => {
     const type = params.level == 0 ? 'partial' : 'full';
     return {
       storeType: type,
@@ -65,7 +65,7 @@ const GridExample = () => {
   const onGridReady = useCallback((params) => {
     setupData();
     const dataSource = {
-      getRows: function (params2) {
+      getRows: (params2) => {
         // To make the demo look real, wait for 500ms before returning
         setTimeout(function () {
           const doingTopLevel = params2.request.groupKeys.length == 0;

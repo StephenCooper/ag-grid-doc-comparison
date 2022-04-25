@@ -31,7 +31,7 @@ const getColumnDefs = () => {
 const getDataSource = (count) => {
   const dataSource = {
     rowCount: count,
-    getRows: function (params) {
+    getRows: (params) => {
       var rowsThisPage = [];
       for (
         var rowIndex = params.startRow;
@@ -66,7 +66,7 @@ const GridExample = () => {
       resizable: true,
     };
   }, []);
-  const getRowId = useCallback(function (params) {
+  const getRowId = useCallback((params) => {
     return params.data.a;
   }, []);
   const datasource = useMemo(() => {

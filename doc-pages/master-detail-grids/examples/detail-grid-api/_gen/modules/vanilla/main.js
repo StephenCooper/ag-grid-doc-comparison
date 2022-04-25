@@ -23,11 +23,11 @@ const gridOptions = {
         resizable: true,
       },
     },
-    getDetailRowData: function (params) {
+    getDetailRowData: (params) => {
       params.successCallback(params.data.callRecords);
     },
   },
-  getRowId: function (params) {
+  getRowId: (params) => {
     // use 'account' as the row ID
     return params.data.account;
   },

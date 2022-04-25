@@ -41,9 +41,9 @@ export class AppComponent {
     minWidth: 100,
     editable: true,
   };
-  public fillOperation: (params: FillOperationParams) => any = function (
+  public fillOperation: (params: FillOperationParams) => any = (
     params: FillOperationParams
-  ) {
+  ) => {
     var hasNonDayValues = params.initialValues.some(function (val) {
       return daysList.indexOf(val) === -1;
     });

@@ -185,7 +185,7 @@ const GridExample = () => {
       cellRendererParams: { checkbox: true },
     };
   }, []);
-  const isGroupOpenByDefault = useCallback(function (params) {
+  const isGroupOpenByDefault = useCallback((params) => {
     return ['Delhi', 'Seoul'].includes(params.key);
   }, []);
 

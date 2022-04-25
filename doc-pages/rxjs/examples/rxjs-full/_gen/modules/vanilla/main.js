@@ -43,11 +43,11 @@ const gridOptions = {
   },
   enableRangeSelection: true,
   // implement this so that we can do selection and have immutable data
-  getRowId: function (params) {
+  getRowId: (params) => {
     return params.data.code;
   },
 
-  onGridReady: function (params) {
+  onGridReady: (params) => {
     const mockServer = createMockServer(),
       initialLoad$ = mockServer.initialLoad(),
       updates$ = mockServer.allDataUpdates();

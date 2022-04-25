@@ -35,7 +35,7 @@ const GridExample = () => {
     };
   }, []);
   const detailCellRendererParams = useMemo<any>(() => {
-    return function (params: ICellRendererParams) {
+    return (params: ICellRendererParams) => {
       var res = {} as IDetailCellRendererParams;
       // we use the same getDetailRowData for both options
       res.getDetailRowData = function (params) {

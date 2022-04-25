@@ -108,7 +108,7 @@ const VueExample = {
             },
           },
           tooltip: {
-            renderer: function (params) {
+            renderer: (params) => {
               var bin = params.datum;
               var binSize = bin.frequency;
               var medalColour = params.xKey;

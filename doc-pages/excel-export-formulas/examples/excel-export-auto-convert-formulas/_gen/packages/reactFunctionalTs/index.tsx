@@ -55,7 +55,7 @@ const GridExample = () => {
     { field: 'lastName' },
     {
       headerName: 'Full Name',
-      valueGetter: function (params) {
+      valueGetter: (params) => {
         return `${params.data.firstName} ${params.data.lastName}`;
       },
     },

@@ -27,7 +27,7 @@ const gridOptions = {
         sortable: true,
       },
     },
-    getDetailRowData: function (params) {
+    getDetailRowData: (params) => {
       params.successCallback(params.data.callRecords);
     },
   },

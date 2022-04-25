@@ -58,7 +58,7 @@ const VueExample = {
   },
   created() {
     this.fillOperation = (params) => {
-      var hasNonDayValues = params.initialValues.some(function (val) {
+      var hasNonDayValues = params.initialValues.some((val) => {
         return daysList.indexOf(val) === -1;
       });
       if (hasNonDayValues) {

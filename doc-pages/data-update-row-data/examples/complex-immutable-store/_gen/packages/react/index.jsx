@@ -167,7 +167,7 @@ class GridExample extends Component {
       },
       rowSelection: 'multiple',
       rowData: globalRowData,
-      getRowId: function (params) {
+      getRowId: (params) => {
         return params.data.trade;
       },
     };

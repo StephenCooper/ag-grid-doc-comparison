@@ -48,14 +48,14 @@ export class AppComponent {
     {
       field: 'dateModified',
       minWidth: 250,
-      comparator: function (d1, d2) {
+      comparator: (d1, d2) => {
         return new Date(d1).getTime() < new Date(d2).getTime() ? -1 : 1;
       },
     },
     {
       field: 'size',
       aggFunc: 'sum',
-      valueFormatter: function (params) {
+      valueFormatter: (params) => {
         return params.value
           ? Math.round(params.value * 10) / 10 + ' MB'
           : '0 MB';
@@ -79,10 +79,10 @@ export class AppComponent {
   };
   public rowData: any[] | null = getData();
   public groupDefaultExpanded = -1;
-  public getDataPath: GetDataPath = function (data: any) {
+  public getDataPath: GetDataPath = (data: any) => {
     return data.filePath;
   };
-  public getRowId: GetRowIdFunc = function (params: GetRowIdParams) {
+  public getRowId: GetRowIdFunc = (params: GetRowIdParams) => {
     return params.data.id;
   };
 

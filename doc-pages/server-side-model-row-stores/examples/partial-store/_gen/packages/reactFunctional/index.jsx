@@ -9,7 +9,7 @@ import 'ag-grid-community/dist/styles/ag-theme-alpine-dark.css';
 
 const createServerSideDatasource = (server) => {
   return {
-    getRows: function (params) {
+    getRows: (params) => {
       console.log(
         '[Datasource] - rows requested by grid: startRow = ' +
           params.request.startRow +
@@ -36,7 +36,7 @@ const createServerSideDatasource = (server) => {
 
 const createFakeServer = (allData) => {
   return {
-    getData: function (request) {
+    getData: (request) => {
       // in this simplified fake server all rows are contained in an array
       var requestedRows = allData.slice(request.startRow, request.endRow);
       // here we are pretending we don't know the last row until we reach it!

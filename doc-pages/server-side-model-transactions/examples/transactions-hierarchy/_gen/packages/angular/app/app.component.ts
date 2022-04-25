@@ -54,16 +54,16 @@ export class AppComponent {
     width: 250,
     resizable: true,
   };
-  public getRowId: GetRowIdFunc = function (params: GetRowIdParams) {
+  public getRowId: GetRowIdFunc = (params: GetRowIdParams) => {
     return params.data.id;
   };
   public rowModelType = 'serverSide';
   public serverSideStoreType: ServerSideStoreType = 'full';
   public getServerSideStoreParams: (
     params: GetServerSideStoreParamsParams
-  ) => ServerSideStoreParams = function (
+  ) => ServerSideStoreParams = (
     params: GetServerSideStoreParamsParams
-  ): ServerSideStoreParams {
+  ): ServerSideStoreParams => {
     const type = params.level == 0 ? 'partial' : 'full';
     return {
       storeType: type,
@@ -132,7 +132,7 @@ export class AppComponent {
 
     setupData();
     const dataSource: IServerSideDatasource = {
-      getRows: function (params2: IServerSideGetRowsParams) {
+      getRows: (params2: IServerSideGetRowsParams) => {
         // To make the demo look real, wait for 500ms before returning
         setTimeout(function () {
           const doingTopLevel = params2.request.groupKeys.length == 0;

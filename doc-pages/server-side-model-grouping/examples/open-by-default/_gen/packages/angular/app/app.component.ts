@@ -63,9 +63,9 @@ export class AppComponent {
   };
   public getServerSideStoreParams: (
     params: GetServerSideStoreParamsParams
-  ) => ServerSideStoreParams = function (
+  ) => ServerSideStoreParams = (
     params: GetServerSideStoreParamsParams
-  ): ServerSideStoreParams {
+  ): ServerSideStoreParams => {
     var res: ServerSideStoreParams = {
       storeType: params.level == 0 ? 'partial' : 'full',
     };
@@ -122,7 +122,7 @@ export class AppComponent {
 
 function getServerSideDatasource(server: any): IServerSideDatasource {
   return {
-    getRows: function (params: IServerSideGetRowsParams) {
+    getRows: (params: IServerSideGetRowsParams) => {
       console.log('[Datasource] - rows requested by grid: ', params.request);
       var response = server.getData(params.request);
       // adding delay to simulate real server call

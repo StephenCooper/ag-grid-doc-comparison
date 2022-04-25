@@ -88,10 +88,10 @@ export class AppComponent {
               field: 'age',
               cellClass: 'twoDecimalPlaces',
               cellClassRules: {
-                greenBackground: function (params) {
+                greenBackground: (params) => {
                   return params.value < 23;
                 },
-                redFont: function (params) {
+                redFont: (params) => {
                   return params.value < 20;
                 },
               },
@@ -100,7 +100,7 @@ export class AppComponent {
               field: 'country',
               minWidth: 200,
               cellClassRules: {
-                redFont: function (params) {
+                redFont: (params) => {
                   return params.value === 'United States';
                 },
               },
@@ -109,7 +109,7 @@ export class AppComponent {
               headerName: 'Group',
               valueGetter: 'data.country.charAt(0)',
               cellClassRules: {
-                boldBorders: function (params) {
+                boldBorders: (params) => {
                   return params.value === 'U';
                 },
               },
@@ -118,7 +118,7 @@ export class AppComponent {
             {
               field: 'year',
               cellClassRules: {
-                notInExcel: function (params) {
+                notInExcel: (params) => {
                   return true;
                 },
               },
@@ -132,7 +132,7 @@ export class AppComponent {
               field: 'date',
               minWidth: 150,
               cellClass: 'dateFormat',
-              valueGetter: function (params) {
+              valueGetter: (params) => {
                 var val = params.data.date;
                 if (val.indexOf('/') < 0) {
                   return val;
@@ -145,7 +145,7 @@ export class AppComponent {
             {
               field: 'gold',
               cellClassRules: {
-                boldBorders: function (params) {
+                boldBorders: (params) => {
                   return params.value > 2;
                 },
               },
@@ -160,7 +160,7 @@ export class AppComponent {
   ];
   public defaultColDef: ColDef = {
     cellClassRules: {
-      darkGreyBackground: function (params: CellClassParams) {
+      darkGreyBackground: (params: CellClassParams) => {
         return (params.node.rowIndex || 0) % 2 == 0;
       },
     },

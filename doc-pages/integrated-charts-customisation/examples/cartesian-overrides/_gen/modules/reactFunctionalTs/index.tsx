@@ -88,7 +88,7 @@ const GridExample = () => {
               color: '#de7b73',
               padding: 10,
               rotation: 20,
-              formatter: function (params) {
+              formatter: (params) => {
                 return params.value.toString().toUpperCase();
               },
             },
@@ -125,7 +125,7 @@ const GridExample = () => {
               color: '#de7b73',
               padding: 10,
               rotation: -20,
-              formatter: function (params) {
+              formatter: (params) => {
                 var value = String(params.value);
                 return value === 'United Kingdom' ? 'UK' : '(' + value + ')';
               },

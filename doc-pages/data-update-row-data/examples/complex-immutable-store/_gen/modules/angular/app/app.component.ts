@@ -193,7 +193,7 @@ export class AppComponent {
   };
   public rowSelection = 'multiple';
   public rowData: any[] | null = globalRowData;
-  public getRowId: GetRowIdFunc = function (params: GetRowIdParams) {
+  public getRowId: GetRowIdFunc = (params: GetRowIdParams) => {
     return params.data.trade;
   };
 

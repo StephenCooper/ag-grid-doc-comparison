@@ -57,9 +57,9 @@ export class AppComponent {
   public serverSideStoreType: ServerSideStoreType = 'partial';
   public getServerSideStoreParams: (
     params: GetServerSideStoreParamsParams
-  ) => ServerSideStoreParams = function (
+  ) => ServerSideStoreParams = (
     params: GetServerSideStoreParamsParams
-  ): ServerSideStoreParams {
+  ): ServerSideStoreParams => {
     var noGroupingActive = params.rowGroupColumns.length == 0;
     var res: ServerSideStoreParams;
     if (noGroupingActive) {
@@ -108,7 +108,7 @@ export class AppComponent {
 
 function getServerSideDatasource(server: any): IServerSideDatasource {
   return {
-    getRows: function (params) {
+    getRows: (params) => {
       console.log('[Datasource] - rows requested by grid: ', params.request);
       var response = server.getData(params.request);
       // adding delay to simulate real server call

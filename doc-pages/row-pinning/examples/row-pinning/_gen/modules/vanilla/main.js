@@ -1,7 +1,7 @@
 const columnDefs = [
   {
     field: 'athlete',
-    cellRendererSelector: function (params) {
+    cellRendererSelector: (params) => {
       if (params.node.rowPinned) {
         return {
           component: CustomPinnedRowRenderer,
@@ -17,7 +17,7 @@ const columnDefs = [
   },
   {
     field: 'age',
-    cellRendererSelector: function (params) {
+    cellRendererSelector: (params) => {
       if (params.node.rowPinned) {
         return {
           component: CustomPinnedRowRenderer,
@@ -46,7 +46,7 @@ const gridOptions = {
   },
   columnDefs: columnDefs,
   rowData: null,
-  getRowStyle: function (params) {
+  getRowStyle: (params) => {
     if (params.node.rowPinned) {
       return { 'font-weight': 'bold' };
     }

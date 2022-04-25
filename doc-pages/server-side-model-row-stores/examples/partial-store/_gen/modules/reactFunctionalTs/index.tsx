@@ -25,7 +25,7 @@ const createServerSideDatasource: (server: any) => IServerSideDatasource = (
   server: any
 ) => {
   return {
-    getRows: function (params) {
+    getRows: (params) => {
       console.log(
         '[Datasource] - rows requested by grid: startRow = ' +
           params.request.startRow +
@@ -52,7 +52,7 @@ const createServerSideDatasource: (server: any) => IServerSideDatasource = (
 
 function createFakeServer(allData: any[]) {
   return {
-    getData: function (request: IServerSideGetRowsRequest) {
+    getData: (request: IServerSideGetRowsRequest) => {
       // in this simplified fake server all rows are contained in an array
       var requestedRows = allData.slice(request.startRow, request.endRow);
       // here we are pretending we don't know the last row until we reach it!

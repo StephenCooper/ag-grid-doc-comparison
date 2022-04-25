@@ -36,7 +36,7 @@ class GridExample extends Component {
         sortable: true,
         filter: true,
       },
-      getRowId: function (params) {
+      getRowId: (params) => {
         return params.data.id;
       },
     };

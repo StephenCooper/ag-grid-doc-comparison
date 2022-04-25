@@ -20,7 +20,7 @@ var rowData = [
 const gridOptions: GridOptions = {
   columnDefs: columnDefs,
   rowData: rowData,
-  onGridReady: function (params) {
+  onGridReady: (params) => {
     params.api.sizeColumnsToFit();
   },
 };

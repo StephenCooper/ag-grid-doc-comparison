@@ -9,7 +9,7 @@ import 'ag-grid-community/dist/styles/ag-theme-alpine-dark.css';
 
 const createServerSideDatasource = (server) => {
   return {
-    getRows: function (params) {
+    getRows: (params) => {
       console.log(
         '[Datasource] - rows requested by grid: startRow = ' +
           params.request.startRow +
@@ -33,7 +33,7 @@ const createServerSideDatasource = (server) => {
 
 const createFakeServer = (allData) => {
   return {
-    getData: function () {
+    getData: () => {
       return {
         success: true,
         rows: allData,

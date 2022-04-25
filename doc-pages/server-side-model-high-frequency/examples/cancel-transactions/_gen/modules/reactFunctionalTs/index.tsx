@@ -90,35 +90,36 @@ const GridExample = () => {
       resizable: true,
     };
   }, []);
-  const isApplyServerSideTransaction = useCallback(function (
-    params: IsApplyServerSideTransactionParams
-  ) {
-    var tx = params.transaction as any;
-    var storeInfo = params.storeInfo;
-    var txCreatedSinceRowDataRead = tx.serverVersion > storeInfo.serverVersion;
-    console.log(
-      'tx.serverVersion = ' +
-        tx.serverVersion +
-        ', storeInfo.serverVersion = ' +
-        storeInfo.serverVersion
-    );
-    if (txCreatedSinceRowDataRead) {
-      console.log('Applying transaction');
-      return true;
-    } else {
-      console.log('Cancelling transaction');
-      return false;
-    }
-  },
-  []);
-  const getRowId = useCallback(function (params: GetRowIdParams) {
+  const isApplyServerSideTransaction = useCallback(
+    (params: IsApplyServerSideTransactionParams) => {
+      var tx = params.transaction as any;
+      var storeInfo = params.storeInfo;
+      var txCreatedSinceRowDataRead =
+        tx.serverVersion > storeInfo.serverVersion;
+      console.log(
+        'tx.serverVersion = ' +
+          tx.serverVersion +
+          ', storeInfo.serverVersion = ' +
+          storeInfo.serverVersion
+      );
+      if (txCreatedSinceRowDataRead) {
+        console.log('Applying transaction');
+        return true;
+      } else {
+        console.log('Cancelling transaction');
+        return false;
+      }
+    },
+    []
+  );
+  const getRowId = useCallback((params: GetRowIdParams) => {
     return params.data.product;
   }, []);
 
   const onGridReady = useCallback((params: GridReadyEvent) => {
     setupData();
     var dataSource: IServerSideDatasource = {
-      getRows: function (params2) {
+      getRows: (params2) => {
         setTimeout(function () {
           var rowData = allServerSideData.slice();
           console.log(

@@ -52,7 +52,7 @@ const GridExample = () => {
       detailGridOptions: {
         rowSelection: 'multiple',
         enableCellChangeFlash: true,
-        getRowId: function (params: GetRowIdParams) {
+        getRowId: (params: GetRowIdParams) => {
           return params.data.callId;
         },
         columnDefs: [
@@ -67,7 +67,7 @@ const GridExample = () => {
           sortable: true,
         },
       },
-      getDetailRowData: function (params: GetDetailRowDataParams) {
+      getDetailRowData: (params: GetDetailRowDataParams) => {
         // params.successCallback([]);
         params.successCallback(params.data.callRecords);
       },

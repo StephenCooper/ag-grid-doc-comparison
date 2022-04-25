@@ -149,7 +149,7 @@ class GridExample extends Component {
 }
 
 var dateFilterParams = {
-  comparator: function (filterLocalDateAtMidnight, cellValue) {
+  comparator: (filterLocalDateAtMidnight, cellValue) => {
     var cellDate = asDate(cellValue);
     if (filterLocalDateAtMidnight.getTime() === cellDate.getTime()) {
       return 0;

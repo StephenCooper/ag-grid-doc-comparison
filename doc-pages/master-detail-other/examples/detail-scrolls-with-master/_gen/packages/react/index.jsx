@@ -32,7 +32,7 @@ class GridExample extends Component {
             { field: 'switchCode' },
           ],
         },
-        getDetailRowData: function (params) {
+        getDetailRowData: (params) => {
           params.successCallback(params.data.callRecords);
         },
       },

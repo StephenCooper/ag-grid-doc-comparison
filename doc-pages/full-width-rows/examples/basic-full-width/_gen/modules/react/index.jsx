@@ -21,7 +21,7 @@ class GridExample extends Component {
       pinnedTopRowData: createData(3, 'pinned'),
       pinnedBottomRowData: createData(3, 'pinned'),
       columnDefs: getColumnDefs(),
-      isFullWidthRow: function (params) {
+      isFullWidthRow: (params) => {
         // in this example, we check the fullWidth attribute that we set
         // while creating the data. what check you do to decide if you
         // want a row full width is up to you, as long as you return a boolean
@@ -29,7 +29,7 @@ class GridExample extends Component {
         return params.rowNode.data.fullWidth;
       },
       fullWidthCellRenderer: FullWidthCellRenderer,
-      getRowHeight: function (params) {
+      getRowHeight: (params) => {
         // you can have normal rows and full width rows any height that you want
         const isBodyRow = params.node.rowPinned === undefined;
         const isFullWidth = params.node.data.fullWidth;

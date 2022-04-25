@@ -59,13 +59,13 @@ const GridExample = () => {
       filter: true,
     };
   }, []);
-  const getRowHeight = useCallback(function (params: RowHeightParams) {
+  const getRowHeight = useCallback((params: RowHeightParams) => {
     // return 100px height for full width rows
     if (isFullWidth(params.data)) {
       return 100;
     }
   }, []);
-  const isFullWidthRow = useCallback(function (params: IsFullWidthRowParams) {
+  const isFullWidthRow = useCallback((params: IsFullWidthRowParams) => {
     return isFullWidth(params.rowNode.data);
   }, []);
   const fullWidthCellRenderer = useMemo<any>(() => {

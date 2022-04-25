@@ -70,7 +70,7 @@ export class AppComponent {
             text: 'Number of cattle',
           },
           label: {
-            formatter: function (params) {
+            formatter: (params) => {
               return params.value / 1000 + 'M';
             },
           },
@@ -84,7 +84,7 @@ export class AppComponent {
             text: 'Exports (tonnes)',
           },
           label: {
-            formatter: function (params) {
+            formatter: (params) => {
               return params.value / 1000 + 'k';
             },
           },

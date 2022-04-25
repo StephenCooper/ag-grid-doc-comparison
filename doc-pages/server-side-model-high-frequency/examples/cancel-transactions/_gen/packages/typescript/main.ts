@@ -20,7 +20,7 @@ const gridOptions: GridOptions = {
     width: 250,
     resizable: true,
   },
-  onAsyncTransactionsFlushed: function (e: AsyncTransactionsFlushed) {
+  onAsyncTransactionsFlushed: (e: AsyncTransactionsFlushed) => {
     var summary: { [key in ServerSideTransactionResultStatus]?: any } = {};
     (e.results as ServerSideTransactionResult[]).forEach(
       (result: ServerSideTransactionResult) => {
@@ -33,9 +33,9 @@ const gridOptions: GridOptions = {
     );
     console.log('onAsyncTransactionsFlushed: ' + JSON.stringify(summary));
   },
-  isApplyServerSideTransaction: function (
+  isApplyServerSideTransaction: (
     params: IsApplyServerSideTransactionParams
-  ) {
+  ) => {
     var tx = params.transaction as any;
     var storeInfo = params.storeInfo;
     var txCreatedSinceRowDataRead = tx.serverVersion > storeInfo.serverVersion;
@@ -53,11 +53,11 @@ const gridOptions: GridOptions = {
       return false;
     }
   },
-  onGridReady: function (params) {
+  onGridReady: (params) => {
     setupData();
 
     var dataSource: IServerSideDatasource = {
-      getRows: function (params2) {
+      getRows: (params2) => {
         setTimeout(function () {
           var rowData = allServerSideData.slice();
           console.log(
@@ -74,7 +74,7 @@ const gridOptions: GridOptions = {
 
     params.api.setServerSideDatasource(dataSource);
   },
-  getRowId: function (params: GetRowIdParams) {
+  getRowId: (params: GetRowIdParams) => {
     return params.data.product;
   },
   rowModelType: 'serverSide',

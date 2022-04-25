@@ -16,7 +16,7 @@ class GridExample extends Component {
         {
           field: 'athlete',
           minWidth: 170,
-          suppressKeyboardEvent: function (params) {
+          suppressKeyboardEvent: (params) => {
             return suppressEnter(params) || suppressNavigation(params);
           },
         },
@@ -24,7 +24,7 @@ class GridExample extends Component {
         {
           field: 'country',
           minWidth: 130,
-          suppressHeaderKeyboardEvent: function (params) {
+          suppressHeaderKeyboardEvent: (params) => {
             var key = params.event.key;
             return (
               key === 'ArrowLeft' || key === 'ArrowRight' || key === 'Enter'

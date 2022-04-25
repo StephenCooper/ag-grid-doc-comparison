@@ -47,9 +47,9 @@ export class AppComponent {
     width: 250,
     resizable: true,
   };
-  public isApplyServerSideTransaction: IsApplyServerSideTransaction = function (
+  public isApplyServerSideTransaction: IsApplyServerSideTransaction = (
     params: IsApplyServerSideTransactionParams
-  ) {
+  ) => {
     var tx = params.transaction as any;
     var storeInfo = params.storeInfo;
     var txCreatedSinceRowDataRead = tx.serverVersion > storeInfo.serverVersion;
@@ -67,7 +67,7 @@ export class AppComponent {
       return false;
     }
   };
-  public getRowId: GetRowIdFunc = function (params: GetRowIdParams) {
+  public getRowId: GetRowIdFunc = (params: GetRowIdParams) => {
     return params.data.product;
   };
   public rowModelType = 'serverSide';
@@ -115,7 +115,7 @@ export class AppComponent {
 
     setupData();
     var dataSource: IServerSideDatasource = {
-      getRows: function (params2) {
+      getRows: (params2) => {
         setTimeout(function () {
           var rowData = allServerSideData.slice();
           console.log(

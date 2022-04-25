@@ -28,7 +28,7 @@ class GridExample extends Component {
         flex: 1,
       },
       rowData: createData(12),
-      getRowStyle: function (params) {
+      getRowStyle: (params) => {
         return {
           backgroundColor: colors[colorIndex],
         };

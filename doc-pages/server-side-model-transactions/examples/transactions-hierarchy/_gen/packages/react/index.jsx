@@ -21,12 +21,12 @@ class GridExample extends Component {
         width: 250,
         resizable: true,
       },
-      getRowId: function (params) {
+      getRowId: (params) => {
         return params.data.id;
       },
       rowModelType: 'serverSide',
       serverSideStoreType: 'full',
-      getServerSideStoreParams: function (params) {
+      getServerSideStoreParams: (params) => {
         const type = params.level == 0 ? 'partial' : 'full';
         return {
           storeType: type,
@@ -41,7 +41,7 @@ class GridExample extends Component {
 
     setupData();
     const dataSource = {
-      getRows: function (params2) {
+      getRows: (params2) => {
         // To make the demo look real, wait for 500ms before returning
         setTimeout(function () {
           const doingTopLevel = params2.request.groupKeys.length == 0;

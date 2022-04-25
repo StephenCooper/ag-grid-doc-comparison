@@ -18,7 +18,7 @@ const gridOptions = {
     sortable: true,
   },
   multiSortKey: 'ctrl',
-  onGridReady: function (params) {
+  onGridReady: (params) => {
     var defaultSortModel = [
       { colId: 'country', sort: 'asc', sortIndex: 0 },
       { colId: 'athlete', sort: 'asc', sortIndex: 1 },

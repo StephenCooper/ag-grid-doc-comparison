@@ -9,7 +9,7 @@ import 'ag-grid-community/dist/styles/ag-theme-alpine-dark.css';
 
 const createServerSideDatasource = (server) => {
   return {
-    getRows: function (params) {
+    getRows: (params) => {
       console.log('[Datasource] - rows requested by grid: ', params.request);
       // get data for request from our fake server
       var response = server.getData(params.request);
@@ -28,7 +28,7 @@ const createServerSideDatasource = (server) => {
 
 const createFakeServer = (allData) => {
   return {
-    getData: function (request) {
+    getData: (request) => {
       // take a copy of the data to return to the client
       var requestedRows = allData.slice();
       return {

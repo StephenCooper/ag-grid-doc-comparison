@@ -21,14 +21,14 @@ class GridExample extends Component {
         {
           field: 'dateModified',
           minWidth: 250,
-          comparator: function (d1, d2) {
+          comparator: (d1, d2) => {
             return new Date(d1).getTime() < new Date(d2).getTime() ? -1 : 1;
           },
         },
         {
           field: 'size',
           aggFunc: 'sum',
-          valueFormatter: function (params) {
+          valueFormatter: (params) => {
             return params.value
               ? Math.round(params.value * 10) / 10 + ' MB'
               : '0 MB';
@@ -52,10 +52,10 @@ class GridExample extends Component {
       },
       rowData: getData(),
       groupDefaultExpanded: -1,
-      getDataPath: function (data) {
+      getDataPath: (data) => {
         return data.filePath;
       },
-      getRowId: function (params) {
+      getRowId: (params) => {
         return params.data.id;
       },
     };

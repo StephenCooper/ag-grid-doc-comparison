@@ -99,7 +99,7 @@ class GridExample extends Component {
 
 function createServerSideDatasource(server) {
   return {
-    getRows: function (params) {
+    getRows: (params) => {
       console.log(
         '[Datasource] - rows requested by grid: startRow = ' +
           params.request.startRow +
@@ -122,7 +122,7 @@ function createServerSideDatasource(server) {
 }
 function createFakeServer(allData) {
   return {
-    getData: function () {
+    getData: () => {
       return {
         success: true,
         rows: allData,

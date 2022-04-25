@@ -51,7 +51,7 @@ const GridExample = () => {
       number: {
         editable: true,
         // editing works with strings, need to change string to number
-        valueParser: function (params: ValueParserParams) {
+        valueParser: (params: ValueParserParams) => {
           return parseInt(params.newValue);
         },
         aggFunc: 'sum',

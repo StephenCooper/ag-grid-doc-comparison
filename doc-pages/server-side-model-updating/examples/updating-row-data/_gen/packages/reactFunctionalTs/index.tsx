@@ -125,7 +125,7 @@ const GridExample = () => {
           item.id = idSequence++;
         });
         var dataSource: IServerSideDatasource = {
-          getRows: function (params: IServerSideGetRowsParams) {
+          getRows: (params: IServerSideGetRowsParams) => {
             // To make the demo look real, wait for 500ms before returning
             setTimeout(function () {
               var response = getMockServerResponse(params.request);

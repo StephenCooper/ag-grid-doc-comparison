@@ -88,7 +88,7 @@ export class AppComponent {
           blur: 8,
         },
         tooltip: {
-          renderer: function (params) {
+          renderer: (params) => {
             return {
               content:
                 '<b>' +

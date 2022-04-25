@@ -45,7 +45,7 @@ export class AppComponent {
     },
     {
       headerName: 'Year',
-      valueGetter: function (params: ValueGetterParams) {
+      valueGetter: (params: ValueGetterParams) => {
         if (params.data) {
           return params.data.year;
         }

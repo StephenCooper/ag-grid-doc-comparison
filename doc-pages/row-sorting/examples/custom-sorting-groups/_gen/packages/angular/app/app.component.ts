@@ -34,7 +34,7 @@ export class AppComponent {
     sortable: true,
   };
   public autoGroupColumnDef: ColDef = {
-    comparator: function (valueA, valueB, nodeA, nodeB, isInverted) {
+    comparator: (valueA, valueB, nodeA, nodeB, isInverted) => {
       var res = valueA == valueB ? 0 : valueA > valueB ? 1 : -1;
       return res;
     },

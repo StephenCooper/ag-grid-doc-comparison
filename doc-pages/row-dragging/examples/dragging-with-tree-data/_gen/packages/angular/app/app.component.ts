@@ -49,10 +49,10 @@ export class AppComponent {
   };
   public rowData: any[] | null = getData();
   public groupDefaultExpanded = -1;
-  public getDataPath: GetDataPath = function (data: any) {
+  public getDataPath: GetDataPath = (data: any) => {
     return data.filePath;
   };
-  public getRowId: GetRowIdFunc = function (params: GetRowIdParams) {
+  public getRowId: GetRowIdFunc = (params: GetRowIdParams) => {
     return params.data.id;
   };
   public autoGroupColumnDef: ColDef = {

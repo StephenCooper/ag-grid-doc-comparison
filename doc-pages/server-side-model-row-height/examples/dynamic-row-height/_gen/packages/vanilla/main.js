@@ -21,7 +21,7 @@ const gridOptions = {
   serverSideStoreType: 'partial',
 
   // dynamically set row heights
-  getRowHeight: function (params) {
+  getRowHeight: (params) => {
     if (params.node.level === 0) {
       return 80;
     }
@@ -38,7 +38,7 @@ const gridOptions = {
 
 function getServerSideDatasource(server) {
   return {
-    getRows: function (params) {
+    getRows: (params) => {
       console.log('[Datasource] - rows requested by grid: ', params.request);
 
       var response = server.getData(params.request);

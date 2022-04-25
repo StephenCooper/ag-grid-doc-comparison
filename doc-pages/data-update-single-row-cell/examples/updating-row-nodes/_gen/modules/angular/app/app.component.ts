@@ -54,7 +54,7 @@ export class AppComponent {
     sortable: true,
     filter: true,
   };
-  public getRowId: GetRowIdFunc = function (params: GetRowIdParams) {
+  public getRowId: GetRowIdFunc = (params: GetRowIdParams) => {
     return params.data.id;
   };
 

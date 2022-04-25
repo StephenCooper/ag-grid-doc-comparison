@@ -95,7 +95,7 @@ export class AppComponent {
           },
           label: {
             rotation: 45,
-            formatter: function (params) {
+            formatter: (params) => {
               return params.value + 'cm';
             },
           },
@@ -107,7 +107,7 @@ export class AppComponent {
             text: 'Weight',
           },
           label: {
-            formatter: function (params) {
+            formatter: (params) => {
               return params.value + 'kg';
             },
           },

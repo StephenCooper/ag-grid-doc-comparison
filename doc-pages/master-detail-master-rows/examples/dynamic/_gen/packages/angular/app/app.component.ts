@@ -27,7 +27,7 @@ import 'ag-grid-enterprise';
   ></ag-grid-angular>`,
 })
 export class AppComponent {
-  public isRowMaster: IsRowMaster = function (dataItem: any) {
+  public isRowMaster: IsRowMaster = (dataItem: any) => {
     return dataItem ? dataItem.callRecords.length > 0 : false;
   };
   public columnDefs: ColDef[] = [

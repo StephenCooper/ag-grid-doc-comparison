@@ -26,7 +26,7 @@ const getServerSideDatasource: (server: any) => IServerSideDatasource = (
   server: any
 ) => {
   return {
-    getRows: function (params) {
+    getRows: (params) => {
       console.log('[Datasource] - rows requested by grid: ', params.request);
       var response = server.getData(params.request);
       response.rows = response.rows.map(function (item: any) {
@@ -88,7 +88,7 @@ const GridExample = () => {
       field: 'athlete',
     };
   }, []);
-  const getRowId = useCallback(function (params: GetRowIdParams) {
+  const getRowId = useCallback((params: GetRowIdParams) => {
     var data = params.data;
     var parts = [];
     if (data.country != null) {

@@ -35,7 +35,7 @@ class ChartExample extends Component {
             marker: {
               size: minSize,
               maxSize: maxSize,
-              formatter: function (params) {
+              formatter: (params) => {
                 return {
                   fill: params.highlighted
                     ? params.fill

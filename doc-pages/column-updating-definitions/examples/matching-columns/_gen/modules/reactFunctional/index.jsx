@@ -13,7 +13,7 @@ ModuleRegistry.registerModules([ClientSideRowModelModule]);
 
 const athleteColumn = {
   headerName: 'Athlete',
-  valueGetter: function (params) {
+  valueGetter: (params) => {
     return params.data.athlete;
   },
 };
@@ -24,14 +24,14 @@ const getColDefsMedalsIncluded = () => {
     {
       colId: 'myAgeCol',
       headerName: 'Age',
-      valueGetter: function (params) {
+      valueGetter: (params) => {
         return params.data.age;
       },
     },
     {
       headerName: 'Country',
       headerClass: 'country-header',
-      valueGetter: function (params) {
+      valueGetter: (params) => {
         return params.data.country;
       },
     },
@@ -51,14 +51,14 @@ const getColDefsMedalsExcluded = () => {
     {
       colId: 'myAgeCol',
       headerName: 'Age',
-      valueGetter: function (params) {
+      valueGetter: (params) => {
         return params.data.age;
       },
     },
     {
       headerName: 'Country',
       headerClass: 'country-header',
-      valueGetter: function (params) {
+      valueGetter: (params) => {
         return params.data.country;
       },
     },

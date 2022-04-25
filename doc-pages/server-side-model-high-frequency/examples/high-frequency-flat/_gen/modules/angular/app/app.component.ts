@@ -47,7 +47,7 @@ export class AppComponent {
   public serverSideStoreType: ServerSideStoreType = 'full';
   public rowModelType = 'serverSide';
   public asyncTransactionWaitMillis = 4000;
-  public getRowId: GetRowIdFunc = function (params: GetRowIdParams) {
+  public getRowId: GetRowIdFunc = (params: GetRowIdParams) => {
     return params.data.product;
   };
   public rowData!: any[];

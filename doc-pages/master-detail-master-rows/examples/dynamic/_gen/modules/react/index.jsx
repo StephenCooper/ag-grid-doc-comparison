@@ -24,7 +24,7 @@ class GridExample extends Component {
     super(props);
 
     this.state = {
-      isRowMaster: function (dataItem) {
+      isRowMaster: (dataItem) => {
         return dataItem ? dataItem.callRecords.length > 0 : false;
       },
       columnDefs: [

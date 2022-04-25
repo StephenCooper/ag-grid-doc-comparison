@@ -4,7 +4,7 @@ import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 import 'ag-grid-enterprise';
 
 var dateFilterParams = {
-  comparator: function (filterLocalDateAtMidnight: Date, cellValue: string) {
+  comparator: (filterLocalDateAtMidnight: Date, cellValue: string) => {
     var cellDate = asDate(cellValue);
 
     if (filterLocalDateAtMidnight.getTime() === cellDate.getTime()) {

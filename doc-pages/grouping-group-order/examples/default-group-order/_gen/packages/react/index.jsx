@@ -34,7 +34,7 @@ class GridExample extends Component {
         minWidth: 200,
       },
       groupDisplayType: 'groupRows',
-      initialGroupOrderComparator: function (params) {
+      initialGroupOrderComparator: (params) => {
         const a = params.nodeA.key || '';
         const b = params.nodeB.key || '';
         return a < b ? -1 : a > b ? 1 : 0;

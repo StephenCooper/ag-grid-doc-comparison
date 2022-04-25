@@ -23,7 +23,7 @@ const gridOptions: GridOptions = {
   rowModelType: 'serverSide',
   animateRows: true,
   asyncTransactionWaitMillis: 4000,
-  onGridReady: function (params) {
+  onGridReady: (params) => {
     setupData();
 
     var dataSource: IServerSideDatasource = {
@@ -37,7 +37,7 @@ const gridOptions: GridOptions = {
 
     params.api.setServerSideDatasource(dataSource);
   },
-  getRowId: function (params: GetRowIdParams) {
+  getRowId: (params: GetRowIdParams) => {
     return params.data.product;
   },
 };

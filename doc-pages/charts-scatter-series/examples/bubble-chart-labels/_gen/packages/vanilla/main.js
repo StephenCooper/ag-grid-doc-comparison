@@ -61,7 +61,7 @@ const options = {
       },
       label: {
         rotation: 45,
-        formatter: function (params) {
+        formatter: (params) => {
           return params.value + 'cm';
         },
       },
@@ -73,7 +73,7 @@ const options = {
         text: 'Weight',
       },
       label: {
-        formatter: function (params) {
+        formatter: (params) => {
           return params.value + 'kg';
         },
       },

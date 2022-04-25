@@ -68,7 +68,7 @@ const GridExample = () => {
       resizable: true,
     };
   }, []);
-  const getRowId = useCallback(function (params) {
+  const getRowId = useCallback((params) => {
     return params.data.product;
   }, []);
 
@@ -77,7 +77,7 @@ const GridExample = () => {
       .then((resp) => resp.json())
       .then((data) => {
         const dataSource = {
-          getRows: function (params) {
+          getRows: (params) => {
             // To make the demo look real, wait for 500ms before returning
             setTimeout(function () {
               const rows = [];

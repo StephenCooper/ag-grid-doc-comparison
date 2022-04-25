@@ -16,14 +16,14 @@ const gridOptions: GridOptions = {
     {
       field: 'dateModified',
       minWidth: 250,
-      comparator: function (d1, d2) {
+      comparator: (d1, d2) => {
         return new Date(d1).getTime() < new Date(d2).getTime() ? -1 : 1;
       },
     },
     {
       field: 'size',
       aggFunc: 'sum',
-      valueFormatter: function (params) {
+      valueFormatter: (params) => {
         return params.value
           ? Math.round(params.value * 10) / 10 + ' MB'
           : '0 MB';
@@ -49,10 +49,10 @@ const gridOptions: GridOptions = {
   treeData: true,
   animateRows: true,
   groupDefaultExpanded: -1,
-  getDataPath: function (data: any) {
+  getDataPath: (data: any) => {
     return data.filePath;
   },
-  getRowId: function (params: GetRowIdParams) {
+  getRowId: (params: GetRowIdParams) => {
     return params.data.id;
   },
 };

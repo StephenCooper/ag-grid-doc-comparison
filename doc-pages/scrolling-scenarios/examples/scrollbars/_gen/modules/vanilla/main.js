@@ -14,7 +14,7 @@ const gridOptions = {
   alwaysShowVerticalScroll: true,
   columnDefs: columnDefs,
   rowData: rowData,
-  onGridReady: function (params) {
+  onGridReady: (params) => {
     params.api.sizeColumnsToFit();
   },
   defaultColDef: {

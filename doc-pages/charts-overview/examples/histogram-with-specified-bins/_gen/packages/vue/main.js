@@ -75,7 +75,7 @@ const ChartExample = {
           position: 'left',
           type: 'number',
           label: {
-            formatter: function () {
+            formatter: () => {
               return '';
             },
           },

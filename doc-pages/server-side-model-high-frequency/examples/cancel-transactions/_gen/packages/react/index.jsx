@@ -17,7 +17,7 @@ class GridExample extends Component {
         width: 250,
         resizable: true,
       },
-      isApplyServerSideTransaction: function (params) {
+      isApplyServerSideTransaction: (params) => {
         var tx = params.transaction;
         var storeInfo = params.storeInfo;
         var txCreatedSinceRowDataRead =
@@ -36,7 +36,7 @@ class GridExample extends Component {
           return false;
         }
       },
-      getRowId: function (params) {
+      getRowId: (params) => {
         return params.data.product;
       },
       rowModelType: 'serverSide',
@@ -50,7 +50,7 @@ class GridExample extends Component {
 
     setupData();
     var dataSource = {
-      getRows: function (params2) {
+      getRows: (params2) => {
         setTimeout(function () {
           var rowData = allServerSideData.slice();
           console.log(

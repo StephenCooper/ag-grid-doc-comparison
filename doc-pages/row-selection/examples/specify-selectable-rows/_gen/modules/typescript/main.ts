@@ -38,7 +38,7 @@ const gridOptions: GridOptions = {
   },
   rowSelection: 'multiple',
   suppressMenuHide: true,
-  isRowSelectable: function (rowNode: RowNode) {
+  isRowSelectable: (rowNode: RowNode) => {
     return rowNode.data ? rowNode.data.year < 2007 : false;
   },
 };

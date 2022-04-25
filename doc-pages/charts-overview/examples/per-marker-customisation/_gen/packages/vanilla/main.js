@@ -63,7 +63,7 @@ const options = {
       marker: {
         size: minSize,
         maxSize: maxSize,
-        formatter: function (params) {
+        formatter: (params) => {
           return {
             fill: params.highlighted
               ? params.fill

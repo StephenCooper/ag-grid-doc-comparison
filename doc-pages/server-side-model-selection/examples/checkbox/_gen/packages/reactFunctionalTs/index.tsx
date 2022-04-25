@@ -26,7 +26,7 @@ const getServerSideDatasource: (server: any) => IServerSideDatasource = (
   server: any
 ) => {
   return {
-    getRows: function (params) {
+    getRows: (params) => {
       console.log('[Datasource] - rows requested by grid: ', params.request);
       var response = server.getData(params.request);
       // adding delay to simulate real server call
@@ -66,7 +66,7 @@ const GridExample = () => {
       sortable: true,
     };
   }, []);
-  const getRowId = useCallback(function (params: GetRowIdParams) {
+  const getRowId = useCallback((params: GetRowIdParams) => {
     var data = params.data;
     // use year for group level ids, or the id we assigned for leaf level
     return data.id != null ? 'id-' + data.id : 'year-' + data.year;
@@ -82,7 +82,7 @@ const GridExample = () => {
       },
     };
   }, []);
-  const isRowSelectable = useCallback(function (rowNode: RowNode) {
+  const isRowSelectable = useCallback((rowNode: RowNode) => {
     return !rowNode.group;
   }, []);
 

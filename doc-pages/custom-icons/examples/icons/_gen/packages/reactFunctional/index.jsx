@@ -8,10 +8,10 @@ import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 
 var myIcons = {
-  sortAscending: function () {
+  sortAscending: () => {
     return 'ASC';
   },
-  sortDescending: function () {
+  sortDescending: () => {
     return 'DESC';
   },
 };

@@ -33,7 +33,7 @@ const gridOptions: GridOptions = {
     minWidth: 280,
     field: 'athlete',
   },
-  getRowId: function (params: GetRowIdParams) {
+  getRowId: (params: GetRowIdParams) => {
     var data = params.data;
     var parts = [];
     if (data.country != null) {
@@ -69,7 +69,7 @@ function refreshCache(route?: string[]) {
 
 function getServerSideDatasource(server: any): IServerSideDatasource {
   return {
-    getRows: function (params) {
+    getRows: (params) => {
       console.log('[Datasource] - rows requested by grid: ', params.request);
 
       var response = server.getData(params.request);

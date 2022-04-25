@@ -78,7 +78,7 @@ const GridExample = () => {
   }, []);
   const defaultExcelExportParams = useMemo<ExcelExportParams>(() => {
     return {
-      addImageToCell: function (rowIndex, col, value) {
+      addImageToCell: (rowIndex, col, value) => {
         if (col.getColId() !== 'country') {
           return;
         }

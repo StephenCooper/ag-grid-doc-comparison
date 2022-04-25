@@ -75,7 +75,7 @@ export class AppComponent {
       cellEditor: 'agRichSelectCellEditor',
       cellEditorPopup: true,
       cellRenderer: CountryCellRenderer,
-      keyCreator: function (params: KeyCreatorParams) {
+      keyCreator: (params: KeyCreatorParams) => {
         return params.value.name;
       },
       cellEditorParams: {

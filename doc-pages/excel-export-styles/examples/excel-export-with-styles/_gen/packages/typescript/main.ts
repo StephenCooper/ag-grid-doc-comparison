@@ -22,10 +22,10 @@ const columnDefs: (ColDef | ColGroupDef)[] = [
             field: 'age',
             cellClass: 'twoDecimalPlaces',
             cellClassRules: {
-              greenBackground: function (params) {
+              greenBackground: (params) => {
                 return params.value < 23;
               },
-              redFont: function (params) {
+              redFont: (params) => {
                 return params.value < 20;
               },
             },
@@ -34,7 +34,7 @@ const columnDefs: (ColDef | ColGroupDef)[] = [
             field: 'country',
             minWidth: 200,
             cellClassRules: {
-              redFont: function (params) {
+              redFont: (params) => {
                 return params.value === 'United States';
               },
             },
@@ -43,7 +43,7 @@ const columnDefs: (ColDef | ColGroupDef)[] = [
             headerName: 'Group',
             valueGetter: 'data.country.charAt(0)',
             cellClassRules: {
-              boldBorders: function (params) {
+              boldBorders: (params) => {
                 return params.value === 'U';
               },
             },
@@ -52,7 +52,7 @@ const columnDefs: (ColDef | ColGroupDef)[] = [
           {
             field: 'year',
             cellClassRules: {
-              notInExcel: function (params) {
+              notInExcel: (params) => {
                 return true;
               },
             },
@@ -66,7 +66,7 @@ const columnDefs: (ColDef | ColGroupDef)[] = [
             field: 'date',
             minWidth: 150,
             cellClass: 'dateFormat',
-            valueGetter: function (params) {
+            valueGetter: (params) => {
               var val = params.data.date;
 
               if (val.indexOf('/') < 0) {
@@ -82,7 +82,7 @@ const columnDefs: (ColDef | ColGroupDef)[] = [
           {
             field: 'gold',
             cellClassRules: {
-              boldBorders: function (params) {
+              boldBorders: (params) => {
                 return params.value > 2;
               },
             },
@@ -99,7 +99,7 @@ const columnDefs: (ColDef | ColGroupDef)[] = [
 const gridOptions: GridOptions = {
   defaultColDef: {
     cellClassRules: {
-      darkGreyBackground: function (params: CellClassParams) {
+      darkGreyBackground: (params: CellClassParams) => {
         return (params.node.rowIndex || 0) % 2 == 0;
       },
     },
@@ -112,7 +112,7 @@ const gridOptions: GridOptions = {
 
   columnDefs: columnDefs,
 
-  onGridReady: function (params: GridReadyEvent) {
+  onGridReady: (params: GridReadyEvent) => {
     (document.getElementById('fontSize') as HTMLInputElement).checked = true;
     (document.getElementById('rowHeight') as HTMLInputElement).checked = true;
     (document.getElementById(

@@ -29,7 +29,7 @@ class ChartExample extends Component {
               enabled: true,
             },
             tooltip: {
-              renderer: function (params) {
+              renderer: (params) => {
                 return {
                   content: `${params.xValue}: ${params.yValue.toFixed(1)}%`,
                 };

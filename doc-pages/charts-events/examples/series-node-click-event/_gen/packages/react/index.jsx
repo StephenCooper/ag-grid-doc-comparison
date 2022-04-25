@@ -52,7 +52,7 @@ class ChartExample extends Component {
           tracking: false,
         },
         listeners: {
-          seriesNodeClick: function (event) {
+          seriesNodeClick: (event) => {
             var datum = event.datum;
             window.alert(
               'Temperature in ' +

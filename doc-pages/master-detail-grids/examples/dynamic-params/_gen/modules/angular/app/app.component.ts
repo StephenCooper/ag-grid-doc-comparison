@@ -38,9 +38,7 @@ export class AppComponent {
     flex: 1,
   };
   public detailRowHeight = 195;
-  public detailCellRendererParams: any = function (
-    params: ICellRendererParams
-  ) {
+  public detailCellRendererParams: any = (params: ICellRendererParams) => {
     var res = {} as IDetailCellRendererParams;
     // we use the same getDetailRowData for both options
     res.getDetailRowData = function (params) {

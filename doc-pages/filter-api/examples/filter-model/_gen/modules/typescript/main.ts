@@ -23,7 +23,7 @@ ModuleRegistry.registerModules([
 ]);
 
 var filterParams = {
-  comparator: function (filterLocalDateAtMidnight: Date, cellValue: string) {
+  comparator: (filterLocalDateAtMidnight: Date, cellValue: string) => {
     var dateAsString = cellValue;
     if (dateAsString == null) return -1;
     var dateParts = dateAsString.split('/');
@@ -74,7 +74,7 @@ const gridOptions: GridOptions = {
     sortable: true,
   },
   sideBar: 'filters',
-  onGridReady: function (params) {
+  onGridReady: (params) => {
     ((params.api.getToolPanelInstance(
       'filters'
     ) as any) as IFiltersToolPanel).expandFilters();

@@ -33,7 +33,7 @@ class ChartExample extends Component {
               fontWeight: 'bold',
             },
             tooltip: {
-              renderer: function (params) {
+              renderer: (params) => {
                 return {
                   content: `${params.xValue}: ${params.yValue.toFixed(1)}%`,
                 };

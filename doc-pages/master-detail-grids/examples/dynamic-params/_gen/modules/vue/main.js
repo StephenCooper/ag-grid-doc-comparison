@@ -59,7 +59,7 @@ const VueExample = {
     this.detailCellRendererParams = (params) => {
       var res = {};
       // we use the same getDetailRowData for both options
-      res.getDetailRowData = function (params) {
+      res.getDetailRowData = (params) => {
         params.successCallback(params.data.callRecords);
       };
       var nameMatch =

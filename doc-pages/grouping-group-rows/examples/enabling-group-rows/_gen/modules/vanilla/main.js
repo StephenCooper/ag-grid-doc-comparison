@@ -5,7 +5,7 @@ const gridOptions = {
     {
       field: 'athlete',
       minWidth: 250,
-      cellRenderer: function (params) {
+      cellRenderer: (params) => {
         return `<span style="margin-left: 60px">${params.value}</span>`;
       },
     },

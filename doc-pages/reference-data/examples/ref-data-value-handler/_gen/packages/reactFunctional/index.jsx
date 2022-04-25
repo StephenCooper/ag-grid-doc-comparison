@@ -71,11 +71,11 @@ const GridExample = () => {
         values: carBrands,
       },
       filterParams: {
-        valueFormatter: function (params) {
+        valueFormatter: (params) => {
           return lookupValue(carMappings, params.value);
         },
       },
-      valueFormatter: function (params) {
+      valueFormatter: (params) => {
         return lookupValue(carMappings, params.value);
       },
     },
@@ -91,15 +91,15 @@ const GridExample = () => {
       filter: 'agSetColumnFilter',
       filterParams: {
         values: colours,
-        valueFormatter: function (params) {
+        valueFormatter: (params) => {
           return lookupValue(colourMappings, params.value);
         },
         cellRenderer: ColourCellRenderer,
       },
-      valueFormatter: function (params) {
+      valueFormatter: (params) => {
         return lookupValue(colourMappings, params.value);
       },
-      valueParser: function (params) {
+      valueParser: (params) => {
         return lookupKey(colourMappings, params.newValue);
       },
       cellRenderer: ColourCellRenderer,
@@ -114,15 +114,15 @@ const GridExample = () => {
       filter: 'agSetColumnFilter',
       filterParams: {
         values: colours,
-        valueFormatter: function (params) {
+        valueFormatter: (params) => {
           return lookupValue(colourMappings, params.value);
         },
         cellRenderer: ColourCellRenderer,
       },
-      valueFormatter: function (params) {
+      valueFormatter: (params) => {
         return lookupValue(colourMappings, params.value);
       },
-      valueParser: function (params) {
+      valueParser: (params) => {
         return lookupKey(colourMappings, params.newValue);
       },
       cellRenderer: ColourCellRenderer,
@@ -132,7 +132,7 @@ const GridExample = () => {
       field: 'price',
       minWidth: 140,
       colId: 'retailPrice',
-      valueGetter: function (params) {
+      valueGetter: (params) => {
         return params.data.price;
       },
       valueFormatter: currencyFormatter,
@@ -142,7 +142,7 @@ const GridExample = () => {
       headerName: 'Retail Price (incl Taxes)',
       minWidth: 205,
       editable: false,
-      valueGetter: function (params) {
+      valueGetter: (params) => {
         // example of chaining value getters
         return params.getValue('retailPrice') * 1.2;
       },

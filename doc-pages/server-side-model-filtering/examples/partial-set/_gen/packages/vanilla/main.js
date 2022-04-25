@@ -94,7 +94,7 @@ function getSportValuesAsync(params) {
 
 function getServerSideDatasource(server) {
   return {
-    getRows: function (params) {
+    getRows: (params) => {
       console.log('[Datasource] - rows requested by grid: ', params.request);
 
       // get data for request from our fake server

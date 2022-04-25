@@ -10,7 +10,7 @@ const gridOptions = {
           type: 'area',
         },
       },
-      valueGetter: function (params) {
+      valueGetter: (params) => {
         const formattedData = [];
         const rateOfChange = params.data.rateOfChange;
         const { x, y } = rateOfChange;

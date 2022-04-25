@@ -156,7 +156,7 @@ window.getBooleanValue = function getBooleanValue(cssSelector) {
 
 window.getServerSideDatasource = function getServerSideDatasource(server) {
   return {
-    getRows: function (params) {
+    getRows: (params) => {
       console.log('[Datasource] - rows requested by grid: ', params.request);
       var response = server.getData(params.request);
       // adding delay to simulate real server call

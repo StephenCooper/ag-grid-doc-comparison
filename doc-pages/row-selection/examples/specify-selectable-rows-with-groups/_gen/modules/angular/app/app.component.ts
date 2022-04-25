@@ -64,7 +64,7 @@ export class AppComponent {
   };
   public rowSelection = 'multiple';
   public groupDefaultExpanded = -1;
-  public isRowSelectable: IsRowSelectable = function (node: RowNode) {
+  public isRowSelectable: IsRowSelectable = (node: RowNode) => {
     return node.data
       ? node.data.year === 2008 || node.data.year === 2004
       : false;

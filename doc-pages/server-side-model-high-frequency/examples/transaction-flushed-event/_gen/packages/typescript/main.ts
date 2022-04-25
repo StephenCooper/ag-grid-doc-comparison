@@ -20,7 +20,7 @@ const gridOptions: GridOptions = {
     resizable: true,
   },
   onAsyncTransactionsFlushed: onAsyncTransactionsFlushed,
-  onGridReady: function (params) {
+  onGridReady: (params) => {
     setupData();
     var dataSource: IServerSideDatasource = {
       getRows: function (params2) {
@@ -32,7 +32,7 @@ const gridOptions: GridOptions = {
     };
     params.api.setServerSideDatasource(dataSource);
   },
-  getRowId: function (params: GetRowIdParams) {
+  getRowId: (params: GetRowIdParams) => {
     return params.data.product;
   },
   rowSelection: 'multiple',

@@ -5,7 +5,7 @@ const columnDefs = [{ headerName: 'Make', field: 'make' }];
 const gridOptions = {
   columnDefs: columnDefs,
   rowData: [],
-  onGridReady: function (params) {
+  onGridReady: (params) => {
     params.api.sizeColumnsToFit();
   },
 };

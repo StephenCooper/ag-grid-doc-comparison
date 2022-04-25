@@ -52,7 +52,7 @@ const gridOptions = {
     minWidth: 120,
     resizable: true,
     cellClass: 'align-right',
-    valueFormatter: function (params) {
+    valueFormatter: (params) => {
       return formatNumber(params.value);
     },
   },

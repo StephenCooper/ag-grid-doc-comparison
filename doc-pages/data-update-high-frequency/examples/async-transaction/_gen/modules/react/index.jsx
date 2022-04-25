@@ -146,7 +146,7 @@ class GridExample extends Component {
       ],
       rowGroupPanelShow: 'always',
       pivotPanelShow: 'always',
-      getRowId: function (params) {
+      getRowId: (params) => {
         return params.data.trade;
       },
       defaultColDef: {

@@ -31,7 +31,7 @@ var valueFormatter = function (params: ValueFormatterParams) {
 };
 
 var cellClassRules = {
-  'hover-over': function (params: CellClassParams) {
+  'hover-over': (params: CellClassParams) => {
     return params.node === potentialParent;
   },
 };
@@ -146,10 +146,10 @@ const GridExample = () => {
       resizable: true,
     };
   }, []);
-  const getDataPath = useCallback(function (data: any) {
+  const getDataPath = useCallback((data: any) => {
     return data.filePath;
   }, []);
-  const getRowId = useCallback(function (params: GetRowIdParams) {
+  const getRowId = useCallback((params: GetRowIdParams) => {
     return params.data.id;
   }, []);
   const autoGroupColumnDef = useMemo<ColDef>(() => {
@@ -162,7 +162,7 @@ const GridExample = () => {
         innerRenderer: FileCellRenderer,
       },
       cellClassRules: {
-        'hover-over': function (params) {
+        'hover-over': (params) => {
           return params.node === potentialParent;
         },
       },

@@ -8,7 +8,7 @@ import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 
 var filterParams = {
-  comparator: function (a, b) {
+  comparator: (a, b) => {
     var valA = parseInt(a);
     var valB = parseInt(b);
     if (valA === valB) return 0;

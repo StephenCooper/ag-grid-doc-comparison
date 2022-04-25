@@ -111,7 +111,7 @@ export class AppComponent {
             text: 'Waste collected (tonnes)',
           },
           label: {
-            formatter: function (params) {
+            formatter: (params) => {
               return params.value / 1000 + 'k';
             },
           },

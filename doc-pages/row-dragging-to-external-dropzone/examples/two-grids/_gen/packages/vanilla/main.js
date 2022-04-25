@@ -27,7 +27,7 @@ var leftGridOptions = {
     'green-row': 'data.color == "Green"',
     'blue-row': 'data.color == "Blue"',
   },
-  getRowId: function (params) {
+  getRowId: (params) => {
     return params.data.id;
   },
   rowData: createLeftRowData(),
@@ -35,7 +35,7 @@ var leftGridOptions = {
   suppressMoveWhenRowDragging: true,
   columnDefs: leftColumnDefs,
   animateRows: true,
-  onGridReady: function (params) {
+  onGridReady: (params) => {
     addBinZone(params);
     addGridDropZone(params, 'Right');
   },
@@ -54,7 +54,7 @@ var rightGridOptions = {
     'green-row': 'data.color == "Green"',
     'blue-row': 'data.color == "Blue"',
   },
-  getRowId: function (params) {
+  getRowId: (params) => {
     return params.data.id;
   },
   rowData: [],
@@ -62,7 +62,7 @@ var rightGridOptions = {
   suppressMoveWhenRowDragging: true,
   columnDefs: rightColumnDefs,
   animateRows: true,
-  onGridReady: function (params) {
+  onGridReady: (params) => {
     addBinZone(params);
     addGridDropZone(params, 'Left');
   },
@@ -138,18 +138,18 @@ function addBinZone(params) {
   var eBin = document.querySelector('.bin'),
     icon = eBin.querySelector('i'),
     dropZone = {
-      getContainer: function () {
+      getContainer: () => {
         return eBin;
       },
-      onDragEnter: function () {
+      onDragEnter: () => {
         eBin.style.color = 'blue';
         icon.style.transform = 'scale(1.5)';
       },
-      onDragLeave: function () {
+      onDragLeave: () => {
         eBin.style.color = 'black';
         icon.style.transform = 'scale(1)';
       },
-      onDragStop: function (params) {
+      onDragStop: (params) => {
         binDrop(params.node.data);
         eBin.style.color = 'black';
         icon.style.transform = 'scale(1)';
@@ -162,10 +162,10 @@ function addBinZone(params) {
 function addGridDropZone(params, side) {
   var grid = document.querySelector('#e' + side + 'Grid'),
     dropZone = {
-      getContainer: function () {
+      getContainer: () => {
         return grid;
       },
-      onDragStop: function (params) {
+      onDragStop: (params) => {
         addRecordToGrid(side.toLowerCase(), params.node.data);
       },
     };

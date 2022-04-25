@@ -40,7 +40,7 @@ const options = {
     tracking: false,
   },
   listeners: {
-    seriesNodeClick: function (event) {
+    seriesNodeClick: (event) => {
       var datum = event.datum;
       window.alert(
         'Temperature in ' +

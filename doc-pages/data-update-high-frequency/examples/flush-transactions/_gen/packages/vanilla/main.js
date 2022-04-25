@@ -149,7 +149,7 @@ const gridOptions = {
   rowGroupPanelShow: 'always',
   pivotPanelShow: 'always',
   asyncTransactionWaitMillis: 4000,
-  getRowId: function (params) {
+  getRowId: (params) => {
     return params.data.trade;
   },
   defaultColDef: {
@@ -160,12 +160,12 @@ const gridOptions = {
   autoGroupColumnDef: {
     width: 250,
   },
-  onGridReady: function (params) {
+  onGridReady: (params) => {
     getData();
     params.api.setRowData(globalRowData);
     startFeed(params.api);
   },
-  onAsyncTransactionsFlushed: function (e) {
+  onAsyncTransactionsFlushed: (e) => {
     console.log(
       '========== onAsyncTransactionsFlushed: applied ' +
         e.results.length +

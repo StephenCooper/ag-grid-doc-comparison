@@ -37,7 +37,7 @@ export class AppComponent {
           label: {
             fontWeight: 'bold',
             color: 'white',
-            formatter: function (params) {
+            formatter: (params) => {
               return (params.value > 0 ? '+' : '') + params.value;
             },
           },

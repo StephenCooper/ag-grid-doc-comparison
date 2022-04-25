@@ -89,7 +89,7 @@ class GridExample extends Component {
               length: 15,
             },
             tooltip: {
-              renderer: function (params) {
+              renderer: (params) => {
                 return {
                   content:
                     '<b>' +

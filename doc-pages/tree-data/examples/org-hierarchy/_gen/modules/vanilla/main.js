@@ -18,7 +18,7 @@ const gridOptions = {
   treeData: true, // enable Tree Data mode
   animateRows: true,
   groupDefaultExpanded: -1, // expand all groups by default
-  getDataPath: function (data) {
+  getDataPath: (data) => {
     return data.orgHierarchy;
   },
 };

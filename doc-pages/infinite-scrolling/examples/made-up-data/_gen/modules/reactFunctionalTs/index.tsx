@@ -41,7 +41,7 @@ function getColumnDefs() {
 function getDataSource(count: number) {
   const dataSource: IDatasource = {
     rowCount: count,
-    getRows: function (params: IGetRowsParams) {
+    getRows: (params: IGetRowsParams) => {
       var rowsThisPage: any[] = [];
       for (
         var rowIndex = params.startRow;
@@ -76,7 +76,7 @@ const GridExample = () => {
       resizable: true,
     };
   }, []);
-  const getRowId = useCallback(function (params: GetRowIdParams) {
+  const getRowId = useCallback((params: GetRowIdParams) => {
     return params.data.a;
   }, []);
   const datasource = useMemo<IDatasource>(() => {

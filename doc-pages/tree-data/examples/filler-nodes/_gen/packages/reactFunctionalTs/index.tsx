@@ -27,7 +27,7 @@ const GridExample = () => {
     // we're using the auto group column by default!
     {
       field: 'groupType',
-      valueGetter: function (params) {
+      valueGetter: (params) => {
         return params.data ? 'Provided' : 'Filler';
       },
     },
@@ -45,7 +45,7 @@ const GridExample = () => {
       },
     };
   }, []);
-  const getDataPath = useCallback(function (data: any) {
+  const getDataPath = useCallback((data: any) => {
     return data.orgHierarchy;
   }, []);
 

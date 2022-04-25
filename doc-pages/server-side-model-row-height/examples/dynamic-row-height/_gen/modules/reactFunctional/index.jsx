@@ -14,7 +14,7 @@ ModuleRegistry.registerModules([ServerSideRowModelModule, RowGroupingModule]);
 
 const getServerSideDatasource = (server) => {
   return {
-    getRows: function (params) {
+    getRows: (params) => {
       console.log('[Datasource] - rows requested by grid: ', params.request);
       var response = server.getData(params.request);
       // adding delay to simulate real server call
@@ -59,7 +59,7 @@ const GridExample = () => {
       minWidth: 180,
     };
   }, []);
-  const getRowHeight = useCallback(function (params) {
+  const getRowHeight = useCallback((params) => {
     if (params.node.level === 0) {
       return 80;
     }

@@ -143,7 +143,7 @@ const gridOptions: GridOptions = {
   getRowId: getRowId,
   isApplyServerSideTransaction: isApplyServerSideTransaction,
   onAsyncTransactionsFlushed: onAsyncTransactionsFlushed,
-  onGridReady: function (params) {
+  onGridReady: (params) => {
     var dataSource: IServerSideDatasource = {
       getRows: function (params2) {
         fakeServer.getData(

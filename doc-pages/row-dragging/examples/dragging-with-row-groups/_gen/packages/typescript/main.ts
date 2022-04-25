@@ -32,7 +32,7 @@ const gridOptions: GridOptions = {
   animateRows: true,
   groupDefaultExpanded: 1,
   onRowDragMove: onRowDragMove,
-  onGridReady: function () {
+  onGridReady: (params) => {
     gridOptions.api!.setRowData(getData());
   },
 };

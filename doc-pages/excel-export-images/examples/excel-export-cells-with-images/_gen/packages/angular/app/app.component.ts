@@ -66,7 +66,7 @@ export class AppComponent {
     resizable: true,
   };
   public defaultExcelExportParams: ExcelExportParams = {
-    addImageToCell: function (rowIndex, col, value) {
+    addImageToCell: (rowIndex, col, value) => {
       if (col.getColId() !== 'country') {
         return;
       }

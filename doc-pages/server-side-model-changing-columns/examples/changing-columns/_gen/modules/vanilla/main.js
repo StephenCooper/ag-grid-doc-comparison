@@ -40,7 +40,7 @@ const gridOptions = {
   rowModelType: 'serverSide',
   serverSideStoreType: 'partial',
 
-  onGridReady: function () {
+  onGridReady: (params) => {
     document.getElementById('athlete').checked = true;
     document.getElementById('age').checked = true;
     document.getElementById('country').checked = true;
@@ -102,7 +102,7 @@ function getBooleanValue(cssSelector) {
 
 function getServerSideDatasource(server) {
   return {
-    getRows: function (params) {
+    getRows: (params) => {
       console.log('[Datasource] - rows requested by grid: ', params.request);
 
       var response = server.getData(params.request);

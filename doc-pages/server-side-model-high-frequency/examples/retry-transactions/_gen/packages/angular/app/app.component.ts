@@ -44,7 +44,7 @@ export class AppComponent {
     width: 250,
     resizable: true,
   };
-  public getRowId: GetRowIdFunc = function (params: GetRowIdParams) {
+  public getRowId: GetRowIdFunc = (params: GetRowIdParams) => {
     return params.data.product;
   };
   public rowModelType = 'serverSide';

@@ -18,10 +18,10 @@ const gridOptions = {
   treeData: true,
   animateRows: true,
   groupDefaultExpanded: -1,
-  getDataPath: function (data) {
+  getDataPath: (data) => {
     return data.filePath;
   },
-  getRowId: function (params) {
+  getRowId: (params) => {
     return params.data.id;
   },
   autoGroupColumnDef: {

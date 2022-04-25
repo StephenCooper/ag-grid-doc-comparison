@@ -34,7 +34,7 @@ class GridExample extends Component {
         flex: 1,
         minWidth: 280,
       },
-      getServerSideStoreParams: function (params) {
+      getServerSideStoreParams: (params) => {
         var res = {
           storeType: params.level == 0 ? 'partial' : 'full',
         };
@@ -130,7 +130,7 @@ class GridExample extends Component {
 
 function getServerSideDatasource(server) {
   return {
-    getRows: function (params) {
+    getRows: (params) => {
       console.log('[Datasource] - rows requested by grid: ', params.request);
       var response = server.getData(params.request);
       // adding delay to simulate real server call

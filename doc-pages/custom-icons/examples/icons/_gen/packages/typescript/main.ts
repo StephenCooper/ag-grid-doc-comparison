@@ -4,10 +4,10 @@ import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 import 'ag-grid-enterprise';
 
 var myIcons = {
-  sortAscending: function () {
+  sortAscending: () => {
     return 'ASC';
   },
-  sortDescending: function () {
+  sortDescending: () => {
     return 'DESC';
   },
 };

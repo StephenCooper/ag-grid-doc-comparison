@@ -24,7 +24,7 @@ const getServerSideDatasource: (server: any) => IServerSideDatasource = (
   server: any
 ) => {
   return {
-    getRows: function (params) {
+    getRows: (params) => {
       console.log('[Datasource] - rows requested by grid: ', params.request);
       var response = server.getData(params.request);
       // adding delay to simulate real server call
@@ -70,38 +70,38 @@ const GridExample = () => {
       minWidth: 280,
     };
   }, []);
-  const getServerSideStoreParams = useCallback(function (
-    params: GetServerSideStoreParamsParams
-  ): ServerSideStoreParams {
-    var noGroupingActive = params.rowGroupColumns.length == 0;
-    var res: ServerSideStoreParams;
-    if (noGroupingActive) {
-      res = {
-        // infinite scrolling
-        storeType: 'partial',
-        // 100 rows per block
-        cacheBlockSize: 100,
-        // purge blocks that are not needed
-        maxBlocksInCache: 2,
-      };
-    } else {
-      var topLevelRows = params.level == 0;
-      res = {
-        storeType: topLevelRows ? 'full' : 'partial',
-        cacheBlockSize: params.level == 1 ? 5 : 2,
-        maxBlocksInCache: -1, // never purge blocks
-      };
-    }
-    console.log('############## NEW STORE ##############');
-    console.log(
-      'getServerSideStoreParams, level = ' +
-        params.level +
-        ', result = ' +
-        JSON.stringify(res)
-    );
-    return res;
-  },
-  []);
+  const getServerSideStoreParams = useCallback(
+    (params: GetServerSideStoreParamsParams): ServerSideStoreParams => {
+      var noGroupingActive = params.rowGroupColumns.length == 0;
+      var res: ServerSideStoreParams;
+      if (noGroupingActive) {
+        res = {
+          // infinite scrolling
+          storeType: 'partial',
+          // 100 rows per block
+          cacheBlockSize: 100,
+          // purge blocks that are not needed
+          maxBlocksInCache: 2,
+        };
+      } else {
+        var topLevelRows = params.level == 0;
+        res = {
+          storeType: topLevelRows ? 'full' : 'partial',
+          cacheBlockSize: params.level == 1 ? 5 : 2,
+          maxBlocksInCache: -1, // never purge blocks
+        };
+      }
+      console.log('############## NEW STORE ##############');
+      console.log(
+        'getServerSideStoreParams, level = ' +
+          params.level +
+          ', result = ' +
+          JSON.stringify(res)
+      );
+      return res;
+    },
+    []
+  );
 
   const onGridReady = useCallback((params: GridReadyEvent) => {
     fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')

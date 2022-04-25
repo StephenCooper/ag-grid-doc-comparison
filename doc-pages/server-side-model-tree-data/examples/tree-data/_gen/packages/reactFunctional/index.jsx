@@ -41,7 +41,7 @@ const createFakeServer = (fakeServerData) => {
 
 const createServerSideDatasource = (fakeServer) => {
   const dataSource = {
-    getRows: function (params) {
+    getRows: (params) => {
       console.log('ServerSideDatasource.getRows: params = ', params);
       var allRows = fakeServer.getData(params.request);
       var request = params.request;
@@ -82,22 +82,22 @@ const GridExample = () => {
     return {
       field: 'employeeName',
       cellRendererParams: {
-        innerRenderer: function (params) {
+        innerRenderer: (params) => {
           // display employeeName rather than group key (employeeId)
           return params.data.employeeName;
         },
       },
     };
   }, []);
-  const isServerSideGroupOpenByDefault = useCallback(function (params) {
+  const isServerSideGroupOpenByDefault = useCallback((params) => {
     // open first two levels by default
     return params.rowNode.level < 2;
   }, []);
-  const isServerSideGroup = useCallback(function (dataItem) {
+  const isServerSideGroup = useCallback((dataItem) => {
     // indicate if node is a group
     return dataItem.group;
   }, []);
-  const getServerSideGroupKey = useCallback(function (dataItem) {
+  const getServerSideGroupKey = useCallback((dataItem) => {
     // specify which group key to use
     return dataItem.employeeId;
   }, []);

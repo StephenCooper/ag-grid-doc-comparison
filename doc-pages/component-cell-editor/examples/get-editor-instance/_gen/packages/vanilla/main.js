@@ -97,7 +97,7 @@ const gridOptions = {
     resizable: true,
   },
   rowData: createRowData(),
-  onGridReady: function () {
+  onGridReady: () => {
     setInterval(() => {
       const instances = gridOptions.api.getCellEditorInstances();
       if (instances.length > 0) {

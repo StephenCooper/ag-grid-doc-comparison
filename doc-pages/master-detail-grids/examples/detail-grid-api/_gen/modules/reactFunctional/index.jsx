@@ -47,12 +47,12 @@ const GridExample = () => {
           resizable: true,
         },
       },
-      getDetailRowData: function (params) {
+      getDetailRowData: (params) => {
         params.successCallback(params.data.callRecords);
       },
     };
   }, []);
-  const getRowId = useCallback(function (params) {
+  const getRowId = useCallback((params) => {
     // use 'account' as the row ID
     return params.data.account;
   }, []);

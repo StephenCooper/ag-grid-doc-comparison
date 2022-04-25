@@ -57,7 +57,7 @@ fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
 
 function createServerSideDatasource(server: any): IServerSideDatasource {
   return {
-    getRows: function (params) {
+    getRows: (params) => {
       console.log('[Datasource] - rows requested by grid: ', params.request);
 
       // get data for request from our fake server
@@ -78,7 +78,7 @@ function createServerSideDatasource(server: any): IServerSideDatasource {
 
 function createFakeServer(allData: any[]) {
   return {
-    getData: function (request: IServerSideGetRowsRequest) {
+    getData: (request: IServerSideGetRowsRequest) => {
       // take a copy of the data to return to the client
       var requestedRows = allData.slice();
 

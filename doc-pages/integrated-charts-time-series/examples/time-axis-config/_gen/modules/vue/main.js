@@ -94,7 +94,7 @@ const VueExample = {
           },
           number: {
             label: {
-              formatter: function (params) {
+              formatter: (params) => {
                 return params.value + '%';
               },
             },

@@ -44,7 +44,7 @@ export class AppComponent {
             enabled: false,
           },
           label: {
-            formatter: function (params) {
+            formatter: (params) => {
               return params.value + '%';
             },
           },

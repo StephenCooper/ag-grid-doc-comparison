@@ -1,6 +1,6 @@
 const gridOptions = {
   masterDetail: true,
-  isRowMaster: function (dataItem) {
+  isRowMaster: (dataItem) => {
     return dataItem ? dataItem.callRecords.length > 0 : false;
   },
   columnDefs: [

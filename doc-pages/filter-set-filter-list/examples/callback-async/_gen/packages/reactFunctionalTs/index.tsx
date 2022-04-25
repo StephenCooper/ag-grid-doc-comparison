@@ -15,7 +15,7 @@ import {
 } from 'ag-grid-community';
 
 var filterParams = {
-  values: function (params: SetFilterValuesFuncParams) {
+  values: (params: SetFilterValuesFuncParams) => {
     setTimeout(function () {
       params.success(['value 1', 'value 2']);
     }, 3000);

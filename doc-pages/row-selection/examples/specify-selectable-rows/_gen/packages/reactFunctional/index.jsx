@@ -36,7 +36,7 @@ const GridExample = () => {
       filter: true,
     };
   }, []);
-  const isRowSelectable = useCallback(function (rowNode) {
+  const isRowSelectable = useCallback((rowNode) => {
     return rowNode.data ? rowNode.data.year < 2007 : false;
   }, []);
 

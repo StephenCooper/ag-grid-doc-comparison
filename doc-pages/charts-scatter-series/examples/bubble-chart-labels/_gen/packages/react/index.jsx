@@ -73,7 +73,7 @@ class ChartExample extends Component {
             },
             label: {
               rotation: 45,
-              formatter: function (params) {
+              formatter: (params) => {
                 return params.value + 'cm';
               },
             },
@@ -85,7 +85,7 @@ class ChartExample extends Component {
               text: 'Weight',
             },
             label: {
-              formatter: function (params) {
+              formatter: (params) => {
                 return params.value + 'kg';
               },
             },

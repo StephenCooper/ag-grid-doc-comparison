@@ -63,7 +63,7 @@ const GridExample = () => {
     {
       headerName: 'Custom column',
       autoHeight: true,
-      valueGetter: function (param) {
+      valueGetter: (param) => {
         return param.data.col1 + '\n' + param.data.col2;
       },
       cellRenderer: MultilineCellRenderer,

@@ -38,9 +38,9 @@ export class AppComponent {
     minWidth: 100,
     editable: true,
   };
-  public fillOperation: (params: FillOperationParams) => any = function (
+  public fillOperation: (params: FillOperationParams) => any = (
     params: FillOperationParams
-  ) {
+  ) => {
     if (params.column.getColId() === 'country') {
       return params.currentCellValue;
     }

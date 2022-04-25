@@ -25,10 +25,10 @@ class GridExample extends Component {
       },
       rowData: getData(),
       groupDefaultExpanded: -1,
-      getDataPath: function (data) {
+      getDataPath: (data) => {
         return data.filePath;
       },
-      getRowId: function (params) {
+      getRowId: (params) => {
         return params.data.id;
       },
       autoGroupColumnDef: {

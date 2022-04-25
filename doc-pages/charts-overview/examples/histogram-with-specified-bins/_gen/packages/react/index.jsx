@@ -36,7 +36,7 @@ class ChartExample extends Component {
             ],
             areaPlot: true,
             tooltip: {
-              renderer: function (params) {
+              renderer: (params) => {
                 var paramsMax = params.datum.domain[1];
                 var sizeName =
                   paramsMax === 2000
@@ -71,7 +71,7 @@ class ChartExample extends Component {
             position: 'left',
             type: 'number',
             label: {
-              formatter: function () {
+              formatter: () => {
                 return '';
               },
             },
