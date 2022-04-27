@@ -27,7 +27,6 @@ const options = {
       position: 'bottom',
       type: 'number',
       title: {
-        enabled: true,
         text: 'Weight (pounds)',
       },
     },
@@ -35,7 +34,6 @@ const options = {
       position: 'left',
       type: 'number',
       title: {
-        enabled: true,
         text: 'Height (inches)',
       },
     },

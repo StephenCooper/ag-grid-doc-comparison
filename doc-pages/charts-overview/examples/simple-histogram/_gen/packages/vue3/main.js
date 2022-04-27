@@ -38,7 +38,6 @@ const ChartExample = {
           position: 'bottom',
           type: 'number',
           title: {
-            enabled: true,
             text: 'Engine Size (Cubic inches)',
           },
         },
@@ -46,7 +45,6 @@ const ChartExample = {
           position: 'left',
           type: 'number',
           title: {
-            enabled: true,
             text: 'Frequency',
           },
         },

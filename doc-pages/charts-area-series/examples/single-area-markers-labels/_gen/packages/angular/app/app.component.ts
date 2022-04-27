@@ -30,7 +30,6 @@ export class AppComponent {
             enabled: true,
           },
           label: {
-            enabled: true,
             fontWeight: 'bold',
           },
           tooltip: {

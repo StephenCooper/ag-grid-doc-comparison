@@ -56,7 +56,6 @@ const ChartExample = {
           type: 'number',
           position: 'left',
           title: {
-            enabled: true,
             text: 'Load (%)',
           },
           min: 0,

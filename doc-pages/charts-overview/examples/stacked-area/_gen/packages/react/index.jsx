@@ -93,7 +93,6 @@ class ChartExample extends Component {
             type: 'number',
             position: 'left',
             title: {
-              enabled: true,
               text: 'Total visitors',
             },
             label: {

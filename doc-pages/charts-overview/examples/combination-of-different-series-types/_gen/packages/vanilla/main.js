@@ -50,7 +50,6 @@ const options = {
       position: 'left',
       keys: ['male', 'female'],
       title: {
-        enabled: true,
         text: 'Number of cattle',
       },
       label: {
@@ -64,7 +63,6 @@ const options = {
       position: 'right',
       keys: ['exportedTonnes'],
       title: {
-        enabled: true,
         text: 'Exports (tonnes)',
       },
       label: {

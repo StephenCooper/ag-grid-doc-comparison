@@ -210,7 +210,6 @@ export class AppComponent {
           type: 'category',
           position: 'bottom',
           title: {
-            enabled: true,
             text: 'Week',
           },
           label: {
@@ -221,7 +220,6 @@ export class AppComponent {
           type: 'number',
           position: 'left',
           title: {
-            enabled: true,
             text: '£ per kg',
           },
           nice: false,

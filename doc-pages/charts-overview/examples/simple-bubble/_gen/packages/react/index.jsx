@@ -46,7 +46,6 @@ class ChartExample extends Component {
             position: 'bottom',
             type: 'number',
             title: {
-              enabled: true,
               text: 'Depth (m)',
             },
           },
@@ -54,7 +53,6 @@ class ChartExample extends Component {
             position: 'left',
             type: 'number',
             title: {
-              enabled: true,
               text: 'Magnitude',
             },
           },

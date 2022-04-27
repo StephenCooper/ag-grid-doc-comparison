@@ -86,7 +86,6 @@ const options = {
       position: 'left',
       keys: ['women', 'men', 'children', 'adults'],
       title: {
-        enabled: true,
         text: 'Adults Who Eat 5 A Day (%)',
       },
     },
@@ -96,7 +95,6 @@ const options = {
       position: 'right',
       keys: ['portions'],
       title: {
-        enabled: true,
         text: 'Portions Consumed (Per Day)',
       },
     },

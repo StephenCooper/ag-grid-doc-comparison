@@ -66,7 +66,6 @@ const ChartExample = {
           position: 'left',
           keys: ['male', 'female'],
           title: {
-            enabled: true,
             text: 'Number of cattle',
           },
           label: {
@@ -80,7 +79,6 @@ const ChartExample = {
           position: 'right',
           keys: ['exportedTonnes'],
           title: {
-            enabled: true,
             text: 'Exports (tonnes)',
           },
           label: {

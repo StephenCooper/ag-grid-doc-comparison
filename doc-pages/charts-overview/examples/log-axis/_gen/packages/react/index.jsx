@@ -31,7 +31,6 @@ class ChartExample extends Component {
             type: 'log',
             position: 'left',
             title: {
-              enabled: true,
               text: 'Population',
             },
             label: {
@@ -43,7 +42,6 @@ class ChartExample extends Component {
             type: 'number',
             position: 'bottom',
             title: {
-              enabled: true,
               text: 'Year',
             },
             label: {
@@ -70,7 +68,6 @@ class ChartExample extends Component {
       type: 'number',
       position: 'left',
       title: {
-        enabled: true,
         text: 'Population',
       },
       label: {
@@ -92,7 +89,6 @@ class ChartExample extends Component {
       type: 'log',
       position: 'left',
       title: {
-        enabled: true,
         text: 'Population',
       },
       label: {

@@ -65,7 +65,6 @@ class ChartExample extends Component {
               count: agCharts.time.month.every(2),
             },
             title: {
-              enabled: true,
               text: 'Date',
             },
           },
@@ -73,7 +72,6 @@ class ChartExample extends Component {
             position: 'left',
             type: 'number',
             title: {
-              enabled: true,
               text: 'Price in pence',
             },
           },

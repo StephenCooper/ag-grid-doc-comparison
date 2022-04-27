@@ -32,7 +32,6 @@ const options = {
     enabled: false,
   },
   navigator: {
-    enabled: true,
     height: 50,
     min: 0.2,
     max: 0.7,

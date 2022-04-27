@@ -65,7 +65,6 @@ class ChartExample extends Component {
             position: 'left',
             keys: ['male', 'female'],
             title: {
-              enabled: true,
               text: 'Number of cattle',
             },
             label: {

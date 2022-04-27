@@ -39,7 +39,6 @@ class ChartExample extends Component {
             position: 'bottom',
             type: 'number',
             title: {
-              enabled: true,
               text: 'Weight (pounds)',
             },
           },
@@ -47,7 +46,6 @@ class ChartExample extends Component {
             position: 'left',
             type: 'number',
             title: {
-              enabled: true,
               text: 'Height (inches)',
             },
           },

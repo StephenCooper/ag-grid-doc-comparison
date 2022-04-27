@@ -53,7 +53,6 @@ const options = {
         count: agCharts.time.month.every(2),
       },
       title: {
-        enabled: true,
         text: 'Date',
       },
     },
@@ -61,7 +60,6 @@ const options = {
       position: 'left',
       type: 'number',
       title: {
-        enabled: true,
         text: 'Price in pence',
       },
     },

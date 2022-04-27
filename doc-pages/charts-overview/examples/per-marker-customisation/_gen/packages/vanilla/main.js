@@ -80,7 +80,6 @@ const options = {
       position: 'bottom',
       type: 'number',
       title: {
-        enabled: true,
         text: 'Depth (m)',
       },
     },
@@ -88,7 +87,6 @@ const options = {
       position: 'left',
       type: 'number',
       title: {
-        enabled: true,
         text: 'Minimum distance (km)',
       },
     },

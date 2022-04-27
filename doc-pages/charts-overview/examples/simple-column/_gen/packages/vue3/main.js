@@ -33,7 +33,6 @@ const ChartExample = {
           fill: '#0084e7',
           strokeWidth: 0,
           shadow: {
-            enabled: true,
             xOffset: 3,
           },
         },
@@ -43,7 +42,6 @@ const ChartExample = {
           type: 'category',
           position: 'bottom',
           title: {
-            enabled: true,
             text: 'Year',
           },
         },
@@ -51,7 +49,6 @@ const ChartExample = {
           type: 'number',
           position: 'left',
           title: {
-            enabled: true,
             text: 'Total visitors',
           },
           label: {

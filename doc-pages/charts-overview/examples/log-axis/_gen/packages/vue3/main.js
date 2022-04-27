@@ -43,7 +43,6 @@ const ChartExample = {
           type: 'log',
           position: 'left',
           title: {
-            enabled: true,
             text: 'Population',
           },
           label: {
@@ -55,7 +54,6 @@ const ChartExample = {
           type: 'number',
           position: 'bottom',
           title: {
-            enabled: true,
             text: 'Year',
           },
           label: {
@@ -80,7 +78,6 @@ const ChartExample = {
         type: 'number',
         position: 'left',
         title: {
-          enabled: true,
           text: 'Population',
         },
         label: {
@@ -101,7 +98,6 @@ const ChartExample = {
         type: 'log',
         position: 'left',
         title: {
-          enabled: true,
           text: 'Population',
         },
         label: {

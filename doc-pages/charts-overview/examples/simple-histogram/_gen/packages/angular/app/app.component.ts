@@ -35,7 +35,6 @@ export class AppComponent {
           position: 'bottom',
           type: 'number',
           title: {
-            enabled: true,
             text: 'Engine Size (Cubic inches)',
           },
         },
@@ -43,7 +42,6 @@ export class AppComponent {
           position: 'left',
           type: 'number',
           title: {
-            enabled: true,
             text: 'Frequency',
           },
         },

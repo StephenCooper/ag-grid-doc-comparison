@@ -94,7 +94,6 @@ export class AppComponent {
           type: 'number',
           position: 'left',
           title: {
-            enabled: true,
             text: 'Total visitors',
           },
           label: {

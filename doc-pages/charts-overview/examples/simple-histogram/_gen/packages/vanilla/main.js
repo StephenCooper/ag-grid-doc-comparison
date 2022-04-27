@@ -22,7 +22,6 @@ const options = {
       position: 'bottom',
       type: 'number',
       title: {
-        enabled: true,
         text: 'Engine Size (Cubic inches)',
       },
     },
@@ -30,7 +29,6 @@ const options = {
       position: 'left',
       type: 'number',
       title: {
-        enabled: true,
         text: 'Frequency',
       },
     },

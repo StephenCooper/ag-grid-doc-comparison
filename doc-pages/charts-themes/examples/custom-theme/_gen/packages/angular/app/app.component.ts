@@ -24,7 +24,6 @@ export class AppComponent {
         right: 70,
       },
       title: {
-        enabled: true,
         text: 'Custom Chart Theme Example',
       },
       data: [

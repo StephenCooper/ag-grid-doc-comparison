@@ -6,7 +6,7 @@ import { AgGridReact } from 'ag-grid-react';
 import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-alpine-dark.css';
 
-var hashValueGetter = function (params) {
+const hashValueGetter = (params) => {
   return params.node ? params.node.rowIndex : null;
 };
 
@@ -14,23 +14,23 @@ const abValueGetter = (params) => {
   return params.data.a + params.data.b;
 };
 
-var a1000ValueGetter = function (params) {
+const a1000ValueGetter = (params) => {
   return params.data.a * 1000;
 };
 
-var b137ValueGetter = function (params) {
+const b137ValueGetter = (params) => {
   return params.data.b * 137;
 };
 
-var randomValueGetter = function () {
+const randomValueGetter = () => {
   return Math.floor(Math.random() * 1000);
 };
 
-var chainValueGetter = function (params) {
+const chainValueGetter = (params) => {
   return params.getValue('a&b') * 1000;
 };
 
-var constValueGetter = function () {
+const constValueGetter = () => {
   return 99999;
 };
 

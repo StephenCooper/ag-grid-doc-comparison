@@ -20,7 +20,6 @@ class ChartExample extends Component {
           right: 70,
         },
         title: {
-          enabled: true,
           text: 'Custom Chart Theme Example',
         },
         data: [

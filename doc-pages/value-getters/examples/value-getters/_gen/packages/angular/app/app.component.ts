@@ -63,27 +63,27 @@ export class AppComponent {
   onGridReady(params: GridReadyEvent) {}
 }
 
-var hashValueGetter = function (params: ValueGetterParams) {
+function hashValueGetter(params: ValueGetterParams) {
   return params.node ? params.node.rowIndex : null;
-};
+}
 function abValueGetter(params: ValueGetterParams) {
   return params.data.a + params.data.b;
 }
-var a1000ValueGetter = function (params: ValueGetterParams) {
+function a1000ValueGetter(params: ValueGetterParams) {
   return params.data.a * 1000;
-};
-var b137ValueGetter = function (params: ValueGetterParams) {
+}
+function b137ValueGetter(params: ValueGetterParams) {
   return params.data.b * 137;
-};
-var randomValueGetter = function () {
+}
+function randomValueGetter() {
   return Math.floor(Math.random() * 1000);
-};
-var chainValueGetter = function (params: ValueGetterParams) {
+}
+function chainValueGetter(params: ValueGetterParams) {
   return params.getValue('a&b') * 1000;
-};
-var constValueGetter = function () {
+}
+function constValueGetter() {
   return 99999;
-};
+}
 function createRowData() {
   var rowData = [];
   for (var i = 0; i < 100; i++) {

@@ -40,7 +40,6 @@ export class AppComponent {
           position: 'bottom',
           type: 'number',
           title: {
-            enabled: true,
             text: 'Weight (pounds)',
           },
         },
@@ -48,7 +47,6 @@ export class AppComponent {
           position: 'left',
           type: 'number',
           title: {
-            enabled: true,
             text: 'Height (inches)',
           },
         },

@@ -29,7 +29,6 @@ class ChartExample extends Component {
               enabled: true,
             },
             label: {
-              enabled: true,
               fontWeight: 'bold',
             },
             tooltip: {

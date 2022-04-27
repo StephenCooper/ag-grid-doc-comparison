@@ -70,7 +70,6 @@ const ChartExample = {
             count: agCharts.time.month.every(2),
           },
           title: {
-            enabled: true,
             text: 'Date',
           },
         },
@@ -78,7 +77,6 @@ const ChartExample = {
           position: 'left',
           type: 'number',
           title: {
-            enabled: true,
             text: 'Price in pence',
           },
         },

@@ -46,7 +46,6 @@ export class AppComponent {
           position: 'bottom',
           type: 'number',
           title: {
-            enabled: true,
             text: 'Longitude',
           },
           min: -180,
@@ -57,7 +56,6 @@ export class AppComponent {
           position: 'left',
           type: 'number',
           title: {
-            enabled: true,
             text: 'Latitude',
           },
           min: -90,

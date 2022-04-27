@@ -87,7 +87,7 @@ const VueExample = {
 
       setupData();
       var dataSource = {
-        getRows: function (params2) {
+        getRows: (params2) => {
           var rowData = allServerSideData.slice();
           setTimeout(function () {
             params2.success({ rowData: rowData });

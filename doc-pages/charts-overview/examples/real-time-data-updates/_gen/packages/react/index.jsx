@@ -51,7 +51,6 @@ class ChartExample extends Component {
             type: 'number',
             position: 'left',
             title: {
-              enabled: true,
               text: 'Load (%)',
             },
             min: 0,

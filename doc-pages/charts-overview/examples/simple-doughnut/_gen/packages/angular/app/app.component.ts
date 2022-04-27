@@ -33,7 +33,6 @@ export class AppComponent {
             enabled: false,
           },
           title: {
-            enabled: true,
             text: '2018/19',
           },
           innerRadiusOffset: -100,

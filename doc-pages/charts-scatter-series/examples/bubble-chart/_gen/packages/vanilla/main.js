@@ -49,7 +49,6 @@ const options = {
       type: 'number',
       position: 'bottom',
       title: {
-        enabled: true,
         text: 'Height',
       },
       label: {
@@ -63,7 +62,6 @@ const options = {
       type: 'number',
       position: 'left',
       title: {
-        enabled: true,
         text: 'Weight',
       },
       label: {

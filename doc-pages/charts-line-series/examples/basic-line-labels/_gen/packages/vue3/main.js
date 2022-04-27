@@ -46,7 +46,6 @@ const ChartExample = {
           xKey: 'year',
           yKey: 'spending',
           label: {
-            enabled: true,
             fontWeight: 'bold',
           },
         },

@@ -58,8 +58,32 @@ const VueExample = {
   },
 };
 
+window.hashValueGetter = function hashValueGetter(params) {
+  return params.node ? params.node.rowIndex : null;
+};
+
 window.abValueGetter = function abValueGetter(params) {
   return params.data.a + params.data.b;
+};
+
+window.a1000ValueGetter = function a1000ValueGetter(params) {
+  return params.data.a * 1000;
+};
+
+window.b137ValueGetter = function b137ValueGetter(params) {
+  return params.data.b * 137;
+};
+
+window.randomValueGetter = function randomValueGetter() {
+  return Math.floor(Math.random() * 1000);
+};
+
+window.chainValueGetter = function chainValueGetter(params) {
+  return params.getValue('a&b') * 1000;
+};
+
+window.constValueGetter = function constValueGetter() {
+  return 99999;
 };
 
 window.createRowData = function createRowData() {
@@ -71,30 +95,6 @@ window.createRowData = function createRowData() {
     });
   }
   return rowData;
-};
-
-var hashValueGetter = function (params) {
-  return params.node ? params.node.rowIndex : null;
-};
-
-var a1000ValueGetter = function (params) {
-  return params.data.a * 1000;
-};
-
-var b137ValueGetter = function (params) {
-  return params.data.b * 137;
-};
-
-var randomValueGetter = function () {
-  return Math.floor(Math.random() * 1000);
-};
-
-var chainValueGetter = function (params) {
-  return params.getValue('a&b') * 1000;
-};
-
-var constValueGetter = function () {
-  return 99999;
 };
 
 createApp(VueExample).mount('#app');

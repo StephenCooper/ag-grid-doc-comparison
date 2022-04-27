@@ -209,7 +209,6 @@ class ChartExample extends Component {
             type: 'category',
             position: 'bottom',
             title: {
-              enabled: true,
               text: 'Week',
             },
             label: {
@@ -220,7 +219,6 @@ class ChartExample extends Component {
             type: 'number',
             position: 'left',
             title: {
-              enabled: true,
               text: '£ per kg',
             },
             nice: false,

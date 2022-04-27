@@ -56,7 +56,6 @@ const ChartExample = {
           position: 'bottom',
           type: 'number',
           title: {
-            enabled: true,
             text: 'Depth (m)',
           },
         },
@@ -64,7 +63,6 @@ const ChartExample = {
           position: 'left',
           type: 'number',
           title: {
-            enabled: true,
             text: 'Minimum distance (km)',
           },
         },

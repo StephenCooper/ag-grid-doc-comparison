@@ -85,7 +85,6 @@ const ChartExample = {
           type: 'number',
           position: 'left',
           title: {
-            enabled: true,
             text: 'Thousand tonnes of oil equivalent',
           },
         },

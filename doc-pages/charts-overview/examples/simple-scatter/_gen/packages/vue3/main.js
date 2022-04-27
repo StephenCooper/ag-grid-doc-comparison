@@ -43,7 +43,6 @@ const ChartExample = {
           position: 'bottom',
           type: 'number',
           title: {
-            enabled: true,
             text: 'Weight (pounds)',
           },
         },
@@ -51,7 +50,6 @@ const ChartExample = {
           position: 'left',
           type: 'number',
           title: {
-            enabled: true,
             text: 'Height (inches)',
           },
         },

@@ -42,7 +42,6 @@ class ChartExample extends Component {
             xKey: 'year',
             yKey: 'spending',
             label: {
-              enabled: true,
               fontWeight: 'bold',
             },
           },

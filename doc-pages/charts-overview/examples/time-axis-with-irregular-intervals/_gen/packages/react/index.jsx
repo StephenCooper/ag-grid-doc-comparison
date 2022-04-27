@@ -90,7 +90,6 @@ class ChartExample extends Component {
             position: 'left',
             type: 'number',
             title: {
-              enabled: true,
               text: 'Magnitude',
             },
           },

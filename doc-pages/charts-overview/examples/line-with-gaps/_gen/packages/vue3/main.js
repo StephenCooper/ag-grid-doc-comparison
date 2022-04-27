@@ -213,7 +213,6 @@ const ChartExample = {
           type: 'category',
           position: 'bottom',
           title: {
-            enabled: true,
             text: 'Week',
           },
           label: {
@@ -224,7 +223,6 @@ const ChartExample = {
           type: 'number',
           position: 'left',
           title: {
-            enabled: true,
             text: '£ per kg',
           },
           nice: false,

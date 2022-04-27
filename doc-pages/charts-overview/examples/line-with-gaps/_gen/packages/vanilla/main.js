@@ -197,7 +197,6 @@ const options = {
       type: 'category',
       position: 'bottom',
       title: {
-        enabled: true,
         text: 'Week',
       },
       label: {
@@ -208,7 +207,6 @@ const options = {
       type: 'number',
       position: 'left',
       title: {
-        enabled: true,
         text: '£ per kg',
       },
       nice: false,

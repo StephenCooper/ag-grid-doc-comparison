@@ -154,7 +154,7 @@ const GridExample = () => {
 
   const onGridReady = useCallback((params) => {
     var dataSource = {
-      getRows: function (params2) {
+      getRows: (params2) => {
         fakeServer.getData(
           params2.request,
           params2.parentNode.data,

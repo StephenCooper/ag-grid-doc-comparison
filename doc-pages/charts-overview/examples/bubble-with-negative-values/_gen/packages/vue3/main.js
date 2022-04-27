@@ -49,7 +49,6 @@ const ChartExample = {
           position: 'bottom',
           type: 'number',
           title: {
-            enabled: true,
             text: 'Longitude',
           },
           min: -180,
@@ -60,7 +59,6 @@ const ChartExample = {
           position: 'left',
           type: 'number',
           title: {
-            enabled: true,
             text: 'Latitude',
           },
           min: -90,

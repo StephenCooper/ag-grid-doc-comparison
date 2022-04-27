@@ -85,27 +85,27 @@ class GridExample extends Component {
   }
 }
 
-var hashValueGetter = function (params) {
+function hashValueGetter(params) {
   return params.node ? params.node.rowIndex : null;
-};
+}
 function abValueGetter(params) {
   return params.data.a + params.data.b;
 }
-var a1000ValueGetter = function (params) {
+function a1000ValueGetter(params) {
   return params.data.a * 1000;
-};
-var b137ValueGetter = function (params) {
+}
+function b137ValueGetter(params) {
   return params.data.b * 137;
-};
-var randomValueGetter = function () {
+}
+function randomValueGetter() {
   return Math.floor(Math.random() * 1000);
-};
-var chainValueGetter = function (params) {
+}
+function chainValueGetter(params) {
   return params.getValue('a&b') * 1000;
-};
-var constValueGetter = function () {
+}
+function constValueGetter() {
   return 99999;
-};
+}
 function createRowData() {
   var rowData = [];
   for (var i = 0; i < 100; i++) {

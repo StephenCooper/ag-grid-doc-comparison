@@ -61,7 +61,6 @@ class ChartExample extends Component {
             type: 'number',
             position: 'bottom',
             title: {
-              enabled: true,
               text: 'Height',
             },
             label: {
@@ -75,7 +74,6 @@ class ChartExample extends Component {
             type: 'number',
             position: 'left',
             title: {
-              enabled: true,
               text: 'Weight',
             },
             label: {

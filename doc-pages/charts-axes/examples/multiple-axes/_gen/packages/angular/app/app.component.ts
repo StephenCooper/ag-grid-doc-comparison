@@ -66,7 +66,6 @@ export class AppComponent {
           position: 'left',
           keys: ['male', 'female'],
           title: {
-            enabled: true,
             text: 'Number of cattle',
           },
           label: {

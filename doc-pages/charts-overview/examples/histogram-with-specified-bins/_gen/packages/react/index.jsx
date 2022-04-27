@@ -63,7 +63,6 @@ class ChartExample extends Component {
             position: 'bottom',
             type: 'number',
             title: {
-              enabled: true,
               text: 'Curb weight (pounds)',
             },
           },

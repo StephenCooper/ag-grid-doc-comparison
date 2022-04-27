@@ -17,7 +17,6 @@ const options = {
         enabled: true,
       },
       label: {
-        enabled: true,
         fontWeight: 'bold',
       },
       tooltip: {

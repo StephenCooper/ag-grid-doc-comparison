@@ -88,7 +88,7 @@ const VueExample = {
 
       setupData();
       var dataSource = {
-        getRows: function (params) {
+        getRows: (params) => {
           var rowData = allServerSideData.slice();
           console.log(
             'getRows: found ' + rowData.length + ' records on server.'

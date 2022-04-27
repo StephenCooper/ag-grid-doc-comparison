@@ -58,7 +58,6 @@ export class AppComponent {
           position: 'left',
           type: 'number',
           title: {
-            enabled: true,
             text: 'Highway MPG',
           },
         },

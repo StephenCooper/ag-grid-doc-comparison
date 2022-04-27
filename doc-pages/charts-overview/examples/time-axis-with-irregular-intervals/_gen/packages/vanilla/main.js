@@ -71,7 +71,6 @@ const options = {
       position: 'left',
       type: 'number',
       title: {
-        enabled: true,
         text: 'Magnitude',
       },
     },

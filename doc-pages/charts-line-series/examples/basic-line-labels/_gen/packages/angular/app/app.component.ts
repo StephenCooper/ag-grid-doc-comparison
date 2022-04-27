@@ -43,7 +43,6 @@ export class AppComponent {
           xKey: 'year',
           yKey: 'spending',
           label: {
-            enabled: true,
             fontWeight: 'bold',
           },
         },

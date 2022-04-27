@@ -33,7 +33,6 @@ const ChartExample = {
             enabled: true,
           },
           label: {
-            enabled: true,
             fontWeight: 'bold',
           },
           tooltip: {

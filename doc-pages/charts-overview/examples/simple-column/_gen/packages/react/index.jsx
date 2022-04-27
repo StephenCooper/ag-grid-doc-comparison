@@ -29,7 +29,6 @@ class ChartExample extends Component {
             fill: '#0084e7',
             strokeWidth: 0,
             shadow: {
-              enabled: true,
               xOffset: 3,
             },
           },
@@ -39,7 +38,6 @@ class ChartExample extends Component {
             type: 'category',
             position: 'bottom',
             title: {
-              enabled: true,
               text: 'Year',
             },
           },
@@ -47,7 +45,6 @@ class ChartExample extends Component {
             type: 'number',
             position: 'left',
             title: {
-              enabled: true,
               text: 'Total visitors',
             },
             label: {

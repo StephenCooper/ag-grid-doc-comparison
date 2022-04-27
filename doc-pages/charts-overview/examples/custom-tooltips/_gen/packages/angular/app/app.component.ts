@@ -107,7 +107,6 @@ export class AppComponent {
           type: 'number',
           position: 'left',
           title: {
-            enabled: true,
             text: 'Waste collected (tonnes)',
           },
           label: {
